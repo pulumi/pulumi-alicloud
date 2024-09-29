@@ -14,7 +14,109 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/25524.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.120.0+.
+    /// &gt; **NOTE:** Available since v1.120.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_essd",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         SystemDiskCategory = "cloud_essd",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
+    ///     {
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         SecurityGroups = new[]
+    ///         {
+    ///             defaultSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+    ///         InstanceChargeType = "PostPaid",
+    ///         SystemDiskCategory = "cloud_essd",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         InstanceName = name,
+    ///         DataDisks = new[]
+    ///         {
+    ///             new AliCloud.Ecs.Inputs.InstanceDataDiskArgs
+    ///             {
+    ///                 Category = "cloud_essd",
+    ///                 Size = 20,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultEcsDisk = new AliCloud.Ecs.EcsDisk("default", new()
+    ///     {
+    ///         DiskName = name,
+    ///         ZoneId = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+    ///         Category = "cloud_essd",
+    ///         Size = 500,
+    ///     });
+    /// 
+    ///     var defaultEcsDiskAttachment = new AliCloud.Ecs.EcsDiskAttachment("default", new()
+    ///     {
+    ///         DiskId = defaultEcsDisk.Id,
+    ///         InstanceId = defaultInstance.Id,
+    ///     });
+    /// 
+    ///     var defaultEcsSnapshot = new AliCloud.Ecs.EcsSnapshot("default", new()
+    ///     {
+    ///         DiskId = defaultEcsDiskAttachment.DiskId,
+    ///         Category = "standard",
+    ///         RetentionDays = 20,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -28,10 +130,10 @@ namespace Pulumi.AliCloud.Ecs
     public partial class EcsSnapshot : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The category of the snapshot. Valid Values: `standard` and `flash`.
+        /// The category of the snapshot. Valid values:
         /// </summary>
         [Output("category")]
-        public Output<string?> Category { get; private set; } = null!;
+        public Output<string> Category { get; private set; } = null!;
 
         /// <summary>
         /// The description of the snapshot.
@@ -46,19 +148,19 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> DiskId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+        /// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the instant access feature.
+        /// Field `instant_access` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Output("instantAccess")]
         public Output<bool?> InstantAccess { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        /// Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Output("instantAccessRetentionDays")]
         public Output<int?> InstantAccessRetentionDays { get; private set; } = null!;
@@ -70,13 +172,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The resource group id.
+        /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The retention period of the snapshot.
+        /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         /// </summary>
         [Output("retentionDays")]
         public Output<int?> RetentionDays { get; private set; } = null!;
@@ -88,15 +190,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SnapshotName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of snapshot.
+        /// The status of the Snapshot.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the snapshot.
-        /// 
-        /// &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -148,7 +248,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsSnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The category of the snapshot. Valid Values: `standard` and `flash`.
+        /// The category of the snapshot. Valid values:
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -166,19 +266,19 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> DiskId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+        /// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the instant access feature.
+        /// Field `instant_access` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Input("instantAccess")]
         public Input<bool>? InstantAccess { get; set; }
 
         /// <summary>
-        /// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        /// Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Input("instantAccessRetentionDays")]
         public Input<int>? InstantAccessRetentionDays { get; set; }
@@ -190,13 +290,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The resource group id.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The retention period of the snapshot.
+        /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
@@ -211,9 +311,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the snapshot.
-        /// 
-        /// &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -230,7 +328,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsSnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The category of the snapshot. Valid Values: `standard` and `flash`.
+        /// The category of the snapshot. Valid values:
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -248,19 +346,19 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DiskId { get; set; }
 
         /// <summary>
-        /// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+        /// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the instant access feature.
+        /// Field `instant_access` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Input("instantAccess")]
         public Input<bool>? InstantAccess { get; set; }
 
         /// <summary>
-        /// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        /// Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         /// </summary>
         [Input("instantAccessRetentionDays")]
         public Input<int>? InstantAccessRetentionDays { get; set; }
@@ -272,13 +370,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The resource group id.
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The retention period of the snapshot.
+        /// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
@@ -290,7 +388,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SnapshotName { get; set; }
 
         /// <summary>
-        /// The status of snapshot.
+        /// The status of the Snapshot.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -299,9 +397,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the snapshot.
-        /// 
-        /// &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<string> Tags
         {

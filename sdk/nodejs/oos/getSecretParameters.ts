@@ -9,7 +9,42 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.oos.SecretParameter("default", {
+ *     secretParameterName: name,
+ *     value: "tf-testacc-oos_secret_parameter",
+ *     type: "Secret",
+ *     description: name,
+ *     constraints: `  {
+ *     "AllowedValues": [
+ *         "tf-testacc-oos_secret_parameter"
+ *     ],
+ *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
+ *     "MinLength": 1,
+ *     "MaxLength": 100
+ *   }
+ * `,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "SecretParameter",
+ *     },
+ * });
+ * const ids = alicloud.oos.getSecretParametersOutput({
+ *     ids: [_default.id],
+ * });
+ * export const oosSecretParameterId0 = ids.apply(ids => ids.parameters?.[0]?.id);
+ * ```
  */
 export function getSecretParameters(args?: GetSecretParametersArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretParametersResult> {
     args = args || {};
@@ -24,6 +59,7 @@ export function getSecretParameters(args?: GetSecretParametersArgs, opts?: pulum
         "sortField": args.sortField,
         "sortOrder": args.sortOrder,
         "tags": args.tags,
+        "withDecryption": args.withDecryption,
     }, opts);
 }
 
@@ -32,7 +68,7 @@ export function getSecretParameters(args?: GetSecretParametersArgs, opts?: pulum
  */
 export interface GetSecretParametersArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
@@ -52,15 +88,25 @@ export interface GetSecretParametersArgs {
      */
     resourceGroupId?: string;
     /**
-     * The name of the secret parameter.
+     * The name of the Secret Parameter.
      */
     secretParameterName?: string;
+    /**
+     * The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+     */
     sortField?: string;
+    /**
+     * The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+     */
     sortOrder?: string;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: string};
+    /**
+     * Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
+     */
+    withDecryption?: boolean;
 }
 
 /**
@@ -74,19 +120,70 @@ export interface GetSecretParametersResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Secret Parameter names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Oos Secret Parameters. Each element contains the following attributes:
+     */
     readonly parameters: outputs.oos.GetSecretParametersParameter[];
+    /**
+     * The ID of the Resource Group.
+     */
     readonly resourceGroupId?: string;
+    /**
+     * The name of the encryption parameter.
+     */
     readonly secretParameterName?: string;
     readonly sortField?: string;
     readonly sortOrder?: string;
+    /**
+     * The tags of the parameter.
+     */
     readonly tags?: {[key: string]: string};
+    readonly withDecryption?: boolean;
 }
 /**
  * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.147.0+.
+ * > **NOTE:** Available since v1.147.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.oos.SecretParameter("default", {
+ *     secretParameterName: name,
+ *     value: "tf-testacc-oos_secret_parameter",
+ *     type: "Secret",
+ *     description: name,
+ *     constraints: `  {
+ *     "AllowedValues": [
+ *         "tf-testacc-oos_secret_parameter"
+ *     ],
+ *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
+ *     "MinLength": 1,
+ *     "MaxLength": 100
+ *   }
+ * `,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "SecretParameter",
+ *     },
+ * });
+ * const ids = alicloud.oos.getSecretParametersOutput({
+ *     ids: [_default.id],
+ * });
+ * export const oosSecretParameterId0 = ids.apply(ids => ids.parameters?.[0]?.id);
+ * ```
  */
 export function getSecretParametersOutput(args?: GetSecretParametersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretParametersResult> {
     args = args || {};
@@ -101,6 +198,7 @@ export function getSecretParametersOutput(args?: GetSecretParametersOutputArgs, 
         "sortField": args.sortField,
         "sortOrder": args.sortOrder,
         "tags": args.tags,
+        "withDecryption": args.withDecryption,
     }, opts);
 }
 
@@ -109,7 +207,7 @@ export function getSecretParametersOutput(args?: GetSecretParametersOutputArgs, 
  */
 export interface GetSecretParametersOutputArgs {
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
@@ -129,13 +227,23 @@ export interface GetSecretParametersOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of the secret parameter.
+     * The name of the Secret Parameter.
      */
     secretParameterName?: pulumi.Input<string>;
+    /**
+     * The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+     */
     sortField?: pulumi.Input<string>;
+    /**
+     * The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+     */
     sortOrder?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
+     */
+    withDecryption?: pulumi.Input<boolean>;
 }

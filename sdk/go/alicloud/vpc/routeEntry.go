@@ -12,7 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a route entry resource. A route entry represents a route item of one VPC route table.
+// Provides a Route Entry resource. A Route Entry represents a route item of one VPC Route Table.
+//
+// For information about Route Entry and how to use it, see [What is Route Entry](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-createrouteentry).
+//
+// > **NOTE:** Available since v0.1.0.
 //
 // ## Example Usage
 //
@@ -30,102 +34,88 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
-//				CpuCoreCount:     pulumi.IntRef(1),
-//				MemorySize:       pulumi.Float64Ref(2),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
-//				MostRecent: pulumi.BoolRef(true),
-//				Owners:     pulumi.StringRef("system"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			cfg := config.New(ctx, "")
-//			name := "RouteEntryConfig"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			foo, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.1.0.0/21"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
-//				VpcId:       foo.ID(),
-//				CidrBlock:   pulumi.String("10.1.1.0/24"),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//				VswitchName: pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			tfTestFoo, err := ecs.NewSecurityGroup(ctx, "tf_test_foo", &ecs.SecurityGroupArgs{
-//				Name:        pulumi.String(name),
-//				Description: pulumi.String("foo"),
-//				VpcId:       foo.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ecs.NewSecurityGroupRule(ctx, "ingress", &ecs.SecurityGroupRuleArgs{
-//				Type:            pulumi.String("ingress"),
-//				IpProtocol:      pulumi.String("tcp"),
-//				NicType:         pulumi.String("intranet"),
-//				Policy:          pulumi.String("accept"),
-//				PortRange:       pulumi.String("22/22"),
-//				Priority:        pulumi.Int(1),
-//				SecurityGroupId: tfTestFoo.ID(),
-//				CidrIp:          pulumi.String("0.0.0.0/0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			fooInstance, err := ecs.NewInstance(ctx, "foo", &ecs.InstanceArgs{
-//				SecurityGroups: pulumi.StringArray{
-//					tfTestFoo.ID(),
-//				},
-//				VswitchId:               fooSwitch.ID(),
-//				InstanceChargeType:      pulumi.String("PostPaid"),
-//				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
-//				InternetChargeType:      pulumi.String("PayByTraffic"),
-//				InternetMaxBandwidthOut: pulumi.Int(5),
-//				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
-//				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
-//				InstanceName:            pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vpc.NewRouteEntry(ctx, "foo", &vpc.RouteEntryArgs{
-//				RouteTableId:         foo.RouteTableId,
-//				DestinationCidrblock: pulumi.String("172.11.1.1/32"),
-//				NexthopType:          pulumi.String("Instance"),
-//				NexthopId:            fooInstance.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+// ImageId: pulumi.StringRef(defaultGetImages.Images[0].Id),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("192.168.192.0/24"),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: defaultSwitch.ID(),
+// InstanceName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = vpc.NewRouteEntry(ctx, "foo", &vpc.RouteEntryArgs{
+// RouteTableId: defaultNetwork.RouteTableId,
+// DestinationCidrblock: pulumi.String("172.11.1.1/32"),
+// NexthopType: pulumi.String("Instance"),
+// NexthopId: defaultInstance.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Module Support
@@ -135,33 +125,35 @@ import (
 //
 // ## Import
 //
-// Router entry can be imported using the id, e.g (formatted as<route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id>).
-//
 // ```sh
-// $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+// $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>
 // ```
 type RouteEntry struct {
 	pulumi.CustomResourceState
 
-	// The RouteEntry's target network segment.
+	// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The destination CIDR block of the custom route entry.
 	DestinationCidrblock pulumi.StringPtrOutput `pulumi:"destinationCidrblock"`
-	// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The route entry's next hop. ECS instance ID or VPC router interface ID.
+	// The ID of Next Hop.
 	NexthopId pulumi.StringPtrOutput `pulumi:"nexthopId"`
-	// The next hop type. Available values:
-	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-	// - `RouterInterface`: a router interface.
-	// - `VpnGateway`: a VPN Gateway.
-	// - `HaVip`: a high-availability virtual IP address (HAVIP).
-	// - `NetworkInterface`: an elastic network interface (ENI).
-	// - `NatGateway`: a Nat Gateway.
-	// - `IPv6Gateway`: an IPv6 gateway.
-	// - `Attachment`: a transit router.
-	// - `VpcPeer`: a VPC Peering Connection.
-	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+	// The type of Next Hop. Valid values:
+	// - `Instance`: An Elastic Compute Service (ECS) instance.
+	// - `HaVip`: A high-availability virtual IP address (HAVIP).
+	// - `RouterInterface`: A router interface.
+	// - `NetworkInterface`: An elastic network interface (ENI).
+	// - `VpnGateway`: A VPN Gateway.
+	// - `IPv6Gateway`: An IPv6 gateway.
+	// - `NatGateway`: A Nat Gateway.
+	// - `Attachment`: A transit router.
+	// - `VpcPeer`: A VPC Peering Connection.
+	// - `Ipv4Gateway`: An IPv4 gateway.
+	// - `GatewayEndpoint`: A gateway endpoint.
+	// - `Ecr`: A Express Connect Router (ECR).
 	NexthopType pulumi.StringPtrOutput `pulumi:"nexthopType"`
-	// The ID of the route table.
+	// The ID of the Route Table.
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
@@ -202,25 +194,29 @@ func GetRouteEntry(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouteEntry resources.
 type routeEntryState struct {
-	// The RouteEntry's target network segment.
+	// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+	Description *string `pulumi:"description"`
+	// The destination CIDR block of the custom route entry.
 	DestinationCidrblock *string `pulumi:"destinationCidrblock"`
-	// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	Name *string `pulumi:"name"`
-	// The route entry's next hop. ECS instance ID or VPC router interface ID.
+	// The ID of Next Hop.
 	NexthopId *string `pulumi:"nexthopId"`
-	// The next hop type. Available values:
-	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-	// - `RouterInterface`: a router interface.
-	// - `VpnGateway`: a VPN Gateway.
-	// - `HaVip`: a high-availability virtual IP address (HAVIP).
-	// - `NetworkInterface`: an elastic network interface (ENI).
-	// - `NatGateway`: a Nat Gateway.
-	// - `IPv6Gateway`: an IPv6 gateway.
-	// - `Attachment`: a transit router.
-	// - `VpcPeer`: a VPC Peering Connection.
-	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+	// The type of Next Hop. Valid values:
+	// - `Instance`: An Elastic Compute Service (ECS) instance.
+	// - `HaVip`: A high-availability virtual IP address (HAVIP).
+	// - `RouterInterface`: A router interface.
+	// - `NetworkInterface`: An elastic network interface (ENI).
+	// - `VpnGateway`: A VPN Gateway.
+	// - `IPv6Gateway`: An IPv6 gateway.
+	// - `NatGateway`: A Nat Gateway.
+	// - `Attachment`: A transit router.
+	// - `VpcPeer`: A VPC Peering Connection.
+	// - `Ipv4Gateway`: An IPv4 gateway.
+	// - `GatewayEndpoint`: A gateway endpoint.
+	// - `Ecr`: A Express Connect Router (ECR).
 	NexthopType *string `pulumi:"nexthopType"`
-	// The ID of the route table.
+	// The ID of the Route Table.
 	RouteTableId *string `pulumi:"routeTableId"`
 	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
@@ -229,25 +225,29 @@ type routeEntryState struct {
 }
 
 type RouteEntryState struct {
-	// The RouteEntry's target network segment.
+	// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+	Description pulumi.StringPtrInput
+	// The destination CIDR block of the custom route entry.
 	DestinationCidrblock pulumi.StringPtrInput
-	// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	Name pulumi.StringPtrInput
-	// The route entry's next hop. ECS instance ID or VPC router interface ID.
+	// The ID of Next Hop.
 	NexthopId pulumi.StringPtrInput
-	// The next hop type. Available values:
-	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-	// - `RouterInterface`: a router interface.
-	// - `VpnGateway`: a VPN Gateway.
-	// - `HaVip`: a high-availability virtual IP address (HAVIP).
-	// - `NetworkInterface`: an elastic network interface (ENI).
-	// - `NatGateway`: a Nat Gateway.
-	// - `IPv6Gateway`: an IPv6 gateway.
-	// - `Attachment`: a transit router.
-	// - `VpcPeer`: a VPC Peering Connection.
-	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+	// The type of Next Hop. Valid values:
+	// - `Instance`: An Elastic Compute Service (ECS) instance.
+	// - `HaVip`: A high-availability virtual IP address (HAVIP).
+	// - `RouterInterface`: A router interface.
+	// - `NetworkInterface`: An elastic network interface (ENI).
+	// - `VpnGateway`: A VPN Gateway.
+	// - `IPv6Gateway`: An IPv6 gateway.
+	// - `NatGateway`: A Nat Gateway.
+	// - `Attachment`: A transit router.
+	// - `VpcPeer`: A VPC Peering Connection.
+	// - `Ipv4Gateway`: An IPv4 gateway.
+	// - `GatewayEndpoint`: A gateway endpoint.
+	// - `Ecr`: A Express Connect Router (ECR).
 	NexthopType pulumi.StringPtrInput
-	// The ID of the route table.
+	// The ID of the Route Table.
 	RouteTableId pulumi.StringPtrInput
 	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
 	//
@@ -260,58 +260,58 @@ func (RouteEntryState) ElementType() reflect.Type {
 }
 
 type routeEntryArgs struct {
-	// The RouteEntry's target network segment.
+	// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+	Description *string `pulumi:"description"`
+	// The destination CIDR block of the custom route entry.
 	DestinationCidrblock *string `pulumi:"destinationCidrblock"`
-	// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	Name *string `pulumi:"name"`
-	// The route entry's next hop. ECS instance ID or VPC router interface ID.
+	// The ID of Next Hop.
 	NexthopId *string `pulumi:"nexthopId"`
-	// The next hop type. Available values:
-	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-	// - `RouterInterface`: a router interface.
-	// - `VpnGateway`: a VPN Gateway.
-	// - `HaVip`: a high-availability virtual IP address (HAVIP).
-	// - `NetworkInterface`: an elastic network interface (ENI).
-	// - `NatGateway`: a Nat Gateway.
-	// - `IPv6Gateway`: an IPv6 gateway.
-	// - `Attachment`: a transit router.
-	// - `VpcPeer`: a VPC Peering Connection.
-	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+	// The type of Next Hop. Valid values:
+	// - `Instance`: An Elastic Compute Service (ECS) instance.
+	// - `HaVip`: A high-availability virtual IP address (HAVIP).
+	// - `RouterInterface`: A router interface.
+	// - `NetworkInterface`: An elastic network interface (ENI).
+	// - `VpnGateway`: A VPN Gateway.
+	// - `IPv6Gateway`: An IPv6 gateway.
+	// - `NatGateway`: A Nat Gateway.
+	// - `Attachment`: A transit router.
+	// - `VpcPeer`: A VPC Peering Connection.
+	// - `Ipv4Gateway`: An IPv4 gateway.
+	// - `GatewayEndpoint`: A gateway endpoint.
+	// - `Ecr`: A Express Connect Router (ECR).
 	NexthopType *string `pulumi:"nexthopType"`
-	// The ID of the route table.
+	// The ID of the Route Table.
 	RouteTableId string `pulumi:"routeTableId"`
-	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
-	//
-	// Deprecated: Attribute routerId has been deprecated and suggest removing it from your template.
-	RouterId *string `pulumi:"routerId"`
 }
 
 // The set of arguments for constructing a RouteEntry resource.
 type RouteEntryArgs struct {
-	// The RouteEntry's target network segment.
+	// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+	Description pulumi.StringPtrInput
+	// The destination CIDR block of the custom route entry.
 	DestinationCidrblock pulumi.StringPtrInput
-	// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+	// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 	Name pulumi.StringPtrInput
-	// The route entry's next hop. ECS instance ID or VPC router interface ID.
+	// The ID of Next Hop.
 	NexthopId pulumi.StringPtrInput
-	// The next hop type. Available values:
-	// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-	// - `RouterInterface`: a router interface.
-	// - `VpnGateway`: a VPN Gateway.
-	// - `HaVip`: a high-availability virtual IP address (HAVIP).
-	// - `NetworkInterface`: an elastic network interface (ENI).
-	// - `NatGateway`: a Nat Gateway.
-	// - `IPv6Gateway`: an IPv6 gateway.
-	// - `Attachment`: a transit router.
-	// - `VpcPeer`: a VPC Peering Connection.
-	// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+	// The type of Next Hop. Valid values:
+	// - `Instance`: An Elastic Compute Service (ECS) instance.
+	// - `HaVip`: A high-availability virtual IP address (HAVIP).
+	// - `RouterInterface`: A router interface.
+	// - `NetworkInterface`: An elastic network interface (ENI).
+	// - `VpnGateway`: A VPN Gateway.
+	// - `IPv6Gateway`: An IPv6 gateway.
+	// - `NatGateway`: A Nat Gateway.
+	// - `Attachment`: A transit router.
+	// - `VpcPeer`: A VPC Peering Connection.
+	// - `Ipv4Gateway`: An IPv4 gateway.
+	// - `GatewayEndpoint`: A gateway endpoint.
+	// - `Ecr`: A Express Connect Router (ECR).
 	NexthopType pulumi.StringPtrInput
-	// The ID of the route table.
+	// The ID of the Route Table.
 	RouteTableId pulumi.StringInput
-	// This argument has been deprecated. Please use other arguments to launch a custom route entry.
-	//
-	// Deprecated: Attribute routerId has been deprecated and suggest removing it from your template.
-	RouterId pulumi.StringPtrInput
 }
 
 func (RouteEntryArgs) ElementType() reflect.Type {
@@ -401,37 +401,44 @@ func (o RouteEntryOutput) ToRouteEntryOutputWithContext(ctx context.Context) Rou
 	return o
 }
 
-// The RouteEntry's target network segment.
+// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+func (o RouteEntryOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteEntry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The destination CIDR block of the custom route entry.
 func (o RouteEntryOutput) DestinationCidrblock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringPtrOutput { return v.DestinationCidrblock }).(pulumi.StringPtrOutput)
 }
 
-// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
 func (o RouteEntryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The route entry's next hop. ECS instance ID or VPC router interface ID.
+// The ID of Next Hop.
 func (o RouteEntryOutput) NexthopId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringPtrOutput { return v.NexthopId }).(pulumi.StringPtrOutput)
 }
 
-// The next hop type. Available values:
-// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-// - `RouterInterface`: a router interface.
-// - `VpnGateway`: a VPN Gateway.
-// - `HaVip`: a high-availability virtual IP address (HAVIP).
-// - `NetworkInterface`: an elastic network interface (ENI).
-// - `NatGateway`: a Nat Gateway.
-// - `IPv6Gateway`: an IPv6 gateway.
-// - `Attachment`: a transit router.
-// - `VpcPeer`: a VPC Peering Connection.
-// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+// The type of Next Hop. Valid values:
+// - `Instance`: An Elastic Compute Service (ECS) instance.
+// - `HaVip`: A high-availability virtual IP address (HAVIP).
+// - `RouterInterface`: A router interface.
+// - `NetworkInterface`: An elastic network interface (ENI).
+// - `VpnGateway`: A VPN Gateway.
+// - `IPv6Gateway`: An IPv6 gateway.
+// - `NatGateway`: A Nat Gateway.
+// - `Attachment`: A transit router.
+// - `VpcPeer`: A VPC Peering Connection.
+// - `Ipv4Gateway`: An IPv4 gateway.
+// - `GatewayEndpoint`: A gateway endpoint.
+// - `Ecr`: A Express Connect Router (ECR).
 func (o RouteEntryOutput) NexthopType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringPtrOutput { return v.NexthopType }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the route table.
+// The ID of the Route Table.
 func (o RouteEntryOutput) RouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouteEntry) pulumi.StringOutput { return v.RouteTableId }).(pulumi.StringOutput)
 }

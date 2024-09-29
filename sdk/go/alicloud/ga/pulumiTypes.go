@@ -541,7 +541,7 @@ type ForwardingRuleRuleAction struct {
 	ForwardGroupConfig *ForwardingRuleRuleActionForwardGroupConfig `pulumi:"forwardGroupConfig"`
 	// Forwarding priority.
 	Order int `pulumi:"order"`
-	// Forward action type.
+	// The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
 	RuleActionType string `pulumi:"ruleActionType"`
 	// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
 	RuleActionValue *string `pulumi:"ruleActionValue"`
@@ -564,7 +564,7 @@ type ForwardingRuleRuleActionArgs struct {
 	ForwardGroupConfig ForwardingRuleRuleActionForwardGroupConfigPtrInput `pulumi:"forwardGroupConfig"`
 	// Forwarding priority.
 	Order pulumi.IntInput `pulumi:"order"`
-	// Forward action type.
+	// The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
 	RuleActionType pulumi.StringInput `pulumi:"ruleActionType"`
 	// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
 	RuleActionValue pulumi.StringPtrInput `pulumi:"ruleActionValue"`
@@ -634,7 +634,7 @@ func (o ForwardingRuleRuleActionOutput) Order() pulumi.IntOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleAction) int { return v.Order }).(pulumi.IntOutput)
 }
 
-// Forward action type.
+// The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
 func (o ForwardingRuleRuleActionOutput) RuleActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleAction) string { return v.RuleActionType }).(pulumi.StringOutput)
 }
@@ -902,11 +902,14 @@ func (o ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) I
 
 type ForwardingRuleRuleCondition struct {
 	// The configuration of the domain name. See `hostConfig` below.
+	// > **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
 	HostConfigs []ForwardingRuleRuleConditionHostConfig `pulumi:"hostConfigs"`
 	// The configuration of the path. See `pathConfig` below.
 	PathConfig *ForwardingRuleRuleConditionPathConfig `pulumi:"pathConfig"`
-	// The type of the forwarding conditions. Valid values: `Host`, `Path`.
+	// The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
 	RuleConditionType string `pulumi:"ruleConditionType"`
+	// The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+	RuleConditionValue *string `pulumi:"ruleConditionValue"`
 }
 
 // ForwardingRuleRuleConditionInput is an input type that accepts ForwardingRuleRuleConditionArgs and ForwardingRuleRuleConditionOutput values.
@@ -922,11 +925,14 @@ type ForwardingRuleRuleConditionInput interface {
 
 type ForwardingRuleRuleConditionArgs struct {
 	// The configuration of the domain name. See `hostConfig` below.
+	// > **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
 	HostConfigs ForwardingRuleRuleConditionHostConfigArrayInput `pulumi:"hostConfigs"`
 	// The configuration of the path. See `pathConfig` below.
 	PathConfig ForwardingRuleRuleConditionPathConfigPtrInput `pulumi:"pathConfig"`
-	// The type of the forwarding conditions. Valid values: `Host`, `Path`.
+	// The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
 	RuleConditionType pulumi.StringInput `pulumi:"ruleConditionType"`
+	// The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+	RuleConditionValue pulumi.StringPtrInput `pulumi:"ruleConditionValue"`
 }
 
 func (ForwardingRuleRuleConditionArgs) ElementType() reflect.Type {
@@ -981,6 +987,7 @@ func (o ForwardingRuleRuleConditionOutput) ToForwardingRuleRuleConditionOutputWi
 }
 
 // The configuration of the domain name. See `hostConfig` below.
+// > **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
 func (o ForwardingRuleRuleConditionOutput) HostConfigs() ForwardingRuleRuleConditionHostConfigArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleCondition) []ForwardingRuleRuleConditionHostConfig { return v.HostConfigs }).(ForwardingRuleRuleConditionHostConfigArrayOutput)
 }
@@ -990,9 +997,14 @@ func (o ForwardingRuleRuleConditionOutput) PathConfig() ForwardingRuleRuleCondit
 	return o.ApplyT(func(v ForwardingRuleRuleCondition) *ForwardingRuleRuleConditionPathConfig { return v.PathConfig }).(ForwardingRuleRuleConditionPathConfigPtrOutput)
 }
 
-// The type of the forwarding conditions. Valid values: `Host`, `Path`.
+// The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
 func (o ForwardingRuleRuleConditionOutput) RuleConditionType() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleCondition) string { return v.RuleConditionType }).(pulumi.StringOutput)
+}
+
+// The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+func (o ForwardingRuleRuleConditionOutput) RuleConditionValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardingRuleRuleCondition) *string { return v.RuleConditionValue }).(pulumi.StringPtrOutput)
 }
 
 type ForwardingRuleRuleConditionArrayOutput struct{ *pulumi.OutputState }

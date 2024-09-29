@@ -12,11 +12,11 @@ namespace Pulumi.AliCloud.Ddos.Inputs
 
     public sealed class DomainResourceProxyTypeArgs : global::Pulumi.ResourceArgs
     {
-        [Input("proxyPorts")]
+        [Input("proxyPorts", required: true)]
         private InputList<int>? _proxyPorts;
 
         /// <summary>
-        /// the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
+        /// The port numbers.
         /// </summary>
         public InputList<int> ProxyPorts
         {
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ddos.Inputs
         }
 
         /// <summary>
-        /// the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+        /// The type of the protocol. Valid values:
         /// </summary>
         [Input("proxyType")]
         public Input<string>? ProxyType { get; set; }

@@ -13,7 +13,67 @@ import (
 
 // This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.147.0+.
+// > **NOTE:** Available since v1.147.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/oos"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := oos.NewSecretParameter(ctx, "default", &oos.SecretParameterArgs{
+//				SecretParameterName: pulumi.String(name),
+//				Value:               pulumi.String("tf-testacc-oos_secret_parameter"),
+//				Type:                pulumi.String("Secret"),
+//				Description:         pulumi.String(name),
+//				Constraints: pulumi.String(`  {
+//	    "AllowedValues": [
+//	        "tf-testacc-oos_secret_parameter"
+//	    ],
+//	    "AllowedPattern": "tf-testacc-oos_secret_parameter",
+//	    "MinLength": 1,
+//	    "MaxLength": 100
+//	  }
+//
+// `),
+//
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("SecretParameter"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ids := oos.GetSecretParametersOutput(ctx, oos.GetSecretParametersOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("oosSecretParameterId0", ids.ApplyT(func(ids oos.GetSecretParametersResult) (*string, error) {
+//				return &ids.Parameters[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSecretParameters(ctx *pulumi.Context, args *GetSecretParametersArgs, opts ...pulumi.InvokeOption) (*GetSecretParametersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretParametersResult
@@ -26,7 +86,7 @@ func GetSecretParameters(ctx *pulumi.Context, args *GetSecretParametersArgs, opt
 
 // A collection of arguments for invoking getSecretParameters.
 type GetSecretParametersArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Secret Parameter IDs.
 	Ids []string `pulumi:"ids"`
@@ -36,29 +96,39 @@ type GetSecretParametersArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the Resource Group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The name of the secret parameter.
+	// The name of the Secret Parameter.
 	SecretParameterName *string `pulumi:"secretParameterName"`
-	SortField           *string `pulumi:"sortField"`
-	SortOrder           *string `pulumi:"sortOrder"`
+	// The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+	SortField *string `pulumi:"sortField"`
+	// The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+	SortOrder *string `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
+	// Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
+	WithDecryption *bool `pulumi:"withDecryption"`
 }
 
 // A collection of values returned by getSecretParameters.
 type GetSecretParametersResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                  string                         `pulumi:"id"`
-	Ids                 []string                       `pulumi:"ids"`
-	NameRegex           *string                        `pulumi:"nameRegex"`
-	Names               []string                       `pulumi:"names"`
-	OutputFile          *string                        `pulumi:"outputFile"`
-	Parameters          []GetSecretParametersParameter `pulumi:"parameters"`
-	ResourceGroupId     *string                        `pulumi:"resourceGroupId"`
-	SecretParameterName *string                        `pulumi:"secretParameterName"`
-	SortField           *string                        `pulumi:"sortField"`
-	SortOrder           *string                        `pulumi:"sortOrder"`
-	Tags                map[string]string              `pulumi:"tags"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Secret Parameter names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Oos Secret Parameters. Each element contains the following attributes:
+	Parameters []GetSecretParametersParameter `pulumi:"parameters"`
+	// The ID of the Resource Group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The name of the encryption parameter.
+	SecretParameterName *string `pulumi:"secretParameterName"`
+	SortField           *string `pulumi:"sortField"`
+	SortOrder           *string `pulumi:"sortOrder"`
+	// The tags of the parameter.
+	Tags           map[string]string `pulumi:"tags"`
+	WithDecryption *bool             `pulumi:"withDecryption"`
 }
 
 func GetSecretParametersOutput(ctx *pulumi.Context, args GetSecretParametersOutputArgs, opts ...pulumi.InvokeOption) GetSecretParametersResultOutput {
@@ -82,7 +152,7 @@ func GetSecretParametersOutput(ctx *pulumi.Context, args GetSecretParametersOutp
 
 // A collection of arguments for invoking getSecretParameters.
 type GetSecretParametersOutputArgs struct {
-	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Secret Parameter IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -92,12 +162,16 @@ type GetSecretParametersOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the Resource Group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The name of the secret parameter.
+	// The name of the Secret Parameter.
 	SecretParameterName pulumi.StringPtrInput `pulumi:"secretParameterName"`
-	SortField           pulumi.StringPtrInput `pulumi:"sortField"`
-	SortOrder           pulumi.StringPtrInput `pulumi:"sortOrder"`
+	// The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+	SortField pulumi.StringPtrInput `pulumi:"sortField"`
+	// The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `withDecryption` takes effect only if `enableDetails` is set to `true`.
+	WithDecryption pulumi.BoolPtrInput `pulumi:"withDecryption"`
 }
 
 func (GetSecretParametersOutputArgs) ElementType() reflect.Type {
@@ -136,6 +210,7 @@ func (o GetSecretParametersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretParametersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Secret Parameter names.
 func (o GetSecretParametersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecretParametersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -144,14 +219,17 @@ func (o GetSecretParametersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretParametersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Oos Secret Parameters. Each element contains the following attributes:
 func (o GetSecretParametersResultOutput) Parameters() GetSecretParametersParameterArrayOutput {
 	return o.ApplyT(func(v GetSecretParametersResult) []GetSecretParametersParameter { return v.Parameters }).(GetSecretParametersParameterArrayOutput)
 }
 
+// The ID of the Resource Group.
 func (o GetSecretParametersResultOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretParametersResult) *string { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The name of the encryption parameter.
 func (o GetSecretParametersResultOutput) SecretParameterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretParametersResult) *string { return v.SecretParameterName }).(pulumi.StringPtrOutput)
 }
@@ -164,8 +242,13 @@ func (o GetSecretParametersResultOutput) SortOrder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSecretParametersResult) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the parameter.
 func (o GetSecretParametersResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretParametersResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+func (o GetSecretParametersResultOutput) WithDecryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSecretParametersResult) *bool { return v.WithDecryption }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

@@ -5,8 +5,10 @@ package com.pulumi.alicloud.gpdb.outputs;
 
 import com.pulumi.alicloud.gpdb.outputs.DbInstancePlanPlanConfigPause;
 import com.pulumi.alicloud.gpdb.outputs.DbInstancePlanPlanConfigResume;
+import com.pulumi.alicloud.gpdb.outputs.DbInstancePlanPlanConfigScaleDown;
 import com.pulumi.alicloud.gpdb.outputs.DbInstancePlanPlanConfigScaleIn;
 import com.pulumi.alicloud.gpdb.outputs.DbInstancePlanPlanConfigScaleOut;
+import com.pulumi.alicloud.gpdb.outputs.DbInstancePlanPlanConfigScaleUp;
 import com.pulumi.core.annotations.CustomType;
 import java.util.Objects;
 import java.util.Optional;
@@ -25,6 +27,11 @@ public final class DbInstancePlanPlanConfig {
      */
     private @Nullable DbInstancePlanPlanConfigResume resume;
     /**
+     * @return Scale down instance plan config. See `scale_down` below.
+     * 
+     */
+    private @Nullable DbInstancePlanPlanConfigScaleDown scaleDown;
+    /**
      * @return Scale In instance plan config. See `scale_in` below.
      * 
      */
@@ -34,6 +41,11 @@ public final class DbInstancePlanPlanConfig {
      * 
      */
     private @Nullable DbInstancePlanPlanConfigScaleOut scaleOut;
+    /**
+     * @return Scale up instance plan config. See `scale_up` below.
+     * 
+     */
+    private @Nullable DbInstancePlanPlanConfigScaleUp scaleUp;
 
     private DbInstancePlanPlanConfig() {}
     /**
@@ -51,6 +63,13 @@ public final class DbInstancePlanPlanConfig {
         return Optional.ofNullable(this.resume);
     }
     /**
+     * @return Scale down instance plan config. See `scale_down` below.
+     * 
+     */
+    public Optional<DbInstancePlanPlanConfigScaleDown> scaleDown() {
+        return Optional.ofNullable(this.scaleDown);
+    }
+    /**
      * @return Scale In instance plan config. See `scale_in` below.
      * 
      */
@@ -64,6 +83,13 @@ public final class DbInstancePlanPlanConfig {
     public Optional<DbInstancePlanPlanConfigScaleOut> scaleOut() {
         return Optional.ofNullable(this.scaleOut);
     }
+    /**
+     * @return Scale up instance plan config. See `scale_up` below.
+     * 
+     */
+    public Optional<DbInstancePlanPlanConfigScaleUp> scaleUp() {
+        return Optional.ofNullable(this.scaleUp);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,15 +102,19 @@ public final class DbInstancePlanPlanConfig {
     public static final class Builder {
         private @Nullable DbInstancePlanPlanConfigPause pause;
         private @Nullable DbInstancePlanPlanConfigResume resume;
+        private @Nullable DbInstancePlanPlanConfigScaleDown scaleDown;
         private @Nullable DbInstancePlanPlanConfigScaleIn scaleIn;
         private @Nullable DbInstancePlanPlanConfigScaleOut scaleOut;
+        private @Nullable DbInstancePlanPlanConfigScaleUp scaleUp;
         public Builder() {}
         public Builder(DbInstancePlanPlanConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.pause = defaults.pause;
     	      this.resume = defaults.resume;
+    	      this.scaleDown = defaults.scaleDown;
     	      this.scaleIn = defaults.scaleIn;
     	      this.scaleOut = defaults.scaleOut;
+    	      this.scaleUp = defaults.scaleUp;
         }
 
         @CustomType.Setter
@@ -100,6 +130,12 @@ public final class DbInstancePlanPlanConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder scaleDown(@Nullable DbInstancePlanPlanConfigScaleDown scaleDown) {
+
+            this.scaleDown = scaleDown;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scaleIn(@Nullable DbInstancePlanPlanConfigScaleIn scaleIn) {
 
             this.scaleIn = scaleIn;
@@ -111,12 +147,20 @@ public final class DbInstancePlanPlanConfig {
             this.scaleOut = scaleOut;
             return this;
         }
+        @CustomType.Setter
+        public Builder scaleUp(@Nullable DbInstancePlanPlanConfigScaleUp scaleUp) {
+
+            this.scaleUp = scaleUp;
+            return this;
+        }
         public DbInstancePlanPlanConfig build() {
             final var _resultValue = new DbInstancePlanPlanConfig();
             _resultValue.pause = pause;
             _resultValue.resume = resume;
+            _resultValue.scaleDown = scaleDown;
             _resultValue.scaleIn = scaleIn;
             _resultValue.scaleOut = scaleOut;
+            _resultValue.scaleUp = scaleUp;
             return _resultValue;
         }
     }

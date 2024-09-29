@@ -100,6 +100,11 @@ export type ScheduledTask = import("./scheduledTask").ScheduledTask;
 export const ScheduledTask: typeof import("./scheduledTask").ScheduledTask = null as any;
 utilities.lazyLoad(exports, ["ScheduledTask"], () => require("./scheduledTask"));
 
+export { ServerGroupAttachmentArgs, ServerGroupAttachmentState } from "./serverGroupAttachment";
+export type ServerGroupAttachment = import("./serverGroupAttachment").ServerGroupAttachment;
+export const ServerGroupAttachment: typeof import("./serverGroupAttachment").ServerGroupAttachment = null as any;
+utilities.lazyLoad(exports, ["ServerGroupAttachment"], () => require("./serverGroupAttachment"));
+
 export { SuspendProcessArgs, SuspendProcessState } from "./suspendProcess";
 export type SuspendProcess = import("./suspendProcess").SuspendProcess;
 export const SuspendProcess: typeof import("./suspendProcess").SuspendProcess = null as any;
@@ -134,6 +139,8 @@ const _module = {
                 return new Schedule(name, <any>undefined, { urn })
             case "alicloud:ess/scheduledTask:ScheduledTask":
                 return new ScheduledTask(name, <any>undefined, { urn })
+            case "alicloud:ess/serverGroupAttachment:ServerGroupAttachment":
+                return new ServerGroupAttachment(name, <any>undefined, { urn })
             case "alicloud:ess/suspendProcess:SuspendProcess":
                 return new SuspendProcess(name, <any>undefined, { urn })
             default:
@@ -153,4 +160,5 @@ pulumi.runtime.registerResourceModule("alicloud", "ess/scalingGroupVServerGroups
 pulumi.runtime.registerResourceModule("alicloud", "ess/scalingRule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/schedule", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/scheduledTask", _module)
+pulumi.runtime.registerResourceModule("alicloud", "ess/serverGroupAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "ess/suspendProcess", _module)

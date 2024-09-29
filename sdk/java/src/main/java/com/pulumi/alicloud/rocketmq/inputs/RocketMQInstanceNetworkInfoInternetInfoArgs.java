@@ -19,14 +19,14 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
     public static final RocketMQInstanceNetworkInfoInternetInfoArgs Empty = new RocketMQInstanceNetworkInfoInternetInfoArgs();
 
     /**
-     * Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+     * Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
      * 
      */
     @Import(name="flowOutBandwidth")
     private @Nullable Output<Integer> flowOutBandwidth;
 
     /**
-     * @return Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+     * @return Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
      * 
      */
     public Optional<Output<Integer>> flowOutBandwidth() {
@@ -34,18 +34,18 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
     }
 
     /**
-     * Public network billing type. The parameter values are as follows:
-     * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-     * - uninvolved: Not involved. Set this value when disabling public network access.
+     * Public network billing type.  Parameter values are as follows:
+     * - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+     * - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
      * 
      */
     @Import(name="flowOutType", required=true)
     private Output<String> flowOutType;
 
     /**
-     * @return Public network billing type. The parameter values are as follows:
-     * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-     * - uninvolved: Not involved. Set this value when disabling public network access.
+     * @return Public network billing type.  Parameter values are as follows:
+     * - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+     * - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
      * 
      */
     public Output<String> flowOutType() {
@@ -53,18 +53,18 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
     }
 
     /**
-     * Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+     * Whether to enable public network access.  The parameter values are as follows:
      * - enable: Enable public network access
-     * - disable: Disable public network access
+     * - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
      * 
      */
     @Import(name="internetSpec", required=true)
     private Output<String> internetSpec;
 
     /**
-     * @return Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+     * @return Whether to enable public network access.  The parameter values are as follows:
      * - enable: Enable public network access
-     * - disable: Disable public network access
+     * - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
      * 
      */
     public Output<String> internetSpec() {
@@ -114,7 +114,7 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param flowOutBandwidth Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+         * @param flowOutBandwidth Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param flowOutBandwidth Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+         * @param flowOutBandwidth Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
          * 
          * @return builder
          * 
@@ -135,9 +135,9 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param flowOutType Public network billing type. The parameter values are as follows:
-         * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-         * - uninvolved: Not involved. Set this value when disabling public network access.
+         * @param flowOutType Public network billing type.  Parameter values are as follows:
+         * - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+         * - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
          * 
          * @return builder
          * 
@@ -148,9 +148,9 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param flowOutType Public network billing type. The parameter values are as follows:
-         * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-         * - uninvolved: Not involved. Set this value when disabling public network access.
+         * @param flowOutType Public network billing type.  Parameter values are as follows:
+         * - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+         * - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
          * 
          * @return builder
          * 
@@ -160,9 +160,9 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param internetSpec Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+         * @param internetSpec Whether to enable public network access.  The parameter values are as follows:
          * - enable: Enable public network access
-         * - disable: Disable public network access
+         * - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
          * 
          * @return builder
          * 
@@ -173,9 +173,9 @@ public final class RocketMQInstanceNetworkInfoInternetInfoArgs extends com.pulum
         }
 
         /**
-         * @param internetSpec Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+         * @param internetSpec Whether to enable public network access.  The parameter values are as follows:
          * - enable: Enable public network access
-         * - disable: Disable public network access
+         * - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
          * 
          * @return builder
          * 

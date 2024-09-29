@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetSecretParametersParameter {
     /**
-     * @return The constraints of the encryption parameter.
+     * @return The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private String constraints;
@@ -38,7 +38,7 @@ public final class GetSecretParametersParameter {
      */
     private String id;
     /**
-     * @return KeyId of KMS used for encryption.
+     * @return The ID of the key of Key Management Service (KMS) that is used for encryption.
      * 
      */
     private String keyId;
@@ -58,7 +58,7 @@ public final class GetSecretParametersParameter {
      */
     private String secretParameterId;
     /**
-     * @return The name of the encryption parameter.
+     * @return The name of the Secret Parameter.
      * 
      */
     private String secretParameterName;
@@ -68,12 +68,12 @@ public final class GetSecretParametersParameter {
      */
     private String shareType;
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private Map<String,String> tags;
     /**
-     * @return The data type of the encryption parameter.
+     * @return The type of the parameter.
      * 
      */
     private String type;
@@ -87,10 +87,15 @@ public final class GetSecretParametersParameter {
      * 
      */
     private String updatedDate;
+    /**
+     * @return (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
+     * 
+     */
+    private String value;
 
     private GetSecretParametersParameter() {}
     /**
-     * @return The constraints of the encryption parameter.
+     * @return The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public String constraints() {
@@ -125,7 +130,7 @@ public final class GetSecretParametersParameter {
         return this.id;
     }
     /**
-     * @return KeyId of KMS used for encryption.
+     * @return The ID of the key of Key Management Service (KMS) that is used for encryption.
      * 
      */
     public String keyId() {
@@ -153,7 +158,7 @@ public final class GetSecretParametersParameter {
         return this.secretParameterId;
     }
     /**
-     * @return The name of the encryption parameter.
+     * @return The name of the Secret Parameter.
      * 
      */
     public String secretParameterName() {
@@ -167,14 +172,14 @@ public final class GetSecretParametersParameter {
         return this.shareType;
     }
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
     /**
-     * @return The data type of the encryption parameter.
+     * @return The type of the parameter.
      * 
      */
     public String type() {
@@ -193,6 +198,13 @@ public final class GetSecretParametersParameter {
      */
     public String updatedDate() {
         return this.updatedDate;
+    }
+    /**
+     * @return (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
+     * 
+     */
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
@@ -219,6 +231,7 @@ public final class GetSecretParametersParameter {
         private String type;
         private String updatedBy;
         private String updatedDate;
+        private String value;
         public Builder() {}
         public Builder(GetSecretParametersParameter defaults) {
     	      Objects.requireNonNull(defaults);
@@ -237,6 +250,7 @@ public final class GetSecretParametersParameter {
     	      this.type = defaults.type;
     	      this.updatedBy = defaults.updatedBy;
     	      this.updatedDate = defaults.updatedDate;
+    	      this.value = defaults.value;
         }
 
         @CustomType.Setter
@@ -359,6 +373,14 @@ public final class GetSecretParametersParameter {
             this.updatedDate = updatedDate;
             return this;
         }
+        @CustomType.Setter
+        public Builder value(String value) {
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetSecretParametersParameter", "value");
+            }
+            this.value = value;
+            return this;
+        }
         public GetSecretParametersParameter build() {
             final var _resultValue = new GetSecretParametersParameter();
             _resultValue.constraints = constraints;
@@ -376,6 +398,7 @@ public final class GetSecretParametersParameter {
             _resultValue.type = type;
             _resultValue.updatedBy = updatedBy;
             _resultValue.updatedDate = updatedDate;
+            _resultValue.value = value;
             return _resultValue;
         }
     }

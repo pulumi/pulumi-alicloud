@@ -103,14 +103,14 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="aclName", refs={String.class}, tree="[0]")
-    private Output<String> aclName;
+    private Output</* @Nullable */ String> aclName;
 
     /**
      * @return The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      * 
      */
-    public Output<String> aclName() {
-        return this.aclName;
+    public Output<Optional<String>> aclName() {
+        return Codegen.optional(this.aclName);
     }
     /**
      * Specifies whether to precheck the API request.
@@ -181,7 +181,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Acl(java.lang.String name, AclArgs args) {
+    public Acl(java.lang.String name, @Nullable AclArgs args) {
         this(name, args, null);
     }
     /**
@@ -190,7 +190,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Acl(java.lang.String name, AclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Acl(java.lang.String name, @Nullable AclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:alb/acl:Acl", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -198,7 +198,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
         super("alicloud:alb/acl:Acl", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static AclArgs makeArgs(AclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static AclArgs makeArgs(@Nullable AclArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

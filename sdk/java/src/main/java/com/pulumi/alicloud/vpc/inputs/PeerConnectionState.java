@@ -22,6 +22,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
      * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
      * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+     * 
      * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
@@ -32,6 +33,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
      * @return The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
      * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+     * 
      * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
@@ -89,14 +91,14 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
+     * The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
+     * @return The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -104,14 +106,18 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The description of the VPC peer connection to be created.
+     * 
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * @return The description of the VPC peer connection to be created.
+     * 
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
      * 
      */
     public Optional<Output<String>> description() {
@@ -119,14 +125,14 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Whether to PreCheck only this request. Default value: `false`. Valid values:
+     * Whether to PreCheck only this request. Value:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck only this request. Default value: `false`. Valid values:
+     * @return Whether to PreCheck only this request. Value:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -134,14 +140,29 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * Whether to forcibly delete the VPC peering connection. Value:
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Whether to forcibly delete the VPC peering connection. Value:
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
+     * The name of the resource.
      * 
      */
     @Import(name="peerConnectionName")
     private @Nullable Output<String> peerConnectionName;
 
     /**
-     * @return The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return The name of the resource.
      * 
      */
     public Optional<Output<String>> peerConnectionName() {
@@ -149,14 +170,14 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the resource group.
+     * The ID of resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -164,14 +185,14 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The status of the VPC peer connection.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the VPC peer connection.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -179,14 +200,14 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tags of the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -194,14 +215,14 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the requester VPC.
+     * You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the requester VPC.
+     * @return You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -218,6 +239,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         this.createTime = $.createTime;
         this.description = $.description;
         this.dryRun = $.dryRun;
+        this.forceDelete = $.forceDelete;
         this.peerConnectionName = $.peerConnectionName;
         this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
@@ -247,6 +269,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
          * @param acceptingAliUid The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
          * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
          * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+         * 
          * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
          * 
          * @return builder
@@ -261,6 +284,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
          * @param acceptingAliUid The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
          * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
          * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+         * 
          * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
          * 
          * @return builder
@@ -338,7 +362,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param createTime The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
+         * @param createTime The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
          * 
          * @return builder
          * 
@@ -349,7 +373,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param createTime The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
+         * @param createTime The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
          * 
          * @return builder
          * 
@@ -359,7 +383,9 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param description The description of the VPC peer connection to be created.
+         * 
+         * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -370,7 +396,9 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param description The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+         * @param description The description of the VPC peer connection to be created.
+         * 
+         * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
          * 
          * @return builder
          * 
@@ -380,7 +408,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request. Default value: `false`. Valid values:
+         * @param dryRun Whether to PreCheck only this request. Value:
          * 
          * @return builder
          * 
@@ -391,7 +419,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param dryRun Whether to PreCheck only this request. Default value: `false`. Valid values:
+         * @param dryRun Whether to PreCheck only this request. Value:
          * 
          * @return builder
          * 
@@ -401,7 +429,28 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param peerConnectionName The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param forceDelete Whether to forcibly delete the VPC peering connection. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Whether to forcibly delete the VPC peering connection. Value:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
+         * @param peerConnectionName The name of the resource.
          * 
          * @return builder
          * 
@@ -412,7 +461,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param peerConnectionName The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+         * @param peerConnectionName The name of the resource.
          * 
          * @return builder
          * 
@@ -422,7 +471,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of resource group.
          * 
          * @return builder
          * 
@@ -433,7 +482,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId The ID of resource group.
          * 
          * @return builder
          * 
@@ -443,7 +492,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the VPC peer connection.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -454,7 +503,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param status The status of the VPC peer connection.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -464,7 +513,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tags of the resource.
          * 
          * @return builder
          * 
@@ -475,7 +524,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags The tags of the resource.
          * 
          * @return builder
          * 
@@ -485,7 +534,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcId The ID of the requester VPC.
+         * @param vpcId You must create a VPC ID on the initiator of a VPC peer connection.
          * 
          * @return builder
          * 
@@ -496,7 +545,7 @@ public final class PeerConnectionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vpcId The ID of the requester VPC.
+         * @param vpcId You must create a VPC ID on the initiator of a VPC peer connection.
          * 
          * @return builder
          * 

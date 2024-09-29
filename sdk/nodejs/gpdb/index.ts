@@ -20,6 +20,11 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { DbInstanceIpArrayArgs, DbInstanceIpArrayState } from "./dbInstanceIpArray";
+export type DbInstanceIpArray = import("./dbInstanceIpArray").DbInstanceIpArray;
+export const DbInstanceIpArray: typeof import("./dbInstanceIpArray").DbInstanceIpArray = null as any;
+utilities.lazyLoad(exports, ["DbInstanceIpArray"], () => require("./dbInstanceIpArray"));
+
 export { DbInstancePlanArgs, DbInstancePlanState } from "./dbInstancePlan";
 export type DbInstancePlan = import("./dbInstancePlan").DbInstancePlan;
 export const DbInstancePlan: typeof import("./dbInstancePlan").DbInstancePlan = null as any;
@@ -45,6 +50,11 @@ export const getAccounts: typeof import("./getAccounts").getAccounts = null as a
 export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
 utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
 
+export { GetDataBackupsArgs, GetDataBackupsResult, GetDataBackupsOutputArgs } from "./getDataBackups";
+export const getDataBackups: typeof import("./getDataBackups").getDataBackups = null as any;
+export const getDataBackupsOutput: typeof import("./getDataBackups").getDataBackupsOutput = null as any;
+utilities.lazyLoad(exports, ["getDataBackups","getDataBackupsOutput"], () => require("./getDataBackups"));
+
 export { GetDbInstancePlansArgs, GetDbInstancePlansResult, GetDbInstancePlansOutputArgs } from "./getDbInstancePlans";
 export const getDbInstancePlans: typeof import("./getDbInstancePlans").getDbInstancePlans = null as any;
 export const getDbInstancePlansOutput: typeof import("./getDbInstancePlans").getDbInstancePlansOutput = null as any;
@@ -54,6 +64,11 @@ export { GetInstancesArgs, GetInstancesResult, GetInstancesOutputArgs } from "./
 export const getInstances: typeof import("./getInstances").getInstances = null as any;
 export const getInstancesOutput: typeof import("./getInstances").getInstancesOutput = null as any;
 utilities.lazyLoad(exports, ["getInstances","getInstancesOutput"], () => require("./getInstances"));
+
+export { GetLogBackupsArgs, GetLogBackupsResult, GetLogBackupsOutputArgs } from "./getLogBackups";
+export const getLogBackups: typeof import("./getLogBackups").getLogBackups = null as any;
+export const getLogBackupsOutput: typeof import("./getLogBackups").getLogBackupsOutput = null as any;
+utilities.lazyLoad(exports, ["getLogBackups","getLogBackupsOutput"], () => require("./getLogBackups"));
 
 export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
@@ -90,6 +105,11 @@ export type StreamingDataSource = import("./streamingDataSource").StreamingDataS
 export const StreamingDataSource: typeof import("./streamingDataSource").StreamingDataSource = null as any;
 utilities.lazyLoad(exports, ["StreamingDataSource"], () => require("./streamingDataSource"));
 
+export { StreamingJobArgs, StreamingJobState } from "./streamingJob";
+export type StreamingJob = import("./streamingJob").StreamingJob;
+export const StreamingJob: typeof import("./streamingJob").StreamingJob = null as any;
+utilities.lazyLoad(exports, ["StreamingJob"], () => require("./streamingJob"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -101,6 +121,8 @@ const _module = {
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:gpdb/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray":
+                return new DbInstanceIpArray(name, <any>undefined, { urn })
             case "alicloud:gpdb/dbInstancePlan:DbInstancePlan":
                 return new DbInstancePlan(name, <any>undefined, { urn })
             case "alicloud:gpdb/dbResourceGroup:DbResourceGroup":
@@ -121,6 +143,8 @@ const _module = {
                 return new StreamingDataService(name, <any>undefined, { urn })
             case "alicloud:gpdb/streamingDataSource:StreamingDataSource":
                 return new StreamingDataSource(name, <any>undefined, { urn })
+            case "alicloud:gpdb/streamingJob:StreamingJob":
+                return new StreamingJob(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -129,6 +153,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstanceIpArray", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstancePlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbResourceGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/elasticInstance", _module)
@@ -139,3 +164,4 @@ pulumi.runtime.registerResourceModule("alicloud", "gpdb/jdbcDataSource", _module
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/remoteAdbDataSource", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingDataService", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingDataSource", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/streamingJob", _module)

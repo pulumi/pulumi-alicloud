@@ -24,14 +24,35 @@ public final class GetSecretParametersResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Secret Parameter names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Oos Secret Parameters. Each element contains the following attributes:
+     * 
+     */
     private List<GetSecretParametersParameter> parameters;
+    /**
+     * @return The ID of the Resource Group.
+     * 
+     */
     private @Nullable String resourceGroupId;
+    /**
+     * @return The name of the encryption parameter.
+     * 
+     */
     private @Nullable String secretParameterName;
     private @Nullable String sortField;
     private @Nullable String sortOrder;
+    /**
+     * @return The tags of the parameter.
+     * 
+     */
     private @Nullable Map<String,String> tags;
+    private @Nullable Boolean withDecryption;
 
     private GetSecretParametersResult() {}
     public Optional<Boolean> enableDetails() {
@@ -50,18 +71,34 @@ public final class GetSecretParametersResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Secret Parameter names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Oos Secret Parameters. Each element contains the following attributes:
+     * 
+     */
     public List<GetSecretParametersParameter> parameters() {
         return this.parameters;
     }
+    /**
+     * @return The ID of the Resource Group.
+     * 
+     */
     public Optional<String> resourceGroupId() {
         return Optional.ofNullable(this.resourceGroupId);
     }
+    /**
+     * @return The name of the encryption parameter.
+     * 
+     */
     public Optional<String> secretParameterName() {
         return Optional.ofNullable(this.secretParameterName);
     }
@@ -71,8 +108,15 @@ public final class GetSecretParametersResult {
     public Optional<String> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
+    /**
+     * @return The tags of the parameter.
+     * 
+     */
     public Map<String,String> tags() {
         return this.tags == null ? Map.of() : this.tags;
+    }
+    public Optional<Boolean> withDecryption() {
+        return Optional.ofNullable(this.withDecryption);
     }
 
     public static Builder builder() {
@@ -96,6 +140,7 @@ public final class GetSecretParametersResult {
         private @Nullable String sortField;
         private @Nullable String sortOrder;
         private @Nullable Map<String,String> tags;
+        private @Nullable Boolean withDecryption;
         public Builder() {}
         public Builder(GetSecretParametersResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -111,6 +156,7 @@ public final class GetSecretParametersResult {
     	      this.sortField = defaults.sortField;
     	      this.sortOrder = defaults.sortOrder;
     	      this.tags = defaults.tags;
+    	      this.withDecryption = defaults.withDecryption;
         }
 
         @CustomType.Setter
@@ -202,6 +248,12 @@ public final class GetSecretParametersResult {
             this.tags = tags;
             return this;
         }
+        @CustomType.Setter
+        public Builder withDecryption(@Nullable Boolean withDecryption) {
+
+            this.withDecryption = withDecryption;
+            return this;
+        }
         public GetSecretParametersResult build() {
             final var _resultValue = new GetSecretParametersResult();
             _resultValue.enableDetails = enableDetails;
@@ -216,6 +268,7 @@ public final class GetSecretParametersResult {
             _resultValue.sortField = sortField;
             _resultValue.sortOrder = sortOrder;
             _resultValue.tags = tags;
+            _resultValue.withDecryption = withDecryption;
             return _resultValue;
         }
     }

@@ -25,6 +25,7 @@ class ContainerGroupArgs:
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
+                 dns_policy: Optional[pulumi.Input[str]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
@@ -56,6 +57,7 @@ class ContainerGroupArgs:
         :param pulumi.Input[bool] auto_match_image_cache: Specifies whether to automatically match the image cache. Default value: `false`. Valid values: `true` and `false`.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
@@ -92,6 +94,8 @@ class ContainerGroupArgs:
             pulumi.set(__self__, "cpu", cpu)
         if dns_config is not None:
             pulumi.set(__self__, "dns_config", dns_config)
+        if dns_policy is not None:
+            pulumi.set(__self__, "dns_policy", dns_policy)
         if eip_bandwidth is not None:
             pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
         if eip_instance_id is not None:
@@ -239,6 +243,18 @@ class ContainerGroupArgs:
     @dns_config.setter
     def dns_config(self, value: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]):
         pulumi.set(self, "dns_config", value)
+
+    @property
+    @pulumi.getter(name="dnsPolicy")
+    def dns_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+        """
+        return pulumi.get(self, "dns_policy")
+
+    @dns_policy.setter
+    def dns_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_policy", value)
 
     @property
     @pulumi.getter(name="eipBandwidth")
@@ -481,6 +497,7 @@ class _ContainerGroupState:
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
+                 dns_policy: Optional[pulumi.Input[str]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
@@ -514,6 +531,7 @@ class _ContainerGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input['ContainerGroupDnsConfigArgs'] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]] host_aliases: HostAliases. See `host_aliases` below.
@@ -556,6 +574,8 @@ class _ContainerGroupState:
             pulumi.set(__self__, "cpu", cpu)
         if dns_config is not None:
             pulumi.set(__self__, "dns_config", dns_config)
+        if dns_policy is not None:
+            pulumi.set(__self__, "dns_policy", dns_policy)
         if eip_bandwidth is not None:
             pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
         if eip_instance_id is not None:
@@ -688,6 +708,18 @@ class _ContainerGroupState:
     @dns_config.setter
     def dns_config(self, value: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']]):
         pulumi.set(self, "dns_config", value)
+
+    @property
+    @pulumi.getter(name="dnsPolicy")
+    def dns_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+        """
+        return pulumi.get(self, "dns_policy")
+
+    @dns_policy.setter
+    def dns_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_policy", value)
 
     @property
     @pulumi.getter(name="eipBandwidth")
@@ -993,6 +1025,7 @@ class ContainerGroup(pulumi.CustomResource):
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
+                 dns_policy: Optional[pulumi.Input[str]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
@@ -1138,6 +1171,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
@@ -1305,6 +1339,7 @@ class ContainerGroup(pulumi.CustomResource):
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  dns_config: Optional[pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
+                 dns_policy: Optional[pulumi.Input[str]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_instance_id: Optional[pulumi.Input[str]] = None,
                  host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
@@ -1346,6 +1381,7 @@ class ContainerGroup(pulumi.CustomResource):
             __props__.__dict__["containers"] = containers
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["dns_config"] = dns_config
+            __props__.__dict__["dns_policy"] = dns_policy
             __props__.__dict__["eip_bandwidth"] = eip_bandwidth
             __props__.__dict__["eip_instance_id"] = eip_instance_id
             __props__.__dict__["host_aliases"] = host_aliases
@@ -1391,6 +1427,7 @@ class ContainerGroup(pulumi.CustomResource):
             containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]]] = None,
             cpu: Optional[pulumi.Input[float]] = None,
             dns_config: Optional[pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']]] = None,
+            dns_policy: Optional[pulumi.Input[str]] = None,
             eip_bandwidth: Optional[pulumi.Input[int]] = None,
             eip_instance_id: Optional[pulumi.Input[str]] = None,
             host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]]] = None,
@@ -1429,6 +1466,7 @@ class ContainerGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupContainerArgs', 'ContainerGroupContainerArgsDict']]]] containers: The list of containers. See `containers` below.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[Union['ContainerGroupDnsConfigArgs', 'ContainerGroupDnsConfigArgsDict']] dns_config: The structure of dnsConfig. See `dns_config` below.
+        :param pulumi.Input[str] dns_policy: The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
         :param pulumi.Input[int] eip_bandwidth: The bandwidth of the EIP. Default value: `5`.
         :param pulumi.Input[str] eip_instance_id: The ID of the elastic IP address (EIP).
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerGroupHostAliasArgs', 'ContainerGroupHostAliasArgsDict']]]] host_aliases: HostAliases. See `host_aliases` below.
@@ -1468,6 +1506,7 @@ class ContainerGroup(pulumi.CustomResource):
         __props__.__dict__["containers"] = containers
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["dns_config"] = dns_config
+        __props__.__dict__["dns_policy"] = dns_policy
         __props__.__dict__["eip_bandwidth"] = eip_bandwidth
         __props__.__dict__["eip_instance_id"] = eip_instance_id
         __props__.__dict__["host_aliases"] = host_aliases
@@ -1549,6 +1588,14 @@ class ContainerGroup(pulumi.CustomResource):
         The structure of dnsConfig. See `dns_config` below.
         """
         return pulumi.get(self, "dns_config")
+
+    @property
+    @pulumi.getter(name="dnsPolicy")
+    def dns_policy(self) -> pulumi.Output[str]:
+        """
+        The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+        """
+        return pulumi.get(self, "dns_policy")
 
     @property
     @pulumi.getter(name="eipBandwidth")

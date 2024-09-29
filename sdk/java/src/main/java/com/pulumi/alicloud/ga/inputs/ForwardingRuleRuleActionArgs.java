@@ -51,14 +51,14 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Forward action type.
+     * The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
      * 
      */
     @Import(name="ruleActionType", required=true)
     private Output<String> ruleActionType;
 
     /**
-     * @return Forward action type.
+     * @return The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
      * 
      */
     public Output<String> ruleActionType() {
@@ -152,7 +152,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleActionType Forward action type.
+         * @param ruleActionType The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ForwardingRuleRuleActionArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ruleActionType Forward action type.
+         * @param ruleActionType The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
          * 
          * @return builder
          * 

@@ -179,6 +179,10 @@ export class ContainerGroup extends pulumi.CustomResource {
      */
     public readonly dnsConfig!: pulumi.Output<outputs.eci.ContainerGroupDnsConfig | undefined>;
     /**
+     * The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+     */
+    public readonly dnsPolicy!: pulumi.Output<string>;
+    /**
      * The bandwidth of the EIP. Default value: `5`.
      */
     public readonly eipBandwidth!: pulumi.Output<number | undefined>;
@@ -298,6 +302,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["containers"] = state ? state.containers : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["dnsConfig"] = state ? state.dnsConfig : undefined;
+            resourceInputs["dnsPolicy"] = state ? state.dnsPolicy : undefined;
             resourceInputs["eipBandwidth"] = state ? state.eipBandwidth : undefined;
             resourceInputs["eipInstanceId"] = state ? state.eipInstanceId : undefined;
             resourceInputs["hostAliases"] = state ? state.hostAliases : undefined;
@@ -343,6 +348,7 @@ export class ContainerGroup extends pulumi.CustomResource {
             resourceInputs["containers"] = args ? args.containers : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["dnsConfig"] = args ? args.dnsConfig : undefined;
+            resourceInputs["dnsPolicy"] = args ? args.dnsPolicy : undefined;
             resourceInputs["eipBandwidth"] = args ? args.eipBandwidth : undefined;
             resourceInputs["eipInstanceId"] = args ? args.eipInstanceId : undefined;
             resourceInputs["hostAliases"] = args ? args.hostAliases : undefined;
@@ -405,6 +411,10 @@ export interface ContainerGroupState {
      * The structure of dnsConfig. See `dnsConfig` below.
      */
     dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
+    /**
+     * The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+     */
+    dnsPolicy?: pulumi.Input<string>;
     /**
      * The bandwidth of the EIP. Default value: `5`.
      */
@@ -538,6 +548,10 @@ export interface ContainerGroupArgs {
      * The structure of dnsConfig. See `dnsConfig` below.
      */
     dnsConfig?: pulumi.Input<inputs.eci.ContainerGroupDnsConfig>;
+    /**
+     * The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+     */
+    dnsPolicy?: pulumi.Input<string>;
     /**
      * The bandwidth of the EIP. Default value: `5`.
      */

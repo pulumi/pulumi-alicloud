@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Application Load Balancer (ALB) Health Check Template resource.
+// Provides an Application Load Balancer (ALB) Health Check Template resource.
 //
 // For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createhealthchecktemplate).
 //
@@ -29,13 +29,19 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/alb"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
 //			_, err := alb.NewHealthCheckTemplate(ctx, "example", &alb.HealthCheckTemplateArgs{
-//				HealthCheckTemplateName: pulumi.String("example_name"),
+//				HealthCheckTemplateName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -58,29 +64,29 @@ type HealthCheckTemplate struct {
 
 	// Whether to precheck the API request.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. **NOTE:** `healthCheckCodes` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckCodes pulumi.StringArrayOutput `pulumi:"healthCheckCodes"`
-	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
+	// The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
 	HealthCheckConnectPort pulumi.IntOutput `pulumi:"healthCheckConnectPort"`
-	// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The domain name that is used for health checks. **NOTE:** `healthCheckHost` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHost pulumi.StringOutput `pulumi:"healthCheckHost"`
-	// The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `healthCheckHttpVersion` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHttpVersion pulumi.StringOutput `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+	// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 	HealthCheckInterval pulumi.IntOutput `pulumi:"healthCheckInterval"`
-	// The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `healthCheckMethod` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckMethod pulumi.StringOutput `pulumi:"healthCheckMethod"`
-	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The URL that is used for health checks. **NOTE:** `healthCheckPath` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckPath pulumi.StringOutput `pulumi:"healthCheckPath"`
-	// The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
+	// The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
 	HealthCheckProtocol pulumi.StringOutput `pulumi:"healthCheckProtocol"`
-	// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	HealthCheckTemplateName pulumi.StringOutput `pulumi:"healthCheckTemplateName"`
-	// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+	// The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
 	HealthCheckTimeout pulumi.IntOutput `pulumi:"healthCheckTimeout"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 	HealthyThreshold pulumi.IntOutput `pulumi:"healthyThreshold"`
-	// The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 	UnhealthyThreshold pulumi.IntOutput `pulumi:"unhealthyThreshold"`
 }
 
@@ -119,58 +125,58 @@ func GetHealthCheckTemplate(ctx *pulumi.Context,
 type healthCheckTemplateState struct {
 	// Whether to precheck the API request.
 	DryRun *bool `pulumi:"dryRun"`
-	// The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. **NOTE:** `healthCheckCodes` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckCodes []string `pulumi:"healthCheckCodes"`
-	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
+	// The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
-	// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The domain name that is used for health checks. **NOTE:** `healthCheckHost` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHost *string `pulumi:"healthCheckHost"`
-	// The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `healthCheckHttpVersion` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHttpVersion *string `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+	// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `healthCheckMethod` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckMethod *string `pulumi:"healthCheckMethod"`
-	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The URL that is used for health checks. **NOTE:** `healthCheckPath` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
-	// The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
+	// The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
-	// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	HealthCheckTemplateName *string `pulumi:"healthCheckTemplateName"`
-	// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+	// The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
 type HealthCheckTemplateState struct {
 	// Whether to precheck the API request.
 	DryRun pulumi.BoolPtrInput
-	// The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. **NOTE:** `healthCheckCodes` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckCodes pulumi.StringArrayInput
-	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
+	// The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
 	HealthCheckConnectPort pulumi.IntPtrInput
-	// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The domain name that is used for health checks. **NOTE:** `healthCheckHost` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHost pulumi.StringPtrInput
-	// The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `healthCheckHttpVersion` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHttpVersion pulumi.StringPtrInput
-	// The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+	// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 	HealthCheckInterval pulumi.IntPtrInput
-	// The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `healthCheckMethod` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckMethod pulumi.StringPtrInput
-	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The URL that is used for health checks. **NOTE:** `healthCheckPath` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckPath pulumi.StringPtrInput
-	// The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
+	// The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
 	HealthCheckProtocol pulumi.StringPtrInput
-	// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	HealthCheckTemplateName pulumi.StringPtrInput
-	// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+	// The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
 	HealthCheckTimeout pulumi.IntPtrInput
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 	HealthyThreshold pulumi.IntPtrInput
-	// The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 	UnhealthyThreshold pulumi.IntPtrInput
 }
 
@@ -181,29 +187,29 @@ func (HealthCheckTemplateState) ElementType() reflect.Type {
 type healthCheckTemplateArgs struct {
 	// Whether to precheck the API request.
 	DryRun *bool `pulumi:"dryRun"`
-	// The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. **NOTE:** `healthCheckCodes` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckCodes []string `pulumi:"healthCheckCodes"`
-	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
+	// The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
-	// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The domain name that is used for health checks. **NOTE:** `healthCheckHost` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHost *string `pulumi:"healthCheckHost"`
-	// The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `healthCheckHttpVersion` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHttpVersion *string `pulumi:"healthCheckHttpVersion"`
-	// The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+	// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `healthCheckMethod` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckMethod *string `pulumi:"healthCheckMethod"`
-	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The URL that is used for health checks. **NOTE:** `healthCheckPath` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
-	// The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
+	// The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
-	// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	HealthCheckTemplateName string `pulumi:"healthCheckTemplateName"`
-	// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+	// The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
 	HealthCheckTimeout *int `pulumi:"healthCheckTimeout"`
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
 }
 
@@ -211,29 +217,29 @@ type healthCheckTemplateArgs struct {
 type HealthCheckTemplateArgs struct {
 	// Whether to precheck the API request.
 	DryRun pulumi.BoolPtrInput
-	// The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. **NOTE:** `healthCheckCodes` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckCodes pulumi.StringArrayInput
-	// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
+	// The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
 	HealthCheckConnectPort pulumi.IntPtrInput
-	// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The domain name that is used for health checks. **NOTE:** `healthCheckHost` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHost pulumi.StringPtrInput
-	// The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `healthCheckHttpVersion` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckHttpVersion pulumi.StringPtrInput
-	// The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+	// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 	HealthCheckInterval pulumi.IntPtrInput
-	// The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `healthCheckMethod` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckMethod pulumi.StringPtrInput
-	// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+	// The URL that is used for health checks. **NOTE:** `healthCheckPath` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 	HealthCheckPath pulumi.StringPtrInput
-	// The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
+	// The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
 	HealthCheckProtocol pulumi.StringPtrInput
-	// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 	HealthCheckTemplateName pulumi.StringInput
-	// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+	// The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
 	HealthCheckTimeout pulumi.IntPtrInput
-	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 	HealthyThreshold pulumi.IntPtrInput
-	// The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 	UnhealthyThreshold pulumi.IntPtrInput
 }
 
@@ -329,62 +335,62 @@ func (o HealthCheckTemplateOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+// The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx`, and `http5xx`. **NOTE:** `healthCheckCodes` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 func (o HealthCheckTemplateOutput) HealthCheckCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.StringArrayOutput { return v.HealthCheckCodes }).(pulumi.StringArrayOutput)
 }
 
-// The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
+// The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
 func (o HealthCheckTemplateOutput) HealthCheckConnectPort() pulumi.IntOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.IntOutput { return v.HealthCheckConnectPort }).(pulumi.IntOutput)
 }
 
-// The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+// The domain name that is used for health checks. **NOTE:** `healthCheckHost` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 func (o HealthCheckTemplateOutput) HealthCheckHost() pulumi.StringOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.StringOutput { return v.HealthCheckHost }).(pulumi.StringOutput)
 }
 
-// The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+// The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `healthCheckHttpVersion` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 func (o HealthCheckTemplateOutput) HealthCheckHttpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.StringOutput { return v.HealthCheckHttpVersion }).(pulumi.StringOutput)
 }
 
-// The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+// The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
 func (o HealthCheckTemplateOutput) HealthCheckInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.IntOutput { return v.HealthCheckInterval }).(pulumi.IntOutput)
 }
 
-// The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+// The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `healthCheckMethod` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 func (o HealthCheckTemplateOutput) HealthCheckMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.StringOutput { return v.HealthCheckMethod }).(pulumi.StringOutput)
 }
 
-// The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+// The URL that is used for health checks. **NOTE:** `healthCheckPath` takes effect only if `healthCheckProtocol` is set to `HTTP`.
 func (o HealthCheckTemplateOutput) HealthCheckPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.StringOutput { return v.HealthCheckPath }).(pulumi.StringOutput)
 }
 
-// The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
+// The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
 func (o HealthCheckTemplateOutput) HealthCheckProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.StringOutput { return v.HealthCheckProtocol }).(pulumi.StringOutput)
 }
 
-// The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+// The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
 func (o HealthCheckTemplateOutput) HealthCheckTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.StringOutput { return v.HealthCheckTemplateName }).(pulumi.StringOutput)
 }
 
-// The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+// The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
 func (o HealthCheckTemplateOutput) HealthCheckTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.IntOutput { return v.HealthCheckTimeout }).(pulumi.IntOutput)
 }
 
-// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
 func (o HealthCheckTemplateOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.IntOutput { return v.HealthyThreshold }).(pulumi.IntOutput)
 }
 
-// The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
 func (o HealthCheckTemplateOutput) UnhealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v *HealthCheckTemplate) pulumi.IntOutput { return v.UnhealthyThreshold }).(pulumi.IntOutput)
 }

@@ -18,10 +18,14 @@ type DbInstancePlanPlanConfig struct {
 	Pause *DbInstancePlanPlanConfigPause `pulumi:"pause"`
 	// Resume instance plan config. See `resume` below.
 	Resume *DbInstancePlanPlanConfigResume `pulumi:"resume"`
+	// Scale down instance plan config. See `scaleDown` below.
+	ScaleDown *DbInstancePlanPlanConfigScaleDown `pulumi:"scaleDown"`
 	// Scale In instance plan config. See `scaleIn` below.
 	ScaleIn *DbInstancePlanPlanConfigScaleIn `pulumi:"scaleIn"`
 	// Scale out instance plan config. See `scaleOut` below.
 	ScaleOut *DbInstancePlanPlanConfigScaleOut `pulumi:"scaleOut"`
+	// Scale up instance plan config. See `scaleUp` below.
+	ScaleUp *DbInstancePlanPlanConfigScaleUp `pulumi:"scaleUp"`
 }
 
 // DbInstancePlanPlanConfigInput is an input type that accepts DbInstancePlanPlanConfigArgs and DbInstancePlanPlanConfigOutput values.
@@ -40,10 +44,14 @@ type DbInstancePlanPlanConfigArgs struct {
 	Pause DbInstancePlanPlanConfigPausePtrInput `pulumi:"pause"`
 	// Resume instance plan config. See `resume` below.
 	Resume DbInstancePlanPlanConfigResumePtrInput `pulumi:"resume"`
+	// Scale down instance plan config. See `scaleDown` below.
+	ScaleDown DbInstancePlanPlanConfigScaleDownPtrInput `pulumi:"scaleDown"`
 	// Scale In instance plan config. See `scaleIn` below.
 	ScaleIn DbInstancePlanPlanConfigScaleInPtrInput `pulumi:"scaleIn"`
 	// Scale out instance plan config. See `scaleOut` below.
 	ScaleOut DbInstancePlanPlanConfigScaleOutPtrInput `pulumi:"scaleOut"`
+	// Scale up instance plan config. See `scaleUp` below.
+	ScaleUp DbInstancePlanPlanConfigScaleUpPtrInput `pulumi:"scaleUp"`
 }
 
 func (DbInstancePlanPlanConfigArgs) ElementType() reflect.Type {
@@ -107,6 +115,11 @@ func (o DbInstancePlanPlanConfigOutput) Resume() DbInstancePlanPlanConfigResumeP
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigResume { return v.Resume }).(DbInstancePlanPlanConfigResumePtrOutput)
 }
 
+// Scale down instance plan config. See `scaleDown` below.
+func (o DbInstancePlanPlanConfigOutput) ScaleDown() DbInstancePlanPlanConfigScaleDownPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleDown { return v.ScaleDown }).(DbInstancePlanPlanConfigScaleDownPtrOutput)
+}
+
 // Scale In instance plan config. See `scaleIn` below.
 func (o DbInstancePlanPlanConfigOutput) ScaleIn() DbInstancePlanPlanConfigScaleInPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleIn { return v.ScaleIn }).(DbInstancePlanPlanConfigScaleInPtrOutput)
@@ -115,6 +128,11 @@ func (o DbInstancePlanPlanConfigOutput) ScaleIn() DbInstancePlanPlanConfigScaleI
 // Scale out instance plan config. See `scaleOut` below.
 func (o DbInstancePlanPlanConfigOutput) ScaleOut() DbInstancePlanPlanConfigScaleOutPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleOut { return v.ScaleOut }).(DbInstancePlanPlanConfigScaleOutPtrOutput)
+}
+
+// Scale up instance plan config. See `scaleUp` below.
+func (o DbInstancePlanPlanConfigOutput) ScaleUp() DbInstancePlanPlanConfigScaleUpPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfig) *DbInstancePlanPlanConfigScaleUp { return v.ScaleUp }).(DbInstancePlanPlanConfigScaleUpPtrOutput)
 }
 
 type DbInstancePlanPlanConfigArrayOutput struct{ *pulumi.OutputState }
@@ -142,6 +160,8 @@ type DbInstancePlanPlanConfigPause struct {
 	ExecuteTime *string `pulumi:"executeTime"`
 	// The Cron Time of the plan.
 	PlanCronTime *string `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus *string `pulumi:"planTaskStatus"`
 }
 
 // DbInstancePlanPlanConfigPauseInput is an input type that accepts DbInstancePlanPlanConfigPauseArgs and DbInstancePlanPlanConfigPauseOutput values.
@@ -160,6 +180,8 @@ type DbInstancePlanPlanConfigPauseArgs struct {
 	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
 	// The Cron Time of the plan.
 	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus pulumi.StringPtrInput `pulumi:"planTaskStatus"`
 }
 
 func (DbInstancePlanPlanConfigPauseArgs) ElementType() reflect.Type {
@@ -249,6 +271,11 @@ func (o DbInstancePlanPlanConfigPauseOutput) PlanCronTime() pulumi.StringPtrOutp
 	return o.ApplyT(func(v DbInstancePlanPlanConfigPause) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigPauseOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigPause) *string { return v.PlanTaskStatus }).(pulumi.StringPtrOutput)
+}
+
 type DbInstancePlanPlanConfigPausePtrOutput struct{ *pulumi.OutputState }
 
 func (DbInstancePlanPlanConfigPausePtrOutput) ElementType() reflect.Type {
@@ -293,11 +320,23 @@ func (o DbInstancePlanPlanConfigPausePtrOutput) PlanCronTime() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigPausePtrOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigPause) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanTaskStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 type DbInstancePlanPlanConfigResume struct {
 	// The executed time of the Plan.
 	ExecuteTime *string `pulumi:"executeTime"`
 	// The Cron Time of the plan.
 	PlanCronTime *string `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus *string `pulumi:"planTaskStatus"`
 }
 
 // DbInstancePlanPlanConfigResumeInput is an input type that accepts DbInstancePlanPlanConfigResumeArgs and DbInstancePlanPlanConfigResumeOutput values.
@@ -316,6 +355,8 @@ type DbInstancePlanPlanConfigResumeArgs struct {
 	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
 	// The Cron Time of the plan.
 	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus pulumi.StringPtrInput `pulumi:"planTaskStatus"`
 }
 
 func (DbInstancePlanPlanConfigResumeArgs) ElementType() reflect.Type {
@@ -405,6 +446,11 @@ func (o DbInstancePlanPlanConfigResumeOutput) PlanCronTime() pulumi.StringPtrOut
 	return o.ApplyT(func(v DbInstancePlanPlanConfigResume) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigResumeOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigResume) *string { return v.PlanTaskStatus }).(pulumi.StringPtrOutput)
+}
+
 type DbInstancePlanPlanConfigResumePtrOutput struct{ *pulumi.OutputState }
 
 func (DbInstancePlanPlanConfigResumePtrOutput) ElementType() reflect.Type {
@@ -449,11 +495,217 @@ func (o DbInstancePlanPlanConfigResumePtrOutput) PlanCronTime() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigResumePtrOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigResume) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanTaskStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleDown struct {
+	// The executed time of the Plan.
+	ExecuteTime *string `pulumi:"executeTime"`
+	// The specification of segment nodes of the Plan.
+	InstanceSpec *string `pulumi:"instanceSpec"`
+	// The Cron Time of the plan.
+	PlanCronTime *string `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus *string `pulumi:"planTaskStatus"`
+}
+
+// DbInstancePlanPlanConfigScaleDownInput is an input type that accepts DbInstancePlanPlanConfigScaleDownArgs and DbInstancePlanPlanConfigScaleDownOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigScaleDownInput` via:
+//
+//	DbInstancePlanPlanConfigScaleDownArgs{...}
+type DbInstancePlanPlanConfigScaleDownInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigScaleDownOutput() DbInstancePlanPlanConfigScaleDownOutput
+	ToDbInstancePlanPlanConfigScaleDownOutputWithContext(context.Context) DbInstancePlanPlanConfigScaleDownOutput
+}
+
+type DbInstancePlanPlanConfigScaleDownArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
+	// The specification of segment nodes of the Plan.
+	InstanceSpec pulumi.StringPtrInput `pulumi:"instanceSpec"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus pulumi.StringPtrInput `pulumi:"planTaskStatus"`
+}
+
+func (DbInstancePlanPlanConfigScaleDownArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigScaleDown)(nil)).Elem()
+}
+
+func (i DbInstancePlanPlanConfigScaleDownArgs) ToDbInstancePlanPlanConfigScaleDownOutput() DbInstancePlanPlanConfigScaleDownOutput {
+	return i.ToDbInstancePlanPlanConfigScaleDownOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigScaleDownArgs) ToDbInstancePlanPlanConfigScaleDownOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleDownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleDownOutput)
+}
+
+func (i DbInstancePlanPlanConfigScaleDownArgs) ToDbInstancePlanPlanConfigScaleDownPtrOutput() DbInstancePlanPlanConfigScaleDownPtrOutput {
+	return i.ToDbInstancePlanPlanConfigScaleDownPtrOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigScaleDownArgs) ToDbInstancePlanPlanConfigScaleDownPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleDownPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleDownOutput).ToDbInstancePlanPlanConfigScaleDownPtrOutputWithContext(ctx)
+}
+
+// DbInstancePlanPlanConfigScaleDownPtrInput is an input type that accepts DbInstancePlanPlanConfigScaleDownArgs, DbInstancePlanPlanConfigScaleDownPtr and DbInstancePlanPlanConfigScaleDownPtrOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigScaleDownPtrInput` via:
+//
+//	        DbInstancePlanPlanConfigScaleDownArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbInstancePlanPlanConfigScaleDownPtrInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigScaleDownPtrOutput() DbInstancePlanPlanConfigScaleDownPtrOutput
+	ToDbInstancePlanPlanConfigScaleDownPtrOutputWithContext(context.Context) DbInstancePlanPlanConfigScaleDownPtrOutput
+}
+
+type dbInstancePlanPlanConfigScaleDownPtrType DbInstancePlanPlanConfigScaleDownArgs
+
+func DbInstancePlanPlanConfigScaleDownPtr(v *DbInstancePlanPlanConfigScaleDownArgs) DbInstancePlanPlanConfigScaleDownPtrInput {
+	return (*dbInstancePlanPlanConfigScaleDownPtrType)(v)
+}
+
+func (*dbInstancePlanPlanConfigScaleDownPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigScaleDown)(nil)).Elem()
+}
+
+func (i *dbInstancePlanPlanConfigScaleDownPtrType) ToDbInstancePlanPlanConfigScaleDownPtrOutput() DbInstancePlanPlanConfigScaleDownPtrOutput {
+	return i.ToDbInstancePlanPlanConfigScaleDownPtrOutputWithContext(context.Background())
+}
+
+func (i *dbInstancePlanPlanConfigScaleDownPtrType) ToDbInstancePlanPlanConfigScaleDownPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleDownPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleDownPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleDownOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigScaleDownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigScaleDown)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigScaleDownOutput) ToDbInstancePlanPlanConfigScaleDownOutput() DbInstancePlanPlanConfigScaleDownOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleDownOutput) ToDbInstancePlanPlanConfigScaleDownOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleDownOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleDownOutput) ToDbInstancePlanPlanConfigScaleDownPtrOutput() DbInstancePlanPlanConfigScaleDownPtrOutput {
+	return o.ToDbInstancePlanPlanConfigScaleDownPtrOutputWithContext(context.Background())
+}
+
+func (o DbInstancePlanPlanConfigScaleDownOutput) ToDbInstancePlanPlanConfigScaleDownPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleDownPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbInstancePlanPlanConfigScaleDown) *DbInstancePlanPlanConfigScaleDown {
+		return &v
+	}).(DbInstancePlanPlanConfigScaleDownPtrOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigScaleDownOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleDown) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
+}
+
+// The specification of segment nodes of the Plan.
+func (o DbInstancePlanPlanConfigScaleDownOutput) InstanceSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleDown) *string { return v.InstanceSpec }).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigScaleDownOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleDown) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigScaleDownOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleDown) *string { return v.PlanTaskStatus }).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleDownPtrOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigScaleDownPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigScaleDown)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigScaleDownPtrOutput) ToDbInstancePlanPlanConfigScaleDownPtrOutput() DbInstancePlanPlanConfigScaleDownPtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleDownPtrOutput) ToDbInstancePlanPlanConfigScaleDownPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleDownPtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleDownPtrOutput) Elem() DbInstancePlanPlanConfigScaleDownOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleDown) DbInstancePlanPlanConfigScaleDown {
+		if v != nil {
+			return *v
+		}
+		var ret DbInstancePlanPlanConfigScaleDown
+		return ret
+	}).(DbInstancePlanPlanConfigScaleDownOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigScaleDownPtrOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleDown) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecuteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of segment nodes of the Plan.
+func (o DbInstancePlanPlanConfigScaleDownPtrOutput) InstanceSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleDown) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSpec
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigScaleDownPtrOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleDown) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanCronTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigScaleDownPtrOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleDown) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanTaskStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 type DbInstancePlanPlanConfigScaleIn struct {
 	// The executed time of the Plan.
 	ExecuteTime *string `pulumi:"executeTime"`
 	// The Cron Time of the plan.
 	PlanCronTime *string `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus *string `pulumi:"planTaskStatus"`
 	// The segment Node Num of the Plan.
 	SegmentNodeNum *string `pulumi:"segmentNodeNum"`
 }
@@ -474,6 +726,8 @@ type DbInstancePlanPlanConfigScaleInArgs struct {
 	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
 	// The Cron Time of the plan.
 	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus pulumi.StringPtrInput `pulumi:"planTaskStatus"`
 	// The segment Node Num of the Plan.
 	SegmentNodeNum pulumi.StringPtrInput `pulumi:"segmentNodeNum"`
 }
@@ -565,6 +819,11 @@ func (o DbInstancePlanPlanConfigScaleInOutput) PlanCronTime() pulumi.StringPtrOu
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleIn) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigScaleInOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleIn) *string { return v.PlanTaskStatus }).(pulumi.StringPtrOutput)
+}
+
 // The segment Node Num of the Plan.
 func (o DbInstancePlanPlanConfigScaleInOutput) SegmentNodeNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleIn) *string { return v.SegmentNodeNum }).(pulumi.StringPtrOutput)
@@ -614,6 +873,16 @@ func (o DbInstancePlanPlanConfigScaleInPtrOutput) PlanCronTime() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigScaleInPtrOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleIn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanTaskStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 // The segment Node Num of the Plan.
 func (o DbInstancePlanPlanConfigScaleInPtrOutput) SegmentNodeNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleIn) *string {
@@ -629,6 +898,8 @@ type DbInstancePlanPlanConfigScaleOut struct {
 	ExecuteTime *string `pulumi:"executeTime"`
 	// The Cron Time of the plan.
 	PlanCronTime *string `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus *string `pulumi:"planTaskStatus"`
 	// The segment Node Num of the Plan.
 	SegmentNodeNum *string `pulumi:"segmentNodeNum"`
 }
@@ -649,6 +920,8 @@ type DbInstancePlanPlanConfigScaleOutArgs struct {
 	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
 	// The Cron Time of the plan.
 	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus pulumi.StringPtrInput `pulumi:"planTaskStatus"`
 	// The segment Node Num of the Plan.
 	SegmentNodeNum pulumi.StringPtrInput `pulumi:"segmentNodeNum"`
 }
@@ -740,6 +1013,11 @@ func (o DbInstancePlanPlanConfigScaleOutOutput) PlanCronTime() pulumi.StringPtrO
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleOut) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigScaleOutOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleOut) *string { return v.PlanTaskStatus }).(pulumi.StringPtrOutput)
+}
+
 // The segment Node Num of the Plan.
 func (o DbInstancePlanPlanConfigScaleOutOutput) SegmentNodeNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleOut) *string { return v.SegmentNodeNum }).(pulumi.StringPtrOutput)
@@ -789,6 +1067,16 @@ func (o DbInstancePlanPlanConfigScaleOutPtrOutput) PlanCronTime() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigScaleOutPtrOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleOut) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanTaskStatus
+	}).(pulumi.StringPtrOutput)
+}
+
 // The segment Node Num of the Plan.
 func (o DbInstancePlanPlanConfigScaleOutPtrOutput) SegmentNodeNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleOut) *string {
@@ -796,6 +1084,200 @@ func (o DbInstancePlanPlanConfigScaleOutPtrOutput) SegmentNodeNum() pulumi.Strin
 			return nil
 		}
 		return v.SegmentNodeNum
+	}).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleUp struct {
+	// The executed time of the Plan.
+	ExecuteTime *string `pulumi:"executeTime"`
+	// The specification of segment nodes of the Plan.
+	InstanceSpec *string `pulumi:"instanceSpec"`
+	// The Cron Time of the plan.
+	PlanCronTime *string `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus *string `pulumi:"planTaskStatus"`
+}
+
+// DbInstancePlanPlanConfigScaleUpInput is an input type that accepts DbInstancePlanPlanConfigScaleUpArgs and DbInstancePlanPlanConfigScaleUpOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigScaleUpInput` via:
+//
+//	DbInstancePlanPlanConfigScaleUpArgs{...}
+type DbInstancePlanPlanConfigScaleUpInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigScaleUpOutput() DbInstancePlanPlanConfigScaleUpOutput
+	ToDbInstancePlanPlanConfigScaleUpOutputWithContext(context.Context) DbInstancePlanPlanConfigScaleUpOutput
+}
+
+type DbInstancePlanPlanConfigScaleUpArgs struct {
+	// The executed time of the Plan.
+	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
+	// The specification of segment nodes of the Plan.
+	InstanceSpec pulumi.StringPtrInput `pulumi:"instanceSpec"`
+	// The Cron Time of the plan.
+	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
+	// (Available since v1.231.0) The status of the plan task.
+	PlanTaskStatus pulumi.StringPtrInput `pulumi:"planTaskStatus"`
+}
+
+func (DbInstancePlanPlanConfigScaleUpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigScaleUp)(nil)).Elem()
+}
+
+func (i DbInstancePlanPlanConfigScaleUpArgs) ToDbInstancePlanPlanConfigScaleUpOutput() DbInstancePlanPlanConfigScaleUpOutput {
+	return i.ToDbInstancePlanPlanConfigScaleUpOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigScaleUpArgs) ToDbInstancePlanPlanConfigScaleUpOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleUpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleUpOutput)
+}
+
+func (i DbInstancePlanPlanConfigScaleUpArgs) ToDbInstancePlanPlanConfigScaleUpPtrOutput() DbInstancePlanPlanConfigScaleUpPtrOutput {
+	return i.ToDbInstancePlanPlanConfigScaleUpPtrOutputWithContext(context.Background())
+}
+
+func (i DbInstancePlanPlanConfigScaleUpArgs) ToDbInstancePlanPlanConfigScaleUpPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleUpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleUpOutput).ToDbInstancePlanPlanConfigScaleUpPtrOutputWithContext(ctx)
+}
+
+// DbInstancePlanPlanConfigScaleUpPtrInput is an input type that accepts DbInstancePlanPlanConfigScaleUpArgs, DbInstancePlanPlanConfigScaleUpPtr and DbInstancePlanPlanConfigScaleUpPtrOutput values.
+// You can construct a concrete instance of `DbInstancePlanPlanConfigScaleUpPtrInput` via:
+//
+//	        DbInstancePlanPlanConfigScaleUpArgs{...}
+//
+//	or:
+//
+//	        nil
+type DbInstancePlanPlanConfigScaleUpPtrInput interface {
+	pulumi.Input
+
+	ToDbInstancePlanPlanConfigScaleUpPtrOutput() DbInstancePlanPlanConfigScaleUpPtrOutput
+	ToDbInstancePlanPlanConfigScaleUpPtrOutputWithContext(context.Context) DbInstancePlanPlanConfigScaleUpPtrOutput
+}
+
+type dbInstancePlanPlanConfigScaleUpPtrType DbInstancePlanPlanConfigScaleUpArgs
+
+func DbInstancePlanPlanConfigScaleUpPtr(v *DbInstancePlanPlanConfigScaleUpArgs) DbInstancePlanPlanConfigScaleUpPtrInput {
+	return (*dbInstancePlanPlanConfigScaleUpPtrType)(v)
+}
+
+func (*dbInstancePlanPlanConfigScaleUpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigScaleUp)(nil)).Elem()
+}
+
+func (i *dbInstancePlanPlanConfigScaleUpPtrType) ToDbInstancePlanPlanConfigScaleUpPtrOutput() DbInstancePlanPlanConfigScaleUpPtrOutput {
+	return i.ToDbInstancePlanPlanConfigScaleUpPtrOutputWithContext(context.Background())
+}
+
+func (i *dbInstancePlanPlanConfigScaleUpPtrType) ToDbInstancePlanPlanConfigScaleUpPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleUpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DbInstancePlanPlanConfigScaleUpPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleUpOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigScaleUpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DbInstancePlanPlanConfigScaleUp)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigScaleUpOutput) ToDbInstancePlanPlanConfigScaleUpOutput() DbInstancePlanPlanConfigScaleUpOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleUpOutput) ToDbInstancePlanPlanConfigScaleUpOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleUpOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleUpOutput) ToDbInstancePlanPlanConfigScaleUpPtrOutput() DbInstancePlanPlanConfigScaleUpPtrOutput {
+	return o.ToDbInstancePlanPlanConfigScaleUpPtrOutputWithContext(context.Background())
+}
+
+func (o DbInstancePlanPlanConfigScaleUpOutput) ToDbInstancePlanPlanConfigScaleUpPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleUpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DbInstancePlanPlanConfigScaleUp) *DbInstancePlanPlanConfigScaleUp {
+		return &v
+	}).(DbInstancePlanPlanConfigScaleUpPtrOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigScaleUpOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleUp) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
+}
+
+// The specification of segment nodes of the Plan.
+func (o DbInstancePlanPlanConfigScaleUpOutput) InstanceSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleUp) *string { return v.InstanceSpec }).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigScaleUpOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleUp) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigScaleUpOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleUp) *string { return v.PlanTaskStatus }).(pulumi.StringPtrOutput)
+}
+
+type DbInstancePlanPlanConfigScaleUpPtrOutput struct{ *pulumi.OutputState }
+
+func (DbInstancePlanPlanConfigScaleUpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DbInstancePlanPlanConfigScaleUp)(nil)).Elem()
+}
+
+func (o DbInstancePlanPlanConfigScaleUpPtrOutput) ToDbInstancePlanPlanConfigScaleUpPtrOutput() DbInstancePlanPlanConfigScaleUpPtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleUpPtrOutput) ToDbInstancePlanPlanConfigScaleUpPtrOutputWithContext(ctx context.Context) DbInstancePlanPlanConfigScaleUpPtrOutput {
+	return o
+}
+
+func (o DbInstancePlanPlanConfigScaleUpPtrOutput) Elem() DbInstancePlanPlanConfigScaleUpOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleUp) DbInstancePlanPlanConfigScaleUp {
+		if v != nil {
+			return *v
+		}
+		var ret DbInstancePlanPlanConfigScaleUp
+		return ret
+	}).(DbInstancePlanPlanConfigScaleUpOutput)
+}
+
+// The executed time of the Plan.
+func (o DbInstancePlanPlanConfigScaleUpPtrOutput) ExecuteTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleUp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExecuteTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The specification of segment nodes of the Plan.
+func (o DbInstancePlanPlanConfigScaleUpPtrOutput) InstanceSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleUp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSpec
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cron Time of the plan.
+func (o DbInstancePlanPlanConfigScaleUpPtrOutput) PlanCronTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleUp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanCronTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.231.0) The status of the plan task.
+func (o DbInstancePlanPlanConfigScaleUpPtrOutput) PlanTaskStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleUp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlanTaskStatus
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -915,6 +1397,157 @@ func (o InstanceIpWhitelistArrayOutput) Index(i pulumi.IntInput) InstanceIpWhite
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIpWhitelist {
 		return vs[0].([]InstanceIpWhitelist)[vs[1].(int)]
 	}).(InstanceIpWhitelistOutput)
+}
+
+type InstanceParameter struct {
+	// (Available since v1.231.0) The default value of the parameter.
+	DefaultValue *string `pulumi:"defaultValue"`
+	// (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+	ForceRestartInstance *string `pulumi:"forceRestartInstance"`
+	// (Available since v1.231.0) Whether the parameter is changeable.
+	IsChangeableConfig *string `pulumi:"isChangeableConfig"`
+	// The name of the parameter.
+	Name string `pulumi:"name"`
+	// (Available since v1.231.0) The optional range of the parameter.
+	OptionalRange *string `pulumi:"optionalRange"`
+	// (Available since v1.231.0) The description of the parameter.
+	ParameterDescription *string `pulumi:"parameterDescription"`
+	// The value of the parameter.
+	Value string `pulumi:"value"`
+}
+
+// InstanceParameterInput is an input type that accepts InstanceParameterArgs and InstanceParameterOutput values.
+// You can construct a concrete instance of `InstanceParameterInput` via:
+//
+//	InstanceParameterArgs{...}
+type InstanceParameterInput interface {
+	pulumi.Input
+
+	ToInstanceParameterOutput() InstanceParameterOutput
+	ToInstanceParameterOutputWithContext(context.Context) InstanceParameterOutput
+}
+
+type InstanceParameterArgs struct {
+	// (Available since v1.231.0) The default value of the parameter.
+	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
+	// (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+	ForceRestartInstance pulumi.StringPtrInput `pulumi:"forceRestartInstance"`
+	// (Available since v1.231.0) Whether the parameter is changeable.
+	IsChangeableConfig pulumi.StringPtrInput `pulumi:"isChangeableConfig"`
+	// The name of the parameter.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (Available since v1.231.0) The optional range of the parameter.
+	OptionalRange pulumi.StringPtrInput `pulumi:"optionalRange"`
+	// (Available since v1.231.0) The description of the parameter.
+	ParameterDescription pulumi.StringPtrInput `pulumi:"parameterDescription"`
+	// The value of the parameter.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (InstanceParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceParameter)(nil)).Elem()
+}
+
+func (i InstanceParameterArgs) ToInstanceParameterOutput() InstanceParameterOutput {
+	return i.ToInstanceParameterOutputWithContext(context.Background())
+}
+
+func (i InstanceParameterArgs) ToInstanceParameterOutputWithContext(ctx context.Context) InstanceParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParameterOutput)
+}
+
+// InstanceParameterArrayInput is an input type that accepts InstanceParameterArray and InstanceParameterArrayOutput values.
+// You can construct a concrete instance of `InstanceParameterArrayInput` via:
+//
+//	InstanceParameterArray{ InstanceParameterArgs{...} }
+type InstanceParameterArrayInput interface {
+	pulumi.Input
+
+	ToInstanceParameterArrayOutput() InstanceParameterArrayOutput
+	ToInstanceParameterArrayOutputWithContext(context.Context) InstanceParameterArrayOutput
+}
+
+type InstanceParameterArray []InstanceParameterInput
+
+func (InstanceParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceParameter)(nil)).Elem()
+}
+
+func (i InstanceParameterArray) ToInstanceParameterArrayOutput() InstanceParameterArrayOutput {
+	return i.ToInstanceParameterArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceParameterArray) ToInstanceParameterArrayOutputWithContext(ctx context.Context) InstanceParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceParameterArrayOutput)
+}
+
+type InstanceParameterOutput struct{ *pulumi.OutputState }
+
+func (InstanceParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceParameter)(nil)).Elem()
+}
+
+func (o InstanceParameterOutput) ToInstanceParameterOutput() InstanceParameterOutput {
+	return o
+}
+
+func (o InstanceParameterOutput) ToInstanceParameterOutputWithContext(ctx context.Context) InstanceParameterOutput {
+	return o
+}
+
+// (Available since v1.231.0) The default value of the parameter.
+func (o InstanceParameterOutput) DefaultValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceParameter) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+func (o InstanceParameterOutput) ForceRestartInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceParameter) *string { return v.ForceRestartInstance }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.231.0) Whether the parameter is changeable.
+func (o InstanceParameterOutput) IsChangeableConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceParameter) *string { return v.IsChangeableConfig }).(pulumi.StringPtrOutput)
+}
+
+// The name of the parameter.
+func (o InstanceParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Available since v1.231.0) The optional range of the parameter.
+func (o InstanceParameterOutput) OptionalRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceParameter) *string { return v.OptionalRange }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.231.0) The description of the parameter.
+func (o InstanceParameterOutput) ParameterDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceParameter) *string { return v.ParameterDescription }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter.
+func (o InstanceParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type InstanceParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceParameter)(nil)).Elem()
+}
+
+func (o InstanceParameterArrayOutput) ToInstanceParameterArrayOutput() InstanceParameterArrayOutput {
+	return o
+}
+
+func (o InstanceParameterArrayOutput) ToInstanceParameterArrayOutputWithContext(ctx context.Context) InstanceParameterArrayOutput {
+	return o
+}
+
+func (o InstanceParameterArrayOutput) Index(i pulumi.IntInput) InstanceParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceParameter {
+		return vs[0].([]InstanceParameter)[vs[1].(int)]
+	}).(InstanceParameterOutput)
 }
 
 type GetAccountsAccount struct {
@@ -1048,6 +1681,211 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
 		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
 	}).(GetAccountsAccountOutput)
+}
+
+type GetDataBackupsBackup struct {
+	// The backup end time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
+	BackupEndTime string `pulumi:"backupEndTime"`
+	// The end time of the backup (local time).
+	BackupEndTimeLocal string `pulumi:"backupEndTimeLocal"`
+	// Backup method. Value Description:-**Physical**: Physical backup.-**Snapshot**: the Snapshot backup.
+	BackupMethod string `pulumi:"backupMethod"`
+	// Backup mode.Full Backup Value Description:-**Automated**: The system is automatically backed up.-**Manual**: Manual backup.Recovery point value description:-**Automated**: The recovery point after a full backup.-**Manual**: The recovery point triggered manually by the user.-**Period**: The recovery point triggered periodically because of the backup policy.
+	BackupMode string `pulumi:"backupMode"`
+	// The ID of the backup set.
+	BackupSetId string `pulumi:"backupSetId"`
+	// The size of the backup file. Unit: Byte.
+	BackupSize int `pulumi:"backupSize"`
+	// The backup start time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
+	BackupStartTime string `pulumi:"backupStartTime"`
+	// The start time of the backup (local time).
+	BackupStartTimeLocal string `pulumi:"backupStartTimeLocal"`
+	// The name of the recovery point or full backup set.
+	BaksetName string `pulumi:"baksetName"`
+	// -Full backup: Returns the timestamp of the consistent point in time.-Recoverable point: Returns the timestamp of the recoverable point in time.
+	ConsistentTime int `pulumi:"consistentTime"`
+	// The backup type. Value Description:-**DATA**: Full backup.-**RESTOREPOI**: Recoverable point.
+	DataType string `pulumi:"dataType"`
+	// The instance ID.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
+	Status string `pulumi:"status"`
+}
+
+// GetDataBackupsBackupInput is an input type that accepts GetDataBackupsBackupArgs and GetDataBackupsBackupOutput values.
+// You can construct a concrete instance of `GetDataBackupsBackupInput` via:
+//
+//	GetDataBackupsBackupArgs{...}
+type GetDataBackupsBackupInput interface {
+	pulumi.Input
+
+	ToGetDataBackupsBackupOutput() GetDataBackupsBackupOutput
+	ToGetDataBackupsBackupOutputWithContext(context.Context) GetDataBackupsBackupOutput
+}
+
+type GetDataBackupsBackupArgs struct {
+	// The backup end time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
+	BackupEndTime pulumi.StringInput `pulumi:"backupEndTime"`
+	// The end time of the backup (local time).
+	BackupEndTimeLocal pulumi.StringInput `pulumi:"backupEndTimeLocal"`
+	// Backup method. Value Description:-**Physical**: Physical backup.-**Snapshot**: the Snapshot backup.
+	BackupMethod pulumi.StringInput `pulumi:"backupMethod"`
+	// Backup mode.Full Backup Value Description:-**Automated**: The system is automatically backed up.-**Manual**: Manual backup.Recovery point value description:-**Automated**: The recovery point after a full backup.-**Manual**: The recovery point triggered manually by the user.-**Period**: The recovery point triggered periodically because of the backup policy.
+	BackupMode pulumi.StringInput `pulumi:"backupMode"`
+	// The ID of the backup set.
+	BackupSetId pulumi.StringInput `pulumi:"backupSetId"`
+	// The size of the backup file. Unit: Byte.
+	BackupSize pulumi.IntInput `pulumi:"backupSize"`
+	// The backup start time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
+	BackupStartTime pulumi.StringInput `pulumi:"backupStartTime"`
+	// The start time of the backup (local time).
+	BackupStartTimeLocal pulumi.StringInput `pulumi:"backupStartTimeLocal"`
+	// The name of the recovery point or full backup set.
+	BaksetName pulumi.StringInput `pulumi:"baksetName"`
+	// -Full backup: Returns the timestamp of the consistent point in time.-Recoverable point: Returns the timestamp of the recoverable point in time.
+	ConsistentTime pulumi.IntInput `pulumi:"consistentTime"`
+	// The backup type. Value Description:-**DATA**: Full backup.-**RESTOREPOI**: Recoverable point.
+	DataType pulumi.StringInput `pulumi:"dataType"`
+	// The instance ID.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDataBackupsBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataBackupsBackup)(nil)).Elem()
+}
+
+func (i GetDataBackupsBackupArgs) ToGetDataBackupsBackupOutput() GetDataBackupsBackupOutput {
+	return i.ToGetDataBackupsBackupOutputWithContext(context.Background())
+}
+
+func (i GetDataBackupsBackupArgs) ToGetDataBackupsBackupOutputWithContext(ctx context.Context) GetDataBackupsBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataBackupsBackupOutput)
+}
+
+// GetDataBackupsBackupArrayInput is an input type that accepts GetDataBackupsBackupArray and GetDataBackupsBackupArrayOutput values.
+// You can construct a concrete instance of `GetDataBackupsBackupArrayInput` via:
+//
+//	GetDataBackupsBackupArray{ GetDataBackupsBackupArgs{...} }
+type GetDataBackupsBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetDataBackupsBackupArrayOutput() GetDataBackupsBackupArrayOutput
+	ToGetDataBackupsBackupArrayOutputWithContext(context.Context) GetDataBackupsBackupArrayOutput
+}
+
+type GetDataBackupsBackupArray []GetDataBackupsBackupInput
+
+func (GetDataBackupsBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataBackupsBackup)(nil)).Elem()
+}
+
+func (i GetDataBackupsBackupArray) ToGetDataBackupsBackupArrayOutput() GetDataBackupsBackupArrayOutput {
+	return i.ToGetDataBackupsBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataBackupsBackupArray) ToGetDataBackupsBackupArrayOutputWithContext(ctx context.Context) GetDataBackupsBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataBackupsBackupArrayOutput)
+}
+
+type GetDataBackupsBackupOutput struct{ *pulumi.OutputState }
+
+func (GetDataBackupsBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataBackupsBackup)(nil)).Elem()
+}
+
+func (o GetDataBackupsBackupOutput) ToGetDataBackupsBackupOutput() GetDataBackupsBackupOutput {
+	return o
+}
+
+func (o GetDataBackupsBackupOutput) ToGetDataBackupsBackupOutputWithContext(ctx context.Context) GetDataBackupsBackupOutput {
+	return o
+}
+
+// The backup end time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
+func (o GetDataBackupsBackupOutput) BackupEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.BackupEndTime }).(pulumi.StringOutput)
+}
+
+// The end time of the backup (local time).
+func (o GetDataBackupsBackupOutput) BackupEndTimeLocal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.BackupEndTimeLocal }).(pulumi.StringOutput)
+}
+
+// Backup method. Value Description:-**Physical**: Physical backup.-**Snapshot**: the Snapshot backup.
+func (o GetDataBackupsBackupOutput) BackupMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.BackupMethod }).(pulumi.StringOutput)
+}
+
+// Backup mode.Full Backup Value Description:-**Automated**: The system is automatically backed up.-**Manual**: Manual backup.Recovery point value description:-**Automated**: The recovery point after a full backup.-**Manual**: The recovery point triggered manually by the user.-**Period**: The recovery point triggered periodically because of the backup policy.
+func (o GetDataBackupsBackupOutput) BackupMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.BackupMode }).(pulumi.StringOutput)
+}
+
+// The ID of the backup set.
+func (o GetDataBackupsBackupOutput) BackupSetId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.BackupSetId }).(pulumi.StringOutput)
+}
+
+// The size of the backup file. Unit: Byte.
+func (o GetDataBackupsBackupOutput) BackupSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) int { return v.BackupSize }).(pulumi.IntOutput)
+}
+
+// The backup start time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
+func (o GetDataBackupsBackupOutput) BackupStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.BackupStartTime }).(pulumi.StringOutput)
+}
+
+// The start time of the backup (local time).
+func (o GetDataBackupsBackupOutput) BackupStartTimeLocal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.BackupStartTimeLocal }).(pulumi.StringOutput)
+}
+
+// The name of the recovery point or full backup set.
+func (o GetDataBackupsBackupOutput) BaksetName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.BaksetName }).(pulumi.StringOutput)
+}
+
+// -Full backup: Returns the timestamp of the consistent point in time.-Recoverable point: Returns the timestamp of the recoverable point in time.
+func (o GetDataBackupsBackupOutput) ConsistentTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) int { return v.ConsistentTime }).(pulumi.IntOutput)
+}
+
+// The backup type. Value Description:-**DATA**: Full backup.-**RESTOREPOI**: Recoverable point.
+func (o GetDataBackupsBackupOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// The instance ID.
+func (o GetDataBackupsBackupOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
+func (o GetDataBackupsBackupOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataBackupsBackup) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDataBackupsBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataBackupsBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataBackupsBackup)(nil)).Elem()
+}
+
+func (o GetDataBackupsBackupArrayOutput) ToGetDataBackupsBackupArrayOutput() GetDataBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetDataBackupsBackupArrayOutput) ToGetDataBackupsBackupArrayOutputWithContext(ctx context.Context) GetDataBackupsBackupArrayOutput {
+	return o
+}
+
+func (o GetDataBackupsBackupArrayOutput) Index(i pulumi.IntInput) GetDataBackupsBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataBackupsBackup {
+		return vs[0].([]GetDataBackupsBackup)[vs[1].(int)]
+	}).(GetDataBackupsBackupOutput)
 }
 
 type GetDbInstancePlansPlan struct {
@@ -2296,6 +3134,157 @@ func (o GetInstancesInstanceIpWhitelistArrayOutput) Index(i pulumi.IntInput) Get
 	}).(GetInstancesInstanceIpWhitelistOutput)
 }
 
+type GetLogBackupsLogbackup struct {
+	// The ID of the Master node of the instance.
+	DbInstanceId string `pulumi:"dbInstanceId"`
+	// The first ID of the resource
+	LogBackupId string `pulumi:"logBackupId"`
+	// Log file name (OSS path).
+	LogFileName string `pulumi:"logFileName"`
+	// Size of the backup log file. Unit: Byte.
+	LogFileSize int `pulumi:"logFileSize"`
+	// The log timestamp.
+	LogTime string `pulumi:"logTime"`
+	// Total number of records.
+	RecordTotal int `pulumi:"recordTotal"`
+	// The node name.
+	SegmentName string `pulumi:"segmentName"`
+}
+
+// GetLogBackupsLogbackupInput is an input type that accepts GetLogBackupsLogbackupArgs and GetLogBackupsLogbackupOutput values.
+// You can construct a concrete instance of `GetLogBackupsLogbackupInput` via:
+//
+//	GetLogBackupsLogbackupArgs{...}
+type GetLogBackupsLogbackupInput interface {
+	pulumi.Input
+
+	ToGetLogBackupsLogbackupOutput() GetLogBackupsLogbackupOutput
+	ToGetLogBackupsLogbackupOutputWithContext(context.Context) GetLogBackupsLogbackupOutput
+}
+
+type GetLogBackupsLogbackupArgs struct {
+	// The ID of the Master node of the instance.
+	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
+	// The first ID of the resource
+	LogBackupId pulumi.StringInput `pulumi:"logBackupId"`
+	// Log file name (OSS path).
+	LogFileName pulumi.StringInput `pulumi:"logFileName"`
+	// Size of the backup log file. Unit: Byte.
+	LogFileSize pulumi.IntInput `pulumi:"logFileSize"`
+	// The log timestamp.
+	LogTime pulumi.StringInput `pulumi:"logTime"`
+	// Total number of records.
+	RecordTotal pulumi.IntInput `pulumi:"recordTotal"`
+	// The node name.
+	SegmentName pulumi.StringInput `pulumi:"segmentName"`
+}
+
+func (GetLogBackupsLogbackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLogBackupsLogbackup)(nil)).Elem()
+}
+
+func (i GetLogBackupsLogbackupArgs) ToGetLogBackupsLogbackupOutput() GetLogBackupsLogbackupOutput {
+	return i.ToGetLogBackupsLogbackupOutputWithContext(context.Background())
+}
+
+func (i GetLogBackupsLogbackupArgs) ToGetLogBackupsLogbackupOutputWithContext(ctx context.Context) GetLogBackupsLogbackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLogBackupsLogbackupOutput)
+}
+
+// GetLogBackupsLogbackupArrayInput is an input type that accepts GetLogBackupsLogbackupArray and GetLogBackupsLogbackupArrayOutput values.
+// You can construct a concrete instance of `GetLogBackupsLogbackupArrayInput` via:
+//
+//	GetLogBackupsLogbackupArray{ GetLogBackupsLogbackupArgs{...} }
+type GetLogBackupsLogbackupArrayInput interface {
+	pulumi.Input
+
+	ToGetLogBackupsLogbackupArrayOutput() GetLogBackupsLogbackupArrayOutput
+	ToGetLogBackupsLogbackupArrayOutputWithContext(context.Context) GetLogBackupsLogbackupArrayOutput
+}
+
+type GetLogBackupsLogbackupArray []GetLogBackupsLogbackupInput
+
+func (GetLogBackupsLogbackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLogBackupsLogbackup)(nil)).Elem()
+}
+
+func (i GetLogBackupsLogbackupArray) ToGetLogBackupsLogbackupArrayOutput() GetLogBackupsLogbackupArrayOutput {
+	return i.ToGetLogBackupsLogbackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetLogBackupsLogbackupArray) ToGetLogBackupsLogbackupArrayOutputWithContext(ctx context.Context) GetLogBackupsLogbackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLogBackupsLogbackupArrayOutput)
+}
+
+type GetLogBackupsLogbackupOutput struct{ *pulumi.OutputState }
+
+func (GetLogBackupsLogbackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLogBackupsLogbackup)(nil)).Elem()
+}
+
+func (o GetLogBackupsLogbackupOutput) ToGetLogBackupsLogbackupOutput() GetLogBackupsLogbackupOutput {
+	return o
+}
+
+func (o GetLogBackupsLogbackupOutput) ToGetLogBackupsLogbackupOutputWithContext(ctx context.Context) GetLogBackupsLogbackupOutput {
+	return o
+}
+
+// The ID of the Master node of the instance.
+func (o GetLogBackupsLogbackupOutput) DbInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogBackupsLogbackup) string { return v.DbInstanceId }).(pulumi.StringOutput)
+}
+
+// The first ID of the resource
+func (o GetLogBackupsLogbackupOutput) LogBackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogBackupsLogbackup) string { return v.LogBackupId }).(pulumi.StringOutput)
+}
+
+// Log file name (OSS path).
+func (o GetLogBackupsLogbackupOutput) LogFileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogBackupsLogbackup) string { return v.LogFileName }).(pulumi.StringOutput)
+}
+
+// Size of the backup log file. Unit: Byte.
+func (o GetLogBackupsLogbackupOutput) LogFileSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLogBackupsLogbackup) int { return v.LogFileSize }).(pulumi.IntOutput)
+}
+
+// The log timestamp.
+func (o GetLogBackupsLogbackupOutput) LogTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogBackupsLogbackup) string { return v.LogTime }).(pulumi.StringOutput)
+}
+
+// Total number of records.
+func (o GetLogBackupsLogbackupOutput) RecordTotal() pulumi.IntOutput {
+	return o.ApplyT(func(v GetLogBackupsLogbackup) int { return v.RecordTotal }).(pulumi.IntOutput)
+}
+
+// The node name.
+func (o GetLogBackupsLogbackupOutput) SegmentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLogBackupsLogbackup) string { return v.SegmentName }).(pulumi.StringOutput)
+}
+
+type GetLogBackupsLogbackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetLogBackupsLogbackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetLogBackupsLogbackup)(nil)).Elem()
+}
+
+func (o GetLogBackupsLogbackupArrayOutput) ToGetLogBackupsLogbackupArrayOutput() GetLogBackupsLogbackupArrayOutput {
+	return o
+}
+
+func (o GetLogBackupsLogbackupArrayOutput) ToGetLogBackupsLogbackupArrayOutputWithContext(ctx context.Context) GetLogBackupsLogbackupArrayOutput {
+	return o
+}
+
+func (o GetLogBackupsLogbackupArrayOutput) Index(i pulumi.IntInput) GetLogBackupsLogbackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLogBackupsLogbackup {
+		return vs[0].([]GetLogBackupsLogbackup)[vs[1].(int)]
+	}).(GetLogBackupsLogbackupOutput)
+}
+
 type GetZonesZone struct {
 	// ID of the zone.
 	Id string `pulumi:"id"`
@@ -2409,14 +3398,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigPausePtrInput)(nil)).Elem(), DbInstancePlanPlanConfigPauseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigResumeInput)(nil)).Elem(), DbInstancePlanPlanConfigResumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigResumePtrInput)(nil)).Elem(), DbInstancePlanPlanConfigResumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleDownInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleDownArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleDownPtrInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleDownArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleInInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleInArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleInPtrInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleInArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleOutInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleOutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleOutPtrInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleOutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleUpInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleUpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DbInstancePlanPlanConfigScaleUpPtrInput)(nil)).Elem(), DbInstancePlanPlanConfigScaleUpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpWhitelistInput)(nil)).Elem(), InstanceIpWhitelistArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIpWhitelistArrayInput)(nil)).Elem(), InstanceIpWhitelistArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterInput)(nil)).Elem(), InstanceParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceParameterArrayInput)(nil)).Elem(), InstanceParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataBackupsBackupInput)(nil)).Elem(), GetDataBackupsBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataBackupsBackupArrayInput)(nil)).Elem(), GetDataBackupsBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanInput)(nil)).Elem(), GetDbInstancePlansPlanArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanArrayInput)(nil)).Elem(), GetDbInstancePlansPlanArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDbInstancePlansPlanPlanConfigInput)(nil)).Elem(), GetDbInstancePlansPlanPlanConfigArgs{})
@@ -2433,6 +3430,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceArrayInput)(nil)).Elem(), GetInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceIpWhitelistInput)(nil)).Elem(), GetInstancesInstanceIpWhitelistArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancesInstanceIpWhitelistArrayInput)(nil)).Elem(), GetInstancesInstanceIpWhitelistArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLogBackupsLogbackupInput)(nil)).Elem(), GetLogBackupsLogbackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLogBackupsLogbackupArrayInput)(nil)).Elem(), GetLogBackupsLogbackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(DbInstancePlanPlanConfigOutput{})
@@ -2441,14 +3440,22 @@ func init() {
 	pulumi.RegisterOutputType(DbInstancePlanPlanConfigPausePtrOutput{})
 	pulumi.RegisterOutputType(DbInstancePlanPlanConfigResumeOutput{})
 	pulumi.RegisterOutputType(DbInstancePlanPlanConfigResumePtrOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleDownOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleDownPtrOutput{})
 	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleInOutput{})
 	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleInPtrOutput{})
 	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleOutOutput{})
 	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleOutPtrOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleUpOutput{})
+	pulumi.RegisterOutputType(DbInstancePlanPlanConfigScaleUpPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIpWhitelistOutput{})
 	pulumi.RegisterOutputType(InstanceIpWhitelistArrayOutput{})
+	pulumi.RegisterOutputType(InstanceParameterOutput{})
+	pulumi.RegisterOutputType(InstanceParameterArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetDataBackupsBackupOutput{})
+	pulumi.RegisterOutputType(GetDataBackupsBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetDbInstancePlansPlanOutput{})
 	pulumi.RegisterOutputType(GetDbInstancePlansPlanArrayOutput{})
 	pulumi.RegisterOutputType(GetDbInstancePlansPlanPlanConfigOutput{})
@@ -2465,6 +3472,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceIpWhitelistOutput{})
 	pulumi.RegisterOutputType(GetInstancesInstanceIpWhitelistArrayOutput{})
+	pulumi.RegisterOutputType(GetLogBackupsLogbackupOutput{})
+	pulumi.RegisterOutputType(GetLogBackupsLogbackupArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

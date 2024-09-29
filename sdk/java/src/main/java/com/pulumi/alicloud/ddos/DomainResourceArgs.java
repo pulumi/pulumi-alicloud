@@ -21,14 +21,90 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
     public static final DomainResourceArgs Empty = new DomainResourceArgs();
 
     /**
-     * The domain name of the website that you want to add to the instance.
+     * The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+     * 
+     * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+     * 
+     */
+    @Import(name="cert")
+    private @Nullable Output<String> cert;
+
+    /**
+     * @return The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+     * 
+     * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+     * 
+     */
+    public Optional<Output<String>> cert() {
+        return Optional.ofNullable(this.cert);
+    }
+
+    /**
+     * The name of the certificate.
+     * 
+     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+     * 
+     */
+    @Import(name="certIdentifier")
+    private @Nullable Output<String> certIdentifier;
+
+    /**
+     * @return The name of the certificate.
+     * 
+     * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+     * 
+     */
+    public Optional<Output<String>> certIdentifier() {
+        return Optional.ofNullable(this.certIdentifier);
+    }
+
+    /**
+     * The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+     * 
+     * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+     * 
+     */
+    @Import(name="certName")
+    private @Nullable Output<String> certName;
+
+    /**
+     * @return The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+     * 
+     * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+     * 
+     */
+    public Optional<Output<String>> certName() {
+        return Optional.ofNullable(this.certName);
+    }
+
+    /**
+     * The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+     * 
+     */
+    @Import(name="certRegion")
+    private @Nullable Output<String> certRegion;
+
+    /**
+     * @return The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+     * 
+     */
+    public Optional<Output<String>> certRegion() {
+        return Optional.ofNullable(this.certRegion);
+    }
+
+    /**
+     * The domain name for which you want to configure the Static Page Caching policy.
+     * 
+     * &gt; **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
      * 
      */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
     /**
-     * @return The domain name of the website that you want to add to the instance.
+     * @return The domain name for which you want to configure the Static Page Caching policy.
+     * 
+     * &gt; **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
      * 
      */
     public Output<String> domain() {
@@ -36,20 +112,38 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-     * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-     * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-     * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+     * The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+     * 
+     * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+     * 
+     * If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+     * 
+     * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+     * 
+     * If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+     * 
+     * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+     * 
+     * After you turn on the switch, HTTP/2 is used.
      * 
      */
     @Import(name="httpsExt")
     private @Nullable Output<String> httpsExt;
 
     /**
-     * @return The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-     * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-     * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-     * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+     * @return The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+     * 
+     * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+     * 
+     * If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+     * 
+     * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+     * 
+     * If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+     * 
+     * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+     * 
+     * After you turn on the switch, HTTP/2 is used.
      * 
      */
     public Optional<Output<String>> httpsExt() {
@@ -57,16 +151,14 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-     * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+     * InstanceIds
      * 
      */
     @Import(name="instanceIds", required=true)
     private Output<List<String>> instanceIds;
 
     /**
-     * @return A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-     * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+     * @return InstanceIds
      * 
      */
     public Output<List<String>> instanceIds() {
@@ -74,14 +166,33 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+     * The globally unique ID of the certificate. The value is in the &#34;Certificate ID-cn-hangzhou&#34; format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+     * 
+     * &gt; **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+     * 
+     */
+    @Import(name="key")
+    private @Nullable Output<String> key;
+
+    /**
+     * @return The globally unique ID of the certificate. The value is in the &#34;Certificate ID-cn-hangzhou&#34; format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+     * 
+     * &gt; **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+     * 
+     */
+    public Optional<Output<String>> key() {
+        return Optional.ofNullable(this.key);
+    }
+
+    /**
+     * Specifies whether to enable the OCSP feature. Valid values:
      * 
      */
     @Import(name="ocspEnabled")
     private @Nullable Output<Boolean> ocspEnabled;
 
     /**
-     * @return Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+     * @return Specifies whether to enable the OCSP feature. Valid values:
      * 
      */
     public Optional<Output<Boolean>> ocspEnabled() {
@@ -90,7 +201,6 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Protocol type and port number information. See `proxy_types` below.
-     * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
      * 
      */
     @Import(name="proxyTypes", required=true)
@@ -98,7 +208,6 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Protocol type and port number information. See `proxy_types` below.
-     * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
      * 
      */
     public Output<List<DomainResourceProxyTypeArgs>> proxyTypes() {
@@ -106,14 +215,14 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * the IP address. This field is required and must be a string array.
+     * Server address information of the source station.
      * 
      */
     @Import(name="realServers", required=true)
     private Output<List<String>> realServers;
 
     /**
-     * @return the IP address. This field is required and must be a string array.
+     * @return Server address information of the source station.
      * 
      */
     public Output<List<String>> realServers() {
@@ -121,14 +230,14 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+     * The address type of the origin server. Valid values:
      * 
      */
     @Import(name="rsType", required=true)
     private Output<Integer> rsType;
 
     /**
-     * @return The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+     * @return The address type of the origin server. Valid values:
      * 
      */
     public Output<Integer> rsType() {
@@ -138,9 +247,14 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
     private DomainResourceArgs() {}
 
     private DomainResourceArgs(DomainResourceArgs $) {
+        this.cert = $.cert;
+        this.certIdentifier = $.certIdentifier;
+        this.certName = $.certName;
+        this.certRegion = $.certRegion;
         this.domain = $.domain;
         this.httpsExt = $.httpsExt;
         this.instanceIds = $.instanceIds;
+        this.key = $.key;
         this.ocspEnabled = $.ocspEnabled;
         this.proxyTypes = $.proxyTypes;
         this.realServers = $.realServers;
@@ -166,7 +280,105 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param domain The domain name of the website that you want to add to the instance.
+         * @param cert The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+         * 
+         * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cert(@Nullable Output<String> cert) {
+            $.cert = cert;
+            return this;
+        }
+
+        /**
+         * @param cert The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+         * 
+         * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cert(String cert) {
+            return cert(Output.of(cert));
+        }
+
+        /**
+         * @param certIdentifier The name of the certificate.
+         * 
+         * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certIdentifier(@Nullable Output<String> certIdentifier) {
+            $.certIdentifier = certIdentifier;
+            return this;
+        }
+
+        /**
+         * @param certIdentifier The name of the certificate.
+         * 
+         * &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certIdentifier(String certIdentifier) {
+            return certIdentifier(Output.of(certIdentifier));
+        }
+
+        /**
+         * @param certName The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+         * 
+         * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certName(@Nullable Output<String> certName) {
+            $.certName = certName;
+            return this;
+        }
+
+        /**
+         * @param certName The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+         * 
+         * &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certName(String certName) {
+            return certName(Output.of(certName));
+        }
+
+        /**
+         * @param certRegion The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(@Nullable Output<String> certRegion) {
+            $.certRegion = certRegion;
+            return this;
+        }
+
+        /**
+         * @param certRegion The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certRegion(String certRegion) {
+            return certRegion(Output.of(certRegion));
+        }
+
+        /**
+         * @param domain The domain name for which you want to configure the Static Page Caching policy.
+         * 
+         * &gt; **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
          * 
          * @return builder
          * 
@@ -177,7 +389,9 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param domain The domain name of the website that you want to add to the instance.
+         * @param domain The domain name for which you want to configure the Static Page Caching policy.
+         * 
+         * &gt; **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
          * 
          * @return builder
          * 
@@ -187,10 +401,19 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param httpsExt The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-         * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-         * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-         * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+         * @param httpsExt The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+         * 
+         * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+         * 
+         * If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+         * 
+         * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+         * 
+         * If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+         * 
+         * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+         * 
+         * After you turn on the switch, HTTP/2 is used.
          * 
          * @return builder
          * 
@@ -201,10 +424,19 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param httpsExt The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-         * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-         * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-         * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+         * @param httpsExt The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+         * 
+         * - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+         * 
+         * If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+         * 
+         * - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+         * 
+         * If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+         * 
+         * - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+         * 
+         * After you turn on the switch, HTTP/2 is used.
          * 
          * @return builder
          * 
@@ -214,8 +446,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceIds A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-         * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+         * @param instanceIds InstanceIds
          * 
          * @return builder
          * 
@@ -226,8 +457,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceIds A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-         * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+         * @param instanceIds InstanceIds
          * 
          * @return builder
          * 
@@ -237,8 +467,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceIds A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-         * &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+         * @param instanceIds InstanceIds
          * 
          * @return builder
          * 
@@ -248,7 +477,32 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ocspEnabled Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+         * @param key The globally unique ID of the certificate. The value is in the &#34;Certificate ID-cn-hangzhou&#34; format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+         * 
+         * &gt; **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder key(@Nullable Output<String> key) {
+            $.key = key;
+            return this;
+        }
+
+        /**
+         * @param key The globally unique ID of the certificate. The value is in the &#34;Certificate ID-cn-hangzhou&#34; format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+         * 
+         * &gt; **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder key(String key) {
+            return key(Output.of(key));
+        }
+
+        /**
+         * @param ocspEnabled Specifies whether to enable the OCSP feature. Valid values:
          * 
          * @return builder
          * 
@@ -259,7 +513,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param ocspEnabled Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+         * @param ocspEnabled Specifies whether to enable the OCSP feature. Valid values:
          * 
          * @return builder
          * 
@@ -270,7 +524,6 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param proxyTypes Protocol type and port number information. See `proxy_types` below.
-         * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
          * 
          * @return builder
          * 
@@ -282,7 +535,6 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param proxyTypes Protocol type and port number information. See `proxy_types` below.
-         * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
          * 
          * @return builder
          * 
@@ -293,7 +545,6 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param proxyTypes Protocol type and port number information. See `proxy_types` below.
-         * &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
          * 
          * @return builder
          * 
@@ -303,7 +554,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param realServers the IP address. This field is required and must be a string array.
+         * @param realServers Server address information of the source station.
          * 
          * @return builder
          * 
@@ -314,7 +565,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param realServers the IP address. This field is required and must be a string array.
+         * @param realServers Server address information of the source station.
          * 
          * @return builder
          * 
@@ -324,7 +575,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param realServers the IP address. This field is required and must be a string array.
+         * @param realServers Server address information of the source station.
          * 
          * @return builder
          * 
@@ -334,7 +585,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rsType The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+         * @param rsType The address type of the origin server. Valid values:
          * 
          * @return builder
          * 
@@ -345,7 +596,7 @@ public final class DomainResourceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rsType The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+         * @param rsType The address type of the origin server. Valid values:
          * 
          * @return builder
          * 

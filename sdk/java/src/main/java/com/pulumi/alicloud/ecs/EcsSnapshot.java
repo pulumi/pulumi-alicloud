@@ -22,7 +22,128 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/25524.htm).
  * 
- * &gt; **NOTE:** Available in v1.120.0+.
+ * &gt; **NOTE:** Available since v1.120.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecs.EcsFunctions;
+ * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecs.Instance;
+ * import com.pulumi.alicloud.ecs.InstanceArgs;
+ * import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
+ * import com.pulumi.alicloud.ecs.EcsDisk;
+ * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+ * import com.pulumi.alicloud.ecs.EcsDiskAttachment;
+ * import com.pulumi.alicloud.ecs.EcsDiskAttachmentArgs;
+ * import com.pulumi.alicloud.ecs.EcsSnapshot;
+ * import com.pulumi.alicloud.ecs.EcsSnapshotArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory("cloud_essd")
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .mostRecent(true)
+ *             .owners("system")
+ *             .build());
+ * 
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .systemDiskCategory("cloud_essd")
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut("10")
+ *             .availabilityZone(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].availabilityZones()[0]))
+ *             .instanceChargeType("PostPaid")
+ *             .systemDiskCategory("cloud_essd")
+ *             .vswitchId(defaultSwitch.id())
+ *             .instanceName(name)
+ *             .dataDisks(InstanceDataDiskArgs.builder()
+ *                 .category("cloud_essd")
+ *                 .size(20)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultEcsDisk = new EcsDisk("defaultEcsDisk", EcsDiskArgs.builder()
+ *             .diskName(name)
+ *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].availabilityZones()[0]))
+ *             .category("cloud_essd")
+ *             .size(500)
+ *             .build());
+ * 
+ *         var defaultEcsDiskAttachment = new EcsDiskAttachment("defaultEcsDiskAttachment", EcsDiskAttachmentArgs.builder()
+ *             .diskId(defaultEcsDisk.id())
+ *             .instanceId(defaultInstance.id())
+ *             .build());
+ * 
+ *         var defaultEcsSnapshot = new EcsSnapshot("defaultEcsSnapshot", EcsSnapshotArgs.builder()
+ *             .diskId(defaultEcsDiskAttachment.diskId())
+ *             .category("standard")
+ *             .retentionDays(20)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -36,18 +157,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/ecsSnapshot:EcsSnapshot")
 public class EcsSnapshot extends com.pulumi.resources.CustomResource {
     /**
-     * The category of the snapshot. Valid Values: `standard` and `flash`.
+     * The category of the snapshot. Valid values:
      * 
      */
     @Export(name="category", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> category;
+    private Output<String> category;
 
     /**
-     * @return The category of the snapshot. Valid Values: `standard` and `flash`.
+     * @return The category of the snapshot. Valid values:
      * 
      */
-    public Output<Optional<String>> category() {
-        return Codegen.optional(this.category);
+    public Output<String> category() {
+        return this.category;
     }
     /**
      * The description of the snapshot.
@@ -78,42 +199,50 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
         return this.diskId;
     }
     /**
-     * Specifies whether to forcibly delete the snapshot that has been used to create disks.
+     * Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Specifies whether to forcibly delete the snapshot that has been used to create disks.
+     * @return Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * Specifies whether to enable the instant access feature.
+     * Field `instant_access` has been deprecated from provider version 1.231.0.
+     * 
+     * @deprecated
+     * Field `instant_access` has been deprecated from provider version 1.231.0.
      * 
      */
+    @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
     @Export(name="instantAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instantAccess;
 
     /**
-     * @return Specifies whether to enable the instant access feature.
+     * @return Field `instant_access` has been deprecated from provider version 1.231.0.
      * 
      */
     public Output<Optional<Boolean>> instantAccess() {
         return Codegen.optional(this.instantAccess);
     }
     /**
-     * Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * 
+     * @deprecated
+     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
      * 
      */
+    @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
     @Export(name="instantAccessRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instantAccessRetentionDays;
 
     /**
-     * @return Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+     * @return Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
      * 
      */
     public Output<Optional<Integer>> instantAccessRetentionDays() {
@@ -123,10 +252,10 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;snapshot_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -138,28 +267,28 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The resource group id.
+     * The ID of the resource group.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The resource group id.
+     * @return The ID of the resource group.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
     /**
-     * The retention period of the snapshot.
+     * The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
      * 
      */
     @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**
-     * @return The retention period of the snapshot.
+     * @return The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
      * 
      */
     public Output<Optional<Integer>> retentionDays() {
@@ -180,32 +309,28 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
         return this.snapshotName;
     }
     /**
-     * The status of snapshot.
+     * The status of the Snapshot.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of snapshot.
+     * @return The status of the Snapshot.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the snapshot.
-     * 
-     * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the snapshot.
-     * 
-     * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

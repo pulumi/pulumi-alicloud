@@ -74,7 +74,7 @@ export class Acl extends pulumi.CustomResource {
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      */
-    public readonly aclName!: pulumi.Output<string>;
+    public readonly aclName!: pulumi.Output<string | undefined>;
     /**
      * Specifies whether to precheck the API request.
      */
@@ -99,7 +99,7 @@ export class Acl extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AclArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AclArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AclArgs | AclState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -113,9 +113,6 @@ export class Acl extends pulumi.CustomResource {
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as AclArgs | undefined;
-            if ((!args || args.aclName === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'aclName'");
-            }
             resourceInputs["aclEntries"] = args ? args.aclEntries : undefined;
             resourceInputs["aclName"] = args ? args.aclName : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
@@ -175,7 +172,7 @@ export interface AclArgs {
     /**
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      */
-    aclName: pulumi.Input<string>;
+    aclName?: pulumi.Input<string>;
     /**
      * Specifies whether to precheck the API request.
      */

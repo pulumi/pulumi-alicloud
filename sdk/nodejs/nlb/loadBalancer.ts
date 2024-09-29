@@ -65,6 +65,66 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * DualStack Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const zone = config.getObject("zone") || [
+ *     "cn-beijing-i",
+ *     "cn-beijing-k",
+ *     "cn-beijing-l",
+ * ];
+ * const vpc = new alicloud.vpc.Network("vpc", {
+ *     vpcName: name,
+ *     cidrBlock: "10.2.0.0/16",
+ *     enableIpv6: true,
+ * });
+ * const vsw: alicloud.vpc.Switch[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     vsw.push(new alicloud.vpc.Switch(`vsw-${range.value}`, {
+ *         enableIpv6: true,
+ *         ipv6CidrBlockMask: `1${range.value}`,
+ *         vswitchName: `vsw-${range.value}-for-nlb`,
+ *         vpcId: vpc.id,
+ *         cidrBlock: `10.2.1${range.value}.0/24`,
+ *         zoneId: zone[range.value],
+ *     }));
+ * }
+ * const _default = new alicloud.vpc.Ipv6Gateway("default", {
+ *     ipv6GatewayName: name,
+ *     vpcId: vpc.id,
+ * });
+ * const nlb = new alicloud.nlb.LoadBalancer("nlb", {
+ *     loadBalancerName: name,
+ *     loadBalancerType: "Network",
+ *     addressType: "Intranet",
+ *     addressIpVersion: "DualStack",
+ *     ipv6AddressType: "Internet",
+ *     vpcId: vpc.id,
+ *     crossZoneEnabled: false,
+ *     tags: {
+ *         Created: "TF",
+ *         For: "example",
+ *     },
+ *     zoneMappings: [
+ *         {
+ *             vswitchId: vsw[0].id,
+ *             zoneId: zone[0],
+ *         },
+ *         {
+ *             vswitchId: vsw[1].id,
+ *             zoneId: zone[1],
+ *         },
+ *     ],
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * ```
+ *
  * ## Import
  *
  * NLB Load Balancer can be imported using the id, e.g.

@@ -15,6 +15,7 @@ __all__ = [
     'RocketMQInstanceNetworkInfoEndpointArgs',
     'RocketMQInstanceNetworkInfoInternetInfoArgs',
     'RocketMQInstanceNetworkInfoVpcInfoArgs',
+    'RocketMQInstanceNetworkInfoVpcInfoVswitchArgs',
     'RocketMQInstanceProductInfoArgs',
     'RocketMQInstanceSoftwareArgs',
 ]
@@ -174,13 +175,13 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
                  flow_out_bandwidth: Optional[pulumi.Input[int]] = None,
                  ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] flow_out_type: Public network billing type. The parameter values are as follows:
-               - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-               - uninvolved: Not involved. Set this value when disabling public network access.
-        :param pulumi.Input[str] internet_spec: Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+        :param pulumi.Input[str] flow_out_type: Public network billing type.  Parameter values are as follows:
+               - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+               - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
+        :param pulumi.Input[str] internet_spec: Whether to enable public network access.  The parameter values are as follows:
                - enable: Enable public network access
-               - disable: Disable public network access
-        :param pulumi.Input[int] flow_out_bandwidth: Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+               - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
+        :param pulumi.Input[int] flow_out_bandwidth: Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_whitelists: internet ip whitelist.
         """
         pulumi.set(__self__, "flow_out_type", flow_out_type)
@@ -194,9 +195,9 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
     @pulumi.getter(name="flowOutType")
     def flow_out_type(self) -> pulumi.Input[str]:
         """
-        Public network billing type. The parameter values are as follows:
-        - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-        - uninvolved: Not involved. Set this value when disabling public network access.
+        Public network billing type.  Parameter values are as follows:
+        - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+        - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
         """
         return pulumi.get(self, "flow_out_type")
 
@@ -208,9 +209,9 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
     @pulumi.getter(name="internetSpec")
     def internet_spec(self) -> pulumi.Input[str]:
         """
-        Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+        Whether to enable public network access.  The parameter values are as follows:
         - enable: Enable public network access
-        - disable: Disable public network access
+        - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
         """
         return pulumi.get(self, "internet_spec")
 
@@ -222,7 +223,7 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
     @pulumi.getter(name="flowOutBandwidth")
     def flow_out_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+        Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
         """
         return pulumi.get(self, "flow_out_bandwidth")
 
@@ -247,13 +248,22 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
 class RocketMQInstanceNetworkInfoVpcInfoArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[str],
-                 vswitch_id: pulumi.Input[str]):
+                 security_group_ids: Optional[pulumi.Input[str]] = None,
+                 vswitch_id: Optional[pulumi.Input[str]] = None,
+                 vswitches: Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]] = None):
         """
         :param pulumi.Input[str] vpc_id: Proprietary Network.
-        :param pulumi.Input[str] vswitch_id: VPC network switch.
+        :param pulumi.Input[str] security_group_ids: Security group id.
+        :param pulumi.Input[str] vswitch_id: VPC switch id.
+        :param pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]] vswitches: Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+        if vswitches is not None:
+            pulumi.set(__self__, "vswitches", vswitches)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -268,15 +278,62 @@ class RocketMQInstanceNetworkInfoVpcInfoArgs:
         pulumi.set(self, "vpc_id", value)
 
     @property
-    @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> pulumi.Input[str]:
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[str]]:
         """
-        VPC network switch.
+        Security group id.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        VPC switch id.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: pulumi.Input[str]):
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vswitch_id", value)
+
+    @property
+    @pulumi.getter
+    def vswitches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]]:
+        """
+        Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+        """
+        return pulumi.get(self, "vswitches")
+
+    @vswitches.setter
+    def vswitches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgs']]]]):
+        pulumi.set(self, "vswitches", value)
+
+
+@pulumi.input_type
+class RocketMQInstanceNetworkInfoVpcInfoVswitchArgs:
+    def __init__(__self__, *,
+                 vswitch_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] vswitch_id: VPC switch id.
+        """
+        if vswitch_id is not None:
+            pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="vswitchId")
+    def vswitch_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        VPC switch id.
+        """
+        return pulumi.get(self, "vswitch_id")
+
+    @vswitch_id.setter
+    def vswitch_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -291,8 +348,8 @@ class RocketMQInstanceProductInfoArgs:
         """
         :param pulumi.Input[str] msg_process_spec: Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
         :param pulumi.Input[bool] auto_scaling: is open auto scaling.
-        :param pulumi.Input[int] message_retention_time: Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
-        :param pulumi.Input[float] send_receive_ratio: message send receive ratio.Value range: [0.2, 0.5].
+        :param pulumi.Input[int] message_retention_time: Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+        :param pulumi.Input[float] send_receive_ratio: message send receive ratio.  Value range: [0.2, 0.5].
         :param pulumi.Input[bool] support_auto_scaling: is support auto scaling.
         """
         pulumi.set(__self__, "msg_process_spec", msg_process_spec)
@@ -333,7 +390,7 @@ class RocketMQInstanceProductInfoArgs:
     @pulumi.getter(name="messageRetentionTime")
     def message_retention_time(self) -> Optional[pulumi.Input[int]]:
         """
-        Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+        Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
         """
         return pulumi.get(self, "message_retention_time")
 
@@ -345,7 +402,7 @@ class RocketMQInstanceProductInfoArgs:
     @pulumi.getter(name="sendReceiveRatio")
     def send_receive_ratio(self) -> Optional[pulumi.Input[float]]:
         """
-        message send receive ratio.Value range: [0.2, 0.5].
+        message send receive ratio.  Value range: [0.2, 0.5].
         """
         return pulumi.get(self, "send_receive_ratio")
 

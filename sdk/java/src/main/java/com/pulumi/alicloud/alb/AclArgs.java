@@ -6,7 +6,6 @@ package com.pulumi.alicloud.alb;
 import com.pulumi.alicloud.alb.inputs.AclAclEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -49,15 +48,15 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
      * The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      * 
      */
-    @Import(name="aclName", required=true)
-    private Output<String> aclName;
+    @Import(name="aclName")
+    private @Nullable Output<String> aclName;
 
     /**
      * @return The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
      * 
      */
-    public Output<String> aclName() {
-        return this.aclName;
+    public Optional<Output<String>> aclName() {
+        return Optional.ofNullable(this.aclName);
     }
 
     /**
@@ -185,7 +184,7 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder aclName(Output<String> aclName) {
+        public Builder aclName(@Nullable Output<String> aclName) {
             $.aclName = aclName;
             return this;
         }
@@ -264,9 +263,6 @@ public final class AclArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AclArgs build() {
-            if ($.aclName == null) {
-                throw new MissingRequiredPropertyException("AclArgs", "aclName");
-            }
             return $;
         }
     }

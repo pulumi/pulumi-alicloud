@@ -21,6 +21,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
     /**
      * The configuration of the domain name. See `host_config` below.
+     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
      * 
      */
     @Import(name="hostConfigs")
@@ -28,6 +29,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
     /**
      * @return The configuration of the domain name. See `host_config` below.
+     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
      * 
      */
     public Optional<Output<List<ForwardingRuleRuleConditionHostConfigArgs>>> hostConfigs() {
@@ -50,18 +52,33 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
     }
 
     /**
-     * The type of the forwarding conditions. Valid values: `Host`, `Path`.
+     * The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
      * 
      */
     @Import(name="ruleConditionType", required=true)
     private Output<String> ruleConditionType;
 
     /**
-     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`.
+     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
      * 
      */
     public Output<String> ruleConditionType() {
         return this.ruleConditionType;
+    }
+
+    /**
+     * The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+     * 
+     */
+    @Import(name="ruleConditionValue")
+    private @Nullable Output<String> ruleConditionValue;
+
+    /**
+     * @return The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+     * 
+     */
+    public Optional<Output<String>> ruleConditionValue() {
+        return Optional.ofNullable(this.ruleConditionValue);
     }
 
     private ForwardingRuleRuleConditionArgs() {}
@@ -70,6 +87,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         this.hostConfigs = $.hostConfigs;
         this.pathConfig = $.pathConfig;
         this.ruleConditionType = $.ruleConditionType;
+        this.ruleConditionValue = $.ruleConditionValue;
     }
 
     public static Builder builder() {
@@ -92,6 +110,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
         /**
          * @param hostConfigs The configuration of the domain name. See `host_config` below.
+         * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
          * 
          * @return builder
          * 
@@ -103,6 +122,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
         /**
          * @param hostConfigs The configuration of the domain name. See `host_config` below.
+         * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
          * 
          * @return builder
          * 
@@ -113,6 +133,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
 
         /**
          * @param hostConfigs The configuration of the domain name. See `host_config` below.
+         * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
          * 
          * @return builder
          * 
@@ -143,7 +164,7 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`.
+         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
          * 
          * @return builder
          * 
@@ -154,13 +175,34 @@ public final class ForwardingRuleRuleConditionArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`.
+         * @param ruleConditionType The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
          * 
          * @return builder
          * 
          */
         public Builder ruleConditionType(String ruleConditionType) {
             return ruleConditionType(Output.of(ruleConditionType));
+        }
+
+        /**
+         * @param ruleConditionValue The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleConditionValue(@Nullable Output<String> ruleConditionValue) {
+            $.ruleConditionValue = ruleConditionValue;
+            return this;
+        }
+
+        /**
+         * @param ruleConditionValue The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ruleConditionValue(String ruleConditionValue) {
+            return ruleConditionValue(Output.of(ruleConditionValue));
         }
 
         public ForwardingRuleRuleConditionArgs build() {

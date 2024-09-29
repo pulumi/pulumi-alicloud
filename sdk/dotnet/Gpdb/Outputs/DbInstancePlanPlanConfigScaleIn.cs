@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// </summary>
         public readonly string? PlanCronTime;
         /// <summary>
+        /// (Available since v1.231.0) The status of the plan task.
+        /// </summary>
+        public readonly string? PlanTaskStatus;
+        /// <summary>
         /// The segment Node Num of the Plan.
         /// </summary>
         public readonly string? SegmentNodeNum;
@@ -32,10 +36,13 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
 
             string? planCronTime,
 
+            string? planTaskStatus,
+
             string? segmentNodeNum)
         {
             ExecuteTime = executeTime;
             PlanCronTime = planCronTime;
+            PlanTaskStatus = planTaskStatus;
             SegmentNodeNum = segmentNodeNum;
         }
     }

@@ -249,7 +249,7 @@ class ForwardingRuleRuleActionArgs:
                  rule_action_value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] order: Forwarding priority.
-        :param pulumi.Input[str] rule_action_type: Forward action type.
+        :param pulumi.Input[str] rule_action_type: The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
         :param pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgs'] forward_group_config: Forwarding configuration. See `forward_group_config` below.
                > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
         :param pulumi.Input[str] rule_action_value: The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
@@ -277,7 +277,7 @@ class ForwardingRuleRuleActionArgs:
     @pulumi.getter(name="ruleActionType")
     def rule_action_type(self) -> pulumi.Input[str]:
         """
-        Forward action type.
+        The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
         """
         return pulumi.get(self, "rule_action_type")
 
@@ -360,23 +360,28 @@ class ForwardingRuleRuleConditionArgs:
     def __init__(__self__, *,
                  rule_condition_type: pulumi.Input[str],
                  host_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]] = None,
-                 path_config: Optional[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs']] = None):
+                 path_config: Optional[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs']] = None,
+                 rule_condition_value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] rule_condition_type: The type of the forwarding conditions. Valid values: `Host`, `Path`.
+        :param pulumi.Input[str] rule_condition_type: The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]] host_configs: The configuration of the domain name. See `host_config` below.
+               > **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
         :param pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs'] path_config: The configuration of the path. See `path_config` below.
+        :param pulumi.Input[str] rule_condition_value: The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         """
         pulumi.set(__self__, "rule_condition_type", rule_condition_type)
         if host_configs is not None:
             pulumi.set(__self__, "host_configs", host_configs)
         if path_config is not None:
             pulumi.set(__self__, "path_config", path_config)
+        if rule_condition_value is not None:
+            pulumi.set(__self__, "rule_condition_value", rule_condition_value)
 
     @property
     @pulumi.getter(name="ruleConditionType")
     def rule_condition_type(self) -> pulumi.Input[str]:
         """
-        The type of the forwarding conditions. Valid values: `Host`, `Path`.
+        The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
         """
         return pulumi.get(self, "rule_condition_type")
 
@@ -389,6 +394,7 @@ class ForwardingRuleRuleConditionArgs:
     def host_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]]:
         """
         The configuration of the domain name. See `host_config` below.
+        > **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
         """
         return pulumi.get(self, "host_configs")
 
@@ -407,6 +413,18 @@ class ForwardingRuleRuleConditionArgs:
     @path_config.setter
     def path_config(self, value: Optional[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs']]):
         pulumi.set(self, "path_config", value)
+
+    @property
+    @pulumi.getter(name="ruleConditionValue")
+    def rule_condition_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+        """
+        return pulumi.get(self, "rule_condition_value")
+
+    @rule_condition_value.setter
+    def rule_condition_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_condition_value", value)
 
 
 @pulumi.input_type

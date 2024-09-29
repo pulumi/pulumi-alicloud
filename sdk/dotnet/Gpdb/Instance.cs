@@ -214,6 +214,12 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<int?> MasterNodeNum { get; private set; } = null!;
 
         /// <summary>
+        /// The parameters. See `parameters` below.
+        /// </summary>
+        [Output("parameters")]
+        public Output<ImmutableArray<Outputs.InstanceParameter>> Parameters { get; private set; } = null!;
+
+        /// <summary>
         /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         /// </summary>
         [Output("paymentType")]
@@ -499,6 +505,18 @@ namespace Pulumi.AliCloud.Gpdb
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
 
+        [Input("parameters")]
+        private InputList<Inputs.InstanceParameterArgs>? _parameters;
+
+        /// <summary>
+        /// The parameters. See `parameters` below.
+        /// </summary>
+        public InputList<Inputs.InstanceParameterArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.InstanceParameterArgs>());
+            set => _parameters = value;
+        }
+
         /// <summary>
         /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         /// </summary>
@@ -753,6 +771,18 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
+
+        [Input("parameters")]
+        private InputList<Inputs.InstanceParameterGetArgs>? _parameters;
+
+        /// <summary>
+        /// The parameters. See `parameters` below.
+        /// </summary>
+        public InputList<Inputs.InstanceParameterGetArgs> Parameters
+        {
+            get => _parameters ?? (_parameters = new InputList<Inputs.InstanceParameterGetArgs>());
+            set => _parameters = value;
+        }
 
         /// <summary>
         /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.

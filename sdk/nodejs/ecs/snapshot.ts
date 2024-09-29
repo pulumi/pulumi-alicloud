@@ -63,7 +63,7 @@ export class Snapshot extends pulumi.CustomResource {
         return obj['__pulumiType'] === Snapshot.__pulumiType;
     }
 
-    public readonly category!: pulumi.Output<string | undefined>;
+    public readonly category!: pulumi.Output<string>;
     /**
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
@@ -73,13 +73,19 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly diskId!: pulumi.Output<string>;
     public readonly force!: pulumi.Output<boolean | undefined>;
+    /**
+     * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
+     */
     public readonly instantAccess!: pulumi.Output<boolean | undefined>;
+    /**
+     * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+     */
     public readonly instantAccessRetentionDays!: pulumi.Output<number | undefined>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -156,13 +162,19 @@ export interface SnapshotState {
      */
     diskId?: pulumi.Input<string>;
     force?: pulumi.Input<boolean>;
+    /**
+     * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
+     */
     instantAccess?: pulumi.Input<boolean>;
+    /**
+     * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+     */
     instantAccessRetentionDays?: pulumi.Input<number>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -192,13 +204,19 @@ export interface SnapshotArgs {
      */
     diskId: pulumi.Input<string>;
     force?: pulumi.Input<boolean>;
+    /**
+     * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
+     */
     instantAccess?: pulumi.Input<boolean>;
+    /**
+     * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+     */
     instantAccessRetentionDays?: pulumi.Input<number>;
     /**
      * The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
     name?: pulumi.Input<string>;
     /**

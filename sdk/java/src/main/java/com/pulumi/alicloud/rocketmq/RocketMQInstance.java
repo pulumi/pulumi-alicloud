@@ -35,7 +35,7 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
     /**
      * Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
      * - true: Enable auto-renewal
-     * - false: Disable auto-renewal.
+     * - false: Disable auto-renewal
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
@@ -44,21 +44,27 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
      * - true: Enable auto-renewal
-     * - false: Disable auto-renewal.
+     * - false: Disable auto-renewal
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Auto-renewal period. This parameter is only valid when auto-renewal is enabled. The values can be as follows: 1, 2, 3, 6, 12.
+     * Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
+     * 
+     * The values can be as follows:
+     * - Monthly renewal: 1, 2, 3, 6, 12
      * 
      */
     @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
-     * @return Auto-renewal period. This parameter is only valid when auto-renewal is enabled. The values can be as follows: 1, 2, 3, 6, 12.
+     * @return Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
+     * 
+     * The values can be as follows:
+     * - Monthly renewal: 1, 2, 3, 6, 12
      * 
      */
     public Output<Optional<Integer>> autoRenewPeriod() {
@@ -79,160 +85,204 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
         return this.autoRenewPeriodUnit;
     }
     /**
-     * The creation time of the resource.
+     * Commodity code
+     * 
+     * ons_rmqsub_public_cn: Package year and month instance
+     * 
+     * ons_rmqpost_public_cn: Pay-As-You-Go instance
+     * 
+     * Next: Serverless instances
+     * 
+     */
+    @Export(name="commodityCode", refs={String.class}, tree="[0]")
+    private Output<String> commodityCode;
+
+    /**
+     * @return Commodity code
+     * 
+     * ons_rmqsub_public_cn: Package year and month instance
+     * 
+     * ons_rmqpost_public_cn: Pay-As-You-Go instance
+     * 
+     * Next: Serverless instances
+     * 
+     */
+    public Output<String> commodityCode() {
+        return this.commodityCode;
+    }
+    /**
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The name of instance.
+     * The name of instance
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
-     * @return The name of instance.
+     * @return The name of instance
      * 
      */
     public Output<Optional<String>> instanceName() {
         return Codegen.optional(this.instanceName);
     }
     /**
-     * Instance network configuration information. See `network_info` below.
+     * Instance network configuration information See `network_info` below.
      * 
      */
     @Export(name="networkInfo", refs={RocketMQInstanceNetworkInfo.class}, tree="[0]")
     private Output<RocketMQInstanceNetworkInfo> networkInfo;
 
     /**
-     * @return Instance network configuration information. See `network_info` below.
+     * @return Instance network configuration information See `network_info` below.
      * 
      */
     public Output<RocketMQInstanceNetworkInfo> networkInfo() {
         return this.networkInfo;
     }
     /**
-     * The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment. The parameter values are as follows:
+     * The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
+     * 
+     * The parameter values are as follows:
      * - PayAsYouGo: Pay-as-you-go, a post-payment model where you pay after usage.
      * - Subscription: Subscription-based, a pre-payment model where you pay before usage.
-     *   For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
+     * 
+     * For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment. The parameter values are as follows:
+     * @return The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
+     * 
+     * The parameter values are as follows:
      * - PayAsYouGo: Pay-as-you-go, a post-payment model where you pay after usage.
      * - Subscription: Subscription-based, a pre-payment model where you pay before usage.
-     *   For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
+     * 
+     * For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
      * 
      */
     public Output<String> paymentType() {
         return this.paymentType;
     }
     /**
-     * Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid). The values can be as follows:
+     * Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
+     * 
+     * The values can be as follows:
      * - Monthly purchase: 1, 2, 3, 4, 5, 6
-     * - Annual purchase: 1, 2, 3.
+     * - Annual purchase: 1, 2, 3
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid). The values can be as follows:
+     * @return Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
+     * 
+     * The values can be as follows:
      * - Monthly purchase: 1, 2, 3, 4, 5, 6
-     * - Annual purchase: 1, 2, 3.
+     * - Annual purchase: 1, 2, 3
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The minimum periodic unit for the duration of purchase. The parameter values are as follows:
+     * The minimum periodic unit for the duration of purchase.
+     * 
+     * The parameter values are as follows:
      * - Month: Purchase on a monthly basis
-     * - Year: Purchase on an annual basis.
+     * - Year: Purchase on an annual basis
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output<String> periodUnit;
 
     /**
-     * @return The minimum periodic unit for the duration of purchase. The parameter values are as follows:
+     * @return The minimum periodic unit for the duration of purchase.
+     * 
+     * The parameter values are as follows:
      * - Month: Purchase on a monthly basis
-     * - Year: Purchase on an annual basis.
+     * - Year: Purchase on an annual basis
      * 
      */
     public Output<String> periodUnit() {
         return this.periodUnit;
     }
     /**
-     * product info. See `product_info` below.
+     * product info See `product_info` below.
      * 
      */
     @Export(name="productInfo", refs={RocketMQInstanceProductInfo.class}, tree="[0]")
     private Output</* @Nullable */ RocketMQInstanceProductInfo> productInfo;
 
     /**
-     * @return product info. See `product_info` below.
+     * @return product info See `product_info` below.
      * 
      */
     public Output<Optional<RocketMQInstanceProductInfo>> productInfo() {
         return Codegen.optional(this.productInfo);
     }
     /**
-     * Custom description.
+     * Custom description
      * 
      */
     @Export(name="remark", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> remark;
 
     /**
-     * @return Custom description.
+     * @return Custom description
      * 
      */
     public Output<Optional<String>> remark() {
         return Codegen.optional(this.remark);
     }
     /**
-     * The ID of the resource group.
+     * The ID of the resource group
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of the resource group
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+     * The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+     * 
+     * The parameter values are as follows:
      * - standard: Standard Edition
      * - ultimate: Platinum Edition
-     * - professional: Professional Edition.
+     * - professional: Professional Edition
      * 
      */
     @Export(name="seriesCode", refs={String.class}, tree="[0]")
     private Output<String> seriesCode;
 
     /**
-     * @return The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+     * @return The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+     * 
+     * The parameter values are as follows:
      * - standard: Standard Edition
      * - ultimate: Platinum Edition
-     * - professional: Professional Edition.
+     * - professional: Professional Edition
      * 
      */
     public Output<String> seriesCode() {
@@ -267,34 +317,40 @@ public class RocketMQInstance extends com.pulumi.resources.CustomResource {
         return this.software;
     }
     /**
-     * The status of the instance.
+     * The status of the instance
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the instance.
+     * @return The status of the instance
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+     * The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+     * 
+     * The parameter values are as follows:
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
-     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+     * 
+     * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
      * 
      */
     @Export(name="subSeriesCode", refs={String.class}, tree="[0]")
     private Output<String> subSeriesCode;
 
     /**
-     * @return The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+     * @return The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+     * 
+     * The parameter values are as follows:
      * - cluster_ha: Cluster High Availability Edition
      * - single_node: Single Node Testing Edition
-     *   When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
+     * 
+     * When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
      * 
      */
     public Output<String> subSeriesCode() {

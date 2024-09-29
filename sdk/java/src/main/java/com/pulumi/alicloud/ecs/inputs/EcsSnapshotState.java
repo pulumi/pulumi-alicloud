@@ -19,14 +19,14 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     public static final EcsSnapshotState Empty = new EcsSnapshotState();
 
     /**
-     * The category of the snapshot. Valid Values: `standard` and `flash`.
+     * The category of the snapshot. Valid values:
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The category of the snapshot. Valid Values: `standard` and `flash`.
+     * @return The category of the snapshot. Valid values:
      * 
      */
     public Optional<Output<String>> category() {
@@ -64,14 +64,14 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to forcibly delete the snapshot that has been used to create disks.
+     * Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Specifies whether to forcibly delete the snapshot that has been used to create disks.
+     * @return Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -79,31 +79,47 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to enable the instant access feature.
+     * Field `instant_access` has been deprecated from provider version 1.231.0.
+     * 
+     * @deprecated
+     * Field `instant_access` has been deprecated from provider version 1.231.0.
      * 
      */
+    @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
     @Import(name="instantAccess")
     private @Nullable Output<Boolean> instantAccess;
 
     /**
-     * @return Specifies whether to enable the instant access feature.
+     * @return Field `instant_access` has been deprecated from provider version 1.231.0.
+     * 
+     * @deprecated
+     * Field `instant_access` has been deprecated from provider version 1.231.0.
      * 
      */
+    @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
     public Optional<Output<Boolean>> instantAccess() {
         return Optional.ofNullable(this.instantAccess);
     }
 
     /**
-     * Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * 
+     * @deprecated
+     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
      * 
      */
+    @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
     @Import(name="instantAccessRetentionDays")
     private @Nullable Output<Integer> instantAccessRetentionDays;
 
     /**
-     * @return Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+     * @return Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+     * 
+     * @deprecated
+     * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
      * 
      */
+    @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
     public Optional<Output<Integer>> instantAccessRetentionDays() {
         return Optional.ofNullable(this.instantAccessRetentionDays);
     }
@@ -112,10 +128,10 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
      * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;snapshot_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -123,23 +139,23 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
      * @return Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;snapshot_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The resource group id.
+     * The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The resource group id.
+     * @return The ID of the resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -147,14 +163,14 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The retention period of the snapshot.
+     * The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
      * 
      */
     @Import(name="retentionDays")
     private @Nullable Output<Integer> retentionDays;
 
     /**
-     * @return The retention period of the snapshot.
+     * @return The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
      * 
      */
     public Optional<Output<Integer>> retentionDays() {
@@ -177,14 +193,14 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of snapshot.
+     * The status of the Snapshot.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of snapshot.
+     * @return The status of the Snapshot.
      * 
      */
     public Optional<Output<String>> status() {
@@ -192,18 +208,14 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A mapping of tags to assign to the snapshot.
-     * 
-     * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the snapshot.
-     * 
-     * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -246,7 +258,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category The category of the snapshot. Valid Values: `standard` and `flash`.
+         * @param category The category of the snapshot. Valid values:
          * 
          * @return builder
          * 
@@ -257,7 +269,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category The category of the snapshot. Valid Values: `standard` and `flash`.
+         * @param category The category of the snapshot. Valid values:
          * 
          * @return builder
          * 
@@ -309,7 +321,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Specifies whether to forcibly delete the snapshot that has been used to create disks.
+         * @param force Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
          * 
          * @return builder
          * 
@@ -320,7 +332,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Specifies whether to forcibly delete the snapshot that has been used to create disks.
+         * @param force Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
          * 
          * @return builder
          * 
@@ -330,43 +342,59 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instantAccess Specifies whether to enable the instant access feature.
+         * @param instantAccess Field `instant_access` has been deprecated from provider version 1.231.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `instant_access` has been deprecated from provider version 1.231.0.
+         * 
          */
+        @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
         public Builder instantAccess(@Nullable Output<Boolean> instantAccess) {
             $.instantAccess = instantAccess;
             return this;
         }
 
         /**
-         * @param instantAccess Specifies whether to enable the instant access feature.
+         * @param instantAccess Field `instant_access` has been deprecated from provider version 1.231.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `instant_access` has been deprecated from provider version 1.231.0.
+         * 
          */
+        @Deprecated /* Field `instant_access` has been deprecated from provider version 1.231.0. */
         public Builder instantAccess(Boolean instantAccess) {
             return instantAccess(Output.of(instantAccess));
         }
 
         /**
-         * @param instantAccessRetentionDays Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+         * @param instantAccessRetentionDays Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+         * 
          */
+        @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
         public Builder instantAccessRetentionDays(@Nullable Output<Integer> instantAccessRetentionDays) {
             $.instantAccessRetentionDays = instantAccessRetentionDays;
             return this;
         }
 
         /**
-         * @param instantAccessRetentionDays Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+         * @param instantAccessRetentionDays Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
+         * 
          */
+        @Deprecated /* Field `instant_access_retention_days` has been deprecated from provider version 1.231.0. */
         public Builder instantAccessRetentionDays(Integer instantAccessRetentionDays) {
             return instantAccessRetentionDays(Output.of(instantAccessRetentionDays));
         }
@@ -377,10 +405,10 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;snapshot_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -392,16 +420,16 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;snapshot_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param resourceGroupId The resource group id.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -412,7 +440,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The resource group id.
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -422,7 +450,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionDays The retention period of the snapshot.
+         * @param retentionDays The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
          * 
          * @return builder
          * 
@@ -433,7 +461,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionDays The retention period of the snapshot.
+         * @param retentionDays The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
          * 
          * @return builder
          * 
@@ -464,7 +492,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of snapshot.
+         * @param status The status of the Snapshot.
          * 
          * @return builder
          * 
@@ -475,7 +503,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of snapshot.
+         * @param status The status of the Snapshot.
          * 
          * @return builder
          * 
@@ -485,9 +513,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the snapshot.
-         * 
-         * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -498,9 +524,7 @@ public final class EcsSnapshotState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the snapshot.
-         * 
-         * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 

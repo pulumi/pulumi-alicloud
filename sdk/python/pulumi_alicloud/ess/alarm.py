@@ -22,6 +22,7 @@ class AlarmArgs:
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective: Optional[pulumi.Input[str]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  expressions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
@@ -40,6 +41,7 @@ class AlarmArgs:
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        :param pulumi.Input[str] effective: The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]] expressions: Support multi alert rule. See `expressions` below for details.
@@ -61,6 +63,8 @@ class AlarmArgs:
             pulumi.set(__self__, "description", description)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
+        if effective is not None:
+            pulumi.set(__self__, "effective", effective)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if evaluation_count is not None:
@@ -153,6 +157,18 @@ class AlarmArgs:
     @dimensions.setter
     def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter
+    def effective(self) -> Optional[pulumi.Input[str]]:
+        """
+        The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+        """
+        return pulumi.get(self, "effective")
+
+    @effective.setter
+    def effective(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective", value)
 
     @property
     @pulumi.getter
@@ -283,6 +299,7 @@ class _AlarmState:
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective: Optional[pulumi.Input[str]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  expressions: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]]] = None,
@@ -302,6 +319,7 @@ class _AlarmState:
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        :param pulumi.Input[str] effective: The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmExpressionArgs']]] expressions: Support multi alert rule. See `expressions` below for details.
@@ -328,6 +346,8 @@ class _AlarmState:
             pulumi.set(__self__, "description", description)
         if dimensions is not None:
             pulumi.set(__self__, "dimensions", dimensions)
+        if effective is not None:
+            pulumi.set(__self__, "effective", effective)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if evaluation_count is not None:
@@ -412,6 +432,18 @@ class _AlarmState:
     @dimensions.setter
     def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter
+    def effective(self) -> Optional[pulumi.Input[str]]:
+        """
+        The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+        """
+        return pulumi.get(self, "effective")
+
+    @effective.setter
+    def effective(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effective", value)
 
     @property
     @pulumi.getter
@@ -571,6 +603,7 @@ class Alarm(pulumi.CustomResource):
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective: Optional[pulumi.Input[str]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  expressions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
@@ -691,6 +724,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        :param pulumi.Input[str] effective: The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]] expressions: Support multi alert rule. See `expressions` below for details.
@@ -830,6 +864,7 @@ class Alarm(pulumi.CustomResource):
                  comparison_operator: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 effective: Optional[pulumi.Input[str]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  evaluation_count: Optional[pulumi.Input[int]] = None,
                  expressions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
@@ -857,6 +892,7 @@ class Alarm(pulumi.CustomResource):
             __props__.__dict__["comparison_operator"] = comparison_operator
             __props__.__dict__["description"] = description
             __props__.__dict__["dimensions"] = dimensions
+            __props__.__dict__["effective"] = effective
             __props__.__dict__["enable"] = enable
             __props__.__dict__["evaluation_count"] = evaluation_count
             __props__.__dict__["expressions"] = expressions
@@ -886,6 +922,7 @@ class Alarm(pulumi.CustomResource):
             comparison_operator: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            effective: Optional[pulumi.Input[str]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             evaluation_count: Optional[pulumi.Input[int]] = None,
             expressions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]]] = None,
@@ -910,6 +947,7 @@ class Alarm(pulumi.CustomResource):
         :param pulumi.Input[str] comparison_operator: The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
         :param pulumi.Input[str] description: The description for the alarm.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] dimensions: The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
+        :param pulumi.Input[str] effective: The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
         :param pulumi.Input[bool] enable: Whether to enable specific ess alarm. Default to true.
         :param pulumi.Input[int] evaluation_count: The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AlarmExpressionArgs', 'AlarmExpressionArgsDict']]]] expressions: Support multi alert rule. See `expressions` below for details.
@@ -935,6 +973,7 @@ class Alarm(pulumi.CustomResource):
         __props__.__dict__["comparison_operator"] = comparison_operator
         __props__.__dict__["description"] = description
         __props__.__dict__["dimensions"] = dimensions
+        __props__.__dict__["effective"] = effective
         __props__.__dict__["enable"] = enable
         __props__.__dict__["evaluation_count"] = evaluation_count
         __props__.__dict__["expressions"] = expressions
@@ -988,6 +1027,14 @@ class Alarm(pulumi.CustomResource):
         The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scaling_group" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
         """
         return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter
+    def effective(self) -> pulumi.Output[str]:
+        """
+        The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+        """
+        return pulumi.get(self, "effective")
 
     @property
     @pulumi.getter

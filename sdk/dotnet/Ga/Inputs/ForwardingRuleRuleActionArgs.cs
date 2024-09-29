@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public Input<int> Order { get; set; } = null!;
 
         /// <summary>
-        /// Forward action type.
+        /// The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
         /// </summary>
         [Input("ruleActionType", required: true)]
         public Input<string> RuleActionType { get; set; } = null!;

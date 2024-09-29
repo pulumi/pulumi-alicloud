@@ -17,6 +17,7 @@ class AccountArgs:
                  baseline_id: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[int]] = None,
                  account_name_prefix: Optional[pulumi.Input[str]] = None,
+                 default_domain_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  payer_account_id: Optional[pulumi.Input[int]] = None):
@@ -31,6 +32,9 @@ class AccountArgs:
         :param pulumi.Input[str] account_name_prefix: Account name prefix.
                - This parameter is required if you are creating a new resource account.
                - If the registration application is applied to an existing account, this parameter does not need to be filled in.
+        :param pulumi.Input[str] default_domain_name: The domain name is used to qualify the login name of RAM users and RAM roles.
+               
+               Format: \\<AccountAlias>.onaliyun.com where \\<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
         :param pulumi.Input[str] display_name: The account display name.
                - This parameter is required if you are creating a new resource account.
                - If the registration application is applied to an existing account, this parameter does not need to be filled in.
@@ -46,6 +50,8 @@ class AccountArgs:
             pulumi.set(__self__, "account_id", account_id)
         if account_name_prefix is not None:
             pulumi.set(__self__, "account_name_prefix", account_name_prefix)
+        if default_domain_name is not None:
+            pulumi.set(__self__, "default_domain_name", default_domain_name)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if folder_id is not None:
@@ -96,6 +102,20 @@ class AccountArgs:
         pulumi.set(self, "account_name_prefix", value)
 
     @property
+    @pulumi.getter(name="defaultDomainName")
+    def default_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name is used to qualify the login name of RAM users and RAM roles.
+
+        Format: \\<AccountAlias>.onaliyun.com where \\<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+        """
+        return pulumi.get(self, "default_domain_name")
+
+    @default_domain_name.setter
+    def default_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_domain_name", value)
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -144,6 +164,7 @@ class _AccountState:
                  account_id: Optional[pulumi.Input[int]] = None,
                  account_name_prefix: Optional[pulumi.Input[str]] = None,
                  baseline_id: Optional[pulumi.Input[str]] = None,
+                 default_domain_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  payer_account_id: Optional[pulumi.Input[int]] = None,
@@ -159,6 +180,9 @@ class _AccountState:
         :param pulumi.Input[str] baseline_id: The baseline ID.
                
                If it is left blank, the system default baseline is used by default.
+        :param pulumi.Input[str] default_domain_name: The domain name is used to qualify the login name of RAM users and RAM roles.
+               
+               Format: \\<AccountAlias>.onaliyun.com where \\<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
         :param pulumi.Input[str] display_name: The account display name.
                - This parameter is required if you are creating a new resource account.
                - If the registration application is applied to an existing account, this parameter does not need to be filled in.
@@ -176,6 +200,8 @@ class _AccountState:
             pulumi.set(__self__, "account_name_prefix", account_name_prefix)
         if baseline_id is not None:
             pulumi.set(__self__, "baseline_id", baseline_id)
+        if default_domain_name is not None:
+            pulumi.set(__self__, "default_domain_name", default_domain_name)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if folder_id is not None:
@@ -226,6 +252,20 @@ class _AccountState:
     @baseline_id.setter
     def baseline_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "baseline_id", value)
+
+    @property
+    @pulumi.getter(name="defaultDomainName")
+    def default_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name is used to qualify the login name of RAM users and RAM roles.
+
+        Format: \\<AccountAlias>.onaliyun.com where \\<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+        """
+        return pulumi.get(self, "default_domain_name")
+
+    @default_domain_name.setter
+    def default_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_domain_name", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -290,6 +330,7 @@ class Account(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[int]] = None,
                  account_name_prefix: Optional[pulumi.Input[str]] = None,
                  baseline_id: Optional[pulumi.Input[str]] = None,
+                 default_domain_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  payer_account_id: Optional[pulumi.Input[int]] = None,
@@ -314,6 +355,9 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] baseline_id: The baseline ID.
                
                If it is left blank, the system default baseline is used by default.
+        :param pulumi.Input[str] default_domain_name: The domain name is used to qualify the login name of RAM users and RAM roles.
+               
+               Format: \\<AccountAlias>.onaliyun.com where \\<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
         :param pulumi.Input[str] display_name: The account display name.
                - This parameter is required if you are creating a new resource account.
                - If the registration application is applied to an existing account, this parameter does not need to be filled in.
@@ -357,6 +401,7 @@ class Account(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[int]] = None,
                  account_name_prefix: Optional[pulumi.Input[str]] = None,
                  baseline_id: Optional[pulumi.Input[str]] = None,
+                 default_domain_name: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  payer_account_id: Optional[pulumi.Input[int]] = None,
@@ -374,6 +419,7 @@ class Account(pulumi.CustomResource):
             if baseline_id is None and not opts.urn:
                 raise TypeError("Missing required property 'baseline_id'")
             __props__.__dict__["baseline_id"] = baseline_id
+            __props__.__dict__["default_domain_name"] = default_domain_name
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["folder_id"] = folder_id
             __props__.__dict__["payer_account_id"] = payer_account_id
@@ -391,6 +437,7 @@ class Account(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[int]] = None,
             account_name_prefix: Optional[pulumi.Input[str]] = None,
             baseline_id: Optional[pulumi.Input[str]] = None,
+            default_domain_name: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             folder_id: Optional[pulumi.Input[str]] = None,
             payer_account_id: Optional[pulumi.Input[int]] = None,
@@ -411,6 +458,9 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] baseline_id: The baseline ID.
                
                If it is left blank, the system default baseline is used by default.
+        :param pulumi.Input[str] default_domain_name: The domain name is used to qualify the login name of RAM users and RAM roles.
+               
+               Format: \\<AccountAlias>.onaliyun.com where \\<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
         :param pulumi.Input[str] display_name: The account display name.
                - This parameter is required if you are creating a new resource account.
                - If the registration application is applied to an existing account, this parameter does not need to be filled in.
@@ -429,6 +479,7 @@ class Account(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["account_name_prefix"] = account_name_prefix
         __props__.__dict__["baseline_id"] = baseline_id
+        __props__.__dict__["default_domain_name"] = default_domain_name
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["payer_account_id"] = payer_account_id
@@ -464,6 +515,16 @@ class Account(pulumi.CustomResource):
         If it is left blank, the system default baseline is used by default.
         """
         return pulumi.get(self, "baseline_id")
+
+    @property
+    @pulumi.getter(name="defaultDomainName")
+    def default_domain_name(self) -> pulumi.Output[Optional[str]]:
+        """
+        The domain name is used to qualify the login name of RAM users and RAM roles.
+
+        Format: \\<AccountAlias>.onaliyun.com where \\<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+        """
+        return pulumi.get(self, "default_domain_name")
 
     @property
     @pulumi.getter(name="displayName")

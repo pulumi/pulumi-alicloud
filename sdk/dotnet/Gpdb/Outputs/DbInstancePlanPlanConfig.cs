@@ -22,6 +22,10 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// </summary>
         public readonly Outputs.DbInstancePlanPlanConfigResume? Resume;
         /// <summary>
+        /// Scale down instance plan config. See `scale_down` below.
+        /// </summary>
+        public readonly Outputs.DbInstancePlanPlanConfigScaleDown? ScaleDown;
+        /// <summary>
         /// Scale In instance plan config. See `scale_in` below.
         /// </summary>
         public readonly Outputs.DbInstancePlanPlanConfigScaleIn? ScaleIn;
@@ -29,6 +33,10 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// Scale out instance plan config. See `scale_out` below.
         /// </summary>
         public readonly Outputs.DbInstancePlanPlanConfigScaleOut? ScaleOut;
+        /// <summary>
+        /// Scale up instance plan config. See `scale_up` below.
+        /// </summary>
+        public readonly Outputs.DbInstancePlanPlanConfigScaleUp? ScaleUp;
 
         [OutputConstructor]
         private DbInstancePlanPlanConfig(
@@ -36,14 +44,20 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
 
             Outputs.DbInstancePlanPlanConfigResume? resume,
 
+            Outputs.DbInstancePlanPlanConfigScaleDown? scaleDown,
+
             Outputs.DbInstancePlanPlanConfigScaleIn? scaleIn,
 
-            Outputs.DbInstancePlanPlanConfigScaleOut? scaleOut)
+            Outputs.DbInstancePlanPlanConfigScaleOut? scaleOut,
+
+            Outputs.DbInstancePlanPlanConfigScaleUp? scaleUp)
         {
             Pause = pause;
             Resume = resume;
+            ScaleDown = scaleDown;
             ScaleIn = scaleIn;
             ScaleOut = scaleOut;
+            ScaleUp = scaleUp;
         }
     }
 }

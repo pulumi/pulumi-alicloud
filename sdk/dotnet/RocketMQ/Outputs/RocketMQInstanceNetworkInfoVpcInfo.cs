@@ -14,22 +14,36 @@ namespace Pulumi.AliCloud.RocketMQ.Outputs
     public sealed class RocketMQInstanceNetworkInfoVpcInfo
     {
         /// <summary>
+        /// Security group id.
+        /// </summary>
+        public readonly string? SecurityGroupIds;
+        /// <summary>
         /// Proprietary Network.
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// VPC network switch.
+        /// VPC switch id.
         /// </summary>
-        public readonly string VswitchId;
+        public readonly string? VswitchId;
+        /// <summary>
+        /// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RocketMQInstanceNetworkInfoVpcInfoVswitch> Vswitches;
 
         [OutputConstructor]
         private RocketMQInstanceNetworkInfoVpcInfo(
+            string? securityGroupIds,
+
             string vpcId,
 
-            string vswitchId)
+            string? vswitchId,
+
+            ImmutableArray<Outputs.RocketMQInstanceNetworkInfoVpcInfoVswitch> vswitches)
         {
+            SecurityGroupIds = securityGroupIds;
             VpcId = vpcId;
             VswitchId = vswitchId;
+            Vswitches = vswitches;
         }
     }
 }

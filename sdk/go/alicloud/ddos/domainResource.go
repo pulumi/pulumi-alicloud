@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Anti-DDoS Pro Domain Resource resource.
+// Provides a Ddos Coo Domain Resource resource.
 //
-// For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createwebrule).
+// For information about Ddos Coo Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/anti-ddos/anti-ddos-pro-and-premium/developer-reference/api-ddoscoo-2020-01-01-createdomainresource).
 //
 // > **NOTE:** Available since v1.123.0.
 //
@@ -87,34 +87,61 @@ import (
 //
 // ## Import
 //
-// Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
+// Ddos Coo Domain Resource can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:ddos/domainResource:DomainResource example <domain>
+// $ pulumi import alicloud:ddos/domainResource:DomainResource example <id>
 // ```
 type DomainResource struct {
 	pulumi.CustomResourceState
 
-	// (Available since v1.207.2) The CNAME assigned to the domain name.
+	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	Cert pulumi.StringPtrOutput `pulumi:"cert"`
+	// The name of the certificate.
+	//
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	CertIdentifier pulumi.StringPtrOutput `pulumi:"certIdentifier"`
+	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	CertName pulumi.StringOutput `pulumi:"certName"`
+	// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+	CertRegion pulumi.StringPtrOutput `pulumi:"certRegion"`
+	// The CNAME address to query.
 	Cname pulumi.StringOutput `pulumi:"cname"`
-	// The domain name of the website that you want to add to the instance.
+	// The domain name for which you want to configure the Static Page Caching policy.
+	//
+	// > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+	// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+	//
+	// If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+	//
+	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+	//
+	// If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+	//
+	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+	//
+	// After you turn on the switch, HTTP/2 is used.
 	HttpsExt pulumi.StringOutput `pulumi:"httpsExt"`
-	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+	// InstanceIds
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
-	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+	//
+	// > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+	Key pulumi.StringPtrOutput `pulumi:"key"`
+	// Specifies whether to enable the OCSP feature. Valid values:
 	OcspEnabled pulumi.BoolPtrOutput `pulumi:"ocspEnabled"`
 	// Protocol type and port number information. See `proxyTypes` below.
-	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes DomainResourceProxyTypeArrayOutput `pulumi:"proxyTypes"`
-	// the IP address. This field is required and must be a string array.
+	// Server address information of the source station.
 	RealServers pulumi.StringArrayOutput `pulumi:"realServers"`
-	// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+	// The address type of the origin server. Valid values:
 	RsType pulumi.IntOutput `pulumi:"rsType"`
 }
 
@@ -140,6 +167,21 @@ func NewDomainResource(ctx *pulumi.Context,
 	if args.RsType == nil {
 		return nil, errors.New("invalid value for required argument 'RsType'")
 	}
+	if args.Cert != nil {
+		args.Cert = pulumi.ToSecret(args.Cert).(pulumi.StringPtrInput)
+	}
+	if args.CertRegion != nil {
+		args.CertRegion = pulumi.ToSecret(args.CertRegion).(pulumi.StringPtrInput)
+	}
+	if args.Key != nil {
+		args.Key = pulumi.ToSecret(args.Key).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"cert",
+		"certRegion",
+		"key",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DomainResource
 	err := ctx.RegisterResource("alicloud:ddos/domainResource:DomainResource", name, args, &resource, opts...)
@@ -163,50 +205,104 @@ func GetDomainResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainResource resources.
 type domainResourceState struct {
-	// (Available since v1.207.2) The CNAME assigned to the domain name.
+	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	Cert *string `pulumi:"cert"`
+	// The name of the certificate.
+	//
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	CertIdentifier *string `pulumi:"certIdentifier"`
+	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	CertName *string `pulumi:"certName"`
+	// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+	CertRegion *string `pulumi:"certRegion"`
+	// The CNAME address to query.
 	Cname *string `pulumi:"cname"`
-	// The domain name of the website that you want to add to the instance.
+	// The domain name for which you want to configure the Static Page Caching policy.
+	//
+	// > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
 	Domain *string `pulumi:"domain"`
-	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+	// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+	//
+	// If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+	//
+	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+	//
+	// If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+	//
+	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+	//
+	// After you turn on the switch, HTTP/2 is used.
 	HttpsExt *string `pulumi:"httpsExt"`
-	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+	// InstanceIds
 	InstanceIds []string `pulumi:"instanceIds"`
-	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+	//
+	// > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+	Key *string `pulumi:"key"`
+	// Specifies whether to enable the OCSP feature. Valid values:
 	OcspEnabled *bool `pulumi:"ocspEnabled"`
 	// Protocol type and port number information. See `proxyTypes` below.
-	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes []DomainResourceProxyType `pulumi:"proxyTypes"`
-	// the IP address. This field is required and must be a string array.
+	// Server address information of the source station.
 	RealServers []string `pulumi:"realServers"`
-	// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+	// The address type of the origin server. Valid values:
 	RsType *int `pulumi:"rsType"`
 }
 
 type DomainResourceState struct {
-	// (Available since v1.207.2) The CNAME assigned to the domain name.
+	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	Cert pulumi.StringPtrInput
+	// The name of the certificate.
+	//
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	CertIdentifier pulumi.StringPtrInput
+	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	CertName pulumi.StringPtrInput
+	// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+	CertRegion pulumi.StringPtrInput
+	// The CNAME address to query.
 	Cname pulumi.StringPtrInput
-	// The domain name of the website that you want to add to the instance.
+	// The domain name for which you want to configure the Static Page Caching policy.
+	//
+	// > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
 	Domain pulumi.StringPtrInput
-	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+	// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+	//
+	// If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+	//
+	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+	//
+	// If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+	//
+	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+	//
+	// After you turn on the switch, HTTP/2 is used.
 	HttpsExt pulumi.StringPtrInput
-	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+	// InstanceIds
 	InstanceIds pulumi.StringArrayInput
-	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+	//
+	// > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+	Key pulumi.StringPtrInput
+	// Specifies whether to enable the OCSP feature. Valid values:
 	OcspEnabled pulumi.BoolPtrInput
 	// Protocol type and port number information. See `proxyTypes` below.
-	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes DomainResourceProxyTypeArrayInput
-	// the IP address. This field is required and must be a string array.
+	// Server address information of the source station.
 	RealServers pulumi.StringArrayInput
-	// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+	// The address type of the origin server. Valid values:
 	RsType pulumi.IntPtrInput
 }
 
@@ -215,47 +311,101 @@ func (DomainResourceState) ElementType() reflect.Type {
 }
 
 type domainResourceArgs struct {
-	// The domain name of the website that you want to add to the instance.
+	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	Cert *string `pulumi:"cert"`
+	// The name of the certificate.
+	//
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	CertIdentifier *string `pulumi:"certIdentifier"`
+	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	CertName *string `pulumi:"certName"`
+	// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+	CertRegion *string `pulumi:"certRegion"`
+	// The domain name for which you want to configure the Static Page Caching policy.
+	//
+	// > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
 	Domain string `pulumi:"domain"`
-	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+	// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+	//
+	// If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+	//
+	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+	//
+	// If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+	//
+	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+	//
+	// After you turn on the switch, HTTP/2 is used.
 	HttpsExt *string `pulumi:"httpsExt"`
-	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+	// InstanceIds
 	InstanceIds []string `pulumi:"instanceIds"`
-	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+	//
+	// > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+	Key *string `pulumi:"key"`
+	// Specifies whether to enable the OCSP feature. Valid values:
 	OcspEnabled *bool `pulumi:"ocspEnabled"`
 	// Protocol type and port number information. See `proxyTypes` below.
-	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes []DomainResourceProxyType `pulumi:"proxyTypes"`
-	// the IP address. This field is required and must be a string array.
+	// Server address information of the source station.
 	RealServers []string `pulumi:"realServers"`
-	// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+	// The address type of the origin server. Valid values:
 	RsType int `pulumi:"rsType"`
 }
 
 // The set of arguments for constructing a DomainResource resource.
 type DomainResourceArgs struct {
-	// The domain name of the website that you want to add to the instance.
+	// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	Cert pulumi.StringPtrInput
+	// The name of the certificate.
+	//
+	// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+	CertIdentifier pulumi.StringPtrInput
+	// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+	//
+	// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+	CertName pulumi.StringPtrInput
+	// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+	CertRegion pulumi.StringPtrInput
+	// The domain name for which you want to configure the Static Page Caching policy.
+	//
+	// > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
 	Domain pulumi.StringInput
-	// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+	// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+	//
+	// If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+	//
+	// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+	//
+	// If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+	//
+	// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+	//
+	// After you turn on the switch, HTTP/2 is used.
 	HttpsExt pulumi.StringPtrInput
-	// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-	// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+	// InstanceIds
 	InstanceIds pulumi.StringArrayInput
-	// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+	// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+	//
+	// > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+	Key pulumi.StringPtrInput
+	// Specifies whether to enable the OCSP feature. Valid values:
 	OcspEnabled pulumi.BoolPtrInput
 	// Protocol type and port number information. See `proxyTypes` below.
-	// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 	ProxyTypes DomainResourceProxyTypeArrayInput
-	// the IP address. This field is required and must be a string array.
+	// Server address information of the source station.
 	RealServers pulumi.StringArrayInput
-	// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+	// The address type of the origin server. Valid values:
 	RsType pulumi.IntInput
 }
 
@@ -346,47 +496,89 @@ func (o DomainResourceOutput) ToDomainResourceOutputWithContext(ctx context.Cont
 	return o
 }
 
-// (Available since v1.207.2) The CNAME assigned to the domain name.
+// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+//
+// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+func (o DomainResourceOutput) Cert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringPtrOutput { return v.Cert }).(pulumi.StringPtrOutput)
+}
+
+// The name of the certificate.
+//
+// > **NOTE:**   You can specify the name of the certificate that you want to associate.
+func (o DomainResourceOutput) CertIdentifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringPtrOutput { return v.CertIdentifier }).(pulumi.StringPtrOutput)
+}
+
+// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+//
+// > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+func (o DomainResourceOutput) CertName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.CertName }).(pulumi.StringOutput)
+}
+
+// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+func (o DomainResourceOutput) CertRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringPtrOutput { return v.CertRegion }).(pulumi.StringPtrOutput)
+}
+
+// The CNAME address to query.
 func (o DomainResourceOutput) Cname() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
 }
 
-// The domain name of the website that you want to add to the instance.
+// The domain name for which you want to configure the Static Page Caching policy.
+//
+// > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
 func (o DomainResourceOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+//
+// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+//
+// If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+//
+// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+//
+// If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+//
+// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+//
+// After you turn on the switch, HTTP/2 is used.
 func (o DomainResourceOutput) HttpsExt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringOutput { return v.HttpsExt }).(pulumi.StringOutput)
 }
 
-// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-// > **NOTE:** There is a potential diff error because of the order of `instanceIds` values indefinite. So, from version 1.161.0, `instanceIds` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+// InstanceIds
 func (o DomainResourceOutput) InstanceIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringArrayOutput { return v.InstanceIds }).(pulumi.StringArrayOutput)
 }
 
-// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+//
+// > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+func (o DomainResourceOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainResource) pulumi.StringPtrOutput { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to enable the OCSP feature. Valid values:
 func (o DomainResourceOutput) OcspEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.BoolPtrOutput { return v.OcspEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Protocol type and port number information. See `proxyTypes` below.
-// > **NOTE:** From version 1.206.0, `proxyTypes` can be modified.
 func (o DomainResourceOutput) ProxyTypes() DomainResourceProxyTypeArrayOutput {
 	return o.ApplyT(func(v *DomainResource) DomainResourceProxyTypeArrayOutput { return v.ProxyTypes }).(DomainResourceProxyTypeArrayOutput)
 }
 
-// the IP address. This field is required and must be a string array.
+// Server address information of the source station.
 func (o DomainResourceOutput) RealServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.StringArrayOutput { return v.RealServers }).(pulumi.StringArrayOutput)
 }
 
-// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+// The address type of the origin server. Valid values:
 func (o DomainResourceOutput) RsType() pulumi.IntOutput {
 	return o.ApplyT(func(v *DomainResource) pulumi.IntOutput { return v.RsType }).(pulumi.IntOutput)
 }

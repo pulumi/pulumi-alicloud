@@ -26,7 +26,7 @@ public final class ForwardingRuleRuleAction {
      */
     private Integer order;
     /**
-     * @return Forward action type.
+     * @return The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
      * 
      */
     private String ruleActionType;
@@ -53,7 +53,7 @@ public final class ForwardingRuleRuleAction {
         return this.order;
     }
     /**
-     * @return Forward action type.
+     * @return The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
      * 
      */
     public String ruleActionType() {

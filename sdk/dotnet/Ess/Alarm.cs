@@ -192,6 +192,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableDictionary<string, string>> Dimensions { get; private set; } = null!;
 
         /// <summary>
+        /// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+        /// </summary>
+        [Output("effective")]
+        public Output<string> Effective { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable specific ess alarm. Default to true.
         /// </summary>
         [Output("enable")]
@@ -355,6 +361,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+        /// </summary>
+        [Input("effective")]
+        public Input<string>? Effective { get; set; }
+
+        /// <summary>
         /// Whether to enable specific ess alarm. Default to true.
         /// </summary>
         [Input("enable")]
@@ -475,6 +487,12 @@ namespace Pulumi.AliCloud.Ess
             get => _dimensions ?? (_dimensions = new InputMap<string>());
             set => _dimensions = value;
         }
+
+        /// <summary>
+        /// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+        /// </summary>
+        [Input("effective")]
+        public Input<string>? Effective { get; set; }
 
         /// <summary>
         /// Whether to enable specific ess alarm. Default to true.

@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Schedule{}
 	case "alicloud:ess/scheduledTask:ScheduledTask":
 		r = &ScheduledTask{}
+	case "alicloud:ess/serverGroupAttachment:ServerGroupAttachment":
+		r = &ServerGroupAttachment{}
 	case "alicloud:ess/suspendProcess:SuspendProcess":
 		r = &SuspendProcess{}
 	default:
@@ -118,6 +120,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ess/scheduledTask",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ess/serverGroupAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

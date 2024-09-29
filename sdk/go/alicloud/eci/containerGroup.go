@@ -202,6 +202,8 @@ type ContainerGroup struct {
 	Cpu pulumi.Float64Output `pulumi:"cpu"`
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig ContainerGroupDnsConfigPtrOutput `pulumi:"dnsConfig"`
+	// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+	DnsPolicy pulumi.StringOutput `pulumi:"dnsPolicy"`
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth pulumi.IntPtrOutput `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
@@ -311,6 +313,8 @@ type containerGroupState struct {
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
+	// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+	DnsPolicy *string `pulumi:"dnsPolicy"`
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
@@ -379,6 +383,8 @@ type ContainerGroupState struct {
 	Cpu pulumi.Float64PtrInput
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig ContainerGroupDnsConfigPtrInput
+	// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+	DnsPolicy pulumi.StringPtrInput
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth pulumi.IntPtrInput
 	// The ID of the elastic IP address (EIP).
@@ -451,6 +457,8 @@ type containerGroupArgs struct {
 	Cpu *float64 `pulumi:"cpu"`
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig *ContainerGroupDnsConfig `pulumi:"dnsConfig"`
+	// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+	DnsPolicy *string `pulumi:"dnsPolicy"`
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth *int `pulumi:"eipBandwidth"`
 	// The ID of the elastic IP address (EIP).
@@ -514,6 +522,8 @@ type ContainerGroupArgs struct {
 	Cpu pulumi.Float64PtrInput
 	// The structure of dnsConfig. See `dnsConfig` below.
 	DnsConfig ContainerGroupDnsConfigPtrInput
+	// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+	DnsPolicy pulumi.StringPtrInput
 	// The bandwidth of the EIP. Default value: `5`.
 	EipBandwidth pulumi.IntPtrInput
 	// The ID of the elastic IP address (EIP).
@@ -681,6 +691,11 @@ func (o ContainerGroupOutput) Cpu() pulumi.Float64Output {
 // The structure of dnsConfig. See `dnsConfig` below.
 func (o ContainerGroupOutput) DnsConfig() ContainerGroupDnsConfigPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupDnsConfigPtrOutput { return v.DnsConfig }).(ContainerGroupDnsConfigPtrOutput)
+}
+
+// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+func (o ContainerGroupOutput) DnsPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.DnsPolicy }).(pulumi.StringOutput)
 }
 
 // The bandwidth of the EIP. Default value: `5`.

@@ -45,11 +45,27 @@ public final class DbInstancePlanPlanConfigPauseArgs extends com.pulumi.resource
         return Optional.ofNullable(this.planCronTime);
     }
 
+    /**
+     * (Available since v1.231.0) The status of the plan task.
+     * 
+     */
+    @Import(name="planTaskStatus")
+    private @Nullable Output<String> planTaskStatus;
+
+    /**
+     * @return (Available since v1.231.0) The status of the plan task.
+     * 
+     */
+    public Optional<Output<String>> planTaskStatus() {
+        return Optional.ofNullable(this.planTaskStatus);
+    }
+
     private DbInstancePlanPlanConfigPauseArgs() {}
 
     private DbInstancePlanPlanConfigPauseArgs(DbInstancePlanPlanConfigPauseArgs $) {
         this.executeTime = $.executeTime;
         this.planCronTime = $.planCronTime;
+        this.planTaskStatus = $.planTaskStatus;
     }
 
     public static Builder builder() {
@@ -110,6 +126,27 @@ public final class DbInstancePlanPlanConfigPauseArgs extends com.pulumi.resource
          */
         public Builder planCronTime(String planCronTime) {
             return planCronTime(Output.of(planCronTime));
+        }
+
+        /**
+         * @param planTaskStatus (Available since v1.231.0) The status of the plan task.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder planTaskStatus(@Nullable Output<String> planTaskStatus) {
+            $.planTaskStatus = planTaskStatus;
+            return this;
+        }
+
+        /**
+         * @param planTaskStatus (Available since v1.231.0) The status of the plan task.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder planTaskStatus(String planTaskStatus) {
+            return planTaskStatus(Output.of(planTaskStatus));
         }
 
         public DbInstancePlanPlanConfigPauseArgs build() {

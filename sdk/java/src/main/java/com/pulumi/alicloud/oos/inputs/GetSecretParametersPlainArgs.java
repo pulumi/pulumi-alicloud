@@ -18,14 +18,14 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
     public static final GetSecretParametersPlainArgs Empty = new GetSecretParametersPlainArgs();
 
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -93,30 +93,46 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The name of the secret parameter.
+     * The name of the Secret Parameter.
      * 
      */
     @Import(name="secretParameterName")
     private @Nullable String secretParameterName;
 
     /**
-     * @return The name of the secret parameter.
+     * @return The name of the Secret Parameter.
      * 
      */
     public Optional<String> secretParameterName() {
         return Optional.ofNullable(this.secretParameterName);
     }
 
+    /**
+     * The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+     * 
+     */
     @Import(name="sortField")
     private @Nullable String sortField;
 
+    /**
+     * @return The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+     * 
+     */
     public Optional<String> sortField() {
         return Optional.ofNullable(this.sortField);
     }
 
+    /**
+     * The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+     * 
+     */
     @Import(name="sortOrder")
     private @Nullable String sortOrder;
 
+    /**
+     * @return The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+     * 
+     */
     public Optional<String> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
@@ -136,6 +152,21 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
         return Optional.ofNullable(this.tags);
     }
 
+    /**
+     * Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+     * 
+     */
+    @Import(name="withDecryption")
+    private @Nullable Boolean withDecryption;
+
+    /**
+     * @return Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+     * 
+     */
+    public Optional<Boolean> withDecryption() {
+        return Optional.ofNullable(this.withDecryption);
+    }
+
     private GetSecretParametersPlainArgs() {}
 
     private GetSecretParametersPlainArgs(GetSecretParametersPlainArgs $) {
@@ -148,6 +179,7 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
         this.sortField = $.sortField;
         this.sortOrder = $.sortOrder;
         this.tags = $.tags;
+        this.withDecryption = $.withDecryption;
     }
 
     public static Builder builder() {
@@ -169,7 +201,7 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -234,7 +266,7 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param secretParameterName The name of the secret parameter.
+         * @param secretParameterName The name of the Secret Parameter.
          * 
          * @return builder
          * 
@@ -244,11 +276,23 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
             return this;
         }
 
+        /**
+         * @param sortField The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortField(@Nullable String sortField) {
             $.sortField = sortField;
             return this;
         }
 
+        /**
+         * @param sortOrder The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortOrder(@Nullable String sortOrder) {
             $.sortOrder = sortOrder;
             return this;
@@ -262,6 +306,17 @@ public final class GetSecretParametersPlainArgs extends com.pulumi.resources.Inv
          */
         public Builder tags(@Nullable Map<String,String> tags) {
             $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param withDecryption Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder withDecryption(@Nullable Boolean withDecryption) {
+            $.withDecryption = withDecryption;
             return this;
         }
 

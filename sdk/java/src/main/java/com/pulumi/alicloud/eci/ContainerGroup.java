@@ -282,6 +282,20 @@ public class ContainerGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dnsConfig);
     }
     /**
+     * The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+     * 
+     */
+    @Export(name="dnsPolicy", refs={String.class}, tree="[0]")
+    private Output<String> dnsPolicy;
+
+    /**
+     * @return The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+     * 
+     */
+    public Output<String> dnsPolicy() {
+        return this.dnsPolicy;
+    }
+    /**
      * The bandwidth of the EIP. Default value: `5`.
      * 
      */

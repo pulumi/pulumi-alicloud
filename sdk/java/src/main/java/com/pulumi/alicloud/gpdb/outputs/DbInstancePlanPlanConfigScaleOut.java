@@ -22,6 +22,11 @@ public final class DbInstancePlanPlanConfigScaleOut {
      */
     private @Nullable String planCronTime;
     /**
+     * @return (Available since v1.231.0) The status of the plan task.
+     * 
+     */
+    private @Nullable String planTaskStatus;
+    /**
      * @return The segment Node Num of the Plan.
      * 
      */
@@ -43,6 +48,13 @@ public final class DbInstancePlanPlanConfigScaleOut {
         return Optional.ofNullable(this.planCronTime);
     }
     /**
+     * @return (Available since v1.231.0) The status of the plan task.
+     * 
+     */
+    public Optional<String> planTaskStatus() {
+        return Optional.ofNullable(this.planTaskStatus);
+    }
+    /**
      * @return The segment Node Num of the Plan.
      * 
      */
@@ -61,12 +73,14 @@ public final class DbInstancePlanPlanConfigScaleOut {
     public static final class Builder {
         private @Nullable String executeTime;
         private @Nullable String planCronTime;
+        private @Nullable String planTaskStatus;
         private @Nullable String segmentNodeNum;
         public Builder() {}
         public Builder(DbInstancePlanPlanConfigScaleOut defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executeTime = defaults.executeTime;
     	      this.planCronTime = defaults.planCronTime;
+    	      this.planTaskStatus = defaults.planTaskStatus;
     	      this.segmentNodeNum = defaults.segmentNodeNum;
         }
 
@@ -83,6 +97,12 @@ public final class DbInstancePlanPlanConfigScaleOut {
             return this;
         }
         @CustomType.Setter
+        public Builder planTaskStatus(@Nullable String planTaskStatus) {
+
+            this.planTaskStatus = planTaskStatus;
+            return this;
+        }
+        @CustomType.Setter
         public Builder segmentNodeNum(@Nullable String segmentNodeNum) {
 
             this.segmentNodeNum = segmentNodeNum;
@@ -92,6 +112,7 @@ public final class DbInstancePlanPlanConfigScaleOut {
             final var _resultValue = new DbInstancePlanPlanConfigScaleOut();
             _resultValue.executeTime = executeTime;
             _resultValue.planCronTime = planCronTime;
+            _resultValue.planTaskStatus = planTaskStatus;
             _resultValue.segmentNodeNum = segmentNodeNum;
             return _resultValue;
         }

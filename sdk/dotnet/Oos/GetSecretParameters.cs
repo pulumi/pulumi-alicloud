@@ -14,7 +14,58 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Oos.SecretParameter("default", new()
+        ///     {
+        ///         SecretParameterName = name,
+        ///         Value = "tf-testacc-oos_secret_parameter",
+        ///         Type = "Secret",
+        ///         Description = name,
+        ///         Constraints = @"  {
+        ///     ""AllowedValues"": [
+        ///         ""tf-testacc-oos_secret_parameter""
+        ///     ],
+        ///     ""AllowedPattern"": ""tf-testacc-oos_secret_parameter"",
+        ///     ""MinLength"": 1,
+        ///     ""MaxLength"": 100
+        ///   }
+        /// ",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "SecretParameter" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Oos.GetSecretParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosSecretParameterId0"] = ids.Apply(getSecretParametersResult =&gt; getSecretParametersResult.Parameters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSecretParametersResult> InvokeAsync(GetSecretParametersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersArgs(), options.WithDefaults());
@@ -22,7 +73,58 @@ namespace Pulumi.AliCloud.Oos
         /// <summary>
         /// This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.147.0+.
+        /// &gt; **NOTE:** Available since v1.147.0.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Basic Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.Oos.SecretParameter("default", new()
+        ///     {
+        ///         SecretParameterName = name,
+        ///         Value = "tf-testacc-oos_secret_parameter",
+        ///         Type = "Secret",
+        ///         Description = name,
+        ///         Constraints = @"  {
+        ///     ""AllowedValues"": [
+        ///         ""tf-testacc-oos_secret_parameter""
+        ///     ],
+        ///     ""AllowedPattern"": ""tf-testacc-oos_secret_parameter"",
+        ///     ""MinLength"": 1,
+        ///     ""MaxLength"": 100
+        ///   }
+        /// ",
+        ///         Tags = 
+        ///         {
+        ///             { "Created", "TF" },
+        ///             { "For", "SecretParameter" },
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.Oos.GetSecretParameters.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oosSecretParameterId0"] = ids.Apply(getSecretParametersResult =&gt; getSecretParametersResult.Parameters[0]?.Id),
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSecretParametersResult> Invoke(GetSecretParametersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretParametersResult>("alicloud:oos/getSecretParameters:getSecretParameters", args ?? new GetSecretParametersInvokeArgs(), options.WithDefaults());
@@ -32,7 +134,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class GetSecretParametersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -68,14 +170,20 @@ namespace Pulumi.AliCloud.Oos
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the secret parameter.
+        /// The name of the Secret Parameter.
         /// </summary>
         [Input("secretParameterName")]
         public string? SecretParameterName { get; set; }
 
+        /// <summary>
+        /// The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+        /// </summary>
         [Input("sortField")]
         public string? SortField { get; set; }
 
+        /// <summary>
+        /// The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+        /// </summary>
         [Input("sortOrder")]
         public string? SortOrder { get; set; }
 
@@ -91,6 +199,12 @@ namespace Pulumi.AliCloud.Oos
             set => _tags = value;
         }
 
+        /// <summary>
+        /// Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        [Input("withDecryption")]
+        public bool? WithDecryption { get; set; }
+
         public GetSecretParametersArgs()
         {
         }
@@ -100,7 +214,7 @@ namespace Pulumi.AliCloud.Oos
     public sealed class GetSecretParametersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to `true` can output more details about resource attributes.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -136,14 +250,20 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The name of the secret parameter.
+        /// The name of the Secret Parameter.
         /// </summary>
         [Input("secretParameterName")]
         public Input<string>? SecretParameterName { get; set; }
 
+        /// <summary>
+        /// The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+        /// </summary>
         [Input("sortField")]
         public Input<string>? SortField { get; set; }
 
+        /// <summary>
+        /// The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
+        /// </summary>
         [Input("sortOrder")]
         public Input<string>? SortOrder { get; set; }
 
@@ -158,6 +278,12 @@ namespace Pulumi.AliCloud.Oos
             get => _tags ?? (_tags = new InputMap<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
+        /// </summary>
+        [Input("withDecryption")]
+        public Input<bool>? WithDecryption { get; set; }
 
         public GetSecretParametersInvokeArgs()
         {
@@ -176,14 +302,30 @@ namespace Pulumi.AliCloud.Oos
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Secret Parameter names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// A list of Oos Secret Parameters. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetSecretParametersParameterResult> Parameters;
+        /// <summary>
+        /// The ID of the Resource Group.
+        /// </summary>
         public readonly string? ResourceGroupId;
+        /// <summary>
+        /// The name of the encryption parameter.
+        /// </summary>
         public readonly string? SecretParameterName;
         public readonly string? SortField;
         public readonly string? SortOrder;
+        /// <summary>
+        /// The tags of the parameter.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
+        public readonly bool? WithDecryption;
 
         [OutputConstructor]
         private GetSecretParametersResult(
@@ -209,7 +351,9 @@ namespace Pulumi.AliCloud.Oos
 
             string? sortOrder,
 
-            ImmutableDictionary<string, string>? tags)
+            ImmutableDictionary<string, string>? tags,
+
+            bool? withDecryption)
         {
             EnableDetails = enableDetails;
             Id = id;
@@ -223,6 +367,7 @@ namespace Pulumi.AliCloud.Oos
             SortField = sortField;
             SortOrder = sortOrder;
             Tags = tags;
+            WithDecryption = withDecryption;
         }
     }
 }

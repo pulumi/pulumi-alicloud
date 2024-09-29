@@ -21,6 +21,11 @@ public final class DbInstancePlanPlanConfigResume {
      * 
      */
     private @Nullable String planCronTime;
+    /**
+     * @return (Available since v1.231.0) The status of the plan task.
+     * 
+     */
+    private @Nullable String planTaskStatus;
 
     private DbInstancePlanPlanConfigResume() {}
     /**
@@ -37,6 +42,13 @@ public final class DbInstancePlanPlanConfigResume {
     public Optional<String> planCronTime() {
         return Optional.ofNullable(this.planCronTime);
     }
+    /**
+     * @return (Available since v1.231.0) The status of the plan task.
+     * 
+     */
+    public Optional<String> planTaskStatus() {
+        return Optional.ofNullable(this.planTaskStatus);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,11 +61,13 @@ public final class DbInstancePlanPlanConfigResume {
     public static final class Builder {
         private @Nullable String executeTime;
         private @Nullable String planCronTime;
+        private @Nullable String planTaskStatus;
         public Builder() {}
         public Builder(DbInstancePlanPlanConfigResume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.executeTime = defaults.executeTime;
     	      this.planCronTime = defaults.planCronTime;
+    	      this.planTaskStatus = defaults.planTaskStatus;
         }
 
         @CustomType.Setter
@@ -68,10 +82,17 @@ public final class DbInstancePlanPlanConfigResume {
             this.planCronTime = planCronTime;
             return this;
         }
+        @CustomType.Setter
+        public Builder planTaskStatus(@Nullable String planTaskStatus) {
+
+            this.planTaskStatus = planTaskStatus;
+            return this;
+        }
         public DbInstancePlanPlanConfigResume build() {
             final var _resultValue = new DbInstancePlanPlanConfigResume();
             _resultValue.executeTime = executeTime;
             _resultValue.planCronTime = planCronTime;
+            _resultValue.planTaskStatus = planTaskStatus;
             return _resultValue;
         }
     }

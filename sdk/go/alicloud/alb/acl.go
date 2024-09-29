@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -68,7 +67,7 @@ type Acl struct {
 	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayOutput `pulumi:"aclEntries"`
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-	AclName pulumi.StringOutput `pulumi:"aclName"`
+	AclName pulumi.StringPtrOutput `pulumi:"aclName"`
 	// Specifies whether to precheck the API request.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the resource group.
@@ -83,12 +82,9 @@ type Acl struct {
 func NewAcl(ctx *pulumi.Context,
 	name string, args *AclArgs, opts ...pulumi.ResourceOption) (*Acl, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AclArgs{}
 	}
 
-	if args.AclName == nil {
-		return nil, errors.New("invalid value for required argument 'AclName'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Acl
 	err := ctx.RegisterResource("alicloud:alb/acl:Acl", name, args, &resource, opts...)
@@ -158,7 +154,7 @@ type aclArgs struct {
 	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
 	AclEntries []AclAclEntry `pulumi:"aclEntries"`
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-	AclName string `pulumi:"aclName"`
+	AclName *string `pulumi:"aclName"`
 	// Specifies whether to precheck the API request.
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the resource group.
@@ -175,7 +171,7 @@ type AclArgs struct {
 	// Deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.
 	AclEntries AclAclEntryArrayInput
 	// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-	AclName pulumi.StringInput
+	AclName pulumi.StringPtrInput
 	// Specifies whether to precheck the API request.
 	DryRun pulumi.BoolPtrInput
 	// The ID of the resource group.
@@ -280,8 +276,8 @@ func (o AclOutput) AclEntries() AclAclEntryArrayOutput {
 }
 
 // The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-func (o AclOutput) AclName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.AclName }).(pulumi.StringOutput)
+func (o AclOutput) AclName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Acl) pulumi.StringPtrOutput { return v.AclName }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether to precheck the API request.

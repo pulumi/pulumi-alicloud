@@ -22,7 +22,7 @@ class GetSecretParametersResult:
     """
     A collection of values returned by getSecretParameters.
     """
-    def __init__(__self__, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, parameters=None, resource_group_id=None, secret_parameter_name=None, sort_field=None, sort_order=None, tags=None):
+    def __init__(__self__, enable_details=None, id=None, ids=None, name_regex=None, names=None, output_file=None, parameters=None, resource_group_id=None, secret_parameter_name=None, sort_field=None, sort_order=None, tags=None, with_decryption=None):
         if enable_details and not isinstance(enable_details, bool):
             raise TypeError("Expected argument 'enable_details' to be a bool")
         pulumi.set(__self__, "enable_details", enable_details)
@@ -59,6 +59,9 @@ class GetSecretParametersResult:
         if tags and not isinstance(tags, dict):
             raise TypeError("Expected argument 'tags' to be a dict")
         pulumi.set(__self__, "tags", tags)
+        if with_decryption and not isinstance(with_decryption, bool):
+            raise TypeError("Expected argument 'with_decryption' to be a bool")
+        pulumi.set(__self__, "with_decryption", with_decryption)
 
     @property
     @pulumi.getter(name="enableDetails")
@@ -86,6 +89,9 @@ class GetSecretParametersResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Secret Parameter names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -96,16 +102,25 @@ class GetSecretParametersResult:
     @property
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GetSecretParametersParameterResult']:
+        """
+        A list of Oos Secret Parameters. Each element contains the following attributes:
+        """
         return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[str]:
+        """
+        The ID of the Resource Group.
+        """
         return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="secretParameterName")
     def secret_parameter_name(self) -> Optional[str]:
+        """
+        The name of the encryption parameter.
+        """
         return pulumi.get(self, "secret_parameter_name")
 
     @property
@@ -121,7 +136,15 @@ class GetSecretParametersResult:
     @property
     @pulumi.getter
     def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        The tags of the parameter.
+        """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="withDecryption")
+    def with_decryption(self) -> Optional[bool]:
+        return pulumi.get(self, "with_decryption")
 
 
 class AwaitableGetSecretParametersResult(GetSecretParametersResult):
@@ -141,7 +164,8 @@ class AwaitableGetSecretParametersResult(GetSecretParametersResult):
             secret_parameter_name=self.secret_parameter_name,
             sort_field=self.sort_field,
             sort_order=self.sort_order,
-            tags=self.tags)
+            tags=self.tags,
+            with_decryption=self.with_decryption)
 
 
 def get_secret_parameters(enable_details: Optional[bool] = None,
@@ -153,20 +177,58 @@ def get_secret_parameters(enable_details: Optional[bool] = None,
                           sort_field: Optional[str] = None,
                           sort_order: Optional[str] = None,
                           tags: Optional[Mapping[str, str]] = None,
+                          with_decryption: Optional[bool] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretParametersResult:
     """
     This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.oos.SecretParameter("default",
+        secret_parameter_name=name,
+        value="tf-testacc-oos_secret_parameter",
+        type="Secret",
+        description=name,
+        constraints=\"\"\"  {
+        "AllowedValues": [
+            "tf-testacc-oos_secret_parameter"
+        ],
+        "AllowedPattern": "tf-testacc-oos_secret_parameter",
+        "MinLength": 1,
+        "MaxLength": 100
+      }
+    \"\"\",
+        tags={
+            "Created": "TF",
+            "For": "SecretParameter",
+        })
+    ids = alicloud.oos.get_secret_parameters_output(ids=[default.id])
+    pulumi.export("oosSecretParameterId0", ids.parameters[0].id)
+    ```
 
 
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Secret Parameter IDs.
     :param str name_regex: A regex string to filter results by Secret Parameter name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the Resource Group.
-    :param str secret_parameter_name: The name of the secret parameter.
+    :param str secret_parameter_name: The name of the Secret Parameter.
+    :param str sort_field: The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+    :param str sort_order: The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
+    :param bool with_decryption: Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -178,6 +240,7 @@ def get_secret_parameters(enable_details: Optional[bool] = None,
     __args__['sortField'] = sort_field
     __args__['sortOrder'] = sort_order
     __args__['tags'] = tags
+    __args__['withDecryption'] = with_decryption
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:oos/getSecretParameters:getSecretParameters', __args__, opts=opts, typ=GetSecretParametersResult).value
 
@@ -193,7 +256,8 @@ def get_secret_parameters(enable_details: Optional[bool] = None,
         secret_parameter_name=pulumi.get(__ret__, 'secret_parameter_name'),
         sort_field=pulumi.get(__ret__, 'sort_field'),
         sort_order=pulumi.get(__ret__, 'sort_order'),
-        tags=pulumi.get(__ret__, 'tags'))
+        tags=pulumi.get(__ret__, 'tags'),
+        with_decryption=pulumi.get(__ret__, 'with_decryption'))
 
 
 @_utilities.lift_output_func(get_secret_parameters)
@@ -206,19 +270,57 @@ def get_secret_parameters_output(enable_details: Optional[pulumi.Input[Optional[
                                  sort_field: Optional[pulumi.Input[Optional[str]]] = None,
                                  sort_order: Optional[pulumi.Input[Optional[str]]] = None,
                                  tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
+                                 with_decryption: Optional[pulumi.Input[Optional[bool]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretParametersResult]:
     """
     This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.147.0+.
+    > **NOTE:** Available since v1.147.0.
+
+    ## Example Usage
+
+    Basic Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.oos.SecretParameter("default",
+        secret_parameter_name=name,
+        value="tf-testacc-oos_secret_parameter",
+        type="Secret",
+        description=name,
+        constraints=\"\"\"  {
+        "AllowedValues": [
+            "tf-testacc-oos_secret_parameter"
+        ],
+        "AllowedPattern": "tf-testacc-oos_secret_parameter",
+        "MinLength": 1,
+        "MaxLength": 100
+      }
+    \"\"\",
+        tags={
+            "Created": "TF",
+            "For": "SecretParameter",
+        })
+    ids = alicloud.oos.get_secret_parameters_output(ids=[default.id])
+    pulumi.export("oosSecretParameterId0", ids.parameters[0].id)
+    ```
 
 
-    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
     :param Sequence[str] ids: A list of Secret Parameter IDs.
     :param str name_regex: A regex string to filter results by Secret Parameter name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the Resource Group.
-    :param str secret_parameter_name: The name of the secret parameter.
+    :param str secret_parameter_name: The name of the Secret Parameter.
+    :param str sort_field: The field used to sort the query results. Valid values: `Name`, `CreatedDate`.
+    :param str sort_order: The order in which the entries are sorted. Default value: `Descending`. Valid values: `Ascending`, `Descending`.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
+    :param bool with_decryption: Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
     """
     ...

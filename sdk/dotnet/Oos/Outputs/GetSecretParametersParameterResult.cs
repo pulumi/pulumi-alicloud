@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
     public sealed class GetSecretParametersParameterResult
     {
         /// <summary>
-        /// The constraints of the encryption parameter.
+        /// The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string Constraints;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// KeyId of KMS used for encryption.
+        /// The ID of the key of Key Management Service (KMS) that is used for encryption.
         /// </summary>
         public readonly string KeyId;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string SecretParameterId;
         /// <summary>
-        /// The name of the encryption parameter.
+        /// The name of the Secret Parameter.
         /// </summary>
         public readonly string SecretParameterName;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// </summary>
         public readonly string ShareType;
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// The data type of the encryption parameter.
+        /// The type of the parameter.
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -73,6 +73,10 @@ namespace Pulumi.AliCloud.Oos.Outputs
         /// The time when the encryption parameter was updated.
         /// </summary>
         public readonly string UpdatedDate;
+        /// <summary>
+        /// (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
+        /// </summary>
+        public readonly string Value;
 
         [OutputConstructor]
         private GetSecretParametersParameterResult(
@@ -104,7 +108,9 @@ namespace Pulumi.AliCloud.Oos.Outputs
 
             string updatedBy,
 
-            string updatedDate)
+            string updatedDate,
+
+            string value)
         {
             Constraints = constraints;
             CreateTime = createTime;
@@ -121,6 +127,7 @@ namespace Pulumi.AliCloud.Oos.Outputs
             Type = type;
             UpdatedBy = updatedBy;
             UpdatedDate = updatedDate;
+            Value = value;
         }
     }
 }

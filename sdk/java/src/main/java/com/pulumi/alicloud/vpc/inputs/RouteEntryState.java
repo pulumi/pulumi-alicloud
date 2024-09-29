@@ -16,14 +16,29 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
     public static final RouteEntryState Empty = new RouteEntryState();
 
     /**
-     * The RouteEntry&#39;s target network segment.
+     * The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The destination CIDR block of the custom route entry.
      * 
      */
     @Import(name="destinationCidrblock")
     private @Nullable Output<String> destinationCidrblock;
 
     /**
-     * @return The RouteEntry&#39;s target network segment.
+     * @return The destination CIDR block of the custom route entry.
      * 
      */
     public Optional<Output<String>> destinationCidrblock() {
@@ -31,14 +46,14 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * @return The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,14 +61,14 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+     * The ID of Next Hop.
      * 
      */
     @Import(name="nexthopId")
     private @Nullable Output<String> nexthopId;
 
     /**
-     * @return The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+     * @return The ID of Next Hop.
      * 
      */
     public Optional<Output<String>> nexthopId() {
@@ -61,34 +76,38 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The next hop type. Available values:
-     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-     * - `RouterInterface`: a router interface.
-     * - `VpnGateway`: a VPN Gateway.
-     * - `HaVip`: a high-availability virtual IP address (HAVIP).
-     * - `NetworkInterface`: an elastic network interface (ENI).
-     * - `NatGateway`: a Nat Gateway.
-     * - `IPv6Gateway`: an IPv6 gateway.
-     * - `Attachment`: a transit router.
-     * - `VpcPeer`: a VPC Peering Connection.
-     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+     * The type of Next Hop. Valid values:
+     * - `Instance`: An Elastic Compute Service (ECS) instance.
+     * - `HaVip`: A high-availability virtual IP address (HAVIP).
+     * - `RouterInterface`: A router interface.
+     * - `NetworkInterface`: An elastic network interface (ENI).
+     * - `VpnGateway`: A VPN Gateway.
+     * - `IPv6Gateway`: An IPv6 gateway.
+     * - `NatGateway`: A Nat Gateway.
+     * - `Attachment`: A transit router.
+     * - `VpcPeer`: A VPC Peering Connection.
+     * - `Ipv4Gateway`: An IPv4 gateway.
+     * - `GatewayEndpoint`: A gateway endpoint.
+     * - `Ecr`: A Express Connect Router (ECR).
      * 
      */
     @Import(name="nexthopType")
     private @Nullable Output<String> nexthopType;
 
     /**
-     * @return The next hop type. Available values:
-     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-     * - `RouterInterface`: a router interface.
-     * - `VpnGateway`: a VPN Gateway.
-     * - `HaVip`: a high-availability virtual IP address (HAVIP).
-     * - `NetworkInterface`: an elastic network interface (ENI).
-     * - `NatGateway`: a Nat Gateway.
-     * - `IPv6Gateway`: an IPv6 gateway.
-     * - `Attachment`: a transit router.
-     * - `VpcPeer`: a VPC Peering Connection.
-     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+     * @return The type of Next Hop. Valid values:
+     * - `Instance`: An Elastic Compute Service (ECS) instance.
+     * - `HaVip`: A high-availability virtual IP address (HAVIP).
+     * - `RouterInterface`: A router interface.
+     * - `NetworkInterface`: An elastic network interface (ENI).
+     * - `VpnGateway`: A VPN Gateway.
+     * - `IPv6Gateway`: An IPv6 gateway.
+     * - `NatGateway`: A Nat Gateway.
+     * - `Attachment`: A transit router.
+     * - `VpcPeer`: A VPC Peering Connection.
+     * - `Ipv4Gateway`: An IPv4 gateway.
+     * - `GatewayEndpoint`: A gateway endpoint.
+     * - `Ecr`: A Express Connect Router (ECR).
      * 
      */
     public Optional<Output<String>> nexthopType() {
@@ -96,14 +115,14 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the route table.
+     * The ID of the Route Table.
      * 
      */
     @Import(name="routeTableId")
     private @Nullable Output<String> routeTableId;
 
     /**
-     * @return The ID of the route table.
+     * @return The ID of the Route Table.
      * 
      */
     public Optional<Output<String>> routeTableId() {
@@ -136,6 +155,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
     private RouteEntryState() {}
 
     private RouteEntryState(RouteEntryState $) {
+        this.description = $.description;
         this.destinationCidrblock = $.destinationCidrblock;
         this.name = $.name;
         this.nexthopId = $.nexthopId;
@@ -163,7 +183,28 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationCidrblock The RouteEntry&#39;s target network segment.
+         * @param description The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param destinationCidrblock The destination CIDR block of the custom route entry.
          * 
          * @return builder
          * 
@@ -174,7 +215,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationCidrblock The RouteEntry&#39;s target network segment.
+         * @param destinationCidrblock The destination CIDR block of the custom route entry.
          * 
          * @return builder
          * 
@@ -184,7 +225,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+         * @param name The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -195,7 +236,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+         * @param name The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -205,7 +246,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nexthopId The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+         * @param nexthopId The ID of Next Hop.
          * 
          * @return builder
          * 
@@ -216,7 +257,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nexthopId The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+         * @param nexthopId The ID of Next Hop.
          * 
          * @return builder
          * 
@@ -226,17 +267,19 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nexthopType The next hop type. Available values:
-         * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-         * - `RouterInterface`: a router interface.
-         * - `VpnGateway`: a VPN Gateway.
-         * - `HaVip`: a high-availability virtual IP address (HAVIP).
-         * - `NetworkInterface`: an elastic network interface (ENI).
-         * - `NatGateway`: a Nat Gateway.
-         * - `IPv6Gateway`: an IPv6 gateway.
-         * - `Attachment`: a transit router.
-         * - `VpcPeer`: a VPC Peering Connection.
-         * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+         * @param nexthopType The type of Next Hop. Valid values:
+         * - `Instance`: An Elastic Compute Service (ECS) instance.
+         * - `HaVip`: A high-availability virtual IP address (HAVIP).
+         * - `RouterInterface`: A router interface.
+         * - `NetworkInterface`: An elastic network interface (ENI).
+         * - `VpnGateway`: A VPN Gateway.
+         * - `IPv6Gateway`: An IPv6 gateway.
+         * - `NatGateway`: A Nat Gateway.
+         * - `Attachment`: A transit router.
+         * - `VpcPeer`: A VPC Peering Connection.
+         * - `Ipv4Gateway`: An IPv4 gateway.
+         * - `GatewayEndpoint`: A gateway endpoint.
+         * - `Ecr`: A Express Connect Router (ECR).
          * 
          * @return builder
          * 
@@ -247,17 +290,19 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nexthopType The next hop type. Available values:
-         * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-         * - `RouterInterface`: a router interface.
-         * - `VpnGateway`: a VPN Gateway.
-         * - `HaVip`: a high-availability virtual IP address (HAVIP).
-         * - `NetworkInterface`: an elastic network interface (ENI).
-         * - `NatGateway`: a Nat Gateway.
-         * - `IPv6Gateway`: an IPv6 gateway.
-         * - `Attachment`: a transit router.
-         * - `VpcPeer`: a VPC Peering Connection.
-         * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+         * @param nexthopType The type of Next Hop. Valid values:
+         * - `Instance`: An Elastic Compute Service (ECS) instance.
+         * - `HaVip`: A high-availability virtual IP address (HAVIP).
+         * - `RouterInterface`: A router interface.
+         * - `NetworkInterface`: An elastic network interface (ENI).
+         * - `VpnGateway`: A VPN Gateway.
+         * - `IPv6Gateway`: An IPv6 gateway.
+         * - `NatGateway`: A Nat Gateway.
+         * - `Attachment`: A transit router.
+         * - `VpcPeer`: A VPC Peering Connection.
+         * - `Ipv4Gateway`: An IPv4 gateway.
+         * - `GatewayEndpoint`: A gateway endpoint.
+         * - `Ecr`: A Express Connect Router (ECR).
          * 
          * @return builder
          * 
@@ -267,7 +312,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeTableId The ID of the route table.
+         * @param routeTableId The ID of the Route Table.
          * 
          * @return builder
          * 
@@ -278,7 +323,7 @@ public final class RouteEntryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routeTableId The ID of the route table.
+         * @param routeTableId The ID of the Route Table.
          * 
          * @return builder
          * 

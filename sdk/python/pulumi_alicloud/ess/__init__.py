@@ -24,6 +24,7 @@ from .scaling_group_v_server_groups import *
 from .scaling_rule import *
 from .schedule import *
 from .scheduled_task import *
+from .server_group_attachment import *
 from .suspend_process import *
 from ._inputs import *
 from . import outputs

@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ddos.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -14,26 +15,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DomainResourceProxyType {
     /**
-     * @return the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
+     * @return The port numbers.
      * 
      */
-    private @Nullable List<Integer> proxyPorts;
+    private List<Integer> proxyPorts;
     /**
-     * @return the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+     * @return The type of the protocol. Valid values:
      * 
      */
     private @Nullable String proxyType;
 
     private DomainResourceProxyType() {}
     /**
-     * @return the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
+     * @return The port numbers.
      * 
      */
     public List<Integer> proxyPorts() {
-        return this.proxyPorts == null ? List.of() : this.proxyPorts;
+        return this.proxyPorts;
     }
     /**
-     * @return the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+     * @return The type of the protocol. Valid values:
      * 
      */
     public Optional<String> proxyType() {
@@ -49,7 +50,7 @@ public final class DomainResourceProxyType {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<Integer> proxyPorts;
+        private List<Integer> proxyPorts;
         private @Nullable String proxyType;
         public Builder() {}
         public Builder(DomainResourceProxyType defaults) {
@@ -59,8 +60,10 @@ public final class DomainResourceProxyType {
         }
 
         @CustomType.Setter
-        public Builder proxyPorts(@Nullable List<Integer> proxyPorts) {
-
+        public Builder proxyPorts(List<Integer> proxyPorts) {
+            if (proxyPorts == null) {
+              throw new MissingRequiredPropertyException("DomainResourceProxyType", "proxyPorts");
+            }
             this.proxyPorts = proxyPorts;
             return this;
         }

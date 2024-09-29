@@ -21,7 +21,7 @@ public final class RocketMQInstanceProductInfo {
      */
     private @Nullable Boolean autoScaling;
     /**
-     * @return Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)&gt;Resource Quotas&gt;Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+     * @return Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)&gt;Resource Quotas&gt;Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
      * 
      */
     private @Nullable Integer messageRetentionTime;
@@ -31,7 +31,7 @@ public final class RocketMQInstanceProductInfo {
      */
     private String msgProcessSpec;
     /**
-     * @return message send receive ratio.Value range: [0.2, 0.5].
+     * @return message send receive ratio.  Value range: [0.2, 0.5].
      * 
      */
     private @Nullable Double sendReceiveRatio;
@@ -50,7 +50,7 @@ public final class RocketMQInstanceProductInfo {
         return Optional.ofNullable(this.autoScaling);
     }
     /**
-     * @return Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)&gt;Resource Quotas&gt;Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+     * @return Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)&gt;Resource Quotas&gt;Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
      * 
      */
     public Optional<Integer> messageRetentionTime() {
@@ -64,7 +64,7 @@ public final class RocketMQInstanceProductInfo {
         return this.msgProcessSpec;
     }
     /**
-     * @return message send receive ratio.Value range: [0.2, 0.5].
+     * @return message send receive ratio.  Value range: [0.2, 0.5].
      * 
      */
     public Optional<Double> sendReceiveRatio() {

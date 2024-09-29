@@ -23,7 +23,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly int Order;
         /// <summary>
-        /// Forward action type.
+        /// The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
         /// </summary>
         public readonly string RuleActionType;
         /// <summary>

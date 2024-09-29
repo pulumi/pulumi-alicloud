@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a VPC Peer Connection resource.
+    /// Provides a Vpc Peer Connection resource.
     /// 
     /// For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
     /// 
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// VPC Peer Connection can be imported using the id, e.g.
+    /// Vpc Peer Connection can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:vpc/peerConnection:PeerConnection example &lt;id&gt;
@@ -72,6 +72,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
         /// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
         /// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+        /// 
         /// &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         /// </summary>
         [Output("acceptingAliUid")]
@@ -98,49 +99,57 @@ namespace Pulumi.AliCloud.Vpc
         public Output<int> Bandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
+        /// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// The description of the VPC peer connection to be created.
+        /// 
+        /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to PreCheck only this request. Default value: `false`. Valid values:
+        /// Whether to PreCheck only this request. Value:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// Whether to forcibly delete the VPC peering connection. Value:
         /// </summary>
-        [Output("peerConnectionName")]
-        public Output<string?> PeerConnectionName { get; private set; } = null!;
+        [Output("forceDelete")]
+        public Output<bool?> ForceDelete { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The name of the resource.
+        /// </summary>
+        [Output("peerConnectionName")]
+        public Output<string> PeerConnectionName { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the VPC peer connection.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of the resource.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the requester VPC.
+        /// You must create a VPC ID on the initiator of a VPC peer connection.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -195,6 +204,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
         /// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
         /// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+        /// 
         /// &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         /// </summary>
         [Input("acceptingAliUid")]
@@ -221,31 +231,39 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// The description of the VPC peer connection to be created.
+        /// 
+        /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to PreCheck only this request. Default value: `false`. Valid values:
+        /// Whether to PreCheck only this request. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// Whether to forcibly delete the VPC peering connection. Value:
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// The name of the resource.
         /// </summary>
         [Input("peerConnectionName")]
         public Input<string>? PeerConnectionName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the VPC peer connection.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -254,7 +272,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of the resource.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -263,7 +281,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The ID of the requester VPC.
+        /// You must create a VPC ID on the initiator of a VPC peer connection.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -280,6 +298,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
         /// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
         /// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+        /// 
         /// &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         /// </summary>
         [Input("acceptingAliUid")]
@@ -306,37 +325,45 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? Bandwidth { get; set; }
 
         /// <summary>
-        /// The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
+        /// The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+        /// The description of the VPC peer connection to be created.
+        /// 
+        /// It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to PreCheck only this request. Default value: `false`. Valid values:
+        /// Whether to PreCheck only this request. Value:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+        /// Whether to forcibly delete the VPC peering connection. Value:
+        /// </summary>
+        [Input("forceDelete")]
+        public Input<bool>? ForceDelete { get; set; }
+
+        /// <summary>
+        /// The name of the resource.
         /// </summary>
         [Input("peerConnectionName")]
         public Input<string>? PeerConnectionName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the VPC peer connection.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -345,7 +372,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// The tags of the resource.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -354,7 +381,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The ID of the requester VPC.
+        /// You must create a VPC ID on the initiator of a VPC peer connection.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

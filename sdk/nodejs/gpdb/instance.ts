@@ -185,6 +185,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly masterNodeNum!: pulumi.Output<number | undefined>;
     /**
+     * The parameters. See `parameters` below.
+     */
+    public readonly parameters!: pulumi.Output<outputs.gpdb.InstanceParameter[]>;
+    /**
      * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
@@ -297,6 +301,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintainStartTime"] = state ? state.maintainStartTime : undefined;
             resourceInputs["masterCu"] = state ? state.masterCu : undefined;
             resourceInputs["masterNodeNum"] = state ? state.masterNodeNum : undefined;
+            resourceInputs["parameters"] = state ? state.parameters : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
@@ -348,6 +353,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["maintainStartTime"] = args ? args.maintainStartTime : undefined;
             resourceInputs["masterCu"] = args ? args.masterCu : undefined;
             resourceInputs["masterNodeNum"] = args ? args.masterNodeNum : undefined;
+            resourceInputs["parameters"] = args ? args.parameters : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
@@ -472,6 +478,10 @@ export interface InstanceState {
      * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      */
     masterNodeNum?: pulumi.Input<number>;
+    /**
+     * The parameters. See `parameters` below.
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.gpdb.InstanceParameter>[]>;
     /**
      * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
      */
@@ -648,6 +658,10 @@ export interface InstanceArgs {
      * @deprecated Field `masterNodeNum` has been deprecated from provider version 1.213.0.
      */
     masterNodeNum?: pulumi.Input<number>;
+    /**
+     * The parameters. See `parameters` below.
+     */
+    parameters?: pulumi.Input<pulumi.Input<inputs.gpdb.InstanceParameter>[]>;
     /**
      * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
      */

@@ -36,6 +36,7 @@ class InstanceArgs:
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  master_cu: Optional[pulumi.Input[int]] = None,
                  master_node_num: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
@@ -82,6 +83,7 @@ class InstanceArgs:
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_cu: The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
         :param pulumi.Input[int] master_node_num: The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: The parameters. See `parameters` below.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
@@ -146,6 +148,8 @@ class InstanceArgs:
             pulumi.log.warn("""master_node_num is deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.""")
         if master_node_num is not None:
             pulumi.set(__self__, "master_node_num", master_node_num)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -436,6 +440,18 @@ class InstanceArgs:
         pulumi.set(self, "master_node_num", value)
 
     @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
+        """
+        The parameters. See `parameters` below.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -644,6 +660,7 @@ class _InstanceState:
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  master_cu: Optional[pulumi.Input[int]] = None,
                  master_node_num: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
@@ -693,6 +710,7 @@ class _InstanceState:
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_cu: The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
         :param pulumi.Input[int] master_node_num: The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: The parameters. See `parameters` below.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the instance.
@@ -764,6 +782,8 @@ class _InstanceState:
             pulumi.log.warn("""master_node_num is deprecated: Field `master_node_num` has been deprecated from provider version 1.213.0.""")
         if master_node_num is not None:
             pulumi.set(__self__, "master_node_num", master_node_num)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
         if payment_type is not None:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
@@ -1060,6 +1080,18 @@ class _InstanceState:
         pulumi.set(self, "master_node_num", value)
 
     @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]:
+        """
+        The parameters. See `parameters` below.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1305,6 +1337,7 @@ class Instance(pulumi.CustomResource):
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  master_cu: Optional[pulumi.Input[int]] = None,
                  master_node_num: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1404,6 +1437,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_cu: The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
         :param pulumi.Input[int] master_node_num: The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: The parameters. See `parameters` below.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
@@ -1516,6 +1550,7 @@ class Instance(pulumi.CustomResource):
                  maintain_start_time: Optional[pulumi.Input[str]] = None,
                  master_cu: Optional[pulumi.Input[int]] = None,
                  master_node_num: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1566,6 +1601,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["maintain_start_time"] = maintain_start_time
             __props__.__dict__["master_cu"] = master_cu
             __props__.__dict__["master_node_num"] = master_node_num
+            __props__.__dict__["parameters"] = parameters
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["private_ip_address"] = private_ip_address
@@ -1617,6 +1653,7 @@ class Instance(pulumi.CustomResource):
             maintain_start_time: Optional[pulumi.Input[str]] = None,
             master_cu: Optional[pulumi.Input[int]] = None,
             master_node_num: Optional[pulumi.Input[int]] = None,
+            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
@@ -1671,6 +1708,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_start_time: The start time of the maintenance window for the instance. in the format of HH:mmZ (UTC time), for example 02:00Z.
         :param pulumi.Input[int] master_cu: The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
         :param pulumi.Input[int] master_node_num: The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceParameterArgs', 'InstanceParameterArgsDict']]]] parameters: The parameters. See `parameters` below.
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the instance.
@@ -1717,6 +1755,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["maintain_start_time"] = maintain_start_time
         __props__.__dict__["master_cu"] = master_cu
         __props__.__dict__["master_node_num"] = master_node_num
+        __props__.__dict__["parameters"] = parameters
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
@@ -1908,6 +1947,14 @@ class Instance(pulumi.CustomResource):
         The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
         """
         return pulumi.get(self, "master_node_num")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> pulumi.Output[Sequence['outputs.InstanceParameter']]:
+        """
+        The parameters. See `parameters` below.
+        """
+        return pulumi.get(self, "parameters")
 
     @property
     @pulumi.getter(name="paymentType")

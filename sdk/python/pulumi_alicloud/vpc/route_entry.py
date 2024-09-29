@@ -15,31 +15,35 @@ __all__ = ['RouteEntryArgs', 'RouteEntry']
 class RouteEntryArgs:
     def __init__(__self__, *,
                  route_table_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
                  destination_cidrblock: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nexthop_id: Optional[pulumi.Input[str]] = None,
-                 nexthop_type: Optional[pulumi.Input[str]] = None,
-                 router_id: Optional[pulumi.Input[str]] = None):
+                 nexthop_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RouteEntry resource.
-        :param pulumi.Input[str] route_table_id: The ID of the route table.
-        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
-        :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
-        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
-               - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-               - `RouterInterface`: a router interface.
-               - `VpnGateway`: a VPN Gateway.
-               - `HaVip`: a high-availability virtual IP address (HAVIP).
-               - `NetworkInterface`: an elastic network interface (ENI).
-               - `NatGateway`: a Nat Gateway.
-               - `IPv6Gateway`: an IPv6 gateway.
-               - `Attachment`: a transit router.
-               - `VpcPeer`: a VPC Peering Connection.
-               - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
-        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] route_table_id: The ID of the Route Table.
+        :param pulumi.Input[str] description: The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] destination_cidrblock: The destination CIDR block of the custom route entry.
+        :param pulumi.Input[str] name: The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] nexthop_id: The ID of Next Hop.
+        :param pulumi.Input[str] nexthop_type: The type of Next Hop. Valid values:
+               - `Instance`: An Elastic Compute Service (ECS) instance.
+               - `HaVip`: A high-availability virtual IP address (HAVIP).
+               - `RouterInterface`: A router interface.
+               - `NetworkInterface`: An elastic network interface (ENI).
+               - `VpnGateway`: A VPN Gateway.
+               - `IPv6Gateway`: An IPv6 gateway.
+               - `NatGateway`: A Nat Gateway.
+               - `Attachment`: A transit router.
+               - `VpcPeer`: A VPC Peering Connection.
+               - `Ipv4Gateway`: An IPv4 gateway.
+               - `GatewayEndpoint`: A gateway endpoint.
+               - `Ecr`: A Express Connect Router (ECR).
         """
         pulumi.set(__self__, "route_table_id", route_table_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if destination_cidrblock is not None:
             pulumi.set(__self__, "destination_cidrblock", destination_cidrblock)
         if name is not None:
@@ -48,17 +52,12 @@ class RouteEntryArgs:
             pulumi.set(__self__, "nexthop_id", nexthop_id)
         if nexthop_type is not None:
             pulumi.set(__self__, "nexthop_type", nexthop_type)
-        if router_id is not None:
-            warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
-            pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
-        if router_id is not None:
-            pulumi.set(__self__, "router_id", router_id)
 
     @property
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Input[str]:
         """
-        The ID of the route table.
+        The ID of the Route Table.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -67,10 +66,22 @@ class RouteEntryArgs:
         pulumi.set(self, "route_table_id", value)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="destinationCidrblock")
     def destination_cidrblock(self) -> Optional[pulumi.Input[str]]:
         """
-        The RouteEntry's target network segment.
+        The destination CIDR block of the custom route entry.
         """
         return pulumi.get(self, "destination_cidrblock")
 
@@ -82,7 +93,7 @@ class RouteEntryArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "name")
 
@@ -94,7 +105,7 @@ class RouteEntryArgs:
     @pulumi.getter(name="nexthopId")
     def nexthop_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The route entry's next hop. ECS instance ID or VPC router interface ID.
+        The ID of Next Hop.
         """
         return pulumi.get(self, "nexthop_id")
 
@@ -106,17 +117,19 @@ class RouteEntryArgs:
     @pulumi.getter(name="nexthopType")
     def nexthop_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The next hop type. Available values:
-        - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-        - `RouterInterface`: a router interface.
-        - `VpnGateway`: a VPN Gateway.
-        - `HaVip`: a high-availability virtual IP address (HAVIP).
-        - `NetworkInterface`: an elastic network interface (ENI).
-        - `NatGateway`: a Nat Gateway.
-        - `IPv6Gateway`: an IPv6 gateway.
-        - `Attachment`: a transit router.
-        - `VpcPeer`: a VPC Peering Connection.
-        - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+        The type of Next Hop. Valid values:
+        - `Instance`: An Elastic Compute Service (ECS) instance.
+        - `HaVip`: A high-availability virtual IP address (HAVIP).
+        - `RouterInterface`: A router interface.
+        - `NetworkInterface`: An elastic network interface (ENI).
+        - `VpnGateway`: A VPN Gateway.
+        - `IPv6Gateway`: An IPv6 gateway.
+        - `NatGateway`: A Nat Gateway.
+        - `Attachment`: A transit router.
+        - `VpcPeer`: A VPC Peering Connection.
+        - `Ipv4Gateway`: An IPv4 gateway.
+        - `GatewayEndpoint`: A gateway endpoint.
+        - `Ecr`: A Express Connect Router (ECR).
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -124,23 +137,11 @@ class RouteEntryArgs:
     def nexthop_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "nexthop_type", value)
 
-    @property
-    @pulumi.getter(name="routerId")
-    @_utilities.deprecated("""Attribute router_id has been deprecated and suggest removing it from your template.""")
-    def router_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        This argument has been deprecated. Please use other arguments to launch a custom route entry.
-        """
-        return pulumi.get(self, "router_id")
-
-    @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "router_id", value)
-
 
 @pulumi.input_type
 class _RouteEntryState:
     def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
                  destination_cidrblock: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nexthop_id: Optional[pulumi.Input[str]] = None,
@@ -149,23 +150,28 @@ class _RouteEntryState:
                  router_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouteEntry resources.
-        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
-        :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
-        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
-               - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-               - `RouterInterface`: a router interface.
-               - `VpnGateway`: a VPN Gateway.
-               - `HaVip`: a high-availability virtual IP address (HAVIP).
-               - `NetworkInterface`: an elastic network interface (ENI).
-               - `NatGateway`: a Nat Gateway.
-               - `IPv6Gateway`: an IPv6 gateway.
-               - `Attachment`: a transit router.
-               - `VpcPeer`: a VPC Peering Connection.
-               - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
-        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] description: The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] destination_cidrblock: The destination CIDR block of the custom route entry.
+        :param pulumi.Input[str] name: The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] nexthop_id: The ID of Next Hop.
+        :param pulumi.Input[str] nexthop_type: The type of Next Hop. Valid values:
+               - `Instance`: An Elastic Compute Service (ECS) instance.
+               - `HaVip`: A high-availability virtual IP address (HAVIP).
+               - `RouterInterface`: A router interface.
+               - `NetworkInterface`: An elastic network interface (ENI).
+               - `VpnGateway`: A VPN Gateway.
+               - `IPv6Gateway`: An IPv6 gateway.
+               - `NatGateway`: A Nat Gateway.
+               - `Attachment`: A transit router.
+               - `VpcPeer`: A VPC Peering Connection.
+               - `Ipv4Gateway`: An IPv4 gateway.
+               - `GatewayEndpoint`: A gateway endpoint.
+               - `Ecr`: A Express Connect Router (ECR).
+        :param pulumi.Input[str] route_table_id: The ID of the Route Table.
         :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if destination_cidrblock is not None:
             pulumi.set(__self__, "destination_cidrblock", destination_cidrblock)
         if name is not None:
@@ -183,10 +189,22 @@ class _RouteEntryState:
             pulumi.set(__self__, "router_id", router_id)
 
     @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="destinationCidrblock")
     def destination_cidrblock(self) -> Optional[pulumi.Input[str]]:
         """
-        The RouteEntry's target network segment.
+        The destination CIDR block of the custom route entry.
         """
         return pulumi.get(self, "destination_cidrblock")
 
@@ -198,7 +216,7 @@ class _RouteEntryState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "name")
 
@@ -210,7 +228,7 @@ class _RouteEntryState:
     @pulumi.getter(name="nexthopId")
     def nexthop_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The route entry's next hop. ECS instance ID or VPC router interface ID.
+        The ID of Next Hop.
         """
         return pulumi.get(self, "nexthop_id")
 
@@ -222,17 +240,19 @@ class _RouteEntryState:
     @pulumi.getter(name="nexthopType")
     def nexthop_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The next hop type. Available values:
-        - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-        - `RouterInterface`: a router interface.
-        - `VpnGateway`: a VPN Gateway.
-        - `HaVip`: a high-availability virtual IP address (HAVIP).
-        - `NetworkInterface`: an elastic network interface (ENI).
-        - `NatGateway`: a Nat Gateway.
-        - `IPv6Gateway`: an IPv6 gateway.
-        - `Attachment`: a transit router.
-        - `VpcPeer`: a VPC Peering Connection.
-        - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+        The type of Next Hop. Valid values:
+        - `Instance`: An Elastic Compute Service (ECS) instance.
+        - `HaVip`: A high-availability virtual IP address (HAVIP).
+        - `RouterInterface`: A router interface.
+        - `NetworkInterface`: An elastic network interface (ENI).
+        - `VpnGateway`: A VPN Gateway.
+        - `IPv6Gateway`: An IPv6 gateway.
+        - `NatGateway`: A Nat Gateway.
+        - `Attachment`: A transit router.
+        - `VpcPeer`: A VPC Peering Connection.
+        - `Ipv4Gateway`: An IPv4 gateway.
+        - `GatewayEndpoint`: A gateway endpoint.
+        - `Ecr`: A Express Connect Router (ECR).
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -244,7 +264,7 @@ class _RouteEntryState:
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the route table.
+        The ID of the Route Table.
         """
         return pulumi.get(self, "route_table_id")
 
@@ -271,15 +291,19 @@ class RouteEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  destination_cidrblock: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nexthop_id: Optional[pulumi.Input[str]] = None,
                  nexthop_type: Optional[pulumi.Input[str]] = None,
                  route_table_id: Optional[pulumi.Input[str]] = None,
-                 router_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a route entry resource. A route entry represents a route item of one VPC route table.
+        Provides a Route Entry resource. A Route Entry represents a route item of one VPC Route Table.
+
+        For information about Route Entry and how to use it, see [What is Route Entry](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-createrouteentry).
+
+        > **NOTE:** Available since v0.1.0.
 
         ## Example Usage
 
@@ -289,53 +313,43 @@ class RouteEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "RouteEntryConfig"
-        foo = alicloud.vpc.Network("foo",
+            name = "terraform-example"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(most_recent=True,
+            owners="system")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
-            cidr_block="10.1.0.0/21")
-        foo_switch = alicloud.vpc.Switch("foo",
-            vpc_id=foo.id,
-            cidr_block="10.1.1.0/24",
-            zone_id=default.zones[0].id,
-            vswitch_name=name)
-        tf_test_foo = alicloud.ecs.SecurityGroup("tf_test_foo",
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
-            description="foo",
-            vpc_id=foo.id)
-        ingress = alicloud.ecs.SecurityGroupRule("ingress",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=tf_test_foo.id,
-            cidr_ip="0.0.0.0/0")
-        foo_instance = alicloud.ecs.Instance("foo",
-            security_groups=[tf_test_foo.id],
-            vswitch_id=foo_switch.id,
-            instance_charge_type="PostPaid",
-            instance_type=default_get_instance_types.instance_types[0].id,
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            system_disk_category="cloud_efficiency",
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
             image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id,
             instance_name=name)
-        foo_route_entry = alicloud.vpc.RouteEntry("foo",
-            route_table_id=foo.route_table_id,
+        foo = alicloud.vpc.RouteEntry("foo",
+            route_table_id=default_network.route_table_id,
             destination_cidrblock="172.11.1.1/32",
             nexthop_type="Instance",
-            nexthop_id=foo_instance.id)
+            nexthop_id=default_instance.id)
         ```
 
         ## Module Support
@@ -345,30 +359,30 @@ class RouteEntry(pulumi.CustomResource):
 
         ## Import
 
-        Router entry can be imported using the id, e.g (formatted as<route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id>).
-
         ```sh
-        $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+        $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
-        :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
-        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
-               - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-               - `RouterInterface`: a router interface.
-               - `VpnGateway`: a VPN Gateway.
-               - `HaVip`: a high-availability virtual IP address (HAVIP).
-               - `NetworkInterface`: an elastic network interface (ENI).
-               - `NatGateway`: a Nat Gateway.
-               - `IPv6Gateway`: an IPv6 gateway.
-               - `Attachment`: a transit router.
-               - `VpcPeer`: a VPC Peering Connection.
-               - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
-        :param pulumi.Input[str] route_table_id: The ID of the route table.
-        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] description: The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] destination_cidrblock: The destination CIDR block of the custom route entry.
+        :param pulumi.Input[str] name: The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] nexthop_id: The ID of Next Hop.
+        :param pulumi.Input[str] nexthop_type: The type of Next Hop. Valid values:
+               - `Instance`: An Elastic Compute Service (ECS) instance.
+               - `HaVip`: A high-availability virtual IP address (HAVIP).
+               - `RouterInterface`: A router interface.
+               - `NetworkInterface`: An elastic network interface (ENI).
+               - `VpnGateway`: A VPN Gateway.
+               - `IPv6Gateway`: An IPv6 gateway.
+               - `NatGateway`: A Nat Gateway.
+               - `Attachment`: A transit router.
+               - `VpcPeer`: A VPC Peering Connection.
+               - `Ipv4Gateway`: An IPv4 gateway.
+               - `GatewayEndpoint`: A gateway endpoint.
+               - `Ecr`: A Express Connect Router (ECR).
+        :param pulumi.Input[str] route_table_id: The ID of the Route Table.
         """
         ...
     @overload
@@ -377,7 +391,11 @@ class RouteEntry(pulumi.CustomResource):
                  args: RouteEntryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a route entry resource. A route entry represents a route item of one VPC route table.
+        Provides a Route Entry resource. A Route Entry represents a route item of one VPC Route Table.
+
+        For information about Route Entry and how to use it, see [What is Route Entry](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-createrouteentry).
+
+        > **NOTE:** Available since v0.1.0.
 
         ## Example Usage
 
@@ -387,53 +405,43 @@ class RouteEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
-            cpu_core_count=1,
-            memory_size=2)
-        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
-            most_recent=True,
-            owners="system")
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "RouteEntryConfig"
-        foo = alicloud.vpc.Network("foo",
+            name = "terraform-example"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(most_recent=True,
+            owners="system")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
-            cidr_block="10.1.0.0/21")
-        foo_switch = alicloud.vpc.Switch("foo",
-            vpc_id=foo.id,
-            cidr_block="10.1.1.0/24",
-            zone_id=default.zones[0].id,
-            vswitch_name=name)
-        tf_test_foo = alicloud.ecs.SecurityGroup("tf_test_foo",
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
-            description="foo",
-            vpc_id=foo.id)
-        ingress = alicloud.ecs.SecurityGroupRule("ingress",
-            type="ingress",
-            ip_protocol="tcp",
-            nic_type="intranet",
-            policy="accept",
-            port_range="22/22",
-            priority=1,
-            security_group_id=tf_test_foo.id,
-            cidr_ip="0.0.0.0/0")
-        foo_instance = alicloud.ecs.Instance("foo",
-            security_groups=[tf_test_foo.id],
-            vswitch_id=foo_switch.id,
-            instance_charge_type="PostPaid",
-            instance_type=default_get_instance_types.instance_types[0].id,
-            internet_charge_type="PayByTraffic",
-            internet_max_bandwidth_out=5,
-            system_disk_category="cloud_efficiency",
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
             image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id,
             instance_name=name)
-        foo_route_entry = alicloud.vpc.RouteEntry("foo",
-            route_table_id=foo.route_table_id,
+        foo = alicloud.vpc.RouteEntry("foo",
+            route_table_id=default_network.route_table_id,
             destination_cidrblock="172.11.1.1/32",
             nexthop_type="Instance",
-            nexthop_id=foo_instance.id)
+            nexthop_id=default_instance.id)
         ```
 
         ## Module Support
@@ -443,10 +451,8 @@ class RouteEntry(pulumi.CustomResource):
 
         ## Import
 
-        Router entry can be imported using the id, e.g (formatted as<route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id>).
-
         ```sh
-        $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+        $ pulumi import alicloud:vpc/routeEntry:RouteEntry example <route_table_id>:<router_id>:<destination_cidrblock>:<nexthop_type>:<nexthop_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -464,12 +470,12 @@ class RouteEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  destination_cidrblock: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nexthop_id: Optional[pulumi.Input[str]] = None,
                  nexthop_type: Optional[pulumi.Input[str]] = None,
                  route_table_id: Optional[pulumi.Input[str]] = None,
-                 router_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -479,6 +485,7 @@ class RouteEntry(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RouteEntryArgs.__new__(RouteEntryArgs)
 
+            __props__.__dict__["description"] = description
             __props__.__dict__["destination_cidrblock"] = destination_cidrblock
             __props__.__dict__["name"] = name
             __props__.__dict__["nexthop_id"] = nexthop_id
@@ -486,7 +493,7 @@ class RouteEntry(pulumi.CustomResource):
             if route_table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'route_table_id'")
             __props__.__dict__["route_table_id"] = route_table_id
-            __props__.__dict__["router_id"] = router_id
+            __props__.__dict__["router_id"] = None
         super(RouteEntry, __self__).__init__(
             'alicloud:vpc/routeEntry:RouteEntry',
             resource_name,
@@ -497,6 +504,7 @@ class RouteEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
             destination_cidrblock: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             nexthop_id: Optional[pulumi.Input[str]] = None,
@@ -510,27 +518,31 @@ class RouteEntry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
-        :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
-        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
-               - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-               - `RouterInterface`: a router interface.
-               - `VpnGateway`: a VPN Gateway.
-               - `HaVip`: a high-availability virtual IP address (HAVIP).
-               - `NetworkInterface`: an elastic network interface (ENI).
-               - `NatGateway`: a Nat Gateway.
-               - `IPv6Gateway`: an IPv6 gateway.
-               - `Attachment`: a transit router.
-               - `VpcPeer`: a VPC Peering Connection.
-               - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
-        :param pulumi.Input[str] route_table_id: The ID of the route table.
+        :param pulumi.Input[str] description: The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] destination_cidrblock: The destination CIDR block of the custom route entry.
+        :param pulumi.Input[str] name: The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] nexthop_id: The ID of Next Hop.
+        :param pulumi.Input[str] nexthop_type: The type of Next Hop. Valid values:
+               - `Instance`: An Elastic Compute Service (ECS) instance.
+               - `HaVip`: A high-availability virtual IP address (HAVIP).
+               - `RouterInterface`: A router interface.
+               - `NetworkInterface`: An elastic network interface (ENI).
+               - `VpnGateway`: A VPN Gateway.
+               - `IPv6Gateway`: An IPv6 gateway.
+               - `NatGateway`: A Nat Gateway.
+               - `Attachment`: A transit router.
+               - `VpcPeer`: A VPC Peering Connection.
+               - `Ipv4Gateway`: An IPv4 gateway.
+               - `GatewayEndpoint`: A gateway endpoint.
+               - `Ecr`: A Express Connect Router (ECR).
+        :param pulumi.Input[str] route_table_id: The ID of the Route Table.
         :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RouteEntryState.__new__(_RouteEntryState)
 
+        __props__.__dict__["description"] = description
         __props__.__dict__["destination_cidrblock"] = destination_cidrblock
         __props__.__dict__["name"] = name
         __props__.__dict__["nexthop_id"] = nexthop_id
@@ -540,10 +552,18 @@ class RouteEntry(pulumi.CustomResource):
         return RouteEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        """
+        return pulumi.get(self, "description")
+
+    @property
     @pulumi.getter(name="destinationCidrblock")
     def destination_cidrblock(self) -> pulumi.Output[Optional[str]]:
         """
-        The RouteEntry's target network segment.
+        The destination CIDR block of the custom route entry.
         """
         return pulumi.get(self, "destination_cidrblock")
 
@@ -551,7 +571,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "name")
 
@@ -559,7 +579,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter(name="nexthopId")
     def nexthop_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The route entry's next hop. ECS instance ID or VPC router interface ID.
+        The ID of Next Hop.
         """
         return pulumi.get(self, "nexthop_id")
 
@@ -567,17 +587,19 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter(name="nexthopType")
     def nexthop_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The next hop type. Available values:
-        - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-        - `RouterInterface`: a router interface.
-        - `VpnGateway`: a VPN Gateway.
-        - `HaVip`: a high-availability virtual IP address (HAVIP).
-        - `NetworkInterface`: an elastic network interface (ENI).
-        - `NatGateway`: a Nat Gateway.
-        - `IPv6Gateway`: an IPv6 gateway.
-        - `Attachment`: a transit router.
-        - `VpcPeer`: a VPC Peering Connection.
-        - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+        The type of Next Hop. Valid values:
+        - `Instance`: An Elastic Compute Service (ECS) instance.
+        - `HaVip`: A high-availability virtual IP address (HAVIP).
+        - `RouterInterface`: A router interface.
+        - `NetworkInterface`: An elastic network interface (ENI).
+        - `VpnGateway`: A VPN Gateway.
+        - `IPv6Gateway`: An IPv6 gateway.
+        - `NatGateway`: A Nat Gateway.
+        - `Attachment`: A transit router.
+        - `VpcPeer`: A VPC Peering Connection.
+        - `Ipv4Gateway`: An IPv4 gateway.
+        - `GatewayEndpoint`: A gateway endpoint.
+        - `Ecr`: A Express Connect Router (ECR).
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -585,7 +607,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter(name="routeTableId")
     def route_table_id(self) -> pulumi.Output[str]:
         """
-        The ID of the route table.
+        The ID of the Route Table.
         """
         return pulumi.get(self, "route_table_id")
 
