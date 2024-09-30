@@ -13,16 +13,34 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
     public sealed class RocketMQInstanceNetworkInfoVpcInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Security group id.
+        /// </summary>
+        [Input("securityGroupIds")]
+        public Input<string>? SecurityGroupIds { get; set; }
+
+        /// <summary>
         /// Proprietary Network.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// VPC network switch.
+        /// VPC switch id.
         /// </summary>
-        [Input("vswitchId", required: true)]
-        public Input<string> VswitchId { get; set; } = null!;
+        [Input("vswitchId")]
+        public Input<string>? VswitchId { get; set; }
+
+        [Input("vswitches")]
+        private InputList<Inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchGetArgs>? _vswitches;
+
+        /// <summary>
+        /// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+        /// </summary>
+        public InputList<Inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchGetArgs> Vswitches
+        {
+            get => _vswitches ?? (_vswitches = new InputList<Inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchGetArgs>());
+            set => _vswitches = value;
+        }
 
         public RocketMQInstanceNetworkInfoVpcInfoGetArgs()
         {

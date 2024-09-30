@@ -29,19 +29,19 @@ class HealthCheckTemplateArgs:
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a HealthCheckTemplate resource.
-        :param pulumi.Input[str] health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[str] health_check_template_name: The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         :param pulumi.Input[bool] dry_run: Whether to precheck the API request.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[int] health_check_connect_port: The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
-        :param pulumi.Input[str] health_check_host: The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_http_version: The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[int] health_check_interval: The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
-        :param pulumi.Input[str] health_check_method: The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_path: The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_protocol: The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
-        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
-        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
-        :param pulumi.Input[int] unhealthy_threshold: The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+        :param pulumi.Input[str] health_check_host: The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_http_version: The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[int] health_check_interval: The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+        :param pulumi.Input[str] health_check_method: The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_path: The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         """
         pulumi.set(__self__, "health_check_template_name", health_check_template_name)
         if dry_run is not None:
@@ -73,7 +73,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckTemplateName")
     def health_check_template_name(self) -> pulumi.Input[str]:
         """
-        The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "health_check_template_name")
 
@@ -97,7 +97,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckCodes")
     def health_check_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_codes")
 
@@ -109,7 +109,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
+        The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -121,7 +121,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckHost")
     def health_check_host(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_host")
 
@@ -133,7 +133,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckHttpVersion")
     def health_check_http_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_http_version")
 
@@ -145,7 +145,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+        The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -157,7 +157,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> Optional[pulumi.Input[str]]:
         """
-        The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -169,7 +169,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_path")
 
@@ -181,7 +181,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
+        The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -193,7 +193,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+        The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -205,7 +205,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -217,7 +217,7 @@ class HealthCheckTemplateArgs:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -245,18 +245,18 @@ class _HealthCheckTemplateState:
         """
         Input properties used for looking up and filtering HealthCheckTemplate resources.
         :param pulumi.Input[bool] dry_run: Whether to precheck the API request.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[int] health_check_connect_port: The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
-        :param pulumi.Input[str] health_check_host: The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_http_version: The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[int] health_check_interval: The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
-        :param pulumi.Input[str] health_check_method: The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_path: The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_protocol: The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
-        :param pulumi.Input[str] health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
-        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
-        :param pulumi.Input[int] unhealthy_threshold: The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+        :param pulumi.Input[str] health_check_host: The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_http_version: The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[int] health_check_interval: The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+        :param pulumi.Input[str] health_check_method: The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_path: The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+        :param pulumi.Input[str] health_check_template_name: The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -301,7 +301,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckCodes")
     def health_check_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_codes")
 
@@ -313,7 +313,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
+        The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -325,7 +325,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckHost")
     def health_check_host(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_host")
 
@@ -337,7 +337,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckHttpVersion")
     def health_check_http_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_http_version")
 
@@ -349,7 +349,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+        The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -361,7 +361,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> Optional[pulumi.Input[str]]:
         """
-        The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -373,7 +373,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_path")
 
@@ -385,7 +385,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
+        The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -397,7 +397,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckTemplateName")
     def health_check_template_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "health_check_template_name")
 
@@ -409,7 +409,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+        The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -421,7 +421,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -433,7 +433,7 @@ class _HealthCheckTemplateState:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 
@@ -462,7 +462,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides a Application Load Balancer (ALB) Health Check Template resource.
+        Provides an Application Load Balancer (ALB) Health Check Template resource.
 
         For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createhealthchecktemplate).
 
@@ -476,7 +476,11 @@ class HealthCheckTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name="example_name")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name=name)
         ```
 
         ## Import
@@ -490,18 +494,18 @@ class HealthCheckTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: Whether to precheck the API request.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[int] health_check_connect_port: The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
-        :param pulumi.Input[str] health_check_host: The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_http_version: The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[int] health_check_interval: The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
-        :param pulumi.Input[str] health_check_method: The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_path: The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_protocol: The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
-        :param pulumi.Input[str] health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
-        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
-        :param pulumi.Input[int] unhealthy_threshold: The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+        :param pulumi.Input[str] health_check_host: The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_http_version: The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[int] health_check_interval: The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+        :param pulumi.Input[str] health_check_method: The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_path: The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+        :param pulumi.Input[str] health_check_template_name: The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         """
         ...
     @overload
@@ -510,7 +514,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
                  args: HealthCheckTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Application Load Balancer (ALB) Health Check Template resource.
+        Provides an Application Load Balancer (ALB) Health Check Template resource.
 
         For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createhealthchecktemplate).
 
@@ -524,7 +528,11 @@ class HealthCheckTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name="example_name")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name=name)
         ```
 
         ## Import
@@ -618,18 +626,18 @@ class HealthCheckTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: Whether to precheck the API request.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[int] health_check_connect_port: The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
-        :param pulumi.Input[str] health_check_host: The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_http_version: The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[int] health_check_interval: The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
-        :param pulumi.Input[str] health_check_method: The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_path: The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
-        :param pulumi.Input[str] health_check_protocol: The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
-        :param pulumi.Input[str] health_check_template_name: The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
-        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
-        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
-        :param pulumi.Input[int] unhealthy_threshold: The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_codes: The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[int] health_check_connect_port: The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
+        :param pulumi.Input[str] health_check_host: The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_http_version: The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[int] health_check_interval: The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
+        :param pulumi.Input[str] health_check_method: The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_path: The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
+        :param pulumi.Input[str] health_check_template_name: The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[int] health_check_timeout: The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
+        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -662,7 +670,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckCodes")
     def health_check_codes(self) -> pulumi.Output[Sequence[str]]:
         """
-        The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The HTTP status codes that are used to indicate whether the backend server passes the health check. Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx`, and `http_5xx`. **NOTE:** `health_check_codes` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_codes")
 
@@ -670,7 +678,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> pulumi.Output[int]:
         """
-        The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
+        The port that is used for health checks. Default value: `0`. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "health_check_connect_port")
 
@@ -678,7 +686,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckHost")
     def health_check_host(self) -> pulumi.Output[str]:
         """
-        The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The domain name that is used for health checks. **NOTE:** `health_check_host` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_host")
 
@@ -686,7 +694,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckHttpVersion")
     def health_check_http_version(self) -> pulumi.Output[str]:
         """
-        The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The version of the HTTP protocol. Default value: `HTTP1.1`. Valid values: `HTTP1.0`, `HTTP1.1`. **NOTE:** `health_check_http_version` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_http_version")
 
@@ -694,7 +702,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> pulumi.Output[int]:
         """
-        The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
+        The interval at which health checks are performed. Unit: seconds. Default value: `2`. Valid values: `1` to `50`.
         """
         return pulumi.get(self, "health_check_interval")
 
@@ -702,7 +710,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckMethod")
     def health_check_method(self) -> pulumi.Output[str]:
         """
-        The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The HTTP method that is used for health checks. Default value: `HEAD`. Valid values: `HEAD`, `GET`. **NOTE:** `health_check_method` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_method")
 
@@ -710,7 +718,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> pulumi.Output[str]:
         """
-        The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : ' , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
+        The URL that is used for health checks. **NOTE:** `health_check_path` takes effect only if `health_check_protocol` is set to `HTTP`.
         """
         return pulumi.get(self, "health_check_path")
 
@@ -718,7 +726,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> pulumi.Output[str]:
         """
-        The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
+        The protocol that is used for health checks. Default value: `HTTP`. Valid values: `HTTP`, `TCP`.
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -726,7 +734,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckTemplateName")
     def health_check_template_name(self) -> pulumi.Output[str]:
         """
-        The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        The name of the health check template. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "health_check_template_name")
 
@@ -734,7 +742,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckTimeout")
     def health_check_timeout(self) -> pulumi.Output[int]:
         """
-        The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
+        The timeout period of a health check. Default value: `5`. Valid values: `1` to `300`.
         """
         return pulumi.get(self, "health_check_timeout")
 
@@ -742,7 +750,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> pulumi.Output[int]:
         """
-        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`.
         """
         return pulumi.get(self, "healthy_threshold")
 
@@ -750,7 +758,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> pulumi.Output[int]:
         """
-        The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`.
         """
         return pulumi.get(self, "unhealthy_threshold")
 

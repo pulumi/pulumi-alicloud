@@ -46,6 +46,21 @@ public final class DbInstancePlanPlanConfigScaleOutArgs extends com.pulumi.resou
     }
 
     /**
+     * (Available since v1.231.0) The status of the plan task.
+     * 
+     */
+    @Import(name="planTaskStatus")
+    private @Nullable Output<String> planTaskStatus;
+
+    /**
+     * @return (Available since v1.231.0) The status of the plan task.
+     * 
+     */
+    public Optional<Output<String>> planTaskStatus() {
+        return Optional.ofNullable(this.planTaskStatus);
+    }
+
+    /**
      * The segment Node Num of the Plan.
      * 
      */
@@ -65,6 +80,7 @@ public final class DbInstancePlanPlanConfigScaleOutArgs extends com.pulumi.resou
     private DbInstancePlanPlanConfigScaleOutArgs(DbInstancePlanPlanConfigScaleOutArgs $) {
         this.executeTime = $.executeTime;
         this.planCronTime = $.planCronTime;
+        this.planTaskStatus = $.planTaskStatus;
         this.segmentNodeNum = $.segmentNodeNum;
     }
 
@@ -126,6 +142,27 @@ public final class DbInstancePlanPlanConfigScaleOutArgs extends com.pulumi.resou
          */
         public Builder planCronTime(String planCronTime) {
             return planCronTime(Output.of(planCronTime));
+        }
+
+        /**
+         * @param planTaskStatus (Available since v1.231.0) The status of the plan task.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder planTaskStatus(@Nullable Output<String> planTaskStatus) {
+            $.planTaskStatus = planTaskStatus;
+            return this;
+        }
+
+        /**
+         * @param planTaskStatus (Available since v1.231.0) The status of the plan task.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder planTaskStatus(String planTaskStatus) {
+            return planTaskStatus(Output.of(planTaskStatus));
         }
 
         /**

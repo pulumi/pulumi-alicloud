@@ -96,6 +96,21 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+     * 
+     */
+    @Import(name="effective")
+    private @Nullable Output<String> effective;
+
+    /**
+     * @return The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+     * 
+     */
+    public Optional<Output<String>> effective() {
+        return Optional.ofNullable(this.effective);
+    }
+
+    /**
      * Whether to enable specific ess alarm. Default to true.
      * 
      */
@@ -289,6 +304,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         this.comparisonOperator = $.comparisonOperator;
         this.description = $.description;
         this.dimensions = $.dimensions;
+        this.effective = $.effective;
         this.enable = $.enable;
         this.evaluationCount = $.evaluationCount;
         this.expressions = $.expressions;
@@ -434,6 +450,27 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dimensions(Map<String,String> dimensions) {
             return dimensions(Output.of(dimensions));
+        }
+
+        /**
+         * @param effective The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effective(@Nullable Output<String> effective) {
+            $.effective = effective;
+            return this;
+        }
+
+        /**
+         * @param effective The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effective(String effective) {
+            return effective(Output.of(effective));
         }
 
         /**

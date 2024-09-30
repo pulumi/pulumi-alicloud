@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class ForwardingRuleRuleCondition {
     /**
      * @return The configuration of the domain name. See `host_config` below.
+     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
      * 
      */
     private @Nullable List<ForwardingRuleRuleConditionHostConfig> hostConfigs;
@@ -26,14 +27,20 @@ public final class ForwardingRuleRuleCondition {
      */
     private @Nullable ForwardingRuleRuleConditionPathConfig pathConfig;
     /**
-     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`.
+     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
      * 
      */
     private String ruleConditionType;
+    /**
+     * @return The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+     * 
+     */
+    private @Nullable String ruleConditionValue;
 
     private ForwardingRuleRuleCondition() {}
     /**
      * @return The configuration of the domain name. See `host_config` below.
+     * &gt; **NOTE:** From version 1.231.0, We recommend that you do not use `path_config` or `host_config`, and we recommend that you use the `rule_condition_type` and `rule_condition_value` to configure forwarding conditions.
      * 
      */
     public List<ForwardingRuleRuleConditionHostConfig> hostConfigs() {
@@ -47,11 +54,18 @@ public final class ForwardingRuleRuleCondition {
         return Optional.ofNullable(this.pathConfig);
     }
     /**
-     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`.
+     * @return The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `rule_condition_type` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
      * 
      */
     public String ruleConditionType() {
         return this.ruleConditionType;
+    }
+    /**
+     * @return The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+     * 
+     */
+    public Optional<String> ruleConditionValue() {
+        return Optional.ofNullable(this.ruleConditionValue);
     }
 
     public static Builder builder() {
@@ -66,12 +80,14 @@ public final class ForwardingRuleRuleCondition {
         private @Nullable List<ForwardingRuleRuleConditionHostConfig> hostConfigs;
         private @Nullable ForwardingRuleRuleConditionPathConfig pathConfig;
         private String ruleConditionType;
+        private @Nullable String ruleConditionValue;
         public Builder() {}
         public Builder(ForwardingRuleRuleCondition defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostConfigs = defaults.hostConfigs;
     	      this.pathConfig = defaults.pathConfig;
     	      this.ruleConditionType = defaults.ruleConditionType;
+    	      this.ruleConditionValue = defaults.ruleConditionValue;
         }
 
         @CustomType.Setter
@@ -97,11 +113,18 @@ public final class ForwardingRuleRuleCondition {
             this.ruleConditionType = ruleConditionType;
             return this;
         }
+        @CustomType.Setter
+        public Builder ruleConditionValue(@Nullable String ruleConditionValue) {
+
+            this.ruleConditionValue = ruleConditionValue;
+            return this;
+        }
         public ForwardingRuleRuleCondition build() {
             final var _resultValue = new ForwardingRuleRuleCondition();
             _resultValue.hostConfigs = hostConfigs;
             _resultValue.pathConfig = pathConfig;
             _resultValue.ruleConditionType = ruleConditionType;
+            _resultValue.ruleConditionValue = ruleConditionValue;
             return _resultValue;
         }
     }

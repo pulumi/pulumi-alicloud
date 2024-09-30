@@ -1306,7 +1306,70 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.SecretParameter;
+     * import com.pulumi.alicloud.oos.SecretParameterArgs;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetSecretParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
+     *             .secretParameterName(name)
+     *             .value("tf-testacc-oos_secret_parameter")
+     *             .type("Secret")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_secret_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "SecretParameter")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = OosFunctions.getSecretParameters(GetSecretParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecretParametersResult> getSecretParameters() {
@@ -1315,7 +1378,70 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.SecretParameter;
+     * import com.pulumi.alicloud.oos.SecretParameterArgs;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetSecretParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
+     *             .secretParameterName(name)
+     *             .value("tf-testacc-oos_secret_parameter")
+     *             .type("Secret")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_secret_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "SecretParameter")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = OosFunctions.getSecretParameters(GetSecretParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecretParametersResult> getSecretParametersPlain() {
@@ -1324,7 +1450,70 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.SecretParameter;
+     * import com.pulumi.alicloud.oos.SecretParameterArgs;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetSecretParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
+     *             .secretParameterName(name)
+     *             .value("tf-testacc-oos_secret_parameter")
+     *             .type("Secret")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_secret_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "SecretParameter")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = OosFunctions.getSecretParameters(GetSecretParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecretParametersResult> getSecretParameters(GetSecretParametersArgs args) {
@@ -1333,7 +1522,70 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.SecretParameter;
+     * import com.pulumi.alicloud.oos.SecretParameterArgs;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetSecretParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
+     *             .secretParameterName(name)
+     *             .value("tf-testacc-oos_secret_parameter")
+     *             .type("Secret")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_secret_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "SecretParameter")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = OosFunctions.getSecretParameters(GetSecretParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecretParametersResult> getSecretParametersPlain(GetSecretParametersPlainArgs args) {
@@ -1342,7 +1594,70 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.SecretParameter;
+     * import com.pulumi.alicloud.oos.SecretParameterArgs;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetSecretParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
+     *             .secretParameterName(name)
+     *             .value("tf-testacc-oos_secret_parameter")
+     *             .type("Secret")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_secret_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "SecretParameter")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = OosFunctions.getSecretParameters(GetSecretParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetSecretParametersResult> getSecretParameters(GetSecretParametersArgs args, InvokeOptions options) {
@@ -1351,7 +1666,70 @@ public final class OosFunctions {
     /**
      * This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.147.0+.
+     * &gt; **NOTE:** Available since v1.147.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.oos.SecretParameter;
+     * import com.pulumi.alicloud.oos.SecretParameterArgs;
+     * import com.pulumi.alicloud.oos.OosFunctions;
+     * import com.pulumi.alicloud.oos.inputs.GetSecretParametersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new SecretParameter("default", SecretParameterArgs.builder()
+     *             .secretParameterName(name)
+     *             .value("tf-testacc-oos_secret_parameter")
+     *             .type("Secret")
+     *             .description(name)
+     *             .constraints("""
+     *   {
+     *     "AllowedValues": [
+     *         "tf-testacc-oos_secret_parameter"
+     *     ],
+     *     "AllowedPattern": "tf-testacc-oos_secret_parameter",
+     *     "MinLength": 1,
+     *     "MaxLength": 100
+     *   }
+     *             """)
+     *             .tags(Map.ofEntries(
+     *                 Map.entry("Created", "TF"),
+     *                 Map.entry("For", "SecretParameter")
+     *             ))
+     *             .build());
+     * 
+     *         final var ids = OosFunctions.getSecretParameters(GetSecretParametersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("oosSecretParameterId0", ids.applyValue(getSecretParametersResult -> getSecretParametersResult).applyValue(ids -> ids.applyValue(getSecretParametersResult -> getSecretParametersResult.parameters()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSecretParametersResult> getSecretParametersPlain(GetSecretParametersPlainArgs args, InvokeOptions options) {

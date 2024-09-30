@@ -5,8 +5,10 @@ package com.pulumi.alicloud.gpdb.inputs;
 
 import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigPauseArgs;
 import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigResumeArgs;
+import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigScaleDownArgs;
 import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigScaleInArgs;
 import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigScaleOutArgs;
+import com.pulumi.alicloud.gpdb.inputs.DbInstancePlanPlanConfigScaleUpArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.util.Objects;
@@ -49,6 +51,21 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Scale down instance plan config. See `scale_down` below.
+     * 
+     */
+    @Import(name="scaleDown")
+    private @Nullable Output<DbInstancePlanPlanConfigScaleDownArgs> scaleDown;
+
+    /**
+     * @return Scale down instance plan config. See `scale_down` below.
+     * 
+     */
+    public Optional<Output<DbInstancePlanPlanConfigScaleDownArgs>> scaleDown() {
+        return Optional.ofNullable(this.scaleDown);
+    }
+
+    /**
      * Scale In instance plan config. See `scale_in` below.
      * 
      */
@@ -78,13 +95,30 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.scaleOut);
     }
 
+    /**
+     * Scale up instance plan config. See `scale_up` below.
+     * 
+     */
+    @Import(name="scaleUp")
+    private @Nullable Output<DbInstancePlanPlanConfigScaleUpArgs> scaleUp;
+
+    /**
+     * @return Scale up instance plan config. See `scale_up` below.
+     * 
+     */
+    public Optional<Output<DbInstancePlanPlanConfigScaleUpArgs>> scaleUp() {
+        return Optional.ofNullable(this.scaleUp);
+    }
+
     private DbInstancePlanPlanConfigArgs() {}
 
     private DbInstancePlanPlanConfigArgs(DbInstancePlanPlanConfigArgs $) {
         this.pause = $.pause;
         this.resume = $.resume;
+        this.scaleDown = $.scaleDown;
         this.scaleIn = $.scaleIn;
         this.scaleOut = $.scaleOut;
+        this.scaleUp = $.scaleUp;
     }
 
     public static Builder builder() {
@@ -148,6 +182,27 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param scaleDown Scale down instance plan config. See `scale_down` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleDown(@Nullable Output<DbInstancePlanPlanConfigScaleDownArgs> scaleDown) {
+            $.scaleDown = scaleDown;
+            return this;
+        }
+
+        /**
+         * @param scaleDown Scale down instance plan config. See `scale_down` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleDown(DbInstancePlanPlanConfigScaleDownArgs scaleDown) {
+            return scaleDown(Output.of(scaleDown));
+        }
+
+        /**
          * @param scaleIn Scale In instance plan config. See `scale_in` below.
          * 
          * @return builder
@@ -187,6 +242,27 @@ public final class DbInstancePlanPlanConfigArgs extends com.pulumi.resources.Res
          */
         public Builder scaleOut(DbInstancePlanPlanConfigScaleOutArgs scaleOut) {
             return scaleOut(Output.of(scaleOut));
+        }
+
+        /**
+         * @param scaleUp Scale up instance plan config. See `scale_up` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleUp(@Nullable Output<DbInstancePlanPlanConfigScaleUpArgs> scaleUp) {
+            $.scaleUp = scaleUp;
+            return this;
+        }
+
+        /**
+         * @param scaleUp Scale up instance plan config. See `scale_up` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleUp(DbInstancePlanPlanConfigScaleUpArgs scaleUp) {
+            return scaleUp(Output.of(scaleUp));
         }
 
         public DbInstancePlanPlanConfigArgs build() {

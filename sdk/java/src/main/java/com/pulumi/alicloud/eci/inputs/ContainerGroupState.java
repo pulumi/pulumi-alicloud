@@ -134,6 +134,21 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+     * 
+     */
+    @Import(name="dnsPolicy")
+    private @Nullable Output<String> dnsPolicy;
+
+    /**
+     * @return The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+     * 
+     */
+    public Optional<Output<String>> dnsPolicy() {
+        return Optional.ofNullable(this.dnsPolicy);
+    }
+
+    /**
      * The bandwidth of the EIP. Default value: `5`.
      * 
      */
@@ -509,6 +524,7 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
         this.containers = $.containers;
         this.cpu = $.cpu;
         this.dnsConfig = $.dnsConfig;
+        this.dnsPolicy = $.dnsPolicy;
         this.eipBandwidth = $.eipBandwidth;
         this.eipInstanceId = $.eipInstanceId;
         this.hostAliases = $.hostAliases;
@@ -718,6 +734,27 @@ public final class ContainerGroupState extends com.pulumi.resources.ResourceArgs
          */
         public Builder dnsConfig(ContainerGroupDnsConfigArgs dnsConfig) {
             return dnsConfig(Output.of(dnsConfig));
+        }
+
+        /**
+         * @param dnsPolicy The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsPolicy(@Nullable Output<String> dnsPolicy) {
+            $.dnsPolicy = dnsPolicy;
+            return this;
+        }
+
+        /**
+         * @param dnsPolicy The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsPolicy(String dnsPolicy) {
+            return dnsPolicy(Output.of(dnsPolicy));
         }
 
         /**

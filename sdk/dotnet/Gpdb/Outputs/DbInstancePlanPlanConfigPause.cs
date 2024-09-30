@@ -21,15 +21,22 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// The Cron Time of the plan.
         /// </summary>
         public readonly string? PlanCronTime;
+        /// <summary>
+        /// (Available since v1.231.0) The status of the plan task.
+        /// </summary>
+        public readonly string? PlanTaskStatus;
 
         [OutputConstructor]
         private DbInstancePlanPlanConfigPause(
             string? executeTime,
 
-            string? planCronTime)
+            string? planCronTime,
+
+            string? planTaskStatus)
         {
             ExecuteTime = executeTime;
             PlanCronTime = planCronTime;
+            PlanTaskStatus = planTaskStatus;
         }
     }
 }

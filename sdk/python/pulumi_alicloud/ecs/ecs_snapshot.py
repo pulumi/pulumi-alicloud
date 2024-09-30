@@ -28,18 +28,16 @@ class EcsSnapshotArgs:
         """
         The set of arguments for constructing a EcsSnapshot resource.
         :param pulumi.Input[str] disk_id: The ID of the disk.
-        :param pulumi.Input[str] category: The category of the snapshot. Valid Values: `standard` and `flash`.
+        :param pulumi.Input[str] category: The category of the snapshot. Valid values:
         :param pulumi.Input[str] description: The description of the snapshot.
-        :param pulumi.Input[bool] force: Specifies whether to forcibly delete the snapshot that has been used to create disks.
-        :param pulumi.Input[bool] instant_access: Specifies whether to enable the instant access feature.
-        :param pulumi.Input[int] instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
+        :param pulumi.Input[bool] instant_access: Field `instant_access` has been deprecated from provider version 1.231.0.
+        :param pulumi.Input[int] instant_access_retention_days: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
-        :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[int] retention_days: The retention period of the snapshot.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot.
-               
-               > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "disk_id", disk_id)
         if category is not None:
@@ -49,12 +47,18 @@ class EcsSnapshotArgs:
         if force is not None:
             pulumi.set(__self__, "force", force)
         if instant_access is not None:
+            warnings.warn("""Field `instant_access` has been deprecated from provider version 1.231.0.""", DeprecationWarning)
+            pulumi.log.warn("""instant_access is deprecated: Field `instant_access` has been deprecated from provider version 1.231.0.""")
+        if instant_access is not None:
             pulumi.set(__self__, "instant_access", instant_access)
+        if instant_access_retention_days is not None:
+            warnings.warn("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""", DeprecationWarning)
+            pulumi.log.warn("""instant_access_retention_days is deprecated: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
         if instant_access_retention_days is not None:
             pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
@@ -82,7 +86,7 @@ class EcsSnapshotArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The category of the snapshot. Valid Values: `standard` and `flash`.
+        The category of the snapshot. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -106,7 +110,7 @@ class EcsSnapshotArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to forcibly delete the snapshot that has been used to create disks.
+        Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -116,9 +120,10 @@ class EcsSnapshotArgs:
 
     @property
     @pulumi.getter(name="instantAccess")
+    @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
     def instant_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the instant access feature.
+        Field `instant_access` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access")
 
@@ -128,9 +133,10 @@ class EcsSnapshotArgs:
 
     @property
     @pulumi.getter(name="instantAccessRetentionDays")
+    @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
     def instant_access_retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access_retention_days")
 
@@ -140,7 +146,7 @@ class EcsSnapshotArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
@@ -155,7 +161,7 @@ class EcsSnapshotArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource group id.
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -167,7 +173,7 @@ class EcsSnapshotArgs:
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The retention period of the snapshot.
+        The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         """
         return pulumi.get(self, "retention_days")
 
@@ -191,9 +197,7 @@ class EcsSnapshotArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A mapping of tags to assign to the snapshot.
-
-        > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -219,20 +223,18 @@ class _EcsSnapshotState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering EcsSnapshot resources.
-        :param pulumi.Input[str] category: The category of the snapshot. Valid Values: `standard` and `flash`.
+        :param pulumi.Input[str] category: The category of the snapshot. Valid values:
         :param pulumi.Input[str] description: The description of the snapshot.
         :param pulumi.Input[str] disk_id: The ID of the disk.
-        :param pulumi.Input[bool] force: Specifies whether to forcibly delete the snapshot that has been used to create disks.
-        :param pulumi.Input[bool] instant_access: Specifies whether to enable the instant access feature.
-        :param pulumi.Input[int] instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
+        :param pulumi.Input[bool] instant_access: Field `instant_access` has been deprecated from provider version 1.231.0.
+        :param pulumi.Input[int] instant_access_retention_days: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
-        :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[int] retention_days: The retention period of the snapshot.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
-        :param pulumi.Input[str] status: The status of snapshot.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot.
-               
-               > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        :param pulumi.Input[str] status: The status of the Snapshot.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -243,12 +245,18 @@ class _EcsSnapshotState:
         if force is not None:
             pulumi.set(__self__, "force", force)
         if instant_access is not None:
+            warnings.warn("""Field `instant_access` has been deprecated from provider version 1.231.0.""", DeprecationWarning)
+            pulumi.log.warn("""instant_access is deprecated: Field `instant_access` has been deprecated from provider version 1.231.0.""")
+        if instant_access is not None:
             pulumi.set(__self__, "instant_access", instant_access)
+        if instant_access_retention_days is not None:
+            warnings.warn("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""", DeprecationWarning)
+            pulumi.log.warn("""instant_access_retention_days is deprecated: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
         if instant_access_retention_days is not None:
             pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
@@ -266,7 +274,7 @@ class _EcsSnapshotState:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        The category of the snapshot. Valid Values: `standard` and `flash`.
+        The category of the snapshot. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -302,7 +310,7 @@ class _EcsSnapshotState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to forcibly delete the snapshot that has been used to create disks.
+        Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -312,9 +320,10 @@ class _EcsSnapshotState:
 
     @property
     @pulumi.getter(name="instantAccess")
+    @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
     def instant_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the instant access feature.
+        Field `instant_access` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access")
 
@@ -324,9 +333,10 @@ class _EcsSnapshotState:
 
     @property
     @pulumi.getter(name="instantAccessRetentionDays")
+    @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
     def instant_access_retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access_retention_days")
 
@@ -336,7 +346,7 @@ class _EcsSnapshotState:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
@@ -351,7 +361,7 @@ class _EcsSnapshotState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource group id.
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -363,7 +373,7 @@ class _EcsSnapshotState:
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The retention period of the snapshot.
+        The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         """
         return pulumi.get(self, "retention_days")
 
@@ -387,7 +397,7 @@ class _EcsSnapshotState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of snapshot.
+        The status of the Snapshot.
         """
         return pulumi.get(self, "status")
 
@@ -399,9 +409,7 @@ class _EcsSnapshotState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A mapping of tags to assign to the snapshot.
-
-        > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -432,7 +440,66 @@ class EcsSnapshot(pulumi.CustomResource):
 
         For information about ECS Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/25524.htm).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_disk_category="cloud_essd",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(most_recent=True,
+            owners="system")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id,
+            system_disk_category="cloud_essd")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_essd",
+            vswitch_id=default_switch.id,
+            instance_name=name,
+            data_disks=[{
+                "category": "cloud_essd",
+                "size": 20,
+            }])
+        default_ecs_disk = alicloud.ecs.EcsDisk("default",
+            disk_name=name,
+            zone_id=default_get_instance_types.instance_types[0].availability_zones[0],
+            category="cloud_essd",
+            size=500)
+        default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("default",
+            disk_id=default_ecs_disk.id,
+            instance_id=default_instance.id)
+        default_ecs_snapshot = alicloud.ecs.EcsSnapshot("default",
+            disk_id=default_ecs_disk_attachment.disk_id,
+            category="standard",
+            retention_days=20)
+        ```
 
         ## Import
 
@@ -444,19 +511,17 @@ class EcsSnapshot(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] category: The category of the snapshot. Valid Values: `standard` and `flash`.
+        :param pulumi.Input[str] category: The category of the snapshot. Valid values:
         :param pulumi.Input[str] description: The description of the snapshot.
         :param pulumi.Input[str] disk_id: The ID of the disk.
-        :param pulumi.Input[bool] force: Specifies whether to forcibly delete the snapshot that has been used to create disks.
-        :param pulumi.Input[bool] instant_access: Specifies whether to enable the instant access feature.
-        :param pulumi.Input[int] instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
+        :param pulumi.Input[bool] instant_access: Field `instant_access` has been deprecated from provider version 1.231.0.
+        :param pulumi.Input[int] instant_access_retention_days: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
-        :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[int] retention_days: The retention period of the snapshot.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot.
-               
-               > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
     @overload
@@ -469,7 +534,66 @@ class EcsSnapshot(pulumi.CustomResource):
 
         For information about ECS Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/25524.htm).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones(available_disk_category="cloud_essd",
+            available_resource_creation="VSwitch")
+        default_get_images = alicloud.ecs.get_images(most_recent=True,
+            owners="system")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+            image_id=default_get_images.images[0].id,
+            system_disk_category="cloud_essd")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_essd",
+            vswitch_id=default_switch.id,
+            instance_name=name,
+            data_disks=[{
+                "category": "cloud_essd",
+                "size": 20,
+            }])
+        default_ecs_disk = alicloud.ecs.EcsDisk("default",
+            disk_name=name,
+            zone_id=default_get_instance_types.instance_types[0].availability_zones[0],
+            category="cloud_essd",
+            size=500)
+        default_ecs_disk_attachment = alicloud.ecs.EcsDiskAttachment("default",
+            disk_id=default_ecs_disk.id,
+            instance_id=default_instance.id)
+        default_ecs_snapshot = alicloud.ecs.EcsSnapshot("default",
+            disk_id=default_ecs_disk_attachment.disk_id,
+            category="standard",
+            retention_days=20)
+        ```
 
         ## Import
 
@@ -557,20 +681,18 @@ class EcsSnapshot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] category: The category of the snapshot. Valid Values: `standard` and `flash`.
+        :param pulumi.Input[str] category: The category of the snapshot. Valid values:
         :param pulumi.Input[str] description: The description of the snapshot.
         :param pulumi.Input[str] disk_id: The ID of the disk.
-        :param pulumi.Input[bool] force: Specifies whether to forcibly delete the snapshot that has been used to create disks.
-        :param pulumi.Input[bool] instant_access: Specifies whether to enable the instant access feature.
-        :param pulumi.Input[int] instant_access_retention_days: Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
+        :param pulumi.Input[bool] instant_access: Field `instant_access` has been deprecated from provider version 1.231.0.
+        :param pulumi.Input[int] instant_access_retention_days: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
-        :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[int] retention_days: The retention period of the snapshot.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         :param pulumi.Input[str] snapshot_name: The name of the snapshot.
-        :param pulumi.Input[str] status: The status of snapshot.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the snapshot.
-               
-               > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        :param pulumi.Input[str] status: The status of the Snapshot.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -592,9 +714,9 @@ class EcsSnapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def category(self) -> pulumi.Output[Optional[str]]:
+    def category(self) -> pulumi.Output[str]:
         """
-        The category of the snapshot. Valid Values: `standard` and `flash`.
+        The category of the snapshot. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -618,29 +740,31 @@ class EcsSnapshot(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to forcibly delete the snapshot that has been used to create disks.
+        Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
         """
         return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="instantAccess")
+    @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
     def instant_access(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to enable the instant access feature.
+        Field `instant_access` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access")
 
     @property
     @pulumi.getter(name="instantAccessRetentionDays")
+    @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
     def instant_access_retention_days(self) -> pulumi.Output[Optional[int]]:
         """
-        Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+        Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.
         """
         return pulumi.get(self, "instant_access_retention_days")
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.
@@ -651,7 +775,7 @@ class EcsSnapshot(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The resource group id.
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -659,7 +783,7 @@ class EcsSnapshot(pulumi.CustomResource):
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Output[Optional[int]]:
         """
-        The retention period of the snapshot.
+        The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retention_days` can be modified.
         """
         return pulumi.get(self, "retention_days")
 
@@ -675,7 +799,7 @@ class EcsSnapshot(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of snapshot.
+        The status of the Snapshot.
         """
         return pulumi.get(self, "status")
 
@@ -683,9 +807,7 @@ class EcsSnapshot(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A mapping of tags to assign to the snapshot.
-
-        > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 

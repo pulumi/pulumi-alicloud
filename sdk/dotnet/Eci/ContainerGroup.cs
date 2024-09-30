@@ -238,6 +238,12 @@ namespace Pulumi.AliCloud.Eci
         public Output<Outputs.ContainerGroupDnsConfig?> DnsConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+        /// </summary>
+        [Output("dnsPolicy")]
+        public Output<string> DnsPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The bandwidth of the EIP. Default value: `5`.
         /// </summary>
         [Output("eipBandwidth")]
@@ -485,6 +491,12 @@ namespace Pulumi.AliCloud.Eci
         public Input<Inputs.ContainerGroupDnsConfigArgs>? DnsConfig { get; set; }
 
         /// <summary>
+        /// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+        /// </summary>
+        [Input("dnsPolicy")]
+        public Input<string>? DnsPolicy { get; set; }
+
+        /// <summary>
         /// The bandwidth of the EIP. Default value: `5`.
         /// </summary>
         [Input("eipBandwidth")]
@@ -704,6 +716,12 @@ namespace Pulumi.AliCloud.Eci
         /// </summary>
         [Input("dnsConfig")]
         public Input<Inputs.ContainerGroupDnsConfigGetArgs>? DnsConfig { get; set; }
+
+        /// <summary>
+        /// The policy of DNS. Default value: `Default`. Valid values: `Default` and `None`.
+        /// </summary>
+        [Input("dnsPolicy")]
+        public Input<string>? DnsPolicy { get; set; }
 
         /// <summary>
         /// The bandwidth of the EIP. Default value: `5`.

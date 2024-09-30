@@ -42,12 +42,18 @@ class SnapshotArgs:
         if force is not None:
             pulumi.set(__self__, "force", force)
         if instant_access is not None:
+            warnings.warn("""Field `instant_access` has been deprecated from provider version 1.231.0.""", DeprecationWarning)
+            pulumi.log.warn("""instant_access is deprecated: Field `instant_access` has been deprecated from provider version 1.231.0.""")
+        if instant_access is not None:
             pulumi.set(__self__, "instant_access", instant_access)
+        if instant_access_retention_days is not None:
+            warnings.warn("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""", DeprecationWarning)
+            pulumi.log.warn("""instant_access_retention_days is deprecated: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
         if instant_access_retention_days is not None:
             pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
@@ -103,6 +109,7 @@ class SnapshotArgs:
 
     @property
     @pulumi.getter(name="instantAccess")
+    @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
     def instant_access(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "instant_access")
 
@@ -112,6 +119,7 @@ class SnapshotArgs:
 
     @property
     @pulumi.getter(name="instantAccessRetentionDays")
+    @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
     def instant_access_retention_days(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "instant_access_retention_days")
 
@@ -121,7 +129,7 @@ class SnapshotArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -209,12 +217,18 @@ class _SnapshotState:
         if force is not None:
             pulumi.set(__self__, "force", force)
         if instant_access is not None:
+            warnings.warn("""Field `instant_access` has been deprecated from provider version 1.231.0.""", DeprecationWarning)
+            pulumi.log.warn("""instant_access is deprecated: Field `instant_access` has been deprecated from provider version 1.231.0.""")
+        if instant_access is not None:
             pulumi.set(__self__, "instant_access", instant_access)
+        if instant_access_retention_days is not None:
+            warnings.warn("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""", DeprecationWarning)
+            pulumi.log.warn("""instant_access_retention_days is deprecated: Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
         if instant_access_retention_days is not None:
             pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if resource_group_id is not None:
@@ -272,6 +286,7 @@ class _SnapshotState:
 
     @property
     @pulumi.getter(name="instantAccess")
+    @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
     def instant_access(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "instant_access")
 
@@ -281,6 +296,7 @@ class _SnapshotState:
 
     @property
     @pulumi.getter(name="instantAccessRetentionDays")
+    @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
     def instant_access_retention_days(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "instant_access_retention_days")
 
@@ -290,7 +306,7 @@ class _SnapshotState:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
@@ -551,7 +567,7 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def category(self) -> pulumi.Output[Optional[str]]:
+    def category(self) -> pulumi.Output[str]:
         return pulumi.get(self, "category")
 
     @property
@@ -577,17 +593,19 @@ class Snapshot(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="instantAccess")
+    @_utilities.deprecated("""Field `instant_access` has been deprecated from provider version 1.231.0.""")
     def instant_access(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "instant_access")
 
     @property
     @pulumi.getter(name="instantAccessRetentionDays")
+    @_utilities.deprecated("""Field `instant_access_retention_days` has been deprecated from provider version 1.231.0.""")
     def instant_access_retention_days(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "instant_access_retention_days")
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.120.0. New field `snapshot_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).

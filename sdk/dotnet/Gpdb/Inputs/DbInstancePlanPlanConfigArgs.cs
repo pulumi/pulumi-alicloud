@@ -25,6 +25,12 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
         public Input<Inputs.DbInstancePlanPlanConfigResumeArgs>? Resume { get; set; }
 
         /// <summary>
+        /// Scale down instance plan config. See `scale_down` below.
+        /// </summary>
+        [Input("scaleDown")]
+        public Input<Inputs.DbInstancePlanPlanConfigScaleDownArgs>? ScaleDown { get; set; }
+
+        /// <summary>
         /// Scale In instance plan config. See `scale_in` below.
         /// </summary>
         [Input("scaleIn")]
@@ -35,6 +41,12 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
         /// </summary>
         [Input("scaleOut")]
         public Input<Inputs.DbInstancePlanPlanConfigScaleOutArgs>? ScaleOut { get; set; }
+
+        /// <summary>
+        /// Scale up instance plan config. See `scale_up` below.
+        /// </summary>
+        [Input("scaleUp")]
+        public Input<Inputs.DbInstancePlanPlanConfigScaleUpArgs>? ScaleUp { get; set; }
 
         public DbInstancePlanPlanConfigArgs()
         {

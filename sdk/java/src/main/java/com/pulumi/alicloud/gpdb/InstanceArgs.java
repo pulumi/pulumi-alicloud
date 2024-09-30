@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.gpdb;
 
 import com.pulumi.alicloud.gpdb.inputs.InstanceIpWhitelistArgs;
+import com.pulumi.alicloud.gpdb.inputs.InstanceParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -349,6 +350,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The parameters. See `parameters` below.
+     * 
+     */
+    @Import(name="parameters")
+    private @Nullable Output<List<InstanceParameterArgs>> parameters;
+
+    /**
+     * @return The parameters. See `parameters` below.
+     * 
+     */
+    public Optional<Output<List<InstanceParameterArgs>>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
+    /**
      * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
      * 
      */
@@ -632,6 +648,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.maintainStartTime = $.maintainStartTime;
         this.masterCu = $.masterCu;
         this.masterNodeNum = $.masterNodeNum;
+        this.parameters = $.parameters;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.privateIpAddress = $.privateIpAddress;
@@ -1118,6 +1135,37 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* Field `master_node_num` has been deprecated from provider version 1.213.0. */
         public Builder masterNodeNum(Integer masterNodeNum) {
             return masterNodeNum(Output.of(masterNodeNum));
+        }
+
+        /**
+         * @param parameters The parameters. See `parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(@Nullable Output<List<InstanceParameterArgs>> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        /**
+         * @param parameters The parameters. See `parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(List<InstanceParameterArgs> parameters) {
+            return parameters(Output.of(parameters));
+        }
+
+        /**
+         * @param parameters The parameters. See `parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(InstanceParameterArgs... parameters) {
+            return parameters(List.of(parameters));
         }
 
         /**

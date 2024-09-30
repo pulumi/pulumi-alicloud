@@ -15,7 +15,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a route entry resource. A route entry represents a route item of one VPC route table.
+ * Provides a Route Entry resource. A Route Entry represents a route item of one VPC Route Table.
+ * 
+ * For information about Route Entry and how to use it, see [What is Route Entry](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-createrouteentry).
+ * 
+ * &gt; **NOTE:** Available since v0.1.0.
  * 
  * ## Example Usage
  * 
@@ -32,16 +36,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+ * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.ecs.SecurityGroupRule;
- * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
  * import com.pulumi.alicloud.vpc.RouteEntry;
@@ -60,69 +62,57 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableDiskCategory("cloud_efficiency")
  *             .availableResourceCreation("VSwitch")
  *             .build());
  * 
- *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(default_.zones()[0].id())
- *             .cpuCoreCount(1)
- *             .memorySize(2)
- *             .build());
- * 
  *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .nameRegex("^ubuntu_18.*64")
  *             .mostRecent(true)
  *             .owners("system")
  *             .build());
  * 
- *         final var name = config.get("name").orElse("RouteEntryConfig");
- *         var foo = new Network("foo", NetworkArgs.builder()
- *             .vpcName(name)
- *             .cidrBlock("10.1.0.0/21")
- *             .build());
- * 
- *         var fooSwitch = new Switch("fooSwitch", SwitchArgs.builder()
- *             .vpcId(foo.id())
- *             .cidrBlock("10.1.1.0/24")
- *             .zoneId(default_.zones()[0].id())
- *             .vswitchName(name)
- *             .build());
- * 
- *         var tfTestFoo = new SecurityGroup("tfTestFoo", SecurityGroupArgs.builder()
- *             .name(name)
- *             .description("foo")
- *             .vpcId(foo.id())
- *             .build());
- * 
- *         var ingress = new SecurityGroupRule("ingress", SecurityGroupRuleArgs.builder()
- *             .type("ingress")
- *             .ipProtocol("tcp")
- *             .nicType("intranet")
- *             .policy("accept")
- *             .portRange("22/22")
- *             .priority(1)
- *             .securityGroupId(tfTestFoo.id())
- *             .cidrIp("0.0.0.0/0")
- *             .build());
- * 
- *         var fooInstance = new Instance("fooInstance", InstanceArgs.builder()
- *             .securityGroups(tfTestFoo.id())
- *             .vswitchId(fooSwitch.id())
- *             .instanceChargeType("PostPaid")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
- *             .internetChargeType("PayByTraffic")
- *             .internetMaxBandwidthOut(5)
- *             .systemDiskCategory("cloud_efficiency")
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
  *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(name)
+ *             .vpcId(defaultNetwork.id())
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut("10")
+ *             .availabilityZone(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].availabilityZones()[0]))
+ *             .instanceChargeType("PostPaid")
+ *             .systemDiskCategory("cloud_efficiency")
+ *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .build());
  * 
- *         var fooRouteEntry = new RouteEntry("fooRouteEntry", RouteEntryArgs.builder()
- *             .routeTableId(foo.routeTableId())
+ *         var foo = new RouteEntry("foo", RouteEntryArgs.builder()
+ *             .routeTableId(defaultNetwork.routeTableId())
  *             .destinationCidrblock("172.11.1.1/32")
  *             .nexthopType("Instance")
- *             .nexthopId(fooInstance.id())
+ *             .nexthopId(defaultInstance.id())
  *             .build());
  * 
  *     }
@@ -138,100 +128,116 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Router entry can be imported using the id, e.g (formatted as&lt;route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id&gt;).
- * 
  * ```sh
- * $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+ * $ pulumi import alicloud:vpc/routeEntry:RouteEntry example &lt;route_table_id&gt;:&lt;router_id&gt;:&lt;destination_cidrblock&gt;:&lt;nexthop_type&gt;:&lt;nexthop_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:vpc/routeEntry:RouteEntry")
 public class RouteEntry extends com.pulumi.resources.CustomResource {
     /**
-     * The RouteEntry&#39;s target network segment.
+     * The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
+     * The destination CIDR block of the custom route entry.
      * 
      */
     @Export(name="destinationCidrblock", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationCidrblock;
 
     /**
-     * @return The RouteEntry&#39;s target network segment.
+     * @return The destination CIDR block of the custom route entry.
      * 
      */
     public Output<Optional<String>> destinationCidrblock() {
         return Codegen.optional(this.destinationCidrblock);
     }
     /**
-     * The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
+     * @return The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+     * The ID of Next Hop.
      * 
      */
     @Export(name="nexthopId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nexthopId;
 
     /**
-     * @return The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+     * @return The ID of Next Hop.
      * 
      */
     public Output<Optional<String>> nexthopId() {
         return Codegen.optional(this.nexthopId);
     }
     /**
-     * The next hop type. Available values:
-     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-     * - `RouterInterface`: a router interface.
-     * - `VpnGateway`: a VPN Gateway.
-     * - `HaVip`: a high-availability virtual IP address (HAVIP).
-     * - `NetworkInterface`: an elastic network interface (ENI).
-     * - `NatGateway`: a Nat Gateway.
-     * - `IPv6Gateway`: an IPv6 gateway.
-     * - `Attachment`: a transit router.
-     * - `VpcPeer`: a VPC Peering Connection.
-     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+     * The type of Next Hop. Valid values:
+     * - `Instance`: An Elastic Compute Service (ECS) instance.
+     * - `HaVip`: A high-availability virtual IP address (HAVIP).
+     * - `RouterInterface`: A router interface.
+     * - `NetworkInterface`: An elastic network interface (ENI).
+     * - `VpnGateway`: A VPN Gateway.
+     * - `IPv6Gateway`: An IPv6 gateway.
+     * - `NatGateway`: A Nat Gateway.
+     * - `Attachment`: A transit router.
+     * - `VpcPeer`: A VPC Peering Connection.
+     * - `Ipv4Gateway`: An IPv4 gateway.
+     * - `GatewayEndpoint`: A gateway endpoint.
+     * - `Ecr`: A Express Connect Router (ECR).
      * 
      */
     @Export(name="nexthopType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nexthopType;
 
     /**
-     * @return The next hop type. Available values:
-     * - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-     * - `RouterInterface`: a router interface.
-     * - `VpnGateway`: a VPN Gateway.
-     * - `HaVip`: a high-availability virtual IP address (HAVIP).
-     * - `NetworkInterface`: an elastic network interface (ENI).
-     * - `NatGateway`: a Nat Gateway.
-     * - `IPv6Gateway`: an IPv6 gateway.
-     * - `Attachment`: a transit router.
-     * - `VpcPeer`: a VPC Peering Connection.
-     * - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+     * @return The type of Next Hop. Valid values:
+     * - `Instance`: An Elastic Compute Service (ECS) instance.
+     * - `HaVip`: A high-availability virtual IP address (HAVIP).
+     * - `RouterInterface`: A router interface.
+     * - `NetworkInterface`: An elastic network interface (ENI).
+     * - `VpnGateway`: A VPN Gateway.
+     * - `IPv6Gateway`: An IPv6 gateway.
+     * - `NatGateway`: A Nat Gateway.
+     * - `Attachment`: A transit router.
+     * - `VpcPeer`: A VPC Peering Connection.
+     * - `Ipv4Gateway`: An IPv4 gateway.
+     * - `GatewayEndpoint`: A gateway endpoint.
+     * - `Ecr`: A Express Connect Router (ECR).
      * 
      */
     public Output<Optional<String>> nexthopType() {
         return Codegen.optional(this.nexthopType);
     }
     /**
-     * The ID of the route table.
+     * The ID of the Route Table.
      * 
      */
     @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**
-     * @return The ID of the route table.
+     * @return The ID of the Route Table.
      * 
      */
     public Output<String> routeTableId() {

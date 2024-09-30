@@ -106,6 +106,103 @@ import (
 //
 // ```
 //
+// # DualStack Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/nlb"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			zone := []string{
+//				"cn-beijing-i",
+//				"cn-beijing-k",
+//				"cn-beijing-l",
+//			}
+//			if param := cfg.GetObject("zone"); param != nil {
+//				zone = param
+//			}
+//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//				VpcName:    pulumi.String(name),
+//				CidrBlock:  pulumi.String("10.2.0.0/16"),
+//				EnableIpv6: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			var vsw []*vpc.Switch
+//			for index := 0; index < 2; index++ {
+//				key0 := index
+//				val0 := index
+//				__res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vsw-%v", key0), &vpc.SwitchArgs{
+//					EnableIpv6:        pulumi.Bool(true),
+//					Ipv6CidrBlockMask: pulumi.Int(fmt.Sprintf("1%v", val0)),
+//					VswitchName:       pulumi.Sprintf("vsw-%v-for-nlb", val0),
+//					VpcId:             vpc.ID(),
+//					CidrBlock:         pulumi.Sprintf("10.2.1%v.0/24", val0),
+//					ZoneId:            zone[val0],
+//				})
+//				if err != nil {
+//					return err
+//				}
+//				vsw = append(vsw, __res)
+//			}
+//			_, err = vpc.NewIpv6Gateway(ctx, "default", &vpc.Ipv6GatewayArgs{
+//				Ipv6GatewayName: pulumi.String(name),
+//				VpcId:           vpc.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = nlb.NewLoadBalancer(ctx, "nlb", &nlb.LoadBalancerArgs{
+//				LoadBalancerName: pulumi.String(name),
+//				LoadBalancerType: pulumi.String("Network"),
+//				AddressType:      pulumi.String("Intranet"),
+//				AddressIpVersion: pulumi.String("DualStack"),
+//				Ipv6AddressType:  pulumi.String("Internet"),
+//				VpcId:            vpc.ID(),
+//				CrossZoneEnabled: pulumi.Bool(false),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
+//				},
+//				ZoneMappings: nlb.LoadBalancerZoneMappingArray{
+//					&nlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: vsw[0].ID(),
+//						ZoneId:    pulumi.Any(zone[0]),
+//					},
+//					&nlb.LoadBalancerZoneMappingArgs{
+//						VswitchId: vsw[1].ID(),
+//						ZoneId:    pulumi.Any(zone[1]),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // NLB Load Balancer can be imported using the id, e.g.

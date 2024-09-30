@@ -196,6 +196,8 @@ type Alarm struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions pulumi.StringMapOutput `pulumi:"dimensions"`
+	// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+	Effective pulumi.StringOutput `pulumi:"effective"`
 	// Whether to enable specific ess alarm. Default to true.
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -271,6 +273,8 @@ type alarmState struct {
 	Description *string `pulumi:"description"`
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions map[string]string `pulumi:"dimensions"`
+	// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+	Effective *string `pulumi:"effective"`
 	// Whether to enable specific ess alarm. Default to true.
 	Enable *bool `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -311,6 +315,8 @@ type AlarmState struct {
 	Description pulumi.StringPtrInput
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions pulumi.StringMapInput
+	// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+	Effective pulumi.StringPtrInput
 	// Whether to enable specific ess alarm. Default to true.
 	Enable pulumi.BoolPtrInput
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -355,6 +361,8 @@ type alarmArgs struct {
 	Description *string `pulumi:"description"`
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions map[string]string `pulumi:"dimensions"`
+	// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+	Effective *string `pulumi:"effective"`
 	// Whether to enable specific ess alarm. Default to true.
 	Enable *bool `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -391,6 +399,8 @@ type AlarmArgs struct {
 	Description pulumi.StringPtrInput
 	// The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 	Dimensions pulumi.StringMapInput
+	// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+	Effective pulumi.StringPtrInput
 	// Whether to enable specific ess alarm. Default to true.
 	Enable pulumi.BoolPtrInput
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
@@ -525,6 +535,11 @@ func (o AlarmOutput) Description() pulumi.StringPtrOutput {
 // The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
 func (o AlarmOutput) Dimensions() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringMapOutput { return v.Dimensions }).(pulumi.StringMapOutput)
+}
+
+// The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+func (o AlarmOutput) Effective() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.Effective }).(pulumi.StringOutput)
 }
 
 // Whether to enable specific ess alarm. Default to true.

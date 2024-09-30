@@ -3076,7 +3076,7 @@ export namespace cms {
 
     export interface AlarmEscalationsCritical {
         /**
-         * Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
+         * Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparisonOperator` can be set to `==`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
@@ -3095,7 +3095,7 @@ export namespace cms {
 
     export interface AlarmEscalationsInfo {
         /**
-         * Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
+         * Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparisonOperator` can be set to `==`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
@@ -3114,7 +3114,7 @@ export namespace cms {
 
     export interface AlarmEscalationsWarn {
         /**
-         * Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
+         * Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparisonOperator` can be set to `==`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
@@ -5862,11 +5862,11 @@ export namespace ddos {
 
     export interface DomainResourceProxyType {
         /**
-         * the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.
+         * The port numbers.
          */
-        proxyPorts?: pulumi.Input<pulumi.Input<number>[]>;
+        proxyPorts: pulumi.Input<pulumi.Input<number>[]>;
         /**
-         * the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+         * The type of the protocol. Valid values:
          */
         proxyType?: pulumi.Input<string>;
     }
@@ -9851,7 +9851,7 @@ export namespace ga {
          */
         order: pulumi.Input<number>;
         /**
-         * Forward action type.
+         * The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
          */
         ruleActionType: pulumi.Input<string>;
         /**
@@ -9877,6 +9877,7 @@ export namespace ga {
     export interface ForwardingRuleRuleCondition {
         /**
          * The configuration of the domain name. See `hostConfig` below.
+         * > **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
          */
         hostConfigs?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleConditionHostConfig>[]>;
         /**
@@ -9884,9 +9885,13 @@ export namespace ga {
          */
         pathConfig?: pulumi.Input<inputs.ga.ForwardingRuleRuleConditionPathConfig>;
         /**
-         * The type of the forwarding conditions. Valid values: `Host`, `Path`.
+         * The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
          */
         ruleConditionType: pulumi.Input<string>;
+        /**
+         * The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+         */
+        ruleConditionValue?: pulumi.Input<string>;
     }
 
     export interface ForwardingRuleRuleConditionHostConfig {
@@ -9974,6 +9979,10 @@ export namespace gpdb {
          */
         resume?: pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfigResume>;
         /**
+         * Scale down instance plan config. See `scaleDown` below.
+         */
+        scaleDown?: pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfigScaleDown>;
+        /**
          * Scale In instance plan config. See `scaleIn` below.
          */
         scaleIn?: pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfigScaleIn>;
@@ -9981,6 +9990,10 @@ export namespace gpdb {
          * Scale out instance plan config. See `scaleOut` below.
          */
         scaleOut?: pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfigScaleOut>;
+        /**
+         * Scale up instance plan config. See `scaleUp` below.
+         */
+        scaleUp?: pulumi.Input<inputs.gpdb.DbInstancePlanPlanConfigScaleUp>;
     }
 
     export interface DbInstancePlanPlanConfigPause {
@@ -9992,6 +10005,10 @@ export namespace gpdb {
          * The Cron Time of the plan.
          */
         planCronTime?: pulumi.Input<string>;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus?: pulumi.Input<string>;
     }
 
     export interface DbInstancePlanPlanConfigResume {
@@ -10003,6 +10020,29 @@ export namespace gpdb {
          * The Cron Time of the plan.
          */
         planCronTime?: pulumi.Input<string>;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus?: pulumi.Input<string>;
+    }
+
+    export interface DbInstancePlanPlanConfigScaleDown {
+        /**
+         * The executed time of the Plan.
+         */
+        executeTime?: pulumi.Input<string>;
+        /**
+         * The specification of segment nodes of the Plan.
+         */
+        instanceSpec?: pulumi.Input<string>;
+        /**
+         * The Cron Time of the plan.
+         */
+        planCronTime?: pulumi.Input<string>;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus?: pulumi.Input<string>;
     }
 
     export interface DbInstancePlanPlanConfigScaleIn {
@@ -10014,6 +10054,10 @@ export namespace gpdb {
          * The Cron Time of the plan.
          */
         planCronTime?: pulumi.Input<string>;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus?: pulumi.Input<string>;
         /**
          * The segment Node Num of the Plan.
          */
@@ -10030,9 +10074,32 @@ export namespace gpdb {
          */
         planCronTime?: pulumi.Input<string>;
         /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus?: pulumi.Input<string>;
+        /**
          * The segment Node Num of the Plan.
          */
         segmentNodeNum?: pulumi.Input<string>;
+    }
+
+    export interface DbInstancePlanPlanConfigScaleUp {
+        /**
+         * The executed time of the Plan.
+         */
+        executeTime?: pulumi.Input<string>;
+        /**
+         * The specification of segment nodes of the Plan.
+         */
+        instanceSpec?: pulumi.Input<string>;
+        /**
+         * The Cron Time of the plan.
+         */
+        planCronTime?: pulumi.Input<string>;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus?: pulumi.Input<string>;
     }
 
     export interface InstanceIpWhitelist {
@@ -10049,6 +10116,37 @@ export namespace gpdb {
          * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
          */
         securityIpList?: pulumi.Input<string>;
+    }
+
+    export interface InstanceParameter {
+        /**
+         * (Available since v1.231.0) The default value of the parameter.
+         */
+        defaultValue?: pulumi.Input<string>;
+        /**
+         * (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+         */
+        forceRestartInstance?: pulumi.Input<string>;
+        /**
+         * (Available since v1.231.0) Whether the parameter is changeable.
+         */
+        isChangeableConfig?: pulumi.Input<string>;
+        /**
+         * The name of the parameter.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * (Available since v1.231.0) The optional range of the parameter.
+         */
+        optionalRange?: pulumi.Input<string>;
+        /**
+         * (Available since v1.231.0) The description of the parameter.
+         */
+        parameterDescription?: pulumi.Input<string>;
+        /**
+         * The value of the parameter.
+         */
+        value: pulumi.Input<string>;
     }
 }
 
@@ -12843,19 +12941,19 @@ export namespace rocketmq {
 
     export interface RocketMQInstanceNetworkInfoInternetInfo {
         /**
-         * Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+         * Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
          */
         flowOutBandwidth?: pulumi.Input<number>;
         /**
-         * Public network billing type. The parameter values are as follows:
-         * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-         * - uninvolved: Not involved. Set this value when disabling public network access.
+         * Public network billing type.  Parameter values are as follows:
+         * - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+         * - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
          */
         flowOutType: pulumi.Input<string>;
         /**
-         * Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+         * Whether to enable public network access.  The parameter values are as follows:
          * - enable: Enable public network access
-         * - disable: Disable public network access
+         * - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
          */
         internetSpec: pulumi.Input<string>;
         /**
@@ -12866,13 +12964,28 @@ export namespace rocketmq {
 
     export interface RocketMQInstanceNetworkInfoVpcInfo {
         /**
+         * Security group id.
+         */
+        securityGroupIds?: pulumi.Input<string>;
+        /**
          * Proprietary Network.
          */
         vpcId: pulumi.Input<string>;
         /**
-         * VPC network switch.
+         * VPC switch id.
          */
-        vswitchId: pulumi.Input<string>;
+        vswitchId?: pulumi.Input<string>;
+        /**
+         * Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+         */
+        vswitches?: pulumi.Input<pulumi.Input<inputs.rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitch>[]>;
+    }
+
+    export interface RocketMQInstanceNetworkInfoVpcInfoVswitch {
+        /**
+         * VPC switch id.
+         */
+        vswitchId?: pulumi.Input<string>;
     }
 
     export interface RocketMQInstanceProductInfo {
@@ -12881,7 +12994,7 @@ export namespace rocketmq {
          */
         autoScaling?: pulumi.Input<boolean>;
         /**
-         * Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+         * Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
          */
         messageRetentionTime?: pulumi.Input<number>;
         /**
@@ -12889,7 +13002,7 @@ export namespace rocketmq {
          */
         msgProcessSpec: pulumi.Input<string>;
         /**
-         * message send receive ratio.Value range: [0.2, 0.5].
+         * message send receive ratio.  Value range: [0.2, 0.5].
          */
         sendReceiveRatio?: pulumi.Input<number>;
         /**

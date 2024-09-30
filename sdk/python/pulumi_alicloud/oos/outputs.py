@@ -787,23 +787,25 @@ class GetSecretParametersParameterResult(dict):
                  tags: Mapping[str, str],
                  type: str,
                  updated_by: str,
-                 updated_date: str):
+                 updated_date: str,
+                 value: str):
         """
-        :param str constraints: The constraints of the encryption parameter.
+        :param str constraints: The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
         :param str create_time: The time when the encryption parameter was created.
         :param str created_by: The user who created the encryption parameter.
         :param str description: The description of the encryption parameter.
         :param str id: The ID of the Secret Parameter.
-        :param str key_id: KeyId of KMS used for encryption.
+        :param str key_id: The ID of the key of Key Management Service (KMS) that is used for encryption.
         :param int parameter_version: The version number of the encryption parameter.
         :param str resource_group_id: The ID of the Resource Group.
         :param str secret_parameter_id: The ID of the encryption parameter.
-        :param str secret_parameter_name: The name of the encryption parameter.
+        :param str secret_parameter_name: The name of the Secret Parameter.
         :param str share_type: The share type of the encryption parameter.
-        :param Mapping[str, str] tags: The tag of the resource.
-        :param str type: The data type of the encryption parameter.
+        :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
+        :param str type: The type of the parameter.
         :param str updated_by: The user who updated the encryption parameter.
         :param str updated_date: The time when the encryption parameter was updated.
+        :param str value: (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
         """
         pulumi.set(__self__, "constraints", constraints)
         pulumi.set(__self__, "create_time", create_time)
@@ -820,12 +822,13 @@ class GetSecretParametersParameterResult(dict):
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "updated_by", updated_by)
         pulumi.set(__self__, "updated_date", updated_date)
+        pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def constraints(self) -> str:
         """
-        The constraints of the encryption parameter.
+        The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "constraints")
 
@@ -865,7 +868,7 @@ class GetSecretParametersParameterResult(dict):
     @pulumi.getter(name="keyId")
     def key_id(self) -> str:
         """
-        KeyId of KMS used for encryption.
+        The ID of the key of Key Management Service (KMS) that is used for encryption.
         """
         return pulumi.get(self, "key_id")
 
@@ -897,7 +900,7 @@ class GetSecretParametersParameterResult(dict):
     @pulumi.getter(name="secretParameterName")
     def secret_parameter_name(self) -> str:
         """
-        The name of the encryption parameter.
+        The name of the Secret Parameter.
         """
         return pulumi.get(self, "secret_parameter_name")
 
@@ -913,7 +916,7 @@ class GetSecretParametersParameterResult(dict):
     @pulumi.getter
     def tags(self) -> Mapping[str, str]:
         """
-        The tag of the resource.
+        A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
@@ -921,7 +924,7 @@ class GetSecretParametersParameterResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The data type of the encryption parameter.
+        The type of the parameter.
         """
         return pulumi.get(self, "type")
 
@@ -940,6 +943,14 @@ class GetSecretParametersParameterResult(dict):
         The time when the encryption parameter was updated.
         """
         return pulumi.get(self, "updated_date")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `with_decryption` is set to `true`.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

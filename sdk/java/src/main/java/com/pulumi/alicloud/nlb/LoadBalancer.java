@@ -116,6 +116,100 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * DualStack Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.vpc.Ipv6Gateway;
+ * import com.pulumi.alicloud.vpc.Ipv6GatewayArgs;
+ * import com.pulumi.alicloud.nlb.LoadBalancer;
+ * import com.pulumi.alicloud.nlb.LoadBalancerArgs;
+ * import com.pulumi.alicloud.nlb.inputs.LoadBalancerZoneMappingArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var zone = config.get("zone").orElse(        
+ *             "cn-beijing-i",
+ *             "cn-beijing-k",
+ *             "cn-beijing-l");
+ *         var vpc = new Network("vpc", NetworkArgs.builder()
+ *             .vpcName(name)
+ *             .cidrBlock("10.2.0.0/16")
+ *             .enableIpv6(true)
+ *             .build());
+ * 
+ *         for (var i = 0; i < 2; i++) {
+ *             new Switch("vsw-" + i, SwitchArgs.builder()
+ *                 .enableIpv6(true)
+ *                 .ipv6CidrBlockMask(String.format("1%s", range.value()))
+ *                 .vswitchName(String.format("vsw-%s-for-nlb", range.value()))
+ *                 .vpcId(vpc.id())
+ *                 .cidrBlock(String.format("10.2.1%s.0/24", range.value()))
+ *                 .zoneId(zone[range.value()])
+ *                 .build());
+ * 
+ *         
+ * }
+ *         var default_ = new Ipv6Gateway("default", Ipv6GatewayArgs.builder()
+ *             .ipv6GatewayName(name)
+ *             .vpcId(vpc.id())
+ *             .build());
+ * 
+ *         var nlb = new LoadBalancer("nlb", LoadBalancerArgs.builder()
+ *             .loadBalancerName(name)
+ *             .loadBalancerType("Network")
+ *             .addressType("Intranet")
+ *             .addressIpVersion("DualStack")
+ *             .ipv6AddressType("Internet")
+ *             .vpcId(vpc.id())
+ *             .crossZoneEnabled(false)
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .zoneMappings(            
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(vsw[0].id())
+ *                     .zoneId(zone[0])
+ *                     .build(),
+ *                 LoadBalancerZoneMappingArgs.builder()
+ *                     .vswitchId(vsw[1].id())
+ *                     .zoneId(zone[1])
+ *                     .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * NLB Load Balancer can be imported using the id, e.g.

@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a VPC Peer Connection resource.
+ * Provides a Vpc Peer Connection resource.
  * 
  * For information about VPC Peer Connection and how to use it, see [What is Peer Connection](https://www.alibabacloud.com/help/en/virtual-private-cloud/latest/createvpcpeer).
  * 
@@ -85,7 +85,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPC Peer Connection can be imported using the id, e.g.
+ * Vpc Peer Connection can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:vpc/peerConnection:PeerConnection example &lt;id&gt;
@@ -98,6 +98,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
      * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+     * 
      * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
@@ -108,6 +109,7 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
      * @return The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
      * - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
      * - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
+     * 
      * &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
@@ -161,112 +163,130 @@ public class PeerConnection extends com.pulumi.resources.CustomResource {
         return this.bandwidth;
     }
     /**
-     * The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
+     * The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the VPC peer connection. Use UTC time in the format `YYYY-MM-DDThh:mm:ssZ`.
+     * @return The creation time of the VPC peer connection. Use UTC time in the format&#39; YYYY-MM-DDThh:mm:ssZ &#39;.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * The description of the VPC peer connection to be created.
+     * 
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
     /**
-     * @return The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+     * @return The description of the VPC peer connection to be created.
+     * 
+     * It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
      * 
      */
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
-     * Whether to PreCheck only this request. Default value: `false`. Valid values:
+     * Whether to PreCheck only this request. Value:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck only this request. Default value: `false`. Valid values:
+     * @return Whether to PreCheck only this request. Value:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * Whether to forcibly delete the VPC peering connection. Value:
+     * 
+     */
+    @Export(name="forceDelete", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDelete;
+
+    /**
+     * @return Whether to forcibly delete the VPC peering connection. Value:
+     * 
+     */
+    public Output<Optional<Boolean>> forceDelete() {
+        return Codegen.optional(this.forceDelete);
+    }
+    /**
+     * The name of the resource.
      * 
      */
     @Export(name="peerConnectionName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> peerConnectionName;
+    private Output<String> peerConnectionName;
 
     /**
-     * @return The name of the VPC peer connection. The name of the resource. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
+     * @return The name of the resource.
      * 
      */
-    public Output<Optional<String>> peerConnectionName() {
-        return Codegen.optional(this.peerConnectionName);
+    public Output<String> peerConnectionName() {
+        return this.peerConnectionName;
     }
     /**
-     * The ID of the resource group.
+     * The ID of resource group.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return The ID of resource group.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The status of the VPC peer connection.
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the VPC peer connection.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * A mapping of tags to assign to the resource.
+     * The tags of the resource.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return The tags of the resource.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the requester VPC.
+     * You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the requester VPC.
+     * @return You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
     public Output<String> vpcId() {

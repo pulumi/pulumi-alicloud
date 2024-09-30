@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPolicy{}
 	case "alicloud:gpdb/connection:Connection":
 		r = &Connection{}
+	case "alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray":
+		r = &DbInstanceIpArray{}
 	case "alicloud:gpdb/dbInstancePlan:DbInstancePlan":
 		r = &DbInstancePlan{}
 	case "alicloud:gpdb/dbResourceGroup:DbResourceGroup":
@@ -47,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &StreamingDataService{}
 	case "alicloud:gpdb/streamingDataSource:StreamingDataSource":
 		r = &StreamingDataSource{}
+	case "alicloud:gpdb/streamingJob:StreamingJob":
+		r = &StreamingJob{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -73,6 +77,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"gpdb/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/dbInstanceIpArray",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -123,6 +132,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"gpdb/streamingDataSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/streamingJob",
 		&module{version},
 	)
 }

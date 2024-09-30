@@ -1039,7 +1039,7 @@ func (o GetPatchBaselinesBaselineArrayOutput) Index(i pulumi.IntInput) GetPatchB
 }
 
 type GetSecretParametersParameter struct {
-	// The constraints of the encryption parameter.
+	// The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
 	Constraints string `pulumi:"constraints"`
 	// The time when the encryption parameter was created.
 	CreateTime string `pulumi:"createTime"`
@@ -1049,7 +1049,7 @@ type GetSecretParametersParameter struct {
 	Description string `pulumi:"description"`
 	// The ID of the Secret Parameter.
 	Id string `pulumi:"id"`
-	// KeyId of KMS used for encryption.
+	// The ID of the key of Key Management Service (KMS) that is used for encryption.
 	KeyId string `pulumi:"keyId"`
 	// The version number of the encryption parameter.
 	ParameterVersion int `pulumi:"parameterVersion"`
@@ -1057,18 +1057,20 @@ type GetSecretParametersParameter struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The ID of the encryption parameter.
 	SecretParameterId string `pulumi:"secretParameterId"`
-	// The name of the encryption parameter.
+	// The name of the Secret Parameter.
 	SecretParameterName string `pulumi:"secretParameterName"`
 	// The share type of the encryption parameter.
 	ShareType string `pulumi:"shareType"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The data type of the encryption parameter.
+	// The type of the parameter.
 	Type string `pulumi:"type"`
 	// The user who updated the encryption parameter.
 	UpdatedBy string `pulumi:"updatedBy"`
 	// The time when the encryption parameter was updated.
 	UpdatedDate string `pulumi:"updatedDate"`
+	// (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `withDecryption` is set to `true`.
+	Value string `pulumi:"value"`
 }
 
 // GetSecretParametersParameterInput is an input type that accepts GetSecretParametersParameterArgs and GetSecretParametersParameterOutput values.
@@ -1083,7 +1085,7 @@ type GetSecretParametersParameterInput interface {
 }
 
 type GetSecretParametersParameterArgs struct {
-	// The constraints of the encryption parameter.
+	// The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
 	Constraints pulumi.StringInput `pulumi:"constraints"`
 	// The time when the encryption parameter was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
@@ -1093,7 +1095,7 @@ type GetSecretParametersParameterArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The ID of the Secret Parameter.
 	Id pulumi.StringInput `pulumi:"id"`
-	// KeyId of KMS used for encryption.
+	// The ID of the key of Key Management Service (KMS) that is used for encryption.
 	KeyId pulumi.StringInput `pulumi:"keyId"`
 	// The version number of the encryption parameter.
 	ParameterVersion pulumi.IntInput `pulumi:"parameterVersion"`
@@ -1101,18 +1103,20 @@ type GetSecretParametersParameterArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The ID of the encryption parameter.
 	SecretParameterId pulumi.StringInput `pulumi:"secretParameterId"`
-	// The name of the encryption parameter.
+	// The name of the Secret Parameter.
 	SecretParameterName pulumi.StringInput `pulumi:"secretParameterName"`
 	// The share type of the encryption parameter.
 	ShareType pulumi.StringInput `pulumi:"shareType"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// The data type of the encryption parameter.
+	// The type of the parameter.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The user who updated the encryption parameter.
 	UpdatedBy pulumi.StringInput `pulumi:"updatedBy"`
 	// The time when the encryption parameter was updated.
 	UpdatedDate pulumi.StringInput `pulumi:"updatedDate"`
+	// (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `withDecryption` is set to `true`.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetSecretParametersParameterArgs) ElementType() reflect.Type {
@@ -1166,7 +1170,7 @@ func (o GetSecretParametersParameterOutput) ToGetSecretParametersParameterOutput
 	return o
 }
 
-// The constraints of the encryption parameter.
+// The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
 func (o GetSecretParametersParameterOutput) Constraints() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.Constraints }).(pulumi.StringOutput)
 }
@@ -1191,7 +1195,7 @@ func (o GetSecretParametersParameterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// KeyId of KMS used for encryption.
+// The ID of the key of Key Management Service (KMS) that is used for encryption.
 func (o GetSecretParametersParameterOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.KeyId }).(pulumi.StringOutput)
 }
@@ -1211,7 +1215,7 @@ func (o GetSecretParametersParameterOutput) SecretParameterId() pulumi.StringOut
 	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.SecretParameterId }).(pulumi.StringOutput)
 }
 
-// The name of the encryption parameter.
+// The name of the Secret Parameter.
 func (o GetSecretParametersParameterOutput) SecretParameterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.SecretParameterName }).(pulumi.StringOutput)
 }
@@ -1221,12 +1225,12 @@ func (o GetSecretParametersParameterOutput) ShareType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.ShareType }).(pulumi.StringOutput)
 }
 
-// The tag of the resource.
+// A mapping of tags to assign to the resource.
 func (o GetSecretParametersParameterOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretParametersParameter) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The data type of the encryption parameter.
+// The type of the parameter.
 func (o GetSecretParametersParameterOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1239,6 +1243,11 @@ func (o GetSecretParametersParameterOutput) UpdatedBy() pulumi.StringOutput {
 // The time when the encryption parameter was updated.
 func (o GetSecretParametersParameterOutput) UpdatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.UpdatedDate }).(pulumi.StringOutput)
+}
+
+// (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `withDecryption` is set to `true`.
+func (o GetSecretParametersParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretParametersParameter) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type GetSecretParametersParameterArrayOutput struct{ *pulumi.OutputState }

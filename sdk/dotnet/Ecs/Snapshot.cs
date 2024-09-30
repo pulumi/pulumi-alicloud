@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs
     public partial class Snapshot : global::Pulumi.CustomResource
     {
         [Output("category")]
-        public Output<string?> Category { get; private set; } = null!;
+        public Output<string> Category { get; private set; } = null!;
 
         /// <summary>
         /// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.

@@ -892,34 +892,33 @@ class BgpPolicyContentSourceLimitArgs:
 @pulumi.input_type
 class DomainResourceProxyTypeArgs:
     def __init__(__self__, *,
-                 proxy_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 proxy_ports: pulumi.Input[Sequence[pulumi.Input[int]]],
                  proxy_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] proxy_ports: the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
-        :param pulumi.Input[str] proxy_type: the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] proxy_ports: The port numbers.
+        :param pulumi.Input[str] proxy_type: The type of the protocol. Valid values:
         """
-        if proxy_ports is not None:
-            pulumi.set(__self__, "proxy_ports", proxy_ports)
+        pulumi.set(__self__, "proxy_ports", proxy_ports)
         if proxy_type is not None:
             pulumi.set(__self__, "proxy_type", proxy_type)
 
     @property
     @pulumi.getter(name="proxyPorts")
-    def proxy_ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+    def proxy_ports(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
         """
-        the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
+        The port numbers.
         """
         return pulumi.get(self, "proxy_ports")
 
     @proxy_ports.setter
-    def proxy_ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+    def proxy_ports(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
         pulumi.set(self, "proxy_ports", value)
 
     @property
     @pulumi.getter(name="proxyType")
     def proxy_type(self) -> Optional[pulumi.Input[str]]:
         """
-        the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+        The type of the protocol. Valid values:
         """
         return pulumi.get(self, "proxy_type")
 

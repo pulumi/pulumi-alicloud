@@ -16,7 +16,129 @@ import (
 //
 // For information about ECS Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/25524.htm).
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableDiskCategory: pulumi.StringRef("cloud_essd"),
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+// ImageId: pulumi.StringRef(defaultGetImages.Images[0].Id),
+// SystemDiskCategory: pulumi.StringRef("cloud_essd"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("192.168.192.0/24"),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_essd"),
+// VswitchId: defaultSwitch.ID(),
+// InstanceName: pulumi.String(name),
+// DataDisks: ecs.InstanceDataDiskArray{
+// &ecs.InstanceDataDiskArgs{
+// Category: pulumi.String("cloud_essd"),
+// Size: pulumi.Int(20),
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
+// DiskName: pulumi.String(name),
+// ZoneId: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// Category: pulumi.String("cloud_essd"),
+// Size: pulumi.Int(500),
+// })
+// if err != nil {
+// return err
+// }
+// defaultEcsDiskAttachment, err := ecs.NewEcsDiskAttachment(ctx, "default", &ecs.EcsDiskAttachmentArgs{
+// DiskId: defaultEcsDisk.ID(),
+// InstanceId: defaultInstance.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = ecs.NewEcsSnapshot(ctx, "default", &ecs.EcsSnapshotArgs{
+// DiskId: defaultEcsDiskAttachment.DiskId,
+// Category: pulumi.String("standard"),
+// RetentionDays: pulumi.Int(20),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 //
 // ## Import
 //
@@ -28,33 +150,35 @@ import (
 type EcsSnapshot struct {
 	pulumi.CustomResourceState
 
-	// The category of the snapshot. Valid Values: `standard` and `flash`.
-	Category pulumi.StringPtrOutput `pulumi:"category"`
+	// The category of the snapshot. Valid values:
+	Category pulumi.StringOutput `pulumi:"category"`
 	// The description of the snapshot.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the disk.
 	DiskId pulumi.StringOutput `pulumi:"diskId"`
-	// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+	// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// Specifies whether to enable the instant access feature.
+	// Field `instantAccess` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess pulumi.BoolPtrOutput `pulumi:"instantAccess"`
-	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+	// Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays pulumi.IntPtrOutput `pulumi:"instantAccessRetentionDays"`
 	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource group id.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// The retention period of the snapshot.
+	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays pulumi.IntPtrOutput `pulumi:"retentionDays"`
 	// The name of the snapshot.
 	SnapshotName pulumi.StringOutput `pulumi:"snapshotName"`
-	// The status of snapshot.
+	// The status of the Snapshot.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A mapping of tags to assign to the snapshot.
-	//
-	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
@@ -91,64 +215,68 @@ func GetEcsSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EcsSnapshot resources.
 type ecsSnapshotState struct {
-	// The category of the snapshot. Valid Values: `standard` and `flash`.
+	// The category of the snapshot. Valid values:
 	Category *string `pulumi:"category"`
 	// The description of the snapshot.
 	Description *string `pulumi:"description"`
 	// The ID of the disk.
 	DiskId *string `pulumi:"diskId"`
-	// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+	// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
 	Force *bool `pulumi:"force"`
-	// Specifies whether to enable the instant access feature.
+	// Field `instantAccess` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess *bool `pulumi:"instantAccess"`
-	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+	// Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays *int `pulumi:"instantAccessRetentionDays"`
 	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name *string `pulumi:"name"`
-	// The resource group id.
+	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The retention period of the snapshot.
+	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays *int `pulumi:"retentionDays"`
 	// The name of the snapshot.
 	SnapshotName *string `pulumi:"snapshotName"`
-	// The status of snapshot.
+	// The status of the Snapshot.
 	Status *string `pulumi:"status"`
-	// A mapping of tags to assign to the snapshot.
-	//
-	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 type EcsSnapshotState struct {
-	// The category of the snapshot. Valid Values: `standard` and `flash`.
+	// The category of the snapshot. Valid values:
 	Category pulumi.StringPtrInput
 	// The description of the snapshot.
 	Description pulumi.StringPtrInput
 	// The ID of the disk.
 	DiskId pulumi.StringPtrInput
-	// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+	// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
 	Force pulumi.BoolPtrInput
-	// Specifies whether to enable the instant access feature.
+	// Field `instantAccess` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess pulumi.BoolPtrInput
-	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+	// Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays pulumi.IntPtrInput
 	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringPtrInput
-	// The resource group id.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The retention period of the snapshot.
+	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays pulumi.IntPtrInput
 	// The name of the snapshot.
 	SnapshotName pulumi.StringPtrInput
-	// The status of snapshot.
+	// The status of the Snapshot.
 	Status pulumi.StringPtrInput
-	// A mapping of tags to assign to the snapshot.
-	//
-	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 }
 
@@ -157,61 +285,65 @@ func (EcsSnapshotState) ElementType() reflect.Type {
 }
 
 type ecsSnapshotArgs struct {
-	// The category of the snapshot. Valid Values: `standard` and `flash`.
+	// The category of the snapshot. Valid values:
 	Category *string `pulumi:"category"`
 	// The description of the snapshot.
 	Description *string `pulumi:"description"`
 	// The ID of the disk.
 	DiskId string `pulumi:"diskId"`
-	// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+	// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
 	Force *bool `pulumi:"force"`
-	// Specifies whether to enable the instant access feature.
+	// Field `instantAccess` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess *bool `pulumi:"instantAccess"`
-	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+	// Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays *int `pulumi:"instantAccessRetentionDays"`
 	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name *string `pulumi:"name"`
-	// The resource group id.
+	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The retention period of the snapshot.
+	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays *int `pulumi:"retentionDays"`
 	// The name of the snapshot.
 	SnapshotName *string `pulumi:"snapshotName"`
-	// A mapping of tags to assign to the snapshot.
-	//
-	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a EcsSnapshot resource.
 type EcsSnapshotArgs struct {
-	// The category of the snapshot. Valid Values: `standard` and `flash`.
+	// The category of the snapshot. Valid values:
 	Category pulumi.StringPtrInput
 	// The description of the snapshot.
 	Description pulumi.StringPtrInput
 	// The ID of the disk.
 	DiskId pulumi.StringInput
-	// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+	// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
 	Force pulumi.BoolPtrInput
-	// Specifies whether to enable the instant access feature.
+	// Field `instantAccess` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 	InstantAccess pulumi.BoolPtrInput
-	// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+	// Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+	//
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays pulumi.IntPtrInput
 	// Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringPtrInput
-	// The resource group id.
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The retention period of the snapshot.
+	// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 	RetentionDays pulumi.IntPtrInput
 	// The name of the snapshot.
 	SnapshotName pulumi.StringPtrInput
-	// A mapping of tags to assign to the snapshot.
-	//
-	// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 }
 
@@ -302,9 +434,9 @@ func (o EcsSnapshotOutput) ToEcsSnapshotOutputWithContext(ctx context.Context) E
 	return o
 }
 
-// The category of the snapshot. Valid Values: `standard` and `flash`.
-func (o EcsSnapshotOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+// The category of the snapshot. Valid values:
+func (o EcsSnapshotOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
 // The description of the snapshot.
@@ -317,34 +449,38 @@ func (o EcsSnapshotOutput) DiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.DiskId }).(pulumi.StringOutput)
 }
 
-// Specifies whether to forcibly delete the snapshot that has been used to create disks.
+// Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
 func (o EcsSnapshotOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to enable the instant access feature.
+// Field `instantAccess` has been deprecated from provider version 1.231.0.
+//
+// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 func (o EcsSnapshotOutput) InstantAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.BoolPtrOutput { return v.InstantAccess }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
+// Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+//
+// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 func (o EcsSnapshotOutput) InstantAccessRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.IntPtrOutput { return v.InstantAccessRetentionDays }).(pulumi.IntPtrOutput)
 }
 
 // Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 func (o EcsSnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource group id.
+// The ID of the resource group.
 func (o EcsSnapshotOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The retention period of the snapshot.
+// The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
 func (o EcsSnapshotOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
 }
@@ -354,14 +490,12 @@ func (o EcsSnapshotOutput) SnapshotName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.SnapshotName }).(pulumi.StringOutput)
 }
 
-// The status of snapshot.
+// The status of the Snapshot.
 func (o EcsSnapshotOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the snapshot.
-//
-// > **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
+// A mapping of tags to assign to the resource.
 func (o EcsSnapshotOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *EcsSnapshot) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

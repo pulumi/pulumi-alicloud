@@ -158,6 +158,8 @@ type Instance struct {
 	//
 	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum pulumi.IntPtrOutput `pulumi:"masterNodeNum"`
+	// The parameters. See `parameters` below.
+	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
@@ -300,6 +302,8 @@ type instanceState struct {
 	//
 	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum *int `pulumi:"masterNodeNum"`
+	// The parameters. See `parameters` below.
+	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
@@ -401,6 +405,8 @@ type InstanceState struct {
 	//
 	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum pulumi.IntPtrInput
+	// The parameters. See `parameters` below.
+	Parameters InstanceParameterArrayInput
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
@@ -504,6 +510,8 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum *int `pulumi:"masterNodeNum"`
+	// The parameters. See `parameters` below.
+	Parameters []InstanceParameter `pulumi:"parameters"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
@@ -600,6 +608,8 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 	MasterNodeNum pulumi.IntPtrInput
+	// The parameters. See `parameters` below.
+	Parameters InstanceParameterArrayInput
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. required when `paymentType` is `Subscription`. Valid values: `Year`, `Month`.
@@ -841,6 +851,11 @@ func (o InstanceOutput) MasterCu() pulumi.IntOutput {
 // Deprecated: Field `masterNodeNum` has been deprecated from provider version 1.213.0.
 func (o InstanceOutput) MasterNodeNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.MasterNodeNum }).(pulumi.IntPtrOutput)
+}
+
+// The parameters. See `parameters` below.
+func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceParameterArrayOutput { return v.Parameters }).(InstanceParameterArrayOutput)
 }
 
 // The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.

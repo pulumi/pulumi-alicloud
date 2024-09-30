@@ -259,6 +259,20 @@ public class Alarm extends com.pulumi.resources.CustomResource {
         return this.dimensions;
     }
     /**
+     * The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+     * 
+     */
+    @Export(name="effective", refs={String.class}, tree="[0]")
+    private Output<String> effective;
+
+    /**
+     * @return The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+     * 
+     */
+    public Output<String> effective() {
+        return this.effective;
+    }
+    /**
      * Whether to enable specific ess alarm. Default to true.
      * 
      */

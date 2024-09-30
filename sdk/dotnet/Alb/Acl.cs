@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Alb
         /// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         /// </summary>
         [Output("aclName")]
-        public Output<string> AclName { get; private set; } = null!;
+        public Output<string?> AclName { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to precheck the API request.
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Alb
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Acl(string name, AclArgs args, CustomResourceOptions? options = null)
+        public Acl(string name, AclArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:alb/acl:Acl", name, args ?? new AclArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -150,8 +150,8 @@ namespace Pulumi.AliCloud.Alb
         /// <summary>
         /// The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         /// </summary>
-        [Input("aclName", required: true)]
-        public Input<string> AclName { get; set; } = null!;
+        [Input("aclName")]
+        public Input<string>? AclName { get; set; }
 
         /// <summary>
         /// Specifies whether to precheck the API request.

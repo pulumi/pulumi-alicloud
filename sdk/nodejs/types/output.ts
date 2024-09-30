@@ -10393,7 +10393,7 @@ export namespace cms {
 
     export interface AlarmEscalationsCritical {
         /**
-         * Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
+         * Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparisonOperator` can be set to `==`.
          */
         comparisonOperator?: string;
         /**
@@ -10412,7 +10412,7 @@ export namespace cms {
 
     export interface AlarmEscalationsInfo {
         /**
-         * Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
+         * Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparisonOperator` can be set to `==`.
          */
         comparisonOperator?: string;
         /**
@@ -10431,7 +10431,7 @@ export namespace cms {
 
     export interface AlarmEscalationsWarn {
         /**
-         * Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.225.0, `comparisonOperator` cannot be set to `==`.
+         * Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparisonOperator` can be set to `==`.
          */
         comparisonOperator?: string;
         /**
@@ -16597,11 +16597,11 @@ export namespace ddos {
 
     export interface DomainResourceProxyType {
         /**
-         * the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxyPorts` can be modified.
+         * The port numbers.
          */
-        proxyPorts?: number[];
+        proxyPorts: number[];
         /**
-         * the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+         * The type of the protocol. Valid values:
          */
         proxyType?: string;
     }
@@ -30704,7 +30704,7 @@ export namespace ga {
          */
         order: number;
         /**
-         * Forward action type.
+         * The type of the forwarding action. Valid values: `ForwardGroup`, `Redirect`, `FixResponse`, `Rewrite`, `AddHeader`, `RemoveHeader`, `Drop`.
          */
         ruleActionType: string;
         /**
@@ -30730,6 +30730,7 @@ export namespace ga {
     export interface ForwardingRuleRuleCondition {
         /**
          * The configuration of the domain name. See `hostConfig` below.
+         * > **NOTE:** From version 1.231.0, We recommend that you do not use `pathConfig` or `hostConfig`, and we recommend that you use the `ruleConditionType` and `ruleConditionValue` to configure forwarding conditions.
          */
         hostConfigs?: outputs.ga.ForwardingRuleRuleConditionHostConfig[];
         /**
@@ -30737,9 +30738,13 @@ export namespace ga {
          */
         pathConfig?: outputs.ga.ForwardingRuleRuleConditionPathConfig;
         /**
-         * The type of the forwarding conditions. Valid values: `Host`, `Path`.
+         * The type of the forwarding conditions. Valid values: `Host`, `Path`, `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`. **NOTE:** From version 1.231.0, `ruleConditionType` can be set to `RequestHeader`, `Query`, `Method`, `Cookie`, `SourceIP`.
          */
         ruleConditionType: string;
+        /**
+         * The value of the forwarding condition type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
+         */
+        ruleConditionValue?: string;
     }
 
     export interface ForwardingRuleRuleConditionHostConfig {
@@ -31783,6 +31788,10 @@ export namespace gpdb {
          */
         resume?: outputs.gpdb.DbInstancePlanPlanConfigResume;
         /**
+         * Scale down instance plan config. See `scaleDown` below.
+         */
+        scaleDown?: outputs.gpdb.DbInstancePlanPlanConfigScaleDown;
+        /**
          * Scale In instance plan config. See `scaleIn` below.
          */
         scaleIn?: outputs.gpdb.DbInstancePlanPlanConfigScaleIn;
@@ -31790,6 +31799,10 @@ export namespace gpdb {
          * Scale out instance plan config. See `scaleOut` below.
          */
         scaleOut?: outputs.gpdb.DbInstancePlanPlanConfigScaleOut;
+        /**
+         * Scale up instance plan config. See `scaleUp` below.
+         */
+        scaleUp?: outputs.gpdb.DbInstancePlanPlanConfigScaleUp;
     }
 
     export interface DbInstancePlanPlanConfigPause {
@@ -31801,6 +31814,10 @@ export namespace gpdb {
          * The Cron Time of the plan.
          */
         planCronTime?: string;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus: string;
     }
 
     export interface DbInstancePlanPlanConfigResume {
@@ -31812,6 +31829,29 @@ export namespace gpdb {
          * The Cron Time of the plan.
          */
         planCronTime?: string;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus: string;
+    }
+
+    export interface DbInstancePlanPlanConfigScaleDown {
+        /**
+         * The executed time of the Plan.
+         */
+        executeTime: string;
+        /**
+         * The specification of segment nodes of the Plan.
+         */
+        instanceSpec?: string;
+        /**
+         * The Cron Time of the plan.
+         */
+        planCronTime?: string;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus: string;
     }
 
     export interface DbInstancePlanPlanConfigScaleIn {
@@ -31823,6 +31863,10 @@ export namespace gpdb {
          * The Cron Time of the plan.
          */
         planCronTime?: string;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus: string;
         /**
          * The segment Node Num of the Plan.
          */
@@ -31839,9 +31883,32 @@ export namespace gpdb {
          */
         planCronTime?: string;
         /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus: string;
+        /**
          * The segment Node Num of the Plan.
          */
         segmentNodeNum?: string;
+    }
+
+    export interface DbInstancePlanPlanConfigScaleUp {
+        /**
+         * The executed time of the Plan.
+         */
+        executeTime: string;
+        /**
+         * The specification of segment nodes of the Plan.
+         */
+        instanceSpec?: string;
+        /**
+         * The Cron Time of the plan.
+         */
+        planCronTime?: string;
+        /**
+         * (Available since v1.231.0) The status of the plan task.
+         */
+        planTaskStatus: string;
     }
 
     export interface GetAccountsAccount {
@@ -31863,6 +31930,61 @@ export namespace gpdb {
         id: string;
         /**
          * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
+         */
+        status: string;
+    }
+
+    export interface GetDataBackupsBackup {
+        /**
+         * The backup end time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
+         */
+        backupEndTime: string;
+        /**
+         * The end time of the backup (local time).
+         */
+        backupEndTimeLocal: string;
+        /**
+         * Backup method. Value Description:-**Physical**: Physical backup.-**Snapshot**: the Snapshot backup.
+         */
+        backupMethod: string;
+        /**
+         * Backup mode.Full Backup Value Description:-**Automated**: The system is automatically backed up.-**Manual**: Manual backup.Recovery point value description:-**Automated**: The recovery point after a full backup.-**Manual**: The recovery point triggered manually by the user.-**Period**: The recovery point triggered periodically because of the backup policy.
+         */
+        backupMode: string;
+        /**
+         * The ID of the backup set.
+         */
+        backupSetId: string;
+        /**
+         * The size of the backup file. Unit: Byte.
+         */
+        backupSize: number;
+        /**
+         * The backup start time. Format: yyyy-MM-ddTHH:mm:ssZ(UTC time).
+         */
+        backupStartTime: string;
+        /**
+         * The start time of the backup (local time).
+         */
+        backupStartTimeLocal: string;
+        /**
+         * The name of the recovery point or full backup set.
+         */
+        baksetName: string;
+        /**
+         * -Full backup: Returns the timestamp of the consistent point in time.-Recoverable point: Returns the timestamp of the recoverable point in time.
+         */
+        consistentTime: number;
+        /**
+         * The backup type. Value Description:-**DATA**: Full backup.-**RESTOREPOI**: Recoverable point.
+         */
+        dataType: string;
+        /**
+         * The instance ID.
+         */
+        dbInstanceId: string;
+        /**
+         * Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
          */
         status: string;
     }
@@ -32126,6 +32248,37 @@ export namespace gpdb {
         securityIpList: string;
     }
 
+    export interface GetLogBackupsLogbackup {
+        /**
+         * The ID of the Master node of the instance.
+         */
+        dbInstanceId: string;
+        /**
+         * The first ID of the resource
+         */
+        logBackupId: string;
+        /**
+         * Log file name (OSS path).
+         */
+        logFileName: string;
+        /**
+         * Size of the backup log file. Unit: Byte.
+         */
+        logFileSize: number;
+        /**
+         * The log timestamp.
+         */
+        logTime: string;
+        /**
+         * Total number of records.
+         */
+        recordTotal: number;
+        /**
+         * The node name.
+         */
+        segmentName: string;
+    }
+
     export interface GetZonesZone {
         /**
          * ID of the zone.
@@ -32151,6 +32304,37 @@ export namespace gpdb {
          * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
          */
         securityIpList: string;
+    }
+
+    export interface InstanceParameter {
+        /**
+         * (Available since v1.231.0) The default value of the parameter.
+         */
+        defaultValue: string;
+        /**
+         * (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+         */
+        forceRestartInstance: string;
+        /**
+         * (Available since v1.231.0) Whether the parameter is changeable.
+         */
+        isChangeableConfig: string;
+        /**
+         * The name of the parameter.
+         */
+        name: string;
+        /**
+         * (Available since v1.231.0) The optional range of the parameter.
+         */
+        optionalRange: string;
+        /**
+         * (Available since v1.231.0) The description of the parameter.
+         */
+        parameterDescription: string;
+        /**
+         * The value of the parameter.
+         */
+        value: string;
     }
 
 }
@@ -38101,7 +38285,7 @@ export namespace oos {
 
     export interface GetSecretParametersParameter {
         /**
-         * The constraints of the encryption parameter.
+         * The constraints of the encryption parameter. **Note:** `constraints` takes effect only if `enableDetails` is set to `true`.
          */
         constraints: string;
         /**
@@ -38121,7 +38305,7 @@ export namespace oos {
          */
         id: string;
         /**
-         * KeyId of KMS used for encryption.
+         * The ID of the key of Key Management Service (KMS) that is used for encryption.
          */
         keyId: string;
         /**
@@ -38137,7 +38321,7 @@ export namespace oos {
          */
         secretParameterId: string;
         /**
-         * The name of the encryption parameter.
+         * The name of the Secret Parameter.
          */
         secretParameterName: string;
         /**
@@ -38145,11 +38329,11 @@ export namespace oos {
          */
         shareType: string;
         /**
-         * The tag of the resource.
+         * A mapping of tags to assign to the resource.
          */
         tags: {[key: string]: string};
         /**
-         * The data type of the encryption parameter.
+         * The type of the parameter.
          */
         type: string;
         /**
@@ -38160,6 +38344,10 @@ export namespace oos {
          * The time when the encryption parameter was updated.
          */
         updatedDate: string;
+        /**
+         * (Available since v1.231.0) The value of the encryption parameter. **Note:** `value` takes effect only if `withDecryption` is set to `true`.
+         */
+        value: string;
     }
 
     export interface GetStateConfigurationsConfiguration {
@@ -43115,19 +43303,19 @@ export namespace rocketmq {
 
     export interface RocketMQInstanceNetworkInfoInternetInfo {
         /**
-         * Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+         * Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
          */
         flowOutBandwidth?: number;
         /**
-         * Public network billing type. The parameter values are as follows:
-         * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-         * - uninvolved: Not involved. Set this value when disabling public network access.
+         * Public network billing type.  Parameter values are as follows:
+         * - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+         * - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
          */
         flowOutType: string;
         /**
-         * Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+         * Whether to enable public network access.  The parameter values are as follows:
          * - enable: Enable public network access
-         * - disable: Disable public network access
+         * - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
          */
         internetSpec: string;
         /**
@@ -43138,11 +43326,26 @@ export namespace rocketmq {
 
     export interface RocketMQInstanceNetworkInfoVpcInfo {
         /**
+         * Security group id.
+         */
+        securityGroupIds?: string;
+        /**
          * Proprietary Network.
          */
         vpcId: string;
         /**
-         * VPC network switch.
+         * VPC switch id.
+         */
+        vswitchId: string;
+        /**
+         * Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+         */
+        vswitches: outputs.rocketmq.RocketMQInstanceNetworkInfoVpcInfoVswitch[];
+    }
+
+    export interface RocketMQInstanceNetworkInfoVpcInfoVswitch {
+        /**
+         * VPC switch id.
          */
         vswitchId: string;
     }
@@ -43153,7 +43356,7 @@ export namespace rocketmq {
          */
         autoScaling?: boolean;
         /**
-         * Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+         * Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
          */
         messageRetentionTime?: number;
         /**
@@ -43161,7 +43364,7 @@ export namespace rocketmq {
          */
         msgProcessSpec: string;
         /**
-         * message send receive ratio.Value range: [0.2, 0.5].
+         * message send receive ratio.  Value range: [0.2, 0.5].
          */
         sendReceiveRatio?: number;
         /**

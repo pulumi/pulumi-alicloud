@@ -3,25 +3,46 @@
 
 package com.pulumi.alicloud.rocketmq.outputs;
 
+import com.pulumi.alicloud.rocketmq.outputs.RocketMQInstanceNetworkInfoVpcInfoVswitch;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RocketMQInstanceNetworkInfoVpcInfo {
+    /**
+     * @return Security group id.
+     * 
+     */
+    private @Nullable String securityGroupIds;
     /**
      * @return Proprietary Network.
      * 
      */
     private String vpcId;
     /**
-     * @return VPC network switch.
+     * @return VPC switch id.
      * 
      */
-    private String vswitchId;
+    private @Nullable String vswitchId;
+    /**
+     * @return Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+     * 
+     */
+    private @Nullable List<RocketMQInstanceNetworkInfoVpcInfoVswitch> vswitches;
 
     private RocketMQInstanceNetworkInfoVpcInfo() {}
+    /**
+     * @return Security group id.
+     * 
+     */
+    public Optional<String> securityGroupIds() {
+        return Optional.ofNullable(this.securityGroupIds);
+    }
     /**
      * @return Proprietary Network.
      * 
@@ -30,11 +51,18 @@ public final class RocketMQInstanceNetworkInfoVpcInfo {
         return this.vpcId;
     }
     /**
-     * @return VPC network switch.
+     * @return VPC switch id.
      * 
      */
-    public String vswitchId() {
-        return this.vswitchId;
+    public Optional<String> vswitchId() {
+        return Optional.ofNullable(this.vswitchId);
+    }
+    /**
+     * @return Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+     * 
+     */
+    public List<RocketMQInstanceNetworkInfoVpcInfoVswitch> vswitches() {
+        return this.vswitches == null ? List.of() : this.vswitches;
     }
 
     public static Builder builder() {
@@ -46,15 +74,25 @@ public final class RocketMQInstanceNetworkInfoVpcInfo {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String securityGroupIds;
         private String vpcId;
-        private String vswitchId;
+        private @Nullable String vswitchId;
+        private @Nullable List<RocketMQInstanceNetworkInfoVpcInfoVswitch> vswitches;
         public Builder() {}
         public Builder(RocketMQInstanceNetworkInfoVpcInfo defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.securityGroupIds = defaults.securityGroupIds;
     	      this.vpcId = defaults.vpcId;
     	      this.vswitchId = defaults.vswitchId;
+    	      this.vswitches = defaults.vswitches;
         }
 
+        @CustomType.Setter
+        public Builder securityGroupIds(@Nullable String securityGroupIds) {
+
+            this.securityGroupIds = securityGroupIds;
+            return this;
+        }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
             if (vpcId == null) {
@@ -64,17 +102,26 @@ public final class RocketMQInstanceNetworkInfoVpcInfo {
             return this;
         }
         @CustomType.Setter
-        public Builder vswitchId(String vswitchId) {
-            if (vswitchId == null) {
-              throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoVpcInfo", "vswitchId");
-            }
+        public Builder vswitchId(@Nullable String vswitchId) {
+
             this.vswitchId = vswitchId;
             return this;
         }
+        @CustomType.Setter
+        public Builder vswitches(@Nullable List<RocketMQInstanceNetworkInfoVpcInfoVswitch> vswitches) {
+
+            this.vswitches = vswitches;
+            return this;
+        }
+        public Builder vswitches(RocketMQInstanceNetworkInfoVpcInfoVswitch... vswitches) {
+            return vswitches(List.of(vswitches));
+        }
         public RocketMQInstanceNetworkInfoVpcInfo build() {
             final var _resultValue = new RocketMQInstanceNetworkInfoVpcInfo();
+            _resultValue.securityGroupIds = securityGroupIds;
             _resultValue.vpcId = vpcId;
             _resultValue.vswitchId = vswitchId;
+            _resultValue.vswitches = vswitches;
             return _resultValue;
         }
     }

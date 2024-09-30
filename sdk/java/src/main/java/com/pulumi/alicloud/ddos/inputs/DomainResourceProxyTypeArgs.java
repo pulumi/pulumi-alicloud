@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ddos.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -18,29 +19,29 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
     public static final DomainResourceProxyTypeArgs Empty = new DomainResourceProxyTypeArgs();
 
     /**
-     * the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
+     * The port numbers.
      * 
      */
-    @Import(name="proxyPorts")
-    private @Nullable Output<List<Integer>> proxyPorts;
+    @Import(name="proxyPorts", required=true)
+    private Output<List<Integer>> proxyPorts;
 
     /**
-     * @return the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
+     * @return The port numbers.
      * 
      */
-    public Optional<Output<List<Integer>>> proxyPorts() {
-        return Optional.ofNullable(this.proxyPorts);
+    public Output<List<Integer>> proxyPorts() {
+        return this.proxyPorts;
     }
 
     /**
-     * the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+     * The type of the protocol. Valid values:
      * 
      */
     @Import(name="proxyType")
     private @Nullable Output<String> proxyType;
 
     /**
-     * @return the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+     * @return The type of the protocol. Valid values:
      * 
      */
     public Optional<Output<String>> proxyType() {
@@ -73,18 +74,18 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyPorts the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
+         * @param proxyPorts The port numbers.
          * 
          * @return builder
          * 
          */
-        public Builder proxyPorts(@Nullable Output<List<Integer>> proxyPorts) {
+        public Builder proxyPorts(Output<List<Integer>> proxyPorts) {
             $.proxyPorts = proxyPorts;
             return this;
         }
 
         /**
-         * @param proxyPorts the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
+         * @param proxyPorts The port numbers.
          * 
          * @return builder
          * 
@@ -94,7 +95,7 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyPorts the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
+         * @param proxyPorts The port numbers.
          * 
          * @return builder
          * 
@@ -104,7 +105,7 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyType the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+         * @param proxyType The type of the protocol. Valid values:
          * 
          * @return builder
          * 
@@ -115,7 +116,7 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param proxyType the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
+         * @param proxyType The type of the protocol. Valid values:
          * 
          * @return builder
          * 
@@ -125,6 +126,9 @@ public final class DomainResourceProxyTypeArgs extends com.pulumi.resources.Reso
         }
 
         public DomainResourceProxyTypeArgs build() {
+            if ($.proxyPorts == null) {
+                throw new MissingRequiredPropertyException("DomainResourceProxyTypeArgs", "proxyPorts");
+            }
             return $;
         }
     }

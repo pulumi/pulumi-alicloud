@@ -460,15 +460,15 @@ func (o RocketMQInstanceNetworkInfoEndpointArrayOutput) Index(i pulumi.IntInput)
 }
 
 type RocketMQInstanceNetworkInfoInternetInfo struct {
-	// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+	// Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
 	FlowOutBandwidth *int `pulumi:"flowOutBandwidth"`
-	// Public network billing type. The parameter values are as follows:
-	// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-	// - uninvolved: Not involved. Set this value when disabling public network access.
+	// Public network billing type.  Parameter values are as follows:
+	// - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+	// - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
 	FlowOutType string `pulumi:"flowOutType"`
-	// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+	// Whether to enable public network access.  The parameter values are as follows:
 	// - enable: Enable public network access
-	// - disable: Disable public network access
+	// - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
 	InternetSpec string `pulumi:"internetSpec"`
 	// internet ip whitelist.
 	IpWhitelists []string `pulumi:"ipWhitelists"`
@@ -486,15 +486,15 @@ type RocketMQInstanceNetworkInfoInternetInfoInput interface {
 }
 
 type RocketMQInstanceNetworkInfoInternetInfoArgs struct {
-	// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+	// Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
 	FlowOutBandwidth pulumi.IntPtrInput `pulumi:"flowOutBandwidth"`
-	// Public network billing type. The parameter values are as follows:
-	// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-	// - uninvolved: Not involved. Set this value when disabling public network access.
+	// Public network billing type.  Parameter values are as follows:
+	// - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+	// - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
 	FlowOutType pulumi.StringInput `pulumi:"flowOutType"`
-	// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+	// Whether to enable public network access.  The parameter values are as follows:
 	// - enable: Enable public network access
-	// - disable: Disable public network access
+	// - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
 	InternetSpec pulumi.StringInput `pulumi:"internetSpec"`
 	// internet ip whitelist.
 	IpWhitelists pulumi.StringArrayInput `pulumi:"ipWhitelists"`
@@ -577,21 +577,21 @@ func (o RocketMQInstanceNetworkInfoInternetInfoOutput) ToRocketMQInstanceNetwork
 	}).(RocketMQInstanceNetworkInfoInternetInfoPtrOutput)
 }
 
-// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+// Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
 func (o RocketMQInstanceNetworkInfoInternetInfoOutput) FlowOutBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) *int { return v.FlowOutBandwidth }).(pulumi.IntPtrOutput)
 }
 
-// Public network billing type. The parameter values are as follows:
-// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-// - uninvolved: Not involved. Set this value when disabling public network access.
+// Public network billing type.  Parameter values are as follows:
+// - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+// - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
 func (o RocketMQInstanceNetworkInfoInternetInfoOutput) FlowOutType() pulumi.StringOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) string { return v.FlowOutType }).(pulumi.StringOutput)
 }
 
-// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+// Whether to enable public network access.  The parameter values are as follows:
 // - enable: Enable public network access
-// - disable: Disable public network access
+// - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
 func (o RocketMQInstanceNetworkInfoInternetInfoOutput) InternetSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoInternetInfo) string { return v.InternetSpec }).(pulumi.StringOutput)
 }
@@ -625,7 +625,7 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) Elem() RocketMQInstanc
 	}).(RocketMQInstanceNetworkInfoInternetInfoOutput)
 }
 
-// Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+// Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
 func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) *int {
 		if v == nil {
@@ -635,9 +635,9 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutBandwidth() pul
 	}).(pulumi.IntPtrOutput)
 }
 
-// Public network billing type. The parameter values are as follows:
-// - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-// - uninvolved: Not involved. Set this value when disabling public network access.
+// Public network billing type.  Parameter values are as follows:
+// - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+// - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
 func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) *string {
 		if v == nil {
@@ -647,9 +647,9 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) FlowOutType() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+// Whether to enable public network access.  The parameter values are as follows:
 // - enable: Enable public network access
-// - disable: Disable public network access
+// - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
 func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) InternetSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoInternetInfo) *string {
 		if v == nil {
@@ -670,10 +670,14 @@ func (o RocketMQInstanceNetworkInfoInternetInfoPtrOutput) IpWhitelists() pulumi.
 }
 
 type RocketMQInstanceNetworkInfoVpcInfo struct {
+	// Security group id.
+	SecurityGroupIds *string `pulumi:"securityGroupIds"`
 	// Proprietary Network.
 	VpcId string `pulumi:"vpcId"`
-	// VPC network switch.
-	VswitchId string `pulumi:"vswitchId"`
+	// VPC switch id.
+	VswitchId *string `pulumi:"vswitchId"`
+	// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+	Vswitches []RocketMQInstanceNetworkInfoVpcInfoVswitch `pulumi:"vswitches"`
 }
 
 // RocketMQInstanceNetworkInfoVpcInfoInput is an input type that accepts RocketMQInstanceNetworkInfoVpcInfoArgs and RocketMQInstanceNetworkInfoVpcInfoOutput values.
@@ -688,10 +692,14 @@ type RocketMQInstanceNetworkInfoVpcInfoInput interface {
 }
 
 type RocketMQInstanceNetworkInfoVpcInfoArgs struct {
+	// Security group id.
+	SecurityGroupIds pulumi.StringPtrInput `pulumi:"securityGroupIds"`
 	// Proprietary Network.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// VPC network switch.
-	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	// VPC switch id.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+	// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+	Vswitches RocketMQInstanceNetworkInfoVpcInfoVswitchArrayInput `pulumi:"vswitches"`
 }
 
 func (RocketMQInstanceNetworkInfoVpcInfoArgs) ElementType() reflect.Type {
@@ -771,14 +779,26 @@ func (o RocketMQInstanceNetworkInfoVpcInfoOutput) ToRocketMQInstanceNetworkInfoV
 	}).(RocketMQInstanceNetworkInfoVpcInfoPtrOutput)
 }
 
+// Security group id.
+func (o RocketMQInstanceNetworkInfoVpcInfoOutput) SecurityGroupIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) *string { return v.SecurityGroupIds }).(pulumi.StringPtrOutput)
+}
+
 // Proprietary Network.
 func (o RocketMQInstanceNetworkInfoVpcInfoOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// VPC network switch.
-func (o RocketMQInstanceNetworkInfoVpcInfoOutput) VswitchId() pulumi.StringOutput {
-	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) string { return v.VswitchId }).(pulumi.StringOutput)
+// VPC switch id.
+func (o RocketMQInstanceNetworkInfoVpcInfoOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+func (o RocketMQInstanceNetworkInfoVpcInfoOutput) Vswitches() RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfo) []RocketMQInstanceNetworkInfoVpcInfoVswitch {
+		return v.Vswitches
+	}).(RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput)
 }
 
 type RocketMQInstanceNetworkInfoVpcInfoPtrOutput struct{ *pulumi.OutputState }
@@ -805,6 +825,16 @@ func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) Elem() RocketMQInstanceNetw
 	}).(RocketMQInstanceNetworkInfoVpcInfoOutput)
 }
 
+// Security group id.
+func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) SecurityGroupIds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupIds
+	}).(pulumi.StringPtrOutput)
+}
+
 // Proprietary Network.
 func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) *string {
@@ -815,24 +845,131 @@ func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VpcId() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// VPC network switch.
+// VPC switch id.
 func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.VswitchId
+		return v.VswitchId
 	}).(pulumi.StringPtrOutput)
+}
+
+// Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+func (o RocketMQInstanceNetworkInfoVpcInfoPtrOutput) Vswitches() RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput {
+	return o.ApplyT(func(v *RocketMQInstanceNetworkInfoVpcInfo) []RocketMQInstanceNetworkInfoVpcInfoVswitch {
+		if v == nil {
+			return nil
+		}
+		return v.Vswitches
+	}).(RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput)
+}
+
+type RocketMQInstanceNetworkInfoVpcInfoVswitch struct {
+	// VPC switch id.
+	VswitchId *string `pulumi:"vswitchId"`
+}
+
+// RocketMQInstanceNetworkInfoVpcInfoVswitchInput is an input type that accepts RocketMQInstanceNetworkInfoVpcInfoVswitchArgs and RocketMQInstanceNetworkInfoVpcInfoVswitchOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoVpcInfoVswitchInput` via:
+//
+//	RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{...}
+type RocketMQInstanceNetworkInfoVpcInfoVswitchInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoVpcInfoVswitchOutput() RocketMQInstanceNetworkInfoVpcInfoVswitchOutput
+	ToRocketMQInstanceNetworkInfoVpcInfoVswitchOutputWithContext(context.Context) RocketMQInstanceNetworkInfoVpcInfoVswitchOutput
+}
+
+type RocketMQInstanceNetworkInfoVpcInfoVswitchArgs struct {
+	// VPC switch id.
+	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
+}
+
+func (RocketMQInstanceNetworkInfoVpcInfoVswitchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfoVswitch)(nil)).Elem()
+}
+
+func (i RocketMQInstanceNetworkInfoVpcInfoVswitchArgs) ToRocketMQInstanceNetworkInfoVpcInfoVswitchOutput() RocketMQInstanceNetworkInfoVpcInfoVswitchOutput {
+	return i.ToRocketMQInstanceNetworkInfoVpcInfoVswitchOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoVpcInfoVswitchArgs) ToRocketMQInstanceNetworkInfoVpcInfoVswitchOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoVswitchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoVpcInfoVswitchOutput)
+}
+
+// RocketMQInstanceNetworkInfoVpcInfoVswitchArrayInput is an input type that accepts RocketMQInstanceNetworkInfoVpcInfoVswitchArray and RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput values.
+// You can construct a concrete instance of `RocketMQInstanceNetworkInfoVpcInfoVswitchArrayInput` via:
+//
+//	RocketMQInstanceNetworkInfoVpcInfoVswitchArray{ RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{...} }
+type RocketMQInstanceNetworkInfoVpcInfoVswitchArrayInput interface {
+	pulumi.Input
+
+	ToRocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput() RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput
+	ToRocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutputWithContext(context.Context) RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput
+}
+
+type RocketMQInstanceNetworkInfoVpcInfoVswitchArray []RocketMQInstanceNetworkInfoVpcInfoVswitchInput
+
+func (RocketMQInstanceNetworkInfoVpcInfoVswitchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RocketMQInstanceNetworkInfoVpcInfoVswitch)(nil)).Elem()
+}
+
+func (i RocketMQInstanceNetworkInfoVpcInfoVswitchArray) ToRocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput() RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput {
+	return i.ToRocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutputWithContext(context.Background())
+}
+
+func (i RocketMQInstanceNetworkInfoVpcInfoVswitchArray) ToRocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput)
+}
+
+type RocketMQInstanceNetworkInfoVpcInfoVswitchOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoVpcInfoVswitchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfoVswitch)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoVswitchOutput) ToRocketMQInstanceNetworkInfoVpcInfoVswitchOutput() RocketMQInstanceNetworkInfoVpcInfoVswitchOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoVswitchOutput) ToRocketMQInstanceNetworkInfoVpcInfoVswitchOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoVswitchOutput {
+	return o
+}
+
+// VPC switch id.
+func (o RocketMQInstanceNetworkInfoVpcInfoVswitchOutput) VswitchId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RocketMQInstanceNetworkInfoVpcInfoVswitch) *string { return v.VswitchId }).(pulumi.StringPtrOutput)
+}
+
+type RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput struct{ *pulumi.OutputState }
+
+func (RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RocketMQInstanceNetworkInfoVpcInfoVswitch)(nil)).Elem()
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput) ToRocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput() RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput) ToRocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutputWithContext(ctx context.Context) RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput {
+	return o
+}
+
+func (o RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput) Index(i pulumi.IntInput) RocketMQInstanceNetworkInfoVpcInfoVswitchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RocketMQInstanceNetworkInfoVpcInfoVswitch {
+		return vs[0].([]RocketMQInstanceNetworkInfoVpcInfoVswitch)[vs[1].(int)]
+	}).(RocketMQInstanceNetworkInfoVpcInfoVswitchOutput)
 }
 
 type RocketMQInstanceProductInfo struct {
 	// is open auto scaling.
 	AutoScaling *bool `pulumi:"autoScaling"`
-	// Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+	// Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
 	MessageRetentionTime *int `pulumi:"messageRetentionTime"`
 	// Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
 	MsgProcessSpec string `pulumi:"msgProcessSpec"`
-	// message send receive ratio.Value range: [0.2, 0.5].
+	// message send receive ratio.  Value range: [0.2, 0.5].
 	SendReceiveRatio *float64 `pulumi:"sendReceiveRatio"`
 	// is support auto scaling.
 	SupportAutoScaling *bool `pulumi:"supportAutoScaling"`
@@ -852,11 +989,11 @@ type RocketMQInstanceProductInfoInput interface {
 type RocketMQInstanceProductInfoArgs struct {
 	// is open auto scaling.
 	AutoScaling pulumi.BoolPtrInput `pulumi:"autoScaling"`
-	// Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+	// Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
 	MessageRetentionTime pulumi.IntPtrInput `pulumi:"messageRetentionTime"`
 	// Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
 	MsgProcessSpec pulumi.StringInput `pulumi:"msgProcessSpec"`
-	// message send receive ratio.Value range: [0.2, 0.5].
+	// message send receive ratio.  Value range: [0.2, 0.5].
 	SendReceiveRatio pulumi.Float64PtrInput `pulumi:"sendReceiveRatio"`
 	// is support auto scaling.
 	SupportAutoScaling pulumi.BoolPtrInput `pulumi:"supportAutoScaling"`
@@ -944,7 +1081,7 @@ func (o RocketMQInstanceProductInfoOutput) AutoScaling() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RocketMQInstanceProductInfo) *bool { return v.AutoScaling }).(pulumi.BoolPtrOutput)
 }
 
-// Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+// Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
 func (o RocketMQInstanceProductInfoOutput) MessageRetentionTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RocketMQInstanceProductInfo) *int { return v.MessageRetentionTime }).(pulumi.IntPtrOutput)
 }
@@ -954,7 +1091,7 @@ func (o RocketMQInstanceProductInfoOutput) MsgProcessSpec() pulumi.StringOutput 
 	return o.ApplyT(func(v RocketMQInstanceProductInfo) string { return v.MsgProcessSpec }).(pulumi.StringOutput)
 }
 
-// message send receive ratio.Value range: [0.2, 0.5].
+// message send receive ratio.  Value range: [0.2, 0.5].
 func (o RocketMQInstanceProductInfoOutput) SendReceiveRatio() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RocketMQInstanceProductInfo) *float64 { return v.SendReceiveRatio }).(pulumi.Float64PtrOutput)
 }
@@ -998,7 +1135,7 @@ func (o RocketMQInstanceProductInfoPtrOutput) AutoScaling() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+// Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
 func (o RocketMQInstanceProductInfoPtrOutput) MessageRetentionTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *int {
 		if v == nil {
@@ -1018,7 +1155,7 @@ func (o RocketMQInstanceProductInfoPtrOutput) MsgProcessSpec() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// message send receive ratio.Value range: [0.2, 0.5].
+// message send receive ratio.  Value range: [0.2, 0.5].
 func (o RocketMQInstanceProductInfoPtrOutput) SendReceiveRatio() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *RocketMQInstanceProductInfo) *float64 {
 		if v == nil {
@@ -1794,6 +1931,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoInternetInfoPtrInput)(nil)).Elem(), RocketMQInstanceNetworkInfoInternetInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfoInput)(nil)).Elem(), RocketMQInstanceNetworkInfoVpcInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfoPtrInput)(nil)).Elem(), RocketMQInstanceNetworkInfoVpcInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfoVswitchInput)(nil)).Elem(), RocketMQInstanceNetworkInfoVpcInfoVswitchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceNetworkInfoVpcInfoVswitchArrayInput)(nil)).Elem(), RocketMQInstanceNetworkInfoVpcInfoVswitchArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceProductInfoInput)(nil)).Elem(), RocketMQInstanceProductInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceProductInfoPtrInput)(nil)).Elem(), RocketMQInstanceProductInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RocketMQInstanceSoftwareInput)(nil)).Elem(), RocketMQInstanceSoftwareArgs{})
@@ -1814,6 +1953,8 @@ func init() {
 	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoInternetInfoPtrOutput{})
 	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoVpcInfoOutput{})
 	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoVpcInfoPtrOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoVpcInfoVswitchOutput{})
+	pulumi.RegisterOutputType(RocketMQInstanceNetworkInfoVpcInfoVswitchArrayOutput{})
 	pulumi.RegisterOutputType(RocketMQInstanceProductInfoOutput{})
 	pulumi.RegisterOutputType(RocketMQInstanceProductInfoPtrOutput{})
 	pulumi.RegisterOutputType(RocketMQInstanceSoftwareOutput{})

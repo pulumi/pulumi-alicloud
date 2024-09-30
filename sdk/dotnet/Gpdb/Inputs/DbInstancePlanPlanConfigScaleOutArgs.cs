@@ -25,6 +25,12 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
         public Input<string>? PlanCronTime { get; set; }
 
         /// <summary>
+        /// (Available since v1.231.0) The status of the plan task.
+        /// </summary>
+        [Input("planTaskStatus")]
+        public Input<string>? PlanTaskStatus { get; set; }
+
+        /// <summary>
         /// The segment Node Num of the Plan.
         /// </summary>
         [Input("segmentNodeNum")]

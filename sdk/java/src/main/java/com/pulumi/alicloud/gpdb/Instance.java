@@ -7,6 +7,7 @@ import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.gpdb.InstanceArgs;
 import com.pulumi.alicloud.gpdb.inputs.InstanceState;
 import com.pulumi.alicloud.gpdb.outputs.InstanceIpWhitelist;
+import com.pulumi.alicloud.gpdb.outputs.InstanceParameter;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -422,6 +423,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> masterNodeNum() {
         return Codegen.optional(this.masterNodeNum);
+    }
+    /**
+     * The parameters. See `parameters` below.
+     * 
+     */
+    @Export(name="parameters", refs={List.class,InstanceParameter.class}, tree="[0,1]")
+    private Output<List<InstanceParameter>> parameters;
+
+    /**
+     * @return The parameters. See `parameters` below.
+     * 
+     */
+    public Output<List<InstanceParameter>> parameters() {
+        return this.parameters;
     }
     /**
      * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.

@@ -13,9 +13,12 @@ __all__ = [
     'DbInstancePlanPlanConfigArgs',
     'DbInstancePlanPlanConfigPauseArgs',
     'DbInstancePlanPlanConfigResumeArgs',
+    'DbInstancePlanPlanConfigScaleDownArgs',
     'DbInstancePlanPlanConfigScaleInArgs',
     'DbInstancePlanPlanConfigScaleOutArgs',
+    'DbInstancePlanPlanConfigScaleUpArgs',
     'InstanceIpWhitelistArgs',
+    'InstanceParameterArgs',
 ]
 
 @pulumi.input_type
@@ -23,22 +26,30 @@ class DbInstancePlanPlanConfigArgs:
     def __init__(__self__, *,
                  pause: Optional[pulumi.Input['DbInstancePlanPlanConfigPauseArgs']] = None,
                  resume: Optional[pulumi.Input['DbInstancePlanPlanConfigResumeArgs']] = None,
+                 scale_down: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleDownArgs']] = None,
                  scale_in: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleInArgs']] = None,
-                 scale_out: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']] = None):
+                 scale_out: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']] = None,
+                 scale_up: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleUpArgs']] = None):
         """
         :param pulumi.Input['DbInstancePlanPlanConfigPauseArgs'] pause: Pause instance plan config. See `pause` below.
         :param pulumi.Input['DbInstancePlanPlanConfigResumeArgs'] resume: Resume instance plan config. See `resume` below.
+        :param pulumi.Input['DbInstancePlanPlanConfigScaleDownArgs'] scale_down: Scale down instance plan config. See `scale_down` below.
         :param pulumi.Input['DbInstancePlanPlanConfigScaleInArgs'] scale_in: Scale In instance plan config. See `scale_in` below.
         :param pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs'] scale_out: Scale out instance plan config. See `scale_out` below.
+        :param pulumi.Input['DbInstancePlanPlanConfigScaleUpArgs'] scale_up: Scale up instance plan config. See `scale_up` below.
         """
         if pause is not None:
             pulumi.set(__self__, "pause", pause)
         if resume is not None:
             pulumi.set(__self__, "resume", resume)
+        if scale_down is not None:
+            pulumi.set(__self__, "scale_down", scale_down)
         if scale_in is not None:
             pulumi.set(__self__, "scale_in", scale_in)
         if scale_out is not None:
             pulumi.set(__self__, "scale_out", scale_out)
+        if scale_up is not None:
+            pulumi.set(__self__, "scale_up", scale_up)
 
     @property
     @pulumi.getter
@@ -65,6 +76,18 @@ class DbInstancePlanPlanConfigArgs:
         pulumi.set(self, "resume", value)
 
     @property
+    @pulumi.getter(name="scaleDown")
+    def scale_down(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigScaleDownArgs']]:
+        """
+        Scale down instance plan config. See `scale_down` below.
+        """
+        return pulumi.get(self, "scale_down")
+
+    @scale_down.setter
+    def scale_down(self, value: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleDownArgs']]):
+        pulumi.set(self, "scale_down", value)
+
+    @property
     @pulumi.getter(name="scaleIn")
     def scale_in(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigScaleInArgs']]:
         """
@@ -88,20 +111,36 @@ class DbInstancePlanPlanConfigArgs:
     def scale_out(self, value: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleOutArgs']]):
         pulumi.set(self, "scale_out", value)
 
+    @property
+    @pulumi.getter(name="scaleUp")
+    def scale_up(self) -> Optional[pulumi.Input['DbInstancePlanPlanConfigScaleUpArgs']]:
+        """
+        Scale up instance plan config. See `scale_up` below.
+        """
+        return pulumi.get(self, "scale_up")
+
+    @scale_up.setter
+    def scale_up(self, value: Optional[pulumi.Input['DbInstancePlanPlanConfigScaleUpArgs']]):
+        pulumi.set(self, "scale_up", value)
+
 
 @pulumi.input_type
 class DbInstancePlanPlanConfigPauseArgs:
     def __init__(__self__, *,
                  execute_time: Optional[pulumi.Input[str]] = None,
-                 plan_cron_time: Optional[pulumi.Input[str]] = None):
+                 plan_cron_time: Optional[pulumi.Input[str]] = None,
+                 plan_task_status: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] execute_time: The executed time of the Plan.
         :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        :param pulumi.Input[str] plan_task_status: (Available since v1.231.0) The status of the plan task.
         """
         if execute_time is not None:
             pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
             pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        if plan_task_status is not None:
+            pulumi.set(__self__, "plan_task_status", plan_task_status)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -126,21 +165,37 @@ class DbInstancePlanPlanConfigPauseArgs:
     @plan_cron_time.setter
     def plan_cron_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "plan_cron_time", value)
+
+    @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) The status of the plan task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+    @plan_task_status.setter
+    def plan_task_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_task_status", value)
 
 
 @pulumi.input_type
 class DbInstancePlanPlanConfigResumeArgs:
     def __init__(__self__, *,
                  execute_time: Optional[pulumi.Input[str]] = None,
-                 plan_cron_time: Optional[pulumi.Input[str]] = None):
+                 plan_cron_time: Optional[pulumi.Input[str]] = None,
+                 plan_task_status: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] execute_time: The executed time of the Plan.
         :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        :param pulumi.Input[str] plan_task_status: (Available since v1.231.0) The status of the plan task.
         """
         if execute_time is not None:
             pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
             pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        if plan_task_status is not None:
+            pulumi.set(__self__, "plan_task_status", plan_task_status)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -165,6 +220,89 @@ class DbInstancePlanPlanConfigResumeArgs:
     @plan_cron_time.setter
     def plan_cron_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "plan_cron_time", value)
+
+    @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) The status of the plan task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+    @plan_task_status.setter
+    def plan_task_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_task_status", value)
+
+
+@pulumi.input_type
+class DbInstancePlanPlanConfigScaleDownArgs:
+    def __init__(__self__, *,
+                 execute_time: Optional[pulumi.Input[str]] = None,
+                 instance_spec: Optional[pulumi.Input[str]] = None,
+                 plan_cron_time: Optional[pulumi.Input[str]] = None,
+                 plan_task_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] execute_time: The executed time of the Plan.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes of the Plan.
+        :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        :param pulumi.Input[str] plan_task_status: (Available since v1.231.0) The status of the plan task.
+        """
+        if execute_time is not None:
+            pulumi.set(__self__, "execute_time", execute_time)
+        if instance_spec is not None:
+            pulumi.set(__self__, "instance_spec", instance_spec)
+        if plan_cron_time is not None:
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        if plan_task_status is not None:
+            pulumi.set(__self__, "plan_task_status", plan_task_status)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @execute_time.setter
+    def execute_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execute_time", value)
+
+    @property
+    @pulumi.getter(name="instanceSpec")
+    def instance_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of segment nodes of the Plan.
+        """
+        return pulumi.get(self, "instance_spec")
+
+    @instance_spec.setter
+    def instance_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_spec", value)
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+    @plan_cron_time.setter
+    def plan_cron_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_cron_time", value)
+
+    @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) The status of the plan task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+    @plan_task_status.setter
+    def plan_task_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_task_status", value)
 
 
 @pulumi.input_type
@@ -172,16 +310,20 @@ class DbInstancePlanPlanConfigScaleInArgs:
     def __init__(__self__, *,
                  execute_time: Optional[pulumi.Input[str]] = None,
                  plan_cron_time: Optional[pulumi.Input[str]] = None,
+                 plan_task_status: Optional[pulumi.Input[str]] = None,
                  segment_node_num: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] execute_time: The executed time of the Plan.
         :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        :param pulumi.Input[str] plan_task_status: (Available since v1.231.0) The status of the plan task.
         :param pulumi.Input[str] segment_node_num: The segment Node Num of the Plan.
         """
         if execute_time is not None:
             pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
             pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        if plan_task_status is not None:
+            pulumi.set(__self__, "plan_task_status", plan_task_status)
         if segment_node_num is not None:
             pulumi.set(__self__, "segment_node_num", segment_node_num)
 
@@ -208,6 +350,18 @@ class DbInstancePlanPlanConfigScaleInArgs:
     @plan_cron_time.setter
     def plan_cron_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "plan_cron_time", value)
+
+    @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) The status of the plan task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+    @plan_task_status.setter
+    def plan_task_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_task_status", value)
 
     @property
     @pulumi.getter(name="segmentNodeNum")
@@ -227,16 +381,20 @@ class DbInstancePlanPlanConfigScaleOutArgs:
     def __init__(__self__, *,
                  execute_time: Optional[pulumi.Input[str]] = None,
                  plan_cron_time: Optional[pulumi.Input[str]] = None,
+                 plan_task_status: Optional[pulumi.Input[str]] = None,
                  segment_node_num: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] execute_time: The executed time of the Plan.
         :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        :param pulumi.Input[str] plan_task_status: (Available since v1.231.0) The status of the plan task.
         :param pulumi.Input[str] segment_node_num: The segment Node Num of the Plan.
         """
         if execute_time is not None:
             pulumi.set(__self__, "execute_time", execute_time)
         if plan_cron_time is not None:
             pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        if plan_task_status is not None:
+            pulumi.set(__self__, "plan_task_status", plan_task_status)
         if segment_node_num is not None:
             pulumi.set(__self__, "segment_node_num", segment_node_num)
 
@@ -265,6 +423,18 @@ class DbInstancePlanPlanConfigScaleOutArgs:
         pulumi.set(self, "plan_cron_time", value)
 
     @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) The status of the plan task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+    @plan_task_status.setter
+    def plan_task_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_task_status", value)
+
+    @property
     @pulumi.getter(name="segmentNodeNum")
     def segment_node_num(self) -> Optional[pulumi.Input[str]]:
         """
@@ -275,6 +445,77 @@ class DbInstancePlanPlanConfigScaleOutArgs:
     @segment_node_num.setter
     def segment_node_num(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "segment_node_num", value)
+
+
+@pulumi.input_type
+class DbInstancePlanPlanConfigScaleUpArgs:
+    def __init__(__self__, *,
+                 execute_time: Optional[pulumi.Input[str]] = None,
+                 instance_spec: Optional[pulumi.Input[str]] = None,
+                 plan_cron_time: Optional[pulumi.Input[str]] = None,
+                 plan_task_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] execute_time: The executed time of the Plan.
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes of the Plan.
+        :param pulumi.Input[str] plan_cron_time: The Cron Time of the plan.
+        :param pulumi.Input[str] plan_task_status: (Available since v1.231.0) The status of the plan task.
+        """
+        if execute_time is not None:
+            pulumi.set(__self__, "execute_time", execute_time)
+        if instance_spec is not None:
+            pulumi.set(__self__, "instance_spec", instance_spec)
+        if plan_cron_time is not None:
+            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+        if plan_task_status is not None:
+            pulumi.set(__self__, "plan_task_status", plan_task_status)
+
+    @property
+    @pulumi.getter(name="executeTime")
+    def execute_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The executed time of the Plan.
+        """
+        return pulumi.get(self, "execute_time")
+
+    @execute_time.setter
+    def execute_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "execute_time", value)
+
+    @property
+    @pulumi.getter(name="instanceSpec")
+    def instance_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The specification of segment nodes of the Plan.
+        """
+        return pulumi.get(self, "instance_spec")
+
+    @instance_spec.setter
+    def instance_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_spec", value)
+
+    @property
+    @pulumi.getter(name="planCronTime")
+    def plan_cron_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cron Time of the plan.
+        """
+        return pulumi.get(self, "plan_cron_time")
+
+    @plan_cron_time.setter
+    def plan_cron_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_cron_time", value)
+
+    @property
+    @pulumi.getter(name="planTaskStatus")
+    def plan_task_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) The status of the plan task.
+        """
+        return pulumi.get(self, "plan_task_status")
+
+    @plan_task_status.setter
+    def plan_task_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan_task_status", value)
 
 
 @pulumi.input_type
@@ -332,5 +573,122 @@ class InstanceIpWhitelistArgs:
     @security_ip_list.setter
     def security_ip_list(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_ip_list", value)
+
+
+@pulumi.input_type
+class InstanceParameterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 default_value: Optional[pulumi.Input[str]] = None,
+                 force_restart_instance: Optional[pulumi.Input[str]] = None,
+                 is_changeable_config: Optional[pulumi.Input[str]] = None,
+                 optional_range: Optional[pulumi.Input[str]] = None,
+                 parameter_description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the parameter.
+        :param pulumi.Input[str] value: The value of the parameter.
+        :param pulumi.Input[str] default_value: (Available since v1.231.0) The default value of the parameter.
+        :param pulumi.Input[str] force_restart_instance: (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+        :param pulumi.Input[str] is_changeable_config: (Available since v1.231.0) Whether the parameter is changeable.
+        :param pulumi.Input[str] optional_range: (Available since v1.231.0) The optional range of the parameter.
+        :param pulumi.Input[str] parameter_description: (Available since v1.231.0) The description of the parameter.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
+        if force_restart_instance is not None:
+            pulumi.set(__self__, "force_restart_instance", force_restart_instance)
+        if is_changeable_config is not None:
+            pulumi.set(__self__, "is_changeable_config", is_changeable_config)
+        if optional_range is not None:
+            pulumi.set(__self__, "optional_range", optional_range)
+        if parameter_description is not None:
+            pulumi.set(__self__, "parameter_description", parameter_description)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the parameter.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the parameter.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) The default value of the parameter.
+        """
+        return pulumi.get(self, "default_value")
+
+    @default_value.setter
+    def default_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_value", value)
+
+    @property
+    @pulumi.getter(name="forceRestartInstance")
+    def force_restart_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) Whether to force restart the instance to config the parameter.
+        """
+        return pulumi.get(self, "force_restart_instance")
+
+    @force_restart_instance.setter
+    def force_restart_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_restart_instance", value)
+
+    @property
+    @pulumi.getter(name="isChangeableConfig")
+    def is_changeable_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) Whether the parameter is changeable.
+        """
+        return pulumi.get(self, "is_changeable_config")
+
+    @is_changeable_config.setter
+    def is_changeable_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "is_changeable_config", value)
+
+    @property
+    @pulumi.getter(name="optionalRange")
+    def optional_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) The optional range of the parameter.
+        """
+        return pulumi.get(self, "optional_range")
+
+    @optional_range.setter
+    def optional_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "optional_range", value)
+
+    @property
+    @pulumi.getter(name="parameterDescription")
+    def parameter_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.231.0) The description of the parameter.
+        """
+        return pulumi.get(self, "parameter_description")
+
+    @parameter_description.setter
+    def parameter_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter_description", value)
 
 

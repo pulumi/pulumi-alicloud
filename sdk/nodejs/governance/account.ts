@@ -60,6 +60,12 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly baselineId!: pulumi.Output<string>;
     /**
+     * The domain name is used to qualify the login name of RAM users and RAM roles.
+     *
+     * Format: \<AccountAlias>.onaliyun.com where \<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+     */
+    public readonly defaultDomainName!: pulumi.Output<string | undefined>;
+    /**
      * The account display name.
      * - This parameter is required if you are creating a new resource account.
      * - If the registration application is applied to an existing account, this parameter does not need to be filled in.
@@ -98,6 +104,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["accountNamePrefix"] = state ? state.accountNamePrefix : undefined;
             resourceInputs["baselineId"] = state ? state.baselineId : undefined;
+            resourceInputs["defaultDomainName"] = state ? state.defaultDomainName : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["folderId"] = state ? state.folderId : undefined;
             resourceInputs["payerAccountId"] = state ? state.payerAccountId : undefined;
@@ -110,6 +117,7 @@ export class Account extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["accountNamePrefix"] = args ? args.accountNamePrefix : undefined;
             resourceInputs["baselineId"] = args ? args.baselineId : undefined;
+            resourceInputs["defaultDomainName"] = args ? args.defaultDomainName : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
             resourceInputs["payerAccountId"] = args ? args.payerAccountId : undefined;
@@ -142,6 +150,12 @@ export interface AccountState {
      * If it is left blank, the system default baseline is used by default.
      */
     baselineId?: pulumi.Input<string>;
+    /**
+     * The domain name is used to qualify the login name of RAM users and RAM roles.
+     *
+     * Format: \<AccountAlias>.onaliyun.com where \<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+     */
+    defaultDomainName?: pulumi.Input<string>;
     /**
      * The account display name.
      * - This parameter is required if you are creating a new resource account.
@@ -188,6 +202,12 @@ export interface AccountArgs {
      * If it is left blank, the system default baseline is used by default.
      */
     baselineId: pulumi.Input<string>;
+    /**
+     * The domain name is used to qualify the login name of RAM users and RAM roles.
+     *
+     * Format: \<AccountAlias>.onaliyun.com where \<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+     */
+    defaultDomainName?: pulumi.Input<string>;
     /**
      * The account display name.
      * - This parameter is required if you are creating a new resource account.

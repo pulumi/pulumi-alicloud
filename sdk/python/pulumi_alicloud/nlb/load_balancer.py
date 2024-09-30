@@ -767,6 +767,64 @@ class LoadBalancer(pulumi.CustomResource):
             ])
         ```
 
+        DualStack Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        zone = config.get_object("zone")
+        if zone is None:
+            zone = [
+                "cn-beijing-i",
+                "cn-beijing-k",
+                "cn-beijing-l",
+            ]
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="10.2.0.0/16",
+            enable_ipv6=True)
+        vsw = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            vsw.append(alicloud.vpc.Switch(f"vsw-{range['value']}",
+                enable_ipv6=True,
+                ipv6_cidr_block_mask=f"1{range['value']}",
+                vswitch_name=f"vsw-{range['value']}-for-nlb",
+                vpc_id=vpc.id,
+                cidr_block=f"10.2.1{range['value']}.0/24",
+                zone_id=zone[range["value"]]))
+        default = alicloud.vpc.Ipv6Gateway("default",
+            ipv6_gateway_name=name,
+            vpc_id=vpc.id)
+        nlb = alicloud.nlb.LoadBalancer("nlb",
+            load_balancer_name=name,
+            load_balancer_type="Network",
+            address_type="Intranet",
+            address_ip_version="DualStack",
+            ipv6_address_type="Internet",
+            vpc_id=vpc.id,
+            cross_zone_enabled=False,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": vsw[0].id,
+                    "zone_id": zone[0],
+                },
+                {
+                    "vswitch_id": vsw[1].id,
+                    "zone_id": zone[1],
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+
         ## Import
 
         NLB Load Balancer can be imported using the id, e.g.
@@ -866,6 +924,64 @@ class LoadBalancer(pulumi.CustomResource):
                     "zone_id": default_get_zones.zones[1].id,
                 },
             ])
+        ```
+
+        DualStack Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        zone = config.get_object("zone")
+        if zone is None:
+            zone = [
+                "cn-beijing-i",
+                "cn-beijing-k",
+                "cn-beijing-l",
+            ]
+        vpc = alicloud.vpc.Network("vpc",
+            vpc_name=name,
+            cidr_block="10.2.0.0/16",
+            enable_ipv6=True)
+        vsw = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            vsw.append(alicloud.vpc.Switch(f"vsw-{range['value']}",
+                enable_ipv6=True,
+                ipv6_cidr_block_mask=f"1{range['value']}",
+                vswitch_name=f"vsw-{range['value']}-for-nlb",
+                vpc_id=vpc.id,
+                cidr_block=f"10.2.1{range['value']}.0/24",
+                zone_id=zone[range["value"]]))
+        default = alicloud.vpc.Ipv6Gateway("default",
+            ipv6_gateway_name=name,
+            vpc_id=vpc.id)
+        nlb = alicloud.nlb.LoadBalancer("nlb",
+            load_balancer_name=name,
+            load_balancer_type="Network",
+            address_type="Intranet",
+            address_ip_version="DualStack",
+            ipv6_address_type="Internet",
+            vpc_id=vpc.id,
+            cross_zone_enabled=False,
+            tags={
+                "Created": "TF",
+                "For": "example",
+            },
+            zone_mappings=[
+                {
+                    "vswitch_id": vsw[0].id,
+                    "zone_id": zone[0],
+                },
+                {
+                    "vswitch_id": vsw[1].id,
+                    "zone_id": zone[1],
+                },
+            ],
+            opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
 
         ## Import

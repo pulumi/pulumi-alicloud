@@ -16,44 +16,33 @@ __all__ = ['AclArgs', 'Acl']
 @pulumi.input_type
 class AclArgs:
     def __init__(__self__, *,
-                 acl_name: pulumi.Input[str],
                  acl_entries: Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]] = None,
+                 acl_name: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Acl resource.
-        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]] acl_entries: The list of the ACL entries. You can add up to `20` entries in each call.  See `acl_entries` below for details.
                **NOTE:** "Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.",
+        :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "acl_name", acl_name)
         if acl_entries is not None:
             warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
         if acl_entries is not None:
             pulumi.set(__self__, "acl_entries", acl_entries)
+        if acl_name is not None:
+            pulumi.set(__self__, "acl_name", acl_name)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-
-    @property
-    @pulumi.getter(name="aclName")
-    def acl_name(self) -> pulumi.Input[str]:
-        """
-        The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
-        """
-        return pulumi.get(self, "acl_name")
-
-    @acl_name.setter
-    def acl_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "acl_name", value)
 
     @property
     @pulumi.getter(name="aclEntries")
@@ -68,6 +57,18 @@ class AclArgs:
     @acl_entries.setter
     def acl_entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AclAclEntryArgs']]]]):
         pulumi.set(self, "acl_entries", value)
+
+    @property
+    @pulumi.getter(name="aclName")
+    def acl_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
+        """
+        return pulumi.get(self, "acl_name")
+
+    @acl_name.setter
+    def acl_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "acl_name", value)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -269,7 +270,7 @@ class Acl(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AclArgs,
+                 args: Optional[AclArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Application Load Balancer (ALB) Acl resource.
@@ -330,8 +331,6 @@ class Acl(pulumi.CustomResource):
             __props__ = AclArgs.__new__(AclArgs)
 
             __props__.__dict__["acl_entries"] = acl_entries
-            if acl_name is None and not opts.urn:
-                raise TypeError("Missing required property 'acl_name'")
             __props__.__dict__["acl_name"] = acl_name
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -392,7 +391,7 @@ class Acl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="aclName")
-    def acl_name(self) -> pulumi.Output[str]:
+    def acl_name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         """

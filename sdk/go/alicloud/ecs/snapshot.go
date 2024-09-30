@@ -59,18 +59,20 @@ import (
 type Snapshot struct {
 	pulumi.CustomResourceState
 
-	Category pulumi.StringPtrOutput `pulumi:"category"`
+	Category pulumi.StringOutput `pulumi:"category"`
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The source disk ID.
-	DiskId                     pulumi.StringOutput  `pulumi:"diskId"`
-	Force                      pulumi.BoolPtrOutput `pulumi:"force"`
-	InstantAccess              pulumi.BoolPtrOutput `pulumi:"instantAccess"`
-	InstantAccessRetentionDays pulumi.IntPtrOutput  `pulumi:"instantAccessRetentionDays"`
+	DiskId pulumi.StringOutput  `pulumi:"diskId"`
+	Force  pulumi.BoolPtrOutput `pulumi:"force"`
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
+	InstantAccess pulumi.BoolPtrOutput `pulumi:"instantAccess"`
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+	InstantAccessRetentionDays pulumi.IntPtrOutput `pulumi:"instantAccessRetentionDays"`
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
@@ -118,14 +120,16 @@ type snapshotState struct {
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// The source disk ID.
-	DiskId                     *string `pulumi:"diskId"`
-	Force                      *bool   `pulumi:"force"`
-	InstantAccess              *bool   `pulumi:"instantAccess"`
-	InstantAccessRetentionDays *int    `pulumi:"instantAccessRetentionDays"`
+	DiskId *string `pulumi:"diskId"`
+	Force  *bool   `pulumi:"force"`
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
+	InstantAccess *bool `pulumi:"instantAccess"`
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+	InstantAccessRetentionDays *int `pulumi:"instantAccessRetentionDays"`
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name *string `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -141,14 +145,16 @@ type SnapshotState struct {
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// The source disk ID.
-	DiskId                     pulumi.StringPtrInput
-	Force                      pulumi.BoolPtrInput
-	InstantAccess              pulumi.BoolPtrInput
+	DiskId pulumi.StringPtrInput
+	Force  pulumi.BoolPtrInput
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
+	InstantAccess pulumi.BoolPtrInput
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays pulumi.IntPtrInput
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -168,14 +174,16 @@ type snapshotArgs struct {
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description *string `pulumi:"description"`
 	// The source disk ID.
-	DiskId                     string `pulumi:"diskId"`
-	Force                      *bool  `pulumi:"force"`
-	InstantAccess              *bool  `pulumi:"instantAccess"`
-	InstantAccessRetentionDays *int   `pulumi:"instantAccessRetentionDays"`
+	DiskId string `pulumi:"diskId"`
+	Force  *bool  `pulumi:"force"`
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
+	InstantAccess *bool `pulumi:"instantAccess"`
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
+	InstantAccessRetentionDays *int `pulumi:"instantAccessRetentionDays"`
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name *string `pulumi:"name"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -191,14 +199,16 @@ type SnapshotArgs struct {
 	// Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description pulumi.StringPtrInput
 	// The source disk ID.
-	DiskId                     pulumi.StringInput
-	Force                      pulumi.BoolPtrInput
-	InstantAccess              pulumi.BoolPtrInput
+	DiskId pulumi.StringInput
+	Force  pulumi.BoolPtrInput
+	// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
+	InstantAccess pulumi.BoolPtrInput
+	// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 	InstantAccessRetentionDays pulumi.IntPtrInput
 	// The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	// It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 	Name pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -295,8 +305,8 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
-func (o SnapshotOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
+func (o SnapshotOutput) Category() pulumi.StringOutput {
+	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
 // Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
@@ -313,10 +323,12 @@ func (o SnapshotOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated: Field `instantAccess` has been deprecated from provider version 1.231.0.
 func (o SnapshotOutput) InstantAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.InstantAccess }).(pulumi.BoolPtrOutput)
 }
 
+// Deprecated: Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
 func (o SnapshotOutput) InstantAccessRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.InstantAccessRetentionDays }).(pulumi.IntPtrOutput)
 }
@@ -324,7 +336,7 @@ func (o SnapshotOutput) InstantAccessRetentionDays() pulumi.IntPtrOutput {
 // The name of the snapshot to be created. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 // It cannot start with auto, because snapshot names starting with auto are recognized as automatic snapshots.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead.
+// Deprecated: Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
 func (o SnapshotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

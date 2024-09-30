@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> BabelfishPort { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
         /// </summary>
@@ -455,13 +455,13 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
-        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
         /// </summary>
         [Output("serverCert")]
         public Output<string> ServerCert { get; private set; } = null!;
 
         /// <summary>
-        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         /// </summary>
         [Output("serverKey")]
         public Output<string> ServerKey { get; private set; } = null!;
@@ -750,7 +750,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BabelfishPort { get; set; }
 
         /// <summary>
-        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
         /// </summary>
@@ -1154,7 +1154,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _serverCert;
 
         /// <summary>
-        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
         /// </summary>
         public Input<string>? ServerCert
         {
@@ -1167,7 +1167,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         /// </summary>
         [Input("serverKey")]
         public Input<string>? ServerKey { get; set; }
@@ -1413,7 +1413,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? BabelfishPort { get; set; }
 
         /// <summary>
-        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        /// The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
         /// - aliyun: a cloud certificate
         /// - custom: a custom certificate
         /// </summary>
@@ -1835,7 +1835,7 @@ namespace Pulumi.AliCloud.Rds
         private Input<string>? _serverCert;
 
         /// <summary>
-        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
         /// </summary>
         public Input<string>? ServerCert
         {
@@ -1848,7 +1848,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        /// The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         /// </summary>
         [Input("serverKey")]
         public Input<string>? ServerKey { get; set; }

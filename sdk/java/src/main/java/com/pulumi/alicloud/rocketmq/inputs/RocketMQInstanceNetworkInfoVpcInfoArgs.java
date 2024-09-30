@@ -3,16 +3,35 @@
 
 package com.pulumi.alicloud.rocketmq.inputs;
 
+import com.pulumi.alicloud.rocketmq.inputs.RocketMQInstanceNetworkInfoVpcInfoVswitchArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RocketMQInstanceNetworkInfoVpcInfoArgs Empty = new RocketMQInstanceNetworkInfoVpcInfoArgs();
+
+    /**
+     * Security group id.
+     * 
+     */
+    @Import(name="securityGroupIds")
+    private @Nullable Output<String> securityGroupIds;
+
+    /**
+     * @return Security group id.
+     * 
+     */
+    public Optional<Output<String>> securityGroupIds() {
+        return Optional.ofNullable(this.securityGroupIds);
+    }
 
     /**
      * Proprietary Network.
@@ -30,25 +49,42 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
     }
 
     /**
-     * VPC network switch.
+     * VPC switch id.
      * 
      */
-    @Import(name="vswitchId", required=true)
-    private Output<String> vswitchId;
+    @Import(name="vswitchId")
+    private @Nullable Output<String> vswitchId;
 
     /**
-     * @return VPC network switch.
+     * @return VPC switch id.
      * 
      */
-    public Output<String> vswitchId() {
-        return this.vswitchId;
+    public Optional<Output<String>> vswitchId() {
+        return Optional.ofNullable(this.vswitchId);
+    }
+
+    /**
+     * Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+     * 
+     */
+    @Import(name="vswitches")
+    private @Nullable Output<List<RocketMQInstanceNetworkInfoVpcInfoVswitchArgs>> vswitches;
+
+    /**
+     * @return Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+     * 
+     */
+    public Optional<Output<List<RocketMQInstanceNetworkInfoVpcInfoVswitchArgs>>> vswitches() {
+        return Optional.ofNullable(this.vswitches);
     }
 
     private RocketMQInstanceNetworkInfoVpcInfoArgs() {}
 
     private RocketMQInstanceNetworkInfoVpcInfoArgs(RocketMQInstanceNetworkInfoVpcInfoArgs $) {
+        this.securityGroupIds = $.securityGroupIds;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
+        this.vswitches = $.vswitches;
     }
 
     public static Builder builder() {
@@ -67,6 +103,27 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
 
         public Builder(RocketMQInstanceNetworkInfoVpcInfoArgs defaults) {
             $ = new RocketMQInstanceNetworkInfoVpcInfoArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param securityGroupIds Security group id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupIds(@Nullable Output<String> securityGroupIds) {
+            $.securityGroupIds = securityGroupIds;
+            return this;
+        }
+
+        /**
+         * @param securityGroupIds Security group id.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupIds(String securityGroupIds) {
+            return securityGroupIds(Output.of(securityGroupIds));
         }
 
         /**
@@ -91,18 +148,18 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
         }
 
         /**
-         * @param vswitchId VPC network switch.
+         * @param vswitchId VPC switch id.
          * 
          * @return builder
          * 
          */
-        public Builder vswitchId(Output<String> vswitchId) {
+        public Builder vswitchId(@Nullable Output<String> vswitchId) {
             $.vswitchId = vswitchId;
             return this;
         }
 
         /**
-         * @param vswitchId VPC network switch.
+         * @param vswitchId VPC switch id.
          * 
          * @return builder
          * 
@@ -111,12 +168,40 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
             return vswitchId(Output.of(vswitchId));
         }
 
+        /**
+         * @param vswitches Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitches(@Nullable Output<List<RocketMQInstanceNetworkInfoVpcInfoVswitchArgs>> vswitches) {
+            $.vswitches = vswitches;
+            return this;
+        }
+
+        /**
+         * @param vswitches Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitches(List<RocketMQInstanceNetworkInfoVpcInfoVswitchArgs> vswitches) {
+            return vswitches(Output.of(vswitches));
+        }
+
+        /**
+         * @param vswitches Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vswitches(RocketMQInstanceNetworkInfoVpcInfoVswitchArgs... vswitches) {
+            return vswitches(List.of(vswitches));
+        }
+
         public RocketMQInstanceNetworkInfoVpcInfoArgs build() {
             if ($.vpcId == null) {
                 throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoVpcInfoArgs", "vpcId");
-            }
-            if ($.vswitchId == null) {
-                throw new MissingRequiredPropertyException("RocketMQInstanceNetworkInfoVpcInfoArgs", "vswitchId");
             }
             return $;
         }

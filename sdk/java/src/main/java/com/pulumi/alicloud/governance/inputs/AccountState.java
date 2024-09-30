@@ -74,6 +74,25 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The domain name is used to qualify the login name of RAM users and RAM roles.
+     * 
+     * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+     * 
+     */
+    @Import(name="defaultDomainName")
+    private @Nullable Output<String> defaultDomainName;
+
+    /**
+     * @return The domain name is used to qualify the login name of RAM users and RAM roles.
+     * 
+     * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+     * 
+     */
+    public Optional<Output<String>> defaultDomainName() {
+        return Optional.ofNullable(this.defaultDomainName);
+    }
+
+    /**
      * The account display name.
      * - This parameter is required if you are creating a new resource account.
      * - If the registration application is applied to an existing account, this parameter does not need to be filled in.
@@ -151,6 +170,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.accountNamePrefix = $.accountNamePrefix;
         this.baselineId = $.baselineId;
+        this.defaultDomainName = $.defaultDomainName;
         this.displayName = $.displayName;
         this.folderId = $.folderId;
         this.payerAccountId = $.payerAccountId;
@@ -248,6 +268,31 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder baselineId(String baselineId) {
             return baselineId(Output.of(baselineId));
+        }
+
+        /**
+         * @param defaultDomainName The domain name is used to qualify the login name of RAM users and RAM roles.
+         * 
+         * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultDomainName(@Nullable Output<String> defaultDomainName) {
+            $.defaultDomainName = defaultDomainName;
+            return this;
+        }
+
+        /**
+         * @param defaultDomainName The domain name is used to qualify the login name of RAM users and RAM roles.
+         * 
+         * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultDomainName(String defaultDomainName) {
+            return defaultDomainName(Output.of(defaultDomainName));
         }
 
         /**

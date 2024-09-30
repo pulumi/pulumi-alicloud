@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ddos
 {
     /// <summary>
-    /// Provides a Anti-DDoS Pro Domain Resource resource.
+    /// Provides a Ddos Coo Domain Resource resource.
     /// 
-    /// For information about Anti-DDoS Pro Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-createwebrule).
+    /// For information about Ddos Coo Domain Resource and how to use it, see [What is Domain Resource](https://www.alibabacloud.com/help/en/anti-ddos/anti-ddos-pro-and-premium/developer-reference/api-ddoscoo-2020-01-01-createdomainresource).
     /// 
     /// &gt; **NOTE:** Available since v1.123.0.
     /// 
@@ -74,64 +74,111 @@ namespace Pulumi.AliCloud.Ddos
     /// 
     /// ## Import
     /// 
-    /// Anti-DDoS Pro Domain Resource can be imported using the id, e.g.
+    /// Ddos Coo Domain Resource can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ddos/domainResource:DomainResource example &lt;domain&gt;
+    /// $ pulumi import alicloud:ddos/domainResource:DomainResource example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ddos/domainResource:DomainResource")]
     public partial class DomainResource : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Available since v1.207.2) The CNAME assigned to the domain name.
+        /// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+        /// 
+        /// &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+        /// </summary>
+        [Output("cert")]
+        public Output<string?> Cert { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the certificate.
+        /// 
+        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+        /// </summary>
+        [Output("certIdentifier")]
+        public Output<string?> CertIdentifier { get; private set; } = null!;
+
+        /// <summary>
+        /// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+        /// 
+        /// &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+        /// </summary>
+        [Output("certName")]
+        public Output<string> CertName { get; private set; } = null!;
+
+        /// <summary>
+        /// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+        /// </summary>
+        [Output("certRegion")]
+        public Output<string?> CertRegion { get; private set; } = null!;
+
+        /// <summary>
+        /// The CNAME address to query.
         /// </summary>
         [Output("cname")]
         public Output<string> Cname { get; private set; } = null!;
 
         /// <summary>
-        /// The domain name of the website that you want to add to the instance.
+        /// The domain name for which you want to configure the Static Page Caching policy.
+        /// 
+        /// &gt; **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-        /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-        /// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-        /// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+        /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        /// 
+        /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        /// 
+        /// If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+        /// 
+        /// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        /// 
+        /// If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+        /// 
+        /// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        /// 
+        /// After you turn on the switch, HTTP/2 is used.
         /// </summary>
         [Output("httpsExt")]
         public Output<string> HttpsExt { get; private set; } = null!;
 
         /// <summary>
-        /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-        /// &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+        /// InstanceIds
         /// </summary>
         [Output("instanceIds")]
         public Output<ImmutableArray<string>> InstanceIds { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+        /// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+        /// 
+        /// &gt; **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+        /// </summary>
+        [Output("key")]
+        public Output<string?> Key { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable the OCSP feature. Valid values:
         /// </summary>
         [Output("ocspEnabled")]
         public Output<bool?> OcspEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Protocol type and port number information. See `proxy_types` below.
-        /// &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
         [Output("proxyTypes")]
         public Output<ImmutableArray<Outputs.DomainResourceProxyType>> ProxyTypes { get; private set; } = null!;
 
         /// <summary>
-        /// the IP address. This field is required and must be a string array.
+        /// Server address information of the source station.
         /// </summary>
         [Output("realServers")]
         public Output<ImmutableArray<string>> RealServers { get; private set; } = null!;
 
         /// <summary>
-        /// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+        /// The address type of the origin server. Valid values:
         /// </summary>
         [Output("rsType")]
         public Output<int> RsType { get; private set; } = null!;
@@ -159,6 +206,12 @@ namespace Pulumi.AliCloud.Ddos
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "cert",
+                    "certRegion",
+                    "key",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -182,17 +235,78 @@ namespace Pulumi.AliCloud.Ddos
 
     public sealed class DomainResourceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("cert")]
+        private Input<string>? _cert;
+
         /// <summary>
-        /// The domain name of the website that you want to add to the instance.
+        /// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+        /// 
+        /// &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+        /// </summary>
+        public Input<string>? Cert
+        {
+            get => _cert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The name of the certificate.
+        /// 
+        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+        /// </summary>
+        [Input("certIdentifier")]
+        public Input<string>? CertIdentifier { get; set; }
+
+        /// <summary>
+        /// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+        /// 
+        /// &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+        /// </summary>
+        [Input("certName")]
+        public Input<string>? CertName { get; set; }
+
+        [Input("certRegion")]
+        private Input<string>? _certRegion;
+
+        /// <summary>
+        /// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+        /// </summary>
+        public Input<string>? CertRegion
+        {
+            get => _certRegion;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certRegion = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The domain name for which you want to configure the Static Page Caching policy.
+        /// 
+        /// &gt; **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-        /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-        /// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-        /// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+        /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        /// 
+        /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        /// 
+        /// If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+        /// 
+        /// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        /// 
+        /// If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+        /// 
+        /// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        /// 
+        /// After you turn on the switch, HTTP/2 is used.
         /// </summary>
         [Input("httpsExt")]
         public Input<string>? HttpsExt { get; set; }
@@ -201,8 +315,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<string>? _instanceIds;
 
         /// <summary>
-        /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-        /// &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+        /// InstanceIds
         /// </summary>
         public InputList<string> InstanceIds
         {
@@ -210,8 +323,26 @@ namespace Pulumi.AliCloud.Ddos
             set => _instanceIds = value;
         }
 
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
-        /// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+        /// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+        /// 
+        /// &gt; **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+        /// </summary>
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Specifies whether to enable the OCSP feature. Valid values:
         /// </summary>
         [Input("ocspEnabled")]
         public Input<bool>? OcspEnabled { get; set; }
@@ -221,7 +352,6 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Protocol type and port number information. See `proxy_types` below.
-        /// &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
         public InputList<Inputs.DomainResourceProxyTypeArgs> ProxyTypes
         {
@@ -233,7 +363,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<string>? _realServers;
 
         /// <summary>
-        /// the IP address. This field is required and must be a string array.
+        /// Server address information of the source station.
         /// </summary>
         public InputList<string> RealServers
         {
@@ -242,7 +372,7 @@ namespace Pulumi.AliCloud.Ddos
         }
 
         /// <summary>
-        /// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+        /// The address type of the origin server. Valid values:
         /// </summary>
         [Input("rsType", required: true)]
         public Input<int> RsType { get; set; } = null!;
@@ -255,23 +385,84 @@ namespace Pulumi.AliCloud.Ddos
 
     public sealed class DomainResourceState : global::Pulumi.ResourceArgs
     {
+        [Input("cert")]
+        private Input<string>? _cert;
+
         /// <summary>
-        /// (Available since v1.207.2) The CNAME assigned to the domain name.
+        /// The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
+        /// 
+        /// &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+        /// </summary>
+        public Input<string>? Cert
+        {
+            get => _cert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The name of the certificate.
+        /// 
+        /// &gt; **NOTE:**   You can specify the name of the certificate that you want to associate.
+        /// </summary>
+        [Input("certIdentifier")]
+        public Input<string>? CertIdentifier { get; set; }
+
+        /// <summary>
+        /// The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
+        /// 
+        /// &gt; **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
+        /// </summary>
+        [Input("certName")]
+        public Input<string>? CertName { get; set; }
+
+        [Input("certRegion")]
+        private Input<string>? _certRegion;
+
+        /// <summary>
+        /// The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
+        /// </summary>
+        public Input<string>? CertRegion
+        {
+            get => _certRegion;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certRegion = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// The CNAME address to query.
         /// </summary>
         [Input("cname")]
         public Input<string>? Cname { get; set; }
 
         /// <summary>
-        /// The domain name of the website that you want to add to the instance.
+        /// The domain name for which you want to configure the Static Page Caching policy.
+        /// 
+        /// &gt; **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The advanced HTTPS settings. This parameter takes effect only when the value of ProxyType includes https. This parameter is a string that contains a JSON struct. The JSON struct includes the following fields:
-        /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enforce HTTPS Routing is turned off. The value `1` indicates that Enforce HTTPS Routing is turned on. The default value is `0`. If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
-        /// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP is turned off. The value `1` indicates that Enable HTTP is turned on. The default value is `0`. If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
-        /// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: `0` and `1`. The value `0` indicates that Enable HTTP/2 is turned off. The value `1` indicates that Enable HTTP/2 is turned on. The default value is `0`. After you turn on the switch, the protocol type is HTTP/2.
+        /// The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        /// 
+        /// - `Http2https`: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        /// 
+        /// If your website supports both HTTP and HTTPS, this feature meets your business requirements. If you enable this feature, all HTTP requests to access the website are redirected to HTTPS requests on the standard port 443.
+        /// 
+        /// - `Https2http`: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        /// 
+        /// If your website does not support HTTPS, this feature meets your business requirements If this feature is enabled, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. This feature can redirect WebSockets requests to WebSocket requests. Requests are redirected over the standard port 80.
+        /// 
+        /// - `Http2`: specifies whether to turn on Enable HTTP/2. This field is optional. Data type: integer. Valid values: `0` and `1`. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        /// 
+        /// After you turn on the switch, HTTP/2 is used.
         /// </summary>
         [Input("httpsExt")]
         public Input<string>? HttpsExt { get; set; }
@@ -280,8 +471,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<string>? _instanceIds;
 
         /// <summary>
-        /// A list of instance ID that you want to associate. If this parameter is empty, only the domain name of the website is added but no instance is associated with the website.
-        /// &gt; **NOTE:** There is a potential diff error because of the order of `instance_ids` values indefinite. So, from version 1.161.0, `instance_ids` type has been updated as `set` from `list`, and you can use tolist to convert it to a list.
+        /// InstanceIds
         /// </summary>
         public InputList<string> InstanceIds
         {
@@ -289,8 +479,26 @@ namespace Pulumi.AliCloud.Ddos
             set => _instanceIds = value;
         }
 
+        [Input("key")]
+        private Input<string>? _key;
+
         /// <summary>
-        /// Specifies whether to enable the OCSP feature. Default value: `false`. Valid values:
+        /// The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
+        /// 
+        /// &gt; **NOTE:**   You can specify only one of this parameter and the CertId parameter.
+        /// </summary>
+        public Input<string>? Key
+        {
+            get => _key;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _key = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Specifies whether to enable the OCSP feature. Valid values:
         /// </summary>
         [Input("ocspEnabled")]
         public Input<bool>? OcspEnabled { get; set; }
@@ -300,7 +508,6 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// Protocol type and port number information. See `proxy_types` below.
-        /// &gt; **NOTE:** From version 1.206.0, `proxy_types` can be modified.
         /// </summary>
         public InputList<Inputs.DomainResourceProxyTypeGetArgs> ProxyTypes
         {
@@ -312,7 +519,7 @@ namespace Pulumi.AliCloud.Ddos
         private InputList<string>? _realServers;
 
         /// <summary>
-        /// the IP address. This field is required and must be a string array.
+        /// Server address information of the source station.
         /// </summary>
         public InputList<string> RealServers
         {
@@ -321,7 +528,7 @@ namespace Pulumi.AliCloud.Ddos
         }
 
         /// <summary>
-        /// The address type of the origin server. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF. Valid values:
+        /// The address type of the origin server. Valid values:
         /// </summary>
         [Input("rsType")]
         public Input<int>? RsType { get; set; }

@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Vpc
 {
     /// <summary>
-    /// Provides a route entry resource. A route entry represents a route item of one VPC route table.
+    /// Provides a Route Entry resource. A Route Entry represents a route item of one VPC Route Table.
+    /// 
+    /// For information about Route Entry and how to use it, see [What is Route Entry](https://www.alibabacloud.com/help/en/vpc/developer-reference/api-vpc-2016-04-28-createrouteentry).
+    /// 
+    /// &gt; **NOTE:** Available since v0.1.0.
     /// 
     /// ## Example Usage
     /// 
@@ -24,82 +28,69 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
     ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         MostRecent = true,
+    ///         Owners = "system",
     ///     });
     /// 
     ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///         CpuCoreCount = 1,
-    ///         MemorySize = 2,
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///     });
     /// 
-    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
-    ///     {
-    ///         NameRegex = "^ubuntu_18.*64",
-    ///         MostRecent = true,
-    ///         Owners = "system",
-    ///     });
-    /// 
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "RouteEntryConfig";
-    ///     var foo = new AliCloud.Vpc.Network("foo", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
-    ///         CidrBlock = "10.1.0.0/21",
+    ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("foo", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         VpcId = foo.Id,
-    ///         CidrBlock = "10.1.1.0/24",
-    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tf_test_foo", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         Name = name,
-    ///         Description = "foo",
-    ///         VpcId = foo.Id,
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var ingress = new AliCloud.Ecs.SecurityGroupRule("ingress", new()
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
     ///     {
-    ///         Type = "ingress",
-    ///         IpProtocol = "tcp",
-    ///         NicType = "intranet",
-    ///         Policy = "accept",
-    ///         PortRange = "22/22",
-    ///         Priority = 1,
-    ///         SecurityGroupId = tfTestFoo.Id,
-    ///         CidrIp = "0.0.0.0/0",
-    ///     });
-    /// 
-    ///     var fooInstance = new AliCloud.Ecs.Instance("foo", new()
-    ///     {
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroups = new[]
     ///         {
-    ///             tfTestFoo.Id,
-    ///         },
-    ///         VswitchId = fooSwitch.Id,
-    ///         InstanceChargeType = "PostPaid",
-    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///             defaultSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
     ///         InternetChargeType = "PayByTraffic",
-    ///         InternetMaxBandwidthOut = 5,
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+    ///         InstanceChargeType = "PostPaid",
     ///         SystemDiskCategory = "cloud_efficiency",
-    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var fooRouteEntry = new AliCloud.Vpc.RouteEntry("foo", new()
+    ///     var foo = new AliCloud.Vpc.RouteEntry("foo", new()
     ///     {
-    ///         RouteTableId = foo.RouteTableId,
+    ///         RouteTableId = defaultNetwork.RouteTableId,
     ///         DestinationCidrblock = "172.11.1.1/32",
     ///         NexthopType = "Instance",
-    ///         NexthopId = fooInstance.Id,
+    ///         NexthopId = defaultInstance.Id,
     ///     });
     /// 
     /// });
@@ -112,51 +103,57 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// ## Import
     /// 
-    /// Router entry can be imported using the id, e.g (formatted as&lt;route_table_id:router_id:destination_cidrblock:nexthop_type:nexthop_id&gt;).
-    /// 
     /// ```sh
-    /// $ pulumi import alicloud:vpc/routeEntry:RouteEntry example vtb-123456:vrt-123456:0.0.0.0/0:NatGateway:ngw-123456
+    /// $ pulumi import alicloud:vpc/routeEntry:RouteEntry example &lt;route_table_id&gt;:&lt;router_id&gt;:&lt;destination_cidrblock&gt;:&lt;nexthop_type&gt;:&lt;nexthop_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:vpc/routeEntry:RouteEntry")]
     public partial class RouteEntry : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The RouteEntry's target network segment.
+        /// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The destination CIDR block of the custom route entry.
         /// </summary>
         [Output("destinationCidrblock")]
         public Output<string?> DestinationCidrblock { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        /// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The route entry's next hop. ECS instance ID or VPC router interface ID.
+        /// The ID of Next Hop.
         /// </summary>
         [Output("nexthopId")]
         public Output<string?> NexthopId { get; private set; } = null!;
 
         /// <summary>
-        /// The next hop type. Available values:
-        /// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-        /// - `RouterInterface`: a router interface.
-        /// - `VpnGateway`: a VPN Gateway.
-        /// - `HaVip`: a high-availability virtual IP address (HAVIP).
-        /// - `NetworkInterface`: an elastic network interface (ENI).
-        /// - `NatGateway`: a Nat Gateway.
-        /// - `IPv6Gateway`: an IPv6 gateway.
-        /// - `Attachment`: a transit router.
-        /// - `VpcPeer`: a VPC Peering Connection.
-        /// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+        /// The type of Next Hop. Valid values:
+        /// - `Instance`: An Elastic Compute Service (ECS) instance.
+        /// - `HaVip`: A high-availability virtual IP address (HAVIP).
+        /// - `RouterInterface`: A router interface.
+        /// - `NetworkInterface`: An elastic network interface (ENI).
+        /// - `VpnGateway`: A VPN Gateway.
+        /// - `IPv6Gateway`: An IPv6 gateway.
+        /// - `NatGateway`: A Nat Gateway.
+        /// - `Attachment`: A transit router.
+        /// - `VpcPeer`: A VPC Peering Connection.
+        /// - `Ipv4Gateway`: An IPv4 gateway.
+        /// - `GatewayEndpoint`: A gateway endpoint.
+        /// - `Ecr`: A Express Connect Router (ECR).
         /// </summary>
         [Output("nexthopType")]
         public Output<string?> NexthopType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the route table.
+        /// The ID of the Route Table.
         /// </summary>
         [Output("routeTableId")]
         public Output<string> RouteTableId { get; private set; } = null!;
@@ -214,50 +211,52 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class RouteEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The RouteEntry's target network segment.
+        /// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The destination CIDR block of the custom route entry.
         /// </summary>
         [Input("destinationCidrblock")]
         public Input<string>? DestinationCidrblock { get; set; }
 
         /// <summary>
-        /// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        /// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The route entry's next hop. ECS instance ID or VPC router interface ID.
+        /// The ID of Next Hop.
         /// </summary>
         [Input("nexthopId")]
         public Input<string>? NexthopId { get; set; }
 
         /// <summary>
-        /// The next hop type. Available values:
-        /// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-        /// - `RouterInterface`: a router interface.
-        /// - `VpnGateway`: a VPN Gateway.
-        /// - `HaVip`: a high-availability virtual IP address (HAVIP).
-        /// - `NetworkInterface`: an elastic network interface (ENI).
-        /// - `NatGateway`: a Nat Gateway.
-        /// - `IPv6Gateway`: an IPv6 gateway.
-        /// - `Attachment`: a transit router.
-        /// - `VpcPeer`: a VPC Peering Connection.
-        /// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+        /// The type of Next Hop. Valid values:
+        /// - `Instance`: An Elastic Compute Service (ECS) instance.
+        /// - `HaVip`: A high-availability virtual IP address (HAVIP).
+        /// - `RouterInterface`: A router interface.
+        /// - `NetworkInterface`: An elastic network interface (ENI).
+        /// - `VpnGateway`: A VPN Gateway.
+        /// - `IPv6Gateway`: An IPv6 gateway.
+        /// - `NatGateway`: A Nat Gateway.
+        /// - `Attachment`: A transit router.
+        /// - `VpcPeer`: A VPC Peering Connection.
+        /// - `Ipv4Gateway`: An IPv4 gateway.
+        /// - `GatewayEndpoint`: A gateway endpoint.
+        /// - `Ecr`: A Express Connect Router (ECR).
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }
 
         /// <summary>
-        /// The ID of the route table.
+        /// The ID of the Route Table.
         /// </summary>
         [Input("routeTableId", required: true)]
         public Input<string> RouteTableId { get; set; } = null!;
-
-        /// <summary>
-        /// This argument has been deprecated. Please use other arguments to launch a custom route entry.
-        /// </summary>
-        [Input("routerId")]
-        public Input<string>? RouterId { get; set; }
 
         public RouteEntryArgs()
         {
@@ -268,41 +267,49 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class RouteEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The RouteEntry's target network segment.
+        /// The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The destination CIDR block of the custom route entry.
         /// </summary>
         [Input("destinationCidrblock")]
         public Input<string>? DestinationCidrblock { get; set; }
 
         /// <summary>
-        /// The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
+        /// The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The route entry's next hop. ECS instance ID or VPC router interface ID.
+        /// The ID of Next Hop.
         /// </summary>
         [Input("nexthopId")]
         public Input<string>? NexthopId { get; set; }
 
         /// <summary>
-        /// The next hop type. Available values:
-        /// - `Instance` (Default): an Elastic Compute Service (ECS) instance. This is the default value.
-        /// - `RouterInterface`: a router interface.
-        /// - `VpnGateway`: a VPN Gateway.
-        /// - `HaVip`: a high-availability virtual IP address (HAVIP).
-        /// - `NetworkInterface`: an elastic network interface (ENI).
-        /// - `NatGateway`: a Nat Gateway.
-        /// - `IPv6Gateway`: an IPv6 gateway.
-        /// - `Attachment`: a transit router.
-        /// - `VpcPeer`: a VPC Peering Connection.
-        /// - `Ipv4Gateway`  (Available in 1.193.0+): an IPv4 gateway.
+        /// The type of Next Hop. Valid values:
+        /// - `Instance`: An Elastic Compute Service (ECS) instance.
+        /// - `HaVip`: A high-availability virtual IP address (HAVIP).
+        /// - `RouterInterface`: A router interface.
+        /// - `NetworkInterface`: An elastic network interface (ENI).
+        /// - `VpnGateway`: A VPN Gateway.
+        /// - `IPv6Gateway`: An IPv6 gateway.
+        /// - `NatGateway`: A Nat Gateway.
+        /// - `Attachment`: A transit router.
+        /// - `VpcPeer`: A VPC Peering Connection.
+        /// - `Ipv4Gateway`: An IPv4 gateway.
+        /// - `GatewayEndpoint`: A gateway endpoint.
+        /// - `Ecr`: A Express Connect Router (ECR).
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }
 
         /// <summary>
-        /// The ID of the route table.
+        /// The ID of the Route Table.
         /// </summary>
         [Input("routeTableId")]
         public Input<string>? RouteTableId { get; set; }

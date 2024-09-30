@@ -24,6 +24,7 @@ class RocketMQInstanceArgs:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
+                 commodity_code: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
@@ -34,35 +35,57 @@ class RocketMQInstanceArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a RocketMQInstance resource.
-        :param pulumi.Input['RocketMQInstanceNetworkInfoArgs'] network_info: Instance network configuration information. See `network_info` below.
-        :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment. The parameter values are as follows:
+        :param pulumi.Input['RocketMQInstanceNetworkInfoArgs'] network_info: Instance network configuration information See `network_info` below.
+        :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
+               
+               The parameter values are as follows:
                - PayAsYouGo: Pay-as-you-go, a post-payment model where you pay after usage.
                - Subscription: Subscription-based, a pre-payment model where you pay before usage.
+               
                For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
-        :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+               
+               The parameter values are as follows:
                - standard: Standard Edition
                - ultimate: Platinum Edition
-               - professional: Professional Edition.
+               - professional: Professional Edition
         :param pulumi.Input[str] service_code: The code of the service code instance. The code of the RocketMQ is rmq.
-        :param pulumi.Input[str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        :param pulumi.Input[str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+               
+               The parameter values are as follows:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
+               
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
-               - false: Disable auto-renewal.
-        :param pulumi.Input[int] auto_renew_period: Auto-renewal period. This parameter is only valid when auto-renewal is enabled. The values can be as follows: 1, 2, 3, 6, 12.
+               - false: Disable auto-renewal
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
+               
+               The values can be as follows:
+               - Monthly renewal: 1, 2, 3, 6, 12
         :param pulumi.Input[str] auto_renew_period_unit: The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] instance_name: The name of instance.
-        :param pulumi.Input[int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid). The values can be as follows:
+        :param pulumi.Input[str] commodity_code: Commodity code
+               
+               ons_rmqsub_public_cn: Package year and month instance
+               
+               ons_rmqpost_public_cn: Pay-As-You-Go instance
+               
+               Next: Serverless instances
+        :param pulumi.Input[str] instance_name: The name of instance
+        :param pulumi.Input[int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
+               
+               The values can be as follows:
                - Monthly purchase: 1, 2, 3, 4, 5, 6
-               - Annual purchase: 1, 2, 3.
-        :param pulumi.Input[str] period_unit: The minimum periodic unit for the duration of purchase. The parameter values are as follows:
+               - Annual purchase: 1, 2, 3
+        :param pulumi.Input[str] period_unit: The minimum periodic unit for the duration of purchase.
+               
+               The parameter values are as follows:
                - Month: Purchase on a monthly basis
-               - Year: Purchase on an annual basis.
-        :param pulumi.Input['RocketMQInstanceProductInfoArgs'] product_info: product info. See `product_info` below.
-        :param pulumi.Input[str] remark: Custom description.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+               - Year: Purchase on an annual basis
+        :param pulumi.Input['RocketMQInstanceProductInfoArgs'] product_info: product info See `product_info` below.
+        :param pulumi.Input[str] remark: Custom description
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
         :param pulumi.Input['RocketMQInstanceSoftwareArgs'] software: Instance software information. See `software` below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
@@ -77,6 +100,8 @@ class RocketMQInstanceArgs:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if auto_renew_period_unit is not None:
             pulumi.set(__self__, "auto_renew_period_unit", auto_renew_period_unit)
+        if commodity_code is not None:
+            pulumi.set(__self__, "commodity_code", commodity_code)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if period is not None:
@@ -98,7 +123,7 @@ class RocketMQInstanceArgs:
     @pulumi.getter(name="networkInfo")
     def network_info(self) -> pulumi.Input['RocketMQInstanceNetworkInfoArgs']:
         """
-        Instance network configuration information. See `network_info` below.
+        Instance network configuration information See `network_info` below.
         """
         return pulumi.get(self, "network_info")
 
@@ -110,9 +135,12 @@ class RocketMQInstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Input[str]:
         """
-        The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment. The parameter values are as follows:
+        The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
+
+        The parameter values are as follows:
         - PayAsYouGo: Pay-as-you-go, a post-payment model where you pay after usage.
         - Subscription: Subscription-based, a pre-payment model where you pay before usage.
+
         For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
         """
         return pulumi.get(self, "payment_type")
@@ -125,10 +153,12 @@ class RocketMQInstanceArgs:
     @pulumi.getter(name="seriesCode")
     def series_code(self) -> pulumi.Input[str]:
         """
-        The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+
+        The parameter values are as follows:
         - standard: Standard Edition
         - ultimate: Platinum Edition
-        - professional: Professional Edition.
+        - professional: Professional Edition
         """
         return pulumi.get(self, "series_code")
 
@@ -152,9 +182,12 @@ class RocketMQInstanceArgs:
     @pulumi.getter(name="subSeriesCode")
     def sub_series_code(self) -> pulumi.Input[str]:
         """
-        The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+
+        The parameter values are as follows:
         - cluster_ha: Cluster High Availability Edition
         - single_node: Single Node Testing Edition
+
         When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         """
         return pulumi.get(self, "sub_series_code")
@@ -169,7 +202,7 @@ class RocketMQInstanceArgs:
         """
         Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
         - true: Enable auto-renewal
-        - false: Disable auto-renewal.
+        - false: Disable auto-renewal
         """
         return pulumi.get(self, "auto_renew")
 
@@ -181,7 +214,10 @@ class RocketMQInstanceArgs:
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Auto-renewal period. This parameter is only valid when auto-renewal is enabled. The values can be as follows: 1, 2, 3, 6, 12.
+        Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
+
+        The values can be as follows:
+        - Monthly renewal: 1, 2, 3, 6, 12
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -202,10 +238,28 @@ class RocketMQInstanceArgs:
         pulumi.set(self, "auto_renew_period_unit", value)
 
     @property
+    @pulumi.getter(name="commodityCode")
+    def commodity_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Commodity code
+
+        ons_rmqsub_public_cn: Package year and month instance
+
+        ons_rmqpost_public_cn: Pay-As-You-Go instance
+
+        Next: Serverless instances
+        """
+        return pulumi.get(self, "commodity_code")
+
+    @commodity_code.setter
+    def commodity_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commodity_code", value)
+
+    @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of instance.
+        The name of instance
         """
         return pulumi.get(self, "instance_name")
 
@@ -217,9 +271,11 @@ class RocketMQInstanceArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid). The values can be as follows:
+        Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
+
+        The values can be as follows:
         - Monthly purchase: 1, 2, 3, 4, 5, 6
-        - Annual purchase: 1, 2, 3.
+        - Annual purchase: 1, 2, 3
         """
         return pulumi.get(self, "period")
 
@@ -231,9 +287,11 @@ class RocketMQInstanceArgs:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The minimum periodic unit for the duration of purchase. The parameter values are as follows:
+        The minimum periodic unit for the duration of purchase.
+
+        The parameter values are as follows:
         - Month: Purchase on a monthly basis
-        - Year: Purchase on an annual basis.
+        - Year: Purchase on an annual basis
         """
         return pulumi.get(self, "period_unit")
 
@@ -245,7 +303,7 @@ class RocketMQInstanceArgs:
     @pulumi.getter(name="productInfo")
     def product_info(self) -> Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']]:
         """
-        product info. See `product_info` below.
+        product info See `product_info` below.
         """
         return pulumi.get(self, "product_info")
 
@@ -257,7 +315,7 @@ class RocketMQInstanceArgs:
     @pulumi.getter
     def remark(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom description.
+        Custom description
         """
         return pulumi.get(self, "remark")
 
@@ -269,7 +327,7 @@ class RocketMQInstanceArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -308,6 +366,7 @@ class _RocketMQInstanceState:
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
+                 commodity_code: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  network_info: Optional[pulumi.Input['RocketMQInstanceNetworkInfoArgs']] = None,
@@ -327,35 +386,57 @@ class _RocketMQInstanceState:
         Input properties used for looking up and filtering RocketMQInstance resources.
         :param pulumi.Input[bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
-               - false: Disable auto-renewal.
-        :param pulumi.Input[int] auto_renew_period: Auto-renewal period. This parameter is only valid when auto-renewal is enabled. The values can be as follows: 1, 2, 3, 6, 12.
+               - false: Disable auto-renewal
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
+               
+               The values can be as follows:
+               - Monthly renewal: 1, 2, 3, 6, 12
         :param pulumi.Input[str] auto_renew_period_unit: The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
-        :param pulumi.Input[str] instance_name: The name of instance.
-        :param pulumi.Input['RocketMQInstanceNetworkInfoArgs'] network_info: Instance network configuration information. See `network_info` below.
-        :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment. The parameter values are as follows:
+        :param pulumi.Input[str] commodity_code: Commodity code
+               
+               ons_rmqsub_public_cn: Package year and month instance
+               
+               ons_rmqpost_public_cn: Pay-As-You-Go instance
+               
+               Next: Serverless instances
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[str] instance_name: The name of instance
+        :param pulumi.Input['RocketMQInstanceNetworkInfoArgs'] network_info: Instance network configuration information See `network_info` below.
+        :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
+               
+               The parameter values are as follows:
                - PayAsYouGo: Pay-as-you-go, a post-payment model where you pay after usage.
                - Subscription: Subscription-based, a pre-payment model where you pay before usage.
+               
                For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
-        :param pulumi.Input[int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid). The values can be as follows:
+        :param pulumi.Input[int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
+               
+               The values can be as follows:
                - Monthly purchase: 1, 2, 3, 4, 5, 6
-               - Annual purchase: 1, 2, 3.
-        :param pulumi.Input[str] period_unit: The minimum periodic unit for the duration of purchase. The parameter values are as follows:
+               - Annual purchase: 1, 2, 3
+        :param pulumi.Input[str] period_unit: The minimum periodic unit for the duration of purchase.
+               
+               The parameter values are as follows:
                - Month: Purchase on a monthly basis
-               - Year: Purchase on an annual basis.
-        :param pulumi.Input['RocketMQInstanceProductInfoArgs'] product_info: product info. See `product_info` below.
-        :param pulumi.Input[str] remark: Custom description.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+               - Year: Purchase on an annual basis
+        :param pulumi.Input['RocketMQInstanceProductInfoArgs'] product_info: product info See `product_info` below.
+        :param pulumi.Input[str] remark: Custom description
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+               
+               The parameter values are as follows:
                - standard: Standard Edition
                - ultimate: Platinum Edition
-               - professional: Professional Edition.
+               - professional: Professional Edition
         :param pulumi.Input[str] service_code: The code of the service code instance. The code of the RocketMQ is rmq.
         :param pulumi.Input['RocketMQInstanceSoftwareArgs'] software: Instance software information. See `software` below.
-        :param pulumi.Input[str] status: The status of the instance.
-        :param pulumi.Input[str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        :param pulumi.Input[str] status: The status of the instance
+        :param pulumi.Input[str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+               
+               The parameter values are as follows:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
+               
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
@@ -365,6 +446,8 @@ class _RocketMQInstanceState:
             pulumi.set(__self__, "auto_renew_period", auto_renew_period)
         if auto_renew_period_unit is not None:
             pulumi.set(__self__, "auto_renew_period_unit", auto_renew_period_unit)
+        if commodity_code is not None:
+            pulumi.set(__self__, "commodity_code", commodity_code)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if instance_name is not None:
@@ -402,7 +485,7 @@ class _RocketMQInstanceState:
         """
         Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
         - true: Enable auto-renewal
-        - false: Disable auto-renewal.
+        - false: Disable auto-renewal
         """
         return pulumi.get(self, "auto_renew")
 
@@ -414,7 +497,10 @@ class _RocketMQInstanceState:
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Auto-renewal period. This parameter is only valid when auto-renewal is enabled. The values can be as follows: 1, 2, 3, 6, 12.
+        Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
+
+        The values can be as follows:
+        - Monthly renewal: 1, 2, 3, 6, 12
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -435,10 +521,28 @@ class _RocketMQInstanceState:
         pulumi.set(self, "auto_renew_period_unit", value)
 
     @property
+    @pulumi.getter(name="commodityCode")
+    def commodity_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Commodity code
+
+        ons_rmqsub_public_cn: Package year and month instance
+
+        ons_rmqpost_public_cn: Pay-As-You-Go instance
+
+        Next: Serverless instances
+        """
+        return pulumi.get(self, "commodity_code")
+
+    @commodity_code.setter
+    def commodity_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "commodity_code", value)
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -450,7 +554,7 @@ class _RocketMQInstanceState:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of instance.
+        The name of instance
         """
         return pulumi.get(self, "instance_name")
 
@@ -462,7 +566,7 @@ class _RocketMQInstanceState:
     @pulumi.getter(name="networkInfo")
     def network_info(self) -> Optional[pulumi.Input['RocketMQInstanceNetworkInfoArgs']]:
         """
-        Instance network configuration information. See `network_info` below.
+        Instance network configuration information See `network_info` below.
         """
         return pulumi.get(self, "network_info")
 
@@ -474,9 +578,12 @@ class _RocketMQInstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment. The parameter values are as follows:
+        The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
+
+        The parameter values are as follows:
         - PayAsYouGo: Pay-as-you-go, a post-payment model where you pay after usage.
         - Subscription: Subscription-based, a pre-payment model where you pay before usage.
+
         For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
         """
         return pulumi.get(self, "payment_type")
@@ -489,9 +596,11 @@ class _RocketMQInstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid). The values can be as follows:
+        Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
+
+        The values can be as follows:
         - Monthly purchase: 1, 2, 3, 4, 5, 6
-        - Annual purchase: 1, 2, 3.
+        - Annual purchase: 1, 2, 3
         """
         return pulumi.get(self, "period")
 
@@ -503,9 +612,11 @@ class _RocketMQInstanceState:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The minimum periodic unit for the duration of purchase. The parameter values are as follows:
+        The minimum periodic unit for the duration of purchase.
+
+        The parameter values are as follows:
         - Month: Purchase on a monthly basis
-        - Year: Purchase on an annual basis.
+        - Year: Purchase on an annual basis
         """
         return pulumi.get(self, "period_unit")
 
@@ -517,7 +628,7 @@ class _RocketMQInstanceState:
     @pulumi.getter(name="productInfo")
     def product_info(self) -> Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']]:
         """
-        product info. See `product_info` below.
+        product info See `product_info` below.
         """
         return pulumi.get(self, "product_info")
 
@@ -529,7 +640,7 @@ class _RocketMQInstanceState:
     @pulumi.getter
     def remark(self) -> Optional[pulumi.Input[str]]:
         """
-        Custom description.
+        Custom description
         """
         return pulumi.get(self, "remark")
 
@@ -541,7 +652,7 @@ class _RocketMQInstanceState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -553,10 +664,12 @@ class _RocketMQInstanceState:
     @pulumi.getter(name="seriesCode")
     def series_code(self) -> Optional[pulumi.Input[str]]:
         """
-        The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+
+        The parameter values are as follows:
         - standard: Standard Edition
         - ultimate: Platinum Edition
-        - professional: Professional Edition.
+        - professional: Professional Edition
         """
         return pulumi.get(self, "series_code")
 
@@ -592,7 +705,7 @@ class _RocketMQInstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the instance.
+        The status of the instance
         """
         return pulumi.get(self, "status")
 
@@ -604,9 +717,12 @@ class _RocketMQInstanceState:
     @pulumi.getter(name="subSeriesCode")
     def sub_series_code(self) -> Optional[pulumi.Input[str]]:
         """
-        The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+
+        The parameter values are as follows:
         - cluster_ha: Cluster High Availability Edition
         - single_node: Single Node Testing Edition
+
         When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         """
         return pulumi.get(self, "sub_series_code")
@@ -636,6 +752,7 @@ class RocketMQInstance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
+                 commodity_code: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  network_info: Optional[pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -663,33 +780,55 @@ class RocketMQInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
-               - false: Disable auto-renewal.
-        :param pulumi.Input[int] auto_renew_period: Auto-renewal period. This parameter is only valid when auto-renewal is enabled. The values can be as follows: 1, 2, 3, 6, 12.
+               - false: Disable auto-renewal
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
+               
+               The values can be as follows:
+               - Monthly renewal: 1, 2, 3, 6, 12
         :param pulumi.Input[str] auto_renew_period_unit: The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] instance_name: The name of instance.
-        :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']] network_info: Instance network configuration information. See `network_info` below.
-        :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment. The parameter values are as follows:
+        :param pulumi.Input[str] commodity_code: Commodity code
+               
+               ons_rmqsub_public_cn: Package year and month instance
+               
+               ons_rmqpost_public_cn: Pay-As-You-Go instance
+               
+               Next: Serverless instances
+        :param pulumi.Input[str] instance_name: The name of instance
+        :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']] network_info: Instance network configuration information See `network_info` below.
+        :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
+               
+               The parameter values are as follows:
                - PayAsYouGo: Pay-as-you-go, a post-payment model where you pay after usage.
                - Subscription: Subscription-based, a pre-payment model where you pay before usage.
+               
                For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
-        :param pulumi.Input[int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid). The values can be as follows:
+        :param pulumi.Input[int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
+               
+               The values can be as follows:
                - Monthly purchase: 1, 2, 3, 4, 5, 6
-               - Annual purchase: 1, 2, 3.
-        :param pulumi.Input[str] period_unit: The minimum periodic unit for the duration of purchase. The parameter values are as follows:
+               - Annual purchase: 1, 2, 3
+        :param pulumi.Input[str] period_unit: The minimum periodic unit for the duration of purchase.
+               
+               The parameter values are as follows:
                - Month: Purchase on a monthly basis
-               - Year: Purchase on an annual basis.
-        :param pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']] product_info: product info. See `product_info` below.
-        :param pulumi.Input[str] remark: Custom description.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+               - Year: Purchase on an annual basis
+        :param pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']] product_info: product info See `product_info` below.
+        :param pulumi.Input[str] remark: Custom description
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+               
+               The parameter values are as follows:
                - standard: Standard Edition
                - ultimate: Platinum Edition
-               - professional: Professional Edition.
+               - professional: Professional Edition
         :param pulumi.Input[str] service_code: The code of the service code instance. The code of the RocketMQ is rmq.
         :param pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']] software: Instance software information. See `software` below.
-        :param pulumi.Input[str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        :param pulumi.Input[str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+               
+               The parameter values are as follows:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
+               
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
@@ -726,6 +865,7 @@ class RocketMQInstance(pulumi.CustomResource):
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
+                 commodity_code: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  network_info: Optional[pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -751,6 +891,7 @@ class RocketMQInstance(pulumi.CustomResource):
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["auto_renew_period_unit"] = auto_renew_period_unit
+            __props__.__dict__["commodity_code"] = commodity_code
             __props__.__dict__["instance_name"] = instance_name
             if network_info is None and not opts.urn:
                 raise TypeError("Missing required property 'network_info'")
@@ -789,6 +930,7 @@ class RocketMQInstance(pulumi.CustomResource):
             auto_renew: Optional[pulumi.Input[bool]] = None,
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             auto_renew_period_unit: Optional[pulumi.Input[str]] = None,
+            commodity_code: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             network_info: Optional[pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
@@ -813,35 +955,57 @@ class RocketMQInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
                - true: Enable auto-renewal
-               - false: Disable auto-renewal.
-        :param pulumi.Input[int] auto_renew_period: Auto-renewal period. This parameter is only valid when auto-renewal is enabled. The values can be as follows: 1, 2, 3, 6, 12.
+               - false: Disable auto-renewal
+        :param pulumi.Input[int] auto_renew_period: Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
+               
+               The values can be as follows:
+               - Monthly renewal: 1, 2, 3, 6, 12
         :param pulumi.Input[str] auto_renew_period_unit: The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] create_time: The creation time of the resource.
-        :param pulumi.Input[str] instance_name: The name of instance.
-        :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']] network_info: Instance network configuration information. See `network_info` below.
-        :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment. The parameter values are as follows:
+        :param pulumi.Input[str] commodity_code: Commodity code
+               
+               ons_rmqsub_public_cn: Package year and month instance
+               
+               ons_rmqpost_public_cn: Pay-As-You-Go instance
+               
+               Next: Serverless instances
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[str] instance_name: The name of instance
+        :param pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']] network_info: Instance network configuration information See `network_info` below.
+        :param pulumi.Input[str] payment_type: The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
+               
+               The parameter values are as follows:
                - PayAsYouGo: Pay-as-you-go, a post-payment model where you pay after usage.
                - Subscription: Subscription-based, a pre-payment model where you pay before usage.
+               
                For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
-        :param pulumi.Input[int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid). The values can be as follows:
+        :param pulumi.Input[int] period: Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
+               
+               The values can be as follows:
                - Monthly purchase: 1, 2, 3, 4, 5, 6
-               - Annual purchase: 1, 2, 3.
-        :param pulumi.Input[str] period_unit: The minimum periodic unit for the duration of purchase. The parameter values are as follows:
+               - Annual purchase: 1, 2, 3
+        :param pulumi.Input[str] period_unit: The minimum periodic unit for the duration of purchase.
+               
+               The parameter values are as follows:
                - Month: Purchase on a monthly basis
-               - Year: Purchase on an annual basis.
-        :param pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']] product_info: product info. See `product_info` below.
-        :param pulumi.Input[str] remark: Custom description.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+               - Year: Purchase on an annual basis
+        :param pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']] product_info: product info See `product_info` below.
+        :param pulumi.Input[str] remark: Custom description
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+        :param pulumi.Input[str] series_code: The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+               
+               The parameter values are as follows:
                - standard: Standard Edition
                - ultimate: Platinum Edition
-               - professional: Professional Edition.
+               - professional: Professional Edition
         :param pulumi.Input[str] service_code: The code of the service code instance. The code of the RocketMQ is rmq.
         :param pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']] software: Instance software information. See `software` below.
-        :param pulumi.Input[str] status: The status of the instance.
-        :param pulumi.Input[str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        :param pulumi.Input[str] status: The status of the instance
+        :param pulumi.Input[str] sub_series_code: The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+               
+               The parameter values are as follows:
                - cluster_ha: Cluster High Availability Edition
                - single_node: Single Node Testing Edition
+               
                When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The resource label.
         """
@@ -852,6 +1016,7 @@ class RocketMQInstance(pulumi.CustomResource):
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["auto_renew_period_unit"] = auto_renew_period_unit
+        __props__.__dict__["commodity_code"] = commodity_code
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["network_info"] = network_info
@@ -875,7 +1040,7 @@ class RocketMQInstance(pulumi.CustomResource):
         """
         Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
         - true: Enable auto-renewal
-        - false: Disable auto-renewal.
+        - false: Disable auto-renewal
         """
         return pulumi.get(self, "auto_renew")
 
@@ -883,7 +1048,10 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter(name="autoRenewPeriod")
     def auto_renew_period(self) -> pulumi.Output[Optional[int]]:
         """
-        Auto-renewal period. This parameter is only valid when auto-renewal is enabled. The values can be as follows: 1, 2, 3, 6, 12.
+        Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
+
+        The values can be as follows:
+        - Monthly renewal: 1, 2, 3, 6, 12
         """
         return pulumi.get(self, "auto_renew_period")
 
@@ -896,10 +1064,24 @@ class RocketMQInstance(pulumi.CustomResource):
         return pulumi.get(self, "auto_renew_period_unit")
 
     @property
+    @pulumi.getter(name="commodityCode")
+    def commodity_code(self) -> pulumi.Output[str]:
+        """
+        Commodity code
+
+        ons_rmqsub_public_cn: Package year and month instance
+
+        ons_rmqpost_public_cn: Pay-As-You-Go instance
+
+        Next: Serverless instances
+        """
+        return pulumi.get(self, "commodity_code")
+
+    @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the resource.
+        The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
@@ -907,7 +1089,7 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of instance.
+        The name of instance
         """
         return pulumi.get(self, "instance_name")
 
@@ -915,7 +1097,7 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter(name="networkInfo")
     def network_info(self) -> pulumi.Output['outputs.RocketMQInstanceNetworkInfo']:
         """
-        Instance network configuration information. See `network_info` below.
+        Instance network configuration information See `network_info` below.
         """
         return pulumi.get(self, "network_info")
 
@@ -923,9 +1105,12 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment. The parameter values are as follows:
+        The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
+
+        The parameter values are as follows:
         - PayAsYouGo: Pay-as-you-go, a post-payment model where you pay after usage.
         - Subscription: Subscription-based, a pre-payment model where you pay before usage.
+
         For more information, please refer to [Billing Methods](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/overview-2).
         """
         return pulumi.get(self, "payment_type")
@@ -934,9 +1119,11 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         """
-        Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid). The values can be as follows:
+        Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
+
+        The values can be as follows:
         - Monthly purchase: 1, 2, 3, 4, 5, 6
-        - Annual purchase: 1, 2, 3.
+        - Annual purchase: 1, 2, 3
         """
         return pulumi.get(self, "period")
 
@@ -944,9 +1131,11 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[str]:
         """
-        The minimum periodic unit for the duration of purchase. The parameter values are as follows:
+        The minimum periodic unit for the duration of purchase.
+
+        The parameter values are as follows:
         - Month: Purchase on a monthly basis
-        - Year: Purchase on an annual basis.
+        - Year: Purchase on an annual basis
         """
         return pulumi.get(self, "period_unit")
 
@@ -954,7 +1143,7 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter(name="productInfo")
     def product_info(self) -> pulumi.Output[Optional['outputs.RocketMQInstanceProductInfo']]:
         """
-        product info. See `product_info` below.
+        product info See `product_info` below.
         """
         return pulumi.get(self, "product_info")
 
@@ -962,7 +1151,7 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter
     def remark(self) -> pulumi.Output[Optional[str]]:
         """
-        Custom description.
+        Custom description
         """
         return pulumi.get(self, "remark")
 
@@ -970,7 +1159,7 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the resource group.
+        The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -978,10 +1167,12 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter(name="seriesCode")
     def series_code(self) -> pulumi.Output[str]:
         """
-        The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+
+        The parameter values are as follows:
         - standard: Standard Edition
         - ultimate: Platinum Edition
-        - professional: Professional Edition.
+        - professional: Professional Edition
         """
         return pulumi.get(self, "series_code")
 
@@ -1005,7 +1196,7 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the instance.
+        The status of the instance
         """
         return pulumi.get(self, "status")
 
@@ -1013,9 +1204,12 @@ class RocketMQInstance(pulumi.CustomResource):
     @pulumi.getter(name="subSeriesCode")
     def sub_series_code(self) -> pulumi.Output[str]:
         """
-        The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection). The parameter values are as follows:
+        The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
+
+        The parameter values are as follows:
         - cluster_ha: Cluster High Availability Edition
         - single_node: Single Node Testing Edition
+
         When selecting the primary series as ultimate (Platinum Edition), the sub-series can only be chosen as cluster_ha (Cluster High Availability Edition).
         """
         return pulumi.get(self, "sub_series_code")

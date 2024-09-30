@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,14 +19,48 @@ public final class PeerConnectionAccepterArgs extends com.pulumi.resources.Resou
     public static final PeerConnectionAccepterArgs Empty = new PeerConnectionAccepterArgs();
 
     /**
-     * The dry run.
+     * The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
+     * 
+     */
+    @Import(name="bandwidth")
+    private @Nullable Output<Integer> bandwidth;
+
+    /**
+     * @return The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
+     * 
+     */
+    public Optional<Output<Integer>> bandwidth() {
+        return Optional.ofNullable(this.bandwidth);
+    }
+
+    /**
+     * The new description of the VPC peering connection.
+     * 
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return The new description of the VPC peering connection.
+     * 
+     * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -33,25 +68,83 @@ public final class PeerConnectionAccepterArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The ID of the instance of the created VPC peer connection.
+     * Specifies whether to forcefully delete the VPC peering connection. Valid values:
+     * 
+     */
+    @Import(name="forceDelete")
+    private @Nullable Output<Boolean> forceDelete;
+
+    /**
+     * @return Specifies whether to forcefully delete the VPC peering connection. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> forceDelete() {
+        return Optional.ofNullable(this.forceDelete);
+    }
+
+    /**
+     * The ID of the VPC peering connection whose name or description you want to modify.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the instance of the created VPC peer connection.
+     * @return The ID of the VPC peering connection whose name or description you want to modify.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
 
+    /**
+     * The new name of the VPC peering connection.
+     * 
+     * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    @Import(name="peerConnectionAccepterName")
+    private @Nullable Output<String> peerConnectionAccepterName;
+
+    /**
+     * @return The new name of the VPC peering connection.
+     * 
+     * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+     * 
+     */
+    public Optional<Output<String>> peerConnectionAccepterName() {
+        return Optional.ofNullable(this.peerConnectionAccepterName);
+    }
+
+    /**
+     * The ID of the new resource group.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the new resource group.
+     * 
+     * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
     private PeerConnectionAccepterArgs() {}
 
     private PeerConnectionAccepterArgs(PeerConnectionAccepterArgs $) {
+        this.bandwidth = $.bandwidth;
+        this.description = $.description;
         this.dryRun = $.dryRun;
+        this.forceDelete = $.forceDelete;
         this.instanceId = $.instanceId;
+        this.peerConnectionAccepterName = $.peerConnectionAccepterName;
+        this.resourceGroupId = $.resourceGroupId;
     }
 
     public static Builder builder() {
@@ -73,7 +166,53 @@ public final class PeerConnectionAccepterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param bandwidth The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(@Nullable Output<Integer> bandwidth) {
+            $.bandwidth = bandwidth;
+            return this;
+        }
+
+        /**
+         * @param bandwidth The new bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(Integer bandwidth) {
+            return bandwidth(Output.of(bandwidth));
+        }
+
+        /**
+         * @param description The new description of the VPC peering connection.
+         * 
+         * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description The new description of the VPC peering connection.
+         * 
+         * The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
+        }
+
+        /**
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -84,7 +223,7 @@ public final class PeerConnectionAccepterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -94,7 +233,28 @@ public final class PeerConnectionAccepterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param instanceId The ID of the instance of the created VPC peer connection.
+         * @param forceDelete Specifies whether to forcefully delete the VPC peering connection. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(@Nullable Output<Boolean> forceDelete) {
+            $.forceDelete = forceDelete;
+            return this;
+        }
+
+        /**
+         * @param forceDelete Specifies whether to forcefully delete the VPC peering connection. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDelete(Boolean forceDelete) {
+            return forceDelete(Output.of(forceDelete));
+        }
+
+        /**
+         * @param instanceId The ID of the VPC peering connection whose name or description you want to modify.
          * 
          * @return builder
          * 
@@ -105,13 +265,63 @@ public final class PeerConnectionAccepterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param instanceId The ID of the instance of the created VPC peer connection.
+         * @param instanceId The ID of the VPC peering connection whose name or description you want to modify.
          * 
          * @return builder
          * 
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param peerConnectionAccepterName The new name of the VPC peering connection.
+         * 
+         * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerConnectionAccepterName(@Nullable Output<String> peerConnectionAccepterName) {
+            $.peerConnectionAccepterName = peerConnectionAccepterName;
+            return this;
+        }
+
+        /**
+         * @param peerConnectionAccepterName The new name of the VPC peering connection.
+         * 
+         * The name must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder peerConnectionAccepterName(String peerConnectionAccepterName) {
+            return peerConnectionAccepterName(Output.of(peerConnectionAccepterName));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the new resource group.
+         * 
+         * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the new resource group.
+         * 
+         * &gt; **NOTE:**   You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management for your Alibaba Cloud account. For more information, see [What is resource management?](https://www.alibabacloud.com/help/en/doc-detail/94475.html)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         public PeerConnectionAccepterArgs build() {

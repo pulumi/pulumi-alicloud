@@ -169,6 +169,10 @@ export class Alarm extends pulumi.CustomResource {
      */
     public readonly dimensions!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+     */
+    public readonly effective!: pulumi.Output<string>;
+    /**
      * Whether to enable specific ess alarm. Default to true.
      */
     public readonly enable!: pulumi.Output<boolean | undefined>;
@@ -238,6 +242,7 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["comparisonOperator"] = state ? state.comparisonOperator : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dimensions"] = state ? state.dimensions : undefined;
+            resourceInputs["effective"] = state ? state.effective : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["evaluationCount"] = state ? state.evaluationCount : undefined;
             resourceInputs["expressions"] = state ? state.expressions : undefined;
@@ -263,6 +268,7 @@ export class Alarm extends pulumi.CustomResource {
             resourceInputs["comparisonOperator"] = args ? args.comparisonOperator : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dimensions"] = args ? args.dimensions : undefined;
+            resourceInputs["effective"] = args ? args.effective : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
             resourceInputs["evaluationCount"] = args ? args.evaluationCount : undefined;
             resourceInputs["expressions"] = args ? args.expressions : undefined;
@@ -305,6 +311,10 @@ export interface AlarmState {
      * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
     dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+     */
+    effective?: pulumi.Input<string>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */
@@ -382,6 +392,10 @@ export interface AlarmArgs {
      * The dimension map for the alarm's associated metric. For all metrics, you can not set the dimension key as "scalingGroup" or "userId", which is set by default, the second dimension for metric, such as "device" for "PackagesNetIn", need to be set by users. See `dimensions` below.
      */
     dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The effective period of the event-triggered task. By default, the event-triggered task is in effect at all times.
+     */
+    effective?: pulumi.Input<string>;
     /**
      * Whether to enable specific ess alarm. Default to true.
      */

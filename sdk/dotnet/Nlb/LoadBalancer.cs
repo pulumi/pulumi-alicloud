@@ -87,6 +87,89 @@ namespace Pulumi.AliCloud.Nlb
     /// });
     /// ```
     /// 
+    /// DualStack Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var zone = config.GetObject&lt;dynamic&gt;("zone") ?? new[]
+    ///     {
+    ///         "cn-beijing-i",
+    ///         "cn-beijing-k",
+    ///         "cn-beijing-l",
+    ///     };
+    ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
+    ///     {
+    ///         VpcName = name,
+    ///         CidrBlock = "10.2.0.0/16",
+    ///         EnableIpv6 = true,
+    ///     });
+    /// 
+    ///     var vsw = new List&lt;AliCloud.Vpc.Switch&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         vsw.Add(new AliCloud.Vpc.Switch($"vsw-{range.Value}", new()
+    ///         {
+    ///             EnableIpv6 = true,
+    ///             Ipv6CidrBlockMask = $"1{range.Value}",
+    ///             VswitchName = $"vsw-{range.Value}-for-nlb",
+    ///             VpcId = vpc.Id,
+    ///             CidrBlock = $"10.2.1{range.Value}.0/24",
+    ///             ZoneId = zone[range.Value],
+    ///         }));
+    ///     }
+    ///     var @default = new AliCloud.Vpc.Ipv6Gateway("default", new()
+    ///     {
+    ///         Ipv6GatewayName = name,
+    ///         VpcId = vpc.Id,
+    ///     });
+    /// 
+    ///     var nlb = new AliCloud.Nlb.LoadBalancer("nlb", new()
+    ///     {
+    ///         LoadBalancerName = name,
+    ///         LoadBalancerType = "Network",
+    ///         AddressType = "Intranet",
+    ///         AddressIpVersion = "DualStack",
+    ///         Ipv6AddressType = "Internet",
+    ///         VpcId = vpc.Id,
+    ///         CrossZoneEnabled = false,
+    ///         Tags = 
+    ///         {
+    ///             { "Created", "TF" },
+    ///             { "For", "example" },
+    ///         },
+    ///         ZoneMappings = new[]
+    ///         {
+    ///             new AliCloud.Nlb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = vsw[0].Id,
+    ///                 ZoneId = zone[0],
+    ///             },
+    ///             new AliCloud.Nlb.Inputs.LoadBalancerZoneMappingArgs
+    ///             {
+    ///                 VswitchId = vsw[1].Id,
+    ///                 ZoneId = zone[1],
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// NLB Load Balancer can be imported using the id, e.g.

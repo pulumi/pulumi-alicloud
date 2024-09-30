@@ -138,7 +138,7 @@ class InstanceArgs:
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
-        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
         :param pulumi.Input[str] category: The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
@@ -247,8 +247,8 @@ class InstanceArgs:
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
@@ -627,7 +627,7 @@ class InstanceArgs:
     @pulumi.getter(name="caType")
     def ca_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
         - aliyun: a cloud certificate
         - custom: a custom certificate
         """
@@ -1199,7 +1199,7 @@ class InstanceArgs:
     @pulumi.getter(name="serverCert")
     def server_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
         """
         return pulumi.get(self, "server_cert")
 
@@ -1211,7 +1211,7 @@ class InstanceArgs:
     @pulumi.getter(name="serverKey")
     def server_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         """
         return pulumi.get(self, "server_key")
 
@@ -1609,7 +1609,7 @@ class _InstanceState:
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
-        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
         :param pulumi.Input[str] category: The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
@@ -1749,8 +1749,8 @@ class _InstanceState:
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
@@ -2073,7 +2073,7 @@ class _InstanceState:
     @pulumi.getter(name="caType")
     def ca_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
         - aliyun: a cloud certificate
         - custom: a custom certificate
         """
@@ -2753,7 +2753,7 @@ class _InstanceState:
     @pulumi.getter(name="serverCert")
     def server_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
         """
         return pulumi.get(self, "server_cert")
 
@@ -2765,7 +2765,7 @@ class _InstanceState:
     @pulumi.getter(name="serverKey")
     def server_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         """
         return pulumi.get(self, "server_key")
 
@@ -3194,7 +3194,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
-        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
         :param pulumi.Input[str] category: The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
@@ -3331,8 +3331,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
@@ -3716,7 +3716,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] babelfish_port: The TDS port of the instance for which Babelfish is enabled.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
-        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        :param pulumi.Input[str] ca_type: The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
                - aliyun: a cloud certificate
                - custom: a custom certificate
         :param pulumi.Input[str] category: The RDS edition of the instance. If you want to create a serverless instance, you must use this value. Valid values:
@@ -3856,8 +3856,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
-        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
-        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        :param pulumi.Input[str] server_cert: The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
+        :param pulumi.Input[str] server_key: The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]]] serverless_configs: The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for Serverless instance. See `serverless_config` below.
         :param pulumi.Input[int] sql_collector_config_value: The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
         :param pulumi.Input[str] sql_collector_status: The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
@@ -4076,7 +4076,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="caType")
     def ca_type(self) -> pulumi.Output[str]:
         """
-        The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. Value range:
+        The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. **NOTE:** From version 1.231.0, `ca_type` start  support `MySQL` engine. Value range:
         - aliyun: a cloud certificate
         - custom: a custom certificate
         """
@@ -4560,7 +4560,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serverCert")
     def server_cert(self) -> pulumi.Output[str]:
         """
-        The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_cert` start  support `MySQL` engine.
         """
         return pulumi.get(self, "server_cert")
 
@@ -4568,7 +4568,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serverKey")
     def server_key(self) -> pulumi.Output[str]:
         """
-        The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
+        The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL or MySQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. **NOTE:** From version 1.231.0, `server_key` start support `MySQL` engine.
         """
         return pulumi.get(self, "server_key")
 

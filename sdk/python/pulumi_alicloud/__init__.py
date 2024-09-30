@@ -3863,6 +3863,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "ess/serverGroupAttachment",
+  "fqn": "pulumi_alicloud.ess",
+  "classes": {
+   "alicloud:ess/serverGroupAttachment:ServerGroupAttachment": "ServerGroupAttachment"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ess/suspendProcess",
   "fqn": "pulumi_alicloud.ess",
   "classes": {
@@ -4447,6 +4455,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "gpdb/dbInstanceIpArray",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray": "DbInstanceIpArray"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "gpdb/dbInstancePlan",
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
@@ -4523,6 +4539,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
    "alicloud:gpdb/streamingDataSource:StreamingDataSource": "StreamingDataSource"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "gpdb/streamingJob",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/streamingJob:StreamingJob": "StreamingJob"
   }
  },
  {
