@@ -2501,16 +2501,12 @@ func Provider() tfbridge.ProviderInfo {
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 			},
-			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0",
-			},
+
 			RespectSchemaVersion: true,
 		},
 		Python: &tfbridge.PythonInfo{
 			RespectSchemaVersion: true,
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
+
 			PyProject: struct{ Enabled bool }{true},
 		},
 		Golang: &tfbridge.GolangInfo{
@@ -2576,12 +2572,14 @@ var skipUserAgentSection = tfbridge.DocsEdit{
 }
 
 // Removes a reference to TF version and compatibility
-var versionNote = []byte("-> **Note:** From version 1.50.0, the provider start to support Terraform 0.12.x.")
-var configurationSource = []byte("* `configuration_source` - (Optional, Available since 1.56.0) Use a string to " +
-	"mark a configuration file source, like `terraform-alicloud-modules/terraform-alicloud-ecs-instance` or " +
-	"`terraform-provider-alicloud/examples/vpc`.\nThe length should not more than 128(Before 1.207.2, it " +
-	"should not more than 64). Since the version 1.145.0, it supports to be set by environment variable " +
-	"`TF_APPEND_USER_AGENT`. See `Custom User-Agent Information`.")
+var (
+	versionNote         = []byte("-> **Note:** From version 1.50.0, the provider start to support Terraform 0.12.x.")
+	configurationSource = []byte("* `configuration_source` - (Optional, Available since 1.56.0) Use a string to " +
+		"mark a configuration file source, like `terraform-alicloud-modules/terraform-alicloud-ecs-instance` or " +
+		"`terraform-provider-alicloud/examples/vpc`.\nThe length should not more than 128(Before 1.207.2, it " +
+		"should not more than 64). Since the version 1.145.0, it supports to be set by environment variable " +
+		"`TF_APPEND_USER_AGENT`. See `Custom User-Agent Information`.")
+)
 
 // Helper func to remove a content byte from a file
 func removeContent(text []byte, path string) tfbridge.DocsEdit {
