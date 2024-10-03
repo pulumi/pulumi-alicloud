@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -329,9 +334,6 @@ def get_networks(cidr_block: Optional[str] = None,
         vpc_owner_id=pulumi.get(__ret__, 'vpc_owner_id'),
         vpcs=pulumi.get(__ret__, 'vpcs'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-
-
-@_utilities.lift_output_func(get_networks)
 def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None,
                         dhcp_options_set_id: Optional[pulumi.Input[Optional[str]]] = None,
                         dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -380,4 +382,43 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     :param int vpc_owner_id: The owner ID of VPC.
     :param str vswitch_id: Filter results by the specified vSwitch.
     """
-    ...
+    __args__ = dict()
+    __args__['cidrBlock'] = cidr_block
+    __args__['dhcpOptionsSetId'] = dhcp_options_set_id
+    __args__['dryRun'] = dry_run
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['isDefault'] = is_default
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vpcName'] = vpc_name
+    __args__['vpcOwnerId'] = vpc_owner_id
+    __args__['vswitchId'] = vswitch_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getNetworks:getNetworks', __args__, opts=opts, typ=GetNetworksResult)
+    return __ret__.apply(lambda __response__: GetNetworksResult(
+        cidr_block=pulumi.get(__response__, 'cidr_block'),
+        dhcp_options_set_id=pulumi.get(__response__, 'dhcp_options_set_id'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        is_default=pulumi.get(__response__, 'is_default'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        total_count=pulumi.get(__response__, 'total_count'),
+        vpc_name=pulumi.get(__response__, 'vpc_name'),
+        vpc_owner_id=pulumi.get(__response__, 'vpc_owner_id'),
+        vpcs=pulumi.get(__response__, 'vpcs'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id')))

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := vpc.GetIpv4Gateways(ctx, nil, nil)
+//			ids, err := vpc.GetIpv4Gateways(ctx, &vpc.GetIpv4GatewaysArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -184,9 +189,6 @@ def get_change_sets(change_set_name: Optional[str] = None,
         sets=pulumi.get(__ret__, 'sets'),
         stack_id=pulumi.get(__ret__, 'stack_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_change_sets)
 def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]] = None,
                            enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -223,4 +225,24 @@ def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]
     :param str stack_id: The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
     :param str status: The status of the change set. Valid Value: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `CREATE_PENDING`, `DELETE_COMPLETE` and `DELETE_FAILED`.
     """
-    ...
+    __args__ = dict()
+    __args__['changeSetName'] = change_set_name
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['stackId'] = stack_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getChangeSets:getChangeSets', __args__, opts=opts, typ=GetChangeSetsResult)
+    return __ret__.apply(lambda __response__: GetChangeSetsResult(
+        change_set_name=pulumi.get(__response__, 'change_set_name'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        sets=pulumi.get(__response__, 'sets'),
+        stack_id=pulumi.get(__response__, 'stack_id'),
+        status=pulumi.get(__response__, 'status')))

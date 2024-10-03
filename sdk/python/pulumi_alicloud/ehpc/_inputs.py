@@ -4,17 +4,73 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ClusterAdditionalVolumeArgs',
+    'ClusterAdditionalVolumeArgsDict',
     'ClusterAdditionalVolumeRoleArgs',
+    'ClusterAdditionalVolumeRoleArgsDict',
     'ClusterApplicationArgs',
+    'ClusterApplicationArgsDict',
     'ClusterPostInstallScriptArgs',
+    'ClusterPostInstallScriptArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ClusterAdditionalVolumeArgsDict(TypedDict):
+        job_queue: NotRequired[pulumi.Input[str]]
+        """
+        The queue of the nodes to which the additional file system is attached.
+        """
+        local_directory: NotRequired[pulumi.Input[str]]
+        """
+        The local directory on which the additional file system is mounted.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        The type of the cluster. Valid value: `PublicCloud`.
+        """
+        remote_directory: NotRequired[pulumi.Input[str]]
+        """
+        The remote directory to which the additional file system is mounted.
+        """
+        roles: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgsDict']]]]
+        """
+        The roles. See `roles` below.
+        """
+        volume_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the additional file system.
+        """
+        volume_mount_option: NotRequired[pulumi.Input[str]]
+        """
+        The mount options of the file system.
+        """
+        volume_mountpoint: NotRequired[pulumi.Input[str]]
+        """
+        The mount target of the additional file system.
+        """
+        volume_protocol: NotRequired[pulumi.Input[str]]
+        """
+        The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
+        """
+        volume_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the additional shared storage. Only NAS file systems are supported.
+        """
+elif False:
+    ClusterAdditionalVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterAdditionalVolumeArgs:
@@ -183,6 +239,15 @@ class ClusterAdditionalVolumeArgs:
         pulumi.set(self, "volume_type", value)
 
 
+if not MYPY:
+    class ClusterAdditionalVolumeRoleArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The type of the nodes to which the additional file system is attached.
+        """
+elif False:
+    ClusterAdditionalVolumeRoleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterAdditionalVolumeRoleArgs:
     def __init__(__self__, *,
@@ -206,6 +271,15 @@ class ClusterAdditionalVolumeRoleArgs:
         pulumi.set(self, "name", value)
 
 
+if not MYPY:
+    class ClusterApplicationArgsDict(TypedDict):
+        tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag of the software.
+        """
+elif False:
+    ClusterApplicationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterApplicationArgs:
     def __init__(__self__, *,
@@ -228,6 +302,19 @@ class ClusterApplicationArgs:
     def tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag", value)
 
+
+if not MYPY:
+    class ClusterPostInstallScriptArgsDict(TypedDict):
+        args: NotRequired[pulumi.Input[str]]
+        """
+        The parameter that is used to run the script after the cluster is created.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        The URL that is used to download the script after the cluster is created.
+        """
+elif False:
+    ClusterPostInstallScriptArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterPostInstallScriptArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -162,9 +167,6 @@ def get_access_rules(access_group_name: Optional[str] = None,
         rw_access=pulumi.get(__ret__, 'rw_access'),
         source_cidr_ip=pulumi.get(__ret__, 'source_cidr_ip'),
         user_access=pulumi.get(__ret__, 'user_access'))
-
-
-@_utilities.lift_output_func(get_access_rules)
 def get_access_rules_output(access_group_name: Optional[pulumi.Input[str]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -185,4 +187,21 @@ def get_access_rules_output(access_group_name: Optional[pulumi.Input[str]] = Non
     :param str source_cidr_ip: Filter results by a specific SourceCidrIp.
     :param str user_access: Filter results by a specific UserAccess.
     """
-    ...
+    __args__ = dict()
+    __args__['accessGroupName'] = access_group_name
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['rwAccess'] = rw_access
+    __args__['sourceCidrIp'] = source_cidr_ip
+    __args__['userAccess'] = user_access
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getAccessRules:getAccessRules', __args__, opts=opts, typ=GetAccessRulesResult)
+    return __ret__.apply(lambda __response__: GetAccessRulesResult(
+        access_group_name=pulumi.get(__response__, 'access_group_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        rules=pulumi.get(__response__, 'rules'),
+        rw_access=pulumi.get(__response__, 'rw_access'),
+        source_cidr_ip=pulumi.get(__response__, 'source_cidr_ip'),
+        user_access=pulumi.get(__response__, 'user_access')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -183,9 +188,6 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         slave_zone_id=pulumi.get(__ret__, 'slave_zone_id'),
         zones=pulumi.get(__ret__, 'zones'))
-
-
-@_utilities.lift_output_func(get_zones)
 def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Optional[str]]] = None,
                      available_slb_address_type: Optional[pulumi.Input[Optional[str]]] = None,
                      enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -219,4 +221,22 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str slave_zone_id: The secondary zone.
     """
-    ...
+    __args__ = dict()
+    __args__['availableSlbAddressIpVersion'] = available_slb_address_ip_version
+    __args__['availableSlbAddressType'] = available_slb_address_type
+    __args__['enableDetails'] = enable_details
+    __args__['masterZoneId'] = master_zone_id
+    __args__['outputFile'] = output_file
+    __args__['slaveZoneId'] = slave_zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
+    return __ret__.apply(lambda __response__: GetZonesResult(
+        available_slb_address_ip_version=pulumi.get(__response__, 'available_slb_address_ip_version'),
+        available_slb_address_type=pulumi.get(__response__, 'available_slb_address_type'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        master_zone_id=pulumi.get(__response__, 'master_zone_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        slave_zone_id=pulumi.get(__response__, 'slave_zone_id'),
+        zones=pulumi.get(__response__, 'zones')))

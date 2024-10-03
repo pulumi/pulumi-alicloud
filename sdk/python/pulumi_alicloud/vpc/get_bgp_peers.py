@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -155,9 +160,6 @@ def get_bgp_peers(bgp_group_id: Optional[str] = None,
         peers=pulumi.get(__ret__, 'peers'),
         router_id=pulumi.get(__ret__, 'router_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_bgp_peers)
 def get_bgp_peers_output(bgp_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -197,4 +199,19 @@ def get_bgp_peers_output(bgp_group_id: Optional[pulumi.Input[Optional[str]]] = N
     :param str router_id: The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
     :param str status: The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
     """
-    ...
+    __args__ = dict()
+    __args__['bgpGroupId'] = bgp_group_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['routerId'] = router_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getBgpPeers:getBgpPeers', __args__, opts=opts, typ=GetBgpPeersResult)
+    return __ret__.apply(lambda __response__: GetBgpPeersResult(
+        bgp_group_id=pulumi.get(__response__, 'bgp_group_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        peers=pulumi.get(__response__, 'peers'),
+        router_id=pulumi.get(__response__, 'router_id'),
+        status=pulumi.get(__response__, 'status')))

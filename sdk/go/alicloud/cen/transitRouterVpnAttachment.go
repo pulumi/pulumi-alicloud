@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := cen.GetTransitRouterAvailableResources(ctx, nil, nil)
+//			_default, err := cen.GetTransitRouterAvailableResources(ctx, &cen.GetTransitRouterAvailableResourcesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

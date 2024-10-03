@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -158,9 +163,6 @@ def get_ecs_deployment_sets(deployment_set_name: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         sets=pulumi.get(__ret__, 'sets'),
         strategy=pulumi.get(__ret__, 'strategy'))
-
-
-@_utilities.lift_output_func(get_ecs_deployment_sets)
 def get_ecs_deployment_sets_output(deployment_set_name: Optional[pulumi.Input[Optional[str]]] = None,
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -193,4 +195,20 @@ def get_ecs_deployment_sets_output(deployment_set_name: Optional[pulumi.Input[Op
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str strategy: The deployment strategy. Valid values: `Availability`.
     """
-    ...
+    __args__ = dict()
+    __args__['deploymentSetName'] = deployment_set_name
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['strategy'] = strategy
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets', __args__, opts=opts, typ=GetEcsDeploymentSetsResult)
+    return __ret__.apply(lambda __response__: GetEcsDeploymentSetsResult(
+        deployment_set_name=pulumi.get(__response__, 'deployment_set_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        sets=pulumi.get(__response__, 'sets'),
+        strategy=pulumi.get(__response__, 'strategy')))

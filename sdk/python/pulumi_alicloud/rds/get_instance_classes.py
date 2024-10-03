@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -280,9 +285,6 @@ def get_instance_classes(category: Optional[str] = None,
         sorted_by=pulumi.get(__ret__, 'sorted_by'),
         storage_type=pulumi.get(__ret__, 'storage_type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_instance_classes)
 def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                                 commodity_code: Optional[pulumi.Input[Optional[str]]] = None,
                                 db_instance_class: Optional[pulumi.Input[Optional[str]]] = None,
@@ -343,4 +345,36 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] 
     :param str storage_type: It has been deprecated from version 1.134.0+ and using `db_instance_storage_type` instead.
     :param str zone_id: The Zone to launch the DB instance.
     """
-    ...
+    __args__ = dict()
+    __args__['category'] = category
+    __args__['commodityCode'] = commodity_code
+    __args__['dbInstanceClass'] = db_instance_class
+    __args__['dbInstanceId'] = db_instance_id
+    __args__['dbInstanceStorageType'] = db_instance_storage_type
+    __args__['engine'] = engine
+    __args__['engineVersion'] = engine_version
+    __args__['instanceChargeType'] = instance_charge_type
+    __args__['multiZone'] = multi_zone
+    __args__['outputFile'] = output_file
+    __args__['sortedBy'] = sorted_by
+    __args__['storageType'] = storage_type
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getInstanceClasses:getInstanceClasses', __args__, opts=opts, typ=GetInstanceClassesResult)
+    return __ret__.apply(lambda __response__: GetInstanceClassesResult(
+        category=pulumi.get(__response__, 'category'),
+        commodity_code=pulumi.get(__response__, 'commodity_code'),
+        db_instance_class=pulumi.get(__response__, 'db_instance_class'),
+        db_instance_id=pulumi.get(__response__, 'db_instance_id'),
+        db_instance_storage_type=pulumi.get(__response__, 'db_instance_storage_type'),
+        engine=pulumi.get(__response__, 'engine'),
+        engine_version=pulumi.get(__response__, 'engine_version'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_charge_type=pulumi.get(__response__, 'instance_charge_type'),
+        instance_classes=pulumi.get(__response__, 'instance_classes'),
+        multi_zone=pulumi.get(__response__, 'multi_zone'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        sorted_by=pulumi.get(__response__, 'sorted_by'),
+        storage_type=pulumi.get(__response__, 'storage_type'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

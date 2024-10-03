@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -246,9 +251,6 @@ def get_domains(change_end_time: Optional[str] = None,
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         security_token=pulumi.get(__ret__, 'security_token'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_domains)
 def get_domains_output(change_end_time: Optional[pulumi.Input[Optional[str]]] = None,
                        change_start_time: Optional[pulumi.Input[Optional[str]]] = None,
                        check_domain_show: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -288,4 +290,32 @@ def get_domains_output(change_end_time: Optional[pulumi.Input[Optional[str]]] = 
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of DCDN Domain.
     """
-    ...
+    __args__ = dict()
+    __args__['changeEndTime'] = change_end_time
+    __args__['changeStartTime'] = change_start_time
+    __args__['checkDomainShow'] = check_domain_show
+    __args__['domainSearchType'] = domain_search_type
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['securityToken'] = security_token
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult)
+    return __ret__.apply(lambda __response__: GetDomainsResult(
+        change_end_time=pulumi.get(__response__, 'change_end_time'),
+        change_start_time=pulumi.get(__response__, 'change_start_time'),
+        check_domain_show=pulumi.get(__response__, 'check_domain_show'),
+        domain_search_type=pulumi.get(__response__, 'domain_search_type'),
+        domains=pulumi.get(__response__, 'domains'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        security_token=pulumi.get(__response__, 'security_token'),
+        status=pulumi.get(__response__, 'status')))

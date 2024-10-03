@@ -25,6 +25,79 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.kms.Key;
+ * import com.pulumi.alicloud.kms.KeyArgs;
+ * import com.pulumi.alicloud.ecs.AutoSnapshotPolicy;
+ * import com.pulumi.alicloud.ecs.AutoSnapshotPolicyArgs;
+ * import com.pulumi.alicloud.ecs.EcsDisk;
+ * import com.pulumi.alicloud.ecs.EcsDiskArgs;
+ * import com.pulumi.alicloud.ecs.EcsAutoSnapshotPolicyAttachment;
+ * import com.pulumi.alicloud.ecs.EcsAutoSnapshotPolicyAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *             .availableResourceCreation("VSwitch")
+ *             .build());
+ * 
+ *         var exampleKey = new Key("exampleKey", KeyArgs.builder()
+ *             .description("terraform-example")
+ *             .pendingWindowInDays("7")
+ *             .status("Enabled")
+ *             .build());
+ * 
+ *         var exampleAutoSnapshotPolicy = new AutoSnapshotPolicy("exampleAutoSnapshotPolicy", AutoSnapshotPolicyArgs.builder()
+ *             .name("terraform-example")
+ *             .repeatWeekdays(            
+ *                 "1",
+ *                 "2",
+ *                 "3")
+ *             .retentionDays(-1)
+ *             .timePoints(            
+ *                 "1",
+ *                 "22",
+ *                 "23")
+ *             .build());
+ * 
+ *         var exampleEcsDisk = new EcsDisk("exampleEcsDisk", EcsDiskArgs.builder()
+ *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+ *             .diskName("terraform-example")
+ *             .description("Hello ecs disk.")
+ *             .category("cloud_efficiency")
+ *             .size("30")
+ *             .encrypted(true)
+ *             .kmsKeyId(exampleKey.id())
+ *             .tags(Map.of("Name", "terraform-example"))
+ *             .build());
+ * 
+ *         var exampleEcsAutoSnapshotPolicyAttachment = new EcsAutoSnapshotPolicyAttachment("exampleEcsAutoSnapshotPolicyAttachment", EcsAutoSnapshotPolicyAttachmentArgs.builder()
+ *             .autoSnapshotPolicyId(exampleAutoSnapshotPolicy.id())
+ *             .diskId(exampleEcsDisk.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -233,9 +238,6 @@ def get_quotas(dimensions: Optional[Sequence[Union['GetQuotasDimensionArgs', 'Ge
         quotas=pulumi.get(__ret__, 'quotas'),
         sort_field=pulumi.get(__ret__, 'sort_field'),
         sort_order=pulumi.get(__ret__, 'sort_order'))
-
-
-@_utilities.lift_output_func(get_quotas)
 def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']]]]] = None,
                       group_code: Optional[pulumi.Input[Optional[str]]] = None,
                       key_word: Optional[pulumi.Input[Optional[str]]] = None,
@@ -277,4 +279,31 @@ def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[Union[
     :param str sort_field: Cloud service ECS specification quota supports setting sorting fields. Valid Values: `TIME`, `TOTAL` and `RESERVED`.
     :param str sort_order: Ranking of cloud service ECS specification quota support. Valid Values: `Ascending` and `Descending`.
     """
-    ...
+    __args__ = dict()
+    __args__['dimensions'] = dimensions
+    __args__['groupCode'] = group_code
+    __args__['keyWord'] = key_word
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['productCode'] = product_code
+    __args__['quotaActionCode'] = quota_action_code
+    __args__['quotaCategory'] = quota_category
+    __args__['sortField'] = sort_field
+    __args__['sortOrder'] = sort_order
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:quotas/getQuotas:getQuotas', __args__, opts=opts, typ=GetQuotasResult)
+    return __ret__.apply(lambda __response__: GetQuotasResult(
+        dimensions=pulumi.get(__response__, 'dimensions'),
+        group_code=pulumi.get(__response__, 'group_code'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        key_word=pulumi.get(__response__, 'key_word'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        product_code=pulumi.get(__response__, 'product_code'),
+        quota_action_code=pulumi.get(__response__, 'quota_action_code'),
+        quota_category=pulumi.get(__response__, 'quota_category'),
+        quotas=pulumi.get(__response__, 'quotas'),
+        sort_field=pulumi.get(__response__, 'sort_field'),
+        sort_order=pulumi.get(__response__, 'sort_order')))

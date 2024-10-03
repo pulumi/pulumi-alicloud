@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := resourcemanager.GetHandshakes(ctx, nil, nil)
+//			example, err := resourcemanager.GetHandshakes(ctx, &resourcemanager.GetHandshakesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

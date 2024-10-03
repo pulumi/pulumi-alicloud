@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -202,9 +207,6 @@ def get_template_applications(batch_quota_application_id: Optional[str] = None,
         product_code=pulumi.get(__ret__, 'product_code'),
         quota_action_code=pulumi.get(__ret__, 'quota_action_code'),
         quota_category=pulumi.get(__ret__, 'quota_category'))
-
-
-@_utilities.lift_output_func(get_template_applications)
 def get_template_applications_output(batch_quota_application_id: Optional[pulumi.Input[Optional[str]]] = None,
                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -262,4 +264,21 @@ def get_template_applications_output(batch_quota_application_id: Optional[pulumi
     :param str quota_action_code: The quota ID.
     :param str quota_category: The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
     """
-    ...
+    __args__ = dict()
+    __args__['batchQuotaApplicationId'] = batch_quota_application_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['productCode'] = product_code
+    __args__['quotaActionCode'] = quota_action_code
+    __args__['quotaCategory'] = quota_category
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:quotas/getTemplateApplications:getTemplateApplications', __args__, opts=opts, typ=GetTemplateApplicationsResult)
+    return __ret__.apply(lambda __response__: GetTemplateApplicationsResult(
+        applications=pulumi.get(__response__, 'applications'),
+        batch_quota_application_id=pulumi.get(__response__, 'batch_quota_application_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        product_code=pulumi.get(__response__, 'product_code'),
+        quota_action_code=pulumi.get(__response__, 'quota_action_code'),
+        quota_category=pulumi.get(__response__, 'quota_category')))

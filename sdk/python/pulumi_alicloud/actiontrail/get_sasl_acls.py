@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -160,9 +165,6 @@ def get_sasl_acls(acl_resource_name: Optional[str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         username=pulumi.get(__ret__, 'username'))
-
-
-@_utilities.lift_output_func(get_sasl_acls)
 def get_sasl_acls_output(acl_resource_name: Optional[pulumi.Input[str]] = None,
                          acl_resource_type: Optional[pulumi.Input[str]] = None,
                          instance_id: Optional[pulumi.Input[str]] = None,
@@ -195,4 +197,19 @@ def get_sasl_acls_output(acl_resource_name: Optional[pulumi.Input[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str username: Get results for the specified username.
     """
-    ...
+    __args__ = dict()
+    __args__['aclResourceName'] = acl_resource_name
+    __args__['aclResourceType'] = acl_resource_type
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    __args__['username'] = username
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getSaslAcls:getSaslAcls', __args__, opts=opts, typ=GetSaslAclsResult)
+    return __ret__.apply(lambda __response__: GetSaslAclsResult(
+        acl_resource_name=pulumi.get(__response__, 'acl_resource_name'),
+        acl_resource_type=pulumi.get(__response__, 'acl_resource_type'),
+        acls=pulumi.get(__response__, 'acls'),
+        id=pulumi.get(__response__, 'id'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        username=pulumi.get(__response__, 'username')))

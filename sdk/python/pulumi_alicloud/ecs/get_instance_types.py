@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -394,9 +399,6 @@ def get_instance_types(availability_zone: Optional[str] = None,
         sorted_by=pulumi.get(__ret__, 'sorted_by'),
         spot_strategy=pulumi.get(__ret__, 'spot_strategy'),
         system_disk_category=pulumi.get(__ret__, 'system_disk_category'))
-
-
-@_utilities.lift_output_func(get_instance_types)
 def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
                               cpu_core_count: Optional[pulumi.Input[Optional[int]]] = None,
                               eni_amount: Optional[pulumi.Input[Optional[int]]] = None,
@@ -496,4 +498,48 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`. 
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
     """
-    ...
+    __args__ = dict()
+    __args__['availabilityZone'] = availability_zone
+    __args__['cpuCoreCount'] = cpu_core_count
+    __args__['eniAmount'] = eni_amount
+    __args__['gpuAmount'] = gpu_amount
+    __args__['gpuSpec'] = gpu_spec
+    __args__['imageId'] = image_id
+    __args__['instanceChargeType'] = instance_charge_type
+    __args__['instanceType'] = instance_type
+    __args__['instanceTypeFamily'] = instance_type_family
+    __args__['isOutdated'] = is_outdated
+    __args__['kubernetesNodeRole'] = kubernetes_node_role
+    __args__['memorySize'] = memory_size
+    __args__['minimumEniIpv6AddressQuantity'] = minimum_eni_ipv6_address_quantity
+    __args__['minimumEniPrivateIpAddressQuantity'] = minimum_eni_private_ip_address_quantity
+    __args__['networkType'] = network_type
+    __args__['outputFile'] = output_file
+    __args__['sortedBy'] = sorted_by
+    __args__['spotStrategy'] = spot_strategy
+    __args__['systemDiskCategory'] = system_disk_category
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult)
+    return __ret__.apply(lambda __response__: GetInstanceTypesResult(
+        availability_zone=pulumi.get(__response__, 'availability_zone'),
+        cpu_core_count=pulumi.get(__response__, 'cpu_core_count'),
+        eni_amount=pulumi.get(__response__, 'eni_amount'),
+        gpu_amount=pulumi.get(__response__, 'gpu_amount'),
+        gpu_spec=pulumi.get(__response__, 'gpu_spec'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        image_id=pulumi.get(__response__, 'image_id'),
+        instance_charge_type=pulumi.get(__response__, 'instance_charge_type'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        instance_type_family=pulumi.get(__response__, 'instance_type_family'),
+        instance_types=pulumi.get(__response__, 'instance_types'),
+        is_outdated=pulumi.get(__response__, 'is_outdated'),
+        kubernetes_node_role=pulumi.get(__response__, 'kubernetes_node_role'),
+        memory_size=pulumi.get(__response__, 'memory_size'),
+        minimum_eni_ipv6_address_quantity=pulumi.get(__response__, 'minimum_eni_ipv6_address_quantity'),
+        minimum_eni_private_ip_address_quantity=pulumi.get(__response__, 'minimum_eni_private_ip_address_quantity'),
+        network_type=pulumi.get(__response__, 'network_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        sorted_by=pulumi.get(__response__, 'sorted_by'),
+        spot_strategy=pulumi.get(__response__, 'spot_strategy'),
+        system_disk_category=pulumi.get(__response__, 'system_disk_category')))

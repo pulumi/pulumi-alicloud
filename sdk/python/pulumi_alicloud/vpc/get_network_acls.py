@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -196,9 +201,6 @@ def get_network_acls(ids: Optional[Sequence[str]] = None,
         resource_type=pulumi.get(__ret__, 'resource_type'),
         status=pulumi.get(__ret__, 'status'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_network_acls)
 def get_network_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             network_acl_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -236,4 +238,26 @@ def get_network_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param str status: The state of the network ACL. Valid values: `Available` and `Modifying`.
     :param str vpc_id: The ID of the associated VPC.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['networkAclName'] = network_acl_name
+    __args__['outputFile'] = output_file
+    __args__['resourceId'] = resource_id
+    __args__['resourceType'] = resource_type
+    __args__['status'] = status
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getNetworkAcls:getNetworkAcls', __args__, opts=opts, typ=GetNetworkAclsResult)
+    return __ret__.apply(lambda __response__: GetNetworkAclsResult(
+        acls=pulumi.get(__response__, 'acls'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        network_acl_name=pulumi.get(__response__, 'network_acl_name'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_id=pulumi.get(__response__, 'resource_id'),
+        resource_type=pulumi.get(__response__, 'resource_type'),
+        status=pulumi.get(__response__, 'status'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

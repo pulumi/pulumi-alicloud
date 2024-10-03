@@ -42,11 +42,11 @@ import (
 //			if param := cfg.Get("anotherUid"); param != "" {
 //				anotherUid = param
 //			}
-//			yourAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			yourAccount, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alicloud.GetAccount(ctx, nil, nil)
+//			_, err = alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

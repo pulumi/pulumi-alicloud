@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -144,9 +149,6 @@ def get_gateway_cache_disks(gateway_id: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_gateway_cache_disks)
 def get_gateway_cache_disks_output(gateway_id: Optional[pulumi.Input[str]] = None,
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -186,4 +188,17 @@ def get_gateway_cache_disks_output(gateway_id: Optional[pulumi.Input[str]] = Non
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
     """
-    ...
+    __args__ = dict()
+    __args__['gatewayId'] = gateway_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks', __args__, opts=opts, typ=GetGatewayCacheDisksResult)
+    return __ret__.apply(lambda __response__: GetGatewayCacheDisksResult(
+        disks=pulumi.get(__response__, 'disks'),
+        gateway_id=pulumi.get(__response__, 'gateway_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -236,9 +241,6 @@ def get_gateway_vco_routes(ids: Optional[Sequence[str]] = None,
         routes=pulumi.get(__ret__, 'routes'),
         status=pulumi.get(__ret__, 'status'),
         vpn_connection_id=pulumi.get(__ret__, 'vpn_connection_id'))
-
-
-@_utilities.lift_output_func(get_gateway_vco_routes)
 def get_gateway_vco_routes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   page_number: Optional[pulumi.Input[Optional[int]]] = None,
@@ -337,4 +339,23 @@ def get_gateway_vco_routes_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     :param str status: The status of the vpn route entry. Valid values: `normal`, `published`.
     :param str vpn_connection_id: The id of the vpn connection.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['routeEntryType'] = route_entry_type
+    __args__['status'] = status
+    __args__['vpnConnectionId'] = vpn_connection_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes', __args__, opts=opts, typ=GetGatewayVcoRoutesResult)
+    return __ret__.apply(lambda __response__: GetGatewayVcoRoutesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        route_entry_type=pulumi.get(__response__, 'route_entry_type'),
+        routes=pulumi.get(__response__, 'routes'),
+        status=pulumi.get(__response__, 'status'),
+        vpn_connection_id=pulumi.get(__response__, 'vpn_connection_id')))

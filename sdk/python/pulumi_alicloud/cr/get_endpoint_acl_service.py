@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -140,9 +145,6 @@ def get_endpoint_acl_service(enable: Optional[bool] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         module_name=pulumi.get(__ret__, 'module_name'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_endpoint_acl_service)
 def get_endpoint_acl_service_output(enable: Optional[pulumi.Input[bool]] = None,
                                     endpoint_type: Optional[pulumi.Input[str]] = None,
                                     instance_id: Optional[pulumi.Input[str]] = None,
@@ -179,4 +181,17 @@ def get_endpoint_acl_service_output(enable: Optional[pulumi.Input[bool]] = None,
            
            > **NOTE:** You may want to allow all ECS instances to access the Container Registry Enterprise Edition instance over the Internet. To achieve this purpose, you can enable access over the Internet and delete all IP addresses from the whitelist for Internet access. After you perform the preceding operation, the Container Registry Enterprise Edition instance is completely exposed to the Internet and may be attacked.
     """
-    ...
+    __args__ = dict()
+    __args__['enable'] = enable
+    __args__['endpointType'] = endpoint_type
+    __args__['instanceId'] = instance_id
+    __args__['moduleName'] = module_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cr/getEndpointAclService:getEndpointAclService', __args__, opts=opts, typ=GetEndpointAclServiceResult)
+    return __ret__.apply(lambda __response__: GetEndpointAclServiceResult(
+        enable=pulumi.get(__response__, 'enable'),
+        endpoint_type=pulumi.get(__response__, 'endpoint_type'),
+        id=pulumi.get(__response__, 'id'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        module_name=pulumi.get(__response__, 'module_name'),
+        status=pulumi.get(__response__, 'status')))

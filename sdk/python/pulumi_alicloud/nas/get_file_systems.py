@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -176,9 +181,6 @@ def get_file_systems(description_regex: Optional[str] = None,
         protocol_type=pulumi.get(__ret__, 'protocol_type'),
         storage_type=pulumi.get(__ret__, 'storage_type'),
         systems=pulumi.get(__ret__, 'systems'))
-
-
-@_utilities.lift_output_func(get_file_systems)
 def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -214,4 +216,20 @@ def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[st
            * `Performance` (Available when the `file_system_type` is `standard`)
            * `Capacity` (Available when the `file_system_type` is `standard`)
     """
-    ...
+    __args__ = dict()
+    __args__['descriptionRegex'] = description_regex
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['protocolType'] = protocol_type
+    __args__['storageType'] = storage_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getFileSystems:getFileSystems', __args__, opts=opts, typ=GetFileSystemsResult)
+    return __ret__.apply(lambda __response__: GetFileSystemsResult(
+        description_regex=pulumi.get(__response__, 'description_regex'),
+        descriptions=pulumi.get(__response__, 'descriptions'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        protocol_type=pulumi.get(__response__, 'protocol_type'),
+        storage_type=pulumi.get(__response__, 'storage_type'),
+        systems=pulumi.get(__response__, 'systems')))

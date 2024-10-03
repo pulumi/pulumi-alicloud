@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cloudstoragegateway.GetExpressSyncs(ctx, nil, nil)
+//			ids, err := cloudstoragegateway.GetExpressSyncs(ctx, &cloudstoragegateway.GetExpressSyncsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -137,9 +142,6 @@ def get_mount_points(file_system_id: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         points=pulumi.get(__ret__, 'points'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_mount_points)
 def get_mount_points_output(file_system_id: Optional[pulumi.Input[str]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -172,4 +174,17 @@ def get_mount_points_output(file_system_id: Optional[pulumi.Input[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Mount Point. Valid values: `Active`, `Inactive`.
     """
-    ...
+    __args__ = dict()
+    __args__['fileSystemId'] = file_system_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dfs/getMountPoints:getMountPoints', __args__, opts=opts, typ=GetMountPointsResult)
+    return __ret__.apply(lambda __response__: GetMountPointsResult(
+        file_system_id=pulumi.get(__response__, 'file_system_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        points=pulumi.get(__response__, 'points'),
+        status=pulumi.get(__response__, 'status')))

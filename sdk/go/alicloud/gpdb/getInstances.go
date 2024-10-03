@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := gpdb.GetInstances(ctx, nil, nil)
+//			ids, err := gpdb.GetInstances(ctx, &gpdb.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

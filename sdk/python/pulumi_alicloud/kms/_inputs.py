@@ -4,14 +4,43 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceBindVpcArgs',
+    'InstanceBindVpcArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceBindVpcArgsDict(TypedDict):
+        region_id: NotRequired[pulumi.Input[str]]
+        """
+        region id.
+        """
+        vpc_id: NotRequired[pulumi.Input[str]]
+        """
+        VPC ID.
+        """
+        vpc_owner_id: NotRequired[pulumi.Input[int]]
+        """
+        VPC owner root user ID.
+        """
+        vswitch_id: NotRequired[pulumi.Input[str]]
+        """
+        vswitch id.
+        """
+elif False:
+    InstanceBindVpcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceBindVpcArgs:

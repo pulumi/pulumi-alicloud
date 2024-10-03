@@ -4,27 +4,73 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ConnectionBgpConfigArgs',
+    'ConnectionBgpConfigArgsDict',
     'ConnectionHealthCheckConfigArgs',
+    'ConnectionHealthCheckConfigArgsDict',
     'ConnectionIkeConfigArgs',
+    'ConnectionIkeConfigArgsDict',
     'ConnectionIpsecConfigArgs',
+    'ConnectionIpsecConfigArgsDict',
     'ConnectionTunnelOptionsSpecificationArgs',
+    'ConnectionTunnelOptionsSpecificationArgsDict',
     'ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs',
+    'ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgsDict',
     'ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs',
+    'ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgsDict',
     'ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs',
+    'ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgsDict',
     'GatewayVpnAttachmentBgpConfigArgs',
+    'GatewayVpnAttachmentBgpConfigArgsDict',
     'GatewayVpnAttachmentHealthCheckConfigArgs',
+    'GatewayVpnAttachmentHealthCheckConfigArgsDict',
     'GatewayVpnAttachmentIkeConfigArgs',
+    'GatewayVpnAttachmentIkeConfigArgsDict',
     'GatewayVpnAttachmentIpsecConfigArgs',
+    'GatewayVpnAttachmentIpsecConfigArgsDict',
     'IpsecServerIkeConfigArgs',
+    'IpsecServerIkeConfigArgsDict',
     'IpsecServerIpsecConfigArgs',
+    'IpsecServerIpsecConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ConnectionBgpConfigArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Bgp enable.
+        """
+        local_asn: NotRequired[pulumi.Input[str]]
+        """
+        Local asn.
+        """
+        local_bgp_ip: NotRequired[pulumi.Input[str]]
+        """
+        Local bgp IP.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The negotiation status of Tunnel.
+        """
+        tunnel_cidr: NotRequired[pulumi.Input[str]]
+        """
+        IPSec tunnel Cidr.
+        """
+elif False:
+    ConnectionBgpConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionBgpConfigArgs:
@@ -113,6 +159,31 @@ class ConnectionBgpConfigArgs:
         pulumi.set(self, "tunnel_cidr", value)
 
 
+if not MYPY:
+    class ConnectionHealthCheckConfigArgsDict(TypedDict):
+        dip: NotRequired[pulumi.Input[str]]
+        """
+        Destination IP.
+        """
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to enable healthcheck.
+        """
+        interval: NotRequired[pulumi.Input[int]]
+        """
+        Retry interval.
+        """
+        retry: NotRequired[pulumi.Input[int]]
+        """
+        retry times.
+        """
+        sip: NotRequired[pulumi.Input[str]]
+        """
+        Source IP.
+        """
+elif False:
+    ConnectionHealthCheckConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionHealthCheckConfigArgs:
     def __init__(__self__, *,
@@ -199,6 +270,47 @@ class ConnectionHealthCheckConfigArgs:
     def sip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sip", value)
 
+
+if not MYPY:
+    class ConnectionIkeConfigArgsDict(TypedDict):
+        ike_auth_alg: NotRequired[pulumi.Input[str]]
+        """
+        IKE auth Algorithm.
+        """
+        ike_enc_alg: NotRequired[pulumi.Input[str]]
+        """
+        IKE encript algorithm.
+        """
+        ike_lifetime: NotRequired[pulumi.Input[int]]
+        """
+        IKE lifetime.
+        """
+        ike_local_id: NotRequired[pulumi.Input[str]]
+        """
+        The local ID, which supports the FQDN and IP formats, and defaults to the IP address of the selected VPN gateway.
+        """
+        ike_mode: NotRequired[pulumi.Input[str]]
+        """
+        IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
+        """
+        ike_pfs: NotRequired[pulumi.Input[str]]
+        """
+        DH group.
+        """
+        ike_remote_id: NotRequired[pulumi.Input[str]]
+        """
+        The peer ID. The FQDN and IP address formats are supported. The default value is the IP address of the selected customer gateway.
+        """
+        ike_version: NotRequired[pulumi.Input[str]]
+        """
+        IKE version.
+        """
+        psk: NotRequired[pulumi.Input[str]]
+        """
+        Preshared secret key.
+        """
+elif False:
+    ConnectionIkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionIkeConfigArgs:
@@ -351,6 +463,27 @@ class ConnectionIkeConfigArgs:
         pulumi.set(self, "psk", value)
 
 
+if not MYPY:
+    class ConnectionIpsecConfigArgsDict(TypedDict):
+        ipsec_auth_alg: NotRequired[pulumi.Input[str]]
+        """
+        IPsec authentication algorithm. sha1 and md5 are supported.
+        """
+        ipsec_enc_alg: NotRequired[pulumi.Input[str]]
+        """
+        IPsec Encript algorithm.
+        """
+        ipsec_lifetime: NotRequired[pulumi.Input[int]]
+        """
+        IPsec lifetime.
+        """
+        ipsec_pfs: NotRequired[pulumi.Input[str]]
+        """
+        DH Group.
+        """
+elif False:
+    ConnectionIpsecConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionIpsecConfigArgs:
     def __init__(__self__, *,
@@ -421,6 +554,59 @@ class ConnectionIpsecConfigArgs:
     def ipsec_pfs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipsec_pfs", value)
 
+
+if not MYPY:
+    class ConnectionTunnelOptionsSpecificationArgsDict(TypedDict):
+        customer_gateway_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the customer gateway in Tunnel.
+        """
+        enable_dpd: NotRequired[pulumi.Input[bool]]
+        """
+        Wether enable Dpd detection.
+        """
+        enable_nat_traversal: NotRequired[pulumi.Input[bool]]
+        """
+        enable nat traversal.
+        """
+        internet_ip: NotRequired[pulumi.Input[str]]
+        """
+        The local internet IP in Tunnel.
+        """
+        role: NotRequired[pulumi.Input[str]]
+        """
+        The role of Tunnel.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        The state of Tunnel.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The negotiation status of Tunnel.
+        """
+        tunnel_bgp_config: NotRequired[pulumi.Input['ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgsDict']]
+        """
+        The bgp config of Tunnel. See `tunnel_bgp_config` below.
+        """
+        tunnel_id: NotRequired[pulumi.Input[str]]
+        """
+        The tunnel ID of IPsec-VPN connection.
+        """
+        tunnel_ike_config: NotRequired[pulumi.Input['ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgsDict']]
+        """
+        The configuration of Phase 1 negotiations in Tunnel. See `tunnel_ike_config` below.
+        """
+        tunnel_ipsec_config: NotRequired[pulumi.Input['ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgsDict']]
+        """
+        IPsec configuration in Tunnel. See `tunnel_ipsec_config` below.
+        """
+        zone_no: NotRequired[pulumi.Input[str]]
+        """
+        The zoneNo of tunnel.
+        """
+elif False:
+    ConnectionTunnelOptionsSpecificationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionTunnelOptionsSpecificationArgs:
@@ -621,6 +807,26 @@ class ConnectionTunnelOptionsSpecificationArgs:
         pulumi.set(self, "zone_no", value)
 
 
+if not MYPY:
+    class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgsDict(TypedDict):
+        bgp_status: NotRequired[pulumi.Input[str]]
+        """
+        Whether BGP function is turned on.
+        """
+        local_asn: NotRequired[pulumi.Input[str]]
+        local_bgp_ip: NotRequired[pulumi.Input[str]]
+        peer_asn: NotRequired[pulumi.Input[str]]
+        """
+        Peer asn.
+        """
+        peer_bgp_ip: NotRequired[pulumi.Input[str]]
+        """
+        Peer bgp ip.
+        """
+        tunnel_cidr: NotRequired[pulumi.Input[str]]
+elif False:
+    ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs:
     def __init__(__self__, *,
@@ -711,6 +917,26 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs:
     def tunnel_cidr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tunnel_cidr", value)
 
+
+if not MYPY:
+    class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgsDict(TypedDict):
+        ike_auth_alg: NotRequired[pulumi.Input[str]]
+        ike_enc_alg: NotRequired[pulumi.Input[str]]
+        ike_lifetime: NotRequired[pulumi.Input[int]]
+        ike_mode: NotRequired[pulumi.Input[str]]
+        ike_pfs: NotRequired[pulumi.Input[str]]
+        ike_version: NotRequired[pulumi.Input[str]]
+        local_id: NotRequired[pulumi.Input[str]]
+        """
+        The local Id.
+        """
+        psk: NotRequired[pulumi.Input[str]]
+        remote_id: NotRequired[pulumi.Input[str]]
+        """
+        Remote ID.
+        """
+elif False:
+    ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
@@ -835,6 +1061,15 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
         pulumi.set(self, "remote_id", value)
 
 
+if not MYPY:
+    class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgsDict(TypedDict):
+        ipsec_auth_alg: NotRequired[pulumi.Input[str]]
+        ipsec_enc_alg: NotRequired[pulumi.Input[str]]
+        ipsec_lifetime: NotRequired[pulumi.Input[int]]
+        ipsec_pfs: NotRequired[pulumi.Input[str]]
+elif False:
+    ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs:
     def __init__(__self__, *,
@@ -887,6 +1122,27 @@ class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs:
     def ipsec_pfs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipsec_pfs", value)
 
+
+if not MYPY:
+    class GatewayVpnAttachmentBgpConfigArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable BGP.
+        """
+        local_asn: NotRequired[pulumi.Input[int]]
+        """
+        The ASN on the Alibaba Cloud side.
+        """
+        local_bgp_ip: NotRequired[pulumi.Input[str]]
+        """
+        The BGP IP address on the Alibaba Cloud side.
+        """
+        tunnel_cidr: NotRequired[pulumi.Input[str]]
+        """
+        The CIDR block of the IPsec tunnel. The CIDR block belongs to 169.254.0.0/16. The mask of the CIDR block is 30 bits in length.
+        """
+elif False:
+    GatewayVpnAttachmentBgpConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GatewayVpnAttachmentBgpConfigArgs:
@@ -958,6 +1214,35 @@ class GatewayVpnAttachmentBgpConfigArgs:
     def tunnel_cidr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tunnel_cidr", value)
 
+
+if not MYPY:
+    class GatewayVpnAttachmentHealthCheckConfigArgsDict(TypedDict):
+        dip: NotRequired[pulumi.Input[str]]
+        """
+        The destination IP address that is used for health checks.
+        """
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to enable health checks.
+        """
+        interval: NotRequired[pulumi.Input[int]]
+        """
+        The interval between two consecutive health checks. Unit: seconds.
+        """
+        policy: NotRequired[pulumi.Input[str]]
+        """
+        Whether to revoke the published route when the health check fails. Valid values: `revoke_route` or `reserve_route`.
+        """
+        retry: NotRequired[pulumi.Input[int]]
+        """
+        The maximum number of health check retries.
+        """
+        sip: NotRequired[pulumi.Input[str]]
+        """
+        The source IP address that is used for health checks.
+        """
+elif False:
+    GatewayVpnAttachmentHealthCheckConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GatewayVpnAttachmentHealthCheckConfigArgs:
@@ -1061,6 +1346,47 @@ class GatewayVpnAttachmentHealthCheckConfigArgs:
     def sip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sip", value)
 
+
+if not MYPY:
+    class GatewayVpnAttachmentIkeConfigArgsDict(TypedDict):
+        ike_auth_alg: NotRequired[pulumi.Input[str]]
+        """
+        IKE authentication algorithm supports sha1 and MD5.
+        """
+        ike_enc_alg: NotRequired[pulumi.Input[str]]
+        """
+        The encryption algorithm of phase-one negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default Valid value: aes.
+        """
+        ike_lifetime: NotRequired[pulumi.Input[int]]
+        """
+        The SA lifecycle as the result of phase-one negotiation. The valid value of n is [0, 86400], the unit is second and the default value is 86400.
+        """
+        ike_mode: NotRequired[pulumi.Input[str]]
+        """
+        The negotiation mode of IKE V1. Valid value: main (main mode) | aggressive (aggressive mode). Default value: `main`.
+        """
+        ike_pfs: NotRequired[pulumi.Input[str]]
+        """
+        The Diffie-Hellman key exchange algorithm used by phase-one negotiation. Valid value: group1 | group2 | group5 | group14 | group24. Default value: group2
+        """
+        ike_version: NotRequired[pulumi.Input[str]]
+        """
+        The version of the IKE protocol. Valid value: `ikev1`, `ikev2`. Default value: `ikev1`.
+        """
+        local_id: NotRequired[pulumi.Input[str]]
+        """
+        The local ID, which supports the FQDN and IP formats. The current VPN gateway IP address is selected by default.
+        """
+        psk: NotRequired[pulumi.Input[str]]
+        """
+        Used for authentication between the IPsec VPN gateway and the customer gateway.
+        """
+        remote_id: NotRequired[pulumi.Input[str]]
+        """
+        The peer ID, which supports FQDN and IP formats. By default, the IP address of the currently selected user gateway.
+        """
+elif False:
+    GatewayVpnAttachmentIkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GatewayVpnAttachmentIkeConfigArgs:
@@ -1213,6 +1539,27 @@ class GatewayVpnAttachmentIkeConfigArgs:
         pulumi.set(self, "remote_id", value)
 
 
+if not MYPY:
+    class GatewayVpnAttachmentIpsecConfigArgsDict(TypedDict):
+        ipsec_auth_alg: NotRequired[pulumi.Input[str]]
+        """
+        The authentication algorithm of phase-two negotiation. Valid value: md5 | sha1 | sha256 | sha384 | sha512 |. Default value: sha1
+        """
+        ipsec_enc_alg: NotRequired[pulumi.Input[str]]
+        """
+        The encryption algorithm of phase-two negotiation. Valid value: aes | aes192 | aes256 | des | 3des. Default value: aes
+        """
+        ipsec_lifetime: NotRequired[pulumi.Input[int]]
+        """
+        The SA lifecycle as the result of phase-two negotiation. The valid value is [0, 86400], the unit is second and the default value is 86400.
+        """
+        ipsec_pfs: NotRequired[pulumi.Input[str]]
+        """
+        The Diffie-Hellman key exchange algorithm used by phase-two negotiation. Valid value: group1 | group2 | group5 | group14 | group24| disabled. Default value: group2
+        """
+elif False:
+    GatewayVpnAttachmentIpsecConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GatewayVpnAttachmentIpsecConfigArgs:
     def __init__(__self__, *,
@@ -1283,6 +1630,43 @@ class GatewayVpnAttachmentIpsecConfigArgs:
     def ipsec_pfs(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ipsec_pfs", value)
 
+
+if not MYPY:
+    class IpsecServerIkeConfigArgsDict(TypedDict):
+        ike_auth_alg: NotRequired[pulumi.Input[str]]
+        """
+        The authentication algorithm that is used in Phase 1 negotiations. Default value: `sha1`.
+        """
+        ike_enc_alg: NotRequired[pulumi.Input[str]]
+        """
+        The encryption algorithm that is used in Phase 1 negotiations. Default value: `aes`.
+        """
+        ike_lifetime: NotRequired[pulumi.Input[int]]
+        """
+        IkeLifetime: the SA lifetime determined by Phase 1 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+        """
+        ike_mode: NotRequired[pulumi.Input[str]]
+        """
+        The IKE negotiation mode. Default value: `main`.
+        """
+        ike_pfs: NotRequired[pulumi.Input[str]]
+        """
+        The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: `group2`.
+        """
+        ike_version: NotRequired[pulumi.Input[str]]
+        """
+        The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
+        """
+        local_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
+        """
+        remote_id: NotRequired[pulumi.Input[str]]
+        """
+        The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
+        """
+elif False:
+    IpsecServerIkeConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IpsecServerIkeConfigArgs:
@@ -1418,6 +1802,27 @@ class IpsecServerIkeConfigArgs:
     def remote_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "remote_id", value)
 
+
+if not MYPY:
+    class IpsecServerIpsecConfigArgsDict(TypedDict):
+        ipsec_auth_alg: NotRequired[pulumi.Input[str]]
+        """
+        The authentication algorithm that is used in Phase 2 negotiations. Default value: `sha1`.
+        """
+        ipsec_enc_alg: NotRequired[pulumi.Input[str]]
+        """
+        The encryption algorithm that is used in Phase 2 negotiations. Default value: `aes`.
+        """
+        ipsec_lifetime: NotRequired[pulumi.Input[int]]
+        """
+        The SA lifetime determined by Phase 2 negotiations. Valid values: `0` to `86400`. Default value: `86400`. Unit: `seconds`.
+        """
+        ipsec_pfs: NotRequired[pulumi.Input[str]]
+        """
+        Forwards packets of all protocols. The Diffie-Hellman key exchange algorithm used in Phase 2 negotiations. Default value: `group2`.
+        """
+elif False:
+    IpsecServerIpsecConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IpsecServerIpsecConfigArgs:

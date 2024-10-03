@@ -340,7 +340,7 @@ import (
 //					Id:          pulumi.String("sls.app.sls_ack.node.down"),
 //					Type:        pulumi.String("sys"),
 //					Lang:        pulumi.String("cn"),
-//					Annotations: nil,
+//					Annotations: pulumi.StringMap{},
 //					Tokens: pulumi.StringMap{
 //						"interval_minute":        pulumi.String("5"),
 //						"default.action_policy":  pulumi.String("sls.app.ack.builtin"),

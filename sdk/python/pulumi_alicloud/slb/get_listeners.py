@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -168,9 +173,6 @@ def get_listeners(description_regex: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         protocol=pulumi.get(__ret__, 'protocol'),
         slb_listeners=pulumi.get(__ret__, 'slb_listeners'))
-
-
-@_utilities.lift_output_func(get_listeners)
 def get_listeners_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          frontend_port: Optional[pulumi.Input[Optional[int]]] = None,
                          load_balancer_id: Optional[pulumi.Input[str]] = None,
@@ -214,4 +216,19 @@ def get_listeners_output(description_regex: Optional[pulumi.Input[Optional[str]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str protocol: Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
     """
-    ...
+    __args__ = dict()
+    __args__['descriptionRegex'] = description_regex
+    __args__['frontendPort'] = frontend_port
+    __args__['loadBalancerId'] = load_balancer_id
+    __args__['outputFile'] = output_file
+    __args__['protocol'] = protocol
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult)
+    return __ret__.apply(lambda __response__: GetListenersResult(
+        description_regex=pulumi.get(__response__, 'description_regex'),
+        frontend_port=pulumi.get(__response__, 'frontend_port'),
+        id=pulumi.get(__response__, 'id'),
+        load_balancer_id=pulumi.get(__response__, 'load_balancer_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        protocol=pulumi.get(__response__, 'protocol'),
+        slb_listeners=pulumi.get(__response__, 'slb_listeners')))

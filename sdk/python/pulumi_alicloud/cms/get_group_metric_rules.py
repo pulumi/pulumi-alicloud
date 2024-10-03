@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -222,9 +227,6 @@ def get_group_metric_rules(dimensions: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         rules=pulumi.get(__ret__, 'rules'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_group_metric_rules)
 def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str]]] = None,
                                   enable_state: Optional[pulumi.Input[Optional[bool]]] = None,
                                   group_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -266,4 +268,30 @@ def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of Group Metric Rule.
     """
-    ...
+    __args__ = dict()
+    __args__['dimensions'] = dimensions
+    __args__['enableState'] = enable_state
+    __args__['groupId'] = group_id
+    __args__['groupMetricRuleName'] = group_metric_rule_name
+    __args__['ids'] = ids
+    __args__['metricName'] = metric_name
+    __args__['nameRegex'] = name_regex
+    __args__['namespace'] = namespace
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getGroupMetricRules:getGroupMetricRules', __args__, opts=opts, typ=GetGroupMetricRulesResult)
+    return __ret__.apply(lambda __response__: GetGroupMetricRulesResult(
+        dimensions=pulumi.get(__response__, 'dimensions'),
+        enable_state=pulumi.get(__response__, 'enable_state'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        group_metric_rule_name=pulumi.get(__response__, 'group_metric_rule_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        metric_name=pulumi.get(__response__, 'metric_name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        rules=pulumi.get(__response__, 'rules'),
+        status=pulumi.get(__response__, 'status')))

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := imp.GetAppTemplates(ctx, nil, nil)
+//			ids, err := imp.GetAppTemplates(ctx, &imp.GetAppTemplatesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

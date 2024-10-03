@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -114,9 +119,6 @@ def get_transit_router_available_resources(output_file: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         resources=pulumi.get(__ret__, 'resources'),
         support_multicast=pulumi.get(__ret__, 'support_multicast'))
-
-
-@_utilities.lift_output_func(get_transit_router_available_resources)
 def get_transit_router_available_resources_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                   support_multicast: Optional[pulumi.Input[Optional[bool]]] = None,
                                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterAvailableResourcesResult]:
@@ -142,4 +144,13 @@ def get_transit_router_available_resources_output(output_file: Optional[pulumi.I
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param bool support_multicast: Specifies whether to query only the zones in which the multicast feature is supported.
     """
-    ...
+    __args__ = dict()
+    __args__['outputFile'] = output_file
+    __args__['supportMulticast'] = support_multicast
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources', __args__, opts=opts, typ=GetTransitRouterAvailableResourcesResult)
+    return __ret__.apply(lambda __response__: GetTransitRouterAvailableResourcesResult(
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resources=pulumi.get(__response__, 'resources'),
+        support_multicast=pulumi.get(__response__, 'support_multicast')))

@@ -42,14 +42,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			instance, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
 //				Name:            pulumi.String(name),
 //				BaseBandwidth:   pulumi.Int(20),
-//				Bandwidth:       int(-1),
+//				Bandwidth:       pulumi.Int(-1),
 //				IpCount:         pulumi.Int(100),
 //				IpType:          pulumi.String("IPv4"),
 //				NormalBandwidth: pulumi.Int(100),

@@ -45,7 +45,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := eci.GetZones(ctx, nil, nil)
+//			_default, err := eci.GetZones(ctx, &eci.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

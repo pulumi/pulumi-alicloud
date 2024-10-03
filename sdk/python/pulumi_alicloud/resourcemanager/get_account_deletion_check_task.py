@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -140,9 +145,6 @@ def get_account_deletion_check_task(account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         not_allow_reasons=pulumi.get(__ret__, 'not_allow_reasons'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_account_deletion_check_task)
 def get_account_deletion_check_task_output(account_id: Optional[pulumi.Input[str]] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountDeletionCheckTaskResult]:
     """
@@ -169,4 +171,14 @@ def get_account_deletion_check_task_output(account_id: Optional[pulumi.Input[str
 
     :param str account_id: The ID of the member that you want to delete.
     """
-    ...
+    __args__ = dict()
+    __args__['accountId'] = account_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask', __args__, opts=opts, typ=GetAccountDeletionCheckTaskResult)
+    return __ret__.apply(lambda __response__: GetAccountDeletionCheckTaskResult(
+        abandon_able_checks=pulumi.get(__response__, 'abandon_able_checks'),
+        account_id=pulumi.get(__response__, 'account_id'),
+        allow_delete=pulumi.get(__response__, 'allow_delete'),
+        id=pulumi.get(__response__, 'id'),
+        not_allow_reasons=pulumi.get(__response__, 'not_allow_reasons'),
+        status=pulumi.get(__response__, 'status')))

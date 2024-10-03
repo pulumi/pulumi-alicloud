@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := sddp.GetDataLimits(ctx, nil, nil)
+//			ids, err := sddp.GetDataLimits(ctx, &sddp.GetDataLimitsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

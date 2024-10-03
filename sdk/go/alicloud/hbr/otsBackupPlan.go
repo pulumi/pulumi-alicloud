@@ -75,7 +75,7 @@ import (
 //						Type: pulumi.String("Integer"),
 //					},
 //				},
-//				TimeToLive:                int(-1),
+//				TimeToLive:                pulumi.Int(-1),
 //				MaxVersion:                pulumi.Int(1),
 //				DeviationCellVersionInSec: pulumi.String("1"),
 //			})
@@ -106,7 +106,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			_default, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

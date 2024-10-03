@@ -47,7 +47,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := alicloud.GetZones(ctx, nil, nil)
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -112,9 +117,6 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_msc_sub_contact_verification_message)
 def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.Input[str]] = None,
                                                     type: Optional[pulumi.Input[int]] = None,
                                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMscSubContactVerificationMessageResult]:
@@ -142,4 +144,13 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
     :param str contact_id: The ID of the Contact.
     :param int type: How a user receives verification messages. Valid values : `1`, `2`.
     """
-    ...
+    __args__ = dict()
+    __args__['contactId'] = contact_id
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage', __args__, opts=opts, typ=GetMscSubContactVerificationMessageResult)
+    return __ret__.apply(lambda __response__: GetMscSubContactVerificationMessageResult(
+        contact_id=pulumi.get(__response__, 'contact_id'),
+        id=pulumi.get(__response__, 'id'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type')))

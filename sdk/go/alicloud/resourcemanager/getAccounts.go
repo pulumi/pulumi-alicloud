@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := resourcemanager.GetAccounts(ctx, nil, nil)
+//			_default, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

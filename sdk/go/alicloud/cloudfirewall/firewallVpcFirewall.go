@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := alicloud.GetAccount(ctx, nil, nil)
+//			current, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

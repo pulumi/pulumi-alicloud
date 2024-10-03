@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -206,9 +211,6 @@ def get_route_services(access_region_id: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         services=pulumi.get(__ret__, 'services'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_route_services)
 def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[str]]] = None,
                               cen_id: Optional[pulumi.Input[str]] = None,
                               host: Optional[pulumi.Input[Optional[str]]] = None,
@@ -243,4 +245,24 @@ def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[s
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
     """
-    ...
+    __args__ = dict()
+    __args__['accessRegionId'] = access_region_id
+    __args__['cenId'] = cen_id
+    __args__['host'] = host
+    __args__['hostRegionId'] = host_region_id
+    __args__['hostVpcId'] = host_vpc_id
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getRouteServices:getRouteServices', __args__, opts=opts, typ=GetRouteServicesResult)
+    return __ret__.apply(lambda __response__: GetRouteServicesResult(
+        access_region_id=pulumi.get(__response__, 'access_region_id'),
+        cen_id=pulumi.get(__response__, 'cen_id'),
+        host=pulumi.get(__response__, 'host'),
+        host_region_id=pulumi.get(__response__, 'host_region_id'),
+        host_vpc_id=pulumi.get(__response__, 'host_vpc_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        services=pulumi.get(__response__, 'services'),
+        status=pulumi.get(__response__, 'status')))

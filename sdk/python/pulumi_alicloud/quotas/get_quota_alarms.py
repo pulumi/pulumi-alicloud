@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -197,9 +202,6 @@ def get_quota_alarms(enable_details: Optional[bool] = None,
         quota_action_code=pulumi.get(__ret__, 'quota_action_code'),
         quota_alarm_name=pulumi.get(__ret__, 'quota_alarm_name'),
         quota_dimensions=pulumi.get(__ret__, 'quota_dimensions'))
-
-
-@_utilities.lift_output_func(get_quota_alarms)
 def get_quota_alarms_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -237,4 +239,26 @@ def get_quota_alarms_output(enable_details: Optional[pulumi.Input[Optional[bool]
     :param str quota_alarm_name: The name of Quota Alarm.
     :param Sequence[Union['GetQuotaAlarmsQuotaDimensionArgs', 'GetQuotaAlarmsQuotaDimensionArgsDict']] quota_dimensions: The Quota Dimensions.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['productCode'] = product_code
+    __args__['quotaActionCode'] = quota_action_code
+    __args__['quotaAlarmName'] = quota_alarm_name
+    __args__['quotaDimensions'] = quota_dimensions
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:quotas/getQuotaAlarms:getQuotaAlarms', __args__, opts=opts, typ=GetQuotaAlarmsResult)
+    return __ret__.apply(lambda __response__: GetQuotaAlarmsResult(
+        alarms=pulumi.get(__response__, 'alarms'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        product_code=pulumi.get(__response__, 'product_code'),
+        quota_action_code=pulumi.get(__response__, 'quota_action_code'),
+        quota_alarm_name=pulumi.get(__response__, 'quota_alarm_name'),
+        quota_dimensions=pulumi.get(__response__, 'quota_dimensions')))

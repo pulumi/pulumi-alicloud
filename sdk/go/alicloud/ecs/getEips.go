@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			eipsDs, err := ecs.GetEips(ctx, nil, nil)
+//			eipsDs, err := ecs.GetEips(ctx, &ecs.GetEipsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

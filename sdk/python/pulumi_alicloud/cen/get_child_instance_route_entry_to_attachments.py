@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -176,9 +181,6 @@ def get_child_instance_route_entry_to_attachments(cen_id: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         service_type=pulumi.get(__ret__, 'service_type'),
         transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'))
-
-
-@_utilities.lift_output_func(get_child_instance_route_entry_to_attachments)
 def get_child_instance_route_entry_to_attachments_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                          child_instance_route_table_id: Optional[pulumi.Input[str]] = None,
                                                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -210,4 +212,21 @@ def get_child_instance_route_entry_to_attachments_output(cen_id: Optional[pulumi
     :param str service_type: ServiceType
     :param str transit_router_attachment_id: TransitRouterAttachmentId
     """
-    ...
+    __args__ = dict()
+    __args__['cenId'] = cen_id
+    __args__['childInstanceRouteTableId'] = child_instance_route_table_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['serviceType'] = service_type
+    __args__['transitRouterAttachmentId'] = transit_router_attachment_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments', __args__, opts=opts, typ=GetChildInstanceRouteEntryToAttachmentsResult)
+    return __ret__.apply(lambda __response__: GetChildInstanceRouteEntryToAttachmentsResult(
+        attachments=pulumi.get(__response__, 'attachments'),
+        cen_id=pulumi.get(__response__, 'cen_id'),
+        child_instance_route_table_id=pulumi.get(__response__, 'child_instance_route_table_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        service_type=pulumi.get(__response__, 'service_type'),
+        transit_router_attachment_id=pulumi.get(__response__, 'transit_router_attachment_id')))

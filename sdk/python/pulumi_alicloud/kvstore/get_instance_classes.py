@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -299,9 +304,6 @@ def get_instance_classes(architecture: Optional[str] = None,
         sorted_by=pulumi.get(__ret__, 'sorted_by'),
         storage_type=pulumi.get(__ret__, 'storage_type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_instance_classes)
 def get_instance_classes_output(architecture: Optional[pulumi.Input[Optional[str]]] = None,
                                 edition_type: Optional[pulumi.Input[Optional[str]]] = None,
                                 engine: Optional[pulumi.Input[Optional[str]]] = None,
@@ -356,4 +358,40 @@ def get_instance_classes_output(architecture: Optional[pulumi.Input[Optional[str
     :param str storage_type: It has been deprecated from 1.68.0.
     :param str zone_id: The Zone to launch the KVStore instance.
     """
-    ...
+    __args__ = dict()
+    __args__['architecture'] = architecture
+    __args__['editionType'] = edition_type
+    __args__['engine'] = engine
+    __args__['engineVersion'] = engine_version
+    __args__['instanceChargeType'] = instance_charge_type
+    __args__['nodeType'] = node_type
+    __args__['outputFile'] = output_file
+    __args__['packageType'] = package_type
+    __args__['performanceType'] = performance_type
+    __args__['productType'] = product_type
+    __args__['seriesType'] = series_type
+    __args__['shardNumber'] = shard_number
+    __args__['sortedBy'] = sorted_by
+    __args__['storageType'] = storage_type
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getInstanceClasses:getInstanceClasses', __args__, opts=opts, typ=GetInstanceClassesResult)
+    return __ret__.apply(lambda __response__: GetInstanceClassesResult(
+        architecture=pulumi.get(__response__, 'architecture'),
+        classes=pulumi.get(__response__, 'classes'),
+        edition_type=pulumi.get(__response__, 'edition_type'),
+        engine=pulumi.get(__response__, 'engine'),
+        engine_version=pulumi.get(__response__, 'engine_version'),
+        id=pulumi.get(__response__, 'id'),
+        instance_charge_type=pulumi.get(__response__, 'instance_charge_type'),
+        instance_classes=pulumi.get(__response__, 'instance_classes'),
+        node_type=pulumi.get(__response__, 'node_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        package_type=pulumi.get(__response__, 'package_type'),
+        performance_type=pulumi.get(__response__, 'performance_type'),
+        product_type=pulumi.get(__response__, 'product_type'),
+        series_type=pulumi.get(__response__, 'series_type'),
+        shard_number=pulumi.get(__response__, 'shard_number'),
+        sorted_by=pulumi.get(__response__, 'sorted_by'),
+        storage_type=pulumi.get(__response__, 'storage_type'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

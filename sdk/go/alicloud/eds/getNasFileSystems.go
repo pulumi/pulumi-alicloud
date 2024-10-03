@@ -48,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids, err := eds.GetNasFileSystems(ctx, nil, nil)
+//			ids, err := eds.GetNasFileSystems(ctx, &eds.GetNasFileSystemsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

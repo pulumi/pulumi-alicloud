@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := resourcemanager.GetResourceDirectories(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceDirectories(ctx, &resourcemanager.GetResourceDirectoriesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -151,9 +156,6 @@ def get_launch_options(ids: Optional[Sequence[str]] = None,
         options=pulumi.get(__ret__, 'options'),
         output_file=pulumi.get(__ret__, 'output_file'),
         product_id=pulumi.get(__ret__, 'product_id'))
-
-
-@_utilities.lift_output_func(get_launch_options)
 def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -183,4 +185,18 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_id: Product ID.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['productId'] = product_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:servicecatalog/getLaunchOptions:getLaunchOptions', __args__, opts=opts, typ=GetLaunchOptionsResult)
+    return __ret__.apply(lambda __response__: GetLaunchOptionsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        launch_options=pulumi.get(__response__, 'launch_options'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        options=pulumi.get(__response__, 'options'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        product_id=pulumi.get(__response__, 'product_id')))

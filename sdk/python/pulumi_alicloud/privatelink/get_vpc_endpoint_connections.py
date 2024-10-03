@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -157,9 +162,6 @@ def get_vpc_endpoint_connections(endpoint_id: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         service_id=pulumi.get(__ret__, 'service_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_vpc_endpoint_connections)
 def get_vpc_endpoint_connections_output(endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         endpoint_owner_id: Optional[pulumi.Input[Optional[int]]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -191,4 +193,20 @@ def get_vpc_endpoint_connections_output(endpoint_id: Optional[pulumi.Input[Optio
     :param str service_id: The ID of the Vpc Endpoint Service.
     :param str status: The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
     """
-    ...
+    __args__ = dict()
+    __args__['endpointId'] = endpoint_id
+    __args__['endpointOwnerId'] = endpoint_owner_id
+    __args__['outputFile'] = output_file
+    __args__['serviceId'] = service_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections', __args__, opts=opts, typ=GetVpcEndpointConnectionsResult)
+    return __ret__.apply(lambda __response__: GetVpcEndpointConnectionsResult(
+        connections=pulumi.get(__response__, 'connections'),
+        endpoint_id=pulumi.get(__response__, 'endpoint_id'),
+        endpoint_owner_id=pulumi.get(__response__, 'endpoint_owner_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        service_id=pulumi.get(__response__, 'service_id'),
+        status=pulumi.get(__response__, 'status')))

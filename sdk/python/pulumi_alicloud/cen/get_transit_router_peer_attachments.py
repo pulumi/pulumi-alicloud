@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -185,9 +190,6 @@ def get_transit_router_peer_attachments(cen_id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'))
-
-
-@_utilities.lift_output_func(get_transit_router_peer_attachments)
 def get_transit_router_peer_attachments_output(cen_id: Optional[pulumi.Input[str]] = None,
                                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -210,4 +212,24 @@ def get_transit_router_peer_attachments_output(cen_id: Optional[pulumi.Input[str
     :param str transit_router_attachment_id: The ID of CEN Transit Router peer attachments.
     :param str transit_router_id: The ID of transit router.
     """
-    ...
+    __args__ = dict()
+    __args__['cenId'] = cen_id
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['transitRouterAttachmentId'] = transit_router_attachment_id
+    __args__['transitRouterId'] = transit_router_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments', __args__, opts=opts, typ=GetTransitRouterPeerAttachmentsResult)
+    return __ret__.apply(lambda __response__: GetTransitRouterPeerAttachmentsResult(
+        attachments=pulumi.get(__response__, 'attachments'),
+        cen_id=pulumi.get(__response__, 'cen_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        transit_router_attachment_id=pulumi.get(__response__, 'transit_router_attachment_id'),
+        transit_router_id=pulumi.get(__response__, 'transit_router_id')))

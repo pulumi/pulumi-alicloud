@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -153,9 +158,6 @@ def get_ssl_vpn_servers(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         servers=pulumi.get(__ret__, 'servers'),
         vpn_gateway_id=pulumi.get(__ret__, 'vpn_gateway_id'))
-
-
-@_utilities.lift_output_func(get_ssl_vpn_servers)
 def get_ssl_vpn_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -182,4 +184,18 @@ def get_ssl_vpn_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     :param str output_file: Save the result to the file.
     :param str vpn_gateway_id: Use the VPN gateway ID as the search key.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['vpnGatewayId'] = vpn_gateway_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getSslVpnServers:getSslVpnServers', __args__, opts=opts, typ=GetSslVpnServersResult)
+    return __ret__.apply(lambda __response__: GetSslVpnServersResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        servers=pulumi.get(__response__, 'servers'),
+        vpn_gateway_id=pulumi.get(__response__, 'vpn_gateway_id')))

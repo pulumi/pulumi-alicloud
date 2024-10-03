@@ -45,7 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

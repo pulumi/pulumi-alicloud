@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -167,9 +172,6 @@ def get_instances(availability_zone: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_instances)
 def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -199,4 +201,20 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param str output_file: The name of file that can save the collection of instances after running `pulumi preview`.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['availabilityZone'] = availability_zone
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:hbase/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
+    return __ret__.apply(lambda __response__: GetInstancesResult(
+        availability_zone=pulumi.get(__response__, 'availability_zone'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instances=pulumi.get(__response__, 'instances'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        tags=pulumi.get(__response__, 'tags')))

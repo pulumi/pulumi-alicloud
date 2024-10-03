@@ -4,14 +4,39 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ClusterNetworkArgs',
+    'ClusterNetworkArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ClusterNetworkArgsDict(TypedDict):
+        vpc_id: pulumi.Input[str]
+        """
+        VpcId to which the cluster belongs.
+        """
+        vswitches: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Switch to which the cluster belongs.
+        """
+        security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Security group to which the cluster belongs.
+        """
+elif False:
+    ClusterNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterNetworkArgs:

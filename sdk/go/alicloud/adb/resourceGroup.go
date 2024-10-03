@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := adb.GetZones(ctx, nil, nil)
+//			_default, err := adb.GetZones(ctx, &adb.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

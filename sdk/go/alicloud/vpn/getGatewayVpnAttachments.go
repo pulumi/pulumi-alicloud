@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := vpn.GetGatewayVpnAttachments(ctx, nil, nil)
+//			ids, err := vpn.GetGatewayVpnAttachments(ctx, &vpn.GetGatewayVpnAttachmentsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

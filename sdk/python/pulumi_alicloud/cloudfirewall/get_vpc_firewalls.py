@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -249,9 +254,6 @@ def get_vpc_firewalls(ids: Optional[Sequence[str]] = None,
         vpc_firewall_id=pulumi.get(__ret__, 'vpc_firewall_id'),
         vpc_firewall_name=pulumi.get(__ret__, 'vpc_firewall_name'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_vpc_firewalls)
 def get_vpc_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              lang: Optional[pulumi.Input[Optional[str]]] = None,
                              member_uid: Optional[pulumi.Input[Optional[str]]] = None,
@@ -293,4 +295,30 @@ def get_vpc_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str vpc_firewall_name: The name of the VPC firewall instance.
     :param str vpc_id: The ID of the peer VPC instance.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['lang'] = lang
+    __args__['memberUid'] = member_uid
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['regionNo'] = region_no
+    __args__['status'] = status
+    __args__['vpcFirewallId'] = vpc_firewall_id
+    __args__['vpcFirewallName'] = vpc_firewall_name
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls', __args__, opts=opts, typ=GetVpcFirewallsResult)
+    return __ret__.apply(lambda __response__: GetVpcFirewallsResult(
+        firewalls=pulumi.get(__response__, 'firewalls'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        lang=pulumi.get(__response__, 'lang'),
+        member_uid=pulumi.get(__response__, 'member_uid'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        region_no=pulumi.get(__response__, 'region_no'),
+        status=pulumi.get(__response__, 'status'),
+        vpc_firewall_id=pulumi.get(__response__, 'vpc_firewall_id'),
+        vpc_firewall_name=pulumi.get(__response__, 'vpc_firewall_name'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -195,9 +200,6 @@ def get_transit_routers(cen_id: Optional[str] = None,
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'),
         transit_router_ids=pulumi.get(__ret__, 'transit_router_ids'),
         transit_routers=pulumi.get(__ret__, 'transit_routers'))
-
-
-@_utilities.lift_output_func(get_transit_routers)
 def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -230,4 +232,24 @@ def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
     :param str transit_router_id: The ID of the transit router.
     :param Sequence[str] transit_router_ids: A list of ID of the transit router.
     """
-    ...
+    __args__ = dict()
+    __args__['cenId'] = cen_id
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['transitRouterId'] = transit_router_id
+    __args__['transitRouterIds'] = transit_router_ids
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouters:getTransitRouters', __args__, opts=opts, typ=GetTransitRoutersResult)
+    return __ret__.apply(lambda __response__: GetTransitRoutersResult(
+        cen_id=pulumi.get(__response__, 'cen_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        transit_router_id=pulumi.get(__response__, 'transit_router_id'),
+        transit_router_ids=pulumi.get(__response__, 'transit_router_ids'),
+        transit_routers=pulumi.get(__response__, 'transit_routers')))

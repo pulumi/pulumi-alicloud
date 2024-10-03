@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -108,9 +113,6 @@ def get_zones(file_system_type: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         zones=pulumi.get(__ret__, 'zones'))
-
-
-@_utilities.lift_output_func(get_zones)
 def get_zones_output(file_system_type: Optional[pulumi.Input[Optional[str]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
@@ -133,4 +135,13 @@ def get_zones_output(file_system_type: Optional[pulumi.Input[Optional[str]]] = N
     :param str file_system_type: The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['fileSystemType'] = file_system_type
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
+    return __ret__.apply(lambda __response__: GetZonesResult(
+        file_system_type=pulumi.get(__response__, 'file_system_type'),
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        zones=pulumi.get(__response__, 'zones')))

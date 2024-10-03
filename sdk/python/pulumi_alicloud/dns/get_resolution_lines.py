@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -179,9 +184,6 @@ def get_resolution_lines(domain_name: Optional[str] = None,
         lines=pulumi.get(__ret__, 'lines'),
         output_file=pulumi.get(__ret__, 'output_file'),
         user_client_ip=pulumi.get(__ret__, 'user_client_ip'))
-
-
-@_utilities.lift_output_func(get_resolution_lines)
 def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[str]]] = None,
                                 lang: Optional[pulumi.Input[Optional[str]]] = None,
                                 line_codes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -214,4 +216,23 @@ def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[str]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str user_client_ip: The ip of user client.
     """
-    ...
+    __args__ = dict()
+    __args__['domainName'] = domain_name
+    __args__['lang'] = lang
+    __args__['lineCodes'] = line_codes
+    __args__['lineDisplayNames'] = line_display_names
+    __args__['lineNames'] = line_names
+    __args__['outputFile'] = output_file
+    __args__['userClientIp'] = user_client_ip
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getResolutionLines:getResolutionLines', __args__, opts=opts, typ=GetResolutionLinesResult)
+    return __ret__.apply(lambda __response__: GetResolutionLinesResult(
+        domain_name=pulumi.get(__response__, 'domain_name'),
+        id=pulumi.get(__response__, 'id'),
+        lang=pulumi.get(__response__, 'lang'),
+        line_codes=pulumi.get(__response__, 'line_codes'),
+        line_display_names=pulumi.get(__response__, 'line_display_names'),
+        line_names=pulumi.get(__response__, 'line_names'),
+        lines=pulumi.get(__response__, 'lines'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        user_client_ip=pulumi.get(__response__, 'user_client_ip')))

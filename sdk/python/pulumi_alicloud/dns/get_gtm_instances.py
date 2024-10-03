@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -130,9 +135,6 @@ def get_gtm_instances(ids: Optional[Sequence[str]] = None,
         lang=pulumi.get(__ret__, 'lang'),
         output_file=pulumi.get(__ret__, 'output_file'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'))
-
-
-@_utilities.lift_output_func(get_gtm_instances)
 def get_gtm_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              lang: Optional[pulumi.Input[Optional[str]]] = None,
                              resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -159,4 +161,16 @@ def get_gtm_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str lang: The lang.
     :param str resource_group_id: The ID of the resource group.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['lang'] = lang
+    __args__['resourceGroupId'] = resource_group_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getGtmInstances:getGtmInstances', __args__, opts=opts, typ=GetGtmInstancesResult)
+    return __ret__.apply(lambda __response__: GetGtmInstancesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instances=pulumi.get(__response__, 'instances'),
+        lang=pulumi.get(__response__, 'lang'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id')))

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ecs.GetActivations(ctx, nil, nil)
+//			ids, err := ecs.GetActivations(ctx, &ecs.GetActivationsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

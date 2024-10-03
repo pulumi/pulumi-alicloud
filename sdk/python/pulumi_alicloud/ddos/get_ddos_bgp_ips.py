@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -176,9 +181,6 @@ def get_ddos_bgp_ips(ids: Optional[Sequence[str]] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         product_name=pulumi.get(__ret__, 'product_name'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_ddos_bgp_ips)
 def get_ddos_bgp_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             instance_id: Optional[pulumi.Input[str]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -217,4 +219,23 @@ def get_ddos_bgp_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
            - normal: indicates normal (not attacked).
            - hole_begin: indicates that you are in a black hole state.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['productName'] = product_name
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ddos/getDdosBgpIps:getDdosBgpIps', __args__, opts=opts, typ=GetDdosBgpIpsResult)
+    return __ret__.apply(lambda __response__: GetDdosBgpIpsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        ips=pulumi.get(__response__, 'ips'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        product_name=pulumi.get(__response__, 'product_name'),
+        status=pulumi.get(__response__, 'status')))

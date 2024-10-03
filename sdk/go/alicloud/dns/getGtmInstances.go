@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dns.GetGtmInstances(ctx, nil, nil)
+//			ids, err := dns.GetGtmInstances(ctx, &dns.GetGtmInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

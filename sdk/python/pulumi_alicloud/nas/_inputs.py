@@ -4,15 +4,41 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AccessPointPosixUserArgs',
+    'AccessPointPosixUserArgsDict',
     'AccessPointRootPathPermissionArgs',
+    'AccessPointRootPathPermissionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AccessPointPosixUserArgsDict(TypedDict):
+        posix_group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the Posix user group.
+        """
+        posix_secondary_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        The ID of the second user group.
+        """
+        posix_user_id: NotRequired[pulumi.Input[int]]
+        """
+        The Posix user ID.
+        """
+elif False:
+    AccessPointPosixUserArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPointPosixUserArgs:
@@ -68,6 +94,23 @@ class AccessPointPosixUserArgs:
     def posix_user_id(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "posix_user_id", value)
 
+
+if not MYPY:
+    class AccessPointRootPathPermissionArgsDict(TypedDict):
+        owner_group_id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the primary user group.
+        """
+        owner_user_id: NotRequired[pulumi.Input[int]]
+        """
+        The owner user ID.
+        """
+        permission: NotRequired[pulumi.Input[str]]
+        """
+        POSIX permission.
+        """
+elif False:
+    AccessPointRootPathPermissionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessPointRootPathPermissionArgs:

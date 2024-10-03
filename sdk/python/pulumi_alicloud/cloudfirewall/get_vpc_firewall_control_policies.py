@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -269,9 +274,6 @@ def get_vpc_firewall_control_policies(acl_action: Optional[str] = None,
         release=pulumi.get(__ret__, 'release'),
         source=pulumi.get(__ret__, 'source'),
         vpc_firewall_id=pulumi.get(__ret__, 'vpc_firewall_id'))
-
-
-@_utilities.lift_output_func(get_vpc_firewall_control_policies)
 def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[Optional[str]]] = None,
                                              acl_uuid: Optional[pulumi.Input[Optional[str]]] = None,
                                              description: Optional[pulumi.Input[Optional[str]]] = None,
@@ -326,4 +328,37 @@ def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[O
            - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
            - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
     """
-    ...
+    __args__ = dict()
+    __args__['aclAction'] = acl_action
+    __args__['aclUuid'] = acl_uuid
+    __args__['description'] = description
+    __args__['destination'] = destination
+    __args__['ids'] = ids
+    __args__['lang'] = lang
+    __args__['memberUid'] = member_uid
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['proto'] = proto
+    __args__['release'] = release
+    __args__['source'] = source
+    __args__['vpcFirewallId'] = vpc_firewall_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies', __args__, opts=opts, typ=GetVpcFirewallControlPoliciesResult)
+    return __ret__.apply(lambda __response__: GetVpcFirewallControlPoliciesResult(
+        acl_action=pulumi.get(__response__, 'acl_action'),
+        acl_uuid=pulumi.get(__response__, 'acl_uuid'),
+        description=pulumi.get(__response__, 'description'),
+        destination=pulumi.get(__response__, 'destination'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        lang=pulumi.get(__response__, 'lang'),
+        member_uid=pulumi.get(__response__, 'member_uid'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        policies=pulumi.get(__response__, 'policies'),
+        proto=pulumi.get(__response__, 'proto'),
+        release=pulumi.get(__response__, 'release'),
+        source=pulumi.get(__response__, 'source'),
+        vpc_firewall_id=pulumi.get(__response__, 'vpc_firewall_id')))

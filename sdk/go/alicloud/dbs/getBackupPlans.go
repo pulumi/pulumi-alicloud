@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dbs.GetBackupPlans(ctx, nil, nil)
+//			ids, err := dbs.GetBackupPlans(ctx, &dbs.GetBackupPlansArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -162,9 +167,6 @@ def get_consumer_groups(consumer_id_regex: Optional[str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_consumer_groups)
 def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                instance_id: Optional[pulumi.Input[str]] = None,
@@ -193,4 +195,19 @@ def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional
     :param str instance_id: ID of the ALIKAFKA Instance that owns the consumer groups.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['consumerIdRegex'] = consumer_id_regex
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getConsumerGroups:getConsumerGroups', __args__, opts=opts, typ=GetConsumerGroupsResult)
+    return __ret__.apply(lambda __response__: GetConsumerGroupsResult(
+        consumer_id_regex=pulumi.get(__response__, 'consumer_id_regex'),
+        consumer_ids=pulumi.get(__response__, 'consumer_ids'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file')))

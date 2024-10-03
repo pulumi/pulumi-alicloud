@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -149,9 +154,6 @@ def get_vbr_pconn_associations(ids: Optional[Sequence[str]] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         vbr_id=pulumi.get(__ret__, 'vbr_id'))
-
-
-@_utilities.lift_output_func(get_vbr_pconn_associations)
 def get_vbr_pconn_associations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       page_number: Optional[pulumi.Input[Optional[int]]] = None,
@@ -179,4 +181,19 @@ def get_vbr_pconn_associations_output(ids: Optional[pulumi.Input[Optional[Sequen
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str vbr_id: The ID of the VBR instance.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['vbrId'] = vbr_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations', __args__, opts=opts, typ=GetVbrPconnAssociationsResult)
+    return __ret__.apply(lambda __response__: GetVbrPconnAssociationsResult(
+        associations=pulumi.get(__response__, 'associations'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        vbr_id=pulumi.get(__response__, 'vbr_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -218,9 +223,6 @@ def get_users(group_name: Optional[str] = None,
         policy_name=pulumi.get(__ret__, 'policy_name'),
         policy_type=pulumi.get(__ret__, 'policy_type'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_users)
 def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -293,4 +295,22 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str policy_name: Filter results by a specific policy name. If you set this parameter without setting `policy_type`, the later will be automatically set to `System`. Returned users are attached to the specified policy.
     :param str policy_type: Filter results by a specific policy type. Valid values are `Custom` and `System`. If you set this parameter, you must set `policy_name` as well.
     """
-    ...
+    __args__ = dict()
+    __args__['groupName'] = group_name
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['policyName'] = policy_name
+    __args__['policyType'] = policy_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
+    return __ret__.apply(lambda __response__: GetUsersResult(
+        group_name=pulumi.get(__response__, 'group_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policy_name=pulumi.get(__response__, 'policy_name'),
+        policy_type=pulumi.get(__response__, 'policy_type'),
+        users=pulumi.get(__response__, 'users')))

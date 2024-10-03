@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -172,9 +177,6 @@ def get_elasticity_assurances(ids: Optional[Sequence[str]] = None,
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_elasticity_assurances)
 def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                      private_pool_options_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -205,4 +207,21 @@ def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequenc
     :param str status: The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
     :param Mapping[str, str] tags: The tag key-value pair information bound by the elastic guarantee service.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['privatePoolOptionsIds'] = private_pool_options_ids
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getElasticityAssurances:getElasticityAssurances', __args__, opts=opts, typ=GetElasticityAssurancesResult)
+    return __ret__.apply(lambda __response__: GetElasticityAssurancesResult(
+        assurances=pulumi.get(__response__, 'assurances'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        private_pool_options_ids=pulumi.get(__response__, 'private_pool_options_ids'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

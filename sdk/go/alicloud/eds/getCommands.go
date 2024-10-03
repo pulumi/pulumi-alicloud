@@ -88,7 +88,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids, err := eds.GetCommands(ctx, nil, nil)
+//			ids, err := eds.GetCommands(ctx, &eds.GetCommandsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

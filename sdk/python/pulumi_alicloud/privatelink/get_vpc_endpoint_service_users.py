@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -130,9 +135,6 @@ def get_vpc_endpoint_service_users(output_file: Optional[str] = None,
         service_id=pulumi.get(__ret__, 'service_id'),
         user_id=pulumi.get(__ret__, 'user_id'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_vpc_endpoint_service_users)
 def get_vpc_endpoint_service_users_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                           service_id: Optional[pulumi.Input[str]] = None,
                                           user_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -159,4 +161,16 @@ def get_vpc_endpoint_service_users_output(output_file: Optional[pulumi.Input[Opt
     :param str service_id: The Id of Vpc Endpoint Service.
     :param str user_id: The Id of Ram User.
     """
-    ...
+    __args__ = dict()
+    __args__['outputFile'] = output_file
+    __args__['serviceId'] = service_id
+    __args__['userId'] = user_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:privatelink/getVpcEndpointServiceUsers:getVpcEndpointServiceUsers', __args__, opts=opts, typ=GetVpcEndpointServiceUsersResult)
+    return __ret__.apply(lambda __response__: GetVpcEndpointServiceUsersResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        service_id=pulumi.get(__response__, 'service_id'),
+        user_id=pulumi.get(__response__, 'user_id'),
+        users=pulumi.get(__response__, 'users')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -162,9 +167,6 @@ def get_hybrid_monitor_datas(end: Optional[str] = None,
         period=pulumi.get(__ret__, 'period'),
         prom_sql=pulumi.get(__ret__, 'prom_sql'),
         start=pulumi.get(__ret__, 'start'))
-
-
-@_utilities.lift_output_func(get_hybrid_monitor_datas)
 def get_hybrid_monitor_datas_output(end: Optional[pulumi.Input[str]] = None,
                                     namespace: Optional[pulumi.Input[str]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -200,4 +202,21 @@ def get_hybrid_monitor_datas_output(end: Optional[pulumi.Input[str]] = None,
     :param str prom_sql: The name of the metric. Note PromQL statements are supported.
     :param str start: The timestamp that specifies the beginning of the time range to query.
     """
-    ...
+    __args__ = dict()
+    __args__['end'] = end
+    __args__['namespace'] = namespace
+    __args__['outputFile'] = output_file
+    __args__['period'] = period
+    __args__['promSql'] = prom_sql
+    __args__['start'] = start
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas', __args__, opts=opts, typ=GetHybridMonitorDatasResult)
+    return __ret__.apply(lambda __response__: GetHybridMonitorDatasResult(
+        datas=pulumi.get(__response__, 'datas'),
+        end=pulumi.get(__response__, 'end'),
+        id=pulumi.get(__response__, 'id'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        period=pulumi.get(__response__, 'period'),
+        prom_sql=pulumi.get(__response__, 'prom_sql'),
+        start=pulumi.get(__response__, 'start')))

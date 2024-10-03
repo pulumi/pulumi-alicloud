@@ -4,24 +4,55 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AccessControlListAclEntryArgs',
+    'AccessControlListAclEntryArgsDict',
     'ApiConstantParameterArgs',
+    'ApiConstantParameterArgsDict',
     'ApiFcServiceConfigArgs',
+    'ApiFcServiceConfigArgsDict',
     'ApiHttpServiceConfigArgs',
+    'ApiHttpServiceConfigArgsDict',
     'ApiHttpVpcServiceConfigArgs',
+    'ApiHttpVpcServiceConfigArgsDict',
     'ApiMockServiceConfigArgs',
+    'ApiMockServiceConfigArgsDict',
     'ApiRequestConfigArgs',
+    'ApiRequestConfigArgsDict',
     'ApiRequestParameterArgs',
+    'ApiRequestParameterArgsDict',
     'ApiSystemParameterArgs',
+    'ApiSystemParameterArgsDict',
     'InstanceToConnectVpcIpBlockArgs',
+    'InstanceToConnectVpcIpBlockArgsDict',
     'InstanceZoneVswitchSecurityGroupArgs',
+    'InstanceZoneVswitchSecurityGroupArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AccessControlListAclEntryArgsDict(TypedDict):
+        acl_entry_comment: NotRequired[pulumi.Input[str]]
+        """
+        The description of the ACL.
+        """
+        acl_entry_ip: NotRequired[pulumi.Input[str]]
+        """
+        The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
+        """
+elif False:
+    AccessControlListAclEntryArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessControlListAclEntryArgs:
@@ -61,6 +92,27 @@ class AccessControlListAclEntryArgs:
     def acl_entry_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "acl_entry_ip", value)
 
+
+if not MYPY:
+    class ApiConstantParameterArgsDict(TypedDict):
+        in_: pulumi.Input[str]
+        """
+        Constant parameter location; values: 'HEAD' and 'QUERY'.
+        """
+        name: pulumi.Input[str]
+        """
+        Constant parameter name.
+        """
+        value: pulumi.Input[str]
+        """
+        Constant parameter value.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of Constant parameter.
+        """
+elif False:
+    ApiConstantParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApiConstantParameterArgs:
@@ -129,6 +181,55 @@ class ApiConstantParameterArgs:
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
 
+
+if not MYPY:
+    class ApiFcServiceConfigArgsDict(TypedDict):
+        arn_role: pulumi.Input[str]
+        """
+        RAM role arn attached to the Function Compute service. This governs both who / what can invoke your Function, as well as what resources our Function has access to. See [User Permissions](https://www.alibabacloud.com/help/doc-detail/52885.htm) for more details.
+        """
+        region: pulumi.Input[str]
+        """
+        The region that the function compute service belongs to.
+        """
+        timeout: pulumi.Input[int]
+        """
+        Backend service time-out time; unit: millisecond.
+        """
+        function_base_url: NotRequired[pulumi.Input[str]]
+        """
+        The base url of function compute service. Required if `function_type` is `HttpTrigger`.
+        """
+        function_name: NotRequired[pulumi.Input[str]]
+        """
+        The function name of function compute service. Required if `function_type` is `FCEvent`.
+        """
+        function_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of function compute service. Supports values of `FCEvent`,`HttpTrigger`. Default value: `FCEvent`.
+        """
+        method: NotRequired[pulumi.Input[str]]
+        """
+        The http method of function compute service. Required if `function_type` is `HttpTrigger`.
+        """
+        only_business_path: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to filter path in `function_base_url`. Optional if `function_type` is `HttpTrigger`.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The path of function compute service. Required if `function_type` is `HttpTrigger`.
+        """
+        qualifier: NotRequired[pulumi.Input[str]]
+        """
+        The qualifier of function name of compute service.
+        """
+        service_name: NotRequired[pulumi.Input[str]]
+        """
+        The service name of function compute service. Required if `function_type` is `FCEvent`.
+        """
+elif False:
+    ApiFcServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApiFcServiceConfigArgs:
@@ -310,6 +411,39 @@ class ApiFcServiceConfigArgs:
         pulumi.set(self, "service_name", value)
 
 
+if not MYPY:
+    class ApiHttpServiceConfigArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        The address of backend service.
+        """
+        method: pulumi.Input[str]
+        """
+        The http method of backend service.
+        """
+        path: pulumi.Input[str]
+        """
+        The path of backend service.
+        """
+        timeout: pulumi.Input[int]
+        """
+        Backend service time-out time; unit: millisecond.
+        """
+        aone_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of aone.
+        """
+        content_type_category: NotRequired[pulumi.Input[str]]
+        """
+        The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+        """
+        content_type_value: NotRequired[pulumi.Input[str]]
+        """
+        The content type value of backend service.
+        """
+elif False:
+    ApiHttpServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApiHttpServiceConfigArgs:
     def __init__(__self__, *,
@@ -424,6 +558,43 @@ class ApiHttpServiceConfigArgs:
     def content_type_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content_type_value", value)
 
+
+if not MYPY:
+    class ApiHttpVpcServiceConfigArgsDict(TypedDict):
+        method: pulumi.Input[str]
+        """
+        The http method of backend service.
+        """
+        name: pulumi.Input[str]
+        """
+        The name of vpc instance.
+        """
+        path: pulumi.Input[str]
+        """
+        The path of backend service.
+        """
+        timeout: pulumi.Input[int]
+        """
+        Backend service time-out time. Unit: millisecond.
+        """
+        aone_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of aone.
+        """
+        content_type_category: NotRequired[pulumi.Input[str]]
+        """
+        The content type category of backend service which supports values of 'DEFAULT','CUSTOM' and 'CLIENT'.
+        """
+        content_type_value: NotRequired[pulumi.Input[str]]
+        """
+        The content type value of backend service.
+        """
+        vpc_scheme: NotRequired[pulumi.Input[str]]
+        """
+        The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
+        """
+elif False:
+    ApiHttpVpcServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApiHttpVpcServiceConfigArgs:
@@ -556,6 +727,19 @@ class ApiHttpVpcServiceConfigArgs:
         pulumi.set(self, "vpc_scheme", value)
 
 
+if not MYPY:
+    class ApiMockServiceConfigArgsDict(TypedDict):
+        result: pulumi.Input[str]
+        """
+        The result of the mock service.
+        """
+        aone_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of aone.
+        """
+elif False:
+    ApiMockServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApiMockServiceConfigArgs:
     def __init__(__self__, *,
@@ -593,6 +777,31 @@ class ApiMockServiceConfigArgs:
     def aone_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "aone_name", value)
 
+
+if not MYPY:
+    class ApiRequestConfigArgsDict(TypedDict):
+        method: pulumi.Input[str]
+        """
+        The method of the api, including 'GET','POST','PUT' etc.
+        """
+        mode: pulumi.Input[str]
+        """
+        The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
+        """
+        path: pulumi.Input[str]
+        """
+        The request path of the api.
+        """
+        protocol: pulumi.Input[str]
+        """
+        The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
+        """
+        body_format: NotRequired[pulumi.Input[str]]
+        """
+        The body format of the api, which support the values of 'STREAM' and 'FORM'.
+        """
+elif False:
+    ApiRequestConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApiRequestConfigArgs:
@@ -676,6 +885,43 @@ class ApiRequestConfigArgs:
     def body_format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "body_format", value)
 
+
+if not MYPY:
+    class ApiRequestParameterArgsDict(TypedDict):
+        in_: pulumi.Input[str]
+        """
+        Request's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        """
+        in_service: pulumi.Input[str]
+        """
+        Backend service's parameter location; values: BODY, HEAD, QUERY, and PATH.
+        """
+        name: pulumi.Input[str]
+        """
+        Request's parameter name.
+        """
+        name_service: pulumi.Input[str]
+        """
+        Backend service's parameter name.
+        """
+        required: pulumi.Input[str]
+        """
+        Parameter required or not; values: REQUIRED and OPTIONAL.
+        """
+        type: pulumi.Input[str]
+        """
+        Parameter type which supports values of 'STRING','INT','BOOLEAN','LONG',"FLOAT" and "DOUBLE".
+        """
+        default_value: NotRequired[pulumi.Input[str]]
+        """
+        The default value of the parameter.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of parameter.
+        """
+elif False:
+    ApiRequestParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApiRequestParameterArgs:
@@ -806,6 +1052,23 @@ class ApiRequestParameterArgs:
         pulumi.set(self, "description", value)
 
 
+if not MYPY:
+    class ApiSystemParameterArgsDict(TypedDict):
+        in_: pulumi.Input[str]
+        """
+        System parameter location; values: 'HEAD' and 'QUERY'.
+        """
+        name: pulumi.Input[str]
+        """
+        System parameter name which supports values including in [system parameter list](https://www.alibabacloud.com/help/doc-detail/43677.html).
+        """
+        name_service: pulumi.Input[str]
+        """
+        Backend service's parameter name.
+        """
+elif False:
+    ApiSystemParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ApiSystemParameterArgs:
     def __init__(__self__, *,
@@ -857,6 +1120,27 @@ class ApiSystemParameterArgs:
     def name_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "name_service", value)
 
+
+if not MYPY:
+    class InstanceToConnectVpcIpBlockArgsDict(TypedDict):
+        cidr_block: pulumi.Input[str]
+        """
+        The CIDR block of the VSwitch.
+        """
+        customized: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the IP block is customized.
+        """
+        vswitch_id: NotRequired[pulumi.Input[str]]
+        """
+        The VSwitch ID.
+        """
+        zone_id: NotRequired[pulumi.Input[str]]
+        """
+        The zone ID.
+        """
+elif False:
+    InstanceToConnectVpcIpBlockArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceToConnectVpcIpBlockArgs:
@@ -927,6 +1211,27 @@ class InstanceToConnectVpcIpBlockArgs:
     def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
+
+if not MYPY:
+    class InstanceZoneVswitchSecurityGroupArgsDict(TypedDict):
+        cidr_block: pulumi.Input[str]
+        """
+        The CIDR block of the VSwitch.
+        """
+        security_group: pulumi.Input[str]
+        """
+        The ID of the security group.
+        """
+        vswitch_id: pulumi.Input[str]
+        """
+        The VSwitch ID.
+        """
+        zone_id: pulumi.Input[str]
+        """
+        The zone ID.
+        """
+elif False:
+    InstanceZoneVswitchSecurityGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceZoneVswitchSecurityGroupArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -152,9 +157,6 @@ def get_instances(description_regex: Optional[str] = None,
         instances=pulumi.get(__ret__, 'instances'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_instances)
 def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -182,4 +184,18 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     :param Sequence[str] ids: A list of DRDS instance IDs.
     :param str name_regex: A regex string to filter results by instance description. It is deprecated since v1.91.0 and will be removed in a future release, please use 'description_regex' instead.
     """
-    ...
+    __args__ = dict()
+    __args__['descriptionRegex'] = description_regex
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:drds/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
+    return __ret__.apply(lambda __response__: GetInstancesResult(
+        description_regex=pulumi.get(__response__, 'description_regex'),
+        descriptions=pulumi.get(__response__, 'descriptions'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instances=pulumi.get(__response__, 'instances'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        output_file=pulumi.get(__response__, 'output_file')))

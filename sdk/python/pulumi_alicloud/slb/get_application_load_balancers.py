@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -448,9 +453,6 @@ def get_application_load_balancers(address: Optional[str] = None,
         total_count=pulumi.get(__ret__, 'total_count'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-
-
-@_utilities.lift_output_func(get_application_load_balancers)
 def get_application_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = None,
                                           address_ip_version: Optional[pulumi.Input[Optional[str]]] = None,
                                           address_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -514,4 +516,56 @@ def get_application_load_balancers_output(address: Optional[pulumi.Input[Optiona
     :param str vpc_id: ID of the VPC linked to the SLBs.
     :param str vswitch_id: ID of the vSwitch linked to the SLBs.
     """
-    ...
+    __args__ = dict()
+    __args__['address'] = address
+    __args__['addressIpVersion'] = address_ip_version
+    __args__['addressType'] = address_type
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['internetChargeType'] = internet_charge_type
+    __args__['loadBalancerName'] = load_balancer_name
+    __args__['masterZoneId'] = master_zone_id
+    __args__['nameRegex'] = name_regex
+    __args__['networkType'] = network_type
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['paymentType'] = payment_type
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['serverId'] = server_id
+    __args__['serverIntranetAddress'] = server_intranet_address
+    __args__['slaveZoneId'] = slave_zone_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vpcId'] = vpc_id
+    __args__['vswitchId'] = vswitch_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers', __args__, opts=opts, typ=GetApplicationLoadBalancersResult)
+    return __ret__.apply(lambda __response__: GetApplicationLoadBalancersResult(
+        address=pulumi.get(__response__, 'address'),
+        address_ip_version=pulumi.get(__response__, 'address_ip_version'),
+        address_type=pulumi.get(__response__, 'address_type'),
+        balancers=pulumi.get(__response__, 'balancers'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        internet_charge_type=pulumi.get(__response__, 'internet_charge_type'),
+        load_balancer_name=pulumi.get(__response__, 'load_balancer_name'),
+        master_zone_id=pulumi.get(__response__, 'master_zone_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        network_type=pulumi.get(__response__, 'network_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        payment_type=pulumi.get(__response__, 'payment_type'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        server_id=pulumi.get(__response__, 'server_id'),
+        server_intranet_address=pulumi.get(__response__, 'server_intranet_address'),
+        slave_zone_id=pulumi.get(__response__, 'slave_zone_id'),
+        slbs=pulumi.get(__response__, 'slbs'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        total_count=pulumi.get(__response__, 'total_count'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id')))

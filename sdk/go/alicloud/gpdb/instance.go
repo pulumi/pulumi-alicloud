@@ -41,11 +41,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetZones, err := gpdb.GetZones(ctx, nil, nil)
+//			defaultGetZones, err := gpdb.GetZones(ctx, &gpdb.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

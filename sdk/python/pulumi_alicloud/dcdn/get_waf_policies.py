@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -155,9 +160,6 @@ def get_waf_policies(ids: Optional[Sequence[str]] = None,
         policies=pulumi.get(__ret__, 'policies'),
         query_args=pulumi.get(__ret__, 'query_args'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_waf_policies)
 def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -187,4 +189,20 @@ def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param str query_args: The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"waf_group","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
     :param str status: The status of the resource. Valid values: `on`, `off`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['queryArgs'] = query_args
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getWafPolicies:getWafPolicies', __args__, opts=opts, typ=GetWafPoliciesResult)
+    return __ret__.apply(lambda __response__: GetWafPoliciesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policies=pulumi.get(__response__, 'policies'),
+        query_args=pulumi.get(__response__, 'query_args'),
+        status=pulumi.get(__response__, 'status')))

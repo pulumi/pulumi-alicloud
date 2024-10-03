@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -177,9 +182,6 @@ def get_server_disks(disk_type: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_server_disks)
 def get_server_disks_output(disk_type: Optional[pulumi.Input[Optional[str]]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             instance_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -220,4 +222,22 @@ def get_server_disks_output(disk_type: Optional[pulumi.Input[Optional[str]]] = N
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
     """
-    ...
+    __args__ = dict()
+    __args__['diskType'] = disk_type
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:simpleapplicationserver/getServerDisks:getServerDisks', __args__, opts=opts, typ=GetServerDisksResult)
+    return __ret__.apply(lambda __response__: GetServerDisksResult(
+        disk_type=pulumi.get(__response__, 'disk_type'),
+        disks=pulumi.get(__response__, 'disks'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

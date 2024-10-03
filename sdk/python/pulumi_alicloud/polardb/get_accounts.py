@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -154,9 +159,6 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'))
-
-
-@_utilities.lift_output_func(get_accounts)
 def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
@@ -212,4 +214,14 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     :param str db_cluster_id: The polarDB cluster ID.
     :param str name_regex: A regex string to filter results by account name.
     """
-    ...
+    __args__ = dict()
+    __args__['dbClusterId'] = db_cluster_id
+    __args__['nameRegex'] = name_regex
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:polardb/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
+    return __ret__.apply(lambda __response__: GetAccountsResult(
+        accounts=pulumi.get(__response__, 'accounts'),
+        db_cluster_id=pulumi.get(__response__, 'db_cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -104,9 +109,6 @@ def get_character_set_names(engine: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_character_set_names)
 def get_character_set_names_output(engine: Optional[pulumi.Input[str]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCharacterSetNamesResult]:
@@ -129,4 +131,13 @@ def get_character_set_names_output(engine: Optional[pulumi.Input[str]] = None,
 
     :param str engine: Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
     """
-    ...
+    __args__ = dict()
+    __args__['engine'] = engine
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getCharacterSetNames:getCharacterSetNames', __args__, opts=opts, typ=GetCharacterSetNamesResult)
+    return __ret__.apply(lambda __response__: GetCharacterSetNamesResult(
+        engine=pulumi.get(__response__, 'engine'),
+        id=pulumi.get(__response__, 'id'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file')))

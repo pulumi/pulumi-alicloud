@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -137,9 +142,6 @@ def get_images(ids: Optional[Sequence[str]] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         platform=pulumi.get(__ret__, 'platform'))
-
-
-@_utilities.lift_output_func(get_images)
 def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       image_type: Optional[pulumi.Input[Optional[str]]] = None,
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -151,4 +153,20 @@ def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     > **NOTE:** Available in v1.135.0+.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['imageType'] = image_type
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['platform'] = platform
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:simpleapplicationserver/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
+    return __ret__.apply(lambda __response__: GetImagesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        image_type=pulumi.get(__response__, 'image_type'),
+        images=pulumi.get(__response__, 'images'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        platform=pulumi.get(__response__, 'platform')))

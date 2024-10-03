@@ -4,16 +4,39 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'RouterExpressConnectRouterRegionArgs',
+    'RouterExpressConnectRouterRegionArgsDict',
     'GetRouterInterfacesFilterArgs',
+    'GetRouterInterfacesFilterArgsDict',
     'GetVirtualBorderRoutersFilterArgs',
+    'GetVirtualBorderRoutersFilterArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class RouterExpressConnectRouterRegionArgsDict(TypedDict):
+        region_id: NotRequired[pulumi.Input[str]]
+        """
+        Representative region ID.
+        """
+        transit_mode: NotRequired[pulumi.Input[str]]
+        """
+        Represents the forwarding mode of the current region.
+        """
+elif False:
+    RouterExpressConnectRouterRegionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RouterExpressConnectRouterRegionArgs:
@@ -54,6 +77,13 @@ class RouterExpressConnectRouterRegionArgs:
         pulumi.set(self, "transit_mode", value)
 
 
+if not MYPY:
+    class GetRouterInterfacesFilterArgsDict(TypedDict):
+        key: NotRequired[str]
+        values: NotRequired[Sequence[str]]
+elif False:
+    GetRouterInterfacesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetRouterInterfacesFilterArgs:
     def __init__(__self__, *,
@@ -82,6 +112,20 @@ class GetRouterInterfacesFilterArgs:
     def values(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class GetVirtualBorderRoutersFilterArgsDict(TypedDict):
+        key: NotRequired[str]
+        """
+        The key of the field to filter by, as defined by
+        [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
+        """
+        values: NotRequired[Sequence[str]]
+        """
+        Set of values that are accepted for the given field.
+        """
+elif False:
+    GetVirtualBorderRoutersFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetVirtualBorderRoutersFilterArgs:

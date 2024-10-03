@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -133,9 +138,6 @@ def get_bucket_objects(bucket_name: Optional[str] = None,
         key_regex=pulumi.get(__ret__, 'key_regex'),
         objects=pulumi.get(__ret__, 'objects'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_bucket_objects)
 def get_bucket_objects_output(bucket_name: Optional[pulumi.Input[str]] = None,
                               key_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                               key_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -161,4 +163,17 @@ def get_bucket_objects_output(bucket_name: Optional[pulumi.Input[str]] = None,
     :param str key_regex: A regex string to filter results by key.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['bucketName'] = bucket_name
+    __args__['keyPrefix'] = key_prefix
+    __args__['keyRegex'] = key_regex
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:oss/getBucketObjects:getBucketObjects', __args__, opts=opts, typ=GetBucketObjectsResult)
+    return __ret__.apply(lambda __response__: GetBucketObjectsResult(
+        bucket_name=pulumi.get(__response__, 'bucket_name'),
+        id=pulumi.get(__response__, 'id'),
+        key_prefix=pulumi.get(__response__, 'key_prefix'),
+        key_regex=pulumi.get(__response__, 'key_regex'),
+        objects=pulumi.get(__response__, 'objects'),
+        output_file=pulumi.get(__response__, 'output_file')))

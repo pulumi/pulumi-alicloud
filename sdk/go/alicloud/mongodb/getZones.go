@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Declare the data source
-//			zonesIds, err := mongodb.GetZones(ctx, nil, nil)
+//			zonesIds, err := mongodb.GetZones(ctx, &mongodb.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

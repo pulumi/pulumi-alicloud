@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -212,9 +217,6 @@ def get_instance_types(cluster_type: Optional[str] = None,
         support_node_types=pulumi.get(__ret__, 'support_node_types'),
         types=pulumi.get(__ret__, 'types'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_instance_types)
 def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
                               destination_resource: Optional[pulumi.Input[str]] = None,
                               instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -259,4 +261,26 @@ def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
            Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
     :param str zone_id: The supported resources of specific zoneId.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterType'] = cluster_type
+    __args__['destinationResource'] = destination_resource
+    __args__['instanceChargeType'] = instance_charge_type
+    __args__['instanceType'] = instance_type
+    __args__['outputFile'] = output_file
+    __args__['supportLocalStorage'] = support_local_storage
+    __args__['supportNodeTypes'] = support_node_types
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:emr/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult)
+    return __ret__.apply(lambda __response__: GetInstanceTypesResult(
+        cluster_type=pulumi.get(__response__, 'cluster_type'),
+        destination_resource=pulumi.get(__response__, 'destination_resource'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_charge_type=pulumi.get(__response__, 'instance_charge_type'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        support_local_storage=pulumi.get(__response__, 'support_local_storage'),
+        support_node_types=pulumi.get(__response__, 'support_node_types'),
+        types=pulumi.get(__response__, 'types'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

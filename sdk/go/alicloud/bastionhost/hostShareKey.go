@@ -43,7 +43,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := bastionhost.GetInstances(ctx, nil, nil)
+//			_default, err := bastionhost.GetInstances(ctx, &bastionhost.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

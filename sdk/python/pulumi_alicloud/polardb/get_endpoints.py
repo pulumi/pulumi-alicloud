@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -133,9 +138,6 @@ def get_endpoints(db_cluster_id: Optional[str] = None,
         db_endpoint_id=pulumi.get(__ret__, 'db_endpoint_id'),
         endpoints=pulumi.get(__ret__, 'endpoints'),
         id=pulumi.get(__ret__, 'id'))
-
-
-@_utilities.lift_output_func(get_endpoints)
 def get_endpoints_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                          db_endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointsResult]:
@@ -180,4 +182,13 @@ def get_endpoints_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     :param str db_cluster_id: PolarDB cluster ID.
     :param str db_endpoint_id: endpoint of the cluster.
     """
-    ...
+    __args__ = dict()
+    __args__['dbClusterId'] = db_cluster_id
+    __args__['dbEndpointId'] = db_endpoint_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:polardb/getEndpoints:getEndpoints', __args__, opts=opts, typ=GetEndpointsResult)
+    return __ret__.apply(lambda __response__: GetEndpointsResult(
+        db_cluster_id=pulumi.get(__response__, 'db_cluster_id'),
+        db_endpoint_id=pulumi.get(__response__, 'db_endpoint_id'),
+        endpoints=pulumi.get(__response__, 'endpoints'),
+        id=pulumi.get(__response__, 'id')))

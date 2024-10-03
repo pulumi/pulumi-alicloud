@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -83,9 +88,6 @@ def get_kv_account(status: Optional[str] = None,
     return AwaitableGetKvAccountResult(
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_kv_account)
 def get_kv_account_output(status: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKvAccountResult]:
     """
@@ -105,4 +107,10 @@ def get_kv_account_output(status: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str status: The status of the KV feature for your account. Valid values: `online`, `offline`.
     """
-    ...
+    __args__ = dict()
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getKvAccount:getKvAccount', __args__, opts=opts, typ=GetKvAccountResult)
+    return __ret__.apply(lambda __response__: GetKvAccountResult(
+        id=pulumi.get(__response__, 'id'),
+        status=pulumi.get(__response__, 'status')))

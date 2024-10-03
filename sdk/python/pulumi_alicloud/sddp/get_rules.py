@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -265,9 +270,6 @@ def get_rules(category: Optional[int] = None,
         rules=pulumi.get(__ret__, 'rules'),
         status=pulumi.get(__ret__, 'status'),
         warn_level=pulumi.get(__ret__, 'warn_level'))
-
-
-@_utilities.lift_output_func(get_rules)
 def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
                      content_category: Optional[pulumi.Input[Optional[str]]] = None,
                      custom_type: Optional[pulumi.Input[Optional[int]]] = None,
@@ -319,4 +321,36 @@ def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
     :param str status: Sensitive Data Identification Rules Detection State of.
     :param int warn_level: The Level of Risk. Valid values:
     """
-    ...
+    __args__ = dict()
+    __args__['category'] = category
+    __args__['contentCategory'] = content_category
+    __args__['customType'] = custom_type
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['name'] = name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['productId'] = product_id
+    __args__['riskLevelId'] = risk_level_id
+    __args__['ruleType'] = rule_type
+    __args__['status'] = status
+    __args__['warnLevel'] = warn_level
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:sddp/getRules:getRules', __args__, opts=opts, typ=GetRulesResult)
+    return __ret__.apply(lambda __response__: GetRulesResult(
+        category=pulumi.get(__response__, 'category'),
+        content_category=pulumi.get(__response__, 'content_category'),
+        custom_type=pulumi.get(__response__, 'custom_type'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name=pulumi.get(__response__, 'name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        product_id=pulumi.get(__response__, 'product_id'),
+        risk_level_id=pulumi.get(__response__, 'risk_level_id'),
+        rule_type=pulumi.get(__response__, 'rule_type'),
+        rules=pulumi.get(__response__, 'rules'),
+        status=pulumi.get(__response__, 'status'),
+        warn_level=pulumi.get(__response__, 'warn_level')))

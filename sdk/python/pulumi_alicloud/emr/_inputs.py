@@ -4,18 +4,59 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ClusterBootstrapActionArgs',
+    'ClusterBootstrapActionArgsDict',
     'ClusterConfigArgs',
+    'ClusterConfigArgsDict',
     'ClusterHostGroupArgs',
+    'ClusterHostGroupArgsDict',
     'ClusterMetaStoreConfArgs',
+    'ClusterMetaStoreConfArgsDict',
     'ClusterModifyClusterServiceConfigArgs',
+    'ClusterModifyClusterServiceConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ClusterBootstrapActionArgsDict(TypedDict):
+        arg: NotRequired[pulumi.Input[str]]
+        """
+        bootstrap action args, e.g. "--a=b".
+        """
+        execution_fail_strategy: NotRequired[pulumi.Input[str]]
+        """
+        bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
+        """
+        execution_moment: NotRequired[pulumi.Input[str]]
+        """
+        bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
+        """
+        execution_target: NotRequired[pulumi.Input[str]]
+        """
+        bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        bootstrap action path, e.g. "oss://bucket/path".
+        """
+elif False:
+    ClusterBootstrapActionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterBootstrapActionArgs:
@@ -120,6 +161,24 @@ class ClusterBootstrapActionArgs:
         pulumi.set(self, "path", value)
 
 
+if not MYPY:
+    class ClusterConfigArgsDict(TypedDict):
+        config_key: pulumi.Input[str]
+        """
+        Custom configuration service config key, e.g. ’dfs.replication’.
+        """
+        config_value: pulumi.Input[str]
+        """
+        Custom configuration service config value, e.g. ’3’.
+        """
+        file_name: pulumi.Input[str]
+        """
+        Custom configuration service file name, e.g. ’hdfs-site’.
+        """
+        service_name: pulumi.Input[str]
+elif False:
+    ClusterConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterConfigArgs:
     def __init__(__self__, *,
@@ -182,6 +241,72 @@ class ClusterConfigArgs:
     def service_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_name", value)
 
+
+if not MYPY:
+    class ClusterHostGroupArgsDict(TypedDict):
+        auto_renew: NotRequired[pulumi.Input[bool]]
+        """
+        Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
+        """
+        charge_type: NotRequired[pulumi.Input[str]]
+        """
+        Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
+        """
+        decommission_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Graceful decommission timeout, unit: seconds.
+        """
+        disk_capacity: NotRequired[pulumi.Input[str]]
+        """
+        Data disk capacity.
+        """
+        disk_count: NotRequired[pulumi.Input[str]]
+        """
+        Data disk count.
+        """
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
+        """
+        enable_graceful_decommission: NotRequired[pulumi.Input[bool]]
+        """
+        Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
+        """
+        gpu_driver: NotRequired[pulumi.Input[str]]
+        host_group_name: NotRequired[pulumi.Input[str]]
+        """
+        host group name.
+        """
+        host_group_type: NotRequired[pulumi.Input[str]]
+        """
+        host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
+        """
+        instance_list: NotRequired[pulumi.Input[str]]
+        """
+        Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \\".
+        """
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Host Ecs instance type.
+        """
+        node_count: NotRequired[pulumi.Input[str]]
+        """
+        Host number in this group.
+        """
+        period: NotRequired[pulumi.Input[int]]
+        """
+        If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
+        """
+        sys_disk_capacity: NotRequired[pulumi.Input[str]]
+        """
+        System disk capacity.
+        """
+        sys_disk_type: NotRequired[pulumi.Input[str]]
+        """
+        System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
+        """
+elif False:
+    ClusterHostGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterHostGroupArgs:
@@ -442,6 +567,23 @@ class ClusterHostGroupArgs:
         pulumi.set(self, "sys_disk_type", value)
 
 
+if not MYPY:
+    class ClusterMetaStoreConfArgsDict(TypedDict):
+        db_password: pulumi.Input[str]
+        """
+        Custom rds database password.
+        """
+        db_url: pulumi.Input[str]
+        """
+        Custom rds database connection url.
+        """
+        db_user_name: pulumi.Input[str]
+        """
+        Custom rds database user name.
+        """
+elif False:
+    ClusterMetaStoreConfArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ClusterMetaStoreConfArgs:
     def __init__(__self__, *,
@@ -493,6 +635,44 @@ class ClusterMetaStoreConfArgs:
     def db_user_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "db_user_name", value)
 
+
+if not MYPY:
+    class ClusterModifyClusterServiceConfigArgsDict(TypedDict):
+        config_params: pulumi.Input[str]
+        """
+        Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
+        """
+        service_name: pulumi.Input[str]
+        comment: NotRequired[pulumi.Input[str]]
+        """
+        Cluster service configuration modification comment, e.g. "Modify tez configuration".
+        """
+        config_type: NotRequired[pulumi.Input[str]]
+        """
+        Cluster service configuration modification type.
+        """
+        custom_config_params: NotRequired[pulumi.Input[str]]
+        """
+        Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
+        """
+        gateway_cluster_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Cluster service configuration modification related gateway cluster id list.
+        """
+        group_id: NotRequired[pulumi.Input[str]]
+        """
+        Cluster service configuration modification node group id, e.g. ’G-XXX’.
+        """
+        host_instance_id: NotRequired[pulumi.Input[str]]
+        """
+        Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
+        """
+        refresh_host_config: NotRequired[pulumi.Input[bool]]
+        """
+        Cluster service configuration modification refresh host config, ’true’ or ’false’.
+        """
+elif False:
+    ClusterModifyClusterServiceConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ClusterModifyClusterServiceConfigArgs:

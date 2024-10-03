@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -186,9 +191,6 @@ def get_db_instance_plans(db_instance_id: Optional[str] = None,
         plan_type=pulumi.get(__ret__, 'plan_type'),
         plans=pulumi.get(__ret__, 'plans'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_db_instance_plans)
 def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[str]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -227,4 +229,24 @@ def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[str]] = N
     :param str plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
     :param str status: Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
     """
-    ...
+    __args__ = dict()
+    __args__['dbInstanceId'] = db_instance_id
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['planScheduleType'] = plan_schedule_type
+    __args__['planType'] = plan_type
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:gpdb/getDbInstancePlans:getDbInstancePlans', __args__, opts=opts, typ=GetDbInstancePlansResult)
+    return __ret__.apply(lambda __response__: GetDbInstancePlansResult(
+        db_instance_id=pulumi.get(__response__, 'db_instance_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        plan_schedule_type=pulumi.get(__response__, 'plan_schedule_type'),
+        plan_type=pulumi.get(__response__, 'plan_type'),
+        plans=pulumi.get(__response__, 'plans'),
+        status=pulumi.get(__response__, 'status')))

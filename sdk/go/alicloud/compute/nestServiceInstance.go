@@ -45,7 +45,8 @@ import (
 // if param := cfg.Get("name"); param != ""{
 // name = param
 // }
-// _default, err := resourcemanager.GetResourceGroups(ctx, nil, nil);
+// _default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+// }, nil);
 // if err != nil {
 // return err
 // }

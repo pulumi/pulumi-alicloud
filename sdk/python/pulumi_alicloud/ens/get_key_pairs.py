@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -154,9 +159,6 @@ def get_key_pairs(key_pair_name: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         pairs=pulumi.get(__ret__, 'pairs'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_key_pairs)
 def get_key_pairs_output(key_pair_name: Optional[pulumi.Input[Optional[str]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -186,4 +188,19 @@ def get_key_pairs_output(key_pair_name: Optional[pulumi.Input[Optional[str]]] = 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str version: The version number.
     """
-    ...
+    __args__ = dict()
+    __args__['keyPairName'] = key_pair_name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ens/getKeyPairs:getKeyPairs', __args__, opts=opts, typ=GetKeyPairsResult)
+    return __ret__.apply(lambda __response__: GetKeyPairsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        key_pair_name=pulumi.get(__response__, 'key_pair_name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        pairs=pulumi.get(__response__, 'pairs'),
+        version=pulumi.get(__response__, 'version')))

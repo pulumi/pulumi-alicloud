@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -169,9 +174,6 @@ def get_ots_backup_plans(ids: Optional[Sequence[str]] = None,
         plan_name=pulumi.get(__ret__, 'plan_name'),
         plans=pulumi.get(__ret__, 'plans'),
         vault_id=pulumi.get(__ret__, 'vault_id'))
-
-
-@_utilities.lift_output_func(get_ots_backup_plans)
 def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -204,4 +206,22 @@ def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     :param str plan_name: The ID of the backup plan.
     :param str vault_id: The ID of backup vault the OtsBackupPlan used.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['planId'] = plan_id
+    __args__['planName'] = plan_name
+    __args__['vaultId'] = vault_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getOtsBackupPlans:getOtsBackupPlans', __args__, opts=opts, typ=GetOtsBackupPlansResult)
+    return __ret__.apply(lambda __response__: GetOtsBackupPlansResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        plan_id=pulumi.get(__response__, 'plan_id'),
+        plan_name=pulumi.get(__response__, 'plan_name'),
+        plans=pulumi.get(__response__, 'plans'),
+        vault_id=pulumi.get(__response__, 'vault_id')))

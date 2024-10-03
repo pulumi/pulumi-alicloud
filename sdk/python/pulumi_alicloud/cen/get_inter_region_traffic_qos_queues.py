@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -155,9 +160,6 @@ def get_inter_region_traffic_qos_queues(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         queues=pulumi.get(__ret__, 'queues'),
         traffic_qos_policy_id=pulumi.get(__ret__, 'traffic_qos_policy_id'))
-
-
-@_utilities.lift_output_func(get_inter_region_traffic_qos_queues)
 def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -186,4 +188,18 @@ def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Option
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str traffic_qos_policy_id: The ID of the traffic scheduling policy.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['trafficQosPolicyId'] = traffic_qos_policy_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues', __args__, opts=opts, typ=GetInterRegionTrafficQosQueuesResult)
+    return __ret__.apply(lambda __response__: GetInterRegionTrafficQosQueuesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        queues=pulumi.get(__response__, 'queues'),
+        traffic_qos_policy_id=pulumi.get(__response__, 'traffic_qos_policy_id')))

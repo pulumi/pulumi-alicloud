@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -170,9 +175,6 @@ def get_ecs_invocations(command_id: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-
-
-@_utilities.lift_output_func(get_ecs_invocations)
 def get_ecs_invocations_output(command_id: Optional[pulumi.Input[Optional[str]]] = None,
                                content_encoding: Optional[pulumi.Input[Optional[str]]] = None,
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -205,4 +207,23 @@ def get_ecs_invocations_output(command_id: Optional[pulumi.Input[Optional[str]]]
     :param str invoke_status: The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['commandId'] = command_id
+    __args__['contentEncoding'] = content_encoding
+    __args__['ids'] = ids
+    __args__['invokeStatus'] = invoke_status
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsInvocations:getEcsInvocations', __args__, opts=opts, typ=GetEcsInvocationsResult)
+    return __ret__.apply(lambda __response__: GetEcsInvocationsResult(
+        command_id=pulumi.get(__response__, 'command_id'),
+        content_encoding=pulumi.get(__response__, 'content_encoding'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        invocations=pulumi.get(__response__, 'invocations'),
+        invoke_status=pulumi.get(__response__, 'invoke_status'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size')))

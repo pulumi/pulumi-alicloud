@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -157,9 +162,6 @@ def get_kubernetes_version(cluster_type: Optional[str] = None,
         kubernetes_version=pulumi.get(__ret__, 'kubernetes_version'),
         metadatas=pulumi.get(__ret__, 'metadatas'),
         profile=pulumi.get(__ret__, 'profile'))
-
-
-@_utilities.lift_output_func(get_kubernetes_version)
 def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = None,
                                   kubernetes_version: Optional[pulumi.Input[Optional[str]]] = None,
                                   profile: Optional[pulumi.Input[Optional[str]]] = None,
@@ -220,4 +222,15 @@ def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[str]] = No
     :param str kubernetes_version: The ACK released kubernetes version.
     :param str profile: The profile of cluster. Its valid value are `Default`, `Serverless` and `Edge`.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterType'] = cluster_type
+    __args__['kubernetesVersion'] = kubernetes_version
+    __args__['profile'] = profile
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getKubernetesVersion:getKubernetesVersion', __args__, opts=opts, typ=GetKubernetesVersionResult)
+    return __ret__.apply(lambda __response__: GetKubernetesVersionResult(
+        cluster_type=pulumi.get(__response__, 'cluster_type'),
+        id=pulumi.get(__response__, 'id'),
+        kubernetes_version=pulumi.get(__response__, 'kubernetes_version'),
+        metadatas=pulumi.get(__response__, 'metadatas'),
+        profile=pulumi.get(__response__, 'profile')))

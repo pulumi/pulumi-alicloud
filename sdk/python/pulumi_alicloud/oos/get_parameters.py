@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -230,9 +235,6 @@ def get_parameters(enable_details: Optional[bool] = None,
         sort_order=pulumi.get(__ret__, 'sort_order'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_parameters)
 def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                           ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -282,4 +284,30 @@ def get_parameters_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str type: The data type of the common parameter. Valid values: `String` and `StringList`.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['parameterName'] = parameter_name
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['sortField'] = sort_field
+    __args__['sortOrder'] = sort_order
+    __args__['tags'] = tags
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:oos/getParameters:getParameters', __args__, opts=opts, typ=GetParametersResult)
+    return __ret__.apply(lambda __response__: GetParametersResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        parameter_name=pulumi.get(__response__, 'parameter_name'),
+        parameters=pulumi.get(__response__, 'parameters'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        sort_field=pulumi.get(__response__, 'sort_field'),
+        sort_order=pulumi.get(__response__, 'sort_order'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -232,9 +237,6 @@ def get_transit_router_route_tables(ids: Optional[Sequence[str]] = None,
         transit_router_route_table_names=pulumi.get(__ret__, 'transit_router_route_table_names'),
         transit_router_route_table_status=pulumi.get(__ret__, 'transit_router_route_table_status'),
         transit_router_route_table_type=pulumi.get(__ret__, 'transit_router_route_table_type'))
-
-
-@_utilities.lift_output_func(get_transit_router_route_tables)
 def get_transit_router_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -285,4 +287,28 @@ def get_transit_router_route_tables_output(ids: Optional[pulumi.Input[Optional[S
     :param str transit_router_route_table_status: The status of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
     :param str transit_router_route_table_type: The type of the transit router route table to query. Valid values `System` and `Custom`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['transitRouterId'] = transit_router_id
+    __args__['transitRouterRouteTableIds'] = transit_router_route_table_ids
+    __args__['transitRouterRouteTableNames'] = transit_router_route_table_names
+    __args__['transitRouterRouteTableStatus'] = transit_router_route_table_status
+    __args__['transitRouterRouteTableType'] = transit_router_route_table_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables', __args__, opts=opts, typ=GetTransitRouterRouteTablesResult)
+    return __ret__.apply(lambda __response__: GetTransitRouterRouteTablesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        tables=pulumi.get(__response__, 'tables'),
+        transit_router_id=pulumi.get(__response__, 'transit_router_id'),
+        transit_router_route_table_ids=pulumi.get(__response__, 'transit_router_route_table_ids'),
+        transit_router_route_table_names=pulumi.get(__response__, 'transit_router_route_table_names'),
+        transit_router_route_table_status=pulumi.get(__response__, 'transit_router_route_table_status'),
+        transit_router_route_table_type=pulumi.get(__response__, 'transit_router_route_table_type')))

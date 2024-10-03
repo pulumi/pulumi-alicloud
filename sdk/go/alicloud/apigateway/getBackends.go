@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := apigateway.GetBackends(ctx, nil, nil)
+//			ids, err := apigateway.GetBackends(ctx, &apigateway.GetBackendsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

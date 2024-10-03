@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := oos.GetApplications(ctx, nil, nil)
+//			ids, err := oos.GetApplications(ctx, &oos.GetApplicationsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

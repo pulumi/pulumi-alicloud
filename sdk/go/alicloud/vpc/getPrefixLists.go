@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := vpc.GetPrefixLists(ctx, nil, nil)
+//			ids, err := vpc.GetPrefixLists(ctx, &vpc.GetPrefixListsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

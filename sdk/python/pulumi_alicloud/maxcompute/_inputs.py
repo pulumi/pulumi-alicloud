@@ -4,19 +4,45 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ProjectIpWhiteListArgs',
+    'ProjectIpWhiteListArgsDict',
     'ProjectPropertiesArgs',
+    'ProjectPropertiesArgsDict',
     'ProjectPropertiesEncryptionArgs',
+    'ProjectPropertiesEncryptionArgsDict',
     'ProjectPropertiesTableLifecycleArgs',
+    'ProjectPropertiesTableLifecycleArgsDict',
     'ProjectSecurityPropertiesArgs',
+    'ProjectSecurityPropertiesArgsDict',
     'ProjectSecurityPropertiesProjectProtectionArgs',
+    'ProjectSecurityPropertiesProjectProtectionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ProjectIpWhiteListArgsDict(TypedDict):
+        ip_list: NotRequired[pulumi.Input[str]]
+        """
+        Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.> **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
+        """
+        vpc_ip_list: NotRequired[pulumi.Input[str]]
+        """
+        Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.> **NOTE:** If you only configure a VPC network IP address whitelist, access to the VPC network is restricted and access to the classic network is prohibited.
+        """
+elif False:
+    ProjectIpWhiteListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectIpWhiteListArgs:
@@ -56,6 +82,44 @@ class ProjectIpWhiteListArgs:
     def vpc_ip_list(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc_ip_list", value)
 
+
+if not MYPY:
+    class ProjectPropertiesArgsDict(TypedDict):
+        allow_full_scan: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to allow full table scan. Default: false.
+        """
+        enable_decimal2: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to turn on Decimal2.0.
+        """
+        encryption: NotRequired[pulumi.Input['ProjectPropertiesEncryptionArgsDict']]
+        """
+        Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
+        > **NOTE :**:  To enable storage encryption, you need to modify the parameters of the basic attributes of the MaxCompute project. This operation permission is authenticated by RAM, and you need to have the Super_Administrator role permission of the corresponding project.  To configure the permissions and IP whitelist parameters of the MaxCompute project, you must have the management permissions (Admin) of the corresponding project, including Super_Administrator, Admin, or custom management permissions. For more information, see the project management permissions list.  You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
+        """
+        retention_days: NotRequired[pulumi.Input[int]]
+        """
+        Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off. The effective policy after adjusting the backup cycle is: Extend the backup cycle: The new backup cycle takes effect on the same day. Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
+        """
+        sql_metering_max: NotRequired[pulumi.Input[str]]
+        """
+        Set the maximum threshold of single SQL consumption, that is, set the ODPS. SQL. metering.value.max attribute. For details, see [Consumption Monitoring Alarm](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control). Unit: scan volume (GB)* complexity. .
+        """
+        table_lifecycle: NotRequired[pulumi.Input['ProjectPropertiesTableLifecycleArgsDict']]
+        """
+        Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,. See `table_lifecycle` below.
+        """
+        timezone: NotRequired[pulumi.Input[str]]
+        """
+        Project time zone, example value: Asia/Shanghai.
+        """
+        type_system: NotRequired[pulumi.Input[str]]
+        """
+        Data type version. Value:(1/2/hive) 1: The original MaxCompute type system. 2: New type system introduced by MaxCompute 2.0. hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
+        """
+elif False:
+    ProjectPropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectPropertiesArgs:
@@ -194,6 +258,23 @@ class ProjectPropertiesArgs:
         pulumi.set(self, "type_system", value)
 
 
+if not MYPY:
+    class ProjectPropertiesEncryptionArgsDict(TypedDict):
+        algorithm: NotRequired[pulumi.Input[str]]
+        """
+        The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
+        """
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Only enable function is supported. Value: (true).
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
+        """
+elif False:
+    ProjectPropertiesEncryptionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectPropertiesEncryptionArgs:
     def __init__(__self__, *,
@@ -249,6 +330,19 @@ class ProjectPropertiesEncryptionArgs:
         pulumi.set(self, "key", value)
 
 
+if not MYPY:
+    class ProjectPropertiesTableLifecycleArgsDict(TypedDict):
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Project type
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
+        """
+elif False:
+    ProjectPropertiesTableLifecycleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ProjectPropertiesTableLifecycleArgs:
     def __init__(__self__, *,
@@ -287,6 +381,39 @@ class ProjectPropertiesTableLifecycleArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ProjectSecurityPropertiesArgsDict(TypedDict):
+        enable_download_privilege: NotRequired[pulumi.Input[bool]]
+        """
+        Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
+        """
+        label_security: NotRequired[pulumi.Input[bool]]
+        """
+        Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
+        """
+        object_creator_has_access_permission: NotRequired[pulumi.Input[bool]]
+        """
+        Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
+        """
+        object_creator_has_grant_permission: NotRequired[pulumi.Input[bool]]
+        """
+        The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
+        """
+        project_protection: NotRequired[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgsDict']]
+        """
+        Project protection. See `project_protection` below.
+        """
+        using_acl: NotRequired[pulumi.Input[bool]]
+        """
+        Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        """
+        using_policy: NotRequired[pulumi.Input[bool]]
+        """
+        Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
+        """
+elif False:
+    ProjectSecurityPropertiesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectSecurityPropertiesArgs:
@@ -406,6 +533,19 @@ class ProjectSecurityPropertiesArgs:
     def using_policy(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "using_policy", value)
 
+
+if not MYPY:
+    class ProjectSecurityPropertiesProjectProtectionArgsDict(TypedDict):
+        exception_policy: NotRequired[pulumi.Input[str]]
+        """
+        Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection).
+        """
+        protected: NotRequired[pulumi.Input[bool]]
+        """
+        Whether enabled, value:(true/false).
+        """
+elif False:
+    ProjectSecurityPropertiesProjectProtectionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProjectSecurityPropertiesProjectProtectionArgs:

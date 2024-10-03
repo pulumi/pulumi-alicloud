@@ -37,7 +37,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := resourcemanager.GetAccounts(ctx, nil, nil)
+//			_default, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

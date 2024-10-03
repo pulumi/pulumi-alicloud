@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -133,9 +138,6 @@ def get_waf_domains(enable_details: Optional[bool] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         query_args=pulumi.get(__ret__, 'query_args'))
-
-
-@_utilities.lift_output_func(get_waf_domains)
 def get_waf_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -164,4 +166,17 @@ def get_waf_domains_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_args: The query conditions. You can filter domain names by name. Fuzzy match is supported `QueryArgs={"DomainName":"Accelerated domain name"}`.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['queryArgs'] = query_args
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getWafDomains:getWafDomains', __args__, opts=opts, typ=GetWafDomainsResult)
+    return __ret__.apply(lambda __response__: GetWafDomainsResult(
+        domains=pulumi.get(__response__, 'domains'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        query_args=pulumi.get(__response__, 'query_args')))

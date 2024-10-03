@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -199,9 +204,6 @@ def get_hana_backup_clients(client_id: Optional[str] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         status=pulumi.get(__ret__, 'status'),
         vault_id=pulumi.get(__ret__, 'vault_id'))
-
-
-@_utilities.lift_output_func(get_hana_backup_clients)
 def get_hana_backup_clients_output(client_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -237,4 +239,25 @@ def get_hana_backup_clients_output(client_id: Optional[pulumi.Input[Optional[str
     :param str status: The status of the Hana Backup Client. Valid Values: `REGISTERED`, `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `UPGRADING`, `UPGRADE_FAILED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `STOPPED`, `UNKNOWN`.
     :param str vault_id: The ID of the backup vault.
     """
-    ...
+    __args__ = dict()
+    __args__['clientId'] = client_id
+    __args__['clusterId'] = cluster_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['status'] = status
+    __args__['vaultId'] = vault_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getHanaBackupClients:getHanaBackupClients', __args__, opts=opts, typ=GetHanaBackupClientsResult)
+    return __ret__.apply(lambda __response__: GetHanaBackupClientsResult(
+        client_id=pulumi.get(__response__, 'client_id'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        hana_backup_clients=pulumi.get(__response__, 'hana_backup_clients'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        status=pulumi.get(__response__, 'status'),
+        vault_id=pulumi.get(__response__, 'vault_id')))

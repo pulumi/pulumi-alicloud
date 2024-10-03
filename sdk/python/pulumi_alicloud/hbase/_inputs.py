@@ -4,16 +4,43 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceSlbConnAddrArgs',
+    'InstanceSlbConnAddrArgsDict',
     'InstanceUiProxyConnAddrArgs',
+    'InstanceUiProxyConnAddrArgsDict',
     'InstanceZkConnAddrArgs',
+    'InstanceZkConnAddrArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceSlbConnAddrArgsDict(TypedDict):
+        conn_addr: NotRequired[pulumi.Input[str]]
+        """
+        The Phoenix address.
+        """
+        conn_addr_port: NotRequired[pulumi.Input[str]]
+        """
+        The number of the port over which Phoenix connects to the instance.
+        """
+        net_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the network. Valid values:
+        """
+elif False:
+    InstanceSlbConnAddrArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceSlbConnAddrArgs:
@@ -70,6 +97,23 @@ class InstanceSlbConnAddrArgs:
         pulumi.set(self, "net_type", value)
 
 
+if not MYPY:
+    class InstanceUiProxyConnAddrArgsDict(TypedDict):
+        conn_addr: NotRequired[pulumi.Input[str]]
+        """
+        The Phoenix address.
+        """
+        conn_addr_port: NotRequired[pulumi.Input[str]]
+        """
+        The number of the port over which Phoenix connects to the instance.
+        """
+        net_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the network. Valid values:
+        """
+elif False:
+    InstanceUiProxyConnAddrArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class InstanceUiProxyConnAddrArgs:
     def __init__(__self__, *,
@@ -124,6 +168,23 @@ class InstanceUiProxyConnAddrArgs:
     def net_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "net_type", value)
 
+
+if not MYPY:
+    class InstanceZkConnAddrArgsDict(TypedDict):
+        conn_addr: NotRequired[pulumi.Input[str]]
+        """
+        The Phoenix address.
+        """
+        conn_addr_port: NotRequired[pulumi.Input[str]]
+        """
+        The number of the port over which Phoenix connects to the instance.
+        """
+        net_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the network. Valid values:
+        """
+elif False:
+    InstanceZkConnAddrArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceZkConnAddrArgs:

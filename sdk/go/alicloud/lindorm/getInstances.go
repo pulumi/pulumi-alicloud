@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := lindorm.GetInstances(ctx, nil, nil)
+//			ids, err := lindorm.GetInstances(ctx, &lindorm.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
