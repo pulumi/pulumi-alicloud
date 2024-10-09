@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -248,9 +253,6 @@ def get_vpc_firewall_cens(cen_id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         vpc_firewall_id=pulumi.get(__ret__, 'vpc_firewall_id'),
         vpc_firewall_name=pulumi.get(__ret__, 'vpc_firewall_name'))
-
-
-@_utilities.lift_output_func(get_vpc_firewall_cens)
 def get_vpc_firewall_cens_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  lang: Optional[pulumi.Input[Optional[str]]] = None,
@@ -293,4 +295,31 @@ def get_vpc_firewall_cens_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
     :param str vpc_firewall_id: VPC firewall ID
     :param str vpc_firewall_name: The name of the VPC firewall instance.
     """
-    ...
+    __args__ = dict()
+    __args__['cenId'] = cen_id
+    __args__['ids'] = ids
+    __args__['lang'] = lang
+    __args__['memberUid'] = member_uid
+    __args__['networkInstanceId'] = network_instance_id
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['status'] = status
+    __args__['vpcFirewallId'] = vpc_firewall_id
+    __args__['vpcFirewallName'] = vpc_firewall_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cloudfirewall/getVpcFirewallCens:getVpcFirewallCens', __args__, opts=opts, typ=GetVpcFirewallCensResult)
+    return __ret__.apply(lambda __response__: GetVpcFirewallCensResult(
+        cen_id=pulumi.get(__response__, 'cen_id'),
+        cens=pulumi.get(__response__, 'cens'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        lang=pulumi.get(__response__, 'lang'),
+        member_uid=pulumi.get(__response__, 'member_uid'),
+        network_instance_id=pulumi.get(__response__, 'network_instance_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        status=pulumi.get(__response__, 'status'),
+        vpc_firewall_id=pulumi.get(__response__, 'vpc_firewall_id'),
+        vpc_firewall_name=pulumi.get(__response__, 'vpc_firewall_name')))

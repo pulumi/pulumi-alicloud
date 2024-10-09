@@ -4,14 +4,39 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'StudioApplicationInstanceArgs',
+    'StudioApplicationInstanceArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class StudioApplicationInstanceArgsDict(TypedDict):
+        id: NotRequired[pulumi.Input[str]]
+        """
+        The id of the instance.
+        """
+        node_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the instance.
+        """
+        node_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the instance.
+        """
+elif False:
+    StudioApplicationInstanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StudioApplicationInstanceArgs:

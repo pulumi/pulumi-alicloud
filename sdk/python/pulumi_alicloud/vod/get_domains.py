@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -187,9 +192,6 @@ def get_domains(domain_search_type: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_domains)
 def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]] = None,
                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -240,4 +242,22 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
            * `Key`: It can be up to 64 characters in length. It cannot be a null string.
            * `Value`: It can be up to 128 characters in length. It can be a null string.
     """
-    ...
+    __args__ = dict()
+    __args__['domainSearchType'] = domain_search_type
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vod/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult)
+    return __ret__.apply(lambda __response__: GetDomainsResult(
+        domain_search_type=pulumi.get(__response__, 'domain_search_type'),
+        domains=pulumi.get(__response__, 'domains'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

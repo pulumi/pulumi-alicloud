@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Declare the data source
-//			_, err := fc.GetZones(ctx, nil, nil)
+//			_, err := fc.GetZones(ctx, &fc.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

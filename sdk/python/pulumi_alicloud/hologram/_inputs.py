@@ -4,14 +4,55 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceEndpointArgs',
+    'InstanceEndpointArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceEndpointArgsDict(TypedDict):
+        alternative_endpoints: NotRequired[pulumi.Input[str]]
+        """
+        Some old instances have both AnyTunnel and SingleTunnel enabled. When switching from AnyTunnel to SingleTunnel, the endpoints of both are retained. Therefore, one more field is required to store the Endpoint.
+        """
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to turn on the network.
+        """
+        endpoint: NotRequired[pulumi.Input[str]]
+        """
+        Domain name.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The network type.
+        """
+        vpc_id: NotRequired[pulumi.Input[str]]
+        """
+        VPC primary key.
+        """
+        vpc_instance_id: NotRequired[pulumi.Input[str]]
+        """
+        The vpc instance ID.
+        """
+        vswitch_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the virtual switch.
+        """
+elif False:
+    InstanceEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceEndpointArgs:

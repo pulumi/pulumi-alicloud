@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -176,9 +181,6 @@ def get_ipv6_addresses(associated_instance_id: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-
-
-@_utilities.lift_output_func(get_ipv6_addresses)
 def get_ipv6_addresses_output(associated_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -218,4 +220,22 @@ def get_ipv6_addresses_output(associated_instance_id: Optional[pulumi.Input[Opti
     :param str vpc_id: The ID of the VPC to which the IPv6 address belongs.
     :param str vswitch_id: The ID of the vSwitch to which the IPv6 address belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['associatedInstanceId'] = associated_instance_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['vpcId'] = vpc_id
+    __args__['vswitchId'] = vswitch_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getIpv6Addresses:getIpv6Addresses', __args__, opts=opts, typ=GetIpv6AddressesResult)
+    return __ret__.apply(lambda __response__: GetIpv6AddressesResult(
+        addresses=pulumi.get(__response__, 'addresses'),
+        associated_instance_id=pulumi.get(__response__, 'associated_instance_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id')))

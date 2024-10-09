@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := mongodb.GetZones(ctx, nil, nil)
+//			_default, err := mongodb.GetZones(ctx, &mongodb.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

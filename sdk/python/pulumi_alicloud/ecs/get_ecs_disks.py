@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -479,9 +484,6 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
         total_count=pulumi.get(__ret__, 'total_count'),
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_ecs_disks)
 def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          auto_snapshot_policy_id: Optional[pulumi.Input[Optional[str]]] = None,
                          availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
@@ -558,4 +560,69 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
     :param str type: Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
     :param str zone_id: ID of the free zone to which the disk belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['additionalAttributes'] = additional_attributes
+    __args__['autoSnapshotPolicyId'] = auto_snapshot_policy_id
+    __args__['availabilityZone'] = availability_zone
+    __args__['category'] = category
+    __args__['deleteAutoSnapshot'] = delete_auto_snapshot
+    __args__['deleteWithInstance'] = delete_with_instance
+    __args__['diskName'] = disk_name
+    __args__['diskType'] = disk_type
+    __args__['dryRun'] = dry_run
+    __args__['enableAutoSnapshot'] = enable_auto_snapshot
+    __args__['enableAutomatedSnapshotPolicy'] = enable_automated_snapshot_policy
+    __args__['enableShared'] = enable_shared
+    __args__['encrypted'] = encrypted
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['kmsKeyId'] = kms_key_id
+    __args__['nameRegex'] = name_regex
+    __args__['operationLocks'] = operation_locks
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['paymentType'] = payment_type
+    __args__['portable'] = portable
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['snapshotId'] = snapshot_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['type'] = type
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsDisks:getEcsDisks', __args__, opts=opts, typ=GetEcsDisksResult)
+    return __ret__.apply(lambda __response__: GetEcsDisksResult(
+        additional_attributes=pulumi.get(__response__, 'additional_attributes'),
+        auto_snapshot_policy_id=pulumi.get(__response__, 'auto_snapshot_policy_id'),
+        availability_zone=pulumi.get(__response__, 'availability_zone'),
+        category=pulumi.get(__response__, 'category'),
+        delete_auto_snapshot=pulumi.get(__response__, 'delete_auto_snapshot'),
+        delete_with_instance=pulumi.get(__response__, 'delete_with_instance'),
+        disk_name=pulumi.get(__response__, 'disk_name'),
+        disk_type=pulumi.get(__response__, 'disk_type'),
+        disks=pulumi.get(__response__, 'disks'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
+        enable_auto_snapshot=pulumi.get(__response__, 'enable_auto_snapshot'),
+        enable_automated_snapshot_policy=pulumi.get(__response__, 'enable_automated_snapshot_policy'),
+        enable_shared=pulumi.get(__response__, 'enable_shared'),
+        encrypted=pulumi.get(__response__, 'encrypted'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        kms_key_id=pulumi.get(__response__, 'kms_key_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        operation_locks=pulumi.get(__response__, 'operation_locks'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        payment_type=pulumi.get(__response__, 'payment_type'),
+        portable=pulumi.get(__response__, 'portable'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        snapshot_id=pulumi.get(__response__, 'snapshot_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        total_count=pulumi.get(__response__, 'total_count'),
+        type=pulumi.get(__response__, 'type'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -158,9 +163,6 @@ def get_listeners(accelerator_id: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_listeners)
 def get_listeners_output(accelerator_id: Optional[pulumi.Input[str]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -193,4 +195,20 @@ def get_listeners_output(accelerator_id: Optional[pulumi.Input[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the listener. Valid values: `active`, `configuring`, `creating`.
     """
-    ...
+    __args__ = dict()
+    __args__['acceleratorId'] = accelerator_id
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult)
+    return __ret__.apply(lambda __response__: GetListenersResult(
+        accelerator_id=pulumi.get(__response__, 'accelerator_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        listeners=pulumi.get(__response__, 'listeners'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

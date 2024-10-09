@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -127,9 +132,6 @@ def get_notifications(ids: Optional[Sequence[str]] = None,
         notifications=pulumi.get(__ret__, 'notifications'),
         output_file=pulumi.get(__ret__, 'output_file'),
         scaling_group_id=pulumi.get(__ret__, 'scaling_group_id'))
-
-
-@_utilities.lift_output_func(get_notifications)
 def get_notifications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -154,4 +156,15 @@ def get_notifications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str scaling_group_id: Scaling group id the notifications belong to.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['scalingGroupId'] = scaling_group_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ess/getNotifications:getNotifications', __args__, opts=opts, typ=GetNotificationsResult)
+    return __ret__.apply(lambda __response__: GetNotificationsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        notifications=pulumi.get(__response__, 'notifications'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        scaling_group_id=pulumi.get(__response__, 'scaling_group_id')))

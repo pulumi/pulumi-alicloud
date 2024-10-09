@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -209,9 +214,6 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         vpc_endpoint_name=pulumi.get(__ret__, 'vpc_endpoint_name'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_vpc_endpoints)
 def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[str]]] = None,
                              enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -251,4 +253,28 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
     :param str vpc_endpoint_name: The name of Vpc Endpoint.
     :param str vpc_id: The private network to which the terminal node belongs..
     """
-    ...
+    __args__ = dict()
+    __args__['connectionStatus'] = connection_status
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['serviceName'] = service_name
+    __args__['status'] = status
+    __args__['vpcEndpointName'] = vpc_endpoint_name
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:privatelink/getVpcEndpoints:getVpcEndpoints', __args__, opts=opts, typ=GetVpcEndpointsResult)
+    return __ret__.apply(lambda __response__: GetVpcEndpointsResult(
+        connection_status=pulumi.get(__response__, 'connection_status'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        endpoints=pulumi.get(__response__, 'endpoints'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        status=pulumi.get(__response__, 'status'),
+        vpc_endpoint_name=pulumi.get(__response__, 'vpc_endpoint_name'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

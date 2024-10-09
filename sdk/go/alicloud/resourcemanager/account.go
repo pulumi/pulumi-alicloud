@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			example, err := resourcemanager.GetFolders(ctx, nil, nil)
+//			example, err := resourcemanager.GetFolders(ctx, &resourcemanager.GetFoldersArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

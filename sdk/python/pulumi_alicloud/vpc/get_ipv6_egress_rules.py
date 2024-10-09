@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -195,9 +200,6 @@ def get_ipv6_egress_rules(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         rules=pulumi.get(__ret__, 'rules'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_ipv6_egress_rules)
 def get_ipv6_egress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  ipv6_egress_rule_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -245,4 +247,24 @@ def get_ipv6_egress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['ipv6EgressRuleName'] = ipv6_egress_rule_name
+    __args__['ipv6GatewayId'] = ipv6_gateway_id
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules', __args__, opts=opts, typ=GetIpv6EgressRulesResult)
+    return __ret__.apply(lambda __response__: GetIpv6EgressRulesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        ipv6_egress_rule_name=pulumi.get(__response__, 'ipv6_egress_rule_name'),
+        ipv6_gateway_id=pulumi.get(__response__, 'ipv6_gateway_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        rules=pulumi.get(__response__, 'rules'),
+        status=pulumi.get(__response__, 'status')))

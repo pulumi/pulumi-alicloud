@@ -4,21 +4,49 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ChangeSetParameterArgs',
+    'ChangeSetParameterArgsDict',
     'StackGroupParameterArgs',
+    'StackGroupParameterArgsDict',
     'StackInstanceParameterOverrideArgs',
+    'StackInstanceParameterOverrideArgsDict',
     'StackParameterArgs',
+    'StackParameterArgsDict',
     'TemplateScratchPreferenceParameterArgs',
+    'TemplateScratchPreferenceParameterArgsDict',
     'TemplateScratchSourceResourceArgs',
+    'TemplateScratchSourceResourceArgsDict',
     'TemplateScratchSourceResourceGroupArgs',
+    'TemplateScratchSourceResourceGroupArgsDict',
     'TemplateScratchSourceTagArgs',
+    'TemplateScratchSourceTagArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ChangeSetParameterArgsDict(TypedDict):
+        parameter_key: pulumi.Input[str]
+        """
+        The parameter key.
+        """
+        parameter_value: pulumi.Input[str]
+        """
+        The parameter value.
+        """
+elif False:
+    ChangeSetParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ChangeSetParameterArgs:
@@ -56,6 +84,19 @@ class ChangeSetParameterArgs:
     def parameter_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "parameter_value", value)
 
+
+if not MYPY:
+    class StackGroupParameterArgsDict(TypedDict):
+        parameter_key: NotRequired[pulumi.Input[str]]
+        """
+        The parameter key.
+        """
+        parameter_value: NotRequired[pulumi.Input[str]]
+        """
+        The parameter value.
+        """
+elif False:
+    StackGroupParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StackGroupParameterArgs:
@@ -96,6 +137,19 @@ class StackGroupParameterArgs:
         pulumi.set(self, "parameter_value", value)
 
 
+if not MYPY:
+    class StackInstanceParameterOverrideArgsDict(TypedDict):
+        parameter_key: NotRequired[pulumi.Input[str]]
+        """
+        The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        """
+        parameter_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
+        """
+elif False:
+    StackInstanceParameterOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StackInstanceParameterOverrideArgs:
     def __init__(__self__, *,
@@ -135,6 +189,19 @@ class StackInstanceParameterOverrideArgs:
         pulumi.set(self, "parameter_value", value)
 
 
+if not MYPY:
+    class StackParameterArgsDict(TypedDict):
+        parameter_value: pulumi.Input[str]
+        """
+        The parameter value.
+        """
+        parameter_key: NotRequired[pulumi.Input[str]]
+        """
+        The parameter key.
+        """
+elif False:
+    StackParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StackParameterArgs:
     def __init__(__self__, *,
@@ -173,6 +240,19 @@ class StackParameterArgs:
         pulumi.set(self, "parameter_key", value)
 
 
+if not MYPY:
+    class TemplateScratchPreferenceParameterArgsDict(TypedDict):
+        parameter_key: pulumi.Input[str]
+        """
+        Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        """
+        parameter_value: pulumi.Input[str]
+        """
+        Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
+        """
+elif False:
+    TemplateScratchPreferenceParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TemplateScratchPreferenceParameterArgs:
     def __init__(__self__, *,
@@ -209,6 +289,19 @@ class TemplateScratchPreferenceParameterArgs:
     def parameter_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "parameter_value", value)
 
+
+if not MYPY:
+    class TemplateScratchSourceResourceArgsDict(TypedDict):
+        resource_id: pulumi.Input[str]
+        """
+        The ID of the Source Resource.
+        """
+        resource_type: pulumi.Input[str]
+        """
+        The type of the Source resource.
+        """
+elif False:
+    TemplateScratchSourceResourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TemplateScratchSourceResourceArgs:
@@ -247,6 +340,16 @@ class TemplateScratchSourceResourceArgs:
         pulumi.set(self, "resource_type", value)
 
 
+if not MYPY:
+    class TemplateScratchSourceResourceGroupArgsDict(TypedDict):
+        resource_group_id: pulumi.Input[str]
+        """
+        The ID of the Source Resource Group.
+        """
+        resource_type_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    TemplateScratchSourceResourceGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TemplateScratchSourceResourceGroupArgs:
     def __init__(__self__, *,
@@ -280,6 +383,16 @@ class TemplateScratchSourceResourceGroupArgs:
     def resource_type_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "resource_type_filters", value)
 
+
+if not MYPY:
+    class TemplateScratchSourceTagArgsDict(TypedDict):
+        resource_tags: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        Source label. **NOTE:** A maximum of 10 source labels can be configured.
+        """
+        resource_type_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    TemplateScratchSourceTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TemplateScratchSourceTagArgs:

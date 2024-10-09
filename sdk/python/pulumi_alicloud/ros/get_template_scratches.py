@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -150,9 +155,6 @@ def get_template_scratches(enable_details: Optional[bool] = None,
         scratches=pulumi.get(__ret__, 'scratches'),
         status=pulumi.get(__ret__, 'status'),
         template_scratch_type=pulumi.get(__ret__, 'template_scratch_type'))
-
-
-@_utilities.lift_output_func(get_template_scratches)
 def get_template_scratches_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                                   ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -187,4 +189,19 @@ def get_template_scratches_output(enable_details: Optional[pulumi.Input[Optional
     :param str status: The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
     :param str template_scratch_type: The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['templateScratchType'] = template_scratch_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getTemplateScratches:getTemplateScratches', __args__, opts=opts, typ=GetTemplateScratchesResult)
+    return __ret__.apply(lambda __response__: GetTemplateScratchesResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        scratches=pulumi.get(__response__, 'scratches'),
+        status=pulumi.get(__response__, 'status'),
+        template_scratch_type=pulumi.get(__response__, 'template_scratch_type')))

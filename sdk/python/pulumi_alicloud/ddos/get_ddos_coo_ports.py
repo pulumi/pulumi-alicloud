@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -147,9 +152,6 @@ def get_ddos_coo_ports(frontend_port: Optional[str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         ports=pulumi.get(__ret__, 'ports'))
-
-
-@_utilities.lift_output_func(get_ddos_coo_ports)
 def get_ddos_coo_ports_output(frontend_port: Optional[pulumi.Input[Optional[str]]] = None,
                               frontend_protocol: Optional[pulumi.Input[Optional[str]]] = None,
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -181,4 +183,19 @@ def get_ddos_coo_ports_output(frontend_port: Optional[pulumi.Input[Optional[str]
     :param str instance_id: The Ddoscoo instance ID.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['frontendPort'] = frontend_port
+    __args__['frontendProtocol'] = frontend_protocol
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ddos/getDdosCooPorts:getDdosCooPorts', __args__, opts=opts, typ=GetDdosCooPortsResult)
+    return __ret__.apply(lambda __response__: GetDdosCooPortsResult(
+        frontend_port=pulumi.get(__response__, 'frontend_port'),
+        frontend_protocol=pulumi.get(__response__, 'frontend_protocol'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        ports=pulumi.get(__response__, 'ports')))

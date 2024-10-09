@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := threatdetection.GetAssets(ctx, nil, nil)
+//			_default, err := threatdetection.GetAssets(ctx, &threatdetection.GetAssetsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

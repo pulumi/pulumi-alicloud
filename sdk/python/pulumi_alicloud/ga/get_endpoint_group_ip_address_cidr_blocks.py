@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -126,9 +131,6 @@ def get_endpoint_group_ip_address_cidr_blocks(accelerator_id: Optional[str] = No
         endpoint_group_region=pulumi.get(__ret__, 'endpoint_group_region'),
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_endpoint_group_ip_address_cidr_blocks)
 def get_endpoint_group_ip_address_cidr_blocks_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                      endpoint_group_region: Optional[pulumi.Input[str]] = None,
                                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -155,4 +157,15 @@ def get_endpoint_group_ip_address_cidr_blocks_output(accelerator_id: Optional[pu
     :param str endpoint_group_region: The region ID of the endpoint group.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['acceleratorId'] = accelerator_id
+    __args__['endpointGroupRegion'] = endpoint_group_region
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks', __args__, opts=opts, typ=GetEndpointGroupIpAddressCidrBlocksResult)
+    return __ret__.apply(lambda __response__: GetEndpointGroupIpAddressCidrBlocksResult(
+        accelerator_id=pulumi.get(__response__, 'accelerator_id'),
+        endpoint_group_ip_address_cidr_blocks=pulumi.get(__response__, 'endpoint_group_ip_address_cidr_blocks'),
+        endpoint_group_region=pulumi.get(__response__, 'endpoint_group_region'),
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file')))

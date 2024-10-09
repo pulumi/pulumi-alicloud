@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -235,9 +240,6 @@ def get_vpc_flow_logs(description: Optional[str] = None,
         resource_type=pulumi.get(__ret__, 'resource_type'),
         status=pulumi.get(__ret__, 'status'),
         traffic_type=pulumi.get(__ret__, 'traffic_type'))
-
-
-@_utilities.lift_output_func(get_vpc_flow_logs)
 def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] = None,
                              flow_log_name: Optional[pulumi.Input[Optional[str]]] = None,
                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -281,4 +283,32 @@ def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] 
     :param str status: The status of  flow log. Valid values: `Active`, `Inactive`.
     :param str traffic_type: The traffic type. Valid values: `All`, `Allow`, `Drop`.
     """
-    ...
+    __args__ = dict()
+    __args__['description'] = description
+    __args__['flowLogName'] = flow_log_name
+    __args__['ids'] = ids
+    __args__['logStoreName'] = log_store_name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['projectName'] = project_name
+    __args__['resourceId'] = resource_id
+    __args__['resourceType'] = resource_type
+    __args__['status'] = status
+    __args__['trafficType'] = traffic_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs', __args__, opts=opts, typ=GetVpcFlowLogsResult)
+    return __ret__.apply(lambda __response__: GetVpcFlowLogsResult(
+        description=pulumi.get(__response__, 'description'),
+        flow_log_name=pulumi.get(__response__, 'flow_log_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        log_store_name=pulumi.get(__response__, 'log_store_name'),
+        logs=pulumi.get(__response__, 'logs'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        project_name=pulumi.get(__response__, 'project_name'),
+        resource_id=pulumi.get(__response__, 'resource_id'),
+        resource_type=pulumi.get(__response__, 'resource_type'),
+        status=pulumi.get(__response__, 'status'),
+        traffic_type=pulumi.get(__response__, 'traffic_type')))

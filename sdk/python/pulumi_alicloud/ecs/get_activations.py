@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -154,9 +159,6 @@ def get_activations(ids: Optional[Sequence[str]] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         total_count=pulumi.get(__ret__, 'total_count'))
-
-
-@_utilities.lift_output_func(get_activations)
 def get_activations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            instance_name: Optional[pulumi.Input[Optional[str]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -185,4 +187,20 @@ def get_activations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     :param str instance_name: The default prefix of the instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['instanceName'] = instance_name
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getActivations:getActivations', __args__, opts=opts, typ=GetActivationsResult)
+    return __ret__.apply(lambda __response__: GetActivationsResult(
+        activations=pulumi.get(__response__, 'activations'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_name=pulumi.get(__response__, 'instance_name'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        total_count=pulumi.get(__response__, 'total_count')))

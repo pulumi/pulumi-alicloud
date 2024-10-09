@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -183,9 +188,6 @@ def get_domain_records(domain_name: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         urls=pulumi.get(__ret__, 'urls'),
         value_regex=pulumi.get(__ret__, 'value_regex'))
-
-
-@_utilities.lift_output_func(get_domain_records)
 def get_domain_records_output(domain_name: Optional[pulumi.Input[str]] = None,
                               host_record_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -199,4 +201,28 @@ def get_domain_records_output(domain_name: Optional[pulumi.Input[str]] = None,
     """
     > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `dns_get_records` instead.
     """
-    ...
+    __args__ = dict()
+    __args__['domainName'] = domain_name
+    __args__['hostRecordRegex'] = host_record_regex
+    __args__['ids'] = ids
+    __args__['isLocked'] = is_locked
+    __args__['line'] = line
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['type'] = type
+    __args__['valueRegex'] = value_regex
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getDomainRecords:getDomainRecords', __args__, opts=opts, typ=GetDomainRecordsResult)
+    return __ret__.apply(lambda __response__: GetDomainRecordsResult(
+        domain_name=pulumi.get(__response__, 'domain_name'),
+        host_record_regex=pulumi.get(__response__, 'host_record_regex'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        is_locked=pulumi.get(__response__, 'is_locked'),
+        line=pulumi.get(__response__, 'line'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        records=pulumi.get(__response__, 'records'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type'),
+        urls=pulumi.get(__response__, 'urls'),
+        value_regex=pulumi.get(__response__, 'value_regex')))

@@ -4,16 +4,39 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'VvpInstanceResourceSpecArgs',
+    'VvpInstanceResourceSpecArgsDict',
     'VvpInstanceStorageArgs',
+    'VvpInstanceStorageArgsDict',
     'VvpInstanceStorageOssArgs',
+    'VvpInstanceStorageOssArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class VvpInstanceResourceSpecArgsDict(TypedDict):
+        cpu: NotRequired[pulumi.Input[int]]
+        """
+        CPU number.
+        """
+        memory_gb: NotRequired[pulumi.Input[int]]
+        """
+        Memory size.
+        """
+elif False:
+    VvpInstanceResourceSpecArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VvpInstanceResourceSpecArgs:
@@ -54,6 +77,15 @@ class VvpInstanceResourceSpecArgs:
         pulumi.set(self, "memory_gb", value)
 
 
+if not MYPY:
+    class VvpInstanceStorageArgsDict(TypedDict):
+        oss: pulumi.Input['VvpInstanceStorageOssArgsDict']
+        """
+        OSS stores information. See `oss` below.
+        """
+elif False:
+    VvpInstanceStorageArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class VvpInstanceStorageArgs:
     def __init__(__self__, *,
@@ -75,6 +107,15 @@ class VvpInstanceStorageArgs:
     def oss(self, value: pulumi.Input['VvpInstanceStorageOssArgs']):
         pulumi.set(self, "oss", value)
 
+
+if not MYPY:
+    class VvpInstanceStorageOssArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        OSS Bucket name.
+        """
+elif False:
+    VvpInstanceStorageOssArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VvpInstanceStorageOssArgs:

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -245,9 +250,6 @@ def get_container_groups(container_group_name: Optional[str] = None,
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'),
         with_event=pulumi.get(__ret__, 'with_event'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_container_groups)
 def get_container_groups_output(container_group_name: Optional[pulumi.Input[Optional[str]]] = None,
                                 enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                                 ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -290,4 +292,34 @@ def get_container_groups_output(container_group_name: Optional[pulumi.Input[Opti
     :param str vswitch_id: The ID of the vSwitch. Currently, container groups can only be deployed in VPC networks.
     :param str zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
     """
-    ...
+    __args__ = dict()
+    __args__['containerGroupName'] = container_group_name
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['limit'] = limit
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vswitchId'] = vswitch_id
+    __args__['withEvent'] = with_event
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:eci/getContainerGroups:getContainerGroups', __args__, opts=opts, typ=GetContainerGroupsResult)
+    return __ret__.apply(lambda __response__: GetContainerGroupsResult(
+        container_group_name=pulumi.get(__response__, 'container_group_name'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        limit=pulumi.get(__response__, 'limit'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id'),
+        with_event=pulumi.get(__response__, 'with_event'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

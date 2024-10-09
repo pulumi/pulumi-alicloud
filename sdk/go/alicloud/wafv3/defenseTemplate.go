@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := wafv3.GetInstances(ctx, nil, nil)
+//			_default, err := wafv3.GetInstances(ctx, &wafv3.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

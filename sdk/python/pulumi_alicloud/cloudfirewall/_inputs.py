@@ -4,25 +4,57 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AddressBookEcsTagArgs',
+    'AddressBookEcsTagArgsDict',
     'FirewallVpcFirewallCenLocalVpcArgs',
+    'FirewallVpcFirewallCenLocalVpcArgsDict',
     'FirewallVpcFirewallCenLocalVpcEniListArgs',
+    'FirewallVpcFirewallCenLocalVpcEniListArgsDict',
     'FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs',
+    'FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgsDict',
     'FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs',
+    'FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgsDict',
     'FirewallVpcFirewallLocalVpcArgs',
+    'FirewallVpcFirewallLocalVpcArgsDict',
     'FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs',
+    'FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgsDict',
     'FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs',
+    'FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgsDict',
     'FirewallVpcFirewallPeerVpcArgs',
+    'FirewallVpcFirewallPeerVpcArgsDict',
     'FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs',
+    'FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgsDict',
     'FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs',
+    'FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgsDict',
     'NatFirewallNatRouteEntryListArgs',
+    'NatFirewallNatRouteEntryListArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AddressBookEcsTagArgsDict(TypedDict):
+        tag_key: NotRequired[pulumi.Input[str]]
+        """
+        The key of ECS tag that to be matched.
+        """
+        tag_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of ECS tag that to be matched.
+        """
+elif False:
+    AddressBookEcsTagArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AddressBookEcsTagArgs:
@@ -62,6 +94,79 @@ class AddressBookEcsTagArgs:
     def tag_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tag_value", value)
 
+
+if not MYPY:
+    class FirewallVpcFirewallCenLocalVpcArgsDict(TypedDict):
+        network_instance_id: pulumi.Input[str]
+        """
+        The ID of the VPC instance that created the VPC firewall.
+        """
+        attachment_id: NotRequired[pulumi.Input[str]]
+        """
+        The connection ID of the network instance.
+        """
+        attachment_name: NotRequired[pulumi.Input[str]]
+        """
+        The connection name of the network instance.
+        """
+        defend_cidr_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of network segments protected by the VPC firewall.
+        """
+        eni_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcEniListArgsDict']]]]
+        """
+        List of elastic network cards.
+        """
+        manual_vswitch_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the vSwitch specified when the routing mode is manual mode.
+        """
+        network_instance_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the network instance.
+        """
+        network_instance_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the network instance. Value: **VPC * *.
+        """
+        owner_id: NotRequired[pulumi.Input[str]]
+        """
+        The UID of the Alibaba Cloud account to which the VPC belongs.
+        """
+        region_no: NotRequired[pulumi.Input[str]]
+        """
+        The region ID of the VPC.
+        """
+        route_mode: NotRequired[pulumi.Input[str]]
+        """
+        Routing mode,. Value:-auto: indicates automatic mode.-manual: indicates manual mode.
+        """
+        support_manual_mode: NotRequired[pulumi.Input[str]]
+        """
+        Whether routing mode supports manual mode. Value:-**1**: Supported.-**0**: Not supported.
+        """
+        transit_router_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the CEN-TR instance.
+        """
+        transit_router_type: NotRequired[pulumi.Input[str]]
+        """
+        The version of the cloud enterprise network forwarding router (CEN-TR). Value:-**Basic**: Basic Edition.-**Enterprise**: Enterprise Edition.
+        """
+        vpc_cidr_table_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgsDict']]]]
+        """
+        The VPC network segment list.
+        """
+        vpc_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the VPC instance.
+        """
+        vpc_name: NotRequired[pulumi.Input[str]]
+        """
+        The instance name of the VPC.
+        """
+elif False:
+    FirewallVpcFirewallCenLocalVpcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallVpcFirewallCenLocalVpcArgs:
@@ -341,6 +446,19 @@ class FirewallVpcFirewallCenLocalVpcArgs:
         pulumi.set(self, "vpc_name", value)
 
 
+if not MYPY:
+    class FirewallVpcFirewallCenLocalVpcEniListArgsDict(TypedDict):
+        eni_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the instance of the ENI in the VPC.
+        """
+        eni_private_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address of the ENI in the VPC.
+        """
+elif False:
+    FirewallVpcFirewallCenLocalVpcEniListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallVpcFirewallCenLocalVpcEniListArgs:
     def __init__(__self__, *,
@@ -379,6 +497,19 @@ class FirewallVpcFirewallCenLocalVpcEniListArgs:
     def eni_private_ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "eni_private_ip_address", value)
 
+
+if not MYPY:
+    class FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgsDict(TypedDict):
+        route_entry_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgsDict']]]]
+        """
+        The list of route entries in the VPC.
+        """
+        route_table_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the route table of the VPC.
+        """
+elif False:
+    FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs:
@@ -419,6 +550,19 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListArgs:
         pulumi.set(self, "route_table_id", value)
 
 
+if not MYPY:
+    class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgsDict(TypedDict):
+        destination_cidr: NotRequired[pulumi.Input[str]]
+        """
+        The target network segment of the VPC.
+        """
+        next_hop_instance_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the next hop instance in the VPC.
+        """
+elif False:
+    FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs:
     def __init__(__self__, *,
@@ -457,6 +601,39 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs:
     def next_hop_instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "next_hop_instance_id", value)
 
+
+if not MYPY:
+    class FirewallVpcFirewallLocalVpcArgsDict(TypedDict):
+        local_vpc_cidr_table_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgsDict']]]
+        """
+        The network segment list of the local VPC. See `local_vpc_cidr_table_list` below.
+        """
+        region_no: pulumi.Input[str]
+        """
+        The region ID of the local VPC.
+        """
+        vpc_id: pulumi.Input[str]
+        """
+        The ID of the local VPC instance.
+        """
+        eni_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the instance of the ENI in the peer VPC.
+        """
+        eni_private_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address of the elastic network card in the peer VPC.
+        """
+        router_interface_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the router interface in the peer VPC.
+        """
+        vpc_name: NotRequired[pulumi.Input[str]]
+        """
+        The instance name of the peer VPC.
+        """
+elif False:
+    FirewallVpcFirewallLocalVpcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallVpcFirewallLocalVpcArgs:
@@ -574,6 +751,19 @@ class FirewallVpcFirewallLocalVpcArgs:
         pulumi.set(self, "vpc_name", value)
 
 
+if not MYPY:
+    class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgsDict(TypedDict):
+        local_route_entry_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgsDict']]]
+        """
+        The list of route entries of the local VPC. See `local_route_entry_list` below.
+        """
+        local_route_table_id: pulumi.Input[str]
+        """
+        The ID of the route table of the local VPC.
+        """
+elif False:
+    FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs:
     def __init__(__self__, *,
@@ -611,6 +801,19 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs:
         pulumi.set(self, "local_route_table_id", value)
 
 
+if not MYPY:
+    class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgsDict(TypedDict):
+        local_destination_cidr: pulumi.Input[str]
+        """
+        The target network segment of the local VPC.
+        """
+        local_next_hop_instance_id: pulumi.Input[str]
+        """
+        The ID of the next-hop instance in the local VPC.
+        """
+elif False:
+    FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs:
     def __init__(__self__, *,
@@ -647,6 +850,39 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs:
     def local_next_hop_instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "local_next_hop_instance_id", value)
 
+
+if not MYPY:
+    class FirewallVpcFirewallPeerVpcArgsDict(TypedDict):
+        peer_vpc_cidr_table_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgsDict']]]
+        """
+        The network segment list of the peer VPC. See `peer_vpc_cidr_table_list` below.
+        """
+        region_no: pulumi.Input[str]
+        """
+        The region ID of the peer VPC.
+        """
+        vpc_id: pulumi.Input[str]
+        """
+        The ID of the peer VPC instance.
+        """
+        eni_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the instance of the ENI in the peer VPC.
+        """
+        eni_private_ip_address: NotRequired[pulumi.Input[str]]
+        """
+        The private IP address of the elastic network card in the peer VPC.
+        """
+        router_interface_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the router interface in the peer VPC.
+        """
+        vpc_name: NotRequired[pulumi.Input[str]]
+        """
+        The instance name of the peer VPC.
+        """
+elif False:
+    FirewallVpcFirewallPeerVpcArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class FirewallVpcFirewallPeerVpcArgs:
@@ -764,6 +1000,19 @@ class FirewallVpcFirewallPeerVpcArgs:
         pulumi.set(self, "vpc_name", value)
 
 
+if not MYPY:
+    class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgsDict(TypedDict):
+        peer_route_entry_lists: pulumi.Input[Sequence[pulumi.Input['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgsDict']]]
+        """
+        Peer VPC route entry list information. See `peer_route_entry_list` below.
+        """
+        peer_route_table_id: pulumi.Input[str]
+        """
+        The ID of the route table of the peer VPC.
+        """
+elif False:
+    FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs:
     def __init__(__self__, *,
@@ -801,6 +1050,19 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs:
         pulumi.set(self, "peer_route_table_id", value)
 
 
+if not MYPY:
+    class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgsDict(TypedDict):
+        peer_destination_cidr: pulumi.Input[str]
+        """
+        The target network segment of the peer VPC.
+        """
+        peer_next_hop_instance_id: pulumi.Input[str]
+        """
+        The ID of the next-hop instance in the peer VPC.
+        """
+elif False:
+    FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs:
     def __init__(__self__, *,
@@ -837,6 +1099,27 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs:
     def peer_next_hop_instance_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "peer_next_hop_instance_id", value)
 
+
+if not MYPY:
+    class NatFirewallNatRouteEntryListArgsDict(TypedDict):
+        destination_cidr: pulumi.Input[str]
+        """
+        The destination network segment of the default route.
+        """
+        nexthop_id: pulumi.Input[str]
+        """
+        The next hop address of the original NAT gateway.
+        """
+        nexthop_type: pulumi.Input[str]
+        """
+        The network type of the next hop. Value: NatGateway : NAT Gateway.
+        """
+        route_table_id: pulumi.Input[str]
+        """
+        The route table where the default route of the NAT gateway is located.
+        """
+elif False:
+    NatFirewallNatRouteEntryListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NatFirewallNatRouteEntryListArgs:

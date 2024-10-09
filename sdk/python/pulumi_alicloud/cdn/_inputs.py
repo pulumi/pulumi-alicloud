@@ -4,23 +4,49 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DomainAuthConfigArgs',
+    'DomainAuthConfigArgsDict',
     'DomainCacheConfigArgs',
+    'DomainCacheConfigArgsDict',
     'DomainCertificateConfigArgs',
+    'DomainCertificateConfigArgsDict',
     'DomainConfigFunctionArgArgs',
+    'DomainConfigFunctionArgArgsDict',
     'DomainHttpHeaderConfigArgs',
+    'DomainHttpHeaderConfigArgsDict',
     'DomainNewCertificateConfigArgs',
+    'DomainNewCertificateConfigArgsDict',
     'DomainNewSourceArgs',
+    'DomainNewSourceArgsDict',
     'DomainPage404ConfigArgs',
+    'DomainPage404ConfigArgsDict',
     'DomainParameterFilterConfigArgs',
+    'DomainParameterFilterConfigArgsDict',
     'DomainReferConfigArgs',
+    'DomainReferConfigArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DomainAuthConfigArgsDict(TypedDict):
+        auth_type: NotRequired[pulumi.Input[str]]
+        master_key: NotRequired[pulumi.Input[str]]
+        slave_key: NotRequired[pulumi.Input[str]]
+        timeout: NotRequired[pulumi.Input[int]]
+elif False:
+    DomainAuthConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainAuthConfigArgs:
@@ -74,6 +100,16 @@ class DomainAuthConfigArgs:
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
+
+if not MYPY:
+    class DomainCacheConfigArgsDict(TypedDict):
+        cache_content: pulumi.Input[str]
+        cache_type: pulumi.Input[str]
+        ttl: pulumi.Input[int]
+        cache_id: NotRequired[pulumi.Input[str]]
+        weight: NotRequired[pulumi.Input[int]]
+elif False:
+    DomainCacheConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainCacheConfigArgs:
@@ -137,6 +173,14 @@ class DomainCacheConfigArgs:
         pulumi.set(self, "weight", value)
 
 
+if not MYPY:
+    class DomainCertificateConfigArgsDict(TypedDict):
+        private_key: NotRequired[pulumi.Input[str]]
+        server_certificate: NotRequired[pulumi.Input[str]]
+        server_certificate_status: NotRequired[pulumi.Input[str]]
+elif False:
+    DomainCertificateConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DomainCertificateConfigArgs:
     def __init__(__self__, *,
@@ -178,6 +222,19 @@ class DomainCertificateConfigArgs:
         pulumi.set(self, "server_certificate_status", value)
 
 
+if not MYPY:
+    class DomainConfigFunctionArgArgsDict(TypedDict):
+        arg_name: pulumi.Input[str]
+        """
+        The name of arg.
+        """
+        arg_value: pulumi.Input[str]
+        """
+        The value of arg.
+        """
+elif False:
+    DomainConfigFunctionArgArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DomainConfigFunctionArgArgs:
     def __init__(__self__, *,
@@ -214,6 +271,14 @@ class DomainConfigFunctionArgArgs:
     def arg_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "arg_value", value)
 
+
+if not MYPY:
+    class DomainHttpHeaderConfigArgsDict(TypedDict):
+        header_key: pulumi.Input[str]
+        header_value: pulumi.Input[str]
+        header_id: NotRequired[pulumi.Input[str]]
+elif False:
+    DomainHttpHeaderConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainHttpHeaderConfigArgs:
@@ -253,6 +318,49 @@ class DomainHttpHeaderConfigArgs:
     def header_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "header_id", value)
 
+
+if not MYPY:
+    class DomainNewCertificateConfigArgsDict(TypedDict):
+        cert_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the certificate. It takes effect only when CertType = cas.
+        """
+        cert_name: NotRequired[pulumi.Input[str]]
+        """
+        Certificate name, only flyer names are supported.
+        """
+        cert_region: NotRequired[pulumi.Input[str]]
+        """
+        The certificate region, which takes effect only when CertType = cas, supports cn-hangzhou (domestic) and ap-southeast-1 (International), and is cn-hangzhou by default.
+        """
+        cert_type: NotRequired[pulumi.Input[str]]
+        """
+        Certificate type. Value:
+        - **upload**: upload certificate.
+        - **cas**: Cloud Shield certificate.
+        - **free**: free certificate.
+        > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+        """
+        force_set: NotRequired[pulumi.Input[str]]
+        """
+        The force set of the security certificate.
+        """
+        private_key: NotRequired[pulumi.Input[str]]
+        """
+        The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
+        """
+        server_certificate: NotRequired[pulumi.Input[str]]
+        """
+        The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
+        """
+        server_certificate_status: NotRequired[pulumi.Input[str]]
+        """
+        Whether the HTTPS certificate is enabled. Value:
+        - **on**(default): enabled.
+        - **off** : not enabled.
+        """
+elif False:
+    DomainNewCertificateConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainNewCertificateConfigArgs:
@@ -401,6 +509,31 @@ class DomainNewCertificateConfigArgs:
         pulumi.set(self, "server_certificate_status", value)
 
 
+if not MYPY:
+    class DomainNewSourceArgsDict(TypedDict):
+        content: NotRequired[pulumi.Input[str]]
+        """
+        The address of source. Valid values can be ip or doaminName. Each item's `content` can not be repeated.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port of source. Valid values are `443` and `80`. Default value is `80`.
+        """
+        priority: NotRequired[pulumi.Input[int]]
+        """
+        Priority of the source. Valid values are `0` and `100`. Default value is `20`.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+        """
+elif False:
+    DomainNewSourceArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DomainNewSourceArgs:
     def __init__(__self__, *,
@@ -488,6 +621,14 @@ class DomainNewSourceArgs:
         pulumi.set(self, "weight", value)
 
 
+if not MYPY:
+    class DomainPage404ConfigArgsDict(TypedDict):
+        custom_page_url: NotRequired[pulumi.Input[str]]
+        error_code: NotRequired[pulumi.Input[str]]
+        page_type: NotRequired[pulumi.Input[str]]
+elif False:
+    DomainPage404ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DomainPage404ConfigArgs:
     def __init__(__self__, *,
@@ -529,6 +670,13 @@ class DomainPage404ConfigArgs:
         pulumi.set(self, "page_type", value)
 
 
+if not MYPY:
+    class DomainParameterFilterConfigArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[str]]
+        hash_key_args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    DomainParameterFilterConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DomainParameterFilterConfigArgs:
     def __init__(__self__, *,
@@ -557,6 +705,14 @@ class DomainParameterFilterConfigArgs:
     def hash_key_args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "hash_key_args", value)
 
+
+if not MYPY:
+    class DomainReferConfigArgsDict(TypedDict):
+        refer_lists: pulumi.Input[Sequence[pulumi.Input[str]]]
+        allow_empty: NotRequired[pulumi.Input[str]]
+        refer_type: NotRequired[pulumi.Input[str]]
+elif False:
+    DomainReferConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainReferConfigArgs:

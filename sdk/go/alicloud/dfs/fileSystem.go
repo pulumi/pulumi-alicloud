@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := dfs.GetZones(ctx, nil, nil)
+//			_default, err := dfs.GetZones(ctx, &dfs.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -183,9 +188,6 @@ def get_groups(group_id_regex: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_groups)
 def get_groups_output(group_id_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       group_type: Optional[pulumi.Input[Optional[str]]] = None,
                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -209,4 +211,24 @@ def get_groups_output(group_id_regex: Optional[pulumi.Input[Optional[str]]] = No
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, str] tags: A map of tags assigned to the Ons instance.
     """
-    ...
+    __args__ = dict()
+    __args__['groupIdRegex'] = group_id_regex
+    __args__['groupType'] = group_type
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rocketmq/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
+    return __ret__.apply(lambda __response__: GetGroupsResult(
+        group_id_regex=pulumi.get(__response__, 'group_id_regex'),
+        group_type=pulumi.get(__response__, 'group_type'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        tags=pulumi.get(__response__, 'tags')))

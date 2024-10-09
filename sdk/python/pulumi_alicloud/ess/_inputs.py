@@ -4,37 +4,93 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AlarmExpressionArgs',
+    'AlarmExpressionArgsDict',
     'EciScalingConfigurationAcrRegistryInfoArgs',
+    'EciScalingConfigurationAcrRegistryInfoArgsDict',
     'EciScalingConfigurationContainerArgs',
+    'EciScalingConfigurationContainerArgsDict',
     'EciScalingConfigurationContainerEnvironmentVarArgs',
+    'EciScalingConfigurationContainerEnvironmentVarArgsDict',
     'EciScalingConfigurationContainerPortArgs',
+    'EciScalingConfigurationContainerPortArgsDict',
     'EciScalingConfigurationContainerVolumeMountArgs',
+    'EciScalingConfigurationContainerVolumeMountArgsDict',
     'EciScalingConfigurationHostAliasArgs',
+    'EciScalingConfigurationHostAliasArgsDict',
     'EciScalingConfigurationImageRegistryCredentialArgs',
+    'EciScalingConfigurationImageRegistryCredentialArgsDict',
     'EciScalingConfigurationInitContainerArgs',
+    'EciScalingConfigurationInitContainerArgsDict',
     'EciScalingConfigurationInitContainerEnvironmentVarArgs',
+    'EciScalingConfigurationInitContainerEnvironmentVarArgsDict',
     'EciScalingConfigurationInitContainerPortArgs',
+    'EciScalingConfigurationInitContainerPortArgsDict',
     'EciScalingConfigurationInitContainerVolumeMountArgs',
+    'EciScalingConfigurationInitContainerVolumeMountArgsDict',
     'EciScalingConfigurationVolumeArgs',
+    'EciScalingConfigurationVolumeArgsDict',
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs',
+    'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict',
     'ScalingConfigurationDataDiskArgs',
+    'ScalingConfigurationDataDiskArgsDict',
     'ScalingConfigurationInstancePatternInfoArgs',
+    'ScalingConfigurationInstancePatternInfoArgsDict',
     'ScalingConfigurationInstanceTypeOverrideArgs',
+    'ScalingConfigurationInstanceTypeOverrideArgsDict',
     'ScalingConfigurationSpotPriceLimitArgs',
+    'ScalingConfigurationSpotPriceLimitArgsDict',
     'ScalingGroupAlbServerGroupArgs',
+    'ScalingGroupAlbServerGroupArgsDict',
     'ScalingGroupLaunchTemplateOverrideArgs',
+    'ScalingGroupLaunchTemplateOverrideArgsDict',
     'ScalingGroupVServerGroupsVserverGroupArgs',
+    'ScalingGroupVServerGroupsVserverGroupArgsDict',
     'ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs',
+    'ScalingGroupVServerGroupsVserverGroupVserverAttributeArgsDict',
     'ScalingRuleAlarmDimensionArgs',
+    'ScalingRuleAlarmDimensionArgsDict',
     'ScalingRuleStepAdjustmentArgs',
+    'ScalingRuleStepAdjustmentArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AlarmExpressionArgsDict(TypedDict):
+        comparison_operator: NotRequired[pulumi.Input[str]]
+        """
+        The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: >=, <=, >, <. Defaults to >=.
+        """
+        metric_name: NotRequired[pulumi.Input[str]]
+        """
+        The name for the alarm's associated metric. See `dimensions` below for details.
+        """
+        period: NotRequired[pulumi.Input[int]]
+        """
+        The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
+        """
+        statistics: NotRequired[pulumi.Input[str]]
+        """
+        The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
+        """
+        threshold: NotRequired[pulumi.Input[float]]
+        """
+        The value against which the specified statistics is compared.
+        """
+elif False:
+    AlarmExpressionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlarmExpressionArgs:
@@ -123,6 +179,31 @@ class AlarmExpressionArgs:
         pulumi.set(self, "threshold", value)
 
 
+if not MYPY:
+    class EciScalingConfigurationAcrRegistryInfoArgsDict(TypedDict):
+        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Endpoint of Container Registry Enterprise Edition instance. By default, all endpoints of the Container Registry Enterprise Edition instance are displayed. It is required
+        when `acr_registry_info` is configured.
+        """
+        instance_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of Container Registry Enterprise Edition instance. It is required
+        when `acr_registry_info` is configured.
+        """
+        instance_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
+        configured.
+        """
+        region_id: NotRequired[pulumi.Input[str]]
+        """
+        The region ID of Container Registry Enterprise Edition instance. It is required
+        when `acr_registry_info` is configured.
+        """
+elif False:
+    EciScalingConfigurationAcrRegistryInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EciScalingConfigurationAcrRegistryInfoArgs:
     def __init__(__self__, *,
@@ -201,6 +282,159 @@ class EciScalingConfigurationAcrRegistryInfoArgs:
     def region_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region_id", value)
 
+
+if not MYPY:
+    class EciScalingConfigurationContainerArgsDict(TypedDict):
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The arguments passed to the commands.
+        """
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The commands run by the init container.
+        """
+        cpu: NotRequired[pulumi.Input[float]]
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgsDict']]]]
+        """
+        The structure of environmentVars.
+        See `environment_vars` below for details.
+        """
+        gpu: NotRequired[pulumi.Input[int]]
+        """
+        The number GPUs.
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        The image of the container.
+        """
+        image_pull_policy: NotRequired[pulumi.Input[str]]
+        """
+        The restart policy of the image.
+        """
+        lifecycle_pre_stop_handler_execs: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The commands to be executed in containers when you use the CLI to specify the preStop callback function.
+        """
+        liveness_probe_exec_commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Commands that you want to run in containers when you use the CLI to perform liveness probes.
+        """
+        liveness_probe_failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of consecutive failures for the liveness probe to be considered failed after having been successful. Default value: 3.
+        """
+        liveness_probe_http_get_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+        """
+        liveness_probe_http_get_port: NotRequired[pulumi.Input[int]]
+        """
+        The port to which HTTP GET requests are sent when you use HTTP requests to perform liveness probes.
+        """
+        liveness_probe_http_get_scheme: NotRequired[pulumi.Input[str]]
+        """
+        The protocol type of HTTP GET requests when you use HTTP requests for liveness probes.Valid values:HTTP and HTTPS.
+        """
+        liveness_probe_initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds after container has started before liveness probes are initiated.
+        """
+        liveness_probe_period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The interval at which the liveness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        """
+        liveness_probe_success_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of consecutive successes for the liveness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+        """
+        liveness_probe_tcp_socket_port: NotRequired[pulumi.Input[int]]
+        """
+        The port detected by TCP sockets when you use TCP sockets to perform liveness probes.
+        """
+        liveness_probe_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The timeout period for the liveness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+        """
+        memory: NotRequired[pulumi.Input[float]]
+        """
+        The amount of memory resources allocated to the container.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the mounted volume.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgsDict']]]]
+        """
+        The structure of port. See `ports` below for details.
+        """
+        readiness_probe_exec_commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Commands that you want to run in containers when you use the CLI to perform readiness probes.
+        """
+        readiness_probe_failure_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of consecutive failures for the readiness probe to be considered failed after having been successful. Default value: 3.
+        """
+        readiness_probe_http_get_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+        """
+        readiness_probe_http_get_port: NotRequired[pulumi.Input[int]]
+        """
+        The port to which HTTP GET requests are sent when you use HTTP requests to perform readiness probes.
+        """
+        readiness_probe_http_get_scheme: NotRequired[pulumi.Input[str]]
+        """
+        The protocol type of HTTP GET requests when you use HTTP requests for readiness probes. Valid values: HTTP and HTTPS.
+        """
+        readiness_probe_initial_delay_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The number of seconds after container N has started before readiness probes are initiated.
+        """
+        readiness_probe_period_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The interval at which the readiness probe is performed. Unit: seconds. Default value: 10. Minimum value: 1.
+        """
+        readiness_probe_success_threshold: NotRequired[pulumi.Input[int]]
+        """
+        The minimum number of consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. Set the value to 1.
+        """
+        readiness_probe_tcp_socket_port: NotRequired[pulumi.Input[int]]
+        """
+        The port detected by Transmission Control Protocol (TCP) sockets when you use TCP sockets to perform readiness probes.
+        """
+        readiness_probe_timeout_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The timeout period for the readiness probe. Unit: seconds. Default value: 1. Minimum value: 1.
+        """
+        security_context_capability_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Grant certain permissions to processes within container. Optional values:
+        - NET_ADMIN: Allow network management tasks to be performed.
+        - NET_RAW: Allow raw sockets.
+        """
+        security_context_read_only_root_file_system: NotRequired[pulumi.Input[bool]]
+        """
+        Mounts the container's root filesystem as read-only.
+        """
+        security_context_run_as_user: NotRequired[pulumi.Input[int]]
+        """
+        Specifies user ID  under which all processes run.
+        """
+        volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgsDict']]]]
+        """
+        The structure of volumeMounts. 
+        See `volume_mounts` below for details.
+        """
+        working_dir: NotRequired[pulumi.Input[str]]
+        """
+        The working directory of the container.
+        """
+elif False:
+    EciScalingConfigurationContainerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EciScalingConfigurationContainerArgs:
@@ -793,6 +1027,14 @@ class EciScalingConfigurationContainerArgs:
         pulumi.set(self, "working_dir", value)
 
 
+if not MYPY:
+    class EciScalingConfigurationContainerEnvironmentVarArgsDict(TypedDict):
+        field_ref_field_path: NotRequired[pulumi.Input[str]]
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    EciScalingConfigurationContainerEnvironmentVarArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EciScalingConfigurationContainerEnvironmentVarArgs:
     def __init__(__self__, *,
@@ -834,6 +1076,13 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class EciScalingConfigurationContainerPortArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        protocol: NotRequired[pulumi.Input[str]]
+elif False:
+    EciScalingConfigurationContainerPortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EciScalingConfigurationContainerPortArgs:
     def __init__(__self__, *,
@@ -862,6 +1111,14 @@ class EciScalingConfigurationContainerPortArgs:
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
 
+
+if not MYPY:
+    class EciScalingConfigurationContainerVolumeMountArgsDict(TypedDict):
+        mount_path: NotRequired[pulumi.Input[str]]
+        name: NotRequired[pulumi.Input[str]]
+        read_only: NotRequired[pulumi.Input[bool]]
+elif False:
+    EciScalingConfigurationContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EciScalingConfigurationContainerVolumeMountArgs:
@@ -904,6 +1161,19 @@ class EciScalingConfigurationContainerVolumeMountArgs:
         pulumi.set(self, "read_only", value)
 
 
+if not MYPY:
+    class EciScalingConfigurationHostAliasArgsDict(TypedDict):
+        hostnames: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Adds a host name.
+        """
+        ip: NotRequired[pulumi.Input[str]]
+        """
+        Adds an IP address.
+        """
+elif False:
+    EciScalingConfigurationHostAliasArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EciScalingConfigurationHostAliasArgs:
     def __init__(__self__, *,
@@ -942,6 +1212,26 @@ class EciScalingConfigurationHostAliasArgs:
     def ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip", value)
 
+
+if not MYPY:
+    class EciScalingConfigurationImageRegistryCredentialArgsDict(TypedDict):
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The password used to log on to the image repository. It is required
+        when `image_registry_credential` is configured.
+        """
+        server: NotRequired[pulumi.Input[str]]
+        """
+        The address of the image repository. It is required when `image_registry_credential` is
+        configured.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username used to log on to the image repository. It is required
+        when `image_registry_credential` is configured.
+        """
+elif False:
+    EciScalingConfigurationImageRegistryCredentialArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EciScalingConfigurationImageRegistryCredentialArgs:
@@ -1003,6 +1293,74 @@ class EciScalingConfigurationImageRegistryCredentialArgs:
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class EciScalingConfigurationInitContainerArgsDict(TypedDict):
+        args: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The arguments passed to the commands.
+        """
+        commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The commands run by the init container.
+        """
+        cpu: NotRequired[pulumi.Input[float]]
+        """
+        The amount of CPU resources allocated to the container.
+        """
+        environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgsDict']]]]
+        """
+        The structure of environmentVars. 
+        See `environment_vars` below for details.
+        """
+        gpu: NotRequired[pulumi.Input[int]]
+        """
+        The number GPUs.
+        """
+        image: NotRequired[pulumi.Input[str]]
+        """
+        The image of the container.
+        """
+        image_pull_policy: NotRequired[pulumi.Input[str]]
+        """
+        The restart policy of the image.
+        """
+        memory: NotRequired[pulumi.Input[float]]
+        """
+        The amount of memory resources allocated to the container.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the mounted volume.
+        """
+        ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgsDict']]]]
+        """
+        The structure of port. See `ports` below for details.
+        """
+        security_context_capability_adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Grant certain permissions to processes within container. Optional values:
+        - NET_ADMIN: Allow network management tasks to be performed.
+        - NET_RAW: Allow raw sockets.
+        """
+        security_context_read_only_root_file_system: NotRequired[pulumi.Input[bool]]
+        """
+        Mounts the container's root filesystem as read-only.
+        """
+        security_context_run_as_user: NotRequired[pulumi.Input[int]]
+        """
+        Specifies user ID  under which all processes run.
+        """
+        volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgsDict']]]]
+        """
+        The structure of volumeMounts. See `volume_mounts` below for details.
+        """
+        working_dir: NotRequired[pulumi.Input[str]]
+        """
+        The working directory of the container.
+        """
+elif False:
+    EciScalingConfigurationInitContainerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EciScalingConfigurationInitContainerArgs:
@@ -1257,6 +1615,14 @@ class EciScalingConfigurationInitContainerArgs:
         pulumi.set(self, "working_dir", value)
 
 
+if not MYPY:
+    class EciScalingConfigurationInitContainerEnvironmentVarArgsDict(TypedDict):
+        field_ref_field_path: NotRequired[pulumi.Input[str]]
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    EciScalingConfigurationInitContainerEnvironmentVarArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EciScalingConfigurationInitContainerEnvironmentVarArgs:
     def __init__(__self__, *,
@@ -1298,6 +1664,13 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class EciScalingConfigurationInitContainerPortArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[int]]
+        protocol: NotRequired[pulumi.Input[str]]
+elif False:
+    EciScalingConfigurationInitContainerPortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EciScalingConfigurationInitContainerPortArgs:
     def __init__(__self__, *,
@@ -1326,6 +1699,14 @@ class EciScalingConfigurationInitContainerPortArgs:
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
 
+
+if not MYPY:
+    class EciScalingConfigurationInitContainerVolumeMountArgsDict(TypedDict):
+        mount_path: NotRequired[pulumi.Input[str]]
+        name: NotRequired[pulumi.Input[str]]
+        read_only: NotRequired[pulumi.Input[bool]]
+elif False:
+    EciScalingConfigurationInitContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EciScalingConfigurationInitContainerVolumeMountArgs:
@@ -1367,6 +1748,64 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
 
+
+if not MYPY:
+    class EciScalingConfigurationVolumeArgsDict(TypedDict):
+        config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict']]]]
+        """
+        ConfigFileVolumeConfigFileToPaths.
+        See `config_file_volume_config_file_to_paths` below for details.
+        """
+        disk_volume_disk_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of DiskVolume.
+        """
+        disk_volume_disk_size: NotRequired[pulumi.Input[int]]
+        """
+        The disk size of DiskVolume.
+        """
+        disk_volume_fs_type: NotRequired[pulumi.Input[str]]
+        """
+        The system type of DiskVolume.
+        """
+        flex_volume_driver: NotRequired[pulumi.Input[str]]
+        """
+        The name of the FlexVolume driver.
+        """
+        flex_volume_fs_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the mounted file system. The default value is determined by the script
+        of FlexVolume.
+        """
+        flex_volume_options: NotRequired[pulumi.Input[str]]
+        """
+        The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
+        string.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the volume.
+        """
+        nfs_volume_path: NotRequired[pulumi.Input[str]]
+        """
+        The path to the NFS volume.
+        """
+        nfs_volume_read_only: NotRequired[pulumi.Input[bool]]
+        """
+        The nfs volume read only. Default to `false`.
+        """
+        nfs_volume_server: NotRequired[pulumi.Input[str]]
+        """
+        The address of the NFS server.
+
+        > **NOTE:** Every volume mounted must have a name and type attributes.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the volume.
+        """
+elif False:
+    EciScalingConfigurationVolumeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EciScalingConfigurationVolumeArgs:
@@ -1577,6 +2016,19 @@ class EciScalingConfigurationVolumeArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict(TypedDict):
+        content: NotRequired[pulumi.Input[str]]
+        """
+        The content of the configuration file. Maximum size: 32 KB.
+        """
+        path: NotRequired[pulumi.Input[str]]
+        """
+        The relative file path.
+        """
+elif False:
+    EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     def __init__(__self__, *,
@@ -1615,6 +2067,55 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
 
+
+if not MYPY:
+    class ScalingConfigurationDataDiskArgsDict(TypedDict):
+        auto_snapshot_policy_id: NotRequired[pulumi.Input[str]]
+        """
+        The id of auto snapshot policy for data disk.
+        """
+        category: NotRequired[pulumi.Input[str]]
+        """
+        Category of data disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd` , `cloud_essd` and `cloud`.
+        """
+        delete_with_instance: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to delete data disks attached on ecs when release ecs instance. Optional value: `true` or `false`, default to `true`.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        """
+        device: NotRequired[pulumi.Input[str]]
+        """
+        The mount point of data disk N. Valid values of N: 1 to 16. If this parameter is not specified, the system automatically allocates a mount point to created ECS instances. The name of the mount point ranges from /dev/xvdb to /dev/xvdz in alphabetical order.
+        """
+        encrypted: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether data disk N is to be encrypted. Valid values of N: 1 to 16. Valid values: `true`: encrypted, `false`: not encrypted. Default value: `false`.
+        """
+        kms_key_id: NotRequired[pulumi.Input[str]]
+        """
+        The CMK ID for data disk N. Valid values of N: 1 to 16.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
+        """
+        performance_level: NotRequired[pulumi.Input[str]]
+        """
+        The performance level of the ESSD used as data disk.
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
+        """
+        snapshot_id: NotRequired[pulumi.Input[str]]
+        """
+        Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
+        """
+elif False:
+    ScalingConfigurationDataDiskArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ScalingConfigurationDataDiskArgs:
@@ -1803,6 +2304,39 @@ class ScalingConfigurationDataDiskArgs:
         pulumi.set(self, "snapshot_id", value)
 
 
+if not MYPY:
+    class ScalingConfigurationInstancePatternInfoArgsDict(TypedDict):
+        architectures: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Architecture N of instance type N. Valid values: X86, Heterogeneous, BareMetal, Arm, SuperComputeCluster.
+        """
+        burstable_performance: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether to include burstable instance types.  Valid values: Exclude, Include, Required.
+        """
+        cores: NotRequired[pulumi.Input[int]]
+        """
+        The number of vCPUs that are specified for an instance type in instancePatternInfo.
+        """
+        excluded_instance_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Instance type N that you want to exclude. You can use wildcard characters, such as an asterisk (*), to exclude an instance type or an instance family.
+        """
+        instance_family_level: NotRequired[pulumi.Input[str]]
+        """
+        The instance family level in instancePatternInfo.
+        """
+        max_price: NotRequired[pulumi.Input[float]]
+        """
+        The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
+        """
+        memory: NotRequired[pulumi.Input[float]]
+        """
+        The memory size that is specified for an instance type in instancePatternInfo.
+        """
+elif False:
+    ScalingConfigurationInstancePatternInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScalingConfigurationInstancePatternInfoArgs:
     def __init__(__self__, *,
@@ -1922,6 +2456,19 @@ class ScalingConfigurationInstancePatternInfoArgs:
         pulumi.set(self, "memory", value)
 
 
+if not MYPY:
+    class ScalingConfigurationInstanceTypeOverrideArgsDict(TypedDict):
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        The is specified for an instance type in instanceTypeOverride.
+        """
+        weighted_capacity: NotRequired[pulumi.Input[int]]
+        """
+        The weight of instance type in instanceTypeOverride.
+        """
+elif False:
+    ScalingConfigurationInstanceTypeOverrideArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScalingConfigurationInstanceTypeOverrideArgs:
     def __init__(__self__, *,
@@ -1961,6 +2508,19 @@ class ScalingConfigurationInstanceTypeOverrideArgs:
         pulumi.set(self, "weighted_capacity", value)
 
 
+if not MYPY:
+    class ScalingConfigurationSpotPriceLimitArgsDict(TypedDict):
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        Resource type of an ECS instance.
+        """
+        price_limit: NotRequired[pulumi.Input[float]]
+        """
+        Price limit hourly of instance type, 2 decimals is allowed at most.
+        """
+elif False:
+    ScalingConfigurationSpotPriceLimitArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScalingConfigurationSpotPriceLimitArgs:
     def __init__(__self__, *,
@@ -1999,6 +2559,23 @@ class ScalingConfigurationSpotPriceLimitArgs:
     def price_limit(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "price_limit", value)
 
+
+if not MYPY:
+    class ScalingGroupAlbServerGroupArgsDict(TypedDict):
+        alb_server_group_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of ALB server group.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
+        """
+        weight: NotRequired[pulumi.Input[int]]
+        """
+        The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
+        """
+elif False:
+    ScalingGroupAlbServerGroupArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ScalingGroupAlbServerGroupArgs:
@@ -2054,6 +2631,30 @@ class ScalingGroupAlbServerGroupArgs:
     def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
+
+if not MYPY:
+    class ScalingGroupLaunchTemplateOverrideArgsDict(TypedDict):
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        The instance type in launchTemplateOverride.
+        """
+        spot_price_limit: NotRequired[pulumi.Input[float]]
+        """
+        The maximum bid price of instance type in launchTemplateOverride.
+
+
+        > **NOTE:** When detach loadbalancers, instances in group will be remove from loadbalancer's `Default Server Group`; On the contrary, When attach loadbalancers, instances in group will be added to loadbalancer's `Default Server Group`.
+
+        > **NOTE:** When detach dbInstances, private ip of instances in group will be remove from dbInstance's `WhiteList`; On the contrary, When attach dbInstances, private ip of instances in group will be added to dbInstance's `WhiteList`.
+
+        > **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is 'COST_OPTIMIZED'.
+        """
+        weighted_capacity: NotRequired[pulumi.Input[int]]
+        """
+        The weight of the instance type in launchTemplateOverride.
+        """
+elif False:
+    ScalingGroupLaunchTemplateOverrideArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ScalingGroupLaunchTemplateOverrideArgs:
@@ -2124,6 +2725,19 @@ class ScalingGroupLaunchTemplateOverrideArgs:
         pulumi.set(self, "weighted_capacity", value)
 
 
+if not MYPY:
+    class ScalingGroupVServerGroupsVserverGroupArgsDict(TypedDict):
+        loadbalancer_id: pulumi.Input[str]
+        """
+        Loadbalancer server ID of VServer Group.
+        """
+        vserver_attributes: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgsDict']]]
+        """
+        A list of VServer Group attributes. See `vserver_attributes` below.
+        """
+elif False:
+    ScalingGroupVServerGroupsVserverGroupArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScalingGroupVServerGroupsVserverGroupArgs:
     def __init__(__self__, *,
@@ -2160,6 +2774,23 @@ class ScalingGroupVServerGroupsVserverGroupArgs:
     def vserver_attributes(self, value: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]]):
         pulumi.set(self, "vserver_attributes", value)
 
+
+if not MYPY:
+    class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgsDict(TypedDict):
+        port: pulumi.Input[int]
+        """
+        The port will be used for VServer Group backend server.
+        """
+        vserver_group_id: pulumi.Input[str]
+        """
+        ID of VServer Group.
+        """
+        weight: pulumi.Input[int]
+        """
+        The weight of an ECS instance attached to the VServer Group.
+        """
+elif False:
+    ScalingGroupVServerGroupsVserverGroupVserverAttributeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
@@ -2213,6 +2844,19 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
         pulumi.set(self, "weight", value)
 
 
+if not MYPY:
+    class ScalingRuleAlarmDimensionArgsDict(TypedDict):
+        dimension_key: NotRequired[pulumi.Input[str]]
+        """
+        The dimension key of the metric.
+        """
+        dimension_value: NotRequired[pulumi.Input[str]]
+        """
+        The dimension value of the metric.
+        """
+elif False:
+    ScalingRuleAlarmDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ScalingRuleAlarmDimensionArgs:
     def __init__(__self__, *,
@@ -2251,6 +2895,23 @@ class ScalingRuleAlarmDimensionArgs:
     def dimension_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dimension_value", value)
 
+
+if not MYPY:
+    class ScalingRuleStepAdjustmentArgsDict(TypedDict):
+        metric_interval_lower_bound: NotRequired[pulumi.Input[str]]
+        """
+        The lower bound of step.
+        """
+        metric_interval_upper_bound: NotRequired[pulumi.Input[str]]
+        """
+        The upper bound of step.
+        """
+        scaling_adjustment: NotRequired[pulumi.Input[int]]
+        """
+        The adjust value of step.
+        """
+elif False:
+    ScalingRuleStepAdjustmentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ScalingRuleStepAdjustmentArgs:

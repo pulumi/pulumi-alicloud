@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sampleDs, err := slb.GetAcls(ctx, nil, nil)
+//			sampleDs, err := slb.GetAcls(ctx, &slb.GetAclsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

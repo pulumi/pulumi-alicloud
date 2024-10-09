@@ -4,15 +4,41 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'LakeAccountAccountPrivilegeArgs',
+    'LakeAccountAccountPrivilegeArgsDict',
     'LakeAccountAccountPrivilegePrivilegeObjectArgs',
+    'LakeAccountAccountPrivilegePrivilegeObjectArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class LakeAccountAccountPrivilegeArgsDict(TypedDict):
+        privilege_object: NotRequired[pulumi.Input['LakeAccountAccountPrivilegePrivilegeObjectArgsDict']]
+        """
+        Object associated to privileges. See `privilege_object` below.
+        """
+        privilege_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of privileges.
+        """
+        privileges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        privilege list.
+        """
+elif False:
+    LakeAccountAccountPrivilegeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LakeAccountAccountPrivilegeArgs:
@@ -68,6 +94,23 @@ class LakeAccountAccountPrivilegeArgs:
     def privileges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "privileges", value)
 
+
+if not MYPY:
+    class LakeAccountAccountPrivilegePrivilegeObjectArgsDict(TypedDict):
+        column: NotRequired[pulumi.Input[str]]
+        """
+        The name of column.
+        """
+        database: NotRequired[pulumi.Input[str]]
+        """
+        The name of database.
+        """
+        table: NotRequired[pulumi.Input[str]]
+        """
+        The name of table.
+        """
+elif False:
+    LakeAccountAccountPrivilegePrivilegeObjectArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class LakeAccountAccountPrivilegePrivilegeObjectArgs:

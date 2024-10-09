@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -196,9 +201,6 @@ def get_security_policies(ids: Optional[Sequence[str]] = None,
         security_policy_name=pulumi.get(__ret__, 'security_policy_name'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_security_policies)
 def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -236,4 +238,26 @@ def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     :param str security_policy_name: The name of the resource.
     :param str status: The status of the resource. Valid values : `Available`, `Configuring`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['securityPolicyIds'] = security_policy_ids
+    __args__['securityPolicyName'] = security_policy_name
+    __args__['status'] = status
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:alb/getSecurityPolicies:getSecurityPolicies', __args__, opts=opts, typ=GetSecurityPoliciesResult)
+    return __ret__.apply(lambda __response__: GetSecurityPoliciesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policies=pulumi.get(__response__, 'policies'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        security_policy_ids=pulumi.get(__response__, 'security_policy_ids'),
+        security_policy_name=pulumi.get(__response__, 'security_policy_name'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

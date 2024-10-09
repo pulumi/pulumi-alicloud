@@ -4,15 +4,77 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceAdAuthServerArgs',
+    'InstanceAdAuthServerArgsDict',
     'InstanceLdapAuthServerArgs',
+    'InstanceLdapAuthServerArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceAdAuthServerArgsDict(TypedDict):
+        account: pulumi.Input[str]
+        """
+        The username of the account that is used for the AD server.
+        """
+        base_dn: pulumi.Input[str]
+        """
+        The Base distinguished name (DN).
+        """
+        domain: pulumi.Input[str]
+        """
+        The domain on the AD server.
+        """
+        is_ssl: pulumi.Input[bool]
+        """
+        Specifies whether to support SSL.
+        """
+        password: pulumi.Input[str]
+        """
+        The password of the account that is used for the AD server.
+        """
+        port: pulumi.Input[int]
+        """
+        The port that is used to access the AD server.
+        """
+        server: pulumi.Input[str]
+        """
+        The address of the AD server.
+        """
+        email_mapping: NotRequired[pulumi.Input[str]]
+        """
+        The field that is used to indicate the email address of a user on the AD server.
+        """
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        The condition that is used to filter users.
+        """
+        mobile_mapping: NotRequired[pulumi.Input[str]]
+        """
+        The field that is used to indicate the mobile phone number of a user on the AD server.
+        """
+        name_mapping: NotRequired[pulumi.Input[str]]
+        """
+        The field that is used to indicate the name of a user on the AD server.
+        """
+        standby_server: NotRequired[pulumi.Input[str]]
+        """
+        The address of the secondary AD server.
+        """
+elif False:
+    InstanceAdAuthServerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceAdAuthServerArgs:
@@ -205,6 +267,59 @@ class InstanceAdAuthServerArgs:
     def standby_server(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "standby_server", value)
 
+
+if not MYPY:
+    class InstanceLdapAuthServerArgsDict(TypedDict):
+        account: pulumi.Input[str]
+        """
+        The username of the account that is used for the LDAP server.
+        """
+        base_dn: pulumi.Input[str]
+        """
+        The Base distinguished name (DN).
+        """
+        password: pulumi.Input[str]
+        """
+        The password of the account that is used for the LDAP server.
+        """
+        port: pulumi.Input[int]
+        """
+        The port that is used to access the LDAP server.
+        """
+        server: pulumi.Input[str]
+        """
+        The address of the LDAP server.
+        """
+        email_mapping: NotRequired[pulumi.Input[str]]
+        """
+        The field that is used to indicate the email address of a user on the LDAP server.
+        """
+        filter: NotRequired[pulumi.Input[str]]
+        """
+        The condition that is used to filter users.
+        """
+        is_ssl: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to support SSL.
+        """
+        login_name_mapping: NotRequired[pulumi.Input[str]]
+        """
+        The field that is used to indicate the logon name of a user on the LDAP server.
+        """
+        mobile_mapping: NotRequired[pulumi.Input[str]]
+        """
+        The field that is used to indicate the mobile phone number of a user on the LDAP server.
+        """
+        name_mapping: NotRequired[pulumi.Input[str]]
+        """
+        The field that is used to indicate the name of a user on the LDAP server.
+        """
+        standby_server: NotRequired[pulumi.Input[str]]
+        """
+        The address of the secondary LDAP server.
+        """
+elif False:
+    InstanceLdapAuthServerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceLdapAuthServerArgs:

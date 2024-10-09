@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -135,9 +140,6 @@ def get_history_delivery_jobs(enable_details: Optional[bool] = None,
         jobs=pulumi.get(__ret__, 'jobs'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_history_delivery_jobs)
 def get_history_delivery_jobs_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -168,4 +170,17 @@ def get_history_delivery_jobs_output(enable_details: Optional[pulumi.Input[Optio
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs', __args__, opts=opts, typ=GetHistoryDeliveryJobsResult)
+    return __ret__.apply(lambda __response__: GetHistoryDeliveryJobsResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        jobs=pulumi.get(__response__, 'jobs'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

@@ -45,7 +45,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := cddc.GetZones(ctx, nil, nil)
+//			_default, err := cddc.GetZones(ctx, &cddc.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

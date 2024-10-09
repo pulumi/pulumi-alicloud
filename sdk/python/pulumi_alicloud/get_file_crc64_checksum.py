@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -106,9 +111,6 @@ def get_file_crc64_checksum(filename: Optional[str] = None,
         filename=pulumi.get(__ret__, 'filename'),
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_file_crc64_checksum)
 def get_file_crc64_checksum_output(filename: Optional[pulumi.Input[str]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFileCrc64ChecksumResult]:
@@ -130,4 +132,13 @@ def get_file_crc64_checksum_output(filename: Optional[pulumi.Input[str]] = None,
 
     :param str filename: The name of the file to be computed crc64 checksum.
     """
-    ...
+    __args__ = dict()
+    __args__['filename'] = filename
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum', __args__, opts=opts, typ=GetFileCrc64ChecksumResult)
+    return __ret__.apply(lambda __response__: GetFileCrc64ChecksumResult(
+        checksum=pulumi.get(__response__, 'checksum'),
+        filename=pulumi.get(__response__, 'filename'),
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -178,9 +183,6 @@ def get_access_assignments(access_configuration_id: Optional[str] = None,
         principal_type=pulumi.get(__ret__, 'principal_type'),
         target_id=pulumi.get(__ret__, 'target_id'),
         target_type=pulumi.get(__ret__, 'target_type'))
-
-
-@_utilities.lift_output_func(get_access_assignments)
 def get_access_assignments_output(access_configuration_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   directory_id: Optional[pulumi.Input[str]] = None,
                                   ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -221,4 +223,23 @@ def get_access_assignments_output(access_configuration_id: Optional[pulumi.Input
     :param str target_id: The ID of the target to create the resource range.
     :param str target_type: The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
     """
-    ...
+    __args__ = dict()
+    __args__['accessConfigurationId'] = access_configuration_id
+    __args__['directoryId'] = directory_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['principalType'] = principal_type
+    __args__['targetId'] = target_id
+    __args__['targetType'] = target_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cloudsso/getAccessAssignments:getAccessAssignments', __args__, opts=opts, typ=GetAccessAssignmentsResult)
+    return __ret__.apply(lambda __response__: GetAccessAssignmentsResult(
+        access_configuration_id=pulumi.get(__response__, 'access_configuration_id'),
+        assignments=pulumi.get(__response__, 'assignments'),
+        directory_id=pulumi.get(__response__, 'directory_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        principal_type=pulumi.get(__response__, 'principal_type'),
+        target_id=pulumi.get(__response__, 'target_id'),
+        target_type=pulumi.get(__response__, 'target_type')))

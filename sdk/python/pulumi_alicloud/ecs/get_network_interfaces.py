@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -384,9 +389,6 @@ def get_network_interfaces(ids: Optional[Sequence[str]] = None,
         type=pulumi.get(__ret__, 'type'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-
-
-@_utilities.lift_output_func(get_network_interfaces)
 def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -495,4 +497,42 @@ def get_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     :param str vpc_id: ID of the VPC that the ENI belongs to.
     :param str vswitch_id: ID of the vSwitch that the ENI is linked to.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['name'] = name
+    __args__['nameRegex'] = name_regex
+    __args__['networkInterfaceName'] = network_interface_name
+    __args__['outputFile'] = output_file
+    __args__['primaryIpAddress'] = primary_ip_address
+    __args__['privateIp'] = private_ip
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['securityGroupId'] = security_group_id
+    __args__['serviceManaged'] = service_managed
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['type'] = type
+    __args__['vpcId'] = vpc_id
+    __args__['vswitchId'] = vswitch_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces', __args__, opts=opts, typ=GetNetworkInterfacesResult)
+    return __ret__.apply(lambda __response__: GetNetworkInterfacesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        interfaces=pulumi.get(__response__, 'interfaces'),
+        name=pulumi.get(__response__, 'name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        network_interface_name=pulumi.get(__response__, 'network_interface_name'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        primary_ip_address=pulumi.get(__response__, 'primary_ip_address'),
+        private_ip=pulumi.get(__response__, 'private_ip'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        security_group_id=pulumi.get(__response__, 'security_group_id'),
+        service_managed=pulumi.get(__response__, 'service_managed'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id')))

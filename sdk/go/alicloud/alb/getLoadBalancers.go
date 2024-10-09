@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := alb.GetLoadBalancers(ctx, nil, nil)
+//			ids, err := alb.GetLoadBalancers(ctx, &alb.GetLoadBalancersArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

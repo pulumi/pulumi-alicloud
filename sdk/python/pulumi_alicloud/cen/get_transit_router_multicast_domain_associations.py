@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -207,9 +212,6 @@ def get_transit_router_multicast_domain_associations(ids: Optional[Sequence[str]
         transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
         transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-
-
-@_utilities.lift_output_func(get_transit_router_multicast_domain_associations)
 def get_transit_router_multicast_domain_associations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                             resource_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -247,4 +249,25 @@ def get_transit_router_multicast_domain_associations_output(ids: Optional[pulumi
     :param str transit_router_multicast_domain_id: The ID of the multicast domain.
     :param str vswitch_id: The ID of the vSwitch.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['resourceId'] = resource_id
+    __args__['resourceType'] = resource_type
+    __args__['status'] = status
+    __args__['transitRouterAttachmentId'] = transit_router_attachment_id
+    __args__['transitRouterMulticastDomainId'] = transit_router_multicast_domain_id
+    __args__['vswitchId'] = vswitch_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations', __args__, opts=opts, typ=GetTransitRouterMulticastDomainAssociationsResult)
+    return __ret__.apply(lambda __response__: GetTransitRouterMulticastDomainAssociationsResult(
+        associations=pulumi.get(__response__, 'associations'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_id=pulumi.get(__response__, 'resource_id'),
+        resource_type=pulumi.get(__response__, 'resource_type'),
+        status=pulumi.get(__response__, 'status'),
+        transit_router_attachment_id=pulumi.get(__response__, 'transit_router_attachment_id'),
+        transit_router_multicast_domain_id=pulumi.get(__response__, 'transit_router_multicast_domain_id'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id')))

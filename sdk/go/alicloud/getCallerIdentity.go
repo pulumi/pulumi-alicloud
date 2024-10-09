@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := alicloud.GetCallerIdentity(ctx, nil, nil)
+//			current, err := alicloud.GetCallerIdentity(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

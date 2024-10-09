@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -125,9 +130,6 @@ def get_system_security_policies(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_system_security_policies)
 def get_system_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
@@ -153,4 +155,15 @@ def get_system_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequ
     :param Sequence[str] ids: A list of System Security Policy IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies', __args__, opts=opts, typ=GetSystemSecurityPoliciesResult)
+    return __ret__.apply(lambda __response__: GetSystemSecurityPoliciesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policies=pulumi.get(__response__, 'policies'),
+        tags=pulumi.get(__response__, 'tags')))

@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids, err := mhub.GetApps(ctx, nil, nil)
+//			ids, err := mhub.GetApps(ctx, &mhub.GetAppsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

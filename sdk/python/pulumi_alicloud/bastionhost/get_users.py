@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -228,9 +233,6 @@ def get_users(display_name: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         user_name=pulumi.get(__ret__, 'user_name'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_users)
 def get_users_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      instance_id: Optional[pulumi.Input[str]] = None,
@@ -278,4 +280,30 @@ def get_users_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str status: The status of the resource. Valid values: `Frozen`, `Normal`.
     :param str user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
     """
-    ...
+    __args__ = dict()
+    __args__['displayName'] = display_name
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['mobile'] = mobile
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['source'] = source
+    __args__['sourceUserId'] = source_user_id
+    __args__['status'] = status
+    __args__['userName'] = user_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:bastionhost/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
+    return __ret__.apply(lambda __response__: GetUsersResult(
+        display_name=pulumi.get(__response__, 'display_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        mobile=pulumi.get(__response__, 'mobile'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        source=pulumi.get(__response__, 'source'),
+        source_user_id=pulumi.get(__response__, 'source_user_id'),
+        status=pulumi.get(__response__, 'status'),
+        user_name=pulumi.get(__response__, 'user_name'),
+        users=pulumi.get(__response__, 'users')))

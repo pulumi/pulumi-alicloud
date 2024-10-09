@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -249,9 +254,6 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_serverless_instances)
 def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Optional[str]]] = None,
                                     db_instance_description: Optional[pulumi.Input[Optional[str]]] = None,
                                     enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -308,4 +310,33 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
     :param str vswitch_id: The id of the vswitch.
     :param str zone_id: The ID of the zone.
     """
-    ...
+    __args__ = dict()
+    __args__['dbInstanceClass'] = db_instance_class
+    __args__['dbInstanceDescription'] = db_instance_description
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['networkType'] = network_type
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vpcId'] = vpc_id
+    __args__['vswitchId'] = vswitch_id
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:mongodb/getServerlessInstances:getServerlessInstances', __args__, opts=opts, typ=GetServerlessInstancesResult)
+    return __ret__.apply(lambda __response__: GetServerlessInstancesResult(
+        db_instance_class=pulumi.get(__response__, 'db_instance_class'),
+        db_instance_description=pulumi.get(__response__, 'db_instance_description'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instances=pulumi.get(__response__, 'instances'),
+        network_type=pulumi.get(__response__, 'network_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

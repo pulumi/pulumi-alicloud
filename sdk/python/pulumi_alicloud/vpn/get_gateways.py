@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -205,9 +210,6 @@ def get_gateways(business_status: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_gateways)
 def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] = None,
                         enable_ipsec: Optional[pulumi.Input[Optional[bool]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -232,4 +234,26 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[str]]] =
     :param str status: Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
     :param str vpc_id: Use the VPC ID as the search key.
     """
-    ...
+    __args__ = dict()
+    __args__['businessStatus'] = business_status
+    __args__['enableIpsec'] = enable_ipsec
+    __args__['ids'] = ids
+    __args__['includeReservationData'] = include_reservation_data
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpn/getGateways:getGateways', __args__, opts=opts, typ=GetGatewaysResult)
+    return __ret__.apply(lambda __response__: GetGatewaysResult(
+        business_status=pulumi.get(__response__, 'business_status'),
+        enable_ipsec=pulumi.get(__response__, 'enable_ipsec'),
+        gateways=pulumi.get(__response__, 'gateways'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        include_reservation_data=pulumi.get(__response__, 'include_reservation_data'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

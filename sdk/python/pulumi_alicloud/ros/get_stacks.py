@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -209,9 +214,6 @@ def get_stacks(enable_details: Optional[bool] = None,
         stacks=pulumi.get(__ret__, 'stacks'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_stacks)
 def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -251,4 +253,28 @@ def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     :param str status: The status of Stack. Valid Values: `CREATE_COMPLETE`, `CREATE_FAILED`, `CREATE_IN_PROGRESS`, `DELETE_COMPLETE`, `DELETE_FAILED`, `DELETE_IN_PROGRESS`, `ROLLBACK_COMPLETE`, `ROLLBACK_FAILED`, `ROLLBACK_IN_PROGRESS`.
     :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['parentStackId'] = parent_stack_id
+    __args__['showNestedStack'] = show_nested_stack
+    __args__['stackName'] = stack_name
+    __args__['status'] = status
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getStacks:getStacks', __args__, opts=opts, typ=GetStacksResult)
+    return __ret__.apply(lambda __response__: GetStacksResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        parent_stack_id=pulumi.get(__response__, 'parent_stack_id'),
+        show_nested_stack=pulumi.get(__response__, 'show_nested_stack'),
+        stack_name=pulumi.get(__response__, 'stack_name'),
+        stacks=pulumi.get(__response__, 'stacks'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

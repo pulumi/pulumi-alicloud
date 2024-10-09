@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -385,9 +390,6 @@ def get_instances(architecture_type: Optional[str] = None,
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_instances)
 def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]] = None,
                          edition_type: Optional[pulumi.Input[Optional[str]]] = None,
                          enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -445,4 +447,50 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
     :param str zone_id: The ID of the zone.
     """
-    ...
+    __args__ = dict()
+    __args__['architectureType'] = architecture_type
+    __args__['editionType'] = edition_type
+    __args__['enableDetails'] = enable_details
+    __args__['engineVersion'] = engine_version
+    __args__['expired'] = expired
+    __args__['globalInstance'] = global_instance
+    __args__['ids'] = ids
+    __args__['instanceClass'] = instance_class
+    __args__['instanceType'] = instance_type
+    __args__['nameRegex'] = name_regex
+    __args__['networkType'] = network_type
+    __args__['outputFile'] = output_file
+    __args__['paymentType'] = payment_type
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['searchKey'] = search_key
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vpcId'] = vpc_id
+    __args__['vswitchId'] = vswitch_id
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
+    return __ret__.apply(lambda __response__: GetInstancesResult(
+        architecture_type=pulumi.get(__response__, 'architecture_type'),
+        edition_type=pulumi.get(__response__, 'edition_type'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        engine_version=pulumi.get(__response__, 'engine_version'),
+        expired=pulumi.get(__response__, 'expired'),
+        global_instance=pulumi.get(__response__, 'global_instance'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_class=pulumi.get(__response__, 'instance_class'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        instances=pulumi.get(__response__, 'instances'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        network_type=pulumi.get(__response__, 'network_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        payment_type=pulumi.get(__response__, 'payment_type'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        search_key=pulumi.get(__response__, 'search_key'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

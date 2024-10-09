@@ -4,28 +4,59 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ServiceMeshExtraConfigurationArgs',
+    'ServiceMeshExtraConfigurationArgsDict',
     'ServiceMeshLoadBalancerArgs',
+    'ServiceMeshLoadBalancerArgsDict',
     'ServiceMeshMeshConfigArgs',
+    'ServiceMeshMeshConfigArgsDict',
     'ServiceMeshMeshConfigAccessLogArgs',
+    'ServiceMeshMeshConfigAccessLogArgsDict',
     'ServiceMeshMeshConfigAuditArgs',
+    'ServiceMeshMeshConfigAuditArgsDict',
     'ServiceMeshMeshConfigControlPlaneLogArgs',
+    'ServiceMeshMeshConfigControlPlaneLogArgsDict',
     'ServiceMeshMeshConfigKialiArgs',
+    'ServiceMeshMeshConfigKialiArgsDict',
     'ServiceMeshMeshConfigOpaArgs',
+    'ServiceMeshMeshConfigOpaArgsDict',
     'ServiceMeshMeshConfigPilotArgs',
+    'ServiceMeshMeshConfigPilotArgsDict',
     'ServiceMeshMeshConfigPrometheusArgs',
+    'ServiceMeshMeshConfigPrometheusArgsDict',
     'ServiceMeshMeshConfigProxyArgs',
+    'ServiceMeshMeshConfigProxyArgsDict',
     'ServiceMeshMeshConfigSidecarInjectorArgs',
+    'ServiceMeshMeshConfigSidecarInjectorArgsDict',
     'ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs',
+    'ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgsDict',
     'ServiceMeshNetworkArgs',
+    'ServiceMeshNetworkArgsDict',
     'UserPermissionPermissionArgs',
+    'UserPermissionPermissionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ServiceMeshExtraConfigurationArgsDict(TypedDict):
+        cr_aggregation_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
+        """
+elif False:
+    ServiceMeshExtraConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceMeshExtraConfigurationArgs:
@@ -49,6 +80,27 @@ class ServiceMeshExtraConfigurationArgs:
     def cr_aggregation_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "cr_aggregation_enabled", value)
 
+
+if not MYPY:
+    class ServiceMeshLoadBalancerArgsDict(TypedDict):
+        api_server_loadbalancer_id: NotRequired[pulumi.Input[str]]
+        """
+        The Instance ID of APIServer Load Balancer.
+        """
+        api_server_public_eip: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to use the IP address of a public network exposed API Server.
+        """
+        pilot_public_eip: NotRequired[pulumi.Input[bool]]
+        """
+        Indicates whether to use the IP address of a public network exposure Istio Pilot.
+        """
+        pilot_public_loadbalancer_id: NotRequired[pulumi.Input[str]]
+        """
+        The Instance ID of Pilot Load Balancer.
+        """
+elif False:
+    ServiceMeshLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceMeshLoadBalancerArgs:
@@ -120,6 +172,71 @@ class ServiceMeshLoadBalancerArgs:
     def pilot_public_loadbalancer_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pilot_public_loadbalancer_id", value)
 
+
+if not MYPY:
+    class ServiceMeshMeshConfigArgsDict(TypedDict):
+        access_log: NotRequired[pulumi.Input['ServiceMeshMeshConfigAccessLogArgsDict']]
+        """
+        The access logging configuration. See `access_log` below.
+        """
+        audit: NotRequired[pulumi.Input['ServiceMeshMeshConfigAuditArgsDict']]
+        """
+        Audit information. See `audit` below.
+        """
+        control_plane_log: NotRequired[pulumi.Input['ServiceMeshMeshConfigControlPlaneLogArgsDict']]
+        """
+        Control plane log collection configuration. See `control_plane_log` below.
+        """
+        customized_zipkin: NotRequired[pulumi.Input[bool]]
+        """
+        Whether or not to enable the use of a custom zipkin.
+        """
+        enable_locality_lb: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable service can access the service through the nearest node access.
+        """
+        include_ip_ranges: NotRequired[pulumi.Input[str]]
+        """
+        The IP ADDRESS range.
+        """
+        kiali: NotRequired[pulumi.Input['ServiceMeshMeshConfigKialiArgsDict']]
+        """
+        Kiali configuration. See `kiali` below.
+        """
+        opa: NotRequired[pulumi.Input['ServiceMeshMeshConfigOpaArgsDict']]
+        """
+        The open-door policy of agent (OPA) plug-in information. See `opa` below.
+        """
+        outbound_traffic_policy: NotRequired[pulumi.Input[str]]
+        """
+        Out to the traffic policy.
+        """
+        pilot: NotRequired[pulumi.Input['ServiceMeshMeshConfigPilotArgsDict']]
+        """
+        Link trace sampling information. See `pilot` below.
+        """
+        prometheus: NotRequired[pulumi.Input['ServiceMeshMeshConfigPrometheusArgsDict']]
+        """
+        Prometheus configuration.
+        """
+        proxy: NotRequired[pulumi.Input['ServiceMeshMeshConfigProxyArgsDict']]
+        """
+        Proxy configuration. See `proxy` below.
+        """
+        sidecar_injector: NotRequired[pulumi.Input['ServiceMeshMeshConfigSidecarInjectorArgsDict']]
+        """
+        Sidecar injector configuration. See `sidecar_injector` below.
+        """
+        telemetry: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+        """
+        tracing: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+        """
+elif False:
+    ServiceMeshMeshConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceMeshMeshConfigArgs:
@@ -368,6 +485,35 @@ class ServiceMeshMeshConfigArgs:
         pulumi.set(self, "tracing", value)
 
 
+if not MYPY:
+    class ServiceMeshMeshConfigAccessLogArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable CNI.
+        """
+        gateway_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+        """
+        gateway_lifecycle: NotRequired[pulumi.Input[int]]
+        """
+        Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+        """
+        project: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SLS Project to which the control plane logs are collected.
+        """
+        sidecar_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+        """
+        sidecar_lifecycle: NotRequired[pulumi.Input[int]]
+        """
+        Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+        """
+elif False:
+    ServiceMeshMeshConfigAccessLogArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceMeshMeshConfigAccessLogArgs:
     def __init__(__self__, *,
@@ -471,6 +617,19 @@ class ServiceMeshMeshConfigAccessLogArgs:
         pulumi.set(self, "sidecar_lifecycle", value)
 
 
+if not MYPY:
+    class ServiceMeshMeshConfigAuditArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable CNI.
+        """
+        project: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SLS Project to which the control plane logs are collected.
+        """
+elif False:
+    ServiceMeshMeshConfigAuditArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceMeshMeshConfigAuditArgs:
     def __init__(__self__, *,
@@ -509,6 +668,23 @@ class ServiceMeshMeshConfigAuditArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+
+if not MYPY:
+    class ServiceMeshMeshConfigControlPlaneLogArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Enable CNI.
+        """
+        log_ttl_in_day: NotRequired[pulumi.Input[int]]
+        """
+        Lifecycle of logs has been collected to Alibaba Cloud SLS.
+        """
+        project: NotRequired[pulumi.Input[str]]
+        """
+        The name of the SLS Project to which the control plane logs are collected.
+        """
+elif False:
+    ServiceMeshMeshConfigControlPlaneLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceMeshMeshConfigControlPlaneLogArgs:
@@ -564,6 +740,19 @@ class ServiceMeshMeshConfigControlPlaneLogArgs:
         pulumi.set(self, "project", value)
 
 
+if not MYPY:
+    class ServiceMeshMeshConfigKialiArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable CNI.
+        """
+        url: NotRequired[pulumi.Input[str]]
+        """
+        Kiali service address.
+        """
+elif False:
+    ServiceMeshMeshConfigKialiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceMeshMeshConfigKialiArgs:
     def __init__(__self__, *,
@@ -602,6 +791,35 @@ class ServiceMeshMeshConfigKialiArgs:
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
 
+
+if not MYPY:
+    class ServiceMeshMeshConfigOpaArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable CNI.
+        """
+        limit_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the throttle.
+        """
+        limit_memory: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the throttle.
+        """
+        log_level: NotRequired[pulumi.Input[str]]
+        """
+        OPA proxy container log level.
+        """
+        request_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the requested resource.
+        """
+        request_memory: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the requested resource.
+        """
+elif False:
+    ServiceMeshMeshConfigOpaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceMeshMeshConfigOpaArgs:
@@ -706,6 +924,19 @@ class ServiceMeshMeshConfigOpaArgs:
         pulumi.set(self, "request_memory", value)
 
 
+if not MYPY:
+    class ServiceMeshMeshConfigPilotArgsDict(TypedDict):
+        http10_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to support the HTTP1.0.
+        """
+        trace_sampling: NotRequired[pulumi.Input[float]]
+        """
+        Link trace sampling percentage.
+        """
+elif False:
+    ServiceMeshMeshConfigPilotArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceMeshMeshConfigPilotArgs:
     def __init__(__self__, *,
@@ -745,6 +976,19 @@ class ServiceMeshMeshConfigPilotArgs:
         pulumi.set(self, "trace_sampling", value)
 
 
+if not MYPY:
+    class ServiceMeshMeshConfigPrometheusArgsDict(TypedDict):
+        external_url: NotRequired[pulumi.Input[str]]
+        """
+        Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+        """
+        use_external: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable external Prometheus.
+        """
+elif False:
+    ServiceMeshMeshConfigPrometheusArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceMeshMeshConfigPrometheusArgs:
     def __init__(__self__, *,
@@ -783,6 +1027,31 @@ class ServiceMeshMeshConfigPrometheusArgs:
     def use_external(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_external", value)
 
+
+if not MYPY:
+    class ServiceMeshMeshConfigProxyArgsDict(TypedDict):
+        cluster_domain: NotRequired[pulumi.Input[str]]
+        """
+        Cluster domain name.
+        """
+        limit_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the throttle.
+        """
+        limit_memory: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the throttle.
+        """
+        request_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the requested resource.
+        """
+        request_memory: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the requested resource.
+        """
+elif False:
+    ServiceMeshMeshConfigProxyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceMeshMeshConfigProxyArgs:
@@ -870,6 +1139,43 @@ class ServiceMeshMeshConfigProxyArgs:
     def request_memory(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_memory", value)
 
+
+if not MYPY:
+    class ServiceMeshMeshConfigSidecarInjectorArgsDict(TypedDict):
+        auto_injection_policy_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable by Pod Annotations automatic injection Sidecar.
+        """
+        enable_namespaces_by_default: NotRequired[pulumi.Input[bool]]
+        """
+        Whether it is the all namespaces you turn on the auto injection capabilities.
+        """
+        init_cni_configuration: NotRequired[pulumi.Input['ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgsDict']]
+        """
+        CNI configuration. See `init_cni_configuration` below.
+        """
+        limit_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the throttle.
+        """
+        limit_memory: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the throttle.
+        """
+        request_cpu: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the requested resource.
+        """
+        request_memory: NotRequired[pulumi.Input[str]]
+        """
+        Sidecar injector Pods on the requested resource.
+        """
+        sidecar_injector_webhook_as_yaml: NotRequired[pulumi.Input[str]]
+        """
+        Other automatic injection Sidecar configuration (in YAML format).
+        """
+elif False:
+    ServiceMeshMeshConfigSidecarInjectorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceMeshMeshConfigSidecarInjectorArgs:
@@ -1006,6 +1312,19 @@ class ServiceMeshMeshConfigSidecarInjectorArgs:
         pulumi.set(self, "sidecar_injector_webhook_as_yaml", value)
 
 
+if not MYPY:
+    class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable CNI.
+        """
+        exclude_namespaces: NotRequired[pulumi.Input[str]]
+        """
+        The excluded namespace.
+        """
+elif False:
+    ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs:
     def __init__(__self__, *,
@@ -1044,6 +1363,23 @@ class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs:
     def exclude_namespaces(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "exclude_namespaces", value)
 
+
+if not MYPY:
+    class ServiceMeshNetworkArgsDict(TypedDict):
+        vpc_id: pulumi.Input[str]
+        """
+        VPC ID.
+        """
+        vswitche_list: pulumi.Input[str]
+        """
+        Virtual Switch ID.
+        """
+        security_group_id: NotRequired[pulumi.Input[str]]
+        """
+        Security group ID.
+        """
+elif False:
+    ServiceMeshNetworkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceMeshNetworkArgs:
@@ -1097,6 +1433,34 @@ class ServiceMeshNetworkArgs:
     def security_group_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_group_id", value)
 
+
+if not MYPY:
+    class UserPermissionPermissionArgsDict(TypedDict):
+        is_custom: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the grant object is a RAM role.
+        """
+        is_ram_role: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the grant object is an entity.
+        """
+        role_name: NotRequired[pulumi.Input[str]]
+        """
+        The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
+        - `istio-admin`:  The administrator.
+        - `istio-ops`: The administrator of the service mesh resource.
+        - `istio-readonly`: The read only permission.
+        """
+        role_type: NotRequired[pulumi.Input[str]]
+        """
+        The role type. Valid Value: `custom`.
+        """
+        service_mesh_id: NotRequired[pulumi.Input[str]]
+        """
+        The service mesh id.
+        """
+elif False:
+    UserPermissionPermissionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class UserPermissionPermissionArgs:

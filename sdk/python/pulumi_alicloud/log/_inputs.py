@@ -4,32 +4,71 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AlertAnnotationArgs',
+    'AlertAnnotationArgsDict',
     'AlertGroupConfigurationArgs',
+    'AlertGroupConfigurationArgsDict',
     'AlertJoinConfigurationArgs',
+    'AlertJoinConfigurationArgsDict',
     'AlertLabelArgs',
+    'AlertLabelArgsDict',
     'AlertNotificationListArgs',
+    'AlertNotificationListArgsDict',
     'AlertPolicyConfigurationArgs',
+    'AlertPolicyConfigurationArgsDict',
     'AlertQueryListArgs',
+    'AlertQueryListArgsDict',
     'AlertScheduleArgs',
+    'AlertScheduleArgsDict',
     'AlertSeverityConfigurationArgs',
+    'AlertSeverityConfigurationArgsDict',
     'AlertTemplateConfigurationArgs',
+    'AlertTemplateConfigurationArgsDict',
     'EtlEtlSinkArgs',
+    'EtlEtlSinkArgsDict',
     'OssExportConfigColumnArgs',
+    'OssExportConfigColumnArgsDict',
     'OssShipperParquetConfigArgs',
+    'OssShipperParquetConfigArgsDict',
     'StoreEncryptConfArgs',
+    'StoreEncryptConfArgsDict',
     'StoreEncryptConfUserCmkInfoArgs',
+    'StoreEncryptConfUserCmkInfoArgsDict',
     'StoreIndexFieldSearchArgs',
+    'StoreIndexFieldSearchArgsDict',
     'StoreIndexFieldSearchJsonKeyArgs',
+    'StoreIndexFieldSearchJsonKeyArgsDict',
     'StoreIndexFullTextArgs',
+    'StoreIndexFullTextArgsDict',
     'StoreShardArgs',
+    'StoreShardArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AlertAnnotationArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Annotations's key for new alert.
+        """
+        value: pulumi.Input[str]
+        """
+        Annotations's value for new alert.
+        """
+elif False:
+    AlertAnnotationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertAnnotationArgs:
@@ -68,6 +107,16 @@ class AlertAnnotationArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class AlertGroupConfigurationArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        Group configuration type, including no_group, labels_auto, custom.
+        """
+        fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+elif False:
+    AlertGroupConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AlertGroupConfigurationArgs:
     def __init__(__self__, *,
@@ -101,6 +150,19 @@ class AlertGroupConfigurationArgs:
     def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "fields", value)
 
+
+if not MYPY:
+    class AlertJoinConfigurationArgsDict(TypedDict):
+        condition: pulumi.Input[str]
+        """
+        Join condition.
+        """
+        type: pulumi.Input[str]
+        """
+        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
+        """
+elif False:
+    AlertJoinConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertJoinConfigurationArgs:
@@ -139,6 +201,19 @@ class AlertJoinConfigurationArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class AlertLabelArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        Labels's key for new alert.
+        """
+        value: pulumi.Input[str]
+        """
+        Labels's value for new alert.
+        """
+elif False:
+    AlertLabelArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AlertLabelArgs:
     def __init__(__self__, *,
@@ -175,6 +250,31 @@ class AlertLabelArgs:
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class AlertNotificationListArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        Notice content of alarm.
+        """
+        type: pulumi.Input[str]
+        """
+        Notification type. support Email, SMS, DingTalk, MessageCenter.
+        """
+        email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Email address list.
+        """
+        mobile_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        SMS sending mobile number.
+        """
+        service_uri: NotRequired[pulumi.Input[str]]
+        """
+        Request address.
+        """
+elif False:
+    AlertNotificationListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertNotificationListArgs:
@@ -261,6 +361,23 @@ class AlertNotificationListArgs:
         pulumi.set(self, "service_uri", value)
 
 
+if not MYPY:
+    class AlertPolicyConfigurationArgsDict(TypedDict):
+        alert_policy_id: pulumi.Input[str]
+        """
+        Alert Policy Id.
+        """
+        repeat_interval: pulumi.Input[str]
+        """
+        Repeat interval used by alert policy, 1h, 1m.e.g.
+        """
+        action_policy_id: NotRequired[pulumi.Input[str]]
+        """
+        Action Policy Id.
+        """
+elif False:
+    AlertPolicyConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AlertPolicyConfigurationArgs:
     def __init__(__self__, *,
@@ -313,6 +430,63 @@ class AlertPolicyConfigurationArgs:
     def action_policy_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "action_policy_id", value)
 
+
+if not MYPY:
+    class AlertQueryListArgsDict(TypedDict):
+        end: pulumi.Input[str]
+        """
+        End time. example: 20s.
+        """
+        query: pulumi.Input[str]
+        """
+        Query corresponding to chart. example: * AND aliyun.
+        """
+        start: pulumi.Input[str]
+        """
+        Begin time. example: -60s.
+        """
+        chart_title: NotRequired[pulumi.Input[str]]
+        """
+        Chart title, optional from 1.161.0+.
+        """
+        dashboard_id: NotRequired[pulumi.Input[str]]
+        """
+        Query dashboard id.
+        """
+        logstore: NotRequired[pulumi.Input[str]]
+        """
+        Query logstore, use store for new alert, Deprecated from 1.161.0+.
+        """
+        power_sql_mode: NotRequired[pulumi.Input[str]]
+        """
+        default disable, whether to use power sql. support auto, enable, disable.
+        """
+        project: NotRequired[pulumi.Input[str]]
+        """
+        Query project.
+        """
+        region: NotRequired[pulumi.Input[str]]
+        """
+        Query project region.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Query project store's ARN.
+        """
+        store: NotRequired[pulumi.Input[str]]
+        """
+        Query store for new alert.
+        """
+        store_type: NotRequired[pulumi.Input[str]]
+        """
+        Query store type for new alert, including log,metric,meta.
+        """
+        time_span_type: NotRequired[pulumi.Input[str]]
+        """
+        default Custom. No need to configure this parameter.
+        """
+elif False:
+    AlertQueryListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertQueryListArgs:
@@ -530,6 +704,37 @@ class AlertQueryListArgs:
         pulumi.set(self, "time_span_type", value)
 
 
+if not MYPY:
+    class AlertScheduleArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        including FixedRate,Hourly,Daily,Weekly,Cron.
+        """
+        cron_expression: NotRequired[pulumi.Input[str]]
+        """
+        Cron expression when type is Cron.
+        """
+        day_of_week: NotRequired[pulumi.Input[int]]
+        """
+        Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
+        """
+        delay: NotRequired[pulumi.Input[int]]
+        hour: NotRequired[pulumi.Input[int]]
+        """
+        Hour of day when type is Weekly/Daily.
+        """
+        interval: NotRequired[pulumi.Input[str]]
+        """
+        Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
+        """
+        run_immediately: NotRequired[pulumi.Input[bool]]
+        time_zone: NotRequired[pulumi.Input[str]]
+        """
+        Time zone for schedule.
+        """
+elif False:
+    AlertScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AlertScheduleArgs:
     def __init__(__self__, *,
@@ -656,6 +861,19 @@ class AlertScheduleArgs:
         pulumi.set(self, "time_zone", value)
 
 
+if not MYPY:
+    class AlertSeverityConfigurationArgsDict(TypedDict):
+        eval_condition: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        Severity when this condition is met.
+        """
+        severity: pulumi.Input[int]
+        """
+        Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
+        """
+elif False:
+    AlertSeverityConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AlertSeverityConfigurationArgs:
     def __init__(__self__, *,
@@ -692,6 +910,31 @@ class AlertSeverityConfigurationArgs:
     def severity(self, value: pulumi.Input[int]):
         pulumi.set(self, "severity", value)
 
+
+if not MYPY:
+    class AlertTemplateConfigurationArgsDict(TypedDict):
+        id: pulumi.Input[str]
+        """
+        Alert template id.
+        """
+        type: pulumi.Input[str]
+        """
+        Alert template type including `sys`, `user`.
+        """
+        annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Alert template annotations.
+        """
+        lang: NotRequired[pulumi.Input[str]]
+        """
+        Alert template language including `cn`, `en`.
+        """
+        tokens: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Alert template tokens.
+        """
+elif False:
+    AlertTemplateConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AlertTemplateConfigurationArgs:
@@ -777,6 +1020,53 @@ class AlertTemplateConfigurationArgs:
     def tokens(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tokens", value)
 
+
+if not MYPY:
+    class EtlEtlSinkArgsDict(TypedDict):
+        endpoint: pulumi.Input[str]
+        """
+        Delivery target logstore region.
+        """
+        logstore: pulumi.Input[str]
+        """
+        Delivery target logstore.
+        """
+        name: pulumi.Input[str]
+        """
+        Delivery target name.
+        """
+        project: pulumi.Input[str]
+        """
+        The project where the target logstore is delivered.
+        """
+        access_key_id: NotRequired[pulumi.Input[str]]
+        """
+        Delivery target logstore access key id.
+        """
+        access_key_secret: NotRequired[pulumi.Input[str]]
+        """
+        Delivery target logstore access key secret.
+        """
+        kms_encrypted_access_key_id: NotRequired[pulumi.Input[str]]
+        """
+        An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
+        """
+        kms_encrypted_access_key_secret: NotRequired[pulumi.Input[str]]
+        """
+        An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
+        """
+        role_arn: NotRequired[pulumi.Input[str]]
+        """
+        Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        ETL sinks type, the default value is AliyunLOG.
+
+        > **Note:** `from_time` and `to_time` no modification allowed after successful creation.
+        """
+elif False:
+    EtlEtlSinkArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EtlEtlSinkArgs:
@@ -945,6 +1235,19 @@ class EtlEtlSinkArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class OssExportConfigColumnArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of the key.
+        """
+        type: pulumi.Input[str]
+        """
+        Type of configuration name.
+        """
+elif False:
+    OssExportConfigColumnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OssExportConfigColumnArgs:
     def __init__(__self__, *,
@@ -982,6 +1285,13 @@ class OssExportConfigColumnArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class OssShipperParquetConfigArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        type: pulumi.Input[str]
+elif False:
+    OssShipperParquetConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class OssShipperParquetConfigArgs:
     def __init__(__self__, *,
@@ -1008,6 +1318,23 @@ class OssShipperParquetConfigArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class StoreEncryptConfArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Enable encryption. Default false.
+        """
+        encrypt_type: NotRequired[pulumi.Input[str]]
+        """
+        Supported encryption type, only supports `default`(AES), `m4`.
+        """
+        user_cmk_info: NotRequired[pulumi.Input['StoreEncryptConfUserCmkInfoArgsDict']]
+        """
+        User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
+        """
+elif False:
+    StoreEncryptConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StoreEncryptConfArgs:
@@ -1064,6 +1391,23 @@ class StoreEncryptConfArgs:
         pulumi.set(self, "user_cmk_info", value)
 
 
+if not MYPY:
+    class StoreEncryptConfUserCmkInfoArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        """
+        Role arn.
+        """
+        cmk_key_id: NotRequired[pulumi.Input[str]]
+        """
+        User master key id.
+        """
+        region_id: NotRequired[pulumi.Input[str]]
+        """
+        Region id where the user master key id is located.
+        """
+elif False:
+    StoreEncryptConfUserCmkInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StoreEncryptConfUserCmkInfoArgs:
     def __init__(__self__, *,
@@ -1118,6 +1462,43 @@ class StoreEncryptConfUserCmkInfoArgs:
     def region_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region_id", value)
 
+
+if not MYPY:
+    class StoreIndexFieldSearchArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The field name, which is unique in the same log store.
+        """
+        alias: NotRequired[pulumi.Input[str]]
+        """
+        The alias of one field
+        """
+        case_sensitive: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+        """
+        enable_analytics: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable field analytics. Default to true.
+        """
+        include_chinese: NotRequired[pulumi.Input[bool]]
+        """
+        Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+        """
+        json_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgsDict']]]]
+        """
+        Use nested index when type is json
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
+        """
+elif False:
+    StoreIndexFieldSearchArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StoreIndexFieldSearchArgs:
@@ -1253,6 +1634,29 @@ class StoreIndexFieldSearchArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class StoreIndexFieldSearchJsonKeyArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        When using the json_keys field, this field is required.
+        """
+        alias: NotRequired[pulumi.Input[str]]
+        """
+        The alias of one field.
+        """
+        doc_value: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable statistics. default to true.
+
+        > **Note:** At least one of the "full_text" and "field_search" should be specified.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+        """
+elif False:
+    StoreIndexFieldSearchJsonKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StoreIndexFieldSearchJsonKeyArgs:
     def __init__(__self__, *,
@@ -1327,6 +1731,23 @@ class StoreIndexFieldSearchJsonKeyArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class StoreIndexFullTextArgsDict(TypedDict):
+        case_sensitive: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the case sensitive. Default to false.
+        """
+        include_chinese: NotRequired[pulumi.Input[bool]]
+        """
+        Whether includes the chinese. Default to false.
+        """
+        token: NotRequired[pulumi.Input[str]]
+        """
+        The string of several split words, like "\\r", "#"
+        """
+elif False:
+    StoreIndexFullTextArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class StoreIndexFullTextArgs:
     def __init__(__self__, *,
@@ -1381,6 +1802,27 @@ class StoreIndexFullTextArgs:
     def token(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token", value)
 
+
+if not MYPY:
+    class StoreShardArgsDict(TypedDict):
+        begin_key: NotRequired[pulumi.Input[str]]
+        """
+        The begin value of the shard range(MD5), included in the shard range.
+        """
+        end_key: NotRequired[pulumi.Input[str]]
+        """
+        The end value of the shard range(MD5), not included in shard range.
+        """
+        id: NotRequired[pulumi.Input[int]]
+        """
+        The ID of the shard.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Shard status, only two status of `readwrite` and `readonly`.
+        """
+elif False:
+    StoreShardArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class StoreShardArgs:

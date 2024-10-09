@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -134,9 +139,6 @@ def get_domain_extensions(frontend_port: Optional[int] = None,
         ids=pulumi.get(__ret__, 'ids'),
         load_balancer_id=pulumi.get(__ret__, 'load_balancer_id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_domain_extensions)
 def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[int]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  load_balancer_id: Optional[pulumi.Input[str]] = None,
@@ -163,4 +165,17 @@ def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[int]] = No
     :param Sequence[str] ids: IDs of the SLB domain extensions.
     :param str load_balancer_id: The ID of the SLB instance.
     """
-    ...
+    __args__ = dict()
+    __args__['frontendPort'] = frontend_port
+    __args__['ids'] = ids
+    __args__['loadBalancerId'] = load_balancer_id
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getDomainExtensions:getDomainExtensions', __args__, opts=opts, typ=GetDomainExtensionsResult)
+    return __ret__.apply(lambda __response__: GetDomainExtensionsResult(
+        extensions=pulumi.get(__response__, 'extensions'),
+        frontend_port=pulumi.get(__response__, 'frontend_port'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        load_balancer_id=pulumi.get(__response__, 'load_balancer_id'),
+        output_file=pulumi.get(__response__, 'output_file')))

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ecp.GetKeyPairs(ctx, nil, nil)
+//			ids, err := ecp.GetKeyPairs(ctx, &ecp.GetKeyPairsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

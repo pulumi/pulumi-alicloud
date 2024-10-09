@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("domainName"); param != "" {
 //				domainName = param
 //			}
-//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

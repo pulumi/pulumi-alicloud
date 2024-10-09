@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -195,9 +200,6 @@ def get_enterprise_users(ids: Optional[Sequence[str]] = None,
         status=pulumi.get(__ret__, 'status'),
         tid=pulumi.get(__ret__, 'tid'),
         users=pulumi.get(__ret__, 'users'))
-
-
-@_utilities.lift_output_func(get_enterprise_users)
 def get_enterprise_users_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -233,4 +235,24 @@ def get_enterprise_users_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     :param str status: The status of the user.
     :param int tid: The ID of the tenant in DMS Enterprise.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['role'] = role
+    __args__['searchKey'] = search_key
+    __args__['status'] = status
+    __args__['tid'] = tid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dms/getEnterpriseUsers:getEnterpriseUsers', __args__, opts=opts, typ=GetEnterpriseUsersResult)
+    return __ret__.apply(lambda __response__: GetEnterpriseUsersResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        role=pulumi.get(__response__, 'role'),
+        search_key=pulumi.get(__response__, 'search_key'),
+        status=pulumi.get(__response__, 'status'),
+        tid=pulumi.get(__response__, 'tid'),
+        users=pulumi.get(__response__, 'users')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -131,9 +136,6 @@ def get_ots_snapshots(end_time: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         snapshots=pulumi.get(__ret__, 'snapshots'),
         start_time=pulumi.get(__ret__, 'start_time'))
-
-
-@_utilities.lift_output_func(get_ots_snapshots)
 def get_ots_snapshots_output(end_time: Optional[pulumi.Input[Optional[str]]] = None,
                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -160,4 +162,17 @@ def get_ots_snapshots_output(end_time: Optional[pulumi.Input[Optional[str]]] = N
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str start_time: The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
     """
-    ...
+    __args__ = dict()
+    __args__['endTime'] = end_time
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['startTime'] = start_time
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getOtsSnapshots:getOtsSnapshots', __args__, opts=opts, typ=GetOtsSnapshotsResult)
+    return __ret__.apply(lambda __response__: GetOtsSnapshotsResult(
+        end_time=pulumi.get(__response__, 'end_time'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        snapshots=pulumi.get(__response__, 'snapshots'),
+        start_time=pulumi.get(__response__, 'start_time')))

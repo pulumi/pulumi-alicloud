@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -150,9 +155,6 @@ def get_alidns_instances(domain_type: Optional[str] = None,
         lang=pulumi.get(__ret__, 'lang'),
         output_file=pulumi.get(__ret__, 'output_file'),
         user_client_ip=pulumi.get(__ret__, 'user_client_ip'))
-
-
-@_utilities.lift_output_func(get_alidns_instances)
 def get_alidns_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = None,
                                 ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 lang: Optional[pulumi.Input[Optional[str]]] = None,
@@ -181,4 +183,19 @@ def get_alidns_instances_output(domain_type: Optional[pulumi.Input[Optional[str]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str user_client_ip: The IP address of the client.
     """
-    ...
+    __args__ = dict()
+    __args__['domainType'] = domain_type
+    __args__['ids'] = ids
+    __args__['lang'] = lang
+    __args__['outputFile'] = output_file
+    __args__['userClientIp'] = user_client_ip
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getAlidnsInstances:getAlidnsInstances', __args__, opts=opts, typ=GetAlidnsInstancesResult)
+    return __ret__.apply(lambda __response__: GetAlidnsInstancesResult(
+        domain_type=pulumi.get(__response__, 'domain_type'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instances=pulumi.get(__response__, 'instances'),
+        lang=pulumi.get(__response__, 'lang'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        user_client_ip=pulumi.get(__response__, 'user_client_ip')))

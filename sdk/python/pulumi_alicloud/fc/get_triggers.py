@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -163,9 +168,6 @@ def get_triggers(function_name: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         service_name=pulumi.get(__ret__, 'service_name'),
         triggers=pulumi.get(__ret__, 'triggers'))
-
-
-@_utilities.lift_output_func(get_triggers)
 def get_triggers_output(function_name: Optional[pulumi.Input[str]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -194,4 +196,20 @@ def get_triggers_output(function_name: Optional[pulumi.Input[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_name: FC service name.
     """
-    ...
+    __args__ = dict()
+    __args__['functionName'] = function_name
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['serviceName'] = service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:fc/getTriggers:getTriggers', __args__, opts=opts, typ=GetTriggersResult)
+    return __ret__.apply(lambda __response__: GetTriggersResult(
+        function_name=pulumi.get(__response__, 'function_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        service_name=pulumi.get(__response__, 'service_name'),
+        triggers=pulumi.get(__response__, 'triggers')))

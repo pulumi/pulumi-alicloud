@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -120,9 +125,6 @@ def get_enterprise_proxies(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         proxies=pulumi.get(__ret__, 'proxies'),
         tid=pulumi.get(__ret__, 'tid'))
-
-
-@_utilities.lift_output_func(get_enterprise_proxies)
 def get_enterprise_proxies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   tid: Optional[pulumi.Input[Optional[str]]] = None,
@@ -149,4 +151,15 @@ def get_enterprise_proxies_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str tid: The ID of the tenant.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['tid'] = tid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dms/getEnterpriseProxies:getEnterpriseProxies', __args__, opts=opts, typ=GetEnterpriseProxiesResult)
+    return __ret__.apply(lambda __response__: GetEnterpriseProxiesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        proxies=pulumi.get(__response__, 'proxies'),
+        tid=pulumi.get(__response__, 'tid')))

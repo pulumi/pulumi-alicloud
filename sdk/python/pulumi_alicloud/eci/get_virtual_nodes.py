@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -212,9 +217,6 @@ def get_virtual_nodes(ids: Optional[Sequence[str]] = None,
         tags=pulumi.get(__ret__, 'tags'),
         virtual_node_name=pulumi.get(__ret__, 'virtual_node_name'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-
-
-@_utilities.lift_output_func(get_virtual_nodes)
 def get_virtual_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -257,4 +259,28 @@ def get_virtual_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str virtual_node_name: The name of the virtual node.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['securityGroupId'] = security_group_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['virtualNodeName'] = virtual_node_name
+    __args__['vswitchId'] = vswitch_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:eci/getVirtualNodes:getVirtualNodes', __args__, opts=opts, typ=GetVirtualNodesResult)
+    return __ret__.apply(lambda __response__: GetVirtualNodesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        nodes=pulumi.get(__response__, 'nodes'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        security_group_id=pulumi.get(__response__, 'security_group_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        virtual_node_name=pulumi.get(__response__, 'virtual_node_name'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id')))

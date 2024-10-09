@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := chatbot.GetAgents(ctx, nil, nil)
+//			_default, err := chatbot.GetAgents(ctx, &chatbot.GetAgentsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -201,9 +206,6 @@ def get_policy_attachments(language: Optional[str] = None,
         principal_name=pulumi.get(__ret__, 'principal_name'),
         principal_type=pulumi.get(__ret__, 'principal_type'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'))
-
-
-@_utilities.lift_output_func(get_policy_attachments)
 def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   policy_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -236,4 +238,24 @@ def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]
     :param str principal_type: The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
     :param str resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
     """
-    ...
+    __args__ = dict()
+    __args__['language'] = language
+    __args__['outputFile'] = output_file
+    __args__['policyName'] = policy_name
+    __args__['policyType'] = policy_type
+    __args__['principalName'] = principal_name
+    __args__['principalType'] = principal_type
+    __args__['resourceGroupId'] = resource_group_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments', __args__, opts=opts, typ=GetPolicyAttachmentsResult)
+    return __ret__.apply(lambda __response__: GetPolicyAttachmentsResult(
+        attachments=pulumi.get(__response__, 'attachments'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        language=pulumi.get(__response__, 'language'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policy_name=pulumi.get(__response__, 'policy_name'),
+        policy_type=pulumi.get(__response__, 'policy_type'),
+        principal_name=pulumi.get(__response__, 'principal_name'),
+        principal_type=pulumi.get(__response__, 'principal_type'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id')))

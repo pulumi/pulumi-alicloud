@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -199,9 +204,6 @@ def get_secrets(enable_details: Optional[bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         secrets=pulumi.get(__ret__, 'secrets'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_secrets)
 def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                        fetch_tags: Optional[pulumi.Input[Optional[bool]]] = None,
                        filters: Optional[pulumi.Input[Optional[str]]] = None,
@@ -241,4 +243,24 @@ def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['fetchTags'] = fetch_tags
+    __args__['filters'] = filters
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:kms/getSecrets:getSecrets', __args__, opts=opts, typ=GetSecretsResult)
+    return __ret__.apply(lambda __response__: GetSecretsResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        fetch_tags=pulumi.get(__response__, 'fetch_tags'),
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        secrets=pulumi.get(__response__, 'secrets'),
+        tags=pulumi.get(__response__, 'tags')))

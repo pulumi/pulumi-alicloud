@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -190,9 +195,6 @@ def get_access_strategies(enable_details: Optional[bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         strategies=pulumi.get(__ret__, 'strategies'),
         strategy_mode=pulumi.get(__ret__, 'strategy_mode'))
-
-
-@_utilities.lift_output_func(get_access_strategies)
 def get_access_strategies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  instance_id: Optional[pulumi.Input[str]] = None,
@@ -235,4 +237,24 @@ def get_access_strategies_output(enable_details: Optional[pulumi.Input[Optional[
            - `GEO`: based on geographic location.
            - `LATENCY`: Based on delay.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['lang'] = lang
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['strategyMode'] = strategy_mode
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getAccessStrategies:getAccessStrategies', __args__, opts=opts, typ=GetAccessStrategiesResult)
+    return __ret__.apply(lambda __response__: GetAccessStrategiesResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        lang=pulumi.get(__response__, 'lang'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        strategies=pulumi.get(__response__, 'strategies'),
+        strategy_mode=pulumi.get(__response__, 'strategy_mode')))

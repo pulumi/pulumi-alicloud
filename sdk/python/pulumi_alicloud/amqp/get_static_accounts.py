@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -124,9 +129,6 @@ def get_static_accounts(ids: Optional[Sequence[str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_static_accounts)
 def get_static_accounts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -151,4 +153,15 @@ def get_static_accounts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     :param str instance_id: InstanceId
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:amqp/getStaticAccounts:getStaticAccounts', __args__, opts=opts, typ=GetStaticAccountsResult)
+    return __ret__.apply(lambda __response__: GetStaticAccountsResult(
+        accounts=pulumi.get(__response__, 'accounts'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        output_file=pulumi.get(__response__, 'output_file')))

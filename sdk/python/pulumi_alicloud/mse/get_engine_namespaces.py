@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -134,9 +139,6 @@ def get_engine_namespaces(accept_language: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         namespaces=pulumi.get(__ret__, 'namespaces'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_engine_namespaces)
 def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional[str]]] = None,
                                  cluster_id: Optional[pulumi.Input[str]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -166,4 +168,17 @@ def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional
     :param Sequence[str] ids: A list of Engine Namespace IDs. It is formatted to `<cluster_id>:<namespace_id>`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['acceptLanguage'] = accept_language
+    __args__['clusterId'] = cluster_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:mse/getEngineNamespaces:getEngineNamespaces', __args__, opts=opts, typ=GetEngineNamespacesResult)
+    return __ret__.apply(lambda __response__: GetEngineNamespacesResult(
+        accept_language=pulumi.get(__response__, 'accept_language'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        namespaces=pulumi.get(__response__, 'namespaces'),
+        output_file=pulumi.get(__response__, 'output_file')))

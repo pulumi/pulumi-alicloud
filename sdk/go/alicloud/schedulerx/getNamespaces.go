@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := schedulerx.GetNamespaces(ctx, nil, nil)
+//			ids, err := schedulerx.GetNamespaces(ctx, &schedulerx.GetNamespacesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := tsdb.GetZones(ctx, nil, nil)
+//			example, err := tsdb.GetZones(ctx, &tsdb.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

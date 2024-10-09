@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -136,9 +141,6 @@ def get_namespaces(name_regex: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         namespaces=pulumi.get(__ret__, 'namespaces'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_namespaces)
 def get_namespaces_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespacesResult]:
@@ -163,4 +165,15 @@ def get_namespaces_output(name_regex: Optional[pulumi.Input[Optional[str]]] = No
     :param str name_regex: A regex string to filter results by namespace name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cr/getNamespaces:getNamespaces', __args__, opts=opts, typ=GetNamespacesResult)
+    return __ret__.apply(lambda __response__: GetNamespacesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        namespaces=pulumi.get(__response__, 'namespaces'),
+        output_file=pulumi.get(__response__, 'output_file')))

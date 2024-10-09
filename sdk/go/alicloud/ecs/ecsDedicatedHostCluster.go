@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := alicloud.GetZones(ctx, nil, nil)
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

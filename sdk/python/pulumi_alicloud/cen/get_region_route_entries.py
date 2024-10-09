@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -119,9 +124,6 @@ def get_region_route_entries(instance_id: Optional[str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         region_id=pulumi.get(__ret__, 'region_id'))
-
-
-@_utilities.lift_output_func(get_region_route_entries)
 def get_region_route_entries_output(instance_id: Optional[pulumi.Input[str]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     region_id: Optional[pulumi.Input[str]] = None,
@@ -144,4 +146,15 @@ def get_region_route_entries_output(instance_id: Optional[pulumi.Input[str]] = N
     :param str instance_id: ID of the CEN instance.
     :param str region_id: ID of the region.
     """
-    ...
+    __args__ = dict()
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    __args__['regionId'] = region_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getRegionRouteEntries:getRegionRouteEntries', __args__, opts=opts, typ=GetRegionRouteEntriesResult)
+    return __ret__.apply(lambda __response__: GetRegionRouteEntriesResult(
+        entries=pulumi.get(__response__, 'entries'),
+        id=pulumi.get(__response__, 'id'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        region_id=pulumi.get(__response__, 'region_id')))

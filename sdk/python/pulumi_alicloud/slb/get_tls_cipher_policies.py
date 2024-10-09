@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -174,9 +179,6 @@ def get_tls_cipher_policies(ids: Optional[Sequence[str]] = None,
         policies=pulumi.get(__ret__, 'policies'),
         status=pulumi.get(__ret__, 'status'),
         tls_cipher_policy_name=pulumi.get(__ret__, 'tls_cipher_policy_name'))
-
-
-@_utilities.lift_output_func(get_tls_cipher_policies)
 def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    include_listener: Optional[pulumi.Input[Optional[bool]]] = None,
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -214,4 +216,22 @@ def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param str status: TLS policy instance state. Valid values: `configuring`, `normal`.
     :param str tls_cipher_policy_name: TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['includeListener'] = include_listener
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['tlsCipherPolicyName'] = tls_cipher_policy_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies', __args__, opts=opts, typ=GetTlsCipherPoliciesResult)
+    return __ret__.apply(lambda __response__: GetTlsCipherPoliciesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        include_listener=pulumi.get(__response__, 'include_listener'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policies=pulumi.get(__response__, 'policies'),
+        status=pulumi.get(__response__, 'status'),
+        tls_cipher_policy_name=pulumi.get(__response__, 'tls_cipher_policy_name')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -138,9 +143,6 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         subscriptions=pulumi.get(__ret__, 'subscriptions'),
         topic_name=pulumi.get(__ret__, 'topic_name'))
-
-
-@_utilities.lift_output_func(get_topic_subscriptions)
 def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    topic_name: Optional[pulumi.Input[str]] = None,
@@ -166,4 +168,16 @@ def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[s
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str topic_name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
     """
-    ...
+    __args__ = dict()
+    __args__['namePrefix'] = name_prefix
+    __args__['outputFile'] = output_file
+    __args__['topicName'] = topic_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:mns/getTopicSubscriptions:getTopicSubscriptions', __args__, opts=opts, typ=GetTopicSubscriptionsResult)
+    return __ret__.apply(lambda __response__: GetTopicSubscriptionsResult(
+        id=pulumi.get(__response__, 'id'),
+        name_prefix=pulumi.get(__response__, 'name_prefix'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        subscriptions=pulumi.get(__response__, 'subscriptions'),
+        topic_name=pulumi.get(__response__, 'topic_name')))

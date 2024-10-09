@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -264,9 +269,6 @@ def get_snapshots(bucket: Optional[str] = None,
         source_type=pulumi.get(__ret__, 'source_type'),
         status=pulumi.get(__ret__, 'status'),
         vault_id=pulumi.get(__ret__, 'vault_id'))
-
-
-@_utilities.lift_output_func(get_snapshots)
 def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
                          complete_time: Optional[pulumi.Input[Optional[str]]] = None,
                          complete_time_checker: Optional[pulumi.Input[Optional[str]]] = None,
@@ -327,4 +329,35 @@ def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
     :param str status: The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
     :param str vault_id: The ID of Vault.
     """
-    ...
+    __args__ = dict()
+    __args__['bucket'] = bucket
+    __args__['completeTime'] = complete_time
+    __args__['completeTimeChecker'] = complete_time_checker
+    __args__['createTime'] = create_time
+    __args__['fileSystemId'] = file_system_id
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['limit'] = limit
+    __args__['outputFile'] = output_file
+    __args__['query'] = query
+    __args__['sourceType'] = source_type
+    __args__['status'] = status
+    __args__['vaultId'] = vault_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult)
+    return __ret__.apply(lambda __response__: GetSnapshotsResult(
+        bucket=pulumi.get(__response__, 'bucket'),
+        complete_time=pulumi.get(__response__, 'complete_time'),
+        complete_time_checker=pulumi.get(__response__, 'complete_time_checker'),
+        create_time=pulumi.get(__response__, 'create_time'),
+        file_system_id=pulumi.get(__response__, 'file_system_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        limit=pulumi.get(__response__, 'limit'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        query=pulumi.get(__response__, 'query'),
+        snapshots=pulumi.get(__response__, 'snapshots'),
+        source_type=pulumi.get(__response__, 'source_type'),
+        status=pulumi.get(__response__, 'status'),
+        vault_id=pulumi.get(__response__, 'vault_id')))

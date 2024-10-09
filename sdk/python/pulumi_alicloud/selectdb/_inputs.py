@@ -4,19 +4,45 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DbClusterDesiredParamArgs',
+    'DbClusterDesiredParamArgsDict',
     'DbClusterParamChangeLogArgs',
+    'DbClusterParamChangeLogArgsDict',
     'DbInstanceDesiredSecurityIpListArgs',
+    'DbInstanceDesiredSecurityIpListArgsDict',
     'DbInstanceInstanceNetInfoArgs',
+    'DbInstanceInstanceNetInfoArgsDict',
     'DbInstanceInstanceNetInfoPortListArgs',
+    'DbInstanceInstanceNetInfoPortListArgsDict',
     'DbInstanceSecurityIpListArgs',
+    'DbInstanceSecurityIpListArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DbClusterDesiredParamArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Parameter name.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The new value of Parameter.
+        """
+elif False:
+    DbClusterDesiredParamArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DbClusterDesiredParamArgs:
@@ -56,6 +82,39 @@ class DbClusterDesiredParamArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class DbClusterParamChangeLogArgsDict(TypedDict):
+        config_id: NotRequired[pulumi.Input[int]]
+        """
+        The id of parameter change.
+        """
+        gmt_created: NotRequired[pulumi.Input[str]]
+        """
+        When the parameter change is created.
+        """
+        gmt_modified: NotRequired[pulumi.Input[str]]
+        """
+        When the parameter change is modified.
+        """
+        is_applied: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the parameter changing is applied.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Changed parameter name.
+        """
+        new_value: NotRequired[pulumi.Input[str]]
+        """
+        The new value of parameter.
+        """
+        old_value: NotRequired[pulumi.Input[str]]
+        """
+        The old value of parameter.
+        """
+elif False:
+    DbClusterParamChangeLogArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DbClusterParamChangeLogArgs:
@@ -176,6 +235,19 @@ class DbClusterParamChangeLogArgs:
         pulumi.set(self, "old_value", value)
 
 
+if not MYPY:
+    class DbInstanceDesiredSecurityIpListArgsDict(TypedDict):
+        group_name: NotRequired[pulumi.Input[str]]
+        """
+        Security group name.
+        """
+        security_ip_list: NotRequired[pulumi.Input[str]]
+        """
+        The IP list of Security group. Each single IP value should be Separated by comma.
+        """
+elif False:
+    DbInstanceDesiredSecurityIpListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DbInstanceDesiredSecurityIpListArgs:
     def __init__(__self__, *,
@@ -214,6 +286,35 @@ class DbInstanceDesiredSecurityIpListArgs:
     def security_ip_list(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_ip_list", value)
 
+
+if not MYPY:
+    class DbInstanceInstanceNetInfoArgsDict(TypedDict):
+        connection_string: NotRequired[pulumi.Input[str]]
+        """
+        The connection string of the instance.
+        """
+        db_ip: NotRequired[pulumi.Input[str]]
+        """
+        The IP address of the instance.
+        """
+        net_type: NotRequired[pulumi.Input[str]]
+        """
+        The network type of the instance.
+        """
+        port_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['DbInstanceInstanceNetInfoPortListArgsDict']]]]
+        """
+        A list for port provides SelectDB service.
+        """
+        vpc_instance_id: NotRequired[pulumi.Input[str]]
+        """
+        The VPC ID.
+        """
+        vswitch_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of vswitch for DBInstance.
+        """
+elif False:
+    DbInstanceInstanceNetInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DbInstanceInstanceNetInfoArgs:
@@ -318,6 +419,19 @@ class DbInstanceInstanceNetInfoArgs:
         pulumi.set(self, "vswitch_id", value)
 
 
+if not MYPY:
+    class DbInstanceInstanceNetInfoPortListArgsDict(TypedDict):
+        port: NotRequired[pulumi.Input[str]]
+        """
+        The port that is used to connect.
+        """
+        protocol: NotRequired[pulumi.Input[str]]
+        """
+        The protocol of the port.
+        """
+elif False:
+    DbInstanceInstanceNetInfoPortListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DbInstanceInstanceNetInfoPortListArgs:
     def __init__(__self__, *,
@@ -356,6 +470,31 @@ class DbInstanceInstanceNetInfoPortListArgs:
     def protocol(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protocol", value)
 
+
+if not MYPY:
+    class DbInstanceSecurityIpListArgsDict(TypedDict):
+        group_name: NotRequired[pulumi.Input[str]]
+        """
+        Security group name.
+        """
+        group_tag: NotRequired[pulumi.Input[str]]
+        """
+        The tag of Security group.
+        """
+        list_net_type: NotRequired[pulumi.Input[str]]
+        """
+        The network type of Security group.
+        """
+        security_ip_list: NotRequired[pulumi.Input[str]]
+        """
+        The IP list of Security group. Each single IP value should be Separated by comma.
+        """
+        security_ip_type: NotRequired[pulumi.Input[str]]
+        """
+        The IP address type. Valid values: `ipv4`, `ipv6` (not supported).
+        """
+elif False:
+    DbInstanceSecurityIpListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DbInstanceSecurityIpListArgs:

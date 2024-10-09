@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -248,9 +253,6 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_capacity_reservations)
 def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      instance_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -291,4 +293,30 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
     :param str status: The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
     :param Mapping[str, str] tags: The tag of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['capacityReservationIds'] = capacity_reservation_ids
+    __args__['ids'] = ids
+    __args__['instanceType'] = instance_type
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['paymentType'] = payment_type
+    __args__['platform'] = platform
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getCapacityReservations:getCapacityReservations', __args__, opts=opts, typ=GetCapacityReservationsResult)
+    return __ret__.apply(lambda __response__: GetCapacityReservationsResult(
+        capacity_reservation_ids=pulumi.get(__response__, 'capacity_reservation_ids'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        payment_type=pulumi.get(__response__, 'payment_type'),
+        platform=pulumi.get(__response__, 'platform'),
+        reservations=pulumi.get(__response__, 'reservations'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

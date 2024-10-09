@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := gpdb.GetZones(ctx, nil, nil)
+//			_default, err := gpdb.GetZones(ctx, &gpdb.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

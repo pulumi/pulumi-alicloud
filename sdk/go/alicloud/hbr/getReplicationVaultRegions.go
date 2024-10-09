@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := hbr.GetReplicationVaultRegions(ctx, nil, nil)
+//			_default, err := hbr.GetReplicationVaultRegions(ctx, &hbr.GetReplicationVaultRegionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

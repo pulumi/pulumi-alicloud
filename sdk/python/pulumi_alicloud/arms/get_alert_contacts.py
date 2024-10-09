@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -171,9 +176,6 @@ def get_alert_contacts(alert_contact_name: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         phone_num=pulumi.get(__ret__, 'phone_num'))
-
-
-@_utilities.lift_output_func(get_alert_contacts)
 def get_alert_contacts_output(alert_contact_name: Optional[pulumi.Input[Optional[str]]] = None,
                               email: Optional[pulumi.Input[Optional[str]]] = None,
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -208,4 +210,22 @@ def get_alert_contacts_output(alert_contact_name: Optional[pulumi.Input[Optional
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str phone_num: The mobile number of the alert contact.
     """
-    ...
+    __args__ = dict()
+    __args__['alertContactName'] = alert_contact_name
+    __args__['email'] = email
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['phoneNum'] = phone_num
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:arms/getAlertContacts:getAlertContacts', __args__, opts=opts, typ=GetAlertContactsResult)
+    return __ret__.apply(lambda __response__: GetAlertContactsResult(
+        alert_contact_name=pulumi.get(__response__, 'alert_contact_name'),
+        contacts=pulumi.get(__response__, 'contacts'),
+        email=pulumi.get(__response__, 'email'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        phone_num=pulumi.get(__response__, 'phone_num')))

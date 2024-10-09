@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -109,9 +114,6 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[Union['GetC
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_collation_time_zones)
 def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[Optional[Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict']]]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCollationTimeZonesResult]:
@@ -137,4 +139,13 @@ def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[
            use in ApsaraDB RDS.
     :param str output_file: File name where to save data source results (after running `pulumi up`).
     """
-    ...
+    __args__ = dict()
+    __args__['collationTimeZones'] = collation_time_zones
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getCollationTimeZones:getCollationTimeZones', __args__, opts=opts, typ=GetCollationTimeZonesResult)
+    return __ret__.apply(lambda __response__: GetCollationTimeZonesResult(
+        collation_time_zones=pulumi.get(__response__, 'collation_time_zones'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file')))

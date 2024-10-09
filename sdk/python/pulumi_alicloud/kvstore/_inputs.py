@@ -4,14 +4,35 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceParameterArgs',
+    'InstanceParameterArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceParameterArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        """
+elif False:
+    InstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceParameterArgs:

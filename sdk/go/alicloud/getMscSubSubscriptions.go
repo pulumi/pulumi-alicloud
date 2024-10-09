@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := alicloud.GetMscSubSubscriptions(ctx, nil, nil)
+//			_default, err := alicloud.GetMscSubSubscriptions(ctx, &alicloud.GetMscSubSubscriptionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

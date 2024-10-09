@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -111,9 +116,6 @@ def get_ack_service(enable: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_ack_service)
 def get_ack_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
                            type: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAckServiceResult]:
@@ -140,4 +142,13 @@ def get_ack_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
            
            > **NOTE:** Setting `enable = "On"` to open the Container Service (CS) service that means you have read and agreed the [Container Service (CS) Terms of Service](https://help.aliyun.com/document_detail/157971.html). The service can not closed once it is opened.
     """
-    ...
+    __args__ = dict()
+    __args__['enable'] = enable
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getAckService:getAckService', __args__, opts=opts, typ=GetAckServiceResult)
+    return __ret__.apply(lambda __response__: GetAckServiceResult(
+        enable=pulumi.get(__response__, 'enable'),
+        id=pulumi.get(__response__, 'id'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type')))

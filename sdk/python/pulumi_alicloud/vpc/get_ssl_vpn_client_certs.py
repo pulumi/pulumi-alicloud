@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -153,9 +158,6 @@ def get_ssl_vpn_client_certs(ids: Optional[Sequence[str]] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         ssl_vpn_server_id=pulumi.get(__ret__, 'ssl_vpn_server_id'))
-
-
-@_utilities.lift_output_func(get_ssl_vpn_client_certs)
 def get_ssl_vpn_client_certs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -182,4 +184,18 @@ def get_ssl_vpn_client_certs_output(ids: Optional[pulumi.Input[Optional[Sequence
     :param str output_file: Save the result to the file.
     :param str ssl_vpn_server_id: Use the SSL-VPN server ID as the search key.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['sslVpnServerId'] = ssl_vpn_server_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts', __args__, opts=opts, typ=GetSslVpnClientCertsResult)
+    return __ret__.apply(lambda __response__: GetSslVpnClientCertsResult(
+        certs=pulumi.get(__response__, 'certs'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        ssl_vpn_server_id=pulumi.get(__response__, 'ssl_vpn_server_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -97,9 +102,6 @@ def get_permission(enable: Optional[str] = None,
         enable=pulumi.get(__ret__, 'enable'),
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_permission)
 def get_permission_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPermissionResult]:
     """
@@ -123,4 +125,11 @@ def get_permission_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     :param str enable: Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
     """
-    ...
+    __args__ = dict()
+    __args__['enable'] = enable
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getPermission:getPermission', __args__, opts=opts, typ=GetPermissionResult)
+    return __ret__.apply(lambda __response__: GetPermissionResult(
+        enable=pulumi.get(__response__, 'enable'),
+        id=pulumi.get(__response__, 'id'),
+        status=pulumi.get(__response__, 'status')))

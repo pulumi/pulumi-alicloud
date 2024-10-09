@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -171,9 +176,6 @@ def get_agents(agent_name: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-
-
-@_utilities.lift_output_func(get_agents)
 def get_agents_output(agent_name: Optional[pulumi.Input[Optional[str]]] = None,
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -200,4 +202,21 @@ def get_agents_output(agent_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name_regex: A regex string to filter resulting chatbot agents by name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['agentName'] = agent_name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:chatbot/getAgents:getAgents', __args__, opts=opts, typ=GetAgentsResult)
+    return __ret__.apply(lambda __response__: GetAgentsResult(
+        agent_name=pulumi.get(__response__, 'agent_name'),
+        agents=pulumi.get(__response__, 'agents'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -309,9 +314,6 @@ def get_executions(category: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         template_name=pulumi.get(__ret__, 'template_name'))
-
-
-@_utilities.lift_output_func(get_executions)
 def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                           end_date: Optional[pulumi.Input[Optional[str]]] = None,
                           end_date_after: Optional[pulumi.Input[Optional[str]]] = None,
@@ -367,4 +369,43 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str template_name: The name of execution template.
     """
-    ...
+    __args__ = dict()
+    __args__['category'] = category
+    __args__['endDate'] = end_date
+    __args__['endDateAfter'] = end_date_after
+    __args__['executedBy'] = executed_by
+    __args__['ids'] = ids
+    __args__['includeChildExecution'] = include_child_execution
+    __args__['mode'] = mode
+    __args__['outputFile'] = output_file
+    __args__['parentExecutionId'] = parent_execution_id
+    __args__['ramRole'] = ram_role
+    __args__['sortField'] = sort_field
+    __args__['sortOrder'] = sort_order
+    __args__['startDateAfter'] = start_date_after
+    __args__['startDateBefore'] = start_date_before
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['templateName'] = template_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:oos/getExecutions:getExecutions', __args__, opts=opts, typ=GetExecutionsResult)
+    return __ret__.apply(lambda __response__: GetExecutionsResult(
+        category=pulumi.get(__response__, 'category'),
+        end_date=pulumi.get(__response__, 'end_date'),
+        end_date_after=pulumi.get(__response__, 'end_date_after'),
+        executed_by=pulumi.get(__response__, 'executed_by'),
+        executions=pulumi.get(__response__, 'executions'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        include_child_execution=pulumi.get(__response__, 'include_child_execution'),
+        mode=pulumi.get(__response__, 'mode'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        parent_execution_id=pulumi.get(__response__, 'parent_execution_id'),
+        ram_role=pulumi.get(__response__, 'ram_role'),
+        sort_field=pulumi.get(__response__, 'sort_field'),
+        sort_order=pulumi.get(__response__, 'sort_order'),
+        start_date_after=pulumi.get(__response__, 'start_date_after'),
+        start_date_before=pulumi.get(__response__, 'start_date_before'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        template_name=pulumi.get(__response__, 'template_name')))

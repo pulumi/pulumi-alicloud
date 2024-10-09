@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -188,9 +193,6 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
         snapshot_group_name=pulumi.get(__ret__, 'snapshot_group_name'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_ecs_snapshot_groups)
 def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -231,4 +233,24 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param str status: The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
     :param Mapping[str, str] tags: A mapping of tags to assign to the snapshot group.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['snapshotGroupName'] = snapshot_group_name
+    __args__['status'] = status
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups', __args__, opts=opts, typ=GetEcsSnapshotGroupsResult)
+    return __ret__.apply(lambda __response__: GetEcsSnapshotGroupsResult(
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        snapshot_group_name=pulumi.get(__response__, 'snapshot_group_name'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

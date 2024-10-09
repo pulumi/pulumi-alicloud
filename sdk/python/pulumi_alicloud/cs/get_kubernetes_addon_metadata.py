@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -110,9 +115,6 @@ def get_kubernetes_addon_metadata(cluster_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_kubernetes_addon_metadata)
 def get_kubernetes_addon_metadata_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                          name: Optional[pulumi.Input[str]] = None,
                                          version: Optional[pulumi.Input[str]] = None,
@@ -127,4 +129,15 @@ def get_kubernetes_addon_metadata_output(cluster_id: Optional[pulumi.Input[str]]
     :param str name: The name of the cluster addon. You can get a list of available addons that the cluster can install by using data source `cs_get_kubernetes_addons`.
     :param str version: The version of the cluster addon.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['name'] = name
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata', __args__, opts=opts, typ=GetKubernetesAddonMetadataResult)
+    return __ret__.apply(lambda __response__: GetKubernetesAddonMetadataResult(
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        config_schema=pulumi.get(__response__, 'config_schema'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        version=pulumi.get(__response__, 'version')))

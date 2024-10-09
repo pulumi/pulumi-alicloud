@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := ros.GetRegions(ctx, nil, nil)
+//			all, err := ros.GetRegions(ctx, &ros.GetRegionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -170,9 +175,6 @@ def get_custom_lines(domain_name: Optional[str] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_custom_lines)
 def get_custom_lines_output(domain_name: Optional[pulumi.Input[str]] = None,
                             enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -206,4 +208,22 @@ def get_custom_lines_output(domain_name: Optional[pulumi.Input[str]] = None,
     :param str name_regex: A regex string to filter results by Custom Line name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['domainName'] = domain_name
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['lang'] = lang
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getCustomLines:getCustomLines', __args__, opts=opts, typ=GetCustomLinesResult)
+    return __ret__.apply(lambda __response__: GetCustomLinesResult(
+        domain_name=pulumi.get(__response__, 'domain_name'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        lang=pulumi.get(__response__, 'lang'),
+        lines=pulumi.get(__response__, 'lines'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file')))

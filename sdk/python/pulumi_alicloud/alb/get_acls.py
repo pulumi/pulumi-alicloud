@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -197,9 +202,6 @@ def get_acls(acl_ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_acls)
 def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     acl_name: Optional[pulumi.Input[Optional[str]]] = None,
                     enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -238,4 +240,26 @@ def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     :param str resource_group_id: Resource Group to Which the Number.
     :param str status: The state of the ACL. Valid values:`Provisioning`,`Available`and`Configuring`.  `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
     """
-    ...
+    __args__ = dict()
+    __args__['aclIds'] = acl_ids
+    __args__['aclName'] = acl_name
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:alb/getAcls:getAcls', __args__, opts=opts, typ=GetAclsResult)
+    return __ret__.apply(lambda __response__: GetAclsResult(
+        acl_ids=pulumi.get(__response__, 'acl_ids'),
+        acl_name=pulumi.get(__response__, 'acl_name'),
+        acls=pulumi.get(__response__, 'acls'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status')))

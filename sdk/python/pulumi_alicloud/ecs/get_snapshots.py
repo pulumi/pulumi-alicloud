@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -344,9 +349,6 @@ def get_snapshots(category: Optional[str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'),
         usage=pulumi.get(__ret__, 'usage'))
-
-
-@_utilities.lift_output_func(get_snapshots)
 def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
                          encrypted: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -420,4 +422,42 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     :param Mapping[str, str] tags: A map of tags assigned to the snapshot.
     :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
     """
-    ...
+    __args__ = dict()
+    __args__['category'] = category
+    __args__['dryRun'] = dry_run
+    __args__['encrypted'] = encrypted
+    __args__['ids'] = ids
+    __args__['kmsKeyId'] = kms_key_id
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['snapshotLinkId'] = snapshot_link_id
+    __args__['snapshotName'] = snapshot_name
+    __args__['snapshotType'] = snapshot_type
+    __args__['sourceDiskType'] = source_disk_type
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['type'] = type
+    __args__['usage'] = usage
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult)
+    return __ret__.apply(lambda __response__: GetSnapshotsResult(
+        category=pulumi.get(__response__, 'category'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
+        encrypted=pulumi.get(__response__, 'encrypted'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        kms_key_id=pulumi.get(__response__, 'kms_key_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        snapshot_link_id=pulumi.get(__response__, 'snapshot_link_id'),
+        snapshot_name=pulumi.get(__response__, 'snapshot_name'),
+        snapshot_type=pulumi.get(__response__, 'snapshot_type'),
+        snapshots=pulumi.get(__response__, 'snapshots'),
+        source_disk_type=pulumi.get(__response__, 'source_disk_type'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type'),
+        usage=pulumi.get(__response__, 'usage')))

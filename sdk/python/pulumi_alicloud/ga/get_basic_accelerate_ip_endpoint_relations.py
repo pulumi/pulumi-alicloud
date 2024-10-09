@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -175,9 +180,6 @@ def get_basic_accelerate_ip_endpoint_relations(accelerate_ip_id: Optional[str] =
         output_file=pulumi.get(__ret__, 'output_file'),
         relations=pulumi.get(__ret__, 'relations'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_basic_accelerate_ip_endpoint_relations)
 def get_basic_accelerate_ip_endpoint_relations_output(accelerate_ip_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                       accelerator_id: Optional[pulumi.Input[str]] = None,
                                                       endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -211,4 +213,21 @@ def get_basic_accelerate_ip_endpoint_relations_output(accelerate_ip_id: Optional
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
     """
-    ...
+    __args__ = dict()
+    __args__['accelerateIpId'] = accelerate_ip_id
+    __args__['acceleratorId'] = accelerator_id
+    __args__['endpointId'] = endpoint_id
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations', __args__, opts=opts, typ=GetBasicAccelerateIpEndpointRelationsResult)
+    return __ret__.apply(lambda __response__: GetBasicAccelerateIpEndpointRelationsResult(
+        accelerate_ip_id=pulumi.get(__response__, 'accelerate_ip_id'),
+        accelerator_id=pulumi.get(__response__, 'accelerator_id'),
+        endpoint_id=pulumi.get(__response__, 'endpoint_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        relations=pulumi.get(__response__, 'relations'),
+        status=pulumi.get(__response__, 'status')))

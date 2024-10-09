@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -374,9 +379,6 @@ def get_images(action_type: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         usage=pulumi.get(__ret__, 'usage'))
-
-
-@_utilities.lift_output_func(get_images)
 def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
                       architecture: Optional[pulumi.Input[Optional[str]]] = None,
                       dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -445,4 +447,50 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
     """
-    ...
+    __args__ = dict()
+    __args__['actionType'] = action_type
+    __args__['architecture'] = architecture
+    __args__['dryRun'] = dry_run
+    __args__['imageFamily'] = image_family
+    __args__['imageId'] = image_id
+    __args__['imageName'] = image_name
+    __args__['imageOwnerId'] = image_owner_id
+    __args__['instanceType'] = instance_type
+    __args__['isSupportCloudInit'] = is_support_cloud_init
+    __args__['isSupportIoOptimized'] = is_support_io_optimized
+    __args__['mostRecent'] = most_recent
+    __args__['nameRegex'] = name_regex
+    __args__['osType'] = os_type
+    __args__['outputFile'] = output_file
+    __args__['owners'] = owners
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['snapshotId'] = snapshot_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['usage'] = usage
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
+    return __ret__.apply(lambda __response__: GetImagesResult(
+        action_type=pulumi.get(__response__, 'action_type'),
+        architecture=pulumi.get(__response__, 'architecture'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        image_family=pulumi.get(__response__, 'image_family'),
+        image_id=pulumi.get(__response__, 'image_id'),
+        image_name=pulumi.get(__response__, 'image_name'),
+        image_owner_id=pulumi.get(__response__, 'image_owner_id'),
+        images=pulumi.get(__response__, 'images'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        is_support_cloud_init=pulumi.get(__response__, 'is_support_cloud_init'),
+        is_support_io_optimized=pulumi.get(__response__, 'is_support_io_optimized'),
+        most_recent=pulumi.get(__response__, 'most_recent'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        os_type=pulumi.get(__response__, 'os_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        owners=pulumi.get(__response__, 'owners'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        snapshot_id=pulumi.get(__response__, 'snapshot_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        usage=pulumi.get(__response__, 'usage')))

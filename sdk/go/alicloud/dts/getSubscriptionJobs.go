@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dts.GetSubscriptionJobs(ctx, nil, nil)
+//			ids, err := dts.GetSubscriptionJobs(ctx, &dts.GetSubscriptionJobsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

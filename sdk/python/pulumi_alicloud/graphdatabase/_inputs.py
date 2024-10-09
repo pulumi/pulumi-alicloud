@@ -4,14 +4,39 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DbInstanceDbInstanceIpArrayArgs',
+    'DbInstanceDbInstanceIpArrayArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DbInstanceDbInstanceIpArrayArgsDict(TypedDict):
+        db_instance_ip_array_attribute: NotRequired[pulumi.Input[str]]
+        """
+        The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
+        """
+        db_instance_ip_array_name: NotRequired[pulumi.Input[str]]
+        """
+        IP ADDRESS whitelist group name.
+        """
+        security_ips: NotRequired[pulumi.Input[str]]
+        """
+        IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
+        """
+elif False:
+    DbInstanceDbInstanceIpArrayArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DbInstanceDbInstanceIpArrayArgs:

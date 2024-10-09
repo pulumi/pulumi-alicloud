@@ -4,37 +4,77 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BucketAccessMonitorArgs',
+    'BucketAccessMonitorArgsDict',
     'BucketCorsCorsRuleArgs',
+    'BucketCorsCorsRuleArgsDict',
     'BucketCorsRuleArgs',
+    'BucketCorsRuleArgsDict',
     'BucketLifecycleRuleArgs',
+    'BucketLifecycleRuleArgsDict',
     'BucketLifecycleRuleAbortMultipartUploadArgs',
+    'BucketLifecycleRuleAbortMultipartUploadArgsDict',
     'BucketLifecycleRuleExpirationArgs',
+    'BucketLifecycleRuleExpirationArgsDict',
     'BucketLifecycleRuleFilterArgs',
+    'BucketLifecycleRuleFilterArgsDict',
     'BucketLifecycleRuleFilterNotArgs',
+    'BucketLifecycleRuleFilterNotArgsDict',
     'BucketLifecycleRuleFilterNotTagArgs',
+    'BucketLifecycleRuleFilterNotTagArgsDict',
     'BucketLifecycleRuleNoncurrentVersionExpirationArgs',
+    'BucketLifecycleRuleNoncurrentVersionExpirationArgsDict',
     'BucketLifecycleRuleNoncurrentVersionTransitionArgs',
+    'BucketLifecycleRuleNoncurrentVersionTransitionArgsDict',
     'BucketLifecycleRuleTransitionArgs',
+    'BucketLifecycleRuleTransitionArgsDict',
     'BucketLoggingArgs',
+    'BucketLoggingArgsDict',
     'BucketRefererConfigArgs',
+    'BucketRefererConfigArgsDict',
     'BucketReplicationDestinationArgs',
+    'BucketReplicationDestinationArgsDict',
     'BucketReplicationEncryptionConfigurationArgs',
+    'BucketReplicationEncryptionConfigurationArgsDict',
     'BucketReplicationPrefixSetArgs',
+    'BucketReplicationPrefixSetArgsDict',
     'BucketReplicationProgressArgs',
+    'BucketReplicationProgressArgsDict',
     'BucketReplicationSourceSelectionCriteriaArgs',
+    'BucketReplicationSourceSelectionCriteriaArgsDict',
     'BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs',
+    'BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict',
     'BucketServerSideEncryptionRuleArgs',
+    'BucketServerSideEncryptionRuleArgsDict',
     'BucketTransferAccelerationArgs',
+    'BucketTransferAccelerationArgsDict',
     'BucketVersioningArgs',
+    'BucketVersioningArgsDict',
     'BucketWebsiteArgs',
+    'BucketWebsiteArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BucketAccessMonitorArgsDict(TypedDict):
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
+        """
+elif False:
+    BucketAccessMonitorArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketAccessMonitorArgs:
@@ -58,6 +98,31 @@ class BucketAccessMonitorArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class BucketCorsCorsRuleArgsDict(TypedDict):
+        allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
+        """
+        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
+        """
+        allowed_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The origins from which cross-origin requests are allowed. .
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
+        """
+        max_age_seconds: NotRequired[pulumi.Input[int]]
+        """
+        The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
+        """
+elif False:
+    BucketCorsCorsRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketCorsCorsRuleArgs:
@@ -145,6 +210,31 @@ class BucketCorsCorsRuleArgs:
         pulumi.set(self, "max_age_seconds", value)
 
 
+if not MYPY:
+    class BucketCorsRuleArgsDict(TypedDict):
+        allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Specifies which methods are allowed. Can be GET, PUT, POST, DELETE or HEAD.
+        """
+        allowed_origins: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Specifies which origins are allowed.
+        """
+        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies which headers are allowed.
+        """
+        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies expose header in the response.
+        """
+        max_age_seconds: NotRequired[pulumi.Input[int]]
+        """
+        Specifies time in seconds that browser can cache the response for a preflight request.
+        """
+elif False:
+    BucketCorsRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketCorsRuleArgs:
     def __init__(__self__, *,
@@ -229,6 +319,53 @@ class BucketCorsRuleArgs:
     def max_age_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age_seconds", value)
 
+
+if not MYPY:
+    class BucketLifecycleRuleArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Specifies lifecycle rule status.
+        """
+        abort_multipart_uploads: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleAbortMultipartUploadArgsDict']]]]
+        """
+        Specifies the number of days after initiating a multipart upload when the multipart upload must be completed. See `abort_multipart_upload` below.
+        """
+        expirations: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleExpirationArgsDict']]]]
+        """
+        Specifies a period in the object's expire. See `expiration` below.
+        """
+        filter: NotRequired[pulumi.Input['BucketLifecycleRuleFilterArgsDict']]
+        """
+        Configuration block used to identify objects that a Lifecycle rule applies to. See `filter` below.
+
+        `NOTE`: At least one of expiration, transitions, abort_multipart_upload, noncurrent_version_expiration and noncurrent_version_transition should be configured.
+        """
+        id: NotRequired[pulumi.Input[str]]
+        """
+        Unique identifier for the rule. If omitted, OSS bucket will assign a unique name.
+        """
+        noncurrent_version_expirations: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]]]
+        """
+        Specifies when noncurrent object versions expire. See `noncurrent_version_expiration` below.
+        """
+        noncurrent_version_transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleNoncurrentVersionTransitionArgsDict']]]]
+        """
+        Specifies when noncurrent object versions transitions. See `noncurrent_version_transition` below.
+        """
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        The prefix in the names of the objects to which the lifecycle rule does not apply.
+        """
+        tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Key-value map of resource tags. All of these tags must exist in the object's tag set in order for the rule to apply.
+        """
+        transitions: NotRequired[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleTransitionArgsDict']]]]
+        """
+        Specifies the time when an object is converted to the IA or archive storage class during a valid life cycle. See `transitions` below.
+        """
+elif False:
+    BucketLifecycleRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketLifecycleRuleArgs:
@@ -400,6 +537,19 @@ class BucketLifecycleRuleArgs:
         pulumi.set(self, "transitions", value)
 
 
+if not MYPY:
+    class BucketLifecycleRuleAbortMultipartUploadArgsDict(TypedDict):
+        created_before_date: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+        """
+        days: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of days noncurrent object versions transition.
+        """
+elif False:
+    BucketLifecycleRuleAbortMultipartUploadArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketLifecycleRuleAbortMultipartUploadArgs:
     def __init__(__self__, *,
@@ -438,6 +588,29 @@ class BucketLifecycleRuleAbortMultipartUploadArgs:
     def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
 
+
+if not MYPY:
+    class BucketLifecycleRuleExpirationArgsDict(TypedDict):
+        created_before_date: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+        """
+        date: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
+        """
+        days: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of days noncurrent object versions transition.
+        """
+        expired_object_delete_marker: NotRequired[pulumi.Input[bool]]
+        """
+        On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
+
+        `NOTE`: One and only one of "date", "days", "created_before_date" and "expired_object_delete_marker" can be specified in one expiration configuration.
+        """
+elif False:
+    BucketLifecycleRuleExpirationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketLifecycleRuleExpirationArgs:
@@ -514,6 +687,23 @@ class BucketLifecycleRuleExpirationArgs:
         pulumi.set(self, "expired_object_delete_marker", value)
 
 
+if not MYPY:
+    class BucketLifecycleRuleFilterArgsDict(TypedDict):
+        not_: NotRequired[pulumi.Input['BucketLifecycleRuleFilterNotArgsDict']]
+        """
+        The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
+        """
+        object_size_greater_than: NotRequired[pulumi.Input[int]]
+        """
+        Minimum object size (in bytes) to which the rule applies.
+        """
+        object_size_less_than: NotRequired[pulumi.Input[int]]
+        """
+        Maximum object size (in bytes) to which the rule applies.
+        """
+elif False:
+    BucketLifecycleRuleFilterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketLifecycleRuleFilterArgs:
     def __init__(__self__, *,
@@ -569,6 +759,19 @@ class BucketLifecycleRuleFilterArgs:
         pulumi.set(self, "object_size_less_than", value)
 
 
+if not MYPY:
+    class BucketLifecycleRuleFilterNotArgsDict(TypedDict):
+        prefix: NotRequired[pulumi.Input[str]]
+        """
+        The prefix in the names of the objects to which the lifecycle rule does not apply.
+        """
+        tag: NotRequired[pulumi.Input['BucketLifecycleRuleFilterNotTagArgsDict']]
+        """
+        The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
+        """
+elif False:
+    BucketLifecycleRuleFilterNotArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketLifecycleRuleFilterNotArgs:
     def __init__(__self__, *,
@@ -608,6 +811,19 @@ class BucketLifecycleRuleFilterNotArgs:
         pulumi.set(self, "tag", value)
 
 
+if not MYPY:
+    class BucketLifecycleRuleFilterNotTagArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The key of the tag that is specified for the objects.
+        """
+        value: pulumi.Input[str]
+        """
+        The value of the tag that is specified for the objects.
+        """
+elif False:
+    BucketLifecycleRuleFilterNotTagArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketLifecycleRuleFilterNotTagArgs:
     def __init__(__self__, *,
@@ -645,6 +861,15 @@ class BucketLifecycleRuleFilterNotTagArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class BucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
+        days: pulumi.Input[int]
+        """
+        Specifies the number of days noncurrent object versions transition.
+        """
+elif False:
+    BucketLifecycleRuleNoncurrentVersionExpirationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def __init__(__self__, *,
@@ -666,6 +891,27 @@ class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def days(self, value: pulumi.Input[int]):
         pulumi.set(self, "days", value)
 
+
+if not MYPY:
+    class BucketLifecycleRuleNoncurrentVersionTransitionArgsDict(TypedDict):
+        days: pulumi.Input[int]
+        """
+        Specifies the number of days noncurrent object versions transition.
+        """
+        storage_class: pulumi.Input[str]
+        """
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
+        """
+        is_access_time: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+        """
+        return_to_std_when_visit: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+        """
+elif False:
+    BucketLifecycleRuleNoncurrentVersionTransitionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
@@ -735,6 +981,31 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
     def return_to_std_when_visit(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "return_to_std_when_visit", value)
 
+
+if not MYPY:
+    class BucketLifecycleRuleTransitionArgsDict(TypedDict):
+        storage_class: pulumi.Input[str]
+        """
+        The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
+        """
+        created_before_date: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
+        """
+        days: NotRequired[pulumi.Input[int]]
+        """
+        Specifies the number of days noncurrent object versions transition.
+        """
+        is_access_time: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
+        """
+        return_to_std_when_visit: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+        """
+elif False:
+    BucketLifecycleRuleTransitionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketLifecycleRuleTransitionArgs:
@@ -822,6 +1093,19 @@ class BucketLifecycleRuleTransitionArgs:
         pulumi.set(self, "return_to_std_when_visit", value)
 
 
+if not MYPY:
+    class BucketLoggingArgsDict(TypedDict):
+        target_bucket: pulumi.Input[str]
+        """
+        The name of the bucket that will receive the log objects.
+        """
+        target_prefix: NotRequired[pulumi.Input[str]]
+        """
+        To specify a key prefix for log objects.
+        """
+elif False:
+    BucketLoggingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketLoggingArgs:
     def __init__(__self__, *,
@@ -860,6 +1144,19 @@ class BucketLoggingArgs:
         pulumi.set(self, "target_prefix", value)
 
 
+if not MYPY:
+    class BucketRefererConfigArgsDict(TypedDict):
+        referers: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The list of referer.
+        """
+        allow_empty: NotRequired[pulumi.Input[bool]]
+        """
+        Allows referer to be empty. Defaults false.
+        """
+elif False:
+    BucketRefererConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketRefererConfigArgs:
     def __init__(__self__, *,
@@ -897,6 +1194,25 @@ class BucketRefererConfigArgs:
     def allow_empty(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_empty", value)
 
+
+if not MYPY:
+    class BucketReplicationDestinationArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        The destination bucket to which the data is replicated.
+        """
+        location: pulumi.Input[str]
+        """
+        The region in which the destination bucket is located.
+        """
+        transfer_type: NotRequired[pulumi.Input[str]]
+        """
+        The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
+
+        `NOTE`: You can set transfer_type to oss_acc only when you create cross-region replication (CRR) rules.
+        """
+elif False:
+    BucketReplicationDestinationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketReplicationDestinationArgs:
@@ -955,6 +1271,17 @@ class BucketReplicationDestinationArgs:
         pulumi.set(self, "transfer_type", value)
 
 
+if not MYPY:
+    class BucketReplicationEncryptionConfigurationArgsDict(TypedDict):
+        replica_kms_key_id: pulumi.Input[str]
+        """
+        The CMK ID used in SSE-KMS.
+
+        `NOTE`: If the status of sse_kms_encrypted_objects is set to Enabled, you must specify the replica_kms_key_id.
+        """
+elif False:
+    BucketReplicationEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketReplicationEncryptionConfigurationArgs:
     def __init__(__self__, *,
@@ -981,6 +1308,17 @@ class BucketReplicationEncryptionConfigurationArgs:
         pulumi.set(self, "replica_kms_key_id", value)
 
 
+if not MYPY:
+    class BucketReplicationPrefixSetArgsDict(TypedDict):
+        prefixes: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        The list of object key name prefix identifying one or more objects to which the rule applies.
+
+        `NOTE`: The prefix must be less than or equal to 1024 characters in length.
+        """
+elif False:
+    BucketReplicationPrefixSetArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketReplicationPrefixSetArgs:
     def __init__(__self__, *,
@@ -1006,6 +1344,19 @@ class BucketReplicationPrefixSetArgs:
     def prefixes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "prefixes", value)
 
+
+if not MYPY:
+    class BucketReplicationProgressArgsDict(TypedDict):
+        historical_object: NotRequired[pulumi.Input[str]]
+        """
+        The percentage of the replicated historical data. This element is valid only when historical_object_replication is set to enabled.
+        """
+        new_object: NotRequired[pulumi.Input[str]]
+        """
+        The time used to distinguish new data from historical data. Data that is written to the source bucket before the time is replicated to the destination bucket as new data. The value of this element is in GMT.
+        """
+elif False:
+    BucketReplicationProgressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketReplicationProgressArgs:
@@ -1046,6 +1397,15 @@ class BucketReplicationProgressArgs:
         pulumi.set(self, "new_object", value)
 
 
+if not MYPY:
+    class BucketReplicationSourceSelectionCriteriaArgsDict(TypedDict):
+        sse_kms_encrypted_objects: NotRequired[pulumi.Input['BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict']]
+        """
+        Filter source objects encrypted by using SSE-KMS. See `sse_kms_encrypted_objects` below.
+        """
+elif False:
+    BucketReplicationSourceSelectionCriteriaArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketReplicationSourceSelectionCriteriaArgs:
     def __init__(__self__, *,
@@ -1069,6 +1429,15 @@ class BucketReplicationSourceSelectionCriteriaArgs:
         pulumi.set(self, "sse_kms_encrypted_objects", value)
 
 
+if not MYPY:
+    class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict(TypedDict):
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The status of the data replication task. Can be starting, doing and closing.
+        """
+elif False:
+    BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs:
     def __init__(__self__, *,
@@ -1091,6 +1460,19 @@ class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class BucketServerSideEncryptionRuleArgsDict(TypedDict):
+        sse_algorithm: pulumi.Input[str]
+        """
+        The server-side encryption algorithm to use. Possible values: `AES256` and `KMS`.
+        """
+        kms_master_key_id: NotRequired[pulumi.Input[str]]
+        """
+        The alibaba cloud KMS master key ID used for the SSE-KMS encryption.
+        """
+elif False:
+    BucketServerSideEncryptionRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketServerSideEncryptionRuleArgs:
@@ -1130,6 +1512,15 @@ class BucketServerSideEncryptionRuleArgs:
         pulumi.set(self, "kms_master_key_id", value)
 
 
+if not MYPY:
+    class BucketTransferAccelerationArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Specifies the accelerate status of a bucket.
+        """
+elif False:
+    BucketTransferAccelerationArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketTransferAccelerationArgs:
     def __init__(__self__, *,
@@ -1152,6 +1543,15 @@ class BucketTransferAccelerationArgs:
         pulumi.set(self, "enabled", value)
 
 
+if not MYPY:
+    class BucketVersioningArgsDict(TypedDict):
+        status: pulumi.Input[str]
+        """
+        Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
+        """
+elif False:
+    BucketVersioningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BucketVersioningArgs:
     def __init__(__self__, *,
@@ -1173,6 +1573,19 @@ class BucketVersioningArgs:
     def status(self, value: pulumi.Input[str]):
         pulumi.set(self, "status", value)
 
+
+if not MYPY:
+    class BucketWebsiteArgsDict(TypedDict):
+        index_document: pulumi.Input[str]
+        """
+        Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
+        """
+        error_document: NotRequired[pulumi.Input[str]]
+        """
+        An absolute path to the document to return in case of a 4XX error.
+        """
+elif False:
+    BucketWebsiteArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BucketWebsiteArgs:

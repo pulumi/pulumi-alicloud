@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -133,9 +138,6 @@ def get_data_limits(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         parent_id=pulumi.get(__ret__, 'parent_id'),
         resource_type=pulumi.get(__ret__, 'resource_type'))
-
-
-@_utilities.lift_output_func(get_data_limits)
 def get_data_limits_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
                            parent_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -164,4 +166,17 @@ def get_data_limits_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     :param str parent_id: The parent asset ID of the data asset.
     :param str resource_type: The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['parentId'] = parent_id
+    __args__['resourceType'] = resource_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:sddp/getDataLimits:getDataLimits', __args__, opts=opts, typ=GetDataLimitsResult)
+    return __ret__.apply(lambda __response__: GetDataLimitsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        limits=pulumi.get(__response__, 'limits'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        parent_id=pulumi.get(__response__, 'parent_id'),
+        resource_type=pulumi.get(__response__, 'resource_type')))

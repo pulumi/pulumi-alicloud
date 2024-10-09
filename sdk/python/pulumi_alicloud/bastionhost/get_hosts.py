@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -241,9 +246,6 @@ def get_hosts(enable_details: Optional[bool] = None,
         source=pulumi.get(__ret__, 'source'),
         source_instance_id=pulumi.get(__ret__, 'source_instance_id'),
         source_instance_state=pulumi.get(__ret__, 'source_instance_state'))
-
-
-@_utilities.lift_output_func(get_hosts)
 def get_hosts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                      host_address: Optional[pulumi.Input[Optional[str]]] = None,
                      host_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -293,4 +295,32 @@ def get_hosts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     :param str source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
     :param str source_instance_state: The source instance state.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['hostAddress'] = host_address
+    __args__['hostName'] = host_name
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['nameRegex'] = name_regex
+    __args__['osType'] = os_type
+    __args__['outputFile'] = output_file
+    __args__['source'] = source
+    __args__['sourceInstanceId'] = source_instance_id
+    __args__['sourceInstanceState'] = source_instance_state
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:bastionhost/getHosts:getHosts', __args__, opts=opts, typ=GetHostsResult)
+    return __ret__.apply(lambda __response__: GetHostsResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        host_address=pulumi.get(__response__, 'host_address'),
+        host_name=pulumi.get(__response__, 'host_name'),
+        hosts=pulumi.get(__response__, 'hosts'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        os_type=pulumi.get(__response__, 'os_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        source=pulumi.get(__response__, 'source'),
+        source_instance_id=pulumi.get(__response__, 'source_instance_id'),
+        source_instance_state=pulumi.get(__response__, 'source_instance_state')))

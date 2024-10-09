@@ -4,21 +4,49 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AggregateCompliancePackConfigRuleArgs',
+    'AggregateCompliancePackConfigRuleArgsDict',
     'AggregateCompliancePackConfigRuleConfigRuleParameterArgs',
+    'AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict',
     'AggregateCompliancePackConfigRuleIdArgs',
+    'AggregateCompliancePackConfigRuleIdArgsDict',
     'AggregatorAggregatorAccountArgs',
+    'AggregatorAggregatorAccountArgsDict',
     'CompliancePackConfigRuleArgs',
+    'CompliancePackConfigRuleArgsDict',
     'CompliancePackConfigRuleConfigRuleParameterArgs',
+    'CompliancePackConfigRuleConfigRuleParameterArgsDict',
     'CompliancePackConfigRuleIdArgs',
+    'CompliancePackConfigRuleIdArgsDict',
     'RuleComplianceArgs',
+    'RuleComplianceArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AggregateCompliancePackConfigRuleArgsDict(TypedDict):
+        managed_rule_identifier: pulumi.Input[str]
+        """
+        The Managed Rule Identifier.
+        """
+        config_rule_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict']]]]
+        """
+        A list of parameter rules. See `config_rule_parameters` below.
+        """
+elif False:
+    AggregateCompliancePackConfigRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleArgs:
@@ -57,6 +85,19 @@ class AggregateCompliancePackConfigRuleArgs:
     def config_rule_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]]):
         pulumi.set(self, "config_rule_parameters", value)
 
+
+if not MYPY:
+    class AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
+        parameter_name: NotRequired[pulumi.Input[str]]
+        """
+        The Parameter Name.
+        """
+        parameter_value: NotRequired[pulumi.Input[str]]
+        """
+        The Parameter Value.
+        """
+elif False:
+    AggregateCompliancePackConfigRuleConfigRuleParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
@@ -97,6 +138,15 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
         pulumi.set(self, "parameter_value", value)
 
 
+if not MYPY:
+    class AggregateCompliancePackConfigRuleIdArgsDict(TypedDict):
+        config_rule_id: NotRequired[pulumi.Input[str]]
+        """
+        The rule ID of Aggregate Config Rule.
+        """
+elif False:
+    AggregateCompliancePackConfigRuleIdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class AggregateCompliancePackConfigRuleIdArgs:
     def __init__(__self__, *,
@@ -119,6 +169,23 @@ class AggregateCompliancePackConfigRuleIdArgs:
     def config_rule_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config_rule_id", value)
 
+
+if not MYPY:
+    class AggregatorAggregatorAccountArgsDict(TypedDict):
+        account_id: pulumi.Input[str]
+        """
+        Aggregator account Uid.
+        """
+        account_name: pulumi.Input[str]
+        """
+        Aggregator account name.
+        """
+        account_type: pulumi.Input[str]
+        """
+        Aggregator account source type. Valid values: `ResourceDirectory`.
+        """
+elif False:
+    AggregatorAggregatorAccountArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AggregatorAggregatorAccountArgs:
@@ -172,6 +239,19 @@ class AggregatorAggregatorAccountArgs:
         pulumi.set(self, "account_type", value)
 
 
+if not MYPY:
+    class CompliancePackConfigRuleArgsDict(TypedDict):
+        managed_rule_identifier: pulumi.Input[str]
+        """
+        The Managed Rule Identifier.
+        """
+        config_rule_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgsDict']]]]
+        """
+        A list of Config Rule Parameters. See `config_rule_parameters` below.
+        """
+elif False:
+    CompliancePackConfigRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CompliancePackConfigRuleArgs:
     def __init__(__self__, *,
@@ -209,6 +289,19 @@ class CompliancePackConfigRuleArgs:
     def config_rule_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]]):
         pulumi.set(self, "config_rule_parameters", value)
 
+
+if not MYPY:
+    class CompliancePackConfigRuleConfigRuleParameterArgsDict(TypedDict):
+        parameter_name: NotRequired[pulumi.Input[str]]
+        """
+        The parameter name.
+        """
+        parameter_value: NotRequired[pulumi.Input[str]]
+        """
+        The parameter value.
+        """
+elif False:
+    CompliancePackConfigRuleConfigRuleParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class CompliancePackConfigRuleConfigRuleParameterArgs:
@@ -249,6 +342,15 @@ class CompliancePackConfigRuleConfigRuleParameterArgs:
         pulumi.set(self, "parameter_value", value)
 
 
+if not MYPY:
+    class CompliancePackConfigRuleIdArgsDict(TypedDict):
+        config_rule_id: NotRequired[pulumi.Input[str]]
+        """
+        The rule ID of Config Rule.
+        """
+elif False:
+    CompliancePackConfigRuleIdArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class CompliancePackConfigRuleIdArgs:
     def __init__(__self__, *,
@@ -271,6 +373,19 @@ class CompliancePackConfigRuleIdArgs:
     def config_rule_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config_rule_id", value)
 
+
+if not MYPY:
+    class RuleComplianceArgsDict(TypedDict):
+        compliance_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
+        """
+        count: NotRequired[pulumi.Input[int]]
+        """
+        The count of compliance.
+        """
+elif False:
+    RuleComplianceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleComplianceArgs:

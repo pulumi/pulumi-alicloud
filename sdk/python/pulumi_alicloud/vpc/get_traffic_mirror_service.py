@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -99,9 +104,6 @@ def get_traffic_mirror_service(enable: Optional[str] = None,
         enable=pulumi.get(__ret__, 'enable'),
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_traffic_mirror_service)
 def get_traffic_mirror_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrafficMirrorServiceResult]:
     """
@@ -127,4 +129,11 @@ def get_traffic_mirror_service_output(enable: Optional[pulumi.Input[Optional[str
            
            > **NOTE:** Setting `enable = "On"` to open the VPC Traffic Mirror service that means you have read and agreed the [VPC Traffic Mirror Terms of Service](https://help.aliyun.com/zh/vpc/support/vpc-terms-of-service). The service can not closed once it is opened.
     """
-    ...
+    __args__ = dict()
+    __args__['enable'] = enable
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService', __args__, opts=opts, typ=GetTrafficMirrorServiceResult)
+    return __ret__.apply(lambda __response__: GetTrafficMirrorServiceResult(
+        enable=pulumi.get(__response__, 'enable'),
+        id=pulumi.get(__response__, 'id'),
+        status=pulumi.get(__response__, 'status')))

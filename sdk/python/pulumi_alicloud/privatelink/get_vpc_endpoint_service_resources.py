@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -117,9 +122,6 @@ def get_vpc_endpoint_service_resources(output_file: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         resources=pulumi.get(__ret__, 'resources'),
         service_id=pulumi.get(__ret__, 'service_id'))
-
-
-@_utilities.lift_output_func(get_vpc_endpoint_service_resources)
 def get_vpc_endpoint_service_resources_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                               service_id: Optional[pulumi.Input[str]] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointServiceResourcesResult]:
@@ -144,4 +146,14 @@ def get_vpc_endpoint_service_resources_output(output_file: Optional[pulumi.Input
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_id: The ID of Vpc Endpoint Service.
     """
-    ...
+    __args__ = dict()
+    __args__['outputFile'] = output_file
+    __args__['serviceId'] = service_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:privatelink/getVpcEndpointServiceResources:getVpcEndpointServiceResources', __args__, opts=opts, typ=GetVpcEndpointServiceResourcesResult)
+    return __ret__.apply(lambda __response__: GetVpcEndpointServiceResourcesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resources=pulumi.get(__response__, 'resources'),
+        service_id=pulumi.get(__response__, 'service_id')))

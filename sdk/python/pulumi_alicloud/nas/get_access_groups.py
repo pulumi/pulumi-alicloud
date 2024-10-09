@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -227,9 +232,6 @@ def get_access_groups(access_group_name: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         type=pulumi.get(__ret__, 'type'),
         useutc_date_time=pulumi.get(__ret__, 'useutc_date_time'))
-
-
-@_utilities.lift_output_func(get_access_groups)
 def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[str]]] = None,
                              access_group_type: Optional[pulumi.Input[Optional[str]]] = None,
                              description: Optional[pulumi.Input[Optional[str]]] = None,
@@ -266,4 +268,27 @@ def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[s
     :param str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
     :param bool useutc_date_time: Specifies whether the time to return is in UTC. Valid values: true and false.
     """
-    ...
+    __args__ = dict()
+    __args__['accessGroupName'] = access_group_name
+    __args__['accessGroupType'] = access_group_type
+    __args__['description'] = description
+    __args__['fileSystemType'] = file_system_type
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['type'] = type
+    __args__['useutcDateTime'] = useutc_date_time
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getAccessGroups:getAccessGroups', __args__, opts=opts, typ=GetAccessGroupsResult)
+    return __ret__.apply(lambda __response__: GetAccessGroupsResult(
+        access_group_name=pulumi.get(__response__, 'access_group_name'),
+        access_group_type=pulumi.get(__response__, 'access_group_type'),
+        description=pulumi.get(__response__, 'description'),
+        file_system_type=pulumi.get(__response__, 'file_system_type'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        type=pulumi.get(__response__, 'type'),
+        useutc_date_time=pulumi.get(__response__, 'useutc_date_time')))

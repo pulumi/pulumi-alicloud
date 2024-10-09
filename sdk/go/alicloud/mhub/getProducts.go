@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids, err := mhub.GetProducts(ctx, nil, nil)
+//			ids, err := mhub.GetProducts(ctx, &mhub.GetProductsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

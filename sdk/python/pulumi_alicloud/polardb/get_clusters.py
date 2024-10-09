@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -205,9 +210,6 @@ def get_clusters(db_type: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_clusters)
 def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
                         description_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -261,4 +263,22 @@ def get_clusters_output(db_type: Optional[pulumi.Input[Optional[str]]] = None,
            - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
            - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
     """
-    ...
+    __args__ = dict()
+    __args__['dbType'] = db_type
+    __args__['descriptionRegex'] = description_regex
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:polardb/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult)
+    return __ret__.apply(lambda __response__: GetClustersResult(
+        clusters=pulumi.get(__response__, 'clusters'),
+        db_type=pulumi.get(__response__, 'db_type'),
+        description_regex=pulumi.get(__response__, 'description_regex'),
+        descriptions=pulumi.get(__response__, 'descriptions'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))
