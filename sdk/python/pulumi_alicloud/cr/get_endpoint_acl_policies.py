@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -138,9 +143,6 @@ def get_endpoint_acl_policies(endpoint_type: Optional[str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'))
-
-
-@_utilities.lift_output_func(get_endpoint_acl_policies)
 def get_endpoint_acl_policies_output(endpoint_type: Optional[pulumi.Input[str]] = None,
                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      instance_id: Optional[pulumi.Input[str]] = None,
@@ -174,4 +176,17 @@ def get_endpoint_acl_policies_output(endpoint_type: Optional[pulumi.Input[str]] 
     :param str instance_id: The ID of the CR Instance.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['endpointType'] = endpoint_type
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cr/getEndpointAclPolicies:getEndpointAclPolicies', __args__, opts=opts, typ=GetEndpointAclPoliciesResult)
+    return __ret__.apply(lambda __response__: GetEndpointAclPoliciesResult(
+        endpoint_type=pulumi.get(__response__, 'endpoint_type'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policies=pulumi.get(__response__, 'policies')))

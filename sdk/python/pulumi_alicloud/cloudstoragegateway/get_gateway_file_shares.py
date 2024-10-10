@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -150,9 +155,6 @@ def get_gateway_file_shares(gateway_id: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         shares=pulumi.get(__ret__, 'shares'))
-
-
-@_utilities.lift_output_func(get_gateway_file_shares)
 def get_gateway_file_shares_output(gateway_id: Optional[pulumi.Input[str]] = None,
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -188,4 +190,18 @@ def get_gateway_file_shares_output(gateway_id: Optional[pulumi.Input[str]] = Non
     :param str name_regex: A regex string to filter results by Gateway File Share name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['gatewayId'] = gateway_id
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares', __args__, opts=opts, typ=GetGatewayFileSharesResult)
+    return __ret__.apply(lambda __response__: GetGatewayFileSharesResult(
+        gateway_id=pulumi.get(__response__, 'gateway_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        shares=pulumi.get(__response__, 'shares')))

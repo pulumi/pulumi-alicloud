@@ -4,15 +4,41 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AppGroupOrderArgs',
+    'AppGroupOrderArgsDict',
     'AppGroupQuotaArgs',
+    'AppGroupQuotaArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AppGroupOrderArgsDict(TypedDict):
+        auto_renew: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
+        """
+        duration: NotRequired[pulumi.Input[int]]
+        """
+        Order cycle. The minimum value is not less than 0.
+        """
+        pricing_cycle: NotRequired[pulumi.Input[str]]
+        """
+        Order cycle unit. Valid values: `Year` and `Month`.
+        """
+elif False:
+    AppGroupOrderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppGroupOrderArgs:
@@ -68,6 +94,34 @@ class AppGroupOrderArgs:
     def pricing_cycle(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pricing_cycle", value)
 
+
+if not MYPY:
+    class AppGroupQuotaArgsDict(TypedDict):
+        compute_resource: pulumi.Input[int]
+        """
+        Computing resources. Unit: LCU.
+        """
+        doc_size: pulumi.Input[int]
+        """
+        Storage Size. Unit: GB.
+        """
+        spec: pulumi.Input[str]
+        """
+        Specification. Valid values: 
+        * `opensearch.share.junior`: Entry-level.
+        * `opensearch.share.common`: Shared universal.
+        * `opensearch.share.compute`: Shared computing.
+        * `opensearch.share.storage`: Shared storage type.
+        * `opensearch.private.common`: Exclusive universal type.
+        * `opensearch.private.compute`: Exclusive computing type.
+        * `opensearch.private.storage`: Exclusive storage type
+        """
+        qps: NotRequired[pulumi.Input[int]]
+        """
+        Search request. Unit: times/second.
+        """
+elif False:
+    AppGroupQuotaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AppGroupQuotaArgs:

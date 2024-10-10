@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -107,9 +112,6 @@ def get_regions(output_file: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         region_id=pulumi.get(__ret__, 'region_id'),
         regions=pulumi.get(__ret__, 'regions'))
-
-
-@_utilities.lift_output_func(get_regions)
 def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                        region_id: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
@@ -134,4 +136,13 @@ def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_id: A list of Disk Replica Group IDs.
     """
-    ...
+    __args__ = dict()
+    __args__['outputFile'] = output_file
+    __args__['regionId'] = region_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ebs/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
+    return __ret__.apply(lambda __response__: GetRegionsResult(
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        region_id=pulumi.get(__response__, 'region_id'),
+        regions=pulumi.get(__response__, 'regions')))

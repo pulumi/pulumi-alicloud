@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -258,9 +263,6 @@ def get_secret_parameters(enable_details: Optional[bool] = None,
         sort_order=pulumi.get(__ret__, 'sort_order'),
         tags=pulumi.get(__ret__, 'tags'),
         with_decryption=pulumi.get(__ret__, 'with_decryption'))
-
-
-@_utilities.lift_output_func(get_secret_parameters)
 def get_secret_parameters_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -323,4 +325,30 @@ def get_secret_parameters_output(enable_details: Optional[pulumi.Input[Optional[
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param bool with_decryption: Specifies whether to decrypt the parameter value. Default value: `false`. **Note:** `with_decryption` takes effect only if `enable_details` is set to `true`.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['secretParameterName'] = secret_parameter_name
+    __args__['sortField'] = sort_field
+    __args__['sortOrder'] = sort_order
+    __args__['tags'] = tags
+    __args__['withDecryption'] = with_decryption
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:oos/getSecretParameters:getSecretParameters', __args__, opts=opts, typ=GetSecretParametersResult)
+    return __ret__.apply(lambda __response__: GetSecretParametersResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        parameters=pulumi.get(__response__, 'parameters'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        secret_parameter_name=pulumi.get(__response__, 'secret_parameter_name'),
+        sort_field=pulumi.get(__response__, 'sort_field'),
+        sort_order=pulumi.get(__response__, 'sort_order'),
+        tags=pulumi.get(__response__, 'tags'),
+        with_decryption=pulumi.get(__response__, 'with_decryption')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -121,9 +126,6 @@ def get_sharding_network_private_addresses(db_instance_id: Optional[str] = None,
         node_id=pulumi.get(__ret__, 'node_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         role=pulumi.get(__ret__, 'role'))
-
-
-@_utilities.lift_output_func(get_sharding_network_private_addresses)
 def get_sharding_network_private_addresses_output(db_instance_id: Optional[pulumi.Input[str]] = None,
                                                   node_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -140,4 +142,17 @@ def get_sharding_network_private_addresses_output(db_instance_id: Optional[pulum
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str role: The role of the node. Valid values: `Primary` or `Secondary`.
     """
-    ...
+    __args__ = dict()
+    __args__['dbInstanceId'] = db_instance_id
+    __args__['nodeId'] = node_id
+    __args__['outputFile'] = output_file
+    __args__['role'] = role
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses', __args__, opts=opts, typ=GetShardingNetworkPrivateAddressesResult)
+    return __ret__.apply(lambda __response__: GetShardingNetworkPrivateAddressesResult(
+        addresses=pulumi.get(__response__, 'addresses'),
+        db_instance_id=pulumi.get(__response__, 'db_instance_id'),
+        id=pulumi.get(__response__, 'id'),
+        node_id=pulumi.get(__response__, 'node_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        role=pulumi.get(__response__, 'role')))

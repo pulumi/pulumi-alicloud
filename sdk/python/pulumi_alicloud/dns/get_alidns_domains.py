@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -308,9 +313,6 @@ def get_alidns_domains(ali_domain: Optional[bool] = None,
         starmark=pulumi.get(__ret__, 'starmark'),
         tags=pulumi.get(__ret__, 'tags'),
         version_code=pulumi.get(__ret__, 'version_code'))
-
-
-@_utilities.lift_output_func(get_alidns_domains)
 def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]] = None,
                               domain_name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -359,4 +361,40 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str version_code: Cloud analysis version code.
     """
-    ...
+    __args__ = dict()
+    __args__['aliDomain'] = ali_domain
+    __args__['domainNameRegex'] = domain_name_regex
+    __args__['enableDetails'] = enable_details
+    __args__['groupId'] = group_id
+    __args__['groupNameRegex'] = group_name_regex
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['keyWord'] = key_word
+    __args__['lang'] = lang
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['searchMode'] = search_mode
+    __args__['starmark'] = starmark
+    __args__['tags'] = tags
+    __args__['versionCode'] = version_code
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getAlidnsDomains:getAlidnsDomains', __args__, opts=opts, typ=GetAlidnsDomainsResult)
+    return __ret__.apply(lambda __response__: GetAlidnsDomainsResult(
+        ali_domain=pulumi.get(__response__, 'ali_domain'),
+        domain_name_regex=pulumi.get(__response__, 'domain_name_regex'),
+        domains=pulumi.get(__response__, 'domains'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        group_name_regex=pulumi.get(__response__, 'group_name_regex'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        key_word=pulumi.get(__response__, 'key_word'),
+        lang=pulumi.get(__response__, 'lang'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        search_mode=pulumi.get(__response__, 'search_mode'),
+        starmark=pulumi.get(__response__, 'starmark'),
+        tags=pulumi.get(__response__, 'tags'),
+        version_code=pulumi.get(__response__, 'version_code')))

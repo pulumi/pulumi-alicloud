@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -172,9 +177,6 @@ def get_instance_attachments(child_instance_region_id: Optional[str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_instance_attachments)
 def get_instance_attachments_output(child_instance_region_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     child_instance_type: Optional[pulumi.Input[Optional[str]]] = None,
                                     instance_id: Optional[pulumi.Input[str]] = None,
@@ -203,4 +205,20 @@ def get_instance_attachments_output(child_instance_region_id: Optional[pulumi.In
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
     """
-    ...
+    __args__ = dict()
+    __args__['childInstanceRegionId'] = child_instance_region_id
+    __args__['childInstanceType'] = child_instance_type
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getInstanceAttachments:getInstanceAttachments', __args__, opts=opts, typ=GetInstanceAttachmentsResult)
+    return __ret__.apply(lambda __response__: GetInstanceAttachmentsResult(
+        attachments=pulumi.get(__response__, 'attachments'),
+        child_instance_region_id=pulumi.get(__response__, 'child_instance_region_id'),
+        child_instance_type=pulumi.get(__response__, 'child_instance_type'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

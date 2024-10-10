@@ -41,7 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids, err := dms.GetEnterpriseProxies(ctx, nil, nil)
+//			ids, err := dms.GetEnterpriseProxies(ctx, &dms.GetEnterpriseProxiesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

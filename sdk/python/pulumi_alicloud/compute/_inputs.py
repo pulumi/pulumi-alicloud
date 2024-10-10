@@ -4,16 +4,39 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'NestServiceInstanceCommodityArgs',
+    'NestServiceInstanceCommodityArgsDict',
     'NestServiceInstanceOperationMetadataArgs',
+    'NestServiceInstanceOperationMetadataArgsDict',
     'GetNestServiceInstancesFilterArgs',
+    'GetNestServiceInstancesFilterArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class NestServiceInstanceCommodityArgsDict(TypedDict):
+        pay_period: NotRequired[pulumi.Input[int]]
+        """
+        Length of purchase.
+        """
+        pay_period_unit: NotRequired[pulumi.Input[str]]
+        """
+        Duration unit. Valid values: `Year`, `Month`, `Day`.
+        """
+elif False:
+    NestServiceInstanceCommodityArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NestServiceInstanceCommodityArgs:
@@ -53,6 +76,27 @@ class NestServiceInstanceCommodityArgs:
     def pay_period_unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pay_period_unit", value)
 
+
+if not MYPY:
+    class NestServiceInstanceOperationMetadataArgsDict(TypedDict):
+        operated_service_instance_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the imported service instance.
+        """
+        operation_end_time: NotRequired[pulumi.Input[str]]
+        """
+        The end time of O&M.
+        """
+        operation_start_time: NotRequired[pulumi.Input[str]]
+        """
+        The start time of O&M.
+        """
+        resources: NotRequired[pulumi.Input[str]]
+        """
+        The list of imported resources.
+        """
+elif False:
+    NestServiceInstanceOperationMetadataArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class NestServiceInstanceOperationMetadataArgs:
@@ -124,6 +168,19 @@ class NestServiceInstanceOperationMetadataArgs:
     def resources(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resources", value)
 
+
+if not MYPY:
+    class GetNestServiceInstancesFilterArgsDict(TypedDict):
+        name: NotRequired[str]
+        """
+        The name of the service.
+        """
+        values: NotRequired[Sequence[str]]
+        """
+        Set of values that are accepted for the given field.
+        """
+elif False:
+    GetNestServiceInstancesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetNestServiceInstancesFilterArgs:

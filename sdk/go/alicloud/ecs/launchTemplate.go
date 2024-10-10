@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			instances, err := ecs.GetInstances(ctx, nil, nil)
+//			instances, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

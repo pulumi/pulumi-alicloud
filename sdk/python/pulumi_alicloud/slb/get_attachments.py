@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -119,9 +124,6 @@ def get_attachments(instance_ids: Optional[Sequence[str]] = None,
         load_balancer_id=pulumi.get(__ret__, 'load_balancer_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         slb_attachments=pulumi.get(__ret__, 'slb_attachments'))
-
-
-@_utilities.lift_output_func(get_attachments)
 def get_attachments_output(instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            load_balancer_id: Optional[pulumi.Input[str]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -144,4 +146,15 @@ def get_attachments_output(instance_ids: Optional[pulumi.Input[Optional[Sequence
     :param str load_balancer_id: ID of the SLB with attachments.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['instanceIds'] = instance_ids
+    __args__['loadBalancerId'] = load_balancer_id
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getAttachments:getAttachments', __args__, opts=opts, typ=GetAttachmentsResult)
+    return __ret__.apply(lambda __response__: GetAttachmentsResult(
+        id=pulumi.get(__response__, 'id'),
+        instance_ids=pulumi.get(__response__, 'instance_ids'),
+        load_balancer_id=pulumi.get(__response__, 'load_balancer_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        slb_attachments=pulumi.get(__response__, 'slb_attachments')))

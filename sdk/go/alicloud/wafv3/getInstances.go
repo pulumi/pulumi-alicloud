@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := wafv3.GetInstances(ctx, nil, nil)
+//			_default, err := wafv3.GetInstances(ctx, &wafv3.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

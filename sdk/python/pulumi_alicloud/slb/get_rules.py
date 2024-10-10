@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -194,9 +199,6 @@ def get_rules(frontend_port: Optional[int] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         slb_rules=pulumi.get(__ret__, 'slb_rules'))
-
-
-@_utilities.lift_output_func(get_rules)
 def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      load_balancer_id: Optional[pulumi.Input[str]] = None,
@@ -256,4 +258,20 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
     :param str name_regex: A regex string to filter results by rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['frontendPort'] = frontend_port
+    __args__['ids'] = ids
+    __args__['loadBalancerId'] = load_balancer_id
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getRules:getRules', __args__, opts=opts, typ=GetRulesResult)
+    return __ret__.apply(lambda __response__: GetRulesResult(
+        frontend_port=pulumi.get(__response__, 'frontend_port'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        load_balancer_id=pulumi.get(__response__, 'load_balancer_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        slb_rules=pulumi.get(__response__, 'slb_rules')))

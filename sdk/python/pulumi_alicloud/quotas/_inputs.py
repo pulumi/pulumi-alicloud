@@ -4,24 +4,49 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ApplicationInfoDimensionArgs',
+    'ApplicationInfoDimensionArgsDict',
     'QuotaAlarmQuotaDimensionArgs',
+    'QuotaAlarmQuotaDimensionArgsDict',
     'QuotaApplicationDimensionArgs',
+    'QuotaApplicationDimensionArgsDict',
     'TemplateApplicationsDimensionArgs',
+    'TemplateApplicationsDimensionArgsDict',
     'TemplateApplicationsQuotaApplicationDetailArgs',
+    'TemplateApplicationsQuotaApplicationDetailArgsDict',
     'TemplateApplicationsQuotaApplicationDetailPeriodArgs',
+    'TemplateApplicationsQuotaApplicationDetailPeriodArgsDict',
     'TemplateQuotaDimensionArgs',
+    'TemplateQuotaDimensionArgsDict',
     'GetApplicationInfosDimensionArgs',
+    'GetApplicationInfosDimensionArgsDict',
     'GetQuotaAlarmsQuotaDimensionArgs',
+    'GetQuotaAlarmsQuotaDimensionArgsDict',
     'GetQuotaApplicationsDimensionArgs',
+    'GetQuotaApplicationsDimensionArgsDict',
     'GetQuotasDimensionArgs',
+    'GetQuotasDimensionArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ApplicationInfoDimensionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        value: NotRequired[pulumi.Input[str]]
+elif False:
+    ApplicationInfoDimensionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApplicationInfoDimensionArgs:
@@ -51,6 +76,19 @@ class ApplicationInfoDimensionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class QuotaAlarmQuotaDimensionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The Key of quota_dimensions.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The Value of quota_dimensions.
+        """
+elif False:
+    QuotaAlarmQuotaDimensionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class QuotaAlarmQuotaDimensionArgs:
@@ -91,6 +129,19 @@ class QuotaAlarmQuotaDimensionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class QuotaApplicationDimensionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Key.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Value.
+        """
+elif False:
+    QuotaApplicationDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class QuotaApplicationDimensionArgs:
     def __init__(__self__, *,
@@ -130,6 +181,19 @@ class QuotaApplicationDimensionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class TemplateApplicationsDimensionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        Quota dimension Key.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Quota dimension Value.
+        """
+elif False:
+    TemplateApplicationsDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TemplateApplicationsDimensionArgs:
     def __init__(__self__, *,
@@ -168,6 +232,76 @@ class TemplateApplicationsDimensionArgs:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class TemplateApplicationsQuotaApplicationDetailArgsDict(TypedDict):
+        aliyun_uid: NotRequired[pulumi.Input[str]]
+        """
+        Alibaba Cloud account (primary account).
+        """
+        application_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the quota promotion request.
+        """
+        approve_value: NotRequired[pulumi.Input[float]]
+        """
+        The approved quota value of the quota increase request.
+        """
+        audit_reason: NotRequired[pulumi.Input[str]]
+        """
+        Approval comments on quota increase applications.
+        """
+        dimensions: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Quota dimension. See `dimensions` below.
+        """
+        env_language: NotRequired[pulumi.Input[str]]
+        """
+        The language of the quota application result notification. Value:
+        - zh (default): Chinese.
+        - en: English.
+        """
+        notice_type: NotRequired[pulumi.Input[int]]
+        """
+        Whether to send notification of quota application result. Value:
+        - 0 (default): No.
+        - 3: Yes.
+        """
+        period: NotRequired[pulumi.Input['TemplateApplicationsQuotaApplicationDetailPeriodArgsDict']]
+        """
+        Quota calculation period.
+        """
+        quota_arn: NotRequired[pulumi.Input[str]]
+        """
+        Quota ARN.
+        """
+        quota_description: NotRequired[pulumi.Input[str]]
+        """
+        The quota description.
+        """
+        quota_name: NotRequired[pulumi.Input[str]]
+        """
+        The quota name.
+        """
+        quota_unit: NotRequired[pulumi.Input[str]]
+        """
+        Quota unit.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        Reason for quota application.
+        > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The approval status of the quota promotion application. Value:
+        - Disagree: reject.
+        - Approve: approved.
+        - Process: under review.
+        - Cancel: Closed.
+        """
+elif False:
+    TemplateApplicationsQuotaApplicationDetailArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TemplateApplicationsQuotaApplicationDetailArgs:
@@ -418,6 +552,19 @@ class TemplateApplicationsQuotaApplicationDetailArgs:
         pulumi.set(self, "status", value)
 
 
+if not MYPY:
+    class TemplateApplicationsQuotaApplicationDetailPeriodArgsDict(TypedDict):
+        period_unit: NotRequired[pulumi.Input[str]]
+        """
+        Quota calculation cycle unit.
+        """
+        period_value: NotRequired[pulumi.Input[int]]
+        """
+        The quota calculation period value.
+        """
+elif False:
+    TemplateApplicationsQuotaApplicationDetailPeriodArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TemplateApplicationsQuotaApplicationDetailPeriodArgs:
     def __init__(__self__, *,
@@ -456,6 +603,19 @@ class TemplateApplicationsQuotaApplicationDetailPeriodArgs:
     def period_value(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period_value", value)
 
+
+if not MYPY:
+    class TemplateQuotaDimensionArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The Key of quota_dimensions.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The Value of quota_dimensions.
+        """
+elif False:
+    TemplateQuotaDimensionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TemplateQuotaDimensionArgs:
@@ -496,6 +656,13 @@ class TemplateQuotaDimensionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetApplicationInfosDimensionArgsDict(TypedDict):
+        key: NotRequired[str]
+        value: NotRequired[str]
+elif False:
+    GetApplicationInfosDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetApplicationInfosDimensionArgs:
     def __init__(__self__, *,
@@ -524,6 +691,13 @@ class GetApplicationInfosDimensionArgs:
     def value(self, value: Optional[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetQuotaAlarmsQuotaDimensionArgsDict(TypedDict):
+        key: NotRequired[str]
+        value: NotRequired[str]
+elif False:
+    GetQuotaAlarmsQuotaDimensionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetQuotaAlarmsQuotaDimensionArgs:
@@ -554,6 +728,13 @@ class GetQuotaAlarmsQuotaDimensionArgs:
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class GetQuotaApplicationsDimensionArgsDict(TypedDict):
+        key: NotRequired[str]
+        value: NotRequired[str]
+elif False:
+    GetQuotaApplicationsDimensionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class GetQuotaApplicationsDimensionArgs:
     def __init__(__self__, *,
@@ -582,6 +763,19 @@ class GetQuotaApplicationsDimensionArgs:
     def value(self, value: Optional[str]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class GetQuotasDimensionArgsDict(TypedDict):
+        key: NotRequired[str]
+        """
+        The key of dimensions.
+        """
+        value: NotRequired[str]
+        """
+        The value of dimensions.
+        """
+elif False:
+    GetQuotasDimensionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GetQuotasDimensionArgs:

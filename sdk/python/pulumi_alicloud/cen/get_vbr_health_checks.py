@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -159,9 +164,6 @@ def get_vbr_health_checks(cen_id: Optional[str] = None,
         vbr_instance_id=pulumi.get(__ret__, 'vbr_instance_id'),
         vbr_instance_owner_id=pulumi.get(__ret__, 'vbr_instance_owner_id'),
         vbr_instance_region_id=pulumi.get(__ret__, 'vbr_instance_region_id'))
-
-
-@_utilities.lift_output_func(get_vbr_health_checks)
 def get_vbr_health_checks_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  vbr_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -180,4 +182,20 @@ def get_vbr_health_checks_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
     :param int vbr_instance_owner_id: The User ID (UID) of the account to which the VBR instance belongs.
     :param str vbr_instance_region_id: The ID of the region where the VBR instance is deployed.
     """
-    ...
+    __args__ = dict()
+    __args__['cenId'] = cen_id
+    __args__['outputFile'] = output_file
+    __args__['vbrInstanceId'] = vbr_instance_id
+    __args__['vbrInstanceOwnerId'] = vbr_instance_owner_id
+    __args__['vbrInstanceRegionId'] = vbr_instance_region_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getVbrHealthChecks:getVbrHealthChecks', __args__, opts=opts, typ=GetVbrHealthChecksResult)
+    return __ret__.apply(lambda __response__: GetVbrHealthChecksResult(
+        cen_id=pulumi.get(__response__, 'cen_id'),
+        checks=pulumi.get(__response__, 'checks'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        vbr_instance_id=pulumi.get(__response__, 'vbr_instance_id'),
+        vbr_instance_owner_id=pulumi.get(__response__, 'vbr_instance_owner_id'),
+        vbr_instance_region_id=pulumi.get(__response__, 'vbr_instance_region_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -235,9 +240,6 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[str] = None,
         payment_type=pulumi.get(__ret__, 'payment_type'),
         service_location=pulumi.get(__ret__, 'service_location'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_anycast_eip_addresses)
 def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.Input[Optional[str]]] = None,
                                      bind_instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      business_status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -281,4 +283,32 @@ def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.I
     :param str service_location: Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
     :param str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
     """
-    ...
+    __args__ = dict()
+    __args__['anycastEipAddressName'] = anycast_eip_address_name
+    __args__['bindInstanceIds'] = bind_instance_ids
+    __args__['businessStatus'] = business_status
+    __args__['ids'] = ids
+    __args__['internetChargeType'] = internet_charge_type
+    __args__['ipAddress'] = ip_address
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['paymentType'] = payment_type
+    __args__['serviceLocation'] = service_location
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses', __args__, opts=opts, typ=GetAnycastEipAddressesResult)
+    return __ret__.apply(lambda __response__: GetAnycastEipAddressesResult(
+        addresses=pulumi.get(__response__, 'addresses'),
+        anycast_eip_address_name=pulumi.get(__response__, 'anycast_eip_address_name'),
+        bind_instance_ids=pulumi.get(__response__, 'bind_instance_ids'),
+        business_status=pulumi.get(__response__, 'business_status'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        internet_charge_type=pulumi.get(__response__, 'internet_charge_type'),
+        ip_address=pulumi.get(__response__, 'ip_address'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        payment_type=pulumi.get(__response__, 'payment_type'),
+        service_location=pulumi.get(__response__, 'service_location'),
+        status=pulumi.get(__response__, 'status')))

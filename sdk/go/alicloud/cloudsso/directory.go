@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := cloudsso.GetDirectories(ctx, nil, nil)
+//			_default, err := cloudsso.GetDirectories(ctx, &cloudsso.GetDirectoriesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

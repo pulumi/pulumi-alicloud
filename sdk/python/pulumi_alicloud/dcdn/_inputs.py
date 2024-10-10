@@ -4,57 +4,121 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DomainConfigFunctionArgArgs',
+    'DomainConfigFunctionArgArgsDict',
     'DomainSourceArgs',
+    'DomainSourceArgsDict',
     'ErEnvConfArgs',
+    'ErEnvConfArgsDict',
     'ErEnvConfPresetCanaryAnhuiArgs',
+    'ErEnvConfPresetCanaryAnhuiArgsDict',
     'ErEnvConfPresetCanaryBeijingArgs',
+    'ErEnvConfPresetCanaryBeijingArgsDict',
     'ErEnvConfPresetCanaryChongqingArgs',
+    'ErEnvConfPresetCanaryChongqingArgsDict',
     'ErEnvConfPresetCanaryFujianArgs',
+    'ErEnvConfPresetCanaryFujianArgsDict',
     'ErEnvConfPresetCanaryGansuArgs',
+    'ErEnvConfPresetCanaryGansuArgsDict',
     'ErEnvConfPresetCanaryGuangdongArgs',
+    'ErEnvConfPresetCanaryGuangdongArgsDict',
     'ErEnvConfPresetCanaryGuangxiArgs',
+    'ErEnvConfPresetCanaryGuangxiArgsDict',
     'ErEnvConfPresetCanaryGuizhouArgs',
+    'ErEnvConfPresetCanaryGuizhouArgsDict',
     'ErEnvConfPresetCanaryHainanArgs',
+    'ErEnvConfPresetCanaryHainanArgsDict',
     'ErEnvConfPresetCanaryHebeiArgs',
+    'ErEnvConfPresetCanaryHebeiArgsDict',
     'ErEnvConfPresetCanaryHeilongjiangArgs',
+    'ErEnvConfPresetCanaryHeilongjiangArgsDict',
     'ErEnvConfPresetCanaryHenanArgs',
+    'ErEnvConfPresetCanaryHenanArgsDict',
     'ErEnvConfPresetCanaryHongKongArgs',
+    'ErEnvConfPresetCanaryHongKongArgsDict',
     'ErEnvConfPresetCanaryHubeiArgs',
+    'ErEnvConfPresetCanaryHubeiArgsDict',
     'ErEnvConfPresetCanaryHunanArgs',
+    'ErEnvConfPresetCanaryHunanArgsDict',
     'ErEnvConfPresetCanaryJiangsuArgs',
+    'ErEnvConfPresetCanaryJiangsuArgsDict',
     'ErEnvConfPresetCanaryJiangxiArgs',
+    'ErEnvConfPresetCanaryJiangxiArgsDict',
     'ErEnvConfPresetCanaryJilinArgs',
+    'ErEnvConfPresetCanaryJilinArgsDict',
     'ErEnvConfPresetCanaryLiaoningArgs',
+    'ErEnvConfPresetCanaryLiaoningArgsDict',
     'ErEnvConfPresetCanaryMacauArgs',
+    'ErEnvConfPresetCanaryMacauArgsDict',
     'ErEnvConfPresetCanaryNeimengguArgs',
+    'ErEnvConfPresetCanaryNeimengguArgsDict',
     'ErEnvConfPresetCanaryNingxiaArgs',
+    'ErEnvConfPresetCanaryNingxiaArgsDict',
     'ErEnvConfPresetCanaryOverseasArgs',
+    'ErEnvConfPresetCanaryOverseasArgsDict',
     'ErEnvConfPresetCanaryQinghaiArgs',
+    'ErEnvConfPresetCanaryQinghaiArgsDict',
     'ErEnvConfPresetCanaryShaanxiArgs',
+    'ErEnvConfPresetCanaryShaanxiArgsDict',
     'ErEnvConfPresetCanaryShandongArgs',
+    'ErEnvConfPresetCanaryShandongArgsDict',
     'ErEnvConfPresetCanaryShanghaiArgs',
+    'ErEnvConfPresetCanaryShanghaiArgsDict',
     'ErEnvConfPresetCanaryShanxiArgs',
+    'ErEnvConfPresetCanaryShanxiArgsDict',
     'ErEnvConfPresetCanarySichuanArgs',
+    'ErEnvConfPresetCanarySichuanArgsDict',
     'ErEnvConfPresetCanaryTaiwanArgs',
+    'ErEnvConfPresetCanaryTaiwanArgsDict',
     'ErEnvConfPresetCanaryTianjinArgs',
+    'ErEnvConfPresetCanaryTianjinArgsDict',
     'ErEnvConfPresetCanaryXinjiangArgs',
+    'ErEnvConfPresetCanaryXinjiangArgsDict',
     'ErEnvConfPresetCanaryXizangArgs',
+    'ErEnvConfPresetCanaryXizangArgsDict',
     'ErEnvConfPresetCanaryYunnanArgs',
+    'ErEnvConfPresetCanaryYunnanArgsDict',
     'ErEnvConfPresetCanaryZhejiangArgs',
+    'ErEnvConfPresetCanaryZhejiangArgsDict',
     'ErEnvConfProductionArgs',
+    'ErEnvConfProductionArgsDict',
     'ErEnvConfStagingArgs',
+    'ErEnvConfStagingArgsDict',
     'IpaDomainSourceArgs',
+    'IpaDomainSourceArgsDict',
     'WafRuleConditionArgs',
+    'WafRuleConditionArgsDict',
     'WafRuleRateLimitArgs',
+    'WafRuleRateLimitArgsDict',
     'WafRuleRateLimitStatusArgs',
+    'WafRuleRateLimitStatusArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DomainConfigFunctionArgArgsDict(TypedDict):
+        arg_name: pulumi.Input[str]
+        """
+        The name of arg.
+        """
+        arg_value: pulumi.Input[str]
+        """
+        The value of arg.
+        """
+elif False:
+    DomainConfigFunctionArgArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainConfigFunctionArgArgs:
@@ -92,6 +156,31 @@ class DomainConfigFunctionArgArgs:
     def arg_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "arg_value", value)
 
+
+if not MYPY:
+    class DomainSourceArgsDict(TypedDict):
+        content: NotRequired[pulumi.Input[str]]
+        """
+        The address of the source station.
+        """
+        port: NotRequired[pulumi.Input[int]]
+        """
+        The port number. Valid values: `443` and `80`. Default to `80`.
+        """
+        priority: NotRequired[pulumi.Input[str]]
+        """
+        The priority of the origin if multiple origins are specified. Default to `20`.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the origin. Valid values:
+        """
+        weight: NotRequired[pulumi.Input[str]]
+        """
+        The weight of the origin if multiple origins are specified. Default to `10`.
+        """
+elif False:
+    DomainSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainSourceArgs:
@@ -179,6 +268,159 @@ class DomainSourceArgs:
     def weight(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "weight", value)
 
+
+if not MYPY:
+    class ErEnvConfArgsDict(TypedDict):
+        preset_canary_anhui: NotRequired[pulumi.Input['ErEnvConfPresetCanaryAnhuiArgsDict']]
+        """
+        The configuration of a presetCanaryAnhui environment. See `staging` below.
+        """
+        preset_canary_beijing: NotRequired[pulumi.Input['ErEnvConfPresetCanaryBeijingArgsDict']]
+        """
+        The configuration of a presetCanaryBeijing environment. See `staging` below.
+        """
+        preset_canary_chongqing: NotRequired[pulumi.Input['ErEnvConfPresetCanaryChongqingArgsDict']]
+        """
+        The configuration of a presetCanaryChongqing environment. See `staging` below.
+        """
+        preset_canary_fujian: NotRequired[pulumi.Input['ErEnvConfPresetCanaryFujianArgsDict']]
+        """
+        The configuration of a presetCanaryFujian environment. See `staging` below.
+        """
+        preset_canary_gansu: NotRequired[pulumi.Input['ErEnvConfPresetCanaryGansuArgsDict']]
+        """
+        The configuration of a presetCanaryGansu environment. See `staging` below.
+        """
+        preset_canary_guangdong: NotRequired[pulumi.Input['ErEnvConfPresetCanaryGuangdongArgsDict']]
+        """
+        The configuration of a presetCanaryGuangdong environment. See `staging` below.
+        """
+        preset_canary_guangxi: NotRequired[pulumi.Input['ErEnvConfPresetCanaryGuangxiArgsDict']]
+        """
+        The configuration of a presetCanaryGuangxi environment. See `staging` below.
+        """
+        preset_canary_guizhou: NotRequired[pulumi.Input['ErEnvConfPresetCanaryGuizhouArgsDict']]
+        """
+        The configuration of a presetCanaryGuizhou environment. See `staging` below.
+        """
+        preset_canary_hainan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHainanArgsDict']]
+        """
+        The configuration of a presetCanaryHainan environment. See `staging` below.
+        """
+        preset_canary_hebei: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHebeiArgsDict']]
+        """
+        The configuration of a presetCanaryHebei environment. See `staging` below.
+        """
+        preset_canary_heilongjiang: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHeilongjiangArgsDict']]
+        """
+        The configuration of a presetCanaryHeilongjiang environment. See `staging` below.
+        """
+        preset_canary_henan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHenanArgsDict']]
+        """
+        The configuration of a presetCanaryHenan environment. See `staging` below.
+        """
+        preset_canary_hong_kong: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHongKongArgsDict']]
+        """
+        The configuration of a presetCanaryHongKong environment. See `staging` below.
+        """
+        preset_canary_hubei: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHubeiArgsDict']]
+        """
+        The configuration of a presetCanaryHubei environment. See `staging` below.
+        """
+        preset_canary_hunan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryHunanArgsDict']]
+        """
+        The configuration of a presetCanaryHunan environment. See `staging` below.
+        """
+        preset_canary_jiangsu: NotRequired[pulumi.Input['ErEnvConfPresetCanaryJiangsuArgsDict']]
+        """
+        The configuration of a presetCanaryJiangsu environment. See `staging` below.
+        """
+        preset_canary_jiangxi: NotRequired[pulumi.Input['ErEnvConfPresetCanaryJiangxiArgsDict']]
+        """
+        The configuration of a presetCanaryJiangxi environment. See `staging` below.
+        """
+        preset_canary_jilin: NotRequired[pulumi.Input['ErEnvConfPresetCanaryJilinArgsDict']]
+        """
+        The configuration of a presetCanaryJilin environment. See `staging` below.
+        """
+        preset_canary_liaoning: NotRequired[pulumi.Input['ErEnvConfPresetCanaryLiaoningArgsDict']]
+        """
+        The configuration of a presetCanaryLiaoning environment. See `staging` below.
+        """
+        preset_canary_macau: NotRequired[pulumi.Input['ErEnvConfPresetCanaryMacauArgsDict']]
+        """
+        The configuration of a presetCanaryMacau environment. See `staging` below.
+        """
+        preset_canary_neimenggu: NotRequired[pulumi.Input['ErEnvConfPresetCanaryNeimengguArgsDict']]
+        """
+        The configuration of a presetCanaryNeimenggu environment. See `staging` below.
+        """
+        preset_canary_ningxia: NotRequired[pulumi.Input['ErEnvConfPresetCanaryNingxiaArgsDict']]
+        """
+        The configuration of a presetCanaryNingxia environment. See `staging` below.
+        """
+        preset_canary_overseas: NotRequired[pulumi.Input['ErEnvConfPresetCanaryOverseasArgsDict']]
+        """
+        The configuration of a presetCanaryOverseas environment. See `staging` below.
+        """
+        preset_canary_qinghai: NotRequired[pulumi.Input['ErEnvConfPresetCanaryQinghaiArgsDict']]
+        """
+        The configuration of a presetCanaryQinghai environment. See `staging` below.
+        """
+        preset_canary_shaanxi: NotRequired[pulumi.Input['ErEnvConfPresetCanaryShaanxiArgsDict']]
+        """
+        The configuration of a presetCanaryShaanxi environment. See `staging` below.
+        """
+        preset_canary_shandong: NotRequired[pulumi.Input['ErEnvConfPresetCanaryShandongArgsDict']]
+        """
+        The configuration of a presetCanaryShandong environment. See `staging` below.
+        """
+        preset_canary_shanghai: NotRequired[pulumi.Input['ErEnvConfPresetCanaryShanghaiArgsDict']]
+        """
+        The configuration of a presetCanaryShanghai environment. See `staging` below.
+        """
+        preset_canary_shanxi: NotRequired[pulumi.Input['ErEnvConfPresetCanaryShanxiArgsDict']]
+        """
+        The configuration of a presetCanaryShanxi environment. See `staging` below.
+        """
+        preset_canary_sichuan: NotRequired[pulumi.Input['ErEnvConfPresetCanarySichuanArgsDict']]
+        """
+        The configuration of a presetCanarySichuan environment. See `staging` below.
+        """
+        preset_canary_taiwan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryTaiwanArgsDict']]
+        """
+        The configuration of a presetCanaryTaiwan environment. See `staging` below.
+        """
+        preset_canary_tianjin: NotRequired[pulumi.Input['ErEnvConfPresetCanaryTianjinArgsDict']]
+        """
+        The configuration of a presetCanaryTianjin environment. See `staging` below.
+        """
+        preset_canary_xinjiang: NotRequired[pulumi.Input['ErEnvConfPresetCanaryXinjiangArgsDict']]
+        """
+        The configuration of a presetCanaryXinjiang environment. See `staging` below.
+        """
+        preset_canary_xizang: NotRequired[pulumi.Input['ErEnvConfPresetCanaryXizangArgsDict']]
+        """
+        The configuration of a presetCanaryXizang environment. See `staging` below.
+        """
+        preset_canary_yunnan: NotRequired[pulumi.Input['ErEnvConfPresetCanaryYunnanArgsDict']]
+        """
+        The configuration of a presetCanaryYunnan environment. See `staging` below.
+        """
+        preset_canary_zhejiang: NotRequired[pulumi.Input['ErEnvConfPresetCanaryZhejiangArgsDict']]
+        """
+        The configuration of a presetCanaryZhejiang environment. See `staging` below.
+        """
+        production: NotRequired[pulumi.Input['ErEnvConfProductionArgsDict']]
+        """
+        The configuration of a production environment. See `staging` below.
+        """
+        staging: NotRequired[pulumi.Input['ErEnvConfStagingArgsDict']]
+        """
+        The configuration of a staging environment. See `staging` below.
+        """
+elif False:
+    ErEnvConfArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfArgs:
@@ -779,6 +1021,23 @@ class ErEnvConfArgs:
         pulumi.set(self, "staging", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryAnhuiArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryAnhuiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryAnhuiArgs:
     def __init__(__self__, *,
@@ -833,6 +1092,23 @@ class ErEnvConfPresetCanaryAnhuiArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryBeijingArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryBeijingArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryBeijingArgs:
@@ -889,6 +1165,23 @@ class ErEnvConfPresetCanaryBeijingArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryChongqingArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryChongqingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryChongqingArgs:
     def __init__(__self__, *,
@@ -943,6 +1236,23 @@ class ErEnvConfPresetCanaryChongqingArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryFujianArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryFujianArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryFujianArgs:
@@ -999,6 +1309,23 @@ class ErEnvConfPresetCanaryFujianArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryGansuArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryGansuArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryGansuArgs:
     def __init__(__self__, *,
@@ -1053,6 +1380,23 @@ class ErEnvConfPresetCanaryGansuArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryGuangdongArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryGuangdongArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryGuangdongArgs:
@@ -1109,6 +1453,23 @@ class ErEnvConfPresetCanaryGuangdongArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryGuangxiArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryGuangxiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryGuangxiArgs:
     def __init__(__self__, *,
@@ -1163,6 +1524,23 @@ class ErEnvConfPresetCanaryGuangxiArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryGuizhouArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryGuizhouArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryGuizhouArgs:
@@ -1219,6 +1597,23 @@ class ErEnvConfPresetCanaryGuizhouArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryHainanArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryHainanArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryHainanArgs:
     def __init__(__self__, *,
@@ -1273,6 +1668,23 @@ class ErEnvConfPresetCanaryHainanArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryHebeiArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryHebeiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryHebeiArgs:
@@ -1329,6 +1741,23 @@ class ErEnvConfPresetCanaryHebeiArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryHeilongjiangArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryHeilongjiangArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryHeilongjiangArgs:
     def __init__(__self__, *,
@@ -1383,6 +1812,23 @@ class ErEnvConfPresetCanaryHeilongjiangArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryHenanArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryHenanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryHenanArgs:
@@ -1439,6 +1885,23 @@ class ErEnvConfPresetCanaryHenanArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryHongKongArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryHongKongArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryHongKongArgs:
     def __init__(__self__, *,
@@ -1493,6 +1956,23 @@ class ErEnvConfPresetCanaryHongKongArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryHubeiArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryHubeiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryHubeiArgs:
@@ -1549,6 +2029,23 @@ class ErEnvConfPresetCanaryHubeiArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryHunanArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryHunanArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryHunanArgs:
     def __init__(__self__, *,
@@ -1603,6 +2100,23 @@ class ErEnvConfPresetCanaryHunanArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryJiangsuArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryJiangsuArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryJiangsuArgs:
@@ -1659,6 +2173,23 @@ class ErEnvConfPresetCanaryJiangsuArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryJiangxiArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryJiangxiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryJiangxiArgs:
     def __init__(__self__, *,
@@ -1713,6 +2244,23 @@ class ErEnvConfPresetCanaryJiangxiArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryJilinArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryJilinArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryJilinArgs:
@@ -1769,6 +2317,23 @@ class ErEnvConfPresetCanaryJilinArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryLiaoningArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryLiaoningArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryLiaoningArgs:
     def __init__(__self__, *,
@@ -1823,6 +2388,23 @@ class ErEnvConfPresetCanaryLiaoningArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryMacauArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryMacauArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryMacauArgs:
@@ -1879,6 +2461,23 @@ class ErEnvConfPresetCanaryMacauArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryNeimengguArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryNeimengguArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryNeimengguArgs:
     def __init__(__self__, *,
@@ -1933,6 +2532,23 @@ class ErEnvConfPresetCanaryNeimengguArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryNingxiaArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryNingxiaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryNingxiaArgs:
@@ -1989,6 +2605,23 @@ class ErEnvConfPresetCanaryNingxiaArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryOverseasArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryOverseasArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryOverseasArgs:
     def __init__(__self__, *,
@@ -2043,6 +2676,23 @@ class ErEnvConfPresetCanaryOverseasArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryQinghaiArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryQinghaiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryQinghaiArgs:
@@ -2099,6 +2749,23 @@ class ErEnvConfPresetCanaryQinghaiArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryShaanxiArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryShaanxiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryShaanxiArgs:
     def __init__(__self__, *,
@@ -2153,6 +2820,23 @@ class ErEnvConfPresetCanaryShaanxiArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryShandongArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryShandongArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryShandongArgs:
@@ -2209,6 +2893,23 @@ class ErEnvConfPresetCanaryShandongArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryShanghaiArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryShanghaiArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryShanghaiArgs:
     def __init__(__self__, *,
@@ -2263,6 +2964,23 @@ class ErEnvConfPresetCanaryShanghaiArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryShanxiArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryShanxiArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryShanxiArgs:
@@ -2319,6 +3037,23 @@ class ErEnvConfPresetCanaryShanxiArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanarySichuanArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanarySichuanArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanarySichuanArgs:
     def __init__(__self__, *,
@@ -2373,6 +3108,23 @@ class ErEnvConfPresetCanarySichuanArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryTaiwanArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryTaiwanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryTaiwanArgs:
@@ -2429,6 +3181,23 @@ class ErEnvConfPresetCanaryTaiwanArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryTianjinArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryTianjinArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryTianjinArgs:
     def __init__(__self__, *,
@@ -2483,6 +3252,23 @@ class ErEnvConfPresetCanaryTianjinArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryXinjiangArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryXinjiangArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryXinjiangArgs:
@@ -2539,6 +3325,23 @@ class ErEnvConfPresetCanaryXinjiangArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryXizangArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryXizangArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryXizangArgs:
     def __init__(__self__, *,
@@ -2593,6 +3396,23 @@ class ErEnvConfPresetCanaryXizangArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfPresetCanaryYunnanArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryYunnanArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfPresetCanaryYunnanArgs:
@@ -2649,6 +3469,23 @@ class ErEnvConfPresetCanaryYunnanArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfPresetCanaryZhejiangArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfPresetCanaryZhejiangArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfPresetCanaryZhejiangArgs:
     def __init__(__self__, *,
@@ -2703,6 +3540,23 @@ class ErEnvConfPresetCanaryZhejiangArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class ErEnvConfProductionArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfProductionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ErEnvConfProductionArgs:
@@ -2759,6 +3613,23 @@ class ErEnvConfProductionArgs:
         pulumi.set(self, "spec_name", value)
 
 
+if not MYPY:
+    class ErEnvConfStagingArgsDict(TypedDict):
+        allowed_hosts: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Allowed DCDN domain names.
+        """
+        code_rev: NotRequired[pulumi.Input[str]]
+        """
+        The version number of the code.
+        """
+        spec_name: NotRequired[pulumi.Input[str]]
+        """
+        The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
+        """
+elif False:
+    ErEnvConfStagingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ErEnvConfStagingArgs:
     def __init__(__self__, *,
@@ -2813,6 +3684,31 @@ class ErEnvConfStagingArgs:
     def spec_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_name", value)
 
+
+if not MYPY:
+    class IpaDomainSourceArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The address of the origin server. You can specify an IP address or a domain name.
+        """
+        port: pulumi.Input[int]
+        """
+        The custom port number. Valid values: `0` to `65535`.
+        """
+        priority: pulumi.Input[str]
+        """
+        The priority of the origin server. Valid values: `20` and `30`. Default value: `20`. A value of 20 specifies that the origin is a primary origin. A value of 30 specifies that the origin is a secondary origin.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of the origin server. Valid values: `ipaddr`, `domain`, `oss`.
+        """
+        weight: pulumi.Input[int]
+        """
+        The weight of the origin server. You must specify a value that is less than `100`. Default value: `10`.
+        """
+elif False:
+    IpaDomainSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class IpaDomainSourceArgs:
@@ -2896,6 +3792,27 @@ class IpaDomainSourceArgs:
         pulumi.set(self, "weight", value)
 
 
+if not MYPY:
+    class WafRuleConditionArgsDict(TypedDict):
+        key: pulumi.Input[str]
+        """
+        The match field.
+        """
+        op_value: pulumi.Input[str]
+        """
+        The logical symbol.
+        """
+        sub_key: NotRequired[pulumi.Input[str]]
+        """
+        The match subfield.
+        """
+        values: NotRequired[pulumi.Input[str]]
+        """
+        The match content. Separate multiple values with commas (,).
+        """
+elif False:
+    WafRuleConditionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class WafRuleConditionArgs:
     def __init__(__self__, *,
@@ -2964,6 +3881,35 @@ class WafRuleConditionArgs:
     def values(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "values", value)
 
+
+if not MYPY:
+    class WafRuleRateLimitArgsDict(TypedDict):
+        interval: NotRequired[pulumi.Input[int]]
+        """
+        Statistical duration, 5-1800.
+        """
+        status: NotRequired[pulumi.Input['WafRuleRateLimitStatusArgsDict']]
+        """
+        Response code statistics. See `status` below.
+        """
+        sub_key: NotRequired[pulumi.Input[str]]
+        """
+        The subfield of the target field. If you set `target` to `Header`, `Query String Parameter`, or `Cookie Name`, you must configure `sub_key`.
+        """
+        target: NotRequired[pulumi.Input[str]]
+        """
+        The statistical field for frequency control. Currently, `IP`, `Header`, `Query String Parameter`, `Cookie Name`, `Session` is supported.
+        """
+        threshold: NotRequired[pulumi.Input[int]]
+        """
+        The trigger threshold of rate limiting. Valid values: 2 to 500000. Unit: requests.
+        """
+        ttl: NotRequired[pulumi.Input[int]]
+        """
+        The validity period of the blacklist. Valid values: 60 to 86400. Unit: seconds.
+        """
+elif False:
+    WafRuleRateLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WafRuleRateLimitArgs:
@@ -3067,6 +4013,23 @@ class WafRuleRateLimitArgs:
     def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
 
+
+if not MYPY:
+    class WafRuleRateLimitStatusArgsDict(TypedDict):
+        code: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP status code returned.
+        """
+        count: NotRequired[pulumi.Input[int]]
+        """
+        The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
+        """
+        ratio: NotRequired[pulumi.Input[int]]
+        """
+        The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
+        """
+elif False:
+    WafRuleRateLimitStatusArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class WafRuleRateLimitStatusArgs:

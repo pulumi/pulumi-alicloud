@@ -50,7 +50,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := dfs.GetZones(ctx, nil, nil)
+//			_default, err := dfs.GetZones(ctx, &dfs.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -132,9 +137,6 @@ def get_ip_info(ip: Optional[str] = None,
         isp_ename=pulumi.get(__ret__, 'isp_ename'),
         region=pulumi.get(__ret__, 'region'),
         region_ename=pulumi.get(__ret__, 'region_ename'))
-
-
-@_utilities.lift_output_func(get_ip_info)
 def get_ip_info_output(ip: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpInfoResult]:
     """
@@ -156,4 +158,15 @@ def get_ip_info_output(ip: Optional[pulumi.Input[str]] = None,
 
     :param str ip: Specify IP address.
     """
-    ...
+    __args__ = dict()
+    __args__['ip'] = ip
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cdn/getIpInfo:getIpInfo', __args__, opts=opts, typ=GetIpInfoResult)
+    return __ret__.apply(lambda __response__: GetIpInfoResult(
+        cdn_ip=pulumi.get(__response__, 'cdn_ip'),
+        id=pulumi.get(__response__, 'id'),
+        ip=pulumi.get(__response__, 'ip'),
+        isp=pulumi.get(__response__, 'isp'),
+        isp_ename=pulumi.get(__response__, 'isp_ename'),
+        region=pulumi.get(__response__, 'region'),
+        region_ename=pulumi.get(__response__, 'region_ename')))

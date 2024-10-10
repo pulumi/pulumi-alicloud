@@ -4,15 +4,41 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'VscMountPointInstanceArgs',
+    'VscMountPointInstanceArgsDict',
     'VscMountPointInstanceVscArgs',
+    'VscMountPointInstanceVscArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class VscMountPointInstanceArgsDict(TypedDict):
+        instance_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the ECS instance to which the HDFS file system is mounted.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        The status of the ECS instance on which the HDFS file system is mounted.
+        """
+        vscs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceVscArgsDict']]]]
+        """
+        The VSC list of mounted HDFS file systems.
+        """
+elif False:
+    VscMountPointInstanceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VscMountPointInstanceArgs:
@@ -68,6 +94,23 @@ class VscMountPointInstanceArgs:
     def vscs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VscMountPointInstanceVscArgs']]]]):
         pulumi.set(self, "vscs", value)
 
+
+if not MYPY:
+    class VscMountPointInstanceVscArgsDict(TypedDict):
+        vsc_id: NotRequired[pulumi.Input[str]]
+        """
+        VSC Channel primary key representation, used to retrieve the specified VSC Channel.
+        """
+        vsc_status: NotRequired[pulumi.Input[str]]
+        """
+        VSC Mount status.
+        """
+        vsc_type: NotRequired[pulumi.Input[str]]
+        """
+        The VSC type.
+        """
+elif False:
+    VscMountPointInstanceVscArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class VscMountPointInstanceVscArgs:

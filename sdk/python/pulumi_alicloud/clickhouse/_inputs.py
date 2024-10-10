@@ -4,15 +4,41 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DbClusterDbClusterAccessWhiteListArgs',
+    'DbClusterDbClusterAccessWhiteListArgsDict',
     'DbClusterMultiZoneVswitchListArgs',
+    'DbClusterMultiZoneVswitchListArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DbClusterDbClusterAccessWhiteListArgsDict(TypedDict):
+        db_cluster_ip_array_attribute: NotRequired[pulumi.Input[str]]
+        """
+        Field `db_cluster_ip_array_attribute` has been removed from provider.
+        """
+        db_cluster_ip_array_name: NotRequired[pulumi.Input[str]]
+        """
+        Whitelist group name.
+        """
+        security_ip_list: NotRequired[pulumi.Input[str]]
+        """
+        The IP address list under the whitelist group.
+        """
+elif False:
+    DbClusterDbClusterAccessWhiteListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DbClusterDbClusterAccessWhiteListArgs:
@@ -68,6 +94,19 @@ class DbClusterDbClusterAccessWhiteListArgs:
     def security_ip_list(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "security_ip_list", value)
 
+
+if not MYPY:
+    class DbClusterMultiZoneVswitchListArgsDict(TypedDict):
+        vswitch_id: pulumi.Input[str]
+        """
+        The ID of the vswitch.
+        """
+        zone_id: NotRequired[pulumi.Input[str]]
+        """
+        The zone ID of the vswitch.
+        """
+elif False:
+    DbClusterMultiZoneVswitchListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DbClusterMultiZoneVswitchListArgs:

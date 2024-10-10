@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -188,9 +193,6 @@ def get_transit_router_multicast_domains(ids: Optional[Sequence[str]] = None,
         status=pulumi.get(__ret__, 'status'),
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'),
         transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'))
-
-
-@_utilities.lift_output_func(get_transit_router_multicast_domains)
 def get_transit_router_multicast_domains_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -227,4 +229,22 @@ def get_transit_router_multicast_domains_output(ids: Optional[pulumi.Input[Optio
     :param str transit_router_id: The ID of the transit router.
     :param str transit_router_multicast_domain_id: The ID of the multicast domain.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['transitRouterId'] = transit_router_id
+    __args__['transitRouterMulticastDomainId'] = transit_router_multicast_domain_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterMulticastDomains:getTransitRouterMulticastDomains', __args__, opts=opts, typ=GetTransitRouterMulticastDomainsResult)
+    return __ret__.apply(lambda __response__: GetTransitRouterMulticastDomainsResult(
+        domains=pulumi.get(__response__, 'domains'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        transit_router_id=pulumi.get(__response__, 'transit_router_id'),
+        transit_router_multicast_domain_id=pulumi.get(__response__, 'transit_router_multicast_domain_id')))

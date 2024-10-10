@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sampleDs, err := slb.GetCaCertificates(ctx, nil, nil)
+//			sampleDs, err := slb.GetCaCertificates(ctx, &slb.GetCaCertificatesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -110,9 +115,6 @@ def get_product(available_region: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         product_code=pulumi.get(__ret__, 'product_code'),
         products=pulumi.get(__ret__, 'products'))
-
-
-@_utilities.lift_output_func(get_product)
 def get_product_output(available_region: Optional[pulumi.Input[Optional[str]]] = None,
                        product_code: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductResult]:
@@ -137,4 +139,13 @@ def get_product_output(available_region: Optional[pulumi.Input[Optional[str]]] =
     :param str available_region: A available region id used to filter market place Ecs images.
     :param str product_code: The product code of the market product.
     """
-    ...
+    __args__ = dict()
+    __args__['availableRegion'] = available_region
+    __args__['productCode'] = product_code
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:marketplace/getProduct:getProduct', __args__, opts=opts, typ=GetProductResult)
+    return __ret__.apply(lambda __response__: GetProductResult(
+        available_region=pulumi.get(__response__, 'available_region'),
+        id=pulumi.get(__response__, 'id'),
+        product_code=pulumi.get(__response__, 'product_code'),
+        products=pulumi.get(__response__, 'products')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -139,9 +144,6 @@ def get_listeners(ids: Optional[Sequence[str]] = None,
         listeners=pulumi.get(__ret__, 'listeners'),
         load_balancer_ids=pulumi.get(__ret__, 'load_balancer_ids'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_listeners)
 def get_listeners_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          listener_protocol: Optional[pulumi.Input[Optional[str]]] = None,
                          load_balancer_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -170,4 +172,17 @@ def get_listeners_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param Sequence[str] load_balancer_ids: The ID of the NLB instance. You can specify at most 20 IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['listenerProtocol'] = listener_protocol
+    __args__['loadBalancerIds'] = load_balancer_ids
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:nlb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult)
+    return __ret__.apply(lambda __response__: GetListenersResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        listener_protocol=pulumi.get(__response__, 'listener_protocol'),
+        listeners=pulumi.get(__response__, 'listeners'),
+        load_balancer_ids=pulumi.get(__response__, 'load_balancer_ids'),
+        output_file=pulumi.get(__response__, 'output_file')))

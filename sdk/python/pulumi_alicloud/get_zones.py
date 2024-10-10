@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -248,9 +253,6 @@ def get_zones(available_disk_category: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         spot_strategy=pulumi.get(__ret__, 'spot_strategy'),
         zones=pulumi.get(__ret__, 'zones'))
-
-
-@_utilities.lift_output_func(get_zones)
 def get_zones_output(available_disk_category: Optional[pulumi.Input[Optional[str]]] = None,
                      available_instance_type: Optional[pulumi.Input[Optional[str]]] = None,
                      available_resource_creation: Optional[pulumi.Input[Optional[str]]] = None,
@@ -298,4 +300,32 @@ def get_zones_output(available_disk_category: Optional[pulumi.Input[Optional[str
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str spot_strategy: - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     """
-    ...
+    __args__ = dict()
+    __args__['availableDiskCategory'] = available_disk_category
+    __args__['availableInstanceType'] = available_instance_type
+    __args__['availableResourceCreation'] = available_resource_creation
+    __args__['availableSlbAddressIpVersion'] = available_slb_address_ip_version
+    __args__['availableSlbAddressType'] = available_slb_address_type
+    __args__['enableDetails'] = enable_details
+    __args__['instanceChargeType'] = instance_charge_type
+    __args__['multi'] = multi
+    __args__['networkType'] = network_type
+    __args__['outputFile'] = output_file
+    __args__['spotStrategy'] = spot_strategy
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
+    return __ret__.apply(lambda __response__: GetZonesResult(
+        available_disk_category=pulumi.get(__response__, 'available_disk_category'),
+        available_instance_type=pulumi.get(__response__, 'available_instance_type'),
+        available_resource_creation=pulumi.get(__response__, 'available_resource_creation'),
+        available_slb_address_ip_version=pulumi.get(__response__, 'available_slb_address_ip_version'),
+        available_slb_address_type=pulumi.get(__response__, 'available_slb_address_type'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_charge_type=pulumi.get(__response__, 'instance_charge_type'),
+        multi=pulumi.get(__response__, 'multi'),
+        network_type=pulumi.get(__response__, 'network_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        spot_strategy=pulumi.get(__response__, 'spot_strategy'),
+        zones=pulumi.get(__response__, 'zones')))

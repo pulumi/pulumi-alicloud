@@ -4,16 +4,54 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DomainCertInfoArgs',
+    'DomainCertInfoArgsDict',
     'DomainConfigFunctionArgArgs',
+    'DomainConfigFunctionArgArgsDict',
     'DomainSourceArgs',
+    'DomainSourceArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DomainCertInfoArgsDict(TypedDict):
+        cert_name: NotRequired[pulumi.Input[str]]
+        """
+        If You Enable HTTPS Here Certificate Name.
+        """
+        cert_type: NotRequired[pulumi.Input[str]]
+        """
+        Certificate Type. Value Range: 
+        * upload: Certificate
+        * cas: Certificate Authority Certificate.
+        * free: Free Certificate.
+        """
+        ssl_pri: NotRequired[pulumi.Input[str]]
+        """
+        Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
+        """
+        ssl_protocol: NotRequired[pulumi.Input[str]]
+        """
+        Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
+        """
+        ssl_pub: NotRequired[pulumi.Input[str]]
+        """
+        If You Enable HTTPS Here Key.
+        """
+elif False:
+    DomainCertInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainCertInfoArgs:
@@ -108,6 +146,19 @@ class DomainCertInfoArgs:
         pulumi.set(self, "ssl_pub", value)
 
 
+if not MYPY:
+    class DomainConfigFunctionArgArgsDict(TypedDict):
+        arg_name: pulumi.Input[str]
+        """
+        The name of arg.
+        """
+        arg_value: pulumi.Input[str]
+        """
+        The value of arg.
+        """
+elif False:
+    DomainConfigFunctionArgArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DomainConfigFunctionArgArgs:
     def __init__(__self__, *,
@@ -144,6 +195,34 @@ class DomainConfigFunctionArgArgs:
     def arg_value(self, value: pulumi.Input[str]):
         pulumi.set(self, "arg_value", value)
 
+
+if not MYPY:
+    class DomainSourceArgsDict(TypedDict):
+        content: pulumi.Input[str]
+        """
+        The Back-to-Source Address.
+        """
+        port: pulumi.Input[int]
+        """
+        Port.
+        """
+        priority: pulumi.Input[str]
+        """
+        Priority.
+        """
+        type: pulumi.Input[str]
+        """
+        The Origin Server Type. Valid Values: 
+        * ipaddr: IP Source Station
+        * domain: the Domain Name
+        * oss: OSS Bucket as a Source Station.
+        """
+        enabled: NotRequired[pulumi.Input[str]]
+        """
+        The source status. Valid values: online, offline.
+        """
+elif False:
+    DomainSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainSourceArgs:

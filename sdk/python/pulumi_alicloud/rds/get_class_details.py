@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -275,9 +280,6 @@ def get_class_details(class_code: Optional[str] = None,
         max_iops=pulumi.get(__ret__, 'max_iops'),
         memory_class=pulumi.get(__ret__, 'memory_class'),
         reference_price=pulumi.get(__ret__, 'reference_price'))
-
-
-@_utilities.lift_output_func(get_class_details)
 def get_class_details_output(class_code: Optional[pulumi.Input[str]] = None,
                              commodity_code: Optional[pulumi.Input[str]] = None,
                              engine: Optional[pulumi.Input[str]] = None,
@@ -320,4 +322,26 @@ def get_class_details_output(class_code: Optional[pulumi.Input[str]] = None,
            - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
            - MariaDB: [ 10.3 ]
     """
-    ...
+    __args__ = dict()
+    __args__['classCode'] = class_code
+    __args__['commodityCode'] = commodity_code
+    __args__['engine'] = engine
+    __args__['engineVersion'] = engine_version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getClassDetails:getClassDetails', __args__, opts=opts, typ=GetClassDetailsResult)
+    return __ret__.apply(lambda __response__: GetClassDetailsResult(
+        category=pulumi.get(__response__, 'category'),
+        class_code=pulumi.get(__response__, 'class_code'),
+        class_group=pulumi.get(__response__, 'class_group'),
+        commodity_code=pulumi.get(__response__, 'commodity_code'),
+        cpu=pulumi.get(__response__, 'cpu'),
+        db_instance_storage_type=pulumi.get(__response__, 'db_instance_storage_type'),
+        engine=pulumi.get(__response__, 'engine'),
+        engine_version=pulumi.get(__response__, 'engine_version'),
+        id=pulumi.get(__response__, 'id'),
+        instruction_set_arch=pulumi.get(__response__, 'instruction_set_arch'),
+        max_connections=pulumi.get(__response__, 'max_connections'),
+        max_iombps=pulumi.get(__response__, 'max_iombps'),
+        max_iops=pulumi.get(__response__, 'max_iops'),
+        memory_class=pulumi.get(__response__, 'memory_class'),
+        reference_price=pulumi.get(__response__, 'reference_price')))

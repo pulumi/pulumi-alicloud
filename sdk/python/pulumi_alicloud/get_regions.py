@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -135,9 +140,6 @@ def get_regions(current: Optional[bool] = None,
         name=pulumi.get(__ret__, 'name'),
         output_file=pulumi.get(__ret__, 'output_file'),
         regions=pulumi.get(__ret__, 'regions'))
-
-
-@_utilities.lift_output_func(get_regions)
 def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
                        name: Optional[pulumi.Input[Optional[str]]] = None,
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -163,4 +165,16 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
            > **NOTE:** You will get an error if you set `current` to true and `name` to a different value from the one you configured in the provider.
            It is better to either use `name` or `current`, but not both at the same time.
     """
-    ...
+    __args__ = dict()
+    __args__['current'] = current
+    __args__['name'] = name
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:index/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
+    return __ret__.apply(lambda __response__: GetRegionsResult(
+        current=pulumi.get(__response__, 'current'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name=pulumi.get(__response__, 'name'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        regions=pulumi.get(__response__, 'regions')))

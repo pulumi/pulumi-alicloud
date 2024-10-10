@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -185,9 +190,6 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         status=pulumi.get(__ret__, 'status'),
         vpn_gateway_id=pulumi.get(__ret__, 'vpn_gateway_id'))
-
-
-@_utilities.lift_output_func(get_gateway_vpn_attachments)
 def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -224,4 +226,24 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     :param str status: The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
     :param str vpn_gateway_id: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['status'] = status
+    __args__['vpnGatewayId'] = vpn_gateway_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments', __args__, opts=opts, typ=GetGatewayVpnAttachmentsResult)
+    return __ret__.apply(lambda __response__: GetGatewayVpnAttachmentsResult(
+        attachments=pulumi.get(__response__, 'attachments'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        status=pulumi.get(__response__, 'status'),
+        vpn_gateway_id=pulumi.get(__response__, 'vpn_gateway_id')))

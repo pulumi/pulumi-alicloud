@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dfs.GetZones(ctx, nil, nil)
+//			_, err := dfs.GetZones(ctx, &dfs.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

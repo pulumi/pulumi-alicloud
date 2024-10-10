@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := nas.GetZones(ctx, nil, nil)
+//			_default, err := nas.GetZones(ctx, &nas.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

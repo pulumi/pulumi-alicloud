@@ -4,14 +4,31 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AnycastEipAddressAttachmentPopLocationArgs',
+    'AnycastEipAddressAttachmentPopLocationArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AnycastEipAddressAttachmentPopLocationArgsDict(TypedDict):
+        pop_location: NotRequired[pulumi.Input[str]]
+        """
+        The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
+        """
+elif False:
+    AnycastEipAddressAttachmentPopLocationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AnycastEipAddressAttachmentPopLocationArgs:

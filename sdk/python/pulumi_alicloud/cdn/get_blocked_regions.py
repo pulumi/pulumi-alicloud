@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -93,9 +98,6 @@ def get_blocked_regions(language: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         language=pulumi.get(__ret__, 'language'),
         regions=pulumi.get(__ret__, 'regions'))
-
-
-@_utilities.lift_output_func(get_blocked_regions)
 def get_blocked_regions_output(language: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBlockedRegionsResult]:
     """
@@ -117,4 +119,11 @@ def get_blocked_regions_output(language: Optional[pulumi.Input[str]] = None,
 
     :param str language: The language. Valid values: `zh`, `en`, `jp`.
     """
-    ...
+    __args__ = dict()
+    __args__['language'] = language
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cdn/getBlockedRegions:getBlockedRegions', __args__, opts=opts, typ=GetBlockedRegionsResult)
+    return __ret__.apply(lambda __response__: GetBlockedRegionsResult(
+        id=pulumi.get(__response__, 'id'),
+        language=pulumi.get(__response__, 'language'),
+        regions=pulumi.get(__response__, 'regions')))

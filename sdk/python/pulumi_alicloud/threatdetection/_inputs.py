@@ -4,17 +4,45 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'HoneypotPresetMetaArgs',
+    'HoneypotPresetMetaArgsDict',
     'HoneypotProbeHoneypotBindListArgs',
+    'HoneypotProbeHoneypotBindListArgsDict',
     'HoneypotProbeHoneypotBindListBindPortListArgs',
+    'HoneypotProbeHoneypotBindListBindPortListArgsDict',
     'SasTrailServiceTrailArgs',
+    'SasTrailServiceTrailArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class HoneypotPresetMetaArgsDict(TypedDict):
+        burp: pulumi.Input[str]
+        """
+        Burp counter.
+        """
+        portrait_option: NotRequired[pulumi.Input[bool]]
+        """
+        Social traceability.
+        """
+        trojan_git: NotRequired[pulumi.Input[str]]
+        """
+        Git countered.
+        """
+elif False:
+    HoneypotPresetMetaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HoneypotPresetMetaArgs:
@@ -70,6 +98,19 @@ class HoneypotPresetMetaArgs:
         pulumi.set(self, "trojan_git", value)
 
 
+if not MYPY:
+    class HoneypotProbeHoneypotBindListArgsDict(TypedDict):
+        bind_port_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgsDict']]]]
+        """
+        List of listening ports.See the following `Block BindPortList`.
+        """
+        honeypot_id: NotRequired[pulumi.Input[str]]
+        """
+        Honeypot ID.
+        """
+elif False:
+    HoneypotProbeHoneypotBindListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class HoneypotProbeHoneypotBindListArgs:
     def __init__(__self__, *,
@@ -108,6 +149,31 @@ class HoneypotProbeHoneypotBindListArgs:
     def honeypot_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "honeypot_id", value)
 
+
+if not MYPY:
+    class HoneypotProbeHoneypotBindListBindPortListArgsDict(TypedDict):
+        bind_port: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to bind the port.
+        """
+        end_port: NotRequired[pulumi.Input[int]]
+        """
+        End port.
+        """
+        fixed: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the port is fixed.
+        """
+        start_port: NotRequired[pulumi.Input[int]]
+        """
+        Start port.
+        """
+        target_port: NotRequired[pulumi.Input[int]]
+        """
+        Destination port.
+        """
+elif False:
+    HoneypotProbeHoneypotBindListBindPortListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class HoneypotProbeHoneypotBindListBindPortListArgs:
@@ -195,6 +261,21 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
     def target_port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_port", value)
 
+
+if not MYPY:
+    class SasTrailServiceTrailArgsDict(TypedDict):
+        config: NotRequired[pulumi.Input[str]]
+        """
+        Service tracking on status. The value is:
+        - **on:** Open
+        - **off:** off.
+        """
+        update_time: NotRequired[pulumi.Input[int]]
+        """
+        The timestamp of the last service update. Unit: milliseconds.
+        """
+elif False:
+    SasTrailServiceTrailArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SasTrailServiceTrailArgs:

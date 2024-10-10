@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -94,9 +99,6 @@ def get_account_alias(output_file: Optional[str] = None,
         account_alias=pulumi.get(__ret__, 'account_alias'),
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_account_alias)
 def get_account_alias_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAliasResult]:
     """
@@ -117,4 +119,11 @@ def get_account_alias_output(output_file: Optional[pulumi.Input[Optional[str]]] 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getAccountAlias:getAccountAlias', __args__, opts=opts, typ=GetAccountAliasResult)
+    return __ret__.apply(lambda __response__: GetAccountAliasResult(
+        account_alias=pulumi.get(__response__, 'account_alias'),
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file')))

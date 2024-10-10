@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -204,9 +209,6 @@ def get_backup_policies(current_page: Optional[int] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         policies=pulumi.get(__ret__, 'policies'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_backup_policies)
 def get_backup_policies_output(current_page: Optional[pulumi.Input[Optional[int]]] = None,
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                machine_remark: Optional[pulumi.Input[Optional[str]]] = None,
@@ -243,4 +245,26 @@ def get_backup_policies_output(current_page: Optional[pulumi.Input[Optional[int]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
     """
-    ...
+    __args__ = dict()
+    __args__['currentPage'] = current_page
+    __args__['ids'] = ids
+    __args__['machineRemark'] = machine_remark
+    __args__['name'] = name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['pageSize'] = page_size
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getBackupPolicies:getBackupPolicies', __args__, opts=opts, typ=GetBackupPoliciesResult)
+    return __ret__.apply(lambda __response__: GetBackupPoliciesResult(
+        current_page=pulumi.get(__response__, 'current_page'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        machine_remark=pulumi.get(__response__, 'machine_remark'),
+        name=pulumi.get(__response__, 'name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        policies=pulumi.get(__response__, 'policies'),
+        status=pulumi.get(__response__, 'status')))

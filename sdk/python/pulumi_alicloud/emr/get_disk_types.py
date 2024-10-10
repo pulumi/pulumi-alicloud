@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -178,9 +183,6 @@ def get_disk_types(cluster_type: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         types=pulumi.get(__ret__, 'types'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_disk_types)
 def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
                           destination_resource: Optional[pulumi.Input[str]] = None,
                           instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -216,4 +218,22 @@ def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str zone_id: The Zone to create emr cluster instance.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterType'] = cluster_type
+    __args__['destinationResource'] = destination_resource
+    __args__['instanceChargeType'] = instance_charge_type
+    __args__['instanceType'] = instance_type
+    __args__['outputFile'] = output_file
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:emr/getDiskTypes:getDiskTypes', __args__, opts=opts, typ=GetDiskTypesResult)
+    return __ret__.apply(lambda __response__: GetDiskTypesResult(
+        cluster_type=pulumi.get(__response__, 'cluster_type'),
+        destination_resource=pulumi.get(__response__, 'destination_resource'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_charge_type=pulumi.get(__response__, 'instance_charge_type'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        types=pulumi.get(__response__, 'types'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

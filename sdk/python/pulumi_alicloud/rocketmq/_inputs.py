@@ -4,21 +4,49 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ConsumerGroupConsumeRetryPolicyArgs',
+    'ConsumerGroupConsumeRetryPolicyArgsDict',
     'RocketMQInstanceNetworkInfoArgs',
+    'RocketMQInstanceNetworkInfoArgsDict',
     'RocketMQInstanceNetworkInfoEndpointArgs',
+    'RocketMQInstanceNetworkInfoEndpointArgsDict',
     'RocketMQInstanceNetworkInfoInternetInfoArgs',
+    'RocketMQInstanceNetworkInfoInternetInfoArgsDict',
     'RocketMQInstanceNetworkInfoVpcInfoArgs',
+    'RocketMQInstanceNetworkInfoVpcInfoArgsDict',
     'RocketMQInstanceNetworkInfoVpcInfoVswitchArgs',
+    'RocketMQInstanceNetworkInfoVpcInfoVswitchArgsDict',
     'RocketMQInstanceProductInfoArgs',
+    'RocketMQInstanceProductInfoArgsDict',
     'RocketMQInstanceSoftwareArgs',
+    'RocketMQInstanceSoftwareArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ConsumerGroupConsumeRetryPolicyArgsDict(TypedDict):
+        max_retry_times: NotRequired[pulumi.Input[int]]
+        """
+        Maximum number of retries.
+        """
+        retry_policy: NotRequired[pulumi.Input[str]]
+        """
+        Consume retry policy.
+        """
+elif False:
+    ConsumerGroupConsumeRetryPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConsumerGroupConsumeRetryPolicyArgs:
@@ -58,6 +86,23 @@ class ConsumerGroupConsumeRetryPolicyArgs:
     def retry_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "retry_policy", value)
 
+
+if not MYPY:
+    class RocketMQInstanceNetworkInfoArgsDict(TypedDict):
+        internet_info: pulumi.Input['RocketMQInstanceNetworkInfoInternetInfoArgsDict']
+        """
+        instance internet info. See `internet_info` below.
+        """
+        vpc_info: pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoArgsDict']
+        """
+        Proprietary network information. See `vpc_info` below.
+        """
+        endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgsDict']]]]
+        """
+        Access point list.
+        """
+elif False:
+    RocketMQInstanceNetworkInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RocketMQInstanceNetworkInfoArgs:
@@ -111,6 +156,23 @@ class RocketMQInstanceNetworkInfoArgs:
     def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
+
+if not MYPY:
+    class RocketMQInstanceNetworkInfoEndpointArgsDict(TypedDict):
+        endpoint_type: NotRequired[pulumi.Input[str]]
+        """
+        Access point type.
+        """
+        endpoint_url: NotRequired[pulumi.Input[str]]
+        """
+        Access point address.
+        """
+        ip_white_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        White list of access addresses.
+        """
+elif False:
+    RocketMQInstanceNetworkInfoEndpointArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RocketMQInstanceNetworkInfoEndpointArgs:
@@ -166,6 +228,31 @@ class RocketMQInstanceNetworkInfoEndpointArgs:
     def ip_white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ip_white_lists", value)
 
+
+if not MYPY:
+    class RocketMQInstanceNetworkInfoInternetInfoArgsDict(TypedDict):
+        flow_out_type: pulumi.Input[str]
+        """
+        Public network billing type.  Parameter values are as follows:
+        - payByBandwidth: Fixed bandwidth billing. This parameter must be set to the value when public network access is enabled.
+        - uninvolved: Not involved. This parameter must be set to the value when public network access is disabled.
+        """
+        internet_spec: pulumi.Input[str]
+        """
+        Whether to enable public network access.  The parameter values are as follows:
+        - enable: Enable public network access
+        - disable: Disable public network access   Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee).
+        """
+        flow_out_bandwidth: NotRequired[pulumi.Input[int]]
+        """
+        Public network bandwidth specification. Unit: Mb/s.  This field should only be filled when the public network billing type is set to payByBandwidth.  The value range is [1 - 1000].
+        """
+        ip_whitelists: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        internet ip whitelist.
+        """
+elif False:
+    RocketMQInstanceNetworkInfoInternetInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RocketMQInstanceNetworkInfoInternetInfoArgs:
@@ -244,6 +331,27 @@ class RocketMQInstanceNetworkInfoInternetInfoArgs:
         pulumi.set(self, "ip_whitelists", value)
 
 
+if not MYPY:
+    class RocketMQInstanceNetworkInfoVpcInfoArgsDict(TypedDict):
+        vpc_id: pulumi.Input[str]
+        """
+        Proprietary Network.
+        """
+        security_group_ids: NotRequired[pulumi.Input[str]]
+        """
+        Security group id.
+        """
+        vswitch_id: NotRequired[pulumi.Input[str]]
+        """
+        VPC switch id.
+        """
+        vswitches: NotRequired[pulumi.Input[Sequence[pulumi.Input['RocketMQInstanceNetworkInfoVpcInfoVswitchArgsDict']]]]
+        """
+        Multiple VSwitches. At least two VSwitches are required for a serverless instance. See `vswitches` below.
+        """
+elif False:
+    RocketMQInstanceNetworkInfoVpcInfoArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RocketMQInstanceNetworkInfoVpcInfoArgs:
     def __init__(__self__, *,
@@ -314,6 +422,15 @@ class RocketMQInstanceNetworkInfoVpcInfoArgs:
         pulumi.set(self, "vswitches", value)
 
 
+if not MYPY:
+    class RocketMQInstanceNetworkInfoVpcInfoVswitchArgsDict(TypedDict):
+        vswitch_id: NotRequired[pulumi.Input[str]]
+        """
+        VPC switch id.
+        """
+elif False:
+    RocketMQInstanceNetworkInfoVpcInfoVswitchArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RocketMQInstanceNetworkInfoVpcInfoVswitchArgs:
     def __init__(__self__, *,
@@ -336,6 +453,31 @@ class RocketMQInstanceNetworkInfoVpcInfoVswitchArgs:
     def vswitch_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitch_id", value)
 
+
+if not MYPY:
+    class RocketMQInstanceProductInfoArgsDict(TypedDict):
+        msg_process_spec: pulumi.Input[str]
+        """
+        Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
+        """
+        auto_scaling: NotRequired[pulumi.Input[bool]]
+        """
+        is open auto scaling.
+        """
+        message_retention_time: NotRequired[pulumi.Input[int]]
+        """
+        Duration of message retention. Unit: hours.  For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.  The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+        """
+        send_receive_ratio: NotRequired[pulumi.Input[float]]
+        """
+        message send receive ratio.  Value range: [0.2, 0.5].
+        """
+        support_auto_scaling: NotRequired[pulumi.Input[bool]]
+        """
+        is support auto scaling.
+        """
+elif False:
+    RocketMQInstanceProductInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RocketMQInstanceProductInfoArgs:
@@ -422,6 +564,23 @@ class RocketMQInstanceProductInfoArgs:
     def support_auto_scaling(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "support_auto_scaling", value)
 
+
+if not MYPY:
+    class RocketMQInstanceSoftwareArgsDict(TypedDict):
+        maintain_time: NotRequired[pulumi.Input[str]]
+        """
+        Upgrade time period.
+        """
+        software_version: NotRequired[pulumi.Input[str]]
+        """
+        Software version.
+        """
+        upgrade_method: NotRequired[pulumi.Input[str]]
+        """
+        Upgrade method.
+        """
+elif False:
+    RocketMQInstanceSoftwareArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RocketMQInstanceSoftwareArgs:

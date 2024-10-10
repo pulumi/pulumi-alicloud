@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids, err := eds.GetUsers(ctx, nil, nil)
+//			ids, err := eds.GetUsers(ctx, &eds.GetUsersArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

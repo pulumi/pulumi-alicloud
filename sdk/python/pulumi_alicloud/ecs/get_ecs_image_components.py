@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -186,9 +191,6 @@ def get_ecs_image_components(ids: Optional[Sequence[str]] = None,
         owner=pulumi.get(__ret__, 'owner'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_ecs_image_components)
 def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     image_component_name: Optional[pulumi.Input[Optional[str]]] = None,
                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -227,4 +229,24 @@ def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence
     :param str resource_group_id: The ID of the resource group.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['imageComponentName'] = image_component_name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['owner'] = owner
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsImageComponents:getEcsImageComponents', __args__, opts=opts, typ=GetEcsImageComponentsResult)
+    return __ret__.apply(lambda __response__: GetEcsImageComponentsResult(
+        components=pulumi.get(__response__, 'components'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        image_component_name=pulumi.get(__response__, 'image_component_name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        owner=pulumi.get(__response__, 'owner'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        tags=pulumi.get(__response__, 'tags')))

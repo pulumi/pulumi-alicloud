@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -161,9 +166,6 @@ def get_instance_engines(engine: Optional[str] = None,
         instance_engines=pulumi.get(__ret__, 'instance_engines'),
         output_file=pulumi.get(__ret__, 'output_file'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_instance_engines)
 def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
                                 engine_version: Optional[pulumi.Input[Optional[str]]] = None,
                                 instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -197,4 +199,19 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
     :param str output_file: File name where to save data source results (after running `pulumi up`).
     :param str zone_id: The Zone to launch the KVStore instance.
     """
-    ...
+    __args__ = dict()
+    __args__['engine'] = engine
+    __args__['engineVersion'] = engine_version
+    __args__['instanceChargeType'] = instance_charge_type
+    __args__['outputFile'] = output_file
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getInstanceEngines:getInstanceEngines', __args__, opts=opts, typ=GetInstanceEnginesResult)
+    return __ret__.apply(lambda __response__: GetInstanceEnginesResult(
+        engine=pulumi.get(__response__, 'engine'),
+        engine_version=pulumi.get(__response__, 'engine_version'),
+        id=pulumi.get(__response__, 'id'),
+        instance_charge_type=pulumi.get(__response__, 'instance_charge_type'),
+        instance_engines=pulumi.get(__response__, 'instance_engines'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

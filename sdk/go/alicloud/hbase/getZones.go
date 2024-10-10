@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			zonesIds, err := hbase.GetZones(ctx, nil, nil)
+//			zonesIds, err := hbase.GetZones(ctx, &hbase.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

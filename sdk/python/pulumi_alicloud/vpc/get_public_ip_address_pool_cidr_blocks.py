@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -164,9 +169,6 @@ def get_public_ip_address_pool_cidr_blocks(cidr_block: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         public_ip_address_pool_id=pulumi.get(__ret__, 'public_ip_address_pool_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_public_ip_address_pool_cidr_blocks)
 def get_public_ip_address_pool_cidr_blocks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None,
                                                   ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -203,4 +205,19 @@ def get_public_ip_address_pool_cidr_blocks_output(cidr_block: Optional[pulumi.In
     :param str public_ip_address_pool_id: The ID of the Vpc Public IP address pool.
     :param str status: The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
     """
-    ...
+    __args__ = dict()
+    __args__['cidrBlock'] = cidr_block
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['publicIpAddressPoolId'] = public_ip_address_pool_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks', __args__, opts=opts, typ=GetPublicIpAddressPoolCidrBlocksResult)
+    return __ret__.apply(lambda __response__: GetPublicIpAddressPoolCidrBlocksResult(
+        blocks=pulumi.get(__response__, 'blocks'),
+        cidr_block=pulumi.get(__response__, 'cidr_block'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        public_ip_address_pool_id=pulumi.get(__response__, 'public_ip_address_pool_id'),
+        status=pulumi.get(__response__, 'status')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -182,9 +187,6 @@ def get_service_hybrid_double_writes(ids: Optional[Sequence[str]] = None,
         source_namespace=pulumi.get(__ret__, 'source_namespace'),
         source_user_id=pulumi.get(__ret__, 'source_user_id'),
         user_id=pulumi.get(__ret__, 'user_id'))
-
-
-@_utilities.lift_output_func(get_service_hybrid_double_writes)
 def get_service_hybrid_double_writes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                             namespace: Optional[pulumi.Input[Optional[str]]] = None,
                                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -225,4 +227,21 @@ def get_service_hybrid_double_writes_output(ids: Optional[pulumi.Input[Optional[
     :param str source_user_id: Source UserId.
     :param str user_id: Target UserId.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['namespace'] = namespace
+    __args__['outputFile'] = output_file
+    __args__['sourceNamespace'] = source_namespace
+    __args__['sourceUserId'] = source_user_id
+    __args__['userId'] = user_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites', __args__, opts=opts, typ=GetServiceHybridDoubleWritesResult)
+    return __ret__.apply(lambda __response__: GetServiceHybridDoubleWritesResult(
+        hybrid_double_writes=pulumi.get(__response__, 'hybrid_double_writes'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        namespace=pulumi.get(__response__, 'namespace'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        source_namespace=pulumi.get(__response__, 'source_namespace'),
+        source_user_id=pulumi.get(__response__, 'source_user_id'),
+        user_id=pulumi.get(__response__, 'user_id')))

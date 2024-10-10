@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cddc.GetDedicatedHostAccounts(ctx, nil, nil)
+//			ids, err := cddc.GetDedicatedHostAccounts(ctx, &cddc.GetDedicatedHostAccountsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

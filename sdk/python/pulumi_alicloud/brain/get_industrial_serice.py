@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -99,9 +104,6 @@ def get_industrial_serice(enable: Optional[str] = None,
         enable=pulumi.get(__ret__, 'enable'),
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_industrial_serice)
 def get_industrial_serice_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIndustrialSericeResult]:
     """
@@ -127,4 +129,11 @@ def get_industrial_serice_output(enable: Optional[pulumi.Input[Optional[str]]] =
            
            > **NOTE:** Setting `enable = "On"` to open the Brain Industrial service. The service can not closed once it is opened.
     """
-    ...
+    __args__ = dict()
+    __args__['enable'] = enable
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:brain/getIndustrialSerice:getIndustrialSerice', __args__, opts=opts, typ=GetIndustrialSericeResult)
+    return __ret__.apply(lambda __response__: GetIndustrialSericeResult(
+        enable=pulumi.get(__response__, 'enable'),
+        id=pulumi.get(__response__, 'id'),
+        status=pulumi.get(__response__, 'status')))

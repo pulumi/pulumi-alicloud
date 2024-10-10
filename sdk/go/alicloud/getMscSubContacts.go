@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := alicloud.GetMscSubContacts(ctx, nil, nil)
+//			ids, err := alicloud.GetMscSubContacts(ctx, &alicloud.GetMscSubContactsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

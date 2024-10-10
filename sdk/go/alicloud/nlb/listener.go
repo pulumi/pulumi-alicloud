@@ -43,11 +43,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetZones, err := nlb.GetZones(ctx, nil, nil)
+//			defaultGetZones, err := nlb.GetZones(ctx, &nlb.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

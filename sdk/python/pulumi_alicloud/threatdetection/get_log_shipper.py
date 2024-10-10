@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -164,9 +169,6 @@ def get_log_shipper(enable: Optional[str] = None,
         sls_project_status=pulumi.get(__ret__, 'sls_project_status'),
         sls_service_status=pulumi.get(__ret__, 'sls_service_status'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_log_shipper)
 def get_log_shipper_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogShipperResult]:
     """
@@ -192,4 +194,16 @@ def get_log_shipper_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
            
            > **NOTE:** Setting `enable = "On"` to open the Threat Detection Log Shipper that means you have read and agreed the [Threat Detection Log Shipper Terms of Service](https://help.aliyun.com/document_detail/170157.html). The service can not closed once it is opened.
     """
-    ...
+    __args__ = dict()
+    __args__['enable'] = enable
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getLogShipper:getLogShipper', __args__, opts=opts, typ=GetLogShipperResult)
+    return __ret__.apply(lambda __response__: GetLogShipperResult(
+        auth_status=pulumi.get(__response__, 'auth_status'),
+        buy_status=pulumi.get(__response__, 'buy_status'),
+        enable=pulumi.get(__response__, 'enable'),
+        id=pulumi.get(__response__, 'id'),
+        open_status=pulumi.get(__response__, 'open_status'),
+        sls_project_status=pulumi.get(__response__, 'sls_project_status'),
+        sls_service_status=pulumi.get(__response__, 'sls_service_status'),
+        status=pulumi.get(__response__, 'status')))

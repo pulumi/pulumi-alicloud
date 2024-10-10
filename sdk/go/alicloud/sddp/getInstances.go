@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := sddp.GetInstances(ctx, nil, nil)
+//			_default, err := sddp.GetInstances(ctx, &sddp.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

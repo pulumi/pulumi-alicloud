@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -121,9 +126,6 @@ def get_ingresses(enable_details: Optional[bool] = None,
         ingresses=pulumi.get(__ret__, 'ingresses'),
         namespace_id=pulumi.get(__ret__, 'namespace_id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_ingresses)
 def get_ingresses_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          namespace_id: Optional[pulumi.Input[str]] = None,
@@ -140,4 +142,17 @@ def get_ingresses_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     :param str namespace_id: The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['namespaceId'] = namespace_id
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:sae/getIngresses:getIngresses', __args__, opts=opts, typ=GetIngressesResult)
+    return __ret__.apply(lambda __response__: GetIngressesResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        ingresses=pulumi.get(__response__, 'ingresses'),
+        namespace_id=pulumi.get(__response__, 'namespace_id'),
+        output_file=pulumi.get(__response__, 'output_file')))

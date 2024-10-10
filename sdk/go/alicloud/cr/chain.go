@@ -80,7 +80,7 @@ import (
 //								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
 //									&cr.ChainChainConfigNodeNodeConfigArgs{
 //										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
+//											&cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs{},
 //										},
 //									},
 //								},
@@ -91,7 +91,7 @@ import (
 //								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
 //									&cr.ChainChainConfigNodeNodeConfigArgs{
 //										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
+//											&cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs{},
 //										},
 //									},
 //								},
@@ -118,7 +118,7 @@ import (
 //								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
 //									&cr.ChainChainConfigNodeNodeConfigArgs{
 //										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
+//											&cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs{},
 //										},
 //									},
 //								},
@@ -129,7 +129,7 @@ import (
 //								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
 //									&cr.ChainChainConfigNodeNodeConfigArgs{
 //										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
+//											&cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs{},
 //										},
 //									},
 //								},
@@ -140,7 +140,7 @@ import (
 //								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
 //									&cr.ChainChainConfigNodeNodeConfigArgs{
 //										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
+//											&cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs{},
 //										},
 //									},
 //								},
@@ -151,7 +151,7 @@ import (
 //								NodeConfigs: cr.ChainChainConfigNodeNodeConfigArray{
 //									&cr.ChainChainConfigNodeNodeConfigArgs{
 //										DenyPolicies: cr.ChainChainConfigNodeNodeConfigDenyPolicyArray{
-//											nil,
+//											&cr.ChainChainConfigNodeNodeConfigDenyPolicyArgs{},
 //										},
 //									},
 //								},

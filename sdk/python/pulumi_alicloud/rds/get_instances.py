@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -300,9 +305,6 @@ def get_instances(connection_mode: Optional[str] = None,
         total_count=pulumi.get(__ret__, 'total_count'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-
-
-@_utilities.lift_output_func(get_instances)
 def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] = None,
                          db_type: Optional[pulumi.Input[Optional[str]]] = None,
                          enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -352,4 +354,37 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
     :param str vpc_id: Used to retrieve instances belong to specified VPC.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
     """
-    ...
+    __args__ = dict()
+    __args__['connectionMode'] = connection_mode
+    __args__['dbType'] = db_type
+    __args__['enableDetails'] = enable_details
+    __args__['engine'] = engine
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vpcId'] = vpc_id
+    __args__['vswitchId'] = vswitch_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
+    return __ret__.apply(lambda __response__: GetInstancesResult(
+        connection_mode=pulumi.get(__response__, 'connection_mode'),
+        db_type=pulumi.get(__response__, 'db_type'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        engine=pulumi.get(__response__, 'engine'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instances=pulumi.get(__response__, 'instances'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        total_count=pulumi.get(__response__, 'total_count'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id')))

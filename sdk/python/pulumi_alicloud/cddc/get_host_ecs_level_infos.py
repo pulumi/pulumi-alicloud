@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -134,9 +139,6 @@ def get_host_ecs_level_infos(db_type: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         storage_type=pulumi.get(__ret__, 'storage_type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_host_ecs_level_infos)
 def get_host_ecs_level_infos_output(db_type: Optional[pulumi.Input[str]] = None,
                                     image_category: Optional[pulumi.Input[Optional[str]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -155,4 +157,19 @@ def get_host_ecs_level_infos_output(db_type: Optional[pulumi.Input[str]] = None,
     :param str storage_type: The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
     :param str zone_id: The ID of the zone in the region.
     """
-    ...
+    __args__ = dict()
+    __args__['dbType'] = db_type
+    __args__['imageCategory'] = image_category
+    __args__['outputFile'] = output_file
+    __args__['storageType'] = storage_type
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos', __args__, opts=opts, typ=GetHostEcsLevelInfosResult)
+    return __ret__.apply(lambda __response__: GetHostEcsLevelInfosResult(
+        db_type=pulumi.get(__response__, 'db_type'),
+        id=pulumi.get(__response__, 'id'),
+        image_category=pulumi.get(__response__, 'image_category'),
+        infos=pulumi.get(__response__, 'infos'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        storage_type=pulumi.get(__response__, 'storage_type'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

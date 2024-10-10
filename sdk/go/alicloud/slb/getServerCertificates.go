@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			sampleDs, err := slb.GetServerCertificates(ctx, nil, nil)
+//			sampleDs, err := slb.GetServerCertificates(ctx, &slb.GetServerCertificatesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

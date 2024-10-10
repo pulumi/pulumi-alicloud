@@ -31,6 +31,122 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.hbr.Vault;
+ * import com.pulumi.alicloud.hbr.VaultArgs;
+ * import com.pulumi.alicloud.ots.Instance;
+ * import com.pulumi.alicloud.ots.InstanceArgs;
+ * import com.pulumi.alicloud.ots.Table;
+ * import com.pulumi.alicloud.ots.TableArgs;
+ * import com.pulumi.alicloud.ots.inputs.TablePrimaryKeyArgs;
+ * import com.pulumi.alicloud.ram.Role;
+ * import com.pulumi.alicloud.ram.RoleArgs;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.hbr.OtsBackupPlan;
+ * import com.pulumi.alicloud.hbr.OtsBackupPlanArgs;
+ * import com.pulumi.alicloud.hbr.inputs.OtsBackupPlanOtsDetailArgs;
+ * import com.pulumi.alicloud.hbr.inputs.OtsBackupPlanRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .max(99999)
+ *             .min(10000)
+ *             .build());
+ * 
+ *         var defaultVault = new Vault("defaultVault", VaultArgs.builder()
+ *             .vaultName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .vaultType("OTS_BACKUP")
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .name(String.format("Example-%s", defaultInteger.result()))
+ *             .description("terraform-example")
+ *             .accessedBy("Any")
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .build());
+ * 
+ *         var defaultTable = new Table("defaultTable", TableArgs.builder()
+ *             .instanceName(defaultInstance.name())
+ *             .tableName("terraform_example")
+ *             .primaryKeys(TablePrimaryKeyArgs.builder()
+ *                 .name("pk1")
+ *                 .type("Integer")
+ *                 .build())
+ *             .timeToLive(-1)
+ *             .maxVersion(1)
+ *             .deviationCellVersionInSec(1)
+ *             .build());
+ * 
+ *         var defaultRole = new Role("defaultRole", RoleArgs.builder()
+ *             .name("hbrexamplerole")
+ *             .document("""
+ * 		{
+ * 			"Statement": [
+ * 			{
+ * 				"Action": "sts:AssumeRole",
+ * 				"Effect": "Allow",
+ * 				"Principal": {
+ * 					"Service": [
+ * 						"crossbackup.hbr.aliyuncs.com"
+ * 					]
+ * 				}
+ * 			}
+ * 			],
+ *   			"Version": "1"
+ * 		}
+ *             """)
+ *             .force(true)
+ *             .build());
+ * 
+ *         final var default = AlicloudFunctions.getAccount();
+ * 
+ *         var example = new OtsBackupPlan("example", OtsBackupPlanArgs.builder()
+ *             .otsBackupPlanName(String.format("terraform-example-%s", defaultInteger.result()))
+ *             .vaultId(defaultVault.id())
+ *             .backupType("COMPLETE")
+ *             .retention("1")
+ *             .instanceName(defaultInstance.name())
+ *             .crossAccountType("SELF_ACCOUNT")
+ *             .crossAccountUserId(default_.id())
+ *             .crossAccountRoleName(defaultRole.id())
+ *             .otsDetails(OtsBackupPlanOtsDetailArgs.builder()
+ *                 .tableNames(defaultTable.tableName())
+ *                 .build())
+ *             .rules(OtsBackupPlanRuleArgs.builder()
+ *                 .schedule("I|1602673264|PT2H")
+ *                 .retention("1")
+ *                 .disabled("false")
+ *                 .ruleName("terraform-example")
+ *                 .backupType("COMPLETE")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := oos.GetStateConfigurations(ctx, nil, nil)
+//			ids, err := oos.GetStateConfigurations(ctx, &oos.GetStateConfigurationsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

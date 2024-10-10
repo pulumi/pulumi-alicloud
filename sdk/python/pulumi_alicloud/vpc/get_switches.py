@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -317,9 +322,6 @@ def get_switches(cidr_block: Optional[str] = None,
         vswitch_owner_id=pulumi.get(__ret__, 'vswitch_owner_id'),
         vswitches=pulumi.get(__ret__, 'vswitches'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_switches)
 def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None,
                         dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -376,4 +378,38 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     :param int vswitch_owner_id: The vSwitch owner id.
     :param str zone_id: The availability zone of the vSwitch.
     """
-    ...
+    __args__ = dict()
+    __args__['cidrBlock'] = cidr_block
+    __args__['dryRun'] = dry_run
+    __args__['ids'] = ids
+    __args__['isDefault'] = is_default
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['routeTableId'] = route_table_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vpcId'] = vpc_id
+    __args__['vswitchName'] = vswitch_name
+    __args__['vswitchOwnerId'] = vswitch_owner_id
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getSwitches:getSwitches', __args__, opts=opts, typ=GetSwitchesResult)
+    return __ret__.apply(lambda __response__: GetSwitchesResult(
+        cidr_block=pulumi.get(__response__, 'cidr_block'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        is_default=pulumi.get(__response__, 'is_default'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        route_table_id=pulumi.get(__response__, 'route_table_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vswitch_name=pulumi.get(__response__, 'vswitch_name'),
+        vswitch_owner_id=pulumi.get(__response__, 'vswitch_owner_id'),
+        vswitches=pulumi.get(__response__, 'vswitches'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

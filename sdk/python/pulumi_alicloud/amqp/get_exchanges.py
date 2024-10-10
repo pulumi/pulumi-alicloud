@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -165,9 +170,6 @@ def get_exchanges(ids: Optional[Sequence[str]] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         virtual_host_name=pulumi.get(__ret__, 'virtual_host_name'))
-
-
-@_utilities.lift_output_func(get_exchanges)
 def get_exchanges_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          instance_id: Optional[pulumi.Input[str]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -207,4 +209,20 @@ def get_exchanges_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str virtual_host_name: The name of virtual host where an exchange resides.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['virtualHostName'] = virtual_host_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:amqp/getExchanges:getExchanges', __args__, opts=opts, typ=GetExchangesResult)
+    return __ret__.apply(lambda __response__: GetExchangesResult(
+        exchanges=pulumi.get(__response__, 'exchanges'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        virtual_host_name=pulumi.get(__response__, 'virtual_host_name')))

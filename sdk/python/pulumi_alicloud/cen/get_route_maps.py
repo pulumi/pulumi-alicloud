@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -193,9 +198,6 @@ def get_route_maps(cen_id: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         transmit_direction=pulumi.get(__ret__, 'transmit_direction'))
-
-
-@_utilities.lift_output_func(get_route_maps)
 def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
                           cen_region_id: Optional[pulumi.Input[Optional[str]]] = None,
                           description_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -233,4 +235,23 @@ def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
     :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
     :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
     """
-    ...
+    __args__ = dict()
+    __args__['cenId'] = cen_id
+    __args__['cenRegionId'] = cen_region_id
+    __args__['descriptionRegex'] = description_regex
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['transmitDirection'] = transmit_direction
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getRouteMaps:getRouteMaps', __args__, opts=opts, typ=GetRouteMapsResult)
+    return __ret__.apply(lambda __response__: GetRouteMapsResult(
+        cen_id=pulumi.get(__response__, 'cen_id'),
+        cen_region_id=pulumi.get(__response__, 'cen_region_id'),
+        description_regex=pulumi.get(__response__, 'description_regex'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        maps=pulumi.get(__response__, 'maps'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        transmit_direction=pulumi.get(__response__, 'transmit_direction')))

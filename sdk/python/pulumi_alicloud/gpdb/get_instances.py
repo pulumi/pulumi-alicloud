@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -259,9 +264,6 @@ def get_instances(availability_zone: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-
-
-@_utilities.lift_output_func(get_instances)
 def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]] = None,
                          db_instance_categories: Optional[pulumi.Input[Optional[str]]] = None,
                          db_instance_modes: Optional[pulumi.Input[Optional[str]]] = None,
@@ -307,4 +309,36 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
     :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
     """
-    ...
+    __args__ = dict()
+    __args__['availabilityZone'] = availability_zone
+    __args__['dbInstanceCategories'] = db_instance_categories
+    __args__['dbInstanceModes'] = db_instance_modes
+    __args__['description'] = description
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['instanceNetworkType'] = instance_network_type
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vswitchId'] = vswitch_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:gpdb/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
+    return __ret__.apply(lambda __response__: GetInstancesResult(
+        availability_zone=pulumi.get(__response__, 'availability_zone'),
+        db_instance_categories=pulumi.get(__response__, 'db_instance_categories'),
+        db_instance_modes=pulumi.get(__response__, 'db_instance_modes'),
+        description=pulumi.get(__response__, 'description'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_network_type=pulumi.get(__response__, 'instance_network_type'),
+        instances=pulumi.get(__response__, 'instances'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id')))

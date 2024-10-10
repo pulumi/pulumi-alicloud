@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -152,9 +157,6 @@ def get_service(enable: Optional[str] = None,
         internet_charge_type=pulumi.get(__ret__, 'internet_charge_type'),
         opening_time=pulumi.get(__ret__, 'opening_time'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_service)
 def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
                        internet_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
@@ -183,4 +185,16 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
            
            > **NOTE:** Setting `enable = "On"` to open the CDN service that means you have read and agreed the [CDN Terms of Service](https://help.aliyun.com/document_detail/27110.html). The service can not closed once it is opened.
     """
-    ...
+    __args__ = dict()
+    __args__['enable'] = enable
+    __args__['internetChargeType'] = internet_charge_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cdn/getService:getService', __args__, opts=opts, typ=GetServiceResult)
+    return __ret__.apply(lambda __response__: GetServiceResult(
+        changing_affect_time=pulumi.get(__response__, 'changing_affect_time'),
+        changing_charge_type=pulumi.get(__response__, 'changing_charge_type'),
+        enable=pulumi.get(__response__, 'enable'),
+        id=pulumi.get(__response__, 'id'),
+        internet_charge_type=pulumi.get(__response__, 'internet_charge_type'),
+        opening_time=pulumi.get(__response__, 'opening_time'),
+        status=pulumi.get(__response__, 'status')))

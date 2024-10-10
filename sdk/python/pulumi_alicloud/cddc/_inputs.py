@@ -4,14 +4,67 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DedicatedPropreHostEcsClassListArgs',
+    'DedicatedPropreHostEcsClassListArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DedicatedPropreHostEcsClassListArgsDict(TypedDict):
+        instance_type: pulumi.Input[str]
+        """
+        ECS specifications.
+        """
+        sys_disk_capacity: pulumi.Input[int]
+        """
+        System disk capacity.
+        """
+        sys_disk_type: pulumi.Input[str]
+        """
+        System disk type, value:
+        - **cloud_essd**: the ESSD cloud disk.
+        - **cloud_ssd**: SSD cloud disk.
+        - **cloud_efficiency**: The ultra cloud disk.
+        - **cloud_auto**: ESSD AutoPL cloud disk.
+        """
+        data_disk_performance_level: NotRequired[pulumi.Input[str]]
+        """
+        Data disk PL level.
+        """
+        disk_capacity: NotRequired[pulumi.Input[int]]
+        """
+        The capacity of the data disk.
+        """
+        disk_count: NotRequired[pulumi.Input[int]]
+        """
+        Number of mounted data disks.
+        """
+        disk_type: NotRequired[pulumi.Input[str]]
+        """
+        Data disk type, value range:
+        - **cloud_essd**: the ESSD cloud disk.
+        - **cloud_ssd**: SSD cloud disk.
+        - **cloud_efficiency**: The ultra cloud disk.
+        - **cloud_auto**: ESSD AutoPL cloud disk.
+        """
+        system_disk_performance_level: NotRequired[pulumi.Input[str]]
+        """
+        System disk PL level.
+        """
+elif False:
+    DedicatedPropreHostEcsClassListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DedicatedPropreHostEcsClassListArgs:

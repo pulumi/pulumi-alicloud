@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -133,9 +138,6 @@ def get_ddos_coo_domain_resources(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         query_domain_pattern=pulumi.get(__ret__, 'query_domain_pattern'),
         resources=pulumi.get(__ret__, 'resources'))
-
-
-@_utilities.lift_output_func(get_ddos_coo_domain_resources)
 def get_ddos_coo_domain_resources_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                          instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -164,4 +166,17 @@ def get_ddos_coo_domain_resources_output(ids: Optional[pulumi.Input[Optional[Seq
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_domain_pattern: Match the pattern.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['instanceIds'] = instance_ids
+    __args__['outputFile'] = output_file
+    __args__['queryDomainPattern'] = query_domain_pattern
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources', __args__, opts=opts, typ=GetDdosCooDomainResourcesResult)
+    return __ret__.apply(lambda __response__: GetDdosCooDomainResourcesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_ids=pulumi.get(__response__, 'instance_ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        query_domain_pattern=pulumi.get(__response__, 'query_domain_pattern'),
+        resources=pulumi.get(__response__, 'resources')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -121,9 +126,6 @@ def get_instance_keywords(key: Optional[str] = None,
         key=pulumi.get(__ret__, 'key'),
         keywords=pulumi.get(__ret__, 'keywords'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_instance_keywords)
 def get_instance_keywords_output(key: Optional[pulumi.Input[str]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceKeywordsResult]:
@@ -147,4 +149,14 @@ def get_instance_keywords_output(key: Optional[pulumi.Input[str]] = None,
     :param str key: The type of reserved keyword to query. Valid values: `account`, `database`.
     :param str output_file: File name where to save data source results (after running `pulumi up`).
     """
-    ...
+    __args__ = dict()
+    __args__['key'] = key
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getInstanceKeywords:getInstanceKeywords', __args__, opts=opts, typ=GetInstanceKeywordsResult)
+    return __ret__.apply(lambda __response__: GetInstanceKeywordsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        key=pulumi.get(__response__, 'key'),
+        keywords=pulumi.get(__response__, 'keywords'),
+        output_file=pulumi.get(__response__, 'output_file')))

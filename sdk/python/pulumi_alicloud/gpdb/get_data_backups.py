@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -241,9 +246,6 @@ def get_data_backups(backup_mode: Optional[str] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         start_time=pulumi.get(__ret__, 'start_time'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_data_backups)
 def get_data_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = None,
                             data_backup_id: Optional[pulumi.Input[Optional[str]]] = None,
                             data_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -285,4 +287,31 @@ def get_data_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] =
     :param str start_time: The query start time. Format: yyyy-MM-ddTHH:mmZ(UTC time).
     :param str status: Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
     """
-    ...
+    __args__ = dict()
+    __args__['backupMode'] = backup_mode
+    __args__['dataBackupId'] = data_backup_id
+    __args__['dataType'] = data_type
+    __args__['dbInstanceId'] = db_instance_id
+    __args__['endTime'] = end_time
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['startTime'] = start_time
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:gpdb/getDataBackups:getDataBackups', __args__, opts=opts, typ=GetDataBackupsResult)
+    return __ret__.apply(lambda __response__: GetDataBackupsResult(
+        backup_mode=pulumi.get(__response__, 'backup_mode'),
+        backups=pulumi.get(__response__, 'backups'),
+        data_backup_id=pulumi.get(__response__, 'data_backup_id'),
+        data_type=pulumi.get(__response__, 'data_type'),
+        db_instance_id=pulumi.get(__response__, 'db_instance_id'),
+        end_time=pulumi.get(__response__, 'end_time'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        start_time=pulumi.get(__response__, 'start_time'),
+        status=pulumi.get(__response__, 'status')))

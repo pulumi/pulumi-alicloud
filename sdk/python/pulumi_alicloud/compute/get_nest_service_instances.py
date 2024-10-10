@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -184,9 +189,6 @@ def get_nest_service_instances(filters: Optional[Sequence[Union['GetNestServiceI
         service_instances=pulumi.get(__ret__, 'service_instances'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_nest_service_instances)
 def get_nest_service_instances_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetNestServiceInstancesFilterArgs', 'GetNestServiceInstancesFilterArgsDict']]]]] = None,
                                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -221,4 +223,22 @@ def get_nest_service_instances_output(filters: Optional[pulumi.Input[Optional[Se
     :param str status: The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['filters'] = filters
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:compute/getNestServiceInstances:getNestServiceInstances', __args__, opts=opts, typ=GetNestServiceInstancesResult)
+    return __ret__.apply(lambda __response__: GetNestServiceInstancesResult(
+        filters=pulumi.get(__response__, 'filters'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        service_instances=pulumi.get(__response__, 'service_instances'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := resourcemanager.GetPolicyAttachments(ctx, nil, nil)
+//			example, err := resourcemanager.GetPolicyAttachments(ctx, &resourcemanager.GetPolicyAttachmentsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

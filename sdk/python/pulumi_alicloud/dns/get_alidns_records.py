@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -310,9 +315,6 @@ def get_alidns_records(direction: Optional[str] = None,
         type_key_word=pulumi.get(__ret__, 'type_key_word'),
         value_key_word=pulumi.get(__ret__, 'value_key_word'),
         value_regex=pulumi.get(__ret__, 'value_regex'))
-
-
-@_utilities.lift_output_func(get_alidns_records)
 def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] = None,
                               domain_name: Optional[pulumi.Input[str]] = None,
                               group_id: Optional[pulumi.Input[Optional[int]]] = None,
@@ -357,4 +359,43 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
     :param str value_key_word: The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
     :param str value_regex: Host record value regex.
     """
-    ...
+    __args__ = dict()
+    __args__['direction'] = direction
+    __args__['domainName'] = domain_name
+    __args__['groupId'] = group_id
+    __args__['ids'] = ids
+    __args__['keyWord'] = key_word
+    __args__['lang'] = lang
+    __args__['line'] = line
+    __args__['orderBy'] = order_by
+    __args__['outputFile'] = output_file
+    __args__['rrKeyWord'] = rr_key_word
+    __args__['rrRegex'] = rr_regex
+    __args__['searchMode'] = search_mode
+    __args__['status'] = status
+    __args__['type'] = type
+    __args__['typeKeyWord'] = type_key_word
+    __args__['valueKeyWord'] = value_key_word
+    __args__['valueRegex'] = value_regex
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getAlidnsRecords:getAlidnsRecords', __args__, opts=opts, typ=GetAlidnsRecordsResult)
+    return __ret__.apply(lambda __response__: GetAlidnsRecordsResult(
+        direction=pulumi.get(__response__, 'direction'),
+        domain_name=pulumi.get(__response__, 'domain_name'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        key_word=pulumi.get(__response__, 'key_word'),
+        lang=pulumi.get(__response__, 'lang'),
+        line=pulumi.get(__response__, 'line'),
+        order_by=pulumi.get(__response__, 'order_by'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        records=pulumi.get(__response__, 'records'),
+        rr_key_word=pulumi.get(__response__, 'rr_key_word'),
+        rr_regex=pulumi.get(__response__, 'rr_regex'),
+        search_mode=pulumi.get(__response__, 'search_mode'),
+        status=pulumi.get(__response__, 'status'),
+        type=pulumi.get(__response__, 'type'),
+        type_key_word=pulumi.get(__response__, 'type_key_word'),
+        value_key_word=pulumi.get(__response__, 'value_key_word'),
+        value_regex=pulumi.get(__response__, 'value_regex')))

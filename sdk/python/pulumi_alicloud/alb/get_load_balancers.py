@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -289,9 +294,6 @@ def get_load_balancers(address_type: Optional[str] = None,
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vpc_ids=pulumi.get(__ret__, 'vpc_ids'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_load_balancers)
 def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]] = None,
                               enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -344,4 +346,40 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]
     :param Sequence[str] vpc_ids: The vpc ids.
     :param str zone_id: The zone ID of the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['addressType'] = address_type
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['loadBalancerBusinessStatus'] = load_balancer_business_status
+    __args__['loadBalancerBussinessStatus'] = load_balancer_bussiness_status
+    __args__['loadBalancerIds'] = load_balancer_ids
+    __args__['loadBalancerName'] = load_balancer_name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vpcId'] = vpc_id
+    __args__['vpcIds'] = vpc_ids
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:alb/getLoadBalancers:getLoadBalancers', __args__, opts=opts, typ=GetLoadBalancersResult)
+    return __ret__.apply(lambda __response__: GetLoadBalancersResult(
+        address_type=pulumi.get(__response__, 'address_type'),
+        balancers=pulumi.get(__response__, 'balancers'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        load_balancer_business_status=pulumi.get(__response__, 'load_balancer_business_status'),
+        load_balancer_bussiness_status=pulumi.get(__response__, 'load_balancer_bussiness_status'),
+        load_balancer_ids=pulumi.get(__response__, 'load_balancer_ids'),
+        load_balancer_name=pulumi.get(__response__, 'load_balancer_name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vpc_ids=pulumi.get(__response__, 'vpc_ids'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

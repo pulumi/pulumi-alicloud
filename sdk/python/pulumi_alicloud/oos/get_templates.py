@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -287,9 +292,6 @@ def get_templates(category: Optional[str] = None,
         template_format=pulumi.get(__ret__, 'template_format'),
         template_type=pulumi.get(__ret__, 'template_type'),
         templates=pulumi.get(__ret__, 'templates'))
-
-
-@_utilities.lift_output_func(get_templates)
 def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          created_by: Optional[pulumi.Input[Optional[str]]] = None,
                          created_date: Optional[pulumi.Input[Optional[str]]] = None,
@@ -343,4 +345,38 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     :param str template_format: The format of the template. Valid values: `JSON`, `YAML`.
     :param str template_type: The type of OOS Template.
     """
-    ...
+    __args__ = dict()
+    __args__['category'] = category
+    __args__['createdBy'] = created_by
+    __args__['createdDate'] = created_date
+    __args__['createdDateAfter'] = created_date_after
+    __args__['hasTrigger'] = has_trigger
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['shareType'] = share_type
+    __args__['sortField'] = sort_field
+    __args__['sortOrder'] = sort_order
+    __args__['tags'] = tags
+    __args__['templateFormat'] = template_format
+    __args__['templateType'] = template_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:oos/getTemplates:getTemplates', __args__, opts=opts, typ=GetTemplatesResult)
+    return __ret__.apply(lambda __response__: GetTemplatesResult(
+        category=pulumi.get(__response__, 'category'),
+        created_by=pulumi.get(__response__, 'created_by'),
+        created_date=pulumi.get(__response__, 'created_date'),
+        created_date_after=pulumi.get(__response__, 'created_date_after'),
+        has_trigger=pulumi.get(__response__, 'has_trigger'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        share_type=pulumi.get(__response__, 'share_type'),
+        sort_field=pulumi.get(__response__, 'sort_field'),
+        sort_order=pulumi.get(__response__, 'sort_order'),
+        tags=pulumi.get(__response__, 'tags'),
+        template_format=pulumi.get(__response__, 'template_format'),
+        template_type=pulumi.get(__response__, 'template_type'),
+        templates=pulumi.get(__response__, 'templates')))

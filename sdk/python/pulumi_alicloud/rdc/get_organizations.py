@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -152,9 +157,6 @@ def get_organizations(ids: Optional[Sequence[str]] = None,
         organizations=pulumi.get(__ret__, 'organizations'),
         output_file=pulumi.get(__ret__, 'output_file'),
         real_pk=pulumi.get(__ret__, 'real_pk'))
-
-
-@_utilities.lift_output_func(get_organizations)
 def get_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -192,4 +194,18 @@ def get_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str real_pk: User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['realPk'] = real_pk
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rdc/getOrganizations:getOrganizations', __args__, opts=opts, typ=GetOrganizationsResult)
+    return __ret__.apply(lambda __response__: GetOrganizationsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        organizations=pulumi.get(__response__, 'organizations'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        real_pk=pulumi.get(__response__, 'real_pk')))

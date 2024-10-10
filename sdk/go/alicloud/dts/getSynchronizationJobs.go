@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dts.GetSynchronizationJobs(ctx, nil, nil)
+//			ids, err := dts.GetSynchronizationJobs(ctx, &dts.GetSynchronizationJobsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

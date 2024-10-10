@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -190,9 +195,6 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
         output_file=pulumi.get(__ret__, 'output_file'),
         tags=pulumi.get(__ret__, 'tags'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_ecs_dedicated_host_clusters)
 def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                            dedicated_host_cluster_name: Optional[pulumi.Input[Optional[str]]] = None,
                                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -235,4 +237,24 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The zone ID of the dedicated host cluster.
     """
-    ...
+    __args__ = dict()
+    __args__['dedicatedHostClusterIds'] = dedicated_host_cluster_ids
+    __args__['dedicatedHostClusterName'] = dedicated_host_cluster_name
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['tags'] = tags
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters', __args__, opts=opts, typ=GetEcsDedicatedHostClustersResult)
+    return __ret__.apply(lambda __response__: GetEcsDedicatedHostClustersResult(
+        clusters=pulumi.get(__response__, 'clusters'),
+        dedicated_host_cluster_ids=pulumi.get(__response__, 'dedicated_host_cluster_ids'),
+        dedicated_host_cluster_name=pulumi.get(__response__, 'dedicated_host_cluster_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        tags=pulumi.get(__response__, 'tags'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

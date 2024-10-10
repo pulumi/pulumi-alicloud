@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -311,9 +316,6 @@ def get_route_tables(ids: Optional[Sequence[str]] = None,
         tags=pulumi.get(__ret__, 'tags'),
         total_count=pulumi.get(__ret__, 'total_count'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_route_tables)
 def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -368,4 +370,37 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: Vpc id of the route table.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['routeTableName'] = route_table_name
+    __args__['routeTableType'] = route_table_type
+    __args__['routerId'] = router_id
+    __args__['routerType'] = router_type
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getRouteTables:getRouteTables', __args__, opts=opts, typ=GetRouteTablesResult)
+    return __ret__.apply(lambda __response__: GetRouteTablesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        route_table_name=pulumi.get(__response__, 'route_table_name'),
+        route_table_type=pulumi.get(__response__, 'route_table_type'),
+        router_id=pulumi.get(__response__, 'router_id'),
+        router_type=pulumi.get(__response__, 'router_type'),
+        status=pulumi.get(__response__, 'status'),
+        tables=pulumi.get(__response__, 'tables'),
+        tags=pulumi.get(__response__, 'tags'),
+        total_count=pulumi.get(__response__, 'total_count'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

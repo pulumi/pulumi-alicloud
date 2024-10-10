@@ -53,11 +53,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default, err := ecp.GetZones(ctx, nil, nil)
+//			_default, err := ecp.GetZones(ctx, &ecp.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetInstanceTypes, err := ecp.GetInstanceTypes(ctx, nil, nil)
+//			defaultGetInstanceTypes, err := ecp.GetInstanceTypes(ctx, &ecp.GetInstanceTypesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

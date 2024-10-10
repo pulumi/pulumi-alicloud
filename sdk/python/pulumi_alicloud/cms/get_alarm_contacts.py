@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -167,9 +172,6 @@ def get_alarm_contacts(chanel_type: Optional[str] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_alarm_contacts)
 def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]] = None,
                               chanel_value: Optional[pulumi.Input[Optional[str]]] = None,
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -202,4 +204,20 @@ def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]]
            
            > **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
     """
-    ...
+    __args__ = dict()
+    __args__['chanelType'] = chanel_type
+    __args__['chanelValue'] = chanel_value
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getAlarmContacts:getAlarmContacts', __args__, opts=opts, typ=GetAlarmContactsResult)
+    return __ret__.apply(lambda __response__: GetAlarmContactsResult(
+        chanel_type=pulumi.get(__response__, 'chanel_type'),
+        chanel_value=pulumi.get(__response__, 'chanel_value'),
+        contacts=pulumi.get(__response__, 'contacts'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file')))

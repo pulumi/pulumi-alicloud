@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := eventbridge.GetEventBuses(ctx, nil, nil)
+//			ids, err := eventbridge.GetEventBuses(ctx, &eventbridge.GetEventBusesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

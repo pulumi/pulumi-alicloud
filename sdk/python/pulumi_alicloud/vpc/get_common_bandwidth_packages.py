@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -223,9 +228,6 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
         packages=pulumi.get(__ret__, 'packages'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_common_bandwidth_packages)
 def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi.Input[Optional[str]]] = None,
                                          dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
                                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -272,4 +274,26 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
     :param str resource_group_id: The Id of resource group which the common bandwidth package belongs.
     :param str status: The status of bandwidth package. Valid values: `Available` and `Pending`.
     """
-    ...
+    __args__ = dict()
+    __args__['bandwidthPackageName'] = bandwidth_package_name
+    __args__['dryRun'] = dry_run
+    __args__['ids'] = ids
+    __args__['includeReservationData'] = include_reservation_data
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages', __args__, opts=opts, typ=GetCommonBandwidthPackagesResult)
+    return __ret__.apply(lambda __response__: GetCommonBandwidthPackagesResult(
+        bandwidth_package_name=pulumi.get(__response__, 'bandwidth_package_name'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        include_reservation_data=pulumi.get(__response__, 'include_reservation_data'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        packages=pulumi.get(__response__, 'packages'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status')))

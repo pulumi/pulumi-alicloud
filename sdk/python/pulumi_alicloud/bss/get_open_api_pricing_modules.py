@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -177,9 +182,6 @@ def get_open_api_pricing_modules(ids: Optional[Sequence[str]] = None,
         product_code=pulumi.get(__ret__, 'product_code'),
         product_type=pulumi.get(__ret__, 'product_type'),
         subscription_type=pulumi.get(__ret__, 'subscription_type'))
-
-
-@_utilities.lift_output_func(get_open_api_pricing_modules)
 def get_open_api_pricing_modules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -214,4 +216,22 @@ def get_open_api_pricing_modules_output(ids: Optional[pulumi.Input[Optional[Sequ
            * Subscription: Prepaid.
            * PayAsYouGo: postpaid.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['productCode'] = product_code
+    __args__['productType'] = product_type
+    __args__['subscriptionType'] = subscription_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules', __args__, opts=opts, typ=GetOpenApiPricingModulesResult)
+    return __ret__.apply(lambda __response__: GetOpenApiPricingModulesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        modules=pulumi.get(__response__, 'modules'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        product_code=pulumi.get(__response__, 'product_code'),
+        product_type=pulumi.get(__response__, 'product_type'),
+        subscription_type=pulumi.get(__response__, 'subscription_type')))

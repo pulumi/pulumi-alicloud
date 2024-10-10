@@ -37,7 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := emr.GetMainVersions(ctx, nil, nil)
+//			_default, err := emr.GetMainVersions(ctx, &emr.GetMainVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -311,7 +311,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := emr.GetMainVersions(ctx, nil, nil)
+//			_default, err := emr.GetMainVersions(ctx, &emr.GetMainVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -583,7 +583,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := emr.GetMainVersions(ctx, nil, nil)
+//			_default, err := emr.GetMainVersions(ctx, &emr.GetMainVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -849,7 +849,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := emr.GetMainVersions(ctx, nil, nil)
+//			_default, err := emr.GetMainVersions(ctx, &emr.GetMainVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

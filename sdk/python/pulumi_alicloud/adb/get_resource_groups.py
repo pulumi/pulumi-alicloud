@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -141,9 +146,6 @@ def get_resource_groups(db_cluster_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_resource_groups)
 def get_resource_groups_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                                group_name: Optional[pulumi.Input[Optional[str]]] = None,
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -171,4 +173,17 @@ def get_resource_groups_output(db_cluster_id: Optional[pulumi.Input[str]] = None
     :param Sequence[str] ids: A list of AnalyticDB for MySQL (ADB) Resource Group IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['dbClusterId'] = db_cluster_id
+    __args__['groupName'] = group_name
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:adb/getResourceGroups:getResourceGroups', __args__, opts=opts, typ=GetResourceGroupsResult)
+    return __ret__.apply(lambda __response__: GetResourceGroupsResult(
+        db_cluster_id=pulumi.get(__response__, 'db_cluster_id'),
+        group_name=pulumi.get(__response__, 'group_name'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file')))

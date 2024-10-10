@@ -4,16 +4,67 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ServiceGroupMonitoringAgentProcessAlertConfigArgs',
+    'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict',
     'ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs',
+    'ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict',
     'ServiceGroupMonitoringAgentProcessMatchExpressArgs',
+    'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ServiceGroupMonitoringAgentProcessAlertConfigArgsDict(TypedDict):
+        comparison_operator: pulumi.Input[str]
+        """
+        The operator that is used to compare the metric value with the threshold. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        """
+        escalations_level: pulumi.Input[str]
+        """
+        The alert level. Valid values: `critical`, `warn`, `info`.
+        """
+        statistics: pulumi.Input[str]
+        """
+        The statistical method for alerts. Valid values: `Average`.
+        """
+        threshold: pulumi.Input[str]
+        """
+        The alert threshold.
+        """
+        times: pulumi.Input[str]
+        """
+        The number of times for which the threshold can be consecutively exceeded.
+        """
+        effective_interval: NotRequired[pulumi.Input[str]]
+        """
+        The time period during which the alert rule is effective.
+        """
+        silence_time: NotRequired[pulumi.Input[int]]
+        """
+        The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds.
+        """
+        target_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict']]]]
+        """
+        The alert triggers. See `target_list` below.
+        """
+        webhook: NotRequired[pulumi.Input[str]]
+        """
+        The callback URL.
+        """
+elif False:
+    ServiceGroupMonitoringAgentProcessAlertConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceGroupMonitoringAgentProcessAlertConfigArgs:
@@ -161,6 +212,27 @@ class ServiceGroupMonitoringAgentProcessAlertConfigArgs:
         pulumi.set(self, "webhook", value)
 
 
+if not MYPY:
+    class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        """
+        The Alibaba Cloud Resource Name (ARN) of the resource.
+        """
+        json_params: NotRequired[pulumi.Input[str]]
+        """
+        The parameters of the alert callback. Specify the parameters in the JSON format.
+        """
+        level: NotRequired[pulumi.Input[str]]
+        """
+        The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
+        """
+        target_list_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the resource for which alerts are triggered.
+        """
+elif False:
+    ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
     def __init__(__self__, *,
@@ -231,6 +303,23 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
     def target_list_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "target_list_id", value)
 
+
+if not MYPY:
+    class ServiceGroupMonitoringAgentProcessMatchExpressArgsDict(TypedDict):
+        function: NotRequired[pulumi.Input[str]]
+        """
+        The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The criteria based on which the instances are matched.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The keyword used to match the instance name.
+        """
+elif False:
+    ServiceGroupMonitoringAgentProcessMatchExpressArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ServiceGroupMonitoringAgentProcessMatchExpressArgs:

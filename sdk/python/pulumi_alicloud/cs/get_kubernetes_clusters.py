@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -168,9 +173,6 @@ def get_kubernetes_clusters(enable_details: Optional[bool] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_kubernetes_clusters)
 def get_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    kube_config_file_prefix: Optional[pulumi.Input[Optional[str]]] = None,
@@ -204,4 +206,20 @@ def get_kubernetes_clusters_output(enable_details: Optional[pulumi.Input[Optiona
     :param str name_regex: A regex string to filter results by cluster name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['kubeConfigFilePrefix'] = kube_config_file_prefix
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getKubernetesClusters:getKubernetesClusters', __args__, opts=opts, typ=GetKubernetesClustersResult)
+    return __ret__.apply(lambda __response__: GetKubernetesClustersResult(
+        clusters=pulumi.get(__response__, 'clusters'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        kube_config_file_prefix=pulumi.get(__response__, 'kube_config_file_prefix'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file')))

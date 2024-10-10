@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -253,9 +258,6 @@ def get_clusters(cluster_name: Optional[str] = None,
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         tags=pulumi.get(__ret__, 'tags'),
         total_count=pulumi.get(__ret__, 'total_count'))
-
-
-@_utilities.lift_output_func(get_clusters)
 def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = None,
                         cluster_states: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         cluster_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -286,4 +288,33 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     :param str resource_group_id: The Resource Group ID.
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterName'] = cluster_name
+    __args__['clusterStates'] = cluster_states
+    __args__['clusterTypes'] = cluster_types
+    __args__['ids'] = ids
+    __args__['maxResults'] = max_results
+    __args__['nameRegex'] = name_regex
+    __args__['nextToken'] = next_token
+    __args__['outputFile'] = output_file
+    __args__['paymentTypes'] = payment_types
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:emrv2/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult)
+    return __ret__.apply(lambda __response__: GetClustersResult(
+        cluster_name=pulumi.get(__response__, 'cluster_name'),
+        cluster_states=pulumi.get(__response__, 'cluster_states'),
+        cluster_types=pulumi.get(__response__, 'cluster_types'),
+        clusters=pulumi.get(__response__, 'clusters'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        max_results=pulumi.get(__response__, 'max_results'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        next_token=pulumi.get(__response__, 'next_token'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        payment_types=pulumi.get(__response__, 'payment_types'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        tags=pulumi.get(__response__, 'tags'),
+        total_count=pulumi.get(__response__, 'total_count')))

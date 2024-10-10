@@ -58,7 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			regions, err := rds.GetCrossRegions(ctx, nil, nil)
+//			regions, err := rds.GetCrossRegions(ctx, &rds.GetCrossRegionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

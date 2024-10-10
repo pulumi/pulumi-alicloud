@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := sae.GetInstanceSpecifications(ctx, nil, nil)
+//			ids, err := sae.GetInstanceSpecifications(ctx, &sae.GetInstanceSpecificationsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

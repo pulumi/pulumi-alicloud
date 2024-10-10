@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -199,9 +204,6 @@ def get_nat_ip_cidrs(ids: Optional[Sequence[str]] = None,
         nat_ip_cidrs=pulumi.get(__ret__, 'nat_ip_cidrs'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_nat_ip_cidrs)
 def get_nat_ip_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             nat_gateway_id: Optional[pulumi.Input[str]] = None,
@@ -253,4 +255,24 @@ def get_nat_ip_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the NAT IP address. Valid values:`Available`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['natGatewayId'] = nat_gateway_id
+    __args__['natIpCidrNames'] = nat_ip_cidr_names
+    __args__['natIpCidrs'] = nat_ip_cidrs
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getNatIpCidrs:getNatIpCidrs', __args__, opts=opts, typ=GetNatIpCidrsResult)
+    return __ret__.apply(lambda __response__: GetNatIpCidrsResult(
+        cidrs=pulumi.get(__response__, 'cidrs'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        nat_gateway_id=pulumi.get(__response__, 'nat_gateway_id'),
+        nat_ip_cidr_names=pulumi.get(__response__, 'nat_ip_cidr_names'),
+        nat_ip_cidrs=pulumi.get(__response__, 'nat_ip_cidrs'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

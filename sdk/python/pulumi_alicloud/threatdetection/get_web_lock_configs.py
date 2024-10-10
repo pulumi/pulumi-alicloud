@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -187,9 +192,6 @@ def get_web_lock_configs(ids: Optional[Sequence[str]] = None,
         remark=pulumi.get(__ret__, 'remark'),
         source_ip=pulumi.get(__ret__, 'source_ip'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_web_lock_configs)
 def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 lang: Optional[pulumi.Input[Optional[str]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -222,4 +224,25 @@ def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     :param str source_ip: The source IP address of the request.
     :param str status: The protection status of the server that you want to query. Valid values: `on`, `off`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['lang'] = lang
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['remark'] = remark
+    __args__['sourceIp'] = source_ip
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs', __args__, opts=opts, typ=GetWebLockConfigsResult)
+    return __ret__.apply(lambda __response__: GetWebLockConfigsResult(
+        configs=pulumi.get(__response__, 'configs'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        lang=pulumi.get(__response__, 'lang'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        remark=pulumi.get(__response__, 'remark'),
+        source_ip=pulumi.get(__response__, 'source_ip'),
+        status=pulumi.get(__response__, 'status')))

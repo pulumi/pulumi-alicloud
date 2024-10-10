@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -247,9 +252,6 @@ def get_control_policies(acl_action: Optional[str] = None,
         policies=pulumi.get(__ret__, 'policies'),
         proto=pulumi.get(__ret__, 'proto'),
         source=pulumi.get(__ret__, 'source'))
-
-
-@_utilities.lift_output_func(get_control_policies)
 def get_control_policies_output(acl_action: Optional[pulumi.Input[Optional[str]]] = None,
                                 acl_uuid: Optional[pulumi.Input[Optional[str]]] = None,
                                 description: Optional[pulumi.Input[Optional[str]]] = None,
@@ -289,4 +291,30 @@ def get_control_policies_output(acl_action: Optional[pulumi.Input[Optional[str]]
     :param str proto: The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
     :param str source: The source address in the access control policy.
     """
-    ...
+    __args__ = dict()
+    __args__['aclAction'] = acl_action
+    __args__['aclUuid'] = acl_uuid
+    __args__['description'] = description
+    __args__['destination'] = destination
+    __args__['direction'] = direction
+    __args__['ipVersion'] = ip_version
+    __args__['lang'] = lang
+    __args__['outputFile'] = output_file
+    __args__['proto'] = proto
+    __args__['source'] = source
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cloudfirewall/getControlPolicies:getControlPolicies', __args__, opts=opts, typ=GetControlPoliciesResult)
+    return __ret__.apply(lambda __response__: GetControlPoliciesResult(
+        acl_action=pulumi.get(__response__, 'acl_action'),
+        acl_uuid=pulumi.get(__response__, 'acl_uuid'),
+        description=pulumi.get(__response__, 'description'),
+        destination=pulumi.get(__response__, 'destination'),
+        direction=pulumi.get(__response__, 'direction'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        ip_version=pulumi.get(__response__, 'ip_version'),
+        lang=pulumi.get(__response__, 'lang'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policies=pulumi.get(__response__, 'policies'),
+        proto=pulumi.get(__response__, 'proto'),
+        source=pulumi.get(__response__, 'source')))

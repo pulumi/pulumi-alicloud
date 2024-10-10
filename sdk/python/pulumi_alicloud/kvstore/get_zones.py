@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -160,9 +165,6 @@ def get_zones(engine: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         product_type=pulumi.get(__ret__, 'product_type'),
         zones=pulumi.get(__ret__, 'zones'))
-
-
-@_utilities.lift_output_func(get_zones)
 def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
                      instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
                      multi: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -191,4 +193,20 @@ def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['engine'] = engine
+    __args__['instanceChargeType'] = instance_charge_type
+    __args__['multi'] = multi
+    __args__['outputFile'] = output_file
+    __args__['productType'] = product_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
+    return __ret__.apply(lambda __response__: GetZonesResult(
+        engine=pulumi.get(__response__, 'engine'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_charge_type=pulumi.get(__response__, 'instance_charge_type'),
+        multi=pulumi.get(__response__, 'multi'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        product_type=pulumi.get(__response__, 'product_type'),
+        zones=pulumi.get(__response__, 'zones')))

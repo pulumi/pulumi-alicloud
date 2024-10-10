@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -315,9 +320,6 @@ def get_nat_gateways(dry_run: Optional[bool] = None,
         tags=pulumi.get(__ret__, 'tags'),
         total_count=pulumi.get(__ret__, 'total_count'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_nat_gateways)
 def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = None,
                             enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -354,4 +356,41 @@ def get_nat_gateways_output(dry_run: Optional[pulumi.Input[Optional[bool]]] = No
     :param Mapping[str, str] tags: The tags of NAT gateway.
     :param str vpc_id: The ID of the VPC.
     """
-    ...
+    __args__ = dict()
+    __args__['dryRun'] = dry_run
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['natGatewayName'] = nat_gateway_name
+    __args__['natType'] = nat_type
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['paymentType'] = payment_type
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['specification'] = specification
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getNatGateways:getNatGateways', __args__, opts=opts, typ=GetNatGatewaysResult)
+    return __ret__.apply(lambda __response__: GetNatGatewaysResult(
+        dry_run=pulumi.get(__response__, 'dry_run'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        gateways=pulumi.get(__response__, 'gateways'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        nat_gateway_name=pulumi.get(__response__, 'nat_gateway_name'),
+        nat_type=pulumi.get(__response__, 'nat_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        payment_type=pulumi.get(__response__, 'payment_type'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        specification=pulumi.get(__response__, 'specification'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        total_count=pulumi.get(__response__, 'total_count'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

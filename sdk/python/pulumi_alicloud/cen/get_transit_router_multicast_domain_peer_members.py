@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -180,9 +185,6 @@ def get_transit_router_multicast_domain_peer_members(ids: Optional[Sequence[str]
         resource_type=pulumi.get(__ret__, 'resource_type'),
         transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
         transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'))
-
-
-@_utilities.lift_output_func(get_transit_router_multicast_domain_peer_members)
 def get_transit_router_multicast_domain_peer_members_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                             peer_transit_router_multicast_domains: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -219,4 +221,23 @@ def get_transit_router_multicast_domain_peer_members_output(ids: Optional[pulumi
     :param str transit_router_attachment_id: The ID of the network instance connection.
     :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['peerTransitRouterMulticastDomains'] = peer_transit_router_multicast_domains
+    __args__['resourceId'] = resource_id
+    __args__['resourceType'] = resource_type
+    __args__['transitRouterAttachmentId'] = transit_router_attachment_id
+    __args__['transitRouterMulticastDomainId'] = transit_router_multicast_domain_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers', __args__, opts=opts, typ=GetTransitRouterMulticastDomainPeerMembersResult)
+    return __ret__.apply(lambda __response__: GetTransitRouterMulticastDomainPeerMembersResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        members=pulumi.get(__response__, 'members'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        peer_transit_router_multicast_domains=pulumi.get(__response__, 'peer_transit_router_multicast_domains'),
+        resource_id=pulumi.get(__response__, 'resource_id'),
+        resource_type=pulumi.get(__response__, 'resource_type'),
+        transit_router_attachment_id=pulumi.get(__response__, 'transit_router_attachment_id'),
+        transit_router_multicast_domain_id=pulumi.get(__response__, 'transit_router_multicast_domain_id')))
