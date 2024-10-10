@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -152,9 +157,6 @@ def get_ipv6_internet_bandwidths(ids: Optional[Sequence[str]] = None,
         ipv6_internet_bandwidth_id=pulumi.get(__ret__, 'ipv6_internet_bandwidth_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_ipv6_internet_bandwidths)
 def get_ipv6_internet_bandwidths_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                         ipv6_address_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         ipv6_internet_bandwidth_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -191,4 +193,19 @@ def get_ipv6_internet_bandwidths_output(ids: Optional[pulumi.Input[Optional[Sequ
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['ipv6AddressId'] = ipv6_address_id
+    __args__['ipv6InternetBandwidthId'] = ipv6_internet_bandwidth_id
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths', __args__, opts=opts, typ=GetIpv6InternetBandwidthsResult)
+    return __ret__.apply(lambda __response__: GetIpv6InternetBandwidthsResult(
+        bandwidths=pulumi.get(__response__, 'bandwidths'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        ipv6_address_id=pulumi.get(__response__, 'ipv6_address_id'),
+        ipv6_internet_bandwidth_id=pulumi.get(__response__, 'ipv6_internet_bandwidth_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

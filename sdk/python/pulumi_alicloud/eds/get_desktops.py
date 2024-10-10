@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -229,9 +234,6 @@ def get_desktops(desktop_name: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policy_group_id=pulumi.get(__ret__, 'policy_group_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_desktops)
 def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = None,
                         end_user_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -302,4 +304,26 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
     :param str policy_group_id: The policy group id of the Desktop.
     :param str status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
     """
-    ...
+    __args__ = dict()
+    __args__['desktopName'] = desktop_name
+    __args__['endUserIds'] = end_user_ids
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['officeSiteId'] = office_site_id
+    __args__['outputFile'] = output_file
+    __args__['policyGroupId'] = policy_group_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getDesktops:getDesktops', __args__, opts=opts, typ=GetDesktopsResult)
+    return __ret__.apply(lambda __response__: GetDesktopsResult(
+        desktop_name=pulumi.get(__response__, 'desktop_name'),
+        desktops=pulumi.get(__response__, 'desktops'),
+        end_user_ids=pulumi.get(__response__, 'end_user_ids'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        office_site_id=pulumi.get(__response__, 'office_site_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policy_group_id=pulumi.get(__response__, 'policy_group_id'),
+        status=pulumi.get(__response__, 'status')))

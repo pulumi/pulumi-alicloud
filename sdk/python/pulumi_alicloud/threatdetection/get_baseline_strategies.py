@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -174,9 +179,6 @@ def get_baseline_strategies(custom_type: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         strategies=pulumi.get(__ret__, 'strategies'),
         strategy_ids=pulumi.get(__ret__, 'strategy_ids'))
-
-
-@_utilities.lift_output_func(get_baseline_strategies)
 def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[str]]] = None,
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -214,4 +216,20 @@ def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[s
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['customType'] = custom_type
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['strategyIds'] = strategy_ids
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies', __args__, opts=opts, typ=GetBaselineStrategiesResult)
+    return __ret__.apply(lambda __response__: GetBaselineStrategiesResult(
+        custom_type=pulumi.get(__response__, 'custom_type'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        strategies=pulumi.get(__response__, 'strategies'),
+        strategy_ids=pulumi.get(__response__, 'strategy_ids')))

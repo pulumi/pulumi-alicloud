@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -142,9 +147,6 @@ def get_transit_router_multicast_domain_members(ids: Optional[Sequence[str]] = N
         network_interface_id=pulumi.get(__ret__, 'network_interface_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'))
-
-
-@_utilities.lift_output_func(get_transit_router_multicast_domain_members)
 def get_transit_router_multicast_domain_members_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                        network_interface_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -173,4 +175,17 @@ def get_transit_router_multicast_domain_members_output(ids: Optional[pulumi.Inpu
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['networkInterfaceId'] = network_interface_id
+    __args__['outputFile'] = output_file
+    __args__['transitRouterMulticastDomainId'] = transit_router_multicast_domain_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers', __args__, opts=opts, typ=GetTransitRouterMulticastDomainMembersResult)
+    return __ret__.apply(lambda __response__: GetTransitRouterMulticastDomainMembersResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        members=pulumi.get(__response__, 'members'),
+        network_interface_id=pulumi.get(__response__, 'network_interface_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        transit_router_multicast_domain_id=pulumi.get(__response__, 'transit_router_multicast_domain_id')))

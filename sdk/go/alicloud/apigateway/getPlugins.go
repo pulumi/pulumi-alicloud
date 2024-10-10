@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := apigateway.GetPlugins(ctx, nil, nil)
+//			ids, err := apigateway.GetPlugins(ctx, &apigateway.GetPluginsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

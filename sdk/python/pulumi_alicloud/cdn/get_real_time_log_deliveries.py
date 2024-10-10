@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -119,9 +124,6 @@ def get_real_time_log_deliveries(domain: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_real_time_log_deliveries)
 def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[str]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                         status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -147,4 +149,15 @@ def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[str]] = No
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
     """
-    ...
+    __args__ = dict()
+    __args__['domain'] = domain
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries', __args__, opts=opts, typ=GetRealTimeLogDeliveriesResult)
+    return __ret__.apply(lambda __response__: GetRealTimeLogDeliveriesResult(
+        deliveries=pulumi.get(__response__, 'deliveries'),
+        domain=pulumi.get(__response__, 'domain'),
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

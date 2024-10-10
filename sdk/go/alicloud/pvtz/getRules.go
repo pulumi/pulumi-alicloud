@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := pvtz.GetRules(ctx, nil, nil)
+//			ids, err := pvtz.GetRules(ctx, &pvtz.GetRulesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

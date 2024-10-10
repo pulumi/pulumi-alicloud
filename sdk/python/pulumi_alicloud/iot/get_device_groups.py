@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -172,9 +177,6 @@ def get_device_groups(enable_details: Optional[bool] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         output_file=pulumi.get(__ret__, 'output_file'),
         super_group_id=pulumi.get(__ret__, 'super_group_id'))
-
-
-@_utilities.lift_output_func(get_device_groups)
 def get_device_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                              group_name: Optional[pulumi.Input[Optional[str]]] = None,
                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -209,4 +211,23 @@ def get_device_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str super_group_id: The id of the SuperGroup.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['groupName'] = group_name
+    __args__['ids'] = ids
+    __args__['iotInstanceId'] = iot_instance_id
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['superGroupId'] = super_group_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:iot/getDeviceGroups:getDeviceGroups', __args__, opts=opts, typ=GetDeviceGroupsResult)
+    return __ret__.apply(lambda __response__: GetDeviceGroupsResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        group_name=pulumi.get(__response__, 'group_name'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        iot_instance_id=pulumi.get(__response__, 'iot_instance_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        super_group_id=pulumi.get(__response__, 'super_group_id')))

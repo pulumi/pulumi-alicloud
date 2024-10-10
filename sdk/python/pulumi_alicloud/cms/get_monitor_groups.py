@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -221,9 +226,6 @@ def get_monitor_groups(dynamic_tag_rule_id: Optional[str] = None,
         select_contact_groups=pulumi.get(__ret__, 'select_contact_groups'),
         tags=pulumi.get(__ret__, 'tags'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_monitor_groups)
 def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optional[str]]] = None,
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               include_template_history: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -264,4 +266,30 @@ def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optiona
     :param bool select_contact_groups: The select contact groups.
     :param str type: The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
     """
-    ...
+    __args__ = dict()
+    __args__['dynamicTagRuleId'] = dynamic_tag_rule_id
+    __args__['ids'] = ids
+    __args__['includeTemplateHistory'] = include_template_history
+    __args__['keyword'] = keyword
+    __args__['monitorGroupName'] = monitor_group_name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['selectContactGroups'] = select_contact_groups
+    __args__['tags'] = tags
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getMonitorGroups:getMonitorGroups', __args__, opts=opts, typ=GetMonitorGroupsResult)
+    return __ret__.apply(lambda __response__: GetMonitorGroupsResult(
+        dynamic_tag_rule_id=pulumi.get(__response__, 'dynamic_tag_rule_id'),
+        groups=pulumi.get(__response__, 'groups'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        include_template_history=pulumi.get(__response__, 'include_template_history'),
+        keyword=pulumi.get(__response__, 'keyword'),
+        monitor_group_name=pulumi.get(__response__, 'monitor_group_name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        select_contact_groups=pulumi.get(__response__, 'select_contact_groups'),
+        tags=pulumi.get(__response__, 'tags'),
+        type=pulumi.get(__response__, 'type')))

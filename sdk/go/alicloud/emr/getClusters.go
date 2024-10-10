@@ -49,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetMainVersions, err := emr.GetMainVersions(ctx, nil, nil)
+//			defaultGetMainVersions, err := emr.GetMainVersions(ctx, &emr.GetMainVersionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -225,7 +225,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ids, err := emr.GetClusters(ctx, nil, nil)
+//			ids, err := emr.GetClusters(ctx, &emr.GetClustersArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

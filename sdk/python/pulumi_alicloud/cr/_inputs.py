@@ -4,21 +4,51 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ChainChainConfigArgs',
+    'ChainChainConfigArgsDict',
     'ChainChainConfigNodeArgs',
+    'ChainChainConfigNodeArgsDict',
     'ChainChainConfigNodeNodeConfigArgs',
+    'ChainChainConfigNodeNodeConfigArgsDict',
     'ChainChainConfigNodeNodeConfigDenyPolicyArgs',
+    'ChainChainConfigNodeNodeConfigDenyPolicyArgsDict',
     'ChainChainConfigRouterArgs',
+    'ChainChainConfigRouterArgsDict',
     'ChainChainConfigRouterFromArgs',
+    'ChainChainConfigRouterFromArgsDict',
     'ChainChainConfigRouterToArgs',
+    'ChainChainConfigRouterToArgsDict',
     'RepoDomainListArgs',
+    'RepoDomainListArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ChainChainConfigArgsDict(TypedDict):
+        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeArgsDict']]]]
+        """
+        Each node in the delivery chain. See `nodes` below.
+
+        > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
+        """
+        routers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterArgsDict']]]]
+        """
+        Execution sequence relationship between delivery chain nodes. See `routers` below.
+        """
+elif False:
+    ChainChainConfigArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ChainChainConfigArgs:
@@ -62,6 +92,23 @@ class ChainChainConfigArgs:
     def routers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterArgs']]]]):
         pulumi.set(self, "routers", value)
 
+
+if not MYPY:
+    class ChainChainConfigNodeArgsDict(TypedDict):
+        enable: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the delivery chain node. Valid values: `true`, `false`.
+        """
+        node_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigArgsDict']]]]
+        """
+        The configuration of delivery chain node. See `node_config` below.
+        """
+        node_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of delivery chain node.
+        """
+elif False:
+    ChainChainConfigNodeArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ChainChainConfigNodeArgs:
@@ -118,6 +165,15 @@ class ChainChainConfigNodeArgs:
         pulumi.set(self, "node_name", value)
 
 
+if not MYPY:
+    class ChainChainConfigNodeNodeConfigArgsDict(TypedDict):
+        deny_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgsDict']]]]
+        """
+        Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
+        """
+elif False:
+    ChainChainConfigNodeNodeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ChainChainConfigNodeNodeConfigArgs:
     def __init__(__self__, *,
@@ -140,6 +196,27 @@ class ChainChainConfigNodeNodeConfigArgs:
     def deny_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigNodeNodeConfigDenyPolicyArgs']]]]):
         pulumi.set(self, "deny_policies", value)
 
+
+if not MYPY:
+    class ChainChainConfigNodeNodeConfigDenyPolicyArgsDict(TypedDict):
+        action: NotRequired[pulumi.Input[str]]
+        """
+        The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
+        """
+        issue_count: NotRequired[pulumi.Input[str]]
+        """
+        The count of scanning vulnerabilities that triggers blocking.
+        """
+        issue_level: NotRequired[pulumi.Input[str]]
+        """
+        The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
+        """
+        logic: NotRequired[pulumi.Input[str]]
+        """
+        The logic of trigger blocking. Valid values: `AND`, `OR`.
+        """
+elif False:
+    ChainChainConfigNodeNodeConfigDenyPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
@@ -212,6 +289,19 @@ class ChainChainConfigNodeNodeConfigDenyPolicyArgs:
         pulumi.set(self, "logic", value)
 
 
+if not MYPY:
+    class ChainChainConfigRouterArgsDict(TypedDict):
+        froms: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterFromArgsDict']]]]
+        """
+        Source node. See `from` below.
+        """
+        tos: NotRequired[pulumi.Input[Sequence[pulumi.Input['ChainChainConfigRouterToArgsDict']]]]
+        """
+        Destination node. See `to` below.
+        """
+elif False:
+    ChainChainConfigRouterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ChainChainConfigRouterArgs:
     def __init__(__self__, *,
@@ -251,6 +341,15 @@ class ChainChainConfigRouterArgs:
         pulumi.set(self, "tos", value)
 
 
+if not MYPY:
+    class ChainChainConfigRouterFromArgsDict(TypedDict):
+        node_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        """
+elif False:
+    ChainChainConfigRouterFromArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ChainChainConfigRouterFromArgs:
     def __init__(__self__, *,
@@ -274,6 +373,15 @@ class ChainChainConfigRouterFromArgs:
         pulumi.set(self, "node_name", value)
 
 
+if not MYPY:
+    class ChainChainConfigRouterToArgsDict(TypedDict):
+        node_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
+        """
+elif False:
+    ChainChainConfigRouterToArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ChainChainConfigRouterToArgs:
     def __init__(__self__, *,
@@ -296,6 +404,23 @@ class ChainChainConfigRouterToArgs:
     def node_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_name", value)
 
+
+if not MYPY:
+    class RepoDomainListArgsDict(TypedDict):
+        internal: NotRequired[pulumi.Input[str]]
+        """
+        Domain of internal endpoint, only in some regions.
+        """
+        public: NotRequired[pulumi.Input[str]]
+        """
+        Domain of public endpoint.
+        """
+        vpc: NotRequired[pulumi.Input[str]]
+        """
+        Domain of vpc endpoint.
+        """
+elif False:
+    RepoDomainListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RepoDomainListArgs:

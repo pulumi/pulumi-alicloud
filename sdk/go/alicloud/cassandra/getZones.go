@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Declare the data source
-//			zonesIds, err := cassandra.GetZones(ctx, nil, nil)
+//			zonesIds, err := cassandra.GetZones(ctx, &cassandra.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

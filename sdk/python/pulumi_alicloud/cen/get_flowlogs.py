@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -217,9 +222,6 @@ def get_flowlogs(cen_id: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         project_name=pulumi.get(__ret__, 'project_name'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_flowlogs)
 def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
                         description: Optional[pulumi.Input[Optional[str]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -257,4 +259,26 @@ def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
     :param str project_name: The name of the SLS project.
     :param str status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
     """
-    ...
+    __args__ = dict()
+    __args__['cenId'] = cen_id
+    __args__['description'] = description
+    __args__['ids'] = ids
+    __args__['logStoreName'] = log_store_name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['projectName'] = project_name
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getFlowlogs:getFlowlogs', __args__, opts=opts, typ=GetFlowlogsResult)
+    return __ret__.apply(lambda __response__: GetFlowlogsResult(
+        cen_id=pulumi.get(__response__, 'cen_id'),
+        description=pulumi.get(__response__, 'description'),
+        flowlogs=pulumi.get(__response__, 'flowlogs'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        log_store_name=pulumi.get(__response__, 'log_store_name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        project_name=pulumi.get(__response__, 'project_name'),
+        status=pulumi.get(__response__, 'status')))

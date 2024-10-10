@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -239,9 +244,6 @@ def get_mount_targets(access_group_name: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'),
         vswitch_id=pulumi.get(__ret__, 'vswitch_id'))
-
-
-@_utilities.lift_output_func(get_mount_targets)
 def get_mount_targets_output(access_group_name: Optional[pulumi.Input[Optional[str]]] = None,
                              file_system_id: Optional[pulumi.Input[str]] = None,
                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -281,4 +283,29 @@ def get_mount_targets_output(access_group_name: Optional[pulumi.Input[Optional[s
     :param str vpc_id: Filter results by a specific VpcId.
     :param str vswitch_id: Filter results by a specific VSwitchId.
     """
-    ...
+    __args__ = dict()
+    __args__['accessGroupName'] = access_group_name
+    __args__['fileSystemId'] = file_system_id
+    __args__['ids'] = ids
+    __args__['mountTargetDomain'] = mount_target_domain
+    __args__['networkType'] = network_type
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['type'] = type
+    __args__['vpcId'] = vpc_id
+    __args__['vswitchId'] = vswitch_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getMountTargets:getMountTargets', __args__, opts=opts, typ=GetMountTargetsResult)
+    return __ret__.apply(lambda __response__: GetMountTargetsResult(
+        access_group_name=pulumi.get(__response__, 'access_group_name'),
+        file_system_id=pulumi.get(__response__, 'file_system_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        mount_target_domain=pulumi.get(__response__, 'mount_target_domain'),
+        network_type=pulumi.get(__response__, 'network_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        targets=pulumi.get(__response__, 'targets'),
+        type=pulumi.get(__response__, 'type'),
+        vpc_id=pulumi.get(__response__, 'vpc_id'),
+        vswitch_id=pulumi.get(__response__, 'vswitch_id')))

@@ -4,14 +4,33 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'InstanceEcsListArgs',
+    'InstanceEcsListArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class InstanceEcsListArgsDict(TypedDict):
+        ecs_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the ECS instance.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+elif False:
+    InstanceEcsListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class InstanceEcsListArgs:

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ga.GetAcls(ctx, nil, nil)
+//			ids, err := ga.GetAcls(ctx, &ga.GetAclsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

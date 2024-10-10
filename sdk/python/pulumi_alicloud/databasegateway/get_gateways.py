@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -171,9 +176,6 @@ def get_gateways(enable_details: Optional[bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         search_key=pulumi.get(__ret__, 'search_key'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_gateways)
 def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -208,4 +210,22 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     :param str search_key: The search key.
     :param str status: The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['searchKey'] = search_key
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:databasegateway/getGateways:getGateways', __args__, opts=opts, typ=GetGatewaysResult)
+    return __ret__.apply(lambda __response__: GetGatewaysResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        gateways=pulumi.get(__response__, 'gateways'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        search_key=pulumi.get(__response__, 'search_key'),
+        status=pulumi.get(__response__, 'status')))

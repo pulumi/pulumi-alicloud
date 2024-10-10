@@ -40,11 +40,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := simpleapplicationserver.GetImages(ctx, nil, nil)
+//			_default, err := simpleapplicationserver.GetImages(ctx, &simpleapplicationserver.GetImagesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetServerPlans, err := simpleapplicationserver.GetServerPlans(ctx, nil, nil)
+//			defaultGetServerPlans, err := simpleapplicationserver.GetServerPlans(ctx, &simpleapplicationserver.GetServerPlansArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

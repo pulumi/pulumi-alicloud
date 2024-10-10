@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -224,9 +229,6 @@ def get_instance_types(charge_type: Optional[str] = None,
         types=pulumi.get(__ret__, 'types'),
         version=pulumi.get(__ret__, 'version'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_instance_types)
 def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[str]]] = None,
                               disk_type: Optional[pulumi.Input[Optional[str]]] = None,
                               engine: Optional[pulumi.Input[Optional[str]]] = None,
@@ -251,4 +253,28 @@ def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[str]]]
     :param str version: The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
     :param str zone_id: The zone id, belong to regionId.
     """
-    ...
+    __args__ = dict()
+    __args__['chargeType'] = charge_type
+    __args__['diskType'] = disk_type
+    __args__['engine'] = engine
+    __args__['instanceType'] = instance_type
+    __args__['outputFile'] = output_file
+    __args__['regionId'] = region_id
+    __args__['version'] = version
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:hbase/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult)
+    return __ret__.apply(lambda __response__: GetInstanceTypesResult(
+        charge_type=pulumi.get(__response__, 'charge_type'),
+        core_instance_types=pulumi.get(__response__, 'core_instance_types'),
+        disk_type=pulumi.get(__response__, 'disk_type'),
+        engine=pulumi.get(__response__, 'engine'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_type=pulumi.get(__response__, 'instance_type'),
+        master_instance_types=pulumi.get(__response__, 'master_instance_types'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        region_id=pulumi.get(__response__, 'region_id'),
+        types=pulumi.get(__response__, 'types'),
+        version=pulumi.get(__response__, 'version'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -206,9 +211,6 @@ def get_route_entries(cidr_block: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         route_table_id=pulumi.get(__ret__, 'route_table_id'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_route_entries)
 def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None,
                              instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -284,4 +286,19 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
     :param str route_table_id: The ID of the router table to which the route entry belongs.
     :param str type: The type of the route entry.
     """
-    ...
+    __args__ = dict()
+    __args__['cidrBlock'] = cidr_block
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    __args__['routeTableId'] = route_table_id
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getRouteEntries:getRouteEntries', __args__, opts=opts, typ=GetRouteEntriesResult)
+    return __ret__.apply(lambda __response__: GetRouteEntriesResult(
+        cidr_block=pulumi.get(__response__, 'cidr_block'),
+        entries=pulumi.get(__response__, 'entries'),
+        id=pulumi.get(__response__, 'id'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        route_table_id=pulumi.get(__response__, 'route_table_id'),
+        type=pulumi.get(__response__, 'type')))

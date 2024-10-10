@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -244,9 +249,6 @@ def get_dedicated_hosts(allocation_status: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_dedicated_hosts)
 def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional[str]]] = None,
                                dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
                                enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -320,4 +322,29 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The ID of the zone.
     """
-    ...
+    __args__ = dict()
+    __args__['allocationStatus'] = allocation_status
+    __args__['dedicatedHostGroupId'] = dedicated_host_group_id
+    __args__['enableDetails'] = enable_details
+    __args__['hostType'] = host_type
+    __args__['ids'] = ids
+    __args__['orderId'] = order_id
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['tags'] = tags
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cddc/getDedicatedHosts:getDedicatedHosts', __args__, opts=opts, typ=GetDedicatedHostsResult)
+    return __ret__.apply(lambda __response__: GetDedicatedHostsResult(
+        allocation_status=pulumi.get(__response__, 'allocation_status'),
+        dedicated_host_group_id=pulumi.get(__response__, 'dedicated_host_group_id'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        host_type=pulumi.get(__response__, 'host_type'),
+        hosts=pulumi.get(__response__, 'hosts'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        order_id=pulumi.get(__response__, 'order_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

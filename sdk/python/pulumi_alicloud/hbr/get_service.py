@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -99,9 +104,6 @@ def get_service(enable: Optional[str] = None,
         enable=pulumi.get(__ret__, 'enable'),
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_service)
 def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
     """
@@ -127,4 +129,11 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
            
            > **NOTE:** Setting `enable = "On"` to open the HBR service that means you have read and agreed the [HBR Terms of Service](https://help.aliyun.com/document_detail/62906.html). The service can not closed once it is opened.
     """
-    ...
+    __args__ = dict()
+    __args__['enable'] = enable
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getService:getService', __args__, opts=opts, typ=GetServiceResult)
+    return __ret__.apply(lambda __response__: GetServiceResult(
+        enable=pulumi.get(__response__, 'enable'),
+        id=pulumi.get(__response__, 'id'),
+        status=pulumi.get(__response__, 'status')))

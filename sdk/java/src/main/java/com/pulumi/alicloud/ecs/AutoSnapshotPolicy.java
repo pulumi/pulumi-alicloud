@@ -30,6 +30,45 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.ecs.AutoSnapshotPolicy;
+ * import com.pulumi.alicloud.ecs.AutoSnapshotPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new AutoSnapshotPolicy("example", AutoSnapshotPolicyArgs.builder()
+ *             .name("tf-testAcc")
+ *             .repeatWeekdays(            
+ *                 "1",
+ *                 "2",
+ *                 "3")
+ *             .retentionDays(-1)
+ *             .timePoints(            
+ *                 "1",
+ *                 "22",
+ *                 "23")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

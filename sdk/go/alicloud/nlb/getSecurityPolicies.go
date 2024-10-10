@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := nlb.GetSecurityPolicies(ctx, nil, nil)
+//			ids, err := nlb.GetSecurityPolicies(ctx, &nlb.GetSecurityPoliciesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

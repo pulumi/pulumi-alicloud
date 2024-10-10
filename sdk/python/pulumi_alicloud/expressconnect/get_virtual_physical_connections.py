@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -235,9 +240,6 @@ def get_virtual_physical_connections(business_status: Optional[str] = None,
         virtual_physical_connection_status=pulumi.get(__ret__, 'virtual_physical_connection_status'),
         vlan_ids=pulumi.get(__ret__, 'vlan_ids'),
         vpconn_ali_uid=pulumi.get(__ret__, 'vpconn_ali_uid'))
-
-
-@_utilities.lift_output_func(get_virtual_physical_connections)
 def get_virtual_physical_connections_output(business_status: Optional[pulumi.Input[Optional[str]]] = None,
                                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                             is_confirmed: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -271,4 +273,30 @@ def get_virtual_physical_connections_output(business_status: Optional[pulumi.Inp
     :param Sequence[int] vlan_ids: The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
     :param str vpconn_ali_uid: The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
     """
-    ...
+    __args__ = dict()
+    __args__['businessStatus'] = business_status
+    __args__['ids'] = ids
+    __args__['isConfirmed'] = is_confirmed
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['parentPhysicalConnectionId'] = parent_physical_connection_id
+    __args__['virtualPhysicalConnectionIds'] = virtual_physical_connection_ids
+    __args__['virtualPhysicalConnectionStatus'] = virtual_physical_connection_status
+    __args__['vlanIds'] = vlan_ids
+    __args__['vpconnAliUid'] = vpconn_ali_uid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections', __args__, opts=opts, typ=GetVirtualPhysicalConnectionsResult)
+    return __ret__.apply(lambda __response__: GetVirtualPhysicalConnectionsResult(
+        business_status=pulumi.get(__response__, 'business_status'),
+        connections=pulumi.get(__response__, 'connections'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        is_confirmed=pulumi.get(__response__, 'is_confirmed'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        parent_physical_connection_id=pulumi.get(__response__, 'parent_physical_connection_id'),
+        virtual_physical_connection_ids=pulumi.get(__response__, 'virtual_physical_connection_ids'),
+        virtual_physical_connection_status=pulumi.get(__response__, 'virtual_physical_connection_status'),
+        vlan_ids=pulumi.get(__response__, 'vlan_ids'),
+        vpconn_ali_uid=pulumi.get(__response__, 'vpconn_ali_uid')))

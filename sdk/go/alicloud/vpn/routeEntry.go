@@ -34,7 +34,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := vpn.GetGateways(ctx, nil, nil)
+//			_default, err := vpn.GetGateways(ctx, &vpn.GetGatewaysArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

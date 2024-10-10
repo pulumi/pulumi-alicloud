@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -185,9 +190,6 @@ def get_instances(app_key: Optional[str] = None,
         query_str=pulumi.get(__ret__, 'query_str'),
         status=pulumi.get(__ret__, 'status'),
         status_list=pulumi.get(__ret__, 'status_list'))
-
-
-@_utilities.lift_output_func(get_instances)
 def get_instances_output(app_key: Optional[pulumi.Input[Optional[str]]] = None,
                          enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                          engine_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -224,4 +226,25 @@ def get_instances_output(app_key: Optional[pulumi.Input[Optional[str]]] = None,
     :param str status: Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
     :param str status_list: The status list.
     """
-    ...
+    __args__ = dict()
+    __args__['appKey'] = app_key
+    __args__['enableDetails'] = enable_details
+    __args__['engineType'] = engine_type
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['queryStr'] = query_str
+    __args__['status'] = status
+    __args__['statusList'] = status_list
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:tsdb/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
+    return __ret__.apply(lambda __response__: GetInstancesResult(
+        app_key=pulumi.get(__response__, 'app_key'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        engine_type=pulumi.get(__response__, 'engine_type'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instances=pulumi.get(__response__, 'instances'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        query_str=pulumi.get(__response__, 'query_str'),
+        status=pulumi.get(__response__, 'status'),
+        status_list=pulumi.get(__response__, 'status_list')))

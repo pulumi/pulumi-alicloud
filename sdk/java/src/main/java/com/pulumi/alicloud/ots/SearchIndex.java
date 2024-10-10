@@ -27,6 +27,128 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.ots.Instance;
+ * import com.pulumi.alicloud.ots.InstanceArgs;
+ * import com.pulumi.alicloud.ots.Table;
+ * import com.pulumi.alicloud.ots.TableArgs;
+ * import com.pulumi.alicloud.ots.inputs.TablePrimaryKeyArgs;
+ * import com.pulumi.alicloud.ots.SearchIndex;
+ * import com.pulumi.alicloud.ots.SearchIndexArgs;
+ * import com.pulumi.alicloud.ots.inputs.SearchIndexSchemaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
+ *             .name(String.format("%s-%s", name,default_.result()))
+ *             .description(name)
+ *             .accessedBy("Any")
+ *             .tags(Map.ofEntries(
+ *                 Map.entry("Created", "TF"),
+ *                 Map.entry("For", "example")
+ *             ))
+ *             .build());
+ * 
+ *         var defaultTable = new Table("defaultTable", TableArgs.builder()
+ *             .instanceName(defaultInstance.name())
+ *             .tableName("tf_example")
+ *             .timeToLive(-1)
+ *             .maxVersion(1)
+ *             .enableSse(true)
+ *             .sseKeyType("SSE_KMS_SERVICE")
+ *             .primaryKeys(            
+ *                 TablePrimaryKeyArgs.builder()
+ *                     .name("pk1")
+ *                     .type("Integer")
+ *                     .build(),
+ *                 TablePrimaryKeyArgs.builder()
+ *                     .name("pk2")
+ *                     .type("String")
+ *                     .build(),
+ *                 TablePrimaryKeyArgs.builder()
+ *                     .name("pk3")
+ *                     .type("Binary")
+ *                     .build())
+ *             .build());
+ * 
+ *         var defaultSearchIndex = new SearchIndex("defaultSearchIndex", SearchIndexArgs.builder()
+ *             .instanceName(defaultInstance.name())
+ *             .tableName(defaultTable.tableName())
+ *             .indexName("example_index")
+ *             .timeToLive(-1)
+ *             .schemas(SearchIndexSchemaArgs.builder()
+ *                 .fieldSchemas(                
+ *                     SearchIndexSchemaFieldSchemaArgs.builder()
+ *                         .fieldName("col1")
+ *                         .fieldType("Text")
+ *                         .isArray(false)
+ *                         .index(true)
+ *                         .analyzer("Split")
+ *                         .store(true)
+ *                         .build(),
+ *                     SearchIndexSchemaFieldSchemaArgs.builder()
+ *                         .fieldName("col2")
+ *                         .fieldType("Long")
+ *                         .enableSortAndAgg(true)
+ *                         .build(),
+ *                     SearchIndexSchemaFieldSchemaArgs.builder()
+ *                         .fieldName("pk1")
+ *                         .fieldType("Long")
+ *                         .build(),
+ *                     SearchIndexSchemaFieldSchemaArgs.builder()
+ *                         .fieldName("pk2")
+ *                         .fieldType("Text")
+ *                         .build())
+ *                 .indexSettings(SearchIndexSchemaIndexSettingArgs.builder()
+ *                     .routingFields(                    
+ *                         "pk1",
+ *                         "pk2")
+ *                     .build())
+ *                 .indexSorts(SearchIndexSchemaIndexSortArgs.builder()
+ *                     .sorters(                    
+ *                         SearchIndexSchemaIndexSortSorterArgs.builder()
+ *                             .sorterType("PrimaryKeySort")
+ *                             .order("Asc")
+ *                             .build(),
+ *                         SearchIndexSchemaIndexSortSorterArgs.builder()
+ *                             .sorterType("FieldSort")
+ *                             .order("Desc")
+ *                             .fieldName("col2")
+ *                             .mode("Max")
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

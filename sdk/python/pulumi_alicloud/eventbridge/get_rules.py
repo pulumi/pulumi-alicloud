@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -171,9 +176,6 @@ def get_rules(event_bus_name: Optional[str] = None,
         rule_name_prefix=pulumi.get(__ret__, 'rule_name_prefix'),
         rules=pulumi.get(__ret__, 'rules'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_rules)
 def get_rules_output(event_bus_name: Optional[pulumi.Input[str]] = None,
                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -208,4 +210,22 @@ def get_rules_output(event_bus_name: Optional[pulumi.Input[str]] = None,
     :param str rule_name_prefix: The rule name prefix.
     :param str status: Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
     """
-    ...
+    __args__ = dict()
+    __args__['eventBusName'] = event_bus_name
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['ruleNamePrefix'] = rule_name_prefix
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:eventbridge/getRules:getRules', __args__, opts=opts, typ=GetRulesResult)
+    return __ret__.apply(lambda __response__: GetRulesResult(
+        event_bus_name=pulumi.get(__response__, 'event_bus_name'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        rule_name_prefix=pulumi.get(__response__, 'rule_name_prefix'),
+        rules=pulumi.get(__response__, 'rules'),
+        status=pulumi.get(__response__, 'status')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -170,9 +175,6 @@ def get_db_cluster_lake_versions(enable_details: Optional[bool] = None,
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         status=pulumi.get(__ret__, 'status'),
         versions=pulumi.get(__ret__, 'versions'))
-
-
-@_utilities.lift_output_func(get_db_cluster_lake_versions)
 def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -205,4 +207,23 @@ def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Op
     :param str resource_group_id: The ID of the resource group.
     :param str status: The status of the resource. Valid values: `Preparing`, `Creating`, `Restoring`, `Running`, `Deleting`, `ClassChanging`, `NetAddressCreating`, `NetAddressDeleting`.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions', __args__, opts=opts, typ=GetDBClusterLakeVersionsResult)
+    return __ret__.apply(lambda __response__: GetDBClusterLakeVersionsResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status=pulumi.get(__response__, 'status'),
+        versions=pulumi.get(__response__, 'versions')))

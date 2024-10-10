@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -174,9 +179,6 @@ def get_extension_providers(ids: Optional[Sequence[str]] = None,
         providers=pulumi.get(__ret__, 'providers'),
         service_mesh_id=pulumi.get(__ret__, 'service_mesh_id'),
         type=pulumi.get(__ret__, 'type'))
-
-
-@_utilities.lift_output_func(get_extension_providers)
 def get_extension_providers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -213,4 +215,20 @@ def get_extension_providers_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param str service_mesh_id: The ID of the Service Mesh.
     :param str type: The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['serviceMeshId'] = service_mesh_id
+    __args__['type'] = type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:servicemesh/getExtensionProviders:getExtensionProviders', __args__, opts=opts, typ=GetExtensionProvidersResult)
+    return __ret__.apply(lambda __response__: GetExtensionProvidersResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        providers=pulumi.get(__response__, 'providers'),
+        service_mesh_id=pulumi.get(__response__, 'service_mesh_id'),
+        type=pulumi.get(__response__, 'type')))

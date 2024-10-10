@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dcdn.GetWafPolicies(ctx, nil, nil)
+//			ids, err := dcdn.GetWafPolicies(ctx, &dcdn.GetWafPoliciesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -185,9 +190,6 @@ def get_custom_routing_port_mappings(accelerator_id: Optional[str] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_custom_routing_port_mappings)
 def get_custom_routing_port_mappings_output(accelerator_id: Optional[pulumi.Input[str]] = None,
                                             endpoint_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                             listener_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -220,4 +222,23 @@ def get_custom_routing_port_mappings_output(accelerator_id: Optional[pulumi.Inpu
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
     """
-    ...
+    __args__ = dict()
+    __args__['acceleratorId'] = accelerator_id
+    __args__['endpointGroupId'] = endpoint_group_id
+    __args__['listenerId'] = listener_id
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings', __args__, opts=opts, typ=GetCustomRoutingPortMappingsResult)
+    return __ret__.apply(lambda __response__: GetCustomRoutingPortMappingsResult(
+        accelerator_id=pulumi.get(__response__, 'accelerator_id'),
+        custom_routing_port_mappings=pulumi.get(__response__, 'custom_routing_port_mappings'),
+        endpoint_group_id=pulumi.get(__response__, 'endpoint_group_id'),
+        id=pulumi.get(__response__, 'id'),
+        listener_id=pulumi.get(__response__, 'listener_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        status=pulumi.get(__response__, 'status')))

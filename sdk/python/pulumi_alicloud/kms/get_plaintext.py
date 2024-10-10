@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -124,9 +129,6 @@ def get_plaintext(ciphertext_blob: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         key_id=pulumi.get(__ret__, 'key_id'),
         plaintext=pulumi.get(__ret__, 'plaintext'))
-
-
-@_utilities.lift_output_func(get_plaintext)
 def get_plaintext_output(ciphertext_blob: Optional[pulumi.Input[str]] = None,
                          encryption_context: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPlaintextResult]:
@@ -153,4 +155,14 @@ def get_plaintext_output(ciphertext_blob: Optional[pulumi.Input[str]] = None,
     :param str ciphertext_blob: The ciphertext to be decrypted.
     :param Mapping[str, str] encryption_context: (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
     """
-    ...
+    __args__ = dict()
+    __args__['ciphertextBlob'] = ciphertext_blob
+    __args__['encryptionContext'] = encryption_context
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:kms/getPlaintext:getPlaintext', __args__, opts=opts, typ=GetPlaintextResult)
+    return __ret__.apply(lambda __response__: GetPlaintextResult(
+        ciphertext_blob=pulumi.get(__response__, 'ciphertext_blob'),
+        encryption_context=pulumi.get(__response__, 'encryption_context'),
+        id=pulumi.get(__response__, 'id'),
+        key_id=pulumi.get(__response__, 'key_id'),
+        plaintext=pulumi.get(__response__, 'plaintext')))

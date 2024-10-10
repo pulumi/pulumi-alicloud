@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -183,9 +188,6 @@ def get_templates(enable_details: Optional[bool] = None,
         tags=pulumi.get(__ret__, 'tags'),
         template_name=pulumi.get(__ret__, 'template_name'),
         templates=pulumi.get(__ret__, 'templates'))
-
-
-@_utilities.lift_output_func(get_templates)
 def get_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -221,4 +223,24 @@ def get_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     :param Mapping[str, str] tags: Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
     :param str template_name: The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
     """
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['shareType'] = share_type
+    __args__['tags'] = tags
+    __args__['templateName'] = template_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getTemplates:getTemplates', __args__, opts=opts, typ=GetTemplatesResult)
+    return __ret__.apply(lambda __response__: GetTemplatesResult(
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        share_type=pulumi.get(__response__, 'share_type'),
+        tags=pulumi.get(__response__, 'tags'),
+        template_name=pulumi.get(__response__, 'template_name'),
+        templates=pulumi.get(__response__, 'templates')))

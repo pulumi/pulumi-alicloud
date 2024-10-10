@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -195,9 +200,6 @@ def get_models(group_id: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-
-
-@_utilities.lift_output_func(get_models)
 def get_models_output(group_id: Optional[pulumi.Input[str]] = None,
                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       model_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -233,4 +235,24 @@ def get_models_output(group_id: Optional[pulumi.Input[str]] = None,
     :param str name_regex: A regex string to filter results by Model name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['groupId'] = group_id
+    __args__['ids'] = ids
+    __args__['modelName'] = model_name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:apigateway/getModels:getModels', __args__, opts=opts, typ=GetModelsResult)
+    return __ret__.apply(lambda __response__: GetModelsResult(
+        group_id=pulumi.get(__response__, 'group_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        model_name=pulumi.get(__response__, 'model_name'),
+        models=pulumi.get(__response__, 'models'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size')))

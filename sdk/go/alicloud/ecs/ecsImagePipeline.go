@@ -63,7 +63,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGetAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			defaultGetAccount, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

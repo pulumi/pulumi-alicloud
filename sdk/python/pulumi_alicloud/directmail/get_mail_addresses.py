@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -146,9 +151,6 @@ def get_mail_addresses(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         sendtype=pulumi.get(__ret__, 'sendtype'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_mail_addresses)
 def get_mail_addresses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               key_word: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -179,4 +181,19 @@ def get_mail_addresses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     :param str sendtype: Account type. Valid values: `batch`, `trigger`.
     :param str status: Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['keyWord'] = key_word
+    __args__['outputFile'] = output_file
+    __args__['sendtype'] = sendtype
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:directmail/getMailAddresses:getMailAddresses', __args__, opts=opts, typ=GetMailAddressesResult)
+    return __ret__.apply(lambda __response__: GetMailAddressesResult(
+        addresses=pulumi.get(__response__, 'addresses'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        key_word=pulumi.get(__response__, 'key_word'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        sendtype=pulumi.get(__response__, 'sendtype'),
+        status=pulumi.get(__response__, 'status')))

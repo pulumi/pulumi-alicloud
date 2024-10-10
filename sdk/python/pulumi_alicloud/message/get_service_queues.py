@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -176,9 +181,6 @@ def get_service_queues(ids: Optional[Sequence[str]] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         queue_name=pulumi.get(__ret__, 'queue_name'),
         queues=pulumi.get(__ret__, 'queues'))
-
-
-@_utilities.lift_output_func(get_service_queues)
 def get_service_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -209,4 +211,22 @@ def get_service_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str queue_name: The name of the queue.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['queueName'] = queue_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:message/getServiceQueues:getServiceQueues', __args__, opts=opts, typ=GetServiceQueuesResult)
+    return __ret__.apply(lambda __response__: GetServiceQueuesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        queue_name=pulumi.get(__response__, 'queue_name'),
+        queues=pulumi.get(__response__, 'queues')))

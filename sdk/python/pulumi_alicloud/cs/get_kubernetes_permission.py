@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -101,9 +106,6 @@ def get_kubernetes_permission(uid: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         permissions=pulumi.get(__ret__, 'permissions'),
         uid=pulumi.get(__ret__, 'uid'))
-
-
-@_utilities.lift_output_func(get_kubernetes_permission)
 def get_kubernetes_permission_output(uid: Optional[pulumi.Input[str]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesPermissionResult]:
     """
@@ -127,4 +129,11 @@ def get_kubernetes_permission_output(uid: Optional[pulumi.Input[str]] = None,
 
     :param str uid: The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
     """
-    ...
+    __args__ = dict()
+    __args__['uid'] = uid
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getKubernetesPermission:getKubernetesPermission', __args__, opts=opts, typ=GetKubernetesPermissionResult)
+    return __ret__.apply(lambda __response__: GetKubernetesPermissionResult(
+        id=pulumi.get(__response__, 'id'),
+        permissions=pulumi.get(__response__, 'permissions'),
+        uid=pulumi.get(__response__, 'uid')))

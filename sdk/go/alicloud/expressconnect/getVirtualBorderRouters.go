@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := expressconnect.GetVirtualBorderRouters(ctx, nil, nil)
+//			ids, err := expressconnect.GetVirtualBorderRouters(ctx, &expressconnect.GetVirtualBorderRoutersArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

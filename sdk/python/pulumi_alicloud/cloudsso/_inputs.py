@@ -4,15 +4,41 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'AccessConfigurationPermissionPolicyArgs',
+    'AccessConfigurationPermissionPolicyArgsDict',
     'DirectorySamlIdentityProviderConfigurationArgs',
+    'DirectorySamlIdentityProviderConfigurationArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class AccessConfigurationPermissionPolicyArgsDict(TypedDict):
+        permission_policy_name: pulumi.Input[str]
+        """
+        The Policy Name of policy. The name of the resource.
+        """
+        permission_policy_type: pulumi.Input[str]
+        """
+        The Policy Type of policy. Valid values: `System`, `Inline`.
+        """
+        permission_policy_document: NotRequired[pulumi.Input[str]]
+        """
+        The Content of Policy.
+        """
+elif False:
+    AccessConfigurationPermissionPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class AccessConfigurationPermissionPolicyArgs:
@@ -66,6 +92,19 @@ class AccessConfigurationPermissionPolicyArgs:
     def permission_policy_document(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "permission_policy_document", value)
 
+
+if not MYPY:
+    class DirectorySamlIdentityProviderConfigurationArgsDict(TypedDict):
+        encoded_metadata_document: NotRequired[pulumi.Input[str]]
+        """
+        Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
+        """
+        sso_status: NotRequired[pulumi.Input[str]]
+        """
+        SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
+        """
+elif False:
+    DirectorySamlIdentityProviderConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DirectorySamlIdentityProviderConfigurationArgs:

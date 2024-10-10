@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -345,9 +350,6 @@ def get_eips(address_name: Optional[str] = None,
         segment_instance_id=pulumi.get(__ret__, 'segment_instance_id'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_eips)
 def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
                     associated_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                     associated_instance_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -392,4 +394,47 @@ def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param Mapping[str, str] tags: A mapping of tags to assign to the resource.
     """
     pulumi.log.warn("""get_eips is deprecated: This function has been deprecated in favour of the getEipAddresses function""")
-    ...
+    __args__ = dict()
+    __args__['addressName'] = address_name
+    __args__['associatedInstanceId'] = associated_instance_id
+    __args__['associatedInstanceType'] = associated_instance_type
+    __args__['dryRun'] = dry_run
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['includeReservationData'] = include_reservation_data
+    __args__['ipAddress'] = ip_address
+    __args__['ipAddresses'] = ip_addresses
+    __args__['isp'] = isp
+    __args__['lockReason'] = lock_reason
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['paymentType'] = payment_type
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['segmentInstanceId'] = segment_instance_id
+    __args__['status'] = status
+    __args__['tags'] = tags
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEips:getEips', __args__, opts=opts, typ=GetEipsResult)
+    return __ret__.apply(lambda __response__: GetEipsResult(
+        address_name=pulumi.get(__response__, 'address_name'),
+        addresses=pulumi.get(__response__, 'addresses'),
+        associated_instance_id=pulumi.get(__response__, 'associated_instance_id'),
+        associated_instance_type=pulumi.get(__response__, 'associated_instance_type'),
+        dry_run=pulumi.get(__response__, 'dry_run'),
+        eips=pulumi.get(__response__, 'eips'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        include_reservation_data=pulumi.get(__response__, 'include_reservation_data'),
+        ip_address=pulumi.get(__response__, 'ip_address'),
+        ip_addresses=pulumi.get(__response__, 'ip_addresses'),
+        isp=pulumi.get(__response__, 'isp'),
+        lock_reason=pulumi.get(__response__, 'lock_reason'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        payment_type=pulumi.get(__response__, 'payment_type'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        segment_instance_id=pulumi.get(__response__, 'segment_instance_id'),
+        status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags')))

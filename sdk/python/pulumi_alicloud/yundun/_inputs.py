@@ -4,15 +4,41 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BastionHostInstanceAdAuthServerArgs',
+    'BastionHostInstanceAdAuthServerArgsDict',
     'BastionHostInstanceLdapAuthServerArgs',
+    'BastionHostInstanceLdapAuthServerArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BastionHostInstanceAdAuthServerArgsDict(TypedDict):
+        account: pulumi.Input[str]
+        base_dn: pulumi.Input[str]
+        domain: pulumi.Input[str]
+        is_ssl: pulumi.Input[bool]
+        password: pulumi.Input[str]
+        port: pulumi.Input[int]
+        server: pulumi.Input[str]
+        email_mapping: NotRequired[pulumi.Input[str]]
+        filter: NotRequired[pulumi.Input[str]]
+        mobile_mapping: NotRequired[pulumi.Input[str]]
+        name_mapping: NotRequired[pulumi.Input[str]]
+        standby_server: NotRequired[pulumi.Input[str]]
+elif False:
+    BastionHostInstanceAdAuthServerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BastionHostInstanceAdAuthServerArgs:
@@ -155,6 +181,23 @@ class BastionHostInstanceAdAuthServerArgs:
     def standby_server(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "standby_server", value)
 
+
+if not MYPY:
+    class BastionHostInstanceLdapAuthServerArgsDict(TypedDict):
+        account: pulumi.Input[str]
+        base_dn: pulumi.Input[str]
+        password: pulumi.Input[str]
+        port: pulumi.Input[int]
+        server: pulumi.Input[str]
+        email_mapping: NotRequired[pulumi.Input[str]]
+        filter: NotRequired[pulumi.Input[str]]
+        is_ssl: NotRequired[pulumi.Input[bool]]
+        login_name_mapping: NotRequired[pulumi.Input[str]]
+        mobile_mapping: NotRequired[pulumi.Input[str]]
+        name_mapping: NotRequired[pulumi.Input[str]]
+        standby_server: NotRequired[pulumi.Input[str]]
+elif False:
+    BastionHostInstanceLdapAuthServerArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BastionHostInstanceLdapAuthServerArgs:

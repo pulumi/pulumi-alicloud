@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := cddc.GetZones(ctx, nil, nil)
+//			example, err := cddc.GetZones(ctx, &cddc.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ocean.GetBaseInstances(ctx, nil, nil)
+//			ids, err := ocean.GetBaseInstances(ctx, &ocean.GetBaseInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

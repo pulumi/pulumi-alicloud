@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -158,9 +163,6 @@ def get_vaults(ids: Optional[Sequence[str]] = None,
         status=pulumi.get(__ret__, 'status'),
         vault_type=pulumi.get(__ret__, 'vault_type'),
         vaults=pulumi.get(__ret__, 'vaults'))
-
-
-@_utilities.lift_output_func(get_vaults)
 def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -193,4 +195,20 @@ def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
            - `STANDARD` - used in OSS, NAS and ECS File backup.
            - `OTS_BACKUP` -  used in OTS backup.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    __args__['vaultType'] = vault_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getVaults:getVaults', __args__, opts=opts, typ=GetVaultsResult)
+    return __ret__.apply(lambda __response__: GetVaultsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status'),
+        vault_type=pulumi.get(__response__, 'vault_type'),
+        vaults=pulumi.get(__response__, 'vaults')))

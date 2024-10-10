@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -414,9 +419,6 @@ def get_clusters(cluster_name: Optional[str] = None,
         status_lists=pulumi.get(__ret__, 'status_lists'),
         total_count=pulumi.get(__ret__, 'total_count'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-
-
-@_utilities.lift_output_func(get_clusters)
 def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = None,
                         cluster_type_lists: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         create_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -574,4 +576,43 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     :param Sequence[str] status_lists: The status list. Valid values: `ABNORMAL`, `CREATE_FAILED`, `CREATING`, `IDLE`, `RELEASED`, `RELEASE_FAILED`, `RELEASING`, `RUNNING`, `WAIT_FOR_PAY`.
     :param str vpc_id: The VPC ID.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterName'] = cluster_name
+    __args__['clusterTypeLists'] = cluster_type_lists
+    __args__['createType'] = create_type
+    __args__['defaultStatus'] = default_status
+    __args__['depositType'] = deposit_type
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['isDesc'] = is_desc
+    __args__['machineType'] = machine_type
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['statusLists'] = status_lists
+    __args__['vpcId'] = vpc_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:emr/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult)
+    return __ret__.apply(lambda __response__: GetClustersResult(
+        cluster_name=pulumi.get(__response__, 'cluster_name'),
+        cluster_type_lists=pulumi.get(__response__, 'cluster_type_lists'),
+        clusters=pulumi.get(__response__, 'clusters'),
+        create_type=pulumi.get(__response__, 'create_type'),
+        default_status=pulumi.get(__response__, 'default_status'),
+        deposit_type=pulumi.get(__response__, 'deposit_type'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        is_desc=pulumi.get(__response__, 'is_desc'),
+        machine_type=pulumi.get(__response__, 'machine_type'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        status_lists=pulumi.get(__response__, 'status_lists'),
+        total_count=pulumi.get(__response__, 'total_count'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

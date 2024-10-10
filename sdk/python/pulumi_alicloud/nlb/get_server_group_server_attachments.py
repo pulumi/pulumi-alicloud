@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -152,9 +157,6 @@ def get_server_group_server_attachments(ids: Optional[Sequence[str]] = None,
         server_group_id=pulumi.get(__ret__, 'server_group_id'),
         server_ids=pulumi.get(__ret__, 'server_ids'),
         server_ips=pulumi.get(__ret__, 'server_ips'))
-
-
-@_utilities.lift_output_func(get_server_group_server_attachments)
 def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                server_group_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -185,4 +187,19 @@ def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Option
     :param Sequence[str] server_ids: The IDs of the servers. You can specify at most 40 server IDs in each call.
     :param Sequence[str] server_ips: The IP addresses of the servers. You can specify at most 40 server IP addresses in each call.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['serverGroupId'] = server_group_id
+    __args__['serverIds'] = server_ids
+    __args__['serverIps'] = server_ips
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments', __args__, opts=opts, typ=GetServerGroupServerAttachmentsResult)
+    return __ret__.apply(lambda __response__: GetServerGroupServerAttachmentsResult(
+        attachments=pulumi.get(__response__, 'attachments'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        server_group_id=pulumi.get(__response__, 'server_group_id'),
+        server_ids=pulumi.get(__response__, 'server_ids'),
+        server_ips=pulumi.get(__response__, 'server_ips')))

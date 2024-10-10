@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -142,9 +147,6 @@ def get_route_entries(cidr_block: Optional[str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         route_table_id=pulumi.get(__ret__, 'route_table_id'))
-
-
-@_utilities.lift_output_func(get_route_entries)
 def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None,
                              instance_id: Optional[pulumi.Input[str]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -170,4 +172,17 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str route_table_id: ID of the route table of the VPC or VBR.
     """
-    ...
+    __args__ = dict()
+    __args__['cidrBlock'] = cidr_block
+    __args__['instanceId'] = instance_id
+    __args__['outputFile'] = output_file
+    __args__['routeTableId'] = route_table_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getRouteEntries:getRouteEntries', __args__, opts=opts, typ=GetRouteEntriesResult)
+    return __ret__.apply(lambda __response__: GetRouteEntriesResult(
+        cidr_block=pulumi.get(__response__, 'cidr_block'),
+        entries=pulumi.get(__response__, 'entries'),
+        id=pulumi.get(__response__, 'id'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        route_table_id=pulumi.get(__response__, 'route_table_id')))

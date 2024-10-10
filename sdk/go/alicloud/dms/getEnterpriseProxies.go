@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dms.GetEnterpriseProxies(ctx, nil, nil)
+//			ids, err := dms.GetEnterpriseProxies(ctx, &dms.GetEnterpriseProxiesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

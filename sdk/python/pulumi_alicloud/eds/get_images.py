@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -215,9 +220,6 @@ def get_images(desktop_instance_type: Optional[str] = None,
         os_type=pulumi.get(__ret__, 'os_type'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_images)
 def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]]] = None,
                       ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       image_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -285,4 +287,24 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
     """
-    ...
+    __args__ = dict()
+    __args__['desktopInstanceType'] = desktop_instance_type
+    __args__['ids'] = ids
+    __args__['imageType'] = image_type
+    __args__['nameRegex'] = name_regex
+    __args__['osType'] = os_type
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
+    return __ret__.apply(lambda __response__: GetImagesResult(
+        desktop_instance_type=pulumi.get(__response__, 'desktop_instance_type'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        image_type=pulumi.get(__response__, 'image_type'),
+        images=pulumi.get(__response__, 'images'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        os_type=pulumi.get(__response__, 'os_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
@@ -121,9 +126,6 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, str]] = None,
         id=pulumi.get(__ret__, 'id'),
         key_id=pulumi.get(__ret__, 'key_id'),
         plaintext=pulumi.get(__ret__, 'plaintext'))
-
-
-@_utilities.lift_output_func(get_ciphertext)
 def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           key_id: Optional[pulumi.Input[str]] = None,
                           plaintext: Optional[pulumi.Input[str]] = None,
@@ -149,4 +151,15 @@ def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Map
     :param str key_id: The globally unique ID of the CMK.
     :param str plaintext: The plaintext to be encrypted which must be encoded in Base64.
     """
-    ...
+    __args__ = dict()
+    __args__['encryptionContext'] = encryption_context
+    __args__['keyId'] = key_id
+    __args__['plaintext'] = plaintext
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:kms/getCiphertext:getCiphertext', __args__, opts=opts, typ=GetCiphertextResult)
+    return __ret__.apply(lambda __response__: GetCiphertextResult(
+        ciphertext_blob=pulumi.get(__response__, 'ciphertext_blob'),
+        encryption_context=pulumi.get(__response__, 'encryption_context'),
+        id=pulumi.get(__response__, 'id'),
+        key_id=pulumi.get(__response__, 'key_id'),
+        plaintext=pulumi.get(__response__, 'plaintext')))

@@ -4,23 +4,101 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'BgpPolicyContentArgs',
+    'BgpPolicyContentArgsDict',
     'BgpPolicyContentFingerPrintRuleListArgs',
+    'BgpPolicyContentFingerPrintRuleListArgsDict',
     'BgpPolicyContentLayer4RuleListArgs',
+    'BgpPolicyContentLayer4RuleListArgsDict',
     'BgpPolicyContentLayer4RuleListConditionListArgs',
+    'BgpPolicyContentLayer4RuleListConditionListArgsDict',
     'BgpPolicyContentPortRuleListArgs',
+    'BgpPolicyContentPortRuleListArgsDict',
     'BgpPolicyContentSourceBlockListArgs',
+    'BgpPolicyContentSourceBlockListArgsDict',
     'BgpPolicyContentSourceLimitArgs',
+    'BgpPolicyContentSourceLimitArgsDict',
     'DomainResourceProxyTypeArgs',
+    'DomainResourceProxyTypeArgsDict',
     'PortConfigArgs',
+    'PortConfigArgsDict',
     'SchedulerRuleRuleArgs',
+    'SchedulerRuleRuleArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class BgpPolicyContentArgsDict(TypedDict):
+        black_ip_list_expire_at: NotRequired[pulumi.Input[int]]
+        """
+        Blacklist and whitelist timeout.
+        """
+        enable_defense: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable L4 protection.
+        """
+        enable_drop_icmp: NotRequired[pulumi.Input[bool]]
+        """
+        Switch to discard ICMP.
+        """
+        enable_intelligence: NotRequired[pulumi.Input[bool]]
+        """
+        Whether the intelligent switch is on.
+        """
+        finger_print_rule_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentFingerPrintRuleListArgsDict']]]]
+        """
+        Fingerprint Rules. See `finger_print_rule_list` below.
+        """
+        intelligence_level: NotRequired[pulumi.Input[str]]
+        """
+        Smart mode. Valid values: weak, hard, and default.
+        """
+        layer4_rule_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListArgsDict']]]]
+        """
+        L4 protection rules. See `layer4_rule_list` below.
+        """
+        port_rule_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentPortRuleListArgsDict']]]]
+        """
+        Port Rule List. See `port_rule_list` below.
+        """
+        reflect_block_udp_port_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        Reflective port filtering.
+        """
+        region_block_country_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        List of Regional Banned Countries.
+        """
+        region_block_province_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        List of Prohibited Provinces by Region.
+        """
+        source_block_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentSourceBlockListArgsDict']]]]
+        """
+        Source pull Black. See `source_block_list` below.
+        """
+        source_limit: NotRequired[pulumi.Input['BgpPolicyContentSourceLimitArgsDict']]
+        """
+        Do not fill in when the source speed limit is deleted. See `source_limit` below.
+        """
+        whiten_gfbr_nets: NotRequired[pulumi.Input[bool]]
+        """
+        Add white high protection back to source network segment switch.
+        """
+elif False:
+    BgpPolicyContentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BgpPolicyContentArgs:
@@ -253,6 +331,63 @@ class BgpPolicyContentArgs:
         pulumi.set(self, "whiten_gfbr_nets", value)
 
 
+if not MYPY:
+    class BgpPolicyContentFingerPrintRuleListArgsDict(TypedDict):
+        dst_port_end: pulumi.Input[int]
+        """
+        End of destination port 0-65535.
+        """
+        dst_port_start: pulumi.Input[int]
+        """
+        Destination Port start 0-65535.
+        """
+        match_action: pulumi.Input[str]
+        """
+        Action. Currently, only drop is supported.
+        """
+        max_pkt_len: pulumi.Input[int]
+        """
+        Maximum bag length.
+        """
+        min_pkt_len: pulumi.Input[int]
+        """
+        Minimum package length.
+        """
+        protocol: pulumi.Input[str]
+        """
+        Protocol, tcp or udp.
+        """
+        seq_no: pulumi.Input[int]
+        """
+        Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+        """
+        src_port_end: pulumi.Input[int]
+        """
+        Source Port end 0-65535.
+        """
+        src_port_start: pulumi.Input[int]
+        """
+        Source port start 0-65535.
+        """
+        finger_print_rule_id: NotRequired[pulumi.Input[str]]
+        """
+        The UUID of the rule is required to be deleted and modified, and it is not required to be created.
+        """
+        offset: NotRequired[pulumi.Input[int]]
+        """
+        Offset.
+        """
+        payload_bytes: NotRequired[pulumi.Input[str]]
+        """
+        Load match, hexadecimal string; Similar to 'abcd'.
+        """
+        rate_value: NotRequired[pulumi.Input[int]]
+        """
+        Speed limit value 1-100000.
+        """
+elif False:
+    BgpPolicyContentFingerPrintRuleListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BgpPolicyContentFingerPrintRuleListArgs:
     def __init__(__self__, *,
@@ -459,6 +594,39 @@ class BgpPolicyContentFingerPrintRuleListArgs:
         pulumi.set(self, "rate_value", value)
 
 
+if not MYPY:
+    class BgpPolicyContentLayer4RuleListArgsDict(TypedDict):
+        action: pulumi.Input[str]
+        """
+        1 for observation 2 for blocking.
+        """
+        condition_lists: pulumi.Input[Sequence[pulumi.Input['BgpPolicyContentLayer4RuleListConditionListArgsDict']]]
+        """
+        Matching Condition. See `condition_list` below.
+        """
+        limited: pulumi.Input[int]
+        """
+        .
+        """
+        match: pulumi.Input[str]
+        """
+        0 indicates that the condition is not met 1 indicates that the condition is met.
+        """
+        method: pulumi.Input[str]
+        """
+        Char indicates a string match hex match.
+        """
+        name: pulumi.Input[str]
+        """
+        Rule Name.
+        """
+        priority: pulumi.Input[int]
+        """
+        1-100, priority, the lower the number, the higher the priority.
+        """
+elif False:
+    BgpPolicyContentLayer4RuleListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BgpPolicyContentLayer4RuleListArgs:
     def __init__(__self__, *,
@@ -571,6 +739,23 @@ class BgpPolicyContentLayer4RuleListArgs:
         pulumi.set(self, "priority", value)
 
 
+if not MYPY:
+    class BgpPolicyContentLayer4RuleListConditionListArgsDict(TypedDict):
+        arg: pulumi.Input[str]
+        """
+        Matching target character.
+        """
+        depth: pulumi.Input[int]
+        """
+        Depth of Matching.
+        """
+        position: pulumi.Input[int]
+        """
+        Position to start matching, starting from 0.
+        """
+elif False:
+    BgpPolicyContentLayer4RuleListConditionListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BgpPolicyContentLayer4RuleListConditionListArgs:
     def __init__(__self__, *,
@@ -622,6 +807,43 @@ class BgpPolicyContentLayer4RuleListConditionListArgs:
     def position(self, value: pulumi.Input[int]):
         pulumi.set(self, "position", value)
 
+
+if not MYPY:
+    class BgpPolicyContentPortRuleListArgsDict(TypedDict):
+        dst_port_end: pulumi.Input[int]
+        """
+        End of destination port 0-65535.
+        """
+        dst_port_start: pulumi.Input[int]
+        """
+        Destination Port start 0-65535.
+        """
+        match_action: pulumi.Input[str]
+        """
+        Action. Currently, only drop is supported.
+        """
+        protocol: pulumi.Input[str]
+        """
+        Protocol, tcp or udp.
+        """
+        seq_no: pulumi.Input[int]
+        """
+        Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
+        """
+        src_port_end: pulumi.Input[int]
+        """
+        Source Port end 0-65535.
+        """
+        src_port_start: pulumi.Input[int]
+        """
+        Source port start 0-65535.
+        """
+        port_rule_id: NotRequired[pulumi.Input[str]]
+        """
+        Rule UUID is required to be deleted and modified, and is not required to be created.
+        """
+elif False:
+    BgpPolicyContentPortRuleListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BgpPolicyContentPortRuleListArgs:
@@ -751,6 +973,27 @@ class BgpPolicyContentPortRuleListArgs:
         pulumi.set(self, "port_rule_id", value)
 
 
+if not MYPY:
+    class BgpPolicyContentSourceBlockListArgsDict(TypedDict):
+        block_expire_seconds: pulumi.Input[int]
+        """
+        Statistical cycle range 60-1200.
+        """
+        every_seconds: pulumi.Input[int]
+        """
+        The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
+        """
+        exceed_limit_times: pulumi.Input[int]
+        """
+        The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
+        """
+        type: pulumi.Input[int]
+        """
+        Type
+        """
+elif False:
+    BgpPolicyContentSourceBlockListArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class BgpPolicyContentSourceBlockListArgs:
     def __init__(__self__, *,
@@ -817,6 +1060,27 @@ class BgpPolicyContentSourceBlockListArgs:
     def type(self, value: pulumi.Input[int]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class BgpPolicyContentSourceLimitArgsDict(TypedDict):
+        bps: NotRequired[pulumi.Input[int]]
+        """
+        bps range 1024~268435456.
+        """
+        pps: NotRequired[pulumi.Input[int]]
+        """
+        Pps range 32~500000.
+        """
+        syn_bps: NotRequired[pulumi.Input[int]]
+        """
+        SynBps range 1024~268435456.
+        """
+        syn_pps: NotRequired[pulumi.Input[int]]
+        """
+        SynPps range 1~100000.
+        """
+elif False:
+    BgpPolicyContentSourceLimitArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class BgpPolicyContentSourceLimitArgs:
@@ -889,6 +1153,19 @@ class BgpPolicyContentSourceLimitArgs:
         pulumi.set(self, "syn_pps", value)
 
 
+if not MYPY:
+    class DomainResourceProxyTypeArgsDict(TypedDict):
+        proxy_ports: pulumi.Input[Sequence[pulumi.Input[int]]]
+        """
+        The port numbers.
+        """
+        proxy_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the protocol. Valid values:
+        """
+elif False:
+    DomainResourceProxyTypeArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DomainResourceProxyTypeArgs:
     def __init__(__self__, *,
@@ -927,6 +1204,15 @@ class DomainResourceProxyTypeArgs:
         pulumi.set(self, "proxy_type", value)
 
 
+if not MYPY:
+    class PortConfigArgsDict(TypedDict):
+        persistence_timeout: NotRequired[pulumi.Input[int]]
+        """
+        The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
+        """
+elif False:
+    PortConfigArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class PortConfigArgs:
     def __init__(__self__, *,
@@ -949,6 +1235,41 @@ class PortConfigArgs:
     def persistence_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "persistence_timeout", value)
 
+
+if not MYPY:
+    class SchedulerRuleRuleArgsDict(TypedDict):
+        priority: NotRequired[pulumi.Input[int]]
+        """
+        The priority of the rule.
+        """
+        region_id: NotRequired[pulumi.Input[str]]
+        """
+        The region where the interaction resource that is used in the scheduling rule is deployed. **NOTE:** This parameter is returned only if the RuleType parameter is set to 2.
+        """
+        status: NotRequired[pulumi.Input[int]]
+        """
+        The status of the scheduling rule.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The address type of the interaction resource. Valid values:
+        `A`: IPv4 address.
+        `CNAME`: CNAME record.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The address of the interaction resource.
+        """
+        value_type: NotRequired[pulumi.Input[int]]
+        """
+        Required. The type of the linked resource. It is an Integer. Valid values:
+        `1`: The IP address of Anti-DDoS Pro or Anti-DDoS Premium
+        `2`: the IP address of the interaction resource (in the tiered protection scenario)
+        `3`: the IP address used to accelerate access (in the network acceleration scenario)
+        `6` the IP address of the interaction resource (in the cloud service interaction scenario)
+        """
+elif False:
+    SchedulerRuleRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SchedulerRuleRuleArgs:

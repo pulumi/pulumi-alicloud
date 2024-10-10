@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -251,9 +256,6 @@ def get_snat_entries(ids: Optional[Sequence[str]] = None,
         source_cidr=pulumi.get(__ret__, 'source_cidr'),
         source_vswitch_id=pulumi.get(__ret__, 'source_vswitch_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_snat_entries)
 def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -314,4 +316,28 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param str source_vswitch_id: The source vswitch ID.
     :param str status: The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['snatEntryName'] = snat_entry_name
+    __args__['snatIp'] = snat_ip
+    __args__['snatTableId'] = snat_table_id
+    __args__['sourceCidr'] = source_cidr
+    __args__['sourceVswitchId'] = source_vswitch_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getSnatEntries:getSnatEntries', __args__, opts=opts, typ=GetSnatEntriesResult)
+    return __ret__.apply(lambda __response__: GetSnatEntriesResult(
+        entries=pulumi.get(__response__, 'entries'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        snat_entry_name=pulumi.get(__response__, 'snat_entry_name'),
+        snat_ip=pulumi.get(__response__, 'snat_ip'),
+        snat_table_id=pulumi.get(__response__, 'snat_table_id'),
+        source_cidr=pulumi.get(__response__, 'source_cidr'),
+        source_vswitch_id=pulumi.get(__response__, 'source_vswitch_id'),
+        status=pulumi.get(__response__, 'status')))

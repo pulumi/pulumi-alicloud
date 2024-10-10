@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -172,9 +177,6 @@ def get_rds_backups(backup_mode: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         start_time=pulumi.get(__ret__, 'start_time'))
-
-
-@_utilities.lift_output_func(get_rds_backups)
 def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = None,
                            backup_status: Optional[pulumi.Input[Optional[str]]] = None,
                            db_instance_id: Optional[pulumi.Input[str]] = None,
@@ -209,4 +211,23 @@ def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str start_time: The start time.
     """
-    ...
+    __args__ = dict()
+    __args__['backupMode'] = backup_mode
+    __args__['backupStatus'] = backup_status
+    __args__['dbInstanceId'] = db_instance_id
+    __args__['endTime'] = end_time
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['startTime'] = start_time
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getRdsBackups:getRdsBackups', __args__, opts=opts, typ=GetRdsBackupsResult)
+    return __ret__.apply(lambda __response__: GetRdsBackupsResult(
+        backup_mode=pulumi.get(__response__, 'backup_mode'),
+        backup_status=pulumi.get(__response__, 'backup_status'),
+        backups=pulumi.get(__response__, 'backups'),
+        db_instance_id=pulumi.get(__response__, 'db_instance_id'),
+        end_time=pulumi.get(__response__, 'end_time'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        start_time=pulumi.get(__response__, 'start_time')))

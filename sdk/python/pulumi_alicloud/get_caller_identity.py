@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
 __all__ = [
@@ -105,9 +110,6 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
         arn=pulumi.get(__ret__, 'arn'),
         id=pulumi.get(__ret__, 'id'),
         identity_type=pulumi.get(__ret__, 'identity_type'))
-
-
-@_utilities.lift_output_func(get_caller_identity)
 def get_caller_identity_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCallerIdentityResult]:
     """
     This data source provides the identity of the current user.
@@ -124,4 +126,11 @@ def get_caller_identity_output(opts: Optional[pulumi.InvokeOptions] = None) -> p
     pulumi.export("currentUserArn", current.id)
     ```
     """
-    ...
+    __args__ = dict()
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:index/getCallerIdentity:getCallerIdentity', __args__, opts=opts, typ=GetCallerIdentityResult)
+    return __ret__.apply(lambda __response__: GetCallerIdentityResult(
+        account_id=pulumi.get(__response__, 'account_id'),
+        arn=pulumi.get(__response__, 'arn'),
+        id=pulumi.get(__response__, 'id'),
+        identity_type=pulumi.get(__response__, 'identity_type')))

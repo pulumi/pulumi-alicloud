@@ -4,27 +4,61 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ApiDestinationHttpApiParametersArgs',
+    'ApiDestinationHttpApiParametersArgsDict',
     'ConnectionAuthParametersArgs',
+    'ConnectionAuthParametersArgsDict',
     'ConnectionAuthParametersApiKeyAuthParametersArgs',
+    'ConnectionAuthParametersApiKeyAuthParametersArgsDict',
     'ConnectionAuthParametersBasicAuthParametersArgs',
+    'ConnectionAuthParametersBasicAuthParametersArgsDict',
     'ConnectionAuthParametersOauthParametersArgs',
+    'ConnectionAuthParametersOauthParametersArgsDict',
     'ConnectionAuthParametersOauthParametersClientParametersArgs',
+    'ConnectionAuthParametersOauthParametersClientParametersArgsDict',
     'ConnectionAuthParametersOauthParametersOauthHttpParametersArgs',
+    'ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict',
     'ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs',
+    'ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict',
     'ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs',
+    'ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict',
     'ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs',
+    'ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict',
     'ConnectionNetworkParametersArgs',
+    'ConnectionNetworkParametersArgsDict',
     'RuleTargetArgs',
+    'RuleTargetArgsDict',
     'RuleTargetDeadLetterQueueArgs',
+    'RuleTargetDeadLetterQueueArgsDict',
     'RuleTargetParamListArgs',
+    'RuleTargetParamListArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ApiDestinationHttpApiParametersArgsDict(TypedDict):
+        endpoint: pulumi.Input[str]
+        """
+        The endpoint of the API destination.
+        """
+        method: pulumi.Input[str]
+        """
+        The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+        """
+elif False:
+    ApiDestinationHttpApiParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ApiDestinationHttpApiParametersArgs:
@@ -62,6 +96,27 @@ class ApiDestinationHttpApiParametersArgs:
     def method(self, value: pulumi.Input[str]):
         pulumi.set(self, "method", value)
 
+
+if not MYPY:
+    class ConnectionAuthParametersArgsDict(TypedDict):
+        api_key_auth_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersApiKeyAuthParametersArgsDict']]
+        """
+        The parameters that are configured for API key authentication. See `api_key_auth_parameters` below.
+        """
+        authorization_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the authentication. Valid values: `API_KEY_AUTH`, `BASIC_AUTH`, `OAUTH_AUTH`.
+        """
+        basic_auth_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersBasicAuthParametersArgsDict']]
+        """
+        The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
+        """
+        oauth_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersOauthParametersArgsDict']]
+        """
+        The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
+        """
+elif False:
+    ConnectionAuthParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionAuthParametersArgs:
@@ -134,6 +189,19 @@ class ConnectionAuthParametersArgs:
         pulumi.set(self, "oauth_parameters", value)
 
 
+if not MYPY:
+    class ConnectionAuthParametersApiKeyAuthParametersArgsDict(TypedDict):
+        api_key_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the API key.
+        """
+        api_key_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the API key.
+        """
+elif False:
+    ConnectionAuthParametersApiKeyAuthParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionAuthParametersApiKeyAuthParametersArgs:
     def __init__(__self__, *,
@@ -173,6 +241,19 @@ class ConnectionAuthParametersApiKeyAuthParametersArgs:
         pulumi.set(self, "api_key_value", value)
 
 
+if not MYPY:
+    class ConnectionAuthParametersBasicAuthParametersArgsDict(TypedDict):
+        password: NotRequired[pulumi.Input[str]]
+        """
+        The password for basic authentication.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        The username for basic authentication.
+        """
+elif False:
+    ConnectionAuthParametersBasicAuthParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionAuthParametersBasicAuthParametersArgs:
     def __init__(__self__, *,
@@ -211,6 +292,27 @@ class ConnectionAuthParametersBasicAuthParametersArgs:
     def username(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "username", value)
 
+
+if not MYPY:
+    class ConnectionAuthParametersOauthParametersArgsDict(TypedDict):
+        authorization_endpoint: NotRequired[pulumi.Input[str]]
+        """
+        The IP address of the authorized endpoint.
+        """
+        client_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersOauthParametersClientParametersArgsDict']]
+        """
+        The parameters that are configured for the client. See `client_parameters` below.
+        """
+        http_method: NotRequired[pulumi.Input[str]]
+        """
+        The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
+        """
+        oauth_http_parameters: NotRequired[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict']]
+        """
+        The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
+        """
+elif False:
+    ConnectionAuthParametersOauthParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersArgs:
@@ -283,6 +385,19 @@ class ConnectionAuthParametersOauthParametersArgs:
         pulumi.set(self, "oauth_http_parameters", value)
 
 
+if not MYPY:
+    class ConnectionAuthParametersOauthParametersClientParametersArgsDict(TypedDict):
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the client.
+        """
+        client_secret: NotRequired[pulumi.Input[str]]
+        """
+        The AccessKey secret of the client.
+        """
+elif False:
+    ConnectionAuthParametersOauthParametersClientParametersArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersClientParametersArgs:
     def __init__(__self__, *,
@@ -321,6 +436,23 @@ class ConnectionAuthParametersOauthParametersClientParametersArgs:
     def client_secret(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "client_secret", value)
 
+
+if not MYPY:
+    class ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict(TypedDict):
+        body_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict']]]]
+        """
+        The parameters that are configured for the request body. See `body_parameters` below.
+        """
+        header_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict']]]]
+        """
+        The parameters that are configured for the request header. See `header_parameters` below.
+        """
+        query_string_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict']]]]
+        """
+        The parameters that are configured for the request path. See `query_string_parameters` below.
+        """
+elif False:
+    ConnectionAuthParametersOauthParametersOauthHttpParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersOauthHttpParametersArgs:
@@ -377,6 +509,23 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersArgs:
         pulumi.set(self, "query_string_parameters", value)
 
 
+if not MYPY:
+    class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict(TypedDict):
+        is_value_secret: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether to enable authentication.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key of the request path.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The key of the request path.
+        """
+elif False:
+    ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs:
     def __init__(__self__, *,
@@ -431,6 +580,23 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArg
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict(TypedDict):
+        is_value_secret: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether to enable authentication.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key of the request path.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The key of the request path.
+        """
+elif False:
+    ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs:
@@ -487,6 +653,23 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterA
         pulumi.set(self, "value", value)
 
 
+if not MYPY:
+    class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict(TypedDict):
+        is_value_secret: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether to enable authentication.
+        """
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The key of the request path.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The key of the request path.
+        """
+elif False:
+    ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs:
     def __init__(__self__, *,
@@ -541,6 +724,27 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParam
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+
+if not MYPY:
+    class ConnectionNetworkParametersArgsDict(TypedDict):
+        network_type: pulumi.Input[str]
+        """
+        The network type. Valid values: `PublicNetwork`, `PrivateNetwork`. **NOTE:** If you set `network_type` to `PrivateNetwork`, you must configure `vpc_id`, `vswitche_id`, and `security_group_id`.
+        """
+        security_group_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the security group.
+        """
+        vpc_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the VPC.
+        """
+        vswitche_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the VSwitch.
+        """
+elif False:
+    ConnectionNetworkParametersArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ConnectionNetworkParametersArgs:
@@ -611,6 +815,38 @@ class ConnectionNetworkParametersArgs:
     def vswitche_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vswitche_id", value)
 
+
+if not MYPY:
+    class RuleTargetArgsDict(TypedDict):
+        endpoint: pulumi.Input[str]
+        """
+        The endpoint of the event target.
+        """
+        param_lists: pulumi.Input[Sequence[pulumi.Input['RuleTargetParamListArgsDict']]]
+        """
+        The parameters that are configured for the event target. See `param_list` below.
+        """
+        target_id: pulumi.Input[str]
+        """
+        The ID of the custom event target.
+        """
+        type: pulumi.Input[str]
+        """
+        The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
+        **NOTE:** From version 1.208.1, `type` can be set to `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fnf`, `acs.k8s`, `acs.openapi`, `acs.rds.mysql`, `acs.sae`, `acs.sls`, `mysql`.
+        """
+        dead_letter_queue: NotRequired[pulumi.Input['RuleTargetDeadLetterQueueArgsDict']]
+        """
+        The dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
+        """
+        push_retry_strategy: NotRequired[pulumi.Input[str]]
+        """
+        The retry policy that is used to push the event. Valid values:
+        - `BACKOFF_RETRY`: Backoff retry. The request can be retried up to three times. The interval between two consecutive retries is a random value between 10 and 20 seconds.
+        - `EXPONENTIAL_DECAY_RETRY`: Exponential decay retry. The request can be retried up to 176 times. The interval between two consecutive retries exponentially increases to 512 seconds, and the total retry time is one day. The specific retry intervals are 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 512, ..., and 512 seconds, including a maximum of one hundred and sixty-seven 512 seconds in total.
+        """
+elif False:
+    RuleTargetArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleTargetArgs:
@@ -717,6 +953,15 @@ class RuleTargetArgs:
         pulumi.set(self, "push_retry_strategy", value)
 
 
+if not MYPY:
+    class RuleTargetDeadLetterQueueArgsDict(TypedDict):
+        arn: NotRequired[pulumi.Input[str]]
+        """
+        The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
+        """
+elif False:
+    RuleTargetDeadLetterQueueArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class RuleTargetDeadLetterQueueArgs:
     def __init__(__self__, *,
@@ -739,6 +984,41 @@ class RuleTargetDeadLetterQueueArgs:
     def arn(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "arn", value)
 
+
+if not MYPY:
+    class RuleTargetParamListArgsDict(TypedDict):
+        form: pulumi.Input[str]
+        """
+        The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
+        """
+        resource_key: pulumi.Input[str]
+        """
+        The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
+        """
+        template: NotRequired[pulumi.Input[str]]
+        """
+        The template of the event target parameter.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the event target parameter.
+
+        > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
+
+        ```
+        param_list {
+        resource_key = "IsBase64Encode"
+        form         = "CONSTANT"
+        value        = "false"
+        template     = ""
+        }
+        ```
+
+        In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
+        If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
+        """
+elif False:
+    RuleTargetParamListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class RuleTargetParamListArgs:

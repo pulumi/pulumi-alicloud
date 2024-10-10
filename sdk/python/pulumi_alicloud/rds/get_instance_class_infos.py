@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -167,9 +172,6 @@ def get_instance_class_infos(commodity_code: Optional[str] = None,
         infos=pulumi.get(__ret__, 'infos'),
         order_type=pulumi.get(__ret__, 'order_type'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_instance_class_infos)
 def get_instance_class_infos_output(commodity_code: Optional[pulumi.Input[str]] = None,
                                     db_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     infos: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict']]]]] = None,
@@ -214,4 +216,19 @@ def get_instance_class_infos_output(commodity_code: Optional[pulumi.Input[str]] 
            
            > **NOTE**: If you use the CommodityCode parameter to query the instance types that are available to read-only instances, you must specify the DBInstanceId parameter.
     """
-    ...
+    __args__ = dict()
+    __args__['commodityCode'] = commodity_code
+    __args__['dbInstanceId'] = db_instance_id
+    __args__['infos'] = infos
+    __args__['orderType'] = order_type
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getInstanceClassInfos:getInstanceClassInfos', __args__, opts=opts, typ=GetInstanceClassInfosResult)
+    return __ret__.apply(lambda __response__: GetInstanceClassInfosResult(
+        commodity_code=pulumi.get(__response__, 'commodity_code'),
+        db_instance_id=pulumi.get(__response__, 'db_instance_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        infos=pulumi.get(__response__, 'infos'),
+        order_type=pulumi.get(__response__, 'order_type'),
+        output_file=pulumi.get(__response__, 'output_file')))

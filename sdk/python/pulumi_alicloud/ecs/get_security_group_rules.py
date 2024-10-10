@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -210,9 +215,6 @@ def get_security_group_rules(direction: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policy=pulumi.get(__ret__, 'policy'),
         rules=pulumi.get(__ret__, 'rules'))
-
-
-@_utilities.lift_output_func(get_security_group_rules)
 def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[str]]] = None,
                                     group_id: Optional[pulumi.Input[str]] = None,
                                     ip_protocol: Optional[pulumi.Input[Optional[str]]] = None,
@@ -255,4 +257,23 @@ def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[st
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy: Authorization policy. Can be either `accept` or `drop`. The default value is `accept`.
     """
-    ...
+    __args__ = dict()
+    __args__['direction'] = direction
+    __args__['groupId'] = group_id
+    __args__['ipProtocol'] = ip_protocol
+    __args__['nicType'] = nic_type
+    __args__['outputFile'] = output_file
+    __args__['policy'] = policy
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules', __args__, opts=opts, typ=GetSecurityGroupRulesResult)
+    return __ret__.apply(lambda __response__: GetSecurityGroupRulesResult(
+        direction=pulumi.get(__response__, 'direction'),
+        group_desc=pulumi.get(__response__, 'group_desc'),
+        group_id=pulumi.get(__response__, 'group_id'),
+        group_name=pulumi.get(__response__, 'group_name'),
+        id=pulumi.get(__response__, 'id'),
+        ip_protocol=pulumi.get(__response__, 'ip_protocol'),
+        nic_type=pulumi.get(__response__, 'nic_type'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policy=pulumi.get(__response__, 'policy'),
+        rules=pulumi.get(__response__, 'rules')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -106,9 +111,6 @@ def get_bandwidth_limits(instance_ids: Optional[Sequence[str]] = None,
         instance_ids=pulumi.get(__ret__, 'instance_ids'),
         limits=pulumi.get(__ret__, 'limits'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_bandwidth_limits)
 def get_bandwidth_limits_output(instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBandwidthLimitsResult]:
@@ -129,4 +131,13 @@ def get_bandwidth_limits_output(instance_ids: Optional[pulumi.Input[Optional[Seq
     :param Sequence[str] instance_ids: A list of CEN instances IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['instanceIds'] = instance_ids
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getBandwidthLimits:getBandwidthLimits', __args__, opts=opts, typ=GetBandwidthLimitsResult)
+    return __ret__.apply(lambda __response__: GetBandwidthLimitsResult(
+        id=pulumi.get(__response__, 'id'),
+        instance_ids=pulumi.get(__response__, 'instance_ids'),
+        limits=pulumi.get(__response__, 'limits'),
+        output_file=pulumi.get(__response__, 'output_file')))

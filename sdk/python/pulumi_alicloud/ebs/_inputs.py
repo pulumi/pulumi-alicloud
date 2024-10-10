@@ -4,21 +4,49 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs',
+    'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict',
     'EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs',
+    'EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict',
     'EnterpriseSnapshotPolicyRetainRuleArgs',
+    'EnterpriseSnapshotPolicyRetainRuleArgsDict',
     'EnterpriseSnapshotPolicyScheduleArgs',
+    'EnterpriseSnapshotPolicyScheduleArgsDict',
     'EnterpriseSnapshotPolicySpecialRetainRulesArgs',
+    'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict',
     'EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs',
+    'EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict',
     'EnterpriseSnapshotPolicyStorageRuleArgs',
+    'EnterpriseSnapshotPolicyStorageRuleArgsDict',
     'SolutionInstanceParameterArgs',
+    'SolutionInstanceParameterArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Enable Snapshot replication.
+        """
+        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict']]]]
+        """
+        Destination region for Snapshot replication. See `regions` below.
+        """
+elif False:
+    EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs:
@@ -59,6 +87,19 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs:
         pulumi.set(self, "regions", value)
 
 
+if not MYPY:
+    class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict(TypedDict):
+        region_id: NotRequired[pulumi.Input[str]]
+        """
+        Destination region ID.
+        """
+        retain_days: NotRequired[pulumi.Input[int]]
+        """
+        Number of days of snapshot retention for replication.
+        """
+elif False:
+    EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs:
     def __init__(__self__, *,
@@ -97,6 +138,23 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs:
     def retain_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "retain_days", value)
 
+
+if not MYPY:
+    class EnterpriseSnapshotPolicyRetainRuleArgsDict(TypedDict):
+        number: NotRequired[pulumi.Input[int]]
+        """
+        Retention based on counting method.
+        """
+        time_interval: NotRequired[pulumi.Input[int]]
+        """
+        Time unit.
+        """
+        time_unit: NotRequired[pulumi.Input[str]]
+        """
+        Time-based retention.
+        """
+elif False:
+    EnterpriseSnapshotPolicyRetainRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicyRetainRuleArgs:
@@ -153,6 +211,15 @@ class EnterpriseSnapshotPolicyRetainRuleArgs:
         pulumi.set(self, "time_unit", value)
 
 
+if not MYPY:
+    class EnterpriseSnapshotPolicyScheduleArgsDict(TypedDict):
+        cron_expression: pulumi.Input[str]
+        """
+        CronTab expression.
+        """
+elif False:
+    EnterpriseSnapshotPolicyScheduleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EnterpriseSnapshotPolicyScheduleArgs:
     def __init__(__self__, *,
@@ -174,6 +241,21 @@ class EnterpriseSnapshotPolicyScheduleArgs:
     def cron_expression(self, value: pulumi.Input[str]):
         pulumi.set(self, "cron_expression", value)
 
+
+if not MYPY:
+    class EnterpriseSnapshotPolicySpecialRetainRulesArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether special reservations are enabled. Value range:
+        - true
+        - false.
+        """
+        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict']]]]
+        """
+        List of special retention rules. See `rules` below.
+        """
+elif False:
+    EnterpriseSnapshotPolicySpecialRetainRulesArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicySpecialRetainRulesArgs:
@@ -217,6 +299,20 @@ class EnterpriseSnapshotPolicySpecialRetainRulesArgs:
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
+
+if not MYPY:
+    class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict(TypedDict):
+        special_period_unit: NotRequired[pulumi.Input[str]]
+        """
+        The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
+        - WEEKS
+        - MONTHS
+        - YEARS.
+        """
+        time_interval: NotRequired[pulumi.Input[int]]
+        time_unit: NotRequired[pulumi.Input[str]]
+elif False:
+    EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs:
@@ -271,6 +367,15 @@ class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs:
         pulumi.set(self, "time_unit", value)
 
 
+if not MYPY:
+    class EnterpriseSnapshotPolicyStorageRuleArgsDict(TypedDict):
+        enable_immediate_access: NotRequired[pulumi.Input[bool]]
+        """
+        Snapshot speed available.
+        """
+elif False:
+    EnterpriseSnapshotPolicyStorageRuleArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class EnterpriseSnapshotPolicyStorageRuleArgs:
     def __init__(__self__, *,
@@ -293,6 +398,19 @@ class EnterpriseSnapshotPolicyStorageRuleArgs:
     def enable_immediate_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_immediate_access", value)
 
+
+if not MYPY:
+    class SolutionInstanceParameterArgsDict(TypedDict):
+        parameter_key: pulumi.Input[str]
+        """
+        Create parameter Key.
+        """
+        parameter_value: pulumi.Input[str]
+        """
+        Create parameter Value.
+        """
+elif False:
+    SolutionInstanceParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SolutionInstanceParameterArgs:

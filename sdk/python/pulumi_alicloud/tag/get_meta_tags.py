@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -107,9 +112,6 @@ def get_meta_tags(key_name: Optional[str] = None,
         key_name=pulumi.get(__ret__, 'key_name'),
         output_file=pulumi.get(__ret__, 'output_file'),
         tags=pulumi.get(__ret__, 'tags'))
-
-
-@_utilities.lift_output_func(get_meta_tags)
 def get_meta_tags_output(key_name: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetaTagsResult]:
@@ -134,4 +136,13 @@ def get_meta_tags_output(key_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param str key_name: The name of the key.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['keyName'] = key_name
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:tag/getMetaTags:getMetaTags', __args__, opts=opts, typ=GetMetaTagsResult)
+    return __ret__.apply(lambda __response__: GetMetaTagsResult(
+        id=pulumi.get(__response__, 'id'),
+        key_name=pulumi.get(__response__, 'key_name'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        tags=pulumi.get(__response__, 'tags')))

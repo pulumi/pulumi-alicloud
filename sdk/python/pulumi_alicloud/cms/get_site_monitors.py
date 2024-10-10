@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -177,9 +182,6 @@ def get_site_monitors(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         task_id=pulumi.get(__ret__, 'task_id'),
         task_type=pulumi.get(__ret__, 'task_type'))
-
-
-@_utilities.lift_output_func(get_site_monitors)
 def get_site_monitors_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              task_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -240,4 +242,17 @@ def get_site_monitors_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     :param str task_id: Task ID.
     :param str task_type: Task Type.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['taskId'] = task_id
+    __args__['taskType'] = task_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getSiteMonitors:getSiteMonitors', __args__, opts=opts, typ=GetSiteMonitorsResult)
+    return __ret__.apply(lambda __response__: GetSiteMonitorsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        monitors=pulumi.get(__response__, 'monitors'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        task_id=pulumi.get(__response__, 'task_id'),
+        task_type=pulumi.get(__response__, 'task_type')))

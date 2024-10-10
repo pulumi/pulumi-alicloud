@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := cloudfirewall.GetInstances(ctx, nil, nil)
+//			ids, err := cloudfirewall.GetInstances(ctx, &cloudfirewall.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

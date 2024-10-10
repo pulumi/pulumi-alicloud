@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -239,9 +244,6 @@ def get_applications(app_name: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         reverse=pulumi.get(__ret__, 'reverse'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_applications)
 def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = None,
                             enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                             field_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -310,4 +312,29 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
     :param bool reverse: The reverse.
     :param str status: The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
     """
-    ...
+    __args__ = dict()
+    __args__['appName'] = app_name
+    __args__['enableDetails'] = enable_details
+    __args__['fieldType'] = field_type
+    __args__['fieldValue'] = field_value
+    __args__['ids'] = ids
+    __args__['namespaceId'] = namespace_id
+    __args__['orderBy'] = order_by
+    __args__['outputFile'] = output_file
+    __args__['reverse'] = reverse
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:sae/getApplications:getApplications', __args__, opts=opts, typ=GetApplicationsResult)
+    return __ret__.apply(lambda __response__: GetApplicationsResult(
+        app_name=pulumi.get(__response__, 'app_name'),
+        applications=pulumi.get(__response__, 'applications'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        field_type=pulumi.get(__response__, 'field_type'),
+        field_value=pulumi.get(__response__, 'field_value'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        namespace_id=pulumi.get(__response__, 'namespace_id'),
+        order_by=pulumi.get(__response__, 'order_by'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        reverse=pulumi.get(__response__, 'reverse'),
+        status=pulumi.get(__response__, 'status')))

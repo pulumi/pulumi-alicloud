@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -171,9 +176,6 @@ def get_snapshots(file_system_id: Optional[str] = None,
         snapshot_name=pulumi.get(__ret__, 'snapshot_name'),
         snapshots=pulumi.get(__ret__, 'snapshots'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_snapshots)
 def get_snapshots_output(file_system_id: Optional[pulumi.Input[Optional[str]]] = None,
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -208,4 +210,22 @@ def get_snapshots_output(file_system_id: Optional[pulumi.Input[Optional[str]]] =
     :param str snapshot_name: The name of the snapshot.
     :param str status: Status. Valid values: `accomplished`, `failed`, `progressing`.
     """
-    ...
+    __args__ = dict()
+    __args__['fileSystemId'] = file_system_id
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['snapshotName'] = snapshot_name
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult)
+    return __ret__.apply(lambda __response__: GetSnapshotsResult(
+        file_system_id=pulumi.get(__response__, 'file_system_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        snapshot_name=pulumi.get(__response__, 'snapshot_name'),
+        snapshots=pulumi.get(__response__, 'snapshots'),
+        status=pulumi.get(__response__, 'status')))

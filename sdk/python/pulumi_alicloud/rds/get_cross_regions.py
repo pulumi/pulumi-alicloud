@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -106,9 +111,6 @@ def get_cross_regions(output_file: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         regions=pulumi.get(__ret__, 'regions'))
-
-
-@_utilities.lift_output_func(get_cross_regions)
 def get_cross_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCrossRegionsResult]:
     """
@@ -127,4 +129,12 @@ def get_cross_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] 
     pulumi.export("firstRdsCrossRegions", regions["ids"])
     ```
     """
-    ...
+    __args__ = dict()
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getCrossRegions:getCrossRegions', __args__, opts=opts, typ=GetCrossRegionsResult)
+    return __ret__.apply(lambda __response__: GetCrossRegionsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        regions=pulumi.get(__response__, 'regions')))

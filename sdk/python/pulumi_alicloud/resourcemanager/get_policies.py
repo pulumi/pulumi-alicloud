@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -143,9 +148,6 @@ def get_policies(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'),
         policy_type=pulumi.get(__ret__, 'policy_type'))
-
-
-@_utilities.lift_output_func(get_policies)
 def get_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -162,4 +164,18 @@ def get_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str policy_type: The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['policyType'] = policy_type
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getPolicies:getPolicies', __args__, opts=opts, typ=GetPoliciesResult)
+    return __ret__.apply(lambda __response__: GetPoliciesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policies=pulumi.get(__response__, 'policies'),
+        policy_type=pulumi.get(__response__, 'policy_type')))

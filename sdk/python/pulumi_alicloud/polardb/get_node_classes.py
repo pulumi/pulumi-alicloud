@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -195,9 +200,6 @@ def get_node_classes(category: Optional[str] = None,
         pay_type=pulumi.get(__ret__, 'pay_type'),
         region_id=pulumi.get(__ret__, 'region_id'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-
-
-@_utilities.lift_output_func(get_node_classes)
 def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                             db_node_class: Optional[pulumi.Input[Optional[str]]] = None,
                             db_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -235,4 +237,25 @@ def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = No
     :param str region_id: The Region to launch the PolarDB cluster.
     :param str zone_id: The Zone to launch the PolarDB cluster.
     """
-    ...
+    __args__ = dict()
+    __args__['category'] = category
+    __args__['dbNodeClass'] = db_node_class
+    __args__['dbType'] = db_type
+    __args__['dbVersion'] = db_version
+    __args__['outputFile'] = output_file
+    __args__['payType'] = pay_type
+    __args__['regionId'] = region_id
+    __args__['zoneId'] = zone_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:polardb/getNodeClasses:getNodeClasses', __args__, opts=opts, typ=GetNodeClassesResult)
+    return __ret__.apply(lambda __response__: GetNodeClassesResult(
+        category=pulumi.get(__response__, 'category'),
+        classes=pulumi.get(__response__, 'classes'),
+        db_node_class=pulumi.get(__response__, 'db_node_class'),
+        db_type=pulumi.get(__response__, 'db_type'),
+        db_version=pulumi.get(__response__, 'db_version'),
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        pay_type=pulumi.get(__response__, 'pay_type'),
+        region_id=pulumi.get(__response__, 'region_id'),
+        zone_id=pulumi.get(__response__, 'zone_id')))

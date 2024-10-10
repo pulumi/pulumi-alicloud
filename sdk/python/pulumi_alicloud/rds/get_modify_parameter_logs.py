@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -134,9 +139,6 @@ def get_modify_parameter_logs(db_instance_id: Optional[str] = None,
         logs=pulumi.get(__ret__, 'logs'),
         output_file=pulumi.get(__ret__, 'output_file'),
         start_time=pulumi.get(__ret__, 'start_time'))
-
-
-@_utilities.lift_output_func(get_modify_parameter_logs)
 def get_modify_parameter_logs_output(db_instance_id: Optional[pulumi.Input[str]] = None,
                                      end_time: Optional[pulumi.Input[str]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -166,4 +168,17 @@ def get_modify_parameter_logs_output(db_instance_id: Optional[pulumi.Input[str]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str start_time: The start time.
     """
-    ...
+    __args__ = dict()
+    __args__['dbInstanceId'] = db_instance_id
+    __args__['endTime'] = end_time
+    __args__['outputFile'] = output_file
+    __args__['startTime'] = start_time
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getModifyParameterLogs:getModifyParameterLogs', __args__, opts=opts, typ=GetModifyParameterLogsResult)
+    return __ret__.apply(lambda __response__: GetModifyParameterLogsResult(
+        db_instance_id=pulumi.get(__response__, 'db_instance_id'),
+        end_time=pulumi.get(__response__, 'end_time'),
+        id=pulumi.get(__response__, 'id'),
+        logs=pulumi.get(__response__, 'logs'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        start_time=pulumi.get(__response__, 'start_time')))

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -155,9 +160,6 @@ def get_cluster_credential(cluster_id: Optional[str] = None,
         kube_config=pulumi.get(__ret__, 'kube_config'),
         output_file=pulumi.get(__ret__, 'output_file'),
         temporary_duration_minutes=pulumi.get(__ret__, 'temporary_duration_minutes'))
-
-
-@_utilities.lift_output_func(get_cluster_credential)
 def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   temporary_duration_minutes: Optional[pulumi.Input[Optional[int]]] = None,
@@ -174,4 +176,18 @@ def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[str]] = None
     :param str output_file: File name where to save the returned KubeConfig (after running `pulumi preview`).
     :param int temporary_duration_minutes: Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
     """
-    ...
+    __args__ = dict()
+    __args__['clusterId'] = cluster_id
+    __args__['outputFile'] = output_file
+    __args__['temporaryDurationMinutes'] = temporary_duration_minutes
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getClusterCredential:getClusterCredential', __args__, opts=opts, typ=GetClusterCredentialResult)
+    return __ret__.apply(lambda __response__: GetClusterCredentialResult(
+        certificate_authority=pulumi.get(__response__, 'certificate_authority'),
+        cluster_id=pulumi.get(__response__, 'cluster_id'),
+        cluster_name=pulumi.get(__response__, 'cluster_name'),
+        expiration=pulumi.get(__response__, 'expiration'),
+        id=pulumi.get(__response__, 'id'),
+        kube_config=pulumi.get(__response__, 'kube_config'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        temporary_duration_minutes=pulumi.get(__response__, 'temporary_duration_minutes')))

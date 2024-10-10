@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -202,9 +207,6 @@ def get_cross_region_backups(backup_id: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         start_time=pulumi.get(__ret__, 'start_time'))
-
-
-@_utilities.lift_output_func(get_cross_region_backups)
 def get_cross_region_backups_output(backup_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     cross_backup_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     cross_backup_region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -247,4 +249,27 @@ def get_cross_region_backups_output(backup_id: Optional[pulumi.Input[Optional[st
     :param str resource_group_id: The ID of the resource group.
     :param str start_time: The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
     """
-    ...
+    __args__ = dict()
+    __args__['backupId'] = backup_id
+    __args__['crossBackupId'] = cross_backup_id
+    __args__['crossBackupRegion'] = cross_backup_region
+    __args__['dbInstanceId'] = db_instance_id
+    __args__['endTime'] = end_time
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['resourceGroupId'] = resource_group_id
+    __args__['startTime'] = start_time
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getCrossRegionBackups:getCrossRegionBackups', __args__, opts=opts, typ=GetCrossRegionBackupsResult)
+    return __ret__.apply(lambda __response__: GetCrossRegionBackupsResult(
+        backup_id=pulumi.get(__response__, 'backup_id'),
+        backups=pulumi.get(__response__, 'backups'),
+        cross_backup_id=pulumi.get(__response__, 'cross_backup_id'),
+        cross_backup_region=pulumi.get(__response__, 'cross_backup_region'),
+        db_instance_id=pulumi.get(__response__, 'db_instance_id'),
+        end_time=pulumi.get(__response__, 'end_time'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        resource_group_id=pulumi.get(__response__, 'resource_group_id'),
+        start_time=pulumi.get(__response__, 'start_time')))

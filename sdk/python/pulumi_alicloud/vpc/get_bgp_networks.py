@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -137,9 +142,6 @@ def get_bgp_networks(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         router_id=pulumi.get(__ret__, 'router_id'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_bgp_networks)
 def get_bgp_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             router_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -172,4 +174,17 @@ def get_bgp_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     :param str router_id: The ID of the router to which the route table belongs.
     :param str status: The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['routerId'] = router_id
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getBgpNetworks:getBgpNetworks', __args__, opts=opts, typ=GetBgpNetworksResult)
+    return __ret__.apply(lambda __response__: GetBgpNetworksResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        networks=pulumi.get(__response__, 'networks'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        router_id=pulumi.get(__response__, 'router_id'),
+        status=pulumi.get(__response__, 'status')))

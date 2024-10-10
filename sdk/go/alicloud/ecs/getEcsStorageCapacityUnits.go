@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := ecs.GetEcsStorageCapacityUnits(ctx, nil, nil)
+//			ids, err := ecs.GetEcsStorageCapacityUnits(ctx, &ecs.GetEcsStorageCapacityUnitsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

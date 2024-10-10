@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -244,9 +249,6 @@ def get_traffic_mirror_sessions(enabled: Optional[bool] = None,
         traffic_mirror_session_name=pulumi.get(__ret__, 'traffic_mirror_session_name'),
         traffic_mirror_source_id=pulumi.get(__ret__, 'traffic_mirror_source_id'),
         traffic_mirror_target_id=pulumi.get(__ret__, 'traffic_mirror_target_id'))
-
-
-@_utilities.lift_output_func(get_traffic_mirror_sessions)
 def get_traffic_mirror_sessions_output(enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -310,4 +312,30 @@ def get_traffic_mirror_sessions_output(enabled: Optional[pulumi.Input[Optional[b
     :param str traffic_mirror_source_id: The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source.
     :param str traffic_mirror_target_id: The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
     """
-    ...
+    __args__ = dict()
+    __args__['enabled'] = enabled
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['priority'] = priority
+    __args__['status'] = status
+    __args__['trafficMirrorFilterId'] = traffic_mirror_filter_id
+    __args__['trafficMirrorSessionName'] = traffic_mirror_session_name
+    __args__['trafficMirrorSourceId'] = traffic_mirror_source_id
+    __args__['trafficMirrorTargetId'] = traffic_mirror_target_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions', __args__, opts=opts, typ=GetTrafficMirrorSessionsResult)
+    return __ret__.apply(lambda __response__: GetTrafficMirrorSessionsResult(
+        enabled=pulumi.get(__response__, 'enabled'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        priority=pulumi.get(__response__, 'priority'),
+        sessions=pulumi.get(__response__, 'sessions'),
+        status=pulumi.get(__response__, 'status'),
+        traffic_mirror_filter_id=pulumi.get(__response__, 'traffic_mirror_filter_id'),
+        traffic_mirror_session_name=pulumi.get(__response__, 'traffic_mirror_session_name'),
+        traffic_mirror_source_id=pulumi.get(__response__, 'traffic_mirror_source_id'),
+        traffic_mirror_target_id=pulumi.get(__response__, 'traffic_mirror_target_id')))

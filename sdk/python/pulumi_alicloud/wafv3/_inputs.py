@@ -4,16 +4,105 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'DomainListenArgs',
+    'DomainListenArgsDict',
     'DomainRedirectArgs',
+    'DomainRedirectArgsDict',
     'DomainRedirectRequestHeaderArgs',
+    'DomainRedirectRequestHeaderArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class DomainListenArgsDict(TypedDict):
+        cert_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the certificate to be added. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol).
+        """
+        cipher_suite: NotRequired[pulumi.Input[int]]
+        """
+        The type of encryption suite to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+        - **1**: indicates that all encryption suites are added.
+        - **2**: indicates that a strong encryption package is added. You can select this value only if the value of **tls_version** is `tlsv1.2`.
+        - **99**: indicates that a custom encryption suite is added.
+        """
+        custom_ciphers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The specific custom encryption suite to add.
+        """
+        enable_tlsv3: NotRequired[pulumi.Input[bool]]
+        """
+        Whether TSL1.3 version is supported. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+        - **true**: indicates that TSL1.3 is supported.
+        - **false**: indicates that TSL1.3 is not supported.
+        """
+        exclusive_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable exclusive IP address. This parameter is used only when the value of **ipv6_enabled** is **false** (indicating that IPv6 is not enabled) and the value of **protection_resource** is **share** (indicating that a shared cluster is used). Value:
+        - **true**: indicates that the exclusive IP address is enabled.
+        - **false** (default): indicates that exclusive IP address is not enabled.
+        """
+        focus_https: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable the forced jump of HTTPS. This parameter is used only when the value of `https_ports` is not empty (indicating that the domain name uses HTTPS protocol) and the value of httports is empty (indicating that the domain name does not use HTTP protocol). Value:
+        - **true**: indicates that HTTPS forced redirection is enabled.
+        - **false**: indicates that HTTPS forced redirection is not enabled.
+        """
+        http2_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to turn on http2. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+        - **true:** indicates that HTTP2 is enabled.
+        - **false** (default): indicates that HTTP2 is not enabled.
+        """
+        http_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        The listening port of the HTTP protocol.
+        """
+        https_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[int]]]]
+        """
+        The listening port of the HTTPS protocol.
+        """
+        ipv6_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether IPv6 is turned on. Value:
+        - **true**: indicates that IPv6 is enabled.
+        - **false** (default): indicates that IPv6 is not enabled.
+        """
+        protection_resource: NotRequired[pulumi.Input[str]]
+        """
+        The type of protection resource to use. Value:
+        - **share** (default): indicates that a shared cluster is used.
+        - **gslb**: indicates that the shared cluster intelligent load balancing is used.
+        """
+        tls_version: NotRequired[pulumi.Input[str]]
+        """
+        The version of TLS to add. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value: **tlsv1**, **tlsv1.1**, **tlsv1.2**.
+        """
+        xff_header_mode: NotRequired[pulumi.Input[int]]
+        """
+        WAF obtains the real IP address of the client. Value:
+        - **0** (default): indicates that the client has not forwarded the traffic to WAF through other layer -7 agents.
+        - **1**: indicates that the first value of the X-Forwarded-For(XFF) field in the WAF read request header is used as the client IP address.
+        - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
+        """
+        xff_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Set the list of custom fields used to obtain the client IP address.
+        """
+elif False:
+    DomainListenArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainListenArgs:
@@ -282,6 +371,77 @@ class DomainListenArgs:
         pulumi.set(self, "xff_headers", value)
 
 
+if not MYPY:
+    class DomainRedirectArgsDict(TypedDict):
+        loadbalance: pulumi.Input[str]
+        """
+        The load balancing algorithm used when returning to the source. Value:
+        - **iphash**: indicates the IPHash algorithm.
+        - **roundRobin**: indicates the polling algorithm.
+        - **leastTime**: indicates the Least Time algorithm.
+        - This value can be selected only if the value of **protection_resource** is **gslb** (indicating that the protected resource type uses shared cluster intelligent load balancing).
+        """
+        backends: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The IP address of the origin server corresponding to the domain name or the back-to-origin domain name of the server.
+        """
+        connect_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Connection timeout. Unit: seconds, value range: 5~120.
+        """
+        focus_http_backend: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable forced HTTP back-to-origin. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+        - **true**: indicates that forced HTTP back-to-origin is enabled.
+        - **false**: indicates that forced HTTP back-to-origin is not enabled.
+        """
+        keepalive: NotRequired[pulumi.Input[bool]]
+        """
+        Open long connection, default true.
+        """
+        keepalive_requests: NotRequired[pulumi.Input[int]]
+        """
+        Number of long connections,  default: `60`. range :60-1000.
+        """
+        keepalive_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Long connection over time, default: `15`. Range: 1-60.
+        """
+        read_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
+        """
+        request_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgsDict']]]]
+        """
+        The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
+        It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
+        and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+        when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
+        to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
+        custom header field already exists in the request, the system will overwrite the value of the custom field in the
+        request with the set traffic tag value. See `request_headers` below.
+        """
+        retry: NotRequired[pulumi.Input[bool]]
+        """
+        Back to Source Retry. default: true, retry 3 times by default.
+        """
+        sni_enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable back-to-source SNI. This parameter is used only if the value of **https_ports** is not empty (indicating that the domain name uses the HTTPS protocol). Value:
+        - **true**: indicates that the back-to-source SNI is enabled.
+        - **false** (default) indicates that the back-to-source SNI is not enabled.
+        """
+        sni_host: NotRequired[pulumi.Input[str]]
+        """
+        Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
+        """
+        write_timeout: NotRequired[pulumi.Input[int]]
+        """
+        Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
+        """
+elif False:
+    DomainRedirectArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class DomainRedirectArgs:
     def __init__(__self__, *,
@@ -523,6 +683,19 @@ class DomainRedirectArgs:
     def write_timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "write_timeout", value)
 
+
+if not MYPY:
+    class DomainRedirectRequestHeaderArgsDict(TypedDict):
+        key: NotRequired[pulumi.Input[str]]
+        """
+        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
+        """
+elif False:
+    DomainRedirectRequestHeaderArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class DomainRedirectRequestHeaderArgs:

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := nlb.GetServerGroups(ctx, nil, nil)
+//			ids, err := nlb.GetServerGroups(ctx, &nlb.GetServerGroupsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

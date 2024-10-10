@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -291,9 +296,6 @@ def get_forward_entries(external_ip: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_forward_entries)
 def get_forward_entries_output(external_ip: Optional[pulumi.Input[Optional[str]]] = None,
                                external_port: Optional[pulumi.Input[Optional[str]]] = None,
                                forward_entry_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -363,4 +365,32 @@ def get_forward_entries_output(external_ip: Optional[pulumi.Input[Optional[str]]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
     """
-    ...
+    __args__ = dict()
+    __args__['externalIp'] = external_ip
+    __args__['externalPort'] = external_port
+    __args__['forwardEntryName'] = forward_entry_name
+    __args__['forwardTableId'] = forward_table_id
+    __args__['ids'] = ids
+    __args__['internalIp'] = internal_ip
+    __args__['internalPort'] = internal_port
+    __args__['ipProtocol'] = ip_protocol
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getForwardEntries:getForwardEntries', __args__, opts=opts, typ=GetForwardEntriesResult)
+    return __ret__.apply(lambda __response__: GetForwardEntriesResult(
+        entries=pulumi.get(__response__, 'entries'),
+        external_ip=pulumi.get(__response__, 'external_ip'),
+        external_port=pulumi.get(__response__, 'external_port'),
+        forward_entry_name=pulumi.get(__response__, 'forward_entry_name'),
+        forward_table_id=pulumi.get(__response__, 'forward_table_id'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        internal_ip=pulumi.get(__response__, 'internal_ip'),
+        internal_port=pulumi.get(__response__, 'internal_port'),
+        ip_protocol=pulumi.get(__response__, 'ip_protocol'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

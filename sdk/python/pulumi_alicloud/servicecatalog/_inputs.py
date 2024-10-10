@@ -4,15 +4,41 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'ProvisionedProductOutputArgs',
+    'ProvisionedProductOutputArgsDict',
     'ProvisionedProductParameterArgs',
+    'ProvisionedProductParameterArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class ProvisionedProductOutputArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Description of the output value defined in the template.
+        """
+        output_key: NotRequired[pulumi.Input[str]]
+        """
+        The name of the output value defined in the template.
+        """
+        output_value: NotRequired[pulumi.Input[str]]
+        """
+        The content of the output value defined in the template.
+        """
+elif False:
+    ProvisionedProductOutputArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProvisionedProductOutputArgs:
@@ -68,6 +94,19 @@ class ProvisionedProductOutputArgs:
     def output_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "output_value", value)
 
+
+if not MYPY:
+    class ProvisionedProductParameterArgsDict(TypedDict):
+        parameter_key: NotRequired[pulumi.Input[str]]
+        """
+        The name of the parameter defined in the template.
+        """
+        parameter_value: NotRequired[pulumi.Input[str]]
+        """
+        The Template parameter value entered by the user.
+        """
+elif False:
+    ProvisionedProductParameterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ProvisionedProductParameterArgs:

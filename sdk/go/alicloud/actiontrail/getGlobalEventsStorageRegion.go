@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := actiontrail.LookupGlobalEventsStorageRegion(ctx, nil, nil)
+//			_default, err := actiontrail.LookupGlobalEventsStorageRegion(ctx, map[string]interface{}{}, nil)
 //			if err != nil {
 //				return err
 //			}

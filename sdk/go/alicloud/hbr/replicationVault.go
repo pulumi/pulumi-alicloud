@@ -43,7 +43,7 @@ import (
 //			if param := cfg.Get("sourceRegion"); param != "" {
 //				sourceRegion = param
 //			}
-//			_, err := hbr.GetReplicationVaultRegions(ctx, nil, nil)
+//			_, err := hbr.GetReplicationVaultRegions(ctx, &hbr.GetReplicationVaultRegionsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

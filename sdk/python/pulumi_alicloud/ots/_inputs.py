@@ -4,21 +4,53 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'SearchIndexSchemaArgs',
+    'SearchIndexSchemaArgsDict',
     'SearchIndexSchemaFieldSchemaArgs',
+    'SearchIndexSchemaFieldSchemaArgsDict',
     'SearchIndexSchemaIndexSettingArgs',
+    'SearchIndexSchemaIndexSettingArgsDict',
     'SearchIndexSchemaIndexSortArgs',
+    'SearchIndexSchemaIndexSortArgsDict',
     'SearchIndexSchemaIndexSortSorterArgs',
+    'SearchIndexSchemaIndexSortSorterArgsDict',
     'TableDefinedColumnArgs',
+    'TableDefinedColumnArgsDict',
     'TablePrimaryKeyArgs',
+    'TablePrimaryKeyArgsDict',
     'TunnelChannelArgs',
+    'TunnelChannelArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class SearchIndexSchemaArgsDict(TypedDict):
+        field_schemas: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaFieldSchemaArgsDict']]]
+        """
+        A list of field schemas. See `field_schema` below.
+        """
+        index_settings: NotRequired[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSettingArgsDict']]]]
+        """
+        The settings of the search index, including routingFields. See `index_setting` below.
+        """
+        index_sorts: NotRequired[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortArgsDict']]]]
+        """
+        The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
+        """
+elif False:
+    SearchIndexSchemaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SearchIndexSchemaArgs:
@@ -73,6 +105,39 @@ class SearchIndexSchemaArgs:
     def index_sorts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortArgs']]]]):
         pulumi.set(self, "index_sorts", value)
 
+
+if not MYPY:
+    class SearchIndexSchemaFieldSchemaArgsDict(TypedDict):
+        field_name: pulumi.Input[str]
+        """
+        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        """
+        field_type: pulumi.Input[str]
+        """
+        Specifies the type of the field. Use FieldType.XXX to set the type.
+        """
+        analyzer: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
+        """
+        enable_sort_and_agg: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
+        """
+        index: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to enable indexing for the column. Type: Boolean.
+        """
+        is_array: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether the value is an array. Type: Boolean.
+        """
+        store: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
+        """
+elif False:
+    SearchIndexSchemaFieldSchemaArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SearchIndexSchemaFieldSchemaArgs:
@@ -191,6 +256,15 @@ class SearchIndexSchemaFieldSchemaArgs:
         pulumi.set(self, "store", value)
 
 
+if not MYPY:
+    class SearchIndexSchemaIndexSettingArgsDict(TypedDict):
+        routing_fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
+        """
+elif False:
+    SearchIndexSchemaIndexSettingArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SearchIndexSchemaIndexSettingArgs:
     def __init__(__self__, *,
@@ -214,6 +288,15 @@ class SearchIndexSchemaIndexSettingArgs:
         pulumi.set(self, "routing_fields", value)
 
 
+if not MYPY:
+    class SearchIndexSchemaIndexSortArgsDict(TypedDict):
+        sorters: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortSorterArgsDict']]]
+        """
+        Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
+        """
+elif False:
+    SearchIndexSchemaIndexSortArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class SearchIndexSchemaIndexSortArgs:
     def __init__(__self__, *,
@@ -235,6 +318,27 @@ class SearchIndexSchemaIndexSortArgs:
     def sorters(self, value: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortSorterArgs']]]):
         pulumi.set(self, "sorters", value)
 
+
+if not MYPY:
+    class SearchIndexSchemaIndexSortSorterArgsDict(TypedDict):
+        field_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
+        """
+        mode: NotRequired[pulumi.Input[str]]
+        """
+        The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
+        """
+        order: NotRequired[pulumi.Input[str]]
+        """
+        The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
+        """
+        sorter_type: NotRequired[pulumi.Input[str]]
+        """
+        Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
+        """
+elif False:
+    SearchIndexSchemaIndexSortSorterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class SearchIndexSchemaIndexSortSorterArgs:
@@ -307,6 +411,19 @@ class SearchIndexSchemaIndexSortSorterArgs:
         pulumi.set(self, "sorter_type", value)
 
 
+if not MYPY:
+    class TableDefinedColumnArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name for defined column.
+        """
+        type: pulumi.Input[str]
+        """
+        Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
+        """
+elif False:
+    TableDefinedColumnArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TableDefinedColumnArgs:
     def __init__(__self__, *,
@@ -344,6 +461,19 @@ class TableDefinedColumnArgs:
         pulumi.set(self, "type", value)
 
 
+if not MYPY:
+    class TablePrimaryKeyArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        Name for primary key.
+        """
+        type: pulumi.Input[str]
+        """
+        Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
+        """
+elif False:
+    TablePrimaryKeyArgsDict: TypeAlias = Mapping[str, Any]
+
 @pulumi.input_type
 class TablePrimaryKeyArgs:
     def __init__(__self__, *,
@@ -380,6 +510,31 @@ class TablePrimaryKeyArgs:
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
 
+
+if not MYPY:
+    class TunnelChannelArgsDict(TypedDict):
+        channel_id: NotRequired[pulumi.Input[str]]
+        """
+        The id of the channel.
+        """
+        channel_rpo: NotRequired[pulumi.Input[int]]
+        """
+        The latest consumption time of the channel, unix time in nanosecond.
+        """
+        channel_status: NotRequired[pulumi.Input[str]]
+        """
+        The status of the channel, valid values: `WAIT`, `OPEN`, `CLOSING`, `CLOSE`, `TERMINATED`.
+        """
+        channel_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the channel, valid values: `BaseData`, `Stream`.
+        """
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The client id of the channel.
+        """
+elif False:
+    TunnelChannelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TunnelChannelArgs:

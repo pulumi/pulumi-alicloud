@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -183,9 +188,6 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
         services=pulumi.get(__ret__, 'services'),
         status=pulumi.get(__ret__, 'status'),
         vpc_endpoint_service_name=pulumi.get(__ret__, 'vpc_endpoint_service_name'))
-
-
-@_utilities.lift_output_func(get_vpc_endpoint_services)
 def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Input[Optional[bool]]] = None,
                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -221,4 +223,24 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
     :param str status: The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
     :param str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
     """
-    ...
+    __args__ = dict()
+    __args__['autoAcceptConnection'] = auto_accept_connection
+    __args__['ids'] = ids
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['serviceBusinessStatus'] = service_business_status
+    __args__['status'] = status
+    __args__['vpcEndpointServiceName'] = vpc_endpoint_service_name
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices', __args__, opts=opts, typ=GetVpcEndpointServicesResult)
+    return __ret__.apply(lambda __response__: GetVpcEndpointServicesResult(
+        auto_accept_connection=pulumi.get(__response__, 'auto_accept_connection'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        service_business_status=pulumi.get(__response__, 'service_business_status'),
+        services=pulumi.get(__response__, 'services'),
+        status=pulumi.get(__response__, 'status'),
+        vpc_endpoint_service_name=pulumi.get(__response__, 'vpc_endpoint_service_name')))

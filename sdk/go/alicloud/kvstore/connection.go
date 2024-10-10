@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := kvstore.GetZones(ctx, nil, nil)
+//			_default, err := kvstore.GetZones(ctx, &kvstore.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -154,9 +159,6 @@ def get_certificates(enable_details: Optional[bool] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-
-
-@_utilities.lift_output_func(get_certificates)
 def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             lang: Optional[pulumi.Input[Optional[str]]] = None,
@@ -174,4 +176,20 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     pulumi.log.warn("""get_certificates is deprecated: This resource has been deprecated in favour of getServiceCertificates""")
-    ...
+    __args__ = dict()
+    __args__['enableDetails'] = enable_details
+    __args__['ids'] = ids
+    __args__['lang'] = lang
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cas/getCertificates:getCertificates', __args__, opts=opts, typ=GetCertificatesResult)
+    return __ret__.apply(lambda __response__: GetCertificatesResult(
+        certificates=pulumi.get(__response__, 'certificates'),
+        enable_details=pulumi.get(__response__, 'enable_details'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        lang=pulumi.get(__response__, 'lang'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file')))

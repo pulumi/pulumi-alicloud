@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -217,9 +222,6 @@ def get_basic_endpoints(endpoint_group_id: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_basic_endpoints)
 def get_basic_endpoints_output(endpoint_group_id: Optional[pulumi.Input[str]] = None,
                                endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
                                endpoint_type: Optional[pulumi.Input[Optional[str]]] = None,
@@ -260,4 +262,26 @@ def get_basic_endpoints_output(endpoint_group_id: Optional[pulumi.Input[str]] = 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
     """
-    ...
+    __args__ = dict()
+    __args__['endpointGroupId'] = endpoint_group_id
+    __args__['endpointId'] = endpoint_id
+    __args__['endpointType'] = endpoint_type
+    __args__['ids'] = ids
+    __args__['name'] = name
+    __args__['nameRegex'] = name_regex
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getBasicEndpoints:getBasicEndpoints', __args__, opts=opts, typ=GetBasicEndpointsResult)
+    return __ret__.apply(lambda __response__: GetBasicEndpointsResult(
+        endpoint_group_id=pulumi.get(__response__, 'endpoint_group_id'),
+        endpoint_id=pulumi.get(__response__, 'endpoint_id'),
+        endpoint_type=pulumi.get(__response__, 'endpoint_type'),
+        endpoints=pulumi.get(__response__, 'endpoints'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        name=pulumi.get(__response__, 'name'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        status=pulumi.get(__response__, 'status')))

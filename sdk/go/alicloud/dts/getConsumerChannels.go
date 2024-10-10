@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := dts.GetConsumerChannels(ctx, nil, nil)
+//			ids, err := dts.GetConsumerChannels(ctx, &dts.GetConsumerChannelsArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -107,9 +112,6 @@ def get_backup_policies(db_cluster_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         policies=pulumi.get(__ret__, 'policies'))
-
-
-@_utilities.lift_output_func(get_backup_policies)
 def get_backup_policies_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupPoliciesResult]:
@@ -134,4 +136,13 @@ def get_backup_policies_output(db_cluster_id: Optional[pulumi.Input[str]] = None
     :param str db_cluster_id: The db cluster id.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['dbClusterId'] = db_cluster_id
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:clickhouse/getBackupPolicies:getBackupPolicies', __args__, opts=opts, typ=GetBackupPoliciesResult)
+    return __ret__.apply(lambda __response__: GetBackupPoliciesResult(
+        db_cluster_id=pulumi.get(__response__, 'db_cluster_id'),
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        policies=pulumi.get(__response__, 'policies')))

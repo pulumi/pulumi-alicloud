@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -127,9 +132,6 @@ def get_network_packages(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         packages=pulumi.get(__ret__, 'packages'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_network_packages)
 def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 status: Optional[pulumi.Input[Optional[str]]] = None,
@@ -163,4 +165,15 @@ def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getNetworkPackages:getNetworkPackages', __args__, opts=opts, typ=GetNetworkPackagesResult)
+    return __ret__.apply(lambda __response__: GetNetworkPackagesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        packages=pulumi.get(__response__, 'packages'),
+        status=pulumi.get(__response__, 'status')))

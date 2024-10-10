@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -121,9 +126,6 @@ def get_topics(name_prefix: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         topics=pulumi.get(__ret__, 'topics'))
-
-
-@_utilities.lift_output_func(get_topics)
 def get_topics_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicsResult]:
@@ -146,4 +148,14 @@ def get_topics_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
     :param str name_prefix: A string to filter resulting topics by their name prefixs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
-    ...
+    __args__ = dict()
+    __args__['namePrefix'] = name_prefix
+    __args__['outputFile'] = output_file
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:mns/getTopics:getTopics', __args__, opts=opts, typ=GetTopicsResult)
+    return __ret__.apply(lambda __response__: GetTopicsResult(
+        id=pulumi.get(__response__, 'id'),
+        name_prefix=pulumi.get(__response__, 'name_prefix'),
+        names=pulumi.get(__response__, 'names'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        topics=pulumi.get(__response__, 'topics')))

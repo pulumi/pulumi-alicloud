@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -189,9 +194,6 @@ def get_domains(accelerator_id: Optional[str] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         status=pulumi.get(__ret__, 'status'))
-
-
-@_utilities.lift_output_func(get_domains)
 def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = None,
                        domain: Optional[pulumi.Input[Optional[str]]] = None,
                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -231,4 +233,23 @@ def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = N
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
     """
-    ...
+    __args__ = dict()
+    __args__['acceleratorId'] = accelerator_id
+    __args__['domain'] = domain
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['pageNumber'] = page_number
+    __args__['pageSize'] = page_size
+    __args__['status'] = status
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult)
+    return __ret__.apply(lambda __response__: GetDomainsResult(
+        accelerator_id=pulumi.get(__response__, 'accelerator_id'),
+        domain=pulumi.get(__response__, 'domain'),
+        domains=pulumi.get(__response__, 'domains'),
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        page_number=pulumi.get(__response__, 'page_number'),
+        page_size=pulumi.get(__response__, 'page_size'),
+        status=pulumi.get(__response__, 'status')))

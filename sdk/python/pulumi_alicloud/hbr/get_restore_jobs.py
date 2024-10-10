@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -210,9 +215,6 @@ def get_restore_jobs(output_file: Optional[str] = None,
         target_file_system_ids=pulumi.get(__ret__, 'target_file_system_ids'),
         target_instance_ids=pulumi.get(__ret__, 'target_instance_ids'),
         vault_ids=pulumi.get(__ret__, 'vault_ids'))
-
-
-@_utilities.lift_output_func(get_restore_jobs)
 def get_restore_jobs_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             restore_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             restore_type: Optional[pulumi.Input[str]] = None,
@@ -253,4 +255,28 @@ def get_restore_jobs_output(output_file: Optional[pulumi.Input[Optional[str]]] =
     :param Sequence[str] target_instance_ids: The ID of target ECS instance.
     :param Sequence[str] vault_ids: The list of backup vault IDs.
     """
-    ...
+    __args__ = dict()
+    __args__['outputFile'] = output_file
+    __args__['restoreIds'] = restore_ids
+    __args__['restoreType'] = restore_type
+    __args__['sourceTypes'] = source_types
+    __args__['status'] = status
+    __args__['targetBuckets'] = target_buckets
+    __args__['targetFileSystemIds'] = target_file_system_ids
+    __args__['targetInstanceIds'] = target_instance_ids
+    __args__['vaultIds'] = vault_ids
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getRestoreJobs:getRestoreJobs', __args__, opts=opts, typ=GetRestoreJobsResult)
+    return __ret__.apply(lambda __response__: GetRestoreJobsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        jobs=pulumi.get(__response__, 'jobs'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        restore_ids=pulumi.get(__response__, 'restore_ids'),
+        restore_type=pulumi.get(__response__, 'restore_type'),
+        source_types=pulumi.get(__response__, 'source_types'),
+        status=pulumi.get(__response__, 'status'),
+        target_buckets=pulumi.get(__response__, 'target_buckets'),
+        target_file_system_ids=pulumi.get(__response__, 'target_file_system_ids'),
+        target_instance_ids=pulumi.get(__response__, 'target_instance_ids'),
+        vault_ids=pulumi.get(__response__, 'vault_ids')))

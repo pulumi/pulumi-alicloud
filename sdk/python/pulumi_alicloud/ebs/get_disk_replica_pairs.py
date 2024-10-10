@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -137,9 +142,6 @@ def get_disk_replica_pairs(ids: Optional[Sequence[str]] = None,
         pairs=pulumi.get(__ret__, 'pairs'),
         replica_group_id=pulumi.get(__ret__, 'replica_group_id'),
         site=pulumi.get(__ret__, 'site'))
-
-
-@_utilities.lift_output_func(get_disk_replica_pairs)
 def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   replica_group_id: Optional[pulumi.Input[Optional[str]]] = None,
@@ -166,4 +168,17 @@ def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     :param str replica_group_id: Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.
     :param str site: Get data for replication pairs where this Region is the production site or the disaster recovery site.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['outputFile'] = output_file
+    __args__['replicaGroupId'] = replica_group_id
+    __args__['site'] = site
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs', __args__, opts=opts, typ=GetDiskReplicaPairsResult)
+    return __ret__.apply(lambda __response__: GetDiskReplicaPairsResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        pairs=pulumi.get(__response__, 'pairs'),
+        replica_group_id=pulumi.get(__response__, 'replica_group_id'),
+        site=pulumi.get(__response__, 'site')))

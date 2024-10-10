@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -265,9 +270,6 @@ def get_policy_document(output_file: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         statements=pulumi.get(__ret__, 'statements'),
         version=pulumi.get(__ret__, 'version'))
-
-
-@_utilities.lift_output_func(get_policy_document)
 def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                statements: Optional[pulumi.Input[Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']]]]] = None,
                                version: Optional[pulumi.Input[Optional[str]]] = None,
@@ -435,4 +437,15 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
     :param Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']] statements: Statement of the RAM policy document. See the following `Block statement`. See `statement` below.
     :param str version: Version of the RAM policy document. Valid value is `1`. Default value is `1`.
     """
-    ...
+    __args__ = dict()
+    __args__['outputFile'] = output_file
+    __args__['statements'] = statements
+    __args__['version'] = version
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getPolicyDocument:getPolicyDocument', __args__, opts=opts, typ=GetPolicyDocumentResult)
+    return __ret__.apply(lambda __response__: GetPolicyDocumentResult(
+        document=pulumi.get(__response__, 'document'),
+        id=pulumi.get(__response__, 'id'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        statements=pulumi.get(__response__, 'statements'),
+        version=pulumi.get(__response__, 'version')))

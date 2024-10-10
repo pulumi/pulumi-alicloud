@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 from . import outputs
 
@@ -206,9 +211,6 @@ def get_registry_enterprise_sync_rules(ids: Optional[Sequence[str]] = None,
         repo_name=pulumi.get(__ret__, 'repo_name'),
         rules=pulumi.get(__ret__, 'rules'),
         target_instance_id=pulumi.get(__ret__, 'target_instance_id'))
-
-
-@_utilities.lift_output_func(get_registry_enterprise_sync_rules)
 def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                               instance_id: Optional[pulumi.Input[str]] = None,
                                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
@@ -246,4 +248,24 @@ def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optiona
     :param str repo_name: Name of Container Registry Enterprise Edition local repo.
     :param str target_instance_id: ID of Container Registry Enterprise Edition target instance.
     """
-    ...
+    __args__ = dict()
+    __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
+    __args__['nameRegex'] = name_regex
+    __args__['namespaceName'] = namespace_name
+    __args__['outputFile'] = output_file
+    __args__['repoName'] = repo_name
+    __args__['targetInstanceId'] = target_instance_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules', __args__, opts=opts, typ=GetRegistryEnterpriseSyncRulesResult)
+    return __ret__.apply(lambda __response__: GetRegistryEnterpriseSyncRulesResult(
+        id=pulumi.get(__response__, 'id'),
+        ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
+        name_regex=pulumi.get(__response__, 'name_regex'),
+        names=pulumi.get(__response__, 'names'),
+        namespace_name=pulumi.get(__response__, 'namespace_name'),
+        output_file=pulumi.get(__response__, 'output_file'),
+        repo_name=pulumi.get(__response__, 'repo_name'),
+        rules=pulumi.get(__response__, 'rules'),
+        target_instance_id=pulumi.get(__response__, 'target_instance_id')))

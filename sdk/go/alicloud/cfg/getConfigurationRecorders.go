@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cfg.GetConfigurationRecorders(ctx, nil, nil)
+//			_, err := cfg.GetConfigurationRecorders(ctx, &cfg.GetConfigurationRecordersArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

@@ -31,7 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ids, err := arms.GetDispatchRules(ctx, nil, nil)
+//			ids, err := arms.GetDispatchRules(ctx, &arms.GetDispatchRulesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}

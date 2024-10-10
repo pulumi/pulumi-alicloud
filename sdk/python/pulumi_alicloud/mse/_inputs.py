@@ -4,14 +4,59 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
 __all__ = [
     'GatewaySlbListArgs',
+    'GatewaySlbListArgsDict',
 ]
+
+MYPY = False
+
+if not MYPY:
+    class GatewaySlbListArgsDict(TypedDict):
+        associate_id: NotRequired[pulumi.Input[str]]
+        """
+        The associate id.
+        """
+        gateway_slb_mode: NotRequired[pulumi.Input[str]]
+        """
+        The Mode of the gateway slb.
+        """
+        gateway_slb_status: NotRequired[pulumi.Input[str]]
+        """
+        The Status of the gateway slb.
+        """
+        gmt_create: NotRequired[pulumi.Input[str]]
+        """
+        The creation time of the gateway slb.
+        """
+        slb_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the gateway slb.
+        """
+        slb_ip: NotRequired[pulumi.Input[str]]
+        """
+        The ip of the gateway slb.
+        """
+        slb_port: NotRequired[pulumi.Input[str]]
+        """
+        The port of the gateway slb.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the gateway slb.
+        """
+elif False:
+    GatewaySlbListArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class GatewaySlbListArgs:

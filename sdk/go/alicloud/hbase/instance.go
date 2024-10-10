@@ -47,7 +47,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_default, err := hbase.GetZones(ctx, nil, nil)
+//			_default, err := hbase.GetZones(ctx, &hbase.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
