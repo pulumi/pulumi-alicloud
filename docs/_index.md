@@ -12,6 +12,7 @@ The alicloud provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud`](https://github.com/pulumi/pulumi-alicloud)
 * .NET: [`Pulumi.Alicloud`](https://www.nuget.org/packages/Pulumi.Alicloud)
 * Java: [`com.pulumi/alicloud`](https://central.sonatype.com/artifact/com.pulumi/alicloud)
+## Overview
 
 The Alibaba Cloud provider is used to interact with the
 many resources supported by [Alibaba Cloud](https://www.alibabacloud.com). The provider needs to be configured
@@ -495,7 +496,7 @@ The following methods are supported, in this order, and explained below:
 ### Static credentials
 
 Static credentials can be provided by adding `accessKey`, `secretKey` and `region` in-line in the
-alicloud provider block:
+alicloud provider configuration:
 
 Usage:
 
@@ -1134,7 +1135,7 @@ config:
 
 In addition to generic `provider` arguments
 (e.g. `alias` and `version`), the following arguments are supported in the Alibaba Cloud
-`provider` block:
+provider configuration:
 
 * `accessKey` - Alibaba Cloud access key. It is required for the provider.
   Can also be set with the `ALIBABA_CLOUD_ACCESS_KEY_ID` environment variable since v1.228.0,

@@ -2555,15 +2555,15 @@ func Provider() tfbridge.ProviderInfo {
 func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	return append(
 		defaults,
-		removeContent(versionNote, "index.md"),
-		removeContent(configurationSource, "index.md"),
+		removeContent(versionNote, "index.html.markdown"),
+		removeContent(configurationSource, "index.html.markdown"),
 		skipUserAgentSection,
 	)
 }
 
 // Removes a User Agent section that includes TF User Agent instructions.
 var skipUserAgentSection = tfbridge.DocsEdit{
-	Path: "index.md",
+	Path: "index.html.markdown",
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
 			return headerText == "Custom User-Agent Information"
