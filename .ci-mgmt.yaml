@@ -45,3 +45,4 @@ license:
     - github.com/alibabacloud-go/alibabacloud-gateway-oss/client
     - github.com/alibabacloud-go/alibabacloud-gateway-oss-util/client
 pulumiConvert: 1
+registryDocs: true
