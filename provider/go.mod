@@ -24,7 +24,7 @@ replace (
 replace github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0
 
 require (
-	github.com/aliyun/terraform-provider-alicloud v1.231.0
+	github.com/aliyun/terraform-provider-alicloud v1.232.0
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.93.1
 	github.com/pulumi/pulumi/sdk/v3 v3.136.1
@@ -62,15 +62,15 @@ require (
 	github.com/alibabacloud-go/alibabacloud-gateway-oss-util v0.0.3 // indirect
 	github.com/alibabacloud-go/alibabacloud-gateway-sls v0.0.6 // indirect
 	github.com/alibabacloud-go/alibabacloud-gateway-sls-util v0.0.1 // indirect
-	github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.4 // indirect
-	github.com/alibabacloud-go/cs-20151215/v5 v5.0.7 // indirect
+	github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.5 // indirect
+	github.com/alibabacloud-go/cs-20151215/v5 v5.7.9 // indirect
 	github.com/alibabacloud-go/darabonba-array v0.1.0 // indirect
 	github.com/alibabacloud-go/darabonba-encode-util v0.0.2 // indirect
 	github.com/alibabacloud-go/darabonba-map v0.0.2 // indirect
-	github.com/alibabacloud-go/darabonba-openapi/v2 v2.0.6 // indirect
+	github.com/alibabacloud-go/darabonba-openapi/v2 v2.0.10 // indirect
 	github.com/alibabacloud-go/darabonba-signature-util v0.0.7 // indirect
 	github.com/alibabacloud-go/darabonba-string v1.0.2 // indirect
-	github.com/alibabacloud-go/debug v1.0.0 // indirect
+	github.com/alibabacloud-go/debug v1.0.1 // indirect
 	github.com/alibabacloud-go/endpoint-util v1.1.0 // indirect
 	github.com/alibabacloud-go/openapi-util v0.1.0 // indirect
 	github.com/alibabacloud-go/sts-20150401/v2 v2.0.2 // indirect
@@ -81,7 +81,7 @@ require (
 	github.com/alibabacloud-go/tea-rpc v1.2.0 // indirect
 	github.com/alibabacloud-go/tea-rpc-utils v1.1.2 // indirect
 	github.com/alibabacloud-go/tea-utils v1.4.5 // indirect
-	github.com/alibabacloud-go/tea-utils/v2 v2.0.5 // indirect
+	github.com/alibabacloud-go/tea-utils/v2 v2.0.6 // indirect
 	github.com/alibabacloud-go/tea-xml v1.1.3 // indirect
 	github.com/aliyun/alibaba-cloud-sdk-go v1.62.590 // indirect
 	github.com/aliyun/aliyun-datahub-sdk-go v0.1.5 // indirect
@@ -89,7 +89,7 @@ require (
 	github.com/aliyun/aliyun-mns-go-sdk v0.0.0-20210305050620-d1b5875bda58 // indirect
 	github.com/aliyun/aliyun-oss-go-sdk v2.2.9+incompatible // indirect
 	github.com/aliyun/aliyun-tablestore-go-sdk v4.1.3+incompatible // indirect
-	github.com/aliyun/credentials-go v1.3.2 // indirect
+	github.com/aliyun/credentials-go v1.3.10 // indirect
 	github.com/aliyun/fc-go-sdk v0.0.0-20220622030011-bc7ded2a9050 // indirect
 	github.com/andybalholm/brotli v1.1.0 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
