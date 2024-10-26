@@ -38,6 +38,8 @@ __all__ = [
     'ManagedKubernetesConnections',
     'ManagedKubernetesDeleteOption',
     'ManagedKubernetesMaintenanceWindow',
+    'ManagedKubernetesOperationPolicy',
+    'ManagedKubernetesOperationPolicyClusterAutoUpgrade',
     'ManagedKubernetesRrsaMetadata',
     'NodePoolDataDisk',
     'NodePoolKubeletConfiguration',
@@ -54,6 +56,9 @@ __all__ = [
     'NodePoolTeeConfig',
     'ServerlessKubernetesAddon',
     'ServerlessKubernetesDeleteOption',
+    'ServerlessKubernetesMaintenanceWindow',
+    'ServerlessKubernetesOperationPolicy',
+    'ServerlessKubernetesOperationPolicyClusterAutoUpgrade',
     'ServerlessKubernetesRrsaMetadata',
     'SwarmNode',
     'GetClusterCredentialCertificateAuthorityResult',
@@ -1610,34 +1615,38 @@ class ManagedKubernetesMaintenanceWindow(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 duration: str,
-                 enable: bool,
-                 maintenance_time: str,
-                 weekly_period: str):
+                 duration: Optional[str] = None,
+                 enable: Optional[bool] = None,
+                 maintenance_time: Optional[str] = None,
+                 weekly_period: Optional[str] = None):
         """
         :param str duration: The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
         :param bool enable: Whether to open the maintenance window. The following parameters take effect only `enable = true`.
-        :param str maintenance_time: Initial maintenance time, For example:"03:00:00Z".
+        :param str maintenance_time: Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
         :param str weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
                
                for example:
                ```
                maintenance_window {
                enable            = true
-               maintenance_time  = "01:00:00Z"
+               maintenance_time  = "2024-10-15T12:31:00.000+08:00"
                duration          = "3h"
                weekly_period     = "Monday,Friday"
                }
                ```
         """
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "enable", enable)
-        pulumi.set(__self__, "maintenance_time", maintenance_time)
-        pulumi.set(__self__, "weekly_period", weekly_period)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if maintenance_time is not None:
+            pulumi.set(__self__, "maintenance_time", maintenance_time)
+        if weekly_period is not None:
+            pulumi.set(__self__, "weekly_period", weekly_period)
 
     @property
     @pulumi.getter
-    def duration(self) -> str:
+    def duration(self) -> Optional[str]:
         """
         The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
         """
@@ -1645,7 +1654,7 @@ class ManagedKubernetesMaintenanceWindow(dict):
 
     @property
     @pulumi.getter
-    def enable(self) -> bool:
+    def enable(self) -> Optional[bool]:
         """
         Whether to open the maintenance window. The following parameters take effect only `enable = true`.
         """
@@ -1653,15 +1662,15 @@ class ManagedKubernetesMaintenanceWindow(dict):
 
     @property
     @pulumi.getter(name="maintenanceTime")
-    def maintenance_time(self) -> str:
+    def maintenance_time(self) -> Optional[str]:
         """
-        Initial maintenance time, For example:"03:00:00Z".
+        Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
         """
         return pulumi.get(self, "maintenance_time")
 
     @property
     @pulumi.getter(name="weeklyPeriod")
-    def weekly_period(self) -> str:
+    def weekly_period(self) -> Optional[str]:
         """
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
@@ -1669,13 +1678,100 @@ class ManagedKubernetesMaintenanceWindow(dict):
         ```
         maintenance_window {
         enable            = true
-        maintenance_time  = "01:00:00Z"
+        maintenance_time  = "2024-10-15T12:31:00.000+08:00"
         duration          = "3h"
         weekly_period     = "Monday,Friday"
         }
         ```
         """
         return pulumi.get(self, "weekly_period")
+
+
+@pulumi.output_type
+class ManagedKubernetesOperationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterAutoUpgrade":
+            suggest = "cluster_auto_upgrade"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedKubernetesOperationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedKubernetesOperationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedKubernetesOperationPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_auto_upgrade: Optional['outputs.ManagedKubernetesOperationPolicyClusterAutoUpgrade'] = None):
+        """
+        :param 'ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs' cluster_auto_upgrade: Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+        """
+        if cluster_auto_upgrade is not None:
+            pulumi.set(__self__, "cluster_auto_upgrade", cluster_auto_upgrade)
+
+    @property
+    @pulumi.getter(name="clusterAutoUpgrade")
+    def cluster_auto_upgrade(self) -> Optional['outputs.ManagedKubernetesOperationPolicyClusterAutoUpgrade']:
+        """
+        Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+        """
+        return pulumi.get(self, "cluster_auto_upgrade")
+
+
+@pulumi.output_type
+class ManagedKubernetesOperationPolicyClusterAutoUpgrade(dict):
+    def __init__(__self__, *,
+                 channel: Optional[str] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param str channel: The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+               
+               for example:
+               ```
+               operation_policy {
+               cluster_auto_upgrade {
+               enabled = true
+               channel = "stable"
+               }
+               }
+               ```
+        :param bool enabled: Whether the RRSA feature has been enabled.
+        """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[str]:
+        """
+        The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+
+        for example:
+        ```
+        operation_policy {
+        cluster_auto_upgrade {
+        enabled = true
+        channel = "stable"
+        }
+        }
+        ```
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the RRSA feature has been enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -3121,6 +3217,187 @@ class ServerlessKubernetesDeleteOption(dict):
         ```
         """
         return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class ServerlessKubernetesMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceTime":
+            suggest = "maintenance_time"
+        elif key == "weeklyPeriod":
+            suggest = "weekly_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerlessKubernetesMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerlessKubernetesMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerlessKubernetesMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 duration: Optional[str] = None,
+                 enable: Optional[bool] = None,
+                 maintenance_time: Optional[str] = None,
+                 weekly_period: Optional[str] = None):
+        """
+        :param str duration: The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+        :param bool enable: Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+        :param str maintenance_time: Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+        :param str weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+               
+               for example:
+               ```
+               maintenance_window {
+               enable            = true
+               maintenance_time  = "2024-10-15T12:31:00.000+08:00"
+               duration          = "3h"
+               weekly_period     = "Monday,Friday"
+               }
+               ```
+        """
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
+        if enable is not None:
+            pulumi.set(__self__, "enable", enable)
+        if maintenance_time is not None:
+            pulumi.set(__self__, "maintenance_time", maintenance_time)
+        if weekly_period is not None:
+            pulumi.set(__self__, "weekly_period", weekly_period)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[str]:
+        """
+        The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+        """
+        return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter
+    def enable(self) -> Optional[bool]:
+        """
+        Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+        """
+        return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="maintenanceTime")
+    def maintenance_time(self) -> Optional[str]:
+        """
+        Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+        """
+        return pulumi.get(self, "maintenance_time")
+
+    @property
+    @pulumi.getter(name="weeklyPeriod")
+    def weekly_period(self) -> Optional[str]:
+        """
+        Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+
+        for example:
+        ```
+        maintenance_window {
+        enable            = true
+        maintenance_time  = "2024-10-15T12:31:00.000+08:00"
+        duration          = "3h"
+        weekly_period     = "Monday,Friday"
+        }
+        ```
+        """
+        return pulumi.get(self, "weekly_period")
+
+
+@pulumi.output_type
+class ServerlessKubernetesOperationPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterAutoUpgrade":
+            suggest = "cluster_auto_upgrade"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerlessKubernetesOperationPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerlessKubernetesOperationPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerlessKubernetesOperationPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_auto_upgrade: Optional['outputs.ServerlessKubernetesOperationPolicyClusterAutoUpgrade'] = None):
+        """
+        :param 'ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs' cluster_auto_upgrade: Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+        """
+        if cluster_auto_upgrade is not None:
+            pulumi.set(__self__, "cluster_auto_upgrade", cluster_auto_upgrade)
+
+    @property
+    @pulumi.getter(name="clusterAutoUpgrade")
+    def cluster_auto_upgrade(self) -> Optional['outputs.ServerlessKubernetesOperationPolicyClusterAutoUpgrade']:
+        """
+        Automatic cluster upgrade policy. See `cluster_auto_upgrade` below.
+        """
+        return pulumi.get(self, "cluster_auto_upgrade")
+
+
+@pulumi.output_type
+class ServerlessKubernetesOperationPolicyClusterAutoUpgrade(dict):
+    def __init__(__self__, *,
+                 channel: Optional[str] = None,
+                 enabled: Optional[bool] = None):
+        """
+        :param str channel: The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+               
+               for example:
+               ```
+               operation_policy {
+               cluster_auto_upgrade {
+               enabled = true
+               channel = "stable"
+               }
+               }
+               ```
+        :param bool enabled: Whether the RRSA feature has been enabled.
+        """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[str]:
+        """
+        The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+
+        for example:
+        ```
+        operation_policy {
+        cluster_auto_upgrade {
+        enabled = true
+        channel = "stable"
+        }
+        }
+        ```
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether the RRSA feature has been enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

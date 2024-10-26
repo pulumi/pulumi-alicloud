@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.ResourceManager.Outputs
     public sealed class GetFoldersFolderResult
     {
         /// <summary>
-        /// The ID of the folder.
+        /// The ID of the Folder.
         /// </summary>
         public readonly string FolderId;
         /// <summary>
-        /// The name of the folder.
+        /// The Name of the Folder.
         /// </summary>
         public readonly string FolderName;
         /// <summary>
-        /// The ID of the folder.
+        /// The ID of the Resource Manager Folder.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of the parent folder.
+        /// The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
         /// </summary>
         public readonly string ParentFolderId;
 

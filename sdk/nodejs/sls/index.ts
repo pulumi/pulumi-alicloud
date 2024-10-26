@@ -10,6 +10,11 @@ export type Alert = import("./alert").Alert;
 export const Alert: typeof import("./alert").Alert = null as any;
 utilities.lazyLoad(exports, ["Alert"], () => require("./alert"));
 
+export { CollectionPolicyArgs, CollectionPolicyState } from "./collectionPolicy";
+export type CollectionPolicy = import("./collectionPolicy").CollectionPolicy;
+export const CollectionPolicy: typeof import("./collectionPolicy").CollectionPolicy = null as any;
+utilities.lazyLoad(exports, ["CollectionPolicy"], () => require("./collectionPolicy"));
+
 export { ScheduledSqlArgs, ScheduledSqlState } from "./scheduledSql";
 export type ScheduledSql = import("./scheduledSql").ScheduledSql;
 export const ScheduledSql: typeof import("./scheduledSql").ScheduledSql = null as any;
@@ -22,6 +27,8 @@ const _module = {
         switch (type) {
             case "alicloud:sls/alert:Alert":
                 return new Alert(name, <any>undefined, { urn })
+            case "alicloud:sls/collectionPolicy:CollectionPolicy":
+                return new CollectionPolicy(name, <any>undefined, { urn })
             case "alicloud:sls/scheduledSql:ScheduledSql":
                 return new ScheduledSql(name, <any>undefined, { urn })
             default:
@@ -30,4 +37,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("alicloud", "sls/alert", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sls/collectionPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/scheduledSql", _module)

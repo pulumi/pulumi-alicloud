@@ -82,8 +82,8 @@ type Disk struct {
 	EnableAutoSnapshot pulumi.BoolOutput      `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
 	// If true, the disk will be encrypted, conflict with `snapshotId`.
-	Encrypted  pulumi.BoolPtrOutput `pulumi:"encrypted"`
-	InstanceId pulumi.StringOutput  `pulumi:"instanceId"`
+	Encrypted  pulumi.BoolOutput   `pulumi:"encrypted"`
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
 	// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -102,7 +102,7 @@ type Disk struct {
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
-	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
+	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
 	// The disk status.
 	Status                    pulumi.StringOutput    `pulumi:"status"`
 	StorageSetId              pulumi.StringPtrOutput `pulumi:"storageSetId"`
@@ -483,8 +483,8 @@ func (o DiskOutput) EncryptAlgorithm() pulumi.StringPtrOutput {
 }
 
 // If true, the disk will be encrypted, conflict with `snapshotId`.
-func (o DiskOutput) Encrypted() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
+func (o DiskOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
 func (o DiskOutput) InstanceId() pulumi.StringOutput {
@@ -527,8 +527,8 @@ func (o DiskOutput) Size() pulumi.IntOutput {
 }
 
 // A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
-func (o DiskOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+func (o DiskOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
 // The disk status.

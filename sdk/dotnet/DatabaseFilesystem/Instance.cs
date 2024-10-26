@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
     /// 
+    /// &gt; **NOTE:** Need to contact us open whitelist before you can use the resource.
+    /// 
     /// &gt; **NOTE:** Available since v1.136.0.
     /// 
     /// ## Example Usage
@@ -101,6 +103,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Output("fsName")]
         public Output<string> FsName { get; private set; } = null!;
 
+        /// <summary>
+        /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
@@ -155,6 +160,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -269,6 +276,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Input("fsName")]
         public Input<string>? FsName { get; set; }
 
+        /// <summary>
+        /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
@@ -320,6 +330,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputMap<string> Tags
         {
@@ -405,6 +417,9 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Input("fsName")]
         public Input<string>? FsName { get; set; }
 
+        /// <summary>
+        /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
@@ -462,6 +477,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
 
         /// <summary>
         /// A mapping of tags to assign to the resource.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputMap<string> Tags
         {

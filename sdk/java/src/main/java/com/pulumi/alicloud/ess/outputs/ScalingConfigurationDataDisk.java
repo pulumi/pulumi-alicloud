@@ -63,6 +63,11 @@ public final class ScalingConfigurationDataDisk {
      */
     private @Nullable String performanceLevel;
     /**
+     * @return IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+     * 
+     */
+    private @Nullable Integer provisionedIops;
+    /**
      * @return Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
      * 
      */
@@ -142,6 +147,13 @@ public final class ScalingConfigurationDataDisk {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
+     * @return IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+     * 
+     */
+    public Optional<Integer> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+    /**
      * @return Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
      * 
      */
@@ -174,6 +186,7 @@ public final class ScalingConfigurationDataDisk {
         private @Nullable String kmsKeyId;
         private @Nullable String name;
         private @Nullable String performanceLevel;
+        private @Nullable Integer provisionedIops;
         private @Nullable Integer size;
         private @Nullable String snapshotId;
         public Builder() {}
@@ -188,6 +201,7 @@ public final class ScalingConfigurationDataDisk {
     	      this.kmsKeyId = defaults.kmsKeyId;
     	      this.name = defaults.name;
     	      this.performanceLevel = defaults.performanceLevel;
+    	      this.provisionedIops = defaults.provisionedIops;
     	      this.size = defaults.size;
     	      this.snapshotId = defaults.snapshotId;
         }
@@ -247,6 +261,12 @@ public final class ScalingConfigurationDataDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedIops(@Nullable Integer provisionedIops) {
+
+            this.provisionedIops = provisionedIops;
+            return this;
+        }
+        @CustomType.Setter
         public Builder size(@Nullable Integer size) {
 
             this.size = size;
@@ -269,6 +289,7 @@ public final class ScalingConfigurationDataDisk {
             _resultValue.kmsKeyId = kmsKeyId;
             _resultValue.name = name;
             _resultValue.performanceLevel = performanceLevel;
+            _resultValue.provisionedIops = provisionedIops;
             _resultValue.size = size;
             _resultValue.snapshotId = snapshotId;
             return _resultValue;

@@ -16,7 +16,7 @@ import (
 //
 // For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
 //
-// > **NOTE:** Available in v1.166.0+.
+// > **NOTE:** Available since v1.166.0.
 //
 // ## Example Usage
 //
@@ -31,17 +31,11 @@ import (
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
 //			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
@@ -64,25 +58,27 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mse.NewCluster(ctx, "default", &mse.ClusterArgs{
-//				ConnectionType:       pulumi.String("slb"),
-//				NetType:              pulumi.String("privatenet"),
-//				VswitchId:            exampleSwitch.ID(),
+//			exampleCluster, err := mse.NewCluster(ctx, "example", &mse.ClusterArgs{
 //				ClusterSpecification: pulumi.String("MSE_SC_1_2_60_c"),
-//				ClusterVersion:       pulumi.String("NACOS_2_0_0"),
-//				InstanceCount:        pulumi.Int(1),
-//				PubNetworkFlow:       pulumi.String("1"),
-//				ClusterAliasName:     pulumi.String(name),
-//				MseVersion:           pulumi.String("mse_dev"),
 //				ClusterType:          pulumi.String("Nacos-Ans"),
+//				ClusterVersion:       pulumi.String("NACOS_2_0_0"),
+//				InstanceCount:        pulumi.Int(3),
+//				NetType:              pulumi.String("privatenet"),
+//				PubNetworkFlow:       pulumi.String("1"),
+//				ConnectionType:       pulumi.String("slb"),
+//				ClusterAliasName:     pulumi.String("terraform-example"),
+//				MseVersion:           pulumi.String("mse_pro"),
+//				VswitchId:            exampleSwitch.ID(),
+//				VpcId:                exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = mse.NewEngineNamespace(ctx, "example", &mse.EngineNamespaceArgs{
-//				ClusterId:         _default.ID(),
-//				NamespaceShowName: pulumi.String(name),
-//				NamespaceId:       pulumi.String(name),
+//				InstanceId:        exampleCluster.ID(),
+//				NamespaceShowName: pulumi.String("terraform-example"),
+//				NamespaceId:       pulumi.String("terraform-example"),
+//				NamespaceDesc:     pulumi.String("description"),
 //			})
 //			if err != nil {
 //				return err
@@ -98,15 +94,21 @@ import (
 // Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
+// $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <instance_id>:<namespace_id>
 // ```
 type EngineNamespace struct {
 	pulumi.CustomResourceState
 
 	// The language type of the returned information. Valid values: `zh`, `en`.
 	AcceptLanguage pulumi.StringPtrOutput `pulumi:"acceptLanguage"`
-	// The id of the cluster.
+	// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
+	// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The description of the namespace.
+	//
+	// **NOTE:** You must set `clusterId` or `instanceId` or both.
+	NamespaceDesc pulumi.StringOutput `pulumi:"namespaceDesc"`
 	// The id of Namespace.
 	NamespaceId pulumi.StringOutput `pulumi:"namespaceId"`
 	// The name of the Engine Namespace.
@@ -120,12 +122,6 @@ func NewEngineNamespace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ClusterId == nil {
-		return nil, errors.New("invalid value for required argument 'ClusterId'")
-	}
-	if args.NamespaceId == nil {
-		return nil, errors.New("invalid value for required argument 'NamespaceId'")
-	}
 	if args.NamespaceShowName == nil {
 		return nil, errors.New("invalid value for required argument 'NamespaceShowName'")
 	}
@@ -154,8 +150,14 @@ func GetEngineNamespace(ctx *pulumi.Context,
 type engineNamespaceState struct {
 	// The language type of the returned information. Valid values: `zh`, `en`.
 	AcceptLanguage *string `pulumi:"acceptLanguage"`
-	// The id of the cluster.
+	// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
 	ClusterId *string `pulumi:"clusterId"`
+	// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+	InstanceId *string `pulumi:"instanceId"`
+	// The description of the namespace.
+	//
+	// **NOTE:** You must set `clusterId` or `instanceId` or both.
+	NamespaceDesc *string `pulumi:"namespaceDesc"`
 	// The id of Namespace.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// The name of the Engine Namespace.
@@ -165,8 +167,14 @@ type engineNamespaceState struct {
 type EngineNamespaceState struct {
 	// The language type of the returned information. Valid values: `zh`, `en`.
 	AcceptLanguage pulumi.StringPtrInput
-	// The id of the cluster.
+	// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
 	ClusterId pulumi.StringPtrInput
+	// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+	InstanceId pulumi.StringPtrInput
+	// The description of the namespace.
+	//
+	// **NOTE:** You must set `clusterId` or `instanceId` or both.
+	NamespaceDesc pulumi.StringPtrInput
 	// The id of Namespace.
 	NamespaceId pulumi.StringPtrInput
 	// The name of the Engine Namespace.
@@ -180,10 +188,16 @@ func (EngineNamespaceState) ElementType() reflect.Type {
 type engineNamespaceArgs struct {
 	// The language type of the returned information. Valid values: `zh`, `en`.
 	AcceptLanguage *string `pulumi:"acceptLanguage"`
-	// The id of the cluster.
-	ClusterId string `pulumi:"clusterId"`
+	// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
+	ClusterId *string `pulumi:"clusterId"`
+	// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+	InstanceId *string `pulumi:"instanceId"`
+	// The description of the namespace.
+	//
+	// **NOTE:** You must set `clusterId` or `instanceId` or both.
+	NamespaceDesc *string `pulumi:"namespaceDesc"`
 	// The id of Namespace.
-	NamespaceId string `pulumi:"namespaceId"`
+	NamespaceId *string `pulumi:"namespaceId"`
 	// The name of the Engine Namespace.
 	NamespaceShowName string `pulumi:"namespaceShowName"`
 }
@@ -192,10 +206,16 @@ type engineNamespaceArgs struct {
 type EngineNamespaceArgs struct {
 	// The language type of the returned information. Valid values: `zh`, `en`.
 	AcceptLanguage pulumi.StringPtrInput
-	// The id of the cluster.
-	ClusterId pulumi.StringInput
+	// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
+	ClusterId pulumi.StringPtrInput
+	// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+	InstanceId pulumi.StringPtrInput
+	// The description of the namespace.
+	//
+	// **NOTE:** You must set `clusterId` or `instanceId` or both.
+	NamespaceDesc pulumi.StringPtrInput
 	// The id of Namespace.
-	NamespaceId pulumi.StringInput
+	NamespaceId pulumi.StringPtrInput
 	// The name of the Engine Namespace.
 	NamespaceShowName pulumi.StringInput
 }
@@ -292,9 +312,21 @@ func (o EngineNamespaceOutput) AcceptLanguage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EngineNamespace) pulumi.StringPtrOutput { return v.AcceptLanguage }).(pulumi.StringPtrOutput)
 }
 
-// The id of the cluster.
+// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
 func (o EngineNamespaceOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+func (o EngineNamespaceOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The description of the namespace.
+//
+// **NOTE:** You must set `clusterId` or `instanceId` or both.
+func (o EngineNamespaceOutput) NamespaceDesc() pulumi.StringOutput {
+	return o.ApplyT(func(v *EngineNamespace) pulumi.StringOutput { return v.NamespaceDesc }).(pulumi.StringOutput)
 }
 
 // The id of Namespace.

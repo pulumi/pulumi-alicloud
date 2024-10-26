@@ -18,14 +18,14 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
     public static final ServiceMeshMeshConfigAccessLogArgs Empty = new ServiceMeshMeshConfigAccessLogArgs();
 
     /**
-     * Enable CNI.
+     * Enable CNI
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -33,14 +33,14 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
     }
 
     /**
-     * Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
      * 
      */
     @Import(name="gatewayEnabled")
     private @Nullable Output<Boolean> gatewayEnabled;
 
     /**
-     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
      * 
      */
     public Optional<Output<Boolean>> gatewayEnabled() {
@@ -48,14 +48,14 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
     }
 
     /**
-     * Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+     * Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS
      * 
      */
     @Import(name="gatewayLifecycle")
     private @Nullable Output<Integer> gatewayLifecycle;
 
     /**
-     * @return Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+     * @return Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS
      * 
      */
     public Optional<Output<Integer>> gatewayLifecycle() {
@@ -78,14 +78,14 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
     }
 
     /**
-     * Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
      * 
      */
     @Import(name="sidecarEnabled")
     private @Nullable Output<Boolean> sidecarEnabled;
 
     /**
-     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
      * 
      */
     public Optional<Output<Boolean>> sidecarEnabled() {
@@ -93,14 +93,14 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
     }
 
     /**
-     * Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+     * Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS
      * 
      */
     @Import(name="sidecarLifecycle")
     private @Nullable Output<Integer> sidecarLifecycle;
 
     /**
-     * @return Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+     * @return Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS
      * 
      */
     public Optional<Output<Integer>> sidecarLifecycle() {
@@ -137,7 +137,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param gatewayEnabled Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+         * @param gatewayEnabled Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param gatewayEnabled Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+         * @param gatewayEnabled Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param gatewayLifecycle Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+         * @param gatewayLifecycle Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param gatewayLifecycle Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+         * @param gatewayLifecycle Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sidecarEnabled Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+         * @param sidecarEnabled Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sidecarEnabled Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+         * @param sidecarEnabled Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sidecarLifecycle Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+         * @param sidecarLifecycle Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sidecarLifecycle Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+         * @param sidecarLifecycle Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS
          * 
          * @return builder
          * 

@@ -131,6 +131,9 @@ export class LaunchTemplate extends pulumi.CustomResource {
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
     public readonly hostName!: pulumi.Output<string | undefined>;
+    public readonly httpEndpoint!: pulumi.Output<string>;
+    public readonly httpPutResponseHopLimit!: pulumi.Output<number>;
+    public readonly httpTokens!: pulumi.Output<string>;
     /**
      * Image ID.
      */
@@ -298,6 +301,9 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableVmOsConfig"] = state ? state.enableVmOsConfig : undefined;
             resourceInputs["hostName"] = state ? state.hostName : undefined;
+            resourceInputs["httpEndpoint"] = state ? state.httpEndpoint : undefined;
+            resourceInputs["httpPutResponseHopLimit"] = state ? state.httpPutResponseHopLimit : undefined;
+            resourceInputs["httpTokens"] = state ? state.httpTokens : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["imageOwnerAlias"] = state ? state.imageOwnerAlias : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
@@ -348,6 +354,9 @@ export class LaunchTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableVmOsConfig"] = args ? args.enableVmOsConfig : undefined;
             resourceInputs["hostName"] = args ? args.hostName : undefined;
+            resourceInputs["httpEndpoint"] = args ? args.httpEndpoint : undefined;
+            resourceInputs["httpPutResponseHopLimit"] = args ? args.httpPutResponseHopLimit : undefined;
+            resourceInputs["httpTokens"] = args ? args.httpTokens : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["imageOwnerAlias"] = args ? args.imageOwnerAlias : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
@@ -418,6 +427,9 @@ export interface LaunchTemplateState {
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
     hostName?: pulumi.Input<string>;
+    httpEndpoint?: pulumi.Input<string>;
+    httpPutResponseHopLimit?: pulumi.Input<number>;
+    httpTokens?: pulumi.Input<string>;
     /**
      * Image ID.
      */
@@ -589,6 +601,9 @@ export interface LaunchTemplateArgs {
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
     hostName?: pulumi.Input<string>;
+    httpEndpoint?: pulumi.Input<string>;
+    httpPutResponseHopLimit?: pulumi.Input<number>;
+    httpTokens?: pulumi.Input<string>;
     /**
      * Image ID.
      */

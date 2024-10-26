@@ -17,14 +17,14 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
     public static final ServiceMeshNetworkArgs Empty = new ServiceMeshNetworkArgs();
 
     /**
-     * Security group ID.
+     * Security group ID
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return Security group ID.
+     * @return Security group ID
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -32,14 +32,14 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * VPC ID.
+     * VPC ID
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return VPC ID.
+     * @return VPC ID
      * 
      */
     public Output<String> vpcId() {
@@ -47,14 +47,14 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Virtual Switch ID.
+     * Virtual Switch ID
      * 
      */
     @Import(name="vswitcheList", required=true)
     private Output<String> vswitcheList;
 
     /**
-     * @return Virtual Switch ID.
+     * @return Virtual Switch ID
      * 
      */
     public Output<String> vswitcheList() {
@@ -88,7 +88,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param securityGroupId Security group ID.
+         * @param securityGroupId Security group ID
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param securityGroupId Security group ID.
+         * @param securityGroupId Security group ID
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcId VPC ID.
+         * @param vpcId VPC ID
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcId VPC ID.
+         * @param vpcId VPC ID
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vswitcheList Virtual Switch ID.
+         * @param vswitcheList Virtual Switch ID
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vswitcheList Virtual Switch ID.
+         * @param vswitcheList Virtual Switch ID
          * 
          * @return builder
          * 

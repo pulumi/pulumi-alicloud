@@ -26,7 +26,7 @@ type EcsDisk struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
+	// Category of the disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
 	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrOutput `pulumi:"deleteAutoSnapshot"`
@@ -41,8 +41,8 @@ type EcsDisk struct {
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot pulumi.BoolOutput      `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   pulumi.StringPtrOutput `pulumi:"encryptAlgorithm"`
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
-	Encrypted pulumi.BoolPtrOutput `pulumi:"encrypted"`
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+	Encrypted pulumi.BoolOutput `pulumi:"encrypted"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
 	// * One of the `zoneId` and `instanceId` must be set but can not be set at the same time.
@@ -56,17 +56,29 @@ type EcsDisk struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
-	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
+	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
 	// The disk status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the storage set.
@@ -116,7 +128,7 @@ type ecsDiskState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
+	// Category of the disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
 	Category *string `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
@@ -131,7 +143,7 @@ type ecsDiskState struct {
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
@@ -146,16 +158,28 @@ type ecsDiskState struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size *int `pulumi:"size"`
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The disk status.
 	Status *string `pulumi:"status"`
@@ -177,7 +201,7 @@ type EcsDiskState struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
+	// Category of the disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
 	Category pulumi.StringPtrInput
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
@@ -192,7 +216,7 @@ type EcsDiskState struct {
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
@@ -207,16 +231,28 @@ type EcsDiskState struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
 	ResourceGroupId pulumi.StringPtrInput
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size pulumi.IntPtrInput
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
 	SnapshotId pulumi.StringPtrInput
 	// The disk status.
 	Status pulumi.StringPtrInput
@@ -242,7 +278,7 @@ type ecsDiskArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
+	// Category of the disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
 	Category *string `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
@@ -257,7 +293,7 @@ type ecsDiskArgs struct {
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot *bool   `pulumi:"enableAutoSnapshot"`
 	EncryptAlgorithm   *string `pulumi:"encryptAlgorithm"`
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted *bool `pulumi:"encrypted"`
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
@@ -272,16 +308,28 @@ type ecsDiskArgs struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size *int `pulumi:"size"`
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The ID of the storage set.
 	StorageSetId *string `pulumi:"storageSetId"`
@@ -302,7 +350,7 @@ type EcsDiskArgs struct {
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
-	// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
+	// Category of the disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
 	Category pulumi.StringPtrInput
 	// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
 	DeleteAutoSnapshot pulumi.BoolPtrInput
@@ -317,7 +365,7 @@ type EcsDiskArgs struct {
 	// Indicates whether to enable creating snapshot automatically.
 	EnableAutoSnapshot pulumi.BoolPtrInput
 	EncryptAlgorithm   pulumi.StringPtrInput
-	// If true, the disk will be encrypted, conflict with `snapshotId`.
+	// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
 	Encrypted pulumi.BoolPtrInput
 	// The ID of the instance to which the created subscription disk is automatically attached.
 	// * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
@@ -332,16 +380,28 @@ type EcsDiskArgs struct {
 	// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instanceId` is required.
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-	// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-	// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-	// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-	// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+	// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+	// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+	// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+	// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 	PerformanceLevel pulumi.StringPtrInput
 	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
 	ResourceGroupId pulumi.StringPtrInput
-	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+	// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+	// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+	// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+	// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+	// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+	// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+	// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+	// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+	// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+	// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+	// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+	// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 	Size pulumi.IntPtrInput
-	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+	// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
 	SnapshotId pulumi.StringPtrInput
 	// The ID of the storage set.
 	StorageSetId pulumi.StringPtrInput
@@ -453,7 +513,7 @@ func (o EcsDiskOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
+// Category of the disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
 func (o EcsDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -492,9 +552,9 @@ func (o EcsDiskOutput) EncryptAlgorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.EncryptAlgorithm }).(pulumi.StringPtrOutput)
 }
 
-// If true, the disk will be encrypted, conflict with `snapshotId`.
-func (o EcsDiskOutput) Encrypted() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *EcsDisk) pulumi.BoolPtrOutput { return v.Encrypted }).(pulumi.BoolPtrOutput)
+// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
+func (o EcsDiskOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *EcsDisk) pulumi.BoolOutput { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
 // The ID of the instance to which the created subscription disk is automatically attached.
@@ -522,10 +582,10 @@ func (o EcsDiskOutput) PaymentType() pulumi.StringOutput {
 }
 
 // Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
 func (o EcsDiskOutput) PerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
@@ -535,14 +595,26 @@ func (o EcsDiskOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+// - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+// - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+// - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+// - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+// - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+// - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+// - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+// - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+// - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+// - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+// - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
 func (o EcsDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
-func (o EcsDiskOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
+func (o EcsDiskOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
 // The disk status.

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a Network Attached Storage (NAS) Fileset resource.
+    /// Provides a Apsara File Storage (NAS) Fileset resource.
     /// 
-    /// For information about Network Attached Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
+    /// For information about Apsara File Storage (NAS) Fileset and how to use it, see [What is Fileset](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
     /// 
     /// &gt; **NOTE:** Available in v1.153.0+.
     /// 
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// ## Import
     /// 
-    /// Network Attached Storage (NAS) Fileset can be imported using the id, e.g.
+    /// Apsara File Storage (NAS) Fileset can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:nas/fileset:Fileset example &lt;file_system_id&gt;:&lt;fileset_id&gt;

@@ -94,7 +94,8 @@ class InstanceArgs:
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
-                 zone_id_slave_a: Optional[pulumi.Input[str]] = None):
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] engine: Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
@@ -320,6 +321,7 @@ class InstanceArgs:
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "engine_version", engine_version)
@@ -471,6 +473,8 @@ class InstanceArgs:
             pulumi.set(__self__, "zone_id", zone_id)
         if zone_id_slave_a is not None:
             pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
+        if zone_id_slave_b is not None:
+            pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter
@@ -1511,6 +1515,18 @@ class InstanceArgs:
     def zone_id_slave_a(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id_slave_a", value)
 
+    @property
+    @pulumi.getter(name="zoneIdSlaveB")
+    def zone_id_slave_b(self) -> Optional[pulumi.Input[str]]:
+        """
+        RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+        """
+        return pulumi.get(self, "zone_id_slave_b")
+
+    @zone_id_slave_b.setter
+    def zone_id_slave_b(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id_slave_b", value)
+
 
 @pulumi.input_type
 class _InstanceState:
@@ -1593,7 +1609,8 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
-                 zone_id_slave_a: Optional[pulumi.Input[str]] = None):
+                 zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] acl: The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. Valid values:
@@ -1824,6 +1841,7 @@ class _InstanceState:
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
@@ -1989,6 +2007,8 @@ class _InstanceState:
             pulumi.set(__self__, "zone_id", zone_id)
         if zone_id_slave_a is not None:
             pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
+        if zone_id_slave_b is not None:
+            pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter
@@ -3089,6 +3109,18 @@ class _InstanceState:
     def zone_id_slave_a(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id_slave_a", value)
 
+    @property
+    @pulumi.getter(name="zoneIdSlaveB")
+    def zone_id_slave_b(self) -> Optional[pulumi.Input[str]]:
+        """
+        RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+        """
+        return pulumi.get(self, "zone_id_slave_b")
+
+    @zone_id_slave_b.setter
+    def zone_id_slave_b(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id_slave_b", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -3169,6 +3201,7 @@ class Instance(pulumi.CustomResource):
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Import
@@ -3404,6 +3437,7 @@ class Instance(pulumi.CustomResource):
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
         """
         ...
     @overload
@@ -3509,6 +3543,7 @@ class Instance(pulumi.CustomResource):
                  whitelist_network_type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+                 zone_id_slave_b: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -3600,6 +3635,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["whitelist_network_type"] = whitelist_network_type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
+            __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["db_instance_type"] = None
@@ -3695,7 +3731,8 @@ class Instance(pulumi.CustomResource):
             vswitch_id: Optional[pulumi.Input[str]] = None,
             whitelist_network_type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None,
-            zone_id_slave_a: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+            zone_id_slave_b: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -3931,6 +3968,7 @@ class Instance(pulumi.CustomResource):
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
+        :param pulumi.Input[str] zone_id_slave_b: RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -4015,6 +4053,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["whitelist_network_type"] = whitelist_network_type
         __props__.__dict__["zone_id"] = zone_id
         __props__.__dict__["zone_id_slave_a"] = zone_id_slave_a
+        __props__.__dict__["zone_id_slave_b"] = zone_id_slave_b
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -4799,4 +4838,12 @@ class Instance(pulumi.CustomResource):
         The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
         return pulumi.get(self, "zone_id_slave_a")
+
+    @property
+    @pulumi.getter(name="zoneIdSlaveB")
+    def zone_id_slave_b(self) -> pulumi.Output[str]:
+        """
+        RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+        """
+        return pulumi.get(self, "zone_id_slave_b")
 

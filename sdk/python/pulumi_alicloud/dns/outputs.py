@@ -1559,7 +1559,7 @@ class GetAlidnsRecordsRecordResult(dict):
         """
         :param str domain_name: The domain name associated to the records.
         :param str id: ID of the resource.
-        :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+        :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
         :param bool locked: Indicates whether the record is locked.
         :param int priority: Priority of the `MX` record.
         :param str record_id: ID of the record.
@@ -1603,7 +1603,7 @@ class GetAlidnsRecordsRecordResult(dict):
     @pulumi.getter
     def line(self) -> str:
         """
-        ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+        ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
         """
         return pulumi.get(self, "line")
 

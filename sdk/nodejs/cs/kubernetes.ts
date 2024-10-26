@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This resource will help you to manage a Kubernetes Cluster in Alibaba Cloud Kubernetes Service, see [What is kubernetes](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/create-an-ask-cluster-1).
  *
+ * > **NOTE:** From August 21, 2024, Container Service for Kubernetes (ACK) discontinues the creation of ACK dedicated clusters, see [Product announcement](https://www.alibabacloud.com/help/en/ack/product-overview/product-announcement-announcement-on-stopping-new-ack-dedicated-cluster) for more details.
+ *
  * > **NOTE:** Available since v1.9.0.
  *
  * > **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
@@ -138,7 +140,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly installCloudMonitor!: pulumi.Output<boolean | undefined>;
     /**
-     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm). Only works for **Create** Operation.
      */
     public readonly isEnterpriseSecurityGroup!: pulumi.Output<boolean>;
     /**
@@ -154,7 +156,9 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     *
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
     public readonly loadBalancerSpec!: pulumi.Output<string | undefined>;
     /**
@@ -220,7 +224,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly natGatewayId!: pulumi.Output<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
      */
     public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
     /**
@@ -248,7 +252,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly podCidr!: pulumi.Output<string | undefined>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     public readonly podVswitchIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -289,7 +293,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly slbInternet!: pulumi.Output<string>;
     /**
-     * Whether to create internet load balancer for API Server. Default to true.
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
      *
      * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
@@ -540,7 +544,7 @@ export interface KubernetesState {
      */
     installCloudMonitor?: pulumi.Input<boolean>;
     /**
-     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm). Only works for **Create** Operation.
      */
     isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
@@ -556,7 +560,9 @@ export interface KubernetesState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     *
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
@@ -622,7 +628,7 @@ export interface KubernetesState {
      */
     natGatewayId?: pulumi.Input<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
      */
     newNatGateway?: pulumi.Input<boolean>;
     /**
@@ -650,7 +656,7 @@ export interface KubernetesState {
      */
     podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -691,7 +697,7 @@ export interface KubernetesState {
      */
     slbInternet?: pulumi.Input<string>;
     /**
-     * Whether to create internet load balancer for API Server. Default to true.
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
      *
      * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.
@@ -786,7 +792,7 @@ export interface KubernetesArgs {
      */
     installCloudMonitor?: pulumi.Input<boolean>;
     /**
-     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm). Only works for **Create** Operation.
      */
     isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
@@ -802,7 +808,9 @@ export interface KubernetesArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     *
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
@@ -860,7 +868,7 @@ export interface KubernetesArgs {
      */
     namePrefix?: pulumi.Input<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Your cluster nodes and applications will have public network access. If there is a NAT gateway in the selected VPC, ACK will use this gateway by default; if there is no NAT gateway in the selected VPC, ACK will create a new NAT gateway for you and automatically configure SNAT rules. Only works for **Create** Operation.
      */
     newNatGateway?: pulumi.Input<boolean>;
     /**
@@ -888,7 +896,7 @@ export interface KubernetesArgs {
      */
     podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` and `masterVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -921,7 +929,7 @@ export interface KubernetesArgs {
      */
     serviceCidr?: pulumi.Input<string>;
     /**
-     * Whether to create internet load balancer for API Server. Default to true.
+     * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation. 
      *
      * > **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specify the `podVswitchIds` field and addons with `terway-eniip`.
      * If you want to use `Flannel` as CNI network plugin, You need to specify the `podCidr` field and addons with `flannel`.

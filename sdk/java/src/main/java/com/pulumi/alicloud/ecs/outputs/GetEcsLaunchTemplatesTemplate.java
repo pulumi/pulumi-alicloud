@@ -19,7 +19,7 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsLaunchTemplatesTemplate {
     /**
-     * @return Instance auto release time.
+     * @return (Optional) Instance auto release time.
      * 
      */
     private String autoReleaseTime;
@@ -44,7 +44,7 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     private String deploymentSetId;
     /**
-     * @return The Description of Template.
+     * @return System disk description.
      * 
      */
     private String description;
@@ -58,6 +58,21 @@ public final class GetEcsLaunchTemplatesTemplate {
      * 
      */
     private String hostName;
+    /**
+     * @return Whether to enable access to instance metadata.
+     * 
+     */
+    private String httpEndpoint;
+    /**
+     * @return The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
+    private Integer httpPutResponseHopLimit;
+    /**
+     * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+     * 
+     */
+    private String httpTokens;
     /**
      * @return The ID of the Launch Template.
      * 
@@ -236,7 +251,7 @@ public final class GetEcsLaunchTemplatesTemplate {
 
     private GetEcsLaunchTemplatesTemplate() {}
     /**
-     * @return Instance auto release time.
+     * @return (Optional) Instance auto release time.
      * 
      */
     public String autoReleaseTime() {
@@ -271,7 +286,7 @@ public final class GetEcsLaunchTemplatesTemplate {
         return this.deploymentSetId;
     }
     /**
-     * @return The Description of Template.
+     * @return System disk description.
      * 
      */
     public String description() {
@@ -290,6 +305,27 @@ public final class GetEcsLaunchTemplatesTemplate {
      */
     public String hostName() {
         return this.hostName;
+    }
+    /**
+     * @return Whether to enable access to instance metadata.
+     * 
+     */
+    public String httpEndpoint() {
+        return this.httpEndpoint;
+    }
+    /**
+     * @return The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
+    public Integer httpPutResponseHopLimit() {
+        return this.httpPutResponseHopLimit;
+    }
+    /**
+     * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+     * 
+     */
+    public String httpTokens() {
+        return this.httpTokens;
     }
     /**
      * @return The ID of the Launch Template.
@@ -554,6 +590,9 @@ public final class GetEcsLaunchTemplatesTemplate {
         private String description;
         private Boolean enableVmOsConfig;
         private String hostName;
+        private String httpEndpoint;
+        private Integer httpPutResponseHopLimit;
+        private String httpTokens;
         private String id;
         private String imageId;
         private String imageOwnerAlias;
@@ -600,6 +639,9 @@ public final class GetEcsLaunchTemplatesTemplate {
     	      this.description = defaults.description;
     	      this.enableVmOsConfig = defaults.enableVmOsConfig;
     	      this.hostName = defaults.hostName;
+    	      this.httpEndpoint = defaults.httpEndpoint;
+    	      this.httpPutResponseHopLimit = defaults.httpPutResponseHopLimit;
+    	      this.httpTokens = defaults.httpTokens;
     	      this.id = defaults.id;
     	      this.imageId = defaults.imageId;
     	      this.imageOwnerAlias = defaults.imageOwnerAlias;
@@ -702,6 +744,30 @@ public final class GetEcsLaunchTemplatesTemplate {
               throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "hostName");
             }
             this.hostName = hostName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpEndpoint(String httpEndpoint) {
+            if (httpEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "httpEndpoint");
+            }
+            this.httpEndpoint = httpEndpoint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpPutResponseHopLimit(Integer httpPutResponseHopLimit) {
+            if (httpPutResponseHopLimit == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "httpPutResponseHopLimit");
+            }
+            this.httpPutResponseHopLimit = httpPutResponseHopLimit;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder httpTokens(String httpTokens) {
+            if (httpTokens == null) {
+              throw new MissingRequiredPropertyException("GetEcsLaunchTemplatesTemplate", "httpTokens");
+            }
+            this.httpTokens = httpTokens;
             return this;
         }
         @CustomType.Setter
@@ -1003,6 +1069,9 @@ public final class GetEcsLaunchTemplatesTemplate {
             _resultValue.description = description;
             _resultValue.enableVmOsConfig = enableVmOsConfig;
             _resultValue.hostName = hostName;
+            _resultValue.httpEndpoint = httpEndpoint;
+            _resultValue.httpPutResponseHopLimit = httpPutResponseHopLimit;
+            _resultValue.httpTokens = httpTokens;
             _resultValue.id = id;
             _resultValue.imageId = imageId;
             _resultValue.imageOwnerAlias = imageOwnerAlias;

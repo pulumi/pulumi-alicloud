@@ -91,13 +91,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<bool?> CfwAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to use log audit. Valid values: `true`, `false`.
+        /// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
         /// </summary>
         [Output("cfwLog")]
         public Output<bool?> CfwLog { get; private set; } = null!;
 
         /// <summary>
-        /// The log storage capacity. It will be ignored when `cfw_log = false`.
+        /// The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         /// </summary>
         [Output("cfwLogStorage")]
         public Output<int?> CfwLogStorage { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The number of public IPs that can be protected. Valid values: 20 to 4000.
         /// </summary>
         [Output("ipNumber")]
-        public Output<int?> IpNumber { get; private set; } = null!;
+        public Output<int> IpNumber { get; private set; } = null!;
 
         /// <summary>
         /// The logistics.
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> Logistics { get; private set; } = null!;
 
         /// <summary>
-        /// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         /// </summary>
         [Output("modifyType")]
         public Output<string?> ModifyType { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string?> RenewalDurationUnit { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        /// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
         /// - `AutoRenewal`: Auto renewal.
         /// - `ManualRenewal`: Manual renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -195,13 +195,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         /// </summary>
         [Output("spec")]
-        public Output<string?> Spec { get; private set; } = null!;
+        public Output<string> Spec { get; private set; } = null!;
 
         /// <summary>
-        /// The status of Instance.
+        /// The status of Cloud Firewall Instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.232.0) The user status of Cloud Firewall Instance.
+        /// </summary>
+        [Output("userStatus")]
+        public Output<bool> UserStatus { get; private set; } = null!;
 
 
         /// <summary>
@@ -268,13 +274,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<bool>? CfwAccount { get; set; }
 
         /// <summary>
-        /// Whether to use log audit. Valid values: `true`, `false`.
+        /// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
         /// </summary>
         [Input("cfwLog")]
         public Input<bool>? CfwLog { get; set; }
 
         /// <summary>
-        /// The log storage capacity. It will be ignored when `cfw_log = false`.
+        /// The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         /// </summary>
         [Input("cfwLogStorage")]
         public Input<int>? CfwLogStorage { get; set; }
@@ -304,7 +310,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Logistics { get; set; }
 
         /// <summary>
-        /// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -341,7 +347,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        /// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
         /// - `AutoRenewal`: Auto renewal.
         /// - `ManualRenewal`: Manual renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -383,13 +389,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<bool>? CfwAccount { get; set; }
 
         /// <summary>
-        /// Whether to use log audit. Valid values: `true`, `false`.
+        /// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
         /// </summary>
         [Input("cfwLog")]
         public Input<bool>? CfwLog { get; set; }
 
         /// <summary>
-        /// The log storage capacity. It will be ignored when `cfw_log = false`.
+        /// The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         /// </summary>
         [Input("cfwLogStorage")]
         public Input<int>? CfwLogStorage { get; set; }
@@ -431,7 +437,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Logistics { get; set; }
 
         /// <summary>
-        /// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        /// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         /// </summary>
         [Input("modifyType")]
         public Input<string>? ModifyType { get; set; }
@@ -474,7 +480,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? RenewalDurationUnit { get; set; }
 
         /// <summary>
-        /// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        /// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
         /// - `AutoRenewal`: Auto renewal.
         /// - `ManualRenewal`: Manual renewal.
         /// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -490,10 +496,16 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Spec { get; set; }
 
         /// <summary>
-        /// The status of Instance.
+        /// The status of Cloud Firewall Instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// (Available since v1.232.0) The user status of Cloud Firewall Instance.
+        /// </summary>
+        [Input("userStatus")]
+        public Input<bool>? UserStatus { get; set; }
 
         public InstanceState()
         {

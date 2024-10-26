@@ -18,8 +18,6 @@ public final class VpcEndpointServiceUserState extends com.pulumi.resources.Reso
 
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
@@ -27,8 +25,6 @@ public final class VpcEndpointServiceUserState extends com.pulumi.resources.Reso
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -51,6 +47,21 @@ public final class VpcEndpointServiceUserState extends com.pulumi.resources.Reso
     }
 
     /**
+     * The whitelist in the format of ARN.
+     * 
+     */
+    @Import(name="userArn")
+    private @Nullable Output<String> userArn;
+
+    /**
+     * @return The whitelist in the format of ARN.
+     * 
+     */
+    public Optional<Output<String>> userArn() {
+        return Optional.ofNullable(this.userArn);
+    }
+
+    /**
      * The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
      * 
      */
@@ -70,6 +81,7 @@ public final class VpcEndpointServiceUserState extends com.pulumi.resources.Reso
     private VpcEndpointServiceUserState(VpcEndpointServiceUserState $) {
         this.dryRun = $.dryRun;
         this.serviceId = $.serviceId;
+        this.userArn = $.userArn;
         this.userId = $.userId;
     }
 
@@ -93,8 +105,6 @@ public final class VpcEndpointServiceUserState extends com.pulumi.resources.Reso
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -106,8 +116,6 @@ public final class VpcEndpointServiceUserState extends com.pulumi.resources.Reso
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -135,6 +143,27 @@ public final class VpcEndpointServiceUserState extends com.pulumi.resources.Reso
          */
         public Builder serviceId(String serviceId) {
             return serviceId(Output.of(serviceId));
+        }
+
+        /**
+         * @param userArn The whitelist in the format of ARN.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userArn(@Nullable Output<String> userArn) {
+            $.userArn = userArn;
+            return this;
+        }
+
+        /**
+         * @param userArn The whitelist in the format of ARN.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userArn(String userArn) {
+            return userArn(Output.of(userArn));
         }
 
         /**

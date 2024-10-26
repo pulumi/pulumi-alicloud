@@ -18,14 +18,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     public static final ServiceMeshMeshConfigSidecarInjectorArgs Empty = new ServiceMeshMeshConfigSidecarInjectorArgs();
 
     /**
-     * Whether to enable by Pod Annotations automatic injection Sidecar.
+     * Whether to enable by Pod Annotations automatic injection Sidecar
      * 
      */
     @Import(name="autoInjectionPolicyEnabled")
     private @Nullable Output<Boolean> autoInjectionPolicyEnabled;
 
     /**
-     * @return Whether to enable by Pod Annotations automatic injection Sidecar.
+     * @return Whether to enable by Pod Annotations automatic injection Sidecar
      * 
      */
     public Optional<Output<Boolean>> autoInjectionPolicyEnabled() {
@@ -33,14 +33,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * Whether it is the all namespaces you turn on the auto injection capabilities.
+     * Whether it is the all namespaces you turn on the auto injection capabilities
      * 
      */
     @Import(name="enableNamespacesByDefault")
     private @Nullable Output<Boolean> enableNamespacesByDefault;
 
     /**
-     * @return Whether it is the all namespaces you turn on the auto injection capabilities.
+     * @return Whether it is the all namespaces you turn on the auto injection capabilities
      * 
      */
     public Optional<Output<Boolean>> enableNamespacesByDefault() {
@@ -48,14 +48,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * CNI configuration. See `init_cni_configuration` below.
+     * CNI configuration See `init_cni_configuration` below.
      * 
      */
     @Import(name="initCniConfiguration")
     private @Nullable Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs> initCniConfiguration;
 
     /**
-     * @return CNI configuration. See `init_cni_configuration` below.
+     * @return CNI configuration See `init_cni_configuration` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs>> initCniConfiguration() {
@@ -63,14 +63,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * Sidecar injector Pods on the throttle.
+     * Sidecar injector Pods on the throttle
      * 
      */
     @Import(name="limitCpu")
     private @Nullable Output<String> limitCpu;
 
     /**
-     * @return Sidecar injector Pods on the throttle.
+     * @return Sidecar injector Pods on the throttle
      * 
      */
     public Optional<Output<String>> limitCpu() {
@@ -78,14 +78,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * Sidecar injector Pods on the throttle.
+     * Sidecar injector Pods on the throttle
      * 
      */
     @Import(name="limitMemory")
     private @Nullable Output<String> limitMemory;
 
     /**
-     * @return Sidecar injector Pods on the throttle.
+     * @return Sidecar injector Pods on the throttle
      * 
      */
     public Optional<Output<String>> limitMemory() {
@@ -93,14 +93,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * Sidecar injector Pods on the requested resource.
+     * Sidecar injector Pods on the requested resource
      * 
      */
     @Import(name="requestCpu")
     private @Nullable Output<String> requestCpu;
 
     /**
-     * @return Sidecar injector Pods on the requested resource.
+     * @return Sidecar injector Pods on the requested resource
      * 
      */
     public Optional<Output<String>> requestCpu() {
@@ -108,14 +108,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * Sidecar injector Pods on the requested resource.
+     * Sidecar injector Pods on the requested resource
      * 
      */
     @Import(name="requestMemory")
     private @Nullable Output<String> requestMemory;
 
     /**
-     * @return Sidecar injector Pods on the requested resource.
+     * @return Sidecar injector Pods on the requested resource
      * 
      */
     public Optional<Output<String>> requestMemory() {
@@ -123,14 +123,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * Other automatic injection Sidecar configuration (in YAML format).
+     * Other automatic injection Sidecar configuration (in YAML format)
      * 
      */
     @Import(name="sidecarInjectorWebhookAsYaml")
     private @Nullable Output<String> sidecarInjectorWebhookAsYaml;
 
     /**
-     * @return Other automatic injection Sidecar configuration (in YAML format).
+     * @return Other automatic injection Sidecar configuration (in YAML format)
      * 
      */
     public Optional<Output<String>> sidecarInjectorWebhookAsYaml() {
@@ -169,7 +169,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param autoInjectionPolicyEnabled Whether to enable by Pod Annotations automatic injection Sidecar.
+         * @param autoInjectionPolicyEnabled Whether to enable by Pod Annotations automatic injection Sidecar
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param autoInjectionPolicyEnabled Whether to enable by Pod Annotations automatic injection Sidecar.
+         * @param autoInjectionPolicyEnabled Whether to enable by Pod Annotations automatic injection Sidecar
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param enableNamespacesByDefault Whether it is the all namespaces you turn on the auto injection capabilities.
+         * @param enableNamespacesByDefault Whether it is the all namespaces you turn on the auto injection capabilities
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param enableNamespacesByDefault Whether it is the all namespaces you turn on the auto injection capabilities.
+         * @param enableNamespacesByDefault Whether it is the all namespaces you turn on the auto injection capabilities
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param initCniConfiguration CNI configuration. See `init_cni_configuration` below.
+         * @param initCniConfiguration CNI configuration See `init_cni_configuration` below.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param initCniConfiguration CNI configuration. See `init_cni_configuration` below.
+         * @param initCniConfiguration CNI configuration See `init_cni_configuration` below.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitCpu Sidecar injector Pods on the throttle.
+         * @param limitCpu Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitCpu Sidecar injector Pods on the throttle.
+         * @param limitCpu Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitMemory Sidecar injector Pods on the throttle.
+         * @param limitMemory Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitMemory Sidecar injector Pods on the throttle.
+         * @param limitMemory Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestCpu Sidecar injector Pods on the requested resource.
+         * @param requestCpu Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestCpu Sidecar injector Pods on the requested resource.
+         * @param requestCpu Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestMemory Sidecar injector Pods on the requested resource.
+         * @param requestMemory Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestMemory Sidecar injector Pods on the requested resource.
+         * @param requestMemory Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param sidecarInjectorWebhookAsYaml Other automatic injection Sidecar configuration (in YAML format).
+         * @param sidecarInjectorWebhookAsYaml Other automatic injection Sidecar configuration (in YAML format)
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param sidecarInjectorWebhookAsYaml Other automatic injection Sidecar configuration (in YAML format).
+         * @param sidecarInjectorWebhookAsYaml Other automatic injection Sidecar configuration (in YAML format)
          * 
          * @return builder
          * 

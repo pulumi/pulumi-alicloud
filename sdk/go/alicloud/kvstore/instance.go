@@ -37,7 +37,7 @@ type Instance struct {
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
 	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
-	// The bandwidth.
+	// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
 	// The ID of the event or the business information.
 	BusinessInfo pulumi.StringPtrOutput `pulumi:"businessInfo"`
@@ -237,7 +237,7 @@ type instanceState struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
 	BackupTime *string `pulumi:"backupTime"`
-	// The bandwidth.
+	// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
 	Bandwidth *int `pulumi:"bandwidth"`
 	// The ID of the event or the business information.
 	BusinessInfo *string `pulumi:"businessInfo"`
@@ -401,7 +401,7 @@ type InstanceState struct {
 	BackupPeriods pulumi.StringArrayInput
 	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
 	BackupTime pulumi.StringPtrInput
-	// The bandwidth.
+	// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
 	Bandwidth pulumi.IntPtrInput
 	// The ID of the event or the business information.
 	BusinessInfo pulumi.StringPtrInput
@@ -569,6 +569,8 @@ type instanceArgs struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
 	BackupTime *string `pulumi:"backupTime"`
+	// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+	Bandwidth *int `pulumi:"bandwidth"`
 	// The ID of the event or the business information.
 	BusinessInfo *string `pulumi:"businessInfo"`
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
@@ -720,6 +722,8 @@ type InstanceArgs struct {
 	BackupPeriods pulumi.StringArrayInput
 	// Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
 	BackupTime pulumi.StringPtrInput
+	// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+	Bandwidth pulumi.IntPtrInput
 	// The ID of the event or the business information.
 	BusinessInfo pulumi.StringPtrInput
 	// The storage capacity of the KVStore DBInstance. Unit: MB.
@@ -977,7 +981,7 @@ func (o InstanceOutput) BackupTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.BackupTime }).(pulumi.StringOutput)
 }
 
-// The bandwidth.
+// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
 func (o InstanceOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Bandwidth }).(pulumi.IntOutput)
 }

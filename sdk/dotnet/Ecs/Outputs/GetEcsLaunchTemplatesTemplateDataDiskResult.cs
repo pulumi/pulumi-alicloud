@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsLaunchTemplatesTemplateDataDiskResult
     {
         /// <summary>
-        /// The category of the disk.
+        /// The category of the system disk.
         /// </summary>
         public readonly string Category;
         /// <summary>
-        /// Indicates whether the data disk is released with the instance.
+        /// Specifies whether to release the system disk when the instance is released.
         /// </summary>
         public readonly bool DeleteWithInstance;
         /// <summary>
-        /// The description of the data disk.
+        /// System disk description.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -30,15 +30,15 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly bool Encrypted;
         /// <summary>
-        /// The name of the data disk.
+        /// System disk name.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// PerformanceLevel.
+        /// The performance level of the ESSD used as the system disk.
         /// </summary>
         public readonly string PerformanceLevel;
         /// <summary>
-        /// The performance level of the ESSD used as the data disk.
+        /// Size of the system disk, measured in GB.
         /// </summary>
         public readonly int Size;
         /// <summary>

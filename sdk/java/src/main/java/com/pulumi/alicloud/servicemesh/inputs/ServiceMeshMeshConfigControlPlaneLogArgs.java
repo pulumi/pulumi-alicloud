@@ -19,14 +19,14 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
     public static final ServiceMeshMeshConfigControlPlaneLogArgs Empty = new ServiceMeshMeshConfigControlPlaneLogArgs();
 
     /**
-     * Enable CNI.
+     * Enable CNI
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     public Output<Boolean> enabled() {
@@ -34,14 +34,14 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
     }
 
     /**
-     * Lifecycle of logs has been collected to Alibaba Cloud SLS.
+     * Lifecycle of logs has been collected to Alibaba Cloud SLS
      * 
      */
     @Import(name="logTtlInDay")
     private @Nullable Output<Integer> logTtlInDay;
 
     /**
-     * @return Lifecycle of logs has been collected to Alibaba Cloud SLS.
+     * @return Lifecycle of logs has been collected to Alibaba Cloud SLS
      * 
      */
     public Optional<Output<Integer>> logTtlInDay() {
@@ -90,7 +90,7 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
         }
 
         /**
-         * @param logTtlInDay Lifecycle of logs has been collected to Alibaba Cloud SLS.
+         * @param logTtlInDay Lifecycle of logs has been collected to Alibaba Cloud SLS
          * 
          * @return builder
          * 
@@ -122,7 +122,7 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
         }
 
         /**
-         * @param logTtlInDay Lifecycle of logs has been collected to Alibaba Cloud SLS.
+         * @param logTtlInDay Lifecycle of logs has been collected to Alibaba Cloud SLS
          * 
          * @return builder
          * 

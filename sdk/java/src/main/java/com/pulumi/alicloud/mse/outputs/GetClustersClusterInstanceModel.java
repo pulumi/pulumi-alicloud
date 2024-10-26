@@ -11,44 +11,100 @@ import java.util.Objects;
 @CustomType
 public final class GetClustersClusterInstanceModel {
     /**
-     * @return The health status of MSE Cluster.
+     * @return The health status of the instance.
      * 
      */
     private String healthStatus;
+    /**
+     * @return (Deprecated from version 1.232.0)
+     * 
+     */
     private String instanceType;
+    /**
+     * @return The public IP address.
+     * 
+     */
     private String internetIp;
+    /**
+     * @return The IP address of the instance.
+     * 
+     */
     private String ip;
+    /**
+     * @return The name of the pod.
+     * 
+     */
     private String podName;
+    /**
+     * @return The role.
+     * 
+     */
     private String role;
+    /**
+     * @return The single-thread IP address.
+     * 
+     */
     private String singleTunnelVip;
+    /**
+     * @return (Deprecated from version 1.232.0)
+     * 
+     */
     private String vip;
 
     private GetClustersClusterInstanceModel() {}
     /**
-     * @return The health status of MSE Cluster.
+     * @return The health status of the instance.
      * 
      */
     public String healthStatus() {
         return this.healthStatus;
     }
+    /**
+     * @return (Deprecated from version 1.232.0)
+     * 
+     */
     public String instanceType() {
         return this.instanceType;
     }
+    /**
+     * @return The public IP address.
+     * 
+     */
     public String internetIp() {
         return this.internetIp;
     }
+    /**
+     * @return The IP address of the instance.
+     * 
+     */
     public String ip() {
         return this.ip;
     }
+    /**
+     * @return The name of the pod.
+     * 
+     */
     public String podName() {
         return this.podName;
     }
+    /**
+     * @return The role.
+     * 
+     */
     public String role() {
         return this.role;
     }
+    /**
+     * @return The single-thread IP address.
+     * 
+     */
     public String singleTunnelVip() {
         return this.singleTunnelVip;
     }
+    /**
+     * @return (Deprecated from version 1.232.0)
+     * 
+     */
     public String vip() {
         return this.vip;
     }

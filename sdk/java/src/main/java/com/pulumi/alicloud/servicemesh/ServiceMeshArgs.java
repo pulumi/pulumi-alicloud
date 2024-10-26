@@ -39,14 +39,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+     * Cluster specification
      * 
      */
     @Import(name="clusterSpec")
     private @Nullable Output<String> clusterSpec;
 
     /**
-     * @return Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+     * @return Cluster specification
      * 
      */
     public Optional<Output<String>> clusterSpec() {
@@ -57,6 +57,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
      * Whether to customize Prometheus. Value:
      * -&#39;true&#39;: custom Prometheus.
      * -&#39;false&#39;: Do not customize Prometheus.
+     * 
      * Default value: &#39;false &#39;.
      * 
      */
@@ -67,6 +68,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
      * @return Whether to customize Prometheus. Value:
      * -&#39;true&#39;: custom Prometheus.
      * -&#39;false&#39;: Do not customize Prometheus.
+     * 
      * Default value: &#39;false &#39;.
      * 
      */
@@ -75,14 +77,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Grid instance version type (for example: the standard, the Pro version, etc.).
+     * Grid instance version type (for example: the standard, the Pro version, etc.)
      * 
      */
     @Import(name="edition")
     private @Nullable Output<String> edition;
 
     /**
-     * @return Grid instance version type (for example: the standard, the Pro version, etc.).
+     * @return Grid instance version type (for example: the standard, the Pro version, etc.)
      * 
      */
     public Optional<Output<String>> edition() {
@@ -90,14 +92,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Data plane KubeAPI access capability. See `extra_configuration` below.
+     * Data plane KubeAPI access capability See `extra_configuration` below.
      * 
      */
     @Import(name="extraConfiguration")
     private @Nullable Output<ServiceMeshExtraConfigurationArgs> extraConfiguration;
 
     /**
-     * @return Data plane KubeAPI access capability. See `extra_configuration` below.
+     * @return Data plane KubeAPI access capability See `extra_configuration` below.
      * 
      */
     public Optional<Output<ServiceMeshExtraConfigurationArgs>> extraConfiguration() {
@@ -108,7 +110,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
      * Whether to forcibly delete the ASM instance. Value:
      * -&#39;true&#39;: force deletion of ASM instance
      * -&#39;false&#39;: no forced deletion of ASM instance
-     * Default value: false.
+     * 
+     * Default value: false
      * 
      */
     @Import(name="force")
@@ -118,7 +121,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
      * @return Whether to forcibly delete the ASM instance. Value:
      * -&#39;true&#39;: force deletion of ASM instance
      * -&#39;false&#39;: no forced deletion of ASM instance
-     * Default value: false.
+     * 
+     * Default value: false
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -126,14 +130,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Load balancing information. See `load_balancer` below.
+     * Load balancing information See `load_balancer` below.
      * 
      */
     @Import(name="loadBalancer")
     private @Nullable Output<ServiceMeshLoadBalancerArgs> loadBalancer;
 
     /**
-     * @return Load balancing information. See `load_balancer` below.
+     * @return Load balancing information See `load_balancer` below.
      * 
      */
     public Optional<Output<ServiceMeshLoadBalancerArgs>> loadBalancer() {
@@ -141,14 +145,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service grid configuration information. See `mesh_config` below.
+     * Service grid configuration information See `mesh_config` below.
      * 
      */
     @Import(name="meshConfig")
     private @Nullable Output<ServiceMeshMeshConfigArgs> meshConfig;
 
     /**
-     * @return Service grid configuration information. See `mesh_config` below.
+     * @return Service grid configuration information See `mesh_config` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigArgs>> meshConfig() {
@@ -156,14 +160,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service grid network configuration information. See `network` below.
+     * Service grid network configuration information See `network` below.
      * 
      */
     @Import(name="network", required=true)
     private Output<ServiceMeshNetworkArgs> network;
 
     /**
-     * @return Service grid network configuration information. See `network` below.
+     * @return Service grid network configuration information See `network` below.
      * 
      */
     public Output<ServiceMeshNetworkArgs> network() {
@@ -186,14 +190,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ServiceMeshName.
+     * ServiceMeshName
      * 
      */
     @Import(name="serviceMeshName")
     private @Nullable Output<String> serviceMeshName;
 
     /**
-     * @return ServiceMeshName.
+     * @return ServiceMeshName
      * 
      */
     public Optional<Output<String>> serviceMeshName() {
@@ -201,14 +205,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -216,14 +220,14 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
+     * Service grid version number
      * 
      */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
+     * @return Service grid version number
      * 
      */
     public Optional<Output<String>> version() {
@@ -298,7 +302,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpec Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+         * @param clusterSpec Cluster specification
          * 
          * @return builder
          * 
@@ -309,7 +313,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpec Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+         * @param clusterSpec Cluster specification
          * 
          * @return builder
          * 
@@ -322,6 +326,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
          * @param customizedPrometheus Whether to customize Prometheus. Value:
          * -&#39;true&#39;: custom Prometheus.
          * -&#39;false&#39;: Do not customize Prometheus.
+         * 
          * Default value: &#39;false &#39;.
          * 
          * @return builder
@@ -336,6 +341,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
          * @param customizedPrometheus Whether to customize Prometheus. Value:
          * -&#39;true&#39;: custom Prometheus.
          * -&#39;false&#39;: Do not customize Prometheus.
+         * 
          * Default value: &#39;false &#39;.
          * 
          * @return builder
@@ -346,7 +352,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edition Grid instance version type (for example: the standard, the Pro version, etc.).
+         * @param edition Grid instance version type (for example: the standard, the Pro version, etc.)
          * 
          * @return builder
          * 
@@ -357,7 +363,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param edition Grid instance version type (for example: the standard, the Pro version, etc.).
+         * @param edition Grid instance version type (for example: the standard, the Pro version, etc.)
          * 
          * @return builder
          * 
@@ -367,7 +373,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraConfiguration Data plane KubeAPI access capability. See `extra_configuration` below.
+         * @param extraConfiguration Data plane KubeAPI access capability See `extra_configuration` below.
          * 
          * @return builder
          * 
@@ -378,7 +384,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param extraConfiguration Data plane KubeAPI access capability. See `extra_configuration` below.
+         * @param extraConfiguration Data plane KubeAPI access capability See `extra_configuration` below.
          * 
          * @return builder
          * 
@@ -391,7 +397,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
          * @param force Whether to forcibly delete the ASM instance. Value:
          * -&#39;true&#39;: force deletion of ASM instance
          * -&#39;false&#39;: no forced deletion of ASM instance
-         * Default value: false.
+         * 
+         * Default value: false
          * 
          * @return builder
          * 
@@ -405,7 +412,8 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
          * @param force Whether to forcibly delete the ASM instance. Value:
          * -&#39;true&#39;: force deletion of ASM instance
          * -&#39;false&#39;: no forced deletion of ASM instance
-         * Default value: false.
+         * 
+         * Default value: false
          * 
          * @return builder
          * 
@@ -415,7 +423,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancer Load balancing information. See `load_balancer` below.
+         * @param loadBalancer Load balancing information See `load_balancer` below.
          * 
          * @return builder
          * 
@@ -426,7 +434,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancer Load balancing information. See `load_balancer` below.
+         * @param loadBalancer Load balancing information See `load_balancer` below.
          * 
          * @return builder
          * 
@@ -436,7 +444,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshConfig Service grid configuration information. See `mesh_config` below.
+         * @param meshConfig Service grid configuration information See `mesh_config` below.
          * 
          * @return builder
          * 
@@ -447,7 +455,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param meshConfig Service grid configuration information. See `mesh_config` below.
+         * @param meshConfig Service grid configuration information See `mesh_config` below.
          * 
          * @return builder
          * 
@@ -457,7 +465,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network Service grid network configuration information. See `network` below.
+         * @param network Service grid network configuration information See `network` below.
          * 
          * @return builder
          * 
@@ -468,7 +476,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network Service grid network configuration information. See `network` below.
+         * @param network Service grid network configuration information See `network` below.
          * 
          * @return builder
          * 
@@ -499,7 +507,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceMeshName ServiceMeshName.
+         * @param serviceMeshName ServiceMeshName
          * 
          * @return builder
          * 
@@ -510,7 +518,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceMeshName ServiceMeshName.
+         * @param serviceMeshName ServiceMeshName
          * 
          * @return builder
          * 
@@ -520,7 +528,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -531,7 +539,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -541,7 +549,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
+         * @param version Service grid version number
          * 
          * @return builder
          * 
@@ -552,7 +560,7 @@ public final class ServiceMeshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param version Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
+         * @param version Service grid version number
          * 
          * @return builder
          * 

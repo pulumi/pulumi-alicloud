@@ -12,8 +12,7 @@ namespace Pulumi.AliCloud.Ecp
     /// <summary>
     /// Provides a Elastic Cloud Phone (ECP) Instance resource.
     /// 
-    /// For information about Elastic Cloud Phone (ECP) Instance and how to use it,
-    /// see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
+    /// For information about Elastic Cloud Phone (ECP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
     /// 
     /// &gt; **NOTE:** Available since v1.158.0.
     /// 
@@ -31,50 +30,35 @@ namespace Pulumi.AliCloud.Ecp
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Ecp.GetZones.Invoke();
+    /// 
+    ///     var defaultGetInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
+    /// 
     ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var @default = AliCloud.Ecp.GetZones.Invoke();
-    /// 
-    ///     var defaultGetInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
-    /// 
-    ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length;
-    /// 
-    ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         var @default = values.Item1;
-    ///         var countSize = values.Item2;
-    ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
+    ///         VpcName = $"{name}-{defaultInteger.Result}",
+    ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length;
-    /// 
-    ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         var defaultGetInstanceTypes = values.Item1;
-    ///         var instanceTypeCountSize = values.Item2;
-    ///         return defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[instanceTypeCountSize - 1].InstanceType;
+    ///         VswitchName = $"{name}-{defaultInteger.Result}",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///     });
     /// 
-    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         NameRegex = "^default-NODELETING$",
-    ///     });
-    /// 
-    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = zoneId,
-    ///     });
-    /// 
-    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
-    ///     {
-    ///         Name = name,
-    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         Name = $"{name}-{defaultInteger.Result}",
+    ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
     ///     var defaultKeyPair = new AliCloud.Ecp.KeyPair("default", new()
@@ -85,15 +69,15 @@ namespace Pulumi.AliCloud.Ecp
     /// 
     ///     var defaultInstance = new AliCloud.Ecp.Instance("default", new()
     ///     {
-    ///         InstanceName = name,
-    ///         Description = name,
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.InstanceType),
+    ///         ImageId = "android-image-release5501072_a11_20240530.raw",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
     ///         KeyPairName = defaultKeyPair.KeyPairName,
-    ///         SecurityGroupId = @group.Id,
-    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         ImageId = "android_9_0_0_release_2851157_20211201.vhd",
-    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[1]?.InstanceType),
     ///         VncPassword = "Ecp123",
     ///         PaymentType = "PayAsYouGo",
+    ///         InstanceName = name,
+    ///         Description = name,
     ///         Force = true,
     ///     });
     /// 
@@ -112,111 +96,105 @@ namespace Pulumi.AliCloud.Ecp
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The auto pay.
+        /// Specifies whether to enable the auto-payment feature. Valid values:
         /// </summary>
         [Output("autoPay")]
         public Output<bool?> AutoPay { get; private set; } = null!;
 
         /// <summary>
-        /// The auto renew.
+        /// Specifies whether to enable the auto-renewal feature. Valid values:
         /// </summary>
         [Output("autoRenew")]
         public Output<bool?> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-        /// start with `http://` and `https`.
+        /// The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The eip bandwidth.
+        /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
         /// </summary>
         [Output("eipBandwidth")]
         public Output<int?> EipBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The force.
+        /// Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The ID Of The Image.
+        /// The ID of the image.
         /// </summary>
         [Output("imageId")]
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance. It must be 2 to 128 characters in length and must start with an
-        /// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-        /// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-        /// the instance.
+        /// The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         /// </summary>
         [Output("instanceName")]
-        public Output<string?> InstanceName { get; private set; } = null!;
+        public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Instance Type.
+        /// The specifications of the ECP instance.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the key pair of the mobile phone instance.
+        /// The name of the key pair that you want to use to connect to the instance.
         /// </summary>
         [Output("keyPairName")]
         public Output<string?> KeyPairName { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type.Valid values: `PayAsYouGo`,`Subscription`
+        /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
         /// </summary>
         [Output("paymentType")]
-        public Output<string?> PaymentType { get; private set; } = null!;
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-        /// is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+        /// The subscription duration. Default value: `1`. Valid values:
+        /// - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+        /// - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
         /// </summary>
         [Output("period")]
         public Output<string?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-        /// to `Month`.
+        /// The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
         /// </summary>
         [Output("periodUnit")]
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The selected resolution for the cloud mobile phone instance.
+        /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
         /// </summary>
         [Output("resolution")]
         public Output<string> Resolution { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the security group. The security group is the same as that of the
-        /// ECS instance.
+        /// The ID of the security group.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance status. Valid values: `Running`, `Stopped`.
+        /// The status of the Instance. Valid values: `Running`, `Stopped`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud mobile phone VNC password. The password must be six characters in length and must
-        /// contain only uppercase, lowercase English letters and Arabic numerals.
+        /// The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
         /// </summary>
         [Output("vncPassword")]
         public Output<string?> VncPassword { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch id.
+        /// The ID of the vSwitch.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -272,98 +250,93 @@ namespace Pulumi.AliCloud.Ecp
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The auto pay.
+        /// Specifies whether to enable the auto-payment feature. Valid values:
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// The auto renew.
+        /// Specifies whether to enable the auto-renewal feature. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-        /// start with `http://` and `https`.
+        /// The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The eip bandwidth.
+        /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
         /// </summary>
         [Input("eipBandwidth")]
         public Input<int>? EipBandwidth { get; set; }
 
         /// <summary>
-        /// The force.
+        /// Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The ID Of The Image.
+        /// The ID of the image.
         /// </summary>
         [Input("imageId", required: true)]
         public Input<string> ImageId { get; set; } = null!;
 
         /// <summary>
-        /// The name of the instance. It must be 2 to 128 characters in length and must start with an
-        /// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-        /// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-        /// the instance.
+        /// The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance Type.
+        /// The specifications of the ECP instance.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The name of the key pair of the mobile phone instance.
+        /// The name of the key pair that you want to use to connect to the instance.
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The payment type.Valid values: `PayAsYouGo`,`Subscription`
+        /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-        /// is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+        /// The subscription duration. Default value: `1`. Valid values:
+        /// - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+        /// - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-        /// to `Month`.
+        /// The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The selected resolution for the cloud mobile phone instance.
+        /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
         /// </summary>
         [Input("resolution")]
         public Input<string>? Resolution { get; set; }
 
         /// <summary>
-        /// The ID of the security group. The security group is the same as that of the
-        /// ECS instance.
+        /// The ID of the security group.
         /// </summary>
         [Input("securityGroupId", required: true)]
         public Input<string> SecurityGroupId { get; set; } = null!;
 
         /// <summary>
-        /// Instance status. Valid values: `Running`, `Stopped`.
+        /// The status of the Instance. Valid values: `Running`, `Stopped`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -372,8 +345,7 @@ namespace Pulumi.AliCloud.Ecp
         private Input<string>? _vncPassword;
 
         /// <summary>
-        /// Cloud mobile phone VNC password. The password must be six characters in length and must
-        /// contain only uppercase, lowercase English letters and Arabic numerals.
+        /// The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
         /// </summary>
         public Input<string>? VncPassword
         {
@@ -386,7 +358,7 @@ namespace Pulumi.AliCloud.Ecp
         }
 
         /// <summary>
-        /// The vswitch id.
+        /// The ID of the vSwitch.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
@@ -400,98 +372,93 @@ namespace Pulumi.AliCloud.Ecp
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The auto pay.
+        /// Specifies whether to enable the auto-payment feature. Valid values:
         /// </summary>
         [Input("autoPay")]
         public Input<bool>? AutoPay { get; set; }
 
         /// <summary>
-        /// The auto renew.
+        /// Specifies whether to enable the auto-renewal feature. Valid values:
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-        /// start with `http://` and `https`.
+        /// The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The eip bandwidth.
+        /// The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
         /// </summary>
         [Input("eipBandwidth")]
         public Input<int>? EipBandwidth { get; set; }
 
         /// <summary>
-        /// The force.
+        /// Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The ID Of The Image.
+        /// The ID of the image.
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// The name of the instance. It must be 2 to 128 characters in length and must start with an
-        /// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-        /// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-        /// the instance.
+        /// The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Instance Type.
+        /// The specifications of the ECP instance.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The name of the key pair of the mobile phone instance.
+        /// The name of the key pair that you want to use to connect to the instance.
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// The payment type.Valid values: `PayAsYouGo`,`Subscription`
+        /// The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-        /// is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+        /// The subscription duration. Default value: `1`. Valid values:
+        /// - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+        /// - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
         /// </summary>
         [Input("period")]
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-        /// to `Month`.
+        /// The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
         /// </summary>
         [Input("periodUnit")]
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The selected resolution for the cloud mobile phone instance.
+        /// The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
         /// </summary>
         [Input("resolution")]
         public Input<string>? Resolution { get; set; }
 
         /// <summary>
-        /// The ID of the security group. The security group is the same as that of the
-        /// ECS instance.
+        /// The ID of the security group.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// Instance status. Valid values: `Running`, `Stopped`.
+        /// The status of the Instance. Valid values: `Running`, `Stopped`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -500,8 +467,7 @@ namespace Pulumi.AliCloud.Ecp
         private Input<string>? _vncPassword;
 
         /// <summary>
-        /// Cloud mobile phone VNC password. The password must be six characters in length and must
-        /// contain only uppercase, lowercase English letters and Arabic numerals.
+        /// The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
         /// </summary>
         public Input<string>? VncPassword
         {
@@ -514,7 +480,7 @@ namespace Pulumi.AliCloud.Ecp
         }
 
         /// <summary>
-        /// The vswitch id.
+        /// The ID of the vSwitch.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

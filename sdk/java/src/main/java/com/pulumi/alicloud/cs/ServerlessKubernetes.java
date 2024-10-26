@@ -8,6 +8,8 @@ import com.pulumi.alicloud.cs.ServerlessKubernetesArgs;
 import com.pulumi.alicloud.cs.inputs.ServerlessKubernetesState;
 import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesAddon;
 import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesDeleteOption;
+import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesMaintenanceWindow;
+import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesOperationPolicy;
 import com.pulumi.alicloud.cs.outputs.ServerlessKubernetesRrsaMetadata;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -222,8 +224,6 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      * 
-     * *Removed params*
-     * 
      */
     @Export(name="customSan", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customSan;
@@ -231,8 +231,6 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     /**
      * @return Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-     * 
-     * *Removed params*
      * 
      */
     public Output<Optional<String>> customSan() {
@@ -285,14 +283,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableRrsa);
     }
     /**
-     * Whether to create internet eip for API Server. Default to false.
+     * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      * 
      */
     @Export(name="endpointPublicAccessEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> endpointPublicAccessEnabled;
 
     /**
-     * @return Whether to create internet eip for API Server. Default to false.
+     * @return Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      * 
      */
     public Output<Optional<Boolean>> endpointPublicAccessEnabled() {
@@ -317,25 +315,25 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kubeConfig);
     }
     /**
-     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      * 
      * @deprecated
-     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      * 
      */
-    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore. */
+    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore. */
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerSpec;
 
     /**
-     * @return The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * @return The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      * 
      */
     public Output<String> loadBalancerSpec() {
         return this.loadBalancerSpec;
     }
     /**
-     * Enable log service, Valid value `SLS`.
+     * Enable log service, Valid value `SLS`. Only works for **Create** Operation.
      * 
      * @deprecated
      * Field &#39;logging_type&#39; has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
@@ -346,11 +344,25 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> loggingType;
 
     /**
-     * @return Enable log service, Valid value `SLS`.
+     * @return Enable log service, Valid value `SLS`. Only works for **Create** Operation.
      * 
      */
     public Output<Optional<String>> loggingType() {
         return Codegen.optional(this.loggingType);
+    }
+    /**
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * 
+     */
+    @Export(name="maintenanceWindow", refs={ServerlessKubernetesMaintenanceWindow.class}, tree="[0]")
+    private Output<ServerlessKubernetesMaintenanceWindow> maintenanceWindow;
+
+    /**
+     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+     * 
+     */
+    public Output<ServerlessKubernetesMaintenanceWindow> maintenanceWindow() {
+        return this.maintenanceWindow;
     }
     /**
      * The kubernetes cluster&#39;s name. It is the only in one Alicloud account.
@@ -385,6 +397,24 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> newNatGateway() {
         return Codegen.optional(this.newNatGateway);
+    }
+    /**
+     * The cluster automatic operation policy. See `operation_policy` below.
+     * 
+     * *Removed params*
+     * 
+     */
+    @Export(name="operationPolicy", refs={ServerlessKubernetesOperationPolicy.class}, tree="[0]")
+    private Output<ServerlessKubernetesOperationPolicy> operationPolicy;
+
+    /**
+     * @return The cluster automatic operation policy. See `operation_policy` below.
+     * 
+     * *Removed params*
+     * 
+     */
+    public Output<ServerlessKubernetesOperationPolicy> operationPolicy() {
+        return this.operationPolicy;
     }
     /**
      * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
@@ -481,7 +511,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceDiscoveryTypes);
     }
     /**
-     * If you use an existing SLS project, you must specify `sls_project_name`.
+     * If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
      * 
      * @deprecated
      * Field &#39;sls_project_name&#39; has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
@@ -492,7 +522,7 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
     private Output<String> slsProjectName;
 
     /**
-     * @return If you use an existing SLS project, you must specify `sls_project_name`.
+     * @return If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
      * 
      */
     public Output<String> slsProjectName() {
@@ -527,14 +557,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return this.timeZone;
     }
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
      * 
      */
     public Output<String> version() {
@@ -569,14 +599,14 @@ public class ServerlessKubernetes extends com.pulumi.resources.CustomResource {
         return this.vswitchIds;
     }
     /**
-     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+     * @return When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
      * 
      */
     public Output<Optional<String>> zoneId() {

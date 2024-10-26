@@ -18,9 +18,9 @@ import java.util.concurrent.CompletableFuture;
 
 public final class BssFunctions {
     /**
-     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -66,9 +66,9 @@ public final class BssFunctions {
         return getOpenApiPricingModules(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -114,9 +114,9 @@ public final class BssFunctions {
         return getOpenApiPricingModulesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -162,9 +162,9 @@ public final class BssFunctions {
         return Deployment.getInstance().invoke("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", TypeShape.of(GetOpenApiPricingModulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+     * This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * 
@@ -210,54 +210,54 @@ public final class BssFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", TypeShape.of(GetOpenApiPricingModulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts() {
         return getOpenApiProducts(GetOpenApiProductsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static CompletableFuture<GetOpenApiProductsResult> getOpenApiProductsPlain() {
         return getOpenApiProductsPlain(GetOpenApiProductsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts(GetOpenApiProductsArgs args) {
         return getOpenApiProducts(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static CompletableFuture<GetOpenApiProductsResult> getOpenApiProductsPlain(GetOpenApiProductsPlainArgs args) {
         return getOpenApiProductsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static Output<GetOpenApiProductsResult> getOpenApiProducts(GetOpenApiProductsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:bss/getOpenApiProducts:getOpenApiProducts", TypeShape.of(GetOpenApiProductsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+     * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static CompletableFuture<GetOpenApiProductsResult> getOpenApiProductsPlain(GetOpenApiProductsPlainArgs args, InvokeOptions options) {

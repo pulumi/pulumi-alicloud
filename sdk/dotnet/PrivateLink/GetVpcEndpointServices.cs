@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.109.0+.
+        /// &gt; **NOTE:** Available since v1.109.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,13 +28,19 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("example", new()
+        ///     {
+        ///         ServiceDescription = "terraform-example",
+        ///         ConnectBandwidth = 103,
+        ///         AutoAcceptConnection = false,
+        ///     });
+        /// 
         ///     var example = AliCloud.PrivateLink.GetVpcEndpointServices.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_value",
+        ///             exampleVpcEndpointService.Id,
         ///         },
-        ///         NameRegex = "the_resource_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -50,7 +56,7 @@ namespace Pulumi.AliCloud.PrivateLink
         /// <summary>
         /// This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.109.0+.
+        /// &gt; **NOTE:** Available since v1.109.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,13 +70,19 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var exampleVpcEndpointService = new AliCloud.PrivateLink.VpcEndpointService("example", new()
+        ///     {
+        ///         ServiceDescription = "terraform-example",
+        ///         ConnectBandwidth = 103,
+        ///         AutoAcceptConnection = false,
+        ///     });
+        /// 
         ///     var example = AliCloud.PrivateLink.GetVpcEndpointServices.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "example_value",
+        ///             exampleVpcEndpointService.Id,
         ///         },
-        ///         NameRegex = "the_resource_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -129,6 +141,18 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("status")]
         public string? Status { get; set; }
 
+        [Input("tags")]
+        private Dictionary<string, string>? _tags;
+
+        /// <summary>
+        /// The tags of Vpc Endpoint Service.
+        /// </summary>
+        public Dictionary<string, string> Tags
+        {
+            get => _tags ?? (_tags = new Dictionary<string, string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The name of Vpc Endpoint Service.
         /// </summary>
@@ -185,6 +209,18 @@ namespace Pulumi.AliCloud.PrivateLink
         [Input("status")]
         public Input<string>? Status { get; set; }
 
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tags of Vpc Endpoint Service.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The name of Vpc Endpoint Service.
         /// </summary>
@@ -201,6 +237,9 @@ namespace Pulumi.AliCloud.PrivateLink
     [OutputType]
     public sealed class GetVpcEndpointServicesResult
     {
+        /// <summary>
+        /// Whether to automatically accept terminal node connections..
+        /// </summary>
         public readonly bool? AutoAcceptConnection;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -208,11 +247,30 @@ namespace Pulumi.AliCloud.PrivateLink
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Vpc Endpoint Service names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        /// <summary>
+        /// The business status of the terminal node service..
+        /// </summary>
         public readonly string? ServiceBusinessStatus;
+        /// <summary>
+        /// A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcEndpointServicesServiceResult> Services;
+        /// <summary>
+        /// The Status of Vpc Endpoint Service.
+        /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// The tags of Vpc Endpoint Service.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Tags;
+        /// <summary>
+        /// The name of Vpc Endpoint Service.
+        /// </summary>
         public readonly string? VpcEndpointServiceName;
 
         [OutputConstructor]
@@ -235,6 +293,8 @@ namespace Pulumi.AliCloud.PrivateLink
 
             string? status,
 
+            ImmutableDictionary<string, string>? tags,
+
             string? vpcEndpointServiceName)
         {
             AutoAcceptConnection = autoAcceptConnection;
@@ -246,6 +306,7 @@ namespace Pulumi.AliCloud.PrivateLink
             ServiceBusinessStatus = serviceBusinessStatus;
             Services = services;
             Status = status;
+            Tags = tags;
             VpcEndpointServiceName = vpcEndpointServiceName;
         }
     }

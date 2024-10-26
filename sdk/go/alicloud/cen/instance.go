@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
+// Provides a Cloud Enterprise Network (CEN) Instance resource.
 //
-// For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+// For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
 //
 // > **NOTE:** Available since v1.15.0.
 //
@@ -28,14 +28,20 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
-//				CenInstanceName: pulumi.String("tf_example"),
-//				Description:     pulumi.String("an example for cen"),
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
+//				CenInstanceName: pulumi.String(name),
+//				Description:     pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -48,25 +54,27 @@ import (
 //
 // ## Import
 //
-// CEN instance can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+// $ pulumi import alicloud:cen/instance:Instance example <id>
 // ```
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
 	CenInstanceName pulumi.StringOutput `pulumi:"cenInstanceName"`
-	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	//
-	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	// The level of CIDR block overlapping. Default value: `REDUCE`.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
-	// The Cen Instance current status.
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The status of the Instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -102,34 +110,38 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
 	CenInstanceName *string `pulumi:"cenInstanceName"`
-	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	//
-	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	Name *string `pulumi:"name"`
-	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	// The level of CIDR block overlapping. Default value: `REDUCE`.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
-	// The Cen Instance current status.
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The status of the Instance.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 type InstanceState struct {
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
 	CenInstanceName pulumi.StringPtrInput
-	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	//
-	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	Name pulumi.StringPtrInput
-	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	// The level of CIDR block overlapping. Default value: `REDUCE`.
 	ProtectionLevel pulumi.StringPtrInput
-	// The Cen Instance current status.
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
+	// The status of the Instance.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -140,32 +152,36 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
 	CenInstanceName *string `pulumi:"cenInstanceName"`
-	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
-	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	//
-	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	Name *string `pulumi:"name"`
-	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	// The level of CIDR block overlapping. Default value: `REDUCE`.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+	// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
 	CenInstanceName pulumi.StringPtrInput
-	// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+	// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
-	// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+	// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	//
-	// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 	Name pulumi.StringPtrInput
-	// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+	// The level of CIDR block overlapping. Default value: `REDUCE`.
 	ProtectionLevel pulumi.StringPtrInput
+	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+	ResourceGroupId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 }
@@ -257,29 +273,34 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
 func (o InstanceOutput) CenInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CenInstanceName }).(pulumi.StringOutput)
 }
 
-// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
 func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+// Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 //
-// Deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+// Deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+// The level of CIDR block overlapping. Default value: `REDUCE`.
 func (o InstanceOutput) ProtectionLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ProtectionLevel }).(pulumi.StringOutput)
 }
 
-// The Cen Instance current status.
+// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// The status of the Instance.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

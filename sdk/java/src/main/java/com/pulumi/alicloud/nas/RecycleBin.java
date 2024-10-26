@@ -15,9 +15,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Network Attached Storage (NAS) Recycle Bin resource.
+ * Provides a Apsara File Storage (NAS) Recycle Bin resource.
  * 
- * For information about Network Attached Storage (NAS) Recycle Bin and how to use it, see [What is Recycle Bin](https://www.alibabacloud.com/help/en/doc-detail/264185.html).
+ * For information about Apsara File Storage (NAS) Recycle Bin and how to use it, see [What is Recycle Bin](https://www.alibabacloud.com/help/en/doc-detail/264185.html).
  * 
  * &gt; **NOTE:** Available in v1.155.0+.
  * 
@@ -77,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Network Attached Storage (NAS) Recycle Bin can be imported using the id, e.g.
+ * Apsara File Storage (NAS) Recycle Bin can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:nas/recycleBin:RecycleBin example &lt;file_system_id&gt;

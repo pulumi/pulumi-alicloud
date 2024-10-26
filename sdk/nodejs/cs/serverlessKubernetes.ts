@@ -147,8 +147,6 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-     *
-     * *Removed params*
      */
     public readonly customSan!: pulumi.Output<string | undefined>;
     /**
@@ -166,7 +164,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly enableRrsa!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to create internet eip for API Server. Default to false.
+     * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      */
     public readonly endpointPublicAccessEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -176,17 +174,21 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly kubeConfig!: pulumi.Output<string | undefined>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      *
-     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
     public readonly loadBalancerSpec!: pulumi.Output<string>;
     /**
-     * Enable log service, Valid value `SLS`.
+     * Enable log service, Valid value `SLS`. Only works for **Create** Operation.
      *
      * @deprecated Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      */
     public readonly loggingType!: pulumi.Output<string | undefined>;
+    /**
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+     */
+    public readonly maintenanceWindow!: pulumi.Output<outputs.cs.ServerlessKubernetesMaintenanceWindow>;
     /**
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
@@ -196,6 +198,12 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
     public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
+    /**
+     * The cluster automatic operation policy. See `operationPolicy` below.
+     *
+     * *Removed params*
+     */
+    public readonly operationPolicy!: pulumi.Output<outputs.cs.ServerlessKubernetesOperationPolicy>;
     /**
      * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
@@ -224,7 +232,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly serviceDiscoveryTypes!: pulumi.Output<string[] | undefined>;
     /**
-     * If you use an existing SLS project, you must specify `slsProjectName`.
+     * If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      *
      * @deprecated Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      */
@@ -238,7 +246,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly timeZone!: pulumi.Output<string>;
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
     public readonly version!: pulumi.Output<string>;
     /**
@@ -250,7 +258,7 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
      */
     public readonly vswitchIds!: pulumi.Output<string[]>;
     /**
-     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -280,9 +288,11 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["kubeConfig"] = state ? state.kubeConfig : undefined;
             resourceInputs["loadBalancerSpec"] = state ? state.loadBalancerSpec : undefined;
             resourceInputs["loggingType"] = state ? state.loggingType : undefined;
+            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["namePrefix"] = state ? state.namePrefix : undefined;
             resourceInputs["newNatGateway"] = state ? state.newNatGateway : undefined;
+            resourceInputs["operationPolicy"] = state ? state.operationPolicy : undefined;
             resourceInputs["privateZone"] = state ? state.privateZone : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retainResources"] = state ? state.retainResources : undefined;
@@ -312,9 +322,11 @@ export class ServerlessKubernetes extends pulumi.CustomResource {
             resourceInputs["kubeConfig"] = args ? args.kubeConfig : undefined;
             resourceInputs["loadBalancerSpec"] = args ? args.loadBalancerSpec : undefined;
             resourceInputs["loggingType"] = args ? args.loggingType : undefined;
+            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
             resourceInputs["newNatGateway"] = args ? args.newNatGateway : undefined;
+            resourceInputs["operationPolicy"] = args ? args.operationPolicy : undefined;
             resourceInputs["privateZone"] = args ? args.privateZone : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["retainResources"] = args ? args.retainResources : undefined;
@@ -364,8 +376,6 @@ export interface ServerlessKubernetesState {
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-     *
-     * *Removed params*
      */
     customSan?: pulumi.Input<string>;
     /**
@@ -383,7 +393,7 @@ export interface ServerlessKubernetesState {
      */
     enableRrsa?: pulumi.Input<boolean>;
     /**
-     * Whether to create internet eip for API Server. Default to false.
+     * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      */
     endpointPublicAccessEnabled?: pulumi.Input<boolean>;
     /**
@@ -393,17 +403,21 @@ export interface ServerlessKubernetesState {
      */
     kubeConfig?: pulumi.Input<string>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      *
-     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
-     * Enable log service, Valid value `SLS`.
+     * Enable log service, Valid value `SLS`. Only works for **Create** Operation.
      *
      * @deprecated Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      */
     loggingType?: pulumi.Input<string>;
+    /**
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+     */
+    maintenanceWindow?: pulumi.Input<inputs.cs.ServerlessKubernetesMaintenanceWindow>;
     /**
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
@@ -413,6 +427,12 @@ export interface ServerlessKubernetesState {
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
     newNatGateway?: pulumi.Input<boolean>;
+    /**
+     * The cluster automatic operation policy. See `operationPolicy` below.
+     *
+     * *Removed params*
+     */
+    operationPolicy?: pulumi.Input<inputs.cs.ServerlessKubernetesOperationPolicy>;
     /**
      * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
@@ -441,7 +461,7 @@ export interface ServerlessKubernetesState {
      */
     serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If you use an existing SLS project, you must specify `slsProjectName`.
+     * If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      *
      * @deprecated Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      */
@@ -455,7 +475,7 @@ export interface ServerlessKubernetesState {
      */
     timeZone?: pulumi.Input<string>;
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
     version?: pulumi.Input<string>;
     /**
@@ -467,7 +487,7 @@ export interface ServerlessKubernetesState {
      */
     vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -501,8 +521,6 @@ export interface ServerlessKubernetesArgs {
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-     *
-     * *Removed params*
      */
     customSan?: pulumi.Input<string>;
     /**
@@ -520,7 +538,7 @@ export interface ServerlessKubernetesArgs {
      */
     enableRrsa?: pulumi.Input<boolean>;
     /**
-     * Whether to create internet eip for API Server. Default to false.
+     * Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
      */
     endpointPublicAccessEnabled?: pulumi.Input<boolean>;
     /**
@@ -530,17 +548,21 @@ export interface ServerlessKubernetesArgs {
      */
     kubeConfig?: pulumi.Input<string>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      *
-     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
-     * Enable log service, Valid value `SLS`.
+     * Enable log service, Valid value `SLS`. Only works for **Create** Operation.
      *
      * @deprecated Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
      */
     loggingType?: pulumi.Input<string>;
+    /**
+     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+     */
+    maintenanceWindow?: pulumi.Input<inputs.cs.ServerlessKubernetesMaintenanceWindow>;
     /**
      * The kubernetes cluster's name. It is the only in one Alicloud account.
      */
@@ -550,6 +572,12 @@ export interface ServerlessKubernetesArgs {
      * Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
      */
     newNatGateway?: pulumi.Input<boolean>;
+    /**
+     * The cluster automatic operation policy. See `operationPolicy` below.
+     *
+     * *Removed params*
+     */
+    operationPolicy?: pulumi.Input<inputs.cs.ServerlessKubernetesOperationPolicy>;
     /**
      * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
      *
@@ -574,7 +602,7 @@ export interface ServerlessKubernetesArgs {
      */
     serviceDiscoveryTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If you use an existing SLS project, you must specify `slsProjectName`.
+     * If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
      *
      * @deprecated Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
      */
@@ -588,7 +616,7 @@ export interface ServerlessKubernetesArgs {
      */
     timeZone?: pulumi.Input<string>;
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
     version?: pulumi.Input<string>;
     /**
@@ -600,7 +628,7 @@ export interface ServerlessKubernetesArgs {
      */
     vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+     * When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
      */
     zoneId?: pulumi.Input<string>;
 }

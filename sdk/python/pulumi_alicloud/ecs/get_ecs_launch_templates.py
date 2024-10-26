@@ -80,6 +80,9 @@ class GetEcsLaunchTemplatesResult:
     @property
     @pulumi.getter(name="launchTemplateName")
     def launch_template_name(self) -> Optional[str]:
+        """
+        The Launch Template Name.
+        """
         return pulumi.get(self, "launch_template_name")
 
     @property
@@ -90,6 +93,9 @@ class GetEcsLaunchTemplatesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Launch Template names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -105,11 +111,17 @@ class GetEcsLaunchTemplatesResult:
     @property
     @pulumi.getter(name="templateTags")
     def template_tags(self) -> Optional[Mapping[str, str]]:
+        """
+        The template tags.
+        """
         return pulumi.get(self, "template_tags")
 
     @property
     @pulumi.getter
     def templates(self) -> Sequence['outputs.GetEcsLaunchTemplatesTemplateResult']:
+        """
+        A list of Ecs Launch Templates. Each element contains the following attributes:
+        """
         return pulumi.get(self, "templates")
 
 
@@ -142,7 +154,7 @@ def get_ecs_launch_templates(enable_details: Optional[bool] = None,
     """
     This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 
@@ -152,8 +164,84 @@ def get_ecs_launch_templates(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_launch_templates(ids=["lt-bp1a469uxxxxxx"],
-        name_regex="your_launch_name")
+    default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        available_resource_creation="VSwitch")
+    default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+    default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        owners="system")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name="terraform-example",
+        cidr_block="172.17.3.0/24")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name="terraform-example",
+        cidr_block="172.17.3.0/24",
+        vpc_id=default_network.id,
+        zone_id=default.zones[0].id)
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name="terraform-example",
+        vpc_id=default_network.id)
+    default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("default",
+        launch_template_name="terraform-example",
+        description="terraform-example",
+        image_id=default_get_images.images[0].id,
+        host_name="terraform-example",
+        instance_charge_type="PrePaid",
+        instance_name="terraform-example",
+        instance_type=default_get_instance_types.instance_types[0].id,
+        internet_charge_type="PayByBandwidth",
+        internet_max_bandwidth_in=5,
+        internet_max_bandwidth_out=5,
+        io_optimized="optimized",
+        key_pair_name="key_pair_name",
+        ram_role_name="ram_role_name",
+        network_type="vpc",
+        security_enhancement_strategy="Active",
+        spot_price_limit=5,
+        spot_strategy="SpotWithPriceLimit",
+        security_group_ids=[default_security_group.id],
+        system_disk={
+            "category": "cloud_ssd",
+            "description": "Test For Terraform",
+            "name": "terraform-example",
+            "size": 40,
+            "delete_with_instance": False,
+        },
+        user_data="xxxxxxx",
+        vswitch_id=default_switch.id,
+        vpc_id=default_network.id,
+        zone_id=default.zones[0].id,
+        template_tags={
+            "Create": "Terraform",
+            "For": "example",
+        },
+        network_interfaces={
+            "name": "eth0",
+            "description": "hello1",
+            "primary_ip": "10.0.0.2",
+            "security_group_id": default_security_group.id,
+            "vswitch_id": default_switch.id,
+        },
+        data_disks=[
+            {
+                "name": "disk1",
+                "description": "description",
+                "delete_with_instance": True,
+                "category": "cloud",
+                "encrypted": False,
+                "performance_level": "PL0",
+                "size": 20,
+            },
+            {
+                "name": "disk2",
+                "description": "description2",
+                "delete_with_instance": True,
+                "category": "cloud",
+                "encrypted": False,
+                "performance_level": "PL0",
+                "size": 20,
+            },
+        ])
+    example = alicloud.ecs.get_ecs_launch_templates_output(ids=[default_ecs_launch_template.id])
     pulumi.export("firstEcsLaunchTemplateId", example.templates[0].id)
     ```
 
@@ -164,6 +252,7 @@ def get_ecs_launch_templates(enable_details: Optional[bool] = None,
     :param str name_regex: A regex string to filter results by Launch Template name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str template_resource_group_id: The template resource group id.
+    :param Mapping[str, str] template_tags: The template tags.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -198,7 +287,7 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
     """
     This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.120.0+.
+    > **NOTE:** Available since v1.120.0.
 
     ## Example Usage
 
@@ -208,8 +297,84 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.ecs.get_ecs_launch_templates(ids=["lt-bp1a469uxxxxxx"],
-        name_regex="your_launch_name")
+    default = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        available_resource_creation="VSwitch")
+    default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+    default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        owners="system")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name="terraform-example",
+        cidr_block="172.17.3.0/24")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name="terraform-example",
+        cidr_block="172.17.3.0/24",
+        vpc_id=default_network.id,
+        zone_id=default.zones[0].id)
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name="terraform-example",
+        vpc_id=default_network.id)
+    default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("default",
+        launch_template_name="terraform-example",
+        description="terraform-example",
+        image_id=default_get_images.images[0].id,
+        host_name="terraform-example",
+        instance_charge_type="PrePaid",
+        instance_name="terraform-example",
+        instance_type=default_get_instance_types.instance_types[0].id,
+        internet_charge_type="PayByBandwidth",
+        internet_max_bandwidth_in=5,
+        internet_max_bandwidth_out=5,
+        io_optimized="optimized",
+        key_pair_name="key_pair_name",
+        ram_role_name="ram_role_name",
+        network_type="vpc",
+        security_enhancement_strategy="Active",
+        spot_price_limit=5,
+        spot_strategy="SpotWithPriceLimit",
+        security_group_ids=[default_security_group.id],
+        system_disk={
+            "category": "cloud_ssd",
+            "description": "Test For Terraform",
+            "name": "terraform-example",
+            "size": 40,
+            "delete_with_instance": False,
+        },
+        user_data="xxxxxxx",
+        vswitch_id=default_switch.id,
+        vpc_id=default_network.id,
+        zone_id=default.zones[0].id,
+        template_tags={
+            "Create": "Terraform",
+            "For": "example",
+        },
+        network_interfaces={
+            "name": "eth0",
+            "description": "hello1",
+            "primary_ip": "10.0.0.2",
+            "security_group_id": default_security_group.id,
+            "vswitch_id": default_switch.id,
+        },
+        data_disks=[
+            {
+                "name": "disk1",
+                "description": "description",
+                "delete_with_instance": True,
+                "category": "cloud",
+                "encrypted": False,
+                "performance_level": "PL0",
+                "size": 20,
+            },
+            {
+                "name": "disk2",
+                "description": "description2",
+                "delete_with_instance": True,
+                "category": "cloud",
+                "encrypted": False,
+                "performance_level": "PL0",
+                "size": 20,
+            },
+        ])
+    example = alicloud.ecs.get_ecs_launch_templates_output(ids=[default_ecs_launch_template.id])
     pulumi.export("firstEcsLaunchTemplateId", example.templates[0].id)
     ```
 
@@ -220,6 +385,7 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
     :param str name_regex: A regex string to filter results by Launch Template name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str template_resource_group_id: The template resource group id.
+    :param Mapping[str, str] template_tags: The template tags.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

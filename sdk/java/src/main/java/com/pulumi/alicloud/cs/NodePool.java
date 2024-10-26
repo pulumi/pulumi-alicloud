@@ -629,6 +629,20 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return this.platform;
     }
     /**
+     * Node pre custom data, base64-encoded, the script executed before the node is initialized.
+     * 
+     */
+    @Export(name="preUserData", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> preUserData;
+
+    /**
+     * @return Node pre custom data, base64-encoded, the script executed before the node is initialized.
+     * 
+     */
+    public Output<Optional<String>> preUserData() {
+        return Codegen.optional(this.preUserData);
+    }
+    /**
      * Private node pool configuration. See `private_pool_options` below.
      * 
      */
@@ -802,6 +816,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+     * 
      * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
      * 
      */
@@ -810,6 +825,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+     * 
      * &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
      * 
      */
@@ -1027,14 +1043,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskSnapshotPolicyId);
     }
     /**
-     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
+     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://&#34;.
+     * @return Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
@@ -1097,14 +1113,14 @@ public class NodePool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.updateNodes);
     }
     /**
-     * Node custom data.
+     * Node custom data, base64-encoded.
      * 
      */
     @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     /**
-     * @return Node custom data.
+     * @return Node custom data, base64-encoded.
      * 
      */
     public Output<Optional<String>> userData() {

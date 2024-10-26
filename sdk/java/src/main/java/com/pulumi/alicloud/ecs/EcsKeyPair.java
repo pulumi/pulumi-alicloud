@@ -166,14 +166,14 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> resourceGroupId;
+    private Output<String> resourceGroupId;
 
     /**
      * @return The Id of resource group which the key pair belongs.
      * 
      */
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;

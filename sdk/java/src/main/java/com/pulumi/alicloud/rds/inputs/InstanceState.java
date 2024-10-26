@@ -1520,6 +1520,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.zoneIdSlaveA);
     }
 
+    /**
+     * RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+     * 
+     */
+    @Import(name="zoneIdSlaveB")
+    private @Nullable Output<String> zoneIdSlaveB;
+
+    /**
+     * @return RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+     * 
+     */
+    public Optional<Output<String>> zoneIdSlaveB() {
+        return Optional.ofNullable(this.zoneIdSlaveB);
+    }
+
     private InstanceState() {}
 
     private InstanceState(InstanceState $) {
@@ -1602,6 +1617,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.whitelistNetworkType = $.whitelistNetworkType;
         this.zoneId = $.zoneId;
         this.zoneIdSlaveA = $.zoneIdSlaveA;
+        this.zoneIdSlaveB = $.zoneIdSlaveB;
     }
 
     public static Builder builder() {
@@ -3653,6 +3669,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder zoneIdSlaveA(String zoneIdSlaveA) {
             return zoneIdSlaveA(Output.of(zoneIdSlaveA));
+        }
+
+        /**
+         * @param zoneIdSlaveB RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneIdSlaveB(@Nullable Output<String> zoneIdSlaveB) {
+            $.zoneIdSlaveB = zoneIdSlaveB;
+            return this;
+        }
+
+        /**
+         * @param zoneIdSlaveB RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneIdSlaveB(String zoneIdSlaveB) {
+            return zoneIdSlaveB(Output.of(zoneIdSlaveB));
         }
 
         public InstanceState build() {

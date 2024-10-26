@@ -139,6 +139,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly dataDisks!: pulumi.Output<outputs.ess.ScalingConfigurationDataDisk[] | undefined>;
     /**
+     * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
      */
     public readonly enable!: pulumi.Output<boolean | undefined>;
@@ -158,6 +162,14 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      * Name of an image file, indicating the image resource selected when an instance is enabled.
      */
     public readonly imageName!: pulumi.Output<string | undefined>;
+    /**
+     * Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+     */
+    public readonly imageOptionsLoginAsNonRoot!: pulumi.Output<boolean | undefined>;
+    /**
+     * The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+     */
+    public readonly instanceDescription!: pulumi.Output<string | undefined>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
@@ -247,6 +259,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly scalingGroupId!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+     */
+    public readonly securityEnhancementStrategy!: pulumi.Output<string | undefined>;
+    /**
      * ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
@@ -254,6 +270,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      * List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      */
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
+    /**
+     * The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+     */
+    public readonly spotDuration!: pulumi.Output<number | undefined>;
     /**
      * Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
      *
@@ -293,9 +313,17 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly systemDiskDescription!: pulumi.Output<string | undefined>;
     /**
+     * The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+     */
+    public readonly systemDiskEncryptAlgorithm!: pulumi.Output<string | undefined>;
+    /**
      * Whether to encrypt the system disk.
      */
     public readonly systemDiskEncrypted!: pulumi.Output<boolean | undefined>;
+    /**
+     * The ID of the KMS key that you want to use to encrypt the system disk.
+     */
+    public readonly systemDiskKmsKeyId!: pulumi.Output<string | undefined>;
     /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
@@ -304,6 +332,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      * The performance level of the ESSD used as the system disk.
      */
     public readonly systemDiskPerformanceLevel!: pulumi.Output<string | undefined>;
+    /**
+     * IOPS measures the number of read and write operations that an EBS device can process per second.
+     */
+    public readonly systemDiskProvisionedIops!: pulumi.Output<number | undefined>;
     /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      */
@@ -335,11 +367,14 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["active"] = state ? state.active : undefined;
             resourceInputs["creditSpecification"] = state ? state.creditSpecification : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["hostName"] = state ? state.hostName : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["imageName"] = state ? state.imageName : undefined;
+            resourceInputs["imageOptionsLoginAsNonRoot"] = state ? state.imageOptionsLoginAsNonRoot : undefined;
+            resourceInputs["instanceDescription"] = state ? state.instanceDescription : undefined;
             resourceInputs["instanceIds"] = state ? state.instanceIds : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instancePatternInfos"] = state ? state.instancePatternInfos : undefined;
@@ -361,17 +396,22 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["roleName"] = state ? state.roleName : undefined;
             resourceInputs["scalingConfigurationName"] = state ? state.scalingConfigurationName : undefined;
             resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["securityEnhancementStrategy"] = state ? state.securityEnhancementStrategy : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
+            resourceInputs["spotDuration"] = state ? state.spotDuration : undefined;
             resourceInputs["spotPriceLimits"] = state ? state.spotPriceLimits : undefined;
             resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
             resourceInputs["substitute"] = state ? state.substitute : undefined;
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = state ? state.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = state ? state.systemDiskDescription : undefined;
+            resourceInputs["systemDiskEncryptAlgorithm"] = state ? state.systemDiskEncryptAlgorithm : undefined;
             resourceInputs["systemDiskEncrypted"] = state ? state.systemDiskEncrypted : undefined;
+            resourceInputs["systemDiskKmsKeyId"] = state ? state.systemDiskKmsKeyId : undefined;
             resourceInputs["systemDiskName"] = state ? state.systemDiskName : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = state ? state.systemDiskPerformanceLevel : undefined;
+            resourceInputs["systemDiskProvisionedIops"] = state ? state.systemDiskProvisionedIops : undefined;
             resourceInputs["systemDiskSize"] = state ? state.systemDiskSize : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["userData"] = state ? state.userData : undefined;
@@ -383,11 +423,14 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["active"] = args ? args.active : undefined;
             resourceInputs["creditSpecification"] = args ? args.creditSpecification : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["hostName"] = args ? args.hostName : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["imageName"] = args ? args.imageName : undefined;
+            resourceInputs["imageOptionsLoginAsNonRoot"] = args ? args.imageOptionsLoginAsNonRoot : undefined;
+            resourceInputs["instanceDescription"] = args ? args.instanceDescription : undefined;
             resourceInputs["instanceIds"] = args ? args.instanceIds : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["instancePatternInfos"] = args ? args.instancePatternInfos : undefined;
@@ -409,17 +452,22 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["roleName"] = args ? args.roleName : undefined;
             resourceInputs["scalingConfigurationName"] = args ? args.scalingConfigurationName : undefined;
             resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["securityEnhancementStrategy"] = args ? args.securityEnhancementStrategy : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["spotDuration"] = args ? args.spotDuration : undefined;
             resourceInputs["spotPriceLimits"] = args ? args.spotPriceLimits : undefined;
             resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
             resourceInputs["substitute"] = args ? args.substitute : undefined;
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = args ? args.systemDiskAutoSnapshotPolicyId : undefined;
             resourceInputs["systemDiskCategory"] = args ? args.systemDiskCategory : undefined;
             resourceInputs["systemDiskDescription"] = args ? args.systemDiskDescription : undefined;
+            resourceInputs["systemDiskEncryptAlgorithm"] = args ? args.systemDiskEncryptAlgorithm : undefined;
             resourceInputs["systemDiskEncrypted"] = args ? args.systemDiskEncrypted : undefined;
+            resourceInputs["systemDiskKmsKeyId"] = args ? args.systemDiskKmsKeyId : undefined;
             resourceInputs["systemDiskName"] = args ? args.systemDiskName : undefined;
             resourceInputs["systemDiskPerformanceLevel"] = args ? args.systemDiskPerformanceLevel : undefined;
+            resourceInputs["systemDiskProvisionedIops"] = args ? args.systemDiskProvisionedIops : undefined;
             resourceInputs["systemDiskSize"] = args ? args.systemDiskSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userData"] = args ? args.userData : undefined;
@@ -446,6 +494,10 @@ export interface ScalingConfigurationState {
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationDataDisk>[]>;
     /**
+     * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
      * Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
      */
     enable?: pulumi.Input<boolean>;
@@ -465,6 +517,14 @@ export interface ScalingConfigurationState {
      * Name of an image file, indicating the image resource selected when an instance is enabled.
      */
     imageName?: pulumi.Input<string>;
+    /**
+     * Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+     */
+    imageOptionsLoginAsNonRoot?: pulumi.Input<boolean>;
+    /**
+     * The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+     */
+    instanceDescription?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
@@ -554,6 +614,10 @@ export interface ScalingConfigurationState {
      */
     scalingGroupId?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+     */
+    securityEnhancementStrategy?: pulumi.Input<string>;
+    /**
      * ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
      */
     securityGroupId?: pulumi.Input<string>;
@@ -561,6 +625,10 @@ export interface ScalingConfigurationState {
      * List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+     */
+    spotDuration?: pulumi.Input<number>;
     /**
      * Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
      *
@@ -600,9 +668,17 @@ export interface ScalingConfigurationState {
      */
     systemDiskDescription?: pulumi.Input<string>;
     /**
+     * The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+     */
+    systemDiskEncryptAlgorithm?: pulumi.Input<string>;
+    /**
      * Whether to encrypt the system disk.
      */
     systemDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the KMS key that you want to use to encrypt the system disk.
+     */
+    systemDiskKmsKeyId?: pulumi.Input<string>;
     /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
@@ -611,6 +687,10 @@ export interface ScalingConfigurationState {
      * The performance level of the ESSD used as the system disk.
      */
     systemDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
+     * IOPS measures the number of read and write operations that an EBS device can process per second.
+     */
+    systemDiskProvisionedIops?: pulumi.Input<number>;
     /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      */
@@ -644,6 +724,10 @@ export interface ScalingConfigurationArgs {
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationDataDisk>[]>;
     /**
+     * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
+    /**
      * Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
      */
     enable?: pulumi.Input<boolean>;
@@ -663,6 +747,14 @@ export interface ScalingConfigurationArgs {
      * Name of an image file, indicating the image resource selected when an instance is enabled.
      */
     imageName?: pulumi.Input<string>;
+    /**
+     * Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+     */
+    imageOptionsLoginAsNonRoot?: pulumi.Input<boolean>;
+    /**
+     * The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+     */
+    instanceDescription?: pulumi.Input<string>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
@@ -752,6 +844,10 @@ export interface ScalingConfigurationArgs {
      */
     scalingGroupId: pulumi.Input<string>;
     /**
+     * Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+     */
+    securityEnhancementStrategy?: pulumi.Input<string>;
+    /**
      * ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
      */
     securityGroupId?: pulumi.Input<string>;
@@ -759,6 +855,10 @@ export interface ScalingConfigurationArgs {
      * List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+     */
+    spotDuration?: pulumi.Input<number>;
     /**
      * Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
      *
@@ -798,9 +898,17 @@ export interface ScalingConfigurationArgs {
      */
     systemDiskDescription?: pulumi.Input<string>;
     /**
+     * The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+     */
+    systemDiskEncryptAlgorithm?: pulumi.Input<string>;
+    /**
      * Whether to encrypt the system disk.
      */
     systemDiskEncrypted?: pulumi.Input<boolean>;
+    /**
+     * The ID of the KMS key that you want to use to encrypt the system disk.
+     */
+    systemDiskKmsKeyId?: pulumi.Input<string>;
     /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
@@ -809,6 +917,10 @@ export interface ScalingConfigurationArgs {
      * The performance level of the ESSD used as the system disk.
      */
     systemDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
+     * IOPS measures the number of read and write operations that an EBS device can process per second.
+     */
+    systemDiskProvisionedIops?: pulumi.Input<number>;
     /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
      */

@@ -30,19 +30,29 @@ public final class EndpointGroupEndpointConfiguration {
      */
     private String endpoint;
     /**
+     * @return The private IP address of the ENI.
+     * &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+     * 
+     */
+    private @Nullable String subAddress;
+    /**
      * @return The type of Endpoint N in the endpoint group. Valid values:
-     * - `Domain`: a custom domain name.
-     * - `Ip`: a custom IP address.
-     * - `PublicIp`: an Alibaba Cloud public IP address.
-     * - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-     * - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-     * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+     * - `Domain`: A custom domain name.
+     * - `Ip`: A custom IP address.
+     * - `PublicIp`: An Alibaba Cloud public IP address.
+     * - `ECS`: An Elastic Compute Service (ECS) instance.
+     * - `SLB`: A Classic Load Balancer (CLB) instance.
+     * - `ALB`: An Application Load Balancer (ALB) instance.
+     * - `NLB`: A Network Load Balancer (NLB) instance.
+     * - `ENI`: An Elastic Network Interface (ENI).
+     * - `OSS`: An Object Storage Service (OSS) bucket.
+     * &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
      * 
      */
     private String type;
     /**
      * @return The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-     * &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+     * &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
      * 
      */
     private Integer weight;
@@ -70,13 +80,25 @@ public final class EndpointGroupEndpointConfiguration {
         return this.endpoint;
     }
     /**
+     * @return The private IP address of the ENI.
+     * &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+     * 
+     */
+    public Optional<String> subAddress() {
+        return Optional.ofNullable(this.subAddress);
+    }
+    /**
      * @return The type of Endpoint N in the endpoint group. Valid values:
-     * - `Domain`: a custom domain name.
-     * - `Ip`: a custom IP address.
-     * - `PublicIp`: an Alibaba Cloud public IP address.
-     * - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-     * - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-     * &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+     * - `Domain`: A custom domain name.
+     * - `Ip`: A custom IP address.
+     * - `PublicIp`: An Alibaba Cloud public IP address.
+     * - `ECS`: An Elastic Compute Service (ECS) instance.
+     * - `SLB`: A Classic Load Balancer (CLB) instance.
+     * - `ALB`: An Application Load Balancer (ALB) instance.
+     * - `NLB`: A Network Load Balancer (NLB) instance.
+     * - `ENI`: An Elastic Network Interface (ENI).
+     * - `OSS`: An Object Storage Service (OSS) bucket.
+     * &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
      * 
      */
     public String type() {
@@ -84,7 +106,7 @@ public final class EndpointGroupEndpointConfiguration {
     }
     /**
      * @return The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-     * &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+     * &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
      * 
      */
     public Integer weight() {
@@ -103,6 +125,7 @@ public final class EndpointGroupEndpointConfiguration {
         private @Nullable Boolean enableClientipPreservation;
         private @Nullable Boolean enableProxyProtocol;
         private String endpoint;
+        private @Nullable String subAddress;
         private String type;
         private Integer weight;
         public Builder() {}
@@ -111,6 +134,7 @@ public final class EndpointGroupEndpointConfiguration {
     	      this.enableClientipPreservation = defaults.enableClientipPreservation;
     	      this.enableProxyProtocol = defaults.enableProxyProtocol;
     	      this.endpoint = defaults.endpoint;
+    	      this.subAddress = defaults.subAddress;
     	      this.type = defaults.type;
     	      this.weight = defaults.weight;
         }
@@ -136,6 +160,12 @@ public final class EndpointGroupEndpointConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder subAddress(@Nullable String subAddress) {
+
+            this.subAddress = subAddress;
+            return this;
+        }
+        @CustomType.Setter
         public Builder type(String type) {
             if (type == null) {
               throw new MissingRequiredPropertyException("EndpointGroupEndpointConfiguration", "type");
@@ -156,6 +186,7 @@ public final class EndpointGroupEndpointConfiguration {
             _resultValue.enableClientipPreservation = enableClientipPreservation;
             _resultValue.enableProxyProtocol = enableProxyProtocol;
             _resultValue.endpoint = endpoint;
+            _resultValue.subAddress = subAddress;
             _resultValue.type = type;
             _resultValue.weight = weight;
             return _resultValue;

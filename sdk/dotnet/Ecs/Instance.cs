@@ -150,6 +150,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> Cpu { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.232.0) The time when the instance was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         /// </summary>
         [Output("creditSpecification")]
@@ -206,6 +212,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("enableJumboFrame")]
         public Output<bool> EnableJumboFrame { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.232.0) The expiration time of the instance.
+        /// </summary>
+        [Output("expiredTime")]
+        public Output<string> ExpiredTime { get; private set; } = null!;
 
         /// <summary>
         /// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -427,6 +439,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+        /// </summary>
+        [Output("passwordInherit")]
+        public Output<bool?> PasswordInherit { get; private set; } = null!;
+
+        /// <summary>
         /// The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
         /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         /// - [1-3] when `period_unit` in "Week"
@@ -462,20 +480,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The number of queues supported by the ERI.
-        /// 
-        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Output("queuePairNumber")]
         public Output<int?> QueuePairNumber { get; private set; } = null!;
@@ -549,6 +553,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("spotStrategy")]
         public Output<string> SpotStrategy { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.232.0) The time when the instance was last started.
+        /// </summary>
+        [Output("startTime")]
+        public Output<string> StartTime { get; private set; } = null!;
 
         /// <summary>
         /// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
@@ -1021,6 +1031,12 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
+        /// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("passwordInherit")]
+        public Input<bool>? PasswordInherit { get; set; }
+
+        /// <summary>
         /// The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
         /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         /// - [1-3] when `period_unit` in "Week"
@@ -1044,20 +1060,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The number of queues supported by the ERI.
-        /// 
-        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("queuePairNumber")]
         public Input<int>? QueuePairNumber { get; set; }
@@ -1310,6 +1312,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? Cpu { get; set; }
 
         /// <summary>
+        /// (Available since v1.232.0) The time when the instance was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         /// </summary>
         [Input("creditSpecification")]
@@ -1372,6 +1380,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("enableJumboFrame")]
         public Input<bool>? EnableJumboFrame { get; set; }
+
+        /// <summary>
+        /// (Available since v1.232.0) The expiration time of the instance.
+        /// </summary>
+        [Input("expiredTime")]
+        public Input<string>? ExpiredTime { get; set; }
 
         /// <summary>
         /// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -1615,6 +1629,12 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
+        /// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("passwordInherit")]
+        public Input<bool>? PasswordInherit { get; set; }
+
+        /// <summary>
         /// The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
         /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         /// - [1-3] when `period_unit` in "Week"
@@ -1650,20 +1670,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// The number of queues supported by the ERI.
-        /// 
-        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-        /// 
-        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-        /// 
-        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         /// </summary>
         [Input("queuePairNumber")]
         public Input<int>? QueuePairNumber { get; set; }
@@ -1749,6 +1755,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }
+
+        /// <summary>
+        /// (Available since v1.232.0) The time when the instance was last started.
+        /// </summary>
+        [Input("startTime")]
+        public Input<string>? StartTime { get; set; }
 
         /// <summary>
         /// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.

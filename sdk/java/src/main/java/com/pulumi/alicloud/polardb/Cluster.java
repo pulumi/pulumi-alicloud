@@ -105,6 +105,22 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.collectorStatus;
     }
     /**
+     * Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+     * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+     * 
+     */
+    @Export(name="compressStorage", refs={String.class}, tree="[0]")
+    private Output<String> compressStorage;
+
+    /**
+     * @return Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+     * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+     * 
+     */
+    public Output<String> compressStorage() {
+        return this.compressStorage;
+    }
+    /**
      * (Available since 1.81.0) PolarDB cluster connection string.
      * 
      */
@@ -451,6 +467,38 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> loosePolarLogBin() {
         return this.loosePolarLogBin;
+    }
+    /**
+     * Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+     * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+     * 
+     */
+    @Export(name="looseXengine", refs={String.class}, tree="[0]")
+    private Output<String> looseXengine;
+
+    /**
+     * @return Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+     * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+     * 
+     */
+    public Output<String> looseXengine() {
+        return this.looseXengine;
+    }
+    /**
+     * Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+     * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+     * 
+     */
+    @Export(name="looseXengineUseMemoryPct", refs={Integer.class}, tree="[0]")
+    private Output<Integer> looseXengineUseMemoryPct;
+
+    /**
+     * @return Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+     * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+     * 
+     */
+    public Output<Integer> looseXengineUseMemoryPct() {
+        return this.looseXengineUseMemoryPct;
     }
     /**
      * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.

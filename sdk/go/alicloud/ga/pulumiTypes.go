@@ -232,16 +232,23 @@ type EndpointGroupEndpointConfiguration struct {
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint string `pulumi:"endpoint"`
+	// The private IP address of the ENI.
+	// > **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
+	SubAddress *string `pulumi:"subAddress"`
 	// The type of Endpoint N in the endpoint group. Valid values:
-	// - `Domain`: a custom domain name.
-	// - `Ip`: a custom IP address.
-	// - `PublicIp`: an Alibaba Cloud public IP address.
-	// - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-	// - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-	// > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+	// - `Domain`: A custom domain name.
+	// - `Ip`: A custom IP address.
+	// - `PublicIp`: An Alibaba Cloud public IP address.
+	// - `ECS`: An Elastic Compute Service (ECS) instance.
+	// - `SLB`: A Classic Load Balancer (CLB) instance.
+	// - `ALB`: An Application Load Balancer (ALB) instance.
+	// - `NLB`: A Network Load Balancer (NLB) instance.
+	// - `ENI`: An Elastic Network Interface (ENI).
+	// - `OSS`: An Object Storage Service (OSS) bucket.
+	// > **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
 	Type string `pulumi:"type"`
 	// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-	// > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+	// > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 	Weight int `pulumi:"weight"`
 }
 
@@ -263,16 +270,23 @@ type EndpointGroupEndpointConfigurationArgs struct {
 	EnableProxyProtocol pulumi.BoolPtrInput `pulumi:"enableProxyProtocol"`
 	// The IP address or domain name of Endpoint N in the endpoint group.
 	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The private IP address of the ENI.
+	// > **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
+	SubAddress pulumi.StringPtrInput `pulumi:"subAddress"`
 	// The type of Endpoint N in the endpoint group. Valid values:
-	// - `Domain`: a custom domain name.
-	// - `Ip`: a custom IP address.
-	// - `PublicIp`: an Alibaba Cloud public IP address.
-	// - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-	// - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-	// > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+	// - `Domain`: A custom domain name.
+	// - `Ip`: A custom IP address.
+	// - `PublicIp`: An Alibaba Cloud public IP address.
+	// - `ECS`: An Elastic Compute Service (ECS) instance.
+	// - `SLB`: A Classic Load Balancer (CLB) instance.
+	// - `ALB`: An Application Load Balancer (ALB) instance.
+	// - `NLB`: A Network Load Balancer (NLB) instance.
+	// - `ENI`: An Elastic Network Interface (ENI).
+	// - `OSS`: An Object Storage Service (OSS) bucket.
+	// > **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-	// > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+	// > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 	Weight pulumi.IntInput `pulumi:"weight"`
 }
 
@@ -342,19 +356,29 @@ func (o EndpointGroupEndpointConfigurationOutput) Endpoint() pulumi.StringOutput
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// The private IP address of the ENI.
+// > **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
+func (o EndpointGroupEndpointConfigurationOutput) SubAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) *string { return v.SubAddress }).(pulumi.StringPtrOutput)
+}
+
 // The type of Endpoint N in the endpoint group. Valid values:
-// - `Domain`: a custom domain name.
-// - `Ip`: a custom IP address.
-// - `PublicIp`: an Alibaba Cloud public IP address.
-// - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-// - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-// > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+// - `Domain`: A custom domain name.
+// - `Ip`: A custom IP address.
+// - `PublicIp`: An Alibaba Cloud public IP address.
+// - `ECS`: An Elastic Compute Service (ECS) instance.
+// - `SLB`: A Classic Load Balancer (CLB) instance.
+// - `ALB`: An Application Load Balancer (ALB) instance.
+// - `NLB`: A Network Load Balancer (NLB) instance.
+// - `ENI`: An Elastic Network Interface (ENI).
+// - `OSS`: An Object Storage Service (OSS) bucket.
+// > **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
 func (o EndpointGroupEndpointConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-// > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+// > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
 func (o EndpointGroupEndpointConfigurationOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v EndpointGroupEndpointConfiguration) int { return v.Weight }).(pulumi.IntOutput)
 }

@@ -3142,15 +3142,15 @@ func (o ManagedKubernetesDeleteOptionArrayOutput) Index(i pulumi.IntInput) Manag
 
 type ManagedKubernetesMaintenanceWindow struct {
 	// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
-	Duration string `pulumi:"duration"`
+	Duration *string `pulumi:"duration"`
 	// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
-	Enable bool `pulumi:"enable"`
-	// Initial maintenance time, For example:"03:00:00Z".
-	MaintenanceTime string `pulumi:"maintenanceTime"`
+	Enable *bool `pulumi:"enable"`
+	// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+	MaintenanceTime *string `pulumi:"maintenanceTime"`
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 	//
 	// for example:
-	WeeklyPeriod string `pulumi:"weeklyPeriod"`
+	WeeklyPeriod *string `pulumi:"weeklyPeriod"`
 }
 
 // ManagedKubernetesMaintenanceWindowInput is an input type that accepts ManagedKubernetesMaintenanceWindowArgs and ManagedKubernetesMaintenanceWindowOutput values.
@@ -3166,15 +3166,15 @@ type ManagedKubernetesMaintenanceWindowInput interface {
 
 type ManagedKubernetesMaintenanceWindowArgs struct {
 	// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
-	Duration pulumi.StringInput `pulumi:"duration"`
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
 	// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
-	Enable pulumi.BoolInput `pulumi:"enable"`
-	// Initial maintenance time, For example:"03:00:00Z".
-	MaintenanceTime pulumi.StringInput `pulumi:"maintenanceTime"`
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+	MaintenanceTime pulumi.StringPtrInput `pulumi:"maintenanceTime"`
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 	//
 	// for example:
-	WeeklyPeriod pulumi.StringInput `pulumi:"weeklyPeriod"`
+	WeeklyPeriod pulumi.StringPtrInput `pulumi:"weeklyPeriod"`
 }
 
 func (ManagedKubernetesMaintenanceWindowArgs) ElementType() reflect.Type {
@@ -3255,25 +3255,25 @@ func (o ManagedKubernetesMaintenanceWindowOutput) ToManagedKubernetesMaintenance
 }
 
 // The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
-func (o ManagedKubernetesMaintenanceWindowOutput) Duration() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) string { return v.Duration }).(pulumi.StringOutput)
+func (o ManagedKubernetesMaintenanceWindowOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
 // Whether to open the maintenance window. The following parameters take effect only `enable = true`.
-func (o ManagedKubernetesMaintenanceWindowOutput) Enable() pulumi.BoolOutput {
-	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) bool { return v.Enable }).(pulumi.BoolOutput)
+func (o ManagedKubernetesMaintenanceWindowOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Initial maintenance time, For example:"03:00:00Z".
-func (o ManagedKubernetesMaintenanceWindowOutput) MaintenanceTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) string { return v.MaintenanceTime }).(pulumi.StringOutput)
+// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+func (o ManagedKubernetesMaintenanceWindowOutput) MaintenanceTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) *string { return v.MaintenanceTime }).(pulumi.StringPtrOutput)
 }
 
 // Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 //
 // for example:
-func (o ManagedKubernetesMaintenanceWindowOutput) WeeklyPeriod() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) string { return v.WeeklyPeriod }).(pulumi.StringOutput)
+func (o ManagedKubernetesMaintenanceWindowOutput) WeeklyPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesMaintenanceWindow) *string { return v.WeeklyPeriod }).(pulumi.StringPtrOutput)
 }
 
 type ManagedKubernetesMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
@@ -3306,7 +3306,7 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) Duration() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.Duration
+		return v.Duration
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3316,17 +3316,17 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) Enable() pulumi.BoolPtrOutp
 		if v == nil {
 			return nil
 		}
-		return &v.Enable
+		return v.Enable
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Initial maintenance time, For example:"03:00:00Z".
+// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
 func (o ManagedKubernetesMaintenanceWindowPtrOutput) MaintenanceTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesMaintenanceWindow) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.MaintenanceTime
+		return v.MaintenanceTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3338,8 +3338,311 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) WeeklyPeriod() pulumi.Strin
 		if v == nil {
 			return nil
 		}
-		return &v.WeeklyPeriod
+		return v.WeeklyPeriod
 	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedKubernetesOperationPolicy struct {
+	// Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+	ClusterAutoUpgrade *ManagedKubernetesOperationPolicyClusterAutoUpgrade `pulumi:"clusterAutoUpgrade"`
+}
+
+// ManagedKubernetesOperationPolicyInput is an input type that accepts ManagedKubernetesOperationPolicyArgs and ManagedKubernetesOperationPolicyOutput values.
+// You can construct a concrete instance of `ManagedKubernetesOperationPolicyInput` via:
+//
+//	ManagedKubernetesOperationPolicyArgs{...}
+type ManagedKubernetesOperationPolicyInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesOperationPolicyOutput() ManagedKubernetesOperationPolicyOutput
+	ToManagedKubernetesOperationPolicyOutputWithContext(context.Context) ManagedKubernetesOperationPolicyOutput
+}
+
+type ManagedKubernetesOperationPolicyArgs struct {
+	// Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+	ClusterAutoUpgrade ManagedKubernetesOperationPolicyClusterAutoUpgradePtrInput `pulumi:"clusterAutoUpgrade"`
+}
+
+func (ManagedKubernetesOperationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesOperationPolicy)(nil)).Elem()
+}
+
+func (i ManagedKubernetesOperationPolicyArgs) ToManagedKubernetesOperationPolicyOutput() ManagedKubernetesOperationPolicyOutput {
+	return i.ToManagedKubernetesOperationPolicyOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesOperationPolicyArgs) ToManagedKubernetesOperationPolicyOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesOperationPolicyOutput)
+}
+
+func (i ManagedKubernetesOperationPolicyArgs) ToManagedKubernetesOperationPolicyPtrOutput() ManagedKubernetesOperationPolicyPtrOutput {
+	return i.ToManagedKubernetesOperationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesOperationPolicyArgs) ToManagedKubernetesOperationPolicyPtrOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesOperationPolicyOutput).ToManagedKubernetesOperationPolicyPtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesOperationPolicyPtrInput is an input type that accepts ManagedKubernetesOperationPolicyArgs, ManagedKubernetesOperationPolicyPtr and ManagedKubernetesOperationPolicyPtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesOperationPolicyPtrInput` via:
+//
+//	        ManagedKubernetesOperationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesOperationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesOperationPolicyPtrOutput() ManagedKubernetesOperationPolicyPtrOutput
+	ToManagedKubernetesOperationPolicyPtrOutputWithContext(context.Context) ManagedKubernetesOperationPolicyPtrOutput
+}
+
+type managedKubernetesOperationPolicyPtrType ManagedKubernetesOperationPolicyArgs
+
+func ManagedKubernetesOperationPolicyPtr(v *ManagedKubernetesOperationPolicyArgs) ManagedKubernetesOperationPolicyPtrInput {
+	return (*managedKubernetesOperationPolicyPtrType)(v)
+}
+
+func (*managedKubernetesOperationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesOperationPolicy)(nil)).Elem()
+}
+
+func (i *managedKubernetesOperationPolicyPtrType) ToManagedKubernetesOperationPolicyPtrOutput() ManagedKubernetesOperationPolicyPtrOutput {
+	return i.ToManagedKubernetesOperationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesOperationPolicyPtrType) ToManagedKubernetesOperationPolicyPtrOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesOperationPolicyPtrOutput)
+}
+
+type ManagedKubernetesOperationPolicyOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesOperationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesOperationPolicy)(nil)).Elem()
+}
+
+func (o ManagedKubernetesOperationPolicyOutput) ToManagedKubernetesOperationPolicyOutput() ManagedKubernetesOperationPolicyOutput {
+	return o
+}
+
+func (o ManagedKubernetesOperationPolicyOutput) ToManagedKubernetesOperationPolicyOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyOutput {
+	return o
+}
+
+func (o ManagedKubernetesOperationPolicyOutput) ToManagedKubernetesOperationPolicyPtrOutput() ManagedKubernetesOperationPolicyPtrOutput {
+	return o.ToManagedKubernetesOperationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesOperationPolicyOutput) ToManagedKubernetesOperationPolicyPtrOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesOperationPolicy) *ManagedKubernetesOperationPolicy {
+		return &v
+	}).(ManagedKubernetesOperationPolicyPtrOutput)
+}
+
+// Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+func (o ManagedKubernetesOperationPolicyOutput) ClusterAutoUpgrade() ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesOperationPolicy) *ManagedKubernetesOperationPolicyClusterAutoUpgrade {
+		return v.ClusterAutoUpgrade
+	}).(ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
+}
+
+type ManagedKubernetesOperationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesOperationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesOperationPolicy)(nil)).Elem()
+}
+
+func (o ManagedKubernetesOperationPolicyPtrOutput) ToManagedKubernetesOperationPolicyPtrOutput() ManagedKubernetesOperationPolicyPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesOperationPolicyPtrOutput) ToManagedKubernetesOperationPolicyPtrOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyPtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesOperationPolicyPtrOutput) Elem() ManagedKubernetesOperationPolicyOutput {
+	return o.ApplyT(func(v *ManagedKubernetesOperationPolicy) ManagedKubernetesOperationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesOperationPolicy
+		return ret
+	}).(ManagedKubernetesOperationPolicyOutput)
+}
+
+// Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+func (o ManagedKubernetesOperationPolicyPtrOutput) ClusterAutoUpgrade() ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesOperationPolicy) *ManagedKubernetesOperationPolicyClusterAutoUpgrade {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterAutoUpgrade
+	}).(ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
+}
+
+type ManagedKubernetesOperationPolicyClusterAutoUpgrade struct {
+	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+	//
+	// for example:
+	Channel *string `pulumi:"channel"`
+	// Whether the RRSA feature has been enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ManagedKubernetesOperationPolicyClusterAutoUpgradeInput is an input type that accepts ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs and ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput values.
+// You can construct a concrete instance of `ManagedKubernetesOperationPolicyClusterAutoUpgradeInput` via:
+//
+//	ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs{...}
+type ManagedKubernetesOperationPolicyClusterAutoUpgradeInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesOperationPolicyClusterAutoUpgradeOutput() ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput
+	ToManagedKubernetesOperationPolicyClusterAutoUpgradeOutputWithContext(context.Context) ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput
+}
+
+type ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs struct {
+	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+	//
+	// for example:
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Whether the RRSA feature has been enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (i ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs) ToManagedKubernetesOperationPolicyClusterAutoUpgradeOutput() ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return i.ToManagedKubernetesOperationPolicyClusterAutoUpgradeOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs) ToManagedKubernetesOperationPolicyClusterAutoUpgradeOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput)
+}
+
+func (i ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs) ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return i.ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs) ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput).ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx)
+}
+
+// ManagedKubernetesOperationPolicyClusterAutoUpgradePtrInput is an input type that accepts ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs, ManagedKubernetesOperationPolicyClusterAutoUpgradePtr and ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput values.
+// You can construct a concrete instance of `ManagedKubernetesOperationPolicyClusterAutoUpgradePtrInput` via:
+//
+//	        ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedKubernetesOperationPolicyClusterAutoUpgradePtrInput interface {
+	pulumi.Input
+
+	ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput
+	ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(context.Context) ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput
+}
+
+type managedKubernetesOperationPolicyClusterAutoUpgradePtrType ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs
+
+func ManagedKubernetesOperationPolicyClusterAutoUpgradePtr(v *ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs) ManagedKubernetesOperationPolicyClusterAutoUpgradePtrInput {
+	return (*managedKubernetesOperationPolicyClusterAutoUpgradePtrType)(v)
+}
+
+func (*managedKubernetesOperationPolicyClusterAutoUpgradePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (i *managedKubernetesOperationPolicyClusterAutoUpgradePtrType) ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return i.ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i *managedKubernetesOperationPolicyClusterAutoUpgradePtrType) ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
+}
+
+type ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedKubernetesOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput) ToManagedKubernetesOperationPolicyClusterAutoUpgradeOutput() ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return o
+}
+
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput) ToManagedKubernetesOperationPolicyClusterAutoUpgradeOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return o
+}
+
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput) ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o.ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput) ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedKubernetesOperationPolicyClusterAutoUpgrade) *ManagedKubernetesOperationPolicyClusterAutoUpgrade {
+		return &v
+	}).(ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
+}
+
+// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+//
+// for example:
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesOperationPolicyClusterAutoUpgrade) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ManagedKubernetesOperationPolicyClusterAutoUpgrade) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedKubernetesOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput) ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput) ToManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx context.Context) ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o
+}
+
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Elem() ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return o.ApplyT(func(v *ManagedKubernetesOperationPolicyClusterAutoUpgrade) ManagedKubernetesOperationPolicyClusterAutoUpgrade {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedKubernetesOperationPolicyClusterAutoUpgrade
+		return ret
+	}).(ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput)
+}
+
+// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+//
+// for example:
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesOperationPolicyClusterAutoUpgrade) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Channel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ManagedKubernetesOperationPolicyClusterAutoUpgrade) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ManagedKubernetesRrsaMetadata struct {
@@ -6240,6 +6543,511 @@ func (o ServerlessKubernetesDeleteOptionArrayOutput) Index(i pulumi.IntInput) Se
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerlessKubernetesDeleteOption {
 		return vs[0].([]ServerlessKubernetesDeleteOption)[vs[1].(int)]
 	}).(ServerlessKubernetesDeleteOptionOutput)
+}
+
+type ServerlessKubernetesMaintenanceWindow struct {
+	// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+	Duration *string `pulumi:"duration"`
+	// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+	Enable *bool `pulumi:"enable"`
+	// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+	MaintenanceTime *string `pulumi:"maintenanceTime"`
+	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+	//
+	// for example:
+	WeeklyPeriod *string `pulumi:"weeklyPeriod"`
+}
+
+// ServerlessKubernetesMaintenanceWindowInput is an input type that accepts ServerlessKubernetesMaintenanceWindowArgs and ServerlessKubernetesMaintenanceWindowOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesMaintenanceWindowInput` via:
+//
+//	ServerlessKubernetesMaintenanceWindowArgs{...}
+type ServerlessKubernetesMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesMaintenanceWindowOutput() ServerlessKubernetesMaintenanceWindowOutput
+	ToServerlessKubernetesMaintenanceWindowOutputWithContext(context.Context) ServerlessKubernetesMaintenanceWindowOutput
+}
+
+type ServerlessKubernetesMaintenanceWindowArgs struct {
+	// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
+	// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+	MaintenanceTime pulumi.StringPtrInput `pulumi:"maintenanceTime"`
+	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+	//
+	// for example:
+	WeeklyPeriod pulumi.StringPtrInput `pulumi:"weeklyPeriod"`
+}
+
+func (ServerlessKubernetesMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesMaintenanceWindow)(nil)).Elem()
+}
+
+func (i ServerlessKubernetesMaintenanceWindowArgs) ToServerlessKubernetesMaintenanceWindowOutput() ServerlessKubernetesMaintenanceWindowOutput {
+	return i.ToServerlessKubernetesMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesMaintenanceWindowArgs) ToServerlessKubernetesMaintenanceWindowOutputWithContext(ctx context.Context) ServerlessKubernetesMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesMaintenanceWindowOutput)
+}
+
+func (i ServerlessKubernetesMaintenanceWindowArgs) ToServerlessKubernetesMaintenanceWindowPtrOutput() ServerlessKubernetesMaintenanceWindowPtrOutput {
+	return i.ToServerlessKubernetesMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesMaintenanceWindowArgs) ToServerlessKubernetesMaintenanceWindowPtrOutputWithContext(ctx context.Context) ServerlessKubernetesMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesMaintenanceWindowOutput).ToServerlessKubernetesMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// ServerlessKubernetesMaintenanceWindowPtrInput is an input type that accepts ServerlessKubernetesMaintenanceWindowArgs, ServerlessKubernetesMaintenanceWindowPtr and ServerlessKubernetesMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesMaintenanceWindowPtrInput` via:
+//
+//	        ServerlessKubernetesMaintenanceWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerlessKubernetesMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesMaintenanceWindowPtrOutput() ServerlessKubernetesMaintenanceWindowPtrOutput
+	ToServerlessKubernetesMaintenanceWindowPtrOutputWithContext(context.Context) ServerlessKubernetesMaintenanceWindowPtrOutput
+}
+
+type serverlessKubernetesMaintenanceWindowPtrType ServerlessKubernetesMaintenanceWindowArgs
+
+func ServerlessKubernetesMaintenanceWindowPtr(v *ServerlessKubernetesMaintenanceWindowArgs) ServerlessKubernetesMaintenanceWindowPtrInput {
+	return (*serverlessKubernetesMaintenanceWindowPtrType)(v)
+}
+
+func (*serverlessKubernetesMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetesMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *serverlessKubernetesMaintenanceWindowPtrType) ToServerlessKubernetesMaintenanceWindowPtrOutput() ServerlessKubernetesMaintenanceWindowPtrOutput {
+	return i.ToServerlessKubernetesMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *serverlessKubernetesMaintenanceWindowPtrType) ToServerlessKubernetesMaintenanceWindowPtrOutputWithContext(ctx context.Context) ServerlessKubernetesMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesMaintenanceWindowPtrOutput)
+}
+
+type ServerlessKubernetesMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesMaintenanceWindowOutput) ToServerlessKubernetesMaintenanceWindowOutput() ServerlessKubernetesMaintenanceWindowOutput {
+	return o
+}
+
+func (o ServerlessKubernetesMaintenanceWindowOutput) ToServerlessKubernetesMaintenanceWindowOutputWithContext(ctx context.Context) ServerlessKubernetesMaintenanceWindowOutput {
+	return o
+}
+
+func (o ServerlessKubernetesMaintenanceWindowOutput) ToServerlessKubernetesMaintenanceWindowPtrOutput() ServerlessKubernetesMaintenanceWindowPtrOutput {
+	return o.ToServerlessKubernetesMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessKubernetesMaintenanceWindowOutput) ToServerlessKubernetesMaintenanceWindowPtrOutputWithContext(ctx context.Context) ServerlessKubernetesMaintenanceWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessKubernetesMaintenanceWindow) *ServerlessKubernetesMaintenanceWindow {
+		return &v
+	}).(ServerlessKubernetesMaintenanceWindowPtrOutput)
+}
+
+// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+func (o ServerlessKubernetesMaintenanceWindowOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesMaintenanceWindow) *string { return v.Duration }).(pulumi.StringPtrOutput)
+}
+
+// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+func (o ServerlessKubernetesMaintenanceWindowOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesMaintenanceWindow) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+func (o ServerlessKubernetesMaintenanceWindowOutput) MaintenanceTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesMaintenanceWindow) *string { return v.MaintenanceTime }).(pulumi.StringPtrOutput)
+}
+
+// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+//
+// for example:
+func (o ServerlessKubernetesMaintenanceWindowOutput) WeeklyPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesMaintenanceWindow) *string { return v.WeeklyPeriod }).(pulumi.StringPtrOutput)
+}
+
+type ServerlessKubernetesMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetesMaintenanceWindow)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesMaintenanceWindowPtrOutput) ToServerlessKubernetesMaintenanceWindowPtrOutput() ServerlessKubernetesMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o ServerlessKubernetesMaintenanceWindowPtrOutput) ToServerlessKubernetesMaintenanceWindowPtrOutputWithContext(ctx context.Context) ServerlessKubernetesMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o ServerlessKubernetesMaintenanceWindowPtrOutput) Elem() ServerlessKubernetesMaintenanceWindowOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesMaintenanceWindow) ServerlessKubernetesMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessKubernetesMaintenanceWindow
+		return ret
+	}).(ServerlessKubernetesMaintenanceWindowOutput)
+}
+
+// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+func (o ServerlessKubernetesMaintenanceWindowPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+func (o ServerlessKubernetesMaintenanceWindowPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesMaintenanceWindow) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+func (o ServerlessKubernetesMaintenanceWindowPtrOutput) MaintenanceTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+//
+// for example:
+func (o ServerlessKubernetesMaintenanceWindowPtrOutput) WeeklyPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerlessKubernetesOperationPolicy struct {
+	// Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+	ClusterAutoUpgrade *ServerlessKubernetesOperationPolicyClusterAutoUpgrade `pulumi:"clusterAutoUpgrade"`
+}
+
+// ServerlessKubernetesOperationPolicyInput is an input type that accepts ServerlessKubernetesOperationPolicyArgs and ServerlessKubernetesOperationPolicyOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesOperationPolicyInput` via:
+//
+//	ServerlessKubernetesOperationPolicyArgs{...}
+type ServerlessKubernetesOperationPolicyInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesOperationPolicyOutput() ServerlessKubernetesOperationPolicyOutput
+	ToServerlessKubernetesOperationPolicyOutputWithContext(context.Context) ServerlessKubernetesOperationPolicyOutput
+}
+
+type ServerlessKubernetesOperationPolicyArgs struct {
+	// Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+	ClusterAutoUpgrade ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrInput `pulumi:"clusterAutoUpgrade"`
+}
+
+func (ServerlessKubernetesOperationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesOperationPolicy)(nil)).Elem()
+}
+
+func (i ServerlessKubernetesOperationPolicyArgs) ToServerlessKubernetesOperationPolicyOutput() ServerlessKubernetesOperationPolicyOutput {
+	return i.ToServerlessKubernetesOperationPolicyOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesOperationPolicyArgs) ToServerlessKubernetesOperationPolicyOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOperationPolicyOutput)
+}
+
+func (i ServerlessKubernetesOperationPolicyArgs) ToServerlessKubernetesOperationPolicyPtrOutput() ServerlessKubernetesOperationPolicyPtrOutput {
+	return i.ToServerlessKubernetesOperationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesOperationPolicyArgs) ToServerlessKubernetesOperationPolicyPtrOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOperationPolicyOutput).ToServerlessKubernetesOperationPolicyPtrOutputWithContext(ctx)
+}
+
+// ServerlessKubernetesOperationPolicyPtrInput is an input type that accepts ServerlessKubernetesOperationPolicyArgs, ServerlessKubernetesOperationPolicyPtr and ServerlessKubernetesOperationPolicyPtrOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesOperationPolicyPtrInput` via:
+//
+//	        ServerlessKubernetesOperationPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerlessKubernetesOperationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesOperationPolicyPtrOutput() ServerlessKubernetesOperationPolicyPtrOutput
+	ToServerlessKubernetesOperationPolicyPtrOutputWithContext(context.Context) ServerlessKubernetesOperationPolicyPtrOutput
+}
+
+type serverlessKubernetesOperationPolicyPtrType ServerlessKubernetesOperationPolicyArgs
+
+func ServerlessKubernetesOperationPolicyPtr(v *ServerlessKubernetesOperationPolicyArgs) ServerlessKubernetesOperationPolicyPtrInput {
+	return (*serverlessKubernetesOperationPolicyPtrType)(v)
+}
+
+func (*serverlessKubernetesOperationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetesOperationPolicy)(nil)).Elem()
+}
+
+func (i *serverlessKubernetesOperationPolicyPtrType) ToServerlessKubernetesOperationPolicyPtrOutput() ServerlessKubernetesOperationPolicyPtrOutput {
+	return i.ToServerlessKubernetesOperationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *serverlessKubernetesOperationPolicyPtrType) ToServerlessKubernetesOperationPolicyPtrOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOperationPolicyPtrOutput)
+}
+
+type ServerlessKubernetesOperationPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesOperationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesOperationPolicy)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesOperationPolicyOutput) ToServerlessKubernetesOperationPolicyOutput() ServerlessKubernetesOperationPolicyOutput {
+	return o
+}
+
+func (o ServerlessKubernetesOperationPolicyOutput) ToServerlessKubernetesOperationPolicyOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyOutput {
+	return o
+}
+
+func (o ServerlessKubernetesOperationPolicyOutput) ToServerlessKubernetesOperationPolicyPtrOutput() ServerlessKubernetesOperationPolicyPtrOutput {
+	return o.ToServerlessKubernetesOperationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessKubernetesOperationPolicyOutput) ToServerlessKubernetesOperationPolicyPtrOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessKubernetesOperationPolicy) *ServerlessKubernetesOperationPolicy {
+		return &v
+	}).(ServerlessKubernetesOperationPolicyPtrOutput)
+}
+
+// Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+func (o ServerlessKubernetesOperationPolicyOutput) ClusterAutoUpgrade() ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesOperationPolicy) *ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
+		return v.ClusterAutoUpgrade
+	}).(ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
+}
+
+type ServerlessKubernetesOperationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesOperationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetesOperationPolicy)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesOperationPolicyPtrOutput) ToServerlessKubernetesOperationPolicyPtrOutput() ServerlessKubernetesOperationPolicyPtrOutput {
+	return o
+}
+
+func (o ServerlessKubernetesOperationPolicyPtrOutput) ToServerlessKubernetesOperationPolicyPtrOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyPtrOutput {
+	return o
+}
+
+func (o ServerlessKubernetesOperationPolicyPtrOutput) Elem() ServerlessKubernetesOperationPolicyOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesOperationPolicy) ServerlessKubernetesOperationPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessKubernetesOperationPolicy
+		return ret
+	}).(ServerlessKubernetesOperationPolicyOutput)
+}
+
+// Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+func (o ServerlessKubernetesOperationPolicyPtrOutput) ClusterAutoUpgrade() ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesOperationPolicy) *ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterAutoUpgrade
+	}).(ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
+}
+
+type ServerlessKubernetesOperationPolicyClusterAutoUpgrade struct {
+	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+	//
+	// for example:
+	Channel *string `pulumi:"channel"`
+	// Whether the RRSA feature has been enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ServerlessKubernetesOperationPolicyClusterAutoUpgradeInput is an input type that accepts ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs and ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesOperationPolicyClusterAutoUpgradeInput` via:
+//
+//	ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs{...}
+type ServerlessKubernetesOperationPolicyClusterAutoUpgradeInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput() ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput
+	ToServerlessKubernetesOperationPolicyClusterAutoUpgradeOutputWithContext(context.Context) ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput
+}
+
+type ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs struct {
+	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+	//
+	// for example:
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
+	// Whether the RRSA feature has been enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (i ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs) ToServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput() ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return i.ToServerlessKubernetesOperationPolicyClusterAutoUpgradeOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs) ToServerlessKubernetesOperationPolicyClusterAutoUpgradeOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput)
+}
+
+func (i ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs) ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return i.ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs) ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput).ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx)
+}
+
+// ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrInput is an input type that accepts ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs, ServerlessKubernetesOperationPolicyClusterAutoUpgradePtr and ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput values.
+// You can construct a concrete instance of `ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrInput` via:
+//
+//	        ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrInput interface {
+	pulumi.Input
+
+	ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput
+	ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(context.Context) ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput
+}
+
+type serverlessKubernetesOperationPolicyClusterAutoUpgradePtrType ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs
+
+func ServerlessKubernetesOperationPolicyClusterAutoUpgradePtr(v *ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs) ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrInput {
+	return (*serverlessKubernetesOperationPolicyClusterAutoUpgradePtrType)(v)
+}
+
+func (*serverlessKubernetesOperationPolicyClusterAutoUpgradePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetesOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (i *serverlessKubernetesOperationPolicyClusterAutoUpgradePtrType) ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return i.ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(context.Background())
+}
+
+func (i *serverlessKubernetesOperationPolicyClusterAutoUpgradePtrType) ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
+}
+
+type ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerlessKubernetesOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput) ToServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput() ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return o
+}
+
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput) ToServerlessKubernetesOperationPolicyClusterAutoUpgradeOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return o
+}
+
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput) ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o.ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(context.Background())
+}
+
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput) ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerlessKubernetesOperationPolicyClusterAutoUpgrade) *ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
+		return &v
+	}).(ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
+}
+
+// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+//
+// for example:
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesOperationPolicyClusterAutoUpgrade) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerlessKubernetesOperationPolicyClusterAutoUpgrade) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerlessKubernetesOperationPolicyClusterAutoUpgrade)(nil)).Elem()
+}
+
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput) ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput() ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o
+}
+
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput) ToServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutputWithContext(ctx context.Context) ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput {
+	return o
+}
+
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Elem() ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesOperationPolicyClusterAutoUpgrade) ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
+		if v != nil {
+			return *v
+		}
+		var ret ServerlessKubernetesOperationPolicyClusterAutoUpgrade
+		return ret
+	}).(ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput)
+}
+
+// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+//
+// for example:
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesOperationPolicyClusterAutoUpgrade) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Channel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the RRSA feature has been enabled.
+func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerlessKubernetesOperationPolicyClusterAutoUpgrade) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServerlessKubernetesRrsaMetadata struct {
@@ -9992,6 +10800,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesDeleteOptionArrayInput)(nil)).Elem(), ManagedKubernetesDeleteOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesMaintenanceWindowPtrInput)(nil)).Elem(), ManagedKubernetesMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesOperationPolicyInput)(nil)).Elem(), ManagedKubernetesOperationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesOperationPolicyPtrInput)(nil)).Elem(), ManagedKubernetesOperationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesOperationPolicyClusterAutoUpgradeInput)(nil)).Elem(), ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesOperationPolicyClusterAutoUpgradePtrInput)(nil)).Elem(), ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ManagedKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDataDiskInput)(nil)).Elem(), NodePoolDataDiskArgs{})
@@ -10024,6 +10836,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesAddonArrayInput)(nil)).Elem(), ServerlessKubernetesAddonArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesDeleteOptionInput)(nil)).Elem(), ServerlessKubernetesDeleteOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesDeleteOptionArrayInput)(nil)).Elem(), ServerlessKubernetesDeleteOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesMaintenanceWindowInput)(nil)).Elem(), ServerlessKubernetesMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesMaintenanceWindowPtrInput)(nil)).Elem(), ServerlessKubernetesMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesOperationPolicyInput)(nil)).Elem(), ServerlessKubernetesOperationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesOperationPolicyPtrInput)(nil)).Elem(), ServerlessKubernetesOperationPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesOperationPolicyClusterAutoUpgradeInput)(nil)).Elem(), ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrInput)(nil)).Elem(), ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerlessKubernetesRrsaMetadataPtrInput)(nil)).Elem(), ServerlessKubernetesRrsaMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SwarmNodeInput)(nil)).Elem(), SwarmNodeArgs{})
@@ -10115,6 +10933,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedKubernetesDeleteOptionArrayOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesOperationPolicyOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesOperationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput{})
+	pulumi.RegisterOutputType(ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataOutput{})
 	pulumi.RegisterOutputType(ManagedKubernetesRrsaMetadataPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolDataDiskOutput{})
@@ -10147,6 +10969,12 @@ func init() {
 	pulumi.RegisterOutputType(ServerlessKubernetesAddonArrayOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesDeleteOptionOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesDeleteOptionArrayOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesOperationPolicyOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesOperationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput{})
+	pulumi.RegisterOutputType(ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataOutput{})
 	pulumi.RegisterOutputType(ServerlessKubernetesRrsaMetadataPtrOutput{})
 	pulumi.RegisterOutputType(SwarmNodeOutput{})

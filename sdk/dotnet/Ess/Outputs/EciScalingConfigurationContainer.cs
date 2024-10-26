@@ -153,6 +153,14 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly int? SecurityContextRunAsUser;
         /// <summary>
+        /// Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+        /// </summary>
+        public readonly bool? Stdin;
+        /// <summary>
+        /// Specifies whether to enable the Interaction feature. Valid values: true, false.
+        /// </summary>
+        public readonly bool? Tty;
+        /// <summary>
         /// The structure of volumeMounts. 
         /// See `volume_mounts` below for details.
         /// </summary>
@@ -232,6 +240,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
 
             int? securityContextRunAsUser,
 
+            bool? stdin,
+
+            bool? tty,
+
             ImmutableArray<Outputs.EciScalingConfigurationContainerVolumeMount> volumeMounts,
 
             string? workingDir)
@@ -270,6 +282,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
             SecurityContextCapabilityAdds = securityContextCapabilityAdds;
             SecurityContextReadOnlyRootFileSystem = securityContextReadOnlyRootFileSystem;
             SecurityContextRunAsUser = securityContextRunAsUser;
+            Stdin = stdin;
+            Tty = tty;
             VolumeMounts = volumeMounts;
             WorkingDir = workingDir;
         }

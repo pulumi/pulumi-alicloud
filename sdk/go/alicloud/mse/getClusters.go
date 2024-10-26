@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in v1.94.0+.
+// > **NOTE:** Available since v1.94.0.
 //
 // ## Example Usage
 //
@@ -22,24 +22,70 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/mse"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
-//			example, err := mse.GetClusters(ctx, &mse.GetClustersArgs{
-//				Ids: []string{
-//					"mse-cn-0d9xxxx",
-//				},
-//				Status: pulumi.StringRef("INIT_SUCCESS"),
+//			// Create resource
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("clusterId", example.Clusters[0].Id)
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       exampleNetwork.ID(),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleCluster, err := mse.NewCluster(ctx, "example", &mse.ClusterArgs{
+//				ClusterSpecification: pulumi.String("MSE_SC_1_2_60_c"),
+//				ClusterType:          pulumi.String("Nacos-Ans"),
+//				ClusterVersion:       pulumi.String("NACOS_2_0_0"),
+//				InstanceCount:        pulumi.Int(3),
+//				NetType:              pulumi.String("privatenet"),
+//				PubNetworkFlow:       pulumi.String("1"),
+//				ConnectionType:       pulumi.String("slb"),
+//				ClusterAliasName:     pulumi.String("terraform-example"),
+//				MseVersion:           pulumi.String("mse_pro"),
+//				VswitchId:            exampleSwitch.ID(),
+//				VpcId:                exampleNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Declare the data source
+//			exampleGetClusters := pulumi.All(exampleCluster.ID(), exampleCluster.ClusterAliasName).ApplyT(func(_args []interface{}) (mse.GetClustersResult, error) {
+//				id := _args[0].(string)
+//				clusterAliasName := _args[1].(string)
+//				return mse.GetClustersResult(interface{}(mse.GetClustersOutput(ctx, mse.GetClustersOutputArgs{
+//					EnableDetails: true,
+//					Ids: []string{
+//						id,
+//					},
+//					Status:    "INIT_SUCCESS",
+//					NameRegex: clusterAliasName,
+//				}, nil))), nil
+//			}).(mse.GetClustersResultOutput)
+//			ctx.Export("instanceId", exampleGetClusters.ApplyT(func(exampleGetClusters mse.GetClustersResult) (*string, error) {
+//				return &exampleGetClusters.Clusters[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -59,13 +105,15 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 type GetClustersArgs struct {
 	// The alias name of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
-	EnableDetails    *bool   `pulumi:"enableDetails"`
-	// A list of MSE Cluster ids.
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
+	// A list of MSE Cluster ids. It is formatted to `<instance_id>`
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter the results by the cluster alias name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  *string `pulumi:"outputFile"`
+	OutputFile *string `pulumi:"outputFile"`
+	// The extended request parameters. The JSON format is supported.
 	RequestPars *string `pulumi:"requestPars"`
 	// The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
 	Status *string `pulumi:"status"`
@@ -113,13 +161,15 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 type GetClustersOutputArgs struct {
 	// The alias name of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput `pulumi:"clusterAliasName"`
-	EnableDetails    pulumi.BoolPtrInput   `pulumi:"enableDetails"`
-	// A list of MSE Cluster ids.
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
+	// A list of MSE Cluster ids. It is formatted to `<instance_id>`
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter the results by the cluster alias name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
-	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
+	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
+	// The extended request parameters. The JSON format is supported.
 	RequestPars pulumi.StringPtrInput `pulumi:"requestPars"`
 	// The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
 	Status pulumi.StringPtrInput `pulumi:"status"`

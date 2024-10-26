@@ -29,6 +29,9 @@ class LaunchTemplateArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_owner_alias: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -135,6 +138,12 @@ class LaunchTemplateArgs:
             pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if http_tokens is not None:
+            pulumi.set(__self__, "http_tokens", http_tokens)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_owner_alias is not None:
@@ -317,6 +326,33 @@ class LaunchTemplateArgs:
     @host_name.setter
     def host_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host_name", value)
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_endpoint", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_tokens", value)
 
     @property
     @pulumi.getter(name="imageId")
@@ -789,6 +825,9 @@ class _LaunchTemplateState:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_owner_alias: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -895,6 +934,12 @@ class _LaunchTemplateState:
             pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if http_tokens is not None:
+            pulumi.set(__self__, "http_tokens", http_tokens)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_owner_alias is not None:
@@ -1077,6 +1122,33 @@ class _LaunchTemplateState:
     @host_name.setter
     def host_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host_name", value)
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_endpoint", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_tokens", value)
 
     @property
     @pulumi.getter(name="imageId")
@@ -1551,6 +1623,9 @@ class LaunchTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_owner_alias: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1819,6 +1894,9 @@ class LaunchTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_owner_alias: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1876,6 +1954,9 @@ class LaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_vm_os_config"] = enable_vm_os_config
             __props__.__dict__["host_name"] = host_name
+            __props__.__dict__["http_endpoint"] = http_endpoint
+            __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
+            __props__.__dict__["http_tokens"] = http_tokens
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["image_owner_alias"] = image_owner_alias
             __props__.__dict__["instance_charge_type"] = instance_charge_type
@@ -1934,6 +2015,9 @@ class LaunchTemplate(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
+            http_endpoint: Optional[pulumi.Input[str]] = None,
+            http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+            http_tokens: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             image_owner_alias: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -2041,6 +2125,9 @@ class LaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_vm_os_config"] = enable_vm_os_config
         __props__.__dict__["host_name"] = host_name
+        __props__.__dict__["http_endpoint"] = http_endpoint
+        __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
+        __props__.__dict__["http_tokens"] = http_tokens
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["image_owner_alias"] = image_owner_alias
         __props__.__dict__["instance_charge_type"] = instance_charge_type
@@ -2134,6 +2221,21 @@ class LaunchTemplate(pulumi.CustomResource):
         Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         """
         return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "http_endpoint")
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> pulumi.Output[int]:
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "http_tokens")
 
     @property
     @pulumi.getter(name="imageId")

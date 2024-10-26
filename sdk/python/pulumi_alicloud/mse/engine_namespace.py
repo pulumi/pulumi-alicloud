@@ -19,46 +19,34 @@ __all__ = ['EngineNamespaceArgs', 'EngineNamespace']
 @pulumi.input_type
 class EngineNamespaceArgs:
     def __init__(__self__, *,
-                 cluster_id: pulumi.Input[str],
-                 namespace_id: pulumi.Input[str],
                  namespace_show_name: pulumi.Input[str],
-                 accept_language: Optional[pulumi.Input[str]] = None):
+                 accept_language: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 namespace_desc: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EngineNamespace resource.
-        :param pulumi.Input[str] cluster_id: The id of the cluster.
-        :param pulumi.Input[str] namespace_id: The id of Namespace.
         :param pulumi.Input[str] namespace_show_name: The name of the Engine Namespace.
         :param pulumi.Input[str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
+        :param pulumi.Input[str] cluster_id: The id of the cluster.It is formatted to `mse-xxxxxxxx`.
+        :param pulumi.Input[str] instance_id: The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        :param pulumi.Input[str] namespace_desc: The description of the namespace.
+               
+               **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        :param pulumi.Input[str] namespace_id: The id of Namespace.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "namespace_show_name", namespace_show_name)
         if accept_language is not None:
             pulumi.set(__self__, "accept_language", accept_language)
-
-    @property
-    @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> pulumi.Input[str]:
-        """
-        The id of the cluster.
-        """
-        return pulumi.get(self, "cluster_id")
-
-    @cluster_id.setter
-    def cluster_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cluster_id", value)
-
-    @property
-    @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> pulumi.Input[str]:
-        """
-        The id of Namespace.
-        """
-        return pulumi.get(self, "namespace_id")
-
-    @namespace_id.setter
-    def namespace_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "namespace_id", value)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if namespace_desc is not None:
+            pulumi.set(__self__, "namespace_desc", namespace_desc)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
 
     @property
     @pulumi.getter(name="namespaceShowName")
@@ -84,18 +72,74 @@ class EngineNamespaceArgs:
     def accept_language(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "accept_language", value)
 
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of the cluster.It is formatted to `mse-xxxxxxxx`.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="namespaceDesc")
+    def namespace_desc(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the namespace.
+
+        **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        """
+        return pulumi.get(self, "namespace_desc")
+
+    @namespace_desc.setter
+    def namespace_desc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_desc", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of Namespace.
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_id", value)
+
 
 @pulumi.input_type
 class _EngineNamespaceState:
     def __init__(__self__, *,
                  accept_language: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 namespace_desc: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  namespace_show_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EngineNamespace resources.
         :param pulumi.Input[str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
-        :param pulumi.Input[str] cluster_id: The id of the cluster.
+        :param pulumi.Input[str] cluster_id: The id of the cluster.It is formatted to `mse-xxxxxxxx`.
+        :param pulumi.Input[str] instance_id: The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        :param pulumi.Input[str] namespace_desc: The description of the namespace.
+               
+               **NOTE:** You must set `cluster_id` or `instance_id` or both.
         :param pulumi.Input[str] namespace_id: The id of Namespace.
         :param pulumi.Input[str] namespace_show_name: The name of the Engine Namespace.
         """
@@ -103,6 +147,10 @@ class _EngineNamespaceState:
             pulumi.set(__self__, "accept_language", accept_language)
         if cluster_id is not None:
             pulumi.set(__self__, "cluster_id", cluster_id)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if namespace_desc is not None:
+            pulumi.set(__self__, "namespace_desc", namespace_desc)
         if namespace_id is not None:
             pulumi.set(__self__, "namespace_id", namespace_id)
         if namespace_show_name is not None:
@@ -124,13 +172,39 @@ class _EngineNamespaceState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the cluster.
+        The id of the cluster.It is formatted to `mse-xxxxxxxx`.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
     def cluster_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="namespaceDesc")
+    def namespace_desc(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the namespace.
+
+        **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        """
+        return pulumi.get(self, "namespace_desc")
+
+    @namespace_desc.setter
+    def namespace_desc(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_desc", value)
 
     @property
     @pulumi.getter(name="namespaceId")
@@ -164,6 +238,8 @@ class EngineNamespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accept_language: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 namespace_desc: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  namespace_show_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -172,7 +248,7 @@ class EngineNamespace(pulumi.CustomResource):
 
         For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
 
-        > **NOTE:** Available in v1.166.0+.
+        > **NOTE:** Available since v1.166.0.
 
         ## Example Usage
 
@@ -182,10 +258,6 @@ class EngineNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
         example = alicloud.get_zones(available_resource_creation="VSwitch")
         example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
@@ -195,21 +267,23 @@ class EngineNamespace(pulumi.CustomResource):
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
             zone_id=example.zones[0].id)
-        default = alicloud.mse.Cluster("default",
-            connection_type="slb",
-            net_type="privatenet",
-            vswitch_id=example_switch.id,
+        example_cluster = alicloud.mse.Cluster("example",
             cluster_specification="MSE_SC_1_2_60_c",
+            cluster_type="Nacos-Ans",
             cluster_version="NACOS_2_0_0",
-            instance_count=1,
+            instance_count=3,
+            net_type="privatenet",
             pub_network_flow="1",
-            cluster_alias_name=name,
-            mse_version="mse_dev",
-            cluster_type="Nacos-Ans")
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_pro",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
         example_engine_namespace = alicloud.mse.EngineNamespace("example",
-            cluster_id=default.id,
-            namespace_show_name=name,
-            namespace_id=name)
+            instance_id=example_cluster.id,
+            namespace_show_name="terraform-example",
+            namespace_id="terraform-example",
+            namespace_desc="description")
         ```
 
         ## Import
@@ -217,13 +291,17 @@ class EngineNamespace(pulumi.CustomResource):
         Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
+        $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <instance_id>:<namespace_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
-        :param pulumi.Input[str] cluster_id: The id of the cluster.
+        :param pulumi.Input[str] cluster_id: The id of the cluster.It is formatted to `mse-xxxxxxxx`.
+        :param pulumi.Input[str] instance_id: The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        :param pulumi.Input[str] namespace_desc: The description of the namespace.
+               
+               **NOTE:** You must set `cluster_id` or `instance_id` or both.
         :param pulumi.Input[str] namespace_id: The id of Namespace.
         :param pulumi.Input[str] namespace_show_name: The name of the Engine Namespace.
         """
@@ -238,7 +316,7 @@ class EngineNamespace(pulumi.CustomResource):
 
         For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
 
-        > **NOTE:** Available in v1.166.0+.
+        > **NOTE:** Available since v1.166.0.
 
         ## Example Usage
 
@@ -248,10 +326,6 @@ class EngineNamespace(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        config = pulumi.Config()
-        name = config.get("name")
-        if name is None:
-            name = "tf-example"
         example = alicloud.get_zones(available_resource_creation="VSwitch")
         example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
@@ -261,21 +335,23 @@ class EngineNamespace(pulumi.CustomResource):
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
             zone_id=example.zones[0].id)
-        default = alicloud.mse.Cluster("default",
-            connection_type="slb",
-            net_type="privatenet",
-            vswitch_id=example_switch.id,
+        example_cluster = alicloud.mse.Cluster("example",
             cluster_specification="MSE_SC_1_2_60_c",
+            cluster_type="Nacos-Ans",
             cluster_version="NACOS_2_0_0",
-            instance_count=1,
+            instance_count=3,
+            net_type="privatenet",
             pub_network_flow="1",
-            cluster_alias_name=name,
-            mse_version="mse_dev",
-            cluster_type="Nacos-Ans")
+            connection_type="slb",
+            cluster_alias_name="terraform-example",
+            mse_version="mse_pro",
+            vswitch_id=example_switch.id,
+            vpc_id=example_network.id)
         example_engine_namespace = alicloud.mse.EngineNamespace("example",
-            cluster_id=default.id,
-            namespace_show_name=name,
-            namespace_id=name)
+            instance_id=example_cluster.id,
+            namespace_show_name="terraform-example",
+            namespace_id="terraform-example",
+            namespace_desc="description")
         ```
 
         ## Import
@@ -283,7 +359,7 @@ class EngineNamespace(pulumi.CustomResource):
         Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
+        $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <instance_id>:<namespace_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -303,6 +379,8 @@ class EngineNamespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accept_language: Optional[pulumi.Input[str]] = None,
                  cluster_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 namespace_desc: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
                  namespace_show_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -315,11 +393,9 @@ class EngineNamespace(pulumi.CustomResource):
             __props__ = EngineNamespaceArgs.__new__(EngineNamespaceArgs)
 
             __props__.__dict__["accept_language"] = accept_language
-            if cluster_id is None and not opts.urn:
-                raise TypeError("Missing required property 'cluster_id'")
             __props__.__dict__["cluster_id"] = cluster_id
-            if namespace_id is None and not opts.urn:
-                raise TypeError("Missing required property 'namespace_id'")
+            __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["namespace_desc"] = namespace_desc
             __props__.__dict__["namespace_id"] = namespace_id
             if namespace_show_name is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_show_name'")
@@ -336,6 +412,8 @@ class EngineNamespace(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             accept_language: Optional[pulumi.Input[str]] = None,
             cluster_id: Optional[pulumi.Input[str]] = None,
+            instance_id: Optional[pulumi.Input[str]] = None,
+            namespace_desc: Optional[pulumi.Input[str]] = None,
             namespace_id: Optional[pulumi.Input[str]] = None,
             namespace_show_name: Optional[pulumi.Input[str]] = None) -> 'EngineNamespace':
         """
@@ -346,7 +424,11 @@ class EngineNamespace(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
-        :param pulumi.Input[str] cluster_id: The id of the cluster.
+        :param pulumi.Input[str] cluster_id: The id of the cluster.It is formatted to `mse-xxxxxxxx`.
+        :param pulumi.Input[str] instance_id: The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        :param pulumi.Input[str] namespace_desc: The description of the namespace.
+               
+               **NOTE:** You must set `cluster_id` or `instance_id` or both.
         :param pulumi.Input[str] namespace_id: The id of Namespace.
         :param pulumi.Input[str] namespace_show_name: The name of the Engine Namespace.
         """
@@ -356,6 +438,8 @@ class EngineNamespace(pulumi.CustomResource):
 
         __props__.__dict__["accept_language"] = accept_language
         __props__.__dict__["cluster_id"] = cluster_id
+        __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["namespace_desc"] = namespace_desc
         __props__.__dict__["namespace_id"] = namespace_id
         __props__.__dict__["namespace_show_name"] = namespace_show_name
         return EngineNamespace(resource_name, opts=opts, __props__=__props__)
@@ -372,9 +456,27 @@ class EngineNamespace(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        The id of the cluster.
+        The id of the cluster.It is formatted to `mse-xxxxxxxx`.
         """
         return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Output[str]:
+        """
+        The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="namespaceDesc")
+    def namespace_desc(self) -> pulumi.Output[str]:
+        """
+        The description of the namespace.
+
+        **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        """
+        return pulumi.get(self, "namespace_desc")
 
     @property
     @pulumi.getter(name="namespaceId")

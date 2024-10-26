@@ -89,11 +89,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly cfwAccount!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to use log audit. Valid values: `true`, `false`.
+     * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
      */
     public readonly cfwLog!: pulumi.Output<boolean | undefined>;
     /**
-     * The log storage capacity. It will be ignored when `cfwLog = false`.
+     * The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
      */
     public readonly cfwLogStorage!: pulumi.Output<number | undefined>;
     /**
@@ -115,13 +115,13 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      */
-    public readonly ipNumber!: pulumi.Output<number | undefined>;
+    public readonly ipNumber!: pulumi.Output<number>;
     /**
      * The logistics.
      */
     public readonly logistics!: pulumi.Output<string | undefined>;
     /**
-     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
@@ -152,7 +152,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly renewalDurationUnit!: pulumi.Output<string | undefined>;
     /**
-     * Whether to renew an instance automatically or not. Default to "ManualRenewal".
+     * Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -162,11 +162,15 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */
-    public readonly spec!: pulumi.Output<string | undefined>;
+    public readonly spec!: pulumi.Output<string>;
     /**
-     * The status of Instance.
+     * The status of Cloud Firewall Instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * (Available since v1.232.0) The user status of Cloud Firewall Instance.
+     */
+    public /*out*/ readonly userStatus!: pulumi.Output<boolean>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -202,6 +206,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["userStatus"] = state ? state.userStatus : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.paymentType === undefined) && !opts.urn) {
@@ -228,6 +233,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["releaseTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["userStatus"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Instance.__pulumiType, name, resourceInputs, opts);
@@ -251,11 +257,11 @@ export interface InstanceState {
      */
     cfwAccount?: pulumi.Input<boolean>;
     /**
-     * Whether to use log audit. Valid values: `true`, `false`.
+     * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
      */
     cfwLog?: pulumi.Input<boolean>;
     /**
-     * The log storage capacity. It will be ignored when `cfwLog = false`.
+     * The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
      */
     cfwLogStorage?: pulumi.Input<number>;
     /**
@@ -283,7 +289,7 @@ export interface InstanceState {
      */
     logistics?: pulumi.Input<string>;
     /**
-     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      */
     modifyType?: pulumi.Input<string>;
     /**
@@ -314,7 +320,7 @@ export interface InstanceState {
      */
     renewalDurationUnit?: pulumi.Input<string>;
     /**
-     * Whether to renew an instance automatically or not. Default to "ManualRenewal".
+     * Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -326,9 +332,13 @@ export interface InstanceState {
      */
     spec?: pulumi.Input<string>;
     /**
-     * The status of Instance.
+     * The status of Cloud Firewall Instance.
      */
     status?: pulumi.Input<string>;
+    /**
+     * (Available since v1.232.0) The user status of Cloud Firewall Instance.
+     */
+    userStatus?: pulumi.Input<boolean>;
 }
 
 /**
@@ -348,11 +358,11 @@ export interface InstanceArgs {
      */
     cfwAccount?: pulumi.Input<boolean>;
     /**
-     * Whether to use log audit. Valid values: `true`, `false`.
+     * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
      */
     cfwLog?: pulumi.Input<boolean>;
     /**
-     * The log storage capacity. It will be ignored when `cfwLog = false`.
+     * The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
      */
     cfwLogStorage?: pulumi.Input<number>;
     /**
@@ -372,7 +382,7 @@ export interface InstanceArgs {
      */
     logistics?: pulumi.Input<string>;
     /**
-     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
      */
     modifyType?: pulumi.Input<string>;
     /**
@@ -399,7 +409,7 @@ export interface InstanceArgs {
      */
     renewalDurationUnit?: pulumi.Input<string>;
     /**
-     * Whether to renew an instance automatically or not. Default to "ManualRenewal".
+     * Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.

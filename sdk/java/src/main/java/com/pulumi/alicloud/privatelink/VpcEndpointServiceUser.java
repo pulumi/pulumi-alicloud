@@ -16,7 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Private Link Vpc Endpoint Service User resource. Endpoint service user whitelist.
+ * Provides a Private Link Vpc Endpoint Service User resource.
+ * 
+ * Endpoint service user whitelist.
  * 
  * For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
  * 
@@ -93,8 +95,6 @@ import javax.annotation.Nullable;
 public class VpcEndpointServiceUser extends com.pulumi.resources.CustomResource {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
@@ -102,8 +102,6 @@ public class VpcEndpointServiceUser extends com.pulumi.resources.CustomResource 
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -122,6 +120,20 @@ public class VpcEndpointServiceUser extends com.pulumi.resources.CustomResource 
      */
     public Output<String> serviceId() {
         return this.serviceId;
+    }
+    /**
+     * The whitelist in the format of ARN.
+     * 
+     */
+    @Export(name="userArn", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> userArn;
+
+    /**
+     * @return The whitelist in the format of ARN.
+     * 
+     */
+    public Output<Optional<String>> userArn() {
+        return Codegen.optional(this.userArn);
     }
     /**
      * The ID of the Alibaba Cloud account in the whitelist of the endpoint service.

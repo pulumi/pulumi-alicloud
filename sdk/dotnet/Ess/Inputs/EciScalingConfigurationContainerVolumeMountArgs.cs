@@ -15,11 +15,17 @@ namespace Pulumi.AliCloud.Ess.Inputs
         [Input("mountPath")]
         public Input<string>? MountPath { get; set; }
 
+        [Input("mountPropagation")]
+        public Input<string>? MountPropagation { get; set; }
+
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
+
+        [Input("subPath")]
+        public Input<string>? SubPath { get; set; }
 
         public EciScalingConfigurationContainerVolumeMountArgs()
         {

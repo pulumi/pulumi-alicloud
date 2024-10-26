@@ -69,6 +69,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
+    }
+
+    /**
      * Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
      * 
      */
@@ -141,6 +156,36 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> imageName() {
         return Optional.ofNullable(this.imageName);
+    }
+
+    /**
+     * Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+     * 
+     */
+    @Import(name="imageOptionsLoginAsNonRoot")
+    private @Nullable Output<Boolean> imageOptionsLoginAsNonRoot;
+
+    /**
+     * @return Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+     * 
+     */
+    public Optional<Output<Boolean>> imageOptionsLoginAsNonRoot() {
+        return Optional.ofNullable(this.imageOptionsLoginAsNonRoot);
+    }
+
+    /**
+     * The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+     * 
+     */
+    @Import(name="instanceDescription")
+    private @Nullable Output<String> instanceDescription;
+
+    /**
+     * @return The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+     * 
+     */
+    public Optional<Output<String>> instanceDescription() {
+        return Optional.ofNullable(this.instanceDescription);
     }
 
     /**
@@ -475,6 +520,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     }
 
     /**
+     * Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+     * 
+     */
+    @Import(name="securityEnhancementStrategy")
+    private @Nullable Output<String> securityEnhancementStrategy;
+
+    /**
+     * @return Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+     * 
+     */
+    public Optional<Output<String>> securityEnhancementStrategy() {
+        return Optional.ofNullable(this.securityEnhancementStrategy);
+    }
+
+    /**
      * ID of the security group used to create new instance. It is conflict with `security_group_ids`.
      * 
      */
@@ -502,6 +562,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      */
     public Optional<Output<List<String>>> securityGroupIds() {
         return Optional.ofNullable(this.securityGroupIds);
+    }
+
+    /**
+     * The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+     * 
+     */
+    @Import(name="spotDuration")
+    private @Nullable Output<Integer> spotDuration;
+
+    /**
+     * @return The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+     * 
+     */
+    public Optional<Output<Integer>> spotDuration() {
+        return Optional.ofNullable(this.spotDuration);
     }
 
     /**
@@ -623,6 +698,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+     * 
+     */
+    @Import(name="systemDiskEncryptAlgorithm")
+    private @Nullable Output<String> systemDiskEncryptAlgorithm;
+
+    /**
+     * @return The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+     * 
+     */
+    public Optional<Output<String>> systemDiskEncryptAlgorithm() {
+        return Optional.ofNullable(this.systemDiskEncryptAlgorithm);
+    }
+
+    /**
      * Whether to encrypt the system disk.
      * 
      */
@@ -635,6 +725,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      */
     public Optional<Output<Boolean>> systemDiskEncrypted() {
         return Optional.ofNullable(this.systemDiskEncrypted);
+    }
+
+    /**
+     * The ID of the KMS key that you want to use to encrypt the system disk.
+     * 
+     */
+    @Import(name="systemDiskKmsKeyId")
+    private @Nullable Output<String> systemDiskKmsKeyId;
+
+    /**
+     * @return The ID of the KMS key that you want to use to encrypt the system disk.
+     * 
+     */
+    public Optional<Output<String>> systemDiskKmsKeyId() {
+        return Optional.ofNullable(this.systemDiskKmsKeyId);
     }
 
     /**
@@ -665,6 +770,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      */
     public Optional<Output<String>> systemDiskPerformanceLevel() {
         return Optional.ofNullable(this.systemDiskPerformanceLevel);
+    }
+
+    /**
+     * IOPS measures the number of read and write operations that an EBS device can process per second.
+     * 
+     */
+    @Import(name="systemDiskProvisionedIops")
+    private @Nullable Output<Integer> systemDiskProvisionedIops;
+
+    /**
+     * @return IOPS measures the number of read and write operations that an EBS device can process per second.
+     * 
+     */
+    public Optional<Output<Integer>> systemDiskProvisionedIops() {
+        return Optional.ofNullable(this.systemDiskProvisionedIops);
     }
 
     /**
@@ -722,11 +842,14 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         this.active = $.active;
         this.creditSpecification = $.creditSpecification;
         this.dataDisks = $.dataDisks;
+        this.deletionProtection = $.deletionProtection;
         this.enable = $.enable;
         this.forceDelete = $.forceDelete;
         this.hostName = $.hostName;
         this.imageId = $.imageId;
         this.imageName = $.imageName;
+        this.imageOptionsLoginAsNonRoot = $.imageOptionsLoginAsNonRoot;
+        this.instanceDescription = $.instanceDescription;
         this.instanceIds = $.instanceIds;
         this.instanceName = $.instanceName;
         this.instancePatternInfos = $.instancePatternInfos;
@@ -748,17 +871,22 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         this.roleName = $.roleName;
         this.scalingConfigurationName = $.scalingConfigurationName;
         this.scalingGroupId = $.scalingGroupId;
+        this.securityEnhancementStrategy = $.securityEnhancementStrategy;
         this.securityGroupId = $.securityGroupId;
         this.securityGroupIds = $.securityGroupIds;
+        this.spotDuration = $.spotDuration;
         this.spotPriceLimits = $.spotPriceLimits;
         this.spotStrategy = $.spotStrategy;
         this.substitute = $.substitute;
         this.systemDiskAutoSnapshotPolicyId = $.systemDiskAutoSnapshotPolicyId;
         this.systemDiskCategory = $.systemDiskCategory;
         this.systemDiskDescription = $.systemDiskDescription;
+        this.systemDiskEncryptAlgorithm = $.systemDiskEncryptAlgorithm;
         this.systemDiskEncrypted = $.systemDiskEncrypted;
+        this.systemDiskKmsKeyId = $.systemDiskKmsKeyId;
         this.systemDiskName = $.systemDiskName;
         this.systemDiskPerformanceLevel = $.systemDiskPerformanceLevel;
+        this.systemDiskProvisionedIops = $.systemDiskProvisionedIops;
         this.systemDiskSize = $.systemDiskSize;
         this.tags = $.tags;
         this.userData = $.userData;
@@ -853,6 +981,27 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder dataDisks(ScalingConfigurationDataDiskArgs... dataDisks) {
             return dataDisks(List.of(dataDisks));
+        }
+
+        /**
+         * @param deletionProtection Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**
@@ -958,6 +1107,48 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder imageName(String imageName) {
             return imageName(Output.of(imageName));
+        }
+
+        /**
+         * @param imageOptionsLoginAsNonRoot Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageOptionsLoginAsNonRoot(@Nullable Output<Boolean> imageOptionsLoginAsNonRoot) {
+            $.imageOptionsLoginAsNonRoot = imageOptionsLoginAsNonRoot;
+            return this;
+        }
+
+        /**
+         * @param imageOptionsLoginAsNonRoot Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageOptionsLoginAsNonRoot(Boolean imageOptionsLoginAsNonRoot) {
+            return imageOptionsLoginAsNonRoot(Output.of(imageOptionsLoginAsNonRoot));
+        }
+
+        /**
+         * @param instanceDescription The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceDescription(@Nullable Output<String> instanceDescription) {
+            $.instanceDescription = instanceDescription;
+            return this;
+        }
+
+        /**
+         * @param instanceDescription The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceDescription(String instanceDescription) {
+            return instanceDescription(Output.of(instanceDescription));
         }
 
         /**
@@ -1462,6 +1653,27 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param securityEnhancementStrategy Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityEnhancementStrategy(@Nullable Output<String> securityEnhancementStrategy) {
+            $.securityEnhancementStrategy = securityEnhancementStrategy;
+            return this;
+        }
+
+        /**
+         * @param securityEnhancementStrategy Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityEnhancementStrategy(String securityEnhancementStrategy) {
+            return securityEnhancementStrategy(Output.of(securityEnhancementStrategy));
+        }
+
+        /**
          * @param securityGroupId ID of the security group used to create new instance. It is conflict with `security_group_ids`.
          * 
          * @return builder
@@ -1511,6 +1723,27 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder securityGroupIds(String... securityGroupIds) {
             return securityGroupIds(List.of(securityGroupIds));
+        }
+
+        /**
+         * @param spotDuration The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotDuration(@Nullable Output<Integer> spotDuration) {
+            $.spotDuration = spotDuration;
+            return this;
+        }
+
+        /**
+         * @param spotDuration The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotDuration(Integer spotDuration) {
+            return spotDuration(Output.of(spotDuration));
         }
 
         /**
@@ -1692,6 +1925,27 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param systemDiskEncryptAlgorithm The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskEncryptAlgorithm(@Nullable Output<String> systemDiskEncryptAlgorithm) {
+            $.systemDiskEncryptAlgorithm = systemDiskEncryptAlgorithm;
+            return this;
+        }
+
+        /**
+         * @param systemDiskEncryptAlgorithm The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskEncryptAlgorithm(String systemDiskEncryptAlgorithm) {
+            return systemDiskEncryptAlgorithm(Output.of(systemDiskEncryptAlgorithm));
+        }
+
+        /**
          * @param systemDiskEncrypted Whether to encrypt the system disk.
          * 
          * @return builder
@@ -1710,6 +1964,27 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder systemDiskEncrypted(Boolean systemDiskEncrypted) {
             return systemDiskEncrypted(Output.of(systemDiskEncrypted));
+        }
+
+        /**
+         * @param systemDiskKmsKeyId The ID of the KMS key that you want to use to encrypt the system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskKmsKeyId(@Nullable Output<String> systemDiskKmsKeyId) {
+            $.systemDiskKmsKeyId = systemDiskKmsKeyId;
+            return this;
+        }
+
+        /**
+         * @param systemDiskKmsKeyId The ID of the KMS key that you want to use to encrypt the system disk.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskKmsKeyId(String systemDiskKmsKeyId) {
+            return systemDiskKmsKeyId(Output.of(systemDiskKmsKeyId));
         }
 
         /**
@@ -1752,6 +2027,27 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder systemDiskPerformanceLevel(String systemDiskPerformanceLevel) {
             return systemDiskPerformanceLevel(Output.of(systemDiskPerformanceLevel));
+        }
+
+        /**
+         * @param systemDiskProvisionedIops IOPS measures the number of read and write operations that an EBS device can process per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskProvisionedIops(@Nullable Output<Integer> systemDiskProvisionedIops) {
+            $.systemDiskProvisionedIops = systemDiskProvisionedIops;
+            return this;
+        }
+
+        /**
+         * @param systemDiskProvisionedIops IOPS measures the number of read and write operations that an EBS device can process per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder systemDiskProvisionedIops(Integer systemDiskProvisionedIops) {
+            return systemDiskProvisionedIops(Output.of(systemDiskProvisionedIops));
         }
 
         /**

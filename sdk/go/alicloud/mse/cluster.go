@@ -24,39 +24,53 @@ type Cluster struct {
 
 	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists pulumi.StringArrayOutput `pulumi:"aclEntryLists"`
-	// (Available in v1.205.0+) The application version.
+	// (Available since v1.205.0) The application version.
 	AppVersion pulumi.StringOutput `pulumi:"appVersion"`
 	// The alias of MSE Cluster.
-	ClusterAliasName pulumi.StringPtrOutput `pulumi:"clusterAliasName"`
-	// (Available in v1.162.0+) The id of Cluster.
+	ClusterAliasName pulumi.StringOutput `pulumi:"clusterAliasName"`
+	// (Available since v1.162.0) The cluster id of Cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+	// - Professional Edition
 	// - `MSE_SC_1_2_60_c`: 1C2G
 	// - `MSE_SC_2_4_60_c`: 2C4G
 	// - `MSE_SC_4_8_60_c`: 4C8G
 	// - `MSE_SC_8_16_60_c`: 8C16G
+	// - `MSE_SC_16_32_60_c`:16C32G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - `MSE_SC_4_8_200_c`: 4C8G
+	// - `MSE_SC_8_16_200_c`: 8C16G
+	// - `MSE_SC_16_32_200_c`:16C32G
+	// - Developer Edition
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - Serverless Edition
+	// - `MSE_SC_SERVERLESS`: Available since v1.232.0
 	ClusterSpecification pulumi.StringOutput `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
 	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion pulumi.StringOutput `pulumi:"clusterVersion"`
-	// The connection type. Valid values: `slb`.
+	// The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
 	ConnectionType pulumi.StringOutput `pulumi:"connectionType"`
 	// The type of Disk.
 	DiskType pulumi.StringPtrOutput `pulumi:"diskType"`
 	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount pulumi.IntOutput `pulumi:"instanceCount"`
-	// The version of MSE. Valid values: `mseDev` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
 	MseVersion pulumi.StringOutput `pulumi:"mseVersion"`
-	// The type of network. Valid values: "privatenet" and "pubnet".
+	// The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
 	NetType pulumi.StringOutput `pulumi:"netType"`
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrOutput `pulumi:"privateSlbSpecification"`
-	// The public network bandwidth. `0` means no access to the public network.
+	// The public network bandwidth.
 	PubNetworkFlow pulumi.StringOutput `pulumi:"pubNetworkFlow"`
-	// The specification of public network SLB.
+	// The specification of public network SLB. Serverless Instance could ignore this parameter.
 	PubSlbSpecification pulumi.StringPtrOutput `pulumi:"pubSlbSpecification"`
 	// The extended request parameters in the JSON format.
 	RequestPars pulumi.StringPtrOutput `pulumi:"requestPars"`
@@ -122,39 +136,53 @@ func GetCluster(ctx *pulumi.Context,
 type clusterState struct {
 	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists []string `pulumi:"aclEntryLists"`
-	// (Available in v1.205.0+) The application version.
+	// (Available since v1.205.0) The application version.
 	AppVersion *string `pulumi:"appVersion"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
-	// (Available in v1.162.0+) The id of Cluster.
+	// (Available since v1.162.0) The cluster id of Cluster.
 	ClusterId *string `pulumi:"clusterId"`
-	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+	// - Professional Edition
 	// - `MSE_SC_1_2_60_c`: 1C2G
 	// - `MSE_SC_2_4_60_c`: 2C4G
 	// - `MSE_SC_4_8_60_c`: 4C8G
 	// - `MSE_SC_8_16_60_c`: 8C16G
+	// - `MSE_SC_16_32_60_c`:16C32G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - `MSE_SC_4_8_200_c`: 4C8G
+	// - `MSE_SC_8_16_200_c`: 8C16G
+	// - `MSE_SC_16_32_200_c`:16C32G
+	// - Developer Edition
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - Serverless Edition
+	// - `MSE_SC_SERVERLESS`: Available since v1.232.0
 	ClusterSpecification *string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType *string `pulumi:"clusterType"`
 	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion *string `pulumi:"clusterVersion"`
-	// The connection type. Valid values: `slb`.
+	// The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
 	ConnectionType *string `pulumi:"connectionType"`
 	// The type of Disk.
 	DiskType *string `pulumi:"diskType"`
 	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount *int `pulumi:"instanceCount"`
-	// The version of MSE. Valid values: `mseDev` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
 	MseVersion *string `pulumi:"mseVersion"`
-	// The type of network. Valid values: "privatenet" and "pubnet".
+	// The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
 	NetType *string `pulumi:"netType"`
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType *string `pulumi:"paymentType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification *string `pulumi:"privateSlbSpecification"`
-	// The public network bandwidth. `0` means no access to the public network.
+	// The public network bandwidth.
 	PubNetworkFlow *string `pulumi:"pubNetworkFlow"`
-	// The specification of public network SLB.
+	// The specification of public network SLB. Serverless Instance could ignore this parameter.
 	PubSlbSpecification *string `pulumi:"pubSlbSpecification"`
 	// The extended request parameters in the JSON format.
 	RequestPars *string `pulumi:"requestPars"`
@@ -173,39 +201,53 @@ type clusterState struct {
 type ClusterState struct {
 	// The whitelist. **NOTE:** This attribute is invalid when the value of `pubNetworkFlow` is `0` and the value of `netType` is `privatenet`.
 	AclEntryLists pulumi.StringArrayInput
-	// (Available in v1.205.0+) The application version.
+	// (Available since v1.205.0) The application version.
 	AppVersion pulumi.StringPtrInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
-	// (Available in v1.162.0+) The id of Cluster.
+	// (Available since v1.162.0) The cluster id of Cluster.
 	ClusterId pulumi.StringPtrInput
-	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+	// - Professional Edition
 	// - `MSE_SC_1_2_60_c`: 1C2G
 	// - `MSE_SC_2_4_60_c`: 2C4G
 	// - `MSE_SC_4_8_60_c`: 4C8G
 	// - `MSE_SC_8_16_60_c`: 8C16G
+	// - `MSE_SC_16_32_60_c`:16C32G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - `MSE_SC_4_8_200_c`: 4C8G
+	// - `MSE_SC_8_16_200_c`: 8C16G
+	// - `MSE_SC_16_32_200_c`:16C32G
+	// - Developer Edition
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - Serverless Edition
+	// - `MSE_SC_SERVERLESS`: Available since v1.232.0
 	ClusterSpecification pulumi.StringPtrInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringPtrInput
 	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion pulumi.StringPtrInput
-	// The connection type. Valid values: `slb`.
+	// The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
 	ConnectionType pulumi.StringPtrInput
 	// The type of Disk.
 	DiskType pulumi.StringPtrInput
 	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount pulumi.IntPtrInput
-	// The version of MSE. Valid values: `mseDev` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
 	MseVersion pulumi.StringPtrInput
-	// The type of network. Valid values: "privatenet" and "pubnet".
+	// The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
 	NetType pulumi.StringPtrInput
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType pulumi.StringPtrInput
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrInput
-	// The public network bandwidth. `0` means no access to the public network.
+	// The public network bandwidth.
 	PubNetworkFlow pulumi.StringPtrInput
-	// The specification of public network SLB.
+	// The specification of public network SLB. Serverless Instance could ignore this parameter.
 	PubSlbSpecification pulumi.StringPtrInput
 	// The extended request parameters in the JSON format.
 	RequestPars pulumi.StringPtrInput
@@ -230,33 +272,47 @@ type clusterArgs struct {
 	AclEntryLists []string `pulumi:"aclEntryLists"`
 	// The alias of MSE Cluster.
 	ClusterAliasName *string `pulumi:"clusterAliasName"`
-	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+	// - Professional Edition
 	// - `MSE_SC_1_2_60_c`: 1C2G
 	// - `MSE_SC_2_4_60_c`: 2C4G
 	// - `MSE_SC_4_8_60_c`: 4C8G
 	// - `MSE_SC_8_16_60_c`: 8C16G
+	// - `MSE_SC_16_32_60_c`:16C32G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - `MSE_SC_4_8_200_c`: 4C8G
+	// - `MSE_SC_8_16_200_c`: 8C16G
+	// - `MSE_SC_16_32_200_c`:16C32G
+	// - Developer Edition
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - Serverless Edition
+	// - `MSE_SC_SERVERLESS`: Available since v1.232.0
 	ClusterSpecification string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType string `pulumi:"clusterType"`
 	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion string `pulumi:"clusterVersion"`
-	// The connection type. Valid values: `slb`.
+	// The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
 	ConnectionType *string `pulumi:"connectionType"`
 	// The type of Disk.
 	DiskType *string `pulumi:"diskType"`
 	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount int `pulumi:"instanceCount"`
-	// The version of MSE. Valid values: `mseDev` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
 	MseVersion *string `pulumi:"mseVersion"`
-	// The type of network. Valid values: "privatenet" and "pubnet".
+	// The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
 	NetType string `pulumi:"netType"`
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType *string `pulumi:"paymentType"`
 	// The specification of private network SLB.
 	PrivateSlbSpecification *string `pulumi:"privateSlbSpecification"`
-	// The public network bandwidth. `0` means no access to the public network.
+	// The public network bandwidth.
 	PubNetworkFlow string `pulumi:"pubNetworkFlow"`
-	// The specification of public network SLB.
+	// The specification of public network SLB. Serverless Instance could ignore this parameter.
 	PubSlbSpecification *string `pulumi:"pubSlbSpecification"`
 	// The extended request parameters in the JSON format.
 	RequestPars *string `pulumi:"requestPars"`
@@ -276,33 +332,47 @@ type ClusterArgs struct {
 	AclEntryLists pulumi.StringArrayInput
 	// The alias of MSE Cluster.
 	ClusterAliasName pulumi.StringPtrInput
-	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+	// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+	// - Professional Edition
 	// - `MSE_SC_1_2_60_c`: 1C2G
 	// - `MSE_SC_2_4_60_c`: 2C4G
 	// - `MSE_SC_4_8_60_c`: 4C8G
 	// - `MSE_SC_8_16_60_c`: 8C16G
+	// - `MSE_SC_16_32_60_c`:16C32G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - `MSE_SC_4_8_200_c`: 4C8G
+	// - `MSE_SC_8_16_200_c`: 8C16G
+	// - `MSE_SC_16_32_200_c`:16C32G
+	// - Developer Edition
+	// - `MSE_SC_1_2_60_c`: 1C2G
+	// - `MSE_SC_2_4_60_c`: 2C4G
+	// - `MSE_SC_1_2_200_c`: 1C2G
+	// - `MSE_SC_2_4_200_c`: 2C4G
+	// - Serverless Edition
+	// - `MSE_SC_SERVERLESS`: Available since v1.232.0
 	ClusterSpecification pulumi.StringInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringInput
 	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion pulumi.StringInput
-	// The connection type. Valid values: `slb`.
+	// The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
 	ConnectionType pulumi.StringPtrInput
 	// The type of Disk.
 	DiskType pulumi.StringPtrInput
 	// The count of instance. **NOTE:** From version 1.188.0, `instanceCount` can be modified.
 	InstanceCount pulumi.IntInput
-	// The version of MSE. Valid values: `mseDev` or `msePro`.
+	// The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
 	MseVersion pulumi.StringPtrInput
-	// The type of network. Valid values: "privatenet" and "pubnet".
+	// The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
 	NetType pulumi.StringInput
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
 	PaymentType pulumi.StringPtrInput
 	// The specification of private network SLB.
 	PrivateSlbSpecification pulumi.StringPtrInput
-	// The public network bandwidth. `0` means no access to the public network.
+	// The public network bandwidth.
 	PubNetworkFlow pulumi.StringInput
-	// The specification of public network SLB.
+	// The specification of public network SLB. Serverless Instance could ignore this parameter.
 	PubSlbSpecification pulumi.StringPtrInput
 	// The extended request parameters in the JSON format.
 	RequestPars pulumi.StringPtrInput
@@ -408,26 +478,40 @@ func (o ClusterOutput) AclEntryLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.AclEntryLists }).(pulumi.StringArrayOutput)
 }
 
-// (Available in v1.205.0+) The application version.
+// (Available since v1.205.0) The application version.
 func (o ClusterOutput) AppVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AppVersion }).(pulumi.StringOutput)
 }
 
 // The alias of MSE Cluster.
-func (o ClusterOutput) ClusterAliasName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ClusterAliasName }).(pulumi.StringPtrOutput)
+func (o ClusterOutput) ClusterAliasName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterAliasName }).(pulumi.StringOutput)
 }
 
-// (Available in v1.162.0+) The id of Cluster.
+// (Available since v1.162.0) The cluster id of Cluster.
 func (o ClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+// - Professional Edition
 // - `MSE_SC_1_2_60_c`: 1C2G
 // - `MSE_SC_2_4_60_c`: 2C4G
 // - `MSE_SC_4_8_60_c`: 4C8G
 // - `MSE_SC_8_16_60_c`: 8C16G
+// - `MSE_SC_16_32_60_c`:16C32G
+// - `MSE_SC_1_2_200_c`: 1C2G
+// - `MSE_SC_2_4_200_c`: 2C4G
+// - `MSE_SC_4_8_200_c`: 4C8G
+// - `MSE_SC_8_16_200_c`: 8C16G
+// - `MSE_SC_16_32_200_c`:16C32G
+// - Developer Edition
+// - `MSE_SC_1_2_60_c`: 1C2G
+// - `MSE_SC_2_4_60_c`: 2C4G
+// - `MSE_SC_1_2_200_c`: 1C2G
+// - `MSE_SC_2_4_200_c`: 2C4G
+// - Serverless Edition
+// - `MSE_SC_SERVERLESS`: Available since v1.232.0
 func (o ClusterOutput) ClusterSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterSpecification }).(pulumi.StringOutput)
 }
@@ -442,7 +526,7 @@ func (o ClusterOutput) ClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterVersion }).(pulumi.StringOutput)
 }
 
-// The connection type. Valid values: `slb`.
+// The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
 func (o ClusterOutput) ConnectionType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ConnectionType }).(pulumi.StringOutput)
 }
@@ -457,12 +541,12 @@ func (o ClusterOutput) InstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.InstanceCount }).(pulumi.IntOutput)
 }
 
-// The version of MSE. Valid values: `mseDev` or `msePro`.
+// The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
 func (o ClusterOutput) MseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.MseVersion }).(pulumi.StringOutput)
 }
 
-// The type of network. Valid values: "privatenet" and "pubnet".
+// The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
 func (o ClusterOutput) NetType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.NetType }).(pulumi.StringOutput)
 }
@@ -477,12 +561,12 @@ func (o ClusterOutput) PrivateSlbSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PrivateSlbSpecification }).(pulumi.StringPtrOutput)
 }
 
-// The public network bandwidth. `0` means no access to the public network.
+// The public network bandwidth.
 func (o ClusterOutput) PubNetworkFlow() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.PubNetworkFlow }).(pulumi.StringOutput)
 }
 
-// The specification of public network SLB.
+// The specification of public network SLB. Serverless Instance could ignore this parameter.
 func (o ClusterOutput) PubSlbSpecification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PubSlbSpecification }).(pulumi.StringPtrOutput)
 }

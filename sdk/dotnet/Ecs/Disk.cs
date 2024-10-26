@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Ecs
         /// If true, the disk will be encrypted, conflict with `snapshot_id`.
         /// </summary>
         [Output("encrypted")]
-        public Output<bool?> Encrypted { get; private set; } = null!;
+        public Output<bool> Encrypted { get; private set; } = null!;
 
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Ecs
         /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         /// </summary>
         [Output("snapshotId")]
-        public Output<string?> SnapshotId { get; private set; } = null!;
+        public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
         /// The disk status.

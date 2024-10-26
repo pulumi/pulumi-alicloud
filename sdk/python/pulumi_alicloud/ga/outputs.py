@@ -175,6 +175,8 @@ class EndpointGroupEndpointConfiguration(dict):
             suggest = "enable_clientip_preservation"
         elif key == "enableProxyProtocol":
             suggest = "enable_proxy_protocol"
+        elif key == "subAddress":
+            suggest = "sub_address"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EndpointGroupEndpointConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -192,20 +194,27 @@ class EndpointGroupEndpointConfiguration(dict):
                  type: str,
                  weight: int,
                  enable_clientip_preservation: Optional[bool] = None,
-                 enable_proxy_protocol: Optional[bool] = None):
+                 enable_proxy_protocol: Optional[bool] = None,
+                 sub_address: Optional[str] = None):
         """
         :param str endpoint: The IP address or domain name of Endpoint N in the endpoint group.
         :param str type: The type of Endpoint N in the endpoint group. Valid values:
-               - `Domain`: a custom domain name.
-               - `Ip`: a custom IP address.
-               - `PublicIp`: an Alibaba Cloud public IP address.
-               - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-               - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-               > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+               - `Domain`: A custom domain name.
+               - `Ip`: A custom IP address.
+               - `PublicIp`: An Alibaba Cloud public IP address.
+               - `ECS`: An Elastic Compute Service (ECS) instance.
+               - `SLB`: A Classic Load Balancer (CLB) instance.
+               - `ALB`: An Application Load Balancer (ALB) instance.
+               - `NLB`: A Network Load Balancer (NLB) instance.
+               - `ENI`: An Elastic Network Interface (ENI).
+               - `OSS`: An Object Storage Service (OSS) bucket.
+               > **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
         :param int weight: The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-               > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+               > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         :param bool enable_clientip_preservation: Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
         :param bool enable_proxy_protocol: Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
+        :param str sub_address: The private IP address of the ENI.
+               > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
         """
         pulumi.set(__self__, "endpoint", endpoint)
         pulumi.set(__self__, "type", type)
@@ -214,6 +223,8 @@ class EndpointGroupEndpointConfiguration(dict):
             pulumi.set(__self__, "enable_clientip_preservation", enable_clientip_preservation)
         if enable_proxy_protocol is not None:
             pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+        if sub_address is not None:
+            pulumi.set(__self__, "sub_address", sub_address)
 
     @property
     @pulumi.getter
@@ -228,12 +239,16 @@ class EndpointGroupEndpointConfiguration(dict):
     def type(self) -> str:
         """
         The type of Endpoint N in the endpoint group. Valid values:
-        - `Domain`: a custom domain name.
-        - `Ip`: a custom IP address.
-        - `PublicIp`: an Alibaba Cloud public IP address.
-        - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-        - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-        > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+        - `Domain`: A custom domain name.
+        - `Ip`: A custom IP address.
+        - `PublicIp`: An Alibaba Cloud public IP address.
+        - `ECS`: An Elastic Compute Service (ECS) instance.
+        - `SLB`: A Classic Load Balancer (CLB) instance.
+        - `ALB`: An Application Load Balancer (ALB) instance.
+        - `NLB`: A Network Load Balancer (NLB) instance.
+        - `ENI`: An Elastic Network Interface (ENI).
+        - `OSS`: An Object Storage Service (OSS) bucket.
+        > **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
         """
         return pulumi.get(self, "type")
 
@@ -242,7 +257,7 @@ class EndpointGroupEndpointConfiguration(dict):
     def weight(self) -> int:
         """
         The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-        > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+        > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         """
         return pulumi.get(self, "weight")
 
@@ -261,6 +276,15 @@ class EndpointGroupEndpointConfiguration(dict):
         Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_proxy_protocol")
+
+    @property
+    @pulumi.getter(name="subAddress")
+    def sub_address(self) -> Optional[str]:
+        """
+        The private IP address of the ENI.
+        > **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+        """
+        return pulumi.get(self, "sub_address")
 
 
 @pulumi.output_type

@@ -123,7 +123,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Type of instance lifting and lowering:
+     * This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
      * - Upgrade: Upgrade
      * - Downgrade: Downgrading.
      * 
@@ -132,7 +132,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> modifyType;
 
     /**
-     * @return Type of instance lifting and lowering:
+     * @return This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
      * - Upgrade: Upgrade
      * - Downgrade: Downgrading.
      * 
@@ -528,7 +528,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType Type of instance lifting and lowering:
+         * @param modifyType This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
          * - Upgrade: Upgrade
          * - Downgrade: Downgrading.
          * 
@@ -541,7 +541,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType Type of instance lifting and lowering:
+         * @param modifyType This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
          * - Upgrade: Upgrade
          * - Downgrade: Downgrading.
          * 

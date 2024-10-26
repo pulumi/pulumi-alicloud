@@ -99,6 +99,23 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+     * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+     * 
+     */
+    @Import(name="compressStorage")
+    private @Nullable Output<String> compressStorage;
+
+    /**
+     * @return Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+     * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+     * 
+     */
+    public Optional<Output<String>> compressStorage() {
+        return Optional.ofNullable(this.compressStorage);
+    }
+
+    /**
      * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
      * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
      * 
@@ -422,6 +439,40 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> loosePolarLogBin() {
         return Optional.ofNullable(this.loosePolarLogBin);
+    }
+
+    /**
+     * Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+     * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+     * 
+     */
+    @Import(name="looseXengine")
+    private @Nullable Output<String> looseXengine;
+
+    /**
+     * @return Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+     * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+     * 
+     */
+    public Optional<Output<String>> looseXengine() {
+        return Optional.ofNullable(this.looseXengine);
+    }
+
+    /**
+     * Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+     * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+     * 
+     */
+    @Import(name="looseXengineUseMemoryPct")
+    private @Nullable Output<Integer> looseXengineUseMemoryPct;
+
+    /**
+     * @return Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+     * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+     * 
+     */
+    public Optional<Output<Integer>> looseXengineUseMemoryPct() {
+        return Optional.ofNullable(this.looseXengineUseMemoryPct);
     }
 
     /**
@@ -1036,6 +1087,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
         this.cloneDataPoint = $.cloneDataPoint;
         this.collectorStatus = $.collectorStatus;
+        this.compressStorage = $.compressStorage;
         this.creationCategory = $.creationCategory;
         this.creationOption = $.creationOption;
         this.dbClusterIpArrays = $.dbClusterIpArrays;
@@ -1056,6 +1108,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.hotStandbyCluster = $.hotStandbyCluster;
         this.imciSwitch = $.imciSwitch;
         this.loosePolarLogBin = $.loosePolarLogBin;
+        this.looseXengine = $.looseXengine;
+        this.looseXengineUseMemoryPct = $.looseXengineUseMemoryPct;
         this.lowerCaseTableNames = $.lowerCaseTableNames;
         this.maintainTime = $.maintainTime;
         this.modifyType = $.modifyType;
@@ -1219,6 +1273,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder collectorStatus(String collectorStatus) {
             return collectorStatus(Output.of(collectorStatus));
+        }
+
+        /**
+         * @param compressStorage Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+         * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compressStorage(@Nullable Output<String> compressStorage) {
+            $.compressStorage = compressStorage;
+            return this;
+        }
+
+        /**
+         * @param compressStorage Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+         * &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder compressStorage(String compressStorage) {
+            return compressStorage(Output.of(compressStorage));
         }
 
         /**
@@ -1675,6 +1752,52 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder loosePolarLogBin(String loosePolarLogBin) {
             return loosePolarLogBin(Output.of(loosePolarLogBin));
+        }
+
+        /**
+         * @param looseXengine Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+         * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder looseXengine(@Nullable Output<String> looseXengine) {
+            $.looseXengine = looseXengine;
+            return this;
+        }
+
+        /**
+         * @param looseXengine Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+         * &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder looseXengine(String looseXengine) {
+            return looseXengine(Output.of(looseXengine));
+        }
+
+        /**
+         * @param looseXengineUseMemoryPct Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+         * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder looseXengineUseMemoryPct(@Nullable Output<Integer> looseXengineUseMemoryPct) {
+            $.looseXengineUseMemoryPct = looseXengineUseMemoryPct;
+            return this;
+        }
+
+        /**
+         * @param looseXengineUseMemoryPct Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+         * &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder looseXengineUseMemoryPct(Integer looseXengineUseMemoryPct) {
+            return looseXengineUseMemoryPct(Output.of(looseXengineUseMemoryPct));
         }
 
         /**

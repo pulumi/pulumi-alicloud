@@ -27,6 +27,8 @@ __all__ = [
     'EciScalingConfigurationContainerPortArgsDict',
     'EciScalingConfigurationContainerVolumeMountArgs',
     'EciScalingConfigurationContainerVolumeMountArgsDict',
+    'EciScalingConfigurationDnsConfigOptionArgs',
+    'EciScalingConfigurationDnsConfigOptionArgsDict',
     'EciScalingConfigurationHostAliasArgs',
     'EciScalingConfigurationHostAliasArgsDict',
     'EciScalingConfigurationImageRegistryCredentialArgs',
@@ -39,6 +41,8 @@ __all__ = [
     'EciScalingConfigurationInitContainerPortArgsDict',
     'EciScalingConfigurationInitContainerVolumeMountArgs',
     'EciScalingConfigurationInitContainerVolumeMountArgsDict',
+    'EciScalingConfigurationSecurityContextSysctlArgs',
+    'EciScalingConfigurationSecurityContextSysctlArgsDict',
     'EciScalingConfigurationVolumeArgs',
     'EciScalingConfigurationVolumeArgsDict',
     'EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs',
@@ -424,6 +428,14 @@ if not MYPY:
         """
         Specifies user ID  under which all processes run.
         """
+        stdin: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+        """
+        tty: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to enable the Interaction feature. Valid values: true, false.
+        """
         volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgsDict']]]]
         """
         The structure of volumeMounts. 
@@ -473,6 +485,8 @@ class EciScalingConfigurationContainerArgs:
                  security_context_capability_adds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_context_read_only_root_file_system: Optional[pulumi.Input[bool]] = None,
                  security_context_run_as_user: Optional[pulumi.Input[int]] = None,
+                 stdin: Optional[pulumi.Input[bool]] = None,
+                 tty: Optional[pulumi.Input[bool]] = None,
                  volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]] = None,
                  working_dir: Optional[pulumi.Input[str]] = None):
         """
@@ -513,6 +527,8 @@ class EciScalingConfigurationContainerArgs:
                - NET_RAW: Allow raw sockets.
         :param pulumi.Input[bool] security_context_read_only_root_file_system: Mounts the container's root filesystem as read-only.
         :param pulumi.Input[int] security_context_run_as_user: Specifies user ID  under which all processes run.
+        :param pulumi.Input[bool] stdin: Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+        :param pulumi.Input[bool] tty: Specifies whether to enable the Interaction feature. Valid values: true, false.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts. 
                See `volume_mounts` below for details.
         :param pulumi.Input[str] working_dir: The working directory of the container.
@@ -585,6 +601,10 @@ class EciScalingConfigurationContainerArgs:
             pulumi.set(__self__, "security_context_read_only_root_file_system", security_context_read_only_root_file_system)
         if security_context_run_as_user is not None:
             pulumi.set(__self__, "security_context_run_as_user", security_context_run_as_user)
+        if stdin is not None:
+            pulumi.set(__self__, "stdin", stdin)
+        if tty is not None:
+            pulumi.set(__self__, "tty", tty)
         if volume_mounts is not None:
             pulumi.set(__self__, "volume_mounts", volume_mounts)
         if working_dir is not None:
@@ -1002,6 +1022,30 @@ class EciScalingConfigurationContainerArgs:
         pulumi.set(self, "security_context_run_as_user", value)
 
     @property
+    @pulumi.getter
+    def stdin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+        """
+        return pulumi.get(self, "stdin")
+
+    @stdin.setter
+    def stdin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "stdin", value)
+
+    @property
+    @pulumi.getter
+    def tty(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the Interaction feature. Valid values: true, false.
+        """
+        return pulumi.get(self, "tty")
+
+    @tty.setter
+    def tty(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "tty", value)
+
+    @property
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]]:
         """
@@ -1115,8 +1159,10 @@ class EciScalingConfigurationContainerPortArgs:
 if not MYPY:
     class EciScalingConfigurationContainerVolumeMountArgsDict(TypedDict):
         mount_path: NotRequired[pulumi.Input[str]]
+        mount_propagation: NotRequired[pulumi.Input[str]]
         name: NotRequired[pulumi.Input[str]]
         read_only: NotRequired[pulumi.Input[bool]]
+        sub_path: NotRequired[pulumi.Input[str]]
 elif False:
     EciScalingConfigurationContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1124,14 +1170,20 @@ elif False:
 class EciScalingConfigurationContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: Optional[pulumi.Input[str]] = None,
+                 mount_propagation: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 read_only: Optional[pulumi.Input[bool]] = None):
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 sub_path: Optional[pulumi.Input[str]] = None):
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
+        if mount_propagation is not None:
+            pulumi.set(__self__, "mount_propagation", mount_propagation)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -1141,6 +1193,15 @@ class EciScalingConfigurationContainerVolumeMountArgs:
     @mount_path.setter
     def mount_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_path", value)
+
+    @property
+    @pulumi.getter(name="mountPropagation")
+    def mount_propagation(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mount_propagation")
+
+    @mount_propagation.setter
+    def mount_propagation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mount_propagation", value)
 
     @property
     @pulumi.getter
@@ -1159,6 +1220,67 @@ class EciScalingConfigurationContainerVolumeMountArgs:
     @read_only.setter
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
+
+    @property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_path", value)
+
+
+if not MYPY:
+    class EciScalingConfigurationDnsConfigOptionArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The option name.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The option value.
+        """
+elif False:
+    EciScalingConfigurationDnsConfigOptionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EciScalingConfigurationDnsConfigOptionArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The option name.
+        :param pulumi.Input[str] value: The option value.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The option name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The option value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -1703,8 +1825,10 @@ class EciScalingConfigurationInitContainerPortArgs:
 if not MYPY:
     class EciScalingConfigurationInitContainerVolumeMountArgsDict(TypedDict):
         mount_path: NotRequired[pulumi.Input[str]]
+        mount_propagation: NotRequired[pulumi.Input[str]]
         name: NotRequired[pulumi.Input[str]]
         read_only: NotRequired[pulumi.Input[bool]]
+        sub_path: NotRequired[pulumi.Input[str]]
 elif False:
     EciScalingConfigurationInitContainerVolumeMountArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -1712,14 +1836,20 @@ elif False:
 class EciScalingConfigurationInitContainerVolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: Optional[pulumi.Input[str]] = None,
+                 mount_propagation: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 read_only: Optional[pulumi.Input[bool]] = None):
+                 read_only: Optional[pulumi.Input[bool]] = None,
+                 sub_path: Optional[pulumi.Input[str]] = None):
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
+        if mount_propagation is not None:
+            pulumi.set(__self__, "mount_propagation", mount_propagation)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
+        if sub_path is not None:
+            pulumi.set(__self__, "sub_path", sub_path)
 
     @property
     @pulumi.getter(name="mountPath")
@@ -1729,6 +1859,15 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
     @mount_path.setter
     def mount_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mount_path", value)
+
+    @property
+    @pulumi.getter(name="mountPropagation")
+    def mount_propagation(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mount_propagation")
+
+    @mount_propagation.setter
+    def mount_propagation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mount_propagation", value)
 
     @property
     @pulumi.getter
@@ -1748,6 +1887,67 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
     def read_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "read_only", value)
 
+    @property
+    @pulumi.getter(name="subPath")
+    def sub_path(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sub_path")
+
+    @sub_path.setter
+    def sub_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_path", value)
+
+
+if not MYPY:
+    class EciScalingConfigurationSecurityContextSysctlArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The system name of the security context in which the elastic container instance is run.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The system value of the security context in which the elastic container instance is run.
+        """
+elif False:
+    EciScalingConfigurationSecurityContextSysctlArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EciScalingConfigurationSecurityContextSysctlArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The system name of the security context in which the elastic container instance is run.
+        :param pulumi.Input[str] value: The system value of the security context in which the elastic container instance is run.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The system name of the security context in which the elastic container instance is run.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The system value of the security context in which the elastic container instance is run.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
 
 if not MYPY:
     class EciScalingConfigurationVolumeArgsDict(TypedDict):
@@ -1755,6 +1955,10 @@ if not MYPY:
         """
         ConfigFileVolumeConfigFileToPaths.
         See `config_file_volume_config_file_to_paths` below for details.
+        """
+        config_file_volume_default_mode: NotRequired[pulumi.Input[int]]
+        """
+        The default permissions on the ConfigFileVolume.
         """
         disk_volume_disk_id: NotRequired[pulumi.Input[str]]
         """
@@ -1767,6 +1971,14 @@ if not MYPY:
         disk_volume_fs_type: NotRequired[pulumi.Input[str]]
         """
         The system type of DiskVolume.
+        """
+        empty_dir_volume_medium: NotRequired[pulumi.Input[str]]
+        """
+        The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+        """
+        empty_dir_volume_size_limit: NotRequired[pulumi.Input[str]]
+        """
+        The storage size of the EmptyDirVolume. Unit: GiB or MiB.
         """
         flex_volume_driver: NotRequired[pulumi.Input[str]]
         """
@@ -1781,6 +1993,14 @@ if not MYPY:
         """
         The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
         string.
+        """
+        host_path_volume_path: NotRequired[pulumi.Input[str]]
+        """
+        The absolute path on the host.
+        """
+        host_path_volume_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of the host path. Examples: File, Directory, and Socket.
         """
         name: NotRequired[pulumi.Input[str]]
         """
@@ -1811,12 +2031,17 @@ elif False:
 class EciScalingConfigurationVolumeArgs:
     def __init__(__self__, *,
                  config_file_volume_config_file_to_paths: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]] = None,
+                 config_file_volume_default_mode: Optional[pulumi.Input[int]] = None,
                  disk_volume_disk_id: Optional[pulumi.Input[str]] = None,
                  disk_volume_disk_size: Optional[pulumi.Input[int]] = None,
                  disk_volume_fs_type: Optional[pulumi.Input[str]] = None,
+                 empty_dir_volume_medium: Optional[pulumi.Input[str]] = None,
+                 empty_dir_volume_size_limit: Optional[pulumi.Input[str]] = None,
                  flex_volume_driver: Optional[pulumi.Input[str]] = None,
                  flex_volume_fs_type: Optional[pulumi.Input[str]] = None,
                  flex_volume_options: Optional[pulumi.Input[str]] = None,
+                 host_path_volume_path: Optional[pulumi.Input[str]] = None,
+                 host_path_volume_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  nfs_volume_path: Optional[pulumi.Input[str]] = None,
                  nfs_volume_read_only: Optional[pulumi.Input[bool]] = None,
@@ -1825,14 +2050,19 @@ class EciScalingConfigurationVolumeArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]] config_file_volume_config_file_to_paths: ConfigFileVolumeConfigFileToPaths.
                See `config_file_volume_config_file_to_paths` below for details.
+        :param pulumi.Input[int] config_file_volume_default_mode: The default permissions on the ConfigFileVolume.
         :param pulumi.Input[str] disk_volume_disk_id: The ID of DiskVolume.
         :param pulumi.Input[int] disk_volume_disk_size: The disk size of DiskVolume.
         :param pulumi.Input[str] disk_volume_fs_type: The system type of DiskVolume.
+        :param pulumi.Input[str] empty_dir_volume_medium: The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+        :param pulumi.Input[str] empty_dir_volume_size_limit: The storage size of the EmptyDirVolume. Unit: GiB or MiB.
         :param pulumi.Input[str] flex_volume_driver: The name of the FlexVolume driver.
         :param pulumi.Input[str] flex_volume_fs_type: The type of the mounted file system. The default value is determined by the script
                of FlexVolume.
         :param pulumi.Input[str] flex_volume_options: The list of FlexVolume objects. Each object is a key-value pair contained in a JSON
                string.
+        :param pulumi.Input[str] host_path_volume_path: The absolute path on the host.
+        :param pulumi.Input[str] host_path_volume_type: The type of the host path. Examples: File, Directory, and Socket.
         :param pulumi.Input[str] name: The name of the volume.
         :param pulumi.Input[str] nfs_volume_path: The path to the NFS volume.
         :param pulumi.Input[bool] nfs_volume_read_only: The nfs volume read only. Default to `false`.
@@ -1843,18 +2073,28 @@ class EciScalingConfigurationVolumeArgs:
         """
         if config_file_volume_config_file_to_paths is not None:
             pulumi.set(__self__, "config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
+        if config_file_volume_default_mode is not None:
+            pulumi.set(__self__, "config_file_volume_default_mode", config_file_volume_default_mode)
         if disk_volume_disk_id is not None:
             pulumi.set(__self__, "disk_volume_disk_id", disk_volume_disk_id)
         if disk_volume_disk_size is not None:
             pulumi.set(__self__, "disk_volume_disk_size", disk_volume_disk_size)
         if disk_volume_fs_type is not None:
             pulumi.set(__self__, "disk_volume_fs_type", disk_volume_fs_type)
+        if empty_dir_volume_medium is not None:
+            pulumi.set(__self__, "empty_dir_volume_medium", empty_dir_volume_medium)
+        if empty_dir_volume_size_limit is not None:
+            pulumi.set(__self__, "empty_dir_volume_size_limit", empty_dir_volume_size_limit)
         if flex_volume_driver is not None:
             pulumi.set(__self__, "flex_volume_driver", flex_volume_driver)
         if flex_volume_fs_type is not None:
             pulumi.set(__self__, "flex_volume_fs_type", flex_volume_fs_type)
         if flex_volume_options is not None:
             pulumi.set(__self__, "flex_volume_options", flex_volume_options)
+        if host_path_volume_path is not None:
+            pulumi.set(__self__, "host_path_volume_path", host_path_volume_path)
+        if host_path_volume_type is not None:
+            pulumi.set(__self__, "host_path_volume_type", host_path_volume_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nfs_volume_path is not None:
@@ -1878,6 +2118,18 @@ class EciScalingConfigurationVolumeArgs:
     @config_file_volume_config_file_to_paths.setter
     def config_file_volume_config_file_to_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]]):
         pulumi.set(self, "config_file_volume_config_file_to_paths", value)
+
+    @property
+    @pulumi.getter(name="configFileVolumeDefaultMode")
+    def config_file_volume_default_mode(self) -> Optional[pulumi.Input[int]]:
+        """
+        The default permissions on the ConfigFileVolume.
+        """
+        return pulumi.get(self, "config_file_volume_default_mode")
+
+    @config_file_volume_default_mode.setter
+    def config_file_volume_default_mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "config_file_volume_default_mode", value)
 
     @property
     @pulumi.getter(name="diskVolumeDiskId")
@@ -1916,6 +2168,30 @@ class EciScalingConfigurationVolumeArgs:
         pulumi.set(self, "disk_volume_fs_type", value)
 
     @property
+    @pulumi.getter(name="emptyDirVolumeMedium")
+    def empty_dir_volume_medium(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+        """
+        return pulumi.get(self, "empty_dir_volume_medium")
+
+    @empty_dir_volume_medium.setter
+    def empty_dir_volume_medium(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "empty_dir_volume_medium", value)
+
+    @property
+    @pulumi.getter(name="emptyDirVolumeSizeLimit")
+    def empty_dir_volume_size_limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+        """
+        return pulumi.get(self, "empty_dir_volume_size_limit")
+
+    @empty_dir_volume_size_limit.setter
+    def empty_dir_volume_size_limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "empty_dir_volume_size_limit", value)
+
+    @property
     @pulumi.getter(name="flexVolumeDriver")
     def flex_volume_driver(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1952,6 +2228,30 @@ class EciScalingConfigurationVolumeArgs:
     @flex_volume_options.setter
     def flex_volume_options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "flex_volume_options", value)
+
+    @property
+    @pulumi.getter(name="hostPathVolumePath")
+    def host_path_volume_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The absolute path on the host.
+        """
+        return pulumi.get(self, "host_path_volume_path")
+
+    @host_path_volume_path.setter
+    def host_path_volume_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_path_volume_path", value)
+
+    @property
+    @pulumi.getter(name="hostPathVolumeType")
+    def host_path_volume_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the host path. Examples: File, Directory, and Socket.
+        """
+        return pulumi.get(self, "host_path_volume_type")
+
+    @host_path_volume_type.setter
+    def host_path_volume_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host_path_volume_type", value)
 
     @property
     @pulumi.getter
@@ -2022,6 +2322,10 @@ if not MYPY:
         """
         The content of the configuration file. Maximum size: 32 KB.
         """
+        mode: NotRequired[pulumi.Input[int]]
+        """
+        The permissions on the ConfigFileVolume directory.
+        """
         path: NotRequired[pulumi.Input[str]]
         """
         The relative file path.
@@ -2033,13 +2337,17 @@ elif False:
 class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] content: The content of the configuration file. Maximum size: 32 KB.
+        :param pulumi.Input[int] mode: The permissions on the ConfigFileVolume directory.
         :param pulumi.Input[str] path: The relative file path.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
         if path is not None:
             pulumi.set(__self__, "path", path)
 
@@ -2054,6 +2362,18 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     @content.setter
     def content(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[int]]:
+        """
+        The permissions on the ConfigFileVolume directory.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "mode", value)
 
     @property
     @pulumi.getter
@@ -2106,6 +2426,10 @@ if not MYPY:
         """
         The performance level of the ESSD used as data disk.
         """
+        provisioned_iops: NotRequired[pulumi.Input[int]]
+        """
+        IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+        """
         size: NotRequired[pulumi.Input[int]]
         """
         Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
@@ -2129,6 +2453,7 @@ class ScalingConfigurationDataDiskArgs:
                  kms_key_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot_id: Optional[pulumi.Input[str]] = None):
         """
@@ -2141,6 +2466,7 @@ class ScalingConfigurationDataDiskArgs:
         :param pulumi.Input[str] kms_key_id: The CMK ID for data disk N. Valid values of N: 1 to 16.
         :param pulumi.Input[str] name: The name of data disk N. Valid values of N: 1 to 16. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         :param pulumi.Input[str] performance_level: The performance level of the ESSD used as data disk.
+        :param pulumi.Input[int] provisioned_iops: IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
         :param pulumi.Input[int] size: Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
         :param pulumi.Input[str] snapshot_id: Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
         """
@@ -2165,6 +2491,8 @@ class ScalingConfigurationDataDiskArgs:
             pulumi.set(__self__, "name", name)
         if performance_level is not None:
             pulumi.set(__self__, "performance_level", performance_level)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if snapshot_id is not None:
@@ -2278,6 +2606,18 @@ class ScalingConfigurationDataDiskArgs:
     @performance_level.setter
     def performance_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
 
     @property
     @pulumi.getter

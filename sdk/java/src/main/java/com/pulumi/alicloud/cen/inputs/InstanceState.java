@@ -17,14 +17,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="cenInstanceName")
     private @Nullable Output<String> cenInstanceName;
 
     /**
-     * @return The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * @return The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> cenInstanceName() {
@@ -32,14 +32,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+     * @return The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -47,37 +47,37 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
      * 
      * @deprecated
-     * attribute &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_instance_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
      * 
      */
-    @Deprecated /* attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
      * 
      * @deprecated
-     * attribute &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_instance_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
      * 
      */
-    @Deprecated /* attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * The level of CIDR block overlapping. Default value: `REDUCE`.
      * 
      */
     @Import(name="protectionLevel")
     private @Nullable Output<String> protectionLevel;
 
     /**
-     * @return Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * @return The level of CIDR block overlapping. Default value: `REDUCE`.
      * 
      */
     public Optional<Output<String>> protectionLevel() {
@@ -85,14 +85,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Cen Instance current status.
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The status of the Instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Cen Instance current status.
+     * @return The status of the Instance.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,6 +136,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.name = $.name;
         this.protectionLevel = $.protectionLevel;
+        this.resourceGroupId = $.resourceGroupId;
         this.status = $.status;
         this.tags = $.tags;
     }
@@ -144,7 +160,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cenInstanceName The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+         * @param cenInstanceName The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -155,7 +171,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cenInstanceName The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+         * @param cenInstanceName The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -165,7 +181,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+         * @param description The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -176,7 +192,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+         * @param description The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -186,36 +202,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * attribute &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_instance_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
          * 
          */
-        @Deprecated /* attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+         * @param name Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * attribute &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_instance_name&#39; instead.
+         * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
          * 
          */
-        @Deprecated /* attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead. */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param protectionLevel Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+         * @param protectionLevel The level of CIDR block overlapping. Default value: `REDUCE`.
          * 
          * @return builder
          * 
@@ -226,7 +242,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protectionLevel Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+         * @param protectionLevel The level of CIDR block overlapping. Default value: `REDUCE`.
          * 
          * @return builder
          * 
@@ -236,7 +252,28 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The Cen Instance current status.
+         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param status The status of the Instance.
          * 
          * @return builder
          * 
@@ -247,7 +284,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The Cen Instance current status.
+         * @param status The status of the Instance.
          * 
          * @return builder
          * 

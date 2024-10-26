@@ -44,6 +44,9 @@ export function getServerlessKubernetesClusters(args?: GetServerlessKubernetesCl
  * A collection of arguments for invoking getServerlessKubernetesClusters.
  */
 export interface GetServerlessKubernetesClustersArgs {
+    /**
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletionProtection`, `connections`. See full list in attributes.
+     */
     enableDetails?: boolean;
     /**
      * Cluster IDs to filter.
@@ -126,6 +129,9 @@ export function getServerlessKubernetesClustersOutput(args?: GetServerlessKubern
  * A collection of arguments for invoking getServerlessKubernetesClusters.
  */
 export interface GetServerlessKubernetesClustersOutputArgs {
+    /**
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletionProtection`, `connections`. See full list in attributes.
+     */
     enableDetails?: pulumi.Input<boolean>;
     /**
      * Cluster IDs to filter.

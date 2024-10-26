@@ -29,6 +29,7 @@ class ClusterArgs:
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  clone_data_point: Optional[pulumi.Input[str]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
+                 compress_storage: Optional[pulumi.Input[str]] = None,
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
@@ -46,6 +47,8 @@ class ClusterArgs:
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
                  loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+                 loose_xengine: Optional[pulumi.Input[str]] = None,
+                 loose_xengine_use_memory_pct: Optional[pulumi.Input[int]] = None,
                  lower_case_table_names: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -98,6 +101,8 @@ class ClusterArgs:
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        :param pulumi.Input[str] compress_storage: Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+               > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
         :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
@@ -125,6 +130,10 @@ class ClusterArgs:
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] loose_polar_log_bin: Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
                > **NOTE:** This parameter is valid only MySQL Engine supports.
+        :param pulumi.Input[str] loose_xengine: Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+               > **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        :param pulumi.Input[int] loose_xengine_use_memory_pct: Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+               > **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
         :param pulumi.Input[int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -194,6 +203,8 @@ class ClusterArgs:
             pulumi.set(__self__, "clone_data_point", clone_data_point)
         if collector_status is not None:
             pulumi.set(__self__, "collector_status", collector_status)
+        if compress_storage is not None:
+            pulumi.set(__self__, "compress_storage", compress_storage)
         if creation_category is not None:
             pulumi.set(__self__, "creation_category", creation_category)
         if creation_option is not None:
@@ -228,6 +239,10 @@ class ClusterArgs:
             pulumi.set(__self__, "imci_switch", imci_switch)
         if loose_polar_log_bin is not None:
             pulumi.set(__self__, "loose_polar_log_bin", loose_polar_log_bin)
+        if loose_xengine is not None:
+            pulumi.set(__self__, "loose_xengine", loose_xengine)
+        if loose_xengine_use_memory_pct is not None:
+            pulumi.set(__self__, "loose_xengine_use_memory_pct", loose_xengine_use_memory_pct)
         if lower_case_table_names is not None:
             pulumi.set(__self__, "lower_case_table_names", lower_case_table_names)
         if maintain_time is not None:
@@ -404,6 +419,19 @@ class ClusterArgs:
     @collector_status.setter
     def collector_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "collector_status", value)
+
+    @property
+    @pulumi.getter(name="compressStorage")
+    def compress_storage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+        > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+        """
+        return pulumi.get(self, "compress_storage")
+
+    @compress_storage.setter
+    def compress_storage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compress_storage", value)
 
     @property
     @pulumi.getter(name="creationCategory")
@@ -618,6 +646,32 @@ class ClusterArgs:
     @loose_polar_log_bin.setter
     def loose_polar_log_bin(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "loose_polar_log_bin", value)
+
+    @property
+    @pulumi.getter(name="looseXengine")
+    def loose_xengine(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+        > **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        """
+        return pulumi.get(self, "loose_xengine")
+
+    @loose_xengine.setter
+    def loose_xengine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "loose_xengine", value)
+
+    @property
+    @pulumi.getter(name="looseXengineUseMemoryPct")
+    def loose_xengine_use_memory_pct(self) -> Optional[pulumi.Input[int]]:
+        """
+        Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+        > **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+        """
+        return pulumi.get(self, "loose_xengine_use_memory_pct")
+
+    @loose_xengine_use_memory_pct.setter
+    def loose_xengine_use_memory_pct(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "loose_xengine_use_memory_pct", value)
 
     @property
     @pulumi.getter(name="lowerCaseTableNames")
@@ -1101,6 +1155,7 @@ class _ClusterState:
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  clone_data_point: Optional[pulumi.Input[str]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
+                 compress_storage: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  creation_category: Optional[pulumi.Input[str]] = None,
@@ -1124,6 +1179,8 @@ class _ClusterState:
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
                  loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+                 loose_xengine: Optional[pulumi.Input[str]] = None,
+                 loose_xengine_use_memory_pct: Optional[pulumi.Input[int]] = None,
                  lower_case_table_names: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -1173,6 +1230,8 @@ class _ClusterState:
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        :param pulumi.Input[str] compress_storage: Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+               > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
         :param pulumi.Input[str] connection_string: (Available since 1.81.0) PolarDB cluster connection string.
         :param pulumi.Input[str] create_time: (Available since 1.204.1) PolarDB cluster creation time.
         :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
@@ -1209,6 +1268,10 @@ class _ClusterState:
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] loose_polar_log_bin: Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
                > **NOTE:** This parameter is valid only MySQL Engine supports.
+        :param pulumi.Input[str] loose_xengine: Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+               > **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        :param pulumi.Input[int] loose_xengine_use_memory_pct: Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+               > **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
         :param pulumi.Input[int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -1280,6 +1343,8 @@ class _ClusterState:
             pulumi.set(__self__, "clone_data_point", clone_data_point)
         if collector_status is not None:
             pulumi.set(__self__, "collector_status", collector_status)
+        if compress_storage is not None:
+            pulumi.set(__self__, "compress_storage", compress_storage)
         if connection_string is not None:
             pulumi.set(__self__, "connection_string", connection_string)
         if create_time is not None:
@@ -1326,6 +1391,10 @@ class _ClusterState:
             pulumi.set(__self__, "imci_switch", imci_switch)
         if loose_polar_log_bin is not None:
             pulumi.set(__self__, "loose_polar_log_bin", loose_polar_log_bin)
+        if loose_xengine is not None:
+            pulumi.set(__self__, "loose_xengine", loose_xengine)
+        if loose_xengine_use_memory_pct is not None:
+            pulumi.set(__self__, "loose_xengine_use_memory_pct", loose_xengine_use_memory_pct)
         if lower_case_table_names is not None:
             pulumi.set(__self__, "lower_case_table_names", lower_case_table_names)
         if maintain_time is not None:
@@ -1469,6 +1538,19 @@ class _ClusterState:
     @collector_status.setter
     def collector_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "collector_status", value)
+
+    @property
+    @pulumi.getter(name="compressStorage")
+    def compress_storage(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+        > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+        """
+        return pulumi.get(self, "compress_storage")
+
+    @compress_storage.setter
+    def compress_storage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compress_storage", value)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -1758,6 +1840,32 @@ class _ClusterState:
     @loose_polar_log_bin.setter
     def loose_polar_log_bin(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "loose_polar_log_bin", value)
+
+    @property
+    @pulumi.getter(name="looseXengine")
+    def loose_xengine(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+        > **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        """
+        return pulumi.get(self, "loose_xengine")
+
+    @loose_xengine.setter
+    def loose_xengine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "loose_xengine", value)
+
+    @property
+    @pulumi.getter(name="looseXengineUseMemoryPct")
+    def loose_xengine_use_memory_pct(self) -> Optional[pulumi.Input[int]]:
+        """
+        Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+        > **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+        """
+        return pulumi.get(self, "loose_xengine_use_memory_pct")
+
+    @loose_xengine_use_memory_pct.setter
+    def loose_xengine_use_memory_pct(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "loose_xengine_use_memory_pct", value)
 
     @property
     @pulumi.getter(name="lowerCaseTableNames")
@@ -2281,6 +2389,7 @@ class Cluster(pulumi.CustomResource):
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  clone_data_point: Optional[pulumi.Input[str]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
+                 compress_storage: Optional[pulumi.Input[str]] = None,
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
@@ -2301,6 +2410,8 @@ class Cluster(pulumi.CustomResource):
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
                  loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+                 loose_xengine: Optional[pulumi.Input[str]] = None,
+                 loose_xengine_use_memory_pct: Optional[pulumi.Input[int]] = None,
                  lower_case_table_names: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -2357,6 +2468,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        :param pulumi.Input[str] compress_storage: Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+               > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
         :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
                > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         :param pulumi.Input[str] creation_option: The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
@@ -2390,6 +2503,10 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] loose_polar_log_bin: Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
                > **NOTE:** This parameter is valid only MySQL Engine supports.
+        :param pulumi.Input[str] loose_xengine: Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+               > **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        :param pulumi.Input[int] loose_xengine_use_memory_pct: Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+               > **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
         :param pulumi.Input[int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -2481,6 +2598,7 @@ class Cluster(pulumi.CustomResource):
                  backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
                  clone_data_point: Optional[pulumi.Input[str]] = None,
                  collector_status: Optional[pulumi.Input[str]] = None,
+                 compress_storage: Optional[pulumi.Input[str]] = None,
                  creation_category: Optional[pulumi.Input[str]] = None,
                  creation_option: Optional[pulumi.Input[str]] = None,
                  db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
@@ -2501,6 +2619,8 @@ class Cluster(pulumi.CustomResource):
                  hot_standby_cluster: Optional[pulumi.Input[str]] = None,
                  imci_switch: Optional[pulumi.Input[str]] = None,
                  loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+                 loose_xengine: Optional[pulumi.Input[str]] = None,
+                 loose_xengine_use_memory_pct: Optional[pulumi.Input[int]] = None,
                  lower_case_table_names: Optional[pulumi.Input[int]] = None,
                  maintain_time: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
@@ -2553,6 +2673,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
             __props__.__dict__["clone_data_point"] = clone_data_point
             __props__.__dict__["collector_status"] = collector_status
+            __props__.__dict__["compress_storage"] = compress_storage
             __props__.__dict__["creation_category"] = creation_category
             __props__.__dict__["creation_option"] = creation_option
             __props__.__dict__["db_cluster_ip_arrays"] = db_cluster_ip_arrays
@@ -2579,6 +2700,8 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["hot_standby_cluster"] = hot_standby_cluster
             __props__.__dict__["imci_switch"] = imci_switch
             __props__.__dict__["loose_polar_log_bin"] = loose_polar_log_bin
+            __props__.__dict__["loose_xengine"] = loose_xengine
+            __props__.__dict__["loose_xengine_use_memory_pct"] = loose_xengine_use_memory_pct
             __props__.__dict__["lower_case_table_names"] = lower_case_table_names
             __props__.__dict__["maintain_time"] = maintain_time
             __props__.__dict__["modify_type"] = modify_type
@@ -2638,6 +2761,7 @@ class Cluster(pulumi.CustomResource):
             backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[str]] = None,
             clone_data_point: Optional[pulumi.Input[str]] = None,
             collector_status: Optional[pulumi.Input[str]] = None,
+            compress_storage: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             creation_category: Optional[pulumi.Input[str]] = None,
@@ -2661,6 +2785,8 @@ class Cluster(pulumi.CustomResource):
             hot_standby_cluster: Optional[pulumi.Input[str]] = None,
             imci_switch: Optional[pulumi.Input[str]] = None,
             loose_polar_log_bin: Optional[pulumi.Input[str]] = None,
+            loose_xengine: Optional[pulumi.Input[str]] = None,
+            loose_xengine_use_memory_pct: Optional[pulumi.Input[int]] = None,
             lower_case_table_names: Optional[pulumi.Input[int]] = None,
             maintain_time: Optional[pulumi.Input[str]] = None,
             modify_type: Optional[pulumi.Input[str]] = None,
@@ -2715,6 +2841,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] clone_data_point: The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
                > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
         :param pulumi.Input[str] collector_status: Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
+        :param pulumi.Input[str] compress_storage: Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+               > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
         :param pulumi.Input[str] connection_string: (Available since 1.81.0) PolarDB cluster connection string.
         :param pulumi.Input[str] create_time: (Available since 1.204.1) PolarDB cluster creation time.
         :param pulumi.Input[str] creation_category: The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
@@ -2751,6 +2879,10 @@ class Cluster(pulumi.CustomResource):
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
         :param pulumi.Input[str] loose_polar_log_bin: Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
                > **NOTE:** This parameter is valid only MySQL Engine supports.
+        :param pulumi.Input[str] loose_xengine: Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+               > **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        :param pulumi.Input[int] loose_xengine_use_memory_pct: Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+               > **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
         :param pulumi.Input[int] lower_case_table_names: Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[str] maintain_time: Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -2821,6 +2953,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["clone_data_point"] = clone_data_point
         __props__.__dict__["collector_status"] = collector_status
+        __props__.__dict__["compress_storage"] = compress_storage
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creation_category"] = creation_category
@@ -2844,6 +2977,8 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["hot_standby_cluster"] = hot_standby_cluster
         __props__.__dict__["imci_switch"] = imci_switch
         __props__.__dict__["loose_polar_log_bin"] = loose_polar_log_bin
+        __props__.__dict__["loose_xengine"] = loose_xengine
+        __props__.__dict__["loose_xengine_use_memory_pct"] = loose_xengine_use_memory_pct
         __props__.__dict__["lower_case_table_names"] = lower_case_table_names
         __props__.__dict__["maintain_time"] = maintain_time
         __props__.__dict__["modify_type"] = modify_type
@@ -2927,6 +3062,15 @@ class Cluster(pulumi.CustomResource):
         Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         """
         return pulumi.get(self, "collector_status")
+
+    @property
+    @pulumi.getter(name="compressStorage")
+    def compress_storage(self) -> pulumi.Output[str]:
+        """
+        Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+        > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+        """
+        return pulumi.get(self, "compress_storage")
 
     @property
     @pulumi.getter(name="connectionString")
@@ -3124,6 +3268,24 @@ class Cluster(pulumi.CustomResource):
         > **NOTE:** This parameter is valid only MySQL Engine supports.
         """
         return pulumi.get(self, "loose_polar_log_bin")
+
+    @property
+    @pulumi.getter(name="looseXengine")
+    def loose_xengine(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+        > **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        """
+        return pulumi.get(self, "loose_xengine")
+
+    @property
+    @pulumi.getter(name="looseXengineUseMemoryPct")
+    def loose_xengine_use_memory_pct(self) -> pulumi.Output[int]:
+        """
+        Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+        > **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+        """
+        return pulumi.get(self, "loose_xengine_use_memory_pct")
 
     @property
     @pulumi.getter(name="lowerCaseTableNames")

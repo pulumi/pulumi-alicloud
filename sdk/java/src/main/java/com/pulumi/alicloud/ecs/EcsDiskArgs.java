@@ -49,14 +49,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+     * Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+     * @return Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -161,14 +161,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, the disk will be encrypted, conflict with `snapshot_id`.
+     * Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
     /**
-     * @return If true, the disk will be encrypted, conflict with `snapshot_id`.
+     * @return Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> encrypted() {
@@ -249,10 +249,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-     * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+     * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     @Import(name="performanceLevel")
@@ -260,10 +260,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-     * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+     * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -286,14 +286,38 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     * The size of the disk. Unit: GiB. This parameter is required. Valid values:
+     * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+     * - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+     * - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+     * - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+     * - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+     * - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+     * - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+     * - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+     * - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+     * - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     * @return The size of the disk. Unit: GiB. This parameter is required. Valid values:
+     * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+     * - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+     * - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+     * - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+     * - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+     * - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+     * - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+     * - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+     * - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+     * - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -301,14 +325,14 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     * The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
     /**
-     * @return A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     * @return The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -476,7 +500,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+         * @param category Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
          * 
          * @return builder
          * 
@@ -487,7 +511,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+         * @param category Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
          * 
          * @return builder
          * 
@@ -632,7 +656,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encrypted If true, the disk will be encrypted, conflict with `snapshot_id`.
+         * @param encrypted Specifies whether to encrypt the disk. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -643,7 +667,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encrypted If true, the disk will be encrypted, conflict with `snapshot_id`.
+         * @param encrypted Specifies whether to encrypt the disk. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -750,10 +774,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param performanceLevel Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-         * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-         * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-         * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-         * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+         * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+         * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+         * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+         * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
          * 
          * @return builder
          * 
@@ -765,10 +789,10 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param performanceLevel Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-         * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-         * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-         * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-         * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+         * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+         * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+         * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+         * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
          * 
          * @return builder
          * 
@@ -799,7 +823,19 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+         * @param size The size of the disk. Unit: GiB. This parameter is required. Valid values:
+         * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+         * - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+         * - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+         * - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+         * - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+         * - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+         * - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+         * - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+         * - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+         * - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+         * - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+         * - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
          * 
          * @return builder
          * 
@@ -810,7 +846,19 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+         * @param size The size of the disk. Unit: GiB. This parameter is required. Valid values:
+         * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+         * - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+         * - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+         * - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+         * - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+         * - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+         * - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+         * - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+         * - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+         * - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+         * - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+         * - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
          * 
          * @return builder
          * 
@@ -820,7 +868,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+         * @param snapshotId The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
          * 
          * @return builder
          * 
@@ -831,7 +879,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+         * @param snapshotId The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
          * 
          * @return builder
          * 

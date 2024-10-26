@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.109.0+.
+ * > **NOTE:** Available since v1.109.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.privatelink.getVpcEndpointServices({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
+ * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("example", {
+ *     serviceDescription: "terraform-example",
+ *     connectBandwidth: 103,
+ *     autoAcceptConnection: false,
  * });
- * export const firstPrivatelinkVpcEndpointServiceId = example.then(example => example.services?.[0]?.id);
+ * const example = alicloud.privatelink.getVpcEndpointServicesOutput({
+ *     ids: [exampleVpcEndpointService.id],
+ * });
+ * export const firstPrivatelinkVpcEndpointServiceId = example.apply(example => example.services?.[0]?.id);
  * ```
  */
 export function getVpcEndpointServices(args?: GetVpcEndpointServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServicesResult> {
@@ -36,6 +40,7 @@ export function getVpcEndpointServices(args?: GetVpcEndpointServicesArgs, opts?:
         "outputFile": args.outputFile,
         "serviceBusinessStatus": args.serviceBusinessStatus,
         "status": args.status,
+        "tags": args.tags,
         "vpcEndpointServiceName": args.vpcEndpointServiceName,
     }, opts);
 }
@@ -69,6 +74,10 @@ export interface GetVpcEndpointServicesArgs {
      */
     status?: string;
     /**
+     * The tags of Vpc Endpoint Service.
+     */
+    tags?: {[key: string]: string};
+    /**
      * The name of Vpc Endpoint Service.
      */
     vpcEndpointServiceName?: string;
@@ -78,6 +87,9 @@ export interface GetVpcEndpointServicesArgs {
  * A collection of values returned by getVpcEndpointServices.
  */
 export interface GetVpcEndpointServicesResult {
+    /**
+     * Whether to automatically accept terminal node connections..
+     */
     readonly autoAcceptConnection?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -85,17 +97,36 @@ export interface GetVpcEndpointServicesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Vpc Endpoint Service names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * The business status of the terminal node service..
+     */
     readonly serviceBusinessStatus?: string;
+    /**
+     * A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+     */
     readonly services: outputs.privatelink.GetVpcEndpointServicesService[];
+    /**
+     * The Status of Vpc Endpoint Service.
+     */
     readonly status?: string;
+    /**
+     * The tags of Vpc Endpoint Service.
+     */
+    readonly tags?: {[key: string]: string};
+    /**
+     * The name of Vpc Endpoint Service.
+     */
     readonly vpcEndpointServiceName?: string;
 }
 /**
  * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.109.0+.
+ * > **NOTE:** Available since v1.109.0.
  *
  * ## Example Usage
  *
@@ -105,11 +136,15 @@ export interface GetVpcEndpointServicesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.privatelink.getVpcEndpointServices({
- *     ids: ["example_value"],
- *     nameRegex: "the_resource_name",
+ * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("example", {
+ *     serviceDescription: "terraform-example",
+ *     connectBandwidth: 103,
+ *     autoAcceptConnection: false,
  * });
- * export const firstPrivatelinkVpcEndpointServiceId = example.then(example => example.services?.[0]?.id);
+ * const example = alicloud.privatelink.getVpcEndpointServicesOutput({
+ *     ids: [exampleVpcEndpointService.id],
+ * });
+ * export const firstPrivatelinkVpcEndpointServiceId = example.apply(example => example.services?.[0]?.id);
  * ```
  */
 export function getVpcEndpointServicesOutput(args?: GetVpcEndpointServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServicesResult> {
@@ -122,6 +157,7 @@ export function getVpcEndpointServicesOutput(args?: GetVpcEndpointServicesOutput
         "outputFile": args.outputFile,
         "serviceBusinessStatus": args.serviceBusinessStatus,
         "status": args.status,
+        "tags": args.tags,
         "vpcEndpointServiceName": args.vpcEndpointServiceName,
     }, opts);
 }
@@ -154,6 +190,10 @@ export interface GetVpcEndpointServicesOutputArgs {
      * The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tags of Vpc Endpoint Service.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name of Vpc Endpoint Service.
      */

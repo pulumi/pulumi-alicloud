@@ -18,14 +18,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * The auto pay.
+     * Specifies whether to enable the auto-payment feature. Valid values:
      * 
      */
     @Import(name="autoPay")
     private @Nullable Output<Boolean> autoPay;
 
     /**
-     * @return The auto pay.
+     * @return Specifies whether to enable the auto-payment feature. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoPay() {
@@ -33,14 +33,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The auto renew.
+     * Specifies whether to enable the auto-renewal feature. Valid values:
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return The auto renew.
+     * @return Specifies whether to enable the auto-renewal feature. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -48,16 +48,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-     * start with `http://` and `https`.
+     * The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-     * start with `http://` and `https`.
+     * @return The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Optional<Output<String>> description() {
@@ -65,14 +63,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The eip bandwidth.
+     * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
      * 
      */
     @Import(name="eipBandwidth")
     private @Nullable Output<Integer> eipBandwidth;
 
     /**
-     * @return The eip bandwidth.
+     * @return The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
      * 
      */
     public Optional<Output<Integer>> eipBandwidth() {
@@ -80,14 +78,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The force.
+     * Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return The force.
+     * @return Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -95,14 +93,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID Of The Image.
+     * The ID of the image.
      * 
      */
     @Import(name="imageId")
     private @Nullable Output<String> imageId;
 
     /**
-     * @return The ID Of The Image.
+     * @return The ID of the image.
      * 
      */
     public Optional<Output<String>> imageId() {
@@ -110,20 +108,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the instance. It must be 2 to 128 characters in length and must start with an
-     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-     * the instance.
+     * The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The name of the instance. It must be 2 to 128 characters in length and must start with an
-     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-     * the instance.
+     * @return The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -131,14 +123,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance Type.
+     * The specifications of the ECP instance.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Instance Type.
+     * @return The specifications of the ECP instance.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -146,14 +138,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the key pair of the mobile phone instance.
+     * The name of the key pair that you want to use to connect to the instance.
      * 
      */
     @Import(name="keyPairName")
     private @Nullable Output<String> keyPairName;
 
     /**
-     * @return The name of the key pair of the mobile phone instance.
+     * @return The name of the key pair that you want to use to connect to the instance.
      * 
      */
     public Optional<Output<String>> keyPairName() {
@@ -161,14 +153,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The payment type.Valid values: `PayAsYouGo`,`Subscription`
+     * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type.Valid values: `PayAsYouGo`,`Subscription`
+     * @return The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -176,16 +168,18 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The period. It is valid when `period_unit` is &#39;Year&#39;. Valid value: `1`, `2`, `3`, `4`, `5`. It
-     * is valid when `period_unit` is &#39;Month&#39;. Valid value: `1`, `2`, `3`, `5`
+     * The subscription duration. Default value: `1`. Valid values:
+     * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     @Import(name="period")
     private @Nullable Output<String> period;
 
     /**
-     * @return The period. It is valid when `period_unit` is &#39;Year&#39;. Valid value: `1`, `2`, `3`, `4`, `5`. It
-     * is valid when `period_unit` is &#39;Month&#39;. Valid value: `1`, `2`, `3`, `5`
+     * @return The subscription duration. Default value: `1`. Valid values:
+     * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     public Optional<Output<String>> period() {
@@ -193,16 +187,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-     * to `Month`.
+     * The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
      * 
      */
     @Import(name="periodUnit")
     private @Nullable Output<String> periodUnit;
 
     /**
-     * @return The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-     * to `Month`.
+     * @return The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
      * 
      */
     public Optional<Output<String>> periodUnit() {
@@ -210,14 +202,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The selected resolution for the cloud mobile phone instance.
+     * The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
      * 
      */
     @Import(name="resolution")
     private @Nullable Output<String> resolution;
 
     /**
-     * @return The selected resolution for the cloud mobile phone instance.
+     * @return The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
      * 
      */
     public Optional<Output<String>> resolution() {
@@ -225,16 +217,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the security group. The security group is the same as that of the
-     * ECS instance.
+     * The ID of the security group.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The ID of the security group. The security group is the same as that of the
-     * ECS instance.
+     * @return The ID of the security group.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -242,14 +232,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance status. Valid values: `Running`, `Stopped`.
+     * The status of the Instance. Valid values: `Running`, `Stopped`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Instance status. Valid values: `Running`, `Stopped`.
+     * @return The status of the Instance. Valid values: `Running`, `Stopped`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -257,16 +247,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cloud mobile phone VNC password. The password must be six characters in length and must
-     * contain only uppercase, lowercase English letters and Arabic numerals.
+     * The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
      * 
      */
     @Import(name="vncPassword")
     private @Nullable Output<String> vncPassword;
 
     /**
-     * @return Cloud mobile phone VNC password. The password must be six characters in length and must
-     * contain only uppercase, lowercase English letters and Arabic numerals.
+     * @return The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
      * 
      */
     public Optional<Output<String>> vncPassword() {
@@ -274,14 +262,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The vswitch id.
+     * The ID of the vSwitch.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch id.
+     * @return The ID of the vSwitch.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -329,7 +317,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoPay The auto pay.
+         * @param autoPay Specifies whether to enable the auto-payment feature. Valid values:
          * 
          * @return builder
          * 
@@ -340,7 +328,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoPay The auto pay.
+         * @param autoPay Specifies whether to enable the auto-payment feature. Valid values:
          * 
          * @return builder
          * 
@@ -350,7 +338,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew The auto renew.
+         * @param autoRenew Specifies whether to enable the auto-renewal feature. Valid values:
          * 
          * @return builder
          * 
@@ -361,7 +349,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew The auto renew.
+         * @param autoRenew Specifies whether to enable the auto-renewal feature. Valid values:
          * 
          * @return builder
          * 
@@ -371,8 +359,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-         * start with `http://` and `https`.
+         * @param description The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -383,8 +370,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-         * start with `http://` and `https`.
+         * @param description The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
          * 
          * @return builder
          * 
@@ -394,7 +380,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eipBandwidth The eip bandwidth.
+         * @param eipBandwidth The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
          * 
          * @return builder
          * 
@@ -405,7 +391,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param eipBandwidth The eip bandwidth.
+         * @param eipBandwidth The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
          * 
          * @return builder
          * 
@@ -415,7 +401,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force The force.
+         * @param force Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -426,7 +412,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force The force.
+         * @param force Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -436,7 +422,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The ID Of The Image.
+         * @param imageId The ID of the image.
          * 
          * @return builder
          * 
@@ -447,7 +433,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param imageId The ID Of The Image.
+         * @param imageId The ID of the image.
          * 
          * @return builder
          * 
@@ -457,10 +443,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the instance. It must be 2 to 128 characters in length and must start with an
-         * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-         * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-         * the instance.
+         * @param instanceName The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
          * 
          * @return builder
          * 
@@ -471,10 +454,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the instance. It must be 2 to 128 characters in length and must start with an
-         * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-         * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-         * the instance.
+         * @param instanceName The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
          * 
          * @return builder
          * 
@@ -484,7 +464,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType Instance Type.
+         * @param instanceType The specifications of the ECP instance.
          * 
          * @return builder
          * 
@@ -495,7 +475,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType Instance Type.
+         * @param instanceType The specifications of the ECP instance.
          * 
          * @return builder
          * 
@@ -505,7 +485,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyPairName The name of the key pair of the mobile phone instance.
+         * @param keyPairName The name of the key pair that you want to use to connect to the instance.
          * 
          * @return builder
          * 
@@ -516,7 +496,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyPairName The name of the key pair of the mobile phone instance.
+         * @param keyPairName The name of the key pair that you want to use to connect to the instance.
          * 
          * @return builder
          * 
@@ -526,7 +506,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type.Valid values: `PayAsYouGo`,`Subscription`
+         * @param paymentType The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
          * 
          * @return builder
          * 
@@ -537,7 +517,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The payment type.Valid values: `PayAsYouGo`,`Subscription`
+         * @param paymentType The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
          * 
          * @return builder
          * 
@@ -547,8 +527,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The period. It is valid when `period_unit` is &#39;Year&#39;. Valid value: `1`, `2`, `3`, `4`, `5`. It
-         * is valid when `period_unit` is &#39;Month&#39;. Valid value: `1`, `2`, `3`, `5`
+         * @param period The subscription duration. Default value: `1`. Valid values:
+         * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+         * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
          * 
          * @return builder
          * 
@@ -559,8 +540,9 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The period. It is valid when `period_unit` is &#39;Year&#39;. Valid value: `1`, `2`, `3`, `4`, `5`. It
-         * is valid when `period_unit` is &#39;Month&#39;. Valid value: `1`, `2`, `3`, `5`
+         * @param period The subscription duration. Default value: `1`. Valid values:
+         * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+         * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
          * 
          * @return builder
          * 
@@ -570,8 +552,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-         * to `Month`.
+         * @param periodUnit The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
          * 
          * @return builder
          * 
@@ -582,8 +563,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param periodUnit The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-         * to `Month`.
+         * @param periodUnit The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
          * 
          * @return builder
          * 
@@ -593,7 +573,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resolution The selected resolution for the cloud mobile phone instance.
+         * @param resolution The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
          * 
          * @return builder
          * 
@@ -604,7 +584,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resolution The selected resolution for the cloud mobile phone instance.
+         * @param resolution The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
          * 
          * @return builder
          * 
@@ -614,8 +594,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of the security group. The security group is the same as that of the
-         * ECS instance.
+         * @param securityGroupId The ID of the security group.
          * 
          * @return builder
          * 
@@ -626,8 +605,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId The ID of the security group. The security group is the same as that of the
-         * ECS instance.
+         * @param securityGroupId The ID of the security group.
          * 
          * @return builder
          * 
@@ -637,7 +615,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Instance status. Valid values: `Running`, `Stopped`.
+         * @param status The status of the Instance. Valid values: `Running`, `Stopped`.
          * 
          * @return builder
          * 
@@ -648,7 +626,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Instance status. Valid values: `Running`, `Stopped`.
+         * @param status The status of the Instance. Valid values: `Running`, `Stopped`.
          * 
          * @return builder
          * 
@@ -658,8 +636,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vncPassword Cloud mobile phone VNC password. The password must be six characters in length and must
-         * contain only uppercase, lowercase English letters and Arabic numerals.
+         * @param vncPassword The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
          * 
          * @return builder
          * 
@@ -670,8 +647,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vncPassword Cloud mobile phone VNC password. The password must be six characters in length and must
-         * contain only uppercase, lowercase English letters and Arabic numerals.
+         * @param vncPassword The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
          * 
          * @return builder
          * 
@@ -681,7 +657,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId The ID of the vSwitch.
          * 
          * @return builder
          * 
@@ -692,7 +668,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId The ID of the vSwitch.
          * 
          * @return builder
          * 

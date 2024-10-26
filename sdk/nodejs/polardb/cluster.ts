@@ -65,6 +65,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly collectorStatus!: pulumi.Output<string>;
     /**
+     * Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+     * > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
+     */
+    public readonly compressStorage!: pulumi.Output<string>;
+    /**
      * (Available since 1.81.0) PolarDB cluster connection string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
@@ -169,6 +174,16 @@ export class Cluster extends pulumi.CustomResource {
      * > **NOTE:** This parameter is valid only MySQL Engine supports.
      */
     public readonly loosePolarLogBin!: pulumi.Output<string>;
+    /**
+     * Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+     * > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+     */
+    public readonly looseXengine!: pulumi.Output<string>;
+    /**
+     * Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+     * > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
+     */
+    public readonly looseXengineUseMemoryPct!: pulumi.Output<number>;
     /**
      * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
@@ -371,6 +386,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["cloneDataPoint"] = state ? state.cloneDataPoint : undefined;
             resourceInputs["collectorStatus"] = state ? state.collectorStatus : undefined;
+            resourceInputs["compressStorage"] = state ? state.compressStorage : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["creationCategory"] = state ? state.creationCategory : undefined;
@@ -394,6 +410,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["hotStandbyCluster"] = state ? state.hotStandbyCluster : undefined;
             resourceInputs["imciSwitch"] = state ? state.imciSwitch : undefined;
             resourceInputs["loosePolarLogBin"] = state ? state.loosePolarLogBin : undefined;
+            resourceInputs["looseXengine"] = state ? state.looseXengine : undefined;
+            resourceInputs["looseXengineUseMemoryPct"] = state ? state.looseXengineUseMemoryPct : undefined;
             resourceInputs["lowerCaseTableNames"] = state ? state.lowerCaseTableNames : undefined;
             resourceInputs["maintainTime"] = state ? state.maintainTime : undefined;
             resourceInputs["modifyType"] = state ? state.modifyType : undefined;
@@ -451,6 +469,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["cloneDataPoint"] = args ? args.cloneDataPoint : undefined;
             resourceInputs["collectorStatus"] = args ? args.collectorStatus : undefined;
+            resourceInputs["compressStorage"] = args ? args.compressStorage : undefined;
             resourceInputs["creationCategory"] = args ? args.creationCategory : undefined;
             resourceInputs["creationOption"] = args ? args.creationOption : undefined;
             resourceInputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
@@ -471,6 +490,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["hotStandbyCluster"] = args ? args.hotStandbyCluster : undefined;
             resourceInputs["imciSwitch"] = args ? args.imciSwitch : undefined;
             resourceInputs["loosePolarLogBin"] = args ? args.loosePolarLogBin : undefined;
+            resourceInputs["looseXengine"] = args ? args.looseXengine : undefined;
+            resourceInputs["looseXengineUseMemoryPct"] = args ? args.looseXengineUseMemoryPct : undefined;
             resourceInputs["lowerCaseTableNames"] = args ? args.lowerCaseTableNames : undefined;
             resourceInputs["maintainTime"] = args ? args.maintainTime : undefined;
             resourceInputs["modifyType"] = args ? args.modifyType : undefined;
@@ -546,6 +567,11 @@ export interface ClusterState {
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      */
     collectorStatus?: pulumi.Input<string>;
+    /**
+     * Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+     * > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
+     */
+    compressStorage?: pulumi.Input<string>;
     /**
      * (Available since 1.81.0) PolarDB cluster connection string.
      */
@@ -651,6 +677,16 @@ export interface ClusterState {
      * > **NOTE:** This parameter is valid only MySQL Engine supports.
      */
     loosePolarLogBin?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+     * > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+     */
+    looseXengine?: pulumi.Input<string>;
+    /**
+     * Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+     * > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
+     */
+    looseXengineUseMemoryPct?: pulumi.Input<number>;
     /**
      * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
@@ -862,6 +898,11 @@ export interface ClusterArgs {
      */
     collectorStatus?: pulumi.Input<string>;
     /**
+     * Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+     * > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
+     */
+    compressStorage?: pulumi.Input<string>;
+    /**
      * The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
      * > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
      */
@@ -954,6 +995,16 @@ export interface ClusterArgs {
      * > **NOTE:** This parameter is valid only MySQL Engine supports.
      */
     loosePolarLogBin?: pulumi.Input<string>;
+    /**
+     * Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+     * > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+     */
+    looseXengine?: pulumi.Input<string>;
+    /**
+     * Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+     * > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
+     */
+    looseXengineUseMemoryPct?: pulumi.Input<number>;
     /**
      * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.

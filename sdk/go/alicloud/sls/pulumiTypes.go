@@ -2763,6 +2763,722 @@ func (o AlertSchedulePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CollectionPolicyCentralizeConfig struct {
+	// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+	DestLogstore *string `pulumi:"destLogstore"`
+	// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+	DestProject *string `pulumi:"destProject"`
+	// Centralized transfer destination area.
+	DestRegion *string `pulumi:"destRegion"`
+	// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+	DestTtl *int `pulumi:"destTtl"`
+}
+
+// CollectionPolicyCentralizeConfigInput is an input type that accepts CollectionPolicyCentralizeConfigArgs and CollectionPolicyCentralizeConfigOutput values.
+// You can construct a concrete instance of `CollectionPolicyCentralizeConfigInput` via:
+//
+//	CollectionPolicyCentralizeConfigArgs{...}
+type CollectionPolicyCentralizeConfigInput interface {
+	pulumi.Input
+
+	ToCollectionPolicyCentralizeConfigOutput() CollectionPolicyCentralizeConfigOutput
+	ToCollectionPolicyCentralizeConfigOutputWithContext(context.Context) CollectionPolicyCentralizeConfigOutput
+}
+
+type CollectionPolicyCentralizeConfigArgs struct {
+	// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+	DestLogstore pulumi.StringPtrInput `pulumi:"destLogstore"`
+	// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+	DestProject pulumi.StringPtrInput `pulumi:"destProject"`
+	// Centralized transfer destination area.
+	DestRegion pulumi.StringPtrInput `pulumi:"destRegion"`
+	// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+	DestTtl pulumi.IntPtrInput `pulumi:"destTtl"`
+}
+
+func (CollectionPolicyCentralizeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionPolicyCentralizeConfig)(nil)).Elem()
+}
+
+func (i CollectionPolicyCentralizeConfigArgs) ToCollectionPolicyCentralizeConfigOutput() CollectionPolicyCentralizeConfigOutput {
+	return i.ToCollectionPolicyCentralizeConfigOutputWithContext(context.Background())
+}
+
+func (i CollectionPolicyCentralizeConfigArgs) ToCollectionPolicyCentralizeConfigOutputWithContext(ctx context.Context) CollectionPolicyCentralizeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyCentralizeConfigOutput)
+}
+
+func (i CollectionPolicyCentralizeConfigArgs) ToCollectionPolicyCentralizeConfigPtrOutput() CollectionPolicyCentralizeConfigPtrOutput {
+	return i.ToCollectionPolicyCentralizeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CollectionPolicyCentralizeConfigArgs) ToCollectionPolicyCentralizeConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyCentralizeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyCentralizeConfigOutput).ToCollectionPolicyCentralizeConfigPtrOutputWithContext(ctx)
+}
+
+// CollectionPolicyCentralizeConfigPtrInput is an input type that accepts CollectionPolicyCentralizeConfigArgs, CollectionPolicyCentralizeConfigPtr and CollectionPolicyCentralizeConfigPtrOutput values.
+// You can construct a concrete instance of `CollectionPolicyCentralizeConfigPtrInput` via:
+//
+//	        CollectionPolicyCentralizeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CollectionPolicyCentralizeConfigPtrInput interface {
+	pulumi.Input
+
+	ToCollectionPolicyCentralizeConfigPtrOutput() CollectionPolicyCentralizeConfigPtrOutput
+	ToCollectionPolicyCentralizeConfigPtrOutputWithContext(context.Context) CollectionPolicyCentralizeConfigPtrOutput
+}
+
+type collectionPolicyCentralizeConfigPtrType CollectionPolicyCentralizeConfigArgs
+
+func CollectionPolicyCentralizeConfigPtr(v *CollectionPolicyCentralizeConfigArgs) CollectionPolicyCentralizeConfigPtrInput {
+	return (*collectionPolicyCentralizeConfigPtrType)(v)
+}
+
+func (*collectionPolicyCentralizeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionPolicyCentralizeConfig)(nil)).Elem()
+}
+
+func (i *collectionPolicyCentralizeConfigPtrType) ToCollectionPolicyCentralizeConfigPtrOutput() CollectionPolicyCentralizeConfigPtrOutput {
+	return i.ToCollectionPolicyCentralizeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *collectionPolicyCentralizeConfigPtrType) ToCollectionPolicyCentralizeConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyCentralizeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyCentralizeConfigPtrOutput)
+}
+
+type CollectionPolicyCentralizeConfigOutput struct{ *pulumi.OutputState }
+
+func (CollectionPolicyCentralizeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionPolicyCentralizeConfig)(nil)).Elem()
+}
+
+func (o CollectionPolicyCentralizeConfigOutput) ToCollectionPolicyCentralizeConfigOutput() CollectionPolicyCentralizeConfigOutput {
+	return o
+}
+
+func (o CollectionPolicyCentralizeConfigOutput) ToCollectionPolicyCentralizeConfigOutputWithContext(ctx context.Context) CollectionPolicyCentralizeConfigOutput {
+	return o
+}
+
+func (o CollectionPolicyCentralizeConfigOutput) ToCollectionPolicyCentralizeConfigPtrOutput() CollectionPolicyCentralizeConfigPtrOutput {
+	return o.ToCollectionPolicyCentralizeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CollectionPolicyCentralizeConfigOutput) ToCollectionPolicyCentralizeConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyCentralizeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CollectionPolicyCentralizeConfig) *CollectionPolicyCentralizeConfig {
+		return &v
+	}).(CollectionPolicyCentralizeConfigPtrOutput)
+}
+
+// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+func (o CollectionPolicyCentralizeConfigOutput) DestLogstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionPolicyCentralizeConfig) *string { return v.DestLogstore }).(pulumi.StringPtrOutput)
+}
+
+// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+func (o CollectionPolicyCentralizeConfigOutput) DestProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionPolicyCentralizeConfig) *string { return v.DestProject }).(pulumi.StringPtrOutput)
+}
+
+// Centralized transfer destination area.
+func (o CollectionPolicyCentralizeConfigOutput) DestRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionPolicyCentralizeConfig) *string { return v.DestRegion }).(pulumi.StringPtrOutput)
+}
+
+// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+func (o CollectionPolicyCentralizeConfigOutput) DestTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CollectionPolicyCentralizeConfig) *int { return v.DestTtl }).(pulumi.IntPtrOutput)
+}
+
+type CollectionPolicyCentralizeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CollectionPolicyCentralizeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionPolicyCentralizeConfig)(nil)).Elem()
+}
+
+func (o CollectionPolicyCentralizeConfigPtrOutput) ToCollectionPolicyCentralizeConfigPtrOutput() CollectionPolicyCentralizeConfigPtrOutput {
+	return o
+}
+
+func (o CollectionPolicyCentralizeConfigPtrOutput) ToCollectionPolicyCentralizeConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyCentralizeConfigPtrOutput {
+	return o
+}
+
+func (o CollectionPolicyCentralizeConfigPtrOutput) Elem() CollectionPolicyCentralizeConfigOutput {
+	return o.ApplyT(func(v *CollectionPolicyCentralizeConfig) CollectionPolicyCentralizeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CollectionPolicyCentralizeConfig
+		return ret
+	}).(CollectionPolicyCentralizeConfigOutput)
+}
+
+// When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+func (o CollectionPolicyCentralizeConfigPtrOutput) DestLogstore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionPolicyCentralizeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestLogstore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+func (o CollectionPolicyCentralizeConfigPtrOutput) DestProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionPolicyCentralizeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestProject
+	}).(pulumi.StringPtrOutput)
+}
+
+// Centralized transfer destination area.
+func (o CollectionPolicyCentralizeConfigPtrOutput) DestRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionPolicyCentralizeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+func (o CollectionPolicyCentralizeConfigPtrOutput) DestTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CollectionPolicyCentralizeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DestTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+type CollectionPolicyDataConfig struct {
+	// Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+	DataProject *string `pulumi:"dataProject"`
+	// If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+	DataRegion *string `pulumi:"dataRegion"`
+}
+
+// CollectionPolicyDataConfigInput is an input type that accepts CollectionPolicyDataConfigArgs and CollectionPolicyDataConfigOutput values.
+// You can construct a concrete instance of `CollectionPolicyDataConfigInput` via:
+//
+//	CollectionPolicyDataConfigArgs{...}
+type CollectionPolicyDataConfigInput interface {
+	pulumi.Input
+
+	ToCollectionPolicyDataConfigOutput() CollectionPolicyDataConfigOutput
+	ToCollectionPolicyDataConfigOutputWithContext(context.Context) CollectionPolicyDataConfigOutput
+}
+
+type CollectionPolicyDataConfigArgs struct {
+	// Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+	DataProject pulumi.StringPtrInput `pulumi:"dataProject"`
+	// If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+	DataRegion pulumi.StringPtrInput `pulumi:"dataRegion"`
+}
+
+func (CollectionPolicyDataConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionPolicyDataConfig)(nil)).Elem()
+}
+
+func (i CollectionPolicyDataConfigArgs) ToCollectionPolicyDataConfigOutput() CollectionPolicyDataConfigOutput {
+	return i.ToCollectionPolicyDataConfigOutputWithContext(context.Background())
+}
+
+func (i CollectionPolicyDataConfigArgs) ToCollectionPolicyDataConfigOutputWithContext(ctx context.Context) CollectionPolicyDataConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyDataConfigOutput)
+}
+
+func (i CollectionPolicyDataConfigArgs) ToCollectionPolicyDataConfigPtrOutput() CollectionPolicyDataConfigPtrOutput {
+	return i.ToCollectionPolicyDataConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CollectionPolicyDataConfigArgs) ToCollectionPolicyDataConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyDataConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyDataConfigOutput).ToCollectionPolicyDataConfigPtrOutputWithContext(ctx)
+}
+
+// CollectionPolicyDataConfigPtrInput is an input type that accepts CollectionPolicyDataConfigArgs, CollectionPolicyDataConfigPtr and CollectionPolicyDataConfigPtrOutput values.
+// You can construct a concrete instance of `CollectionPolicyDataConfigPtrInput` via:
+//
+//	        CollectionPolicyDataConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CollectionPolicyDataConfigPtrInput interface {
+	pulumi.Input
+
+	ToCollectionPolicyDataConfigPtrOutput() CollectionPolicyDataConfigPtrOutput
+	ToCollectionPolicyDataConfigPtrOutputWithContext(context.Context) CollectionPolicyDataConfigPtrOutput
+}
+
+type collectionPolicyDataConfigPtrType CollectionPolicyDataConfigArgs
+
+func CollectionPolicyDataConfigPtr(v *CollectionPolicyDataConfigArgs) CollectionPolicyDataConfigPtrInput {
+	return (*collectionPolicyDataConfigPtrType)(v)
+}
+
+func (*collectionPolicyDataConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionPolicyDataConfig)(nil)).Elem()
+}
+
+func (i *collectionPolicyDataConfigPtrType) ToCollectionPolicyDataConfigPtrOutput() CollectionPolicyDataConfigPtrOutput {
+	return i.ToCollectionPolicyDataConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *collectionPolicyDataConfigPtrType) ToCollectionPolicyDataConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyDataConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyDataConfigPtrOutput)
+}
+
+type CollectionPolicyDataConfigOutput struct{ *pulumi.OutputState }
+
+func (CollectionPolicyDataConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionPolicyDataConfig)(nil)).Elem()
+}
+
+func (o CollectionPolicyDataConfigOutput) ToCollectionPolicyDataConfigOutput() CollectionPolicyDataConfigOutput {
+	return o
+}
+
+func (o CollectionPolicyDataConfigOutput) ToCollectionPolicyDataConfigOutputWithContext(ctx context.Context) CollectionPolicyDataConfigOutput {
+	return o
+}
+
+func (o CollectionPolicyDataConfigOutput) ToCollectionPolicyDataConfigPtrOutput() CollectionPolicyDataConfigPtrOutput {
+	return o.ToCollectionPolicyDataConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CollectionPolicyDataConfigOutput) ToCollectionPolicyDataConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyDataConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CollectionPolicyDataConfig) *CollectionPolicyDataConfig {
+		return &v
+	}).(CollectionPolicyDataConfigPtrOutput)
+}
+
+// Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+func (o CollectionPolicyDataConfigOutput) DataProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionPolicyDataConfig) *string { return v.DataProject }).(pulumi.StringPtrOutput)
+}
+
+// If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+func (o CollectionPolicyDataConfigOutput) DataRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionPolicyDataConfig) *string { return v.DataRegion }).(pulumi.StringPtrOutput)
+}
+
+type CollectionPolicyDataConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CollectionPolicyDataConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionPolicyDataConfig)(nil)).Elem()
+}
+
+func (o CollectionPolicyDataConfigPtrOutput) ToCollectionPolicyDataConfigPtrOutput() CollectionPolicyDataConfigPtrOutput {
+	return o
+}
+
+func (o CollectionPolicyDataConfigPtrOutput) ToCollectionPolicyDataConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyDataConfigPtrOutput {
+	return o
+}
+
+func (o CollectionPolicyDataConfigPtrOutput) Elem() CollectionPolicyDataConfigOutput {
+	return o.ApplyT(func(v *CollectionPolicyDataConfig) CollectionPolicyDataConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CollectionPolicyDataConfig
+		return ret
+	}).(CollectionPolicyDataConfigOutput)
+}
+
+// Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+func (o CollectionPolicyDataConfigPtrOutput) DataProject() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionPolicyDataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataProject
+	}).(pulumi.StringPtrOutput)
+}
+
+// If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+func (o CollectionPolicyDataConfigPtrOutput) DataRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionPolicyDataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+type CollectionPolicyPolicyConfig struct {
+	// A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+	InstanceIds []string `pulumi:"instanceIds"`
+	// The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+	Regions []string `pulumi:"regions"`
+	// Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+	ResourceMode string `pulumi:"resourceMode"`
+	// Resource label, valid if and only if resourceMode is attributeMode.
+	//
+	// If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
+	//
+	// The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+	ResourceTags map[string]string `pulumi:"resourceTags"`
+}
+
+// CollectionPolicyPolicyConfigInput is an input type that accepts CollectionPolicyPolicyConfigArgs and CollectionPolicyPolicyConfigOutput values.
+// You can construct a concrete instance of `CollectionPolicyPolicyConfigInput` via:
+//
+//	CollectionPolicyPolicyConfigArgs{...}
+type CollectionPolicyPolicyConfigInput interface {
+	pulumi.Input
+
+	ToCollectionPolicyPolicyConfigOutput() CollectionPolicyPolicyConfigOutput
+	ToCollectionPolicyPolicyConfigOutputWithContext(context.Context) CollectionPolicyPolicyConfigOutput
+}
+
+type CollectionPolicyPolicyConfigArgs struct {
+	// A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+	InstanceIds pulumi.StringArrayInput `pulumi:"instanceIds"`
+	// The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+	ResourceMode pulumi.StringInput `pulumi:"resourceMode"`
+	// Resource label, valid if and only if resourceMode is attributeMode.
+	//
+	// If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
+	//
+	// The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+	ResourceTags pulumi.StringMapInput `pulumi:"resourceTags"`
+}
+
+func (CollectionPolicyPolicyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionPolicyPolicyConfig)(nil)).Elem()
+}
+
+func (i CollectionPolicyPolicyConfigArgs) ToCollectionPolicyPolicyConfigOutput() CollectionPolicyPolicyConfigOutput {
+	return i.ToCollectionPolicyPolicyConfigOutputWithContext(context.Background())
+}
+
+func (i CollectionPolicyPolicyConfigArgs) ToCollectionPolicyPolicyConfigOutputWithContext(ctx context.Context) CollectionPolicyPolicyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyPolicyConfigOutput)
+}
+
+func (i CollectionPolicyPolicyConfigArgs) ToCollectionPolicyPolicyConfigPtrOutput() CollectionPolicyPolicyConfigPtrOutput {
+	return i.ToCollectionPolicyPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CollectionPolicyPolicyConfigArgs) ToCollectionPolicyPolicyConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyPolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyPolicyConfigOutput).ToCollectionPolicyPolicyConfigPtrOutputWithContext(ctx)
+}
+
+// CollectionPolicyPolicyConfigPtrInput is an input type that accepts CollectionPolicyPolicyConfigArgs, CollectionPolicyPolicyConfigPtr and CollectionPolicyPolicyConfigPtrOutput values.
+// You can construct a concrete instance of `CollectionPolicyPolicyConfigPtrInput` via:
+//
+//	        CollectionPolicyPolicyConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CollectionPolicyPolicyConfigPtrInput interface {
+	pulumi.Input
+
+	ToCollectionPolicyPolicyConfigPtrOutput() CollectionPolicyPolicyConfigPtrOutput
+	ToCollectionPolicyPolicyConfigPtrOutputWithContext(context.Context) CollectionPolicyPolicyConfigPtrOutput
+}
+
+type collectionPolicyPolicyConfigPtrType CollectionPolicyPolicyConfigArgs
+
+func CollectionPolicyPolicyConfigPtr(v *CollectionPolicyPolicyConfigArgs) CollectionPolicyPolicyConfigPtrInput {
+	return (*collectionPolicyPolicyConfigPtrType)(v)
+}
+
+func (*collectionPolicyPolicyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionPolicyPolicyConfig)(nil)).Elem()
+}
+
+func (i *collectionPolicyPolicyConfigPtrType) ToCollectionPolicyPolicyConfigPtrOutput() CollectionPolicyPolicyConfigPtrOutput {
+	return i.ToCollectionPolicyPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *collectionPolicyPolicyConfigPtrType) ToCollectionPolicyPolicyConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyPolicyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyPolicyConfigPtrOutput)
+}
+
+type CollectionPolicyPolicyConfigOutput struct{ *pulumi.OutputState }
+
+func (CollectionPolicyPolicyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionPolicyPolicyConfig)(nil)).Elem()
+}
+
+func (o CollectionPolicyPolicyConfigOutput) ToCollectionPolicyPolicyConfigOutput() CollectionPolicyPolicyConfigOutput {
+	return o
+}
+
+func (o CollectionPolicyPolicyConfigOutput) ToCollectionPolicyPolicyConfigOutputWithContext(ctx context.Context) CollectionPolicyPolicyConfigOutput {
+	return o
+}
+
+func (o CollectionPolicyPolicyConfigOutput) ToCollectionPolicyPolicyConfigPtrOutput() CollectionPolicyPolicyConfigPtrOutput {
+	return o.ToCollectionPolicyPolicyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CollectionPolicyPolicyConfigOutput) ToCollectionPolicyPolicyConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyPolicyConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CollectionPolicyPolicyConfig) *CollectionPolicyPolicyConfig {
+		return &v
+	}).(CollectionPolicyPolicyConfigPtrOutput)
+}
+
+// A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+func (o CollectionPolicyPolicyConfigOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CollectionPolicyPolicyConfig) []string { return v.InstanceIds }).(pulumi.StringArrayOutput)
+}
+
+// The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+func (o CollectionPolicyPolicyConfigOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CollectionPolicyPolicyConfig) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+func (o CollectionPolicyPolicyConfigOutput) ResourceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v CollectionPolicyPolicyConfig) string { return v.ResourceMode }).(pulumi.StringOutput)
+}
+
+// Resource label, valid if and only if resourceMode is attributeMode.
+//
+// If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
+//
+// The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+func (o CollectionPolicyPolicyConfigOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v CollectionPolicyPolicyConfig) map[string]string { return v.ResourceTags }).(pulumi.StringMapOutput)
+}
+
+type CollectionPolicyPolicyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CollectionPolicyPolicyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionPolicyPolicyConfig)(nil)).Elem()
+}
+
+func (o CollectionPolicyPolicyConfigPtrOutput) ToCollectionPolicyPolicyConfigPtrOutput() CollectionPolicyPolicyConfigPtrOutput {
+	return o
+}
+
+func (o CollectionPolicyPolicyConfigPtrOutput) ToCollectionPolicyPolicyConfigPtrOutputWithContext(ctx context.Context) CollectionPolicyPolicyConfigPtrOutput {
+	return o
+}
+
+func (o CollectionPolicyPolicyConfigPtrOutput) Elem() CollectionPolicyPolicyConfigOutput {
+	return o.ApplyT(func(v *CollectionPolicyPolicyConfig) CollectionPolicyPolicyConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CollectionPolicyPolicyConfig
+		return ret
+	}).(CollectionPolicyPolicyConfigOutput)
+}
+
+// A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+func (o CollectionPolicyPolicyConfigPtrOutput) InstanceIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CollectionPolicyPolicyConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+func (o CollectionPolicyPolicyConfigPtrOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CollectionPolicyPolicyConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Regions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+func (o CollectionPolicyPolicyConfigPtrOutput) ResourceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionPolicyPolicyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource label, valid if and only if resourceMode is attributeMode.
+//
+// If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
+//
+// The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+func (o CollectionPolicyPolicyConfigPtrOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CollectionPolicyPolicyConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceTags
+	}).(pulumi.StringMapOutput)
+}
+
+type CollectionPolicyResourceDirectory struct {
+	// Support all mode all and custom mode custom under this resource directory
+	AccountGroupType *string `pulumi:"accountGroupType"`
+	// When the resource directory is configured in the custom mode, the corresponding member account list
+	Members []string `pulumi:"members"`
+}
+
+// CollectionPolicyResourceDirectoryInput is an input type that accepts CollectionPolicyResourceDirectoryArgs and CollectionPolicyResourceDirectoryOutput values.
+// You can construct a concrete instance of `CollectionPolicyResourceDirectoryInput` via:
+//
+//	CollectionPolicyResourceDirectoryArgs{...}
+type CollectionPolicyResourceDirectoryInput interface {
+	pulumi.Input
+
+	ToCollectionPolicyResourceDirectoryOutput() CollectionPolicyResourceDirectoryOutput
+	ToCollectionPolicyResourceDirectoryOutputWithContext(context.Context) CollectionPolicyResourceDirectoryOutput
+}
+
+type CollectionPolicyResourceDirectoryArgs struct {
+	// Support all mode all and custom mode custom under this resource directory
+	AccountGroupType pulumi.StringPtrInput `pulumi:"accountGroupType"`
+	// When the resource directory is configured in the custom mode, the corresponding member account list
+	Members pulumi.StringArrayInput `pulumi:"members"`
+}
+
+func (CollectionPolicyResourceDirectoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionPolicyResourceDirectory)(nil)).Elem()
+}
+
+func (i CollectionPolicyResourceDirectoryArgs) ToCollectionPolicyResourceDirectoryOutput() CollectionPolicyResourceDirectoryOutput {
+	return i.ToCollectionPolicyResourceDirectoryOutputWithContext(context.Background())
+}
+
+func (i CollectionPolicyResourceDirectoryArgs) ToCollectionPolicyResourceDirectoryOutputWithContext(ctx context.Context) CollectionPolicyResourceDirectoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyResourceDirectoryOutput)
+}
+
+func (i CollectionPolicyResourceDirectoryArgs) ToCollectionPolicyResourceDirectoryPtrOutput() CollectionPolicyResourceDirectoryPtrOutput {
+	return i.ToCollectionPolicyResourceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i CollectionPolicyResourceDirectoryArgs) ToCollectionPolicyResourceDirectoryPtrOutputWithContext(ctx context.Context) CollectionPolicyResourceDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyResourceDirectoryOutput).ToCollectionPolicyResourceDirectoryPtrOutputWithContext(ctx)
+}
+
+// CollectionPolicyResourceDirectoryPtrInput is an input type that accepts CollectionPolicyResourceDirectoryArgs, CollectionPolicyResourceDirectoryPtr and CollectionPolicyResourceDirectoryPtrOutput values.
+// You can construct a concrete instance of `CollectionPolicyResourceDirectoryPtrInput` via:
+//
+//	        CollectionPolicyResourceDirectoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type CollectionPolicyResourceDirectoryPtrInput interface {
+	pulumi.Input
+
+	ToCollectionPolicyResourceDirectoryPtrOutput() CollectionPolicyResourceDirectoryPtrOutput
+	ToCollectionPolicyResourceDirectoryPtrOutputWithContext(context.Context) CollectionPolicyResourceDirectoryPtrOutput
+}
+
+type collectionPolicyResourceDirectoryPtrType CollectionPolicyResourceDirectoryArgs
+
+func CollectionPolicyResourceDirectoryPtr(v *CollectionPolicyResourceDirectoryArgs) CollectionPolicyResourceDirectoryPtrInput {
+	return (*collectionPolicyResourceDirectoryPtrType)(v)
+}
+
+func (*collectionPolicyResourceDirectoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionPolicyResourceDirectory)(nil)).Elem()
+}
+
+func (i *collectionPolicyResourceDirectoryPtrType) ToCollectionPolicyResourceDirectoryPtrOutput() CollectionPolicyResourceDirectoryPtrOutput {
+	return i.ToCollectionPolicyResourceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (i *collectionPolicyResourceDirectoryPtrType) ToCollectionPolicyResourceDirectoryPtrOutputWithContext(ctx context.Context) CollectionPolicyResourceDirectoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CollectionPolicyResourceDirectoryPtrOutput)
+}
+
+type CollectionPolicyResourceDirectoryOutput struct{ *pulumi.OutputState }
+
+func (CollectionPolicyResourceDirectoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CollectionPolicyResourceDirectory)(nil)).Elem()
+}
+
+func (o CollectionPolicyResourceDirectoryOutput) ToCollectionPolicyResourceDirectoryOutput() CollectionPolicyResourceDirectoryOutput {
+	return o
+}
+
+func (o CollectionPolicyResourceDirectoryOutput) ToCollectionPolicyResourceDirectoryOutputWithContext(ctx context.Context) CollectionPolicyResourceDirectoryOutput {
+	return o
+}
+
+func (o CollectionPolicyResourceDirectoryOutput) ToCollectionPolicyResourceDirectoryPtrOutput() CollectionPolicyResourceDirectoryPtrOutput {
+	return o.ToCollectionPolicyResourceDirectoryPtrOutputWithContext(context.Background())
+}
+
+func (o CollectionPolicyResourceDirectoryOutput) ToCollectionPolicyResourceDirectoryPtrOutputWithContext(ctx context.Context) CollectionPolicyResourceDirectoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CollectionPolicyResourceDirectory) *CollectionPolicyResourceDirectory {
+		return &v
+	}).(CollectionPolicyResourceDirectoryPtrOutput)
+}
+
+// Support all mode all and custom mode custom under this resource directory
+func (o CollectionPolicyResourceDirectoryOutput) AccountGroupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CollectionPolicyResourceDirectory) *string { return v.AccountGroupType }).(pulumi.StringPtrOutput)
+}
+
+// When the resource directory is configured in the custom mode, the corresponding member account list
+func (o CollectionPolicyResourceDirectoryOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CollectionPolicyResourceDirectory) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+type CollectionPolicyResourceDirectoryPtrOutput struct{ *pulumi.OutputState }
+
+func (CollectionPolicyResourceDirectoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CollectionPolicyResourceDirectory)(nil)).Elem()
+}
+
+func (o CollectionPolicyResourceDirectoryPtrOutput) ToCollectionPolicyResourceDirectoryPtrOutput() CollectionPolicyResourceDirectoryPtrOutput {
+	return o
+}
+
+func (o CollectionPolicyResourceDirectoryPtrOutput) ToCollectionPolicyResourceDirectoryPtrOutputWithContext(ctx context.Context) CollectionPolicyResourceDirectoryPtrOutput {
+	return o
+}
+
+func (o CollectionPolicyResourceDirectoryPtrOutput) Elem() CollectionPolicyResourceDirectoryOutput {
+	return o.ApplyT(func(v *CollectionPolicyResourceDirectory) CollectionPolicyResourceDirectory {
+		if v != nil {
+			return *v
+		}
+		var ret CollectionPolicyResourceDirectory
+		return ret
+	}).(CollectionPolicyResourceDirectoryOutput)
+}
+
+// Support all mode all and custom mode custom under this resource directory
+func (o CollectionPolicyResourceDirectoryPtrOutput) AccountGroupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CollectionPolicyResourceDirectory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccountGroupType
+	}).(pulumi.StringPtrOutput)
+}
+
+// When the resource directory is configured in the custom mode, the corresponding member account list
+func (o CollectionPolicyResourceDirectoryPtrOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CollectionPolicyResourceDirectory) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Members
+	}).(pulumi.StringArrayOutput)
+}
+
 type ScheduledSqlSchedule struct {
 	// Cron expression, minimum precision is minutes, 24-hour clock. For example, 0 0/1 **indicates that the check is performed every one hour from 00:00. When type is set to Cron, cronExpression must be set.
 	CronExpression *string `pulumi:"cronExpression"`
@@ -3467,6 +4183,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertConfigurationTemplateConfigurationPtrInput)(nil)).Elem(), AlertConfigurationTemplateConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertScheduleInput)(nil)).Elem(), AlertScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertSchedulePtrInput)(nil)).Elem(), AlertScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyCentralizeConfigInput)(nil)).Elem(), CollectionPolicyCentralizeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyCentralizeConfigPtrInput)(nil)).Elem(), CollectionPolicyCentralizeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyDataConfigInput)(nil)).Elem(), CollectionPolicyDataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyDataConfigPtrInput)(nil)).Elem(), CollectionPolicyDataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyPolicyConfigInput)(nil)).Elem(), CollectionPolicyPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyPolicyConfigPtrInput)(nil)).Elem(), CollectionPolicyPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyResourceDirectoryInput)(nil)).Elem(), CollectionPolicyResourceDirectoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CollectionPolicyResourceDirectoryPtrInput)(nil)).Elem(), CollectionPolicyResourceDirectoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlScheduleInput)(nil)).Elem(), ScheduledSqlScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlSchedulePtrInput)(nil)).Elem(), ScheduledSqlScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSqlScheduledSqlConfigurationInput)(nil)).Elem(), ScheduledSqlScheduledSqlConfigurationArgs{})
@@ -3501,6 +4225,14 @@ func init() {
 	pulumi.RegisterOutputType(AlertConfigurationTemplateConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AlertScheduleOutput{})
 	pulumi.RegisterOutputType(AlertSchedulePtrOutput{})
+	pulumi.RegisterOutputType(CollectionPolicyCentralizeConfigOutput{})
+	pulumi.RegisterOutputType(CollectionPolicyCentralizeConfigPtrOutput{})
+	pulumi.RegisterOutputType(CollectionPolicyDataConfigOutput{})
+	pulumi.RegisterOutputType(CollectionPolicyDataConfigPtrOutput{})
+	pulumi.RegisterOutputType(CollectionPolicyPolicyConfigOutput{})
+	pulumi.RegisterOutputType(CollectionPolicyPolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(CollectionPolicyResourceDirectoryOutput{})
+	pulumi.RegisterOutputType(CollectionPolicyResourceDirectoryPtrOutput{})
 	pulumi.RegisterOutputType(ScheduledSqlScheduleOutput{})
 	pulumi.RegisterOutputType(ScheduledSqlSchedulePtrOutput{})
 	pulumi.RegisterOutputType(ScheduledSqlScheduledSqlConfigurationOutput{})

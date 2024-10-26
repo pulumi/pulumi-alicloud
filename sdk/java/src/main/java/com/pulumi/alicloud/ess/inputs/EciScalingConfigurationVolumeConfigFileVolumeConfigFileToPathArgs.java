@@ -5,6 +5,7 @@ package com.pulumi.alicloud.ess.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,21 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
     }
 
     /**
+     * The permissions on the ConfigFileVolume directory.
+     * 
+     */
+    @Import(name="mode")
+    private @Nullable Output<Integer> mode;
+
+    /**
+     * @return The permissions on the ConfigFileVolume directory.
+     * 
+     */
+    public Optional<Output<Integer>> mode() {
+        return Optional.ofNullable(this.mode);
+    }
+
+    /**
      * The relative file path.
      * 
      */
@@ -49,6 +65,7 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
 
     private EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs $) {
         this.content = $.content;
+        this.mode = $.mode;
         this.path = $.path;
     }
 
@@ -89,6 +106,27 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
          */
         public Builder content(String content) {
             return content(Output.of(content));
+        }
+
+        /**
+         * @param mode The permissions on the ConfigFileVolume directory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(@Nullable Output<Integer> mode) {
+            $.mode = mode;
+            return this;
+        }
+
+        /**
+         * @param mode The permissions on the ConfigFileVolume directory.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mode(Integer mode) {
+            return mode(Output.of(mode));
         }
 
         /**

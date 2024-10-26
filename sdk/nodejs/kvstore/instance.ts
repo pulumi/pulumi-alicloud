@@ -74,9 +74,9 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
-     * The bandwidth.
+     * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
      */
-    public /*out*/ readonly bandwidth!: pulumi.Output<number>;
+    public readonly bandwidth!: pulumi.Output<number>;
     /**
      * The ID of the event or the business information.
      */
@@ -431,6 +431,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupId"] = args ? args.backupId : undefined;
             resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
+            resourceInputs["bandwidth"] = args ? args.bandwidth : undefined;
             resourceInputs["businessInfo"] = args ? args.businessInfo : undefined;
             resourceInputs["capacity"] = args ? args.capacity : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
@@ -486,7 +487,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vpcAuthMode"] = args ? args.vpcAuthMode : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["bandwidth"] = undefined /*out*/;
             resourceInputs["connectionDomain"] = undefined /*out*/;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
@@ -535,7 +535,7 @@ export interface InstanceState {
      */
     backupTime?: pulumi.Input<string>;
     /**
-     * The bandwidth.
+     * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
      */
     bandwidth?: pulumi.Input<number>;
     /**
@@ -837,6 +837,10 @@ export interface InstanceArgs {
      * Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
      */
     backupTime?: pulumi.Input<string>;
+    /**
+     * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+     */
+    bandwidth?: pulumi.Input<number>;
     /**
      * The ID of the event or the business information.
      */

@@ -148,8 +148,6 @@ type ServerlessKubernetes struct {
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-	//
-	// *Removed params*
 	CustomSan pulumi.StringPtrOutput `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ServerlessKubernetesDeleteOptionArrayOutput `pulumi:"deleteOptions"`
@@ -159,25 +157,31 @@ type ServerlessKubernetes struct {
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrOutput `pulumi:"enableRrsa"`
-	// Whether to create internet eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled pulumi.BoolPtrOutput `pulumi:"endpointPublicAccessEnabled"`
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrOutput `pulumi:"kubeConfig"`
-	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
 	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
-	// Enable log service, Valid value `SLS`.
+	// Enable log service, Valid value `SLS`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType pulumi.StringPtrOutput `pulumi:"loggingType"`
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	MaintenanceWindow ServerlessKubernetesMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
+	// The cluster automatic operation policy. See `operationPolicy` below.
+	//
+	// *Removed params*
+	OperationPolicy ServerlessKubernetesOperationPolicyOutput `pulumi:"operationPolicy"`
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
@@ -193,7 +197,7 @@ type ServerlessKubernetes struct {
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
 	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes pulumi.StringArrayOutput `pulumi:"serviceDiscoveryTypes"`
-	// If you use an existing SLS project, you must specify `slsProjectName`.
+	// If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName pulumi.StringOutput `pulumi:"slsProjectName"`
@@ -201,13 +205,13 @@ type ServerlessKubernetes struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The time zone of the cluster.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
-	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -255,8 +259,6 @@ type serverlessKubernetesState struct {
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-	//
-	// *Removed params*
 	CustomSan *string `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions []ServerlessKubernetesDeleteOption `pulumi:"deleteOptions"`
@@ -266,25 +268,31 @@ type serverlessKubernetesState struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
-	// Whether to create internet eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig *string `pulumi:"kubeConfig"`
-	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
-	// Enable log service, Valid value `SLS`.
+	// Enable log service, Valid value `SLS`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType *string `pulumi:"loggingType"`
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	MaintenanceWindow *ServerlessKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
+	// The cluster automatic operation policy. See `operationPolicy` below.
+	//
+	// *Removed params*
+	OperationPolicy *ServerlessKubernetesOperationPolicy `pulumi:"operationPolicy"`
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
@@ -300,7 +308,7 @@ type serverlessKubernetesState struct {
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes []string `pulumi:"serviceDiscoveryTypes"`
-	// If you use an existing SLS project, you must specify `slsProjectName`.
+	// If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName *string `pulumi:"slsProjectName"`
@@ -308,13 +316,13 @@ type serverlessKubernetesState struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The time zone of the cluster.
 	TimeZone *string `pulumi:"timeZone"`
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds []string `pulumi:"vswitchIds"`
-	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -333,8 +341,6 @@ type ServerlessKubernetesState struct {
 	ClusterSpec pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-	//
-	// *Removed params*
 	CustomSan pulumi.StringPtrInput
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ServerlessKubernetesDeleteOptionArrayInput
@@ -344,25 +350,31 @@ type ServerlessKubernetesState struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
-	// Whether to create internet eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
-	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
 	LoadBalancerSpec pulumi.StringPtrInput
-	// Enable log service, Valid value `SLS`.
+	// Enable log service, Valid value `SLS`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType pulumi.StringPtrInput
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	MaintenanceWindow ServerlessKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrInput
+	// The cluster automatic operation policy. See `operationPolicy` below.
+	//
+	// *Removed params*
+	OperationPolicy ServerlessKubernetesOperationPolicyPtrInput
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
@@ -378,7 +390,7 @@ type ServerlessKubernetesState struct {
 	ServiceCidr pulumi.StringPtrInput
 	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes pulumi.StringArrayInput
-	// If you use an existing SLS project, you must specify `slsProjectName`.
+	// If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName pulumi.StringPtrInput
@@ -386,13 +398,13 @@ type ServerlessKubernetesState struct {
 	Tags pulumi.StringMapInput
 	// The time zone of the cluster.
 	TimeZone pulumi.StringPtrInput
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
 	VpcId pulumi.StringPtrInput
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayInput
-	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -415,8 +427,6 @@ type serverlessKubernetesArgs struct {
 	ClusterSpec *string `pulumi:"clusterSpec"`
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-	//
-	// *Removed params*
 	CustomSan *string `pulumi:"customSan"`
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions []ServerlessKubernetesDeleteOption `pulumi:"deleteOptions"`
@@ -426,25 +436,31 @@ type serverlessKubernetesArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa *bool `pulumi:"enableRrsa"`
-	// Whether to create internet eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled *bool `pulumi:"endpointPublicAccessEnabled"`
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig *string `pulumi:"kubeConfig"`
-	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
-	// Enable log service, Valid value `SLS`.
+	// Enable log service, Valid value `SLS`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType *string `pulumi:"loggingType"`
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	MaintenanceWindow *ServerlessKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
+	// The cluster automatic operation policy. See `operationPolicy` below.
+	//
+	// *Removed params*
+	OperationPolicy *ServerlessKubernetesOperationPolicy `pulumi:"operationPolicy"`
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
@@ -458,7 +474,7 @@ type serverlessKubernetesArgs struct {
 	ServiceCidr *string `pulumi:"serviceCidr"`
 	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes []string `pulumi:"serviceDiscoveryTypes"`
-	// If you use an existing SLS project, you must specify `slsProjectName`.
+	// If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName *string `pulumi:"slsProjectName"`
@@ -466,13 +482,13 @@ type serverlessKubernetesArgs struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The time zone of the cluster.
 	TimeZone *string `pulumi:"timeZone"`
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds []string `pulumi:"vswitchIds"`
-	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -492,8 +508,6 @@ type ServerlessKubernetesArgs struct {
 	ClusterSpec pulumi.StringPtrInput
 	// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 	// > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-	//
-	// *Removed params*
 	CustomSan pulumi.StringPtrInput
 	// Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
 	DeleteOptions ServerlessKubernetesDeleteOptionArrayInput
@@ -503,25 +517,31 @@ type ServerlessKubernetesArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
 	EnableRrsa pulumi.BoolPtrInput
-	// Whether to create internet eip for API Server. Default to false.
+	// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 	EndpointPublicAccessEnabled pulumi.BoolPtrInput
 	// The path of kube config, like `~/.kube/config`.
 	//
 	// Deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.
 	KubeConfig pulumi.StringPtrInput
-	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+	// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 	//
-	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+	// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
 	LoadBalancerSpec pulumi.StringPtrInput
-	// Enable log service, Valid value `SLS`.
+	// Enable log service, Valid value `SLS`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 	LoggingType pulumi.StringPtrInput
+	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+	MaintenanceWindow ServerlessKubernetesMaintenanceWindowPtrInput
 	// The kubernetes cluster's name. It is the only in one Alicloud account.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrInput
+	// The cluster automatic operation policy. See `operationPolicy` below.
+	//
+	// *Removed params*
+	OperationPolicy ServerlessKubernetesOperationPolicyPtrInput
 	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
@@ -535,7 +555,7 @@ type ServerlessKubernetesArgs struct {
 	ServiceCidr pulumi.StringPtrInput
 	// Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
 	ServiceDiscoveryTypes pulumi.StringArrayInput
-	// If you use an existing SLS project, you must specify `slsProjectName`.
+	// If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
 	//
 	// Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 	SlsProjectName pulumi.StringPtrInput
@@ -543,13 +563,13 @@ type ServerlessKubernetesArgs struct {
 	Tags pulumi.StringMapInput
 	// The time zone of the cluster.
 	TimeZone pulumi.StringPtrInput
-	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
 	VpcId pulumi.StringPtrInput
 	// The vswitches where new kubernetes cluster will be located.
 	VswitchIds pulumi.StringArrayInput
-	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+	// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -669,8 +689,6 @@ func (o ServerlessKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 
 // Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
 // > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-//
-// *Removed params*
 func (o ServerlessKubernetesOutput) CustomSan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.CustomSan }).(pulumi.StringPtrOutput)
 }
@@ -692,7 +710,7 @@ func (o ServerlessKubernetesOutput) EnableRrsa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.EnableRrsa }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to create internet eip for API Server. Default to false.
+// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
 func (o ServerlessKubernetesOutput) EndpointPublicAccessEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.EndpointPublicAccessEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -704,18 +722,23 @@ func (o ServerlessKubernetesOutput) KubeConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.KubeConfig }).(pulumi.StringPtrOutput)
 }
 
-// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
 //
-// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.
+// Deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
 func (o ServerlessKubernetesOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
 
-// Enable log service, Valid value `SLS`.
+// Enable log service, Valid value `SLS`. Only works for **Create** Operation.
 //
 // Deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.
 func (o ServerlessKubernetesOutput) LoggingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.LoggingType }).(pulumi.StringPtrOutput)
+}
+
+// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenanceWindow` below.
+func (o ServerlessKubernetesOutput) MaintenanceWindow() ServerlessKubernetesMaintenanceWindowOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesMaintenanceWindowOutput { return v.MaintenanceWindow }).(ServerlessKubernetesMaintenanceWindowOutput)
 }
 
 // The kubernetes cluster's name. It is the only in one Alicloud account.
@@ -730,6 +753,13 @@ func (o ServerlessKubernetesOutput) NamePrefix() pulumi.StringPtrOutput {
 // Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 func (o ServerlessKubernetesOutput) NewNatGateway() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.NewNatGateway }).(pulumi.BoolPtrOutput)
+}
+
+// The cluster automatic operation policy. See `operationPolicy` below.
+//
+// *Removed params*
+func (o ServerlessKubernetesOutput) OperationPolicy() ServerlessKubernetesOperationPolicyOutput {
+	return o.ApplyT(func(v *ServerlessKubernetes) ServerlessKubernetesOperationPolicyOutput { return v.OperationPolicy }).(ServerlessKubernetesOperationPolicyOutput)
 }
 
 // Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
@@ -768,7 +798,7 @@ func (o ServerlessKubernetesOutput) ServiceDiscoveryTypes() pulumi.StringArrayOu
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringArrayOutput { return v.ServiceDiscoveryTypes }).(pulumi.StringArrayOutput)
 }
 
-// If you use an existing SLS project, you must specify `slsProjectName`.
+// If you use an existing SLS project, you must specify `slsProjectName`. Only works for **Create** Operation.
 //
 // Deprecated: Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.
 func (o ServerlessKubernetesOutput) SlsProjectName() pulumi.StringOutput {
@@ -785,7 +815,7 @@ func (o ServerlessKubernetesOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }
 
-// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
 func (o ServerlessKubernetesOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
@@ -800,7 +830,7 @@ func (o ServerlessKubernetesOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringArrayOutput { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
-// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
 func (o ServerlessKubernetesOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

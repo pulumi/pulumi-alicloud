@@ -189,12 +189,12 @@ class GetClustersClusterResult(dict):
         :param str cluster_name: ID of the OOS Executions.
         :param str cluster_type: The type of MSE Cluster.
         :param int cpu: The num of cpu.
-        :param str health_status: The health status of MSE Cluster.
+        :param str health_status: The health status of the instance.
         :param str id: ID of the MSE Cluster.
         :param int init_cost_time: Time-consuming to create.
         :param int instance_count: The count of instance.
         :param str instance_id: ID of the MSE Cluster.
-        :param Sequence['GetClustersClusterInstanceModelArgs'] instance_models: The list of instances.
+        :param Sequence['GetClustersClusterInstanceModelArgs'] instance_models: The list of instance nodes.
         :param str internet_address: The address of public network.
         :param str internet_domain: The domain of public network.
         :param str internet_port: The port of public network.
@@ -281,7 +281,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="healthStatus")
     def health_status(self) -> str:
         """
-        The health status of MSE Cluster.
+        The health status of the instance.
         """
         return pulumi.get(self, "health_status")
 
@@ -321,7 +321,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="instanceModels")
     def instance_models(self) -> Sequence['outputs.GetClustersClusterInstanceModelResult']:
         """
-        The list of instances.
+        The list of instance nodes.
         """
         return pulumi.get(self, "instance_models")
 
@@ -418,7 +418,14 @@ class GetClustersClusterInstanceModelResult(dict):
                  single_tunnel_vip: str,
                  vip: str):
         """
-        :param str health_status: The health status of MSE Cluster.
+        :param str health_status: The health status of the instance.
+        :param str instance_type: (Deprecated from version 1.232.0)
+        :param str internet_ip: The public IP address.
+        :param str ip: The IP address of the instance.
+        :param str pod_name: The name of the pod.
+        :param str role: The role.
+        :param str single_tunnel_vip: The single-thread IP address.
+        :param str vip: (Deprecated from version 1.232.0)
         """
         pulumi.set(__self__, "health_status", health_status)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -433,43 +440,64 @@ class GetClustersClusterInstanceModelResult(dict):
     @pulumi.getter(name="healthStatus")
     def health_status(self) -> str:
         """
-        The health status of MSE Cluster.
+        The health status of the instance.
         """
         return pulumi.get(self, "health_status")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
+        """
+        (Deprecated from version 1.232.0)
+        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="internetIp")
     def internet_ip(self) -> str:
+        """
+        The public IP address.
+        """
         return pulumi.get(self, "internet_ip")
 
     @property
     @pulumi.getter
     def ip(self) -> str:
+        """
+        The IP address of the instance.
+        """
         return pulumi.get(self, "ip")
 
     @property
     @pulumi.getter(name="podName")
     def pod_name(self) -> str:
+        """
+        The name of the pod.
+        """
         return pulumi.get(self, "pod_name")
 
     @property
     @pulumi.getter
     def role(self) -> str:
+        """
+        The role.
+        """
         return pulumi.get(self, "role")
 
     @property
     @pulumi.getter(name="singleTunnelVip")
     def single_tunnel_vip(self) -> str:
+        """
+        The single-thread IP address.
+        """
         return pulumi.get(self, "single_tunnel_vip")
 
     @property
     @pulumi.getter
     def vip(self) -> str:
+        """
+        (Deprecated from version 1.232.0)
+        """
         return pulumi.get(self, "vip")
 
 
@@ -486,7 +514,7 @@ class GetEngineNamespacesNamespaceResult(dict):
                  type: int):
         """
         :param int config_count: The Number of Configuration of the Namespace.
-        :param str id: The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+        :param str id: The ID of the Engine Namespace. It is formatted to `<instance_id>:<namespace_id>`.
         :param str namespace_desc: The description of the Namespace.
         :param str namespace_id: The id of Namespace.
         :param str namespace_show_name: The name of the Namespace.
@@ -518,7 +546,7 @@ class GetEngineNamespacesNamespaceResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+        The ID of the Engine Namespace. It is formatted to `<instance_id>:<namespace_id>`.
         """
         return pulumi.get(self, "id")
 

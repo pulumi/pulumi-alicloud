@@ -16,14 +16,14 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
     public static final ServiceMeshMeshConfigProxyArgs Empty = new ServiceMeshMeshConfigProxyArgs();
 
     /**
-     * Cluster domain name.
+     * Cluster domain name
      * 
      */
     @Import(name="clusterDomain")
     private @Nullable Output<String> clusterDomain;
 
     /**
-     * @return Cluster domain name.
+     * @return Cluster domain name
      * 
      */
     public Optional<Output<String>> clusterDomain() {
@@ -31,14 +31,14 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Sidecar injector Pods on the throttle.
+     * Sidecar injector Pods on the throttle
      * 
      */
     @Import(name="limitCpu")
     private @Nullable Output<String> limitCpu;
 
     /**
-     * @return Sidecar injector Pods on the throttle.
+     * @return Sidecar injector Pods on the throttle
      * 
      */
     public Optional<Output<String>> limitCpu() {
@@ -46,14 +46,14 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Sidecar injector Pods on the throttle.
+     * Sidecar injector Pods on the throttle
      * 
      */
     @Import(name="limitMemory")
     private @Nullable Output<String> limitMemory;
 
     /**
-     * @return Sidecar injector Pods on the throttle.
+     * @return Sidecar injector Pods on the throttle
      * 
      */
     public Optional<Output<String>> limitMemory() {
@@ -61,14 +61,14 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Sidecar injector Pods on the requested resource.
+     * Sidecar injector Pods on the requested resource
      * 
      */
     @Import(name="requestCpu")
     private @Nullable Output<String> requestCpu;
 
     /**
-     * @return Sidecar injector Pods on the requested resource.
+     * @return Sidecar injector Pods on the requested resource
      * 
      */
     public Optional<Output<String>> requestCpu() {
@@ -76,14 +76,14 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Sidecar injector Pods on the requested resource.
+     * Sidecar injector Pods on the requested resource
      * 
      */
     @Import(name="requestMemory")
     private @Nullable Output<String> requestMemory;
 
     /**
-     * @return Sidecar injector Pods on the requested resource.
+     * @return Sidecar injector Pods on the requested resource
      * 
      */
     public Optional<Output<String>> requestMemory() {
@@ -119,7 +119,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clusterDomain Cluster domain name.
+         * @param clusterDomain Cluster domain name
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param clusterDomain Cluster domain name.
+         * @param clusterDomain Cluster domain name
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param limitCpu Sidecar injector Pods on the throttle.
+         * @param limitCpu Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param limitCpu Sidecar injector Pods on the throttle.
+         * @param limitCpu Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param limitMemory Sidecar injector Pods on the throttle.
+         * @param limitMemory Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param limitMemory Sidecar injector Pods on the throttle.
+         * @param limitMemory Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param requestCpu Sidecar injector Pods on the requested resource.
+         * @param requestCpu Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param requestCpu Sidecar injector Pods on the requested resource.
+         * @param requestCpu Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param requestMemory Sidecar injector Pods on the requested resource.
+         * @param requestMemory Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class ServiceMeshMeshConfigProxyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param requestMemory Sidecar injector Pods on the requested resource.
+         * @param requestMemory Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 

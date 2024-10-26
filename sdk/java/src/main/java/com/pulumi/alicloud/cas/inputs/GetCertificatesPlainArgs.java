@@ -38,9 +38,28 @@ public final class GetCertificatesPlainArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.ids);
     }
 
+    @Import(name="keyword")
+    private @Nullable String keyword;
+
+    public Optional<String> keyword() {
+        return Optional.ofNullable(this.keyword);
+    }
+
+    /**
+     * @deprecated
+     * Field `lang` has been deprecated from provider version 1.232.0.
+     * 
+     */
+    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
     @Import(name="lang")
     private @Nullable String lang;
 
+    /**
+     * @deprecated
+     * Field `lang` has been deprecated from provider version 1.232.0.
+     * 
+     */
+    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
     public Optional<String> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -80,6 +99,7 @@ public final class GetCertificatesPlainArgs extends com.pulumi.resources.InvokeA
     private GetCertificatesPlainArgs(GetCertificatesPlainArgs $) {
         this.enableDetails = $.enableDetails;
         this.ids = $.ids;
+        this.keyword = $.keyword;
         this.lang = $.lang;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
@@ -129,6 +149,19 @@ public final class GetCertificatesPlainArgs extends com.pulumi.resources.InvokeA
             return ids(List.of(ids));
         }
 
+        public Builder keyword(@Nullable String keyword) {
+            $.keyword = keyword;
+            return this;
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field `lang` has been deprecated from provider version 1.232.0.
+         * 
+         */
+        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
         public Builder lang(@Nullable String lang) {
             $.lang = lang;
             return this;

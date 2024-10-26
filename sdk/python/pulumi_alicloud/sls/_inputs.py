@@ -45,6 +45,14 @@ __all__ = [
     'AlertConfigurationTemplateConfigurationArgsDict',
     'AlertScheduleArgs',
     'AlertScheduleArgsDict',
+    'CollectionPolicyCentralizeConfigArgs',
+    'CollectionPolicyCentralizeConfigArgsDict',
+    'CollectionPolicyDataConfigArgs',
+    'CollectionPolicyDataConfigArgsDict',
+    'CollectionPolicyPolicyConfigArgs',
+    'CollectionPolicyPolicyConfigArgsDict',
+    'CollectionPolicyResourceDirectoryArgs',
+    'CollectionPolicyResourceDirectoryArgsDict',
     'ScheduledSqlScheduleArgs',
     'ScheduledSqlScheduleArgsDict',
     'ScheduledSqlScheduledSqlConfigurationArgs',
@@ -1630,6 +1638,305 @@ class AlertScheduleArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class CollectionPolicyCentralizeConfigArgsDict(TypedDict):
+        dest_logstore: NotRequired[pulumi.Input[str]]
+        """
+        When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+        """
+        dest_project: NotRequired[pulumi.Input[str]]
+        """
+        The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+        """
+        dest_region: NotRequired[pulumi.Input[str]]
+        """
+        Centralized transfer destination area.
+        """
+        dest_ttl: NotRequired[pulumi.Input[int]]
+        """
+        The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+        """
+elif False:
+    CollectionPolicyCentralizeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CollectionPolicyCentralizeConfigArgs:
+    def __init__(__self__, *,
+                 dest_logstore: Optional[pulumi.Input[str]] = None,
+                 dest_project: Optional[pulumi.Input[str]] = None,
+                 dest_region: Optional[pulumi.Input[str]] = None,
+                 dest_ttl: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] dest_logstore: When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+        :param pulumi.Input[str] dest_project: The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+        :param pulumi.Input[str] dest_region: Centralized transfer destination area.
+        :param pulumi.Input[int] dest_ttl: The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+        """
+        if dest_logstore is not None:
+            pulumi.set(__self__, "dest_logstore", dest_logstore)
+        if dest_project is not None:
+            pulumi.set(__self__, "dest_project", dest_project)
+        if dest_region is not None:
+            pulumi.set(__self__, "dest_region", dest_region)
+        if dest_ttl is not None:
+            pulumi.set(__self__, "dest_ttl", dest_ttl)
+
+    @property
+    @pulumi.getter(name="destLogstore")
+    def dest_logstore(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+        """
+        return pulumi.get(self, "dest_logstore")
+
+    @dest_logstore.setter
+    def dest_logstore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_logstore", value)
+
+    @property
+    @pulumi.getter(name="destProject")
+    def dest_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+        """
+        return pulumi.get(self, "dest_project")
+
+    @dest_project.setter
+    def dest_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_project", value)
+
+    @property
+    @pulumi.getter(name="destRegion")
+    def dest_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Centralized transfer destination area.
+        """
+        return pulumi.get(self, "dest_region")
+
+    @dest_region.setter
+    def dest_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_region", value)
+
+    @property
+    @pulumi.getter(name="destTtl")
+    def dest_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+        """
+        return pulumi.get(self, "dest_ttl")
+
+    @dest_ttl.setter
+    def dest_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "dest_ttl", value)
+
+
+if not MYPY:
+    class CollectionPolicyDataConfigArgsDict(TypedDict):
+        data_project: NotRequired[pulumi.Input[str]]
+        """
+        Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+        """
+        data_region: NotRequired[pulumi.Input[str]]
+        """
+        If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+        """
+elif False:
+    CollectionPolicyDataConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CollectionPolicyDataConfigArgs:
+    def __init__(__self__, *,
+                 data_project: Optional[pulumi.Input[str]] = None,
+                 data_region: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] data_project: Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+        :param pulumi.Input[str] data_region: If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+        """
+        if data_project is not None:
+            pulumi.set(__self__, "data_project", data_project)
+        if data_region is not None:
+            pulumi.set(__self__, "data_region", data_region)
+
+    @property
+    @pulumi.getter(name="dataProject")
+    def data_project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+        """
+        return pulumi.get(self, "data_project")
+
+    @data_project.setter
+    def data_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_project", value)
+
+    @property
+    @pulumi.getter(name="dataRegion")
+    def data_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+        """
+        return pulumi.get(self, "data_region")
+
+    @data_region.setter
+    def data_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_region", value)
+
+
+if not MYPY:
+    class CollectionPolicyPolicyConfigArgsDict(TypedDict):
+        resource_mode: pulumi.Input[str]
+        """
+        Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+        """
+        instance_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+        """
+        regions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+        """
+        resource_tags: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Resource label, valid if and only if resourceMode is attributeMode.
+
+        If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
+
+        The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+        """
+elif False:
+    CollectionPolicyPolicyConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CollectionPolicyPolicyConfigArgs:
+    def __init__(__self__, *,
+                 resource_mode: pulumi.Input[str],
+                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] resource_mode: Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_tags: Resource label, valid if and only if resourceMode is attributeMode.
+               
+               If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
+               
+               The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+        """
+        pulumi.set(__self__, "resource_mode", resource_mode)
+        if instance_ids is not None:
+            pulumi.set(__self__, "instance_ids", instance_ids)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+        if resource_tags is not None:
+            pulumi.set(__self__, "resource_tags", resource_tags)
+
+    @property
+    @pulumi.getter(name="resourceMode")
+    def resource_mode(self) -> pulumi.Input[str]:
+        """
+        Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+        """
+        return pulumi.get(self, "resource_mode")
+
+    @resource_mode.setter
+    def resource_mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "resource_mode", value)
+
+    @property
+    @pulumi.getter(name="instanceIds")
+    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+        """
+        return pulumi.get(self, "instance_ids")
+
+    @instance_ids.setter
+    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_ids", value)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "regions", value)
+
+    @property
+    @pulumi.getter(name="resourceTags")
+    def resource_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource label, valid if and only if resourceMode is attributeMode.
+
+        If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
+
+        The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+        """
+        return pulumi.get(self, "resource_tags")
+
+    @resource_tags.setter
+    def resource_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_tags", value)
+
+
+if not MYPY:
+    class CollectionPolicyResourceDirectoryArgsDict(TypedDict):
+        account_group_type: NotRequired[pulumi.Input[str]]
+        """
+        Support all mode all and custom mode custom under this resource directory
+        """
+        members: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        When the resource directory is configured in the custom mode, the corresponding member account list
+        """
+elif False:
+    CollectionPolicyResourceDirectoryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CollectionPolicyResourceDirectoryArgs:
+    def __init__(__self__, *,
+                 account_group_type: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] account_group_type: Support all mode all and custom mode custom under this resource directory
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: When the resource directory is configured in the custom mode, the corresponding member account list
+        """
+        if account_group_type is not None:
+            pulumi.set(__self__, "account_group_type", account_group_type)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+
+    @property
+    @pulumi.getter(name="accountGroupType")
+    def account_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Support all mode all and custom mode custom under this resource directory
+        """
+        return pulumi.get(self, "account_group_type")
+
+    @account_group_type.setter
+    def account_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_group_type", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        When the resource directory is configured in the custom mode, the corresponding member account list
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
 
 
 if not MYPY:

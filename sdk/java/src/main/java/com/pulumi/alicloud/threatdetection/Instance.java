@@ -44,6 +44,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
+     * 
      * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      * @deprecated
@@ -56,6 +57,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Container Image security scan. Interval type, value interval:[0,200000].
+     * 
      * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
@@ -64,6 +66,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
+     * 
      * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
@@ -72,6 +75,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Container Image security scan. Interval type, value interval:[0,200000].
+     * 
      * &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      * 
      */
@@ -79,14 +83,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.containerImageScanNew);
     }
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the resource.
+     * @return The creation time of the resource
      * 
      */
     public Output<String> createTime() {
@@ -94,6 +98,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+     * 
      * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
      * 
      */
@@ -102,6 +107,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+     * 
      * &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
      * 
      */
@@ -145,14 +151,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.modifyType);
     }
     /**
-     * The payment type of the resource.
+     * The payment type of the resource
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource.
+     * @return The payment type of the resource
      * 
      */
     public Output<String> paymentType() {
@@ -160,6 +166,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * 
      * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
@@ -168,6 +175,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * 
      * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
@@ -190,7 +198,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Automatic renewal cycle, in months.
-     * &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+     * 
+     * &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      * 
      */
     @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
@@ -198,7 +207,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Automatic renewal cycle, in months.
-     * &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+     * 
+     * &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      * 
      */
     public Output<Integer> renewPeriod() {
@@ -208,6 +218,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Automatic renewal period unit, value:
      * - M: month.
      * - Y: years.
+     * 
      * &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
      * 
      */
@@ -218,6 +229,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Automatic renewal period unit, value:
      * - M: month.
      * - Y: years.
+     * 
      * &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
      * 
      */
@@ -225,18 +237,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.renewalPeriodUnit;
     }
     /**
-     * Automatic renewal status, default ManualRenewal, valid values:
+     * Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
      * - ManualRenewal: manual renewal.
+     * 
+     * Default ManualRenewal.
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalStatus;
 
     /**
-     * @return Automatic renewal status, default ManualRenewal, valid values:
+     * @return Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
      * - ManualRenewal: manual renewal.
+     * 
+     * Default ManualRenewal.
      * 
      */
     public Output<Optional<String>> renewalStatus() {
@@ -244,6 +260,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+     * 
      * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
@@ -252,6 +269,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+     * 
      * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
@@ -259,16 +277,18 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sasAntiRansomware);
     }
     /**
-     * Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+     * Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+     * 
+     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      * 
      */
     @Export(name="sasCspm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sasCspm;
 
     /**
-     * @return Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+     * @return Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+     * 
+     * &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      * 
      */
     public Output<Optional<String>> sasCspm() {
@@ -312,6 +332,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+     * 
      * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
@@ -320,6 +341,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+     * 
      * &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
@@ -342,6 +364,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+     * 
      * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
@@ -350,6 +373,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+     * 
      * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
@@ -393,14 +417,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sasWebguardOrderNum);
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
@@ -408,6 +432,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+     * 
      * &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
@@ -416,11 +441,48 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+     * 
      * &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      * 
      */
     public Output<Optional<String>> threatAnalysis() {
         return Codegen.optional(this.threatAnalysis);
+    }
+    /**
+     * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+     * 
+     * &gt; **NOTE:**  Step size is 1.
+     * 
+     */
+    @Export(name="threatAnalysisFlow", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> threatAnalysisFlow;
+
+    /**
+     * @return Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+     * 
+     * &gt; **NOTE:**  Step size is 1.
+     * 
+     */
+    public Output<Optional<String>> threatAnalysisFlow() {
+        return Codegen.optional(this.threatAnalysisFlow);
+    }
+    /**
+     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     * 
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     * 
+     */
+    @Export(name="threatAnalysisSlsStorage", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> threatAnalysisSlsStorage;
+
+    /**
+     * @return Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     * 
+     * &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     * 
+     */
+    public Output<Optional<String>> threatAnalysisSlsStorage() {
+        return Codegen.optional(this.threatAnalysisSlsStorage);
     }
     /**
      * Threat analysis. Value:
@@ -439,6 +501,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> threatAnalysisSwitch() {
         return this.threatAnalysisSwitch;
+    }
+    /**
+     * Threat analysis and response switch (new), values:
+     * - 0: No
+     * - 1: Yes
+     * 
+     */
+    @Export(name="threatAnalysisSwitch1", refs={String.class}, tree="[0]")
+    private Output<String> threatAnalysisSwitch1;
+
+    /**
+     * @return Threat analysis and response switch (new), values:
+     * - 0: No
+     * - 1: Yes
+     * 
+     */
+    public Output<String> threatAnalysisSwitch1() {
+        return this.threatAnalysisSwitch1;
     }
     /**
      * Number of cores.
@@ -480,6 +560,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].
+     * 
      * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
      * 
      */
@@ -488,6 +569,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Vulnerability repair times, interval type, value range:[20,100000000].
+     * 
      * &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
      * 
      */
@@ -498,6 +580,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Vulnerability fix switch. Value:
      * - 0: No.
      * - 1: Yes.
+     * 
      * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      * 
      */
@@ -508,6 +591,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return Vulnerability fix switch. Value:
      * - 0: No.
      * - 1: Yes.
+     * 
      * &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      * 
      */

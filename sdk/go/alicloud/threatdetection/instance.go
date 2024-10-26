@@ -25,16 +25,19 @@ type Instance struct {
 	// Number of servers.
 	BuyNumber pulumi.StringPtrOutput `pulumi:"buyNumber"`
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	//
 	// Deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScan pulumi.StringPtrOutput `pulumi:"containerImageScan"`
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScanNew pulumi.StringPtrOutput `pulumi:"containerImageScanNew"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+	//
 	// > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
 	Honeypot pulumi.StringPtrOutput `pulumi:"honeypot"`
 	// Cloud honeypot. Value:
@@ -45,30 +48,37 @@ type Instance struct {
 	// - Upgrade: Upgrade.
 	// - Downgrade: Downgrade.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
-	// The payment type of the resource.
+	// The payment type of the resource
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount pulumi.StringPtrOutput `pulumi:"raspCount"`
 	// Automatic renewal cycle, in months.
-	// > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod pulumi.IntOutput `pulumi:"renewPeriod"`
 	// Automatic renewal period unit, value:
 	// - M: month.
 	// - Y: years.
+	//
 	// > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
 	RenewalPeriodUnit pulumi.StringOutput `pulumi:"renewalPeriodUnit"`
-	// Automatic renewal status, default ManualRenewal, valid values:
+	// Automatic renewal status, value:
 	// - AutoRenewal: automatic renewal.
 	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
 	// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasAntiRansomware pulumi.StringPtrOutput `pulumi:"sasAntiRansomware"`
-	// Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+	// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+	//
+	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
 	SasCspm pulumi.StringPtrOutput `pulumi:"sasCspm"`
 	// Cloud platform configuration check switch. Value:
 	// - 0: No.
@@ -79,11 +89,13 @@ type Instance struct {
 	// - false: No.
 	SasSc pulumi.BoolPtrOutput `pulumi:"sasSc"`
 	// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSdk pulumi.StringPtrOutput `pulumi:"sasSdk"`
 	// Malicious file detection SDK.
 	SasSdkSwitch pulumi.StringOutput `pulumi:"sasSdkSwitch"`
 	// Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSlsStorage pulumi.StringPtrOutput `pulumi:"sasSlsStorage"`
 	// Web tamper-proof switch. Value:
@@ -94,15 +106,28 @@ type Instance struct {
 	// - 0: No
 	// - 1: Yes.
 	SasWebguardOrderNum pulumi.StringPtrOutput `pulumi:"sasWebguardOrderNum"`
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	ThreatAnalysis pulumi.StringPtrOutput `pulumi:"threatAnalysis"`
+	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  Step size is 1.
+	ThreatAnalysisFlow pulumi.StringPtrOutput `pulumi:"threatAnalysisFlow"`
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	ThreatAnalysisSlsStorage pulumi.StringPtrOutput `pulumi:"threatAnalysisSlsStorage"`
 	// Threat analysis. Value:
 	// - 0: No.
 	// - 1: Yes.
 	ThreatAnalysisSwitch pulumi.StringOutput `pulumi:"threatAnalysisSwitch"`
+	// Threat analysis and response switch (new), values:
+	// - 0: No
+	// - 1: Yes
+	ThreatAnalysisSwitch1 pulumi.StringOutput `pulumi:"threatAnalysisSwitch1"`
 	// Number of cores.
 	VCore pulumi.StringPtrOutput `pulumi:"vCore"`
 	// Select the security center version. Value:
@@ -113,11 +138,13 @@ type Instance struct {
 	// - level10: Purchase value-added services only.
 	VersionCode pulumi.StringOutput `pulumi:"versionCode"`
 	// Vulnerability repair times, interval type, value range:[20,100000000].
+	//
 	// > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
 	VulCount pulumi.StringPtrOutput `pulumi:"vulCount"`
 	// Vulnerability fix switch. Value:
 	// - 0: No.
 	// - 1: Yes.
+	//
 	// > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
 	VulSwitch pulumi.StringOutput `pulumi:"vulSwitch"`
 }
@@ -161,16 +188,19 @@ type instanceState struct {
 	// Number of servers.
 	BuyNumber *string `pulumi:"buyNumber"`
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	//
 	// Deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScan *string `pulumi:"containerImageScan"`
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScanNew *string `pulumi:"containerImageScanNew"`
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime *string `pulumi:"createTime"`
 	// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+	//
 	// > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
 	Honeypot *string `pulumi:"honeypot"`
 	// Cloud honeypot. Value:
@@ -181,30 +211,37 @@ type instanceState struct {
 	// - Upgrade: Upgrade.
 	// - Downgrade: Downgrade.
 	ModifyType *string `pulumi:"modifyType"`
-	// The payment type of the resource.
+	// The payment type of the resource
 	PaymentType *string `pulumi:"paymentType"`
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period *int `pulumi:"period"`
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount *string `pulumi:"raspCount"`
 	// Automatic renewal cycle, in months.
-	// > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod *int `pulumi:"renewPeriod"`
 	// Automatic renewal period unit, value:
 	// - M: month.
 	// - Y: years.
+	//
 	// > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
 	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
-	// Automatic renewal status, default ManualRenewal, valid values:
+	// Automatic renewal status, value:
 	// - AutoRenewal: automatic renewal.
 	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasAntiRansomware *string `pulumi:"sasAntiRansomware"`
-	// Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+	// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+	//
+	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
 	SasCspm *string `pulumi:"sasCspm"`
 	// Cloud platform configuration check switch. Value:
 	// - 0: No.
@@ -215,11 +252,13 @@ type instanceState struct {
 	// - false: No.
 	SasSc *bool `pulumi:"sasSc"`
 	// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSdk *string `pulumi:"sasSdk"`
 	// Malicious file detection SDK.
 	SasSdkSwitch *string `pulumi:"sasSdkSwitch"`
 	// Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSlsStorage *string `pulumi:"sasSlsStorage"`
 	// Web tamper-proof switch. Value:
@@ -230,15 +269,28 @@ type instanceState struct {
 	// - 0: No
 	// - 1: Yes.
 	SasWebguardOrderNum *string `pulumi:"sasWebguardOrderNum"`
-	// The status of the resource.
+	// The status of the resource
 	Status *string `pulumi:"status"`
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	ThreatAnalysis *string `pulumi:"threatAnalysis"`
+	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  Step size is 1.
+	ThreatAnalysisFlow *string `pulumi:"threatAnalysisFlow"`
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	ThreatAnalysisSlsStorage *string `pulumi:"threatAnalysisSlsStorage"`
 	// Threat analysis. Value:
 	// - 0: No.
 	// - 1: Yes.
 	ThreatAnalysisSwitch *string `pulumi:"threatAnalysisSwitch"`
+	// Threat analysis and response switch (new), values:
+	// - 0: No
+	// - 1: Yes
+	ThreatAnalysisSwitch1 *string `pulumi:"threatAnalysisSwitch1"`
 	// Number of cores.
 	VCore *string `pulumi:"vCore"`
 	// Select the security center version. Value:
@@ -249,11 +301,13 @@ type instanceState struct {
 	// - level10: Purchase value-added services only.
 	VersionCode *string `pulumi:"versionCode"`
 	// Vulnerability repair times, interval type, value range:[20,100000000].
+	//
 	// > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
 	VulCount *string `pulumi:"vulCount"`
 	// Vulnerability fix switch. Value:
 	// - 0: No.
 	// - 1: Yes.
+	//
 	// > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
 	VulSwitch *string `pulumi:"vulSwitch"`
 }
@@ -262,16 +316,19 @@ type InstanceState struct {
 	// Number of servers.
 	BuyNumber pulumi.StringPtrInput
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	//
 	// Deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScan pulumi.StringPtrInput
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScanNew pulumi.StringPtrInput
-	// The creation time of the resource.
+	// The creation time of the resource
 	CreateTime pulumi.StringPtrInput
 	// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+	//
 	// > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
 	Honeypot pulumi.StringPtrInput
 	// Cloud honeypot. Value:
@@ -282,30 +339,37 @@ type InstanceState struct {
 	// - Upgrade: Upgrade.
 	// - Downgrade: Downgrade.
 	ModifyType pulumi.StringPtrInput
-	// The payment type of the resource.
+	// The payment type of the resource
 	PaymentType pulumi.StringPtrInput
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period pulumi.IntPtrInput
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount pulumi.StringPtrInput
 	// Automatic renewal cycle, in months.
-	// > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod pulumi.IntPtrInput
 	// Automatic renewal period unit, value:
 	// - M: month.
 	// - Y: years.
+	//
 	// > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
 	RenewalPeriodUnit pulumi.StringPtrInput
-	// Automatic renewal status, default ManualRenewal, valid values:
+	// Automatic renewal status, value:
 	// - AutoRenewal: automatic renewal.
 	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
 	RenewalStatus pulumi.StringPtrInput
 	// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasAntiRansomware pulumi.StringPtrInput
-	// Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+	// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+	//
+	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
 	SasCspm pulumi.StringPtrInput
 	// Cloud platform configuration check switch. Value:
 	// - 0: No.
@@ -316,11 +380,13 @@ type InstanceState struct {
 	// - false: No.
 	SasSc pulumi.BoolPtrInput
 	// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSdk pulumi.StringPtrInput
 	// Malicious file detection SDK.
 	SasSdkSwitch pulumi.StringPtrInput
 	// Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSlsStorage pulumi.StringPtrInput
 	// Web tamper-proof switch. Value:
@@ -331,15 +397,28 @@ type InstanceState struct {
 	// - 0: No
 	// - 1: Yes.
 	SasWebguardOrderNum pulumi.StringPtrInput
-	// The status of the resource.
+	// The status of the resource
 	Status pulumi.StringPtrInput
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	ThreatAnalysis pulumi.StringPtrInput
+	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  Step size is 1.
+	ThreatAnalysisFlow pulumi.StringPtrInput
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	ThreatAnalysisSlsStorage pulumi.StringPtrInput
 	// Threat analysis. Value:
 	// - 0: No.
 	// - 1: Yes.
 	ThreatAnalysisSwitch pulumi.StringPtrInput
+	// Threat analysis and response switch (new), values:
+	// - 0: No
+	// - 1: Yes
+	ThreatAnalysisSwitch1 pulumi.StringPtrInput
 	// Number of cores.
 	VCore pulumi.StringPtrInput
 	// Select the security center version. Value:
@@ -350,11 +429,13 @@ type InstanceState struct {
 	// - level10: Purchase value-added services only.
 	VersionCode pulumi.StringPtrInput
 	// Vulnerability repair times, interval type, value range:[20,100000000].
+	//
 	// > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
 	VulCount pulumi.StringPtrInput
 	// Vulnerability fix switch. Value:
 	// - 0: No.
 	// - 1: Yes.
+	//
 	// > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
 	VulSwitch pulumi.StringPtrInput
 }
@@ -367,14 +448,17 @@ type instanceArgs struct {
 	// Number of servers.
 	BuyNumber *string `pulumi:"buyNumber"`
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	//
 	// Deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScan *string `pulumi:"containerImageScan"`
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScanNew *string `pulumi:"containerImageScanNew"`
 	// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+	//
 	// > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
 	Honeypot *string `pulumi:"honeypot"`
 	// Cloud honeypot. Value:
@@ -385,30 +469,37 @@ type instanceArgs struct {
 	// - Upgrade: Upgrade.
 	// - Downgrade: Downgrade.
 	ModifyType *string `pulumi:"modifyType"`
-	// The payment type of the resource.
+	// The payment type of the resource
 	PaymentType string `pulumi:"paymentType"`
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period *int `pulumi:"period"`
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount *string `pulumi:"raspCount"`
 	// Automatic renewal cycle, in months.
-	// > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod *int `pulumi:"renewPeriod"`
 	// Automatic renewal period unit, value:
 	// - M: month.
 	// - Y: years.
+	//
 	// > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
 	RenewalPeriodUnit *string `pulumi:"renewalPeriodUnit"`
-	// Automatic renewal status, default ManualRenewal, valid values:
+	// Automatic renewal status, value:
 	// - AutoRenewal: automatic renewal.
 	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasAntiRansomware *string `pulumi:"sasAntiRansomware"`
-	// Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+	// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+	//
+	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
 	SasCspm *string `pulumi:"sasCspm"`
 	// Cloud platform configuration check switch. Value:
 	// - 0: No.
@@ -419,11 +510,13 @@ type instanceArgs struct {
 	// - false: No.
 	SasSc *bool `pulumi:"sasSc"`
 	// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSdk *string `pulumi:"sasSdk"`
 	// Malicious file detection SDK.
 	SasSdkSwitch *string `pulumi:"sasSdkSwitch"`
 	// Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSlsStorage *string `pulumi:"sasSlsStorage"`
 	// Web tamper-proof switch. Value:
@@ -435,12 +528,25 @@ type instanceArgs struct {
 	// - 1: Yes.
 	SasWebguardOrderNum *string `pulumi:"sasWebguardOrderNum"`
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	ThreatAnalysis *string `pulumi:"threatAnalysis"`
+	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  Step size is 1.
+	ThreatAnalysisFlow *string `pulumi:"threatAnalysisFlow"`
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	ThreatAnalysisSlsStorage *string `pulumi:"threatAnalysisSlsStorage"`
 	// Threat analysis. Value:
 	// - 0: No.
 	// - 1: Yes.
 	ThreatAnalysisSwitch *string `pulumi:"threatAnalysisSwitch"`
+	// Threat analysis and response switch (new), values:
+	// - 0: No
+	// - 1: Yes
+	ThreatAnalysisSwitch1 *string `pulumi:"threatAnalysisSwitch1"`
 	// Number of cores.
 	VCore *string `pulumi:"vCore"`
 	// Select the security center version. Value:
@@ -451,11 +557,13 @@ type instanceArgs struct {
 	// - level10: Purchase value-added services only.
 	VersionCode string `pulumi:"versionCode"`
 	// Vulnerability repair times, interval type, value range:[20,100000000].
+	//
 	// > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
 	VulCount *string `pulumi:"vulCount"`
 	// Vulnerability fix switch. Value:
 	// - 0: No.
 	// - 1: Yes.
+	//
 	// > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
 	VulSwitch *string `pulumi:"vulSwitch"`
 }
@@ -465,14 +573,17 @@ type InstanceArgs struct {
 	// Number of servers.
 	BuyNumber pulumi.StringPtrInput
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	//
 	// Deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScan pulumi.StringPtrInput
 	// Container Image security scan. Interval type, value interval:[0,200000].
+	//
 	// > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 	ContainerImageScanNew pulumi.StringPtrInput
 	// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+	//
 	// > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
 	Honeypot pulumi.StringPtrInput
 	// Cloud honeypot. Value:
@@ -483,30 +594,37 @@ type InstanceArgs struct {
 	// - Upgrade: Upgrade.
 	// - Downgrade: Downgrade.
 	ModifyType pulumi.StringPtrInput
-	// The payment type of the resource.
+	// The payment type of the resource
 	PaymentType pulumi.StringInput
 	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
 	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period pulumi.IntPtrInput
 	// Number of application protection licenses. Interval type, value interval:[1,100000000].
 	RaspCount pulumi.StringPtrInput
 	// Automatic renewal cycle, in months.
-	// > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod pulumi.IntPtrInput
 	// Automatic renewal period unit, value:
 	// - M: month.
 	// - Y: years.
+	//
 	// > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
 	RenewalPeriodUnit pulumi.StringPtrInput
-	// Automatic renewal status, default ManualRenewal, valid values:
+	// Automatic renewal status, value:
 	// - AutoRenewal: automatic renewal.
 	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
 	RenewalStatus pulumi.StringPtrInput
 	// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasAntiRansomware pulumi.StringPtrInput
-	// Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+	// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+	//
+	// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
 	SasCspm pulumi.StringPtrInput
 	// Cloud platform configuration check switch. Value:
 	// - 0: No.
@@ -517,11 +635,13 @@ type InstanceArgs struct {
 	// - false: No.
 	SasSc pulumi.BoolPtrInput
 	// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSdk pulumi.StringPtrInput
 	// Malicious file detection SDK.
 	SasSdkSwitch pulumi.StringPtrInput
 	// Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+	//
 	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 	SasSlsStorage pulumi.StringPtrInput
 	// Web tamper-proof switch. Value:
@@ -533,12 +653,25 @@ type InstanceArgs struct {
 	// - 1: Yes.
 	SasWebguardOrderNum pulumi.StringPtrInput
 	// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+	//
 	// > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 	ThreatAnalysis pulumi.StringPtrInput
+	// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  Step size is 1.
+	ThreatAnalysisFlow pulumi.StringPtrInput
+	// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+	//
+	// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+	ThreatAnalysisSlsStorage pulumi.StringPtrInput
 	// Threat analysis. Value:
 	// - 0: No.
 	// - 1: Yes.
 	ThreatAnalysisSwitch pulumi.StringPtrInput
+	// Threat analysis and response switch (new), values:
+	// - 0: No
+	// - 1: Yes
+	ThreatAnalysisSwitch1 pulumi.StringPtrInput
 	// Number of cores.
 	VCore pulumi.StringPtrInput
 	// Select the security center version. Value:
@@ -549,11 +682,13 @@ type InstanceArgs struct {
 	// - level10: Purchase value-added services only.
 	VersionCode pulumi.StringInput
 	// Vulnerability repair times, interval type, value range:[20,100000000].
+	//
 	// > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
 	VulCount pulumi.StringPtrInput
 	// Vulnerability fix switch. Value:
 	// - 0: No.
 	// - 1: Yes.
+	//
 	// > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
 	VulSwitch pulumi.StringPtrInput
 }
@@ -651,6 +786,7 @@ func (o InstanceOutput) BuyNumber() pulumi.StringPtrOutput {
 }
 
 // Container Image security scan. Interval type, value interval:[0,200000].
+//
 // > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 //
 // Deprecated: Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
@@ -659,17 +795,19 @@ func (o InstanceOutput) ContainerImageScan() pulumi.StringPtrOutput {
 }
 
 // Container Image security scan. Interval type, value interval:[0,200000].
+//
 // > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
 func (o InstanceOutput) ContainerImageScanNew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ContainerImageScanNew }).(pulumi.StringPtrOutput)
 }
 
-// The creation time of the resource.
+// The creation time of the resource
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+//
 // > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
 func (o InstanceOutput) Honeypot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Honeypot }).(pulumi.StringPtrOutput)
@@ -689,12 +827,13 @@ func (o InstanceOutput) ModifyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
 }
 
-// The payment type of the resource.
+// The payment type of the resource
 func (o InstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
 // Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+//
 // > **NOTE:**  must be set when creating a prepaid instance.
 func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
@@ -706,7 +845,8 @@ func (o InstanceOutput) RaspCount() pulumi.StringPtrOutput {
 }
 
 // Automatic renewal cycle, in months.
-// > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+//
+// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 func (o InstanceOutput) RenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.RenewPeriod }).(pulumi.IntOutput)
 }
@@ -714,26 +854,31 @@ func (o InstanceOutput) RenewPeriod() pulumi.IntOutput {
 // Automatic renewal period unit, value:
 // - M: month.
 // - Y: years.
+//
 // > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
 func (o InstanceOutput) RenewalPeriodUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RenewalPeriodUnit }).(pulumi.StringOutput)
 }
 
-// Automatic renewal status, default ManualRenewal, valid values:
+// Automatic renewal status, value:
 // - AutoRenewal: automatic renewal.
 // - ManualRenewal: manual renewal.
+//
+// Default ManualRenewal.
 func (o InstanceOutput) RenewalStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalStatus }).(pulumi.StringPtrOutput)
 }
 
 // Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+//
 // > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 func (o InstanceOutput) SasAntiRansomware() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SasAntiRansomware }).(pulumi.StringPtrOutput)
 }
 
-// Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+//
+// > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
 func (o InstanceOutput) SasCspm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SasCspm }).(pulumi.StringPtrOutput)
 }
@@ -753,6 +898,7 @@ func (o InstanceOutput) SasSc() pulumi.BoolPtrOutput {
 }
 
 // Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+//
 // > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 func (o InstanceOutput) SasSdk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SasSdk }).(pulumi.StringPtrOutput)
@@ -764,6 +910,7 @@ func (o InstanceOutput) SasSdkSwitch() pulumi.StringOutput {
 }
 
 // Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+//
 // > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
 func (o InstanceOutput) SasSlsStorage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SasSlsStorage }).(pulumi.StringPtrOutput)
@@ -783,15 +930,30 @@ func (o InstanceOutput) SasWebguardOrderNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SasWebguardOrderNum }).(pulumi.StringPtrOutput)
 }
 
-// The status of the resource.
+// The status of the resource
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+//
 // > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
 func (o InstanceOutput) ThreatAnalysis() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ThreatAnalysis }).(pulumi.StringPtrOutput)
+}
+
+// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+//
+// > **NOTE:**  Step size is 1.
+func (o InstanceOutput) ThreatAnalysisFlow() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ThreatAnalysisFlow }).(pulumi.StringPtrOutput)
+}
+
+// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+//
+// > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+func (o InstanceOutput) ThreatAnalysisSlsStorage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ThreatAnalysisSlsStorage }).(pulumi.StringPtrOutput)
 }
 
 // Threat analysis. Value:
@@ -799,6 +961,13 @@ func (o InstanceOutput) ThreatAnalysis() pulumi.StringPtrOutput {
 // - 1: Yes.
 func (o InstanceOutput) ThreatAnalysisSwitch() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ThreatAnalysisSwitch }).(pulumi.StringOutput)
+}
+
+// Threat analysis and response switch (new), values:
+// - 0: No
+// - 1: Yes
+func (o InstanceOutput) ThreatAnalysisSwitch1() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ThreatAnalysisSwitch1 }).(pulumi.StringOutput)
 }
 
 // Number of cores.
@@ -817,6 +986,7 @@ func (o InstanceOutput) VersionCode() pulumi.StringOutput {
 }
 
 // Vulnerability repair times, interval type, value range:[20,100000000].
+//
 // > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
 func (o InstanceOutput) VulCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VulCount }).(pulumi.StringPtrOutput)
@@ -825,6 +995,7 @@ func (o InstanceOutput) VulCount() pulumi.StringPtrOutput {
 // Vulnerability fix switch. Value:
 // - 0: No.
 // - 1: Yes.
+//
 // > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
 func (o InstanceOutput) VulSwitch() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VulSwitch }).(pulumi.StringOutput)

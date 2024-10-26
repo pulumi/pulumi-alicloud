@@ -42,19 +42,19 @@ class InstanceArgs:
         :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
-        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
-        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. It will be ignored when `cfw_log = false`.
+        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
+        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
-        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
                **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
                - `AutoRenewal`: Auto renewal.
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -150,7 +150,7 @@ class InstanceArgs:
     @pulumi.getter(name="cfwLog")
     def cfw_log(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to use log audit. Valid values: `true`, `false`.
+        Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
         """
         return pulumi.get(self, "cfw_log")
 
@@ -162,7 +162,7 @@ class InstanceArgs:
     @pulumi.getter(name="cfwLogStorage")
     def cfw_log_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        The log storage capacity. It will be ignored when `cfw_log = false`.
+        The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         """
         return pulumi.get(self, "cfw_log_storage")
 
@@ -222,7 +222,7 @@ class InstanceArgs:
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
@@ -284,7 +284,7 @@ class InstanceArgs:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
         - `AutoRenewal`: Auto renewal.
         - `ManualRenewal`: Manual renewal.
         - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -332,21 +332,22 @@ class _InstanceState:
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[str]] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 user_status: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
-        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
-        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. It will be ignored when `cfw_log = false`.
+        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
+        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] end_time: The end time.
         :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
-        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         :param pulumi.Input[str] release_time: The release time.
@@ -354,13 +355,14 @@ class _InstanceState:
         :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
                **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
                - `AutoRenewal`: Auto renewal.
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
                **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
-        :param pulumi.Input[str] status: The status of Instance.
+        :param pulumi.Input[str] status: The status of Cloud Firewall Instance.
+        :param pulumi.Input[bool] user_status: (Available since v1.232.0) The user status of Cloud Firewall Instance.
         """
         if account_number is not None:
             pulumi.set(__self__, "account_number", account_number)
@@ -407,6 +409,8 @@ class _InstanceState:
             pulumi.set(__self__, "spec", spec)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if user_status is not None:
+            pulumi.set(__self__, "user_status", user_status)
 
     @property
     @pulumi.getter(name="accountNumber")
@@ -448,7 +452,7 @@ class _InstanceState:
     @pulumi.getter(name="cfwLog")
     def cfw_log(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to use log audit. Valid values: `true`, `false`.
+        Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
         """
         return pulumi.get(self, "cfw_log")
 
@@ -460,7 +464,7 @@ class _InstanceState:
     @pulumi.getter(name="cfwLogStorage")
     def cfw_log_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        The log storage capacity. It will be ignored when `cfw_log = false`.
+        The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         """
         return pulumi.get(self, "cfw_log_storage")
 
@@ -544,7 +548,7 @@ class _InstanceState:
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
@@ -630,7 +634,7 @@ class _InstanceState:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
         - `AutoRenewal`: Auto renewal.
         - `ManualRenewal`: Manual renewal.
         - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -658,13 +662,25 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Instance.
+        The status of Cloud Firewall Instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="userStatus")
+    def user_status(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Available since v1.232.0) The user status of Cloud Firewall Instance.
+        """
+        return pulumi.get(self, "user_status")
+
+    @user_status.setter
+    def user_status(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "user_status", value)
 
 
 class Instance(pulumi.CustomResource):
@@ -738,20 +754,20 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
-        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
-        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. It will be ignored when `cfw_log = false`.
+        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
+        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
-        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute `renew_period` has been deprecated since 1.209.1. Using `renewal_duration` instead.
         :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
                **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
                - `AutoRenewal`: Auto renewal.
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -871,6 +887,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["end_time"] = None
             __props__.__dict__["release_time"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["user_status"] = None
         super(Instance, __self__).__init__(
             'alicloud:cloudfirewall/instance:Instance',
             resource_name,
@@ -901,7 +918,8 @@ class Instance(pulumi.CustomResource):
             renewal_duration_unit: Optional[pulumi.Input[str]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[str]] = None,
-            status: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            status: Optional[pulumi.Input[str]] = None,
+            user_status: Optional[pulumi.Input[bool]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -912,15 +930,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
         :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
-        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
-        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. It will be ignored when `cfw_log = false`.
+        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
+        :param pulumi.Input[int] cfw_log_storage: The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         :param pulumi.Input[str] create_time: The creation time.
         :param pulumi.Input[str] end_time: The end time.
         :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
-        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
         :param pulumi.Input[str] release_time: The release time.
@@ -928,13 +946,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that `renewal_status` is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
                **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
-        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
                - `AutoRenewal`: Auto renewal.
                - `ManualRenewal`: Manual renewal.
                - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
                **NOTE:** `renewal_status` takes effect only if `payment_type` is set to `Subscription`.
         :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
-        :param pulumi.Input[str] status: The status of Instance.
+        :param pulumi.Input[str] status: The status of Cloud Firewall Instance.
+        :param pulumi.Input[bool] user_status: (Available since v1.232.0) The user status of Cloud Firewall Instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -961,6 +980,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["renewal_status"] = renewal_status
         __props__.__dict__["spec"] = spec
         __props__.__dict__["status"] = status
+        __props__.__dict__["user_status"] = user_status
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -991,7 +1011,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="cfwLog")
     def cfw_log(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to use log audit. Valid values: `true`, `false`.
+        Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
         """
         return pulumi.get(self, "cfw_log")
 
@@ -999,7 +1019,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="cfwLogStorage")
     def cfw_log_storage(self) -> pulumi.Output[Optional[int]]:
         """
-        The log storage capacity. It will be ignored when `cfw_log = false`.
+        The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
         """
         return pulumi.get(self, "cfw_log_storage")
 
@@ -1037,7 +1057,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipNumber")
-    def ip_number(self) -> pulumi.Output[Optional[int]]:
+    def ip_number(self) -> pulumi.Output[int]:
         """
         The number of public IPs that can be protected. Valid values: 20 to 4000.
         """
@@ -1055,7 +1075,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+        The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
         """
         return pulumi.get(self, "modify_type")
 
@@ -1113,7 +1133,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> pulumi.Output[str]:
         """
-        Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
         - `AutoRenewal`: Auto renewal.
         - `ManualRenewal`: Manual renewal.
         - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -1123,7 +1143,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Output[Optional[str]]:
+    def spec(self) -> pulumi.Output[str]:
         """
         Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """
@@ -1133,7 +1153,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of Instance.
+        The status of Cloud Firewall Instance.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="userStatus")
+    def user_status(self) -> pulumi.Output[bool]:
+        """
+        (Available since v1.232.0) The user status of Cloud Firewall Instance.
+        """
+        return pulumi.get(self, "user_status")
 

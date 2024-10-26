@@ -1280,13 +1280,13 @@ public final class ResourcemanagerFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", TypeShape.of(GetDelegatedAdministratorsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the resource manager folders of the current Alibaba Cloud user.
+     * This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.84.0+.
-     * 
-     * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1296,6 +1296,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.Folder;
+     * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
@@ -1311,11 +1313,17 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex("tftest")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Folder("default", FolderArgs.builder()
+     *             .folderName(name)
      *             .build());
      * 
-     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
+     *         final var ids = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
      * }
@@ -1327,13 +1335,13 @@ public final class ResourcemanagerFunctions {
         return getFolders(GetFoldersArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the resource manager folders of the current Alibaba Cloud user.
+     * This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.84.0+.
-     * 
-     * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1343,6 +1351,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.Folder;
+     * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
@@ -1358,11 +1368,17 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex("tftest")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Folder("default", FolderArgs.builder()
+     *             .folderName(name)
      *             .build());
      * 
-     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
+     *         final var ids = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
      * }
@@ -1374,13 +1390,13 @@ public final class ResourcemanagerFunctions {
         return getFoldersPlain(GetFoldersPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the resource manager folders of the current Alibaba Cloud user.
+     * This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.84.0+.
-     * 
-     * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1390,6 +1406,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.Folder;
+     * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
@@ -1405,11 +1423,17 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex("tftest")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Folder("default", FolderArgs.builder()
+     *             .folderName(name)
      *             .build());
      * 
-     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
+     *         final var ids = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
      * }
@@ -1421,13 +1445,13 @@ public final class ResourcemanagerFunctions {
         return getFolders(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the resource manager folders of the current Alibaba Cloud user.
+     * This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.84.0+.
-     * 
-     * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1437,6 +1461,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.Folder;
+     * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
@@ -1452,11 +1478,17 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex("tftest")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Folder("default", FolderArgs.builder()
+     *             .folderName(name)
      *             .build());
      * 
-     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
+     *         final var ids = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
      * }
@@ -1468,13 +1500,13 @@ public final class ResourcemanagerFunctions {
         return getFoldersPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the resource manager folders of the current Alibaba Cloud user.
+     * This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.84.0+.
-     * 
-     * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1484,6 +1516,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.Folder;
+     * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
@@ -1499,11 +1533,17 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex("tftest")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Folder("default", FolderArgs.builder()
+     *             .folderName(name)
      *             .build());
      * 
-     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
+     *         final var ids = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
      * }
@@ -1515,13 +1555,13 @@ public final class ResourcemanagerFunctions {
         return Deployment.getInstance().invoke("alicloud:resourcemanager/getFolders:getFolders", TypeShape.of(GetFoldersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the resource manager folders of the current Alibaba Cloud user.
+     * This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:**  Available in 1.84.0+.
-     * 
-     * &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+     * &gt; **NOTE:** Available since v1.84.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
      * <pre>
@@ -1531,6 +1571,8 @@ public final class ResourcemanagerFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.Folder;
+     * import com.pulumi.alicloud.resourcemanager.FolderArgs;
      * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
      * import com.pulumi.alicloud.resourcemanager.inputs.GetFoldersArgs;
      * import java.util.List;
@@ -1546,11 +1588,17 @@ public final class ResourcemanagerFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
-     *             .nameRegex("tftest")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("terraform-example");
+     *         var default_ = new Folder("default", FolderArgs.builder()
+     *             .folderName(name)
      *             .build());
      * 
-     *         ctx.export("firstFolderId", example.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id()));
+     *         final var ids = ResourcemanagerFunctions.getFolders(GetFoldersArgs.builder()
+     *             .ids(default_.id())
+     *             .build());
+     * 
+     *         ctx.export("resourceManagerFolderId0", ids.applyValue(getFoldersResult -> getFoldersResult).applyValue(ids -> ids.applyValue(getFoldersResult -> getFoldersResult.folders()[0].id())));
      *     }
      * }
      * }

@@ -29,7 +29,7 @@ class GetCertificatesResult:
     """
     A collection of values returned by getCertificates.
     """
-    def __init__(__self__, certificates=None, enable_details=None, id=None, ids=None, lang=None, name_regex=None, names=None, output_file=None):
+    def __init__(__self__, certificates=None, enable_details=None, id=None, ids=None, keyword=None, lang=None, name_regex=None, names=None, output_file=None):
         if certificates and not isinstance(certificates, list):
             raise TypeError("Expected argument 'certificates' to be a list")
         pulumi.set(__self__, "certificates", certificates)
@@ -42,6 +42,9 @@ class GetCertificatesResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if keyword and not isinstance(keyword, str):
+            raise TypeError("Expected argument 'keyword' to be a str")
+        pulumi.set(__self__, "keyword", keyword)
         if lang and not isinstance(lang, str):
             raise TypeError("Expected argument 'lang' to be a str")
         pulumi.set(__self__, "lang", lang)
@@ -86,6 +89,12 @@ class GetCertificatesResult:
 
     @property
     @pulumi.getter
+    def keyword(self) -> Optional[str]:
+        return pulumi.get(self, "keyword")
+
+    @property
+    @pulumi.getter
+    @_utilities.deprecated("""Field `lang` has been deprecated from provider version 1.232.0.""")
     def lang(self) -> Optional[str]:
         return pulumi.get(self, "lang")
 
@@ -118,6 +127,7 @@ class AwaitableGetCertificatesResult(GetCertificatesResult):
             enable_details=self.enable_details,
             id=self.id,
             ids=self.ids,
+            keyword=self.keyword,
             lang=self.lang,
             name_regex=self.name_regex,
             names=self.names,
@@ -126,6 +136,7 @@ class AwaitableGetCertificatesResult(GetCertificatesResult):
 
 def get_certificates(enable_details: Optional[bool] = None,
                      ids: Optional[Sequence[str]] = None,
+                     keyword: Optional[str] = None,
                      lang: Optional[str] = None,
                      name_regex: Optional[str] = None,
                      output_file: Optional[str] = None,
@@ -144,6 +155,7 @@ def get_certificates(enable_details: Optional[bool] = None,
     __args__ = dict()
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
+    __args__['keyword'] = keyword
     __args__['lang'] = lang
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -155,12 +167,14 @@ def get_certificates(enable_details: Optional[bool] = None,
         enable_details=pulumi.get(__ret__, 'enable_details'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
+        keyword=pulumi.get(__ret__, 'keyword'),
         lang=pulumi.get(__ret__, 'lang'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = None,
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                            keyword: Optional[pulumi.Input[Optional[str]]] = None,
                             lang: Optional[pulumi.Input[Optional[str]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
@@ -179,6 +193,7 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
     __args__ = dict()
     __args__['enableDetails'] = enable_details
     __args__['ids'] = ids
+    __args__['keyword'] = keyword
     __args__['lang'] = lang
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
@@ -189,6 +204,7 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
         enable_details=pulumi.get(__response__, 'enable_details'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
+        keyword=pulumi.get(__response__, 'keyword'),
         lang=pulumi.get(__response__, 'lang'),
         name_regex=pulumi.get(__response__, 'name_regex'),
         names=pulumi.get(__response__, 'names'),

@@ -74,7 +74,20 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         /// </summary>
         [Output("applicationName")]
-        public Output<string> ApplicationName { get; private set; } = null!;
+        public Output<string?> ApplicationName { get; private set; } = null!;
+
+        /// <summary>
+        /// The application types supported by the access control policy.
+        /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        /// </summary>
+        [Output("applicationNameLists")]
+        public Output<ImmutableArray<string>> ApplicationNameLists { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.232.0) The time when the access control policy was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// The description of the access control policy.
@@ -119,6 +132,22 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Direction { get; private set; } = null!;
 
         /// <summary>
+        /// The domain name resolution method of the access control policy. Valid values:
+        /// - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
+        /// - `DNS`: DNS-based dynamic resolution.
+        /// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
+        /// </summary>
+        [Output("domainResolveType")]
+        public Output<string?> DomainResolveType { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+        /// </summary>
+        [Output("endTime")]
+        public Output<int?> EndTime { get; private set; } = null!;
+
+        /// <summary>
         /// The IP version supported by the access control policy. Default value: `4`. Valid values:
         /// </summary>
         [Output("ipVersion")]
@@ -143,6 +172,39 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> Release { get; private set; } = null!;
 
         /// <summary>
+        /// The days of a week or of a month on which the access control policy takes effect. Valid values:
+        /// - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+        /// - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        /// &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+        /// </summary>
+        [Output("repeatDays")]
+        public Output<ImmutableArray<int>> RepeatDays { get; private set; } = null!;
+
+        /// <summary>
+        /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+        /// </summary>
+        [Output("repeatEndTime")]
+        public Output<string?> RepeatEndTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        /// </summary>
+        [Output("repeatStartTime")]
+        public Output<string?> RepeatStartTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
+        /// - `Permanent`: The policy always takes effect.
+        /// - `None`: The policy takes effect for only once.
+        /// - `Daily`: The policy takes effect on a daily basis.
+        /// - `Weekly`: The policy takes effect on a weekly basis.
+        /// - `Monthly`: The policy takes effect on a monthly basis.
+        /// </summary>
+        [Output("repeatType")]
+        public Output<string> RepeatType { get; private set; } = null!;
+
+        /// <summary>
         /// The source address in the access control policy.
         /// </summary>
         [Output("source")]
@@ -159,6 +221,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Output("sourceType")]
         public Output<string> SourceType { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        /// </summary>
+        [Output("startTime")]
+        public Output<int?> StartTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -216,8 +284,21 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The application type supported by the access control policy. Valid values: `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
         /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name` to `ANY`.
         /// </summary>
-        [Input("applicationName", required: true)]
-        public Input<string> ApplicationName { get; set; } = null!;
+        [Input("applicationName")]
+        public Input<string>? ApplicationName { get; set; }
+
+        [Input("applicationNameLists")]
+        private InputList<string>? _applicationNameLists;
+
+        /// <summary>
+        /// The application types supported by the access control policy.
+        /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        /// </summary>
+        public InputList<string> ApplicationNameLists
+        {
+            get => _applicationNameLists ?? (_applicationNameLists = new InputList<string>());
+            set => _applicationNameLists = value;
+        }
 
         /// <summary>
         /// The description of the access control policy.
@@ -262,6 +343,22 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string> Direction { get; set; } = null!;
 
         /// <summary>
+        /// The domain name resolution method of the access control policy. Valid values:
+        /// - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
+        /// - `DNS`: DNS-based dynamic resolution.
+        /// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
+        /// </summary>
+        [Input("domainResolveType")]
+        public Input<string>? DomainResolveType { get; set; }
+
+        /// <summary>
+        /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+        /// </summary>
+        [Input("endTime")]
+        public Input<int>? EndTime { get; set; }
+
+        /// <summary>
         /// The IP version supported by the access control policy. Default value: `4`. Valid values:
         /// </summary>
         [Input("ipVersion")]
@@ -285,6 +382,45 @@ namespace Pulumi.AliCloud.CloudFirewall
         [Input("release")]
         public Input<string>? Release { get; set; }
 
+        [Input("repeatDays")]
+        private InputList<int>? _repeatDays;
+
+        /// <summary>
+        /// The days of a week or of a month on which the access control policy takes effect. Valid values:
+        /// - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+        /// - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        /// &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+        /// </summary>
+        public InputList<int> RepeatDays
+        {
+            get => _repeatDays ?? (_repeatDays = new InputList<int>());
+            set => _repeatDays = value;
+        }
+
+        /// <summary>
+        /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+        /// </summary>
+        [Input("repeatEndTime")]
+        public Input<string>? RepeatEndTime { get; set; }
+
+        /// <summary>
+        /// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        /// </summary>
+        [Input("repeatStartTime")]
+        public Input<string>? RepeatStartTime { get; set; }
+
+        /// <summary>
+        /// The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
+        /// - `Permanent`: The policy always takes effect.
+        /// - `None`: The policy takes effect for only once.
+        /// - `Daily`: The policy takes effect on a daily basis.
+        /// - `Weekly`: The policy takes effect on a weekly basis.
+        /// - `Monthly`: The policy takes effect on a monthly basis.
+        /// </summary>
+        [Input("repeatType")]
+        public Input<string>? RepeatType { get; set; }
+
         /// <summary>
         /// The source address in the access control policy.
         /// </summary>
@@ -302,6 +438,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;
+
+        /// <summary>
+        /// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        /// </summary>
+        [Input("startTime")]
+        public Input<int>? StartTime { get; set; }
 
         public ControlPolicyArgs()
         {
@@ -329,6 +471,25 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Input("applicationName")]
         public Input<string>? ApplicationName { get; set; }
+
+        [Input("applicationNameLists")]
+        private InputList<string>? _applicationNameLists;
+
+        /// <summary>
+        /// The application types supported by the access control policy.
+        /// &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `["ANY"]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+        /// </summary>
+        public InputList<string> ApplicationNameLists
+        {
+            get => _applicationNameLists ?? (_applicationNameLists = new InputList<string>());
+            set => _applicationNameLists = value;
+        }
+
+        /// <summary>
+        /// (Available since v1.232.0) The time when the access control policy was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// The description of the access control policy.
@@ -373,6 +534,22 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Direction { get; set; }
 
         /// <summary>
+        /// The domain name resolution method of the access control policy. Valid values:
+        /// - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
+        /// - `DNS`: DNS-based dynamic resolution.
+        /// - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
+        /// </summary>
+        [Input("domainResolveType")]
+        public Input<string>? DomainResolveType { get; set; }
+
+        /// <summary>
+        /// The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+        /// </summary>
+        [Input("endTime")]
+        public Input<int>? EndTime { get; set; }
+
+        /// <summary>
         /// The IP version supported by the access control policy. Default value: `4`. Valid values:
         /// </summary>
         [Input("ipVersion")]
@@ -396,6 +573,45 @@ namespace Pulumi.AliCloud.CloudFirewall
         [Input("release")]
         public Input<string>? Release { get; set; }
 
+        [Input("repeatDays")]
+        private InputList<int>? _repeatDays;
+
+        /// <summary>
+        /// The days of a week or of a month on which the access control policy takes effect. Valid values:
+        /// - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+        /// - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+        /// &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+        /// </summary>
+        public InputList<int> RepeatDays
+        {
+            get => _repeatDays ?? (_repeatDays = new InputList<int>());
+            set => _repeatDays = value;
+        }
+
+        /// <summary>
+        /// The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+        /// &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+        /// </summary>
+        [Input("repeatEndTime")]
+        public Input<string>? RepeatEndTime { get; set; }
+
+        /// <summary>
+        /// The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        /// </summary>
+        [Input("repeatStartTime")]
+        public Input<string>? RepeatStartTime { get; set; }
+
+        /// <summary>
+        /// The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
+        /// - `Permanent`: The policy always takes effect.
+        /// - `None`: The policy takes effect for only once.
+        /// - `Daily`: The policy takes effect on a daily basis.
+        /// - `Weekly`: The policy takes effect on a weekly basis.
+        /// - `Monthly`: The policy takes effect on a monthly basis.
+        /// </summary>
+        [Input("repeatType")]
+        public Input<string>? RepeatType { get; set; }
+
         /// <summary>
         /// The source address in the access control policy.
         /// </summary>
@@ -413,6 +629,12 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// </summary>
         [Input("sourceType")]
         public Input<string>? SourceType { get; set; }
+
+        /// <summary>
+        /// The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+        /// </summary>
+        [Input("startTime")]
+        public Input<int>? StartTime { get; set; }
 
         public ControlPolicyState()
         {

@@ -19,6 +19,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> ConfigFileVolumeConfigFileToPaths;
         /// <summary>
+        /// The default permissions on the ConfigFileVolume.
+        /// </summary>
+        public readonly int? ConfigFileVolumeDefaultMode;
+        /// <summary>
         /// The ID of DiskVolume.
         /// </summary>
         public readonly string? DiskVolumeDiskId;
@@ -30,6 +34,14 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// The system type of DiskVolume.
         /// </summary>
         public readonly string? DiskVolumeFsType;
+        /// <summary>
+        /// The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+        /// </summary>
+        public readonly string? EmptyDirVolumeMedium;
+        /// <summary>
+        /// The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+        /// </summary>
+        public readonly string? EmptyDirVolumeSizeLimit;
         /// <summary>
         /// The name of the FlexVolume driver.
         /// </summary>
@@ -44,6 +56,14 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// string.
         /// </summary>
         public readonly string? FlexVolumeOptions;
+        /// <summary>
+        /// The absolute path on the host.
+        /// </summary>
+        public readonly string? HostPathVolumePath;
+        /// <summary>
+        /// The type of the host path. Examples: File, Directory, and Socket.
+        /// </summary>
+        public readonly string? HostPathVolumeType;
         /// <summary>
         /// The name of the volume.
         /// </summary>
@@ -71,17 +91,27 @@ namespace Pulumi.AliCloud.Ess.Outputs
         private EciScalingConfigurationVolume(
             ImmutableArray<Outputs.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths,
 
+            int? configFileVolumeDefaultMode,
+
             string? diskVolumeDiskId,
 
             int? diskVolumeDiskSize,
 
             string? diskVolumeFsType,
 
+            string? emptyDirVolumeMedium,
+
+            string? emptyDirVolumeSizeLimit,
+
             string? flexVolumeDriver,
 
             string? flexVolumeFsType,
 
             string? flexVolumeOptions,
+
+            string? hostPathVolumePath,
+
+            string? hostPathVolumeType,
 
             string? name,
 
@@ -94,12 +124,17 @@ namespace Pulumi.AliCloud.Ess.Outputs
             string? type)
         {
             ConfigFileVolumeConfigFileToPaths = configFileVolumeConfigFileToPaths;
+            ConfigFileVolumeDefaultMode = configFileVolumeDefaultMode;
             DiskVolumeDiskId = diskVolumeDiskId;
             DiskVolumeDiskSize = diskVolumeDiskSize;
             DiskVolumeFsType = diskVolumeFsType;
+            EmptyDirVolumeMedium = emptyDirVolumeMedium;
+            EmptyDirVolumeSizeLimit = emptyDirVolumeSizeLimit;
             FlexVolumeDriver = flexVolumeDriver;
             FlexVolumeFsType = flexVolumeFsType;
             FlexVolumeOptions = flexVolumeOptions;
+            HostPathVolumePath = hostPathVolumePath;
+            HostPathVolumeType = hostPathVolumeType;
             Name = name;
             NfsVolumePath = nfsVolumePath;
             NfsVolumeReadOnly = nfsVolumeReadOnly;

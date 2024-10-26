@@ -123,6 +123,8 @@ type NodePool struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform pulumi.StringOutput `pulumi:"platform"`
+	// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+	PreUserData pulumi.StringPtrOutput `pulumi:"preUserData"`
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions NodePoolPrivatePoolOptionsPtrOutput `pulumi:"privatePoolOptions"`
 	// The list of RDS instances.
@@ -150,6 +152,7 @@ type NodePool struct {
 	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
 	SecurityHardeningOs pulumi.BoolPtrOutput `pulumi:"securityHardeningOs"`
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	//
 	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled pulumi.BoolPtrOutput `pulumi:"socEnabled"`
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
@@ -187,7 +190,7 @@ type NodePool struct {
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrOutput `pulumi:"systemDiskSnapshotPolicyId"`
-	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints NodePoolTaintArrayOutput `pulumi:"taints"`
@@ -197,7 +200,7 @@ type NodePool struct {
 	Unschedulable pulumi.BoolPtrOutput `pulumi:"unschedulable"`
 	// Synchronously update node labels and taints.
 	UpdateNodes pulumi.BoolPtrOutput `pulumi:"updateNodes"`
-	// Node custom data.
+	// Node custom data, base64-encoded.
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The vswitches used by node pool workers.
 	VswitchIds pulumi.StringArrayOutput `pulumi:"vswitchIds"`
@@ -350,6 +353,8 @@ type nodePoolState struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform *string `pulumi:"platform"`
+	// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+	PreUserData *string `pulumi:"preUserData"`
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions *NodePoolPrivatePoolOptions `pulumi:"privatePoolOptions"`
 	// The list of RDS instances.
@@ -377,6 +382,7 @@ type nodePoolState struct {
 	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
 	SecurityHardeningOs *bool `pulumi:"securityHardeningOs"`
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	//
 	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
@@ -414,7 +420,7 @@ type nodePoolState struct {
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
-	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
 	Tags map[string]string `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints []NodePoolTaint `pulumi:"taints"`
@@ -424,7 +430,7 @@ type nodePoolState struct {
 	Unschedulable *bool `pulumi:"unschedulable"`
 	// Synchronously update node labels and taints.
 	UpdateNodes *bool `pulumi:"updateNodes"`
-	// Node custom data.
+	// Node custom data, base64-encoded.
 	UserData *string `pulumi:"userData"`
 	// The vswitches used by node pool workers.
 	VswitchIds []string `pulumi:"vswitchIds"`
@@ -528,6 +534,8 @@ type NodePoolState struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform pulumi.StringPtrInput
+	// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+	PreUserData pulumi.StringPtrInput
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions NodePoolPrivatePoolOptionsPtrInput
 	// The list of RDS instances.
@@ -555,6 +563,7 @@ type NodePoolState struct {
 	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
 	SecurityHardeningOs pulumi.BoolPtrInput
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	//
 	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled pulumi.BoolPtrInput
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
@@ -592,7 +601,7 @@ type NodePoolState struct {
 	SystemDiskSize pulumi.IntPtrInput
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
-	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
 	Tags pulumi.StringMapInput
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints NodePoolTaintArrayInput
@@ -602,7 +611,7 @@ type NodePoolState struct {
 	Unschedulable pulumi.BoolPtrInput
 	// Synchronously update node labels and taints.
 	UpdateNodes pulumi.BoolPtrInput
-	// Node custom data.
+	// Node custom data, base64-encoded.
 	UserData pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
 	VswitchIds pulumi.StringArrayInput
@@ -708,6 +717,8 @@ type nodePoolArgs struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform *string `pulumi:"platform"`
+	// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+	PreUserData *string `pulumi:"preUserData"`
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions *NodePoolPrivatePoolOptions `pulumi:"privatePoolOptions"`
 	// The list of RDS instances.
@@ -733,6 +744,7 @@ type nodePoolArgs struct {
 	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
 	SecurityHardeningOs *bool `pulumi:"securityHardeningOs"`
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	//
 	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled *bool `pulumi:"socEnabled"`
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
@@ -770,7 +782,7 @@ type nodePoolArgs struct {
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId *string `pulumi:"systemDiskSnapshotPolicyId"`
-	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
 	Tags map[string]string `pulumi:"tags"`
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints []NodePoolTaint `pulumi:"taints"`
@@ -780,7 +792,7 @@ type nodePoolArgs struct {
 	Unschedulable *bool `pulumi:"unschedulable"`
 	// Synchronously update node labels and taints.
 	UpdateNodes *bool `pulumi:"updateNodes"`
-	// Node custom data.
+	// Node custom data, base64-encoded.
 	UserData *string `pulumi:"userData"`
 	// The vswitches used by node pool workers.
 	VswitchIds []string `pulumi:"vswitchIds"`
@@ -883,6 +895,8 @@ type NodePoolArgs struct {
 	//
 	// Deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `imageType` instead.
 	Platform pulumi.StringPtrInput
+	// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+	PreUserData pulumi.StringPtrInput
 	// Private node pool configuration. See `privatePoolOptions` below.
 	PrivatePoolOptions NodePoolPrivatePoolOptionsPtrInput
 	// The list of RDS instances.
@@ -908,6 +922,7 @@ type NodePoolArgs struct {
 	// Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
 	SecurityHardeningOs pulumi.BoolPtrInput
 	// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+	//
 	// > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 	SocEnabled pulumi.BoolPtrInput
 	// The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
@@ -945,7 +960,7 @@ type NodePoolArgs struct {
 	SystemDiskSize pulumi.IntPtrInput
 	// The ID of the automatic snapshot policy used by the system disk.
 	SystemDiskSnapshotPolicyId pulumi.StringPtrInput
-	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+	// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
 	Tags pulumi.StringMapInput
 	// A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
 	Taints NodePoolTaintArrayInput
@@ -955,7 +970,7 @@ type NodePoolArgs struct {
 	Unschedulable pulumi.BoolPtrInput
 	// Synchronously update node labels and taints.
 	UpdateNodes pulumi.BoolPtrInput
-	// Node custom data.
+	// Node custom data, base64-encoded.
 	UserData pulumi.StringPtrInput
 	// The vswitches used by node pool workers.
 	VswitchIds pulumi.StringArrayInput
@@ -1262,6 +1277,11 @@ func (o NodePoolOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)
 }
 
+// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+func (o NodePoolOutput) PreUserData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.PreUserData }).(pulumi.StringPtrOutput)
+}
+
 // Private node pool configuration. See `privatePoolOptions` below.
 func (o NodePoolOutput) PrivatePoolOptions() NodePoolPrivatePoolOptionsPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolPrivatePoolOptionsPtrOutput { return v.PrivatePoolOptions }).(NodePoolPrivatePoolOptionsPtrOutput)
@@ -1325,6 +1345,7 @@ func (o NodePoolOutput) SecurityHardeningOs() pulumi.BoolPtrOutput {
 }
 
 // Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+//
 // > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
 func (o NodePoolOutput) SocEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.SocEnabled }).(pulumi.BoolPtrOutput)
@@ -1407,7 +1428,7 @@ func (o NodePoolOutput) SystemDiskSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.SystemDiskSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
 func (o NodePoolOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -1432,7 +1453,7 @@ func (o NodePoolOutput) UpdateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.BoolPtrOutput { return v.UpdateNodes }).(pulumi.BoolPtrOutput)
 }
 
-// Node custom data.
+// Node custom data, base64-encoded.
 func (o NodePoolOutput) UserData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringPtrOutput { return v.UserData }).(pulumi.StringPtrOutput)
 }

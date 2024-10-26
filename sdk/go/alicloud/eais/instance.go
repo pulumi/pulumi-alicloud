@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a EAIS Instance resource.
+// Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
 //
-// For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+// For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
 //
 // > **NOTE:** Available since v1.137.0.
 //
@@ -27,7 +27,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/eais"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
@@ -39,28 +38,22 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
 //			zoneId := "cn-hangzhou-h"
-//			_, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.0.0.0/8"),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
-//				CidrBlock:   pulumi.String("10.1.0.0/16"),
-//				VpcId:       defaultNetwork.ID(),
+//				VpcId:       _default.ID(),
+//				CidrBlock:   pulumi.String("192.168.192.0/24"),
 //				ZoneId:      pulumi.String(zoneId),
 //			})
 //			if err != nil {
@@ -68,16 +61,16 @@ import (
 //			}
 //			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				Name:  pulumi.String(name),
-//				VpcId: defaultNetwork.ID(),
+//				VpcId: _default.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = eais.NewInstance(ctx, "default", &eais.InstanceArgs{
 //				InstanceType:    pulumi.String("eais.ei-a6.2xlarge"),
-//				InstanceName:    pulumi.String(name),
-//				SecurityGroupId: defaultSecurityGroup.ID(),
 //				VswitchId:       defaultSwitch.ID(),
+//				SecurityGroupId: defaultSecurityGroup.ID(),
+//				InstanceName:    pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -90,7 +83,7 @@ import (
 //
 // ## Import
 //
-// EAIS Instance can be imported using the id, e.g.
+// Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:eais/instance:Instance example <id>
@@ -98,17 +91,17 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The name of the instance.
-	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
-	// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// The name of the Instance.
+	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
+	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
-	// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+	// The status of the Instance.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID of the vswitch.
+	// The ID of the vSwitch.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 }
 
@@ -151,32 +144,32 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
 	Force *bool `pulumi:"force"`
-	// The name of the instance.
+	// The name of the Instance.
 	InstanceName *string `pulumi:"instanceName"`
-	// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
 	InstanceType *string `pulumi:"instanceType"`
 	// The ID of the security group.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
-	// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+	// The status of the Instance.
 	Status *string `pulumi:"status"`
-	// The ID of the vswitch.
+	// The ID of the vSwitch.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type InstanceState struct {
-	// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrInput
-	// The name of the instance.
+	// The name of the Instance.
 	InstanceName pulumi.StringPtrInput
-	// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
 	InstanceType pulumi.StringPtrInput
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringPtrInput
-	// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+	// The status of the Instance.
 	Status pulumi.StringPtrInput
-	// The ID of the vswitch.
+	// The ID of the vSwitch.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -185,29 +178,29 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
 	Force *bool `pulumi:"force"`
-	// The name of the instance.
+	// The name of the Instance.
 	InstanceName *string `pulumi:"instanceName"`
-	// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
 	InstanceType string `pulumi:"instanceType"`
 	// The ID of the security group.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The ID of the vswitch.
+	// The ID of the vSwitch.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+	// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
 	Force pulumi.BoolPtrInput
-	// The name of the instance.
+	// The name of the Instance.
 	InstanceName pulumi.StringPtrInput
-	// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+	// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
 	InstanceType pulumi.StringInput
 	// The ID of the security group.
 	SecurityGroupId pulumi.StringInput
-	// The ID of the vswitch.
+	// The ID of the vSwitch.
 	VswitchId pulumi.StringInput
 }
 
@@ -298,17 +291,17 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
 func (o InstanceOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the instance.
-func (o InstanceOutput) InstanceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceName }).(pulumi.StringPtrOutput)
+// The name of the Instance.
+func (o InstanceOutput) InstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
 func (o InstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -318,12 +311,12 @@ func (o InstanceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+// The status of the Instance.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the vswitch.
+// The ID of the vSwitch.
 func (o InstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }

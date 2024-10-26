@@ -11,6 +11,8 @@ import * as utilities from "../utilities";
  *
  * For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
  *
+ * > **NOTE:** Need to contact us open whitelist before you can use the resource.
+ *
  * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
@@ -103,6 +105,8 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly fsName!: pulumi.Output<string>;
     /**
+     * . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+     *
      * @deprecated Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
      */
     public readonly instanceName!: pulumi.Output<string>;
@@ -143,6 +147,8 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -264,6 +270,8 @@ export interface InstanceState {
      */
     fsName?: pulumi.Input<string>;
     /**
+     * . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+     *
      * @deprecated Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
      */
     instanceName?: pulumi.Input<string>;
@@ -304,6 +312,8 @@ export interface InstanceState {
     status?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -354,6 +364,8 @@ export interface InstanceArgs {
      */
     fsName?: pulumi.Input<string>;
     /**
+     * . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+     *
      * @deprecated Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
      */
     instanceName?: pulumi.Input<string>;
@@ -390,6 +402,8 @@ export interface InstanceArgs {
     snapshotId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

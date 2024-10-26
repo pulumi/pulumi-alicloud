@@ -164,6 +164,8 @@ type ScalingConfiguration struct {
 	CreditSpecification pulumi.StringPtrOutput `pulumi:"creditSpecification"`
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks ScalingConfigurationDataDiskArrayOutput `pulumi:"dataDisks"`
+	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
@@ -174,6 +176,10 @@ type ScalingConfiguration struct {
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName pulumi.StringPtrOutput `pulumi:"imageName"`
+	// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+	ImageOptionsLoginAsNonRoot pulumi.BoolPtrOutput `pulumi:"imageOptionsLoginAsNonRoot"`
+	// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+	InstanceDescription pulumi.StringPtrOutput `pulumi:"instanceDescription"`
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -220,10 +226,14 @@ type ScalingConfiguration struct {
 	ScalingConfigurationName pulumi.StringOutput `pulumi:"scalingConfigurationName"`
 	// ID of the scaling group of a scaling configuration.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
+	// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
 	// ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
+	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+	SpotDuration pulumi.IntPtrOutput `pulumi:"spotDuration"`
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -250,12 +260,18 @@ type ScalingConfiguration struct {
 	SystemDiskCategory pulumi.StringPtrOutput `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrOutput `pulumi:"systemDiskDescription"`
+	// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+	SystemDiskEncryptAlgorithm pulumi.StringPtrOutput `pulumi:"systemDiskEncryptAlgorithm"`
 	// Whether to encrypt the system disk.
 	SystemDiskEncrypted pulumi.BoolPtrOutput `pulumi:"systemDiskEncrypted"`
+	// The ID of the KMS key that you want to use to encrypt the system disk.
+	SystemDiskKmsKeyId pulumi.StringPtrOutput `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName pulumi.StringPtrOutput `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk.
 	SystemDiskPerformanceLevel pulumi.StringPtrOutput `pulumi:"systemDiskPerformanceLevel"`
+	// IOPS measures the number of read and write operations that an EBS device can process per second.
+	SystemDiskProvisionedIops pulumi.IntPtrOutput `pulumi:"systemDiskProvisionedIops"`
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -305,6 +321,8 @@ type scalingConfigurationState struct {
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks []ScalingConfigurationDataDisk `pulumi:"dataDisks"`
+	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable *bool `pulumi:"enable"`
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
@@ -315,6 +333,10 @@ type scalingConfigurationState struct {
 	ImageId *string `pulumi:"imageId"`
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName *string `pulumi:"imageName"`
+	// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+	ImageOptionsLoginAsNonRoot *bool `pulumi:"imageOptionsLoginAsNonRoot"`
+	// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+	InstanceDescription *string `pulumi:"instanceDescription"`
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -361,10 +383,14 @@ type scalingConfigurationState struct {
 	ScalingConfigurationName *string `pulumi:"scalingConfigurationName"`
 	// ID of the scaling group of a scaling configuration.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
+	// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+	SpotDuration *int `pulumi:"spotDuration"`
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -391,12 +417,18 @@ type scalingConfigurationState struct {
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
 	// Whether to encrypt the system disk.
 	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
+	// The ID of the KMS key that you want to use to encrypt the system disk.
+	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
+	// IOPS measures the number of read and write operations that an EBS device can process per second.
+	SystemDiskProvisionedIops *int `pulumi:"systemDiskProvisionedIops"`
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -414,6 +446,8 @@ type ScalingConfigurationState struct {
 	CreditSpecification pulumi.StringPtrInput
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks ScalingConfigurationDataDiskArrayInput
+	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+	DeletionProtection pulumi.BoolPtrInput
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable pulumi.BoolPtrInput
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
@@ -424,6 +458,10 @@ type ScalingConfigurationState struct {
 	ImageId pulumi.StringPtrInput
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName pulumi.StringPtrInput
+	// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+	ImageOptionsLoginAsNonRoot pulumi.BoolPtrInput
+	// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+	InstanceDescription pulumi.StringPtrInput
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -470,10 +508,14 @@ type ScalingConfigurationState struct {
 	ScalingConfigurationName pulumi.StringPtrInput
 	// ID of the scaling group of a scaling configuration.
 	ScalingGroupId pulumi.StringPtrInput
+	// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
 	SecurityGroupId pulumi.StringPtrInput
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds pulumi.StringArrayInput
+	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+	SpotDuration pulumi.IntPtrInput
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -500,12 +542,18 @@ type ScalingConfigurationState struct {
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
+	// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
 	// Whether to encrypt the system disk.
 	SystemDiskEncrypted pulumi.BoolPtrInput
+	// The ID of the KMS key that you want to use to encrypt the system disk.
+	SystemDiskKmsKeyId pulumi.StringPtrInput
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
+	// IOPS measures the number of read and write operations that an EBS device can process per second.
+	SystemDiskProvisionedIops pulumi.IntPtrInput
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -527,6 +575,8 @@ type scalingConfigurationArgs struct {
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks []ScalingConfigurationDataDisk `pulumi:"dataDisks"`
+	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable *bool `pulumi:"enable"`
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
@@ -537,6 +587,10 @@ type scalingConfigurationArgs struct {
 	ImageId *string `pulumi:"imageId"`
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName *string `pulumi:"imageName"`
+	// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+	ImageOptionsLoginAsNonRoot *bool `pulumi:"imageOptionsLoginAsNonRoot"`
+	// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+	InstanceDescription *string `pulumi:"instanceDescription"`
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -583,10 +637,14 @@ type scalingConfigurationArgs struct {
 	ScalingConfigurationName *string `pulumi:"scalingConfigurationName"`
 	// ID of the scaling group of a scaling configuration.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
+	// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
 	// ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+	SpotDuration *int `pulumi:"spotDuration"`
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -613,12 +671,18 @@ type scalingConfigurationArgs struct {
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
+	// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+	SystemDiskEncryptAlgorithm *string `pulumi:"systemDiskEncryptAlgorithm"`
 	// Whether to encrypt the system disk.
 	SystemDiskEncrypted *bool `pulumi:"systemDiskEncrypted"`
+	// The ID of the KMS key that you want to use to encrypt the system disk.
+	SystemDiskKmsKeyId *string `pulumi:"systemDiskKmsKeyId"`
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName *string `pulumi:"systemDiskName"`
 	// The performance level of the ESSD used as the system disk.
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
+	// IOPS measures the number of read and write operations that an EBS device can process per second.
+	SystemDiskProvisionedIops *int `pulumi:"systemDiskProvisionedIops"`
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -637,6 +701,8 @@ type ScalingConfigurationArgs struct {
 	CreditSpecification pulumi.StringPtrInput
 	// DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
 	DataDisks ScalingConfigurationDataDiskArrayInput
+	// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+	DeletionProtection pulumi.BoolPtrInput
 	// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 	Enable pulumi.BoolPtrInput
 	// The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
@@ -647,6 +713,10 @@ type ScalingConfigurationArgs struct {
 	ImageId pulumi.StringPtrInput
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName pulumi.StringPtrInput
+	// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+	ImageOptionsLoginAsNonRoot pulumi.BoolPtrInput
+	// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+	InstanceDescription pulumi.StringPtrInput
 	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
@@ -693,10 +763,14 @@ type ScalingConfigurationArgs struct {
 	ScalingConfigurationName pulumi.StringPtrInput
 	// ID of the scaling group of a scaling configuration.
 	ScalingGroupId pulumi.StringInput
+	// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+	SecurityEnhancementStrategy pulumi.StringPtrInput
 	// ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
 	SecurityGroupId pulumi.StringPtrInput
 	// List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 	SecurityGroupIds pulumi.StringArrayInput
+	// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+	SpotDuration pulumi.IntPtrInput
 	// Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
 	//
 	// > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -723,12 +797,18 @@ type ScalingConfigurationArgs struct {
 	SystemDiskCategory pulumi.StringPtrInput
 	// The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	SystemDiskDescription pulumi.StringPtrInput
+	// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+	SystemDiskEncryptAlgorithm pulumi.StringPtrInput
 	// Whether to encrypt the system disk.
 	SystemDiskEncrypted pulumi.BoolPtrInput
+	// The ID of the KMS key that you want to use to encrypt the system disk.
+	SystemDiskKmsKeyId pulumi.StringPtrInput
 	// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
 	SystemDiskName pulumi.StringPtrInput
 	// The performance level of the ESSD used as the system disk.
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
+	// IOPS measures the number of read and write operations that an EBS device can process per second.
+	SystemDiskProvisionedIops pulumi.IntPtrInput
 	// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
@@ -841,6 +921,11 @@ func (o ScalingConfigurationOutput) DataDisks() ScalingConfigurationDataDiskArra
 	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationDataDiskArrayOutput { return v.DataDisks }).(ScalingConfigurationDataDiskArrayOutput)
 }
 
+// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+func (o ScalingConfigurationOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
 // Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
 func (o ScalingConfigurationOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.Enable }).(pulumi.BoolPtrOutput)
@@ -864,6 +949,16 @@ func (o ScalingConfigurationOutput) ImageId() pulumi.StringPtrOutput {
 // Name of an image file, indicating the image resource selected when an instance is enabled.
 func (o ScalingConfigurationOutput) ImageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.ImageName }).(pulumi.StringPtrOutput)
+}
+
+// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+func (o ScalingConfigurationOutput) ImageOptionsLoginAsNonRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.ImageOptionsLoginAsNonRoot }).(pulumi.BoolPtrOutput)
+}
+
+// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+func (o ScalingConfigurationOutput) InstanceDescription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.InstanceDescription }).(pulumi.StringPtrOutput)
 }
 
 // It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
@@ -979,6 +1074,11 @@ func (o ScalingConfigurationOutput) ScalingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
 }
 
+// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+func (o ScalingConfigurationOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
+}
+
 // ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
 func (o ScalingConfigurationOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
@@ -987,6 +1087,11 @@ func (o ScalingConfigurationOutput) SecurityGroupId() pulumi.StringPtrOutput {
 // List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
 func (o ScalingConfigurationOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+func (o ScalingConfigurationOutput) SpotDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.IntPtrOutput { return v.SpotDuration }).(pulumi.IntPtrOutput)
 }
 
 // Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
@@ -1033,9 +1138,19 @@ func (o ScalingConfigurationOutput) SystemDiskDescription() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskDescription }).(pulumi.StringPtrOutput)
 }
 
+// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+func (o ScalingConfigurationOutput) SystemDiskEncryptAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskEncryptAlgorithm }).(pulumi.StringPtrOutput)
+}
+
 // Whether to encrypt the system disk.
 func (o ScalingConfigurationOutput) SystemDiskEncrypted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.BoolPtrOutput { return v.SystemDiskEncrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the KMS key that you want to use to encrypt the system disk.
+func (o ScalingConfigurationOutput) SystemDiskKmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskKmsKeyId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
@@ -1046,6 +1161,11 @@ func (o ScalingConfigurationOutput) SystemDiskName() pulumi.StringPtrOutput {
 // The performance level of the ESSD used as the system disk.
 func (o ScalingConfigurationOutput) SystemDiskPerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.SystemDiskPerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// IOPS measures the number of read and write operations that an EBS device can process per second.
+func (o ScalingConfigurationOutput) SystemDiskProvisionedIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.IntPtrOutput { return v.SystemDiskProvisionedIops }).(pulumi.IntPtrOutput)
 }
 
 // Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.

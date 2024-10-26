@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Mse.Outputs
         /// </summary>
         public readonly int Cpu;
         /// <summary>
-        /// The health status of MSE Cluster.
+        /// The health status of the instance.
         /// </summary>
         public readonly string HealthStatus;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Mse.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// The list of instances.
+        /// The list of instance nodes.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterInstanceModelResult> InstanceModels;
         /// <summary>

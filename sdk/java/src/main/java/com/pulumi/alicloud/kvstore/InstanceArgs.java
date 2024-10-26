@@ -134,6 +134,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+     * 
+     */
+    @Import(name="bandwidth")
+    private @Nullable Output<Integer> bandwidth;
+
+    /**
+     * @return The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+     * 
+     */
+    public Optional<Output<Integer>> bandwidth() {
+        return Optional.ofNullable(this.bandwidth);
+    }
+
+    /**
      * The ID of the event or the business information.
      * 
      */
@@ -1034,6 +1049,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.backupId = $.backupId;
         this.backupPeriods = $.backupPeriods;
         this.backupTime = $.backupTime;
+        this.bandwidth = $.bandwidth;
         this.businessInfo = $.businessInfo;
         this.capacity = $.capacity;
         this.config = $.config;
@@ -1272,6 +1288,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupTime(String backupTime) {
             return backupTime(Output.of(backupTime));
+        }
+
+        /**
+         * @param bandwidth The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(@Nullable Output<Integer> bandwidth) {
+            $.bandwidth = bandwidth;
+            return this;
+        }
+
+        /**
+         * @param bandwidth The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bandwidth(Integer bandwidth) {
+            return bandwidth(Output.of(bandwidth));
         }
 
         /**

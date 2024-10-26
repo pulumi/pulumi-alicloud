@@ -20,8 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Elastic Cloud Phone (ECP) Instance resource.
  * 
- * For information about Elastic Cloud Phone (ECP) Instance and how to use it,
- * see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
+ * For information about Elastic Cloud Phone (ECP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
  * 
  * &gt; **NOTE:** Available since v1.158.0.
  * 
@@ -37,14 +36,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.integer;
- * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ecp.EcpFunctions;
  * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecp.KeyPair;
@@ -65,36 +65,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = EcpFunctions.getZones();
+ * 
+ *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+ * 
  *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var default = EcpFunctions.getZones();
- * 
- *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
- * 
- *         final var countSize = default_.zones().length();
- * 
- *         final var zoneId = default_.zones()[countSize - 1].zoneId();
- * 
- *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length();
- * 
- *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
- * 
- *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex("^default-NODELETING$")
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
- *             .zoneId(zoneId)
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(default_.zones()[0].zoneId())
  *             .build());
  * 
- *         var group = new SecurityGroup("group", SecurityGroupArgs.builder()
- *             .name(name)
- *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+ *             .name(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultKeyPair = new KeyPair("defaultKeyPair", KeyPairArgs.builder()
@@ -103,15 +98,15 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .instanceName(name)
- *             .description(name)
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].instanceType()))
+ *             .imageId("android-image-release5501072_a11_20240530.raw")
+ *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupId(defaultSecurityGroup.id())
  *             .keyPairName(defaultKeyPair.keyPairName())
- *             .securityGroupId(group.id())
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
- *             .imageId("android_9_0_0_release_2851157_20211201.vhd")
- *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[1].instanceType()))
  *             .vncPassword("Ecp123")
  *             .paymentType("PayAsYouGo")
+ *             .instanceName(name)
+ *             .description(name)
  *             .force("true")
  *             .build());
  * 
@@ -133,254 +128,242 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecp/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The auto pay.
+     * Specifies whether to enable the auto-payment feature. Valid values:
      * 
      */
     @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
-     * @return The auto pay.
+     * @return Specifies whether to enable the auto-payment feature. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoPay() {
         return Codegen.optional(this.autoPay);
     }
     /**
-     * The auto renew.
+     * Specifies whether to enable the auto-renewal feature. Valid values:
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
-     * @return The auto renew.
+     * @return Specifies whether to enable the auto-renewal feature. Valid values:
      * 
      */
     public Output<Optional<Boolean>> autoRenew() {
         return Codegen.optional(this.autoRenew);
     }
     /**
-     * Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-     * start with `http://` and `https`.
+     * The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-     * start with `http://` and `https`.
+     * @return The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The eip bandwidth.
+     * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
      * 
      */
     @Export(name="eipBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> eipBandwidth;
 
     /**
-     * @return The eip bandwidth.
+     * @return The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
      * 
      */
     public Output<Optional<Integer>> eipBandwidth() {
         return Codegen.optional(this.eipBandwidth);
     }
     /**
-     * The force.
+     * Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return The force.
+     * @return Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The ID Of The Image.
+     * The ID of the image.
      * 
      */
     @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
-     * @return The ID Of The Image.
+     * @return The ID of the image.
      * 
      */
     public Output<String> imageId() {
         return this.imageId;
     }
     /**
-     * The name of the instance. It must be 2 to 128 characters in length and must start with an
-     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-     * the instance.
+     * The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> instanceName;
+    private Output<String> instanceName;
 
     /**
-     * @return The name of the instance. It must be 2 to 128 characters in length and must start with an
-     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-     * the instance.
+     * @return The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      * 
      */
-    public Output<Optional<String>> instanceName() {
-        return Codegen.optional(this.instanceName);
+    public Output<String> instanceName() {
+        return this.instanceName;
     }
     /**
-     * Instance Type.
+     * The specifications of the ECP instance.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return Instance Type.
+     * @return The specifications of the ECP instance.
      * 
      */
     public Output<String> instanceType() {
         return this.instanceType;
     }
     /**
-     * The name of the key pair of the mobile phone instance.
+     * The name of the key pair that you want to use to connect to the instance.
      * 
      */
     @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
-     * @return The name of the key pair of the mobile phone instance.
+     * @return The name of the key pair that you want to use to connect to the instance.
      * 
      */
     public Output<Optional<String>> keyPairName() {
         return Codegen.optional(this.keyPairName);
     }
     /**
-     * The payment type.Valid values: `PayAsYouGo`,`Subscription`
+     * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> paymentType;
+    private Output<String> paymentType;
 
     /**
-     * @return The payment type.Valid values: `PayAsYouGo`,`Subscription`
+     * @return The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
      * 
      */
-    public Output<Optional<String>> paymentType() {
-        return Codegen.optional(this.paymentType);
+    public Output<String> paymentType() {
+        return this.paymentType;
     }
     /**
-     * The period. It is valid when `period_unit` is &#39;Year&#39;. Valid value: `1`, `2`, `3`, `4`, `5`. It
-     * is valid when `period_unit` is &#39;Month&#39;. Valid value: `1`, `2`, `3`, `5`
+     * The subscription duration. Default value: `1`. Valid values:
+     * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
-     * @return The period. It is valid when `period_unit` is &#39;Year&#39;. Valid value: `1`, `2`, `3`, `4`, `5`. It
-     * is valid when `period_unit` is &#39;Month&#39;. Valid value: `1`, `2`, `3`, `5`
+     * @return The subscription duration. Default value: `1`. Valid values:
+     * - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
      * 
      */
     public Output<Optional<String>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-     * to `Month`.
+     * The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
      * 
      */
     @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
-     * @return The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-     * to `Month`.
+     * @return The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
      * 
      */
     public Output<Optional<String>> periodUnit() {
         return Codegen.optional(this.periodUnit);
     }
     /**
-     * The selected resolution for the cloud mobile phone instance.
+     * The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
      * 
      */
     @Export(name="resolution", refs={String.class}, tree="[0]")
     private Output<String> resolution;
 
     /**
-     * @return The selected resolution for the cloud mobile phone instance.
+     * @return The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
      * 
      */
     public Output<String> resolution() {
         return this.resolution;
     }
     /**
-     * The ID of the security group. The security group is the same as that of the
-     * ECS instance.
+     * The ID of the security group.
      * 
      */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
-     * @return The ID of the security group. The security group is the same as that of the
-     * ECS instance.
+     * @return The ID of the security group.
      * 
      */
     public Output<String> securityGroupId() {
         return this.securityGroupId;
     }
     /**
-     * Instance status. Valid values: `Running`, `Stopped`.
+     * The status of the Instance. Valid values: `Running`, `Stopped`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Instance status. Valid values: `Running`, `Stopped`.
+     * @return The status of the Instance. Valid values: `Running`, `Stopped`.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * Cloud mobile phone VNC password. The password must be six characters in length and must
-     * contain only uppercase, lowercase English letters and Arabic numerals.
+     * The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
      * 
      */
     @Export(name="vncPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vncPassword;
 
     /**
-     * @return Cloud mobile phone VNC password. The password must be six characters in length and must
-     * contain only uppercase, lowercase English letters and Arabic numerals.
+     * @return The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
      * 
      */
     public Output<Optional<String>> vncPassword() {
         return Codegen.optional(this.vncPassword);
     }
     /**
-     * The vswitch id.
+     * The ID of the vSwitch.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The vswitch id.
+     * @return The ID of the vSwitch.
      * 
      */
     public Output<String> vswitchId() {

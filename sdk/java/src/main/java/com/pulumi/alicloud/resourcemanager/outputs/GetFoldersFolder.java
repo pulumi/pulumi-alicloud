@@ -11,50 +11,50 @@ import java.util.Objects;
 @CustomType
 public final class GetFoldersFolder {
     /**
-     * @return The ID of the folder.
+     * @return The ID of the Folder.
      * 
      */
     private String folderId;
     /**
-     * @return The name of the folder.
+     * @return The Name of the Folder.
      * 
      */
     private String folderName;
     /**
-     * @return The ID of the folder.
+     * @return The ID of the Resource Manager Folder.
      * 
      */
     private String id;
     /**
-     * @return The ID of the parent folder.
+     * @return The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
      * 
      */
     private String parentFolderId;
 
     private GetFoldersFolder() {}
     /**
-     * @return The ID of the folder.
+     * @return The ID of the Folder.
      * 
      */
     public String folderId() {
         return this.folderId;
     }
     /**
-     * @return The name of the folder.
+     * @return The Name of the Folder.
      * 
      */
     public String folderName() {
         return this.folderName;
     }
     /**
-     * @return The ID of the folder.
+     * @return The ID of the Resource Manager Folder.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The ID of the parent folder.
+     * @return The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
      * 
      */
     public String parentFolderId() {

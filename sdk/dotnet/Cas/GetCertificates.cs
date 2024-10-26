@@ -47,6 +47,9 @@ namespace Pulumi.AliCloud.Cas
             set => _ids = value;
         }
 
+        [Input("keyword")]
+        public string? Keyword { get; set; }
+
         [Input("lang")]
         public string? Lang { get; set; }
 
@@ -84,6 +87,9 @@ namespace Pulumi.AliCloud.Cas
             get => _ids ?? (_ids = new InputList<string>());
             set => _ids = value;
         }
+
+        [Input("keyword")]
+        public Input<string>? Keyword { get; set; }
 
         [Input("lang")]
         public Input<string>? Lang { get; set; }
@@ -123,6 +129,7 @@ namespace Pulumi.AliCloud.Cas
         /// A list of cert IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
+        public readonly string? Keyword;
         public readonly string? Lang;
         public readonly string? NameRegex;
         /// <summary>
@@ -141,6 +148,8 @@ namespace Pulumi.AliCloud.Cas
 
             ImmutableArray<string> ids,
 
+            string? keyword,
+
             string? lang,
 
             string? nameRegex,
@@ -153,6 +162,7 @@ namespace Pulumi.AliCloud.Cas
             EnableDetails = enableDetails;
             Id = id;
             Ids = ids;
+            Keyword = keyword;
             Lang = lang;
             NameRegex = nameRegex;
             Names = names;

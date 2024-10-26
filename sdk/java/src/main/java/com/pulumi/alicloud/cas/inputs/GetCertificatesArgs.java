@@ -39,9 +39,28 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.ids);
     }
 
+    @Import(name="keyword")
+    private @Nullable Output<String> keyword;
+
+    public Optional<Output<String>> keyword() {
+        return Optional.ofNullable(this.keyword);
+    }
+
+    /**
+     * @deprecated
+     * Field `lang` has been deprecated from provider version 1.232.0.
+     * 
+     */
+    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
+    /**
+     * @deprecated
+     * Field `lang` has been deprecated from provider version 1.232.0.
+     * 
+     */
+    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -81,6 +100,7 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
     private GetCertificatesArgs(GetCertificatesArgs $) {
         this.enableDetails = $.enableDetails;
         this.ids = $.ids;
+        this.keyword = $.keyword;
         this.lang = $.lang;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
@@ -144,11 +164,36 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
             return ids(List.of(ids));
         }
 
+        public Builder keyword(@Nullable Output<String> keyword) {
+            $.keyword = keyword;
+            return this;
+        }
+
+        public Builder keyword(String keyword) {
+            return keyword(Output.of(keyword));
+        }
+
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field `lang` has been deprecated from provider version 1.232.0.
+         * 
+         */
+        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Field `lang` has been deprecated from provider version 1.232.0.
+         * 
+         */
+        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }

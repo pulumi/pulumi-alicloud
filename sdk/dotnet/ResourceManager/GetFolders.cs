@@ -12,13 +12,13 @@ namespace Pulumi.AliCloud.ResourceManager
     public static class GetFolders
     {
         /// <summary>
-        /// This data source provides the resource manager folders of the current Alibaba Cloud user.
+        /// This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.84.0+.
-        /// 
-        /// &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+        /// &gt; **NOTE:** Available since v1.84.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -28,14 +28,24 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.ResourceManager.GetFolders.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.ResourceManager.Folder("default", new()
         ///     {
-        ///         NameRegex = "tftest",
+        ///         FolderName = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ResourceManager.GetFolders.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstFolderId"] = example.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///         ["resourceManagerFolderId0"] = ids.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -44,13 +54,13 @@ namespace Pulumi.AliCloud.ResourceManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFoldersResult>("alicloud:resourcemanager/getFolders:getFolders", args ?? new GetFoldersArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the resource manager folders of the current Alibaba Cloud user.
+        /// This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:**  Available in 1.84.0+.
-        /// 
-        /// &gt; **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+        /// &gt; **NOTE:** Available since v1.84.0.
         /// 
         /// ## Example Usage
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -60,14 +70,24 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AliCloud.ResourceManager.GetFolders.Invoke(new()
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = new AliCloud.ResourceManager.Folder("default", new()
         ///     {
-        ///         NameRegex = "tftest",
+        ///         FolderName = name,
+        ///     });
+        /// 
+        ///     var ids = AliCloud.ResourceManager.GetFolders.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstFolderId"] = example.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
+        ///         ["resourceManagerFolderId0"] = ids.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -80,7 +100,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetFoldersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -89,7 +109,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of resource manager folders IDs.
+        /// A list of Folders IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -98,7 +118,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
 
         /// <summary>
-        /// A regex string to filter results by folder name.
+        /// A regex string to filter results by Folder name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -110,13 +130,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the parent folder.
+        /// The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
         /// </summary>
         [Input("parentFolderId")]
         public string? ParentFolderId { get; set; }
 
         /// <summary>
-        /// The query keyword.
+        /// The keyword used for the query, such as a folder name. Fuzzy match is supported.
         /// </summary>
         [Input("queryKeyword")]
         public string? QueryKeyword { get; set; }
@@ -130,7 +150,7 @@ namespace Pulumi.AliCloud.ResourceManager
     public sealed class GetFoldersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Default to `false`. Set it to true can output more details.
+        /// Whether to query the detailed list of resource attributes. Default value: `false`.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
@@ -139,7 +159,7 @@ namespace Pulumi.AliCloud.ResourceManager
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of resource manager folders IDs.
+        /// A list of Folders IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -148,7 +168,7 @@ namespace Pulumi.AliCloud.ResourceManager
         }
 
         /// <summary>
-        /// A regex string to filter results by folder name.
+        /// A regex string to filter results by Folder name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -160,13 +180,13 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the parent folder.
+        /// The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
         /// </summary>
         [Input("parentFolderId")]
         public Input<string>? ParentFolderId { get; set; }
 
         /// <summary>
-        /// The query keyword.
+        /// The keyword used for the query, such as a folder name. Fuzzy match is supported.
         /// </summary>
         [Input("queryKeyword")]
         public Input<string>? QueryKeyword { get; set; }
@@ -183,25 +203,22 @@ namespace Pulumi.AliCloud.ResourceManager
     {
         public readonly bool? EnableDetails;
         /// <summary>
-        /// A list of folders. Each element contains the following attributes:
+        /// A list of Folder. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFoldersFolderResult> Folders;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of folder IDs.
-        /// </summary>
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of folder names.
+        /// A list of Folder names.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         /// <summary>
-        /// (Available in v1.114.0+)The ID of the parent folder.
+        /// (Available since v1.114.0) The ID of the parent folder. **Note:** `parent_folder_id` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string? ParentFolderId;
         public readonly string? QueryKeyword;

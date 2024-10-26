@@ -140,6 +140,15 @@ namespace Pulumi.AliCloud.Ecs
         [Output("hostName")]
         public Output<string?> HostName { get; private set; } = null!;
 
+        [Output("httpEndpoint")]
+        public Output<string> HttpEndpoint { get; private set; } = null!;
+
+        [Output("httpPutResponseHopLimit")]
+        public Output<int> HttpPutResponseHopLimit { get; private set; } = null!;
+
+        [Output("httpTokens")]
+        public Output<string> HttpTokens { get; private set; } = null!;
+
         /// <summary>
         /// Image ID.
         /// </summary>
@@ -441,6 +450,15 @@ namespace Pulumi.AliCloud.Ecs
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
 
+        [Input("httpEndpoint")]
+        public Input<string>? HttpEndpoint { get; set; }
+
+        [Input("httpPutResponseHopLimit")]
+        public Input<int>? HttpPutResponseHopLimit { get; set; }
+
+        [Input("httpTokens")]
+        public Input<string>? HttpTokens { get; set; }
+
         /// <summary>
         /// Image ID.
         /// </summary>
@@ -719,6 +737,15 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
+
+        [Input("httpEndpoint")]
+        public Input<string>? HttpEndpoint { get; set; }
+
+        [Input("httpPutResponseHopLimit")]
+        public Input<int>? HttpPutResponseHopLimit { get; set; }
+
+        [Input("httpTokens")]
+        public Input<string>? HttpTokens { get; set; }
 
         /// <summary>
         /// Image ID.

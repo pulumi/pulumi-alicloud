@@ -17,14 +17,14 @@ public final class ServiceMeshMeshConfigAuditArgs extends com.pulumi.resources.R
     public static final ServiceMeshMeshConfigAuditArgs Empty = new ServiceMeshMeshConfigAuditArgs();
 
     /**
-     * Enable CNI.
+     * Enable CNI
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -72,7 +72,7 @@ public final class ServiceMeshMeshConfigAuditArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ServiceMeshMeshConfigAuditArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 

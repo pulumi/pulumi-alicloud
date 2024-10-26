@@ -37,7 +37,7 @@ type GetCertificatesCertificate struct {
 	Key    string `pulumi:"key"`
 	// The cert's name.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
 	Name string `pulumi:"name"`
 	// The cert's organization.
 	OrgName string `pulumi:"orgName"`
@@ -84,7 +84,7 @@ type GetCertificatesCertificateArgs struct {
 	Key    pulumi.StringInput `pulumi:"key"`
 	// The cert's name.
 	//
-	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+	// Deprecated: Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The cert's organization.
 	OrgName pulumi.StringInput `pulumi:"orgName"`
@@ -209,7 +209,7 @@ func (o GetCertificatesCertificateOutput) Key() pulumi.StringOutput {
 
 // The cert's name.
 //
-// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+// Deprecated: Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
 func (o GetCertificatesCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -255,41 +255,43 @@ func (o GetCertificatesCertificateArrayOutput) Index(i pulumi.IntInput) GetCerti
 }
 
 type GetServiceCertificatesCertificate struct {
-	// The cert is buy from aliyun or not.
+	// Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buyInAliyun` takes effect only if `enableDetails` is set to `true`.
 	BuyInAliyun bool `pulumi:"buyInAliyun"`
-	// The cert's Cert.
+	// The Cert of the certificate. **Note:** `cert` takes effect only if `enableDetails` is set to `true`.
 	Cert string `pulumi:"cert"`
-	// The cert's id.
+	// The ID of the certificate.
 	CertId string `pulumi:"certId"`
-	// The cert's name.
+	// The name of the certificate.
 	CertificateName string `pulumi:"certificateName"`
-	// The cert's city.
+	// The city in which the organization is located.
 	City string `pulumi:"city"`
-	// The cert's common name.
+	// The parent domain name of the certificate.
 	Common string `pulumi:"common"`
-	// The cert's country.
+	// The code of the country in which the organization is located.
 	Country string `pulumi:"country"`
-	// The cert's not valid after time.
+	// The time at which the certificate expires.
 	EndDate string `pulumi:"endDate"`
-	// The cert is expired or not.
+	// Whether the certificate has expired.
 	Expired bool `pulumi:"expired"`
-	// The cert's finger.
+	// The fingerprint of the certificate.
 	Fingerprint string `pulumi:"fingerprint"`
-	// The cert's id.
+	// The ID of the Ssl Certificates Service Certificate.
 	Id string `pulumi:"id"`
-	// The cert's Issuer.
+	// The issuer of the certificate.
 	Issuer string `pulumi:"issuer"`
-	// The cert's Keye.
+	// The Key of the certificate. **Note:** `key` takes effect only if `enableDetails` is set to `true`.
 	Key string `pulumi:"key"`
-	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+	// (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
 	Name string `pulumi:"name"`
-	// The cert's organization.
+	// The name of the organization that is associated with the certificate.
 	OrgName string `pulumi:"orgName"`
-	// The cert's province.
+	// The province or autonomous region in which the organization is located.
 	Province string `pulumi:"province"`
-	// The cert's subject alternative name.
+	// All domain names that are bound to the certificate.
 	Sans string `pulumi:"sans"`
-	// The cert's not valid before time.
+	// The time at which the certificate starts to take effect.
 	StartDate string `pulumi:"startDate"`
 }
 
@@ -305,41 +307,43 @@ type GetServiceCertificatesCertificateInput interface {
 }
 
 type GetServiceCertificatesCertificateArgs struct {
-	// The cert is buy from aliyun or not.
+	// Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buyInAliyun` takes effect only if `enableDetails` is set to `true`.
 	BuyInAliyun pulumi.BoolInput `pulumi:"buyInAliyun"`
-	// The cert's Cert.
+	// The Cert of the certificate. **Note:** `cert` takes effect only if `enableDetails` is set to `true`.
 	Cert pulumi.StringInput `pulumi:"cert"`
-	// The cert's id.
+	// The ID of the certificate.
 	CertId pulumi.StringInput `pulumi:"certId"`
-	// The cert's name.
+	// The name of the certificate.
 	CertificateName pulumi.StringInput `pulumi:"certificateName"`
-	// The cert's city.
+	// The city in which the organization is located.
 	City pulumi.StringInput `pulumi:"city"`
-	// The cert's common name.
+	// The parent domain name of the certificate.
 	Common pulumi.StringInput `pulumi:"common"`
-	// The cert's country.
+	// The code of the country in which the organization is located.
 	Country pulumi.StringInput `pulumi:"country"`
-	// The cert's not valid after time.
+	// The time at which the certificate expires.
 	EndDate pulumi.StringInput `pulumi:"endDate"`
-	// The cert is expired or not.
+	// Whether the certificate has expired.
 	Expired pulumi.BoolInput `pulumi:"expired"`
-	// The cert's finger.
+	// The fingerprint of the certificate.
 	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
-	// The cert's id.
+	// The ID of the Ssl Certificates Service Certificate.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The cert's Issuer.
+	// The issuer of the certificate.
 	Issuer pulumi.StringInput `pulumi:"issuer"`
-	// The cert's Keye.
+	// The Key of the certificate. **Note:** `key` takes effect only if `enableDetails` is set to `true`.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+	// (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The cert's organization.
+	// The name of the organization that is associated with the certificate.
 	OrgName pulumi.StringInput `pulumi:"orgName"`
-	// The cert's province.
+	// The province or autonomous region in which the organization is located.
 	Province pulumi.StringInput `pulumi:"province"`
-	// The cert's subject alternative name.
+	// All domain names that are bound to the certificate.
 	Sans pulumi.StringInput `pulumi:"sans"`
-	// The cert's not valid before time.
+	// The time at which the certificate starts to take effect.
 	StartDate pulumi.StringInput `pulumi:"startDate"`
 }
 
@@ -394,92 +398,94 @@ func (o GetServiceCertificatesCertificateOutput) ToGetServiceCertificatesCertifi
 	return o
 }
 
-// The cert is buy from aliyun or not.
+// Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buyInAliyun` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceCertificatesCertificateOutput) BuyInAliyun() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) bool { return v.BuyInAliyun }).(pulumi.BoolOutput)
 }
 
-// The cert's Cert.
+// The Cert of the certificate. **Note:** `cert` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceCertificatesCertificateOutput) Cert() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Cert }).(pulumi.StringOutput)
 }
 
-// The cert's id.
+// The ID of the certificate.
 func (o GetServiceCertificatesCertificateOutput) CertId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.CertId }).(pulumi.StringOutput)
 }
 
-// The cert's name.
+// The name of the certificate.
 func (o GetServiceCertificatesCertificateOutput) CertificateName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.CertificateName }).(pulumi.StringOutput)
 }
 
-// The cert's city.
+// The city in which the organization is located.
 func (o GetServiceCertificatesCertificateOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.City }).(pulumi.StringOutput)
 }
 
-// The cert's common name.
+// The parent domain name of the certificate.
 func (o GetServiceCertificatesCertificateOutput) Common() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Common }).(pulumi.StringOutput)
 }
 
-// The cert's country.
+// The code of the country in which the organization is located.
 func (o GetServiceCertificatesCertificateOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Country }).(pulumi.StringOutput)
 }
 
-// The cert's not valid after time.
+// The time at which the certificate expires.
 func (o GetServiceCertificatesCertificateOutput) EndDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.EndDate }).(pulumi.StringOutput)
 }
 
-// The cert is expired or not.
+// Whether the certificate has expired.
 func (o GetServiceCertificatesCertificateOutput) Expired() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) bool { return v.Expired }).(pulumi.BoolOutput)
 }
 
-// The cert's finger.
+// The fingerprint of the certificate.
 func (o GetServiceCertificatesCertificateOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
-// The cert's id.
+// The ID of the Ssl Certificates Service Certificate.
 func (o GetServiceCertificatesCertificateOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The cert's Issuer.
+// The issuer of the certificate.
 func (o GetServiceCertificatesCertificateOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// The cert's Keye.
+// The Key of the certificate. **Note:** `key` takes effect only if `enableDetails` is set to `true`.
 func (o GetServiceCertificatesCertificateOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Deprecated: Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+// (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
+//
+// Deprecated: Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
 func (o GetServiceCertificatesCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The cert's organization.
+// The name of the organization that is associated with the certificate.
 func (o GetServiceCertificatesCertificateOutput) OrgName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.OrgName }).(pulumi.StringOutput)
 }
 
-// The cert's province.
+// The province or autonomous region in which the organization is located.
 func (o GetServiceCertificatesCertificateOutput) Province() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Province }).(pulumi.StringOutput)
 }
 
-// The cert's subject alternative name.
+// All domain names that are bound to the certificate.
 func (o GetServiceCertificatesCertificateOutput) Sans() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.Sans }).(pulumi.StringOutput)
 }
 
-// The cert's not valid before time.
+// The time at which the certificate starts to take effect.
 func (o GetServiceCertificatesCertificateOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceCertificatesCertificate) string { return v.StartDate }).(pulumi.StringOutput)
 }

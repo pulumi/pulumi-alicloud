@@ -120,7 +120,7 @@ type Instance struct {
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
 	DbInstanceMode pulumi.StringOutput `pulumi:"dbInstanceMode"`
 	// The description of the instance.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The ID of the encryption key.
 	// > **NOTE:** If `encryptionType` is set to `CloudDisk`, you must specify an encryption key that resides in the same region as the cloud disk that is specified by EncryptionType. Otherwise, leave this parameter empty.
 	EncryptionKey pulumi.StringPtrOutput `pulumi:"encryptionKey"`
@@ -773,8 +773,8 @@ func (o InstanceOutput) DbInstanceMode() pulumi.StringOutput {
 }
 
 // The description of the instance.
-func (o InstanceOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The ID of the encryption key.

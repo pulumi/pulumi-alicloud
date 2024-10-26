@@ -67,6 +67,12 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
+        /// IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
+        /// <summary>
         /// Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
         /// </summary>
         [Input("size")]

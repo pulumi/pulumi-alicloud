@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsLaunchTemplatesTemplateResult
     {
         /// <summary>
-        /// Instance auto release time.
+        /// (Optional) Instance auto release time.
         /// </summary>
         public readonly string AutoReleaseTime;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string DeploymentSetId;
         /// <summary>
-        /// The Description of Template.
+        /// System disk description.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -45,6 +45,18 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// Instance host name.
         /// </summary>
         public readonly string HostName;
+        /// <summary>
+        /// Whether to enable access to instance metadata.
+        /// </summary>
+        public readonly string HttpEndpoint;
+        /// <summary>
+        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// </summary>
+        public readonly int HttpPutResponseHopLimit;
+        /// <summary>
+        /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+        /// </summary>
+        public readonly string HttpTokens;
         /// <summary>
         /// The ID of the Launch Template.
         /// </summary>
@@ -204,6 +216,12 @@ namespace Pulumi.AliCloud.Ecs.Outputs
 
             string hostName,
 
+            string httpEndpoint,
+
+            int httpPutResponseHopLimit,
+
+            string httpTokens,
+
             string id,
 
             string imageId,
@@ -282,6 +300,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Description = description;
             EnableVmOsConfig = enableVmOsConfig;
             HostName = hostName;
+            HttpEndpoint = httpEndpoint;
+            HttpPutResponseHopLimit = httpPutResponseHopLimit;
+            HttpTokens = httpTokens;
             Id = id;
             ImageId = imageId;
             ImageOwnerAlias = imageOwnerAlias;

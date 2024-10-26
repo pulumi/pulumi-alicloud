@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult
     {
         /// <summary>
-        /// The ENI description.
+        /// System disk description.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The ENI name.
+        /// System disk name.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -26,11 +26,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string PrimaryIp;
         /// <summary>
-        /// The security group ID must be one in the same VPC.
+        /// The security group ID.
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
-        /// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        /// The vswitch id.
         /// </summary>
         public readonly string VswitchId;
 

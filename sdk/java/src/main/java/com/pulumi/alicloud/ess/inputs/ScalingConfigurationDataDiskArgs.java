@@ -161,6 +161,21 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
     }
 
     /**
+     * IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+     * 
+     */
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    /**
+     * @return IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
+    /**
      * Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
      * 
      */
@@ -202,6 +217,7 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
         this.kmsKeyId = $.kmsKeyId;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
+        this.provisionedIops = $.provisionedIops;
         this.size = $.size;
         this.snapshotId = $.snapshotId;
     }
@@ -419,6 +435,27 @@ public final class ScalingConfigurationDataDiskArgs extends com.pulumi.resources
          */
         public Builder performanceLevel(String performanceLevel) {
             return performanceLevel(Output.of(performanceLevel));
+        }
+
+        /**
+         * @param provisionedIops IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        /**
+         * @param provisionedIops IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
         }
 
         /**

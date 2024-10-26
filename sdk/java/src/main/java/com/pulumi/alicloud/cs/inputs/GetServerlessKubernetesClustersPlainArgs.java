@@ -16,9 +16,17 @@ public final class GetServerlessKubernetesClustersPlainArgs extends com.pulumi.r
 
     public static final GetServerlessKubernetesClustersPlainArgs Empty = new GetServerlessKubernetesClustersPlainArgs();
 
+    /**
+     * Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletion_protection`, `connections`. See full list in attributes.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletion_protection`, `connections`. See full list in attributes.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -111,6 +119,12 @@ public final class GetServerlessKubernetesClustersPlainArgs extends com.pulumi.r
             $ = new GetServerlessKubernetesClustersPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletion_protection`, `connections`. See full list in attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;

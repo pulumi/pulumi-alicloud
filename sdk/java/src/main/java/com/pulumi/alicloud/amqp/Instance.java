@@ -103,14 +103,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maxEipTps", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> maxEipTps;
+    private Output<String> maxEipTps;
 
     /**
      * @return Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
      * 
      */
-    public Output<Optional<String>> maxEipTps() {
-        return Codegen.optional(this.maxEipTps);
+    public Output<String> maxEipTps() {
+        return this.maxEipTps;
     }
     /**
      * Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
@@ -127,7 +127,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.maxTps;
     }
     /**
-     * Type of instance lifting and lowering:
+     * This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
      * - Upgrade: Upgrade
      * - Downgrade: Downgrading.
      * 
@@ -136,7 +136,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> modifyType;
 
     /**
-     * @return Type of instance lifting and lowering:
+     * @return This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
      * - Upgrade: Upgrade
      * - Downgrade: Downgrading.
      * 

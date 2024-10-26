@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Amqp
         /// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         /// </summary>
         [Output("maxEipTps")]
-        public Output<string?> MaxEipTps { get; private set; } = null!;
+        public Output<string> MaxEipTps { get; private set; } = null!;
 
         /// <summary>
         /// Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Amqp
         public Output<string> MaxTps { get; private set; } = null!;
 
         /// <summary>
-        /// Type of instance lifting and lowering:
+        /// This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
         /// - Upgrade: Upgrade
         /// - Downgrade: Downgrading.
         /// </summary>
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? MaxTps { get; set; }
 
         /// <summary>
-        /// Type of instance lifting and lowering:
+        /// This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
         /// - Upgrade: Upgrade
         /// - Downgrade: Downgrading.
         /// </summary>
@@ -362,7 +362,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? MaxTps { get; set; }
 
         /// <summary>
-        /// Type of instance lifting and lowering:
+        /// This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
         /// - Upgrade: Upgrade
         /// - Downgrade: Downgrading.
         /// </summary>

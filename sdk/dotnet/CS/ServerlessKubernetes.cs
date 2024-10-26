@@ -160,8 +160,6 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-        /// 
-        /// *Removed params*
         /// </summary>
         [Output("customSan")]
         public Output<string?> CustomSan { get; private set; } = null!;
@@ -187,7 +185,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> EnableRrsa { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create internet eip for API Server. Default to false.
+        /// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         /// </summary>
         [Output("endpointPublicAccessEnabled")]
         public Output<bool?> EndpointPublicAccessEnabled { get; private set; } = null!;
@@ -199,16 +197,22 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> KubeConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         /// </summary>
         [Output("loadBalancerSpec")]
         public Output<string> LoadBalancerSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Enable log service, Valid value `SLS`.
+        /// Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         /// </summary>
         [Output("loggingType")]
         public Output<string?> LoggingType { get; private set; } = null!;
+
+        /// <summary>
+        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        /// </summary>
+        [Output("maintenanceWindow")]
+        public Output<Outputs.ServerlessKubernetesMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
         /// The kubernetes cluster's name. It is the only in one Alicloud account.
@@ -224,6 +228,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Output("newNatGateway")]
         public Output<bool?> NewNatGateway { get; private set; } = null!;
+
+        /// <summary>
+        /// The cluster automatic operation policy. See `operation_policy` below.
+        /// 
+        /// *Removed params*
+        /// </summary>
+        [Output("operationPolicy")]
+        public Output<Outputs.ServerlessKubernetesOperationPolicy> OperationPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
@@ -265,7 +277,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> ServiceDiscoveryTypes { get; private set; } = null!;
 
         /// <summary>
-        /// If you use an existing SLS project, you must specify `sls_project_name`.
+        /// If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         /// </summary>
         [Output("slsProjectName")]
         public Output<string> SlsProjectName { get; private set; } = null!;
@@ -283,7 +295,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> TimeZone { get; private set; } = null!;
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -301,7 +313,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> VswitchIds { get; private set; } = null!;
 
         /// <summary>
-        /// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        /// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -393,8 +405,6 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-        /// 
-        /// *Removed params*
         /// </summary>
         [Input("customSan")]
         public Input<string>? CustomSan { get; set; }
@@ -426,7 +436,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableRrsa { get; set; }
 
         /// <summary>
-        /// Whether to create internet eip for API Server. Default to false.
+        /// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         /// </summary>
         [Input("endpointPublicAccessEnabled")]
         public Input<bool>? EndpointPublicAccessEnabled { get; set; }
@@ -438,16 +448,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? KubeConfig { get; set; }
 
         /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// Enable log service, Valid value `SLS`.
+        /// Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         /// </summary>
         [Input("loggingType")]
         public Input<string>? LoggingType { get; set; }
+
+        /// <summary>
+        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        /// </summary>
+        [Input("maintenanceWindow")]
+        public Input<Inputs.ServerlessKubernetesMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// The kubernetes cluster's name. It is the only in one Alicloud account.
@@ -463,6 +479,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
+
+        /// <summary>
+        /// The cluster automatic operation policy. See `operation_policy` below.
+        /// 
+        /// *Removed params*
+        /// </summary>
+        [Input("operationPolicy")]
+        public Input<Inputs.ServerlessKubernetesOperationPolicyArgs>? OperationPolicy { get; set; }
 
         /// <summary>
         /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
@@ -509,7 +533,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// If you use an existing SLS project, you must specify `sls_project_name`.
+        /// If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         /// </summary>
         [Input("slsProjectName")]
         public Input<string>? SlsProjectName { get; set; }
@@ -533,7 +557,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -557,7 +581,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        /// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -611,8 +635,6 @@ namespace Pulumi.AliCloud.CS
         /// <summary>
         /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         /// &gt; **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-        /// 
-        /// *Removed params*
         /// </summary>
         [Input("customSan")]
         public Input<string>? CustomSan { get; set; }
@@ -644,7 +666,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? EnableRrsa { get; set; }
 
         /// <summary>
-        /// Whether to create internet eip for API Server. Default to false.
+        /// Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         /// </summary>
         [Input("endpointPublicAccessEnabled")]
         public Input<bool>? EndpointPublicAccessEnabled { get; set; }
@@ -656,16 +678,22 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? KubeConfig { get; set; }
 
         /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        /// The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
 
         /// <summary>
-        /// Enable log service, Valid value `SLS`.
+        /// Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         /// </summary>
         [Input("loggingType")]
         public Input<string>? LoggingType { get; set; }
+
+        /// <summary>
+        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        /// </summary>
+        [Input("maintenanceWindow")]
+        public Input<Inputs.ServerlessKubernetesMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
         /// The kubernetes cluster's name. It is the only in one Alicloud account.
@@ -681,6 +709,14 @@ namespace Pulumi.AliCloud.CS
         /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
+
+        /// <summary>
+        /// The cluster automatic operation policy. See `operation_policy` below.
+        /// 
+        /// *Removed params*
+        /// </summary>
+        [Input("operationPolicy")]
+        public Input<Inputs.ServerlessKubernetesOperationPolicyGetArgs>? OperationPolicy { get; set; }
 
         /// <summary>
         /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
@@ -733,7 +769,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// If you use an existing SLS project, you must specify `sls_project_name`.
+        /// If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         /// </summary>
         [Input("slsProjectName")]
         public Input<string>? SlsProjectName { get; set; }
@@ -757,7 +793,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? TimeZone { get; set; }
 
         /// <summary>
-        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        /// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -781,7 +817,7 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        /// When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

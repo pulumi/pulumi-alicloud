@@ -144,6 +144,59 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Whether to enable access to instance metadata. Valid values:
+     * - enabled: Enabled.
+     * - disabled: Disabled.
+     * 
+     */
+    @Import(name="httpEndpoint")
+    private @Nullable Output<String> httpEndpoint;
+
+    /**
+     * @return Whether to enable access to instance metadata. Valid values:
+     * - enabled: Enabled.
+     * - disabled: Disabled.
+     * 
+     */
+    public Optional<Output<String>> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
+    }
+
+    /**
+     * The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
+    @Import(name="httpPutResponseHopLimit")
+    private @Nullable Output<Integer> httpPutResponseHopLimit;
+
+    /**
+     * @return The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
+    public Optional<Output<Integer>> httpPutResponseHopLimit() {
+        return Optional.ofNullable(this.httpPutResponseHopLimit);
+    }
+
+    /**
+     * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+     * - optional: Not mandatory.
+     * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     * 
+     */
+    @Import(name="httpTokens")
+    private @Nullable Output<String> httpTokens;
+
+    /**
+     * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+     * - optional: Not mandatory.
+     * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     * 
+     */
+    public Optional<Output<String>> httpTokens() {
+        return Optional.ofNullable(this.httpTokens);
+    }
+
+    /**
      * The Image ID.
      * 
      */
@@ -814,6 +867,9 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
         this.description = $.description;
         this.enableVmOsConfig = $.enableVmOsConfig;
         this.hostName = $.hostName;
+        this.httpEndpoint = $.httpEndpoint;
+        this.httpPutResponseHopLimit = $.httpPutResponseHopLimit;
+        this.httpTokens = $.httpTokens;
         this.imageId = $.imageId;
         this.imageOwnerAlias = $.imageOwnerAlias;
         this.instanceChargeType = $.instanceChargeType;
@@ -1050,6 +1106,77 @@ public final class EcsLaunchTemplateArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder hostName(String hostName) {
             return hostName(Output.of(hostName));
+        }
+
+        /**
+         * @param httpEndpoint Whether to enable access to instance metadata. Valid values:
+         * - enabled: Enabled.
+         * - disabled: Disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(@Nullable Output<String> httpEndpoint) {
+            $.httpEndpoint = httpEndpoint;
+            return this;
+        }
+
+        /**
+         * @param httpEndpoint Whether to enable access to instance metadata. Valid values:
+         * - enabled: Enabled.
+         * - disabled: Disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpEndpoint(String httpEndpoint) {
+            return httpEndpoint(Output.of(httpEndpoint));
+        }
+
+        /**
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpPutResponseHopLimit(@Nullable Output<Integer> httpPutResponseHopLimit) {
+            $.httpPutResponseHopLimit = httpPutResponseHopLimit;
+            return this;
+        }
+
+        /**
+         * @param httpPutResponseHopLimit The HTTP PUT response hop limit required for instance metadata requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpPutResponseHopLimit(Integer httpPutResponseHopLimit) {
+            return httpPutResponseHopLimit(Output.of(httpPutResponseHopLimit));
+        }
+
+        /**
+         * @param httpTokens Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+         * - optional: Not mandatory.
+         * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTokens(@Nullable Output<String> httpTokens) {
+            $.httpTokens = httpTokens;
+            return this;
+        }
+
+        /**
+         * @param httpTokens Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+         * - optional: Not mandatory.
+         * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTokens(String httpTokens) {
+            return httpTokens(Output.of(httpTokens));
         }
 
         /**

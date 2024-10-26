@@ -1132,7 +1132,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def encrypted(self) -> pulumi.Output[Optional[bool]]:
+    def encrypted(self) -> pulumi.Output[bool]:
         """
         If true, the disk will be encrypted, conflict with `snapshot_id`.
         """
@@ -1195,7 +1195,7 @@ class Disk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
+    def snapshot_id(self) -> pulumi.Output[str]:
         """
         A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         """

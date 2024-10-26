@@ -15,13 +15,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEngineNamespacesResult {
     private @Nullable String acceptLanguage;
-    private String clusterId;
+    private @Nullable String clusterId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
     private List<String> ids;
+    private @Nullable String instanceId;
+    /**
+     * @return A list of Mse Engine Namespaces. Each element contains the following attributes:
+     * 
+     */
     private List<GetEngineNamespacesNamespace> namespaces;
     private @Nullable String outputFile;
 
@@ -29,8 +34,8 @@ public final class GetEngineNamespacesResult {
     public Optional<String> acceptLanguage() {
         return Optional.ofNullable(this.acceptLanguage);
     }
-    public String clusterId() {
-        return this.clusterId;
+    public Optional<String> clusterId() {
+        return Optional.ofNullable(this.clusterId);
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -42,6 +47,13 @@ public final class GetEngineNamespacesResult {
     public List<String> ids() {
         return this.ids;
     }
+    public Optional<String> instanceId() {
+        return Optional.ofNullable(this.instanceId);
+    }
+    /**
+     * @return A list of Mse Engine Namespaces. Each element contains the following attributes:
+     * 
+     */
     public List<GetEngineNamespacesNamespace> namespaces() {
         return this.namespaces;
     }
@@ -59,9 +71,10 @@ public final class GetEngineNamespacesResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String acceptLanguage;
-        private String clusterId;
+        private @Nullable String clusterId;
         private String id;
         private List<String> ids;
+        private @Nullable String instanceId;
         private List<GetEngineNamespacesNamespace> namespaces;
         private @Nullable String outputFile;
         public Builder() {}
@@ -71,6 +84,7 @@ public final class GetEngineNamespacesResult {
     	      this.clusterId = defaults.clusterId;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.instanceId = defaults.instanceId;
     	      this.namespaces = defaults.namespaces;
     	      this.outputFile = defaults.outputFile;
         }
@@ -82,10 +96,8 @@ public final class GetEngineNamespacesResult {
             return this;
         }
         @CustomType.Setter
-        public Builder clusterId(String clusterId) {
-            if (clusterId == null) {
-              throw new MissingRequiredPropertyException("GetEngineNamespacesResult", "clusterId");
-            }
+        public Builder clusterId(@Nullable String clusterId) {
+
             this.clusterId = clusterId;
             return this;
         }
@@ -107,6 +119,12 @@ public final class GetEngineNamespacesResult {
         }
         public Builder ids(String... ids) {
             return ids(List.of(ids));
+        }
+        @CustomType.Setter
+        public Builder instanceId(@Nullable String instanceId) {
+
+            this.instanceId = instanceId;
+            return this;
         }
         @CustomType.Setter
         public Builder namespaces(List<GetEngineNamespacesNamespace> namespaces) {
@@ -131,6 +149,7 @@ public final class GetEngineNamespacesResult {
             _resultValue.clusterId = clusterId;
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
             _resultValue.namespaces = namespaces;
             _resultValue.outputFile = outputFile;
             return _resultValue;

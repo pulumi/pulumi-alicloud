@@ -267,6 +267,18 @@ namespace Pulumi.AliCloud.Ess.Inputs
         [Input("securityContextRunAsUser")]
         public Input<int>? SecurityContextRunAsUser { get; set; }
 
+        /// <summary>
+        /// Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+        /// </summary>
+        [Input("stdin")]
+        public Input<bool>? Stdin { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable the Interaction feature. Valid values: true, false.
+        /// </summary>
+        [Input("tty")]
+        public Input<bool>? Tty { get; set; }
+
         [Input("volumeMounts")]
         private InputList<Inputs.EciScalingConfigurationContainerVolumeMountGetArgs>? _volumeMounts;
 

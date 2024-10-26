@@ -27,7 +27,7 @@ class GetVpcEndpointServicesResult:
     """
     A collection of values returned by getVpcEndpointServices.
     """
-    def __init__(__self__, auto_accept_connection=None, id=None, ids=None, name_regex=None, names=None, output_file=None, service_business_status=None, services=None, status=None, vpc_endpoint_service_name=None):
+    def __init__(__self__, auto_accept_connection=None, id=None, ids=None, name_regex=None, names=None, output_file=None, service_business_status=None, services=None, status=None, tags=None, vpc_endpoint_service_name=None):
         if auto_accept_connection and not isinstance(auto_accept_connection, bool):
             raise TypeError("Expected argument 'auto_accept_connection' to be a bool")
         pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
@@ -55,6 +55,9 @@ class GetVpcEndpointServicesResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if vpc_endpoint_service_name and not isinstance(vpc_endpoint_service_name, str):
             raise TypeError("Expected argument 'vpc_endpoint_service_name' to be a str")
         pulumi.set(__self__, "vpc_endpoint_service_name", vpc_endpoint_service_name)
@@ -62,6 +65,9 @@ class GetVpcEndpointServicesResult:
     @property
     @pulumi.getter(name="autoAcceptConnection")
     def auto_accept_connection(self) -> Optional[bool]:
+        """
+        Whether to automatically accept terminal node connections..
+        """
         return pulumi.get(self, "auto_accept_connection")
 
     @property
@@ -85,6 +91,9 @@ class GetVpcEndpointServicesResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
+        """
+        A list of Vpc Endpoint Service names.
+        """
         return pulumi.get(self, "names")
 
     @property
@@ -95,21 +104,41 @@ class GetVpcEndpointServicesResult:
     @property
     @pulumi.getter(name="serviceBusinessStatus")
     def service_business_status(self) -> Optional[str]:
+        """
+        The business status of the terminal node service..
+        """
         return pulumi.get(self, "service_business_status")
 
     @property
     @pulumi.getter
     def services(self) -> Sequence['outputs.GetVpcEndpointServicesServiceResult']:
+        """
+        A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+        """
         return pulumi.get(self, "services")
 
     @property
     @pulumi.getter
     def status(self) -> Optional[str]:
+        """
+        The Status of Vpc Endpoint Service.
+        """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Mapping[str, str]]:
+        """
+        The tags of Vpc Endpoint Service.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcEndpointServiceName")
     def vpc_endpoint_service_name(self) -> Optional[str]:
+        """
+        The name of Vpc Endpoint Service.
+        """
         return pulumi.get(self, "vpc_endpoint_service_name")
 
 
@@ -128,6 +157,7 @@ class AwaitableGetVpcEndpointServicesResult(GetVpcEndpointServicesResult):
             service_business_status=self.service_business_status,
             services=self.services,
             status=self.status,
+            tags=self.tags,
             vpc_endpoint_service_name=self.vpc_endpoint_service_name)
 
 
@@ -137,12 +167,13 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
                               output_file: Optional[str] = None,
                               service_business_status: Optional[str] = None,
                               status: Optional[str] = None,
+                              tags: Optional[Mapping[str, str]] = None,
                               vpc_endpoint_service_name: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcEndpointServicesResult:
     """
     This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.109.0+.
+    > **NOTE:** Available since v1.109.0.
 
     ## Example Usage
 
@@ -152,8 +183,11 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.privatelink.get_vpc_endpoint_services(ids=["example_value"],
-        name_regex="the_resource_name")
+    example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("example",
+        service_description="terraform-example",
+        connect_bandwidth=103,
+        auto_accept_connection=False)
+    example = alicloud.privatelink.get_vpc_endpoint_services_output(ids=[example_vpc_endpoint_service.id])
     pulumi.export("firstPrivatelinkVpcEndpointServiceId", example.services[0].id)
     ```
 
@@ -164,6 +198,7 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_business_status: The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
     :param str status: The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+    :param Mapping[str, str] tags: The tags of Vpc Endpoint Service.
     :param str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
     """
     __args__ = dict()
@@ -173,6 +208,7 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
     __args__['outputFile'] = output_file
     __args__['serviceBusinessStatus'] = service_business_status
     __args__['status'] = status
+    __args__['tags'] = tags
     __args__['vpcEndpointServiceName'] = vpc_endpoint_service_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices', __args__, opts=opts, typ=GetVpcEndpointServicesResult).value
@@ -187,6 +223,7 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
         service_business_status=pulumi.get(__ret__, 'service_business_status'),
         services=pulumi.get(__ret__, 'services'),
         status=pulumi.get(__ret__, 'status'),
+        tags=pulumi.get(__ret__, 'tags'),
         vpc_endpoint_service_name=pulumi.get(__ret__, 'vpc_endpoint_service_name'))
 def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Input[Optional[bool]]] = None,
                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
@@ -194,12 +231,13 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                      service_business_status: Optional[pulumi.Input[Optional[str]]] = None,
                                      status: Optional[pulumi.Input[Optional[str]]] = None,
+                                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                      vpc_endpoint_service_name: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointServicesResult]:
     """
     This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.109.0+.
+    > **NOTE:** Available since v1.109.0.
 
     ## Example Usage
 
@@ -209,8 +247,11 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.privatelink.get_vpc_endpoint_services(ids=["example_value"],
-        name_regex="the_resource_name")
+    example_vpc_endpoint_service = alicloud.privatelink.VpcEndpointService("example",
+        service_description="terraform-example",
+        connect_bandwidth=103,
+        auto_accept_connection=False)
+    example = alicloud.privatelink.get_vpc_endpoint_services_output(ids=[example_vpc_endpoint_service.id])
     pulumi.export("firstPrivatelinkVpcEndpointServiceId", example.services[0].id)
     ```
 
@@ -221,6 +262,7 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_business_status: The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
     :param str status: The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+    :param Mapping[str, str] tags: The tags of Vpc Endpoint Service.
     :param str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
     """
     __args__ = dict()
@@ -230,6 +272,7 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
     __args__['outputFile'] = output_file
     __args__['serviceBusinessStatus'] = service_business_status
     __args__['status'] = status
+    __args__['tags'] = tags
     __args__['vpcEndpointServiceName'] = vpc_endpoint_service_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:privatelink/getVpcEndpointServices:getVpcEndpointServices', __args__, opts=opts, typ=GetVpcEndpointServicesResult)
@@ -243,4 +286,5 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
         service_business_status=pulumi.get(__response__, 'service_business_status'),
         services=pulumi.get(__response__, 'services'),
         status=pulumi.get(__response__, 'status'),
+        tags=pulumi.get(__response__, 'tags'),
         vpc_endpoint_service_name=pulumi.get(__response__, 'vpc_endpoint_service_name')))

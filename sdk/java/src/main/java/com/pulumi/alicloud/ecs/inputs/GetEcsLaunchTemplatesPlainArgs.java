@@ -107,9 +107,17 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
         return Optional.ofNullable(this.templateResourceGroupId);
     }
 
+    /**
+     * The template tags.
+     * 
+     */
     @Import(name="templateTags")
     private @Nullable Map<String,String> templateTags;
 
+    /**
+     * @return The template tags.
+     * 
+     */
     public Optional<Map<String,String>> templateTags() {
         return Optional.ofNullable(this.templateTags);
     }
@@ -220,6 +228,12 @@ public final class GetEcsLaunchTemplatesPlainArgs extends com.pulumi.resources.I
             return this;
         }
 
+        /**
+         * @param templateTags The template tags.
+         * 
+         * @return builder
+         * 
+         */
         public Builder templateTags(@Nullable Map<String,String> templateTags) {
             $.templateTags = templateTags;
             return this;

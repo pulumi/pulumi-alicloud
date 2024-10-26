@@ -33,6 +33,9 @@ type Cluster struct {
 	CloneDataPoint pulumi.StringPtrOutput `pulumi:"cloneDataPoint"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringOutput `pulumi:"collectorStatus"`
+	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+	// > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
+	CompressStorage pulumi.StringOutput `pulumi:"compressStorage"`
 	// (Available since 1.81.0) PolarDB cluster connection string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// (Available since 1.204.1) PolarDB cluster creation time.
@@ -92,6 +95,12 @@ type Cluster struct {
 	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
 	LoosePolarLogBin pulumi.StringOutput `pulumi:"loosePolarLogBin"`
+	// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+	// > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+	LooseXengine pulumi.StringOutput `pulumi:"looseXengine"`
+	// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+	// > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
+	LooseXengineUseMemoryPct pulumi.IntOutput `pulumi:"looseXengineUseMemoryPct"`
 	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	LowerCaseTableNames pulumi.IntOutput `pulumi:"lowerCaseTableNames"`
@@ -245,6 +254,9 @@ type clusterState struct {
 	CloneDataPoint *string `pulumi:"cloneDataPoint"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
+	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+	// > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
+	CompressStorage *string `pulumi:"compressStorage"`
 	// (Available since 1.81.0) PolarDB cluster connection string.
 	ConnectionString *string `pulumi:"connectionString"`
 	// (Available since 1.204.1) PolarDB cluster creation time.
@@ -304,6 +316,12 @@ type clusterState struct {
 	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
 	LoosePolarLogBin *string `pulumi:"loosePolarLogBin"`
+	// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+	// > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+	LooseXengine *string `pulumi:"looseXengine"`
+	// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+	// > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
+	LooseXengineUseMemoryPct *int `pulumi:"looseXengineUseMemoryPct"`
 	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
@@ -419,6 +437,9 @@ type ClusterState struct {
 	CloneDataPoint pulumi.StringPtrInput
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
+	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+	// > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
+	CompressStorage pulumi.StringPtrInput
 	// (Available since 1.81.0) PolarDB cluster connection string.
 	ConnectionString pulumi.StringPtrInput
 	// (Available since 1.204.1) PolarDB cluster creation time.
@@ -478,6 +499,12 @@ type ClusterState struct {
 	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
 	LoosePolarLogBin pulumi.StringPtrInput
+	// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+	// > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+	LooseXengine pulumi.StringPtrInput
+	// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+	// > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
+	LooseXengineUseMemoryPct pulumi.IntPtrInput
 	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	LowerCaseTableNames pulumi.IntPtrInput
@@ -597,6 +624,9 @@ type clusterArgs struct {
 	CloneDataPoint *string `pulumi:"cloneDataPoint"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
+	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+	// > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
+	CompressStorage *string `pulumi:"compressStorage"`
 	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
 	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory *string `pulumi:"creationCategory"`
@@ -650,6 +680,12 @@ type clusterArgs struct {
 	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
 	LoosePolarLogBin *string `pulumi:"loosePolarLogBin"`
+	// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+	// > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+	LooseXengine *string `pulumi:"looseXengine"`
+	// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+	// > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
+	LooseXengineUseMemoryPct *int `pulumi:"looseXengineUseMemoryPct"`
 	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
@@ -758,6 +794,9 @@ type ClusterArgs struct {
 	CloneDataPoint pulumi.StringPtrInput
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
+	// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+	// > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
+	CompressStorage pulumi.StringPtrInput
 	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
 	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
 	CreationCategory pulumi.StringPtrInput
@@ -811,6 +850,12 @@ type ClusterArgs struct {
 	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
 	LoosePolarLogBin pulumi.StringPtrInput
+	// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+	// > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+	LooseXengine pulumi.StringPtrInput
+	// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+	// > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
+	LooseXengineUseMemoryPct pulumi.IntPtrInput
 	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	LowerCaseTableNames pulumi.IntPtrInput
@@ -1019,6 +1064,12 @@ func (o ClusterOutput) CollectorStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CollectorStatus }).(pulumi.StringOutput)
 }
 
+// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+// > **NOTE:** When the value of dbType is not MySQL, the value of creationOption is neither empty nor Normal, and the value of storageType is not PSL4, this field will be ignored.
+func (o ClusterOutput) CompressStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CompressStorage }).(pulumi.StringOutput)
+}
+
 // (Available since 1.81.0) PolarDB cluster connection string.
 func (o ClusterOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
@@ -1145,6 +1196,18 @@ func (o ClusterOutput) ImciSwitch() pulumi.StringOutput {
 // > **NOTE:** This parameter is valid only MySQL Engine supports.
 func (o ClusterOutput) LoosePolarLogBin() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.LoosePolarLogBin }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+// > **NOTE:** This parameter takes effect only if you do not set `creationOption` to CreateGdnStandby and you set `dbType` to MySQL and `dbVersion` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+func (o ClusterOutput) LooseXengine() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.LooseXengine }).(pulumi.StringOutput)
+}
+
+// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+// > **NOTE:** When the parameter `looseXengine` is ON, `looseXengineUseMemoryPct` takes effect.
+func (o ClusterOutput) LooseXengineUseMemoryPct() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.LooseXengineUseMemoryPct }).(pulumi.IntOutput)
 }
 
 // Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.

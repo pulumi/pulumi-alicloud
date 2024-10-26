@@ -12,17 +12,17 @@ namespace Pulumi.AliCloud.Bss
     public static class GetOpenApiProducts
     {
         /// <summary>
-        /// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+        /// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// </summary>
         public static Task<GetOpenApiProductsResult> InvokeAsync(GetOpenApiProductsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenApiProductsResult>("alicloud:bss/getOpenApiProducts:getOpenApiProducts", args ?? new GetOpenApiProductsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+        /// This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// </summary>
         public static Output<GetOpenApiProductsResult> Invoke(GetOpenApiProductsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpenApiProductsResult>("alicloud:bss/getOpenApiProducts:getOpenApiProducts", args ?? new GetOpenApiProductsInvokeArgs(), options.WithDefaults());

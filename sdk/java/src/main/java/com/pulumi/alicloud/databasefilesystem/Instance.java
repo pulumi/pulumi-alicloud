@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * 
  * For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
  * 
+ * &gt; **NOTE:** Need to contact us open whitelist before you can use the resource.
+ * 
  * &gt; **NOTE:** Available since v1.136.0.
  * 
  * ## Example Usage
@@ -197,6 +199,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.fsName;
     }
     /**
+     * . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * 
      * @deprecated
      * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
@@ -205,6 +209,10 @@ public class Instance extends com.pulumi.resources.CustomResource {
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
+    /**
+     * @return . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * 
+     */
     public Output<String> instanceName() {
         return this.instanceName;
     }
@@ -323,12 +331,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A mapping of tags to assign to the resource.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
      * @return A mapping of tags to assign to the resource.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

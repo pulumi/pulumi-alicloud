@@ -531,10 +531,10 @@ class GetFoldersFolderResult(dict):
                  id: str,
                  parent_folder_id: str):
         """
-        :param str folder_id: The ID of the folder.
-        :param str folder_name: The name of the folder.
-        :param str id: The ID of the folder.
-        :param str parent_folder_id: The ID of the parent folder.
+        :param str folder_id: The ID of the Folder.
+        :param str folder_name: The Name of the Folder.
+        :param str id: The ID of the Resource Manager Folder.
+        :param str parent_folder_id: The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
         """
         pulumi.set(__self__, "folder_id", folder_id)
         pulumi.set(__self__, "folder_name", folder_name)
@@ -545,7 +545,7 @@ class GetFoldersFolderResult(dict):
     @pulumi.getter(name="folderId")
     def folder_id(self) -> str:
         """
-        The ID of the folder.
+        The ID of the Folder.
         """
         return pulumi.get(self, "folder_id")
 
@@ -553,7 +553,7 @@ class GetFoldersFolderResult(dict):
     @pulumi.getter(name="folderName")
     def folder_name(self) -> str:
         """
-        The name of the folder.
+        The Name of the Folder.
         """
         return pulumi.get(self, "folder_name")
 
@@ -561,7 +561,7 @@ class GetFoldersFolderResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of the folder.
+        The ID of the Resource Manager Folder.
         """
         return pulumi.get(self, "id")
 
@@ -569,7 +569,7 @@ class GetFoldersFolderResult(dict):
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> str:
         """
-        The ID of the parent folder.
+        The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
         """
         return pulumi.get(self, "parent_folder_id")
 

@@ -108,14 +108,14 @@ public final class GetAlidnsRecordsPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+     * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
      * 
      */
     @Import(name="line")
     private @Nullable String line;
 
     /**
-     * @return ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+     * @return ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
      * 
      */
     public Optional<String> line() {
@@ -389,7 +389,7 @@ public final class GetAlidnsRecordsPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param line ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+         * @param line ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
          * 
          * @return builder
          * 

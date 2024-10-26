@@ -227,6 +227,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.cpu;
     }
     /**
+     * (Available since v1.232.0) The time when the instance was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.232.0) The time when the instance was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
      * Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
      * 
      */
@@ -359,6 +373,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> enableJumboFrame() {
         return this.enableJumboFrame;
+    }
+    /**
+     * (Available since v1.232.0) The expiration time of the instance.
+     * 
+     */
+    @Export(name="expiredTime", refs={String.class}, tree="[0]")
+    private Output<String> expiredTime;
+
+    /**
+     * @return (Available since v1.232.0) The expiration time of the instance.
+     * 
+     */
+    public Output<String> expiredTime() {
+        return this.expiredTime;
     }
     /**
      * If it is true, the &#34;PrePaid&#34; instance will be change to &#34;PostPaid&#34; and then deleted forcibly.
@@ -871,6 +899,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.password);
     }
     /**
+     * Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="passwordInherit", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> passwordInherit;
+
+    /**
+     * @return Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> passwordInherit() {
+        return Codegen.optional(this.passwordInherit);
+    }
+    /**
      * The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
      * - [1-3] when `period_unit` in &#34;Week&#34;
@@ -951,40 +993,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * The number of queues supported by the ERI.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-     * 
      */
     @Export(name="queuePairNumber", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> queuePairNumber;
 
     /**
      * @return The number of queues supported by the ERI.
-     * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Output<Optional<Integer>> queuePairNumber() {
@@ -1149,6 +1163,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> spotStrategy() {
         return this.spotStrategy;
+    }
+    /**
+     * (Available since v1.232.0) The time when the instance was last started.
+     * 
+     */
+    @Export(name="startTime", refs={String.class}, tree="[0]")
+    private Output<String> startTime;
+
+    /**
+     * @return (Available since v1.232.0) The time when the instance was last started.
+     * 
+     */
+    public Output<String> startTime() {
+        return this.startTime;
     }
     /**
      * The instance status. Valid values: [&#34;Running&#34;, &#34;Stopped&#34;]. You can control the instance start and stop through this parameter. Default to `Running`.

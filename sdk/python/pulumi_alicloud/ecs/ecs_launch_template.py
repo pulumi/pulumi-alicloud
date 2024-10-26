@@ -29,6 +29,9 @@ class EcsLaunchTemplateArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_owner_alias: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -79,6 +82,13 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[str] http_endpoint: Whether to enable access to instance metadata. Valid values:
+               - enabled: Enabled.
+               - disabled: Disabled.
+        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
+        :param pulumi.Input[str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+               - optional: Not mandatory.
+               - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
@@ -142,6 +152,12 @@ class EcsLaunchTemplateArgs:
             pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if http_tokens is not None:
+            pulumi.set(__self__, "http_tokens", http_tokens)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_owner_alias is not None:
@@ -336,6 +352,46 @@ class EcsLaunchTemplateArgs:
     @host_name.setter
     def host_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host_name", value)
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable access to instance metadata. Valid values:
+        - enabled: Enabled.
+        - disabled: Disabled.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_endpoint", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP PUT response hop limit required for instance metadata requests.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+        - optional: Not mandatory.
+        - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_tokens", value)
 
     @property
     @pulumi.getter(name="imageId")
@@ -841,6 +897,9 @@ class _EcsLaunchTemplateState:
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_owner_alias: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -891,6 +950,13 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[str] http_endpoint: Whether to enable access to instance metadata. Valid values:
+               - enabled: Enabled.
+               - disabled: Disabled.
+        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
+        :param pulumi.Input[str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+               - optional: Not mandatory.
+               - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
@@ -954,6 +1020,12 @@ class _EcsLaunchTemplateState:
             pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
         if host_name is not None:
             pulumi.set(__self__, "host_name", host_name)
+        if http_endpoint is not None:
+            pulumi.set(__self__, "http_endpoint", http_endpoint)
+        if http_put_response_hop_limit is not None:
+            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        if http_tokens is not None:
+            pulumi.set(__self__, "http_tokens", http_tokens)
         if image_id is not None:
             pulumi.set(__self__, "image_id", image_id)
         if image_owner_alias is not None:
@@ -1148,6 +1220,46 @@ class _EcsLaunchTemplateState:
     @host_name.setter
     def host_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host_name", value)
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to enable access to instance metadata. Valid values:
+        - enabled: Enabled.
+        - disabled: Disabled.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @http_endpoint.setter
+    def http_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_endpoint", value)
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP PUT response hop limit required for instance metadata requests.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @http_put_response_hop_limit.setter
+    def http_put_response_hop_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_put_response_hop_limit", value)
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+        - optional: Not mandatory.
+        - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+        """
+        return pulumi.get(self, "http_tokens")
+
+    @http_tokens.setter
+    def http_tokens(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_tokens", value)
 
     @property
     @pulumi.getter(name="imageId")
@@ -1655,6 +1767,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_owner_alias: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -1808,6 +1923,13 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[str] http_endpoint: Whether to enable access to instance metadata. Valid values:
+               - enabled: Enabled.
+               - disabled: Disabled.
+        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
+        :param pulumi.Input[str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+               - optional: Not mandatory.
+               - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
@@ -1986,6 +2108,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
+                 http_endpoint: Optional[pulumi.Input[str]] = None,
+                 http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+                 http_tokens: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_owner_alias: Optional[pulumi.Input[str]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -2043,6 +2168,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_vm_os_config"] = enable_vm_os_config
             __props__.__dict__["host_name"] = host_name
+            __props__.__dict__["http_endpoint"] = http_endpoint
+            __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
+            __props__.__dict__["http_tokens"] = http_tokens
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["image_owner_alias"] = image_owner_alias
             __props__.__dict__["instance_charge_type"] = instance_charge_type
@@ -2101,6 +2229,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
+            http_endpoint: Optional[pulumi.Input[str]] = None,
+            http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+            http_tokens: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             image_owner_alias: Optional[pulumi.Input[str]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -2156,6 +2287,13 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
+        :param pulumi.Input[str] http_endpoint: Whether to enable access to instance metadata. Valid values:
+               - enabled: Enabled.
+               - disabled: Disabled.
+        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
+        :param pulumi.Input[str] http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+               - optional: Not mandatory.
+               - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
         :param pulumi.Input[str] image_id: The Image ID.
         :param pulumi.Input[str] image_owner_alias: Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Valid values: `PostPaid`, `PrePaid`.
@@ -2215,6 +2353,9 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_vm_os_config"] = enable_vm_os_config
         __props__.__dict__["host_name"] = host_name
+        __props__.__dict__["http_endpoint"] = http_endpoint
+        __props__.__dict__["http_put_response_hop_limit"] = http_put_response_hop_limit
+        __props__.__dict__["http_tokens"] = http_tokens
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["image_owner_alias"] = image_owner_alias
         __props__.__dict__["instance_charge_type"] = instance_charge_type
@@ -2320,6 +2461,34 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         """
         return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> pulumi.Output[str]:
+        """
+        Whether to enable access to instance metadata. Valid values:
+        - enabled: Enabled.
+        - disabled: Disabled.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> pulumi.Output[int]:
+        """
+        The HTTP PUT response hop limit required for instance metadata requests.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> pulumi.Output[str]:
+        """
+        Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+        - optional: Not mandatory.
+        - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+        """
+        return pulumi.get(self, "http_tokens")
 
     @property
     @pulumi.getter(name="imageId")

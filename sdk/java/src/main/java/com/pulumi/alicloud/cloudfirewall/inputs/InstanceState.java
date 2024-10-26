@@ -63,14 +63,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to use log audit. Valid values: `true`, `false`.
+     * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
      * 
      */
     @Import(name="cfwLog")
     private @Nullable Output<Boolean> cfwLog;
 
     /**
-     * @return Whether to use log audit. Valid values: `true`, `false`.
+     * @return Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
      * 
      */
     public Optional<Output<Boolean>> cfwLog() {
@@ -78,14 +78,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The log storage capacity. It will be ignored when `cfw_log = false`.
+     * The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
      * 
      */
     @Import(name="cfwLogStorage")
     private @Nullable Output<Integer> cfwLogStorage;
 
     /**
-     * @return The log storage capacity. It will be ignored when `cfw_log = false`.
+     * @return The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
      * 
      */
     public Optional<Output<Integer>> cfwLogStorage() {
@@ -183,14 +183,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
      * 
      */
     @Import(name="modifyType")
     private @Nullable Output<String> modifyType;
 
     /**
-     * @return The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+     * @return The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
      * 
      */
     public Optional<Output<String>> modifyType() {
@@ -298,7 +298,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -309,7 +309,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> renewalStatus;
 
     /**
-     * @return Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * @return Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -336,18 +336,33 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of Instance.
+     * The status of Cloud Firewall Instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of Instance.
+     * @return The status of Cloud Firewall Instance.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * (Available since v1.232.0) The user status of Cloud Firewall Instance.
+     * 
+     */
+    @Import(name="userStatus")
+    private @Nullable Output<Boolean> userStatus;
+
+    /**
+     * @return (Available since v1.232.0) The user status of Cloud Firewall Instance.
+     * 
+     */
+    public Optional<Output<Boolean>> userStatus() {
+        return Optional.ofNullable(this.userStatus);
     }
 
     private InstanceState() {}
@@ -374,6 +389,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.renewalStatus = $.renewalStatus;
         this.spec = $.spec;
         this.status = $.status;
+        this.userStatus = $.userStatus;
     }
 
     public static Builder builder() {
@@ -458,7 +474,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cfwLog Whether to use log audit. Valid values: `true`, `false`.
+         * @param cfwLog Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
          * 
          * @return builder
          * 
@@ -469,7 +485,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cfwLog Whether to use log audit. Valid values: `true`, `false`.
+         * @param cfwLog Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
          * 
          * @return builder
          * 
@@ -479,7 +495,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cfwLogStorage The log storage capacity. It will be ignored when `cfw_log = false`.
+         * @param cfwLogStorage The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
          * 
          * @return builder
          * 
@@ -490,7 +506,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cfwLogStorage The log storage capacity. It will be ignored when `cfw_log = false`.
+         * @param cfwLogStorage The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
          * 
          * @return builder
          * 
@@ -626,7 +642,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+         * @param modifyType The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
          * 
          * @return builder
          * 
@@ -637,7 +653,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param modifyType The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+         * @param modifyType The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
          * 
          * @return builder
          * 
@@ -783,7 +799,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+         * @param renewalStatus Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
          * - `AutoRenewal`: Auto renewal.
          * - `ManualRenewal`: Manual renewal.
          * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -798,7 +814,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param renewalStatus Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+         * @param renewalStatus Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
          * - `AutoRenewal`: Auto renewal.
          * - `ManualRenewal`: Manual renewal.
          * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -833,7 +849,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of Instance.
+         * @param status The status of Cloud Firewall Instance.
          * 
          * @return builder
          * 
@@ -844,13 +860,34 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of Instance.
+         * @param status The status of Cloud Firewall Instance.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param userStatus (Available since v1.232.0) The user status of Cloud Firewall Instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userStatus(@Nullable Output<Boolean> userStatus) {
+            $.userStatus = userStatus;
+            return this;
+        }
+
+        /**
+         * @param userStatus (Available since v1.232.0) The user status of Cloud Firewall Instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userStatus(Boolean userStatus) {
+            return userStatus(Output.of(userStatus));
         }
 
         public InstanceState build() {

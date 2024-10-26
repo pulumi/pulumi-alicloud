@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshNetwork {
     /**
-     * @return Security group ID.
+     * @return Security group ID
      * 
      */
     private @Nullable String securityGroupId;
     /**
-     * @return VPC ID.
+     * @return VPC ID
      * 
      */
     private String vpcId;
     /**
-     * @return Virtual Switch ID.
+     * @return Virtual Switch ID
      * 
      */
     private String vswitcheList;
 
     private ServiceMeshNetwork() {}
     /**
-     * @return Security group ID.
+     * @return Security group ID
      * 
      */
     public Optional<String> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
     /**
-     * @return VPC ID.
+     * @return VPC ID
      * 
      */
     public String vpcId() {
         return this.vpcId;
     }
     /**
-     * @return Virtual Switch ID.
+     * @return Virtual Switch ID
      * 
      */
     public String vswitcheList() {

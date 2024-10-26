@@ -7,22 +7,25 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the resource manager folders of the current Alibaba Cloud user.
+ * This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.84.0+.
- *
- * > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+ * > **NOTE:** Available since v1.84.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.resourcemanager.getFolders({
- *     nameRegex: "tftest",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.resourcemanager.Folder("default", {folderName: name});
+ * const ids = alicloud.resourcemanager.getFoldersOutput({
+ *     ids: [_default.id],
  * });
- * export const firstFolderId = example.then(example => example.folders?.[0]?.id);
+ * export const resourceManagerFolderId0 = ids.apply(ids => ids.folders?.[0]?.id);
  * ```
  */
 export function getFolders(args?: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
@@ -43,15 +46,15 @@ export function getFolders(args?: GetFoldersArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetFoldersArgs {
     /**
-     * Default to `false`. Set it to true can output more details.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: boolean;
     /**
-     * A list of resource manager folders IDs.
+     * A list of Folders IDs.
      */
     ids?: string[];
     /**
-     * A regex string to filter results by folder name.
+     * A regex string to filter results by Folder name.
      */
     nameRegex?: string;
     /**
@@ -59,11 +62,11 @@ export interface GetFoldersArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the parent folder.
+     * The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
      */
     parentFolderId?: string;
     /**
-     * The query keyword.
+     * The keyword used for the query, such as a folder name. Fuzzy match is supported.
      */
     queryKeyword?: string;
 }
@@ -74,46 +77,46 @@ export interface GetFoldersArgs {
 export interface GetFoldersResult {
     readonly enableDetails?: boolean;
     /**
-     * A list of folders. Each element contains the following attributes:
+     * A list of Folder. Each element contains the following attributes:
      */
     readonly folders: outputs.resourcemanager.GetFoldersFolder[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * A list of folder IDs.
-     */
     readonly ids: string[];
     readonly nameRegex?: string;
     /**
-     * A list of folder names.
+     * A list of Folder names.
      */
     readonly names: string[];
     readonly outputFile?: string;
     /**
-     * (Available in v1.114.0+)The ID of the parent folder.
+     * (Available since v1.114.0) The ID of the parent folder. **Note:** `parentFolderId` takes effect only if `enableDetails` is set to `true`.
      */
     readonly parentFolderId?: string;
     readonly queryKeyword?: string;
 }
 /**
- * This data source provides the resource manager folders of the current Alibaba Cloud user.
+ * This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
  *
- * > **NOTE:**  Available in 1.84.0+.
- *
- * > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+ * > **NOTE:** Available since v1.84.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.resourcemanager.getFolders({
- *     nameRegex: "tftest",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.resourcemanager.Folder("default", {folderName: name});
+ * const ids = alicloud.resourcemanager.getFoldersOutput({
+ *     ids: [_default.id],
  * });
- * export const firstFolderId = example.then(example => example.folders?.[0]?.id);
+ * export const resourceManagerFolderId0 = ids.apply(ids => ids.folders?.[0]?.id);
  * ```
  */
 export function getFoldersOutput(args?: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
@@ -134,15 +137,15 @@ export function getFoldersOutput(args?: GetFoldersOutputArgs, opts?: pulumi.Invo
  */
 export interface GetFoldersOutputArgs {
     /**
-     * Default to `false`. Set it to true can output more details.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * A list of resource manager folders IDs.
+     * A list of Folders IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex string to filter results by folder name.
+     * A regex string to filter results by Folder name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
@@ -150,11 +153,11 @@ export interface GetFoldersOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the parent folder.
+     * The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
      */
     parentFolderId?: pulumi.Input<string>;
     /**
-     * The query keyword.
+     * The keyword used for the query, such as a folder name. Fuzzy match is supported.
      */
     queryKeyword?: pulumi.Input<string>;
 }

@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> BackupTime { get; private set; } = null!;
 
         /// <summary>
-        /// The bandwidth.
+        /// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
@@ -537,6 +537,12 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
+        /// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+        /// </summary>
+        [Input("bandwidth")]
+        public Input<int>? Bandwidth { get; set; }
+
+        /// <summary>
         /// The ID of the event or the business information.
         /// </summary>
         [Input("businessInfo")]
@@ -973,7 +979,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// The bandwidth.
+        /// The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }

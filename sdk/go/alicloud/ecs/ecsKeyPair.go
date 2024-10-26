@@ -84,7 +84,7 @@ type EcsKeyPair struct {
 	// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// The Id of resource group which the key pair belongs.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput    `pulumi:"resourceGroupId"`
 	Tags            pulumi.StringMapOutput `pulumi:"tags"`
 }
 
@@ -313,8 +313,8 @@ func (o EcsKeyPairOutput) PublicKey() pulumi.StringPtrOutput {
 }
 
 // The Id of resource group which the key pair belongs.
-func (o EcsKeyPairOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+func (o EcsKeyPairOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsKeyPair) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 func (o EcsKeyPairOutput) Tags() pulumi.StringMapOutput {

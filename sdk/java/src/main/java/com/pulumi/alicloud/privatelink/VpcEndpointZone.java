@@ -139,8 +139,6 @@ import javax.annotation.Nullable;
 public class VpcEndpointZone extends com.pulumi.resources.CustomResource {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
@@ -148,8 +146,6 @@ public class VpcEndpointZone extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -198,14 +194,14 @@ public class VpcEndpointZone extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * The ID of the vSwitch in the zone. .
+     * The ID of the vSwitch in the zone.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch in the zone. .
+     * @return The ID of the vSwitch in the zone.
      * 
      */
     public Output<String> vswitchId() {

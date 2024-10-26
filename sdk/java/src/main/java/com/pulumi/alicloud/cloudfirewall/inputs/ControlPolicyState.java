@@ -5,7 +5,9 @@ package com.pulumi.alicloud.cloudfirewall.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -60,6 +62,38 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<String>> applicationName() {
         return Optional.ofNullable(this.applicationName);
+    }
+
+    /**
+     * The application types supported by the access control policy.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+     * 
+     */
+    @Import(name="applicationNameLists")
+    private @Nullable Output<List<String>> applicationNameLists;
+
+    /**
+     * @return The application types supported by the access control policy.
+     * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+     * 
+     */
+    public Optional<Output<List<String>>> applicationNameLists() {
+        return Optional.ofNullable(this.applicationNameLists);
+    }
+
+    /**
+     * (Available since v1.232.0) The time when the access control policy was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.232.0) The time when the access control policy was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     /**
@@ -168,6 +202,44 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The domain name resolution method of the access control policy. Valid values:
+     * - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
+     * - `DNS`: DNS-based dynamic resolution.
+     * - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
+     * 
+     */
+    @Import(name="domainResolveType")
+    private @Nullable Output<String> domainResolveType;
+
+    /**
+     * @return The domain name resolution method of the access control policy. Valid values:
+     * - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
+     * - `DNS`: DNS-based dynamic resolution.
+     * - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
+     * 
+     */
+    public Optional<Output<String>> domainResolveType() {
+        return Optional.ofNullable(this.domainResolveType);
+    }
+
+    /**
+     * The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+     * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+     * 
+     */
+    @Import(name="endTime")
+    private @Nullable Output<Integer> endTime;
+
+    /**
+     * @return The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+     * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+     * 
+     */
+    public Optional<Output<Integer>> endTime() {
+        return Optional.ofNullable(this.endTime);
+    }
+
+    /**
      * The IP version supported by the access control policy. Default value: `4`. Valid values:
      * 
      */
@@ -228,6 +300,84 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * The days of a week or of a month on which the access control policy takes effect. Valid values:
+     * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+     * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+     * 
+     */
+    @Import(name="repeatDays")
+    private @Nullable Output<List<Integer>> repeatDays;
+
+    /**
+     * @return The days of a week or of a month on which the access control policy takes effect. Valid values:
+     * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+     * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+     * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+     * 
+     */
+    public Optional<Output<List<Integer>>> repeatDays() {
+        return Optional.ofNullable(this.repeatDays);
+    }
+
+    /**
+     * The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+     * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+     * 
+     */
+    @Import(name="repeatEndTime")
+    private @Nullable Output<String> repeatEndTime;
+
+    /**
+     * @return The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+     * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+     * 
+     */
+    public Optional<Output<String>> repeatEndTime() {
+        return Optional.ofNullable(this.repeatEndTime);
+    }
+
+    /**
+     * The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+     * 
+     */
+    @Import(name="repeatStartTime")
+    private @Nullable Output<String> repeatStartTime;
+
+    /**
+     * @return The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+     * 
+     */
+    public Optional<Output<String>> repeatStartTime() {
+        return Optional.ofNullable(this.repeatStartTime);
+    }
+
+    /**
+     * The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
+     * - `Permanent`: The policy always takes effect.
+     * - `None`: The policy takes effect for only once.
+     * - `Daily`: The policy takes effect on a daily basis.
+     * - `Weekly`: The policy takes effect on a weekly basis.
+     * - `Monthly`: The policy takes effect on a monthly basis.
+     * 
+     */
+    @Import(name="repeatType")
+    private @Nullable Output<String> repeatType;
+
+    /**
+     * @return The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
+     * - `Permanent`: The policy always takes effect.
+     * - `None`: The policy takes effect for only once.
+     * - `Daily`: The policy takes effect on a daily basis.
+     * - `Weekly`: The policy takes effect on a weekly basis.
+     * - `Monthly`: The policy takes effect on a monthly basis.
+     * 
+     */
+    public Optional<Output<String>> repeatType() {
+        return Optional.ofNullable(this.repeatType);
+    }
+
+    /**
      * The source address in the access control policy.
      * 
      */
@@ -272,12 +422,29 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.sourceType);
     }
 
+    /**
+     * The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+     * 
+     */
+    @Import(name="startTime")
+    private @Nullable Output<Integer> startTime;
+
+    /**
+     * @return The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+     * 
+     */
+    public Optional<Output<Integer>> startTime() {
+        return Optional.ofNullable(this.startTime);
+    }
+
     private ControlPolicyState() {}
 
     private ControlPolicyState(ControlPolicyState $) {
         this.aclAction = $.aclAction;
         this.aclUuid = $.aclUuid;
         this.applicationName = $.applicationName;
+        this.applicationNameLists = $.applicationNameLists;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.destPort = $.destPort;
         this.destPortGroup = $.destPortGroup;
@@ -285,13 +452,20 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         this.destination = $.destination;
         this.destinationType = $.destinationType;
         this.direction = $.direction;
+        this.domainResolveType = $.domainResolveType;
+        this.endTime = $.endTime;
         this.ipVersion = $.ipVersion;
         this.lang = $.lang;
         this.proto = $.proto;
         this.release = $.release;
+        this.repeatDays = $.repeatDays;
+        this.repeatEndTime = $.repeatEndTime;
+        this.repeatStartTime = $.repeatStartTime;
+        this.repeatType = $.repeatType;
         this.source = $.source;
         this.sourceIp = $.sourceIp;
         this.sourceType = $.sourceType;
+        this.startTime = $.startTime;
     }
 
     public static Builder builder() {
@@ -375,6 +549,61 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder applicationName(String applicationName) {
             return applicationName(Output.of(applicationName));
+        }
+
+        /**
+         * @param applicationNameLists The application types supported by the access control policy.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationNameLists(@Nullable Output<List<String>> applicationNameLists) {
+            $.applicationNameLists = applicationNameLists;
+            return this;
+        }
+
+        /**
+         * @param applicationNameLists The application types supported by the access control policy.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationNameLists(List<String> applicationNameLists) {
+            return applicationNameLists(Output.of(applicationNameLists));
+        }
+
+        /**
+         * @param applicationNameLists The application types supported by the access control policy.
+         * &gt; **NOTE:** If `proto` is set to `TCP`, you can set `application_name_list` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `application_name_list` to `[&#34;ANY&#34;]`. From version 1.232.0, You must specify at least one of the `application_name_list` and `application_name`. If you specify both `application_name_list` and `application_name`, only the `application_name_list` takes effect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder applicationNameLists(String... applicationNameLists) {
+            return applicationNameLists(List.of(applicationNameLists));
+        }
+
+        /**
+         * @param createTime (Available since v1.232.0) The time when the access control policy was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.232.0) The time when the access control policy was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -525,6 +754,56 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param domainResolveType The domain name resolution method of the access control policy. Valid values:
+         * - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
+         * - `DNS`: DNS-based dynamic resolution.
+         * - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainResolveType(@Nullable Output<String> domainResolveType) {
+            $.domainResolveType = domainResolveType;
+            return this;
+        }
+
+        /**
+         * @param domainResolveType The domain name resolution method of the access control policy. Valid values:
+         * - `FQDN`: Fully qualified domain name (FQDN)-based resolution.
+         * - `DNS`: DNS-based dynamic resolution.
+         * - `FQDN_AND_DNS`: FQDN and DNS-based dynamic resolution.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainResolveType(String domainResolveType) {
+            return domainResolveType(Output.of(domainResolveType));
+        }
+
+        /**
+         * @param endTime The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+         * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endTime(@Nullable Output<Integer> endTime) {
+            $.endTime = endTime;
+            return this;
+        }
+
+        /**
+         * @param endTime The time when the access control policy stops taking effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+         * &gt; **NOTE:** If `repeat_type` is set to `None`, `Daily`, `Weekly`, or `Monthly`, `start_time` and `end_time` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endTime(Integer endTime) {
+            return endTime(Output.of(endTime));
+        }
+
+        /**
          * @param ipVersion The IP version supported by the access control policy. Default value: `4`. Valid values:
          * 
          * @return builder
@@ -609,6 +888,121 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
+         * @param repeatDays The days of a week or of a month on which the access control policy takes effect. Valid values:
+         * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+         * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+         * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatDays(@Nullable Output<List<Integer>> repeatDays) {
+            $.repeatDays = repeatDays;
+            return this;
+        }
+
+        /**
+         * @param repeatDays The days of a week or of a month on which the access control policy takes effect. Valid values:
+         * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+         * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+         * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatDays(List<Integer> repeatDays) {
+            return repeatDays(Output.of(repeatDays));
+        }
+
+        /**
+         * @param repeatDays The days of a week or of a month on which the access control policy takes effect. Valid values:
+         * - If `repeat_type` is set to `Weekly`. Valid values: `0` to `6`.
+         * - If `repeat_type` is set to `Monthly`. Valid values: `1` to `31`.
+         * &gt; **NOTE:** If `repeat_type` is set to `Weekly`, or `Monthly`, `repeat_days` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatDays(Integer... repeatDays) {
+            return repeatDays(List.of(repeatDays));
+        }
+
+        /**
+         * @param repeatEndTime The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+         * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatEndTime(@Nullable Output<String> repeatEndTime) {
+            $.repeatEndTime = repeatEndTime;
+            return this;
+        }
+
+        /**
+         * @param repeatEndTime The point in time when the recurrence ends. Example: `23:30`. The end time must be on the hour or on the half hour, and at least 30 minutes later than the start time.
+         * &gt; **NOTE:** If `repeat_type` is set to `Daily`, `Weekly`, or `Monthly`, `repeat_start_time` and `repeat_end_time` must be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatEndTime(String repeatEndTime) {
+            return repeatEndTime(Output.of(repeatEndTime));
+        }
+
+        /**
+         * @param repeatStartTime The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatStartTime(@Nullable Output<String> repeatStartTime) {
+            $.repeatStartTime = repeatStartTime;
+            return this;
+        }
+
+        /**
+         * @param repeatStartTime The point in time when the recurrence starts. Example: `08:00`. The start time must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatStartTime(String repeatStartTime) {
+            return repeatStartTime(Output.of(repeatStartTime));
+        }
+
+        /**
+         * @param repeatType The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
+         * - `Permanent`: The policy always takes effect.
+         * - `None`: The policy takes effect for only once.
+         * - `Daily`: The policy takes effect on a daily basis.
+         * - `Weekly`: The policy takes effect on a weekly basis.
+         * - `Monthly`: The policy takes effect on a monthly basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatType(@Nullable Output<String> repeatType) {
+            $.repeatType = repeatType;
+            return this;
+        }
+
+        /**
+         * @param repeatType The recurrence type for the access control policy to take effect. Default value: `Permanent`. Valid values:
+         * - `Permanent`: The policy always takes effect.
+         * - `None`: The policy takes effect for only once.
+         * - `Daily`: The policy takes effect on a daily basis.
+         * - `Weekly`: The policy takes effect on a weekly basis.
+         * - `Monthly`: The policy takes effect on a monthly basis.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder repeatType(String repeatType) {
+            return repeatType(Output.of(repeatType));
+        }
+
+        /**
          * @param source The source address in the access control policy.
          * 
          * @return builder
@@ -669,6 +1063,27 @@ public final class ControlPolicyState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder sourceType(String sourceType) {
             return sourceType(Output.of(sourceType));
+        }
+
+        /**
+         * @param startTime The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(@Nullable Output<Integer> startTime) {
+            $.startTime = startTime;
+            return this;
+        }
+
+        /**
+         * @param startTime The time when the access control policy starts to take effect. The value is a UNIX timestamp. Unit: seconds. The value must be on the hour or on the half hour, and at least 30 minutes earlier than the end time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(Integer startTime) {
+            return startTime(Output.of(startTime));
         }
 
         public ControlPolicyState build() {

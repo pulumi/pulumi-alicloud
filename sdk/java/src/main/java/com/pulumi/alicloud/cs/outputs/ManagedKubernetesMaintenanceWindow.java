@@ -4,10 +4,11 @@
 package com.pulumi.alicloud.cs.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ManagedKubernetesMaintenanceWindow {
@@ -15,46 +16,46 @@ public final class ManagedKubernetesMaintenanceWindow {
      * @return The maintenance time, values range from 1 to 24,unit is hour. For example: &#34;3h&#34;.
      * 
      */
-    private String duration;
+    private @Nullable String duration;
     /**
      * @return Whether to open the maintenance window. The following parameters take effect only `enable = true`.
      * 
      */
-    private Boolean enable;
+    private @Nullable Boolean enable;
     /**
-     * @return Initial maintenance time, For example:&#34;03:00:00Z&#34;.
+     * @return Initial maintenance time, RFC3339 format. For example: &#34;2024-10-15T12:31:00.000+08:00&#34;.
      * 
      */
-    private String maintenanceTime;
+    private @Nullable String maintenanceTime;
     /**
      * @return Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
      * 
      * for example:
      * 
      */
-    private String weeklyPeriod;
+    private @Nullable String weeklyPeriod;
 
     private ManagedKubernetesMaintenanceWindow() {}
     /**
      * @return The maintenance time, values range from 1 to 24,unit is hour. For example: &#34;3h&#34;.
      * 
      */
-    public String duration() {
-        return this.duration;
+    public Optional<String> duration() {
+        return Optional.ofNullable(this.duration);
     }
     /**
      * @return Whether to open the maintenance window. The following parameters take effect only `enable = true`.
      * 
      */
-    public Boolean enable() {
-        return this.enable;
+    public Optional<Boolean> enable() {
+        return Optional.ofNullable(this.enable);
     }
     /**
-     * @return Initial maintenance time, For example:&#34;03:00:00Z&#34;.
+     * @return Initial maintenance time, RFC3339 format. For example: &#34;2024-10-15T12:31:00.000+08:00&#34;.
      * 
      */
-    public String maintenanceTime() {
-        return this.maintenanceTime;
+    public Optional<String> maintenanceTime() {
+        return Optional.ofNullable(this.maintenanceTime);
     }
     /**
      * @return Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
@@ -62,8 +63,8 @@ public final class ManagedKubernetesMaintenanceWindow {
      * for example:
      * 
      */
-    public String weeklyPeriod() {
-        return this.weeklyPeriod;
+    public Optional<String> weeklyPeriod() {
+        return Optional.ofNullable(this.weeklyPeriod);
     }
 
     public static Builder builder() {
@@ -75,10 +76,10 @@ public final class ManagedKubernetesMaintenanceWindow {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String duration;
-        private Boolean enable;
-        private String maintenanceTime;
-        private String weeklyPeriod;
+        private @Nullable String duration;
+        private @Nullable Boolean enable;
+        private @Nullable String maintenanceTime;
+        private @Nullable String weeklyPeriod;
         public Builder() {}
         public Builder(ManagedKubernetesMaintenanceWindow defaults) {
     	      Objects.requireNonNull(defaults);
@@ -89,34 +90,26 @@ public final class ManagedKubernetesMaintenanceWindow {
         }
 
         @CustomType.Setter
-        public Builder duration(String duration) {
-            if (duration == null) {
-              throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindow", "duration");
-            }
+        public Builder duration(@Nullable String duration) {
+
             this.duration = duration;
             return this;
         }
         @CustomType.Setter
-        public Builder enable(Boolean enable) {
-            if (enable == null) {
-              throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindow", "enable");
-            }
+        public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
-        public Builder maintenanceTime(String maintenanceTime) {
-            if (maintenanceTime == null) {
-              throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindow", "maintenanceTime");
-            }
+        public Builder maintenanceTime(@Nullable String maintenanceTime) {
+
             this.maintenanceTime = maintenanceTime;
             return this;
         }
         @CustomType.Setter
-        public Builder weeklyPeriod(String weeklyPeriod) {
-            if (weeklyPeriod == null) {
-              throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindow", "weeklyPeriod");
-            }
+        public Builder weeklyPeriod(@Nullable String weeklyPeriod) {
+
             this.weeklyPeriod = weeklyPeriod;
             return this;
         }

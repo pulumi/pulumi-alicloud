@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
+ * Provides a Cloud Enterprise Network (CEN) Instance resource.
  *
- * For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+ * For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
  *
  * > **NOTE:** Available since v1.15.0.
  *
@@ -19,18 +19,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = new alicloud.cen.Instance("example", {
- *     cenInstanceName: "tf_example",
- *     description: "an example for cen",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new alicloud.cen.Instance("default", {
+ *     cenInstanceName: name,
+ *     description: name,
  * });
  * ```
  *
  * ## Import
  *
- * CEN instance can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+ * $ pulumi import alicloud:cen/instance:Instance example <id>
  * ```
  */
 export class Instance extends pulumi.CustomResource {
@@ -62,25 +64,29 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
      */
     public readonly cenInstanceName!: pulumi.Output<string>;
     /**
-     * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+     * Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
      *
-     * @deprecated attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * The level of CIDR block overlapping. Default value: `REDUCE`.
      */
     public readonly protectionLevel!: pulumi.Output<string>;
     /**
-     * The Cen Instance current status.
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The status of the Instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -105,6 +111,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["protectionLevel"] = state ? state.protectionLevel : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -113,6 +120,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["protectionLevel"] = args ? args.protectionLevel : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -126,25 +134,29 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
      */
     cenInstanceName?: pulumi.Input<string>;
     /**
-     * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+     * Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
      *
-     * @deprecated attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * The level of CIDR block overlapping. Default value: `REDUCE`.
      */
     protectionLevel?: pulumi.Input<string>;
     /**
-     * The Cen Instance current status.
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The status of the Instance.
      */
     status?: pulumi.Input<string>;
     /**
@@ -158,23 +170,27 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
      */
     cenInstanceName?: pulumi.Input<string>;
     /**
-     * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from version 1.98.0. Use `cenInstanceName` instead.
+     * Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
      *
-     * @deprecated attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.
+     * @deprecated Field `name` has been deprecated from provider version 1.98.0. New field `cenInstanceName` instead.
      */
     name?: pulumi.Input<string>;
     /**
-     * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * The level of CIDR block overlapping. Default value: `REDUCE`.
      */
     protectionLevel?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     */
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * A mapping of tags to assign to the resource.
      */

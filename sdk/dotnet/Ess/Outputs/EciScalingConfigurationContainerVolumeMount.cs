@@ -14,20 +14,28 @@ namespace Pulumi.AliCloud.Ess.Outputs
     public sealed class EciScalingConfigurationContainerVolumeMount
     {
         public readonly string? MountPath;
+        public readonly string? MountPropagation;
         public readonly string? Name;
         public readonly bool? ReadOnly;
+        public readonly string? SubPath;
 
         [OutputConstructor]
         private EciScalingConfigurationContainerVolumeMount(
             string? mountPath,
 
+            string? mountPropagation,
+
             string? name,
 
-            bool? readOnly)
+            bool? readOnly,
+
+            string? subPath)
         {
             MountPath = mountPath;
+            MountPropagation = mountPropagation;
             Name = name;
             ReadOnly = readOnly;
+            SubPath = subPath;
         }
     }
 }

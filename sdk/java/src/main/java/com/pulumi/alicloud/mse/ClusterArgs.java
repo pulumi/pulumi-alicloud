@@ -50,22 +50,50 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
      * - `MSE_SC_4_8_60_c`: 4C8G
      * - `MSE_SC_8_16_60_c`: 8C16G
+     * - `MSE_SC_16_32_60_c`:16C32G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - `MSE_SC_4_8_200_c`: 4C8G
+     * - `MSE_SC_8_16_200_c`: 8C16G
+     * - `MSE_SC_16_32_200_c`:16C32G
+     * - Developer Edition
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - Serverless Edition
+     * - `MSE_SC_SERVERLESS`: Available since v1.232.0
      * 
      */
     @Import(name="clusterSpecification", required=true)
     private Output<String> clusterSpecification;
 
     /**
-     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
      * - `MSE_SC_4_8_60_c`: 4C8G
      * - `MSE_SC_8_16_60_c`: 8C16G
+     * - `MSE_SC_16_32_60_c`:16C32G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - `MSE_SC_4_8_200_c`: 4C8G
+     * - `MSE_SC_8_16_200_c`: 8C16G
+     * - `MSE_SC_16_32_200_c`:16C32G
+     * - Developer Edition
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - Serverless Edition
+     * - `MSE_SC_SERVERLESS`: Available since v1.232.0
      * 
      */
     public Output<String> clusterSpecification() {
@@ -103,14 +131,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The connection type. Valid values: `slb`.
+     * The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
      * 
      */
     @Import(name="connectionType")
     private @Nullable Output<String> connectionType;
 
     /**
-     * @return The connection type. Valid values: `slb`.
+     * @return The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
      * 
      */
     public Optional<Output<String>> connectionType() {
@@ -148,14 +176,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+     * The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
      * 
      */
     @Import(name="mseVersion")
     private @Nullable Output<String> mseVersion;
 
     /**
-     * @return The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+     * @return The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
      * 
      */
     public Optional<Output<String>> mseVersion() {
@@ -163,14 +191,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of network. Valid values: &#34;privatenet&#34; and &#34;pubnet&#34;.
+     * The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
      * 
      */
     @Import(name="netType", required=true)
     private Output<String> netType;
 
     /**
-     * @return The type of network. Valid values: &#34;privatenet&#34; and &#34;pubnet&#34;.
+     * @return The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
      * 
      */
     public Output<String> netType() {
@@ -208,14 +236,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public network bandwidth. `0` means no access to the public network.
+     * The public network bandwidth.
      * 
      */
     @Import(name="pubNetworkFlow", required=true)
     private Output<String> pubNetworkFlow;
 
     /**
-     * @return The public network bandwidth. `0` means no access to the public network.
+     * @return The public network bandwidth.
      * 
      */
     public Output<String> pubNetworkFlow() {
@@ -223,14 +251,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specification of public network SLB.
+     * The specification of public network SLB. Serverless Instance could ignore this parameter.
      * 
      */
     @Import(name="pubSlbSpecification")
     private @Nullable Output<String> pubSlbSpecification;
 
     /**
-     * @return The specification of public network SLB.
+     * @return The specification of public network SLB. Serverless Instance could ignore this parameter.
      * 
      */
     public Optional<Output<String>> pubSlbSpecification() {
@@ -407,11 +435,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+         * - Professional Edition
          * - `MSE_SC_1_2_60_c`: 1C2G
          * - `MSE_SC_2_4_60_c`: 2C4G
          * - `MSE_SC_4_8_60_c`: 4C8G
          * - `MSE_SC_8_16_60_c`: 8C16G
+         * - `MSE_SC_16_32_60_c`:16C32G
+         * - `MSE_SC_1_2_200_c`: 1C2G
+         * - `MSE_SC_2_4_200_c`: 2C4G
+         * - `MSE_SC_4_8_200_c`: 4C8G
+         * - `MSE_SC_8_16_200_c`: 8C16G
+         * - `MSE_SC_16_32_200_c`:16C32G
+         * - Developer Edition
+         * - `MSE_SC_1_2_60_c`: 1C2G
+         * - `MSE_SC_2_4_60_c`: 2C4G
+         * - `MSE_SC_1_2_200_c`: 1C2G
+         * - `MSE_SC_2_4_200_c`: 2C4G
+         * - Serverless Edition
+         * - `MSE_SC_SERVERLESS`: Available since v1.232.0
          * 
          * @return builder
          * 
@@ -422,11 +464,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+         * @param clusterSpecification The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+         * - Professional Edition
          * - `MSE_SC_1_2_60_c`: 1C2G
          * - `MSE_SC_2_4_60_c`: 2C4G
          * - `MSE_SC_4_8_60_c`: 4C8G
          * - `MSE_SC_8_16_60_c`: 8C16G
+         * - `MSE_SC_16_32_60_c`:16C32G
+         * - `MSE_SC_1_2_200_c`: 1C2G
+         * - `MSE_SC_2_4_200_c`: 2C4G
+         * - `MSE_SC_4_8_200_c`: 4C8G
+         * - `MSE_SC_8_16_200_c`: 8C16G
+         * - `MSE_SC_16_32_200_c`:16C32G
+         * - Developer Edition
+         * - `MSE_SC_1_2_60_c`: 1C2G
+         * - `MSE_SC_2_4_60_c`: 2C4G
+         * - `MSE_SC_1_2_200_c`: 1C2G
+         * - `MSE_SC_2_4_200_c`: 2C4G
+         * - Serverless Edition
+         * - `MSE_SC_SERVERLESS`: Available since v1.232.0
          * 
          * @return builder
          * 
@@ -478,7 +534,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType The connection type. Valid values: `slb`.
+         * @param connectionType The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
          * 
          * @return builder
          * 
@@ -489,7 +545,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionType The connection type. Valid values: `slb`.
+         * @param connectionType The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
          * 
          * @return builder
          * 
@@ -541,7 +597,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mseVersion The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+         * @param mseVersion The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
          * 
          * @return builder
          * 
@@ -552,7 +608,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mseVersion The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+         * @param mseVersion The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
          * 
          * @return builder
          * 
@@ -562,7 +618,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netType The type of network. Valid values: &#34;privatenet&#34; and &#34;pubnet&#34;.
+         * @param netType The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
          * 
          * @return builder
          * 
@@ -573,7 +629,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param netType The type of network. Valid values: &#34;privatenet&#34; and &#34;pubnet&#34;.
+         * @param netType The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
          * 
          * @return builder
          * 
@@ -625,7 +681,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pubNetworkFlow The public network bandwidth. `0` means no access to the public network.
+         * @param pubNetworkFlow The public network bandwidth.
          * 
          * @return builder
          * 
@@ -636,7 +692,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pubNetworkFlow The public network bandwidth. `0` means no access to the public network.
+         * @param pubNetworkFlow The public network bandwidth.
          * 
          * @return builder
          * 
@@ -646,7 +702,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pubSlbSpecification The specification of public network SLB.
+         * @param pubSlbSpecification The specification of public network SLB. Serverless Instance could ignore this parameter.
          * 
          * @return builder
          * 
@@ -657,7 +713,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pubSlbSpecification The specification of public network SLB.
+         * @param pubSlbSpecification The specification of public network SLB. Serverless Instance could ignore this parameter.
          * 
          * @return builder
          * 

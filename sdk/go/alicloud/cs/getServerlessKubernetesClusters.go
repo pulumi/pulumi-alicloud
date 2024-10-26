@@ -58,6 +58,7 @@ func GetServerlessKubernetesClusters(ctx *pulumi.Context, args *GetServerlessKub
 
 // A collection of arguments for invoking getServerlessKubernetesClusters.
 type GetServerlessKubernetesClustersArgs struct {
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletionProtection`, `connections`. See full list in attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids []string `pulumi:"ids"`
@@ -106,6 +107,7 @@ func GetServerlessKubernetesClustersOutput(ctx *pulumi.Context, args GetServerle
 
 // A collection of arguments for invoking getServerlessKubernetesClusters.
 type GetServerlessKubernetesClustersOutputArgs struct {
+	// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletionProtection`, `connections`. See full list in attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// Cluster IDs to filter.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

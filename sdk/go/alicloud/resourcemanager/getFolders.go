@@ -11,13 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the resource manager folders of the current Alibaba Cloud user.
+// This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
 //
-// > **NOTE:**  Available in 1.84.0+.
-//
-// > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+// > **NOTE:** Available since v1.84.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -26,18 +26,31 @@ import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := resourcemanager.GetFolders(ctx, &resourcemanager.GetFoldersArgs{
-//				NameRegex: pulumi.StringRef("tftest"),
-//			}, nil)
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := resourcemanager.NewFolder(ctx, "default", &resourcemanager.FolderArgs{
+//				FolderName: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstFolderId", example.Folders[0].Id)
+//			ids := resourcemanager.GetFoldersOutput(ctx, resourcemanager.GetFoldersOutputArgs{
+//				Ids: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("resourceManagerFolderId0", ids.ApplyT(func(ids resourcemanager.GetFoldersResult) (*string, error) {
+//				return &ids.Folders[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -55,34 +68,33 @@ func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getFolders.
 type GetFoldersArgs struct {
-	// Default to `false`. Set it to true can output more details.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// A list of resource manager folders IDs.
+	// A list of Folders IDs.
 	Ids []string `pulumi:"ids"`
-	// A regex string to filter results by folder name.
+	// A regex string to filter results by Folder name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of the parent folder.
+	// The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
 	ParentFolderId *string `pulumi:"parentFolderId"`
-	// The query keyword.
+	// The keyword used for the query, such as a folder name. Fuzzy match is supported.
 	QueryKeyword *string `pulumi:"queryKeyword"`
 }
 
 // A collection of values returned by getFolders.
 type GetFoldersResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// A list of folders. Each element contains the following attributes:
+	// A list of Folder. Each element contains the following attributes:
 	Folders []GetFoldersFolder `pulumi:"folders"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A list of folder IDs.
+	Id        string   `pulumi:"id"`
 	Ids       []string `pulumi:"ids"`
 	NameRegex *string  `pulumi:"nameRegex"`
-	// A list of folder names.
+	// A list of Folder names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// (Available in v1.114.0+)The ID of the parent folder.
+	// (Available since v1.114.0) The ID of the parent folder. **Note:** `parentFolderId` takes effect only if `enableDetails` is set to `true`.
 	ParentFolderId *string `pulumi:"parentFolderId"`
 	QueryKeyword   *string `pulumi:"queryKeyword"`
 }
@@ -108,17 +120,17 @@ func GetFoldersOutput(ctx *pulumi.Context, args GetFoldersOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getFolders.
 type GetFoldersOutputArgs struct {
-	// Default to `false`. Set it to true can output more details.
+	// Whether to query the detailed list of resource attributes. Default value: `false`.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// A list of resource manager folders IDs.
+	// A list of Folders IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// A regex string to filter results by folder name.
+	// A regex string to filter results by Folder name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of the parent folder.
+	// The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
 	ParentFolderId pulumi.StringPtrInput `pulumi:"parentFolderId"`
-	// The query keyword.
+	// The keyword used for the query, such as a folder name. Fuzzy match is supported.
 	QueryKeyword pulumi.StringPtrInput `pulumi:"queryKeyword"`
 }
 
@@ -145,7 +157,7 @@ func (o GetFoldersResultOutput) EnableDetails() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetFoldersResult) *bool { return v.EnableDetails }).(pulumi.BoolPtrOutput)
 }
 
-// A list of folders. Each element contains the following attributes:
+// A list of Folder. Each element contains the following attributes:
 func (o GetFoldersResultOutput) Folders() GetFoldersFolderArrayOutput {
 	return o.ApplyT(func(v GetFoldersResult) []GetFoldersFolder { return v.Folders }).(GetFoldersFolderArrayOutput)
 }
@@ -155,7 +167,6 @@ func (o GetFoldersResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFoldersResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of folder IDs.
 func (o GetFoldersResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFoldersResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
@@ -164,7 +175,7 @@ func (o GetFoldersResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFoldersResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of folder names.
+// A list of Folder names.
 func (o GetFoldersResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFoldersResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -173,7 +184,7 @@ func (o GetFoldersResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFoldersResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// (Available in v1.114.0+)The ID of the parent folder.
+// (Available since v1.114.0) The ID of the parent folder. **Note:** `parentFolderId` takes effect only if `enableDetails` is set to `true`.
 func (o GetFoldersResultOutput) ParentFolderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFoldersResult) *string { return v.ParentFolderId }).(pulumi.StringPtrOutput)
 }

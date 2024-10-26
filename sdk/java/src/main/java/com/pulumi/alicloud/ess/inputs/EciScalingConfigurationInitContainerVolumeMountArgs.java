@@ -23,6 +23,13 @@ public final class EciScalingConfigurationInitContainerVolumeMountArgs extends c
         return Optional.ofNullable(this.mountPath);
     }
 
+    @Import(name="mountPropagation")
+    private @Nullable Output<String> mountPropagation;
+
+    public Optional<Output<String>> mountPropagation() {
+        return Optional.ofNullable(this.mountPropagation);
+    }
+
     @Import(name="name")
     private @Nullable Output<String> name;
 
@@ -37,12 +44,21 @@ public final class EciScalingConfigurationInitContainerVolumeMountArgs extends c
         return Optional.ofNullable(this.readOnly);
     }
 
+    @Import(name="subPath")
+    private @Nullable Output<String> subPath;
+
+    public Optional<Output<String>> subPath() {
+        return Optional.ofNullable(this.subPath);
+    }
+
     private EciScalingConfigurationInitContainerVolumeMountArgs() {}
 
     private EciScalingConfigurationInitContainerVolumeMountArgs(EciScalingConfigurationInitContainerVolumeMountArgs $) {
         this.mountPath = $.mountPath;
+        this.mountPropagation = $.mountPropagation;
         this.name = $.name;
         this.readOnly = $.readOnly;
+        this.subPath = $.subPath;
     }
 
     public static Builder builder() {
@@ -72,6 +88,15 @@ public final class EciScalingConfigurationInitContainerVolumeMountArgs extends c
             return mountPath(Output.of(mountPath));
         }
 
+        public Builder mountPropagation(@Nullable Output<String> mountPropagation) {
+            $.mountPropagation = mountPropagation;
+            return this;
+        }
+
+        public Builder mountPropagation(String mountPropagation) {
+            return mountPropagation(Output.of(mountPropagation));
+        }
+
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -88,6 +113,15 @@ public final class EciScalingConfigurationInitContainerVolumeMountArgs extends c
 
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
+        }
+
+        public Builder subPath(@Nullable Output<String> subPath) {
+            $.subPath = subPath;
+            return this;
+        }
+
+        public Builder subPath(String subPath) {
+            return subPath(Output.of(subPath));
         }
 
         public EciScalingConfigurationInitContainerVolumeMountArgs build() {

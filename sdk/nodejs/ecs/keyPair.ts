@@ -83,7 +83,7 @@ export class KeyPair extends pulumi.CustomResource {
     /**
      * The Id of resource group which the key pair belongs.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**

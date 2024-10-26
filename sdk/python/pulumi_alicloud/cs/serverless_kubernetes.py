@@ -34,9 +34,11 @@ class ServerlessKubernetesArgs:
                  kube_config: Optional[pulumi.Input[str]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  logging_type: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+                 operation_policy: Optional[pulumi.Input['ServerlessKubernetesOperationPolicyArgs']] = None,
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -61,31 +63,33 @@ class ServerlessKubernetesArgs:
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-               
-               *Removed params*
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
-        :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false.
+        :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
+        :param pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
+        :param pulumi.Input['ServerlessKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+               
+               *Removed params*
         :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
-        :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`.
+        :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
-        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
-        :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
@@ -113,8 +117,8 @@ class ServerlessKubernetesArgs:
         if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
-            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.""", DeprecationWarning)
-            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.""")
+            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""", DeprecationWarning)
+            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if logging_type is not None:
@@ -122,12 +126,16 @@ class ServerlessKubernetesArgs:
             pulumi.log.warn("""logging_type is deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.""")
         if logging_type is not None:
             pulumi.set(__self__, "logging_type", logging_type)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
         if new_nat_gateway is not None:
             pulumi.set(__self__, "new_nat_gateway", new_nat_gateway)
+        if operation_policy is not None:
+            pulumi.set(__self__, "operation_policy", operation_policy)
         if private_zone is not None:
             warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
             pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
@@ -229,8 +237,6 @@ class ServerlessKubernetesArgs:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-
-        *Removed params*
         """
         return pulumi.get(self, "custom_san")
 
@@ -280,7 +286,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter(name="endpointPublicAccessEnabled")
     def endpoint_public_access_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create internet eip for API Server. Default to false.
+        Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         """
         return pulumi.get(self, "endpoint_public_access_enabled")
 
@@ -303,10 +309,10 @@ class ServerlessKubernetesArgs:
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.""")
+    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -319,13 +325,25 @@ class ServerlessKubernetesArgs:
     @_utilities.deprecated("""Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.""")
     def logging_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable log service, Valid value `SLS`.
+        Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         """
         return pulumi.get(self, "logging_type")
 
     @logging_type.setter
     def logging_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "logging_type", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs']]:
+        """
+        The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
 
     @property
     @pulumi.getter
@@ -359,6 +377,20 @@ class ServerlessKubernetesArgs:
     @new_nat_gateway.setter
     def new_nat_gateway(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "new_nat_gateway", value)
+
+    @property
+    @pulumi.getter(name="operationPolicy")
+    def operation_policy(self) -> Optional[pulumi.Input['ServerlessKubernetesOperationPolicyArgs']]:
+        """
+        The cluster automatic operation policy. See `operation_policy` below.
+
+        *Removed params*
+        """
+        return pulumi.get(self, "operation_policy")
+
+    @operation_policy.setter
+    def operation_policy(self, value: Optional[pulumi.Input['ServerlessKubernetesOperationPolicyArgs']]):
+        pulumi.set(self, "operation_policy", value)
 
     @property
     @pulumi.getter(name="privateZone")
@@ -435,7 +467,7 @@ class ServerlessKubernetesArgs:
     @_utilities.deprecated("""Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.""")
     def sls_project_name(self) -> Optional[pulumi.Input[str]]:
         """
-        If you use an existing SLS project, you must specify `sls_project_name`.
+        If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         """
         return pulumi.get(self, "sls_project_name")
 
@@ -471,7 +503,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         """
         return pulumi.get(self, "version")
 
@@ -507,7 +539,7 @@ class ServerlessKubernetesArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         """
         return pulumi.get(self, "zone_id")
 
@@ -532,9 +564,11 @@ class _ServerlessKubernetesState:
                  kube_config: Optional[pulumi.Input[str]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  logging_type: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+                 operation_policy: Optional[pulumi.Input['ServerlessKubernetesOperationPolicyArgs']] = None,
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -560,32 +594,34 @@ class _ServerlessKubernetesState:
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-               
-               *Removed params*
         :param pulumi.Input[Sequence[pulumi.Input['ServerlessKubernetesDeleteOptionArgs']]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
-        :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false.
+        :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
+        :param pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs'] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
+        :param pulumi.Input['ServerlessKubernetesOperationPolicyArgs'] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+               
+               *Removed params*
         :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input['ServerlessKubernetesRrsaMetadataArgs'] rrsa_metadata: Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
-        :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`.
+        :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
-        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
-        :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         """
         if addons is not None:
             pulumi.set(__self__, "addons", addons)
@@ -613,8 +649,8 @@ class _ServerlessKubernetesState:
         if kube_config is not None:
             pulumi.set(__self__, "kube_config", kube_config)
         if load_balancer_spec is not None:
-            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.""", DeprecationWarning)
-            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.""")
+            warnings.warn("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""", DeprecationWarning)
+            pulumi.log.warn("""load_balancer_spec is deprecated: Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
         if load_balancer_spec is not None:
             pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
         if logging_type is not None:
@@ -622,12 +658,16 @@ class _ServerlessKubernetesState:
             pulumi.log.warn("""logging_type is deprecated: Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.""")
         if logging_type is not None:
             pulumi.set(__self__, "logging_type", logging_type)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
         if new_nat_gateway is not None:
             pulumi.set(__self__, "new_nat_gateway", new_nat_gateway)
+        if operation_policy is not None:
+            pulumi.set(__self__, "operation_policy", operation_policy)
         if private_zone is not None:
             warnings.warn("""Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""", DeprecationWarning)
             pulumi.log.warn("""private_zone is deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.""")
@@ -731,8 +771,6 @@ class _ServerlessKubernetesState:
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-
-        *Removed params*
         """
         return pulumi.get(self, "custom_san")
 
@@ -782,7 +820,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter(name="endpointPublicAccessEnabled")
     def endpoint_public_access_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to create internet eip for API Server. Default to false.
+        Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         """
         return pulumi.get(self, "endpoint_public_access_enabled")
 
@@ -805,10 +843,10 @@ class _ServerlessKubernetesState:
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.""")
+    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -821,13 +859,25 @@ class _ServerlessKubernetesState:
     @_utilities.deprecated("""Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.""")
     def logging_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Enable log service, Valid value `SLS`.
+        Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         """
         return pulumi.get(self, "logging_type")
 
     @logging_type.setter
     def logging_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "logging_type", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs']]:
+        """
+        The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['ServerlessKubernetesMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
 
     @property
     @pulumi.getter
@@ -861,6 +911,20 @@ class _ServerlessKubernetesState:
     @new_nat_gateway.setter
     def new_nat_gateway(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "new_nat_gateway", value)
+
+    @property
+    @pulumi.getter(name="operationPolicy")
+    def operation_policy(self) -> Optional[pulumi.Input['ServerlessKubernetesOperationPolicyArgs']]:
+        """
+        The cluster automatic operation policy. See `operation_policy` below.
+
+        *Removed params*
+        """
+        return pulumi.get(self, "operation_policy")
+
+    @operation_policy.setter
+    def operation_policy(self, value: Optional[pulumi.Input['ServerlessKubernetesOperationPolicyArgs']]):
+        pulumi.set(self, "operation_policy", value)
 
     @property
     @pulumi.getter(name="privateZone")
@@ -949,7 +1013,7 @@ class _ServerlessKubernetesState:
     @_utilities.deprecated("""Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.""")
     def sls_project_name(self) -> Optional[pulumi.Input[str]]:
         """
-        If you use an existing SLS project, you must specify `sls_project_name`.
+        If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         """
         return pulumi.get(self, "sls_project_name")
 
@@ -985,7 +1049,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         """
         return pulumi.get(self, "version")
 
@@ -1021,7 +1085,7 @@ class _ServerlessKubernetesState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         """
         return pulumi.get(self, "zone_id")
 
@@ -1048,9 +1112,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  kube_config: Optional[pulumi.Input[str]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  logging_type: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+                 operation_policy: Optional[pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']]] = None,
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1161,31 +1227,33 @@ class ServerlessKubernetes(pulumi.CustomResource):
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-               
-               *Removed params*
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
-        :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false.
+        :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
+        :param pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
+        :param pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+               
+               *Removed params*
         :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
-        :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`.
+        :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
-        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
-        :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         """
         ...
     @overload
@@ -1306,9 +1374,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
                  kube_config: Optional[pulumi.Input[str]] = None,
                  load_balancer_spec: Optional[pulumi.Input[str]] = None,
                  logging_type: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
                  new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+                 operation_policy: Optional[pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']]] = None,
                  private_zone: Optional[pulumi.Input[bool]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1344,9 +1414,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
             __props__.__dict__["kube_config"] = kube_config
             __props__.__dict__["load_balancer_spec"] = load_balancer_spec
             __props__.__dict__["logging_type"] = logging_type
+            __props__.__dict__["maintenance_window"] = maintenance_window
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
             __props__.__dict__["new_nat_gateway"] = new_nat_gateway
+            __props__.__dict__["operation_policy"] = operation_policy
             __props__.__dict__["private_zone"] = private_zone
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
@@ -1384,9 +1456,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
             kube_config: Optional[pulumi.Input[str]] = None,
             load_balancer_spec: Optional[pulumi.Input[str]] = None,
             logging_type: Optional[pulumi.Input[str]] = None,
+            maintenance_window: Optional[pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             name_prefix: Optional[pulumi.Input[str]] = None,
             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+            operation_policy: Optional[pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']]] = None,
             private_zone: Optional[pulumi.Input[bool]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1417,32 +1491,34 @@ class ServerlessKubernetes(pulumi.CustomResource):
                - ack.pro.small: Professional serverless clusters.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
                > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-               
-               *Removed params*
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServerlessKubernetesDeleteOptionArgs', 'ServerlessKubernetesDeleteOptionArgsDict']]]] delete_options: Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `delete_options` below.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[bool] enable_rrsa: Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
-        :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false.
+        :param pulumi.Input[bool] endpoint_public_access_enabled: Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         :param pulumi.Input[str] kube_config: The path of kube config, like `~/.kube/config`.
-        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`.
+        :param pulumi.Input[str] load_balancer_spec: The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+        :param pulumi.Input[str] logging_type: Enable log service, Valid value `SLS`. Only works for **Create** Operation.
+        :param pulumi.Input[Union['ServerlessKubernetesMaintenanceWindowArgs', 'ServerlessKubernetesMaintenanceWindowArgsDict']] maintenance_window: The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is the only in one Alicloud account.
         :param pulumi.Input[bool] new_nat_gateway: Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
+        :param pulumi.Input[Union['ServerlessKubernetesOperationPolicyArgs', 'ServerlessKubernetesOperationPolicyArgsDict']] operation_policy: The cluster automatic operation policy. See `operation_policy` below.
+               
+               *Removed params*
         :param pulumi.Input[bool] private_zone: Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
         :param pulumi.Input[Union['ServerlessKubernetesRrsaMetadataArgs', 'ServerlessKubernetesRrsaMetadataArgsDict']] rrsa_metadata: Nested attribute containing RRSA related data for your cluster.
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_cidr: CIDR block of the service network. The specified CIDR block cannot overlap with that of the VPC or those of the ACK clusters that are deployed in the VPC. The CIDR block cannot be modified after the cluster is created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_discovery_types: Service discovery type. Only works for **Create** Operation. If the value is empty, it means that service discovery is not enabled. Valid values are `CoreDNS` and `PrivateZone`.
-        :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`.
+        :param pulumi.Input[str] sls_project_name: If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Default nil, A map of tags assigned to the kubernetes cluster and work nodes.
         :param pulumi.Input[str] time_zone: The time zone of the cluster.
-        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         :param pulumi.Input[str] vpc_id: The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches where new kubernetes cluster will be located.
-        :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        :param pulumi.Input[str] zone_id: When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1461,9 +1537,11 @@ class ServerlessKubernetes(pulumi.CustomResource):
         __props__.__dict__["kube_config"] = kube_config
         __props__.__dict__["load_balancer_spec"] = load_balancer_spec
         __props__.__dict__["logging_type"] = logging_type
+        __props__.__dict__["maintenance_window"] = maintenance_window
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
         __props__.__dict__["new_nat_gateway"] = new_nat_gateway
+        __props__.__dict__["operation_policy"] = operation_policy
         __props__.__dict__["private_zone"] = private_zone
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retain_resources"] = retain_resources
@@ -1528,8 +1606,6 @@ class ServerlessKubernetes(pulumi.CustomResource):
         """
         Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
-
-        *Removed params*
         """
         return pulumi.get(self, "custom_san")
 
@@ -1563,7 +1639,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="endpointPublicAccessEnabled")
     def endpoint_public_access_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to create internet eip for API Server. Default to false.
+        Whether to create internet eip for API Server. Default to false. Only works for **Create** Operation.
         """
         return pulumi.get(self, "endpoint_public_access_enabled")
 
@@ -1578,10 +1654,10 @@ class ServerlessKubernetes(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="loadBalancerSpec")
-    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that no spec is need anymore.""")
+    @_utilities.deprecated("""Field 'load_balancer_spec' has been deprecated from provider version 1.229.1. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.""")
     def load_balancer_spec(self) -> pulumi.Output[str]:
         """
-        The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+        The cluster api server load balance instance specification, default `slb.s2.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
         """
         return pulumi.get(self, "load_balancer_spec")
 
@@ -1590,9 +1666,17 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'logging_type' has been deprecated from provider version 1.229.1. Please use addons `alibaba-log-controller` to enable logging.""")
     def logging_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Enable log service, Valid value `SLS`.
+        Enable log service, Valid value `SLS`. Only works for **Create** Operation.
         """
         return pulumi.get(self, "logging_type")
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> pulumi.Output['outputs.ServerlessKubernetesMaintenanceWindow']:
+        """
+        The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
+        """
+        return pulumi.get(self, "maintenance_window")
 
     @property
     @pulumi.getter
@@ -1614,6 +1698,16 @@ class ServerlessKubernetes(pulumi.CustomResource):
         Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
         """
         return pulumi.get(self, "new_nat_gateway")
+
+    @property
+    @pulumi.getter(name="operationPolicy")
+    def operation_policy(self) -> pulumi.Output['outputs.ServerlessKubernetesOperationPolicy']:
+        """
+        The cluster automatic operation policy. See `operation_policy` below.
+
+        *Removed params*
+        """
+        return pulumi.get(self, "operation_policy")
 
     @property
     @pulumi.getter(name="privateZone")
@@ -1674,7 +1768,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @_utilities.deprecated("""Field 'sls_project_name' has been deprecated from provider version 1.229.1. Please use the field `config` of addons `alibaba-log-controller` to specify log project name.""")
     def sls_project_name(self) -> pulumi.Output[str]:
         """
-        If you use an existing SLS project, you must specify `sls_project_name`.
+        If you use an existing SLS project, you must specify `sls_project_name`. Only works for **Create** Operation.
         """
         return pulumi.get(self, "sls_project_name")
 
@@ -1698,7 +1792,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.
+        Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used.  Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
         """
         return pulumi.get(self, "version")
 
@@ -1722,7 +1816,7 @@ class ServerlessKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
-        When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located.
+        When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
         """
         return pulumi.get(self, "zone_id")
 

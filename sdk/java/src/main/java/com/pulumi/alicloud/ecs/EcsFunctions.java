@@ -4004,7 +4004,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -4018,7 +4018,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplate;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplateArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateSystemDiskArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -4033,12 +4048,104 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids("lt-bp1a469uxxxxxx")
-     *             .nameRegex("your_launch_name")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("terraform-example")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
+     *             .launchTemplateName("terraform-example")
+     *             .description("terraform-example")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .hostName("terraform-example")
+     *             .instanceChargeType("PrePaid")
+     *             .instanceName("terraform-example")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByBandwidth")
+     *             .internetMaxBandwidthIn("5")
+     *             .internetMaxBandwidthOut("5")
+     *             .ioOptimized("optimized")
+     *             .keyPairName("key_pair_name")
+     *             .ramRoleName("ram_role_name")
+     *             .networkType("vpc")
+     *             .securityEnhancementStrategy("Active")
+     *             .spotPriceLimit("5")
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
+     *                 .category("cloud_ssd")
+     *                 .description("Test For Terraform")
+     *                 .name("terraform-example")
+     *                 .size("40")
+     *                 .deleteWithInstance("false")
+     *                 .build())
+     *             .userData("xxxxxxx")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .templateTags(Map.ofEntries(
+     *                 Map.entry("Create", "Terraform"),
+     *                 Map.entry("For", "example")
+     *             ))
+     *             .networkInterfaces(EcsLaunchTemplateNetworkInterfacesArgs.builder()
+     *                 .name("eth0")
+     *                 .description("hello1")
+     *                 .primaryIp("10.0.0.2")
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build())
+     *             .dataDisks(            
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk1")
+     *                     .description("description")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build(),
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk2")
+     *                     .description("description2")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(defaultEcsLaunchTemplate.id())
+     *             .build());
+     * 
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
      *     }
      * }
      * }
@@ -4052,7 +4159,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -4066,7 +4173,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplate;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplateArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateSystemDiskArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -4081,12 +4203,104 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids("lt-bp1a469uxxxxxx")
-     *             .nameRegex("your_launch_name")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("terraform-example")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
+     *             .launchTemplateName("terraform-example")
+     *             .description("terraform-example")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .hostName("terraform-example")
+     *             .instanceChargeType("PrePaid")
+     *             .instanceName("terraform-example")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByBandwidth")
+     *             .internetMaxBandwidthIn("5")
+     *             .internetMaxBandwidthOut("5")
+     *             .ioOptimized("optimized")
+     *             .keyPairName("key_pair_name")
+     *             .ramRoleName("ram_role_name")
+     *             .networkType("vpc")
+     *             .securityEnhancementStrategy("Active")
+     *             .spotPriceLimit("5")
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
+     *                 .category("cloud_ssd")
+     *                 .description("Test For Terraform")
+     *                 .name("terraform-example")
+     *                 .size("40")
+     *                 .deleteWithInstance("false")
+     *                 .build())
+     *             .userData("xxxxxxx")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .templateTags(Map.ofEntries(
+     *                 Map.entry("Create", "Terraform"),
+     *                 Map.entry("For", "example")
+     *             ))
+     *             .networkInterfaces(EcsLaunchTemplateNetworkInterfacesArgs.builder()
+     *                 .name("eth0")
+     *                 .description("hello1")
+     *                 .primaryIp("10.0.0.2")
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build())
+     *             .dataDisks(            
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk1")
+     *                     .description("description")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build(),
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk2")
+     *                     .description("description2")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(defaultEcsLaunchTemplate.id())
+     *             .build());
+     * 
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
      *     }
      * }
      * }
@@ -4100,7 +4314,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -4114,7 +4328,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplate;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplateArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateSystemDiskArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -4129,12 +4358,104 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids("lt-bp1a469uxxxxxx")
-     *             .nameRegex("your_launch_name")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("terraform-example")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
+     *             .launchTemplateName("terraform-example")
+     *             .description("terraform-example")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .hostName("terraform-example")
+     *             .instanceChargeType("PrePaid")
+     *             .instanceName("terraform-example")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByBandwidth")
+     *             .internetMaxBandwidthIn("5")
+     *             .internetMaxBandwidthOut("5")
+     *             .ioOptimized("optimized")
+     *             .keyPairName("key_pair_name")
+     *             .ramRoleName("ram_role_name")
+     *             .networkType("vpc")
+     *             .securityEnhancementStrategy("Active")
+     *             .spotPriceLimit("5")
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
+     *                 .category("cloud_ssd")
+     *                 .description("Test For Terraform")
+     *                 .name("terraform-example")
+     *                 .size("40")
+     *                 .deleteWithInstance("false")
+     *                 .build())
+     *             .userData("xxxxxxx")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .templateTags(Map.ofEntries(
+     *                 Map.entry("Create", "Terraform"),
+     *                 Map.entry("For", "example")
+     *             ))
+     *             .networkInterfaces(EcsLaunchTemplateNetworkInterfacesArgs.builder()
+     *                 .name("eth0")
+     *                 .description("hello1")
+     *                 .primaryIp("10.0.0.2")
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build())
+     *             .dataDisks(            
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk1")
+     *                     .description("description")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build(),
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk2")
+     *                     .description("description2")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(defaultEcsLaunchTemplate.id())
+     *             .build());
+     * 
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
      *     }
      * }
      * }
@@ -4148,7 +4469,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -4162,7 +4483,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplate;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplateArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateSystemDiskArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -4177,12 +4513,104 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids("lt-bp1a469uxxxxxx")
-     *             .nameRegex("your_launch_name")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("terraform-example")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
+     *             .launchTemplateName("terraform-example")
+     *             .description("terraform-example")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .hostName("terraform-example")
+     *             .instanceChargeType("PrePaid")
+     *             .instanceName("terraform-example")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByBandwidth")
+     *             .internetMaxBandwidthIn("5")
+     *             .internetMaxBandwidthOut("5")
+     *             .ioOptimized("optimized")
+     *             .keyPairName("key_pair_name")
+     *             .ramRoleName("ram_role_name")
+     *             .networkType("vpc")
+     *             .securityEnhancementStrategy("Active")
+     *             .spotPriceLimit("5")
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
+     *                 .category("cloud_ssd")
+     *                 .description("Test For Terraform")
+     *                 .name("terraform-example")
+     *                 .size("40")
+     *                 .deleteWithInstance("false")
+     *                 .build())
+     *             .userData("xxxxxxx")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .templateTags(Map.ofEntries(
+     *                 Map.entry("Create", "Terraform"),
+     *                 Map.entry("For", "example")
+     *             ))
+     *             .networkInterfaces(EcsLaunchTemplateNetworkInterfacesArgs.builder()
+     *                 .name("eth0")
+     *                 .description("hello1")
+     *                 .primaryIp("10.0.0.2")
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build())
+     *             .dataDisks(            
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk1")
+     *                     .description("description")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build(),
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk2")
+     *                     .description("description2")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(defaultEcsLaunchTemplate.id())
+     *             .build());
+     * 
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
      *     }
      * }
      * }
@@ -4196,7 +4624,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -4210,7 +4638,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplate;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplateArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateSystemDiskArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -4225,12 +4668,104 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids("lt-bp1a469uxxxxxx")
-     *             .nameRegex("your_launch_name")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("terraform-example")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
+     *             .launchTemplateName("terraform-example")
+     *             .description("terraform-example")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .hostName("terraform-example")
+     *             .instanceChargeType("PrePaid")
+     *             .instanceName("terraform-example")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByBandwidth")
+     *             .internetMaxBandwidthIn("5")
+     *             .internetMaxBandwidthOut("5")
+     *             .ioOptimized("optimized")
+     *             .keyPairName("key_pair_name")
+     *             .ramRoleName("ram_role_name")
+     *             .networkType("vpc")
+     *             .securityEnhancementStrategy("Active")
+     *             .spotPriceLimit("5")
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
+     *                 .category("cloud_ssd")
+     *                 .description("Test For Terraform")
+     *                 .name("terraform-example")
+     *                 .size("40")
+     *                 .deleteWithInstance("false")
+     *                 .build())
+     *             .userData("xxxxxxx")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .templateTags(Map.ofEntries(
+     *                 Map.entry("Create", "Terraform"),
+     *                 Map.entry("For", "example")
+     *             ))
+     *             .networkInterfaces(EcsLaunchTemplateNetworkInterfacesArgs.builder()
+     *                 .name("eth0")
+     *                 .description("hello1")
+     *                 .primaryIp("10.0.0.2")
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build())
+     *             .dataDisks(            
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk1")
+     *                     .description("description")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build(),
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk2")
+     *                     .description("description2")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(defaultEcsLaunchTemplate.id())
+     *             .build());
+     * 
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
      *     }
      * }
      * }
@@ -4244,7 +4779,7 @@ public final class EcsFunctions {
     /**
      * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.120.0+.
+     * &gt; **NOTE:** Available since v1.120.0.
      * 
      * ## Example Usage
      * 
@@ -4258,7 +4793,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
+     * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplate;
+     * import com.pulumi.alicloud.ecs.EcsLaunchTemplateArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateSystemDiskArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateNetworkInterfacesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.EcsLaunchTemplateDataDiskArgs;
      * import com.pulumi.alicloud.ecs.inputs.GetEcsLaunchTemplatesArgs;
      * import java.util.List;
      * import java.util.ArrayList;
@@ -4273,12 +4823,104 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
-     *             .ids("lt-bp1a469uxxxxxx")
-     *             .nameRegex("your_launch_name")
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableDiskCategory("cloud_efficiency")
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id()));
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex("^ubuntu_18.*64")
+     *             .owners("system")
+     *             .build());
+     * 
+     *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
+     *             .name("terraform-example")
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsLaunchTemplate = new EcsLaunchTemplate("defaultEcsLaunchTemplate", EcsLaunchTemplateArgs.builder()
+     *             .launchTemplateName("terraform-example")
+     *             .description("terraform-example")
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+     *             .hostName("terraform-example")
+     *             .instanceChargeType("PrePaid")
+     *             .instanceName("terraform-example")
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .internetChargeType("PayByBandwidth")
+     *             .internetMaxBandwidthIn("5")
+     *             .internetMaxBandwidthOut("5")
+     *             .ioOptimized("optimized")
+     *             .keyPairName("key_pair_name")
+     *             .ramRoleName("ram_role_name")
+     *             .networkType("vpc")
+     *             .securityEnhancementStrategy("Active")
+     *             .spotPriceLimit("5")
+     *             .spotStrategy("SpotWithPriceLimit")
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .systemDisk(EcsLaunchTemplateSystemDiskArgs.builder()
+     *                 .category("cloud_ssd")
+     *                 .description("Test For Terraform")
+     *                 .name("terraform-example")
+     *                 .size("40")
+     *                 .deleteWithInstance("false")
+     *                 .build())
+     *             .userData("xxxxxxx")
+     *             .vswitchId(defaultSwitch.id())
+     *             .vpcId(defaultNetwork.id())
+     *             .zoneId(default_.zones()[0].id())
+     *             .templateTags(Map.ofEntries(
+     *                 Map.entry("Create", "Terraform"),
+     *                 Map.entry("For", "example")
+     *             ))
+     *             .networkInterfaces(EcsLaunchTemplateNetworkInterfacesArgs.builder()
+     *                 .name("eth0")
+     *                 .description("hello1")
+     *                 .primaryIp("10.0.0.2")
+     *                 .securityGroupId(defaultSecurityGroup.id())
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build())
+     *             .dataDisks(            
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk1")
+     *                     .description("description")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build(),
+     *                 EcsLaunchTemplateDataDiskArgs.builder()
+     *                     .name("disk2")
+     *                     .description("description2")
+     *                     .deleteWithInstance("true")
+     *                     .category("cloud")
+     *                     .encrypted("false")
+     *                     .performanceLevel("PL0")
+     *                     .size("20")
+     *                     .build())
+     *             .build());
+     * 
+     *         final var example = EcsFunctions.getEcsLaunchTemplates(GetEcsLaunchTemplatesArgs.builder()
+     *             .ids(defaultEcsLaunchTemplate.id())
+     *             .build());
+     * 
+     *         ctx.export("firstEcsLaunchTemplateId", example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult).applyValue(example -> example.applyValue(getEcsLaunchTemplatesResult -> getEcsLaunchTemplatesResult.templates()[0].id())));
      *     }
      * }
      * }

@@ -359,13 +359,13 @@ func (o GetVpcEndpointServiceUsersUserArrayOutput) Index(i pulumi.IntInput) GetV
 }
 
 type GetVpcEndpointServicesService struct {
-	// Whether to automatically accept terminal node connections..
+	// Whether to automatically accept terminal node connections.
 	AutoAcceptConnection bool `pulumi:"autoAcceptConnection"`
 	// The connection bandwidth.
 	ConnectBandwidth int `pulumi:"connectBandwidth"`
 	// The ID of the Vpc Endpoint Service.
 	Id string `pulumi:"id"`
-	// The business status of the terminal node service..
+	// The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
 	ServiceBusinessStatus string `pulumi:"serviceBusinessStatus"`
 	// The description of the terminal node service.
 	ServiceDescription string `pulumi:"serviceDescription"`
@@ -373,8 +373,10 @@ type GetVpcEndpointServicesService struct {
 	ServiceDomain string `pulumi:"serviceDomain"`
 	// The ID of the Vpc Endpoint Service.
 	ServiceId string `pulumi:"serviceId"`
-	// The Status of Vpc Endpoint Service.
+	// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
 	Status string `pulumi:"status"`
+	// The tags of Vpc Endpoint Service.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of Vpc Endpoint Service.
 	VpcEndpointServiceName string `pulumi:"vpcEndpointServiceName"`
 }
@@ -391,13 +393,13 @@ type GetVpcEndpointServicesServiceInput interface {
 }
 
 type GetVpcEndpointServicesServiceArgs struct {
-	// Whether to automatically accept terminal node connections..
+	// Whether to automatically accept terminal node connections.
 	AutoAcceptConnection pulumi.BoolInput `pulumi:"autoAcceptConnection"`
 	// The connection bandwidth.
 	ConnectBandwidth pulumi.IntInput `pulumi:"connectBandwidth"`
 	// The ID of the Vpc Endpoint Service.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The business status of the terminal node service..
+	// The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
 	ServiceBusinessStatus pulumi.StringInput `pulumi:"serviceBusinessStatus"`
 	// The description of the terminal node service.
 	ServiceDescription pulumi.StringInput `pulumi:"serviceDescription"`
@@ -405,8 +407,10 @@ type GetVpcEndpointServicesServiceArgs struct {
 	ServiceDomain pulumi.StringInput `pulumi:"serviceDomain"`
 	// The ID of the Vpc Endpoint Service.
 	ServiceId pulumi.StringInput `pulumi:"serviceId"`
-	// The Status of Vpc Endpoint Service.
+	// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The tags of Vpc Endpoint Service.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of Vpc Endpoint Service.
 	VpcEndpointServiceName pulumi.StringInput `pulumi:"vpcEndpointServiceName"`
 }
@@ -462,7 +466,7 @@ func (o GetVpcEndpointServicesServiceOutput) ToGetVpcEndpointServicesServiceOutp
 	return o
 }
 
-// Whether to automatically accept terminal node connections..
+// Whether to automatically accept terminal node connections.
 func (o GetVpcEndpointServicesServiceOutput) AutoAcceptConnection() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesService) bool { return v.AutoAcceptConnection }).(pulumi.BoolOutput)
 }
@@ -477,7 +481,7 @@ func (o GetVpcEndpointServicesServiceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesService) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The business status of the terminal node service..
+// The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
 func (o GetVpcEndpointServicesServiceOutput) ServiceBusinessStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesService) string { return v.ServiceBusinessStatus }).(pulumi.StringOutput)
 }
@@ -497,9 +501,14 @@ func (o GetVpcEndpointServicesServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesService) string { return v.ServiceId }).(pulumi.StringOutput)
 }
 
-// The Status of Vpc Endpoint Service.
+// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
 func (o GetVpcEndpointServicesServiceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesService) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tags of Vpc Endpoint Service.
+func (o GetVpcEndpointServicesServiceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVpcEndpointServicesService) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The name of Vpc Endpoint Service.

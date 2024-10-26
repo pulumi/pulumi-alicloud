@@ -17,14 +17,14 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
     public static final ServiceMeshMeshConfigOpaArgs Empty = new ServiceMeshMeshConfigOpaArgs();
 
     /**
-     * Enable CNI.
+     * Enable CNI
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Sidecar injector Pods on the throttle.
+     * Sidecar injector Pods on the throttle
      * 
      */
     @Import(name="limitCpu")
     private @Nullable Output<String> limitCpu;
 
     /**
-     * @return Sidecar injector Pods on the throttle.
+     * @return Sidecar injector Pods on the throttle
      * 
      */
     public Optional<Output<String>> limitCpu() {
@@ -47,14 +47,14 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Sidecar injector Pods on the throttle.
+     * Sidecar injector Pods on the throttle
      * 
      */
     @Import(name="limitMemory")
     private @Nullable Output<String> limitMemory;
 
     /**
-     * @return Sidecar injector Pods on the throttle.
+     * @return Sidecar injector Pods on the throttle
      * 
      */
     public Optional<Output<String>> limitMemory() {
@@ -62,14 +62,14 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * OPA proxy container log level.
+     * OPA proxy container log level
      * 
      */
     @Import(name="logLevel")
     private @Nullable Output<String> logLevel;
 
     /**
-     * @return OPA proxy container log level.
+     * @return OPA proxy container log level
      * 
      */
     public Optional<Output<String>> logLevel() {
@@ -77,14 +77,14 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Sidecar injector Pods on the requested resource.
+     * Sidecar injector Pods on the requested resource
      * 
      */
     @Import(name="requestCpu")
     private @Nullable Output<String> requestCpu;
 
     /**
-     * @return Sidecar injector Pods on the requested resource.
+     * @return Sidecar injector Pods on the requested resource
      * 
      */
     public Optional<Output<String>> requestCpu() {
@@ -92,14 +92,14 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Sidecar injector Pods on the requested resource.
+     * Sidecar injector Pods on the requested resource
      * 
      */
     @Import(name="requestMemory")
     private @Nullable Output<String> requestMemory;
 
     /**
-     * @return Sidecar injector Pods on the requested resource.
+     * @return Sidecar injector Pods on the requested resource
      * 
      */
     public Optional<Output<String>> requestMemory() {
@@ -136,7 +136,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param limitCpu Sidecar injector Pods on the throttle.
+         * @param limitCpu Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param limitCpu Sidecar injector Pods on the throttle.
+         * @param limitCpu Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param limitMemory Sidecar injector Pods on the throttle.
+         * @param limitMemory Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param limitMemory Sidecar injector Pods on the throttle.
+         * @param limitMemory Sidecar injector Pods on the throttle
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param logLevel OPA proxy container log level.
+         * @param logLevel OPA proxy container log level
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param logLevel OPA proxy container log level.
+         * @param logLevel OPA proxy container log level
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param requestCpu Sidecar injector Pods on the requested resource.
+         * @param requestCpu Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param requestCpu Sidecar injector Pods on the requested resource.
+         * @param requestCpu Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param requestMemory Sidecar injector Pods on the requested resource.
+         * @param requestMemory Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class ServiceMeshMeshConfigOpaArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param requestMemory Sidecar injector Pods on the requested resource.
+         * @param requestMemory Sidecar injector Pods on the requested resource
          * 
          * @return builder
          * 

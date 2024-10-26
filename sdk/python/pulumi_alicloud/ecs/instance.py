@@ -64,6 +64,7 @@ class InstanceArgs:
                  network_interfaces: Optional[pulumi.Input['InstanceNetworkInterfacesArgs']] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
@@ -159,6 +160,7 @@ class InstanceArgs:
         :param pulumi.Input['InstanceNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[bool] password_inherit: Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
                - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
                - [1-3] when `period_unit` in "Week"
@@ -167,20 +169,6 @@ class InstanceArgs:
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[int] queue_pair_number: The number of queues supported by the ERI.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
@@ -320,6 +308,8 @@ class InstanceArgs:
             pulumi.set(__self__, "operator_type", operator_type)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_inherit is not None:
+            pulumi.set(__self__, "password_inherit", password_inherit)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
@@ -919,6 +909,18 @@ class InstanceArgs:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="passwordInherit")
+    def password_inherit(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "password_inherit")
+
+    @password_inherit.setter
+    def password_inherit(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "password_inherit", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -963,20 +965,6 @@ class InstanceArgs:
     def queue_pair_number(self) -> Optional[pulumi.Input[int]]:
         """
         The number of queues supported by the ERI.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "queue_pair_number")
 
@@ -1336,6 +1324,7 @@ class _InstanceState:
                  auto_renew_period: Optional[pulumi.Input[int]] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  cpu: Optional[pulumi.Input[int]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
                  dedicated_host_id: Optional[pulumi.Input[str]] = None,
@@ -1345,6 +1334,7 @@ class _InstanceState:
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  enable_jumbo_frame: Optional[pulumi.Input[bool]] = None,
+                 expired_time: Optional[pulumi.Input[str]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  hpc_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -1380,6 +1370,7 @@ class _InstanceState:
                  os_name: Optional[pulumi.Input[str]] = None,
                  os_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1396,6 +1387,7 @@ class _InstanceState:
                  spot_duration: Optional[pulumi.Input[int]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  stopped_mode: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
@@ -1425,6 +1417,7 @@ class _InstanceState:
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[int] cpu: The number of vCPUs.
+        :param pulumi.Input[str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -1438,6 +1431,7 @@ class _InstanceState:
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        :param pulumi.Input[str] expired_time: (Available since v1.232.0) The expiration time of the instance.
         :param pulumi.Input[bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
@@ -1484,6 +1478,7 @@ class _InstanceState:
         :param pulumi.Input[str] os_name: The name of the operating system of the instance.
         :param pulumi.Input[str] os_type: The type of the operating system of the instance.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[bool] password_inherit: Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
                - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
                - [1-3] when `period_unit` in "Week"
@@ -1494,20 +1489,6 @@ class _InstanceState:
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] public_ip: The instance public ip.
         :param pulumi.Input[int] queue_pair_number: The number of queues supported by the ERI.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
@@ -1528,6 +1509,7 @@ class _InstanceState:
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
                
                Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
+        :param pulumi.Input[str] start_time: (Available since v1.232.0) The time when the instance was last started.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
                * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
@@ -1569,6 +1551,8 @@ class _InstanceState:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if credit_specification is not None:
             pulumi.set(__self__, "credit_specification", credit_specification)
         if data_disks is not None:
@@ -1587,6 +1571,8 @@ class _InstanceState:
             pulumi.set(__self__, "dry_run", dry_run)
         if enable_jumbo_frame is not None:
             pulumi.set(__self__, "enable_jumbo_frame", enable_jumbo_frame)
+        if expired_time is not None:
+            pulumi.set(__self__, "expired_time", expired_time)
         if force_delete is not None:
             pulumi.set(__self__, "force_delete", force_delete)
         if host_name is not None:
@@ -1660,6 +1646,8 @@ class _InstanceState:
             pulumi.set(__self__, "os_type", os_type)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if password_inherit is not None:
+            pulumi.set(__self__, "password_inherit", password_inherit)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if period_unit is not None:
@@ -1692,6 +1680,8 @@ class _InstanceState:
             pulumi.set(__self__, "spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
             pulumi.set(__self__, "spot_strategy", spot_strategy)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if stopped_mode is not None:
@@ -1793,6 +1783,18 @@ class _InstanceState:
     @cpu.setter
     def cpu(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.232.0) The time when the instance was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="creditSpecification")
@@ -1905,6 +1907,18 @@ class _InstanceState:
     @enable_jumbo_frame.setter
     def enable_jumbo_frame(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_jumbo_frame", value)
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.232.0) The expiration time of the instance.
+        """
+        return pulumi.get(self, "expired_time")
+
+    @expired_time.setter
+    def expired_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expired_time", value)
 
     @property
     @pulumi.getter(name="forceDelete")
@@ -2337,6 +2351,18 @@ class _InstanceState:
         pulumi.set(self, "password", value)
 
     @property
+    @pulumi.getter(name="passwordInherit")
+    def password_inherit(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "password_inherit")
+
+    @password_inherit.setter
+    def password_inherit(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "password_inherit", value)
+
+    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
@@ -2405,20 +2431,6 @@ class _InstanceState:
     def queue_pair_number(self) -> Optional[pulumi.Input[int]]:
         """
         The number of queues supported by the ERI.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "queue_pair_number")
 
@@ -2555,6 +2567,18 @@ class _InstanceState:
     @spot_strategy.setter
     def spot_strategy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spot_strategy", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.232.0) The time when the instance was last started.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
 
     @property
     @pulumi.getter
@@ -2830,6 +2854,7 @@ class Instance(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']]] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
@@ -3004,6 +3029,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[bool] password_inherit: Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
                - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
                - [1-3] when `period_unit` in "Week"
@@ -3012,20 +3038,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[int] queue_pair_number: The number of queues supported by the ERI.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
@@ -3215,6 +3227,7 @@ class Instance(pulumi.CustomResource):
                  network_interfaces: Optional[pulumi.Input[Union['InstanceNetworkInterfacesArgs', 'InstanceNetworkInterfacesArgsDict']]] = None,
                  operator_type: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 password_inherit: Optional[pulumi.Input[bool]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
@@ -3298,6 +3311,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["operator_type"] = operator_type
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            __props__.__dict__["password_inherit"] = password_inherit
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
             __props__.__dict__["private_ip"] = private_ip
@@ -3330,13 +3344,16 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["cpu"] = None
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["deployment_set_group_no"] = None
+            __props__.__dict__["expired_time"] = None
             __props__.__dict__["memory"] = None
             __props__.__dict__["network_interface_id"] = None
             __props__.__dict__["os_name"] = None
             __props__.__dict__["os_type"] = None
             __props__.__dict__["primary_ip_address"] = None
             __props__.__dict__["public_ip"] = None
+            __props__.__dict__["start_time"] = None
             __props__.__dict__["system_disk_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -3355,6 +3372,7 @@ class Instance(pulumi.CustomResource):
             auto_renew_period: Optional[pulumi.Input[int]] = None,
             availability_zone: Optional[pulumi.Input[str]] = None,
             cpu: Optional[pulumi.Input[int]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             credit_specification: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]]] = None,
             dedicated_host_id: Optional[pulumi.Input[str]] = None,
@@ -3364,6 +3382,7 @@ class Instance(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             enable_jumbo_frame: Optional[pulumi.Input[bool]] = None,
+            expired_time: Optional[pulumi.Input[str]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             hpc_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -3399,6 +3418,7 @@ class Instance(pulumi.CustomResource):
             os_name: Optional[pulumi.Input[str]] = None,
             os_type: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            password_inherit: Optional[pulumi.Input[bool]] = None,
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
             primary_ip_address: Optional[pulumi.Input[str]] = None,
@@ -3415,6 +3435,7 @@ class Instance(pulumi.CustomResource):
             spot_duration: Optional[pulumi.Input[int]] = None,
             spot_price_limit: Optional[pulumi.Input[float]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
+            start_time: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             stopped_mode: Optional[pulumi.Input[str]] = None,
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
@@ -3449,6 +3470,7 @@ class Instance(pulumi.CustomResource):
                - [1, 2, 3] when `period_unit` in "Week"
         :param pulumi.Input[str] availability_zone: The Zone to start the instance in. It is ignored and will be computed when set `vswitch_id`.
         :param pulumi.Input[int] cpu: The number of vCPUs.
+        :param pulumi.Input[str] create_time: (Available since v1.232.0) The time when the instance was created.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDataDiskArgs', 'InstanceDataDiskArgsDict']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] dedicated_host_id: The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spot_strategy` and `spot_price_limit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
@@ -3462,6 +3484,7 @@ class Instance(pulumi.CustomResource):
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[bool] enable_jumbo_frame: Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
+        :param pulumi.Input[str] expired_time: (Available since v1.232.0) The expiration time of the instance.
         :param pulumi.Input[bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
                However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
         :param pulumi.Input[str] host_name: Host name of the ECS, which is a string of at least two characters. “hostname” cannot start or end with “.” or “-“. In addition, two or more consecutive “.” or “-“ symbols are not allowed. On Windows, the host name can contain a maximum of 15 characters, which can be a combination of uppercase/lowercase letters, numerals, and “-“. The host name cannot contain dots (“.”) or contain only numeric characters. When it is changed, the instance will reboot to make the change take effect.
@@ -3508,6 +3531,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] os_name: The name of the operating system of the instance.
         :param pulumi.Input[str] os_type: The type of the operating system of the instance.
         :param pulumi.Input[str] password: Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
+        :param pulumi.Input[bool] password_inherit: Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
                - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
                - [1-3] when `period_unit` in "Week"
@@ -3518,20 +3542,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] public_ip: The instance public ip.
         :param pulumi.Input[int] queue_pair_number: The number of queues supported by the ERI.
-               
-               > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-               
-               > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-               
-               > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-               
-               > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-               
-               > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-               Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-               However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-               
-               > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
                - `AutoRenewal`: Enable auto renewal.
                - `Normal`: Disable auto renewal.
@@ -3552,6 +3562,7 @@ class Instance(pulumi.CustomResource):
                - SpotAsPriceGo: A price that is based on the highest Pay-As-You-Go instance
                
                Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
+        :param pulumi.Input[str] start_time: (Available since v1.232.0) The time when the instance was last started.
         :param pulumi.Input[str] status: The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
         :param pulumi.Input[str] stopped_mode: The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
                * `KeepCharging`: standard mode. Billing of the instance continues after the instance is stopped, and resources are retained for the instance.
@@ -3589,6 +3600,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["auto_renew_period"] = auto_renew_period
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["cpu"] = cpu
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["credit_specification"] = credit_specification
         __props__.__dict__["data_disks"] = data_disks
         __props__.__dict__["dedicated_host_id"] = dedicated_host_id
@@ -3598,6 +3610,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["enable_jumbo_frame"] = enable_jumbo_frame
+        __props__.__dict__["expired_time"] = expired_time
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["host_name"] = host_name
         __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id
@@ -3633,6 +3646,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["os_name"] = os_name
         __props__.__dict__["os_type"] = os_type
         __props__.__dict__["password"] = password
+        __props__.__dict__["password_inherit"] = password_inherit
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["primary_ip_address"] = primary_ip_address
@@ -3649,6 +3663,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["spot_duration"] = spot_duration
         __props__.__dict__["spot_price_limit"] = spot_price_limit
         __props__.__dict__["spot_strategy"] = spot_strategy
+        __props__.__dict__["start_time"] = start_time
         __props__.__dict__["status"] = status
         __props__.__dict__["stopped_mode"] = stopped_mode
         __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
@@ -3713,6 +3728,14 @@ class Instance(pulumi.CustomResource):
         The number of vCPUs.
         """
         return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.232.0) The time when the instance was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="creditSpecification")
@@ -3789,6 +3812,14 @@ class Instance(pulumi.CustomResource):
         Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_jumbo_frame")
+
+    @property
+    @pulumi.getter(name="expiredTime")
+    def expired_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.232.0) The expiration time of the instance.
+        """
+        return pulumi.get(self, "expired_time")
 
     @property
     @pulumi.getter(name="forceDelete")
@@ -4081,6 +4112,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "password")
 
     @property
+    @pulumi.getter(name="passwordInherit")
+    def password_inherit(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "password_inherit")
+
+    @property
     @pulumi.getter
     def period(self) -> pulumi.Output[int]:
         """
@@ -4129,20 +4168,6 @@ class Instance(pulumi.CustomResource):
     def queue_pair_number(self) -> pulumi.Output[Optional[int]]:
         """
         The number of queues supported by the ERI.
-
-        > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-
-        > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
-
-        > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-
-        > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-
-        > **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
-        Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-        However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-
-        > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
         """
         return pulumi.get(self, "queue_pair_number")
 
@@ -4235,6 +4260,14 @@ class Instance(pulumi.CustomResource):
         Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
         """
         return pulumi.get(self, "spot_strategy")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.232.0) The time when the instance was last started.
+        """
+        return pulumi.get(self, "start_time")
 
     @property
     @pulumi.getter

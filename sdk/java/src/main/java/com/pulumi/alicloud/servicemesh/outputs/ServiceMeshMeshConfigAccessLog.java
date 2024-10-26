@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigAccessLog {
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
      * 
      */
     private @Nullable Boolean gatewayEnabled;
     /**
-     * @return Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+     * @return Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS
      * 
      */
     private @Nullable Integer gatewayLifecycle;
@@ -34,33 +34,33 @@ public final class ServiceMeshMeshConfigAccessLog {
      */
     private @Nullable String project;
     /**
-     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
      * 
      */
     private @Nullable Boolean sidecarEnabled;
     /**
-     * @return Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+     * @return Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS
      * 
      */
     private @Nullable Integer sidecarLifecycle;
 
     private ServiceMeshMeshConfigAccessLog() {}
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
      * 
      */
     public Optional<Boolean> gatewayEnabled() {
         return Optional.ofNullable(this.gatewayEnabled);
     }
     /**
-     * @return Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+     * @return Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS
      * 
      */
     public Optional<Integer> gatewayLifecycle() {
@@ -74,14 +74,14 @@ public final class ServiceMeshMeshConfigAccessLog {
         return Optional.ofNullable(this.project);
     }
     /**
-     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+     * @return Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
      * 
      */
     public Optional<Boolean> sidecarEnabled() {
         return Optional.ofNullable(this.sidecarEnabled);
     }
     /**
-     * @return Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+     * @return Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS
      * 
      */
     public Optional<Integer> sidecarLifecycle() {

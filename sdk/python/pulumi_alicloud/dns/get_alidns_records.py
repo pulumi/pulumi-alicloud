@@ -251,9 +251,20 @@ def get_alidns_records(direction: Optional[str] = None,
     """
     This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:**  Available in 1.86.0+.
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    records_ds = alicloud.dns.get_alidns_records(domain_name="xiaozhu.top",
+        ids=["1978593525779****"],
+        type="A",
+        output_file="records.txt")
+    pulumi.export("firstRecordId", records_ds.records[0].record_id)
+    ```
 
 
     :param str direction: Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
@@ -262,7 +273,7 @@ def get_alidns_records(direction: Optional[str] = None,
     :param Sequence[str] ids: A list of record IDs.
     :param str key_word: Keywords.
     :param str lang: User language.
-    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
     :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
@@ -336,9 +347,20 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
     """
     This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:**  Available in 1.86.0+.
+    > **NOTE:** Available since v1.86.0.
 
     ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    records_ds = alicloud.dns.get_alidns_records(domain_name="xiaozhu.top",
+        ids=["1978593525779****"],
+        type="A",
+        output_file="records.txt")
+    pulumi.export("firstRecordId", records_ds.records[0].record_id)
+    ```
 
 
     :param str direction: Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
@@ -347,7 +369,7 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
     :param Sequence[str] ids: A list of record IDs.
     :param str key_word: Keywords.
     :param str lang: User language.
-    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
     :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.

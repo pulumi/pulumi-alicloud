@@ -9,12 +9,17 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVpcEndpointServicesResult {
+    /**
+     * @return Whether to automatically accept terminal node connections..
+     * 
+     */
     private @Nullable Boolean autoAcceptConnection;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -23,14 +28,43 @@ public final class GetVpcEndpointServicesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Vpc Endpoint Service names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return The business status of the terminal node service..
+     * 
+     */
     private @Nullable String serviceBusinessStatus;
+    /**
+     * @return A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+     * 
+     */
     private List<GetVpcEndpointServicesService> services;
+    /**
+     * @return The Status of Vpc Endpoint Service.
+     * 
+     */
     private @Nullable String status;
+    /**
+     * @return The tags of Vpc Endpoint Service.
+     * 
+     */
+    private @Nullable Map<String,String> tags;
+    /**
+     * @return The name of Vpc Endpoint Service.
+     * 
+     */
     private @Nullable String vpcEndpointServiceName;
 
     private GetVpcEndpointServicesResult() {}
+    /**
+     * @return Whether to automatically accept terminal node connections..
+     * 
+     */
     public Optional<Boolean> autoAcceptConnection() {
         return Optional.ofNullable(this.autoAcceptConnection);
     }
@@ -47,21 +81,48 @@ public final class GetVpcEndpointServicesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Vpc Endpoint Service names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return The business status of the terminal node service..
+     * 
+     */
     public Optional<String> serviceBusinessStatus() {
         return Optional.ofNullable(this.serviceBusinessStatus);
     }
+    /**
+     * @return A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+     * 
+     */
     public List<GetVpcEndpointServicesService> services() {
         return this.services;
     }
+    /**
+     * @return The Status of Vpc Endpoint Service.
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
+    /**
+     * @return The tags of Vpc Endpoint Service.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags == null ? Map.of() : this.tags;
+    }
+    /**
+     * @return The name of Vpc Endpoint Service.
+     * 
+     */
     public Optional<String> vpcEndpointServiceName() {
         return Optional.ofNullable(this.vpcEndpointServiceName);
     }
@@ -84,6 +145,7 @@ public final class GetVpcEndpointServicesResult {
         private @Nullable String serviceBusinessStatus;
         private List<GetVpcEndpointServicesService> services;
         private @Nullable String status;
+        private @Nullable Map<String,String> tags;
         private @Nullable String vpcEndpointServiceName;
         public Builder() {}
         public Builder(GetVpcEndpointServicesResult defaults) {
@@ -97,6 +159,7 @@ public final class GetVpcEndpointServicesResult {
     	      this.serviceBusinessStatus = defaults.serviceBusinessStatus;
     	      this.services = defaults.services;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
     	      this.vpcEndpointServiceName = defaults.vpcEndpointServiceName;
         }
 
@@ -172,6 +235,12 @@ public final class GetVpcEndpointServicesResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(@Nullable Map<String,String> tags) {
+
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcEndpointServiceName(@Nullable String vpcEndpointServiceName) {
 
             this.vpcEndpointServiceName = vpcEndpointServiceName;
@@ -188,6 +257,7 @@ public final class GetVpcEndpointServicesResult {
             _resultValue.serviceBusinessStatus = serviceBusinessStatus;
             _resultValue.services = services;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             _resultValue.vpcEndpointServiceName = vpcEndpointServiceName;
             return _resultValue;
         }

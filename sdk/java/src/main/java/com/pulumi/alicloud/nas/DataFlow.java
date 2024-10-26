@@ -17,15 +17,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Network Attached Storage (NAS) Data Flow resource.
+ * Provides a Apsara File Storage (NAS) Data Flow resource.
  * 
- * For information about Network Attached Storage (NAS) Data Flow and how to use it, see [What is Data Flow](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
+ * For information about Apsara File Storage (NAS) Data Flow and how to use it, see [What is Data Flow](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
  * 
  * &gt; **NOTE:** Available since v1.153.0.
  * 
  * ## Import
  * 
- * Network Attached Storage (NAS) Data Flow can be imported using the id, e.g.
+ * Apsara File Storage (NAS) Data Flow can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:nas/dataFlow:DataFlow example &lt;file_system_id&gt;:&lt;data_flow_id&gt;

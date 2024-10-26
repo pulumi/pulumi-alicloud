@@ -26,7 +26,7 @@ public final class MseFunctions {
     /**
      * This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.94.0+.
+     * &gt; **NOTE:** Available since v1.94.0.
      * 
      * ## Example Usage
      * 
@@ -38,6 +38,14 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
@@ -53,13 +61,46 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids("mse-cn-0d9xxxx")
-     *             .status("INIT_SUCCESS")
+     *         // Create resource
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails("true")
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
+     * 
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
      * }
@@ -73,7 +114,7 @@ public final class MseFunctions {
     /**
      * This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.94.0+.
+     * &gt; **NOTE:** Available since v1.94.0.
      * 
      * ## Example Usage
      * 
@@ -85,6 +126,14 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
@@ -100,13 +149,46 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids("mse-cn-0d9xxxx")
-     *             .status("INIT_SUCCESS")
+     *         // Create resource
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails("true")
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
+     * 
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
      * }
@@ -120,7 +202,7 @@ public final class MseFunctions {
     /**
      * This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.94.0+.
+     * &gt; **NOTE:** Available since v1.94.0.
      * 
      * ## Example Usage
      * 
@@ -132,6 +214,14 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
@@ -147,13 +237,46 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids("mse-cn-0d9xxxx")
-     *             .status("INIT_SUCCESS")
+     *         // Create resource
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails("true")
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
+     * 
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
      * }
@@ -167,7 +290,7 @@ public final class MseFunctions {
     /**
      * This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.94.0+.
+     * &gt; **NOTE:** Available since v1.94.0.
      * 
      * ## Example Usage
      * 
@@ -179,6 +302,14 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
@@ -194,13 +325,46 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids("mse-cn-0d9xxxx")
-     *             .status("INIT_SUCCESS")
+     *         // Create resource
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails("true")
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
+     * 
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
      * }
@@ -214,7 +378,7 @@ public final class MseFunctions {
     /**
      * This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.94.0+.
+     * &gt; **NOTE:** Available since v1.94.0.
      * 
      * ## Example Usage
      * 
@@ -226,6 +390,14 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
@@ -241,13 +413,46 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids("mse-cn-0d9xxxx")
-     *             .status("INIT_SUCCESS")
+     *         // Create resource
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails("true")
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
+     * 
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
      * }
@@ -261,7 +466,7 @@ public final class MseFunctions {
     /**
      * This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.94.0+.
+     * &gt; **NOTE:** Available since v1.94.0.
      * 
      * ## Example Usage
      * 
@@ -273,6 +478,14 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetClustersArgs;
      * import java.util.List;
@@ -288,13 +501,46 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         // Declare the data source
-     *         final var example = MseFunctions.getClusters(GetClustersArgs.builder()
-     *             .ids("mse-cn-0d9xxxx")
-     *             .status("INIT_SUCCESS")
+     *         // Create resource
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("clusterId", example.applyValue(getClustersResult -> getClustersResult.clusters()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetClusters = MseFunctions.getClusters(GetClustersArgs.builder()
+     *             .enableDetails("true")
+     *             .ids(exampleCluster.id())
+     *             .status("INIT_SUCCESS")
+     *             .nameRegex(exampleCluster.clusterAliasName())
+     *             .build());
+     * 
+     *         ctx.export("instanceId", exampleGetClusters.applyValue(getClustersResult -> getClustersResult).applyValue(exampleGetClusters -> exampleGetClusters.applyValue(getClustersResult -> getClustersResult.clusters()[0].id())));
      *     }
      * }
      * }
@@ -308,7 +554,7 @@ public final class MseFunctions {
     /**
      * This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.166.0+.
+     * &gt; **NOTE:** Available since v1.166.0.
      * 
      * ## Example Usage
      * 
@@ -322,6 +568,16 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
+     * import com.pulumi.alicloud.mse.EngineNamespace;
+     * import com.pulumi.alicloud.mse.EngineNamespaceArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
      * import java.util.List;
@@ -337,12 +593,242 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
-     *             .clusterId("example_value")
-     *             .ids("example_value")
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceId1", ids.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .namespaceShowName("terraform-example")
+     *             .namespaceId("terraform-example")
+     *             .namespaceDesc("description")
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .instanceId(exampleEngineNamespace.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEngineNamespacesResult> getEngineNamespaces() {
+        return getEngineNamespaces(GetEngineNamespacesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.166.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
+     * import com.pulumi.alicloud.mse.EngineNamespace;
+     * import com.pulumi.alicloud.mse.EngineNamespaceArgs;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .namespaceShowName("terraform-example")
+     *             .namespaceId("terraform-example")
+     *             .namespaceDesc("description")
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .instanceId(exampleEngineNamespace.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetEngineNamespacesResult> getEngineNamespacesPlain() {
+        return getEngineNamespacesPlain(GetEngineNamespacesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.166.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
+     * import com.pulumi.alicloud.mse.EngineNamespace;
+     * import com.pulumi.alicloud.mse.EngineNamespaceArgs;
+     * import com.pulumi.alicloud.mse.MseFunctions;
+     * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
+     *             .build());
+     * 
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .namespaceShowName("terraform-example")
+     *             .namespaceId("terraform-example")
+     *             .namespaceDesc("description")
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .instanceId(exampleEngineNamespace.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
      *     }
      * }
      * }
@@ -356,7 +842,7 @@ public final class MseFunctions {
     /**
      * This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.166.0+.
+     * &gt; **NOTE:** Available since v1.166.0.
      * 
      * ## Example Usage
      * 
@@ -370,6 +856,16 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
+     * import com.pulumi.alicloud.mse.EngineNamespace;
+     * import com.pulumi.alicloud.mse.EngineNamespaceArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
      * import java.util.List;
@@ -385,12 +881,50 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
-     *             .clusterId("example_value")
-     *             .ids("example_value")
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceId1", ids.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .namespaceShowName("terraform-example")
+     *             .namespaceId("terraform-example")
+     *             .namespaceDesc("description")
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .instanceId(exampleEngineNamespace.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
      *     }
      * }
      * }
@@ -404,7 +938,7 @@ public final class MseFunctions {
     /**
      * This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.166.0+.
+     * &gt; **NOTE:** Available since v1.166.0.
      * 
      * ## Example Usage
      * 
@@ -418,6 +952,16 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
+     * import com.pulumi.alicloud.mse.EngineNamespace;
+     * import com.pulumi.alicloud.mse.EngineNamespaceArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
      * import java.util.List;
@@ -433,12 +977,50 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
-     *             .clusterId("example_value")
-     *             .ids("example_value")
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceId1", ids.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .namespaceShowName("terraform-example")
+     *             .namespaceId("terraform-example")
+     *             .namespaceDesc("description")
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .instanceId(exampleEngineNamespace.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
      *     }
      * }
      * }
@@ -452,7 +1034,7 @@ public final class MseFunctions {
     /**
      * This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.166.0+.
+     * &gt; **NOTE:** Available since v1.166.0.
      * 
      * ## Example Usage
      * 
@@ -466,6 +1048,16 @@ public final class MseFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.mse.Cluster;
+     * import com.pulumi.alicloud.mse.ClusterArgs;
+     * import com.pulumi.alicloud.mse.EngineNamespace;
+     * import com.pulumi.alicloud.mse.EngineNamespaceArgs;
      * import com.pulumi.alicloud.mse.MseFunctions;
      * import com.pulumi.alicloud.mse.inputs.GetEngineNamespacesArgs;
      * import java.util.List;
@@ -481,12 +1073,50 @@ public final class MseFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var ids = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
-     *             .clusterId("example_value")
-     *             .ids("example_value")
+     *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation("VSwitch")
      *             .build());
      * 
-     *         ctx.export("mseEngineNamespaceId1", ids.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id()));
+     *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
+     *             .vpcName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .build());
+     * 
+     *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
+     *             .vswitchName("terraform-example")
+     *             .cidrBlock("172.17.3.0/24")
+     *             .vpcId(exampleNetwork.id())
+     *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
+     *             .build());
+     * 
+     *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
+     *             .clusterSpecification("MSE_SC_1_2_60_c")
+     *             .clusterType("Nacos-Ans")
+     *             .clusterVersion("NACOS_2_0_0")
+     *             .instanceCount(3)
+     *             .netType("privatenet")
+     *             .pubNetworkFlow("1")
+     *             .connectionType("slb")
+     *             .clusterAliasName("terraform-example")
+     *             .mseVersion("mse_pro")
+     *             .vswitchId(exampleSwitch.id())
+     *             .vpcId(exampleNetwork.id())
+     *             .build());
+     * 
+     *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()
+     *             .instanceId(exampleCluster.id())
+     *             .namespaceShowName("terraform-example")
+     *             .namespaceId("terraform-example")
+     *             .namespaceDesc("description")
+     *             .build());
+     * 
+     *         // Declare the data source
+     *         final var exampleGetEngineNamespaces = MseFunctions.getEngineNamespaces(GetEngineNamespacesArgs.builder()
+     *             .instanceId(exampleEngineNamespace.instanceId())
+     *             .build());
+     * 
+     *         ctx.export("mseEngineNamespaceIdPublic", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[0].id())));
+     *         ctx.export("mseEngineNamespaceIdExample", exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult).applyValue(exampleGetEngineNamespaces -> exampleGetEngineNamespaces.applyValue(getEngineNamespacesResult -> getEngineNamespacesResult.namespaces()[1].id())));
      *     }
      * }
      * }

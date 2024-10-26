@@ -47,7 +47,7 @@ class InstanceArgs:
         :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
-        :param pulumi.Input[str] modify_type: Type of instance lifting and lowering:
+        :param pulumi.Input[str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
         :param pulumi.Input[int] period: Prepayment cycle, unit: periodCycle.  This parameter is valid when PaymentType is set to Subscription.
@@ -188,7 +188,7 @@ class InstanceArgs:
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of instance lifting and lowering:
+        This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
         - Upgrade: Upgrade
         - Downgrade: Downgrading.
         """
@@ -364,7 +364,7 @@ class _InstanceState:
         :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
-        :param pulumi.Input[str] modify_type: Type of instance lifting and lowering:
+        :param pulumi.Input[str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
         :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
@@ -512,7 +512,7 @@ class _InstanceState:
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of instance lifting and lowering:
+        This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
         - Upgrade: Upgrade
         - Downgrade: Downgrading.
         """
@@ -721,7 +721,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
-        :param pulumi.Input[str] modify_type: Type of instance lifting and lowering:
+        :param pulumi.Input[str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
         :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
@@ -863,7 +863,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] max_connections: The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         :param pulumi.Input[str] max_eip_tps: Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         :param pulumi.Input[str] max_tps: Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
-        :param pulumi.Input[str] modify_type: Type of instance lifting and lowering:
+        :param pulumi.Input[str] modify_type: This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
                - Upgrade: Upgrade
                - Downgrade: Downgrading.
         :param pulumi.Input[str] payment_type: The Payment type. Valid value: Subscription: prepaid. PayAsYouGo: Post-paid.
@@ -949,7 +949,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxEipTps")
-    def max_eip_tps(self) -> pulumi.Output[Optional[str]]:
+    def max_eip_tps(self) -> pulumi.Output[str]:
         """
         Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         """
@@ -967,7 +967,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="modifyType")
     def modify_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Type of instance lifting and lowering:
+        This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
         - Upgrade: Upgrade
         - Downgrade: Downgrading.
         """

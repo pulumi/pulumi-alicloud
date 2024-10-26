@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
     public sealed class GetVpcEndpointServicesServiceResult
     {
         /// <summary>
-        /// Whether to automatically accept terminal node connections..
+        /// Whether to automatically accept terminal node connections.
         /// </summary>
         public readonly bool AutoAcceptConnection;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The business status of the terminal node service..
+        /// The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
         /// </summary>
         public readonly string ServiceBusinessStatus;
         /// <summary>
@@ -42,9 +42,13 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
         /// </summary>
         public readonly string ServiceId;
         /// <summary>
-        /// The Status of Vpc Endpoint Service.
+        /// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The tags of Vpc Endpoint Service.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
         /// The name of Vpc Endpoint Service.
         /// </summary>
@@ -68,6 +72,8 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
 
             string status,
 
+            ImmutableDictionary<string, string> tags,
+
             string vpcEndpointServiceName)
         {
             AutoAcceptConnection = autoAcceptConnection;
@@ -78,6 +84,7 @@ namespace Pulumi.AliCloud.PrivateLink.Outputs
             ServiceDomain = serviceDomain;
             ServiceId = serviceId;
             Status = status;
+            Tags = tags;
             VpcEndpointServiceName = vpcEndpointServiceName;
         }
     }

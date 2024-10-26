@@ -20,6 +20,11 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { DatabaseArgs, DatabaseState } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+
 export { DbInstanceIpArrayArgs, DbInstanceIpArrayState } from "./dbInstanceIpArray";
 export type DbInstanceIpArray = import("./dbInstanceIpArray").DbInstanceIpArray;
 export const DbInstanceIpArray: typeof import("./dbInstanceIpArray").DbInstanceIpArray = null as any;
@@ -121,6 +126,8 @@ const _module = {
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:gpdb/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "alicloud:gpdb/database:Database":
+                return new Database(name, <any>undefined, { urn })
             case "alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray":
                 return new DbInstanceIpArray(name, <any>undefined, { urn })
             case "alicloud:gpdb/dbInstancePlan:DbInstancePlan":
@@ -153,6 +160,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/connection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "gpdb/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstanceIpArray", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbInstancePlan", _module)
 pulumi.runtime.registerResourceModule("alicloud", "gpdb/dbResourceGroup", _module)

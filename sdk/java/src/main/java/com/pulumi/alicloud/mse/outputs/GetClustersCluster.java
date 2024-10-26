@@ -44,7 +44,7 @@ public final class GetClustersCluster {
      */
     private Integer cpu;
     /**
-     * @return The health status of MSE Cluster.
+     * @return The health status of the instance.
      * 
      */
     private String healthStatus;
@@ -69,7 +69,7 @@ public final class GetClustersCluster {
      */
     private String instanceId;
     /**
-     * @return The list of instances.
+     * @return The list of instance nodes.
      * 
      */
     private List<GetClustersClusterInstanceModel> instanceModels;
@@ -168,7 +168,7 @@ public final class GetClustersCluster {
         return this.cpu;
     }
     /**
-     * @return The health status of MSE Cluster.
+     * @return The health status of the instance.
      * 
      */
     public String healthStatus() {
@@ -203,7 +203,7 @@ public final class GetClustersCluster {
         return this.instanceId;
     }
     /**
-     * @return The list of instances.
+     * @return The list of instance nodes.
      * 
      */
     public List<GetClustersClusterInstanceModel> instanceModels() {

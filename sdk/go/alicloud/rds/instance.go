@@ -332,6 +332,8 @@ type Instance struct {
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA pulumi.StringOutput `pulumi:"zoneIdSlaveA"`
+	// RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+	ZoneIdSlaveB pulumi.StringOutput `pulumi:"zoneIdSlaveB"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -697,6 +699,8 @@ type instanceState struct {
 	ZoneId *string `pulumi:"zoneId"`
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA *string `pulumi:"zoneIdSlaveA"`
+	// RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+	ZoneIdSlaveB *string `pulumi:"zoneIdSlaveB"`
 }
 
 type InstanceState struct {
@@ -1010,6 +1014,8 @@ type InstanceState struct {
 	ZoneId pulumi.StringPtrInput
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA pulumi.StringPtrInput
+	// RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+	ZoneIdSlaveB pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -1317,6 +1323,8 @@ type instanceArgs struct {
 	ZoneId *string `pulumi:"zoneId"`
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA *string `pulumi:"zoneIdSlaveA"`
+	// RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+	ZoneIdSlaveB *string `pulumi:"zoneIdSlaveB"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -1621,6 +1629,8 @@ type InstanceArgs struct {
 	ZoneId pulumi.StringPtrInput
 	// The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 	ZoneIdSlaveA pulumi.StringPtrInput
+	// RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+	ZoneIdSlaveB pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -2255,6 +2265,11 @@ func (o InstanceOutput) ZoneId() pulumi.StringOutput {
 // The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
 func (o InstanceOutput) ZoneIdSlaveA() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneIdSlaveA }).(pulumi.StringOutput)
+}
+
+// RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+func (o InstanceOutput) ZoneIdSlaveB() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneIdSlaveB }).(pulumi.StringOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

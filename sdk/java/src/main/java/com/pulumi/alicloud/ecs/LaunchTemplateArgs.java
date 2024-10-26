@@ -111,6 +111,27 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.hostName);
     }
 
+    @Import(name="httpEndpoint")
+    private @Nullable Output<String> httpEndpoint;
+
+    public Optional<Output<String>> httpEndpoint() {
+        return Optional.ofNullable(this.httpEndpoint);
+    }
+
+    @Import(name="httpPutResponseHopLimit")
+    private @Nullable Output<Integer> httpPutResponseHopLimit;
+
+    public Optional<Output<Integer>> httpPutResponseHopLimit() {
+        return Optional.ofNullable(this.httpPutResponseHopLimit);
+    }
+
+    @Import(name="httpTokens")
+    private @Nullable Output<String> httpTokens;
+
+    public Optional<Output<String>> httpTokens() {
+        return Optional.ofNullable(this.httpTokens);
+    }
+
     /**
      * Image ID.
      * 
@@ -686,6 +707,9 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         this.description = $.description;
         this.enableVmOsConfig = $.enableVmOsConfig;
         this.hostName = $.hostName;
+        this.httpEndpoint = $.httpEndpoint;
+        this.httpPutResponseHopLimit = $.httpPutResponseHopLimit;
+        this.httpTokens = $.httpTokens;
         this.imageId = $.imageId;
         this.imageOwnerAlias = $.imageOwnerAlias;
         this.instanceChargeType = $.instanceChargeType;
@@ -874,6 +898,33 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder hostName(String hostName) {
             return hostName(Output.of(hostName));
+        }
+
+        public Builder httpEndpoint(@Nullable Output<String> httpEndpoint) {
+            $.httpEndpoint = httpEndpoint;
+            return this;
+        }
+
+        public Builder httpEndpoint(String httpEndpoint) {
+            return httpEndpoint(Output.of(httpEndpoint));
+        }
+
+        public Builder httpPutResponseHopLimit(@Nullable Output<Integer> httpPutResponseHopLimit) {
+            $.httpPutResponseHopLimit = httpPutResponseHopLimit;
+            return this;
+        }
+
+        public Builder httpPutResponseHopLimit(Integer httpPutResponseHopLimit) {
+            return httpPutResponseHopLimit(Output.of(httpPutResponseHopLimit));
+        }
+
+        public Builder httpTokens(@Nullable Output<String> httpTokens) {
+            $.httpTokens = httpTokens;
+            return this;
+        }
+
+        public Builder httpTokens(String httpTokens) {
+            return httpTokens(Output.of(httpTokens));
         }
 
         /**

@@ -33,10 +33,10 @@ type Instance struct {
 	// The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
 	MaxConnections pulumi.IntOutput `pulumi:"maxConnections"`
 	// Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
-	MaxEipTps pulumi.StringPtrOutput `pulumi:"maxEipTps"`
+	MaxEipTps pulumi.StringOutput `pulumi:"maxEipTps"`
 	// Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
 	MaxTps pulumi.StringOutput `pulumi:"maxTps"`
-	// Type of instance lifting and lowering:
+	// This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
@@ -115,7 +115,7 @@ type instanceState struct {
 	MaxEipTps *string `pulumi:"maxEipTps"`
 	// Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
 	MaxTps *string `pulumi:"maxTps"`
-	// Type of instance lifting and lowering:
+	// This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType *string `pulumi:"modifyType"`
@@ -162,7 +162,7 @@ type InstanceState struct {
 	MaxEipTps pulumi.StringPtrInput
 	// Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
 	MaxTps pulumi.StringPtrInput
-	// Type of instance lifting and lowering:
+	// This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType pulumi.StringPtrInput
@@ -211,7 +211,7 @@ type instanceArgs struct {
 	MaxEipTps *string `pulumi:"maxEipTps"`
 	// Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
 	MaxTps *string `pulumi:"maxTps"`
-	// Type of instance lifting and lowering:
+	// This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType *string `pulumi:"modifyType"`
@@ -255,7 +255,7 @@ type InstanceArgs struct {
 	MaxEipTps pulumi.StringPtrInput
 	// Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
 	MaxTps pulumi.StringPtrInput
-	// Type of instance lifting and lowering:
+	// This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
 	// - Upgrade: Upgrade
 	// - Downgrade: Downgrading.
 	ModifyType pulumi.StringPtrInput
@@ -398,8 +398,8 @@ func (o InstanceOutput) MaxConnections() pulumi.IntOutput {
 }
 
 // Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
-func (o InstanceOutput) MaxEipTps() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.MaxEipTps }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) MaxEipTps() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaxEipTps }).(pulumi.StringOutput)
 }
 
 // Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
@@ -407,7 +407,7 @@ func (o InstanceOutput) MaxTps() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MaxTps }).(pulumi.StringOutput)
 }
 
-// Type of instance lifting and lowering:
+// This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
 // - Upgrade: Upgrade
 // - Downgrade: Downgrading.
 func (o InstanceOutput) ModifyType() pulumi.StringPtrOutput {

@@ -644,6 +644,12 @@ namespace Pulumi.AliCloud.Rds
         [Output("zoneIdSlaveA")]
         public Output<string> ZoneIdSlaveA { get; private set; } = null!;
 
+        /// <summary>
+        /// RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+        /// </summary>
+        [Output("zoneIdSlaveB")]
+        public Output<string> ZoneIdSlaveB { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -1350,6 +1356,12 @@ namespace Pulumi.AliCloud.Rds
         [Input("zoneIdSlaveA")]
         public Input<string>? ZoneIdSlaveA { get; set; }
 
+        /// <summary>
+        /// RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+        /// </summary>
+        [Input("zoneIdSlaveB")]
+        public Input<string>? ZoneIdSlaveB { get; set; }
+
         public InstanceArgs()
         {
         }
@@ -2042,6 +2054,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("zoneIdSlaveA")]
         public Input<string>? ZoneIdSlaveA { get; set; }
+
+        /// <summary>
+        /// RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+        /// </summary>
+        [Input("zoneIdSlaveB")]
+        public Input<string>? ZoneIdSlaveB { get; set; }
 
         public InstanceState()
         {

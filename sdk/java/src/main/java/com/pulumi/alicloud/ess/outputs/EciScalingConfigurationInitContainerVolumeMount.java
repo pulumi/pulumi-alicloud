@@ -13,18 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EciScalingConfigurationInitContainerVolumeMount {
     private @Nullable String mountPath;
+    private @Nullable String mountPropagation;
     private @Nullable String name;
     private @Nullable Boolean readOnly;
+    private @Nullable String subPath;
 
     private EciScalingConfigurationInitContainerVolumeMount() {}
     public Optional<String> mountPath() {
         return Optional.ofNullable(this.mountPath);
+    }
+    public Optional<String> mountPropagation() {
+        return Optional.ofNullable(this.mountPropagation);
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
+    }
+    public Optional<String> subPath() {
+        return Optional.ofNullable(this.subPath);
     }
 
     public static Builder builder() {
@@ -37,20 +45,30 @@ public final class EciScalingConfigurationInitContainerVolumeMount {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String mountPath;
+        private @Nullable String mountPropagation;
         private @Nullable String name;
         private @Nullable Boolean readOnly;
+        private @Nullable String subPath;
         public Builder() {}
         public Builder(EciScalingConfigurationInitContainerVolumeMount defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mountPath = defaults.mountPath;
+    	      this.mountPropagation = defaults.mountPropagation;
     	      this.name = defaults.name;
     	      this.readOnly = defaults.readOnly;
+    	      this.subPath = defaults.subPath;
         }
 
         @CustomType.Setter
         public Builder mountPath(@Nullable String mountPath) {
 
             this.mountPath = mountPath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mountPropagation(@Nullable String mountPropagation) {
+
+            this.mountPropagation = mountPropagation;
             return this;
         }
         @CustomType.Setter
@@ -65,11 +83,19 @@ public final class EciScalingConfigurationInitContainerVolumeMount {
             this.readOnly = readOnly;
             return this;
         }
+        @CustomType.Setter
+        public Builder subPath(@Nullable String subPath) {
+
+            this.subPath = subPath;
+            return this;
+        }
         public EciScalingConfigurationInitContainerVolumeMount build() {
             final var _resultValue = new EciScalingConfigurationInitContainerVolumeMount();
             _resultValue.mountPath = mountPath;
+            _resultValue.mountPropagation = mountPropagation;
             _resultValue.name = name;
             _resultValue.readOnly = readOnly;
+            _resultValue.subPath = subPath;
             return _resultValue;
         }
     }

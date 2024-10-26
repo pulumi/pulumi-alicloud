@@ -18,14 +18,14 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
     public static final GetServiceCertificatesArgs Empty = new GetServiceCertificatesArgs();
 
     /**
-     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> enableDetails() {
@@ -33,14 +33,14 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * A list of Certificate IDs.
+     * A list of Ssl Certificates IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of Certificate IDs.
+     * @return A list of Ssl Certificates IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -48,29 +48,52 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The lang.
+     * The domain name that is bound or the ID of the resource. Fuzzy match is supported.
      * 
      */
+    @Import(name="keyword")
+    private @Nullable Output<String> keyword;
+
+    /**
+     * @return The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+     * 
+     */
+    public Optional<Output<String>> keyword() {
+        return Optional.ofNullable(this.keyword);
+    }
+
+    /**
+     * The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+     * 
+     * @deprecated
+     * Field `lang` has been deprecated from provider version 1.232.0.
+     * 
+     */
+    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return The lang.
+     * @return The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+     * 
+     * @deprecated
+     * Field `lang` has been deprecated from provider version 1.232.0.
      * 
      */
+    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
     public Optional<Output<String>> lang() {
         return Optional.ofNullable(this.lang);
     }
 
     /**
-     * A regex string to filter results by Certificate name.
+     * A regex string to filter results by Ssl Certificates name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
-     * @return A regex string to filter results by Certificate name.
+     * @return A regex string to filter results by Ssl Certificates name.
      * 
      */
     public Optional<Output<String>> nameRegex() {
@@ -97,6 +120,7 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
     private GetServiceCertificatesArgs(GetServiceCertificatesArgs $) {
         this.enableDetails = $.enableDetails;
         this.ids = $.ids;
+        this.keyword = $.keyword;
         this.lang = $.lang;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
@@ -121,7 +145,7 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -132,7 +156,7 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -142,7 +166,7 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param ids A list of Certificate IDs.
+         * @param ids A list of Ssl Certificates IDs.
          * 
          * @return builder
          * 
@@ -153,7 +177,7 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param ids A list of Certificate IDs.
+         * @param ids A list of Ssl Certificates IDs.
          * 
          * @return builder
          * 
@@ -163,7 +187,7 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param ids A list of Certificate IDs.
+         * @param ids A list of Ssl Certificates IDs.
          * 
          * @return builder
          * 
@@ -173,28 +197,57 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param lang The lang.
+         * @param keyword The domain name that is bound or the ID of the resource. Fuzzy match is supported.
          * 
          * @return builder
          * 
          */
+        public Builder keyword(@Nullable Output<String> keyword) {
+            $.keyword = keyword;
+            return this;
+        }
+
+        /**
+         * @param keyword The domain name that is bound or the ID of the resource. Fuzzy match is supported.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyword(String keyword) {
+            return keyword(Output.of(keyword));
+        }
+
+        /**
+         * @param lang The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `lang` has been deprecated from provider version 1.232.0.
+         * 
+         */
+        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
         public Builder lang(@Nullable Output<String> lang) {
             $.lang = lang;
             return this;
         }
 
         /**
-         * @param lang The lang.
+         * @param lang The language of the content within the request and response. **Note:** Field `lang` has been deprecated from provider version 1.232.0.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `lang` has been deprecated from provider version 1.232.0.
+         * 
          */
+        @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
         public Builder lang(String lang) {
             return lang(Output.of(lang));
         }
 
         /**
-         * @param nameRegex A regex string to filter results by Certificate name.
+         * @param nameRegex A regex string to filter results by Ssl Certificates name.
          * 
          * @return builder
          * 
@@ -205,7 +258,7 @@ public final class GetServiceCertificatesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param nameRegex A regex string to filter results by Certificate name.
+         * @param nameRegex A regex string to filter results by Ssl Certificates name.
          * 
          * @return builder
          * 

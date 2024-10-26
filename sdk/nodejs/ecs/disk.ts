@@ -101,7 +101,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * If true, the disk will be encrypted, conflict with `snapshotId`.
      */
-    public readonly encrypted!: pulumi.Output<boolean | undefined>;
+    public readonly encrypted!: pulumi.Output<boolean>;
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
@@ -133,7 +133,7 @@ export class Disk extends pulumi.CustomResource {
     /**
      * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    public readonly snapshotId!: pulumi.Output<string>;
     /**
      * The disk status.
      */

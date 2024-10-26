@@ -15,12 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigControlPlaneLog {
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     private Boolean enabled;
     /**
-     * @return Lifecycle of logs has been collected to Alibaba Cloud SLS.
+     * @return Lifecycle of logs has been collected to Alibaba Cloud SLS
      * 
      */
     private @Nullable Integer logTtlInDay;
@@ -32,14 +32,14 @@ public final class ServiceMeshMeshConfigControlPlaneLog {
 
     private ServiceMeshMeshConfigControlPlaneLog() {}
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     public Boolean enabled() {
         return this.enabled;
     }
     /**
-     * @return Lifecycle of logs has been collected to Alibaba Cloud SLS.
+     * @return Lifecycle of logs has been collected to Alibaba Cloud SLS
      * 
      */
     public Optional<Integer> logTtlInDay() {

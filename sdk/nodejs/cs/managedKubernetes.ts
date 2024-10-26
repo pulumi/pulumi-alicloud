@@ -151,11 +151,13 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly encryptionProviderKey!: pulumi.Output<string | undefined>;
     /**
-     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
     public readonly isEnterpriseSecurityGroup!: pulumi.Output<boolean>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     *
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
     public readonly loadBalancerSpec!: pulumi.Output<string | undefined>;
     /**
@@ -172,7 +174,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public /*out*/ readonly natGatewayId!: pulumi.Output<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
      */
     public readonly newNatGateway!: pulumi.Output<boolean | undefined>;
     /**
@@ -180,11 +182,15 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly nodeCidrMask!: pulumi.Output<number | undefined>;
     /**
+     * The cluster automatic operation policy. See `operationPolicy` below.
+     */
+    public readonly operationPolicy!: pulumi.Output<outputs.cs.ManagedKubernetesOperationPolicy>;
+    /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
     public readonly podCidr!: pulumi.Output<string | undefined>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     public readonly podVswitchIds!: pulumi.Output<string[] | undefined>;
     /**
@@ -246,7 +252,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly userCa!: pulumi.Output<string | undefined>;
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
     public readonly version!: pulumi.Output<string>;
     /**
@@ -300,6 +306,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["natGatewayId"] = state ? state.natGatewayId : undefined;
             resourceInputs["newNatGateway"] = state ? state.newNatGateway : undefined;
             resourceInputs["nodeCidrMask"] = state ? state.nodeCidrMask : undefined;
+            resourceInputs["operationPolicy"] = state ? state.operationPolicy : undefined;
             resourceInputs["podCidr"] = state ? state.podCidr : undefined;
             resourceInputs["podVswitchIds"] = state ? state.podVswitchIds : undefined;
             resourceInputs["proxyMode"] = state ? state.proxyMode : undefined;
@@ -347,6 +354,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
             resourceInputs["newNatGateway"] = args ? args.newNatGateway : undefined;
             resourceInputs["nodeCidrMask"] = args ? args.nodeCidrMask : undefined;
+            resourceInputs["operationPolicy"] = args ? args.operationPolicy : undefined;
             resourceInputs["podCidr"] = args ? args.podCidr : undefined;
             resourceInputs["podVswitchIds"] = args ? args.podVswitchIds : undefined;
             resourceInputs["proxyMode"] = args ? args.proxyMode : undefined;
@@ -456,11 +464,13 @@ export interface ManagedKubernetesState {
      */
     encryptionProviderKey?: pulumi.Input<string>;
     /**
-     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
     isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     *
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
@@ -477,7 +487,7 @@ export interface ManagedKubernetesState {
      */
     natGatewayId?: pulumi.Input<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
      */
     newNatGateway?: pulumi.Input<boolean>;
     /**
@@ -485,11 +495,15 @@ export interface ManagedKubernetesState {
      */
     nodeCidrMask?: pulumi.Input<number>;
     /**
+     * The cluster automatic operation policy. See `operationPolicy` below.
+     */
+    operationPolicy?: pulumi.Input<inputs.cs.ManagedKubernetesOperationPolicy>;
+    /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
     podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -551,7 +565,7 @@ export interface ManagedKubernetesState {
      */
     userCa?: pulumi.Input<string>;
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
     version?: pulumi.Input<string>;
     /**
@@ -640,11 +654,13 @@ export interface ManagedKubernetesArgs {
      */
     encryptionProviderKey?: pulumi.Input<string>;
     /**
-     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
     isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     *
+     * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      */
     loadBalancerSpec?: pulumi.Input<string>;
     /**
@@ -657,7 +673,7 @@ export interface ManagedKubernetesArgs {
     name?: pulumi.Input<string>;
     namePrefix?: pulumi.Input<string>;
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
      */
     newNatGateway?: pulumi.Input<boolean>;
     /**
@@ -665,11 +681,15 @@ export interface ManagedKubernetesArgs {
      */
     nodeCidrMask?: pulumi.Input<number>;
     /**
+     * The cluster automatic operation policy. See `operationPolicy` below.
+     */
+    operationPolicy?: pulumi.Input<inputs.cs.ManagedKubernetesOperationPolicy>;
+    /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
     podCidr?: pulumi.Input<string>;
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `workerVswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
     podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -715,7 +735,7 @@ export interface ManagedKubernetesArgs {
      */
     userCa?: pulumi.Input<string>;
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
     version?: pulumi.Input<string>;
     /**

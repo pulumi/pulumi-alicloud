@@ -49,6 +49,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.
+        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         :param pulumi.Input[str] instance_type: Instance type. Value range:
                - dbfs.small
                - dbfs.medium
@@ -62,6 +63,8 @@ class InstanceArgs:
         :param pulumi.Input[int] raid_stripe_unit_number: Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
                - MySQL 5.7
                - PostgreSQL
@@ -218,6 +221,9 @@ class InstanceArgs:
     @pulumi.getter(name="instanceName")
     @_utilities.deprecated("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -296,6 +302,8 @@ class InstanceArgs:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "tags")
 
@@ -351,6 +359,7 @@ class _InstanceState:
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.
+        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         :param pulumi.Input[str] instance_type: Instance type. Value range:
                - dbfs.small
                - dbfs.medium
@@ -366,6 +375,8 @@ class _InstanceState:
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
                - MySQL 5.7
                - PostgreSQL
@@ -518,6 +529,9 @@ class _InstanceState:
     @pulumi.getter(name="instanceName")
     @_utilities.deprecated("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
@@ -620,6 +634,8 @@ class _InstanceState:
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A mapping of tags to assign to the resource.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "tags")
 
@@ -683,6 +699,8 @@ class Instance(pulumi.CustomResource):
 
         For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
 
+        > **NOTE:** Need to contact us open whitelist before you can use the resource.
+
         > **NOTE:** Available since v1.136.0.
 
         ## Example Usage
@@ -722,6 +740,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.
+        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         :param pulumi.Input[str] instance_type: Instance type. Value range:
                - dbfs.small
                - dbfs.medium
@@ -736,6 +755,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] size: Size of database file system, unit GiB.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
                - MySQL 5.7
                - PostgreSQL
@@ -752,6 +773,8 @@ class Instance(pulumi.CustomResource):
         Provides a DBFS Dbfs Instance resource. An instance of a database file system is equivalent to a file system and can store data of file types.
 
         For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
+
+        > **NOTE:** Need to contact us open whitelist before you can use the resource.
 
         > **NOTE:** Available since v1.136.0.
 
@@ -893,6 +916,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.
+        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         :param pulumi.Input[str] instance_type: Instance type. Value range:
                - dbfs.small
                - dbfs.medium
@@ -908,6 +932,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot used to create the DBFS instance.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[str] used_scene: The usage scenario of DBFS. Value range:
                - MySQL 5.7
                - PostgreSQL
@@ -1008,6 +1034,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceName")
     @_utilities.deprecated("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
     def instance_name(self) -> pulumi.Output[str]:
+        """
+        . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+        """
         return pulumi.get(self, "instance_name")
 
     @property
@@ -1078,6 +1107,8 @@ class Instance(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A mapping of tags to assign to the resource.
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "tags")
 

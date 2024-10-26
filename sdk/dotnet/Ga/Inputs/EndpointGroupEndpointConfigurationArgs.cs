@@ -31,20 +31,31 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public Input<string> Endpoint { get; set; } = null!;
 
         /// <summary>
+        /// The private IP address of the ENI.
+        /// &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+        /// </summary>
+        [Input("subAddress")]
+        public Input<string>? SubAddress { get; set; }
+
+        /// <summary>
         /// The type of Endpoint N in the endpoint group. Valid values:
-        /// - `Domain`: a custom domain name.
-        /// - `Ip`: a custom IP address.
-        /// - `PublicIp`: an Alibaba Cloud public IP address.
-        /// - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-        /// - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-        /// &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+        /// - `Domain`: A custom domain name.
+        /// - `Ip`: A custom IP address.
+        /// - `PublicIp`: An Alibaba Cloud public IP address.
+        /// - `ECS`: An Elastic Compute Service (ECS) instance.
+        /// - `SLB`: A Classic Load Balancer (CLB) instance.
+        /// - `ALB`: An Application Load Balancer (ALB) instance.
+        /// - `NLB`: A Network Load Balancer (NLB) instance.
+        /// - `ENI`: An Elastic Network Interface (ENI).
+        /// - `OSS`: An Object Storage Service (OSS) bucket.
+        /// &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
         /// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-        /// &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+        /// &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         /// </summary>
         [Input("weight", required: true)]
         public Input<int> Weight { get; set; } = null!;
