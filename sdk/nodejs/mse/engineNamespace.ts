@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
  *
- * > **NOTE:** Available in v1.166.0+.
+ * > **NOTE:** Available since v1.166.0.
  *
  * ## Example Usage
  *
@@ -19,8 +19,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
  * const example = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
@@ -34,22 +32,24 @@ import * as utilities from "../utilities";
  *     vpcId: exampleNetwork.id,
  *     zoneId: example.then(example => example.zones?.[0]?.id),
  * });
- * const _default = new alicloud.mse.Cluster("default", {
- *     connectionType: "slb",
- *     netType: "privatenet",
- *     vswitchId: exampleSwitch.id,
+ * const exampleCluster = new alicloud.mse.Cluster("example", {
  *     clusterSpecification: "MSE_SC_1_2_60_c",
- *     clusterVersion: "NACOS_2_0_0",
- *     instanceCount: 1,
- *     pubNetworkFlow: "1",
- *     clusterAliasName: name,
- *     mseVersion: "mse_dev",
  *     clusterType: "Nacos-Ans",
+ *     clusterVersion: "NACOS_2_0_0",
+ *     instanceCount: 3,
+ *     netType: "privatenet",
+ *     pubNetworkFlow: "1",
+ *     connectionType: "slb",
+ *     clusterAliasName: "terraform-example",
+ *     mseVersion: "mse_pro",
+ *     vswitchId: exampleSwitch.id,
+ *     vpcId: exampleNetwork.id,
  * });
  * const exampleEngineNamespace = new alicloud.mse.EngineNamespace("example", {
- *     clusterId: _default.id,
- *     namespaceShowName: name,
- *     namespaceId: name,
+ *     instanceId: exampleCluster.id,
+ *     namespaceShowName: "terraform-example",
+ *     namespaceId: "terraform-example",
+ *     namespaceDesc: "description",
  * });
  * ```
  *
@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  * Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <cluster_id>:<namespace_id>
+ * $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example <instance_id>:<namespace_id>
  * ```
  */
 export class EngineNamespace extends pulumi.CustomResource {
@@ -94,9 +94,19 @@ export class EngineNamespace extends pulumi.CustomResource {
      */
     public readonly acceptLanguage!: pulumi.Output<string | undefined>;
     /**
-     * The id of the cluster.
+     * The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      */
     public readonly clusterId!: pulumi.Output<string>;
+    /**
+     * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+     */
+    public readonly instanceId!: pulumi.Output<string>;
+    /**
+     * The description of the namespace.
+     *
+     * **NOTE:** You must set `clusterId` or `instanceId` or both.
+     */
+    public readonly namespaceDesc!: pulumi.Output<string>;
     /**
      * The id of Namespace.
      */
@@ -121,21 +131,19 @@ export class EngineNamespace extends pulumi.CustomResource {
             const state = argsOrState as EngineNamespaceState | undefined;
             resourceInputs["acceptLanguage"] = state ? state.acceptLanguage : undefined;
             resourceInputs["clusterId"] = state ? state.clusterId : undefined;
+            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["namespaceDesc"] = state ? state.namespaceDesc : undefined;
             resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
             resourceInputs["namespaceShowName"] = state ? state.namespaceShowName : undefined;
         } else {
             const args = argsOrState as EngineNamespaceArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clusterId'");
-            }
-            if ((!args || args.namespaceId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'namespaceId'");
-            }
             if ((!args || args.namespaceShowName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceShowName'");
             }
             resourceInputs["acceptLanguage"] = args ? args.acceptLanguage : undefined;
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
+            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["namespaceDesc"] = args ? args.namespaceDesc : undefined;
             resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
             resourceInputs["namespaceShowName"] = args ? args.namespaceShowName : undefined;
         }
@@ -153,9 +161,19 @@ export interface EngineNamespaceState {
      */
     acceptLanguage?: pulumi.Input<string>;
     /**
-     * The id of the cluster.
+     * The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      */
     clusterId?: pulumi.Input<string>;
+    /**
+     * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * The description of the namespace.
+     *
+     * **NOTE:** You must set `clusterId` or `instanceId` or both.
+     */
+    namespaceDesc?: pulumi.Input<string>;
     /**
      * The id of Namespace.
      */
@@ -175,13 +193,23 @@ export interface EngineNamespaceArgs {
      */
     acceptLanguage?: pulumi.Input<string>;
     /**
-     * The id of the cluster.
+     * The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      */
-    clusterId: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string>;
+    /**
+     * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+     */
+    instanceId?: pulumi.Input<string>;
+    /**
+     * The description of the namespace.
+     *
+     * **NOTE:** You must set `clusterId` or `instanceId` or both.
+     */
+    namespaceDesc?: pulumi.Input<string>;
     /**
      * The id of Namespace.
      */
-    namespaceId: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * The name of the Engine Namespace.
      */

@@ -121,7 +121,10 @@ type LaunchTemplate struct {
 	Description      pulumi.StringPtrOutput `pulumi:"description"`
 	EnableVmOsConfig pulumi.BoolPtrOutput   `pulumi:"enableVmOsConfig"`
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName pulumi.StringPtrOutput `pulumi:"hostName"`
+	HostName                pulumi.StringPtrOutput `pulumi:"hostName"`
+	HttpEndpoint            pulumi.StringOutput    `pulumi:"httpEndpoint"`
+	HttpPutResponseHopLimit pulumi.IntOutput       `pulumi:"httpPutResponseHopLimit"`
+	HttpTokens              pulumi.StringOutput    `pulumi:"httpTokens"`
 	// Image ID.
 	ImageId         pulumi.StringPtrOutput `pulumi:"imageId"`
 	ImageOwnerAlias pulumi.StringPtrOutput `pulumi:"imageOwnerAlias"`
@@ -260,7 +263,10 @@ type launchTemplateState struct {
 	Description      *string `pulumi:"description"`
 	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName *string `pulumi:"hostName"`
+	HostName                *string `pulumi:"hostName"`
+	HttpEndpoint            *string `pulumi:"httpEndpoint"`
+	HttpPutResponseHopLimit *int    `pulumi:"httpPutResponseHopLimit"`
+	HttpTokens              *string `pulumi:"httpTokens"`
 	// Image ID.
 	ImageId         *string `pulumi:"imageId"`
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
@@ -370,7 +376,10 @@ type LaunchTemplateState struct {
 	Description      pulumi.StringPtrInput
 	EnableVmOsConfig pulumi.BoolPtrInput
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName pulumi.StringPtrInput
+	HostName                pulumi.StringPtrInput
+	HttpEndpoint            pulumi.StringPtrInput
+	HttpPutResponseHopLimit pulumi.IntPtrInput
+	HttpTokens              pulumi.StringPtrInput
 	// Image ID.
 	ImageId         pulumi.StringPtrInput
 	ImageOwnerAlias pulumi.StringPtrInput
@@ -484,7 +493,10 @@ type launchTemplateArgs struct {
 	Description      *string `pulumi:"description"`
 	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName *string `pulumi:"hostName"`
+	HostName                *string `pulumi:"hostName"`
+	HttpEndpoint            *string `pulumi:"httpEndpoint"`
+	HttpPutResponseHopLimit *int    `pulumi:"httpPutResponseHopLimit"`
+	HttpTokens              *string `pulumi:"httpTokens"`
 	// Image ID.
 	ImageId         *string `pulumi:"imageId"`
 	ImageOwnerAlias *string `pulumi:"imageOwnerAlias"`
@@ -595,7 +607,10 @@ type LaunchTemplateArgs struct {
 	Description      pulumi.StringPtrInput
 	EnableVmOsConfig pulumi.BoolPtrInput
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
-	HostName pulumi.StringPtrInput
+	HostName                pulumi.StringPtrInput
+	HttpEndpoint            pulumi.StringPtrInput
+	HttpPutResponseHopLimit pulumi.IntPtrInput
+	HttpTokens              pulumi.StringPtrInput
 	// Image ID.
 	ImageId         pulumi.StringPtrInput
 	ImageOwnerAlias pulumi.StringPtrInput
@@ -814,6 +829,18 @@ func (o LaunchTemplateOutput) EnableVmOsConfig() pulumi.BoolPtrOutput {
 // Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
 func (o LaunchTemplateOutput) HostName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+func (o LaunchTemplateOutput) HttpEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.HttpEndpoint }).(pulumi.StringOutput)
+}
+
+func (o LaunchTemplateOutput) HttpPutResponseHopLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.IntOutput { return v.HttpPutResponseHopLimit }).(pulumi.IntOutput)
+}
+
+func (o LaunchTemplateOutput) HttpTokens() pulumi.StringOutput {
+	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.HttpTokens }).(pulumi.StringOutput)
 }
 
 // Image ID.

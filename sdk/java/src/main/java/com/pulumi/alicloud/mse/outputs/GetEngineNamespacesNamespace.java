@@ -17,7 +17,7 @@ public final class GetEngineNamespacesNamespace {
      */
     private Integer configCount;
     /**
-     * @return The ID of the Engine Namespace. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+     * @return The ID of the Engine Namespace. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
      * 
      */
     private String id;
@@ -64,7 +64,7 @@ public final class GetEngineNamespacesNamespace {
         return this.configCount;
     }
     /**
-     * @return The ID of the Engine Namespace. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+     * @return The ID of the Engine Namespace. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
      * 
      */
     public String id() {

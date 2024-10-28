@@ -2535,7 +2535,7 @@ type GetAlidnsRecordsRecord struct {
 	DomainName string `pulumi:"domainName"`
 	// ID of the resource.
 	Id string `pulumi:"id"`
-	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
 	Line string `pulumi:"line"`
 	// Indicates whether the record is locked.
 	Locked bool `pulumi:"locked"`
@@ -2573,7 +2573,7 @@ type GetAlidnsRecordsRecordArgs struct {
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// ID of the resource.
 	Id pulumi.StringInput `pulumi:"id"`
-	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
 	Line pulumi.StringInput `pulumi:"line"`
 	// Indicates whether the record is locked.
 	Locked pulumi.BoolInput `pulumi:"locked"`
@@ -2656,7 +2656,7 @@ func (o GetAlidnsRecordsRecordOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
 func (o GetAlidnsRecordsRecordOutput) Line() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlidnsRecordsRecord) string { return v.Line }).(pulumi.StringOutput)
 }

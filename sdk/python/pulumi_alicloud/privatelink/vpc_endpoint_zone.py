@@ -27,10 +27,8 @@ class VpcEndpointZoneArgs:
         """
         The set of arguments for constructing a VpcEndpointZone resource.
         :param pulumi.Input[str] endpoint_id: The endpoint ID.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone. .
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
         :param pulumi.Input[str] zone_id: The zone ID.
         """
@@ -59,7 +57,7 @@ class VpcEndpointZoneArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The ID of the vSwitch in the zone. .
+        The ID of the vSwitch in the zone.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -72,8 +70,6 @@ class VpcEndpointZoneArgs:
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -118,12 +114,10 @@ class _VpcEndpointZoneState:
         """
         Input properties used for looking up and filtering VpcEndpointZone resources.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         :param pulumi.Input[str] endpoint_id: The endpoint ID.
         :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
         :param pulumi.Input[str] status: The state of the zone.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone. .
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone.
         :param pulumi.Input[str] zone_id: The zone ID.
         """
         if dry_run is not None:
@@ -144,8 +138,6 @@ class _VpcEndpointZoneState:
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -193,7 +185,7 @@ class _VpcEndpointZoneState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the vSwitch in the zone. .
+        The ID of the vSwitch in the zone.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -291,11 +283,9 @@ class VpcEndpointZone(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         :param pulumi.Input[str] endpoint_id: The endpoint ID.
         :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone. .
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone.
         :param pulumi.Input[str] zone_id: The zone ID.
         """
         ...
@@ -430,12 +420,10 @@ class VpcEndpointZone(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         :param pulumi.Input[str] endpoint_id: The endpoint ID.
         :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
         :param pulumi.Input[str] status: The state of the zone.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone. .
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone.
         :param pulumi.Input[str] zone_id: The zone ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -455,8 +443,6 @@ class VpcEndpointZone(pulumi.CustomResource):
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -488,7 +474,7 @@ class VpcEndpointZone(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        The ID of the vSwitch in the zone. .
+        The ID of the vSwitch in the zone.
         """
         return pulumi.get(self, "vswitch_id")
 

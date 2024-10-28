@@ -160,6 +160,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<Outputs.EciScalingConfigurationContainer>> Containers { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+        /// </summary>
+        [Output("costOptimization")]
+        public Output<bool?> CostOptimization { get; private set; } = null!;
+
+        /// <summary>
         /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Output("cpu")]
@@ -183,6 +189,13 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+        /// details.
+        /// </summary>
+        [Output("dnsConfigOptions")]
+        public Output<ImmutableArray<Outputs.EciScalingConfigurationDnsConfigOption>> DnsConfigOptions { get; private set; } = null!;
 
         /// <summary>
         /// dns policy of contain group.
@@ -259,6 +272,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<Outputs.EciScalingConfigurationInitContainer>> InitContainers { get; private set; } = null!;
 
         /// <summary>
+        /// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+        /// </summary>
+        [Output("instanceFamilyLevel")]
+        public Output<string?> InstanceFamilyLevel { get; private set; } = null!;
+
+        /// <summary>
         /// The specified ECS instance types. You can specify up to five ECS instance types.
         /// </summary>
         [Output("instanceTypes")]
@@ -314,6 +333,13 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("scalingGroupId")]
         public Output<string> ScalingGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+        /// details.
+        /// </summary>
+        [Output("securityContextSysctls")]
+        public Output<ImmutableArray<Outputs.EciScalingConfigurationSecurityContextSysctl>> SecurityContextSysctls { get; private set; } = null!;
 
         /// <summary>
         /// ID of the security group used to create new instance. It is conflict
@@ -460,6 +486,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+        /// </summary>
+        [Input("costOptimization")]
+        public Input<bool>? CostOptimization { get; set; }
+
+        /// <summary>
         /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
@@ -483,6 +515,19 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("dnsConfigOptions")]
+        private InputList<Inputs.EciScalingConfigurationDnsConfigOptionArgs>? _dnsConfigOptions;
+
+        /// <summary>
+        /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+        /// details.
+        /// </summary>
+        public InputList<Inputs.EciScalingConfigurationDnsConfigOptionArgs> DnsConfigOptions
+        {
+            get => _dnsConfigOptions ?? (_dnsConfigOptions = new InputList<Inputs.EciScalingConfigurationDnsConfigOptionArgs>());
+            set => _dnsConfigOptions = value;
+        }
 
         /// <summary>
         /// dns policy of contain group.
@@ -576,6 +621,12 @@ namespace Pulumi.AliCloud.Ess
             set => _initContainers = value;
         }
 
+        /// <summary>
+        /// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+        /// </summary>
+        [Input("instanceFamilyLevel")]
+        public Input<string>? InstanceFamilyLevel { get; set; }
+
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
 
@@ -638,6 +689,19 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("scalingGroupId", required: true)]
         public Input<string> ScalingGroupId { get; set; } = null!;
+
+        [Input("securityContextSysctls")]
+        private InputList<Inputs.EciScalingConfigurationSecurityContextSysctlArgs>? _securityContextSysctls;
+
+        /// <summary>
+        /// The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+        /// details.
+        /// </summary>
+        public InputList<Inputs.EciScalingConfigurationSecurityContextSysctlArgs> SecurityContextSysctls
+        {
+            get => _securityContextSysctls ?? (_securityContextSysctls = new InputList<Inputs.EciScalingConfigurationSecurityContextSysctlArgs>());
+            set => _securityContextSysctls = value;
+        }
 
         /// <summary>
         /// ID of the security group used to create new instance. It is conflict
@@ -758,6 +822,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+        /// </summary>
+        [Input("costOptimization")]
+        public Input<bool>? CostOptimization { get; set; }
+
+        /// <summary>
         /// The amount of CPU resources allocated to the container group.
         /// </summary>
         [Input("cpu")]
@@ -781,6 +851,19 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("dnsConfigOptions")]
+        private InputList<Inputs.EciScalingConfigurationDnsConfigOptionGetArgs>? _dnsConfigOptions;
+
+        /// <summary>
+        /// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+        /// details.
+        /// </summary>
+        public InputList<Inputs.EciScalingConfigurationDnsConfigOptionGetArgs> DnsConfigOptions
+        {
+            get => _dnsConfigOptions ?? (_dnsConfigOptions = new InputList<Inputs.EciScalingConfigurationDnsConfigOptionGetArgs>());
+            set => _dnsConfigOptions = value;
+        }
 
         /// <summary>
         /// dns policy of contain group.
@@ -874,6 +957,12 @@ namespace Pulumi.AliCloud.Ess
             set => _initContainers = value;
         }
 
+        /// <summary>
+        /// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+        /// </summary>
+        [Input("instanceFamilyLevel")]
+        public Input<string>? InstanceFamilyLevel { get; set; }
+
         [Input("instanceTypes")]
         private InputList<string>? _instanceTypes;
 
@@ -936,6 +1025,19 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("scalingGroupId")]
         public Input<string>? ScalingGroupId { get; set; }
+
+        [Input("securityContextSysctls")]
+        private InputList<Inputs.EciScalingConfigurationSecurityContextSysctlGetArgs>? _securityContextSysctls;
+
+        /// <summary>
+        /// The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+        /// details.
+        /// </summary>
+        public InputList<Inputs.EciScalingConfigurationSecurityContextSysctlGetArgs> SecurityContextSysctls
+        {
+            get => _securityContextSysctls ?? (_securityContextSysctls = new InputList<Inputs.EciScalingConfigurationSecurityContextSysctlGetArgs>());
+            set => _securityContextSysctls = value;
+        }
 
         /// <summary>
         /// ID of the security group used to create new instance. It is conflict

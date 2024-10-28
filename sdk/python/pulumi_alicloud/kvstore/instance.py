@@ -28,6 +28,7 @@ class InstanceArgs:
                  backup_id: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
                  business_info: Optional[pulumi.Input[str]] = None,
                  capacity: Optional[pulumi.Input[int]] = None,
                  config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -92,6 +93,7 @@ class InstanceArgs:
         :param pulumi.Input[str] backup_id: The ID of the backup file of the source instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup period.
         :param pulumi.Input[str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+        :param pulumi.Input[int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
@@ -174,6 +176,8 @@ class InstanceArgs:
             pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
+        if bandwidth is not None:
+            pulumi.set(__self__, "bandwidth", bandwidth)
         if business_info is not None:
             pulumi.set(__self__, "business_info", business_info)
         if capacity is not None:
@@ -387,6 +391,18 @@ class InstanceArgs:
     @backup_time.setter
     def backup_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "backup_time", value)
+
+    @property
+    @pulumi.getter
+    def bandwidth(self) -> Optional[pulumi.Input[int]]:
+        """
+        The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
+        """
+        return pulumi.get(self, "bandwidth")
+
+    @bandwidth.setter
+    def bandwidth(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "bandwidth", value)
 
     @property
     @pulumi.getter(name="businessInfo")
@@ -1144,7 +1160,7 @@ class _InstanceState:
         :param pulumi.Input[str] backup_id: The ID of the backup file of the source instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup period.
         :param pulumi.Input[str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
-        :param pulumi.Input[int] bandwidth: The bandwidth.
+        :param pulumi.Input[int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
@@ -1465,7 +1481,7 @@ class _InstanceState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The bandwidth.
+        The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -2222,6 +2238,7 @@ class Instance(pulumi.CustomResource):
                  backup_id: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
                  business_info: Optional[pulumi.Input[str]] = None,
                  capacity: Optional[pulumi.Input[int]] = None,
                  config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2296,6 +2313,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] backup_id: The ID of the backup file of the source instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup period.
         :param pulumi.Input[str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
+        :param pulumi.Input[int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
@@ -2398,6 +2416,7 @@ class Instance(pulumi.CustomResource):
                  backup_id: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
+                 bandwidth: Optional[pulumi.Input[int]] = None,
                  business_info: Optional[pulumi.Input[str]] = None,
                  capacity: Optional[pulumi.Input[int]] = None,
                  config: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2469,6 +2488,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["backup_id"] = backup_id
             __props__.__dict__["backup_periods"] = backup_periods
             __props__.__dict__["backup_time"] = backup_time
+            __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["business_info"] = business_info
             __props__.__dict__["capacity"] = capacity
             __props__.__dict__["config"] = config
@@ -2524,7 +2544,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["vpc_auth_mode"] = vpc_auth_mode
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
-            __props__.__dict__["bandwidth"] = None
             __props__.__dict__["connection_domain"] = None
             __props__.__dict__["connection_string"] = None
             __props__.__dict__["end_time"] = None
@@ -2624,7 +2643,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] backup_id: The ID of the backup file of the source instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup period.
         :param pulumi.Input[str] backup_time: Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
-        :param pulumi.Input[int] bandwidth: The bandwidth.
+        :param pulumi.Input[int] bandwidth: The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         :param pulumi.Input[str] business_info: The ID of the event or the business information.
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
@@ -2830,7 +2849,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[int]:
         """
-        The bandwidth.
+        The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shard_count` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
         """
         return pulumi.get(self, "bandwidth")
 

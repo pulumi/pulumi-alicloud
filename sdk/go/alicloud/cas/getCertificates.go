@@ -30,8 +30,10 @@ func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pul
 type GetCertificatesArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of cert IDs.
-	Ids  []string `pulumi:"ids"`
-	Lang *string  `pulumi:"lang"`
+	Ids     []string `pulumi:"ids"`
+	Keyword *string  `pulumi:"keyword"`
+	// Deprecated: Field `lang` has been deprecated from provider version 1.232.0.
+	Lang *string `pulumi:"lang"`
 	// A regex string to filter results by the certificate name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -46,9 +48,11 @@ type GetCertificatesResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of cert IDs.
-	Ids       []string `pulumi:"ids"`
-	Lang      *string  `pulumi:"lang"`
-	NameRegex *string  `pulumi:"nameRegex"`
+	Ids     []string `pulumi:"ids"`
+	Keyword *string  `pulumi:"keyword"`
+	// Deprecated: Field `lang` has been deprecated from provider version 1.232.0.
+	Lang      *string `pulumi:"lang"`
+	NameRegex *string `pulumi:"nameRegex"`
 	// A list of cert names.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
@@ -77,8 +81,10 @@ func GetCertificatesOutput(ctx *pulumi.Context, args GetCertificatesOutputArgs, 
 type GetCertificatesOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of cert IDs.
-	Ids  pulumi.StringArrayInput `pulumi:"ids"`
-	Lang pulumi.StringPtrInput   `pulumi:"lang"`
+	Ids     pulumi.StringArrayInput `pulumi:"ids"`
+	Keyword pulumi.StringPtrInput   `pulumi:"keyword"`
+	// Deprecated: Field `lang` has been deprecated from provider version 1.232.0.
+	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// A regex string to filter results by the certificate name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -123,6 +129,11 @@ func (o GetCertificatesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCertificatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+func (o GetCertificatesResultOutput) Keyword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetCertificatesResult) *string { return v.Keyword }).(pulumi.StringPtrOutput)
+}
+
+// Deprecated: Field `lang` has been deprecated from provider version 1.232.0.
 func (o GetCertificatesResultOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCertificatesResult) *string { return v.Lang }).(pulumi.StringPtrOutput)
 }

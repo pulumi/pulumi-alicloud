@@ -23,12 +23,28 @@ public final class GetEcsLaunchTemplatesResult {
      */
     private String id;
     private List<String> ids;
+    /**
+     * @return The Launch Template Name.
+     * 
+     */
     private @Nullable String launchTemplateName;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Launch Template names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
     private @Nullable String templateResourceGroupId;
+    /**
+     * @return The template tags.
+     * 
+     */
     private @Nullable Map<String,String> templateTags;
+    /**
+     * @return A list of Ecs Launch Templates. Each element contains the following attributes:
+     * 
+     */
     private List<GetEcsLaunchTemplatesTemplate> templates;
 
     private GetEcsLaunchTemplatesResult() {}
@@ -45,12 +61,20 @@ public final class GetEcsLaunchTemplatesResult {
     public List<String> ids() {
         return this.ids;
     }
+    /**
+     * @return The Launch Template Name.
+     * 
+     */
     public Optional<String> launchTemplateName() {
         return Optional.ofNullable(this.launchTemplateName);
     }
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Launch Template names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
@@ -60,9 +84,17 @@ public final class GetEcsLaunchTemplatesResult {
     public Optional<String> templateResourceGroupId() {
         return Optional.ofNullable(this.templateResourceGroupId);
     }
+    /**
+     * @return The template tags.
+     * 
+     */
     public Map<String,String> templateTags() {
         return this.templateTags == null ? Map.of() : this.templateTags;
     }
+    /**
+     * @return A list of Ecs Launch Templates. Each element contains the following attributes:
+     * 
+     */
     public List<GetEcsLaunchTemplatesTemplate> templates() {
         return this.templates;
     }

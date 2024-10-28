@@ -32,22 +32,30 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.clusterAliasName);
     }
 
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
 
     /**
-     * A list of MSE Cluster ids.
+     * A list of MSE Cluster ids. It is formatted to `&lt;instance_id&gt;`
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of MSE Cluster ids.
+     * @return A list of MSE Cluster ids. It is formatted to `&lt;instance_id&gt;`
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -84,9 +92,17 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * The extended request parameters. The JSON format is supported.
+     * 
+     */
     @Import(name="requestPars")
     private @Nullable Output<String> requestPars;
 
+    /**
+     * @return The extended request parameters. The JSON format is supported.
+     * 
+     */
     public Optional<Output<String>> requestPars() {
         return Optional.ofNullable(this.requestPars);
     }
@@ -157,17 +173,29 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
             return clusterAliasName(Output.of(clusterAliasName));
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }
 
         /**
-         * @param ids A list of MSE Cluster ids.
+         * @param ids A list of MSE Cluster ids. It is formatted to `&lt;instance_id&gt;`
          * 
          * @return builder
          * 
@@ -178,7 +206,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of MSE Cluster ids.
+         * @param ids A list of MSE Cluster ids. It is formatted to `&lt;instance_id&gt;`
          * 
          * @return builder
          * 
@@ -188,7 +216,7 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of MSE Cluster ids.
+         * @param ids A list of MSE Cluster ids. It is formatted to `&lt;instance_id&gt;`
          * 
          * @return builder
          * 
@@ -239,11 +267,23 @@ public final class GetClustersArgs extends com.pulumi.resources.InvokeArgs {
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param requestPars The extended request parameters. The JSON format is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestPars(@Nullable Output<String> requestPars) {
             $.requestPars = requestPars;
             return this;
         }
 
+        /**
+         * @param requestPars The extended request parameters. The JSON format is supported.
+         * 
+         * @return builder
+         * 
+         */
         public Builder requestPars(String requestPars) {
             return requestPars(Output.of(requestPars));
         }

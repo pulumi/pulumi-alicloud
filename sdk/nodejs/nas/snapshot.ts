@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Network Attached Storage (NAS) Snapshot resource.
+ * Provides a Apsara File Storage (NAS) Snapshot resource.
  *
- * For information about Network Attached Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
+ * For information about Apsara File Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
  *
  * > **NOTE:** Available in v1.152.0+.
  *
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Network Attached Storage (NAS) Snapshot can be imported using the id, e.g.
+ * Apsara File Storage (NAS) Snapshot can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nas/snapshot:Snapshot example <id>

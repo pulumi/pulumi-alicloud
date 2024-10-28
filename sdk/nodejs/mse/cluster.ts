@@ -46,23 +46,37 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly aclEntryLists!: pulumi.Output<string[] | undefined>;
     /**
-     * (Available in v1.205.0+) The application version.
+     * (Available since v1.205.0) The application version.
      */
     public /*out*/ readonly appVersion!: pulumi.Output<string>;
     /**
      * The alias of MSE Cluster.
      */
-    public readonly clusterAliasName!: pulumi.Output<string | undefined>;
+    public readonly clusterAliasName!: pulumi.Output<string>;
     /**
-     * (Available in v1.162.0+) The id of Cluster.
+     * (Available since v1.162.0) The cluster id of Cluster.
      */
     public /*out*/ readonly clusterId!: pulumi.Output<string>;
     /**
-     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
      * - `MSE_SC_4_8_60_c`: 4C8G
      * - `MSE_SC_8_16_60_c`: 8C16G
+     * - `MSE_SC_16_32_60_c`:16C32G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - `MSE_SC_4_8_200_c`: 4C8G
+     * - `MSE_SC_8_16_200_c`: 8C16G
+     * - `MSE_SC_16_32_200_c`:16C32G
+     * - Developer Edition
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - Serverless Edition
+     * - `MSE_SC_SERVERLESS`: Available since v1.232.0
      */
     public readonly clusterSpecification!: pulumi.Output<string>;
     /**
@@ -74,7 +88,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterVersion!: pulumi.Output<string>;
     /**
-     * The connection type. Valid values: `slb`.
+     * The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
      */
     public readonly connectionType!: pulumi.Output<string>;
     /**
@@ -86,11 +100,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly instanceCount!: pulumi.Output<number>;
     /**
-     * The version of MSE. Valid values: `mseDev` or `msePro`.
+     * The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
      */
     public readonly mseVersion!: pulumi.Output<string>;
     /**
-     * The type of network. Valid values: "privatenet" and "pubnet".
+     * The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
      */
     public readonly netType!: pulumi.Output<string>;
     /**
@@ -102,11 +116,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly privateSlbSpecification!: pulumi.Output<string | undefined>;
     /**
-     * The public network bandwidth. `0` means no access to the public network.
+     * The public network bandwidth.
      */
     public readonly pubNetworkFlow!: pulumi.Output<string>;
     /**
-     * The specification of public network SLB.
+     * The specification of public network SLB. Serverless Instance could ignore this parameter.
      */
     public readonly pubSlbSpecification!: pulumi.Output<string | undefined>;
     /**
@@ -226,7 +240,7 @@ export interface ClusterState {
      */
     aclEntryLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * (Available in v1.205.0+) The application version.
+     * (Available since v1.205.0) The application version.
      */
     appVersion?: pulumi.Input<string>;
     /**
@@ -234,15 +248,29 @@ export interface ClusterState {
      */
     clusterAliasName?: pulumi.Input<string>;
     /**
-     * (Available in v1.162.0+) The id of Cluster.
+     * (Available since v1.162.0) The cluster id of Cluster.
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
      * - `MSE_SC_4_8_60_c`: 4C8G
      * - `MSE_SC_8_16_60_c`: 8C16G
+     * - `MSE_SC_16_32_60_c`:16C32G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - `MSE_SC_4_8_200_c`: 4C8G
+     * - `MSE_SC_8_16_200_c`: 8C16G
+     * - `MSE_SC_16_32_200_c`:16C32G
+     * - Developer Edition
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - Serverless Edition
+     * - `MSE_SC_SERVERLESS`: Available since v1.232.0
      */
     clusterSpecification?: pulumi.Input<string>;
     /**
@@ -254,7 +282,7 @@ export interface ClusterState {
      */
     clusterVersion?: pulumi.Input<string>;
     /**
-     * The connection type. Valid values: `slb`.
+     * The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
      */
     connectionType?: pulumi.Input<string>;
     /**
@@ -266,11 +294,11 @@ export interface ClusterState {
      */
     instanceCount?: pulumi.Input<number>;
     /**
-     * The version of MSE. Valid values: `mseDev` or `msePro`.
+     * The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
      */
     mseVersion?: pulumi.Input<string>;
     /**
-     * The type of network. Valid values: "privatenet" and "pubnet".
+     * The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
      */
     netType?: pulumi.Input<string>;
     /**
@@ -282,11 +310,11 @@ export interface ClusterState {
      */
     privateSlbSpecification?: pulumi.Input<string>;
     /**
-     * The public network bandwidth. `0` means no access to the public network.
+     * The public network bandwidth.
      */
     pubNetworkFlow?: pulumi.Input<string>;
     /**
-     * The specification of public network SLB.
+     * The specification of public network SLB. Serverless Instance could ignore this parameter.
      */
     pubSlbSpecification?: pulumi.Input<string>;
     /**
@@ -328,11 +356,25 @@ export interface ClusterArgs {
      */
     clusterAliasName?: pulumi.Input<string>;
     /**
-     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. Valid values:
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `clusterSpecification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
      * - `MSE_SC_4_8_60_c`: 4C8G
      * - `MSE_SC_8_16_60_c`: 8C16G
+     * - `MSE_SC_16_32_60_c`:16C32G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - `MSE_SC_4_8_200_c`: 4C8G
+     * - `MSE_SC_8_16_200_c`: 8C16G
+     * - `MSE_SC_16_32_200_c`:16C32G
+     * - Developer Edition
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - Serverless Edition
+     * - `MSE_SC_SERVERLESS`: Available since v1.232.0
      */
     clusterSpecification: pulumi.Input<string>;
     /**
@@ -344,7 +386,7 @@ export interface ClusterArgs {
      */
     clusterVersion: pulumi.Input<string>;
     /**
-     * The connection type. Valid values: `slb`.
+     * The connection type. Valid values: `slb`,`singleEni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mseVersion is `mseDev`,please use `singleEni`.
      */
     connectionType?: pulumi.Input<string>;
     /**
@@ -356,11 +398,11 @@ export interface ClusterArgs {
      */
     instanceCount: pulumi.Input<number>;
     /**
-     * The version of MSE. Valid values: `mseDev` or `msePro`.
+     * The version of MSE. Valid values: `mseDev` or `msePro` or `mseServerless`(Available since v1.232.0).
      */
     mseVersion?: pulumi.Input<string>;
     /**
-     * The type of network. Valid values: "privatenet" and "pubnet".
+     * The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
      */
     netType: pulumi.Input<string>;
     /**
@@ -372,11 +414,11 @@ export interface ClusterArgs {
      */
     privateSlbSpecification?: pulumi.Input<string>;
     /**
-     * The public network bandwidth. `0` means no access to the public network.
+     * The public network bandwidth.
      */
     pubNetworkFlow: pulumi.Input<string>;
     /**
-     * The specification of public network SLB.
+     * The specification of public network SLB. Serverless Instance could ignore this parameter.
      */
     pubSlbSpecification?: pulumi.Input<string>;
     /**

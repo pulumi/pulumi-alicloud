@@ -186,7 +186,7 @@ type GetClustersCluster struct {
 	ClusterType string `pulumi:"clusterType"`
 	// The num of cpu.
 	Cpu int `pulumi:"cpu"`
-	// The health status of MSE Cluster.
+	// The health status of the instance.
 	HealthStatus string `pulumi:"healthStatus"`
 	// ID of the MSE Cluster.
 	Id string `pulumi:"id"`
@@ -196,7 +196,7 @@ type GetClustersCluster struct {
 	InstanceCount int `pulumi:"instanceCount"`
 	// ID of the MSE Cluster.
 	InstanceId string `pulumi:"instanceId"`
-	// The list of instances.
+	// The list of instance nodes.
 	InstanceModels []GetClustersClusterInstanceModel `pulumi:"instanceModels"`
 	// The address of public network.
 	InternetAddress string `pulumi:"internetAddress"`
@@ -244,7 +244,7 @@ type GetClustersClusterArgs struct {
 	ClusterType pulumi.StringInput `pulumi:"clusterType"`
 	// The num of cpu.
 	Cpu pulumi.IntInput `pulumi:"cpu"`
-	// The health status of MSE Cluster.
+	// The health status of the instance.
 	HealthStatus pulumi.StringInput `pulumi:"healthStatus"`
 	// ID of the MSE Cluster.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -254,7 +254,7 @@ type GetClustersClusterArgs struct {
 	InstanceCount pulumi.IntInput `pulumi:"instanceCount"`
 	// ID of the MSE Cluster.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
-	// The list of instances.
+	// The list of instance nodes.
 	InstanceModels GetClustersClusterInstanceModelArrayInput `pulumi:"instanceModels"`
 	// The address of public network.
 	InternetAddress pulumi.StringInput `pulumi:"internetAddress"`
@@ -359,7 +359,7 @@ func (o GetClustersClusterOutput) Cpu() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersCluster) int { return v.Cpu }).(pulumi.IntOutput)
 }
 
-// The health status of MSE Cluster.
+// The health status of the instance.
 func (o GetClustersClusterOutput) HealthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.HealthStatus }).(pulumi.StringOutput)
 }
@@ -384,7 +384,7 @@ func (o GetClustersClusterOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The list of instances.
+// The list of instance nodes.
 func (o GetClustersClusterOutput) InstanceModels() GetClustersClusterInstanceModelArrayOutput {
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterInstanceModel { return v.InstanceModels }).(GetClustersClusterInstanceModelArrayOutput)
 }
@@ -460,15 +460,22 @@ func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClust
 }
 
 type GetClustersClusterInstanceModel struct {
-	// The health status of MSE Cluster.
-	HealthStatus    string `pulumi:"healthStatus"`
-	InstanceType    string `pulumi:"instanceType"`
-	InternetIp      string `pulumi:"internetIp"`
-	Ip              string `pulumi:"ip"`
-	PodName         string `pulumi:"podName"`
-	Role            string `pulumi:"role"`
+	// The health status of the instance.
+	HealthStatus string `pulumi:"healthStatus"`
+	// (Deprecated from version 1.232.0)
+	InstanceType string `pulumi:"instanceType"`
+	// The public IP address.
+	InternetIp string `pulumi:"internetIp"`
+	// The IP address of the instance.
+	Ip string `pulumi:"ip"`
+	// The name of the pod.
+	PodName string `pulumi:"podName"`
+	// The role.
+	Role string `pulumi:"role"`
+	// The single-thread IP address.
 	SingleTunnelVip string `pulumi:"singleTunnelVip"`
-	Vip             string `pulumi:"vip"`
+	// (Deprecated from version 1.232.0)
+	Vip string `pulumi:"vip"`
 }
 
 // GetClustersClusterInstanceModelInput is an input type that accepts GetClustersClusterInstanceModelArgs and GetClustersClusterInstanceModelOutput values.
@@ -483,15 +490,22 @@ type GetClustersClusterInstanceModelInput interface {
 }
 
 type GetClustersClusterInstanceModelArgs struct {
-	// The health status of MSE Cluster.
-	HealthStatus    pulumi.StringInput `pulumi:"healthStatus"`
-	InstanceType    pulumi.StringInput `pulumi:"instanceType"`
-	InternetIp      pulumi.StringInput `pulumi:"internetIp"`
-	Ip              pulumi.StringInput `pulumi:"ip"`
-	PodName         pulumi.StringInput `pulumi:"podName"`
-	Role            pulumi.StringInput `pulumi:"role"`
+	// The health status of the instance.
+	HealthStatus pulumi.StringInput `pulumi:"healthStatus"`
+	// (Deprecated from version 1.232.0)
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// The public IP address.
+	InternetIp pulumi.StringInput `pulumi:"internetIp"`
+	// The IP address of the instance.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// The name of the pod.
+	PodName pulumi.StringInput `pulumi:"podName"`
+	// The role.
+	Role pulumi.StringInput `pulumi:"role"`
+	// The single-thread IP address.
 	SingleTunnelVip pulumi.StringInput `pulumi:"singleTunnelVip"`
-	Vip             pulumi.StringInput `pulumi:"vip"`
+	// (Deprecated from version 1.232.0)
+	Vip pulumi.StringInput `pulumi:"vip"`
 }
 
 func (GetClustersClusterInstanceModelArgs) ElementType() reflect.Type {
@@ -545,35 +559,42 @@ func (o GetClustersClusterInstanceModelOutput) ToGetClustersClusterInstanceModel
 	return o
 }
 
-// The health status of MSE Cluster.
+// The health status of the instance.
 func (o GetClustersClusterInstanceModelOutput) HealthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterInstanceModel) string { return v.HealthStatus }).(pulumi.StringOutput)
 }
 
+// (Deprecated from version 1.232.0)
 func (o GetClustersClusterInstanceModelOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterInstanceModel) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
+// The public IP address.
 func (o GetClustersClusterInstanceModelOutput) InternetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterInstanceModel) string { return v.InternetIp }).(pulumi.StringOutput)
 }
 
+// The IP address of the instance.
 func (o GetClustersClusterInstanceModelOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterInstanceModel) string { return v.Ip }).(pulumi.StringOutput)
 }
 
+// The name of the pod.
 func (o GetClustersClusterInstanceModelOutput) PodName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterInstanceModel) string { return v.PodName }).(pulumi.StringOutput)
 }
 
+// The role.
 func (o GetClustersClusterInstanceModelOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterInstanceModel) string { return v.Role }).(pulumi.StringOutput)
 }
 
+// The single-thread IP address.
 func (o GetClustersClusterInstanceModelOutput) SingleTunnelVip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterInstanceModel) string { return v.SingleTunnelVip }).(pulumi.StringOutput)
 }
 
+// (Deprecated from version 1.232.0)
 func (o GetClustersClusterInstanceModelOutput) Vip() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterInstanceModel) string { return v.Vip }).(pulumi.StringOutput)
 }
@@ -601,7 +622,7 @@ func (o GetClustersClusterInstanceModelArrayOutput) Index(i pulumi.IntInput) Get
 type GetEngineNamespacesNamespace struct {
 	// The Number of Configuration of the Namespace.
 	ConfigCount int `pulumi:"configCount"`
-	// The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+	// The ID of the Engine Namespace. It is formatted to `<instance_id>:<namespace_id>`.
 	Id string `pulumi:"id"`
 	// The description of the Namespace.
 	NamespaceDesc string `pulumi:"namespaceDesc"`
@@ -634,7 +655,7 @@ type GetEngineNamespacesNamespaceInput interface {
 type GetEngineNamespacesNamespaceArgs struct {
 	// The Number of Configuration of the Namespace.
 	ConfigCount pulumi.IntInput `pulumi:"configCount"`
-	// The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+	// The ID of the Engine Namespace. It is formatted to `<instance_id>:<namespace_id>`.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The description of the Namespace.
 	NamespaceDesc pulumi.StringInput `pulumi:"namespaceDesc"`
@@ -709,7 +730,7 @@ func (o GetEngineNamespacesNamespaceOutput) ConfigCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEngineNamespacesNamespace) int { return v.ConfigCount }).(pulumi.IntOutput)
 }
 
-// The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+// The ID of the Engine Namespace. It is formatted to `<instance_id>:<namespace_id>`.
 func (o GetEngineNamespacesNamespaceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEngineNamespacesNamespace) string { return v.Id }).(pulumi.StringOutput)
 }

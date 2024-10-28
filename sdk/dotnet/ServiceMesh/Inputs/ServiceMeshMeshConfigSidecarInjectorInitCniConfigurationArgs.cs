@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable CNI.
+        /// Enable CNI
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The excluded namespace.
+        /// The excluded namespace
         /// </summary>
         [Input("excludeNamespaces")]
         public Input<string>? ExcludeNamespaces { get; set; }

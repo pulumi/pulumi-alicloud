@@ -8,9 +8,11 @@ import com.pulumi.alicloud.ess.EciScalingConfigurationArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationState;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationAcrRegistryInfo;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationContainer;
+import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationDnsConfigOption;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationHostAlias;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationImageRegistryCredential;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationInitContainer;
+import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationSecurityContextSysctl;
 import com.pulumi.alicloud.ess.outputs.EciScalingConfigurationVolume;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -248,6 +250,20 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.containers);
     }
     /**
+     * Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+     * 
+     */
+    @Export(name="costOptimization", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> costOptimization;
+
+    /**
+     * @return Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+     * 
+     */
+    public Output<Optional<Boolean>> costOptimization() {
+        return Codegen.optional(this.costOptimization);
+    }
+    /**
      * The amount of CPU resources allocated to the container group.
      * 
      */
@@ -304,6 +320,22 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+     * details.
+     * 
+     */
+    @Export(name="dnsConfigOptions", refs={List.class,EciScalingConfigurationDnsConfigOption.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<EciScalingConfigurationDnsConfigOption>> dnsConfigOptions;
+
+    /**
+     * @return The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+     * details.
+     * 
+     */
+    public Output<Optional<List<EciScalingConfigurationDnsConfigOption>>> dnsConfigOptions() {
+        return Codegen.optional(this.dnsConfigOptions);
     }
     /**
      * dns policy of contain group.
@@ -478,6 +510,20 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.initContainers);
     }
     /**
+     * The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+     * 
+     */
+    @Export(name="instanceFamilyLevel", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> instanceFamilyLevel;
+
+    /**
+     * @return The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+     * 
+     */
+    public Output<Optional<String>> instanceFamilyLevel() {
+        return Codegen.optional(this.instanceFamilyLevel);
+    }
+    /**
      * The specified ECS instance types. You can specify up to five ECS instance types.
      * 
      */
@@ -608,6 +654,22 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
      */
     public Output<String> scalingGroupId() {
         return this.scalingGroupId;
+    }
+    /**
+     * The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+     * details.
+     * 
+     */
+    @Export(name="securityContextSysctls", refs={List.class,EciScalingConfigurationSecurityContextSysctl.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<EciScalingConfigurationSecurityContextSysctl>> securityContextSysctls;
+
+    /**
+     * @return The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+     * details.
+     * 
+     */
+    public Output<Optional<List<EciScalingConfigurationSecurityContextSysctl>>> securityContextSysctls() {
+        return Codegen.optional(this.securityContextSysctls);
     }
     /**
      * ID of the security group used to create new instance. It is conflict

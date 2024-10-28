@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// The description of the instance.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the encryption key.

@@ -22,12 +22,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfig {
     /**
-     * @return The access logging configuration. See `access_log` below.
+     * @return The access logging configuration See `access_log` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigAccessLog accessLog;
     /**
-     * @return Audit information. See `audit` below.
+     * @return Audit information See `audit` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigAudit audit;
@@ -37,76 +37,76 @@ public final class ServiceMeshMeshConfig {
      */
     private @Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog;
     /**
-     * @return Whether or not to enable the use of a custom zipkin.
+     * @return Whether or not to enable the use of a custom zipkin
      * 
      */
     private @Nullable Boolean customizedZipkin;
     /**
-     * @return Whether to enable service can access the service through the nearest node access.
+     * @return Whether to enable service can access the service through the nearest node access
      * 
      */
     private @Nullable Boolean enableLocalityLb;
     /**
-     * @return The IP ADDRESS range.
+     * @return The IP ADDRESS range
      * 
      */
     private @Nullable String includeIpRanges;
     /**
-     * @return Kiali configuration. See `kiali` below.
+     * @return Kiali configuration See `kiali` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigKiali kiali;
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
+     * @return The open-door policy of agent (OPA) plug-in information See `opa` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigOpa opa;
     /**
-     * @return Out to the traffic policy.
+     * @return Out to the traffic policy
      * 
      */
     private @Nullable String outboundTrafficPolicy;
     /**
-     * @return Link trace sampling information. See `pilot` below.
+     * @return Link trace sampling information See `pilot` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigPilot pilot;
     /**
-     * @return Prometheus configuration.
+     * @return Prometheus configuration
      * 
      */
     private @Nullable ServiceMeshMeshConfigPrometheus prometheus;
     /**
-     * @return Proxy configuration. See `proxy` below.
+     * @return Proxy configuration, the fields under this structure have service segment default values, if not explicitly specified, you need to manually add them based on the return value of the server after the instance is created. See `proxy` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigProxy proxy;
     /**
-     * @return Sidecar injector configuration. See `sidecar_injector` below.
+     * @return Sidecar injector configuration See `sidecar_injector` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector;
     /**
-     * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+     * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/)
      * 
      */
     private @Nullable Boolean telemetry;
     /**
-     * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+     * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/)
      * 
      */
     private @Nullable Boolean tracing;
 
     private ServiceMeshMeshConfig() {}
     /**
-     * @return The access logging configuration. See `access_log` below.
+     * @return The access logging configuration See `access_log` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigAccessLog> accessLog() {
         return Optional.ofNullable(this.accessLog);
     }
     /**
-     * @return Audit information. See `audit` below.
+     * @return Audit information See `audit` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigAudit> audit() {
@@ -120,84 +120,84 @@ public final class ServiceMeshMeshConfig {
         return Optional.ofNullable(this.controlPlaneLog);
     }
     /**
-     * @return Whether or not to enable the use of a custom zipkin.
+     * @return Whether or not to enable the use of a custom zipkin
      * 
      */
     public Optional<Boolean> customizedZipkin() {
         return Optional.ofNullable(this.customizedZipkin);
     }
     /**
-     * @return Whether to enable service can access the service through the nearest node access.
+     * @return Whether to enable service can access the service through the nearest node access
      * 
      */
     public Optional<Boolean> enableLocalityLb() {
         return Optional.ofNullable(this.enableLocalityLb);
     }
     /**
-     * @return The IP ADDRESS range.
+     * @return The IP ADDRESS range
      * 
      */
     public Optional<String> includeIpRanges() {
         return Optional.ofNullable(this.includeIpRanges);
     }
     /**
-     * @return Kiali configuration. See `kiali` below.
+     * @return Kiali configuration See `kiali` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigKiali> kiali() {
         return Optional.ofNullable(this.kiali);
     }
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
+     * @return The open-door policy of agent (OPA) plug-in information See `opa` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigOpa> opa() {
         return Optional.ofNullable(this.opa);
     }
     /**
-     * @return Out to the traffic policy.
+     * @return Out to the traffic policy
      * 
      */
     public Optional<String> outboundTrafficPolicy() {
         return Optional.ofNullable(this.outboundTrafficPolicy);
     }
     /**
-     * @return Link trace sampling information. See `pilot` below.
+     * @return Link trace sampling information See `pilot` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigPilot> pilot() {
         return Optional.ofNullable(this.pilot);
     }
     /**
-     * @return Prometheus configuration.
+     * @return Prometheus configuration
      * 
      */
     public Optional<ServiceMeshMeshConfigPrometheus> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
     /**
-     * @return Proxy configuration. See `proxy` below.
+     * @return Proxy configuration, the fields under this structure have service segment default values, if not explicitly specified, you need to manually add them based on the return value of the server after the instance is created. See `proxy` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigProxy> proxy() {
         return Optional.ofNullable(this.proxy);
     }
     /**
-     * @return Sidecar injector configuration. See `sidecar_injector` below.
+     * @return Sidecar injector configuration See `sidecar_injector` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigSidecarInjector> sidecarInjector() {
         return Optional.ofNullable(this.sidecarInjector);
     }
     /**
-     * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+     * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/)
      * 
      */
     public Optional<Boolean> telemetry() {
         return Optional.ofNullable(this.telemetry);
     }
     /**
-     * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+     * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/)
      * 
      */
     public Optional<Boolean> tracing() {

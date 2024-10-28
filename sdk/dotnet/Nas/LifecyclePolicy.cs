@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a Network Attached Storage (NAS) Lifecycle Policy resource.
+    /// Provides a Apsara File Storage (NAS) Lifecycle Policy resource.
     /// 
-    /// For information about Network Attached Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
+    /// For information about Apsara File Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
     /// 
     /// &gt; **NOTE:** Available in v1.153.0+.
     /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// ## Import
     /// 
-    /// Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
+    /// Apsara File Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example &lt;file_system_id&gt;:&lt;lifecycle_policy_name&gt;

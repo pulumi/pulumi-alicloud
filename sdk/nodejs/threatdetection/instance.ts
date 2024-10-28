@@ -47,6 +47,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly buyNumber!: pulumi.Output<string | undefined>;
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
+     *
      * > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      *
      * @deprecated Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
@@ -54,15 +55,17 @@ export class Instance extends pulumi.CustomResource {
     public readonly containerImageScan!: pulumi.Output<string | undefined>;
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
+     *
      * > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      */
     public readonly containerImageScanNew!: pulumi.Output<string | undefined>;
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+     *
      * > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
      */
     public readonly honeypot!: pulumi.Output<string | undefined>;
@@ -79,11 +82,12 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
-     * The payment type of the resource.
+     * The payment type of the resource
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     *
      * > **NOTE:**  must be set when creating a prepaid instance.
      */
     public readonly period!: pulumi.Output<number | undefined>;
@@ -93,30 +97,36 @@ export class Instance extends pulumi.CustomResource {
     public readonly raspCount!: pulumi.Output<string | undefined>;
     /**
      * Automatic renewal cycle, in months.
-     * > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+     *
+     * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
     public readonly renewPeriod!: pulumi.Output<number>;
     /**
      * Automatic renewal period unit, value:
      * - M: month.
      * - Y: years.
+     *
      * > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
      */
     public readonly renewalPeriodUnit!: pulumi.Output<string>;
     /**
-     * Automatic renewal status, default ManualRenewal, valid values:
+     * Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
      * - ManualRenewal: manual renewal.
+     *
+     * Default ManualRenewal.
      */
     public readonly renewalStatus!: pulumi.Output<string | undefined>;
     /**
      * Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+     *
      * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      */
     public readonly sasAntiRansomware!: pulumi.Output<string | undefined>;
     /**
-     * Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-     * > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+     * Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+     *
+     * > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      */
     public readonly sasCspm!: pulumi.Output<string | undefined>;
     /**
@@ -133,6 +143,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly sasSc!: pulumi.Output<boolean | undefined>;
     /**
      * Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+     *
      * > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      */
     public readonly sasSdk!: pulumi.Output<string | undefined>;
@@ -142,6 +153,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly sasSdkSwitch!: pulumi.Output<string>;
     /**
      * Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+     *
      * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      */
     public readonly sasSlsStorage!: pulumi.Output<string | undefined>;
@@ -158,20 +170,39 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly sasWebguardOrderNum!: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+     *
      * > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      */
     public readonly threatAnalysis!: pulumi.Output<string | undefined>;
+    /**
+     * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+     *
+     * > **NOTE:**  Step size is 1.
+     */
+    public readonly threatAnalysisFlow!: pulumi.Output<string | undefined>;
+    /**
+     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     *
+     * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     */
+    public readonly threatAnalysisSlsStorage!: pulumi.Output<string | undefined>;
     /**
      * Threat analysis. Value:
      * - 0: No.
      * - 1: Yes.
      */
     public readonly threatAnalysisSwitch!: pulumi.Output<string>;
+    /**
+     * Threat analysis and response switch (new), values:
+     * - 0: No
+     * - 1: Yes
+     */
+    public readonly threatAnalysisSwitch1!: pulumi.Output<string>;
     /**
      * Number of cores.
      */
@@ -187,6 +218,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly versionCode!: pulumi.Output<string>;
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].
+     *
      * > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
      */
     public readonly vulCount!: pulumi.Output<string | undefined>;
@@ -194,6 +226,7 @@ export class Instance extends pulumi.CustomResource {
      * Vulnerability fix switch. Value:
      * - 0: No.
      * - 1: Yes.
+     *
      * > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      */
     public readonly vulSwitch!: pulumi.Output<string>;
@@ -235,7 +268,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["sasWebguardOrderNum"] = state ? state.sasWebguardOrderNum : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["threatAnalysis"] = state ? state.threatAnalysis : undefined;
+            resourceInputs["threatAnalysisFlow"] = state ? state.threatAnalysisFlow : undefined;
+            resourceInputs["threatAnalysisSlsStorage"] = state ? state.threatAnalysisSlsStorage : undefined;
             resourceInputs["threatAnalysisSwitch"] = state ? state.threatAnalysisSwitch : undefined;
+            resourceInputs["threatAnalysisSwitch1"] = state ? state.threatAnalysisSwitch1 : undefined;
             resourceInputs["vCore"] = state ? state.vCore : undefined;
             resourceInputs["versionCode"] = state ? state.versionCode : undefined;
             resourceInputs["vulCount"] = state ? state.vulCount : undefined;
@@ -270,7 +306,10 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["sasWebguardBoolean"] = args ? args.sasWebguardBoolean : undefined;
             resourceInputs["sasWebguardOrderNum"] = args ? args.sasWebguardOrderNum : undefined;
             resourceInputs["threatAnalysis"] = args ? args.threatAnalysis : undefined;
+            resourceInputs["threatAnalysisFlow"] = args ? args.threatAnalysisFlow : undefined;
+            resourceInputs["threatAnalysisSlsStorage"] = args ? args.threatAnalysisSlsStorage : undefined;
             resourceInputs["threatAnalysisSwitch"] = args ? args.threatAnalysisSwitch : undefined;
+            resourceInputs["threatAnalysisSwitch1"] = args ? args.threatAnalysisSwitch1 : undefined;
             resourceInputs["vCore"] = args ? args.vCore : undefined;
             resourceInputs["versionCode"] = args ? args.versionCode : undefined;
             resourceInputs["vulCount"] = args ? args.vulCount : undefined;
@@ -293,6 +332,7 @@ export interface InstanceState {
     buyNumber?: pulumi.Input<string>;
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
+     *
      * > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      *
      * @deprecated Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
@@ -300,15 +340,17 @@ export interface InstanceState {
     containerImageScan?: pulumi.Input<string>;
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
+     *
      * > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      */
     containerImageScanNew?: pulumi.Input<string>;
     /**
-     * The creation time of the resource.
+     * The creation time of the resource
      */
     createTime?: pulumi.Input<string>;
     /**
      * Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+     *
      * > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
      */
     honeypot?: pulumi.Input<string>;
@@ -325,11 +367,12 @@ export interface InstanceState {
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * The payment type of the resource.
+     * The payment type of the resource
      */
     paymentType?: pulumi.Input<string>;
     /**
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     *
      * > **NOTE:**  must be set when creating a prepaid instance.
      */
     period?: pulumi.Input<number>;
@@ -339,30 +382,36 @@ export interface InstanceState {
     raspCount?: pulumi.Input<string>;
     /**
      * Automatic renewal cycle, in months.
-     * > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+     *
+     * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
      * Automatic renewal period unit, value:
      * - M: month.
      * - Y: years.
+     *
      * > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
      */
     renewalPeriodUnit?: pulumi.Input<string>;
     /**
-     * Automatic renewal status, default ManualRenewal, valid values:
+     * Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
      * - ManualRenewal: manual renewal.
+     *
+     * Default ManualRenewal.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
      * Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+     *
      * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      */
     sasAntiRansomware?: pulumi.Input<string>;
     /**
-     * Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-     * > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+     * Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+     *
+     * > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      */
     sasCspm?: pulumi.Input<string>;
     /**
@@ -379,6 +428,7 @@ export interface InstanceState {
     sasSc?: pulumi.Input<boolean>;
     /**
      * Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+     *
      * > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      */
     sasSdk?: pulumi.Input<string>;
@@ -388,6 +438,7 @@ export interface InstanceState {
     sasSdkSwitch?: pulumi.Input<string>;
     /**
      * Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+     *
      * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      */
     sasSlsStorage?: pulumi.Input<string>;
@@ -404,20 +455,39 @@ export interface InstanceState {
      */
     sasWebguardOrderNum?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
      * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+     *
      * > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      */
     threatAnalysis?: pulumi.Input<string>;
+    /**
+     * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+     *
+     * > **NOTE:**  Step size is 1.
+     */
+    threatAnalysisFlow?: pulumi.Input<string>;
+    /**
+     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     *
+     * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     */
+    threatAnalysisSlsStorage?: pulumi.Input<string>;
     /**
      * Threat analysis. Value:
      * - 0: No.
      * - 1: Yes.
      */
     threatAnalysisSwitch?: pulumi.Input<string>;
+    /**
+     * Threat analysis and response switch (new), values:
+     * - 0: No
+     * - 1: Yes
+     */
+    threatAnalysisSwitch1?: pulumi.Input<string>;
     /**
      * Number of cores.
      */
@@ -433,6 +503,7 @@ export interface InstanceState {
     versionCode?: pulumi.Input<string>;
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].
+     *
      * > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
      */
     vulCount?: pulumi.Input<string>;
@@ -440,6 +511,7 @@ export interface InstanceState {
      * Vulnerability fix switch. Value:
      * - 0: No.
      * - 1: Yes.
+     *
      * > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      */
     vulSwitch?: pulumi.Input<string>;
@@ -455,6 +527,7 @@ export interface InstanceArgs {
     buyNumber?: pulumi.Input<string>;
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
+     *
      * > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      *
      * @deprecated Field 'container_image_scan' has been deprecated from provider version 1.212.0. Container Image security scan. Interval type, value interval:[0,200000].> The step size is 20, that is, only multiples of 20 can be filled in.
@@ -462,11 +535,13 @@ export interface InstanceArgs {
     containerImageScan?: pulumi.Input<string>;
     /**
      * Container Image security scan. Interval type, value interval:[0,200000].
+     *
      * > **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
      */
     containerImageScanNew?: pulumi.Input<string>;
     /**
      * Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+     *
      * > **NOTE:**  This module can only be purchased when honeypotSwitch = 1, starting with 20.
      */
     honeypot?: pulumi.Input<string>;
@@ -483,11 +558,12 @@ export interface InstanceArgs {
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * The payment type of the resource.
+     * The payment type of the resource
      */
     paymentType: pulumi.Input<string>;
     /**
      * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     *
      * > **NOTE:**  must be set when creating a prepaid instance.
      */
     period?: pulumi.Input<number>;
@@ -497,30 +573,36 @@ export interface InstanceArgs {
     raspCount?: pulumi.Input<string>;
     /**
      * Automatic renewal cycle, in months.
-     * > **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+     *
+     * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
      * Automatic renewal period unit, value:
      * - M: month.
      * - Y: years.
+     *
      * > **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
      */
     renewalPeriodUnit?: pulumi.Input<string>;
     /**
-     * Automatic renewal status, default ManualRenewal, valid values:
+     * Automatic renewal status, value:
      * - AutoRenewal: automatic renewal.
      * - ManualRenewal: manual renewal.
+     *
+     * Default ManualRenewal.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
      * Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+     *
      * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      */
     sasAntiRansomware?: pulumi.Input<string>;
     /**
-     * Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-     * > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+     * Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+     *
+     * > **NOTE:**  You must have sasCspmSwitch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
      */
     sasCspm?: pulumi.Input<string>;
     /**
@@ -537,6 +619,7 @@ export interface InstanceArgs {
     sasSc?: pulumi.Input<boolean>;
     /**
      * Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+     *
      * > **NOTE:**  This module can only be purchased when sasSdkSwitch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      */
     sasSdk?: pulumi.Input<string>;
@@ -546,6 +629,7 @@ export interface InstanceArgs {
     sasSdkSwitch?: pulumi.Input<string>;
     /**
      * Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+     *
      * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
      */
     sasSlsStorage?: pulumi.Input<string>;
@@ -563,15 +647,34 @@ export interface InstanceArgs {
     sasWebguardOrderNum?: pulumi.Input<string>;
     /**
      * Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+     *
      * > **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
      */
     threatAnalysis?: pulumi.Input<string>;
+    /**
+     * Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+     *
+     * > **NOTE:**  Step size is 1.
+     */
+    threatAnalysisFlow?: pulumi.Input<string>;
+    /**
+     * Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+     *
+     * > **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+     */
+    threatAnalysisSlsStorage?: pulumi.Input<string>;
     /**
      * Threat analysis. Value:
      * - 0: No.
      * - 1: Yes.
      */
     threatAnalysisSwitch?: pulumi.Input<string>;
+    /**
+     * Threat analysis and response switch (new), values:
+     * - 0: No
+     * - 1: Yes
+     */
+    threatAnalysisSwitch1?: pulumi.Input<string>;
     /**
      * Number of cores.
      */
@@ -587,6 +690,7 @@ export interface InstanceArgs {
     versionCode: pulumi.Input<string>;
     /**
      * Vulnerability repair times, interval type, value range:[20,100000000].
+     *
      * > **NOTE:**  This module can only be purchased when vulSwitch = 1. Only when the versionCode value is level7 or level10. other versions do not need to be purchased separately.
      */
     vulCount?: pulumi.Input<string>;
@@ -594,6 +698,7 @@ export interface InstanceArgs {
      * Vulnerability fix switch. Value:
      * - 0: No.
      * - 1: Yes.
+     *
      * > **NOTE:**  When the value of versionCode is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
      */
     vulSwitch?: pulumi.Input<string>;

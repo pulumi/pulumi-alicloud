@@ -156,28 +156,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cfwAccount);
     }
     /**
-     * Whether to use log audit. Valid values: `true`, `false`.
+     * Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
      * 
      */
     @Export(name="cfwLog", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cfwLog;
 
     /**
-     * @return Whether to use log audit. Valid values: `true`, `false`.
+     * @return Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, `cfw_log` can only be set to `true`, `cfw_log` cannot be modified to `false`.
      * 
      */
     public Output<Optional<Boolean>> cfwLog() {
         return Codegen.optional(this.cfwLog);
     }
     /**
-     * The log storage capacity. It will be ignored when `cfw_log = false`.
+     * The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
      * 
      */
     @Export(name="cfwLogStorage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cfwLogStorage;
 
     /**
-     * @return The log storage capacity. It will be ignored when `cfw_log = false`.
+     * @return The log storage capacity. **NOTE:** From version 1.232.0, When `payment_type` is set to `PayAsYouGo`, or `cfw_log` is set to `false`, `cfw_log_storage` will be ignored.
      * 
      */
     public Output<Optional<Integer>> cfwLogStorage() {
@@ -244,14 +244,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ipNumber", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> ipNumber;
+    private Output<Integer> ipNumber;
 
     /**
      * @return The number of public IPs that can be protected. Valid values: 20 to 4000.
      * 
      */
-    public Output<Optional<Integer>> ipNumber() {
-        return Codegen.optional(this.ipNumber);
+    public Output<Integer> ipNumber() {
+        return this.ipNumber;
     }
     /**
      * The logistics.
@@ -268,14 +268,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logistics);
     }
     /**
-     * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+     * The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
      * 
      */
     @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
-     * @return The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
+     * @return The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modify_type` is required when you execute an update operation.
      * 
      */
     public Output<Optional<String>> modifyType() {
@@ -372,7 +372,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.renewalDurationUnit);
     }
     /**
-     * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -383,7 +383,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> renewalStatus;
 
     /**
-     * @return Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
+     * @return Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
      * - `AutoRenewal`: Auto renewal.
      * - `ManualRenewal`: Manual renewal.
      * - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -398,28 +398,42 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="spec", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> spec;
+    private Output<String> spec;
 
     /**
      * @return Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
      * 
      */
-    public Output<Optional<String>> spec() {
-        return Codegen.optional(this.spec);
+    public Output<String> spec() {
+        return this.spec;
     }
     /**
-     * The status of Instance.
+     * The status of Cloud Firewall Instance.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of Instance.
+     * @return The status of Cloud Firewall Instance.
      * 
      */
     public Output<String> status() {
         return this.status;
+    }
+    /**
+     * (Available since v1.232.0) The user status of Cloud Firewall Instance.
+     * 
+     */
+    @Export(name="userStatus", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> userStatus;
+
+    /**
+     * @return (Available since v1.232.0) The user status of Cloud Firewall Instance.
+     * 
+     */
+    public Output<Boolean> userStatus() {
+        return this.userStatus;
     }
 
     /**

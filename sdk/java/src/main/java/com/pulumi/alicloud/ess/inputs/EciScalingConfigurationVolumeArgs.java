@@ -37,6 +37,21 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
     }
 
     /**
+     * The default permissions on the ConfigFileVolume.
+     * 
+     */
+    @Import(name="configFileVolumeDefaultMode")
+    private @Nullable Output<Integer> configFileVolumeDefaultMode;
+
+    /**
+     * @return The default permissions on the ConfigFileVolume.
+     * 
+     */
+    public Optional<Output<Integer>> configFileVolumeDefaultMode() {
+        return Optional.ofNullable(this.configFileVolumeDefaultMode);
+    }
+
+    /**
      * The ID of DiskVolume.
      * 
      */
@@ -79,6 +94,36 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
      */
     public Optional<Output<String>> diskVolumeFsType() {
         return Optional.ofNullable(this.diskVolumeFsType);
+    }
+
+    /**
+     * The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+     * 
+     */
+    @Import(name="emptyDirVolumeMedium")
+    private @Nullable Output<String> emptyDirVolumeMedium;
+
+    /**
+     * @return The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+     * 
+     */
+    public Optional<Output<String>> emptyDirVolumeMedium() {
+        return Optional.ofNullable(this.emptyDirVolumeMedium);
+    }
+
+    /**
+     * The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+     * 
+     */
+    @Import(name="emptyDirVolumeSizeLimit")
+    private @Nullable Output<String> emptyDirVolumeSizeLimit;
+
+    /**
+     * @return The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+     * 
+     */
+    public Optional<Output<String>> emptyDirVolumeSizeLimit() {
+        return Optional.ofNullable(this.emptyDirVolumeSizeLimit);
     }
 
     /**
@@ -128,6 +173,36 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
      */
     public Optional<Output<String>> flexVolumeOptions() {
         return Optional.ofNullable(this.flexVolumeOptions);
+    }
+
+    /**
+     * The absolute path on the host.
+     * 
+     */
+    @Import(name="hostPathVolumePath")
+    private @Nullable Output<String> hostPathVolumePath;
+
+    /**
+     * @return The absolute path on the host.
+     * 
+     */
+    public Optional<Output<String>> hostPathVolumePath() {
+        return Optional.ofNullable(this.hostPathVolumePath);
+    }
+
+    /**
+     * The type of the host path. Examples: File, Directory, and Socket.
+     * 
+     */
+    @Import(name="hostPathVolumeType")
+    private @Nullable Output<String> hostPathVolumeType;
+
+    /**
+     * @return The type of the host path. Examples: File, Directory, and Socket.
+     * 
+     */
+    public Optional<Output<String>> hostPathVolumeType() {
+        return Optional.ofNullable(this.hostPathVolumeType);
     }
 
     /**
@@ -213,12 +288,17 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
 
     private EciScalingConfigurationVolumeArgs(EciScalingConfigurationVolumeArgs $) {
         this.configFileVolumeConfigFileToPaths = $.configFileVolumeConfigFileToPaths;
+        this.configFileVolumeDefaultMode = $.configFileVolumeDefaultMode;
         this.diskVolumeDiskId = $.diskVolumeDiskId;
         this.diskVolumeDiskSize = $.diskVolumeDiskSize;
         this.diskVolumeFsType = $.diskVolumeFsType;
+        this.emptyDirVolumeMedium = $.emptyDirVolumeMedium;
+        this.emptyDirVolumeSizeLimit = $.emptyDirVolumeSizeLimit;
         this.flexVolumeDriver = $.flexVolumeDriver;
         this.flexVolumeFsType = $.flexVolumeFsType;
         this.flexVolumeOptions = $.flexVolumeOptions;
+        this.hostPathVolumePath = $.hostPathVolumePath;
+        this.hostPathVolumeType = $.hostPathVolumeType;
         this.name = $.name;
         this.nfsVolumePath = $.nfsVolumePath;
         this.nfsVolumeReadOnly = $.nfsVolumeReadOnly;
@@ -276,6 +356,27 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
          */
         public Builder configFileVolumeConfigFileToPaths(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs... configFileVolumeConfigFileToPaths) {
             return configFileVolumeConfigFileToPaths(List.of(configFileVolumeConfigFileToPaths));
+        }
+
+        /**
+         * @param configFileVolumeDefaultMode The default permissions on the ConfigFileVolume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configFileVolumeDefaultMode(@Nullable Output<Integer> configFileVolumeDefaultMode) {
+            $.configFileVolumeDefaultMode = configFileVolumeDefaultMode;
+            return this;
+        }
+
+        /**
+         * @param configFileVolumeDefaultMode The default permissions on the ConfigFileVolume.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configFileVolumeDefaultMode(Integer configFileVolumeDefaultMode) {
+            return configFileVolumeDefaultMode(Output.of(configFileVolumeDefaultMode));
         }
 
         /**
@@ -339,6 +440,48 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
          */
         public Builder diskVolumeFsType(String diskVolumeFsType) {
             return diskVolumeFsType(Output.of(diskVolumeFsType));
+        }
+
+        /**
+         * @param emptyDirVolumeMedium The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emptyDirVolumeMedium(@Nullable Output<String> emptyDirVolumeMedium) {
+            $.emptyDirVolumeMedium = emptyDirVolumeMedium;
+            return this;
+        }
+
+        /**
+         * @param emptyDirVolumeMedium The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emptyDirVolumeMedium(String emptyDirVolumeMedium) {
+            return emptyDirVolumeMedium(Output.of(emptyDirVolumeMedium));
+        }
+
+        /**
+         * @param emptyDirVolumeSizeLimit The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emptyDirVolumeSizeLimit(@Nullable Output<String> emptyDirVolumeSizeLimit) {
+            $.emptyDirVolumeSizeLimit = emptyDirVolumeSizeLimit;
+            return this;
+        }
+
+        /**
+         * @param emptyDirVolumeSizeLimit The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emptyDirVolumeSizeLimit(String emptyDirVolumeSizeLimit) {
+            return emptyDirVolumeSizeLimit(Output.of(emptyDirVolumeSizeLimit));
         }
 
         /**
@@ -406,6 +549,48 @@ public final class EciScalingConfigurationVolumeArgs extends com.pulumi.resource
          */
         public Builder flexVolumeOptions(String flexVolumeOptions) {
             return flexVolumeOptions(Output.of(flexVolumeOptions));
+        }
+
+        /**
+         * @param hostPathVolumePath The absolute path on the host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostPathVolumePath(@Nullable Output<String> hostPathVolumePath) {
+            $.hostPathVolumePath = hostPathVolumePath;
+            return this;
+        }
+
+        /**
+         * @param hostPathVolumePath The absolute path on the host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostPathVolumePath(String hostPathVolumePath) {
+            return hostPathVolumePath(Output.of(hostPathVolumePath));
+        }
+
+        /**
+         * @param hostPathVolumeType The type of the host path. Examples: File, Directory, and Socket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostPathVolumeType(@Nullable Output<String> hostPathVolumeType) {
+            $.hostPathVolumeType = hostPathVolumeType;
+            return this;
+        }
+
+        /**
+         * @param hostPathVolumeType The type of the host path. Examples: File, Directory, and Socket.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostPathVolumeType(String hostPathVolumeType) {
+            return hostPathVolumeType(Output.of(hostPathVolumeType));
         }
 
         /**

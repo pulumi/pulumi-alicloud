@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshMeshConfigPrometheusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+        /// Prometheus service addresses (enabled external Prometheus when the system automatically populates)
         /// </summary>
         [Input("externalUrl")]
         public Input<string>? ExternalUrl { get; set; }
 
         /// <summary>
-        /// Whether to enable external Prometheus.
+        /// Whether to enable external Prometheus
         /// </summary>
         [Input("useExternal")]
         public Input<bool>? UseExternal { get; set; }

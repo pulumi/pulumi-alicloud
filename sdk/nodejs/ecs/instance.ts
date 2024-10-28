@@ -140,6 +140,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly cpu!: pulumi.Output<number>;
     /**
+     * (Available since v1.232.0) The time when the instance was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
     public readonly creditSpecification!: pulumi.Output<string>;
@@ -179,6 +183,10 @@ export class Instance extends pulumi.CustomResource {
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      */
     public readonly enableJumboFrame!: pulumi.Output<boolean>;
+    /**
+     * (Available since v1.232.0) The expiration time of the instance.
+     */
+    public /*out*/ readonly expiredTime!: pulumi.Output<string>;
     /**
      * If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
@@ -331,6 +339,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
+     * Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+     */
+    public readonly passwordInherit!: pulumi.Output<boolean | undefined>;
+    /**
      * The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
      * - [1-3] when `periodUnit` in "Week"
@@ -356,20 +368,6 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly publicIp!: pulumi.Output<string>;
     /**
      * The number of queues supported by the ERI.
-     *
-     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     *
-     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-     *
-     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-     *
-     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     *
-     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-     *
-     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
      */
     public readonly queuePairNumber!: pulumi.Output<number | undefined>;
     /**
@@ -422,6 +420,10 @@ export class Instance extends pulumi.CustomResource {
      * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
      */
     public readonly spotStrategy!: pulumi.Output<string>;
+    /**
+     * (Available since v1.232.0) The time when the instance was last started.
+     */
+    public /*out*/ readonly startTime!: pulumi.Output<string>;
     /**
      * The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
      */
@@ -522,6 +524,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["autoRenewPeriod"] = state ? state.autoRenewPeriod : undefined;
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["creditSpecification"] = state ? state.creditSpecification : undefined;
             resourceInputs["dataDisks"] = state ? state.dataDisks : undefined;
             resourceInputs["dedicatedHostId"] = state ? state.dedicatedHostId : undefined;
@@ -531,6 +534,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["enableJumboFrame"] = state ? state.enableJumboFrame : undefined;
+            resourceInputs["expiredTime"] = state ? state.expiredTime : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["hostName"] = state ? state.hostName : undefined;
             resourceInputs["hpcClusterId"] = state ? state.hpcClusterId : undefined;
@@ -566,6 +570,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["osName"] = state ? state.osName : undefined;
             resourceInputs["osType"] = state ? state.osType : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["passwordInherit"] = state ? state.passwordInherit : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
             resourceInputs["primaryIpAddress"] = state ? state.primaryIpAddress : undefined;
@@ -582,6 +587,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["spotDuration"] = state ? state.spotDuration : undefined;
             resourceInputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
             resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
+            resourceInputs["startTime"] = state ? state.startTime : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stoppedMode"] = state ? state.stoppedMode : undefined;
             resourceInputs["systemDiskAutoSnapshotPolicyId"] = state ? state.systemDiskAutoSnapshotPolicyId : undefined;
@@ -645,6 +651,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["operatorType"] = args ? args.operatorType : undefined;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
@@ -677,13 +684,16 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["cpu"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deploymentSetGroupNo"] = undefined /*out*/;
+            resourceInputs["expiredTime"] = undefined /*out*/;
             resourceInputs["memory"] = undefined /*out*/;
             resourceInputs["networkInterfaceId"] = undefined /*out*/;
             resourceInputs["osName"] = undefined /*out*/;
             resourceInputs["osType"] = undefined /*out*/;
             resourceInputs["primaryIpAddress"] = undefined /*out*/;
             resourceInputs["publicIp"] = undefined /*out*/;
+            resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["systemDiskId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -724,6 +734,10 @@ export interface InstanceState {
      */
     cpu?: pulumi.Input<number>;
     /**
+     * (Available since v1.232.0) The time when the instance was created.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
     creditSpecification?: pulumi.Input<string>;
@@ -763,6 +777,10 @@ export interface InstanceState {
      * Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
      */
     enableJumboFrame?: pulumi.Input<boolean>;
+    /**
+     * (Available since v1.232.0) The expiration time of the instance.
+     */
+    expiredTime?: pulumi.Input<string>;
     /**
      * If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
      * However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
@@ -915,6 +933,10 @@ export interface InstanceState {
      */
     password?: pulumi.Input<string>;
     /**
+     * Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+     */
+    passwordInherit?: pulumi.Input<boolean>;
+    /**
      * The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
      * - [1-3] when `periodUnit` in "Week"
@@ -940,20 +962,6 @@ export interface InstanceState {
     publicIp?: pulumi.Input<string>;
     /**
      * The number of queues supported by the ERI.
-     *
-     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     *
-     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-     *
-     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-     *
-     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     *
-     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-     *
-     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
      */
     queuePairNumber?: pulumi.Input<number>;
     /**
@@ -1006,6 +1014,10 @@ export interface InstanceState {
      * Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
      */
     spotStrategy?: pulumi.Input<string>;
+    /**
+     * (Available since v1.232.0) The time when the instance was last started.
+     */
+    startTime?: pulumi.Input<string>;
     /**
      * The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
      */
@@ -1287,6 +1299,10 @@ export interface InstanceArgs {
      */
     password?: pulumi.Input<string>;
     /**
+     * Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+     */
+    passwordInherit?: pulumi.Input<boolean>;
+    /**
      * The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
      * - [1-3] when `periodUnit` in "Week"
@@ -1304,20 +1320,6 @@ export interface InstanceArgs {
     privateIp?: pulumi.Input<string>;
     /**
      * The number of queues supported by the ERI.
-     *
-     * > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-     *
-     * > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-     *
-     * > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-     *
-     * > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     *
-     * > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-     * Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-     *
-     * > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
      */
     queuePairNumber?: pulumi.Input<number>;
     /**

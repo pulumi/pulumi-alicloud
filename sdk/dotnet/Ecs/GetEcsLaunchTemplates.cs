@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,13 +28,122 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^ubuntu_18.*64",
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///         VpcId = defaultNetwork.Id,
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = "terraform-example",
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultEcsLaunchTemplate = new AliCloud.Ecs.EcsLaunchTemplate("default", new()
+        ///     {
+        ///         LaunchTemplateName = "terraform-example",
+        ///         Description = "terraform-example",
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         HostName = "terraform-example",
+        ///         InstanceChargeType = "PrePaid",
+        ///         InstanceName = "terraform-example",
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         InternetChargeType = "PayByBandwidth",
+        ///         InternetMaxBandwidthIn = 5,
+        ///         InternetMaxBandwidthOut = 5,
+        ///         IoOptimized = "optimized",
+        ///         KeyPairName = "key_pair_name",
+        ///         RamRoleName = "ram_role_name",
+        ///         NetworkType = "vpc",
+        ///         SecurityEnhancementStrategy = "Active",
+        ///         SpotPriceLimit = 5,
+        ///         SpotStrategy = "SpotWithPriceLimit",
+        ///         SecurityGroupIds = new[]
+        ///         {
+        ///             defaultSecurityGroup.Id,
+        ///         },
+        ///         SystemDisk = new AliCloud.Ecs.Inputs.EcsLaunchTemplateSystemDiskArgs
+        ///         {
+        ///             Category = "cloud_ssd",
+        ///             Description = "Test For Terraform",
+        ///             Name = "terraform-example",
+        ///             Size = 40,
+        ///             DeleteWithInstance = false,
+        ///         },
+        ///         UserData = "xxxxxxx",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         VpcId = defaultNetwork.Id,
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         TemplateTags = 
+        ///         {
+        ///             { "Create", "Terraform" },
+        ///             { "For", "example" },
+        ///         },
+        ///         NetworkInterfaces = new AliCloud.Ecs.Inputs.EcsLaunchTemplateNetworkInterfacesArgs
+        ///         {
+        ///             Name = "eth0",
+        ///             Description = "hello1",
+        ///             PrimaryIp = "10.0.0.2",
+        ///             SecurityGroupId = defaultSecurityGroup.Id,
+        ///             VswitchId = defaultSwitch.Id,
+        ///         },
+        ///         DataDisks = new[]
+        ///         {
+        ///             new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
+        ///             {
+        ///                 Name = "disk1",
+        ///                 Description = "description",
+        ///                 DeleteWithInstance = true,
+        ///                 Category = "cloud",
+        ///                 Encrypted = false,
+        ///                 PerformanceLevel = "PL0",
+        ///                 Size = 20,
+        ///             },
+        ///             new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
+        ///             {
+        ///                 Name = "disk2",
+        ///                 Description = "description2",
+        ///                 DeleteWithInstance = true,
+        ///                 Category = "cloud",
+        ///                 Encrypted = false,
+        ///                 PerformanceLevel = "PL0",
+        ///                 Size = 20,
+        ///             },
+        ///         },
+        ///     });
+        /// 
         ///     var example = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "lt-bp1a469uxxxxxx",
+        ///             defaultEcsLaunchTemplate.Id,
         ///         },
-        ///         NameRegex = "your_launch_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -50,7 +159,7 @@ namespace Pulumi.AliCloud.Ecs
         /// <summary>
         /// This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.120.0+.
+        /// &gt; **NOTE:** Available since v1.120.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,13 +173,122 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableDiskCategory = "cloud_efficiency",
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     {
+        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+        ///     {
+        ///         NameRegex = "^ubuntu_18.*64",
+        ///         Owners = "system",
+        ///     });
+        /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///         VpcId = defaultNetwork.Id,
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = "terraform-example",
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultEcsLaunchTemplate = new AliCloud.Ecs.EcsLaunchTemplate("default", new()
+        ///     {
+        ///         LaunchTemplateName = "terraform-example",
+        ///         Description = "terraform-example",
+        ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///         HostName = "terraform-example",
+        ///         InstanceChargeType = "PrePaid",
+        ///         InstanceName = "terraform-example",
+        ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         InternetChargeType = "PayByBandwidth",
+        ///         InternetMaxBandwidthIn = 5,
+        ///         InternetMaxBandwidthOut = 5,
+        ///         IoOptimized = "optimized",
+        ///         KeyPairName = "key_pair_name",
+        ///         RamRoleName = "ram_role_name",
+        ///         NetworkType = "vpc",
+        ///         SecurityEnhancementStrategy = "Active",
+        ///         SpotPriceLimit = 5,
+        ///         SpotStrategy = "SpotWithPriceLimit",
+        ///         SecurityGroupIds = new[]
+        ///         {
+        ///             defaultSecurityGroup.Id,
+        ///         },
+        ///         SystemDisk = new AliCloud.Ecs.Inputs.EcsLaunchTemplateSystemDiskArgs
+        ///         {
+        ///             Category = "cloud_ssd",
+        ///             Description = "Test For Terraform",
+        ///             Name = "terraform-example",
+        ///             Size = 40,
+        ///             DeleteWithInstance = false,
+        ///         },
+        ///         UserData = "xxxxxxx",
+        ///         VswitchId = defaultSwitch.Id,
+        ///         VpcId = defaultNetwork.Id,
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///         TemplateTags = 
+        ///         {
+        ///             { "Create", "Terraform" },
+        ///             { "For", "example" },
+        ///         },
+        ///         NetworkInterfaces = new AliCloud.Ecs.Inputs.EcsLaunchTemplateNetworkInterfacesArgs
+        ///         {
+        ///             Name = "eth0",
+        ///             Description = "hello1",
+        ///             PrimaryIp = "10.0.0.2",
+        ///             SecurityGroupId = defaultSecurityGroup.Id,
+        ///             VswitchId = defaultSwitch.Id,
+        ///         },
+        ///         DataDisks = new[]
+        ///         {
+        ///             new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
+        ///             {
+        ///                 Name = "disk1",
+        ///                 Description = "description",
+        ///                 DeleteWithInstance = true,
+        ///                 Category = "cloud",
+        ///                 Encrypted = false,
+        ///                 PerformanceLevel = "PL0",
+        ///                 Size = 20,
+        ///             },
+        ///             new AliCloud.Ecs.Inputs.EcsLaunchTemplateDataDiskArgs
+        ///             {
+        ///                 Name = "disk2",
+        ///                 Description = "description2",
+        ///                 DeleteWithInstance = true,
+        ///                 Category = "cloud",
+        ///                 Encrypted = false,
+        ///                 PerformanceLevel = "PL0",
+        ///                 Size = 20,
+        ///             },
+        ///         },
+        ///     });
+        /// 
         ///     var example = AliCloud.Ecs.GetEcsLaunchTemplates.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "lt-bp1a469uxxxxxx",
+        ///             defaultEcsLaunchTemplate.Id,
         ///         },
-        ///         NameRegex = "your_launch_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -131,6 +349,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("templateTags")]
         private Dictionary<string, string>? _templateTags;
+
+        /// <summary>
+        /// The template tags.
+        /// </summary>
         public Dictionary<string, string> TemplateTags
         {
             get => _templateTags ?? (_templateTags = new Dictionary<string, string>());
@@ -189,6 +411,10 @@ namespace Pulumi.AliCloud.Ecs
 
         [Input("templateTags")]
         private InputMap<string>? _templateTags;
+
+        /// <summary>
+        /// The template tags.
+        /// </summary>
         public InputMap<string> TemplateTags
         {
             get => _templateTags ?? (_templateTags = new InputMap<string>());
@@ -211,12 +437,24 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        /// <summary>
+        /// The Launch Template Name.
+        /// </summary>
         public readonly string? LaunchTemplateName;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Launch Template names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
         public readonly string? TemplateResourceGroupId;
+        /// <summary>
+        /// The template tags.
+        /// </summary>
         public readonly ImmutableDictionary<string, string>? TemplateTags;
+        /// <summary>
+        /// A list of Ecs Launch Templates. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsLaunchTemplatesTemplateResult> Templates;
 
         [OutputConstructor]

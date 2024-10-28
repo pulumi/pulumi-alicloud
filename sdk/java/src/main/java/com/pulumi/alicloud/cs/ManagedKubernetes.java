@@ -11,6 +11,7 @@ import com.pulumi.alicloud.cs.outputs.ManagedKubernetesCertificateAuthority;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesConnections;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesDeleteOption;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesMaintenanceWindow;
+import com.pulumi.alicloud.cs.outputs.ManagedKubernetesOperationPolicy;
 import com.pulumi.alicloud.cs.outputs.ManagedKubernetesRrsaMetadata;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -321,28 +322,32 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptionProviderKey);
     }
     /**
-     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      * 
      */
     @Export(name="isEnterpriseSecurityGroup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isEnterpriseSecurityGroup;
 
     /**
-     * @return Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
+     * @return Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      * 
      */
     public Output<Boolean> isEnterpriseSecurityGroup() {
         return this.isEnterpriseSecurityGroup;
     }
     /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
+     * 
+     * @deprecated
+     * Field &#39;load_balancer_spec&#39; has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore.
      * 
      */
+    @Deprecated /* Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The load balancer has been changed to PayByCLCU so that the spec is no need anymore. */
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loadBalancerSpec;
 
     /**
-     * @return The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
+     * @return The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation.
      * 
      */
     public Output<Optional<String>> loadBalancerSpec() {
@@ -397,14 +402,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.natGatewayId;
     }
     /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
      * 
      */
     @Export(name="newNatGateway", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> newNatGateway;
 
     /**
-     * @return Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
+     * @return Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
      * 
      */
     public Output<Optional<Boolean>> newNatGateway() {
@@ -425,6 +430,20 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.nodeCidrMask);
     }
     /**
+     * The cluster automatic operation policy. See `operation_policy` below.
+     * 
+     */
+    @Export(name="operationPolicy", refs={ManagedKubernetesOperationPolicy.class}, tree="[0]")
+    private Output<ManagedKubernetesOperationPolicy> operationPolicy;
+
+    /**
+     * @return The cluster automatic operation policy. See `operation_policy` below.
+     * 
+     */
+    public Output<ManagedKubernetesOperationPolicy> operationPolicy() {
+        return this.operationPolicy;
+    }
+    /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      * 
      */
@@ -439,14 +458,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.podCidr);
     }
     /**
-     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones.
+     * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     @Export(name="podVswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> podVswitchIds;
 
     /**
-     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones.
+     * @return [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `pod_vswitch_ids` is not belong to `worker_vswitch_ids` but must be in same availability zones. Only works for **Create** Operation.
      * 
      */
     public Output<Optional<List<String>>> podVswitchIds() {
@@ -651,14 +670,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.userCa);
     }
     /**
-     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
-     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
+     * @return Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see cluster_auto_upgrade for more information.
      * 
      */
     public Output<String> version() {

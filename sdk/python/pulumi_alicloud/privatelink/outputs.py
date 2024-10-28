@@ -154,16 +154,18 @@ class GetVpcEndpointServicesServiceResult(dict):
                  service_domain: str,
                  service_id: str,
                  status: str,
+                 tags: Mapping[str, str],
                  vpc_endpoint_service_name: str):
         """
-        :param bool auto_accept_connection: Whether to automatically accept terminal node connections..
+        :param bool auto_accept_connection: Whether to automatically accept terminal node connections.
         :param int connect_bandwidth: The connection bandwidth.
         :param str id: The ID of the Vpc Endpoint Service.
-        :param str service_business_status: The business status of the terminal node service..
+        :param str service_business_status: The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
         :param str service_description: The description of the terminal node service.
         :param str service_domain: The domain of service.
         :param str service_id: The ID of the Vpc Endpoint Service.
-        :param str status: The Status of Vpc Endpoint Service.
+        :param str status: The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
+        :param Mapping[str, str] tags: The tags of Vpc Endpoint Service.
         :param str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
         """
         pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
@@ -174,13 +176,14 @@ class GetVpcEndpointServicesServiceResult(dict):
         pulumi.set(__self__, "service_domain", service_domain)
         pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "vpc_endpoint_service_name", vpc_endpoint_service_name)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
     def auto_accept_connection(self) -> bool:
         """
-        Whether to automatically accept terminal node connections..
+        Whether to automatically accept terminal node connections.
         """
         return pulumi.get(self, "auto_accept_connection")
 
@@ -204,7 +207,7 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter(name="serviceBusinessStatus")
     def service_business_status(self) -> str:
         """
-        The business status of the terminal node service..
+        The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
         """
         return pulumi.get(self, "service_business_status")
 
@@ -236,9 +239,17 @@ class GetVpcEndpointServicesServiceResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The Status of Vpc Endpoint Service.
+        The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        The tags of Vpc Endpoint Service.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcEndpointServiceName")

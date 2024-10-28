@@ -154,6 +154,8 @@ type Instance struct {
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The number of vCPUs.
 	Cpu pulumi.IntOutput `pulumi:"cpu"`
+	// (Available since v1.232.0) The time when the instance was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification pulumi.StringOutput `pulumi:"creditSpecification"`
 	// The list of data disks created with instance. See `dataDisks` below.
@@ -176,6 +178,8 @@ type Instance struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolOutput `pulumi:"enableJumboFrame"`
+	// (Available since v1.232.0) The expiration time of the instance.
+	ExpiredTime pulumi.StringOutput `pulumi:"expiredTime"`
 	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete pulumi.BoolPtrOutput `pulumi:"forceDelete"`
@@ -259,6 +263,8 @@ type Instance struct {
 	OsType pulumi.StringOutput `pulumi:"osType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
+	// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+	PasswordInherit pulumi.BoolPtrOutput `pulumi:"passwordInherit"`
 	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
@@ -274,20 +280,6 @@ type Instance struct {
 	// The instance public ip.
 	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
 	// The number of queues supported by the ERI.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	QueuePairNumber pulumi.IntPtrOutput `pulumi:"queuePairNumber"`
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
@@ -319,6 +311,8 @@ type Instance struct {
 	//
 	// Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
 	SpotStrategy pulumi.StringOutput `pulumi:"spotStrategy"`
+	// (Available since v1.232.0) The time when the instance was last started.
+	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
@@ -419,6 +413,8 @@ type instanceState struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The number of vCPUs.
 	Cpu *int `pulumi:"cpu"`
+	// (Available since v1.232.0) The time when the instance was created.
+	CreateTime *string `pulumi:"createTime"`
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification *string `pulumi:"creditSpecification"`
 	// The list of data disks created with instance. See `dataDisks` below.
@@ -441,6 +437,8 @@ type instanceState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame *bool `pulumi:"enableJumboFrame"`
+	// (Available since v1.232.0) The expiration time of the instance.
+	ExpiredTime *string `pulumi:"expiredTime"`
 	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete *bool `pulumi:"forceDelete"`
@@ -524,6 +522,8 @@ type instanceState struct {
 	OsType *string `pulumi:"osType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password *string `pulumi:"password"`
+	// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+	PasswordInherit *bool `pulumi:"passwordInherit"`
 	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
@@ -539,20 +539,6 @@ type instanceState struct {
 	// The instance public ip.
 	PublicIp *string `pulumi:"publicIp"`
 	// The number of queues supported by the ERI.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	QueuePairNumber *int `pulumi:"queuePairNumber"`
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
@@ -584,6 +570,8 @@ type instanceState struct {
 	//
 	// Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
 	SpotStrategy *string `pulumi:"spotStrategy"`
+	// (Available since v1.232.0) The time when the instance was last started.
+	StartTime *string `pulumi:"startTime"`
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status *string `pulumi:"status"`
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
@@ -648,6 +636,8 @@ type InstanceState struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// The number of vCPUs.
 	Cpu pulumi.IntPtrInput
+	// (Available since v1.232.0) The time when the instance was created.
+	CreateTime pulumi.StringPtrInput
 	// Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 	CreditSpecification pulumi.StringPtrInput
 	// The list of data disks created with instance. See `dataDisks` below.
@@ -670,6 +660,8 @@ type InstanceState struct {
 	DryRun pulumi.BoolPtrInput
 	// Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 	EnableJumboFrame pulumi.BoolPtrInput
+	// (Available since v1.232.0) The expiration time of the instance.
+	ExpiredTime pulumi.StringPtrInput
 	// If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
 	// However, because of changing instance charge type has CPU core count quota limitation, so strongly recommand that "Don't modify instance charge type frequentlly in one month".
 	ForceDelete pulumi.BoolPtrInput
@@ -753,6 +745,8 @@ type InstanceState struct {
 	OsType pulumi.StringPtrInput
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password pulumi.StringPtrInput
+	// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+	PasswordInherit pulumi.BoolPtrInput
 	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
@@ -768,20 +762,6 @@ type InstanceState struct {
 	// The instance public ip.
 	PublicIp pulumi.StringPtrInput
 	// The number of queues supported by the ERI.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	QueuePairNumber pulumi.IntPtrInput
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
@@ -813,6 +793,8 @@ type InstanceState struct {
 	//
 	// Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
 	SpotStrategy pulumi.StringPtrInput
+	// (Available since v1.232.0) The time when the instance was last started.
+	StartTime pulumi.StringPtrInput
 	// The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.
 	Status pulumi.StringPtrInput
 	// The stop mode of the pay-as-you-go instance. Valid values: `StopCharging`,`KeepCharging`, `Not-applicable`. Default value: If the prerequisites required for enabling the economical mode are met, and you have enabled this mode in the ECS console, the default value is `StopCharging`. For more information, see "Enable the economical mode" in [Economical mode](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/economical-mode). Otherwise, the default value is `KeepCharging`. **Note:** `Not-applicable`: Economical mode is not applicable to the instance.`
@@ -974,6 +956,8 @@ type instanceArgs struct {
 	OperatorType *string `pulumi:"operatorType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password *string `pulumi:"password"`
+	// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+	PasswordInherit *bool `pulumi:"passwordInherit"`
 	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
@@ -985,20 +969,6 @@ type instanceArgs struct {
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp *string `pulumi:"privateIp"`
 	// The number of queues supported by the ERI.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	QueuePairNumber *int `pulumi:"queuePairNumber"`
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
@@ -1186,6 +1156,8 @@ type InstanceArgs struct {
 	OperatorType pulumi.StringPtrInput
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
 	Password pulumi.StringPtrInput
+	// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+	PasswordInherit pulumi.BoolPtrInput
 	// The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
@@ -1197,20 +1169,6 @@ type InstanceArgs struct {
 	// Instance private IP address can be specified when you creating new instance. It is valid when `vswitchId` is specified. When it is changed, the instance will reboot to make the change take effect.
 	PrivateIp pulumi.StringPtrInput
 	// The number of queues supported by the ERI.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	QueuePairNumber pulumi.IntPtrInput
 	// Whether to renew an ECS instance automatically or not. It is valid when `instanceChargeType` is `PrePaid`. Default to "Normal". Valid values:
 	// - `AutoRenewal`: Enable auto renewal.
@@ -1405,6 +1363,11 @@ func (o InstanceOutput) Cpu() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Cpu }).(pulumi.IntOutput)
 }
 
+// (Available since v1.232.0) The time when the instance was created.
+func (o InstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
 func (o InstanceOutput) CreditSpecification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreditSpecification }).(pulumi.StringOutput)
@@ -1452,6 +1415,11 @@ func (o InstanceOutput) DryRun() pulumi.BoolPtrOutput {
 // Specifies whether to enable the Jumbo Frames feature for the instance. Valid values: `true`, `false`.
 func (o InstanceOutput) EnableJumboFrame() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.EnableJumboFrame }).(pulumi.BoolOutput)
+}
+
+// (Available since v1.232.0) The expiration time of the instance.
+func (o InstanceOutput) ExpiredTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ExpiredTime }).(pulumi.StringOutput)
 }
 
 // If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -1642,6 +1610,11 @@ func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+func (o InstanceOutput) PasswordInherit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.PasswordInherit }).(pulumi.BoolPtrOutput)
+}
+
 // The duration that you will buy the resource, in month. It is valid and required when `instanceChargeType` is `PrePaid`. Valid values:
 // - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 // - [1-3] when `periodUnit` in "Week"
@@ -1672,20 +1645,6 @@ func (o InstanceOutput) PublicIp() pulumi.StringOutput {
 }
 
 // The number of queues supported by the ERI.
-//
-// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-//
-// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-//
-// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-//
-// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-//
-// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-//
-// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 func (o InstanceOutput) QueuePairNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.QueuePairNumber }).(pulumi.IntPtrOutput)
 }
@@ -1748,6 +1707,11 @@ func (o InstanceOutput) SpotPriceLimit() pulumi.Float64Output {
 // Default to NoSpot. Note: Currently, the spot instance only supports domestic site account.
 func (o InstanceOutput) SpotStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SpotStrategy }).(pulumi.StringOutput)
+}
+
+// (Available since v1.232.0) The time when the instance was last started.
+func (o InstanceOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
 }
 
 // The instance status. Valid values: ["Running", "Stopped"]. You can control the instance start and stop through this parameter. Default to `Running`.

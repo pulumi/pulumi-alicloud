@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a EAIS Instance resource.
+ * Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
  *
- * For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+ * For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
  *
  * > **NOTE:** Available since v1.137.0.
  *
@@ -20,36 +20,33 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const zoneId = "cn-hangzhou-h";
- * const default = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("default", {
+ * const _default = new alicloud.vpc.Network("default", {
  *     vpcName: name,
- *     cidrBlock: "10.0.0.0/8",
+ *     cidrBlock: "192.168.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
- *     cidrBlock: "10.1.0.0/16",
- *     vpcId: defaultNetwork.id,
+ *     vpcId: _default.id,
+ *     cidrBlock: "192.168.192.0/24",
  *     zoneId: zoneId,
  * });
  * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
  *     name: name,
- *     vpcId: defaultNetwork.id,
+ *     vpcId: _default.id,
  * });
  * const defaultInstance = new alicloud.eais.Instance("default", {
  *     instanceType: "eais.ei-a6.2xlarge",
- *     instanceName: name,
- *     securityGroupId: defaultSecurityGroup.id,
  *     vswitchId: defaultSwitch.id,
+ *     securityGroupId: defaultSecurityGroup.id,
+ *     instanceName: name,
  * });
  * ```
  *
  * ## Import
  *
- * EAIS Instance can be imported using the id, e.g.
+ * Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:eais/instance:Instance example <id>
@@ -84,15 +81,15 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the instance.
+     * The name of the Instance.
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    public readonly instanceName!: pulumi.Output<string>;
     /**
-     * The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -100,11 +97,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
-     * The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+     * The status of the Instance.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The ID of the vswitch.
+     * The ID of the vSwitch.
      */
     public readonly vswitchId!: pulumi.Output<string>;
 
@@ -155,15 +152,15 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The name of the instance.
+     * The name of the Instance.
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -171,11 +168,11 @@ export interface InstanceState {
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+     * The status of the Instance.
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of the vswitch.
+     * The ID of the vSwitch.
      */
     vswitchId?: pulumi.Input<string>;
 }
@@ -185,15 +182,15 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The name of the instance.
+     * The name of the Instance.
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
      */
     instanceType: pulumi.Input<string>;
     /**
@@ -201,7 +198,7 @@ export interface InstanceArgs {
      */
     securityGroupId: pulumi.Input<string>;
     /**
-     * The ID of the vswitch.
+     * The ID of the vSwitch.
      */
     vswitchId: pulumi.Input<string>;
 }

@@ -5,7 +5,6 @@ package com.pulumi.alicloud.mse.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -33,29 +32,29 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The id of the cluster.
+     * The ID of the cluster.
      * 
      */
-    @Import(name="clusterId", required=true)
-    private Output<String> clusterId;
+    @Import(name="clusterId")
+    private @Nullable Output<String> clusterId;
 
     /**
-     * @return The id of the cluster.
+     * @return The ID of the cluster.
      * 
      */
-    public Output<String> clusterId() {
-        return this.clusterId;
+    public Optional<Output<String>> clusterId() {
+        return Optional.ofNullable(this.clusterId);
     }
 
     /**
-     * A list of Engine Namespace IDs. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+     * A list of Engine Namespace IDs. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of Engine Namespace IDs. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+     * @return A list of Engine Namespace IDs. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -63,7 +62,24 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
+     * The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
+     * 
+     */
+    @Import(name="instanceId")
+    private @Nullable Output<String> instanceId;
+
+    /**
+     * @return The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
+     * 
+     */
+    public Optional<Output<String>> instanceId() {
+        return Optional.ofNullable(this.instanceId);
+    }
+
+    /**
      * File name where to save data source results (after running `pulumi preview`).
+     * 
+     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
      * 
      */
     @Import(name="outputFile")
@@ -71,6 +87,8 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
 
     /**
      * @return File name where to save data source results (after running `pulumi preview`).
+     * 
+     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
      * 
      */
     public Optional<Output<String>> outputFile() {
@@ -83,6 +101,7 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         this.acceptLanguage = $.acceptLanguage;
         this.clusterId = $.clusterId;
         this.ids = $.ids;
+        this.instanceId = $.instanceId;
         this.outputFile = $.outputFile;
     }
 
@@ -126,18 +145,18 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param clusterId The id of the cluster.
+         * @param clusterId The ID of the cluster.
          * 
          * @return builder
          * 
          */
-        public Builder clusterId(Output<String> clusterId) {
+        public Builder clusterId(@Nullable Output<String> clusterId) {
             $.clusterId = clusterId;
             return this;
         }
 
         /**
-         * @param clusterId The id of the cluster.
+         * @param clusterId The ID of the cluster.
          * 
          * @return builder
          * 
@@ -147,7 +166,7 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param ids A list of Engine Namespace IDs. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+         * @param ids A list of Engine Namespace IDs. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
          * 
          * @return builder
          * 
@@ -158,7 +177,7 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param ids A list of Engine Namespace IDs. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+         * @param ids A list of Engine Namespace IDs. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
          * 
          * @return builder
          * 
@@ -168,7 +187,7 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param ids A list of Engine Namespace IDs. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+         * @param ids A list of Engine Namespace IDs. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
          * 
          * @return builder
          * 
@@ -178,7 +197,30 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
+         * @param instanceId The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(@Nullable Output<String> instanceId) {
+            $.instanceId = instanceId;
+            return this;
+        }
+
+        /**
+         * @param instanceId The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(String instanceId) {
+            return instanceId(Output.of(instanceId));
+        }
+
+        /**
          * @param outputFile File name where to save data source results (after running `pulumi preview`).
+         * 
+         * **NOTE:** You must set `cluster_id` or `instance_id` or both.
          * 
          * @return builder
          * 
@@ -191,6 +233,8 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         /**
          * @param outputFile File name where to save data source results (after running `pulumi preview`).
          * 
+         * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+         * 
          * @return builder
          * 
          */
@@ -199,9 +243,6 @@ public final class GetEngineNamespacesArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetEngineNamespacesArgs build() {
-            if ($.clusterId == null) {
-                throw new MissingRequiredPropertyException("GetEngineNamespacesArgs", "clusterId");
-            }
             return $;
         }
     }

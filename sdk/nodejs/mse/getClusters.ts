@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.94.0+.
+ * > **NOTE:** Available since v1.94.0.
  *
  * ## Example Usage
  *
@@ -17,12 +17,41 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const example = alicloud.mse.getClusters({
- *     ids: ["mse-cn-0d9xxxx"],
- *     status: "INIT_SUCCESS",
+ * // Create resource
+ * const example = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * export const clusterId = example.then(example => example.clusters?.[0]?.id);
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
+ * });
+ * const exampleCluster = new alicloud.mse.Cluster("example", {
+ *     clusterSpecification: "MSE_SC_1_2_60_c",
+ *     clusterType: "Nacos-Ans",
+ *     clusterVersion: "NACOS_2_0_0",
+ *     instanceCount: 3,
+ *     netType: "privatenet",
+ *     pubNetworkFlow: "1",
+ *     connectionType: "slb",
+ *     clusterAliasName: "terraform-example",
+ *     mseVersion: "mse_pro",
+ *     vswitchId: exampleSwitch.id,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * // Declare the data source
+ * const exampleGetClusters = pulumi.all([exampleCluster.id, exampleCluster.clusterAliasName]).apply(([id, clusterAliasName]) => alicloud.mse.getClustersOutput({
+ *     enableDetails: true,
+ *     ids: [id],
+ *     status: "INIT_SUCCESS",
+ *     nameRegex: clusterAliasName,
+ * }));
+ * export const instanceId = exampleGetClusters.apply(exampleGetClusters => exampleGetClusters.clusters?.[0]?.id);
  * ```
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
@@ -47,9 +76,12 @@ export interface GetClustersArgs {
      * The alias name of MSE Cluster.
      */
     clusterAliasName?: string;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
-     * A list of MSE Cluster ids.
+     * A list of MSE Cluster ids. It is formatted to `<instance_id>`
      */
     ids?: string[];
     /**
@@ -60,6 +92,9 @@ export interface GetClustersArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * The extended request parameters. The JSON format is supported.
+     */
     requestPars?: string;
     /**
      * The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
@@ -100,7 +135,7 @@ export interface GetClustersResult {
 /**
  * This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.94.0+.
+ * > **NOTE:** Available since v1.94.0.
  *
  * ## Example Usage
  *
@@ -108,12 +143,41 @@ export interface GetClustersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const example = alicloud.mse.getClusters({
- *     ids: ["mse-cn-0d9xxxx"],
- *     status: "INIT_SUCCESS",
+ * // Create resource
+ * const example = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * export const clusterId = example.then(example => example.clusters?.[0]?.id);
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: exampleNetwork.id,
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
+ * });
+ * const exampleCluster = new alicloud.mse.Cluster("example", {
+ *     clusterSpecification: "MSE_SC_1_2_60_c",
+ *     clusterType: "Nacos-Ans",
+ *     clusterVersion: "NACOS_2_0_0",
+ *     instanceCount: 3,
+ *     netType: "privatenet",
+ *     pubNetworkFlow: "1",
+ *     connectionType: "slb",
+ *     clusterAliasName: "terraform-example",
+ *     mseVersion: "mse_pro",
+ *     vswitchId: exampleSwitch.id,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * // Declare the data source
+ * const exampleGetClusters = pulumi.all([exampleCluster.id, exampleCluster.clusterAliasName]).apply(([id, clusterAliasName]) => alicloud.mse.getClustersOutput({
+ *     enableDetails: true,
+ *     ids: [id],
+ *     status: "INIT_SUCCESS",
+ *     nameRegex: clusterAliasName,
+ * }));
+ * export const instanceId = exampleGetClusters.apply(exampleGetClusters => exampleGetClusters.clusters?.[0]?.id);
  * ```
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
@@ -138,9 +202,12 @@ export interface GetClustersOutputArgs {
      * The alias name of MSE Cluster.
      */
     clusterAliasName?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * A list of MSE Cluster ids.
+     * A list of MSE Cluster ids. It is formatted to `<instance_id>`
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -151,6 +218,9 @@ export interface GetClustersOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string>;
+    /**
+     * The extended request parameters. The JSON format is supported.
+     */
     requestPars?: pulumi.Input<string>;
     /**
      * The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`

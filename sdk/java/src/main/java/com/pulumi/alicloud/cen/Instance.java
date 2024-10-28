@@ -16,9 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
+ * Provides a Cloud Enterprise Network (CEN) Instance resource.
  * 
- * For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+ * For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
  * 
  * &gt; **NOTE:** Available since v1.15.0.
  * 
@@ -49,9 +49,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Instance("example", InstanceArgs.builder()
- *             .cenInstanceName("tf_example")
- *             .description("an example for cen")
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .cenInstanceName(name)
+ *             .description(name)
  *             .build());
  * 
  *     }
@@ -62,84 +64,98 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN instance can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+ * $ pulumi import alicloud:cen/instance:Instance example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cen/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="cenInstanceName", refs={String.class}, tree="[0]")
     private Output<String> cenInstanceName;
 
     /**
-     * @return The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+     * @return The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<String> cenInstanceName() {
         return this.cenInstanceName;
     }
     /**
-     * The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+     * The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+     * @return The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
      * 
      * @deprecated
-     * attribute &#39;name&#39; has been deprecated from version 1.98.0. Use &#39;cen_instance_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
      * 
      */
-    @Deprecated /* attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+     * @return Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * The level of CIDR block overlapping. Default value: `REDUCE`.
      * 
      */
     @Export(name="protectionLevel", refs={String.class}, tree="[0]")
     private Output<String> protectionLevel;
 
     /**
-     * @return Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+     * @return The level of CIDR block overlapping. Default value: `REDUCE`.
      * 
      */
     public Output<String> protectionLevel() {
         return this.protectionLevel;
     }
     /**
-     * The Cen Instance current status.
+     * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The status of the Instance.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The Cen Instance current status.
+     * @return The status of the Instance.
      * 
      */
     public Output<String> status() {

@@ -17,14 +17,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+     * @return Specifies whether to force delete the Instance. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -32,14 +32,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the instance.
+     * The name of the Instance.
      * 
      */
     @Import(name="instanceName")
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return The name of the instance.
+     * @return The name of the Instance.
      * 
      */
     public Optional<Output<String>> instanceName() {
@@ -47,14 +47,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * @return The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -77,14 +77,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+     * The status of the Instance.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+     * @return The status of the Instance.
      * 
      */
     public Optional<Output<String>> status() {
@@ -92,14 +92,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the vswitch.
+     * The ID of the vSwitch.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The ID of the vswitch.
+     * @return The ID of the vSwitch.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -136,7 +136,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+         * @param force Specifies whether to force delete the Instance. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+         * @param force Specifies whether to force delete the Instance. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the instance.
+         * @param instanceName The name of the Instance.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the instance.
+         * @param instanceName The name of the Instance.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+         * @param instanceType The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceType The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+         * @param instanceType The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+         * @param status The status of the Instance.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+         * @param status The status of the Instance.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the vswitch.
+         * @param vswitchId The ID of the vSwitch.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the vswitch.
+         * @param vswitchId The ID of the vSwitch.
          * 
          * @return builder
          * 

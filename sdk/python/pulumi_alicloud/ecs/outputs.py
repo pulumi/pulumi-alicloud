@@ -5372,6 +5372,9 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
                  description: str,
                  enable_vm_os_config: bool,
                  host_name: str,
+                 http_endpoint: str,
+                 http_put_response_hop_limit: int,
+                 http_tokens: str,
                  id: str,
                  image_id: str,
                  image_owner_alias: str,
@@ -5408,14 +5411,17 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
                  vswitch_id: str,
                  zone_id: str):
         """
-        :param str auto_release_time: Instance auto release time.
+        :param str auto_release_time: (Optional) Instance auto release time.
         :param str created_by: CreatedBy.
         :param Sequence['GetEcsLaunchTemplatesTemplateDataDiskArgs'] data_disks: The list of data disks created with instance.
         :param int default_version_number: The Default Version Number.
         :param str deployment_set_id: The Deployment Set Id.
-        :param str description: The Description of Template.
+        :param str description: System disk description.
         :param bool enable_vm_os_config: Whether to enable the instance operating system configuration.
         :param str host_name: Instance host name.
+        :param str http_endpoint: Whether to enable access to instance metadata.
+        :param int http_put_response_hop_limit: The HTTP PUT response hop limit required for instance metadata requests.
+        :param str http_tokens: Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
         :param str id: The ID of the Launch Template.
         :param str image_id: The Image Id.
         :param str image_owner_alias: Mirror source.
@@ -5460,6 +5466,9 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
         pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "http_endpoint", http_endpoint)
+        pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+        pulumi.set(__self__, "http_tokens", http_tokens)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "image_owner_alias", image_owner_alias)
@@ -5500,7 +5509,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter(name="autoReleaseTime")
     def auto_release_time(self) -> str:
         """
-        Instance auto release time.
+        (Optional) Instance auto release time.
         """
         return pulumi.get(self, "auto_release_time")
 
@@ -5540,7 +5549,7 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        The Description of Template.
+        System disk description.
         """
         return pulumi.get(self, "description")
 
@@ -5559,6 +5568,30 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
         Instance host name.
         """
         return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter(name="httpEndpoint")
+    def http_endpoint(self) -> str:
+        """
+        Whether to enable access to instance metadata.
+        """
+        return pulumi.get(self, "http_endpoint")
+
+    @property
+    @pulumi.getter(name="httpPutResponseHopLimit")
+    def http_put_response_hop_limit(self) -> int:
+        """
+        The HTTP PUT response hop limit required for instance metadata requests.
+        """
+        return pulumi.get(self, "http_put_response_hop_limit")
+
+    @property
+    @pulumi.getter(name="httpTokens")
+    def http_tokens(self) -> str:
+        """
+        Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+        """
+        return pulumi.get(self, "http_tokens")
 
     @property
     @pulumi.getter
@@ -5853,13 +5886,13 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
                  size: int,
                  snapshot_id: str):
         """
-        :param str category: The category of the disk.
-        :param bool delete_with_instance: Indicates whether the data disk is released with the instance.
-        :param str description: The description of the data disk.
+        :param str category: The category of the system disk.
+        :param bool delete_with_instance: Specifies whether to release the system disk when the instance is released.
+        :param str description: System disk description.
         :param bool encrypted: Encrypted the data in this disk.
-        :param str name: The name of the data disk.
-        :param str performance_level: PerformanceLevel.
-        :param int size: The performance level of the ESSD used as the data disk.
+        :param str name: System disk name.
+        :param str performance_level: The performance level of the ESSD used as the system disk.
+        :param int size: Size of the system disk, measured in GB.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
         pulumi.set(__self__, "category", category)
@@ -5875,7 +5908,7 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
     @pulumi.getter
     def category(self) -> str:
         """
-        The category of the disk.
+        The category of the system disk.
         """
         return pulumi.get(self, "category")
 
@@ -5883,7 +5916,7 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> bool:
         """
-        Indicates whether the data disk is released with the instance.
+        Specifies whether to release the system disk when the instance is released.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -5891,7 +5924,7 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        The description of the data disk.
+        System disk description.
         """
         return pulumi.get(self, "description")
 
@@ -5907,7 +5940,7 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the data disk.
+        System disk name.
         """
         return pulumi.get(self, "name")
 
@@ -5915,7 +5948,7 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> str:
         """
-        PerformanceLevel.
+        The performance level of the ESSD used as the system disk.
         """
         return pulumi.get(self, "performance_level")
 
@@ -5923,7 +5956,7 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
     @pulumi.getter
     def size(self) -> int:
         """
-        The performance level of the ESSD used as the data disk.
+        Size of the system disk, measured in GB.
         """
         return pulumi.get(self, "size")
 
@@ -5945,11 +5978,11 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
                  security_group_id: str,
                  vswitch_id: str):
         """
-        :param str description: The ENI description.
-        :param str name: The ENI name.
+        :param str description: System disk description.
+        :param str name: System disk name.
         :param str primary_ip: The primary private IP address of the ENI.
-        :param str security_group_id: The security group ID must be one in the same VPC.
-        :param str vswitch_id: The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param str security_group_id: The security group ID.
+        :param str vswitch_id: The vswitch id.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
@@ -5961,7 +5994,7 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        The ENI description.
+        System disk description.
         """
         return pulumi.get(self, "description")
 
@@ -5969,7 +6002,7 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The ENI name.
+        System disk name.
         """
         return pulumi.get(self, "name")
 
@@ -5985,7 +6018,7 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> str:
         """
-        The security group ID must be one in the same VPC.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -5993,7 +6026,7 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
         """
-        The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        The vswitch id.
         """
         return pulumi.get(self, "vswitch_id")
 

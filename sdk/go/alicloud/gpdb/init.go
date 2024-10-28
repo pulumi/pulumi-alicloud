@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPolicy{}
 	case "alicloud:gpdb/connection:Connection":
 		r = &Connection{}
+	case "alicloud:gpdb/database:Database":
+		r = &Database{}
 	case "alicloud:gpdb/dbInstanceIpArray:DbInstanceIpArray":
 		r = &DbInstanceIpArray{}
 	case "alicloud:gpdb/dbInstancePlan:DbInstancePlan":
@@ -77,6 +79,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"gpdb/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"gpdb/database",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

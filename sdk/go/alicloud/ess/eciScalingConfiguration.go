@@ -150,6 +150,8 @@ type EciScalingConfiguration struct {
 	ContainerGroupName pulumi.StringPtrOutput `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayOutput `pulumi:"containers"`
+	// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+	CostOptimization pulumi.BoolPtrOutput `pulumi:"costOptimization"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrOutput `pulumi:"cpu"`
 	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
@@ -159,6 +161,9 @@ type EciScalingConfiguration struct {
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
+	// details.
+	DnsConfigOptions EciScalingConfigurationDnsConfigOptionArrayOutput `pulumi:"dnsConfigOptions"`
 	// dns policy of contain group.
 	DnsPolicy pulumi.StringPtrOutput `pulumi:"dnsPolicy"`
 	// egress bandwidth.
@@ -185,6 +190,8 @@ type EciScalingConfiguration struct {
 	IngressBandwidth pulumi.IntPtrOutput `pulumi:"ingressBandwidth"`
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayOutput `pulumi:"initContainers"`
+	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+	InstanceFamilyLevel pulumi.StringPtrOutput `pulumi:"instanceFamilyLevel"`
 	// The specified ECS instance types. You can specify up to five ECS instance types.
 	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// Number of IPv6 addresses.
@@ -206,6 +213,9 @@ type EciScalingConfiguration struct {
 	ScalingConfigurationName pulumi.StringOutput `pulumi:"scalingConfigurationName"`
 	// ID of the scaling group of a eci scaling configuration.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
+	// The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
+	// details.
+	SecurityContextSysctls EciScalingConfigurationSecurityContextSysctlArrayOutput `pulumi:"securityContextSysctls"`
 	// ID of the security group used to create new instance. It is conflict
 	// with `securityGroupIds`.
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
@@ -275,6 +285,8 @@ type eciScalingConfigurationState struct {
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
+	// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+	CostOptimization *bool `pulumi:"costOptimization"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
 	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
@@ -284,6 +296,9 @@ type eciScalingConfigurationState struct {
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
+	// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
+	// details.
+	DnsConfigOptions []EciScalingConfigurationDnsConfigOption `pulumi:"dnsConfigOptions"`
 	// dns policy of contain group.
 	DnsPolicy *string `pulumi:"dnsPolicy"`
 	// egress bandwidth.
@@ -310,6 +325,8 @@ type eciScalingConfigurationState struct {
 	IngressBandwidth *int `pulumi:"ingressBandwidth"`
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
+	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+	InstanceFamilyLevel *string `pulumi:"instanceFamilyLevel"`
 	// The specified ECS instance types. You can specify up to five ECS instance types.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Number of IPv6 addresses.
@@ -331,6 +348,9 @@ type eciScalingConfigurationState struct {
 	ScalingConfigurationName *string `pulumi:"scalingConfigurationName"`
 	// ID of the scaling group of a eci scaling configuration.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
+	// The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
+	// details.
+	SecurityContextSysctls []EciScalingConfigurationSecurityContextSysctl `pulumi:"securityContextSysctls"`
 	// ID of the security group used to create new instance. It is conflict
 	// with `securityGroupIds`.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -368,6 +388,8 @@ type EciScalingConfigurationState struct {
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayInput
+	// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+	CostOptimization pulumi.BoolPtrInput
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
 	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
@@ -377,6 +399,9 @@ type EciScalingConfigurationState struct {
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
+	// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
+	// details.
+	DnsConfigOptions EciScalingConfigurationDnsConfigOptionArrayInput
 	// dns policy of contain group.
 	DnsPolicy pulumi.StringPtrInput
 	// egress bandwidth.
@@ -403,6 +428,8 @@ type EciScalingConfigurationState struct {
 	IngressBandwidth pulumi.IntPtrInput
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
+	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+	InstanceFamilyLevel pulumi.StringPtrInput
 	// The specified ECS instance types. You can specify up to five ECS instance types.
 	InstanceTypes pulumi.StringArrayInput
 	// Number of IPv6 addresses.
@@ -424,6 +451,9 @@ type EciScalingConfigurationState struct {
 	ScalingConfigurationName pulumi.StringPtrInput
 	// ID of the scaling group of a eci scaling configuration.
 	ScalingGroupId pulumi.StringPtrInput
+	// The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
+	// details.
+	SecurityContextSysctls EciScalingConfigurationSecurityContextSysctlArrayInput
 	// ID of the security group used to create new instance. It is conflict
 	// with `securityGroupIds`.
 	SecurityGroupId pulumi.StringPtrInput
@@ -465,6 +495,8 @@ type eciScalingConfigurationArgs struct {
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
+	// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+	CostOptimization *bool `pulumi:"costOptimization"`
 	// The amount of CPU resources allocated to the container group.
 	Cpu *float64 `pulumi:"cpu"`
 	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
@@ -474,6 +506,9 @@ type eciScalingConfigurationArgs struct {
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
+	// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
+	// details.
+	DnsConfigOptions []EciScalingConfigurationDnsConfigOption `pulumi:"dnsConfigOptions"`
 	// dns policy of contain group.
 	DnsPolicy *string `pulumi:"dnsPolicy"`
 	// egress bandwidth.
@@ -500,6 +535,8 @@ type eciScalingConfigurationArgs struct {
 	IngressBandwidth *int `pulumi:"ingressBandwidth"`
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
+	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+	InstanceFamilyLevel *string `pulumi:"instanceFamilyLevel"`
 	// The specified ECS instance types. You can specify up to five ECS instance types.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Number of IPv6 addresses.
@@ -521,6 +558,9 @@ type eciScalingConfigurationArgs struct {
 	ScalingConfigurationName *string `pulumi:"scalingConfigurationName"`
 	// ID of the scaling group of a eci scaling configuration.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
+	// The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
+	// details.
+	SecurityContextSysctls []EciScalingConfigurationSecurityContextSysctl `pulumi:"securityContextSysctls"`
 	// ID of the security group used to create new instance. It is conflict
 	// with `securityGroupIds`.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -559,6 +599,8 @@ type EciScalingConfigurationArgs struct {
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayInput
+	// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+	CostOptimization pulumi.BoolPtrInput
 	// The amount of CPU resources allocated to the container group.
 	Cpu pulumi.Float64PtrInput
 	// The number of physical CPU cores. You can specify this parameter for only specific instance types.
@@ -568,6 +610,9 @@ type EciScalingConfigurationArgs struct {
 	// The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
 	// 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
+	// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
+	// details.
+	DnsConfigOptions EciScalingConfigurationDnsConfigOptionArrayInput
 	// dns policy of contain group.
 	DnsPolicy pulumi.StringPtrInput
 	// egress bandwidth.
@@ -594,6 +639,8 @@ type EciScalingConfigurationArgs struct {
 	IngressBandwidth pulumi.IntPtrInput
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
+	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+	InstanceFamilyLevel pulumi.StringPtrInput
 	// The specified ECS instance types. You can specify up to five ECS instance types.
 	InstanceTypes pulumi.StringArrayInput
 	// Number of IPv6 addresses.
@@ -615,6 +662,9 @@ type EciScalingConfigurationArgs struct {
 	ScalingConfigurationName pulumi.StringPtrInput
 	// ID of the scaling group of a eci scaling configuration.
 	ScalingGroupId pulumi.StringInput
+	// The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
+	// details.
+	SecurityContextSysctls EciScalingConfigurationSecurityContextSysctlArrayInput
 	// ID of the security group used to create new instance. It is conflict
 	// with `securityGroupIds`.
 	SecurityGroupId pulumi.StringPtrInput
@@ -761,6 +811,11 @@ func (o EciScalingConfigurationOutput) Containers() EciScalingConfigurationConta
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationContainerArrayOutput { return v.Containers }).(EciScalingConfigurationContainerArrayOutput)
 }
 
+// Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+func (o EciScalingConfigurationOutput) CostOptimization() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.CostOptimization }).(pulumi.BoolPtrOutput)
+}
+
 // The amount of CPU resources allocated to the container group.
 func (o EciScalingConfigurationOutput) Cpu() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.Float64PtrOutput { return v.Cpu }).(pulumi.Float64PtrOutput)
@@ -780,6 +835,14 @@ func (o EciScalingConfigurationOutput) CpuOptionsThreadsPerCore() pulumi.IntPtrO
 // 256 characters in length and cannot start with http:// or https://.
 func (o EciScalingConfigurationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
+// details.
+func (o EciScalingConfigurationOutput) DnsConfigOptions() EciScalingConfigurationDnsConfigOptionArrayOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationDnsConfigOptionArrayOutput {
+		return v.DnsConfigOptions
+	}).(EciScalingConfigurationDnsConfigOptionArrayOutput)
 }
 
 // dns policy of contain group.
@@ -848,6 +911,11 @@ func (o EciScalingConfigurationOutput) InitContainers() EciScalingConfigurationI
 	}).(EciScalingConfigurationInitContainerArrayOutput)
 }
 
+// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+func (o EciScalingConfigurationOutput) InstanceFamilyLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.InstanceFamilyLevel }).(pulumi.StringPtrOutput)
+}
+
 // The specified ECS instance types. You can specify up to five ECS instance types.
 func (o EciScalingConfigurationOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
@@ -894,6 +962,14 @@ func (o EciScalingConfigurationOutput) ScalingConfigurationName() pulumi.StringO
 // ID of the scaling group of a eci scaling configuration.
 func (o EciScalingConfigurationOutput) ScalingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringOutput { return v.ScalingGroupId }).(pulumi.StringOutput)
+}
+
+// The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
+// details.
+func (o EciScalingConfigurationOutput) SecurityContextSysctls() EciScalingConfigurationSecurityContextSysctlArrayOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationSecurityContextSysctlArrayOutput {
+		return v.SecurityContextSysctls
+	}).(EciScalingConfigurationSecurityContextSysctlArrayOutput)
 }
 
 // ID of the security group used to create new instance. It is conflict

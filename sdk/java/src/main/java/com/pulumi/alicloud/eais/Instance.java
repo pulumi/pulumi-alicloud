@@ -16,9 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a EAIS Instance resource.
+ * Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
  * 
- * For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+ * For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
  * 
  * &gt; **NOTE:** Available since v1.137.0.
  * 
@@ -34,8 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -58,35 +56,31 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var zoneId = "cn-hangzhou-h";
  * 
- *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation("VSwitch")
- *             .build());
- * 
- *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *         var default_ = new Network("default", NetworkArgs.builder()
  *             .vpcName(name)
- *             .cidrBlock("10.0.0.0/8")
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
  *             .vswitchName(name)
- *             .cidrBlock("10.1.0.0/16")
- *             .vpcId(defaultNetwork.id())
+ *             .vpcId(default_.id())
+ *             .cidrBlock("192.168.192.0/24")
  *             .zoneId(zoneId)
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
- *             .vpcId(defaultNetwork.id())
+ *             .vpcId(default_.id())
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .instanceType("eais.ei-a6.2xlarge")
- *             .instanceName(name)
- *             .securityGroupId(defaultSecurityGroup.id())
  *             .vswitchId(defaultSwitch.id())
+ *             .securityGroupId(defaultSecurityGroup.id())
+ *             .instanceName(name)
  *             .build());
  * 
  *     }
@@ -97,7 +91,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * EAIS Instance can be imported using the id, e.g.
+ * Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:eais/instance:Instance example &lt;id&gt;
@@ -107,42 +101,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:eais/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+     * Specifies whether to force delete the Instance. Default value: `false`. Valid values:
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+     * @return Specifies whether to force delete the Instance. Default value: `false`. Valid values:
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The name of the instance.
+     * The name of the Instance.
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> instanceName;
+    private Output<String> instanceName;
 
     /**
-     * @return The name of the instance.
+     * @return The name of the Instance.
      * 
      */
-    public Output<Optional<String>> instanceName() {
-        return Codegen.optional(this.instanceName);
+    public Output<String> instanceName() {
+        return this.instanceName;
     }
     /**
-     * The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+     * @return The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
      * 
      */
     public Output<String> instanceType() {
@@ -163,28 +157,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityGroupId;
     }
     /**
-     * The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+     * The status of the Instance.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+     * @return The status of the Instance.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The ID of the vswitch.
+     * The ID of the vSwitch.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the vswitch.
+     * @return The ID of the vSwitch.
      * 
      */
     public Output<String> vswitchId() {

@@ -115,6 +115,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.232.0) The time when the instance was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.232.0) The time when the instance was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * Performance mode of the t5 burstable instance. Valid values: &#39;Standard&#39;, &#39;Unlimited&#39;.
      * 
      */
@@ -255,6 +270,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> enableJumboFrame() {
         return Optional.ofNullable(this.enableJumboFrame);
+    }
+
+    /**
+     * (Available since v1.232.0) The expiration time of the instance.
+     * 
+     */
+    @Import(name="expiredTime")
+    private @Nullable Output<String> expiredTime;
+
+    /**
+     * @return (Available since v1.232.0) The expiration time of the instance.
+     * 
+     */
+    public Optional<Output<String>> expiredTime() {
+        return Optional.ofNullable(this.expiredTime);
     }
 
     /**
@@ -807,6 +837,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="passwordInherit")
+    private @Nullable Output<Boolean> passwordInherit;
+
+    /**
+     * @return Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> passwordInherit() {
+        return Optional.ofNullable(this.passwordInherit);
+    }
+
+    /**
      * The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
      * - [1-3] when `period_unit` in &#34;Week&#34;
@@ -892,40 +937,12 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The number of queues supported by the ERI.
      * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-     * 
      */
     @Import(name="queuePairNumber")
     private @Nullable Output<Integer> queuePairNumber;
 
     /**
      * @return The number of queues supported by the ERI.
-     * 
-     * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-     * 
-     * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-     * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-     * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-     * 
-     * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
      * 
      */
     public Optional<Output<Integer>> queuePairNumber() {
@@ -1100,6 +1117,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> spotStrategy() {
         return Optional.ofNullable(this.spotStrategy);
+    }
+
+    /**
+     * (Available since v1.232.0) The time when the instance was last started.
+     * 
+     */
+    @Import(name="startTime")
+    private @Nullable Output<String> startTime;
+
+    /**
+     * @return (Available since v1.232.0) The time when the instance was last started.
+     * 
+     */
+    public Optional<Output<String>> startTime() {
+        return Optional.ofNullable(this.startTime);
     }
 
     /**
@@ -1398,6 +1430,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.availabilityZone = $.availabilityZone;
         this.cpu = $.cpu;
+        this.createTime = $.createTime;
         this.creditSpecification = $.creditSpecification;
         this.dataDisks = $.dataDisks;
         this.dedicatedHostId = $.dedicatedHostId;
@@ -1407,6 +1440,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.dryRun = $.dryRun;
         this.enableJumboFrame = $.enableJumboFrame;
+        this.expiredTime = $.expiredTime;
         this.forceDelete = $.forceDelete;
         this.hostName = $.hostName;
         this.hpcClusterId = $.hpcClusterId;
@@ -1442,6 +1476,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.osName = $.osName;
         this.osType = $.osType;
         this.password = $.password;
+        this.passwordInherit = $.passwordInherit;
         this.period = $.period;
         this.periodUnit = $.periodUnit;
         this.primaryIpAddress = $.primaryIpAddress;
@@ -1458,6 +1493,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.spotDuration = $.spotDuration;
         this.spotPriceLimit = $.spotPriceLimit;
         this.spotStrategy = $.spotStrategy;
+        this.startTime = $.startTime;
         this.status = $.status;
         this.stoppedMode = $.stoppedMode;
         this.systemDiskAutoSnapshotPolicyId = $.systemDiskAutoSnapshotPolicyId;
@@ -1615,6 +1651,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder cpu(Integer cpu) {
             return cpu(Output.of(cpu));
+        }
+
+        /**
+         * @param createTime (Available since v1.232.0) The time when the instance was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.232.0) The time when the instance was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -1822,6 +1879,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableJumboFrame(Boolean enableJumboFrame) {
             return enableJumboFrame(Output.of(enableJumboFrame));
+        }
+
+        /**
+         * @param expiredTime (Available since v1.232.0) The expiration time of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiredTime(@Nullable Output<String> expiredTime) {
+            $.expiredTime = expiredTime;
+            return this;
+        }
+
+        /**
+         * @param expiredTime (Available since v1.232.0) The expiration time of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiredTime(String expiredTime) {
+            return expiredTime(Output.of(expiredTime));
         }
 
         /**
@@ -2590,6 +2668,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param passwordInherit Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordInherit(@Nullable Output<Boolean> passwordInherit) {
+            $.passwordInherit = passwordInherit;
+            return this;
+        }
+
+        /**
+         * @param passwordInherit Specifies whether to use the password preset in the image. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder passwordInherit(Boolean passwordInherit) {
+            return passwordInherit(Output.of(passwordInherit));
+        }
+
+        /**
          * @param period The duration that you will buy the resource, in month. It is valid and required when `instance_charge_type` is `PrePaid`. Valid values:
          * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
          * - [1-3] when `period_unit` in &#34;Week&#34;
@@ -2705,20 +2804,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param queuePairNumber The number of queues supported by the ERI.
          * 
-         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
-         * 
          * @return builder
          * 
          */
@@ -2729,20 +2814,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param queuePairNumber The number of queues supported by the ERI.
-         * 
-         * &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s charge type can be changed to &#34;PrePaid&#34; by specifying `period` and `period_unit`, but it is irreversible.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s private IP address can be specified when creating VPC network instance.
-         * 
-         * &gt; **NOTE:** From version 1.5.0, instance&#39;s vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public IP for an instance.
-         * Setting &#34;internet_max_bandwidth_out&#34; to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-         * However, at present, &#39;PrePaid&#39; instance cannot narrow its max bandwidth out when its &#39;internet_charge_type&#39; is &#34;PayByBandwidth&#34;.
-         * 
-         * &gt; **NOTE:** From version 1.7.0, instance&#39;s type can be changed. When it is changed, the instance will reboot to make the change take effect.
          * 
          * @return builder
          * 
@@ -2999,6 +3070,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spotStrategy(String spotStrategy) {
             return spotStrategy(Output.of(spotStrategy));
+        }
+
+        /**
+         * @param startTime (Available since v1.232.0) The time when the instance was last started.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(@Nullable Output<String> startTime) {
+            $.startTime = startTime;
+            return this;
+        }
+
+        /**
+         * @param startTime (Available since v1.232.0) The time when the instance was last started.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder startTime(String startTime) {
+            return startTime(Output.of(startTime));
         }
 
         /**

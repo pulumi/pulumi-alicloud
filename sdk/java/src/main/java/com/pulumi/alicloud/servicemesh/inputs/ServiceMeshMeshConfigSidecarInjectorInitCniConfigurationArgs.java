@@ -17,14 +17,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs 
     public static final ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs Empty = new ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs();
 
     /**
-     * Enable CNI.
+     * Enable CNI
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs 
     }
 
     /**
-     * The excluded namespace.
+     * The excluded namespace
      * 
      */
     @Import(name="excludeNamespaces")
     private @Nullable Output<String> excludeNamespaces;
 
     /**
-     * @return The excluded namespace.
+     * @return The excluded namespace
      * 
      */
     public Optional<Output<String>> excludeNamespaces() {
@@ -72,7 +72,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs 
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs 
         }
 
         /**
-         * @param enabled Enable CNI.
+         * @param enabled Enable CNI
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs 
         }
 
         /**
-         * @param excludeNamespaces The excluded namespace.
+         * @param excludeNamespaces The excluded namespace
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs 
         }
 
         /**
-         * @param excludeNamespaces The excluded namespace.
+         * @param excludeNamespaces The excluded namespace
          * 
          * @return builder
          * 

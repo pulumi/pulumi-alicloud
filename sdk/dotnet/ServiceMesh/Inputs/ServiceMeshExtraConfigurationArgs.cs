@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshExtraConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
+        /// Whether the data plane KubeAPI access capability is enabled.
         /// </summary>
         [Input("crAggregationEnabled")]
         public Input<bool>? CrAggregationEnabled { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
     /// 
-    /// &gt; **NOTE:** Available in v1.166.0+.
+    /// &gt; **NOTE:** Available since v1.166.0.
     /// 
     /// ## Example Usage
     /// 
@@ -28,8 +28,6 @@ namespace Pulumi.AliCloud.Mse
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
     ///     var example = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -49,25 +47,27 @@ namespace Pulumi.AliCloud.Mse
     ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var @default = new AliCloud.Mse.Cluster("default", new()
+    ///     var exampleCluster = new AliCloud.Mse.Cluster("example", new()
     ///     {
-    ///         ConnectionType = "slb",
-    ///         NetType = "privatenet",
-    ///         VswitchId = exampleSwitch.Id,
     ///         ClusterSpecification = "MSE_SC_1_2_60_c",
-    ///         ClusterVersion = "NACOS_2_0_0",
-    ///         InstanceCount = 1,
-    ///         PubNetworkFlow = "1",
-    ///         ClusterAliasName = name,
-    ///         MseVersion = "mse_dev",
     ///         ClusterType = "Nacos-Ans",
+    ///         ClusterVersion = "NACOS_2_0_0",
+    ///         InstanceCount = 3,
+    ///         NetType = "privatenet",
+    ///         PubNetworkFlow = "1",
+    ///         ConnectionType = "slb",
+    ///         ClusterAliasName = "terraform-example",
+    ///         MseVersion = "mse_pro",
+    ///         VswitchId = exampleSwitch.Id,
+    ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
     ///     var exampleEngineNamespace = new AliCloud.Mse.EngineNamespace("example", new()
     ///     {
-    ///         ClusterId = @default.Id,
-    ///         NamespaceShowName = name,
-    ///         NamespaceId = name,
+    ///         InstanceId = exampleCluster.Id,
+    ///         NamespaceShowName = "terraform-example",
+    ///         NamespaceId = "terraform-example",
+    ///         NamespaceDesc = "description",
     ///     });
     /// 
     /// });
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Mse
     /// Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example &lt;cluster_id&gt;:&lt;namespace_id&gt;
+    /// $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example &lt;instance_id&gt;:&lt;namespace_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:mse/engineNamespace:EngineNamespace")]
@@ -91,10 +91,24 @@ namespace Pulumi.AliCloud.Mse
         public Output<string?> AcceptLanguage { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the cluster.
+        /// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
+
+        /// <summary>
+        /// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        /// </summary>
+        [Output("instanceId")]
+        public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the namespace.
+        /// 
+        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        /// </summary>
+        [Output("namespaceDesc")]
+        public Output<string> NamespaceDesc { get; private set; } = null!;
 
         /// <summary>
         /// The id of Namespace.
@@ -161,16 +175,30 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? AcceptLanguage { get; set; }
 
         /// <summary>
-        /// The id of the cluster.
+        /// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
         /// </summary>
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The description of the namespace.
+        /// 
+        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        /// </summary>
+        [Input("namespaceDesc")]
+        public Input<string>? NamespaceDesc { get; set; }
 
         /// <summary>
         /// The id of Namespace.
         /// </summary>
-        [Input("namespaceId", required: true)]
-        public Input<string> NamespaceId { get; set; } = null!;
+        [Input("namespaceId")]
+        public Input<string>? NamespaceId { get; set; }
 
         /// <summary>
         /// The name of the Engine Namespace.
@@ -193,10 +221,24 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? AcceptLanguage { get; set; }
 
         /// <summary>
-        /// The id of the cluster.
+        /// The id of the cluster.It is formatted to `mse-xxxxxxxx`.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
+
+        /// <summary>
+        /// The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The description of the namespace.
+        /// 
+        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
+        /// </summary>
+        [Input("namespaceDesc")]
+        public Input<string>? NamespaceDesc { get; set; }
 
         /// <summary>
         /// The id of Namespace.

@@ -29,10 +29,12 @@ class EciScalingConfigurationArgs:
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]]] = None,
+                 cost_optimization: Optional[pulumi.Input[bool]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  cpu_options_core: Optional[pulumi.Input[int]] = None,
                  cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dns_config_options: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationDnsConfigOptionArgs']]]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
                  egress_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -45,6 +47,7 @@ class EciScalingConfigurationArgs:
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]] = None,
+                 instance_family_level: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
@@ -53,6 +56,7 @@ class EciScalingConfigurationArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  restart_policy: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
+                 security_context_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationSecurityContextSysctlArgs']]]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -71,11 +75,14 @@ class EciScalingConfigurationArgs:
         :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers. See `containers` below for details.
+        :param pulumi.Input[bool] cost_optimization: Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
         :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationDnsConfigOptionArgs']]] dns_config_options: The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+               details.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
         :param pulumi.Input[int] egress_bandwidth: egress bandwidth.
         :param pulumi.Input[int] eip_bandwidth: Eip bandwidth.
@@ -90,6 +97,7 @@ class EciScalingConfigurationArgs:
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[str] instance_family_level: The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
@@ -101,6 +109,8 @@ class EciScalingConfigurationArgs:
                English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number,
                underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is
                EciScalingConfigurationId.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationSecurityContextSysctlArgs']]] security_context_sysctls: The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+               details.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict
                with `security_group_ids`.
         :param pulumi.Input[float] spot_price_limit: The maximum price hourly for spot instance.
@@ -129,6 +139,8 @@ class EciScalingConfigurationArgs:
             pulumi.set(__self__, "container_group_name", container_group_name)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
+        if cost_optimization is not None:
+            pulumi.set(__self__, "cost_optimization", cost_optimization)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if cpu_options_core is not None:
@@ -137,6 +149,8 @@ class EciScalingConfigurationArgs:
             pulumi.set(__self__, "cpu_options_threads_per_core", cpu_options_threads_per_core)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dns_config_options is not None:
+            pulumi.set(__self__, "dns_config_options", dns_config_options)
         if dns_policy is not None:
             pulumi.set(__self__, "dns_policy", dns_policy)
         if egress_bandwidth is not None:
@@ -161,6 +175,8 @@ class EciScalingConfigurationArgs:
             pulumi.set(__self__, "ingress_bandwidth", ingress_bandwidth)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
+        if instance_family_level is not None:
+            pulumi.set(__self__, "instance_family_level", instance_family_level)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if ipv6_address_count is not None:
@@ -177,6 +193,8 @@ class EciScalingConfigurationArgs:
             pulumi.set(__self__, "restart_policy", restart_policy)
         if scaling_configuration_name is not None:
             pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
+        if security_context_sysctls is not None:
+            pulumi.set(__self__, "security_context_sysctls", security_context_sysctls)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if spot_price_limit is not None:
@@ -289,6 +307,18 @@ class EciScalingConfigurationArgs:
         pulumi.set(self, "containers", value)
 
     @property
+    @pulumi.getter(name="costOptimization")
+    def cost_optimization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+        """
+        return pulumi.get(self, "cost_optimization")
+
+    @cost_optimization.setter
+    def cost_optimization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cost_optimization", value)
+
+    @property
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[float]]:
         """
@@ -336,6 +366,19 @@ class EciScalingConfigurationArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsConfigOptions")
+    def dns_config_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationDnsConfigOptionArgs']]]]:
+        """
+        The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+        details.
+        """
+        return pulumi.get(self, "dns_config_options")
+
+    @dns_config_options.setter
+    def dns_config_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationDnsConfigOptionArgs']]]]):
+        pulumi.set(self, "dns_config_options", value)
 
     @property
     @pulumi.getter(name="dnsPolicy")
@@ -482,6 +525,18 @@ class EciScalingConfigurationArgs:
     @init_containers.setter
     def init_containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]]):
         pulumi.set(self, "init_containers", value)
+
+    @property
+    @pulumi.getter(name="instanceFamilyLevel")
+    def instance_family_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+        """
+        return pulumi.get(self, "instance_family_level")
+
+    @instance_family_level.setter
+    def instance_family_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_family_level", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -583,6 +638,19 @@ class EciScalingConfigurationArgs:
         pulumi.set(self, "scaling_configuration_name", value)
 
     @property
+    @pulumi.getter(name="securityContextSysctls")
+    def security_context_sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationSecurityContextSysctlArgs']]]]:
+        """
+        The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+        details.
+        """
+        return pulumi.get(self, "security_context_sysctls")
+
+    @security_context_sysctls.setter
+    def security_context_sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationSecurityContextSysctlArgs']]]]):
+        pulumi.set(self, "security_context_sysctls", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -671,10 +739,12 @@ class _EciScalingConfigurationState:
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]]] = None,
+                 cost_optimization: Optional[pulumi.Input[bool]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  cpu_options_core: Optional[pulumi.Input[int]] = None,
                  cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dns_config_options: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationDnsConfigOptionArgs']]]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
                  egress_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -687,6 +757,7 @@ class _EciScalingConfigurationState:
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]] = None,
+                 instance_family_level: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
@@ -696,6 +767,7 @@ class _EciScalingConfigurationState:
                  restart_policy: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 security_context_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationSecurityContextSysctlArgs']]]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -713,11 +785,14 @@ class _EciScalingConfigurationState:
         :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers. See `containers` below for details.
+        :param pulumi.Input[bool] cost_optimization: Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
         :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationDnsConfigOptionArgs']]] dns_config_options: The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+               details.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
         :param pulumi.Input[int] egress_bandwidth: egress bandwidth.
         :param pulumi.Input[int] eip_bandwidth: Eip bandwidth.
@@ -732,6 +807,7 @@ class _EciScalingConfigurationState:
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[str] instance_family_level: The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
@@ -744,6 +820,8 @@ class _EciScalingConfigurationState:
                underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is
                EciScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a eci scaling configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationSecurityContextSysctlArgs']]] security_context_sysctls: The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+               details.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict
                with `security_group_ids`.
         :param pulumi.Input[float] spot_price_limit: The maximum price hourly for spot instance.
@@ -771,6 +849,8 @@ class _EciScalingConfigurationState:
             pulumi.set(__self__, "container_group_name", container_group_name)
         if containers is not None:
             pulumi.set(__self__, "containers", containers)
+        if cost_optimization is not None:
+            pulumi.set(__self__, "cost_optimization", cost_optimization)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if cpu_options_core is not None:
@@ -779,6 +859,8 @@ class _EciScalingConfigurationState:
             pulumi.set(__self__, "cpu_options_threads_per_core", cpu_options_threads_per_core)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dns_config_options is not None:
+            pulumi.set(__self__, "dns_config_options", dns_config_options)
         if dns_policy is not None:
             pulumi.set(__self__, "dns_policy", dns_policy)
         if egress_bandwidth is not None:
@@ -803,6 +885,8 @@ class _EciScalingConfigurationState:
             pulumi.set(__self__, "ingress_bandwidth", ingress_bandwidth)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
+        if instance_family_level is not None:
+            pulumi.set(__self__, "instance_family_level", instance_family_level)
         if instance_types is not None:
             pulumi.set(__self__, "instance_types", instance_types)
         if ipv6_address_count is not None:
@@ -821,6 +905,8 @@ class _EciScalingConfigurationState:
             pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
         if scaling_group_id is not None:
             pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if security_context_sysctls is not None:
+            pulumi.set(__self__, "security_context_sysctls", security_context_sysctls)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if spot_price_limit is not None:
@@ -921,6 +1007,18 @@ class _EciScalingConfigurationState:
         pulumi.set(self, "containers", value)
 
     @property
+    @pulumi.getter(name="costOptimization")
+    def cost_optimization(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+        """
+        return pulumi.get(self, "cost_optimization")
+
+    @cost_optimization.setter
+    def cost_optimization(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cost_optimization", value)
+
+    @property
     @pulumi.getter
     def cpu(self) -> Optional[pulumi.Input[float]]:
         """
@@ -968,6 +1066,19 @@ class _EciScalingConfigurationState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsConfigOptions")
+    def dns_config_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationDnsConfigOptionArgs']]]]:
+        """
+        The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+        details.
+        """
+        return pulumi.get(self, "dns_config_options")
+
+    @dns_config_options.setter
+    def dns_config_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationDnsConfigOptionArgs']]]]):
+        pulumi.set(self, "dns_config_options", value)
 
     @property
     @pulumi.getter(name="dnsPolicy")
@@ -1114,6 +1225,18 @@ class _EciScalingConfigurationState:
     @init_containers.setter
     def init_containers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]]):
         pulumi.set(self, "init_containers", value)
+
+    @property
+    @pulumi.getter(name="instanceFamilyLevel")
+    def instance_family_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+        """
+        return pulumi.get(self, "instance_family_level")
+
+    @instance_family_level.setter
+    def instance_family_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_family_level", value)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -1227,6 +1350,19 @@ class _EciScalingConfigurationState:
         pulumi.set(self, "scaling_group_id", value)
 
     @property
+    @pulumi.getter(name="securityContextSysctls")
+    def security_context_sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationSecurityContextSysctlArgs']]]]:
+        """
+        The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+        details.
+        """
+        return pulumi.get(self, "security_context_sysctls")
+
+    @security_context_sysctls.setter
+    def security_context_sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationSecurityContextSysctlArgs']]]]):
+        pulumi.set(self, "security_context_sysctls", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1317,10 +1453,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]]] = None,
+                 cost_optimization: Optional[pulumi.Input[bool]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  cpu_options_core: Optional[pulumi.Input[int]] = None,
                  cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dns_config_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationDnsConfigOptionArgs', 'EciScalingConfigurationDnsConfigOptionArgsDict']]]]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
                  egress_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -1333,6 +1471,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]]] = None,
+                 instance_family_level: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
@@ -1342,6 +1481,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  restart_policy: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 security_context_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationSecurityContextSysctlArgs', 'EciScalingConfigurationSecurityContextSysctlArgsDict']]]]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -1429,11 +1569,14 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]] containers: The list of containers. See `containers` below for details.
+        :param pulumi.Input[bool] cost_optimization: Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
         :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationDnsConfigOptionArgs', 'EciScalingConfigurationDnsConfigOptionArgsDict']]]] dns_config_options: The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+               details.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
         :param pulumi.Input[int] egress_bandwidth: egress bandwidth.
         :param pulumi.Input[int] eip_bandwidth: Eip bandwidth.
@@ -1448,6 +1591,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[str] instance_family_level: The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
@@ -1460,6 +1604,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
                underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is
                EciScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a eci scaling configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationSecurityContextSysctlArgs', 'EciScalingConfigurationSecurityContextSysctlArgsDict']]]] security_context_sysctls: The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+               details.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict
                with `security_group_ids`.
         :param pulumi.Input[float] spot_price_limit: The maximum price hourly for spot instance.
@@ -1570,10 +1716,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
                  container_group_name: Optional[pulumi.Input[str]] = None,
                  containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]]] = None,
+                 cost_optimization: Optional[pulumi.Input[bool]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  cpu_options_core: Optional[pulumi.Input[int]] = None,
                  cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dns_config_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationDnsConfigOptionArgs', 'EciScalingConfigurationDnsConfigOptionArgsDict']]]]] = None,
                  dns_policy: Optional[pulumi.Input[str]] = None,
                  egress_bandwidth: Optional[pulumi.Input[int]] = None,
                  eip_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -1586,6 +1734,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]]] = None,
+                 instance_family_level: Optional[pulumi.Input[str]] = None,
                  instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
@@ -1595,6 +1744,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  restart_policy: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 security_context_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationSecurityContextSysctlArgs', 'EciScalingConfigurationSecurityContextSysctlArgsDict']]]]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  spot_price_limit: Optional[pulumi.Input[float]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -1617,10 +1767,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["auto_match_image_cache"] = auto_match_image_cache
             __props__.__dict__["container_group_name"] = container_group_name
             __props__.__dict__["containers"] = containers
+            __props__.__dict__["cost_optimization"] = cost_optimization
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["cpu_options_core"] = cpu_options_core
             __props__.__dict__["cpu_options_threads_per_core"] = cpu_options_threads_per_core
             __props__.__dict__["description"] = description
+            __props__.__dict__["dns_config_options"] = dns_config_options
             __props__.__dict__["dns_policy"] = dns_policy
             __props__.__dict__["egress_bandwidth"] = egress_bandwidth
             __props__.__dict__["eip_bandwidth"] = eip_bandwidth
@@ -1633,6 +1785,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["image_snapshot_id"] = image_snapshot_id
             __props__.__dict__["ingress_bandwidth"] = ingress_bandwidth
             __props__.__dict__["init_containers"] = init_containers
+            __props__.__dict__["instance_family_level"] = instance_family_level
             __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["ipv6_address_count"] = ipv6_address_count
             __props__.__dict__["load_balancer_weight"] = load_balancer_weight
@@ -1644,6 +1797,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__.__dict__["scaling_group_id"] = scaling_group_id
+            __props__.__dict__["security_context_sysctls"] = security_context_sysctls
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["spot_price_limit"] = spot_price_limit
             __props__.__dict__["spot_strategy"] = spot_strategy
@@ -1667,10 +1821,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
             auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
             container_group_name: Optional[pulumi.Input[str]] = None,
             containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]]] = None,
+            cost_optimization: Optional[pulumi.Input[bool]] = None,
             cpu: Optional[pulumi.Input[float]] = None,
             cpu_options_core: Optional[pulumi.Input[int]] = None,
             cpu_options_threads_per_core: Optional[pulumi.Input[int]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            dns_config_options: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationDnsConfigOptionArgs', 'EciScalingConfigurationDnsConfigOptionArgsDict']]]]] = None,
             dns_policy: Optional[pulumi.Input[str]] = None,
             egress_bandwidth: Optional[pulumi.Input[int]] = None,
             eip_bandwidth: Optional[pulumi.Input[int]] = None,
@@ -1683,6 +1839,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             image_snapshot_id: Optional[pulumi.Input[str]] = None,
             ingress_bandwidth: Optional[pulumi.Input[int]] = None,
             init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]]] = None,
+            instance_family_level: Optional[pulumi.Input[str]] = None,
             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_address_count: Optional[pulumi.Input[int]] = None,
             load_balancer_weight: Optional[pulumi.Input[int]] = None,
@@ -1692,6 +1849,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             restart_policy: Optional[pulumi.Input[str]] = None,
             scaling_configuration_name: Optional[pulumi.Input[str]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
+            security_context_sysctls: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationSecurityContextSysctlArgs', 'EciScalingConfigurationSecurityContextSysctlArgsDict']]]]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             spot_price_limit: Optional[pulumi.Input[float]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
@@ -1714,11 +1872,14 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
                English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]] containers: The list of containers. See `containers` below for details.
+        :param pulumi.Input[bool] cost_optimization: Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
         :param pulumi.Input[int] cpu_options_core: The number of physical CPU cores. You can specify this parameter for only specific instance types.
         :param pulumi.Input[int] cpu_options_threads_per_core: The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
         :param pulumi.Input[str] description: The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
                256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationDnsConfigOptionArgs', 'EciScalingConfigurationDnsConfigOptionArgsDict']]]] dns_config_options: The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+               details.
         :param pulumi.Input[str] dns_policy: dns policy of contain group.
         :param pulumi.Input[int] egress_bandwidth: egress bandwidth.
         :param pulumi.Input[int] eip_bandwidth: Eip bandwidth.
@@ -1733,6 +1894,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationInitContainerArgs', 'EciScalingConfigurationInitContainerArgsDict']]]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[str] instance_family_level: The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
@@ -1745,6 +1907,8 @@ class EciScalingConfiguration(pulumi.CustomResource):
                underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is
                EciScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a eci scaling configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationSecurityContextSysctlArgs', 'EciScalingConfigurationSecurityContextSysctlArgsDict']]]] security_context_sysctls: The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+               details.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict
                with `security_group_ids`.
         :param pulumi.Input[float] spot_price_limit: The maximum price hourly for spot instance.
@@ -1769,10 +1933,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["auto_match_image_cache"] = auto_match_image_cache
         __props__.__dict__["container_group_name"] = container_group_name
         __props__.__dict__["containers"] = containers
+        __props__.__dict__["cost_optimization"] = cost_optimization
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["cpu_options_core"] = cpu_options_core
         __props__.__dict__["cpu_options_threads_per_core"] = cpu_options_threads_per_core
         __props__.__dict__["description"] = description
+        __props__.__dict__["dns_config_options"] = dns_config_options
         __props__.__dict__["dns_policy"] = dns_policy
         __props__.__dict__["egress_bandwidth"] = egress_bandwidth
         __props__.__dict__["eip_bandwidth"] = eip_bandwidth
@@ -1785,6 +1951,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["image_snapshot_id"] = image_snapshot_id
         __props__.__dict__["ingress_bandwidth"] = ingress_bandwidth
         __props__.__dict__["init_containers"] = init_containers
+        __props__.__dict__["instance_family_level"] = instance_family_level
         __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["ipv6_address_count"] = ipv6_address_count
         __props__.__dict__["load_balancer_weight"] = load_balancer_weight
@@ -1794,6 +1961,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["restart_policy"] = restart_policy
         __props__.__dict__["scaling_configuration_name"] = scaling_configuration_name
         __props__.__dict__["scaling_group_id"] = scaling_group_id
+        __props__.__dict__["security_context_sysctls"] = security_context_sysctls
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["spot_price_limit"] = spot_price_limit
         __props__.__dict__["spot_strategy"] = spot_strategy
@@ -1861,6 +2029,14 @@ class EciScalingConfiguration(pulumi.CustomResource):
         return pulumi.get(self, "containers")
 
     @property
+    @pulumi.getter(name="costOptimization")
+    def cost_optimization(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+        """
+        return pulumi.get(self, "cost_optimization")
+
+    @property
     @pulumi.getter
     def cpu(self) -> pulumi.Output[Optional[float]]:
         """
@@ -1892,6 +2068,15 @@ class EciScalingConfiguration(pulumi.CustomResource):
         256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsConfigOptions")
+    def dns_config_options(self) -> pulumi.Output[Optional[Sequence['outputs.EciScalingConfigurationDnsConfigOption']]]:
+        """
+        The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+        details.
+        """
+        return pulumi.get(self, "dns_config_options")
 
     @property
     @pulumi.getter(name="dnsPolicy")
@@ -1992,6 +2177,14 @@ class EciScalingConfiguration(pulumi.CustomResource):
         return pulumi.get(self, "init_containers")
 
     @property
+    @pulumi.getter(name="instanceFamilyLevel")
+    def instance_family_level(self) -> pulumi.Output[Optional[str]]:
+        """
+        The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+        """
+        return pulumi.get(self, "instance_family_level")
+
+    @property
     @pulumi.getter(name="instanceTypes")
     def instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -2065,6 +2258,15 @@ class EciScalingConfiguration(pulumi.CustomResource):
         ID of the scaling group of a eci scaling configuration.
         """
         return pulumi.get(self, "scaling_group_id")
+
+    @property
+    @pulumi.getter(name="securityContextSysctls")
+    def security_context_sysctls(self) -> pulumi.Output[Optional[Sequence['outputs.EciScalingConfigurationSecurityContextSysctl']]]:
+        """
+        The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+        details.
+        """
+        return pulumi.get(self, "security_context_sysctls")
 
     @property
     @pulumi.getter(name="securityGroupId")

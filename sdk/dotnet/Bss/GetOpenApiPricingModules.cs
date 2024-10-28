@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Bss
     public static class GetOpenApiPricingModules
     {
         /// <summary>
-        /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+        /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 
@@ -45,9 +45,9 @@ namespace Pulumi.AliCloud.Bss
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenApiPricingModulesResult>("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", args ?? new GetOpenApiPricingModulesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/bss-openapi/latest/describepricingmodule#doc-api-BssOpenApi-DescribePricingModule)
+        /// This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// ## Example Usage
         /// 

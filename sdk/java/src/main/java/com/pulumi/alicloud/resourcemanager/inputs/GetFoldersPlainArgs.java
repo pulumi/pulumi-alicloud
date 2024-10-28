@@ -17,14 +17,14 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFoldersPlainArgs Empty = new GetFoldersPlainArgs();
 
     /**
-     * Default to `false`. Set it to true can output more details.
+     * Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
     /**
-     * @return Default to `false`. Set it to true can output more details.
+     * @return Whether to query the detailed list of resource attributes. Default value: `false`.
      * 
      */
     public Optional<Boolean> enableDetails() {
@@ -32,14 +32,14 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of resource manager folders IDs.
+     * A list of Folders IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable List<String> ids;
 
     /**
-     * @return A list of resource manager folders IDs.
+     * @return A list of Folders IDs.
      * 
      */
     public Optional<List<String>> ids() {
@@ -47,14 +47,14 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A regex string to filter results by folder name.
+     * A regex string to filter results by Folder name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regex string to filter results by folder name.
+     * @return A regex string to filter results by Folder name.
      * 
      */
     public Optional<String> nameRegex() {
@@ -77,14 +77,14 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the parent folder.
+     * The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
      * 
      */
     @Import(name="parentFolderId")
     private @Nullable String parentFolderId;
 
     /**
-     * @return The ID of the parent folder.
+     * @return The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
      * 
      */
     public Optional<String> parentFolderId() {
@@ -92,14 +92,14 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The query keyword.
+     * The keyword used for the query, such as a folder name. Fuzzy match is supported.
      * 
      */
     @Import(name="queryKeyword")
     private @Nullable String queryKeyword;
 
     /**
-     * @return The query keyword.
+     * @return The keyword used for the query, such as a folder name. Fuzzy match is supported.
      * 
      */
     public Optional<String> queryKeyword() {
@@ -136,7 +136,7 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to `false`. Set it to true can output more details.
+         * @param enableDetails Whether to query the detailed list of resource attributes. Default value: `false`.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of resource manager folders IDs.
+         * @param ids A list of Folders IDs.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of resource manager folders IDs.
+         * @param ids A list of Folders IDs.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regex string to filter results by folder name.
+         * @param nameRegex A regex string to filter results by Folder name.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param parentFolderId The ID of the parent folder.
+         * @param parentFolderId The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class GetFoldersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param queryKeyword The query keyword.
+         * @param queryKeyword The keyword used for the query, such as a folder name. Fuzzy match is supported.
          * 
          * @return builder
          * 

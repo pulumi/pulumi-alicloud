@@ -27,7 +27,7 @@ class GetEngineNamespacesResult:
     """
     A collection of values returned by getEngineNamespaces.
     """
-    def __init__(__self__, accept_language=None, cluster_id=None, id=None, ids=None, namespaces=None, output_file=None):
+    def __init__(__self__, accept_language=None, cluster_id=None, id=None, ids=None, instance_id=None, namespaces=None, output_file=None):
         if accept_language and not isinstance(accept_language, str):
             raise TypeError("Expected argument 'accept_language' to be a str")
         pulumi.set(__self__, "accept_language", accept_language)
@@ -40,6 +40,9 @@ class GetEngineNamespacesResult:
         if ids and not isinstance(ids, list):
             raise TypeError("Expected argument 'ids' to be a list")
         pulumi.set(__self__, "ids", ids)
+        if instance_id and not isinstance(instance_id, str):
+            raise TypeError("Expected argument 'instance_id' to be a str")
+        pulumi.set(__self__, "instance_id", instance_id)
         if namespaces and not isinstance(namespaces, list):
             raise TypeError("Expected argument 'namespaces' to be a list")
         pulumi.set(__self__, "namespaces", namespaces)
@@ -54,7 +57,7 @@ class GetEngineNamespacesResult:
 
     @property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> str:
+    def cluster_id(self) -> Optional[str]:
         return pulumi.get(self, "cluster_id")
 
     @property
@@ -71,8 +74,16 @@ class GetEngineNamespacesResult:
         return pulumi.get(self, "ids")
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[str]:
+        return pulumi.get(self, "instance_id")
+
+    @property
     @pulumi.getter
     def namespaces(self) -> Sequence['outputs.GetEngineNamespacesNamespaceResult']:
+        """
+        A list of Mse Engine Namespaces. Each element contains the following attributes:
+        """
         return pulumi.get(self, "namespaces")
 
     @property
@@ -91,6 +102,7 @@ class AwaitableGetEngineNamespacesResult(GetEngineNamespacesResult):
             cluster_id=self.cluster_id,
             id=self.id,
             ids=self.ids,
+            instance_id=self.instance_id,
             namespaces=self.namespaces,
             output_file=self.output_file)
 
@@ -98,12 +110,13 @@ class AwaitableGetEngineNamespacesResult(GetEngineNamespacesResult):
 def get_engine_namespaces(accept_language: Optional[str] = None,
                           cluster_id: Optional[str] = None,
                           ids: Optional[Sequence[str]] = None,
+                          instance_id: Optional[str] = None,
                           output_file: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEngineNamespacesResult:
     """
     This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.166.0+.
+    > **NOTE:** Available since v1.166.0.
 
     ## Example Usage
 
@@ -113,21 +126,52 @@ def get_engine_namespaces(accept_language: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.mse.get_engine_namespaces(cluster_id="example_value",
-        ids=["example_value"])
-    pulumi.export("mseEngineNamespaceId1", ids.namespaces[0].id)
+    example = alicloud.get_zones(available_resource_creation="VSwitch")
+    example_network = alicloud.vpc.Network("example",
+        vpc_name="terraform-example",
+        cidr_block="172.17.3.0/24")
+    example_switch = alicloud.vpc.Switch("example",
+        vswitch_name="terraform-example",
+        cidr_block="172.17.3.0/24",
+        vpc_id=example_network.id,
+        zone_id=example.zones[0].id)
+    example_cluster = alicloud.mse.Cluster("example",
+        cluster_specification="MSE_SC_1_2_60_c",
+        cluster_type="Nacos-Ans",
+        cluster_version="NACOS_2_0_0",
+        instance_count=3,
+        net_type="privatenet",
+        pub_network_flow="1",
+        connection_type="slb",
+        cluster_alias_name="terraform-example",
+        mse_version="mse_pro",
+        vswitch_id=example_switch.id,
+        vpc_id=example_network.id)
+    example_engine_namespace = alicloud.mse.EngineNamespace("example",
+        instance_id=example_cluster.id,
+        namespace_show_name="terraform-example",
+        namespace_id="terraform-example",
+        namespace_desc="description")
+    # Declare the data source
+    example_get_engine_namespaces = alicloud.mse.get_engine_namespaces_output(instance_id=example_engine_namespace.instance_id)
+    pulumi.export("mseEngineNamespaceIdPublic", example_get_engine_namespaces.namespaces[0].id)
+    pulumi.export("mseEngineNamespaceIdExample", example_get_engine_namespaces.namespaces[1].id)
     ```
 
 
     :param str accept_language: The language type of the returned information. Valid values: `zh`, `en`.
-    :param str cluster_id: The id of the cluster.
-    :param Sequence[str] ids: A list of Engine Namespace IDs. It is formatted to `<cluster_id>:<namespace_id>`.
+    :param str cluster_id: The ID of the cluster.
+    :param Sequence[str] ids: A list of Engine Namespace IDs. It is formatted to `<instance_id>:<namespace_id>`.
+    :param str instance_id: The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+           
+           **NOTE:** You must set `cluster_id` or `instance_id` or both.
     """
     __args__ = dict()
     __args__['acceptLanguage'] = accept_language
     __args__['clusterId'] = cluster_id
     __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('alicloud:mse/getEngineNamespaces:getEngineNamespaces', __args__, opts=opts, typ=GetEngineNamespacesResult).value
@@ -137,17 +181,19 @@ def get_engine_namespaces(accept_language: Optional[str] = None,
         cluster_id=pulumi.get(__ret__, 'cluster_id'),
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
+        instance_id=pulumi.get(__ret__, 'instance_id'),
         namespaces=pulumi.get(__ret__, 'namespaces'),
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional[str]]] = None,
-                                 cluster_id: Optional[pulumi.Input[str]] = None,
+                                 cluster_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                 instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEngineNamespacesResult]:
     """
     This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.166.0+.
+    > **NOTE:** Available since v1.166.0.
 
     ## Example Usage
 
@@ -157,21 +203,52 @@ def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ids = alicloud.mse.get_engine_namespaces(cluster_id="example_value",
-        ids=["example_value"])
-    pulumi.export("mseEngineNamespaceId1", ids.namespaces[0].id)
+    example = alicloud.get_zones(available_resource_creation="VSwitch")
+    example_network = alicloud.vpc.Network("example",
+        vpc_name="terraform-example",
+        cidr_block="172.17.3.0/24")
+    example_switch = alicloud.vpc.Switch("example",
+        vswitch_name="terraform-example",
+        cidr_block="172.17.3.0/24",
+        vpc_id=example_network.id,
+        zone_id=example.zones[0].id)
+    example_cluster = alicloud.mse.Cluster("example",
+        cluster_specification="MSE_SC_1_2_60_c",
+        cluster_type="Nacos-Ans",
+        cluster_version="NACOS_2_0_0",
+        instance_count=3,
+        net_type="privatenet",
+        pub_network_flow="1",
+        connection_type="slb",
+        cluster_alias_name="terraform-example",
+        mse_version="mse_pro",
+        vswitch_id=example_switch.id,
+        vpc_id=example_network.id)
+    example_engine_namespace = alicloud.mse.EngineNamespace("example",
+        instance_id=example_cluster.id,
+        namespace_show_name="terraform-example",
+        namespace_id="terraform-example",
+        namespace_desc="description")
+    # Declare the data source
+    example_get_engine_namespaces = alicloud.mse.get_engine_namespaces_output(instance_id=example_engine_namespace.instance_id)
+    pulumi.export("mseEngineNamespaceIdPublic", example_get_engine_namespaces.namespaces[0].id)
+    pulumi.export("mseEngineNamespaceIdExample", example_get_engine_namespaces.namespaces[1].id)
     ```
 
 
     :param str accept_language: The language type of the returned information. Valid values: `zh`, `en`.
-    :param str cluster_id: The id of the cluster.
-    :param Sequence[str] ids: A list of Engine Namespace IDs. It is formatted to `<cluster_id>:<namespace_id>`.
+    :param str cluster_id: The ID of the cluster.
+    :param Sequence[str] ids: A list of Engine Namespace IDs. It is formatted to `<instance_id>:<namespace_id>`.
+    :param str instance_id: The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+           
+           **NOTE:** You must set `cluster_id` or `instance_id` or both.
     """
     __args__ = dict()
     __args__['acceptLanguage'] = accept_language
     __args__['clusterId'] = cluster_id
     __args__['ids'] = ids
+    __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mse/getEngineNamespaces:getEngineNamespaces', __args__, opts=opts, typ=GetEngineNamespacesResult)
@@ -180,5 +257,6 @@ def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional
         cluster_id=pulumi.get(__response__, 'cluster_id'),
         id=pulumi.get(__response__, 'id'),
         ids=pulumi.get(__response__, 'ids'),
+        instance_id=pulumi.get(__response__, 'instance_id'),
         namespaces=pulumi.get(__response__, 'namespaces'),
         output_file=pulumi.get(__response__, 'output_file')))

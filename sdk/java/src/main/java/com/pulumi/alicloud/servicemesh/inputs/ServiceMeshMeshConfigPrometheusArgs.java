@@ -17,14 +17,14 @@ public final class ServiceMeshMeshConfigPrometheusArgs extends com.pulumi.resour
     public static final ServiceMeshMeshConfigPrometheusArgs Empty = new ServiceMeshMeshConfigPrometheusArgs();
 
     /**
-     * Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+     * Prometheus service addresses (enabled external Prometheus when the system automatically populates)
      * 
      */
     @Import(name="externalUrl")
     private @Nullable Output<String> externalUrl;
 
     /**
-     * @return Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+     * @return Prometheus service addresses (enabled external Prometheus when the system automatically populates)
      * 
      */
     public Optional<Output<String>> externalUrl() {
@@ -32,14 +32,14 @@ public final class ServiceMeshMeshConfigPrometheusArgs extends com.pulumi.resour
     }
 
     /**
-     * Whether to enable external Prometheus.
+     * Whether to enable external Prometheus
      * 
      */
     @Import(name="useExternal")
     private @Nullable Output<Boolean> useExternal;
 
     /**
-     * @return Whether to enable external Prometheus.
+     * @return Whether to enable external Prometheus
      * 
      */
     public Optional<Output<Boolean>> useExternal() {
@@ -72,7 +72,7 @@ public final class ServiceMeshMeshConfigPrometheusArgs extends com.pulumi.resour
         }
 
         /**
-         * @param externalUrl Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+         * @param externalUrl Prometheus service addresses (enabled external Prometheus when the system automatically populates)
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ServiceMeshMeshConfigPrometheusArgs extends com.pulumi.resour
         }
 
         /**
-         * @param externalUrl Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+         * @param externalUrl Prometheus service addresses (enabled external Prometheus when the system automatically populates)
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ServiceMeshMeshConfigPrometheusArgs extends com.pulumi.resour
         }
 
         /**
-         * @param useExternal Whether to enable external Prometheus.
+         * @param useExternal Whether to enable external Prometheus
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ServiceMeshMeshConfigPrometheusArgs extends com.pulumi.resour
         }
 
         /**
-         * @param useExternal Whether to enable external Prometheus.
+         * @param useExternal Whether to enable external Prometheus
          * 
          * @return builder
          * 

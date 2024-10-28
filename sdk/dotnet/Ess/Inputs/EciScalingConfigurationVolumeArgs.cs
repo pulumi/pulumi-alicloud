@@ -26,6 +26,12 @@ namespace Pulumi.AliCloud.Ess.Inputs
         }
 
         /// <summary>
+        /// The default permissions on the ConfigFileVolume.
+        /// </summary>
+        [Input("configFileVolumeDefaultMode")]
+        public Input<int>? ConfigFileVolumeDefaultMode { get; set; }
+
+        /// <summary>
         /// The ID of DiskVolume.
         /// </summary>
         [Input("diskVolumeDiskId")]
@@ -42,6 +48,18 @@ namespace Pulumi.AliCloud.Ess.Inputs
         /// </summary>
         [Input("diskVolumeFsType")]
         public Input<string>? DiskVolumeFsType { get; set; }
+
+        /// <summary>
+        /// The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+        /// </summary>
+        [Input("emptyDirVolumeMedium")]
+        public Input<string>? EmptyDirVolumeMedium { get; set; }
+
+        /// <summary>
+        /// The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+        /// </summary>
+        [Input("emptyDirVolumeSizeLimit")]
+        public Input<string>? EmptyDirVolumeSizeLimit { get; set; }
 
         /// <summary>
         /// The name of the FlexVolume driver.
@@ -62,6 +80,18 @@ namespace Pulumi.AliCloud.Ess.Inputs
         /// </summary>
         [Input("flexVolumeOptions")]
         public Input<string>? FlexVolumeOptions { get; set; }
+
+        /// <summary>
+        /// The absolute path on the host.
+        /// </summary>
+        [Input("hostPathVolumePath")]
+        public Input<string>? HostPathVolumePath { get; set; }
+
+        /// <summary>
+        /// The type of the host path. Examples: File, Directory, and Socket.
+        /// </summary>
+        [Input("hostPathVolumeType")]
+        public Input<string>? HostPathVolumeType { get; set; }
 
         /// <summary>
         /// The name of the volume.

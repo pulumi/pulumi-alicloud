@@ -134,8 +134,6 @@ type VpcEndpointZone struct {
 	pulumi.CustomResourceState
 
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The endpoint ID.
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
@@ -143,7 +141,7 @@ type VpcEndpointZone struct {
 	EniIp pulumi.StringOutput `pulumi:"eniIp"`
 	// The state of the zone.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID of the vSwitch in the zone. .
+	// The ID of the vSwitch in the zone.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
 	// The zone ID.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
@@ -186,8 +184,6 @@ func GetVpcEndpointZone(ctx *pulumi.Context,
 // Input properties used for looking up and filtering VpcEndpointZone resources.
 type vpcEndpointZoneState struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
 	// The endpoint ID.
 	EndpointId *string `pulumi:"endpointId"`
@@ -195,7 +191,7 @@ type vpcEndpointZoneState struct {
 	EniIp *string `pulumi:"eniIp"`
 	// The state of the zone.
 	Status *string `pulumi:"status"`
-	// The ID of the vSwitch in the zone. .
+	// The ID of the vSwitch in the zone.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -203,8 +199,6 @@ type vpcEndpointZoneState struct {
 
 type VpcEndpointZoneState struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
 	// The endpoint ID.
 	EndpointId pulumi.StringPtrInput
@@ -212,7 +206,7 @@ type VpcEndpointZoneState struct {
 	EniIp pulumi.StringPtrInput
 	// The state of the zone.
 	Status pulumi.StringPtrInput
-	// The ID of the vSwitch in the zone. .
+	// The ID of the vSwitch in the zone.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID.
 	ZoneId pulumi.StringPtrInput
@@ -224,14 +218,12 @@ func (VpcEndpointZoneState) ElementType() reflect.Type {
 
 type vpcEndpointZoneArgs struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
 	// The endpoint ID.
 	EndpointId string `pulumi:"endpointId"`
 	// The IP address of the endpoint ENI.
 	EniIp *string `pulumi:"eniIp"`
-	// The ID of the vSwitch in the zone. .
+	// The ID of the vSwitch in the zone.
 	VswitchId string `pulumi:"vswitchId"`
 	// The zone ID.
 	ZoneId *string `pulumi:"zoneId"`
@@ -240,14 +232,12 @@ type vpcEndpointZoneArgs struct {
 // The set of arguments for constructing a VpcEndpointZone resource.
 type VpcEndpointZoneArgs struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
 	// The endpoint ID.
 	EndpointId pulumi.StringInput
 	// The IP address of the endpoint ENI.
 	EniIp pulumi.StringPtrInput
-	// The ID of the vSwitch in the zone. .
+	// The ID of the vSwitch in the zone.
 	VswitchId pulumi.StringInput
 	// The zone ID.
 	ZoneId pulumi.StringPtrInput
@@ -341,8 +331,6 @@ func (o VpcEndpointZoneOutput) ToVpcEndpointZoneOutputWithContext(ctx context.Co
 }
 
 // Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 func (o VpcEndpointZoneOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpcEndpointZone) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
@@ -362,7 +350,7 @@ func (o VpcEndpointZoneOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the vSwitch in the zone. .
+// The ID of the vSwitch in the zone.
 func (o VpcEndpointZoneOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }

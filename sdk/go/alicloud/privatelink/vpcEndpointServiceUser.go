@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Private Link Vpc Endpoint Service User resource. Endpoint service user whitelist.
+// Provides a Private Link Vpc Endpoint Service User resource.
+//
+// Endpoint service user whitelist.
 //
 // For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
 //
@@ -83,11 +85,11 @@ type VpcEndpointServiceUser struct {
 	pulumi.CustomResourceState
 
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The endpoint service ID.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
+	// The whitelist in the format of ARN.
+	UserArn pulumi.StringPtrOutput `pulumi:"userArn"`
 	// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
@@ -129,22 +131,22 @@ func GetVpcEndpointServiceUser(ctx *pulumi.Context,
 // Input properties used for looking up and filtering VpcEndpointServiceUser resources.
 type vpcEndpointServiceUserState struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
 	// The endpoint service ID.
 	ServiceId *string `pulumi:"serviceId"`
+	// The whitelist in the format of ARN.
+	UserArn *string `pulumi:"userArn"`
 	// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
 	UserId *string `pulumi:"userId"`
 }
 
 type VpcEndpointServiceUserState struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
 	// The endpoint service ID.
 	ServiceId pulumi.StringPtrInput
+	// The whitelist in the format of ARN.
+	UserArn pulumi.StringPtrInput
 	// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
 	UserId pulumi.StringPtrInput
 }
@@ -155,11 +157,11 @@ func (VpcEndpointServiceUserState) ElementType() reflect.Type {
 
 type vpcEndpointServiceUserArgs struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
 	// The endpoint service ID.
 	ServiceId string `pulumi:"serviceId"`
+	// The whitelist in the format of ARN.
+	UserArn *string `pulumi:"userArn"`
 	// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
 	UserId string `pulumi:"userId"`
 }
@@ -167,11 +169,11 @@ type vpcEndpointServiceUserArgs struct {
 // The set of arguments for constructing a VpcEndpointServiceUser resource.
 type VpcEndpointServiceUserArgs struct {
 	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
 	// The endpoint service ID.
 	ServiceId pulumi.StringInput
+	// The whitelist in the format of ARN.
+	UserArn pulumi.StringPtrInput
 	// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
 	UserId pulumi.StringInput
 }
@@ -264,8 +266,6 @@ func (o VpcEndpointServiceUserOutput) ToVpcEndpointServiceUserOutputWithContext(
 }
 
 // Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 func (o VpcEndpointServiceUserOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpcEndpointServiceUser) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
@@ -273,6 +273,11 @@ func (o VpcEndpointServiceUserOutput) DryRun() pulumi.BoolPtrOutput {
 // The endpoint service ID.
 func (o VpcEndpointServiceUserOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointServiceUser) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// The whitelist in the format of ARN.
+func (o VpcEndpointServiceUserOutput) UserArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceUser) pulumi.StringPtrOutput { return v.UserArn }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the Alibaba Cloud account in the whitelist of the endpoint service.

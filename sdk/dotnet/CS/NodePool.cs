@@ -271,6 +271,12 @@ namespace Pulumi.AliCloud.CS
         public Output<string> Platform { get; private set; } = null!;
 
         /// <summary>
+        /// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+        /// </summary>
+        [Output("preUserData")]
+        public Output<string?> PreUserData { get; private set; } = null!;
+
+        /// <summary>
         /// Private node pool configuration. See `private_pool_options` below.
         /// </summary>
         [Output("privatePoolOptions")]
@@ -344,6 +350,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+        /// 
         /// &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         /// </summary>
         [Output("socEnabled")]
@@ -441,7 +448,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> SystemDiskSnapshotPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        /// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -471,7 +478,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> UpdateNodes { get; private set; } = null!;
 
         /// <summary>
-        /// Node custom data.
+        /// Node custom data, base64-encoded.
         /// </summary>
         [Output("userData")]
         public Output<string?> UserData { get; private set; } = null!;
@@ -823,6 +830,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Platform { get; set; }
 
         /// <summary>
+        /// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+        /// </summary>
+        [Input("preUserData")]
+        public Input<string>? PreUserData { get; set; }
+
+        /// <summary>
         /// Private node pool configuration. See `private_pool_options` below.
         /// </summary>
         [Input("privatePoolOptions")]
@@ -902,6 +915,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+        /// 
         /// &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         /// </summary>
         [Input("socEnabled")]
@@ -1014,7 +1028,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        /// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -1053,7 +1067,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? UpdateNodes { get; set; }
 
         /// <summary>
-        /// Node custom data.
+        /// Node custom data, base64-encoded.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }
@@ -1374,6 +1388,12 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? Platform { get; set; }
 
         /// <summary>
+        /// Node pre custom data, base64-encoded, the script executed before the node is initialized.
+        /// </summary>
+        [Input("preUserData")]
+        public Input<string>? PreUserData { get; set; }
+
+        /// <summary>
         /// Private node pool configuration. See `private_pool_options` below.
         /// </summary>
         [Input("privatePoolOptions")]
@@ -1459,6 +1479,7 @@ namespace Pulumi.AliCloud.CS
 
         /// <summary>
         /// Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+        /// 
         /// &gt; **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         /// </summary>
         [Input("socEnabled")]
@@ -1571,7 +1592,7 @@ namespace Pulumi.AliCloud.CS
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        /// Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -1610,7 +1631,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? UpdateNodes { get; set; }
 
         /// <summary>
-        /// Node custom data.
+        /// Node custom data, base64-encoded.
         /// </summary>
         [Input("userData")]
         public Input<string>? UserData { get; set; }

@@ -36,25 +36,27 @@ class ServiceMeshArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceMesh resource.
-        :param pulumi.Input['ServiceMeshNetworkArgs'] network: Service grid network configuration information. See `network` below.
+        :param pulumi.Input['ServiceMeshNetworkArgs'] network: Service grid network configuration information See `network` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_ids: List of clusters.
-        :param pulumi.Input[str] cluster_spec: Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+        :param pulumi.Input[str] cluster_spec: Cluster specification
         :param pulumi.Input[bool] customized_prometheus: Whether to customize Prometheus. Value:
                -'true': custom Prometheus.
                -'false': Do not customize Prometheus.
+               
                Default value: 'false '.
-        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.).
-        :param pulumi.Input['ServiceMeshExtraConfigurationArgs'] extra_configuration: Data plane KubeAPI access capability. See `extra_configuration` below.
+        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.)
+        :param pulumi.Input['ServiceMeshExtraConfigurationArgs'] extra_configuration: Data plane KubeAPI access capability See `extra_configuration` below.
         :param pulumi.Input[bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
                -'false': no forced deletion of ASM instance
-               Default value: false.
-        :param pulumi.Input['ServiceMeshLoadBalancerArgs'] load_balancer: Load balancing information. See `load_balancer` below.
-        :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: Service grid configuration information. See `mesh_config` below.
+               
+               Default value: false
+        :param pulumi.Input['ServiceMeshLoadBalancerArgs'] load_balancer: Load balancing information See `load_balancer` below.
+        :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: Service grid configuration information See `mesh_config` below.
         :param pulumi.Input[str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
-        :param pulumi.Input[str] service_mesh_name: ServiceMeshName.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
-        :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
+        :param pulumi.Input[str] service_mesh_name: ServiceMeshName
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] version: Service grid version number
         """
         pulumi.set(__self__, "network", network)
         if cluster_ids is not None:
@@ -86,7 +88,7 @@ class ServiceMeshArgs:
     @pulumi.getter
     def network(self) -> pulumi.Input['ServiceMeshNetworkArgs']:
         """
-        Service grid network configuration information. See `network` below.
+        Service grid network configuration information See `network` below.
         """
         return pulumi.get(self, "network")
 
@@ -110,7 +112,7 @@ class ServiceMeshArgs:
     @pulumi.getter(name="clusterSpec")
     def cluster_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+        Cluster specification
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -125,6 +127,7 @@ class ServiceMeshArgs:
         Whether to customize Prometheus. Value:
         -'true': custom Prometheus.
         -'false': Do not customize Prometheus.
+
         Default value: 'false '.
         """
         return pulumi.get(self, "customized_prometheus")
@@ -137,7 +140,7 @@ class ServiceMeshArgs:
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
-        Grid instance version type (for example: the standard, the Pro version, etc.).
+        Grid instance version type (for example: the standard, the Pro version, etc.)
         """
         return pulumi.get(self, "edition")
 
@@ -149,7 +152,7 @@ class ServiceMeshArgs:
     @pulumi.getter(name="extraConfiguration")
     def extra_configuration(self) -> Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]:
         """
-        Data plane KubeAPI access capability. See `extra_configuration` below.
+        Data plane KubeAPI access capability See `extra_configuration` below.
         """
         return pulumi.get(self, "extra_configuration")
 
@@ -164,7 +167,8 @@ class ServiceMeshArgs:
         Whether to forcibly delete the ASM instance. Value:
         -'true': force deletion of ASM instance
         -'false': no forced deletion of ASM instance
-        Default value: false.
+
+        Default value: false
         """
         return pulumi.get(self, "force")
 
@@ -176,7 +180,7 @@ class ServiceMeshArgs:
     @pulumi.getter(name="loadBalancer")
     def load_balancer(self) -> Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']]:
         """
-        Load balancing information. See `load_balancer` below.
+        Load balancing information See `load_balancer` below.
         """
         return pulumi.get(self, "load_balancer")
 
@@ -188,7 +192,7 @@ class ServiceMeshArgs:
     @pulumi.getter(name="meshConfig")
     def mesh_config(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigArgs']]:
         """
-        Service grid configuration information. See `mesh_config` below.
+        Service grid configuration information See `mesh_config` below.
         """
         return pulumi.get(self, "mesh_config")
 
@@ -212,7 +216,7 @@ class ServiceMeshArgs:
     @pulumi.getter(name="serviceMeshName")
     def service_mesh_name(self) -> Optional[pulumi.Input[str]]:
         """
-        ServiceMeshName.
+        ServiceMeshName
         """
         return pulumi.get(self, "service_mesh_name")
 
@@ -224,7 +228,7 @@ class ServiceMeshArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The tag of the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -236,7 +240,7 @@ class ServiceMeshArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
+        Service grid version number
         """
         return pulumi.get(self, "version")
 
@@ -255,6 +259,7 @@ class _ServiceMeshState:
                  edition: Optional[pulumi.Input[str]] = None,
                  extra_configuration: Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 kubeconfig: Optional[pulumi.Input[str]] = None,
                  load_balancer: Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']] = None,
                  mesh_config: Optional[pulumi.Input['ServiceMeshMeshConfigArgs']] = None,
                  network: Optional[pulumi.Input['ServiceMeshNetworkArgs']] = None,
@@ -266,26 +271,29 @@ class _ServiceMeshState:
         """
         Input properties used for looking up and filtering ServiceMesh resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_ids: List of clusters.
-        :param pulumi.Input[str] cluster_spec: Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
-        :param pulumi.Input[str] create_time: Service grid creation time.
+        :param pulumi.Input[str] cluster_spec: Cluster specification
+        :param pulumi.Input[str] create_time: Service grid creation time
         :param pulumi.Input[bool] customized_prometheus: Whether to customize Prometheus. Value:
                -'true': custom Prometheus.
                -'false': Do not customize Prometheus.
+               
                Default value: 'false '.
-        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.).
-        :param pulumi.Input['ServiceMeshExtraConfigurationArgs'] extra_configuration: Data plane KubeAPI access capability. See `extra_configuration` below.
+        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.)
+        :param pulumi.Input['ServiceMeshExtraConfigurationArgs'] extra_configuration: Data plane KubeAPI access capability See `extra_configuration` below.
         :param pulumi.Input[bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
                -'false': no forced deletion of ASM instance
-               Default value: false.
-        :param pulumi.Input['ServiceMeshLoadBalancerArgs'] load_balancer: Load balancing information. See `load_balancer` below.
-        :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: Service grid configuration information. See `mesh_config` below.
-        :param pulumi.Input['ServiceMeshNetworkArgs'] network: Service grid network configuration information. See `network` below.
+               
+               Default value: false
+        :param pulumi.Input[str] kubeconfig: Kubeconfig configuration content
+        :param pulumi.Input['ServiceMeshLoadBalancerArgs'] load_balancer: Load balancing information See `load_balancer` below.
+        :param pulumi.Input['ServiceMeshMeshConfigArgs'] mesh_config: Service grid configuration information See `mesh_config` below.
+        :param pulumi.Input['ServiceMeshNetworkArgs'] network: Service grid network configuration information See `network` below.
         :param pulumi.Input[str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
-        :param pulumi.Input[str] service_mesh_name: ServiceMeshName.
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
-        :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
+        :param pulumi.Input[str] service_mesh_name: ServiceMeshName
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] version: Service grid version number
         """
         if cluster_ids is not None:
             pulumi.set(__self__, "cluster_ids", cluster_ids)
@@ -301,6 +309,8 @@ class _ServiceMeshState:
             pulumi.set(__self__, "extra_configuration", extra_configuration)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if kubeconfig is not None:
+            pulumi.set(__self__, "kubeconfig", kubeconfig)
         if load_balancer is not None:
             pulumi.set(__self__, "load_balancer", load_balancer)
         if mesh_config is not None:
@@ -334,7 +344,7 @@ class _ServiceMeshState:
     @pulumi.getter(name="clusterSpec")
     def cluster_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+        Cluster specification
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -346,7 +356,7 @@ class _ServiceMeshState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Service grid creation time.
+        Service grid creation time
         """
         return pulumi.get(self, "create_time")
 
@@ -361,6 +371,7 @@ class _ServiceMeshState:
         Whether to customize Prometheus. Value:
         -'true': custom Prometheus.
         -'false': Do not customize Prometheus.
+
         Default value: 'false '.
         """
         return pulumi.get(self, "customized_prometheus")
@@ -373,7 +384,7 @@ class _ServiceMeshState:
     @pulumi.getter
     def edition(self) -> Optional[pulumi.Input[str]]:
         """
-        Grid instance version type (for example: the standard, the Pro version, etc.).
+        Grid instance version type (for example: the standard, the Pro version, etc.)
         """
         return pulumi.get(self, "edition")
 
@@ -385,7 +396,7 @@ class _ServiceMeshState:
     @pulumi.getter(name="extraConfiguration")
     def extra_configuration(self) -> Optional[pulumi.Input['ServiceMeshExtraConfigurationArgs']]:
         """
-        Data plane KubeAPI access capability. See `extra_configuration` below.
+        Data plane KubeAPI access capability See `extra_configuration` below.
         """
         return pulumi.get(self, "extra_configuration")
 
@@ -400,7 +411,8 @@ class _ServiceMeshState:
         Whether to forcibly delete the ASM instance. Value:
         -'true': force deletion of ASM instance
         -'false': no forced deletion of ASM instance
-        Default value: false.
+
+        Default value: false
         """
         return pulumi.get(self, "force")
 
@@ -409,10 +421,22 @@ class _ServiceMeshState:
         pulumi.set(self, "force", value)
 
     @property
+    @pulumi.getter
+    def kubeconfig(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kubeconfig configuration content
+        """
+        return pulumi.get(self, "kubeconfig")
+
+    @kubeconfig.setter
+    def kubeconfig(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubeconfig", value)
+
+    @property
     @pulumi.getter(name="loadBalancer")
     def load_balancer(self) -> Optional[pulumi.Input['ServiceMeshLoadBalancerArgs']]:
         """
-        Load balancing information. See `load_balancer` below.
+        Load balancing information See `load_balancer` below.
         """
         return pulumi.get(self, "load_balancer")
 
@@ -424,7 +448,7 @@ class _ServiceMeshState:
     @pulumi.getter(name="meshConfig")
     def mesh_config(self) -> Optional[pulumi.Input['ServiceMeshMeshConfigArgs']]:
         """
-        Service grid configuration information. See `mesh_config` below.
+        Service grid configuration information See `mesh_config` below.
         """
         return pulumi.get(self, "mesh_config")
 
@@ -436,7 +460,7 @@ class _ServiceMeshState:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input['ServiceMeshNetworkArgs']]:
         """
-        Service grid network configuration information. See `network` below.
+        Service grid network configuration information See `network` below.
         """
         return pulumi.get(self, "network")
 
@@ -460,7 +484,7 @@ class _ServiceMeshState:
     @pulumi.getter(name="serviceMeshName")
     def service_mesh_name(self) -> Optional[pulumi.Input[str]]:
         """
-        ServiceMeshName.
+        ServiceMeshName
         """
         return pulumi.get(self, "service_mesh_name")
 
@@ -472,7 +496,7 @@ class _ServiceMeshState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -484,7 +508,7 @@ class _ServiceMeshState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The tag of the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -496,7 +520,7 @@ class _ServiceMeshState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
+        Service grid version number
         """
         return pulumi.get(self, "version")
 
@@ -542,24 +566,26 @@ class ServiceMesh(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_ids: List of clusters.
-        :param pulumi.Input[str] cluster_spec: Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+        :param pulumi.Input[str] cluster_spec: Cluster specification
         :param pulumi.Input[bool] customized_prometheus: Whether to customize Prometheus. Value:
                -'true': custom Prometheus.
                -'false': Do not customize Prometheus.
+               
                Default value: 'false '.
-        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.).
-        :param pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']] extra_configuration: Data plane KubeAPI access capability. See `extra_configuration` below.
+        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.)
+        :param pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']] extra_configuration: Data plane KubeAPI access capability See `extra_configuration` below.
         :param pulumi.Input[bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
                -'false': no forced deletion of ASM instance
-               Default value: false.
-        :param pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']] load_balancer: Load balancing information. See `load_balancer` below.
-        :param pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']] mesh_config: Service grid configuration information. See `mesh_config` below.
-        :param pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']] network: Service grid network configuration information. See `network` below.
+               
+               Default value: false
+        :param pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']] load_balancer: Load balancing information See `load_balancer` below.
+        :param pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']] mesh_config: Service grid configuration information See `mesh_config` below.
+        :param pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']] network: Service grid network configuration information See `network` below.
         :param pulumi.Input[str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
-        :param pulumi.Input[str] service_mesh_name: ServiceMeshName.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
-        :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
+        :param pulumi.Input[str] service_mesh_name: ServiceMeshName
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] version: Service grid version number
         """
         ...
     @overload
@@ -635,6 +661,7 @@ class ServiceMesh(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["version"] = version
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["kubeconfig"] = None
             __props__.__dict__["status"] = None
         super(ServiceMesh, __self__).__init__(
             'alicloud:servicemesh/serviceMesh:ServiceMesh',
@@ -653,6 +680,7 @@ class ServiceMesh(pulumi.CustomResource):
             edition: Optional[pulumi.Input[str]] = None,
             extra_configuration: Optional[pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']]] = None,
             force: Optional[pulumi.Input[bool]] = None,
+            kubeconfig: Optional[pulumi.Input[str]] = None,
             load_balancer: Optional[pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']]] = None,
             mesh_config: Optional[pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']]] = None,
             network: Optional[pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']]] = None,
@@ -669,26 +697,29 @@ class ServiceMesh(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cluster_ids: List of clusters.
-        :param pulumi.Input[str] cluster_spec: Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
-        :param pulumi.Input[str] create_time: Service grid creation time.
+        :param pulumi.Input[str] cluster_spec: Cluster specification
+        :param pulumi.Input[str] create_time: Service grid creation time
         :param pulumi.Input[bool] customized_prometheus: Whether to customize Prometheus. Value:
                -'true': custom Prometheus.
                -'false': Do not customize Prometheus.
+               
                Default value: 'false '.
-        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.).
-        :param pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']] extra_configuration: Data plane KubeAPI access capability. See `extra_configuration` below.
+        :param pulumi.Input[str] edition: Grid instance version type (for example: the standard, the Pro version, etc.)
+        :param pulumi.Input[Union['ServiceMeshExtraConfigurationArgs', 'ServiceMeshExtraConfigurationArgsDict']] extra_configuration: Data plane KubeAPI access capability See `extra_configuration` below.
         :param pulumi.Input[bool] force: Whether to forcibly delete the ASM instance. Value:
                -'true': force deletion of ASM instance
                -'false': no forced deletion of ASM instance
-               Default value: false.
-        :param pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']] load_balancer: Load balancing information. See `load_balancer` below.
-        :param pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']] mesh_config: Service grid configuration information. See `mesh_config` below.
-        :param pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']] network: Service grid network configuration information. See `network` below.
+               
+               Default value: false
+        :param pulumi.Input[str] kubeconfig: Kubeconfig configuration content
+        :param pulumi.Input[Union['ServiceMeshLoadBalancerArgs', 'ServiceMeshLoadBalancerArgsDict']] load_balancer: Load balancing information See `load_balancer` below.
+        :param pulumi.Input[Union['ServiceMeshMeshConfigArgs', 'ServiceMeshMeshConfigArgsDict']] mesh_config: Service grid configuration information See `mesh_config` below.
+        :param pulumi.Input[Union['ServiceMeshNetworkArgs', 'ServiceMeshNetworkArgsDict']] network: Service grid network configuration information See `network` below.
         :param pulumi.Input[str] prometheus_url: The Prometheus service address (in non-custom cases, use the ARMS address format).
-        :param pulumi.Input[str] service_mesh_name: ServiceMeshName.
-        :param pulumi.Input[str] status: The status of the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
-        :param pulumi.Input[str] version: Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
+        :param pulumi.Input[str] service_mesh_name: ServiceMeshName
+        :param pulumi.Input[str] status: The status of the resource
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource
+        :param pulumi.Input[str] version: Service grid version number
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -701,6 +732,7 @@ class ServiceMesh(pulumi.CustomResource):
         __props__.__dict__["edition"] = edition
         __props__.__dict__["extra_configuration"] = extra_configuration
         __props__.__dict__["force"] = force
+        __props__.__dict__["kubeconfig"] = kubeconfig
         __props__.__dict__["load_balancer"] = load_balancer
         __props__.__dict__["mesh_config"] = mesh_config
         __props__.__dict__["network"] = network
@@ -723,7 +755,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter(name="clusterSpec")
     def cluster_spec(self) -> pulumi.Output[str]:
         """
-        Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+        Cluster specification
         """
         return pulumi.get(self, "cluster_spec")
 
@@ -731,7 +763,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Service grid creation time.
+        Service grid creation time
         """
         return pulumi.get(self, "create_time")
 
@@ -742,6 +774,7 @@ class ServiceMesh(pulumi.CustomResource):
         Whether to customize Prometheus. Value:
         -'true': custom Prometheus.
         -'false': Do not customize Prometheus.
+
         Default value: 'false '.
         """
         return pulumi.get(self, "customized_prometheus")
@@ -750,7 +783,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter
     def edition(self) -> pulumi.Output[Optional[str]]:
         """
-        Grid instance version type (for example: the standard, the Pro version, etc.).
+        Grid instance version type (for example: the standard, the Pro version, etc.)
         """
         return pulumi.get(self, "edition")
 
@@ -758,7 +791,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter(name="extraConfiguration")
     def extra_configuration(self) -> pulumi.Output['outputs.ServiceMeshExtraConfiguration']:
         """
-        Data plane KubeAPI access capability. See `extra_configuration` below.
+        Data plane KubeAPI access capability See `extra_configuration` below.
         """
         return pulumi.get(self, "extra_configuration")
 
@@ -769,15 +802,24 @@ class ServiceMesh(pulumi.CustomResource):
         Whether to forcibly delete the ASM instance. Value:
         -'true': force deletion of ASM instance
         -'false': no forced deletion of ASM instance
-        Default value: false.
+
+        Default value: false
         """
         return pulumi.get(self, "force")
+
+    @property
+    @pulumi.getter
+    def kubeconfig(self) -> pulumi.Output[str]:
+        """
+        Kubeconfig configuration content
+        """
+        return pulumi.get(self, "kubeconfig")
 
     @property
     @pulumi.getter(name="loadBalancer")
     def load_balancer(self) -> pulumi.Output['outputs.ServiceMeshLoadBalancer']:
         """
-        Load balancing information. See `load_balancer` below.
+        Load balancing information See `load_balancer` below.
         """
         return pulumi.get(self, "load_balancer")
 
@@ -785,7 +827,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter(name="meshConfig")
     def mesh_config(self) -> pulumi.Output['outputs.ServiceMeshMeshConfig']:
         """
-        Service grid configuration information. See `mesh_config` below.
+        Service grid configuration information See `mesh_config` below.
         """
         return pulumi.get(self, "mesh_config")
 
@@ -793,7 +835,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output['outputs.ServiceMeshNetwork']:
         """
-        Service grid network configuration information. See `network` below.
+        Service grid network configuration information See `network` below.
         """
         return pulumi.get(self, "network")
 
@@ -809,7 +851,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter(name="serviceMeshName")
     def service_mesh_name(self) -> pulumi.Output[Optional[str]]:
         """
-        ServiceMeshName.
+        ServiceMeshName
         """
         return pulumi.get(self, "service_mesh_name")
 
@@ -817,7 +859,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource.
+        The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -825,7 +867,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The tag of the resource.
+        The tag of the resource
         """
         return pulumi.get(self, "tags")
 
@@ -833,7 +875,7 @@ class ServiceMesh(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[Optional[str]]:
         """
-        Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `servicemesh_get_service_meshes`.
+        Service grid version number
         """
         return pulumi.get(self, "version")
 

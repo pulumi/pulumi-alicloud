@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
+    /// Provides a Cloud Enterprise Network (CEN) Instance resource.
     /// 
-    /// For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+    /// For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
     /// 
     /// &gt; **NOTE:** Available since v1.15.0.
     /// 
@@ -28,10 +28,12 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new AliCloud.Cen.Instance("example", new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new AliCloud.Cen.Instance("default", new()
     ///     {
-    ///         CenInstanceName = "tf_example",
-    ///         Description = "an example for cen",
+    ///         CenInstanceName = name,
+    ///         Description = name,
     ///     });
     /// 
     /// });
@@ -39,41 +41,47 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN instance can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+    /// $ pulumi import alicloud:cen/instance:Instance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/instance:Instance")]
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        /// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("cenInstanceName")]
         public Output<string> CenInstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        /// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+        /// Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        /// The level of CIDR block overlapping. Default value: `REDUCE`.
         /// </summary>
         [Output("protectionLevel")]
         public Output<string> ProtectionLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The Cen Instance current status.
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the Instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -131,28 +139,34 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        /// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("cenInstanceName")]
         public Input<string>? CenInstanceName { get; set; }
 
         /// <summary>
-        /// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        /// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+        /// Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        /// The level of CIDR block overlapping. Default value: `REDUCE`.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("tags")]
         private InputMap<string>? _tags;
@@ -175,31 +189,37 @@ namespace Pulumi.AliCloud.Cen
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        /// The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("cenInstanceName")]
         public Input<string>? CenInstanceName { get; set; }
 
         /// <summary>
-        /// The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        /// The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+        /// Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        /// The level of CIDR block overlapping. Default value: `REDUCE`.
         /// </summary>
         [Input("protectionLevel")]
         public Input<string>? ProtectionLevel { get; set; }
 
         /// <summary>
-        /// The Cen Instance current status.
+        /// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The status of the Instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

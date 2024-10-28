@@ -8,12 +8,13 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetVpcEndpointServicesService {
     /**
-     * @return Whether to automatically accept terminal node connections..
+     * @return Whether to automatically accept terminal node connections.
      * 
      */
     private Boolean autoAcceptConnection;
@@ -28,7 +29,7 @@ public final class GetVpcEndpointServicesService {
      */
     private String id;
     /**
-     * @return The business status of the terminal node service..
+     * @return The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
     private String serviceBusinessStatus;
@@ -48,10 +49,15 @@ public final class GetVpcEndpointServicesService {
      */
     private String serviceId;
     /**
-     * @return The Status of Vpc Endpoint Service.
+     * @return The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      * 
      */
     private String status;
+    /**
+     * @return The tags of Vpc Endpoint Service.
+     * 
+     */
+    private Map<String,String> tags;
     /**
      * @return The name of Vpc Endpoint Service.
      * 
@@ -60,7 +66,7 @@ public final class GetVpcEndpointServicesService {
 
     private GetVpcEndpointServicesService() {}
     /**
-     * @return Whether to automatically accept terminal node connections..
+     * @return Whether to automatically accept terminal node connections.
      * 
      */
     public Boolean autoAcceptConnection() {
@@ -81,7 +87,7 @@ public final class GetVpcEndpointServicesService {
         return this.id;
     }
     /**
-     * @return The business status of the terminal node service..
+     * @return The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
     public String serviceBusinessStatus() {
@@ -109,11 +115,18 @@ public final class GetVpcEndpointServicesService {
         return this.serviceId;
     }
     /**
-     * @return The Status of Vpc Endpoint Service.
+     * @return The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      * 
      */
     public String status() {
         return this.status;
+    }
+    /**
+     * @return The tags of Vpc Endpoint Service.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
     }
     /**
      * @return The name of Vpc Endpoint Service.
@@ -140,6 +153,7 @@ public final class GetVpcEndpointServicesService {
         private String serviceDomain;
         private String serviceId;
         private String status;
+        private Map<String,String> tags;
         private String vpcEndpointServiceName;
         public Builder() {}
         public Builder(GetVpcEndpointServicesService defaults) {
@@ -152,6 +166,7 @@ public final class GetVpcEndpointServicesService {
     	      this.serviceDomain = defaults.serviceDomain;
     	      this.serviceId = defaults.serviceId;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
     	      this.vpcEndpointServiceName = defaults.vpcEndpointServiceName;
         }
 
@@ -220,6 +235,14 @@ public final class GetVpcEndpointServicesService {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder vpcEndpointServiceName(String vpcEndpointServiceName) {
             if (vpcEndpointServiceName == null) {
               throw new MissingRequiredPropertyException("GetVpcEndpointServicesService", "vpcEndpointServiceName");
@@ -237,6 +260,7 @@ public final class GetVpcEndpointServicesService {
             _resultValue.serviceDomain = serviceDomain;
             _resultValue.serviceId = serviceId;
             _resultValue.status = status;
+            _resultValue.tags = tags;
             _resultValue.vpcEndpointServiceName = vpcEndpointServiceName;
             return _resultValue;
         }

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Eais
 {
     /// <summary>
-    /// Provides a EAIS Instance resource.
+    /// Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
     /// 
-    /// For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+    /// For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
     /// 
     /// &gt; **NOTE:** Available since v1.137.0.
     /// 
@@ -29,40 +29,35 @@ namespace Pulumi.AliCloud.Eais
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var zoneId = "cn-hangzhou-h";
     /// 
-    ///     var @default = AliCloud.GetZones.Invoke(new()
-    ///     {
-    ///         AvailableResourceCreation = "VSwitch",
-    ///     });
-    /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     var @default = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
-    ///         CidrBlock = "10.0.0.0/8",
+    ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
-    ///         CidrBlock = "10.1.0.0/16",
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = @default.Id,
+    ///         CidrBlock = "192.168.192.0/24",
     ///         ZoneId = zoneId,
     ///     });
     /// 
     ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         Name = name,
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = @default.Id,
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Eais.Instance("default", new()
     ///     {
     ///         InstanceType = "eais.ei-a6.2xlarge",
-    ///         InstanceName = name,
-    ///         SecurityGroupId = defaultSecurityGroup.Id,
     ///         VswitchId = defaultSwitch.Id,
+    ///         SecurityGroupId = defaultSecurityGroup.Id,
+    ///         InstanceName = name,
     ///     });
     /// 
     /// });
@@ -70,7 +65,7 @@ namespace Pulumi.AliCloud.Eais
     /// 
     /// ## Import
     /// 
-    /// EAIS Instance can be imported using the id, e.g.
+    /// Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:eais/instance:Instance example &lt;id&gt;
@@ -80,19 +75,19 @@ namespace Pulumi.AliCloud.Eais
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+        /// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance.
+        /// The name of the Instance.
         /// </summary>
         [Output("instanceName")]
-        public Output<string?> InstanceName { get; private set; } = null!;
+        public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -104,13 +99,13 @@ namespace Pulumi.AliCloud.Eais
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+        /// The status of the Instance.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the vswitch.
+        /// The ID of the vSwitch.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -162,19 +157,19 @@ namespace Pulumi.AliCloud.Eais
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+        /// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The name of the instance.
+        /// The name of the Instance.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -186,7 +181,7 @@ namespace Pulumi.AliCloud.Eais
         public Input<string> SecurityGroupId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the vswitch.
+        /// The ID of the vSwitch.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
@@ -200,19 +195,19 @@ namespace Pulumi.AliCloud.Eais
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+        /// Specifies whether to force delete the Instance. Default value: `false`. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The name of the instance.
+        /// The name of the Instance.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        /// The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -224,13 +219,13 @@ namespace Pulumi.AliCloud.Eais
         public Input<string>? SecurityGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+        /// The status of the Instance.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the vswitch.
+        /// The ID of the vSwitch.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

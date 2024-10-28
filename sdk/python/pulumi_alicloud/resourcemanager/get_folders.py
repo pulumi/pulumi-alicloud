@@ -65,7 +65,7 @@ class GetFoldersResult:
     @pulumi.getter
     def folders(self) -> Sequence['outputs.GetFoldersFolderResult']:
         """
-        A list of folders. Each element contains the following attributes:
+        A list of Folder. Each element contains the following attributes:
         """
         return pulumi.get(self, "folders")
 
@@ -80,9 +80,6 @@ class GetFoldersResult:
     @property
     @pulumi.getter
     def ids(self) -> Sequence[str]:
-        """
-        A list of folder IDs.
-        """
         return pulumi.get(self, "ids")
 
     @property
@@ -94,7 +91,7 @@ class GetFoldersResult:
     @pulumi.getter
     def names(self) -> Sequence[str]:
         """
-        A list of folder names.
+        A list of Folder names.
         """
         return pulumi.get(self, "names")
 
@@ -107,7 +104,7 @@ class GetFoldersResult:
     @pulumi.getter(name="parentFolderId")
     def parent_folder_id(self) -> Optional[str]:
         """
-        (Available in v1.114.0+)The ID of the parent folder.
+        (Available since v1.114.0) The ID of the parent folder. **Note:** `parent_folder_id` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "parent_folder_id")
 
@@ -142,29 +139,34 @@ def get_folders(enable_details: Optional[bool] = None,
                 query_keyword: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFoldersResult:
     """
-    This data source provides the resource manager folders of the current Alibaba Cloud user.
+    This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.84.0+.
-
-    > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+    > **NOTE:** Available since v1.84.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.resourcemanager.get_folders(name_regex="tftest")
-    pulumi.export("firstFolderId", example.folders[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.resourcemanager.Folder("default", folder_name=name)
+    ids = alicloud.resourcemanager.get_folders_output(ids=[default.id])
+    pulumi.export("resourceManagerFolderId0", ids.folders[0].id)
     ```
 
 
-    :param bool enable_details: Default to `false`. Set it to true can output more details.
-    :param Sequence[str] ids: A list of resource manager folders IDs.
-    :param str name_regex: A regex string to filter results by folder name.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[str] ids: A list of Folders IDs.
+    :param str name_regex: A regex string to filter results by Folder name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parent_folder_id: The ID of the parent folder.
-    :param str query_keyword: The query keyword.
+    :param str parent_folder_id: The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+    :param str query_keyword: The keyword used for the query, such as a folder name. Fuzzy match is supported.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -194,29 +196,34 @@ def get_folders_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
                        query_keyword: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFoldersResult]:
     """
-    This data source provides the resource manager folders of the current Alibaba Cloud user.
+    This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
 
-    > **NOTE:**  Available in 1.84.0+.
-
-    > **NOTE:**  You can view only the information of the first-level child folders of the specified folder.
+    > **NOTE:** Available since v1.84.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example = alicloud.resourcemanager.get_folders(name_regex="tftest")
-    pulumi.export("firstFolderId", example.folders[0].id)
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.resourcemanager.Folder("default", folder_name=name)
+    ids = alicloud.resourcemanager.get_folders_output(ids=[default.id])
+    pulumi.export("resourceManagerFolderId0", ids.folders[0].id)
     ```
 
 
-    :param bool enable_details: Default to `false`. Set it to true can output more details.
-    :param Sequence[str] ids: A list of resource manager folders IDs.
-    :param str name_regex: A regex string to filter results by folder name.
+    :param bool enable_details: Whether to query the detailed list of resource attributes. Default value: `false`.
+    :param Sequence[str] ids: A list of Folders IDs.
+    :param str name_regex: A regex string to filter results by Folder name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parent_folder_id: The ID of the parent folder.
-    :param str query_keyword: The query keyword.
+    :param str parent_folder_id: The ID of the parent folder. **NOTE:** If `parent_folder_id` is not set, the information of the first-level subfolders of the Root folder is queried.
+    :param str query_keyword: The keyword used for the query, such as a folder name. Fuzzy match is supported.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details

@@ -539,6 +539,36 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
     }
 
     /**
+     * Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+     * 
+     */
+    @Import(name="stdin")
+    private @Nullable Output<Boolean> stdin;
+
+    /**
+     * @return Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+     * 
+     */
+    public Optional<Output<Boolean>> stdin() {
+        return Optional.ofNullable(this.stdin);
+    }
+
+    /**
+     * Specifies whether to enable the Interaction feature. Valid values: true, false.
+     * 
+     */
+    @Import(name="tty")
+    private @Nullable Output<Boolean> tty;
+
+    /**
+     * @return Specifies whether to enable the Interaction feature. Valid values: true, false.
+     * 
+     */
+    public Optional<Output<Boolean>> tty() {
+        return Optional.ofNullable(this.tty);
+    }
+
+    /**
      * The structure of volumeMounts.
      * See `volume_mounts` below for details.
      * 
@@ -607,6 +637,8 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
         this.securityContextCapabilityAdds = $.securityContextCapabilityAdds;
         this.securityContextReadOnlyRootFileSystem = $.securityContextReadOnlyRootFileSystem;
         this.securityContextRunAsUser = $.securityContextRunAsUser;
+        this.stdin = $.stdin;
+        this.tty = $.tty;
         this.volumeMounts = $.volumeMounts;
         this.workingDir = $.workingDir;
     }
@@ -1430,6 +1462,48 @@ public final class EciScalingConfigurationContainerArgs extends com.pulumi.resou
          */
         public Builder securityContextRunAsUser(Integer securityContextRunAsUser) {
             return securityContextRunAsUser(Output.of(securityContextRunAsUser));
+        }
+
+        /**
+         * @param stdin Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stdin(@Nullable Output<Boolean> stdin) {
+            $.stdin = stdin;
+            return this;
+        }
+
+        /**
+         * @param stdin Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stdin(Boolean stdin) {
+            return stdin(Output.of(stdin));
+        }
+
+        /**
+         * @param tty Specifies whether to enable the Interaction feature. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tty(@Nullable Output<Boolean> tty) {
+            $.tty = tty;
+            return this;
+        }
+
+        /**
+         * @param tty Specifies whether to enable the Interaction feature. Valid values: true, false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tty(Boolean tty) {
+            return tty(Output.of(tty));
         }
 
         /**

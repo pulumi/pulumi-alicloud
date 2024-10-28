@@ -44,14 +44,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.aclEntryLists);
     }
     /**
-     * (Available in v1.205.0+) The application version.
+     * (Available since v1.205.0) The application version.
      * 
      */
     @Export(name="appVersion", refs={String.class}, tree="[0]")
     private Output<String> appVersion;
 
     /**
-     * @return (Available in v1.205.0+) The application version.
+     * @return (Available since v1.205.0) The application version.
      * 
      */
     public Output<String> appVersion() {
@@ -62,46 +62,74 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="clusterAliasName", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> clusterAliasName;
+    private Output<String> clusterAliasName;
 
     /**
      * @return The alias of MSE Cluster.
      * 
      */
-    public Output<Optional<String>> clusterAliasName() {
-        return Codegen.optional(this.clusterAliasName);
+    public Output<String> clusterAliasName() {
+        return this.clusterAliasName;
     }
     /**
-     * (Available in v1.162.0+) The id of Cluster.
+     * (Available since v1.162.0) The cluster id of Cluster.
      * 
      */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
-     * @return (Available in v1.162.0+) The id of Cluster.
+     * @return (Available since v1.162.0) The cluster id of Cluster.
      * 
      */
     public Output<String> clusterId() {
         return this.clusterId;
     }
     /**
-     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+     * The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
      * - `MSE_SC_4_8_60_c`: 4C8G
      * - `MSE_SC_8_16_60_c`: 8C16G
+     * - `MSE_SC_16_32_60_c`:16C32G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - `MSE_SC_4_8_200_c`: 4C8G
+     * - `MSE_SC_8_16_200_c`: 8C16G
+     * - `MSE_SC_16_32_200_c`:16C32G
+     * - Developer Edition
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - Serverless Edition
+     * - `MSE_SC_SERVERLESS`: Available since v1.232.0
      * 
      */
     @Export(name="clusterSpecification", refs={String.class}, tree="[0]")
     private Output<String> clusterSpecification;
 
     /**
-     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+     * @return The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+     * - Professional Edition
      * - `MSE_SC_1_2_60_c`: 1C2G
      * - `MSE_SC_2_4_60_c`: 2C4G
      * - `MSE_SC_4_8_60_c`: 4C8G
      * - `MSE_SC_8_16_60_c`: 8C16G
+     * - `MSE_SC_16_32_60_c`:16C32G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - `MSE_SC_4_8_200_c`: 4C8G
+     * - `MSE_SC_8_16_200_c`: 8C16G
+     * - `MSE_SC_16_32_200_c`:16C32G
+     * - Developer Edition
+     * - `MSE_SC_1_2_60_c`: 1C2G
+     * - `MSE_SC_2_4_60_c`: 2C4G
+     * - `MSE_SC_1_2_200_c`: 1C2G
+     * - `MSE_SC_2_4_200_c`: 2C4G
+     * - Serverless Edition
+     * - `MSE_SC_SERVERLESS`: Available since v1.232.0
      * 
      */
     public Output<String> clusterSpecification() {
@@ -136,14 +164,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.clusterVersion;
     }
     /**
-     * The connection type. Valid values: `slb`.
+     * The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
      * 
      */
     @Export(name="connectionType", refs={String.class}, tree="[0]")
     private Output<String> connectionType;
 
     /**
-     * @return The connection type. Valid values: `slb`.
+     * @return The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster&#39;s mse_version is `mse_dev`,please use `single_eni`.
      * 
      */
     public Output<String> connectionType() {
@@ -178,28 +206,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.instanceCount;
     }
     /**
-     * The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+     * The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
      * 
      */
     @Export(name="mseVersion", refs={String.class}, tree="[0]")
     private Output<String> mseVersion;
 
     /**
-     * @return The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+     * @return The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
      * 
      */
     public Output<String> mseVersion() {
         return this.mseVersion;
     }
     /**
-     * The type of network. Valid values: &#34;privatenet&#34; and &#34;pubnet&#34;.
+     * The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
      * 
      */
     @Export(name="netType", refs={String.class}, tree="[0]")
     private Output<String> netType;
 
     /**
-     * @return The type of network. Valid values: &#34;privatenet&#34; and &#34;pubnet&#34;.
+     * @return The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
      * 
      */
     public Output<String> netType() {
@@ -234,28 +262,28 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privateSlbSpecification);
     }
     /**
-     * The public network bandwidth. `0` means no access to the public network.
+     * The public network bandwidth.
      * 
      */
     @Export(name="pubNetworkFlow", refs={String.class}, tree="[0]")
     private Output<String> pubNetworkFlow;
 
     /**
-     * @return The public network bandwidth. `0` means no access to the public network.
+     * @return The public network bandwidth.
      * 
      */
     public Output<String> pubNetworkFlow() {
         return this.pubNetworkFlow;
     }
     /**
-     * The specification of public network SLB.
+     * The specification of public network SLB. Serverless Instance could ignore this parameter.
      * 
      */
     @Export(name="pubSlbSpecification", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pubSlbSpecification;
 
     /**
-     * @return The specification of public network SLB.
+     * @return The specification of public network SLB. Serverless Instance could ignore this parameter.
      * 
      */
     public Output<Optional<String>> pubSlbSpecification() {

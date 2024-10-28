@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshExtraConfiguration {
     /**
-     * @return Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
+     * @return Whether the data plane KubeAPI access capability is enabled.
      * 
      */
     private @Nullable Boolean crAggregationEnabled;
 
     private ServiceMeshExtraConfiguration() {}
     /**
-     * @return Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
+     * @return Whether the data plane KubeAPI access capability is enabled.
      * 
      */
     public Optional<Boolean> crAggregationEnabled() {

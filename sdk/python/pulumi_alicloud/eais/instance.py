@@ -26,11 +26,11 @@ class InstanceArgs:
                  instance_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_type: The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        :param pulumi.Input[str] instance_type: The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[str] vswitch_id: The ID of the vswitch.
-        :param pulumi.Input[bool] force: Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
-        :param pulumi.Input[str] instance_name: The name of the instance.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        :param pulumi.Input[str] instance_name: The name of the Instance.
         """
         pulumi.set(__self__, "instance_type", instance_type)
         pulumi.set(__self__, "security_group_id", security_group_id)
@@ -44,7 +44,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
         """
-        The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -68,7 +68,7 @@ class InstanceArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The ID of the vswitch.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -80,7 +80,7 @@ class InstanceArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+        Specifies whether to force delete the Instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -92,7 +92,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance.
+        The name of the Instance.
         """
         return pulumi.get(self, "instance_name")
 
@@ -112,12 +112,12 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[bool] force: Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
-        :param pulumi.Input[str] instance_name: The name of the instance.
-        :param pulumi.Input[str] instance_type: The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        :param pulumi.Input[str] instance_name: The name of the Instance.
+        :param pulumi.Input[str] instance_type: The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
-        :param pulumi.Input[str] vswitch_id: The ID of the vswitch.
+        :param pulumi.Input[str] status: The status of the Instance.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         if force is not None:
             pulumi.set(__self__, "force", force)
@@ -136,7 +136,7 @@ class _InstanceState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+        Specifies whether to force delete the Instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -148,7 +148,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance.
+        The name of the Instance.
         """
         return pulumi.get(self, "instance_name")
 
@@ -160,7 +160,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -184,7 +184,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+        The status of the Instance.
         """
         return pulumi.get(self, "status")
 
@@ -196,7 +196,7 @@ class _InstanceState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the vswitch.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -217,9 +217,9 @@ class Instance(pulumi.CustomResource):
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a EAIS Instance resource.
+        Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
 
-        For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+        For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
 
         > **NOTE:** Available since v1.137.0.
 
@@ -234,30 +234,29 @@ class Instance(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         zone_id = "cn-hangzhou-h"
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("default",
+        default = alicloud.vpc.Network("default",
             vpc_name=name,
-            cidr_block="10.0.0.0/8")
+            cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
+            vpc_id=default.id,
+            cidr_block="192.168.192.0/24",
             zone_id=zone_id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
-            vpc_id=default_network.id)
+            vpc_id=default.id)
         default_instance = alicloud.eais.Instance("default",
             instance_type="eais.ei-a6.2xlarge",
-            instance_name=name,
+            vswitch_id=default_switch.id,
             security_group_id=default_security_group.id,
-            vswitch_id=default_switch.id)
+            instance_name=name)
         ```
 
         ## Import
 
-        EAIS Instance can be imported using the id, e.g.
+        Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:eais/instance:Instance example <id>
@@ -265,11 +264,11 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] force: Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
-        :param pulumi.Input[str] instance_name: The name of the instance.
-        :param pulumi.Input[str] instance_type: The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        :param pulumi.Input[str] instance_name: The name of the Instance.
+        :param pulumi.Input[str] instance_type: The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[str] vswitch_id: The ID of the vswitch.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         ...
     @overload
@@ -278,9 +277,9 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a EAIS Instance resource.
+        Provides a Elastic Accelerated Computing Instances (EAIS) Instance resource.
 
-        For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
+        For information about Elastic Accelerated Computing Instances (EAIS) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
 
         > **NOTE:** Available since v1.137.0.
 
@@ -295,30 +294,29 @@ class Instance(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         zone_id = "cn-hangzhou-h"
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("default",
+        default = alicloud.vpc.Network("default",
             vpc_name=name,
-            cidr_block="10.0.0.0/8")
+            cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
-            cidr_block="10.1.0.0/16",
-            vpc_id=default_network.id,
+            vpc_id=default.id,
+            cidr_block="192.168.192.0/24",
             zone_id=zone_id)
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
-            vpc_id=default_network.id)
+            vpc_id=default.id)
         default_instance = alicloud.eais.Instance("default",
             instance_type="eais.ei-a6.2xlarge",
-            instance_name=name,
+            vswitch_id=default_switch.id,
             security_group_id=default_security_group.id,
-            vswitch_id=default_switch.id)
+            instance_name=name)
         ```
 
         ## Import
 
-        EAIS Instance can be imported using the id, e.g.
+        Elastic Accelerated Computing Instances (EAIS) Instance can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:eais/instance:Instance example <id>
@@ -388,12 +386,12 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] force: Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
-        :param pulumi.Input[str] instance_name: The name of the instance.
-        :param pulumi.Input[str] instance_type: The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the Instance. Default value: `false`. Valid values:
+        :param pulumi.Input[str] instance_name: The name of the Instance.
+        :param pulumi.Input[str] instance_type: The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
-        :param pulumi.Input[str] status: The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
-        :param pulumi.Input[str] vswitch_id: The ID of the vswitch.
+        :param pulumi.Input[str] status: The status of the Instance.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -411,15 +409,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
+        Specifies whether to force delete the Instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> pulumi.Output[Optional[str]]:
+    def instance_name(self) -> pulumi.Output[str]:
         """
-        The name of the instance.
+        The name of the Instance.
         """
         return pulumi.get(self, "instance_name")
 
@@ -427,7 +425,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        The type of the resource. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
+        The type of the Instance. Valid values: `eais.ei-a6.4xlarge`, `eais.ei-a6.2xlarge`, `eais.ei-a6.xlarge`, `eais.ei-a6.large`, `eais.ei-a6.medium`.
         """
         return pulumi.get(self, "instance_type")
 
@@ -443,7 +441,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
+        The status of the Instance.
         """
         return pulumi.get(self, "status")
 
@@ -451,7 +449,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        The ID of the vswitch.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 

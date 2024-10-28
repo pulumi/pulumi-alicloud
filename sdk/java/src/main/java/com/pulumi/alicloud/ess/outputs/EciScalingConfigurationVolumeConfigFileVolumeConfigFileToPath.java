@@ -4,6 +4,7 @@
 package com.pulumi.alicloud.ess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,11 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
      */
     private @Nullable String content;
     /**
+     * @return The permissions on the ConfigFileVolume directory.
+     * 
+     */
+    private @Nullable Integer mode;
+    /**
      * @return The relative file path.
      * 
      */
@@ -29,6 +35,13 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
      */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
+    }
+    /**
+     * @return The permissions on the ConfigFileVolume directory.
+     * 
+     */
+    public Optional<Integer> mode() {
+        return Optional.ofNullable(this.mode);
     }
     /**
      * @return The relative file path.
@@ -48,11 +61,13 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String content;
+        private @Nullable Integer mode;
         private @Nullable String path;
         public Builder() {}
         public Builder(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.content = defaults.content;
+    	      this.mode = defaults.mode;
     	      this.path = defaults.path;
         }
 
@@ -60,6 +75,12 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
         public Builder content(@Nullable String content) {
 
             this.content = content;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mode(@Nullable Integer mode) {
+
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +92,7 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
         public EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath build() {
             final var _resultValue = new EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath();
             _resultValue.content = content;
+            _resultValue.mode = mode;
             _resultValue.path = path;
             return _resultValue;
         }

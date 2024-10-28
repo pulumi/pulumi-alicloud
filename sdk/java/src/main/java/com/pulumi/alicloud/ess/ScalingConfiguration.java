@@ -209,6 +209,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dataDisks);
     }
     /**
+     * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+     * 
+     */
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    /**
+     * @return Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+     * 
+     */
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
+    }
+    /**
      * Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
      * 
      */
@@ -277,6 +291,34 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> imageName() {
         return Codegen.optional(this.imageName);
+    }
+    /**
+     * Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+     * 
+     */
+    @Export(name="imageOptionsLoginAsNonRoot", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> imageOptionsLoginAsNonRoot;
+
+    /**
+     * @return Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+     * 
+     */
+    public Output<Optional<Boolean>> imageOptionsLoginAsNonRoot() {
+        return Codegen.optional(this.imageOptionsLoginAsNonRoot);
+    }
+    /**
+     * The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+     * 
+     */
+    @Export(name="instanceDescription", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> instanceDescription;
+
+    /**
+     * @return The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+     * 
+     */
+    public Output<Optional<String>> instanceDescription() {
+        return Codegen.optional(this.instanceDescription);
     }
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
@@ -581,6 +623,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return this.scalingGroupId;
     }
     /**
+     * Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+     * 
+     */
+    @Export(name="securityEnhancementStrategy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> securityEnhancementStrategy;
+
+    /**
+     * @return Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+     * 
+     */
+    public Output<Optional<String>> securityEnhancementStrategy() {
+        return Codegen.optional(this.securityEnhancementStrategy);
+    }
+    /**
      * ID of the security group used to create new instance. It is conflict with `security_group_ids`.
      * 
      */
@@ -607,6 +663,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> securityGroupIds() {
         return Codegen.optional(this.securityGroupIds);
+    }
+    /**
+     * The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+     * 
+     */
+    @Export(name="spotDuration", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> spotDuration;
+
+    /**
+     * @return The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+     * 
+     */
+    public Output<Optional<Integer>> spotDuration() {
+        return Codegen.optional(this.spotDuration);
     }
     /**
      * Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
@@ -721,6 +791,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.systemDiskDescription);
     }
     /**
+     * The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+     * 
+     */
+    @Export(name="systemDiskEncryptAlgorithm", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> systemDiskEncryptAlgorithm;
+
+    /**
+     * @return The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+     * 
+     */
+    public Output<Optional<String>> systemDiskEncryptAlgorithm() {
+        return Codegen.optional(this.systemDiskEncryptAlgorithm);
+    }
+    /**
      * Whether to encrypt the system disk.
      * 
      */
@@ -733,6 +817,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> systemDiskEncrypted() {
         return Codegen.optional(this.systemDiskEncrypted);
+    }
+    /**
+     * The ID of the KMS key that you want to use to encrypt the system disk.
+     * 
+     */
+    @Export(name="systemDiskKmsKeyId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> systemDiskKmsKeyId;
+
+    /**
+     * @return The ID of the KMS key that you want to use to encrypt the system disk.
+     * 
+     */
+    public Output<Optional<String>> systemDiskKmsKeyId() {
+        return Codegen.optional(this.systemDiskKmsKeyId);
     }
     /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
@@ -761,6 +859,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> systemDiskPerformanceLevel() {
         return Codegen.optional(this.systemDiskPerformanceLevel);
+    }
+    /**
+     * IOPS measures the number of read and write operations that an EBS device can process per second.
+     * 
+     */
+    @Export(name="systemDiskProvisionedIops", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> systemDiskProvisionedIops;
+
+    /**
+     * @return IOPS measures the number of read and write operations that an EBS device can process per second.
+     * 
+     */
+    public Output<Optional<Integer>> systemDiskProvisionedIops() {
+        return Codegen.optional(this.systemDiskProvisionedIops);
     }
     /**
      * Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.

@@ -26,8 +26,6 @@ if not MYPY:
         ecs_id: NotRequired[pulumi.Input[str]]
         """
         The ID of the ECS instance.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
 elif False:
     InstanceEcsListArgsDict: TypeAlias = Mapping[str, Any]
@@ -38,8 +36,6 @@ class InstanceEcsListArgs:
                  ecs_id: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ecs_id: The ID of the ECS instance.
-               
-               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         if ecs_id is not None:
             pulumi.set(__self__, "ecs_id", ecs_id)
@@ -49,8 +45,6 @@ class InstanceEcsListArgs:
     def ecs_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the ECS instance.
-
-        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "ecs_id")
 

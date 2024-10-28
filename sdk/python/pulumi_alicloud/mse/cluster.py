@@ -40,24 +40,38 @@ class ClusterArgs:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+               - Professional Edition
                - `MSE_SC_1_2_60_c`: 1C2G
                - `MSE_SC_2_4_60_c`: 2C4G
                - `MSE_SC_4_8_60_c`: 4C8G
                - `MSE_SC_8_16_60_c`: 8C16G
+               - `MSE_SC_16_32_60_c`:16C32G
+               - `MSE_SC_1_2_200_c`: 1C2G
+               - `MSE_SC_2_4_200_c`: 2C4G
+               - `MSE_SC_4_8_200_c`: 4C8G
+               - `MSE_SC_8_16_200_c`: 8C16G
+               - `MSE_SC_16_32_200_c`:16C32G
+               - Developer Edition
+               - `MSE_SC_1_2_60_c`: 1C2G
+               - `MSE_SC_2_4_60_c`: 2C4G
+               - `MSE_SC_1_2_200_c`: 1C2G
+               - `MSE_SC_2_4_200_c`: 2C4G
+               - Serverless Edition
+               - `MSE_SC_SERVERLESS`: Available since v1.232.0
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
-        :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
-        :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
+        :param pulumi.Input[str] net_type: The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
+        :param pulumi.Input[str] pub_network_flow: The public network bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
-        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
+        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         :param pulumi.Input[str] disk_type: The type of Disk.
-        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
         :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
-        :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
+        :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB. Serverless Instance could ignore this parameter.
         :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
         :param pulumi.Input[str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
@@ -101,11 +115,25 @@ class ClusterArgs:
     @pulumi.getter(name="clusterSpecification")
     def cluster_specification(self) -> pulumi.Input[str]:
         """
-        The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+        - Professional Edition
         - `MSE_SC_1_2_60_c`: 1C2G
         - `MSE_SC_2_4_60_c`: 2C4G
         - `MSE_SC_4_8_60_c`: 4C8G
         - `MSE_SC_8_16_60_c`: 8C16G
+        - `MSE_SC_16_32_60_c`:16C32G
+        - `MSE_SC_1_2_200_c`: 1C2G
+        - `MSE_SC_2_4_200_c`: 2C4G
+        - `MSE_SC_4_8_200_c`: 4C8G
+        - `MSE_SC_8_16_200_c`: 8C16G
+        - `MSE_SC_16_32_200_c`:16C32G
+        - Developer Edition
+        - `MSE_SC_1_2_60_c`: 1C2G
+        - `MSE_SC_2_4_60_c`: 2C4G
+        - `MSE_SC_1_2_200_c`: 1C2G
+        - `MSE_SC_2_4_200_c`: 2C4G
+        - Serverless Edition
+        - `MSE_SC_SERVERLESS`: Available since v1.232.0
         """
         return pulumi.get(self, "cluster_specification")
 
@@ -153,7 +181,7 @@ class ClusterArgs:
     @pulumi.getter(name="netType")
     def net_type(self) -> pulumi.Input[str]:
         """
-        The type of network. Valid values: "privatenet" and "pubnet".
+        The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         """
         return pulumi.get(self, "net_type")
 
@@ -165,7 +193,7 @@ class ClusterArgs:
     @pulumi.getter(name="pubNetworkFlow")
     def pub_network_flow(self) -> pulumi.Input[str]:
         """
-        The public network bandwidth. `0` means no access to the public network.
+        The public network bandwidth.
         """
         return pulumi.get(self, "pub_network_flow")
 
@@ -201,7 +229,7 @@ class ClusterArgs:
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The connection type. Valid values: `slb`.
+        The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         """
         return pulumi.get(self, "connection_type")
 
@@ -225,7 +253,7 @@ class ClusterArgs:
     @pulumi.getter(name="mseVersion")
     def mse_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+        The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
         """
         return pulumi.get(self, "mse_version")
 
@@ -261,7 +289,7 @@ class ClusterArgs:
     @pulumi.getter(name="pubSlbSpecification")
     def pub_slb_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of public network SLB.
+        The specification of public network SLB. Serverless Instance could ignore this parameter.
         """
         return pulumi.get(self, "pub_slb_specification")
 
@@ -358,25 +386,39 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
-        :param pulumi.Input[str] app_version: (Available in v1.205.0+) The application version.
+        :param pulumi.Input[str] app_version: (Available since v1.205.0) The application version.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
-        :param pulumi.Input[str] cluster_id: (Available in v1.162.0+) The id of Cluster.
-        :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        :param pulumi.Input[str] cluster_id: (Available since v1.162.0) The cluster id of Cluster.
+        :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+               - Professional Edition
                - `MSE_SC_1_2_60_c`: 1C2G
                - `MSE_SC_2_4_60_c`: 2C4G
                - `MSE_SC_4_8_60_c`: 4C8G
                - `MSE_SC_8_16_60_c`: 8C16G
+               - `MSE_SC_16_32_60_c`:16C32G
+               - `MSE_SC_1_2_200_c`: 1C2G
+               - `MSE_SC_2_4_200_c`: 2C4G
+               - `MSE_SC_4_8_200_c`: 4C8G
+               - `MSE_SC_8_16_200_c`: 8C16G
+               - `MSE_SC_16_32_200_c`:16C32G
+               - Developer Edition
+               - `MSE_SC_1_2_60_c`: 1C2G
+               - `MSE_SC_2_4_60_c`: 2C4G
+               - `MSE_SC_1_2_200_c`: 1C2G
+               - `MSE_SC_2_4_200_c`: 2C4G
+               - Serverless Edition
+               - `MSE_SC_SERVERLESS`: Available since v1.232.0
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
-        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
+        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
-        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
-        :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
+        :param pulumi.Input[str] net_type: The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
-        :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
-        :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
+        :param pulumi.Input[str] pub_network_flow: The public network bandwidth.
+        :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB. Serverless Instance could ignore this parameter.
         :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
         :param pulumi.Input[str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[str] status: The status of MSE Cluster.
@@ -445,7 +487,7 @@ class _ClusterState:
     @pulumi.getter(name="appVersion")
     def app_version(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in v1.205.0+) The application version.
+        (Available since v1.205.0) The application version.
         """
         return pulumi.get(self, "app_version")
 
@@ -469,7 +511,7 @@ class _ClusterState:
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
-        (Available in v1.162.0+) The id of Cluster.
+        (Available since v1.162.0) The cluster id of Cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -481,11 +523,25 @@ class _ClusterState:
     @pulumi.getter(name="clusterSpecification")
     def cluster_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+        - Professional Edition
         - `MSE_SC_1_2_60_c`: 1C2G
         - `MSE_SC_2_4_60_c`: 2C4G
         - `MSE_SC_4_8_60_c`: 4C8G
         - `MSE_SC_8_16_60_c`: 8C16G
+        - `MSE_SC_16_32_60_c`:16C32G
+        - `MSE_SC_1_2_200_c`: 1C2G
+        - `MSE_SC_2_4_200_c`: 2C4G
+        - `MSE_SC_4_8_200_c`: 4C8G
+        - `MSE_SC_8_16_200_c`: 8C16G
+        - `MSE_SC_16_32_200_c`:16C32G
+        - Developer Edition
+        - `MSE_SC_1_2_60_c`: 1C2G
+        - `MSE_SC_2_4_60_c`: 2C4G
+        - `MSE_SC_1_2_200_c`: 1C2G
+        - `MSE_SC_2_4_200_c`: 2C4G
+        - Serverless Edition
+        - `MSE_SC_SERVERLESS`: Available since v1.232.0
         """
         return pulumi.get(self, "cluster_specification")
 
@@ -521,7 +577,7 @@ class _ClusterState:
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The connection type. Valid values: `slb`.
+        The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         """
         return pulumi.get(self, "connection_type")
 
@@ -557,7 +613,7 @@ class _ClusterState:
     @pulumi.getter(name="mseVersion")
     def mse_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+        The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
         """
         return pulumi.get(self, "mse_version")
 
@@ -569,7 +625,7 @@ class _ClusterState:
     @pulumi.getter(name="netType")
     def net_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of network. Valid values: "privatenet" and "pubnet".
+        The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         """
         return pulumi.get(self, "net_type")
 
@@ -605,7 +661,7 @@ class _ClusterState:
     @pulumi.getter(name="pubNetworkFlow")
     def pub_network_flow(self) -> Optional[pulumi.Input[str]]:
         """
-        The public network bandwidth. `0` means no access to the public network.
+        The public network bandwidth.
         """
         return pulumi.get(self, "pub_network_flow")
 
@@ -617,7 +673,7 @@ class _ClusterState:
     @pulumi.getter(name="pubSlbSpecification")
     def pub_slb_specification(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of public network SLB.
+        The specification of public network SLB. Serverless Instance could ignore this parameter.
         """
         return pulumi.get(self, "pub_slb_specification")
 
@@ -736,22 +792,36 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
-        :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+               - Professional Edition
                - `MSE_SC_1_2_60_c`: 1C2G
                - `MSE_SC_2_4_60_c`: 2C4G
                - `MSE_SC_4_8_60_c`: 4C8G
                - `MSE_SC_8_16_60_c`: 8C16G
+               - `MSE_SC_16_32_60_c`:16C32G
+               - `MSE_SC_1_2_200_c`: 1C2G
+               - `MSE_SC_2_4_200_c`: 2C4G
+               - `MSE_SC_4_8_200_c`: 4C8G
+               - `MSE_SC_8_16_200_c`: 8C16G
+               - `MSE_SC_16_32_200_c`:16C32G
+               - Developer Edition
+               - `MSE_SC_1_2_60_c`: 1C2G
+               - `MSE_SC_2_4_60_c`: 2C4G
+               - `MSE_SC_1_2_200_c`: 1C2G
+               - `MSE_SC_2_4_200_c`: 2C4G
+               - Serverless Edition
+               - `MSE_SC_SERVERLESS`: Available since v1.232.0
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
-        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
+        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
-        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
-        :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
+        :param pulumi.Input[str] net_type: The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
-        :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
-        :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
+        :param pulumi.Input[str] pub_network_flow: The public network bandwidth.
+        :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB. Serverless Instance could ignore this parameter.
         :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
         :param pulumi.Input[str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag of the resource.
@@ -890,25 +960,39 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] acl_entry_lists: The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
-        :param pulumi.Input[str] app_version: (Available in v1.205.0+) The application version.
+        :param pulumi.Input[str] app_version: (Available since v1.205.0) The application version.
         :param pulumi.Input[str] cluster_alias_name: The alias of MSE Cluster.
-        :param pulumi.Input[str] cluster_id: (Available in v1.162.0+) The id of Cluster.
-        :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        :param pulumi.Input[str] cluster_id: (Available since v1.162.0) The cluster id of Cluster.
+        :param pulumi.Input[str] cluster_specification: The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+               - Professional Edition
                - `MSE_SC_1_2_60_c`: 1C2G
                - `MSE_SC_2_4_60_c`: 2C4G
                - `MSE_SC_4_8_60_c`: 4C8G
                - `MSE_SC_8_16_60_c`: 8C16G
+               - `MSE_SC_16_32_60_c`:16C32G
+               - `MSE_SC_1_2_200_c`: 1C2G
+               - `MSE_SC_2_4_200_c`: 2C4G
+               - `MSE_SC_4_8_200_c`: 4C8G
+               - `MSE_SC_8_16_200_c`: 8C16G
+               - `MSE_SC_16_32_200_c`:16C32G
+               - Developer Edition
+               - `MSE_SC_1_2_60_c`: 1C2G
+               - `MSE_SC_2_4_60_c`: 2C4G
+               - `MSE_SC_1_2_200_c`: 1C2G
+               - `MSE_SC_2_4_200_c`: 2C4G
+               - Serverless Edition
+               - `MSE_SC_SERVERLESS`: Available since v1.232.0
         :param pulumi.Input[str] cluster_type: The type of MSE Cluster.
         :param pulumi.Input[str] cluster_version: The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
-        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`.
+        :param pulumi.Input[str] connection_type: The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         :param pulumi.Input[str] disk_type: The type of Disk.
         :param pulumi.Input[int] instance_count: The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
-        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro`.
-        :param pulumi.Input[str] net_type: The type of network. Valid values: "privatenet" and "pubnet".
+        :param pulumi.Input[str] mse_version: The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
+        :param pulumi.Input[str] net_type: The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         :param pulumi.Input[str] payment_type: Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         :param pulumi.Input[str] private_slb_specification: The specification of private network SLB.
-        :param pulumi.Input[str] pub_network_flow: The public network bandwidth. `0` means no access to the public network.
-        :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB.
+        :param pulumi.Input[str] pub_network_flow: The public network bandwidth.
+        :param pulumi.Input[str] pub_slb_specification: The specification of public network SLB. Serverless Instance could ignore this parameter.
         :param pulumi.Input[str] request_pars: The extended request parameters in the JSON format.
         :param pulumi.Input[str] resource_group_id: The resource group of the resource.
         :param pulumi.Input[str] status: The status of MSE Cluster.
@@ -956,13 +1040,13 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="appVersion")
     def app_version(self) -> pulumi.Output[str]:
         """
-        (Available in v1.205.0+) The application version.
+        (Available since v1.205.0) The application version.
         """
         return pulumi.get(self, "app_version")
 
     @property
     @pulumi.getter(name="clusterAliasName")
-    def cluster_alias_name(self) -> pulumi.Output[Optional[str]]:
+    def cluster_alias_name(self) -> pulumi.Output[str]:
         """
         The alias of MSE Cluster.
         """
@@ -972,7 +1056,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> pulumi.Output[str]:
         """
-        (Available in v1.162.0+) The id of Cluster.
+        (Available since v1.162.0) The cluster id of Cluster.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -980,11 +1064,25 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="clusterSpecification")
     def cluster_specification(self) -> pulumi.Output[str]:
         """
-        The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+        - Professional Edition
         - `MSE_SC_1_2_60_c`: 1C2G
         - `MSE_SC_2_4_60_c`: 2C4G
         - `MSE_SC_4_8_60_c`: 4C8G
         - `MSE_SC_8_16_60_c`: 8C16G
+        - `MSE_SC_16_32_60_c`:16C32G
+        - `MSE_SC_1_2_200_c`: 1C2G
+        - `MSE_SC_2_4_200_c`: 2C4G
+        - `MSE_SC_4_8_200_c`: 4C8G
+        - `MSE_SC_8_16_200_c`: 8C16G
+        - `MSE_SC_16_32_200_c`:16C32G
+        - Developer Edition
+        - `MSE_SC_1_2_60_c`: 1C2G
+        - `MSE_SC_2_4_60_c`: 2C4G
+        - `MSE_SC_1_2_200_c`: 1C2G
+        - `MSE_SC_2_4_200_c`: 2C4G
+        - Serverless Edition
+        - `MSE_SC_SERVERLESS`: Available since v1.232.0
         """
         return pulumi.get(self, "cluster_specification")
 
@@ -1008,7 +1106,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="connectionType")
     def connection_type(self) -> pulumi.Output[str]:
         """
-        The connection type. Valid values: `slb`.
+        The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         """
         return pulumi.get(self, "connection_type")
 
@@ -1032,7 +1130,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="mseVersion")
     def mse_version(self) -> pulumi.Output[str]:
         """
-        The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+        The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
         """
         return pulumi.get(self, "mse_version")
 
@@ -1040,7 +1138,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="netType")
     def net_type(self) -> pulumi.Output[str]:
         """
-        The type of network. Valid values: "privatenet" and "pubnet".
+        The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         """
         return pulumi.get(self, "net_type")
 
@@ -1064,7 +1162,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="pubNetworkFlow")
     def pub_network_flow(self) -> pulumi.Output[str]:
         """
-        The public network bandwidth. `0` means no access to the public network.
+        The public network bandwidth.
         """
         return pulumi.get(self, "pub_network_flow")
 
@@ -1072,7 +1170,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="pubSlbSpecification")
     def pub_slb_specification(self) -> pulumi.Output[Optional[str]]:
         """
-        The specification of public network SLB.
+        The specification of public network SLB. Serverless Instance could ignore this parameter.
         """
         return pulumi.get(self, "pub_slb_specification")
 

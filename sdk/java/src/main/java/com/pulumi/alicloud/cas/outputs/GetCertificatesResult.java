@@ -31,6 +31,13 @@ public final class GetCertificatesResult {
      * 
      */
     private List<String> ids;
+    private @Nullable String keyword;
+    /**
+     * @deprecated
+     * Field `lang` has been deprecated from provider version 1.232.0.
+     * 
+     */
+    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
     private @Nullable String lang;
     private @Nullable String nameRegex;
     /**
@@ -65,6 +72,15 @@ public final class GetCertificatesResult {
     public List<String> ids() {
         return this.ids;
     }
+    public Optional<String> keyword() {
+        return Optional.ofNullable(this.keyword);
+    }
+    /**
+     * @deprecated
+     * Field `lang` has been deprecated from provider version 1.232.0.
+     * 
+     */
+    @Deprecated /* Field `lang` has been deprecated from provider version 1.232.0. */
     public Optional<String> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -95,6 +111,7 @@ public final class GetCertificatesResult {
         private @Nullable Boolean enableDetails;
         private String id;
         private List<String> ids;
+        private @Nullable String keyword;
         private @Nullable String lang;
         private @Nullable String nameRegex;
         private List<String> names;
@@ -106,6 +123,7 @@ public final class GetCertificatesResult {
     	      this.enableDetails = defaults.enableDetails;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.keyword = defaults.keyword;
     	      this.lang = defaults.lang;
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
@@ -149,6 +167,12 @@ public final class GetCertificatesResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder keyword(@Nullable String keyword) {
+
+            this.keyword = keyword;
+            return this;
+        }
+        @CustomType.Setter
         public Builder lang(@Nullable String lang) {
 
             this.lang = lang;
@@ -183,6 +207,7 @@ public final class GetCertificatesResult {
             _resultValue.enableDetails = enableDetails;
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.keyword = keyword;
             _resultValue.lang = lang;
             _resultValue.nameRegex = nameRegex;
             _resultValue.names = names;

@@ -17,14 +17,14 @@ public final class ServiceMeshMeshConfigPilotArgs extends com.pulumi.resources.R
     public static final ServiceMeshMeshConfigPilotArgs Empty = new ServiceMeshMeshConfigPilotArgs();
 
     /**
-     * Whether to support the HTTP1.0.
+     * Whether to support the HTTP1.0
      * 
      */
     @Import(name="http10Enabled")
     private @Nullable Output<Boolean> http10Enabled;
 
     /**
-     * @return Whether to support the HTTP1.0.
+     * @return Whether to support the HTTP1.0
      * 
      */
     public Optional<Output<Boolean>> http10Enabled() {
@@ -32,14 +32,14 @@ public final class ServiceMeshMeshConfigPilotArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Link trace sampling percentage.
+     * Link trace sampling percentage
      * 
      */
     @Import(name="traceSampling")
     private @Nullable Output<Double> traceSampling;
 
     /**
-     * @return Link trace sampling percentage.
+     * @return Link trace sampling percentage
      * 
      */
     public Optional<Output<Double>> traceSampling() {
@@ -72,7 +72,7 @@ public final class ServiceMeshMeshConfigPilotArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param http10Enabled Whether to support the HTTP1.0.
+         * @param http10Enabled Whether to support the HTTP1.0
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ServiceMeshMeshConfigPilotArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param http10Enabled Whether to support the HTTP1.0.
+         * @param http10Enabled Whether to support the HTTP1.0
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ServiceMeshMeshConfigPilotArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param traceSampling Link trace sampling percentage.
+         * @param traceSampling Link trace sampling percentage
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ServiceMeshMeshConfigPilotArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param traceSampling Link trace sampling percentage.
+         * @param traceSampling Link trace sampling percentage
          * 
          * @return builder
          * 

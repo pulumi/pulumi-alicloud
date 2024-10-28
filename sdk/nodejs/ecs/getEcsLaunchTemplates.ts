@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -19,11 +19,97 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ecs.getEcsLaunchTemplates({
- *     ids: ["lt-bp1a469uxxxxxx"],
- *     nameRegex: "your_launch_name",
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
  * });
- * export const firstEcsLaunchTemplateId = example.then(example => example.templates?.[0]?.id);
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ * }));
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: "terraform-example",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultEcsLaunchTemplate = new alicloud.ecs.EcsLaunchTemplate("default", {
+ *     launchTemplateName: "terraform-example",
+ *     description: "terraform-example",
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     hostName: "terraform-example",
+ *     instanceChargeType: "PrePaid",
+ *     instanceName: "terraform-example",
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     internetChargeType: "PayByBandwidth",
+ *     internetMaxBandwidthIn: 5,
+ *     internetMaxBandwidthOut: 5,
+ *     ioOptimized: "optimized",
+ *     keyPairName: "key_pair_name",
+ *     ramRoleName: "ram_role_name",
+ *     networkType: "vpc",
+ *     securityEnhancementStrategy: "Active",
+ *     spotPriceLimit: 5,
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ *     systemDisk: {
+ *         category: "cloud_ssd",
+ *         description: "Test For Terraform",
+ *         name: "terraform-example",
+ *         size: 40,
+ *         deleteWithInstance: false,
+ *     },
+ *     userData: "xxxxxxx",
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     templateTags: {
+ *         Create: "Terraform",
+ *         For: "example",
+ *     },
+ *     networkInterfaces: {
+ *         name: "eth0",
+ *         description: "hello1",
+ *         primaryIp: "10.0.0.2",
+ *         securityGroupId: defaultSecurityGroup.id,
+ *         vswitchId: defaultSwitch.id,
+ *     },
+ *     dataDisks: [
+ *         {
+ *             name: "disk1",
+ *             description: "description",
+ *             deleteWithInstance: true,
+ *             category: "cloud",
+ *             encrypted: false,
+ *             performanceLevel: "PL0",
+ *             size: 20,
+ *         },
+ *         {
+ *             name: "disk2",
+ *             description: "description2",
+ *             deleteWithInstance: true,
+ *             category: "cloud",
+ *             encrypted: false,
+ *             performanceLevel: "PL0",
+ *             size: 20,
+ *         },
+ *     ],
+ * });
+ * const example = alicloud.ecs.getEcsLaunchTemplatesOutput({
+ *     ids: [defaultEcsLaunchTemplate.id],
+ * });
+ * export const firstEcsLaunchTemplateId = example.apply(example => example.templates?.[0]?.id);
  * ```
  */
 export function getEcsLaunchTemplates(args?: GetEcsLaunchTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsLaunchTemplatesResult> {
@@ -68,6 +154,9 @@ export interface GetEcsLaunchTemplatesArgs {
      * The template resource group id.
      */
     templateResourceGroupId?: string;
+    /**
+     * The template tags.
+     */
     templateTags?: {[key: string]: string};
 }
 
@@ -81,18 +170,30 @@ export interface GetEcsLaunchTemplatesResult {
      */
     readonly id: string;
     readonly ids: string[];
+    /**
+     * The Launch Template Name.
+     */
     readonly launchTemplateName?: string;
     readonly nameRegex?: string;
+    /**
+     * A list of Launch Template names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
     readonly templateResourceGroupId?: string;
+    /**
+     * The template tags.
+     */
     readonly templateTags?: {[key: string]: string};
+    /**
+     * A list of Ecs Launch Templates. Each element contains the following attributes:
+     */
     readonly templates: outputs.ecs.GetEcsLaunchTemplatesTemplate[];
 }
 /**
  * This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -102,11 +203,97 @@ export interface GetEcsLaunchTemplatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const example = alicloud.ecs.getEcsLaunchTemplates({
- *     ids: ["lt-bp1a469uxxxxxx"],
- *     nameRegex: "your_launch_name",
+ * const default = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
  * });
- * export const firstEcsLaunchTemplateId = example.then(example => example.templates?.[0]?.id);
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ * }));
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_18.*64",
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: "terraform-example",
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultEcsLaunchTemplate = new alicloud.ecs.EcsLaunchTemplate("default", {
+ *     launchTemplateName: "terraform-example",
+ *     description: "terraform-example",
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     hostName: "terraform-example",
+ *     instanceChargeType: "PrePaid",
+ *     instanceName: "terraform-example",
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     internetChargeType: "PayByBandwidth",
+ *     internetMaxBandwidthIn: 5,
+ *     internetMaxBandwidthOut: 5,
+ *     ioOptimized: "optimized",
+ *     keyPairName: "key_pair_name",
+ *     ramRoleName: "ram_role_name",
+ *     networkType: "vpc",
+ *     securityEnhancementStrategy: "Active",
+ *     spotPriceLimit: 5,
+ *     spotStrategy: "SpotWithPriceLimit",
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ *     systemDisk: {
+ *         category: "cloud_ssd",
+ *         description: "Test For Terraform",
+ *         name: "terraform-example",
+ *         size: 40,
+ *         deleteWithInstance: false,
+ *     },
+ *     userData: "xxxxxxx",
+ *     vswitchId: defaultSwitch.id,
+ *     vpcId: defaultNetwork.id,
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     templateTags: {
+ *         Create: "Terraform",
+ *         For: "example",
+ *     },
+ *     networkInterfaces: {
+ *         name: "eth0",
+ *         description: "hello1",
+ *         primaryIp: "10.0.0.2",
+ *         securityGroupId: defaultSecurityGroup.id,
+ *         vswitchId: defaultSwitch.id,
+ *     },
+ *     dataDisks: [
+ *         {
+ *             name: "disk1",
+ *             description: "description",
+ *             deleteWithInstance: true,
+ *             category: "cloud",
+ *             encrypted: false,
+ *             performanceLevel: "PL0",
+ *             size: 20,
+ *         },
+ *         {
+ *             name: "disk2",
+ *             description: "description2",
+ *             deleteWithInstance: true,
+ *             category: "cloud",
+ *             encrypted: false,
+ *             performanceLevel: "PL0",
+ *             size: 20,
+ *         },
+ *     ],
+ * });
+ * const example = alicloud.ecs.getEcsLaunchTemplatesOutput({
+ *     ids: [defaultEcsLaunchTemplate.id],
+ * });
+ * export const firstEcsLaunchTemplateId = example.apply(example => example.templates?.[0]?.id);
  * ```
  */
 export function getEcsLaunchTemplatesOutput(args?: GetEcsLaunchTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsLaunchTemplatesResult> {
@@ -151,5 +338,8 @@ export interface GetEcsLaunchTemplatesOutputArgs {
      * The template resource group id.
      */
     templateResourceGroupId?: pulumi.Input<string>;
+    /**
+     * The template tags.
+     */
     templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -972,13 +972,13 @@ func (o GetDelegatedAdministratorsAdministratorArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetFoldersFolder struct {
-	// The ID of the folder.
+	// The ID of the Folder.
 	FolderId string `pulumi:"folderId"`
-	// The name of the folder.
+	// The Name of the Folder.
 	FolderName string `pulumi:"folderName"`
-	// The ID of the folder.
+	// The ID of the Resource Manager Folder.
 	Id string `pulumi:"id"`
-	// The ID of the parent folder.
+	// The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
 	ParentFolderId string `pulumi:"parentFolderId"`
 }
 
@@ -994,13 +994,13 @@ type GetFoldersFolderInput interface {
 }
 
 type GetFoldersFolderArgs struct {
-	// The ID of the folder.
+	// The ID of the Folder.
 	FolderId pulumi.StringInput `pulumi:"folderId"`
-	// The name of the folder.
+	// The Name of the Folder.
 	FolderName pulumi.StringInput `pulumi:"folderName"`
-	// The ID of the folder.
+	// The ID of the Resource Manager Folder.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the parent folder.
+	// The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
 	ParentFolderId pulumi.StringInput `pulumi:"parentFolderId"`
 }
 
@@ -1055,22 +1055,22 @@ func (o GetFoldersFolderOutput) ToGetFoldersFolderOutputWithContext(ctx context.
 	return o
 }
 
-// The ID of the folder.
+// The ID of the Folder.
 func (o GetFoldersFolderOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFoldersFolder) string { return v.FolderId }).(pulumi.StringOutput)
 }
 
-// The name of the folder.
+// The Name of the Folder.
 func (o GetFoldersFolderOutput) FolderName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFoldersFolder) string { return v.FolderName }).(pulumi.StringOutput)
 }
 
-// The ID of the folder.
+// The ID of the Resource Manager Folder.
 func (o GetFoldersFolderOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFoldersFolder) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the parent folder.
+// The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
 func (o GetFoldersFolderOutput) ParentFolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFoldersFolder) string { return v.ParentFolderId }).(pulumi.StringOutput)
 }

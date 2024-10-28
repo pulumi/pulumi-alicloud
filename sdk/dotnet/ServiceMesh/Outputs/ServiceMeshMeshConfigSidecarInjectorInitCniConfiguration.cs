@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration
     {
         /// <summary>
-        /// Enable CNI.
+        /// Enable CNI
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The excluded namespace.
+        /// The excluded namespace
         /// </summary>
         public readonly string? ExcludeNamespaces;
 

@@ -16,6 +16,8 @@ import (
 //
 // For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
 //
+// > **NOTE:** Need to contact us open whitelist before you can use the resource.
+//
 // > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
@@ -84,6 +86,8 @@ type Instance struct {
 	Encryption pulumi.BoolPtrOutput `pulumi:"encryption"`
 	// Database file system name.
 	FsName pulumi.StringOutput `pulumi:"fsName"`
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Instance type. Value range:
@@ -108,6 +112,8 @@ type Instance struct {
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
@@ -175,6 +181,8 @@ type instanceState struct {
 	Encryption *bool `pulumi:"encryption"`
 	// Database file system name.
 	FsName *string `pulumi:"fsName"`
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. Value range:
@@ -199,6 +207,8 @@ type instanceState struct {
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]string `pulumi:"tags"`
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
@@ -228,6 +238,8 @@ type InstanceState struct {
 	Encryption pulumi.BoolPtrInput
 	// Database file system name.
 	FsName pulumi.StringPtrInput
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName pulumi.StringPtrInput
 	// Instance type. Value range:
@@ -252,6 +264,8 @@ type InstanceState struct {
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapInput
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
@@ -283,6 +297,8 @@ type instanceArgs struct {
 	Encryption *bool `pulumi:"encryption"`
 	// Database file system name.
 	FsName *string `pulumi:"fsName"`
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. Value range:
@@ -305,6 +321,8 @@ type instanceArgs struct {
 	// The ID of the snapshot used to create the DBFS instance.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags map[string]string `pulumi:"tags"`
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
@@ -333,6 +351,8 @@ type InstanceArgs struct {
 	Encryption pulumi.BoolPtrInput
 	// Database file system name.
 	FsName pulumi.StringPtrInput
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName pulumi.StringPtrInput
 	// Instance type. Value range:
@@ -355,6 +375,8 @@ type InstanceArgs struct {
 	// The ID of the snapshot used to create the DBFS instance.
 	SnapshotId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	Tags pulumi.StringMapInput
 	// The usage scenario of DBFS. Value range:
 	// - MySQL 5.7
@@ -494,6 +516,8 @@ func (o InstanceOutput) FsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FsName }).(pulumi.StringOutput)
 }
 
+// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+//
 // Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
@@ -542,6 +566,8 @@ func (o InstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A mapping of tags to assign to the resource.
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o InstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

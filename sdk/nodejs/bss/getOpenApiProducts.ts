@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+ * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  */
 export function getOpenApiProducts(args?: GetOpenApiProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenApiProductsResult> {
     args = args || {};
@@ -60,9 +60,9 @@ export interface GetOpenApiProductsResult {
     readonly products: outputs.bss.GetOpenApiProductsProduct[];
 }
 /**
- * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/bss-openapi/latest/api-bssopenapi-2017-12-14-queryproductlist)
+ * This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  */
 export function getOpenApiProductsOutput(args?: GetOpenApiProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenApiProductsResult> {
     args = args || {};

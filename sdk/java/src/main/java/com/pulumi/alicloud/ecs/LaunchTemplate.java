@@ -212,6 +212,24 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> hostName() {
         return Codegen.optional(this.hostName);
     }
+    @Export(name="httpEndpoint", refs={String.class}, tree="[0]")
+    private Output<String> httpEndpoint;
+
+    public Output<String> httpEndpoint() {
+        return this.httpEndpoint;
+    }
+    @Export(name="httpPutResponseHopLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> httpPutResponseHopLimit;
+
+    public Output<Integer> httpPutResponseHopLimit() {
+        return this.httpPutResponseHopLimit;
+    }
+    @Export(name="httpTokens", refs={String.class}, tree="[0]")
+    private Output<String> httpTokens;
+
+    public Output<String> httpTokens() {
+        return this.httpTokens;
+    }
     /**
      * Image ID.
      * 

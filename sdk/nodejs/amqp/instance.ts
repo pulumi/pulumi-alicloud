@@ -64,13 +64,13 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
      */
-    public readonly maxEipTps!: pulumi.Output<string | undefined>;
+    public readonly maxEipTps!: pulumi.Output<string>;
     /**
      * Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
      */
     public readonly maxTps!: pulumi.Output<string>;
     /**
-     * Type of instance lifting and lowering:
+     * This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
      * - Upgrade: Upgrade
      * - Downgrade: Downgrading.
      */
@@ -227,7 +227,7 @@ export interface InstanceState {
      */
     maxTps?: pulumi.Input<string>;
     /**
-     * Type of instance lifting and lowering:
+     * This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
      * - Upgrade: Upgrade
      * - Downgrade: Downgrading.
      */
@@ -315,7 +315,7 @@ export interface InstanceArgs {
      */
     maxTps?: pulumi.Input<string>;
     /**
-     * Type of instance lifting and lowering:
+     * This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
      * - Upgrade: Upgrade
      * - Downgrade: Downgrading.
      */

@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 public final class GetFoldersResult {
     private @Nullable Boolean enableDetails;
     /**
-     * @return A list of folders. Each element contains the following attributes:
+     * @return A list of Folder. Each element contains the following attributes:
      * 
      */
     private List<GetFoldersFolder> folders;
@@ -26,20 +26,16 @@ public final class GetFoldersResult {
      * 
      */
     private String id;
-    /**
-     * @return A list of folder IDs.
-     * 
-     */
     private List<String> ids;
     private @Nullable String nameRegex;
     /**
-     * @return A list of folder names.
+     * @return A list of Folder names.
      * 
      */
     private List<String> names;
     private @Nullable String outputFile;
     /**
-     * @return (Available in v1.114.0+)The ID of the parent folder.
+     * @return (Available since v1.114.0) The ID of the parent folder. **Note:** `parent_folder_id` takes effect only if `enable_details` is set to `true`.
      * 
      */
     private @Nullable String parentFolderId;
@@ -50,7 +46,7 @@ public final class GetFoldersResult {
         return Optional.ofNullable(this.enableDetails);
     }
     /**
-     * @return A list of folders. Each element contains the following attributes:
+     * @return A list of Folder. Each element contains the following attributes:
      * 
      */
     public List<GetFoldersFolder> folders() {
@@ -63,10 +59,6 @@ public final class GetFoldersResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of folder IDs.
-     * 
-     */
     public List<String> ids() {
         return this.ids;
     }
@@ -74,7 +66,7 @@ public final class GetFoldersResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of folder names.
+     * @return A list of Folder names.
      * 
      */
     public List<String> names() {
@@ -84,7 +76,7 @@ public final class GetFoldersResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return (Available in v1.114.0+)The ID of the parent folder.
+     * @return (Available since v1.114.0) The ID of the parent folder. **Note:** `parent_folder_id` takes effect only if `enable_details` is set to `true`.
      * 
      */
     public Optional<String> parentFolderId() {

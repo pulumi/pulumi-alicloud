@@ -46,14 +46,14 @@ class EcsDiskArgs:
         """
         The set of arguments for constructing a EcsDisk resource.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        :param pulumi.Input[str] category: Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] disk_name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
         :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically.
-        :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
+        :param pulumi.Input[bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
                * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
@@ -61,13 +61,25 @@ class EcsDiskArgs:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-               * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+               - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
-        :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-        :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        :param pulumi.Input[int] size: The size of the disk. Unit: GiB. This parameter is required. Valid values:
+               - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+               - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+               - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+               - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+               - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+               - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+               - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+               - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+               - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -155,7 +167,7 @@ class EcsDiskArgs:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         """
         return pulumi.get(self, "category")
 
@@ -248,7 +260,7 @@ class EcsDiskArgs:
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, the disk will be encrypted, conflict with `snapshot_id`.
+        Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "encrypted")
 
@@ -312,10 +324,10 @@ class EcsDiskArgs:
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-        * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
 
@@ -339,7 +351,19 @@ class EcsDiskArgs:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+        - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+        - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+        - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+        - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+        - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+        - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+        - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+        - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
         """
         return pulumi.get(self, "size")
 
@@ -351,7 +375,7 @@ class EcsDiskArgs:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -451,14 +475,14 @@ class _EcsDiskState:
         """
         Input properties used for looking up and filtering EcsDisk resources.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        :param pulumi.Input[str] category: Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] disk_name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
         :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically.
-        :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
+        :param pulumi.Input[bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
                * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
@@ -466,13 +490,25 @@ class _EcsDiskState:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-               * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+               - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
-        :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-        :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        :param pulumi.Input[int] size: The size of the disk. Unit: GiB. This parameter is required. Valid values:
+               - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+               - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+               - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+               - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+               - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+               - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+               - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+               - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+               - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         :param pulumi.Input[str] status: The disk status.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
@@ -563,7 +599,7 @@ class _EcsDiskState:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
         """
-        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         """
         return pulumi.get(self, "category")
 
@@ -656,7 +692,7 @@ class _EcsDiskState:
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, the disk will be encrypted, conflict with `snapshot_id`.
+        Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "encrypted")
 
@@ -720,10 +756,10 @@ class _EcsDiskState:
     def performance_level(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-        * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
 
@@ -747,7 +783,19 @@ class _EcsDiskState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
         """
-        The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+        - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+        - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+        - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+        - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+        - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+        - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+        - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+        - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
         """
         return pulumi.get(self, "size")
 
@@ -759,7 +807,7 @@ class _EcsDiskState:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -882,14 +930,14 @@ class EcsDisk(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        :param pulumi.Input[str] category: Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] disk_name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
         :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically.
-        :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
+        :param pulumi.Input[bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
                * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
@@ -897,13 +945,25 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-               * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+               - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
-        :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-        :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        :param pulumi.Input[int] size: The size of the disk. Unit: GiB. This parameter is required. Valid values:
+               - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+               - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+               - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+               - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+               - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+               - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+               - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+               - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+               - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
@@ -1041,14 +1101,14 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
-        :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        :param pulumi.Input[str] category: Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
         :param pulumi.Input[str] description: Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         :param pulumi.Input[str] disk_name: Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
         :param pulumi.Input[bool] dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
         :param pulumi.Input[bool] enable_auto_snapshot: Indicates whether to enable creating snapshot automatically.
-        :param pulumi.Input[bool] encrypted: If true, the disk will be encrypted, conflict with `snapshot_id`.
+        :param pulumi.Input[bool] encrypted: Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         :param pulumi.Input[str] instance_id: The ID of the instance to which the created subscription disk is automatically attached.
                * After you specify the instance ID, the specified `resource_group_id`, `tags`, and `kms_key_id` parameters are ignored.
                * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
@@ -1056,13 +1116,25 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-               * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-               * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-               * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-               * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+               - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+               - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+               - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+               - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
-        :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
-        :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        :param pulumi.Input[int] size: The size of the disk. Unit: GiB. This parameter is required. Valid values:
+               - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+               - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+               - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+               - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+               - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+               - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+               - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+               - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+               - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+               - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+               - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         :param pulumi.Input[str] status: The disk status.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
         :param pulumi.Input[int] storage_set_partition_number: The number of partitions in the storage set.
@@ -1119,7 +1191,7 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter
     def category(self) -> pulumi.Output[Optional[str]]:
         """
-        Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         """
         return pulumi.get(self, "category")
 
@@ -1178,9 +1250,9 @@ class EcsDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def encrypted(self) -> pulumi.Output[Optional[bool]]:
+    def encrypted(self) -> pulumi.Output[bool]:
         """
-        If true, the disk will be encrypted, conflict with `snapshot_id`.
+        Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "encrypted")
 
@@ -1224,10 +1296,10 @@ class EcsDisk(pulumi.CustomResource):
     def performance_level(self) -> pulumi.Output[str]:
         """
         Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-        * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-        * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         """
         return pulumi.get(self, "performance_level")
 
@@ -1243,15 +1315,27 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[int]:
         """
-        The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+        - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+        - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+        - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+        - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+        - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+        - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+        - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+        - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+        - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
         """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
+    def snapshot_id(self) -> pulumi.Output[str]:
         """
-        A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         """
         return pulumi.get(self, "snapshot_id")
 

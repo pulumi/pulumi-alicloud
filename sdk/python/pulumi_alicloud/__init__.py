@@ -4455,6 +4455,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "gpdb/database",
+  "fqn": "pulumi_alicloud.gpdb",
+  "classes": {
+   "alicloud:gpdb/database:Database": "Database"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "gpdb/dbInstanceIpArray",
   "fqn": "pulumi_alicloud.gpdb",
   "classes": {
@@ -6867,6 +6875,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sls",
   "classes": {
    "alicloud:sls/alert:Alert": "Alert"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sls/collectionPolicy",
+  "fqn": "pulumi_alicloud.sls",
+  "classes": {
+   "alicloud:sls/collectionPolicy:CollectionPolicy": "CollectionPolicy"
   }
  },
  {

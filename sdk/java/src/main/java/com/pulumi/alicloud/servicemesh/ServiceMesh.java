@@ -54,28 +54,28 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterIds);
     }
     /**
-     * Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+     * Cluster specification
      * 
      */
     @Export(name="clusterSpec", refs={String.class}, tree="[0]")
     private Output<String> clusterSpec;
 
     /**
-     * @return Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+     * @return Cluster specification
      * 
      */
     public Output<String> clusterSpec() {
         return this.clusterSpec;
     }
     /**
-     * Service grid creation time.
+     * Service grid creation time
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Service grid creation time.
+     * @return Service grid creation time
      * 
      */
     public Output<String> createTime() {
@@ -85,6 +85,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * Whether to customize Prometheus. Value:
      * -&#39;true&#39;: custom Prometheus.
      * -&#39;false&#39;: Do not customize Prometheus.
+     * 
      * Default value: &#39;false &#39;.
      * 
      */
@@ -95,6 +96,7 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * @return Whether to customize Prometheus. Value:
      * -&#39;true&#39;: custom Prometheus.
      * -&#39;false&#39;: Do not customize Prometheus.
+     * 
      * Default value: &#39;false &#39;.
      * 
      */
@@ -102,28 +104,28 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customizedPrometheus);
     }
     /**
-     * Grid instance version type (for example: the standard, the Pro version, etc.).
+     * Grid instance version type (for example: the standard, the Pro version, etc.)
      * 
      */
     @Export(name="edition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edition;
 
     /**
-     * @return Grid instance version type (for example: the standard, the Pro version, etc.).
+     * @return Grid instance version type (for example: the standard, the Pro version, etc.)
      * 
      */
     public Output<Optional<String>> edition() {
         return Codegen.optional(this.edition);
     }
     /**
-     * Data plane KubeAPI access capability. See `extra_configuration` below.
+     * Data plane KubeAPI access capability See `extra_configuration` below.
      * 
      */
     @Export(name="extraConfiguration", refs={ServiceMeshExtraConfiguration.class}, tree="[0]")
     private Output<ServiceMeshExtraConfiguration> extraConfiguration;
 
     /**
-     * @return Data plane KubeAPI access capability. See `extra_configuration` below.
+     * @return Data plane KubeAPI access capability See `extra_configuration` below.
      * 
      */
     public Output<ServiceMeshExtraConfiguration> extraConfiguration() {
@@ -133,7 +135,8 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * Whether to forcibly delete the ASM instance. Value:
      * -&#39;true&#39;: force deletion of ASM instance
      * -&#39;false&#39;: no forced deletion of ASM instance
-     * Default value: false.
+     * 
+     * Default value: false
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
@@ -143,49 +146,64 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
      * @return Whether to forcibly delete the ASM instance. Value:
      * -&#39;true&#39;: force deletion of ASM instance
      * -&#39;false&#39;: no forced deletion of ASM instance
-     * Default value: false.
+     * 
+     * Default value: false
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * Load balancing information. See `load_balancer` below.
+     * Kubeconfig configuration content
+     * 
+     */
+    @Export(name="kubeconfig", refs={String.class}, tree="[0]")
+    private Output<String> kubeconfig;
+
+    /**
+     * @return Kubeconfig configuration content
+     * 
+     */
+    public Output<String> kubeconfig() {
+        return this.kubeconfig;
+    }
+    /**
+     * Load balancing information See `load_balancer` below.
      * 
      */
     @Export(name="loadBalancer", refs={ServiceMeshLoadBalancer.class}, tree="[0]")
     private Output<ServiceMeshLoadBalancer> loadBalancer;
 
     /**
-     * @return Load balancing information. See `load_balancer` below.
+     * @return Load balancing information See `load_balancer` below.
      * 
      */
     public Output<ServiceMeshLoadBalancer> loadBalancer() {
         return this.loadBalancer;
     }
     /**
-     * Service grid configuration information. See `mesh_config` below.
+     * Service grid configuration information See `mesh_config` below.
      * 
      */
     @Export(name="meshConfig", refs={ServiceMeshMeshConfig.class}, tree="[0]")
     private Output<ServiceMeshMeshConfig> meshConfig;
 
     /**
-     * @return Service grid configuration information. See `mesh_config` below.
+     * @return Service grid configuration information See `mesh_config` below.
      * 
      */
     public Output<ServiceMeshMeshConfig> meshConfig() {
         return this.meshConfig;
     }
     /**
-     * Service grid network configuration information. See `network` below.
+     * Service grid network configuration information See `network` below.
      * 
      */
     @Export(name="network", refs={ServiceMeshNetwork.class}, tree="[0]")
     private Output<ServiceMeshNetwork> network;
 
     /**
-     * @return Service grid network configuration information. See `network` below.
+     * @return Service grid network configuration information See `network` below.
      * 
      */
     public Output<ServiceMeshNetwork> network() {
@@ -206,56 +224,56 @@ public class ServiceMesh extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.prometheusUrl);
     }
     /**
-     * ServiceMeshName.
+     * ServiceMeshName
      * 
      */
     @Export(name="serviceMeshName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceMeshName;
 
     /**
-     * @return ServiceMeshName.
+     * @return ServiceMeshName
      * 
      */
     public Output<Optional<String>> serviceMeshName() {
         return Codegen.optional(this.serviceMeshName);
     }
     /**
-     * The status of the resource.
+     * The status of the resource
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
+     * Service grid version number
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> version;
 
     /**
-     * @return Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istio_operator_version in `alicloud.servicemesh.getServiceMeshes`.
+     * @return Service grid version number
      * 
      */
     public Output<Optional<String>> version() {

@@ -879,7 +879,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -893,6 +893,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
      * import java.util.List;
@@ -908,12 +910,17 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids("example_value")
-     *             .nameRegex("the_resource_name")
+     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription("terraform-example")
+     *             .connectBandwidth(103)
+     *             .autoAcceptConnection(false)
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(exampleVpcEndpointService.id())
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
      *     }
      * }
      * }
@@ -927,7 +934,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -941,6 +948,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
      * import java.util.List;
@@ -956,12 +965,17 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids("example_value")
-     *             .nameRegex("the_resource_name")
+     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription("terraform-example")
+     *             .connectBandwidth(103)
+     *             .autoAcceptConnection(false)
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(exampleVpcEndpointService.id())
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
      *     }
      * }
      * }
@@ -975,7 +989,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -989,6 +1003,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
      * import java.util.List;
@@ -1004,12 +1020,17 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids("example_value")
-     *             .nameRegex("the_resource_name")
+     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription("terraform-example")
+     *             .connectBandwidth(103)
+     *             .autoAcceptConnection(false)
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(exampleVpcEndpointService.id())
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
      *     }
      * }
      * }
@@ -1023,7 +1044,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -1037,6 +1058,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
      * import java.util.List;
@@ -1052,12 +1075,17 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids("example_value")
-     *             .nameRegex("the_resource_name")
+     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription("terraform-example")
+     *             .connectBandwidth(103)
+     *             .autoAcceptConnection(false)
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(exampleVpcEndpointService.id())
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
      *     }
      * }
      * }
@@ -1071,7 +1099,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -1085,6 +1113,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
      * import java.util.List;
@@ -1100,12 +1130,17 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids("example_value")
-     *             .nameRegex("the_resource_name")
+     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription("terraform-example")
+     *             .connectBandwidth(103)
+     *             .autoAcceptConnection(false)
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(exampleVpcEndpointService.id())
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
      *     }
      * }
      * }
@@ -1119,7 +1154,7 @@ public final class PrivatelinkFunctions {
     /**
      * This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.109.0+.
+     * &gt; **NOTE:** Available since v1.109.0.
      * 
      * ## Example Usage
      * 
@@ -1133,6 +1168,8 @@ public final class PrivatelinkFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointService;
+     * import com.pulumi.alicloud.privatelink.VpcEndpointServiceArgs;
      * import com.pulumi.alicloud.privatelink.PrivatelinkFunctions;
      * import com.pulumi.alicloud.privatelink.inputs.GetVpcEndpointServicesArgs;
      * import java.util.List;
@@ -1148,12 +1185,17 @@ public final class PrivatelinkFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
-     *             .ids("example_value")
-     *             .nameRegex("the_resource_name")
+     *         var exampleVpcEndpointService = new VpcEndpointService("exampleVpcEndpointService", VpcEndpointServiceArgs.builder()
+     *             .serviceDescription("terraform-example")
+     *             .connectBandwidth(103)
+     *             .autoAcceptConnection(false)
      *             .build());
      * 
-     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id()));
+     *         final var example = PrivatelinkFunctions.getVpcEndpointServices(GetVpcEndpointServicesArgs.builder()
+     *             .ids(exampleVpcEndpointService.id())
+     *             .build());
+     * 
+     *         ctx.export("firstPrivatelinkVpcEndpointServiceId", example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult).applyValue(example -> example.applyValue(getVpcEndpointServicesResult -> getVpcEndpointServicesResult.services()[0].id())));
      *     }
      * }
      * }

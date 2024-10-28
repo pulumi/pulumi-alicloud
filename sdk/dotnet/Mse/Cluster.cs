@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Mse
         public Output<ImmutableArray<string>> AclEntryLists { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.205.0+) The application version.
+        /// (Available since v1.205.0) The application version.
         /// </summary>
         [Output("appVersion")]
         public Output<string> AppVersion { get; private set; } = null!;
@@ -37,20 +37,34 @@ namespace Pulumi.AliCloud.Mse
         /// The alias of MSE Cluster.
         /// </summary>
         [Output("clusterAliasName")]
-        public Output<string?> ClusterAliasName { get; private set; } = null!;
+        public Output<string> ClusterAliasName { get; private set; } = null!;
 
         /// <summary>
-        /// (Available in v1.162.0+) The id of Cluster.
+        /// (Available since v1.162.0) The cluster id of Cluster.
         /// </summary>
         [Output("clusterId")]
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+        /// - Professional Edition
         /// - `MSE_SC_1_2_60_c`: 1C2G
         /// - `MSE_SC_2_4_60_c`: 2C4G
         /// - `MSE_SC_4_8_60_c`: 4C8G
         /// - `MSE_SC_8_16_60_c`: 8C16G
+        /// - `MSE_SC_16_32_60_c`:16C32G
+        /// - `MSE_SC_1_2_200_c`: 1C2G
+        /// - `MSE_SC_2_4_200_c`: 2C4G
+        /// - `MSE_SC_4_8_200_c`: 4C8G
+        /// - `MSE_SC_8_16_200_c`: 8C16G
+        /// - `MSE_SC_16_32_200_c`:16C32G
+        /// - Developer Edition
+        /// - `MSE_SC_1_2_60_c`: 1C2G
+        /// - `MSE_SC_2_4_60_c`: 2C4G
+        /// - `MSE_SC_1_2_200_c`: 1C2G
+        /// - `MSE_SC_2_4_200_c`: 2C4G
+        /// - Serverless Edition
+        /// - `MSE_SC_SERVERLESS`: Available since v1.232.0
         /// </summary>
         [Output("clusterSpecification")]
         public Output<string> ClusterSpecification { get; private set; } = null!;
@@ -68,7 +82,7 @@ namespace Pulumi.AliCloud.Mse
         public Output<string> ClusterVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The connection type. Valid values: `slb`.
+        /// The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         /// </summary>
         [Output("connectionType")]
         public Output<string> ConnectionType { get; private set; } = null!;
@@ -86,13 +100,13 @@ namespace Pulumi.AliCloud.Mse
         public Output<int> InstanceCount { get; private set; } = null!;
 
         /// <summary>
-        /// The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+        /// The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
         /// </summary>
         [Output("mseVersion")]
         public Output<string> MseVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The type of network. Valid values: "privatenet" and "pubnet".
+        /// The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         /// </summary>
         [Output("netType")]
         public Output<string> NetType { get; private set; } = null!;
@@ -110,13 +124,13 @@ namespace Pulumi.AliCloud.Mse
         public Output<string?> PrivateSlbSpecification { get; private set; } = null!;
 
         /// <summary>
-        /// The public network bandwidth. `0` means no access to the public network.
+        /// The public network bandwidth.
         /// </summary>
         [Output("pubNetworkFlow")]
         public Output<string> PubNetworkFlow { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of public network SLB.
+        /// The specification of public network SLB. Serverless Instance could ignore this parameter.
         /// </summary>
         [Output("pubSlbSpecification")]
         public Output<string?> PubSlbSpecification { get; private set; } = null!;
@@ -222,11 +236,25 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterAliasName { get; set; }
 
         /// <summary>
-        /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+        /// - Professional Edition
         /// - `MSE_SC_1_2_60_c`: 1C2G
         /// - `MSE_SC_2_4_60_c`: 2C4G
         /// - `MSE_SC_4_8_60_c`: 4C8G
         /// - `MSE_SC_8_16_60_c`: 8C16G
+        /// - `MSE_SC_16_32_60_c`:16C32G
+        /// - `MSE_SC_1_2_200_c`: 1C2G
+        /// - `MSE_SC_2_4_200_c`: 2C4G
+        /// - `MSE_SC_4_8_200_c`: 4C8G
+        /// - `MSE_SC_8_16_200_c`: 8C16G
+        /// - `MSE_SC_16_32_200_c`:16C32G
+        /// - Developer Edition
+        /// - `MSE_SC_1_2_60_c`: 1C2G
+        /// - `MSE_SC_2_4_60_c`: 2C4G
+        /// - `MSE_SC_1_2_200_c`: 1C2G
+        /// - `MSE_SC_2_4_200_c`: 2C4G
+        /// - Serverless Edition
+        /// - `MSE_SC_SERVERLESS`: Available since v1.232.0
         /// </summary>
         [Input("clusterSpecification", required: true)]
         public Input<string> ClusterSpecification { get; set; } = null!;
@@ -244,7 +272,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<string> ClusterVersion { get; set; } = null!;
 
         /// <summary>
-        /// The connection type. Valid values: `slb`.
+        /// The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         /// </summary>
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
@@ -262,13 +290,13 @@ namespace Pulumi.AliCloud.Mse
         public Input<int> InstanceCount { get; set; } = null!;
 
         /// <summary>
-        /// The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+        /// The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
         /// </summary>
         [Input("mseVersion")]
         public Input<string>? MseVersion { get; set; }
 
         /// <summary>
-        /// The type of network. Valid values: "privatenet" and "pubnet".
+        /// The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         /// </summary>
         [Input("netType", required: true)]
         public Input<string> NetType { get; set; } = null!;
@@ -286,13 +314,13 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? PrivateSlbSpecification { get; set; }
 
         /// <summary>
-        /// The public network bandwidth. `0` means no access to the public network.
+        /// The public network bandwidth.
         /// </summary>
         [Input("pubNetworkFlow", required: true)]
         public Input<string> PubNetworkFlow { get; set; } = null!;
 
         /// <summary>
-        /// The specification of public network SLB.
+        /// The specification of public network SLB. Serverless Instance could ignore this parameter.
         /// </summary>
         [Input("pubSlbSpecification")]
         public Input<string>? PubSlbSpecification { get; set; }
@@ -354,7 +382,7 @@ namespace Pulumi.AliCloud.Mse
         }
 
         /// <summary>
-        /// (Available in v1.205.0+) The application version.
+        /// (Available since v1.205.0) The application version.
         /// </summary>
         [Input("appVersion")]
         public Input<string>? AppVersion { get; set; }
@@ -366,17 +394,31 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterAliasName { get; set; }
 
         /// <summary>
-        /// (Available in v1.162.0+) The id of Cluster.
+        /// (Available since v1.162.0) The cluster id of Cluster.
         /// </summary>
         [Input("clusterId")]
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. Valid values:
+        /// The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
+        /// - Professional Edition
         /// - `MSE_SC_1_2_60_c`: 1C2G
         /// - `MSE_SC_2_4_60_c`: 2C4G
         /// - `MSE_SC_4_8_60_c`: 4C8G
         /// - `MSE_SC_8_16_60_c`: 8C16G
+        /// - `MSE_SC_16_32_60_c`:16C32G
+        /// - `MSE_SC_1_2_200_c`: 1C2G
+        /// - `MSE_SC_2_4_200_c`: 2C4G
+        /// - `MSE_SC_4_8_200_c`: 4C8G
+        /// - `MSE_SC_8_16_200_c`: 8C16G
+        /// - `MSE_SC_16_32_200_c`:16C32G
+        /// - Developer Edition
+        /// - `MSE_SC_1_2_60_c`: 1C2G
+        /// - `MSE_SC_2_4_60_c`: 2C4G
+        /// - `MSE_SC_1_2_200_c`: 1C2G
+        /// - `MSE_SC_2_4_200_c`: 2C4G
+        /// - Serverless Edition
+        /// - `MSE_SC_SERVERLESS`: Available since v1.232.0
         /// </summary>
         [Input("clusterSpecification")]
         public Input<string>? ClusterSpecification { get; set; }
@@ -394,7 +436,7 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? ClusterVersion { get; set; }
 
         /// <summary>
-        /// The connection type. Valid values: `slb`.
+        /// The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         /// </summary>
         [Input("connectionType")]
         public Input<string>? ConnectionType { get; set; }
@@ -412,13 +454,13 @@ namespace Pulumi.AliCloud.Mse
         public Input<int>? InstanceCount { get; set; }
 
         /// <summary>
-        /// The version of MSE. Valid values: `mse_dev` or `mse_pro`.
+        /// The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
         /// </summary>
         [Input("mseVersion")]
         public Input<string>? MseVersion { get; set; }
 
         /// <summary>
-        /// The type of network. Valid values: "privatenet" and "pubnet".
+        /// The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         /// </summary>
         [Input("netType")]
         public Input<string>? NetType { get; set; }
@@ -436,13 +478,13 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? PrivateSlbSpecification { get; set; }
 
         /// <summary>
-        /// The public network bandwidth. `0` means no access to the public network.
+        /// The public network bandwidth.
         /// </summary>
         [Input("pubNetworkFlow")]
         public Input<string>? PubNetworkFlow { get; set; }
 
         /// <summary>
-        /// The specification of public network SLB.
+        /// The specification of public network SLB. Serverless Instance could ignore this parameter.
         /// </summary>
         [Input("pubSlbSpecification")]
         public Input<string>? PubSlbSpecification { get; set; }

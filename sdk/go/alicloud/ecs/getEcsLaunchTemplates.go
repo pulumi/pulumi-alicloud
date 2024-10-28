@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.120.0+.
+// > **NOTE:** Available since v1.120.0.
 //
 // ## Example Usage
 //
@@ -24,23 +24,133 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := ecs.GetEcsLaunchTemplates(ctx, &ecs.GetEcsLaunchTemplatesArgs{
-//				Ids: []string{
-//					"lt-bp1a469uxxxxxx",
-//				},
-//				NameRegex: pulumi.StringRef("your_launch_name"),
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstEcsLaunchTemplateId", example.Templates[0].Id)
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				NameRegex: pulumi.StringRef("^ubuntu_18.*64"),
+//				Owners:    pulumi.StringRef("system"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String("terraform-example"),
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcsLaunchTemplate, err := ecs.NewEcsLaunchTemplate(ctx, "default", &ecs.EcsLaunchTemplateArgs{
+//				LaunchTemplateName:          pulumi.String("terraform-example"),
+//				Description:                 pulumi.String("terraform-example"),
+//				ImageId:                     pulumi.String(defaultGetImages.Images[0].Id),
+//				HostName:                    pulumi.String("terraform-example"),
+//				InstanceChargeType:          pulumi.String("PrePaid"),
+//				InstanceName:                pulumi.String("terraform-example"),
+//				InstanceType:                pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				InternetChargeType:          pulumi.String("PayByBandwidth"),
+//				InternetMaxBandwidthIn:      pulumi.Int(5),
+//				InternetMaxBandwidthOut:     pulumi.Int(5),
+//				IoOptimized:                 pulumi.String("optimized"),
+//				KeyPairName:                 pulumi.String("key_pair_name"),
+//				RamRoleName:                 pulumi.String("ram_role_name"),
+//				NetworkType:                 pulumi.String("vpc"),
+//				SecurityEnhancementStrategy: pulumi.String("Active"),
+//				SpotPriceLimit:              pulumi.Float64(5),
+//				SpotStrategy:                pulumi.String("SpotWithPriceLimit"),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				SystemDisk: &ecs.EcsLaunchTemplateSystemDiskArgs{
+//					Category:           pulumi.String("cloud_ssd"),
+//					Description:        pulumi.String("Test For Terraform"),
+//					Name:               pulumi.String("terraform-example"),
+//					Size:               pulumi.Int(40),
+//					DeleteWithInstance: pulumi.Bool(false),
+//				},
+//				UserData:  pulumi.String("xxxxxxx"),
+//				VswitchId: defaultSwitch.ID(),
+//				VpcId:     defaultNetwork.ID(),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				TemplateTags: pulumi.StringMap{
+//					"Create": pulumi.String("Terraform"),
+//					"For":    pulumi.String("example"),
+//				},
+//				NetworkInterfaces: &ecs.EcsLaunchTemplateNetworkInterfacesArgs{
+//					Name:            pulumi.String("eth0"),
+//					Description:     pulumi.String("hello1"),
+//					PrimaryIp:       pulumi.String("10.0.0.2"),
+//					SecurityGroupId: defaultSecurityGroup.ID(),
+//					VswitchId:       defaultSwitch.ID(),
+//				},
+//				DataDisks: ecs.EcsLaunchTemplateDataDiskArray{
+//					&ecs.EcsLaunchTemplateDataDiskArgs{
+//						Name:               pulumi.String("disk1"),
+//						Description:        pulumi.String("description"),
+//						DeleteWithInstance: pulumi.Bool(true),
+//						Category:           pulumi.String("cloud"),
+//						Encrypted:          pulumi.Bool(false),
+//						PerformanceLevel:   pulumi.String("PL0"),
+//						Size:               pulumi.Int(20),
+//					},
+//					&ecs.EcsLaunchTemplateDataDiskArgs{
+//						Name:               pulumi.String("disk2"),
+//						Description:        pulumi.String("description2"),
+//						DeleteWithInstance: pulumi.Bool(true),
+//						Category:           pulumi.String("cloud"),
+//						Encrypted:          pulumi.Bool(false),
+//						PerformanceLevel:   pulumi.String("PL0"),
+//						Size:               pulumi.Int(20),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example := ecs.GetEcsLaunchTemplatesOutput(ctx, ecs.GetEcsLaunchTemplatesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					defaultEcsLaunchTemplate.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("firstEcsLaunchTemplateId", example.ApplyT(func(example ecs.GetEcsLaunchTemplatesResult) (*string, error) {
+//				return &example.Templates[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -69,23 +179,28 @@ type GetEcsLaunchTemplatesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The template resource group id.
-	TemplateResourceGroupId *string           `pulumi:"templateResourceGroupId"`
-	TemplateTags            map[string]string `pulumi:"templateTags"`
+	TemplateResourceGroupId *string `pulumi:"templateResourceGroupId"`
+	// The template tags.
+	TemplateTags map[string]string `pulumi:"templateTags"`
 }
 
 // A collection of values returned by getEcsLaunchTemplates.
 type GetEcsLaunchTemplatesResult struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                      string                          `pulumi:"id"`
-	Ids                     []string                        `pulumi:"ids"`
-	LaunchTemplateName      *string                         `pulumi:"launchTemplateName"`
-	NameRegex               *string                         `pulumi:"nameRegex"`
-	Names                   []string                        `pulumi:"names"`
-	OutputFile              *string                         `pulumi:"outputFile"`
-	TemplateResourceGroupId *string                         `pulumi:"templateResourceGroupId"`
-	TemplateTags            map[string]string               `pulumi:"templateTags"`
-	Templates               []GetEcsLaunchTemplatesTemplate `pulumi:"templates"`
+	Id  string   `pulumi:"id"`
+	Ids []string `pulumi:"ids"`
+	// The Launch Template Name.
+	LaunchTemplateName *string `pulumi:"launchTemplateName"`
+	NameRegex          *string `pulumi:"nameRegex"`
+	// A list of Launch Template names.
+	Names                   []string `pulumi:"names"`
+	OutputFile              *string  `pulumi:"outputFile"`
+	TemplateResourceGroupId *string  `pulumi:"templateResourceGroupId"`
+	// The template tags.
+	TemplateTags map[string]string `pulumi:"templateTags"`
+	// A list of Ecs Launch Templates. Each element contains the following attributes:
+	Templates []GetEcsLaunchTemplatesTemplate `pulumi:"templates"`
 }
 
 func GetEcsLaunchTemplatesOutput(ctx *pulumi.Context, args GetEcsLaunchTemplatesOutputArgs, opts ...pulumi.InvokeOption) GetEcsLaunchTemplatesResultOutput {
@@ -121,7 +236,8 @@ type GetEcsLaunchTemplatesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The template resource group id.
 	TemplateResourceGroupId pulumi.StringPtrInput `pulumi:"templateResourceGroupId"`
-	TemplateTags            pulumi.StringMapInput `pulumi:"templateTags"`
+	// The template tags.
+	TemplateTags pulumi.StringMapInput `pulumi:"templateTags"`
 }
 
 func (GetEcsLaunchTemplatesOutputArgs) ElementType() reflect.Type {
@@ -156,6 +272,7 @@ func (o GetEcsLaunchTemplatesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
+// The Launch Template Name.
 func (o GetEcsLaunchTemplatesResultOutput) LaunchTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) *string { return v.LaunchTemplateName }).(pulumi.StringPtrOutput)
 }
@@ -164,6 +281,7 @@ func (o GetEcsLaunchTemplatesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Launch Template names.
 func (o GetEcsLaunchTemplatesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -176,10 +294,12 @@ func (o GetEcsLaunchTemplatesResultOutput) TemplateResourceGroupId() pulumi.Stri
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) *string { return v.TemplateResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
+// The template tags.
 func (o GetEcsLaunchTemplatesResultOutput) TemplateTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) map[string]string { return v.TemplateTags }).(pulumi.StringMapOutput)
 }
 
+// A list of Ecs Launch Templates. Each element contains the following attributes:
 func (o GetEcsLaunchTemplatesResultOutput) Templates() GetEcsLaunchTemplatesTemplateArrayOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesResult) []GetEcsLaunchTemplatesTemplate { return v.Templates }).(GetEcsLaunchTemplatesTemplateArrayOutput)
 }

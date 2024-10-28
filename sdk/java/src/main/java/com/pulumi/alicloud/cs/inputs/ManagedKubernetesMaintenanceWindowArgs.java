@@ -5,10 +5,11 @@ package com.pulumi.alicloud.cs.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.resources.ResourceArgs {
@@ -19,45 +20,45 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
      * The maintenance time, values range from 1 to 24,unit is hour. For example: &#34;3h&#34;.
      * 
      */
-    @Import(name="duration", required=true)
-    private Output<String> duration;
+    @Import(name="duration")
+    private @Nullable Output<String> duration;
 
     /**
      * @return The maintenance time, values range from 1 to 24,unit is hour. For example: &#34;3h&#34;.
      * 
      */
-    public Output<String> duration() {
-        return this.duration;
+    public Optional<Output<String>> duration() {
+        return Optional.ofNullable(this.duration);
     }
 
     /**
      * Whether to open the maintenance window. The following parameters take effect only `enable = true`.
      * 
      */
-    @Import(name="enable", required=true)
-    private Output<Boolean> enable;
+    @Import(name="enable")
+    private @Nullable Output<Boolean> enable;
 
     /**
      * @return Whether to open the maintenance window. The following parameters take effect only `enable = true`.
      * 
      */
-    public Output<Boolean> enable() {
-        return this.enable;
+    public Optional<Output<Boolean>> enable() {
+        return Optional.ofNullable(this.enable);
     }
 
     /**
-     * Initial maintenance time, For example:&#34;03:00:00Z&#34;.
+     * Initial maintenance time, RFC3339 format. For example: &#34;2024-10-15T12:31:00.000+08:00&#34;.
      * 
      */
-    @Import(name="maintenanceTime", required=true)
-    private Output<String> maintenanceTime;
+    @Import(name="maintenanceTime")
+    private @Nullable Output<String> maintenanceTime;
 
     /**
-     * @return Initial maintenance time, For example:&#34;03:00:00Z&#34;.
+     * @return Initial maintenance time, RFC3339 format. For example: &#34;2024-10-15T12:31:00.000+08:00&#34;.
      * 
      */
-    public Output<String> maintenanceTime() {
-        return this.maintenanceTime;
+    public Optional<Output<String>> maintenanceTime() {
+        return Optional.ofNullable(this.maintenanceTime);
     }
 
     /**
@@ -66,8 +67,8 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
      * for example:
      * 
      */
-    @Import(name="weeklyPeriod", required=true)
-    private Output<String> weeklyPeriod;
+    @Import(name="weeklyPeriod")
+    private @Nullable Output<String> weeklyPeriod;
 
     /**
      * @return Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
@@ -75,8 +76,8 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
      * for example:
      * 
      */
-    public Output<String> weeklyPeriod() {
-        return this.weeklyPeriod;
+    public Optional<Output<String>> weeklyPeriod() {
+        return Optional.ofNullable(this.weeklyPeriod);
     }
 
     private ManagedKubernetesMaintenanceWindowArgs() {}
@@ -112,7 +113,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder duration(Output<String> duration) {
+        public Builder duration(@Nullable Output<String> duration) {
             $.duration = duration;
             return this;
         }
@@ -133,7 +134,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder enable(Output<Boolean> enable) {
+        public Builder enable(@Nullable Output<Boolean> enable) {
             $.enable = enable;
             return this;
         }
@@ -149,18 +150,18 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
         }
 
         /**
-         * @param maintenanceTime Initial maintenance time, For example:&#34;03:00:00Z&#34;.
+         * @param maintenanceTime Initial maintenance time, RFC3339 format. For example: &#34;2024-10-15T12:31:00.000+08:00&#34;.
          * 
          * @return builder
          * 
          */
-        public Builder maintenanceTime(Output<String> maintenanceTime) {
+        public Builder maintenanceTime(@Nullable Output<String> maintenanceTime) {
             $.maintenanceTime = maintenanceTime;
             return this;
         }
 
         /**
-         * @param maintenanceTime Initial maintenance time, For example:&#34;03:00:00Z&#34;.
+         * @param maintenanceTime Initial maintenance time, RFC3339 format. For example: &#34;2024-10-15T12:31:00.000+08:00&#34;.
          * 
          * @return builder
          * 
@@ -177,7 +178,7 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder weeklyPeriod(Output<String> weeklyPeriod) {
+        public Builder weeklyPeriod(@Nullable Output<String> weeklyPeriod) {
             $.weeklyPeriod = weeklyPeriod;
             return this;
         }
@@ -195,18 +196,6 @@ public final class ManagedKubernetesMaintenanceWindowArgs extends com.pulumi.res
         }
 
         public ManagedKubernetesMaintenanceWindowArgs build() {
-            if ($.duration == null) {
-                throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindowArgs", "duration");
-            }
-            if ($.enable == null) {
-                throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindowArgs", "enable");
-            }
-            if ($.maintenanceTime == null) {
-                throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindowArgs", "maintenanceTime");
-            }
-            if ($.weeklyPeriod == null) {
-                throw new MissingRequiredPropertyException("ManagedKubernetesMaintenanceWindowArgs", "weeklyPeriod");
-            }
             return $;
         }
     }

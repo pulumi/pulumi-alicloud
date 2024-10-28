@@ -25,11 +25,14 @@ class ScalingConfigurationArgs:
                  active: Optional[pulumi.Input[bool]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
+                 image_options_login_as_non_root: Optional[pulumi.Input[bool]] = None,
+                 instance_description: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
@@ -50,17 +53,22 @@ class ScalingConfigurationArgs:
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  role_name: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
+                 security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_duration: Optional[pulumi.Input[int]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  substitute: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
                  system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+                 system_disk_provisioned_iops: Optional[pulumi.Input[int]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None):
@@ -70,11 +78,14 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
+        :param pulumi.Input[bool] image_options_login_as_non_root: Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        :param pulumi.Input[str] instance_description: The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
@@ -95,8 +106,10 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] resource_group_id: ID of resource group.
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
+        :param pulumi.Input[str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
                
                > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -117,9 +130,12 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk.
+        :param pulumi.Input[str] system_disk_kms_key_id: The ID of the KMS key that you want to use to encrypt the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk.
+        :param pulumi.Input[int] system_disk_provisioned_iops: IOPS measures the number of read and write operations that an EBS device can process per second.
         :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
@@ -133,6 +149,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "credit_specification", credit_specification)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if force_delete is not None:
@@ -143,6 +161,10 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
             pulumi.set(__self__, "image_name", image_name)
+        if image_options_login_as_non_root is not None:
+            pulumi.set(__self__, "image_options_login_as_non_root", image_options_login_as_non_root)
+        if instance_description is not None:
+            pulumi.set(__self__, "instance_description", instance_description)
         if instance_ids is not None:
             warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
@@ -189,10 +211,14 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "role_name", role_name)
         if scaling_configuration_name is not None:
             pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
+        if security_enhancement_strategy is not None:
+            pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if spot_duration is not None:
+            pulumi.set(__self__, "spot_duration", spot_duration)
         if spot_price_limits is not None:
             pulumi.set(__self__, "spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
@@ -205,12 +231,18 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
             pulumi.set(__self__, "system_disk_description", system_disk_description)
+        if system_disk_encrypt_algorithm is not None:
+            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
         if system_disk_encrypted is not None:
             pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        if system_disk_kms_key_id is not None:
+            pulumi.set(__self__, "system_disk_kms_key_id", system_disk_kms_key_id)
         if system_disk_name is not None:
             pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+        if system_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "system_disk_provisioned_iops", system_disk_provisioned_iops)
         if system_disk_size is not None:
             pulumi.set(__self__, "system_disk_size", system_disk_size)
         if tags is not None:
@@ -265,6 +297,18 @@ class ScalingConfigurationArgs:
     @data_disks.setter
     def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -325,6 +369,30 @@ class ScalingConfigurationArgs:
     @image_name.setter
     def image_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="imageOptionsLoginAsNonRoot")
+    def image_options_login_as_non_root(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        """
+        return pulumi.get(self, "image_options_login_as_non_root")
+
+    @image_options_login_as_non_root.setter
+    def image_options_login_as_non_root(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "image_options_login_as_non_root", value)
+
+    @property
+    @pulumi.getter(name="instanceDescription")
+    def instance_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "instance_description")
+
+    @instance_description.setter
+    def instance_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_description", value)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -569,6 +637,18 @@ class ScalingConfigurationArgs:
         pulumi.set(self, "scaling_configuration_name", value)
 
     @property
+    @pulumi.getter(name="securityEnhancementStrategy")
+    def security_enhancement_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        """
+        return pulumi.get(self, "security_enhancement_strategy")
+
+    @security_enhancement_strategy.setter
+    def security_enhancement_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_enhancement_strategy", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -591,6 +671,18 @@ class ScalingConfigurationArgs:
     @security_group_ids.setter
     def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="spotDuration")
+    def spot_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        """
+        return pulumi.get(self, "spot_duration")
+
+    @spot_duration.setter
+    def spot_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_duration", value)
 
     @property
     @pulumi.getter(name="spotPriceLimits")
@@ -679,6 +771,18 @@ class ScalingConfigurationArgs:
         pulumi.set(self, "system_disk_description", value)
 
     @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @system_disk_encrypt_algorithm.setter
+    def system_disk_encrypt_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_encrypt_algorithm", value)
+
+    @property
     @pulumi.getter(name="systemDiskEncrypted")
     def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -689,6 +793,18 @@ class ScalingConfigurationArgs:
     @system_disk_encrypted.setter
     def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKeyId")
+    def system_disk_kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the KMS key that you want to use to encrypt the system disk.
+        """
+        return pulumi.get(self, "system_disk_kms_key_id")
+
+    @system_disk_kms_key_id.setter
+    def system_disk_kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_kms_key_id", value)
 
     @property
     @pulumi.getter(name="systemDiskName")
@@ -713,6 +829,18 @@ class ScalingConfigurationArgs:
     @system_disk_performance_level.setter
     def system_disk_performance_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "system_disk_performance_level", value)
+
+    @property
+    @pulumi.getter(name="systemDiskProvisionedIops")
+    def system_disk_provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        IOPS measures the number of read and write operations that an EBS device can process per second.
+        """
+        return pulumi.get(self, "system_disk_provisioned_iops")
+
+    @system_disk_provisioned_iops.setter
+    def system_disk_provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "system_disk_provisioned_iops", value)
 
     @property
     @pulumi.getter(name="systemDiskSize")
@@ -759,11 +887,14 @@ class _ScalingConfigurationState:
                  active: Optional[pulumi.Input[bool]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
+                 image_options_login_as_non_root: Optional[pulumi.Input[bool]] = None,
+                 instance_description: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
@@ -785,17 +916,22 @@ class _ScalingConfigurationState:
                  role_name: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_duration: Optional[pulumi.Input[int]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  substitute: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
                  system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+                 system_disk_provisioned_iops: Optional[pulumi.Input[int]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None):
@@ -804,11 +940,14 @@ class _ScalingConfigurationState:
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
+        :param pulumi.Input[bool] image_options_login_as_non_root: Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        :param pulumi.Input[str] instance_description: The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
@@ -830,8 +969,10 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
+        :param pulumi.Input[str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
                
                > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -852,9 +993,12 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk.
+        :param pulumi.Input[str] system_disk_kms_key_id: The ID of the KMS key that you want to use to encrypt the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk.
+        :param pulumi.Input[int] system_disk_provisioned_iops: IOPS measures the number of read and write operations that an EBS device can process per second.
         :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
@@ -867,6 +1011,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "credit_specification", credit_specification)
         if data_disks is not None:
             pulumi.set(__self__, "data_disks", data_disks)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if force_delete is not None:
@@ -877,6 +1023,10 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "image_id", image_id)
         if image_name is not None:
             pulumi.set(__self__, "image_name", image_name)
+        if image_options_login_as_non_root is not None:
+            pulumi.set(__self__, "image_options_login_as_non_root", image_options_login_as_non_root)
+        if instance_description is not None:
+            pulumi.set(__self__, "instance_description", instance_description)
         if instance_ids is not None:
             warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
@@ -925,10 +1075,14 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "scaling_configuration_name", scaling_configuration_name)
         if scaling_group_id is not None:
             pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        if security_enhancement_strategy is not None:
+            pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
         if security_group_id is not None:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
+        if spot_duration is not None:
+            pulumi.set(__self__, "spot_duration", spot_duration)
         if spot_price_limits is not None:
             pulumi.set(__self__, "spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
@@ -941,12 +1095,18 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "system_disk_category", system_disk_category)
         if system_disk_description is not None:
             pulumi.set(__self__, "system_disk_description", system_disk_description)
+        if system_disk_encrypt_algorithm is not None:
+            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
         if system_disk_encrypted is not None:
             pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+        if system_disk_kms_key_id is not None:
+            pulumi.set(__self__, "system_disk_kms_key_id", system_disk_kms_key_id)
         if system_disk_name is not None:
             pulumi.set(__self__, "system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
             pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+        if system_disk_provisioned_iops is not None:
+            pulumi.set(__self__, "system_disk_provisioned_iops", system_disk_provisioned_iops)
         if system_disk_size is not None:
             pulumi.set(__self__, "system_disk_size", system_disk_size)
         if tags is not None:
@@ -989,6 +1149,18 @@ class _ScalingConfigurationState:
     @data_disks.setter
     def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter
@@ -1049,6 +1221,30 @@ class _ScalingConfigurationState:
     @image_name.setter
     def image_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_name", value)
+
+    @property
+    @pulumi.getter(name="imageOptionsLoginAsNonRoot")
+    def image_options_login_as_non_root(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        """
+        return pulumi.get(self, "image_options_login_as_non_root")
+
+    @image_options_login_as_non_root.setter
+    def image_options_login_as_non_root(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "image_options_login_as_non_root", value)
+
+    @property
+    @pulumi.getter(name="instanceDescription")
+    def instance_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "instance_description")
+
+    @instance_description.setter
+    def instance_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_description", value)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -1305,6 +1501,18 @@ class _ScalingConfigurationState:
         pulumi.set(self, "scaling_group_id", value)
 
     @property
+    @pulumi.getter(name="securityEnhancementStrategy")
+    def security_enhancement_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        """
+        return pulumi.get(self, "security_enhancement_strategy")
+
+    @security_enhancement_strategy.setter
+    def security_enhancement_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "security_enhancement_strategy", value)
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1327,6 +1535,18 @@ class _ScalingConfigurationState:
     @security_group_ids.setter
     def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "security_group_ids", value)
+
+    @property
+    @pulumi.getter(name="spotDuration")
+    def spot_duration(self) -> Optional[pulumi.Input[int]]:
+        """
+        The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        """
+        return pulumi.get(self, "spot_duration")
+
+    @spot_duration.setter
+    def spot_duration(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "spot_duration", value)
 
     @property
     @pulumi.getter(name="spotPriceLimits")
@@ -1415,6 +1635,18 @@ class _ScalingConfigurationState:
         pulumi.set(self, "system_disk_description", value)
 
     @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @system_disk_encrypt_algorithm.setter
+    def system_disk_encrypt_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_encrypt_algorithm", value)
+
+    @property
     @pulumi.getter(name="systemDiskEncrypted")
     def system_disk_encrypted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1425,6 +1657,18 @@ class _ScalingConfigurationState:
     @system_disk_encrypted.setter
     def system_disk_encrypted(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "system_disk_encrypted", value)
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKeyId")
+    def system_disk_kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the KMS key that you want to use to encrypt the system disk.
+        """
+        return pulumi.get(self, "system_disk_kms_key_id")
+
+    @system_disk_kms_key_id.setter
+    def system_disk_kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "system_disk_kms_key_id", value)
 
     @property
     @pulumi.getter(name="systemDiskName")
@@ -1449,6 +1693,18 @@ class _ScalingConfigurationState:
     @system_disk_performance_level.setter
     def system_disk_performance_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "system_disk_performance_level", value)
+
+    @property
+    @pulumi.getter(name="systemDiskProvisionedIops")
+    def system_disk_provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        IOPS measures the number of read and write operations that an EBS device can process per second.
+        """
+        return pulumi.get(self, "system_disk_provisioned_iops")
+
+    @system_disk_provisioned_iops.setter
+    def system_disk_provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "system_disk_provisioned_iops", value)
 
     @property
     @pulumi.getter(name="systemDiskSize")
@@ -1497,11 +1753,14 @@ class ScalingConfiguration(pulumi.CustomResource):
                  active: Optional[pulumi.Input[bool]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
+                 image_options_login_as_non_root: Optional[pulumi.Input[bool]] = None,
+                 instance_description: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
@@ -1523,17 +1782,22 @@ class ScalingConfiguration(pulumi.CustomResource):
                  role_name: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_duration: Optional[pulumi.Input[int]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  substitute: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
                  system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+                 system_disk_provisioned_iops: Optional[pulumi.Input[int]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
@@ -1624,11 +1888,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
+        :param pulumi.Input[bool] image_options_login_as_non_root: Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        :param pulumi.Input[str] instance_description: The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
@@ -1650,8 +1917,10 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
+        :param pulumi.Input[str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
                
                > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -1672,9 +1941,12 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk.
+        :param pulumi.Input[str] system_disk_kms_key_id: The ID of the KMS key that you want to use to encrypt the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk.
+        :param pulumi.Input[int] system_disk_provisioned_iops: IOPS measures the number of read and write operations that an EBS device can process per second.
         :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
@@ -1786,11 +2058,14 @@ class ScalingConfiguration(pulumi.CustomResource):
                  active: Optional[pulumi.Input[bool]] = None,
                  credit_specification: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  force_delete: Optional[pulumi.Input[bool]] = None,
                  host_name: Optional[pulumi.Input[str]] = None,
                  image_id: Optional[pulumi.Input[str]] = None,
                  image_name: Optional[pulumi.Input[str]] = None,
+                 image_options_login_as_non_root: Optional[pulumi.Input[bool]] = None,
+                 instance_description: Optional[pulumi.Input[str]] = None,
                  instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
@@ -1812,17 +2087,22 @@ class ScalingConfiguration(pulumi.CustomResource):
                  role_name: Optional[pulumi.Input[str]] = None,
                  scaling_configuration_name: Optional[pulumi.Input[str]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
+                 security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 spot_duration: Optional[pulumi.Input[int]] = None,
                  spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
                  spot_strategy: Optional[pulumi.Input[str]] = None,
                  substitute: Optional[pulumi.Input[str]] = None,
                  system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
                  system_disk_category: Optional[pulumi.Input[str]] = None,
                  system_disk_description: Optional[pulumi.Input[str]] = None,
+                 system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
                  system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+                 system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
                  system_disk_name: Optional[pulumi.Input[str]] = None,
                  system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+                 system_disk_provisioned_iops: Optional[pulumi.Input[int]] = None,
                  system_disk_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  user_data: Optional[pulumi.Input[str]] = None,
@@ -1838,11 +2118,14 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["active"] = active
             __props__.__dict__["credit_specification"] = credit_specification
             __props__.__dict__["data_disks"] = data_disks
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable"] = enable
             __props__.__dict__["force_delete"] = force_delete
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["image_name"] = image_name
+            __props__.__dict__["image_options_login_as_non_root"] = image_options_login_as_non_root
+            __props__.__dict__["instance_description"] = instance_description
             __props__.__dict__["instance_ids"] = instance_ids
             __props__.__dict__["instance_name"] = instance_name
             __props__.__dict__["instance_pattern_infos"] = instance_pattern_infos
@@ -1866,17 +2149,22 @@ class ScalingConfiguration(pulumi.CustomResource):
             if scaling_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'scaling_group_id'")
             __props__.__dict__["scaling_group_id"] = scaling_group_id
+            __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_group_ids"] = security_group_ids
+            __props__.__dict__["spot_duration"] = spot_duration
             __props__.__dict__["spot_price_limits"] = spot_price_limits
             __props__.__dict__["spot_strategy"] = spot_strategy
             __props__.__dict__["substitute"] = substitute
             __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
             __props__.__dict__["system_disk_category"] = system_disk_category
             __props__.__dict__["system_disk_description"] = system_disk_description
+            __props__.__dict__["system_disk_encrypt_algorithm"] = system_disk_encrypt_algorithm
             __props__.__dict__["system_disk_encrypted"] = system_disk_encrypted
+            __props__.__dict__["system_disk_kms_key_id"] = system_disk_kms_key_id
             __props__.__dict__["system_disk_name"] = system_disk_name
             __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
+            __props__.__dict__["system_disk_provisioned_iops"] = system_disk_provisioned_iops
             __props__.__dict__["system_disk_size"] = system_disk_size
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_data"] = user_data
@@ -1893,11 +2181,14 @@ class ScalingConfiguration(pulumi.CustomResource):
             active: Optional[pulumi.Input[bool]] = None,
             credit_specification: Optional[pulumi.Input[str]] = None,
             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             force_delete: Optional[pulumi.Input[bool]] = None,
             host_name: Optional[pulumi.Input[str]] = None,
             image_id: Optional[pulumi.Input[str]] = None,
             image_name: Optional[pulumi.Input[str]] = None,
+            image_options_login_as_non_root: Optional[pulumi.Input[bool]] = None,
+            instance_description: Optional[pulumi.Input[str]] = None,
             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
@@ -1919,17 +2210,22 @@ class ScalingConfiguration(pulumi.CustomResource):
             role_name: Optional[pulumi.Input[str]] = None,
             scaling_configuration_name: Optional[pulumi.Input[str]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
+            security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            spot_duration: Optional[pulumi.Input[int]] = None,
             spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
             spot_strategy: Optional[pulumi.Input[str]] = None,
             substitute: Optional[pulumi.Input[str]] = None,
             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
             system_disk_category: Optional[pulumi.Input[str]] = None,
             system_disk_description: Optional[pulumi.Input[str]] = None,
+            system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
             system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+            system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
             system_disk_name: Optional[pulumi.Input[str]] = None,
             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+            system_disk_provisioned_iops: Optional[pulumi.Input[int]] = None,
             system_disk_size: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             user_data: Optional[pulumi.Input[str]] = None) -> 'ScalingConfiguration':
@@ -1943,11 +2239,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[bool] active: Whether active current scaling configuration in the specified scaling group. Default to `false`.
         :param pulumi.Input[str] credit_specification: Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]] data_disks: DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
+        :param pulumi.Input[bool] deletion_protection: Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         :param pulumi.Input[bool] enable: Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         :param pulumi.Input[bool] force_delete: The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
+        :param pulumi.Input[bool] image_options_login_as_non_root: Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        :param pulumi.Input[str] instance_description: The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
@@ -1969,8 +2268,10 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] role_name: Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         :param pulumi.Input[str] scaling_configuration_name: Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
+        :param pulumi.Input[str] security_enhancement_strategy: Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
         :param pulumi.Input[str] security_group_id: ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
+        :param pulumi.Input[int] spot_duration: The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]] spot_price_limits: Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
                
                > **NOTE:** Before enabling the scaling group, it must have a active scaling configuration.
@@ -1991,9 +2292,12 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] system_disk_auto_snapshot_policy_id: The id of auto snapshot policy for system disk.
         :param pulumi.Input[str] system_disk_category: Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         :param pulumi.Input[str] system_disk_description: The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] system_disk_encrypt_algorithm: The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
         :param pulumi.Input[bool] system_disk_encrypted: Whether to encrypt the system disk.
+        :param pulumi.Input[str] system_disk_kms_key_id: The ID of the KMS key that you want to use to encrypt the system disk.
         :param pulumi.Input[str] system_disk_name: The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         :param pulumi.Input[str] system_disk_performance_level: The performance level of the ESSD used as the system disk.
+        :param pulumi.Input[int] system_disk_provisioned_iops: IOPS measures the number of read and write operations that an EBS device can process per second.
         :param pulumi.Input[int] system_disk_size: Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
@@ -2007,11 +2311,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["active"] = active
         __props__.__dict__["credit_specification"] = credit_specification
         __props__.__dict__["data_disks"] = data_disks
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["enable"] = enable
         __props__.__dict__["force_delete"] = force_delete
         __props__.__dict__["host_name"] = host_name
         __props__.__dict__["image_id"] = image_id
         __props__.__dict__["image_name"] = image_name
+        __props__.__dict__["image_options_login_as_non_root"] = image_options_login_as_non_root
+        __props__.__dict__["instance_description"] = instance_description
         __props__.__dict__["instance_ids"] = instance_ids
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_pattern_infos"] = instance_pattern_infos
@@ -2033,17 +2340,22 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["role_name"] = role_name
         __props__.__dict__["scaling_configuration_name"] = scaling_configuration_name
         __props__.__dict__["scaling_group_id"] = scaling_group_id
+        __props__.__dict__["security_enhancement_strategy"] = security_enhancement_strategy
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
+        __props__.__dict__["spot_duration"] = spot_duration
         __props__.__dict__["spot_price_limits"] = spot_price_limits
         __props__.__dict__["spot_strategy"] = spot_strategy
         __props__.__dict__["substitute"] = substitute
         __props__.__dict__["system_disk_auto_snapshot_policy_id"] = system_disk_auto_snapshot_policy_id
         __props__.__dict__["system_disk_category"] = system_disk_category
         __props__.__dict__["system_disk_description"] = system_disk_description
+        __props__.__dict__["system_disk_encrypt_algorithm"] = system_disk_encrypt_algorithm
         __props__.__dict__["system_disk_encrypted"] = system_disk_encrypted
+        __props__.__dict__["system_disk_kms_key_id"] = system_disk_kms_key_id
         __props__.__dict__["system_disk_name"] = system_disk_name
         __props__.__dict__["system_disk_performance_level"] = system_disk_performance_level
+        __props__.__dict__["system_disk_provisioned_iops"] = system_disk_provisioned_iops
         __props__.__dict__["system_disk_size"] = system_disk_size
         __props__.__dict__["tags"] = tags
         __props__.__dict__["user_data"] = user_data
@@ -2072,6 +2384,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         """
         return pulumi.get(self, "data_disks")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -2112,6 +2432,22 @@ class ScalingConfiguration(pulumi.CustomResource):
         Name of an image file, indicating the image resource selected when an instance is enabled.
         """
         return pulumi.get(self, "image_name")
+
+    @property
+    @pulumi.getter(name="imageOptionsLoginAsNonRoot")
+    def image_options_login_as_non_root(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        """
+        return pulumi.get(self, "image_options_login_as_non_root")
+
+    @property
+    @pulumi.getter(name="instanceDescription")
+    def instance_description(self) -> pulumi.Output[Optional[str]]:
+        """
+        The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+        """
+        return pulumi.get(self, "instance_description")
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -2284,6 +2620,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         return pulumi.get(self, "scaling_group_id")
 
     @property
+    @pulumi.getter(name="securityEnhancementStrategy")
+    def security_enhancement_strategy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        """
+        return pulumi.get(self, "security_enhancement_strategy")
+
+    @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
@@ -2298,6 +2642,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         """
         return pulumi.get(self, "security_group_ids")
+
+    @property
+    @pulumi.getter(name="spotDuration")
+    def spot_duration(self) -> pulumi.Output[Optional[int]]:
+        """
+        The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        """
+        return pulumi.get(self, "spot_duration")
 
     @property
     @pulumi.getter(name="spotPriceLimits")
@@ -2362,12 +2714,28 @@ class ScalingConfiguration(pulumi.CustomResource):
         return pulumi.get(self, "system_disk_description")
 
     @property
+    @pulumi.getter(name="systemDiskEncryptAlgorithm")
+    def system_disk_encrypt_algorithm(self) -> pulumi.Output[Optional[str]]:
+        """
+        The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+        """
+        return pulumi.get(self, "system_disk_encrypt_algorithm")
+
+    @property
     @pulumi.getter(name="systemDiskEncrypted")
     def system_disk_encrypted(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to encrypt the system disk.
         """
         return pulumi.get(self, "system_disk_encrypted")
+
+    @property
+    @pulumi.getter(name="systemDiskKmsKeyId")
+    def system_disk_kms_key_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the KMS key that you want to use to encrypt the system disk.
+        """
+        return pulumi.get(self, "system_disk_kms_key_id")
 
     @property
     @pulumi.getter(name="systemDiskName")
@@ -2384,6 +2752,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         The performance level of the ESSD used as the system disk.
         """
         return pulumi.get(self, "system_disk_performance_level")
+
+    @property
+    @pulumi.getter(name="systemDiskProvisionedIops")
+    def system_disk_provisioned_iops(self) -> pulumi.Output[Optional[int]]:
+        """
+        IOPS measures the number of read and write operations that an EBS device can process per second.
+        """
+        return pulumi.get(self, "system_disk_provisioned_iops")
 
     @property
     @pulumi.getter(name="systemDiskSize")

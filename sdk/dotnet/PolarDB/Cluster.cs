@@ -53,6 +53,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> CollectorStatus { get; private set; } = null!;
 
         /// <summary>
+        /// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+        /// &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+        /// </summary>
+        [Output("compressStorage")]
+        public Output<string> CompressStorage { get; private set; } = null!;
+
+        /// <summary>
         /// (Available since 1.81.0) PolarDB cluster connection string.
         /// </summary>
         [Output("connectionString")]
@@ -202,6 +209,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Output("loosePolarLogBin")]
         public Output<string> LoosePolarLogBin { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+        /// &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        /// </summary>
+        [Output("looseXengine")]
+        public Output<string> LooseXengine { get; private set; } = null!;
+
+        /// <summary>
+        /// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+        /// &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+        /// </summary>
+        [Output("looseXengineUseMemoryPct")]
+        public Output<int> LooseXengineUseMemoryPct { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
@@ -546,6 +567,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CollectorStatus { get; set; }
 
         /// <summary>
+        /// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+        /// &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+        /// </summary>
+        [Input("compressStorage")]
+        public Input<string>? CompressStorage { get; set; }
+
+        /// <summary>
         /// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
         /// &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
         /// </summary>
@@ -683,6 +711,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("loosePolarLogBin")]
         public Input<string>? LoosePolarLogBin { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+        /// &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        /// </summary>
+        [Input("looseXengine")]
+        public Input<string>? LooseXengine { get; set; }
+
+        /// <summary>
+        /// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+        /// &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+        /// </summary>
+        [Input("looseXengineUseMemoryPct")]
+        public Input<int>? LooseXengineUseMemoryPct { get; set; }
 
         /// <summary>
         /// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
@@ -993,6 +1035,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CollectorStatus { get; set; }
 
         /// <summary>
+        /// Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
+        /// &gt; **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
+        /// </summary>
+        [Input("compressStorage")]
+        public Input<string>? CompressStorage { get; set; }
+
+        /// <summary>
         /// (Available since 1.81.0) PolarDB cluster connection string.
         /// </summary>
         [Input("connectionString")]
@@ -1154,6 +1203,20 @@ namespace Pulumi.AliCloud.PolarDB
         /// </summary>
         [Input("loosePolarLogBin")]
         public Input<string>? LoosePolarLogBin { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
+        /// &gt; **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+        /// </summary>
+        [Input("looseXengine")]
+        public Input<string>? LooseXengine { get; set; }
+
+        /// <summary>
+        /// Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
+        /// &gt; **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
+        /// </summary>
+        [Input("looseXengineUseMemoryPct")]
+        public Input<int>? LooseXengineUseMemoryPct { get; set; }
 
         /// <summary>
         /// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.

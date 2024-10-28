@@ -5320,7 +5320,7 @@ export namespace cas {
         /**
          * The cert's name.
          *
-         * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+         * @deprecated Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
          */
         name: string;
         /**
@@ -5343,75 +5343,77 @@ export namespace cas {
 
     export interface GetServiceCertificatesCertificate {
         /**
-         * The cert is buy from aliyun or not.
+         * Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buyInAliyun` takes effect only if `enableDetails` is set to `true`.
          */
         buyInAliyun: boolean;
         /**
-         * The cert's Cert.
+         * The Cert of the certificate. **Note:** `cert` takes effect only if `enableDetails` is set to `true`.
          */
         cert: string;
         /**
-         * The cert's id.
+         * The ID of the certificate.
          */
         certId: string;
         /**
-         * The cert's name.
+         * The name of the certificate.
          */
         certificateName: string;
         /**
-         * The cert's city.
+         * The city in which the organization is located.
          */
         city: string;
         /**
-         * The cert's common name.
+         * The parent domain name of the certificate.
          */
         common: string;
         /**
-         * The cert's country.
+         * The code of the country in which the organization is located.
          */
         country: string;
         /**
-         * The cert's not valid after time.
+         * The time at which the certificate expires.
          */
         endDate: string;
         /**
-         * The cert is expired or not.
+         * Whether the certificate has expired.
          */
         expired: boolean;
         /**
-         * The cert's finger.
+         * The fingerprint of the certificate.
          */
         fingerprint: string;
         /**
-         * The cert's id.
+         * The ID of the Ssl Certificates Service Certificate.
          */
         id: string;
         /**
-         * The cert's Issuer.
+         * The issuer of the certificate.
          */
         issuer: string;
         /**
-         * The cert's Keye.
+         * The Key of the certificate. **Note:** `key` takes effect only if `enableDetails` is set to `true`.
          */
         key: string;
         /**
-         * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
+         * (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
+         *
+         * @deprecated Field `name` has been deprecated from provider version 1.129.0. New field `certificateName` instead.
          */
         name: string;
         /**
-         * The cert's organization.
+         * The name of the organization that is associated with the certificate.
          */
         orgName: string;
         /**
-         * The cert's province.
+         * The province or autonomous region in which the organization is located.
          */
         province: string;
         /**
-         * The cert's subject alternative name.
+         * All domain names that are bound to the certificate.
          */
         sans: string;
         /**
-         * The cert's not valid before time.
+         * The time at which the certificate starts to take effect.
          */
         startDate: string;
     }
@@ -14295,7 +14297,7 @@ export namespace cs {
          */
         enable: boolean;
         /**
-         * Initial maintenance time, For example:"03:00:00Z".
+         * Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
          */
         maintenanceTime: string;
         /**
@@ -14305,13 +14307,41 @@ export namespace cs {
          * ```
          * maintenance_window {
          * enable            = true
-         * maintenance_time  = "01:00:00Z"
+         * maintenance_time  = "2024-10-15T12:31:00.000+08:00"
          * duration          = "3h"
          * weekly_period     = "Monday,Friday"
          * }
          * ```
          */
         weeklyPeriod: string;
+    }
+
+    export interface ManagedKubernetesOperationPolicy {
+        /**
+         * Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+         */
+        clusterAutoUpgrade?: outputs.cs.ManagedKubernetesOperationPolicyClusterAutoUpgrade;
+    }
+
+    export interface ManagedKubernetesOperationPolicyClusterAutoUpgrade {
+        /**
+         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         *
+         * for example:
+         * ```
+         * operation_policy {
+         * cluster_auto_upgrade {
+         * enabled = true
+         * channel = "stable"
+         * }
+         * }
+         * ```
+         */
+        channel?: string;
+        /**
+         * Whether the RRSA feature has been enabled.
+         */
+        enabled?: boolean;
     }
 
     export interface ManagedKubernetesRrsaMetadata {
@@ -14729,6 +14759,63 @@ export namespace cs {
         resourceType?: string;
     }
 
+    export interface ServerlessKubernetesMaintenanceWindow {
+        /**
+         * The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
+         */
+        duration: string;
+        /**
+         * Whether to open the maintenance window. The following parameters take effect only `enable = true`.
+         */
+        enable: boolean;
+        /**
+         * Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
+         */
+        maintenanceTime: string;
+        /**
+         * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
+         *
+         * for example:
+         * ```
+         * maintenance_window {
+         * enable            = true
+         * maintenance_time  = "2024-10-15T12:31:00.000+08:00"
+         * duration          = "3h"
+         * weekly_period     = "Monday,Friday"
+         * }
+         * ```
+         */
+        weeklyPeriod: string;
+    }
+
+    export interface ServerlessKubernetesOperationPolicy {
+        /**
+         * Automatic cluster upgrade policy. See `clusterAutoUpgrade` below.
+         */
+        clusterAutoUpgrade?: outputs.cs.ServerlessKubernetesOperationPolicyClusterAutoUpgrade;
+    }
+
+    export interface ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
+        /**
+         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         *
+         * for example:
+         * ```
+         * operation_policy {
+         * cluster_auto_upgrade {
+         * enabled = true
+         * channel = "stable"
+         * }
+         * }
+         * ```
+         */
+        channel?: string;
+        /**
+         * Whether the RRSA feature has been enabled.
+         */
+        enabled?: boolean;
+    }
+
     export interface ServerlessKubernetesRrsaMetadata {
         /**
          * Whether the RRSA feature has been enabled.
@@ -14946,8 +15033,6 @@ export namespace databasefilesystem {
     export interface InstanceEcsList {
         /**
          * The ID of the ECS instance.
-         *
-         * The following arguments will be discarded. Please use new fields as soon as possible:
          */
         ecsId?: string;
     }
@@ -18234,7 +18319,7 @@ export namespace dns {
          */
         id: string;
         /**
-         * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+         * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
          */
         line: string;
         /**
@@ -22132,7 +22217,7 @@ export namespace ecs {
 
     export interface GetEcsLaunchTemplatesTemplate {
         /**
-         * Instance auto release time.
+         * (Optional) Instance auto release time.
          */
         autoReleaseTime: string;
         /**
@@ -22152,7 +22237,7 @@ export namespace ecs {
          */
         deploymentSetId: string;
         /**
-         * The Description of Template.
+         * System disk description.
          */
         description: string;
         /**
@@ -22163,6 +22248,18 @@ export namespace ecs {
          * Instance host name.
          */
         hostName: string;
+        /**
+         * Whether to enable access to instance metadata.
+         */
+        httpEndpoint: string;
+        /**
+         * The HTTP PUT response hop limit required for instance metadata requests.
+         */
+        httpPutResponseHopLimit: number;
+        /**
+         * Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+         */
+        httpTokens: string;
         /**
          * The ID of the Launch Template.
          */
@@ -22307,15 +22404,15 @@ export namespace ecs {
 
     export interface GetEcsLaunchTemplatesTemplateDataDisk {
         /**
-         * The category of the disk.
+         * The category of the system disk.
          */
         category: string;
         /**
-         * Indicates whether the data disk is released with the instance.
+         * Specifies whether to release the system disk when the instance is released.
          */
         deleteWithInstance: boolean;
         /**
-         * The description of the data disk.
+         * System disk description.
          */
         description: string;
         /**
@@ -22323,15 +22420,15 @@ export namespace ecs {
          */
         encrypted: boolean;
         /**
-         * The name of the data disk.
+         * System disk name.
          */
         name: string;
         /**
-         * PerformanceLevel.
+         * The performance level of the ESSD used as the system disk.
          */
         performanceLevel: string;
         /**
-         * The performance level of the ESSD used as the data disk.
+         * Size of the system disk, measured in GB.
          */
         size: number;
         /**
@@ -22342,11 +22439,11 @@ export namespace ecs {
 
     export interface GetEcsLaunchTemplatesTemplateNetworkInterface {
         /**
-         * The ENI description.
+         * System disk description.
          */
         description: string;
         /**
-         * The ENI name.
+         * System disk name.
          */
         name: string;
         /**
@@ -22354,11 +22451,11 @@ export namespace ecs {
          */
         primaryIp: string;
         /**
-         * The security group ID must be one in the same VPC.
+         * The security group ID.
          */
         securityGroupId: string;
         /**
-         * The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         * The vswitch id.
          */
         vswitchId: string;
     }
@@ -27590,6 +27687,14 @@ export namespace ess {
          */
         securityContextRunAsUser?: number;
         /**
+         * Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+         */
+        stdin?: boolean;
+        /**
+         * Specifies whether to enable the Interaction feature. Valid values: true, false.
+         */
+        tty?: boolean;
+        /**
          * The structure of volumeMounts. 
          * See `volumeMounts` below for details.
          */
@@ -27613,8 +27718,21 @@ export namespace ess {
 
     export interface EciScalingConfigurationContainerVolumeMount {
         mountPath?: string;
+        mountPropagation: string;
         name?: string;
         readOnly?: boolean;
+        subPath?: string;
+    }
+
+    export interface EciScalingConfigurationDnsConfigOption {
+        /**
+         * The option name.
+         */
+        name?: string;
+        /**
+         * The option value.
+         */
+        value?: string;
     }
 
     export interface EciScalingConfigurationHostAlias {
@@ -27725,8 +27843,21 @@ export namespace ess {
 
     export interface EciScalingConfigurationInitContainerVolumeMount {
         mountPath?: string;
+        mountPropagation: string;
         name?: string;
         readOnly?: boolean;
+        subPath?: string;
+    }
+
+    export interface EciScalingConfigurationSecurityContextSysctl {
+        /**
+         * The system name of the security context in which the elastic container instance is run.
+         */
+        name?: string;
+        /**
+         * The system value of the security context in which the elastic container instance is run.
+         */
+        value?: string;
     }
 
     export interface EciScalingConfigurationVolume {
@@ -27735,6 +27866,10 @@ export namespace ess {
          * See `configFileVolumeConfigFileToPaths` below for details.
          */
         configFileVolumeConfigFileToPaths?: outputs.ess.EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath[];
+        /**
+         * The default permissions on the ConfigFileVolume.
+         */
+        configFileVolumeDefaultMode?: number;
         /**
          * The ID of DiskVolume.
          */
@@ -27747,6 +27882,14 @@ export namespace ess {
          * The system type of DiskVolume.
          */
         diskVolumeFsType?: string;
+        /**
+         * The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+         */
+        emptyDirVolumeMedium: string;
+        /**
+         * The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+         */
+        emptyDirVolumeSizeLimit?: string;
         /**
          * The name of the FlexVolume driver.
          */
@@ -27761,6 +27904,14 @@ export namespace ess {
          * string.
          */
         flexVolumeOptions?: string;
+        /**
+         * The absolute path on the host.
+         */
+        hostPathVolumePath?: string;
+        /**
+         * The type of the host path. Examples: File, Directory, and Socket.
+         */
+        hostPathVolumeType?: string;
         /**
          * The name of the volume.
          */
@@ -27790,6 +27941,10 @@ export namespace ess {
          * The content of the configuration file. Maximum size: 32 KB.
          */
         content?: string;
+        /**
+         * The permissions on the ConfigFileVolume directory.
+         */
+        mode?: number;
         /**
          * The relative file path.
          */
@@ -28269,6 +28424,10 @@ export namespace ess {
          * The performance level of the ESSD used as data disk.
          */
         performanceLevel?: string;
+        /**
+         * IOPS measures the number of read and write operations that an Elastic Block Storage (EBS) device can process per second.
+         */
+        provisionedIops?: number;
         /**
          * Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeralSsd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloudEssd disk.
          */
@@ -30666,18 +30825,27 @@ export namespace ga {
          */
         endpoint: string;
         /**
+         * The private IP address of the ENI.
+         * > **NOTE:** `subAddress` is valid only when `type` is set to `ENI`.
+         */
+        subAddress: string;
+        /**
          * The type of Endpoint N in the endpoint group. Valid values:
-         * - `Domain`: a custom domain name.
-         * - `Ip`: a custom IP address.
-         * - `PublicIp`: an Alibaba Cloud public IP address.
-         * - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-         * - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-         * > **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+         * - `Domain`: A custom domain name.
+         * - `Ip`: A custom IP address.
+         * - `PublicIp`: An Alibaba Cloud public IP address.
+         * - `ECS`: An Elastic Compute Service (ECS) instance.
+         * - `SLB`: A Classic Load Balancer (CLB) instance.
+         * - `ALB`: An Application Load Balancer (ALB) instance.
+         * - `NLB`: A Network Load Balancer (NLB) instance.
+         * - `ENI`: An Elastic Network Interface (ENI).
+         * - `OSS`: An Object Storage Service (OSS) bucket.
+         * > **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
          */
         type: string;
         /**
          * The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-         * > **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+         * > **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
          */
         weight: number;
     }
@@ -36735,7 +36903,7 @@ export namespace mse {
          */
         cpu: number;
         /**
-         * The health status of MSE Cluster.
+         * The health status of the instance.
          */
         healthStatus: string;
         /**
@@ -36755,7 +36923,7 @@ export namespace mse {
          */
         instanceId: string;
         /**
-         * The list of instances.
+         * The list of instance nodes.
          */
         instanceModels: outputs.mse.GetClustersClusterInstanceModel[];
         /**
@@ -36802,15 +36970,36 @@ export namespace mse {
 
     export interface GetClustersClusterInstanceModel {
         /**
-         * The health status of MSE Cluster.
+         * The health status of the instance.
          */
         healthStatus: string;
+        /**
+         * (Deprecated from version 1.232.0)
+         */
         instanceType: string;
+        /**
+         * The public IP address.
+         */
         internetIp: string;
+        /**
+         * The IP address of the instance.
+         */
         ip: string;
+        /**
+         * The name of the pod.
+         */
         podName: string;
+        /**
+         * The role.
+         */
         role: string;
+        /**
+         * The single-thread IP address.
+         */
         singleTunnelVip: string;
+        /**
+         * (Deprecated from version 1.232.0)
+         */
         vip: string;
     }
 
@@ -36820,7 +37009,7 @@ export namespace mse {
          */
         configCount: number;
         /**
-         * The ID of the Engine Namespace. It is formatted to `<cluster_id>:<namespace_id>`.
+         * The ID of the Engine Namespace. It is formatted to `<instance_id>:<namespace_id>`.
          */
         id: string;
         /**
@@ -40307,7 +40496,7 @@ export namespace privatelink {
 
     export interface GetVpcEndpointServicesService {
         /**
-         * Whether to automatically accept terminal node connections..
+         * Whether to automatically accept terminal node connections.
          */
         autoAcceptConnection: boolean;
         /**
@@ -40319,7 +40508,7 @@ export namespace privatelink {
          */
         id: string;
         /**
-         * The business status of the terminal node service..
+         * The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
          */
         serviceBusinessStatus: string;
         /**
@@ -40335,9 +40524,13 @@ export namespace privatelink {
          */
         serviceId: string;
         /**
-         * The Status of Vpc Endpoint Service.
+         * The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
          */
         status: string;
+        /**
+         * The tags of Vpc Endpoint Service.
+         */
+        tags: {[key: string]: string};
         /**
          * The name of Vpc Endpoint Service.
          */
@@ -42775,19 +42968,19 @@ export namespace resourcemanager {
 
     export interface GetFoldersFolder {
         /**
-         * The ID of the folder.
+         * The ID of the Folder.
          */
         folderId: string;
         /**
-         * The name of the folder.
+         * The Name of the Folder.
          */
         folderName: string;
         /**
-         * The ID of the folder.
+         * The ID of the Resource Manager Folder.
          */
         id: string;
         /**
-         * The ID of the parent folder.
+         * The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
          */
         parentFolderId: string;
     }
@@ -46846,37 +47039,41 @@ export namespace servicemesh {
 
     export interface ServiceMeshExtraConfiguration {
         /**
-         * Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
+         * Whether the data plane KubeAPI access capability is enabled.
          */
         crAggregationEnabled?: boolean;
     }
 
     export interface ServiceMeshLoadBalancer {
         /**
-         * The Instance ID of APIServer Load Balancer.
+         * The Instance ID of APIServer Load Balancer
          */
         apiServerLoadbalancerId: string;
         /**
-         * Indicates whether to use the IP address of a public network exposed API Server.
+         * Indicates whether to use the IP address of a public network exposed API Server
          */
         apiServerPublicEip?: boolean;
         /**
-         * Indicates whether to use the IP address of a public network exposure Istio Pilot.
+         * Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilotPublicEipId instead.
          */
-        pilotPublicEip?: boolean;
+        pilotPublicEip: boolean;
         /**
-         * The Instance ID of Pilot Load Balancer.
+         * the EIP instance id of Pilot load balancer.
+         */
+        pilotPublicEipId?: string;
+        /**
+         * The Instance ID of Pilot Load Balancer
          */
         pilotPublicLoadbalancerId: string;
     }
 
     export interface ServiceMeshMeshConfig {
         /**
-         * The access logging configuration. See `accessLog` below.
+         * The access logging configuration See `accessLog` below.
          */
         accessLog?: outputs.servicemesh.ServiceMeshMeshConfigAccessLog;
         /**
-         * Audit information. See `audit` below.
+         * Audit information See `audit` below.
          */
         audit: outputs.servicemesh.ServiceMeshMeshConfigAudit;
         /**
@@ -46884,66 +47081,66 @@ export namespace servicemesh {
          */
         controlPlaneLog?: outputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog;
         /**
-         * Whether or not to enable the use of a custom zipkin.
+         * Whether or not to enable the use of a custom zipkin
          */
         customizedZipkin?: boolean;
         /**
-         * Whether to enable service can access the service through the nearest node access.
+         * Whether to enable service can access the service through the nearest node access
          */
         enableLocalityLb?: boolean;
         /**
-         * The IP ADDRESS range.
+         * The IP ADDRESS range
          */
         includeIpRanges: string;
         /**
-         * Kiali configuration. See `kiali` below.
+         * Kiali configuration See `kiali` below.
          */
         kiali?: outputs.servicemesh.ServiceMeshMeshConfigKiali;
         /**
-         * The open-door policy of agent (OPA) plug-in information. See `opa` below.
+         * The open-door policy of agent (OPA) plug-in information See `opa` below.
          */
         opa?: outputs.servicemesh.ServiceMeshMeshConfigOpa;
         /**
-         * Out to the traffic policy.
+         * Out to the traffic policy
          */
         outboundTrafficPolicy?: string;
         /**
-         * Link trace sampling information. See `pilot` below.
+         * Link trace sampling information See `pilot` below.
          */
         pilot?: outputs.servicemesh.ServiceMeshMeshConfigPilot;
         /**
-         * Prometheus configuration.
+         * Prometheus configuration
          */
         prometheus: outputs.servicemesh.ServiceMeshMeshConfigPrometheus;
         /**
-         * Proxy configuration. See `proxy` below.
+         * Proxy configuration, the fields under this structure have service segment default values, if not explicitly specified, you need to manually add them based on the return value of the server after the instance is created. See `proxy` below.
          */
         proxy?: outputs.servicemesh.ServiceMeshMeshConfigProxy;
         /**
-         * Sidecar injector configuration. See `sidecarInjector` below.
+         * Sidecar injector configuration See `sidecarInjector` below.
          */
         sidecarInjector?: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjector;
         /**
-         * Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+         * Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/)
          */
         telemetry?: boolean;
         /**
-         * Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+         * Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/)
          */
         tracing?: boolean;
     }
 
     export interface ServiceMeshMeshConfigAccessLog {
         /**
-         * Enable CNI.
+         * Enable CNI
          */
         enabled?: boolean;
         /**
-         * Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+         * Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
          */
         gatewayEnabled?: boolean;
         /**
-         * Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS.
+         * Lifecycle of AccessLog of ASM Gateways which have been collected to Alibaba Cloud SLS
          */
         gatewayLifecycle: number;
         /**
@@ -46951,18 +47148,18 @@ export namespace servicemesh {
          */
         project?: string;
         /**
-         * Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS.
+         * Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
          */
         sidecarEnabled?: boolean;
         /**
-         * Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS.
+         * Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS
          */
         sidecarLifecycle: number;
     }
 
     export interface ServiceMeshMeshConfigAudit {
         /**
-         * Enable CNI.
+         * Enable CNI
          */
         enabled: boolean;
         /**
@@ -46973,11 +47170,11 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfigControlPlaneLog {
         /**
-         * Enable CNI.
+         * Enable CNI
          */
         enabled: boolean;
         /**
-         * Lifecycle of logs has been collected to Alibaba Cloud SLS.
+         * Lifecycle of logs has been collected to Alibaba Cloud SLS
          */
         logTtlInDay: number;
         /**
@@ -46988,144 +47185,237 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfigKiali {
         /**
-         * Enable CNI.
+         * When the mesh topology is deployed in managed mode and integrated with CLB to provide external access, the external access address is automatically generated.
+         */
+        aggregatedKialiAddress: string;
+        /**
+         * The authentication strategy used when logging into the mesh topology. In data plane deployment mode, the mesh topology can use token, openid, or ramoauth authentication strategies; in managed mode, the mesh topology can use openid or ramoauth authentication strategies.
+         */
+        authStrategy: string;
+        /**
+         * When the mesh topology cannot automatically use the integrated ARMS Prometheus, you need to use this property to specify a custom Prometheus HTTP API Url. The corresponding Prometheus instance needs to have been configured to collect Istio metrics in the cluster within the service mesh.
+         */
+        customPrometheusUrl: string;
+        /**
+         * The login token provided when the mesh topology is deployed in data plane deployment mode. When the mesh topology authentication strategy is token, this token can be used to log in to the mesh topology service. The key of the property is the Kubernetes cluster id, and the value of the property is the login token of the mesh topology service in the cluster.
+         */
+        distributedKialiAccessTokens: string;
+        /**
+         * When the mesh topology is deployed in data plane deployment mode and integrated with CLB to provide external access, the external access address is automatically generated. The key of the attribute is the Kubernetes cluster id, and the value is the external access address of the mesh topology service in the cluster.
+         */
+        distributedKialiAddresses: string;
+        /**
+         * Enable CNI
          */
         enabled?: boolean;
         /**
-         * Kiali service address.
+         * Whether to integrate CLB for mesh topology services to provide external access.
+         */
+        integrateClb?: boolean;
+        /**
+         * When the mesh topology automatically uses the integrated ARMS Prometheus, if the ARMS Prometheus instance in the cluster has token authentication enabled, you need to use this property to provide the corresponding authentication token for the mesh topology. The key of the property is the Kubernetes cluster id, and the value is the authentication token of the ARMS Prometheus instance corresponding to the cluster. (Service mesh instance version 1.15.3.113 or above is required)
+         */
+        kialiArmsAuthTokens?: string;
+        /**
+         * Annotations for the Service corresponding to the mesh topology service. When the mesh topology service integrates CLB, annotations can be used to control the CLB specifications. The attribute type is map, the key is the Kubernetes cluster id, and the value is the mesh topology service annotation map under the corresponding Kubernetes cluster. When using the managed mode mesh topology, the key is the service mesh instance id. For annotation content, refer to [Configuring traditional load balancing CLB through Annotation](https://www.alibabacloud.com/help/en/ack/serverless-kubernetes/user-guide/use-annotations-to-configure-load-balancing).(Service mesh instance version 1.17.2.19 or above is required)
+         */
+        kialiServiceAnnotations?: string;
+        /**
+         * When the mesh topology's authentication policy is openid, the configuration used when the mesh topology and OIDC application are connected. If the authentication policy is openid, this configuration must be provided. See `openIdConfig` below.
+         */
+        openIdConfig?: outputs.servicemesh.ServiceMeshMeshConfigKialiOpenIdConfig;
+        /**
+         * When the authentication strategy of the mesh topology is ramoauth, the mesh topology will be connected to the RAM OAuth application to log in with the Alibaba Cloud account. In this case, this attribute must be provided to configure the connection with the RAM OAuth application. See `ramOauthConfig` below.
+         */
+        ramOauthConfig?: outputs.servicemesh.ServiceMeshMeshConfigKialiRamOauthConfig;
+        /**
+         * When you need to configure external access to the mesh topology through ASM gateway or other means, and access the mesh topology through a custom domain name or address, you need to specify this property. (The service mesh instance version must be 1.16.4.5 or above) See `serverConfig` below.
+         */
+        serverConfig?: outputs.servicemesh.ServiceMeshMeshConfigKialiServerConfig;
+        /**
+         * Kiali service address
          */
         url: string;
+        /**
+         * Whether the mesh topology automatically uses the integrated ARMS Prometheus. When the integrated ARMS Prometheus is automatically used, there is no need to specify the dependent Prometheus HTTP API Url.
+         */
+        usePopulatedArmsPrometheus: boolean;
+    }
+
+    export interface ServiceMeshMeshConfigKialiOpenIdConfig {
+        /**
+         * The client id provided by the OIDC application
+         */
+        clientId?: string;
+        /**
+         * The client secret provided by the OIDC application
+         */
+        clientSecret?: string;
+        /**
+         * OIDC应用的Issuer URI
+         */
+        issuerUri?: string;
+        /**
+         * The scope of the mesh topology request to the OIDC application
+         */
+        scopes?: string[];
+    }
+
+    export interface ServiceMeshMeshConfigKialiRamOauthConfig {
+        /**
+         * The redirect Uri provided to the RAM OAuth application. This needs to be the access address of the mesh topology service. When not provided, the redirect Uri will be automatically inferred based on the ServerConfig or the CLB address of the mesh topology integration.
+         */
+        redirectUris?: string;
+    }
+
+    export interface ServiceMeshMeshConfigKialiServerConfig {
+        /**
+         * The domain name or address used when accessing the mesh topology in a custom way
+         */
+        webFqdn?: string;
+        /**
+         * The port used when accessing the mesh topology in a custom way
+         */
+        webPort?: number;
+        /**
+         * The root path of the service when accessing the mesh topology in a custom way
+         */
+        webRoot?: string;
+        /**
+         * The protocol used when accessing the mesh topology in a custom way. Can only be http or https
+         */
+        webSchema?: string;
     }
 
     export interface ServiceMeshMeshConfigOpa {
         /**
-         * Enable CNI.
+         * Enable CNI
          */
         enabled?: boolean;
         /**
-         * Sidecar injector Pods on the throttle.
+         * Sidecar injector Pods on the throttle
          */
         limitCpu?: string;
         /**
-         * Sidecar injector Pods on the throttle.
+         * Sidecar injector Pods on the throttle
          */
         limitMemory?: string;
         /**
-         * OPA proxy container log level.
+         * OPA proxy container log level
          */
         logLevel?: string;
         /**
-         * Sidecar injector Pods on the requested resource.
+         * Sidecar injector Pods on the requested resource
          */
         requestCpu?: string;
         /**
-         * Sidecar injector Pods on the requested resource.
+         * Sidecar injector Pods on the requested resource
          */
         requestMemory?: string;
     }
 
     export interface ServiceMeshMeshConfigPilot {
         /**
-         * Whether to support the HTTP1.0.
+         * Whether to support the HTTP1.0
          */
         http10Enabled?: boolean;
         /**
-         * Link trace sampling percentage.
+         * Link trace sampling percentage
          */
         traceSampling?: number;
     }
 
     export interface ServiceMeshMeshConfigPrometheus {
         /**
-         * Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+         * Prometheus service addresses (enabled external Prometheus when the system automatically populates)
          */
         externalUrl: string;
         /**
-         * Whether to enable external Prometheus.
+         * Whether to enable external Prometheus
          */
         useExternal: boolean;
     }
 
     export interface ServiceMeshMeshConfigProxy {
         /**
-         * Cluster domain name.
+         * Cluster domain name
          */
         clusterDomain: string;
         /**
-         * Sidecar injector Pods on the throttle.
+         * Sidecar injector Pods on the throttle
          */
         limitCpu?: string;
         /**
-         * Sidecar injector Pods on the throttle.
+         * Sidecar injector Pods on the throttle
          */
         limitMemory?: string;
         /**
-         * Sidecar injector Pods on the requested resource.
+         * Sidecar injector Pods on the requested resource
          */
         requestCpu?: string;
         /**
-         * Sidecar injector Pods on the requested resource.
+         * Sidecar injector Pods on the requested resource
          */
         requestMemory?: string;
     }
 
     export interface ServiceMeshMeshConfigSidecarInjector {
         /**
-         * Whether to enable by Pod Annotations automatic injection Sidecar.
+         * Whether to enable by Pod Annotations automatic injection Sidecar
          */
         autoInjectionPolicyEnabled?: boolean;
         /**
-         * Whether it is the all namespaces you turn on the auto injection capabilities.
+         * Whether it is the all namespaces you turn on the auto injection capabilities
          */
         enableNamespacesByDefault?: boolean;
         /**
-         * CNI configuration. See `initCniConfiguration` below.
+         * CNI configuration See `initCniConfiguration` below.
          */
         initCniConfiguration: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration;
         /**
-         * Sidecar injector Pods on the throttle.
+         * Sidecar injector Pods on the throttle
          */
         limitCpu?: string;
         /**
-         * Sidecar injector Pods on the throttle.
+         * Sidecar injector Pods on the throttle
          */
         limitMemory?: string;
         /**
-         * Sidecar injector Pods on the requested resource.
+         * Sidecar injector Pods on the requested resource
          */
         requestCpu?: string;
         /**
-         * Sidecar injector Pods on the requested resource.
+         * Sidecar injector Pods on the requested resource
          */
         requestMemory?: string;
         /**
-         * Other automatic injection Sidecar configuration (in YAML format).
+         * Other automatic injection Sidecar configuration (in YAML format)
          */
         sidecarInjectorWebhookAsYaml: string;
     }
 
     export interface ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
         /**
-         * Enable CNI.
+         * Enable CNI
          */
         enabled?: boolean;
         /**
-         * The excluded namespace.
+         * The excluded namespace
          */
         excludeNamespaces?: string;
     }
 
     export interface ServiceMeshNetwork {
         /**
-         * Security group ID.
+         * Security group ID
          */
         securityGroupId: string;
         /**
-         * VPC ID.
+         * VPC ID
          */
         vpcId: string;
         /**
-         * Virtual Switch ID.
+         * Virtual Switch ID
          */
         vswitcheList: string;
     }
@@ -48693,6 +48983,70 @@ export namespace sls {
          * Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows: Fixedate: checks query and analysis results at regular intervals. Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
          */
         type?: string;
+    }
+
+    export interface CollectionPolicyCentralizeConfig {
+        /**
+         * When the central logstore is transferred to the destination logstore, its geographical attribute should be consistent with the destRegion and belong to the destProject.
+         */
+        destLogstore?: string;
+        /**
+         * The geographical attributes of the centralized transfer project should be consistent with the destRegion.
+         */
+        destProject?: string;
+        /**
+         * Centralized transfer destination area.
+         */
+        destRegion?: string;
+        /**
+         * The number of days for the central transfer destination. This is valid only if the central transfer destination log store is not created for the first time.
+         */
+        destTtl?: number;
+    }
+
+    export interface CollectionPolicyDataConfig {
+        /**
+         * Valid only when the log type is global. For example, if the productCode is sls, the log is collected to the default dedicated Project of the account in a specific dataRegion.
+         */
+        dataProject: string;
+        /**
+         * If and only if the log type is global log type, for example, if productCode is sls, global logs will be collected to the corresponding region during the first configuration.
+         */
+        dataRegion?: string;
+    }
+
+    export interface CollectionPolicyPolicyConfig {
+        /**
+         * A collection of instance IDs, valid only if resourceMode is instanceMode. Only instances whose instance ID is in the instance ID collection are collected.
+         */
+        instanceIds?: string[];
+        /**
+         * The region collection to which the instance belongs. Valid only when resourceMode is set to attributeMode. Wildcard characters are supported. If the region collection filter item is an empty array, it means that you do not need to filter by region, and all instances meet the filtering condition of the region collection. Otherwise, only instances with region attributes in the region collection are collected. The region collection and resource label of the instance. The instance objects are collected only when all of them are met.
+         */
+        regions?: string[];
+        /**
+         * Resource collection mode. If all is configured, all instances under the account will be collected to the default logstore. If attributeMode is configured, filtering will be performed according to the region attribute and resource label of the instance. If instanceMode is configured, filtering will be performed according to the instance ID.
+         */
+        resourceMode: string;
+        /**
+         * Resource label, valid if and only if resourceMode is attributeMode.
+         *
+         * If the resource label filter item is empty, it means that you do not need to filter by resource label, and all instances meet the resource label filter condition. Otherwise, only instances whose resource label attributes meet the resource label configuration are collected.
+         *
+         * The resource tag and the region collection to which the instance belongs work together. The instance objects are collected only when all of them are met.
+         */
+        resourceTags?: {[key: string]: string};
+    }
+
+    export interface CollectionPolicyResourceDirectory {
+        /**
+         * Support all mode all and custom mode custom under this resource directory
+         */
+        accountGroupType?: string;
+        /**
+         * When the resource directory is configured in the custom mode, the corresponding member account list
+         */
+        members?: string[];
     }
 
     export interface ScheduledSqlSchedule {

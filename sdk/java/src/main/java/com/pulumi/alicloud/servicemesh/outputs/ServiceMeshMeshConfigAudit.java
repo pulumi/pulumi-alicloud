@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigAudit {
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     private @Nullable Boolean enabled;
@@ -25,7 +25,7 @@ public final class ServiceMeshMeshConfigAudit {
 
     private ServiceMeshMeshConfigAudit() {}
     /**
-     * @return Enable CNI.
+     * @return Enable CNI
      * 
      */
     public Optional<Boolean> enabled() {

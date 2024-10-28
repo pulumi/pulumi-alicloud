@@ -512,6 +512,10 @@ export class Instance extends pulumi.CustomResource {
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
     public readonly zoneIdSlaveA!: pulumi.Output<string>;
+    /**
+     * RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+     */
+    public readonly zoneIdSlaveB!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -605,6 +609,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["whitelistNetworkType"] = state ? state.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
             resourceInputs["zoneIdSlaveA"] = state ? state.zoneIdSlaveA : undefined;
+            resourceInputs["zoneIdSlaveB"] = state ? state.zoneIdSlaveB : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.engine === undefined) && !opts.urn) {
@@ -693,6 +698,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["whitelistNetworkType"] = args ? args.whitelistNetworkType : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["zoneIdSlaveA"] = args ? args.zoneIdSlaveA : undefined;
+            resourceInputs["zoneIdSlaveB"] = args ? args.zoneIdSlaveB : undefined;
             resourceInputs["connectionString"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dbInstanceType"] = undefined /*out*/;
@@ -1179,6 +1185,10 @@ export interface InstanceState {
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
     zoneIdSlaveA?: pulumi.Input<string>;
+    /**
+     * RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+     */
+    zoneIdSlaveB?: pulumi.Input<string>;
 }
 
 /**
@@ -1634,4 +1644,8 @@ export interface InstanceArgs {
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      */
     zoneIdSlaveA?: pulumi.Input<string>;
+    /**
+     * RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+     */
+    zoneIdSlaveB?: pulumi.Input<string>;
 }

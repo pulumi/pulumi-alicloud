@@ -8688,7 +8688,7 @@ func (o GetEcsKeyPairsPairInstanceArrayOutput) Index(i pulumi.IntInput) GetEcsKe
 }
 
 type GetEcsLaunchTemplatesTemplate struct {
-	// Instance auto release time.
+	// (Optional) Instance auto release time.
 	AutoReleaseTime string `pulumi:"autoReleaseTime"`
 	// CreatedBy.
 	CreatedBy string `pulumi:"createdBy"`
@@ -8698,12 +8698,18 @@ type GetEcsLaunchTemplatesTemplate struct {
 	DefaultVersionNumber int `pulumi:"defaultVersionNumber"`
 	// The Deployment Set Id.
 	DeploymentSetId string `pulumi:"deploymentSetId"`
-	// The Description of Template.
+	// System disk description.
 	Description string `pulumi:"description"`
 	// Whether to enable the instance operating system configuration.
 	EnableVmOsConfig bool `pulumi:"enableVmOsConfig"`
 	// Instance host name.
 	HostName string `pulumi:"hostName"`
+	// Whether to enable access to instance metadata.
+	HttpEndpoint string `pulumi:"httpEndpoint"`
+	// The HTTP PUT response hop limit required for instance metadata requests.
+	HttpPutResponseHopLimit int `pulumi:"httpPutResponseHopLimit"`
+	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+	HttpTokens string `pulumi:"httpTokens"`
 	// The ID of the Launch Template.
 	Id string `pulumi:"id"`
 	// The Image Id.
@@ -8788,7 +8794,7 @@ type GetEcsLaunchTemplatesTemplateInput interface {
 }
 
 type GetEcsLaunchTemplatesTemplateArgs struct {
-	// Instance auto release time.
+	// (Optional) Instance auto release time.
 	AutoReleaseTime pulumi.StringInput `pulumi:"autoReleaseTime"`
 	// CreatedBy.
 	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
@@ -8798,12 +8804,18 @@ type GetEcsLaunchTemplatesTemplateArgs struct {
 	DefaultVersionNumber pulumi.IntInput `pulumi:"defaultVersionNumber"`
 	// The Deployment Set Id.
 	DeploymentSetId pulumi.StringInput `pulumi:"deploymentSetId"`
-	// The Description of Template.
+	// System disk description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Whether to enable the instance operating system configuration.
 	EnableVmOsConfig pulumi.BoolInput `pulumi:"enableVmOsConfig"`
 	// Instance host name.
 	HostName pulumi.StringInput `pulumi:"hostName"`
+	// Whether to enable access to instance metadata.
+	HttpEndpoint pulumi.StringInput `pulumi:"httpEndpoint"`
+	// The HTTP PUT response hop limit required for instance metadata requests.
+	HttpPutResponseHopLimit pulumi.IntInput `pulumi:"httpPutResponseHopLimit"`
+	// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+	HttpTokens pulumi.StringInput `pulumi:"httpTokens"`
 	// The ID of the Launch Template.
 	Id pulumi.StringInput `pulumi:"id"`
 	// The Image Id.
@@ -8927,7 +8939,7 @@ func (o GetEcsLaunchTemplatesTemplateOutput) ToGetEcsLaunchTemplatesTemplateOutp
 	return o
 }
 
-// Instance auto release time.
+// (Optional) Instance auto release time.
 func (o GetEcsLaunchTemplatesTemplateOutput) AutoReleaseTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.AutoReleaseTime }).(pulumi.StringOutput)
 }
@@ -8952,7 +8964,7 @@ func (o GetEcsLaunchTemplatesTemplateOutput) DeploymentSetId() pulumi.StringOutp
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.DeploymentSetId }).(pulumi.StringOutput)
 }
 
-// The Description of Template.
+// System disk description.
 func (o GetEcsLaunchTemplatesTemplateOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -8965,6 +8977,21 @@ func (o GetEcsLaunchTemplatesTemplateOutput) EnableVmOsConfig() pulumi.BoolOutpu
 // Instance host name.
 func (o GetEcsLaunchTemplatesTemplateOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.HostName }).(pulumi.StringOutput)
+}
+
+// Whether to enable access to instance metadata.
+func (o GetEcsLaunchTemplatesTemplateOutput) HttpEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.HttpEndpoint }).(pulumi.StringOutput)
+}
+
+// The HTTP PUT response hop limit required for instance metadata requests.
+func (o GetEcsLaunchTemplatesTemplateOutput) HttpPutResponseHopLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) int { return v.HttpPutResponseHopLimit }).(pulumi.IntOutput)
+}
+
+// Whether to use the hardened mode (IMDSv2) when accessing instance metadata.
+func (o GetEcsLaunchTemplatesTemplateOutput) HttpTokens() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplate) string { return v.HttpTokens }).(pulumi.StringOutput)
 }
 
 // The ID of the Launch Template.
@@ -9165,19 +9192,19 @@ func (o GetEcsLaunchTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetEc
 }
 
 type GetEcsLaunchTemplatesTemplateDataDisk struct {
-	// The category of the disk.
+	// The category of the system disk.
 	Category string `pulumi:"category"`
-	// Indicates whether the data disk is released with the instance.
+	// Specifies whether to release the system disk when the instance is released.
 	DeleteWithInstance bool `pulumi:"deleteWithInstance"`
-	// The description of the data disk.
+	// System disk description.
 	Description string `pulumi:"description"`
 	// Encrypted the data in this disk.
 	Encrypted bool `pulumi:"encrypted"`
-	// The name of the data disk.
+	// System disk name.
 	Name string `pulumi:"name"`
-	// PerformanceLevel.
+	// The performance level of the ESSD used as the system disk.
 	PerformanceLevel string `pulumi:"performanceLevel"`
-	// The performance level of the ESSD used as the data disk.
+	// Size of the system disk, measured in GB.
 	Size int `pulumi:"size"`
 	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
 	SnapshotId string `pulumi:"snapshotId"`
@@ -9195,19 +9222,19 @@ type GetEcsLaunchTemplatesTemplateDataDiskInput interface {
 }
 
 type GetEcsLaunchTemplatesTemplateDataDiskArgs struct {
-	// The category of the disk.
+	// The category of the system disk.
 	Category pulumi.StringInput `pulumi:"category"`
-	// Indicates whether the data disk is released with the instance.
+	// Specifies whether to release the system disk when the instance is released.
 	DeleteWithInstance pulumi.BoolInput `pulumi:"deleteWithInstance"`
-	// The description of the data disk.
+	// System disk description.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Encrypted the data in this disk.
 	Encrypted pulumi.BoolInput `pulumi:"encrypted"`
-	// The name of the data disk.
+	// System disk name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// PerformanceLevel.
+	// The performance level of the ESSD used as the system disk.
 	PerformanceLevel pulumi.StringInput `pulumi:"performanceLevel"`
-	// The performance level of the ESSD used as the data disk.
+	// Size of the system disk, measured in GB.
 	Size pulumi.IntInput `pulumi:"size"`
 	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
 	SnapshotId pulumi.StringInput `pulumi:"snapshotId"`
@@ -9264,17 +9291,17 @@ func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) ToGetEcsLaunchTemplatesTemp
 	return o
 }
 
-// The category of the disk.
+// The category of the system disk.
 func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) string { return v.Category }).(pulumi.StringOutput)
 }
 
-// Indicates whether the data disk is released with the instance.
+// Specifies whether to release the system disk when the instance is released.
 func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) bool { return v.DeleteWithInstance }).(pulumi.BoolOutput)
 }
 
-// The description of the data disk.
+// System disk description.
 func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -9284,17 +9311,17 @@ func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Encrypted() pulumi.BoolOutp
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
-// The name of the data disk.
+// System disk name.
 func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// PerformanceLevel.
+// The performance level of the ESSD used as the system disk.
 func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) PerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) string { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
 
-// The performance level of the ESSD used as the data disk.
+// Size of the system disk, measured in GB.
 func (o GetEcsLaunchTemplatesTemplateDataDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateDataDisk) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -9325,15 +9352,15 @@ func (o GetEcsLaunchTemplatesTemplateDataDiskArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetEcsLaunchTemplatesTemplateNetworkInterface struct {
-	// The ENI description.
+	// System disk description.
 	Description string `pulumi:"description"`
-	// The ENI name.
+	// System disk name.
 	Name string `pulumi:"name"`
 	// The primary private IP address of the ENI.
 	PrimaryIp string `pulumi:"primaryIp"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// The vswitch id.
 	VswitchId string `pulumi:"vswitchId"`
 }
 
@@ -9349,15 +9376,15 @@ type GetEcsLaunchTemplatesTemplateNetworkInterfaceInput interface {
 }
 
 type GetEcsLaunchTemplatesTemplateNetworkInterfaceArgs struct {
-	// The ENI description.
+	// System disk description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The ENI name.
+	// System disk name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The primary private IP address of the ENI.
 	PrimaryIp pulumi.StringInput `pulumi:"primaryIp"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// The vswitch id.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 }
 
@@ -9412,12 +9439,12 @@ func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) ToGetEcsLaunchTempl
 	return o
 }
 
-// The ENI description.
+// System disk description.
 func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The ENI name.
+// System disk name.
 func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9427,12 +9454,12 @@ func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) PrimaryIp() pulumi.
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.PrimaryIp }).(pulumi.StringOutput)
 }
 
-// The security group ID must be one in the same VPC.
+// The security group ID.
 func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+// The vswitch id.
 func (o GetEcsLaunchTemplatesTemplateNetworkInterfaceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEcsLaunchTemplatesTemplateNetworkInterface) string { return v.VswitchId }).(pulumi.StringOutput)
 }

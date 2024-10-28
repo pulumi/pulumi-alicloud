@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -108,6 +109,21 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
     }
 
     /**
+     * The tags of Vpc Endpoint Service.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tags of Vpc Endpoint Service.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The name of Vpc Endpoint Service.
      * 
      */
@@ -131,6 +147,7 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
         this.outputFile = $.outputFile;
         this.serviceBusinessStatus = $.serviceBusinessStatus;
         this.status = $.status;
+        this.tags = $.tags;
         this.vpcEndpointServiceName = $.vpcEndpointServiceName;
     }
 
@@ -286,6 +303,27 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tags of Vpc Endpoint Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tags of Vpc Endpoint Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         /**

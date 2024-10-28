@@ -18,16 +18,12 @@ public final class InstanceEcsListArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The ID of the ECS instance.
      * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
-     * 
      */
     @Import(name="ecsId")
     private @Nullable Output<String> ecsId;
 
     /**
      * @return The ID of the ECS instance.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<String>> ecsId() {
@@ -61,8 +57,6 @@ public final class InstanceEcsListArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param ecsId The ID of the ECS instance.
          * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
-         * 
          * @return builder
          * 
          */
@@ -73,8 +67,6 @@ public final class InstanceEcsListArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param ecsId The ID of the ECS instance.
-         * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

@@ -14,15 +14,36 @@ namespace Pulumi.AliCloud.Mse.Outputs
     public sealed class GetClustersClusterInstanceModelResult
     {
         /// <summary>
-        /// The health status of MSE Cluster.
+        /// The health status of the instance.
         /// </summary>
         public readonly string HealthStatus;
+        /// <summary>
+        /// (Deprecated from version 1.232.0)
+        /// </summary>
         public readonly string InstanceType;
+        /// <summary>
+        /// The public IP address.
+        /// </summary>
         public readonly string InternetIp;
+        /// <summary>
+        /// The IP address of the instance.
+        /// </summary>
         public readonly string Ip;
+        /// <summary>
+        /// The name of the pod.
+        /// </summary>
         public readonly string PodName;
+        /// <summary>
+        /// The role.
+        /// </summary>
         public readonly string Role;
+        /// <summary>
+        /// The single-thread IP address.
+        /// </summary>
         public readonly string SingleTunnelVip;
+        /// <summary>
+        /// (Deprecated from version 1.232.0)
+        /// </summary>
         public readonly string Vip;
 
         [OutputConstructor]

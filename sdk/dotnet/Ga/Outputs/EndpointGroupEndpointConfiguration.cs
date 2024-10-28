@@ -26,18 +26,27 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
+        /// The private IP address of the ENI.
+        /// &gt; **NOTE:** `sub_address` is valid only when `type` is set to `ENI`.
+        /// </summary>
+        public readonly string? SubAddress;
+        /// <summary>
         /// The type of Endpoint N in the endpoint group. Valid values:
-        /// - `Domain`: a custom domain name.
-        /// - `Ip`: a custom IP address.
-        /// - `PublicIp`: an Alibaba Cloud public IP address.
-        /// - `ECS`: an Alibaba Cloud Elastic Compute Service (ECS) instance.
-        /// - `SLB`: an Alibaba Cloud Server Load Balancer (SLB) instance.
-        /// &gt; **NOTE:** When the terminal node type is ECS or SLB, if the service association role does not exist, the system will automatically create a service association role named aliyunserviceroleforgavpcndpoint.
+        /// - `Domain`: A custom domain name.
+        /// - `Ip`: A custom IP address.
+        /// - `PublicIp`: An Alibaba Cloud public IP address.
+        /// - `ECS`: An Elastic Compute Service (ECS) instance.
+        /// - `SLB`: A Classic Load Balancer (CLB) instance.
+        /// - `ALB`: An Application Load Balancer (ALB) instance.
+        /// - `NLB`: A Network Load Balancer (NLB) instance.
+        /// - `ENI`: An Elastic Network Interface (ENI).
+        /// - `OSS`: An Object Storage Service (OSS) bucket.
+        /// &gt; **NOTE:** From version 1.232.0, `type` can be set to `ALB`, `NLB`, `ENI`, `OSS`.
         /// </summary>
         public readonly string Type;
         /// <summary>
         /// The weight of Endpoint N in the endpoint group. Valid values: `0` to `255`.
-        /// &gt; **NOTE:** If the weight of a terminal node is set to 0, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
+        /// &gt; **NOTE:** If the weight of a terminal node is set to `0`, global acceleration will terminate the distribution of traffic to the terminal node. Please be careful.
         /// </summary>
         public readonly int Weight;
 
@@ -49,6 +58,8 @@ namespace Pulumi.AliCloud.Ga.Outputs
 
             string endpoint,
 
+            string? subAddress,
+
             string type,
 
             int weight)
@@ -56,6 +67,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
             EnableClientipPreservation = enableClientipPreservation;
             EnableProxyProtocol = enableProxyProtocol;
             Endpoint = endpoint;
+            SubAddress = subAddress;
             Type = type;
             Weight = weight;
         }

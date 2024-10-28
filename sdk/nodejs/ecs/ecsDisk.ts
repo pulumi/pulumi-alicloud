@@ -49,7 +49,7 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
+     * Category of the disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
      */
     public readonly category!: pulumi.Output<string | undefined>;
     /**
@@ -78,9 +78,9 @@ export class EcsDisk extends pulumi.CustomResource {
     public readonly enableAutoSnapshot!: pulumi.Output<boolean>;
     public readonly encryptAlgorithm!: pulumi.Output<string | undefined>;
     /**
-     * If true, the disk will be encrypted, conflict with `snapshotId`.
+     * Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      */
-    public readonly encrypted!: pulumi.Output<boolean | undefined>;
+    public readonly encrypted!: pulumi.Output<boolean>;
     /**
      * The ID of the instance to which the created subscription disk is automatically attached.
      * * After you specify the instance ID, the specified `resourceGroupId`, `tags`, and `kmsKeyId` parameters are ignored.
@@ -103,10 +103,10 @@ export class EcsDisk extends pulumi.CustomResource {
     public readonly paymentType!: pulumi.Output<string>;
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-     * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+     * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
     public readonly performanceLevel!: pulumi.Output<string>;
     /**
@@ -114,13 +114,25 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     * The size of the disk. Unit: GiB. This parameter is required. Valid values:
+     * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+     * - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+     * - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+     * - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+     * - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+     * - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+     * - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+     * - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+     * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+     * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
      */
     public readonly size!: pulumi.Output<number>;
     /**
-     * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     * The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    public readonly snapshotId!: pulumi.Output<string>;
     /**
      * The disk status.
      */
@@ -229,7 +241,7 @@ export interface EcsDiskState {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
+     * Category of the disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
      */
     category?: pulumi.Input<string>;
     /**
@@ -258,7 +270,7 @@ export interface EcsDiskState {
     enableAutoSnapshot?: pulumi.Input<boolean>;
     encryptAlgorithm?: pulumi.Input<string>;
     /**
-     * If true, the disk will be encrypted, conflict with `snapshotId`.
+     * Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      */
     encrypted?: pulumi.Input<boolean>;
     /**
@@ -283,10 +295,10 @@ export interface EcsDiskState {
     paymentType?: pulumi.Input<string>;
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-     * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+     * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
     performanceLevel?: pulumi.Input<string>;
     /**
@@ -294,11 +306,23 @@ export interface EcsDiskState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     * The size of the disk. Unit: GiB. This parameter is required. Valid values:
+     * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+     * - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+     * - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+     * - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+     * - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+     * - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+     * - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+     * - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+     * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+     * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
      */
     size?: pulumi.Input<number>;
     /**
-     * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     * The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      */
     snapshotId?: pulumi.Input<string>;
     /**
@@ -339,7 +363,7 @@ export interface EcsDiskArgs {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Category of the disk. Valid values are `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`. Default is `cloudEfficiency`.
+     * Category of the disk. Default value: `cloudEfficiency`. Valid Values: `cloud`, `cloudEfficiency`, `cloudSsd`, `cloudEssd`, `cloudAuto`, `cloudEssdEntry`, `elasticEphemeralDiskStandard`, `elasticEphemeralDiskPremium`.
      */
     category?: pulumi.Input<string>;
     /**
@@ -368,7 +392,7 @@ export interface EcsDiskArgs {
     enableAutoSnapshot?: pulumi.Input<boolean>;
     encryptAlgorithm?: pulumi.Input<string>;
     /**
-     * If true, the disk will be encrypted, conflict with `snapshotId`.
+     * Specifies whether to encrypt the disk. Default value: `false`. Valid values:
      */
     encrypted?: pulumi.Input<boolean>;
     /**
@@ -393,10 +417,10 @@ export interface EcsDiskArgs {
     paymentType?: pulumi.Input<string>;
     /**
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-     * * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-     * * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-     * * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-     * * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+     * - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+     * - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+     * - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+     * - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
      */
     performanceLevel?: pulumi.Input<string>;
     /**
@@ -404,11 +428,23 @@ export interface EcsDiskArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+     * The size of the disk. Unit: GiB. This parameter is required. Valid values:
+     * - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+     * - If `category` is set to `cloudEfficiency`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudSsd`. Valid values: `20` to `32768`.
+     * - If `category` is set to `cloudAuto`. Valid values: `1` to `65536`.
+     * - If `category` is set to `cloudEssdEntry`. Valid values: `10` to `32768`.
+     * - If `category` is set to `elasticEphemeralDiskStandard`. Valid values: `64` to `8192`.
+     * - If `category` is set to `elasticEphemeralDiskPremium`. Valid values: `64` to `8192`.
+     * - If `category` is set to `cloudEssd`, the valid values are related to `performanceLevel`. Valid values:
+     * - If `performanceLevel` is set to `PL0`. Valid values: `1` to `65536`.
+     * - If `performanceLevel` is set to `PL1`. Valid values: `20` to `65536`.
+     * - If `performanceLevel` is set to `PL2`. Valid values: `461` to `65536`.
+     * - If `performanceLevel` is set to `PL3`. Valid values: `1261` to `65536`.
      */
     size?: pulumi.Input<number>;
     /**
-     * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+     * The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshotId` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshotId` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
      */
     snapshotId?: pulumi.Input<string>;
     /**

@@ -60,10 +60,10 @@ public final class GetCertificatesCertificate {
      * @return The cert&#39;s name.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead. */
     private String name;
     /**
      * @return The cert&#39;s organization.
@@ -162,10 +162,10 @@ public final class GetCertificatesCertificate {
      * @return The cert&#39;s name.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
+     * Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead. */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead. */
     public String name() {
         return this.name;
     }

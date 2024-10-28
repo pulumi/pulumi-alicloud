@@ -293,6 +293,56 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.hostName);
     }
     /**
+     * Whether to enable access to instance metadata. Valid values:
+     * - enabled: Enabled.
+     * - disabled: Disabled.
+     * 
+     */
+    @Export(name="httpEndpoint", refs={String.class}, tree="[0]")
+    private Output<String> httpEndpoint;
+
+    /**
+     * @return Whether to enable access to instance metadata. Valid values:
+     * - enabled: Enabled.
+     * - disabled: Disabled.
+     * 
+     */
+    public Output<String> httpEndpoint() {
+        return this.httpEndpoint;
+    }
+    /**
+     * The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
+    @Export(name="httpPutResponseHopLimit", refs={Integer.class}, tree="[0]")
+    private Output<Integer> httpPutResponseHopLimit;
+
+    /**
+     * @return The HTTP PUT response hop limit required for instance metadata requests.
+     * 
+     */
+    public Output<Integer> httpPutResponseHopLimit() {
+        return this.httpPutResponseHopLimit;
+    }
+    /**
+     * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+     * - optional: Not mandatory.
+     * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     * 
+     */
+    @Export(name="httpTokens", refs={String.class}, tree="[0]")
+    private Output<String> httpTokens;
+
+    /**
+     * @return Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+     * - optional: Not mandatory.
+     * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     * 
+     */
+    public Output<String> httpTokens() {
+        return this.httpTokens;
+    }
+    /**
      * The Image ID.
      * 
      */

@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshMeshConfigControlPlaneLogGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable CNI.
+        /// Enable CNI
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// Lifecycle of logs has been collected to Alibaba Cloud SLS.
+        /// Lifecycle of logs has been collected to Alibaba Cloud SLS
         /// </summary>
         [Input("logTtlInDay")]
         public Input<int>? LogTtlInDay { get; set; }

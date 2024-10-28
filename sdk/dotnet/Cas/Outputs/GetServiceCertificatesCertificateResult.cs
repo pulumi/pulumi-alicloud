@@ -14,72 +14,75 @@ namespace Pulumi.AliCloud.Cas.Outputs
     public sealed class GetServiceCertificatesCertificateResult
     {
         /// <summary>
-        /// The cert is buy from aliyun or not.
+        /// Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buy_in_aliyun` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly bool BuyInAliyun;
         /// <summary>
-        /// The cert's Cert.
+        /// The Cert of the certificate. **Note:** `cert` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string Cert;
         /// <summary>
-        /// The cert's id.
+        /// The ID of the certificate.
         /// </summary>
         public readonly string CertId;
         /// <summary>
-        /// The cert's name.
+        /// The name of the certificate.
         /// </summary>
         public readonly string CertificateName;
         /// <summary>
-        /// The cert's city.
+        /// The city in which the organization is located.
         /// </summary>
         public readonly string City;
         /// <summary>
-        /// The cert's common name.
+        /// The parent domain name of the certificate.
         /// </summary>
         public readonly string Common;
         /// <summary>
-        /// The cert's country.
+        /// The code of the country in which the organization is located.
         /// </summary>
         public readonly string Country;
         /// <summary>
-        /// The cert's not valid after time.
+        /// The time at which the certificate expires.
         /// </summary>
         public readonly string EndDate;
         /// <summary>
-        /// The cert is expired or not.
+        /// Whether the certificate has expired.
         /// </summary>
         public readonly bool Expired;
         /// <summary>
-        /// The cert's finger.
+        /// The fingerprint of the certificate.
         /// </summary>
         public readonly string Fingerprint;
         /// <summary>
-        /// The cert's id.
+        /// The ID of the Ssl Certificates Service Certificate.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The cert's Issuer.
+        /// The issuer of the certificate.
         /// </summary>
         public readonly string Issuer;
         /// <summary>
-        /// The cert's Keye.
+        /// The Key of the certificate. **Note:** `key` takes effect only if `enable_details` is set to `true`.
         /// </summary>
         public readonly string Key;
+        /// <summary>
+        /// (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
+        /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The cert's organization.
+        /// The name of the organization that is associated with the certificate.
         /// </summary>
         public readonly string OrgName;
         /// <summary>
-        /// The cert's province.
+        /// The province or autonomous region in which the organization is located.
         /// </summary>
         public readonly string Province;
         /// <summary>
-        /// The cert's subject alternative name.
+        /// All domain names that are bound to the certificate.
         /// </summary>
         public readonly string Sans;
         /// <summary>
-        /// The cert's not valid before time.
+        /// The time at which the certificate starts to take effect.
         /// </summary>
         public readonly string StartDate;
 

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "alicloud:sls/alert:Alert":
 		r = &Alert{}
+	case "alicloud:sls/collectionPolicy:CollectionPolicy":
+		r = &CollectionPolicy{}
 	case "alicloud:sls/scheduledSql:ScheduledSql":
 		r = &ScheduledSql{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"sls/alert",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"sls/collectionPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

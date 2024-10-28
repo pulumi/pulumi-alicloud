@@ -13,50 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshLoadBalancer {
     /**
-     * @return The Instance ID of APIServer Load Balancer.
+     * @return The Instance ID of APIServer Load Balancer
      * 
      */
     private @Nullable String apiServerLoadbalancerId;
     /**
-     * @return Indicates whether to use the IP address of a public network exposed API Server.
+     * @return Indicates whether to use the IP address of a public network exposed API Server
      * 
      */
     private @Nullable Boolean apiServerPublicEip;
     /**
-     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot.
+     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
      * 
      */
     private @Nullable Boolean pilotPublicEip;
     /**
-     * @return The Instance ID of Pilot Load Balancer.
+     * @return the EIP instance id of Pilot load balancer.
+     * 
+     */
+    private @Nullable String pilotPublicEipId;
+    /**
+     * @return The Instance ID of Pilot Load Balancer
      * 
      */
     private @Nullable String pilotPublicLoadbalancerId;
 
     private ServiceMeshLoadBalancer() {}
     /**
-     * @return The Instance ID of APIServer Load Balancer.
+     * @return The Instance ID of APIServer Load Balancer
      * 
      */
     public Optional<String> apiServerLoadbalancerId() {
         return Optional.ofNullable(this.apiServerLoadbalancerId);
     }
     /**
-     * @return Indicates whether to use the IP address of a public network exposed API Server.
+     * @return Indicates whether to use the IP address of a public network exposed API Server
      * 
      */
     public Optional<Boolean> apiServerPublicEip() {
         return Optional.ofNullable(this.apiServerPublicEip);
     }
     /**
-     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot.
+     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
      * 
      */
     public Optional<Boolean> pilotPublicEip() {
         return Optional.ofNullable(this.pilotPublicEip);
     }
     /**
-     * @return The Instance ID of Pilot Load Balancer.
+     * @return the EIP instance id of Pilot load balancer.
+     * 
+     */
+    public Optional<String> pilotPublicEipId() {
+        return Optional.ofNullable(this.pilotPublicEipId);
+    }
+    /**
+     * @return The Instance ID of Pilot Load Balancer
      * 
      */
     public Optional<String> pilotPublicLoadbalancerId() {
@@ -75,6 +87,7 @@ public final class ServiceMeshLoadBalancer {
         private @Nullable String apiServerLoadbalancerId;
         private @Nullable Boolean apiServerPublicEip;
         private @Nullable Boolean pilotPublicEip;
+        private @Nullable String pilotPublicEipId;
         private @Nullable String pilotPublicLoadbalancerId;
         public Builder() {}
         public Builder(ServiceMeshLoadBalancer defaults) {
@@ -82,6 +95,7 @@ public final class ServiceMeshLoadBalancer {
     	      this.apiServerLoadbalancerId = defaults.apiServerLoadbalancerId;
     	      this.apiServerPublicEip = defaults.apiServerPublicEip;
     	      this.pilotPublicEip = defaults.pilotPublicEip;
+    	      this.pilotPublicEipId = defaults.pilotPublicEipId;
     	      this.pilotPublicLoadbalancerId = defaults.pilotPublicLoadbalancerId;
         }
 
@@ -104,6 +118,12 @@ public final class ServiceMeshLoadBalancer {
             return this;
         }
         @CustomType.Setter
+        public Builder pilotPublicEipId(@Nullable String pilotPublicEipId) {
+
+            this.pilotPublicEipId = pilotPublicEipId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pilotPublicLoadbalancerId(@Nullable String pilotPublicLoadbalancerId) {
 
             this.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
@@ -114,6 +134,7 @@ public final class ServiceMeshLoadBalancer {
             _resultValue.apiServerLoadbalancerId = apiServerLoadbalancerId;
             _resultValue.apiServerPublicEip = apiServerPublicEip;
             _resultValue.pilotPublicEip = pilotPublicEip;
+            _resultValue.pilotPublicEipId = pilotPublicEipId;
             _resultValue.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
             return _resultValue;
         }

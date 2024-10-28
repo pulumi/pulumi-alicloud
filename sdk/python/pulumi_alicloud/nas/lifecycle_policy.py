@@ -199,9 +199,9 @@ class LifecyclePolicy(pulumi.CustomResource):
                  storage_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Network Attached Storage (NAS) Lifecycle Policy resource.
+        Provides a Apsara File Storage (NAS) Lifecycle Policy resource.
 
-        For information about Network Attached Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
+        For information about Apsara File Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
 
         > **NOTE:** Available in v1.153.0+.
 
@@ -226,7 +226,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
         ## Import
 
-        Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
+        Apsara File Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>
@@ -247,9 +247,9 @@ class LifecyclePolicy(pulumi.CustomResource):
                  args: LifecyclePolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Network Attached Storage (NAS) Lifecycle Policy resource.
+        Provides a Apsara File Storage (NAS) Lifecycle Policy resource.
 
-        For information about Network Attached Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
+        For information about Apsara File Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
 
         > **NOTE:** Available in v1.153.0+.
 
@@ -274,7 +274,7 @@ class LifecyclePolicy(pulumi.CustomResource):
 
         ## Import
 
-        Network Attached Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
+        Apsara File Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>

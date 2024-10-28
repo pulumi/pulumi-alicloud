@@ -19,8 +19,6 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
@@ -28,8 +26,6 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -67,14 +63,14 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The ID of the vSwitch in the zone. .
+     * The ID of the vSwitch in the zone.
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch in the zone. .
+     * @return The ID of the vSwitch in the zone.
      * 
      */
     public Output<String> vswitchId() {
@@ -126,8 +122,6 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -139,8 +133,6 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -192,7 +184,7 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch in the zone. .
+         * @param vswitchId The ID of the vSwitch in the zone.
          * 
          * @return builder
          * 
@@ -203,7 +195,7 @@ public final class VpcEndpointZoneArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch in the zone. .
+         * @param vswitchId The ID of the vSwitch in the zone.
          * 
          * @return builder
          * 

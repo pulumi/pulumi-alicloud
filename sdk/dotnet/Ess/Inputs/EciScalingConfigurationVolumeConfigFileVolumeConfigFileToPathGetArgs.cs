@@ -19,6 +19,12 @@ namespace Pulumi.AliCloud.Ess.Inputs
         public Input<string>? Content { get; set; }
 
         /// <summary>
+        /// The permissions on the ConfigFileVolume directory.
+        /// </summary>
+        [Input("mode")]
+        public Input<int>? Mode { get; set; }
+
+        /// <summary>
         /// The relative file path.
         /// </summary>
         [Input("path")]

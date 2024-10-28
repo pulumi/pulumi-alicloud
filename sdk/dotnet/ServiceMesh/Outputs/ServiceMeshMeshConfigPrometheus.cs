@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfigPrometheus
     {
         /// <summary>
-        /// Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+        /// Prometheus service addresses (enabled external Prometheus when the system automatically populates)
         /// </summary>
         public readonly string? ExternalUrl;
         /// <summary>
-        /// Whether to enable external Prometheus.
+        /// Whether to enable external Prometheus
         /// </summary>
         public readonly bool? UseExternal;
 

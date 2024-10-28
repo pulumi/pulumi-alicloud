@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigPrometheus {
     /**
-     * @return Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+     * @return Prometheus service addresses (enabled external Prometheus when the system automatically populates)
      * 
      */
     private @Nullable String externalUrl;
     /**
-     * @return Whether to enable external Prometheus.
+     * @return Whether to enable external Prometheus
      * 
      */
     private @Nullable Boolean useExternal;
 
     private ServiceMeshMeshConfigPrometheus() {}
     /**
-     * @return Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+     * @return Prometheus service addresses (enabled external Prometheus when the system automatically populates)
      * 
      */
     public Optional<String> externalUrl() {
         return Optional.ofNullable(this.externalUrl);
     }
     /**
-     * @return Whether to enable external Prometheus.
+     * @return Whether to enable external Prometheus
      * 
      */
     public Optional<Boolean> useExternal() {

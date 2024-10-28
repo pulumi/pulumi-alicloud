@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about Microservice Engine (MSE) Engine Namespace and how to use it, see [What is Engine Namespace](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createenginenamespace).
  * 
- * &gt; **NOTE:** Available in v1.166.0+.
+ * &gt; **NOTE:** Available since v1.166.0.
  * 
  * ## Example Usage
  * 
@@ -56,8 +56,6 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
  *         final var example = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation("VSwitch")
  *             .build());
@@ -74,23 +72,25 @@ import javax.annotation.Nullable;
  *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].id()))
  *             .build());
  * 
- *         var default_ = new Cluster("default", ClusterArgs.builder()
- *             .connectionType("slb")
- *             .netType("privatenet")
- *             .vswitchId(exampleSwitch.id())
+ *         var exampleCluster = new Cluster("exampleCluster", ClusterArgs.builder()
  *             .clusterSpecification("MSE_SC_1_2_60_c")
- *             .clusterVersion("NACOS_2_0_0")
- *             .instanceCount("1")
- *             .pubNetworkFlow("1")
- *             .clusterAliasName(name)
- *             .mseVersion("mse_dev")
  *             .clusterType("Nacos-Ans")
+ *             .clusterVersion("NACOS_2_0_0")
+ *             .instanceCount(3)
+ *             .netType("privatenet")
+ *             .pubNetworkFlow("1")
+ *             .connectionType("slb")
+ *             .clusterAliasName("terraform-example")
+ *             .mseVersion("mse_pro")
+ *             .vswitchId(exampleSwitch.id())
+ *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
  *         var exampleEngineNamespace = new EngineNamespace("exampleEngineNamespace", EngineNamespaceArgs.builder()
- *             .clusterId(default_.id())
- *             .namespaceShowName(name)
- *             .namespaceId(name)
+ *             .instanceId(exampleCluster.id())
+ *             .namespaceShowName("terraform-example")
+ *             .namespaceId("terraform-example")
+ *             .namespaceDesc("description")
  *             .build());
  * 
  *     }
@@ -104,7 +104,7 @@ import javax.annotation.Nullable;
  * Microservice Engine (MSE) Engine Namespace can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example &lt;cluster_id&gt;:&lt;namespace_id&gt;
+ * $ pulumi import alicloud:mse/engineNamespace:EngineNamespace example &lt;instance_id&gt;:&lt;namespace_id&gt;
  * ```
  * 
  */
@@ -125,18 +125,50 @@ public class EngineNamespace extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.acceptLanguage);
     }
     /**
-     * The id of the cluster.
+     * The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      * 
      */
     @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
-     * @return The id of the cluster.
+     * @return The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      * 
      */
     public Output<String> clusterId() {
         return this.clusterId;
+    }
+    /**
+     * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+     * 
+     */
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
+    private Output<String> instanceId;
+
+    /**
+     * @return The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+     * 
+     */
+    public Output<String> instanceId() {
+        return this.instanceId;
+    }
+    /**
+     * The description of the namespace.
+     * 
+     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * 
+     */
+    @Export(name="namespaceDesc", refs={String.class}, tree="[0]")
+    private Output<String> namespaceDesc;
+
+    /**
+     * @return The description of the namespace.
+     * 
+     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * 
+     */
+    public Output<String> namespaceDesc() {
+        return this.namespaceDesc;
     }
     /**
      * The id of Namespace.

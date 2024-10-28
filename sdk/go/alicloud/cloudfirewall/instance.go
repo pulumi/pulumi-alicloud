@@ -95,9 +95,9 @@ type Instance struct {
 	BandWidth pulumi.IntPtrOutput `pulumi:"bandWidth"`
 	// Whether to use multi-account. Valid values: `true`, `false`.
 	CfwAccount pulumi.BoolPtrOutput `pulumi:"cfwAccount"`
-	// Whether to use log audit. Valid values: `true`, `false`.
+	// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
 	CfwLog pulumi.BoolPtrOutput `pulumi:"cfwLog"`
-	// The log storage capacity. It will be ignored when `cfwLog = false`.
+	// The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
 	CfwLogStorage pulumi.IntPtrOutput `pulumi:"cfwLogStorage"`
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -108,10 +108,10 @@ type Instance struct {
 	// The number of assets.
 	InstanceCount pulumi.IntPtrOutput `pulumi:"instanceCount"`
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
-	IpNumber pulumi.IntPtrOutput `pulumi:"ipNumber"`
+	IpNumber pulumi.IntOutput `pulumi:"ipNumber"`
 	// The logistics.
 	Logistics pulumi.StringPtrOutput `pulumi:"logistics"`
-	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
 	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -128,16 +128,18 @@ type Instance struct {
 	RenewalDuration pulumi.IntOutput `pulumi:"renewalDuration"`
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrOutput `pulumi:"renewalDurationUnit"`
-	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
 	// - `AutoRenewal`: Auto renewal.
 	// - `ManualRenewal`: Manual renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
 	//   **NOTE:** `renewalStatus` takes effect only if `paymentType` is set to `Subscription`.
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
-	Spec pulumi.StringPtrOutput `pulumi:"spec"`
-	// The status of Instance.
+	Spec pulumi.StringOutput `pulumi:"spec"`
+	// The status of Cloud Firewall Instance.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// (Available since v1.232.0) The user status of Cloud Firewall Instance.
+	UserStatus pulumi.BoolOutput `pulumi:"userStatus"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -179,9 +181,9 @@ type instanceState struct {
 	BandWidth *int `pulumi:"bandWidth"`
 	// Whether to use multi-account. Valid values: `true`, `false`.
 	CfwAccount *bool `pulumi:"cfwAccount"`
-	// Whether to use log audit. Valid values: `true`, `false`.
+	// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
 	CfwLog *bool `pulumi:"cfwLog"`
-	// The log storage capacity. It will be ignored when `cfwLog = false`.
+	// The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
 	CfwLogStorage *int `pulumi:"cfwLogStorage"`
 	// The creation time.
 	CreateTime *string `pulumi:"createTime"`
@@ -195,7 +197,7 @@ type instanceState struct {
 	IpNumber *int `pulumi:"ipNumber"`
 	// The logistics.
 	Logistics *string `pulumi:"logistics"`
-	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType *string `pulumi:"modifyType"`
 	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
@@ -212,7 +214,7 @@ type instanceState struct {
 	RenewalDuration *int `pulumi:"renewalDuration"`
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
-	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
 	// - `AutoRenewal`: Auto renewal.
 	// - `ManualRenewal`: Manual renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -220,8 +222,10 @@ type instanceState struct {
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
 	Spec *string `pulumi:"spec"`
-	// The status of Instance.
+	// The status of Cloud Firewall Instance.
 	Status *string `pulumi:"status"`
+	// (Available since v1.232.0) The user status of Cloud Firewall Instance.
+	UserStatus *bool `pulumi:"userStatus"`
 }
 
 type InstanceState struct {
@@ -231,9 +235,9 @@ type InstanceState struct {
 	BandWidth pulumi.IntPtrInput
 	// Whether to use multi-account. Valid values: `true`, `false`.
 	CfwAccount pulumi.BoolPtrInput
-	// Whether to use log audit. Valid values: `true`, `false`.
+	// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
 	CfwLog pulumi.BoolPtrInput
-	// The log storage capacity. It will be ignored when `cfwLog = false`.
+	// The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
 	CfwLogStorage pulumi.IntPtrInput
 	// The creation time.
 	CreateTime pulumi.StringPtrInput
@@ -247,7 +251,7 @@ type InstanceState struct {
 	IpNumber pulumi.IntPtrInput
 	// The logistics.
 	Logistics pulumi.StringPtrInput
-	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
@@ -264,7 +268,7 @@ type InstanceState struct {
 	RenewalDuration pulumi.IntPtrInput
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrInput
-	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
 	// - `AutoRenewal`: Auto renewal.
 	// - `ManualRenewal`: Manual renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -272,8 +276,10 @@ type InstanceState struct {
 	RenewalStatus pulumi.StringPtrInput
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
 	Spec pulumi.StringPtrInput
-	// The status of Instance.
+	// The status of Cloud Firewall Instance.
 	Status pulumi.StringPtrInput
+	// (Available since v1.232.0) The user status of Cloud Firewall Instance.
+	UserStatus pulumi.BoolPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -287,9 +293,9 @@ type instanceArgs struct {
 	BandWidth *int `pulumi:"bandWidth"`
 	// Whether to use multi-account. Valid values: `true`, `false`.
 	CfwAccount *bool `pulumi:"cfwAccount"`
-	// Whether to use log audit. Valid values: `true`, `false`.
+	// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
 	CfwLog *bool `pulumi:"cfwLog"`
-	// The log storage capacity. It will be ignored when `cfwLog = false`.
+	// The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
 	CfwLogStorage *int `pulumi:"cfwLogStorage"`
 	// The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
 	FwVpcNumber *int `pulumi:"fwVpcNumber"`
@@ -299,7 +305,7 @@ type instanceArgs struct {
 	IpNumber *int `pulumi:"ipNumber"`
 	// The logistics.
 	Logistics *string `pulumi:"logistics"`
-	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType *string `pulumi:"modifyType"`
 	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
@@ -314,7 +320,7 @@ type instanceArgs struct {
 	RenewalDuration *int `pulumi:"renewalDuration"`
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit *string `pulumi:"renewalDurationUnit"`
-	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
 	// - `AutoRenewal`: Auto renewal.
 	// - `ManualRenewal`: Manual renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -332,9 +338,9 @@ type InstanceArgs struct {
 	BandWidth pulumi.IntPtrInput
 	// Whether to use multi-account. Valid values: `true`, `false`.
 	CfwAccount pulumi.BoolPtrInput
-	// Whether to use log audit. Valid values: `true`, `false`.
+	// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
 	CfwLog pulumi.BoolPtrInput
-	// The log storage capacity. It will be ignored when `cfwLog = false`.
+	// The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
 	CfwLogStorage pulumi.IntPtrInput
 	// The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
 	FwVpcNumber pulumi.IntPtrInput
@@ -344,7 +350,7 @@ type InstanceArgs struct {
 	IpNumber pulumi.IntPtrInput
 	// The logistics.
 	Logistics pulumi.StringPtrInput
-	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+	// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 	ModifyType pulumi.StringPtrInput
 	// The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `paymentType` can be set to `PayAsYouGo`.
 	PaymentType pulumi.StringInput
@@ -359,7 +365,7 @@ type InstanceArgs struct {
 	RenewalDuration pulumi.IntPtrInput
 	// Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
 	RenewalDurationUnit pulumi.StringPtrInput
-	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+	// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
 	// - `AutoRenewal`: Auto renewal.
 	// - `ManualRenewal`: Manual renewal.
 	// - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -471,12 +477,12 @@ func (o InstanceOutput) CfwAccount() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.CfwAccount }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use log audit. Valid values: `true`, `false`.
+// Whether to use log audit. Valid values: `true`, `false`. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, `cfwLog` can only be set to `true`, `cfwLog` cannot be modified to `false`.
 func (o InstanceOutput) CfwLog() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.CfwLog }).(pulumi.BoolPtrOutput)
 }
 
-// The log storage capacity. It will be ignored when `cfwLog = false`.
+// The log storage capacity. **NOTE:** From version 1.232.0, When `paymentType` is set to `PayAsYouGo`, or `cfwLog` is set to `false`, `cfwLogStorage` will be ignored.
 func (o InstanceOutput) CfwLogStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.CfwLogStorage }).(pulumi.IntPtrOutput)
 }
@@ -502,8 +508,8 @@ func (o InstanceOutput) InstanceCount() pulumi.IntPtrOutput {
 }
 
 // The number of public IPs that can be protected. Valid values: 20 to 4000.
-func (o InstanceOutput) IpNumber() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.IpNumber }).(pulumi.IntPtrOutput)
+func (o InstanceOutput) IpNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IpNumber }).(pulumi.IntOutput)
 }
 
 // The logistics.
@@ -511,7 +517,7 @@ func (o InstanceOutput) Logistics() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Logistics }).(pulumi.StringPtrOutput)
 }
 
-// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
+// The type of modification. Valid values: `Upgrade`, `Downgrade`. **NOTE:** The `modifyType` is required when you execute an update operation.
 func (o InstanceOutput) ModifyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
 }
@@ -549,7 +555,7 @@ func (o InstanceOutput) RenewalDurationUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RenewalDurationUnit }).(pulumi.StringPtrOutput)
 }
 
-// Whether to renew an instance automatically or not. Default to "ManualRenewal".
+// Whether to renew an instance automatically or not. Default value: `ManualRenewal`.
 //   - `AutoRenewal`: Auto renewal.
 //   - `ManualRenewal`: Manual renewal.
 //   - `NotRenewal`: No renewal any longer. After you specify this value, Alibaba Cloud stop sending notification of instance expiry, and only gives a brief reminder on the third day before the instance expiry.
@@ -559,13 +565,18 @@ func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
 }
 
 // Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
-func (o InstanceOutput) Spec() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Spec }).(pulumi.StringPtrOutput)
+func (o InstanceOutput) Spec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
 }
 
-// The status of Instance.
+// The status of Cloud Firewall Instance.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// (Available since v1.232.0) The user status of Cloud Firewall Instance.
+func (o InstanceOutput) UserStatus() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.UserStatus }).(pulumi.BoolOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

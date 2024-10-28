@@ -8,6 +8,7 @@ import typing
 from .account import *
 from .backup_policy import *
 from .connection import *
+from .database import *
 from .db_instance_ip_array import *
 from .db_instance_plan import *
 from .db_resource_group import *

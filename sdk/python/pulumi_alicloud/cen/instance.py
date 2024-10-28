@@ -23,13 +23,15 @@ class InstanceArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] cen_instance_name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
-        :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
-        :param pulumi.Input[str] protection_level: Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        :param pulumi.Input[str] cen_instance_name: The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+        :param pulumi.Input[str] protection_level: The level of CIDR block overlapping. Default value: `REDUCE`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if cen_instance_name is not None:
@@ -37,12 +39,14 @@ class InstanceArgs:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
-            warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protection_level is not None:
             pulumi.set(__self__, "protection_level", protection_level)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -50,7 +54,7 @@ class InstanceArgs:
     @pulumi.getter(name="cenInstanceName")
     def cen_instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "cen_instance_name")
 
@@ -62,7 +66,7 @@ class InstanceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -72,10 +76,10 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+        Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -87,13 +91,25 @@ class InstanceArgs:
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        The level of CIDR block overlapping. Default value: `REDUCE`.
         """
         return pulumi.get(self, "protection_level")
 
     @protection_level.setter
     def protection_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "protection_level", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter
@@ -115,15 +131,17 @@ class _InstanceState:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[str] cen_instance_name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
-        :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
-        :param pulumi.Input[str] protection_level: Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
-        :param pulumi.Input[str] status: The Cen Instance current status.
+        :param pulumi.Input[str] cen_instance_name: The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+        :param pulumi.Input[str] protection_level: The level of CIDR block overlapping. Default value: `REDUCE`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        :param pulumi.Input[str] status: The status of the Instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         if cen_instance_name is not None:
@@ -131,12 +149,14 @@ class _InstanceState:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
-            warnings.warn("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+            warnings.warn("""Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if protection_level is not None:
             pulumi.set(__self__, "protection_level", protection_level)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -146,7 +166,7 @@ class _InstanceState:
     @pulumi.getter(name="cenInstanceName")
     def cen_instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "cen_instance_name")
 
@@ -158,7 +178,7 @@ class _InstanceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -168,10 +188,10 @@ class _InstanceState:
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+        Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -183,7 +203,7 @@ class _InstanceState:
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        The level of CIDR block overlapping. Default value: `REDUCE`.
         """
         return pulumi.get(self, "protection_level")
 
@@ -192,10 +212,22 @@ class _InstanceState:
         pulumi.set(self, "protection_level", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The Cen Instance current status.
+        The status of the Instance.
         """
         return pulumi.get(self, "status")
 
@@ -225,12 +257,13 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
+        Provides a Cloud Enterprise Network (CEN) Instance resource.
 
-        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+        For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
 
         > **NOTE:** Available since v1.15.0.
 
@@ -242,25 +275,30 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cen.Instance("default",
+            cen_instance_name=name,
+            description=name)
         ```
 
         ## Import
 
-        CEN instance can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+        $ pulumi import alicloud:cen/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cen_instance_name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
-        :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
-        :param pulumi.Input[str] protection_level: Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        :param pulumi.Input[str] cen_instance_name: The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+        :param pulumi.Input[str] protection_level: The level of CIDR block overlapping. Default value: `REDUCE`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         ...
@@ -270,9 +308,9 @@ class Instance(pulumi.CustomResource):
                  args: Optional[InstanceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
+        Provides a Cloud Enterprise Network (CEN) Instance resource.
 
-        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
+        For information about Cloud Enterprise Network (CEN) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
 
         > **NOTE:** Available since v1.15.0.
 
@@ -284,17 +322,21 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.cen.Instance("example",
-            cen_instance_name="tf_example",
-            description="an example for cen")
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cen.Instance("default",
+            cen_instance_name=name,
+            description=name)
         ```
 
         ## Import
 
-        CEN instance can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/instance:Instance example cen-abc123456
+        $ pulumi import alicloud:cen/instance:Instance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -316,6 +358,7 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  protection_level: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -330,6 +373,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["protection_level"] = protection_level
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
@@ -346,6 +390,7 @@ class Instance(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             protection_level: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Instance':
         """
@@ -355,11 +400,12 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cen_instance_name: The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
-        :param pulumi.Input[str] description: The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
-        :param pulumi.Input[str] protection_level: Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
-        :param pulumi.Input[str] status: The Cen Instance current status.
+        :param pulumi.Input[str] cen_instance_name: The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
+        :param pulumi.Input[str] protection_level: The level of CIDR block overlapping. Default value: `REDUCE`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        :param pulumi.Input[str] status: The status of the Instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -370,6 +416,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["protection_level"] = protection_level
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -378,7 +425,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="cenInstanceName")
     def cen_instance_name(self) -> pulumi.Output[str]:
         """
-        The name of the CEN instance. Defaults to null. The name must be 2 to 128 characters in length and can contain letters, numbers, periods (.), underscores (_), and hyphens (-). The name must start with a letter, but cannot start with http:// or https://.
+        The name of the CEN Instance. The name can be empty or `1` to `128` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "cen_instance_name")
 
@@ -386,16 +433,16 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the CEN instance. Defaults to null. The description must be 2 to 256 characters in length. It must start with a letter, and cannot start with http:// or https://.
+        The description of the CEN Instance. The description can be empty or `1` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""attribute 'name' has been deprecated from version 1.98.0. Use 'cen_instance_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
-        Field `name` has been deprecated from version 1.98.0. Use `cen_instance_name` instead.
+        Field `name` has been deprecated from provider version 1.98.0. New field `cen_instance_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -403,15 +450,23 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> pulumi.Output[str]:
         """
-        Indicates the allowed level of CIDR block overlapping. Default value: `REDUCE`: Overlapping CIDR blocks are allowed. However, the overlapping CIDR blocks cannot be identical.
+        The level of CIDR block overlapping. Default value: `REDUCE`.
         """
         return pulumi.get(self, "protection_level")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The Cen Instance current status.
+        The status of the Instance.
         """
         return pulumi.get(self, "status")
 

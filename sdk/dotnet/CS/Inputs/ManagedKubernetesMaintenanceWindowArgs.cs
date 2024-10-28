@@ -15,20 +15,20 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// <summary>
         /// The maintenance time, values range from 1 to 24,unit is hour. For example: "3h".
         /// </summary>
-        [Input("duration", required: true)]
-        public Input<string> Duration { get; set; } = null!;
+        [Input("duration")]
+        public Input<string>? Duration { get; set; }
 
         /// <summary>
         /// Whether to open the maintenance window. The following parameters take effect only `enable = true`.
         /// </summary>
-        [Input("enable", required: true)]
-        public Input<bool> Enable { get; set; } = null!;
+        [Input("enable")]
+        public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Initial maintenance time, For example:"03:00:00Z".
+        /// Initial maintenance time, RFC3339 format. For example: "2024-10-15T12:31:00.000+08:00".
         /// </summary>
-        [Input("maintenanceTime", required: true)]
-        public Input<string> MaintenanceTime { get; set; } = null!;
+        [Input("maintenanceTime")]
+        public Input<string>? MaintenanceTime { get; set; }
 
         /// <summary>
         /// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
@@ -37,14 +37,14 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// ```
         /// maintenance_window {
         /// enable            = true
-        /// maintenance_time  = "01:00:00Z"
+        /// maintenance_time  = "2024-10-15T12:31:00.000+08:00"
         /// duration          = "3h"
         /// weekly_period     = "Monday,Friday"
         /// }
         /// ```
         /// </summary>
-        [Input("weeklyPeriod", required: true)]
-        public Input<string> WeeklyPeriod { get; set; } = null!;
+        [Input("weeklyPeriod")]
+        public Input<string>? WeeklyPeriod { get; set; }
 
         public ManagedKubernetesMaintenanceWindowArgs()
         {

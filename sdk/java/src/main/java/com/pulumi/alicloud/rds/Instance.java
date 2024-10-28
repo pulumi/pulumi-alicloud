@@ -1444,6 +1444,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
     public Output<String> zoneIdSlaveA() {
         return this.zoneIdSlaveA;
     }
+    /**
+     * RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+     * 
+     */
+    @Export(name="zoneIdSlaveB", refs={String.class}, tree="[0]")
+    private Output<String> zoneIdSlaveB;
+
+    /**
+     * @return RDS MySQL Cluster series instances support creating 1 to 2 secondary nodes at the same time when establishing a new instance. If you have this requirement, you can use this parameter to specify the availability zone for the second secondary node.
+     * 
+     */
+    public Output<String> zoneIdSlaveB() {
+        return this.zoneIdSlaveB;
+    }
 
     /**
      *

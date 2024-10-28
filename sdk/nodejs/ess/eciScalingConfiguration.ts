@@ -140,6 +140,10 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly containers!: pulumi.Output<outputs.ess.EciScalingConfigurationContainer[] | undefined>;
     /**
+     * Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+     */
+    public readonly costOptimization!: pulumi.Output<boolean | undefined>;
+    /**
      * The amount of CPU resources allocated to the container group.
      */
     public readonly cpu!: pulumi.Output<number | undefined>;
@@ -156,6 +160,11 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      * 256 characters in length and cannot start with http:// or https://.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
+     * details.
+     */
+    public readonly dnsConfigOptions!: pulumi.Output<outputs.ess.EciScalingConfigurationDnsConfigOption[] | undefined>;
     /**
      * dns policy of contain group.
      */
@@ -207,6 +216,10 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly initContainers!: pulumi.Output<outputs.ess.EciScalingConfigurationInitContainer[] | undefined>;
     /**
+     * The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+     */
+    public readonly instanceFamilyLevel!: pulumi.Output<string | undefined>;
+    /**
      * The specified ECS instance types. You can specify up to five ECS instance types.
      */
     public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
@@ -245,6 +258,11 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      * ID of the scaling group of a eci scaling configuration.
      */
     public readonly scalingGroupId!: pulumi.Output<string>;
+    /**
+     * The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
+     * details.
+     */
+    public readonly securityContextSysctls!: pulumi.Output<outputs.ess.EciScalingConfigurationSecurityContextSysctl[] | undefined>;
     /**
      * ID of the security group used to create new instance. It is conflict
      * with `securityGroupIds`.
@@ -296,10 +314,12 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["autoMatchImageCache"] = state ? state.autoMatchImageCache : undefined;
             resourceInputs["containerGroupName"] = state ? state.containerGroupName : undefined;
             resourceInputs["containers"] = state ? state.containers : undefined;
+            resourceInputs["costOptimization"] = state ? state.costOptimization : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["cpuOptionsCore"] = state ? state.cpuOptionsCore : undefined;
             resourceInputs["cpuOptionsThreadsPerCore"] = state ? state.cpuOptionsThreadsPerCore : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["dnsConfigOptions"] = state ? state.dnsConfigOptions : undefined;
             resourceInputs["dnsPolicy"] = state ? state.dnsPolicy : undefined;
             resourceInputs["egressBandwidth"] = state ? state.egressBandwidth : undefined;
             resourceInputs["eipBandwidth"] = state ? state.eipBandwidth : undefined;
@@ -312,6 +332,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["imageSnapshotId"] = state ? state.imageSnapshotId : undefined;
             resourceInputs["ingressBandwidth"] = state ? state.ingressBandwidth : undefined;
             resourceInputs["initContainers"] = state ? state.initContainers : undefined;
+            resourceInputs["instanceFamilyLevel"] = state ? state.instanceFamilyLevel : undefined;
             resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
             resourceInputs["loadBalancerWeight"] = state ? state.loadBalancerWeight : undefined;
@@ -321,6 +342,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["restartPolicy"] = state ? state.restartPolicy : undefined;
             resourceInputs["scalingConfigurationName"] = state ? state.scalingConfigurationName : undefined;
             resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
+            resourceInputs["securityContextSysctls"] = state ? state.securityContextSysctls : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
             resourceInputs["spotPriceLimit"] = state ? state.spotPriceLimit : undefined;
             resourceInputs["spotStrategy"] = state ? state.spotStrategy : undefined;
@@ -339,10 +361,12 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["autoMatchImageCache"] = args ? args.autoMatchImageCache : undefined;
             resourceInputs["containerGroupName"] = args ? args.containerGroupName : undefined;
             resourceInputs["containers"] = args ? args.containers : undefined;
+            resourceInputs["costOptimization"] = args ? args.costOptimization : undefined;
             resourceInputs["cpu"] = args ? args.cpu : undefined;
             resourceInputs["cpuOptionsCore"] = args ? args.cpuOptionsCore : undefined;
             resourceInputs["cpuOptionsThreadsPerCore"] = args ? args.cpuOptionsThreadsPerCore : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dnsConfigOptions"] = args ? args.dnsConfigOptions : undefined;
             resourceInputs["dnsPolicy"] = args ? args.dnsPolicy : undefined;
             resourceInputs["egressBandwidth"] = args ? args.egressBandwidth : undefined;
             resourceInputs["eipBandwidth"] = args ? args.eipBandwidth : undefined;
@@ -355,6 +379,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["imageSnapshotId"] = args ? args.imageSnapshotId : undefined;
             resourceInputs["ingressBandwidth"] = args ? args.ingressBandwidth : undefined;
             resourceInputs["initContainers"] = args ? args.initContainers : undefined;
+            resourceInputs["instanceFamilyLevel"] = args ? args.instanceFamilyLevel : undefined;
             resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
             resourceInputs["loadBalancerWeight"] = args ? args.loadBalancerWeight : undefined;
@@ -364,6 +389,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["restartPolicy"] = args ? args.restartPolicy : undefined;
             resourceInputs["scalingConfigurationName"] = args ? args.scalingConfigurationName : undefined;
             resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
+            resourceInputs["securityContextSysctls"] = args ? args.securityContextSysctls : undefined;
             resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
             resourceInputs["spotPriceLimit"] = args ? args.spotPriceLimit : undefined;
             resourceInputs["spotStrategy"] = args ? args.spotStrategy : undefined;
@@ -411,6 +437,10 @@ export interface EciScalingConfigurationState {
      */
     containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[]>;
     /**
+     * Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+     */
+    costOptimization?: pulumi.Input<boolean>;
+    /**
      * The amount of CPU resources allocated to the container group.
      */
     cpu?: pulumi.Input<number>;
@@ -427,6 +457,11 @@ export interface EciScalingConfigurationState {
      * 256 characters in length and cannot start with http:// or https://.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
+     * details.
+     */
+    dnsConfigOptions?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationDnsConfigOption>[]>;
     /**
      * dns policy of contain group.
      */
@@ -478,6 +513,10 @@ export interface EciScalingConfigurationState {
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
     /**
+     * The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+     */
+    instanceFamilyLevel?: pulumi.Input<string>;
+    /**
      * The specified ECS instance types. You can specify up to five ECS instance types.
      */
     instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -516,6 +555,11 @@ export interface EciScalingConfigurationState {
      * ID of the scaling group of a eci scaling configuration.
      */
     scalingGroupId?: pulumi.Input<string>;
+    /**
+     * The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
+     * details.
+     */
+    securityContextSysctls?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationSecurityContextSysctl>[]>;
     /**
      * ID of the security group used to create new instance. It is conflict
      * with `securityGroupIds`.
@@ -583,6 +627,10 @@ export interface EciScalingConfigurationArgs {
      */
     containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[]>;
     /**
+     * Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+     */
+    costOptimization?: pulumi.Input<boolean>;
+    /**
      * The amount of CPU resources allocated to the container group.
      */
     cpu?: pulumi.Input<number>;
@@ -599,6 +647,11 @@ export interface EciScalingConfigurationArgs {
      * 256 characters in length and cannot start with http:// or https://.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
+     * details.
+     */
+    dnsConfigOptions?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationDnsConfigOption>[]>;
     /**
      * dns policy of contain group.
      */
@@ -650,6 +703,10 @@ export interface EciScalingConfigurationArgs {
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
     /**
+     * The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+     */
+    instanceFamilyLevel?: pulumi.Input<string>;
+    /**
      * The specified ECS instance types. You can specify up to five ECS instance types.
      */
     instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -688,6 +745,11 @@ export interface EciScalingConfigurationArgs {
      * ID of the scaling group of a eci scaling configuration.
      */
     scalingGroupId: pulumi.Input<string>;
+    /**
+     * The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
+     * details.
+     */
+    securityContextSysctls?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationSecurityContextSysctl>[]>;
     /**
      * ID of the security group used to create new instance. It is conflict
      * with `securityGroupIds`.

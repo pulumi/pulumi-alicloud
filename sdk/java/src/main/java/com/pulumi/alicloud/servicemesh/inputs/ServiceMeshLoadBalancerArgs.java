@@ -17,14 +17,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     public static final ServiceMeshLoadBalancerArgs Empty = new ServiceMeshLoadBalancerArgs();
 
     /**
-     * The Instance ID of APIServer Load Balancer.
+     * The Instance ID of APIServer Load Balancer
      * 
      */
     @Import(name="apiServerLoadbalancerId")
     private @Nullable Output<String> apiServerLoadbalancerId;
 
     /**
-     * @return The Instance ID of APIServer Load Balancer.
+     * @return The Instance ID of APIServer Load Balancer
      * 
      */
     public Optional<Output<String>> apiServerLoadbalancerId() {
@@ -32,14 +32,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Indicates whether to use the IP address of a public network exposed API Server.
+     * Indicates whether to use the IP address of a public network exposed API Server
      * 
      */
     @Import(name="apiServerPublicEip")
     private @Nullable Output<Boolean> apiServerPublicEip;
 
     /**
-     * @return Indicates whether to use the IP address of a public network exposed API Server.
+     * @return Indicates whether to use the IP address of a public network exposed API Server
      * 
      */
     public Optional<Output<Boolean>> apiServerPublicEip() {
@@ -47,14 +47,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Indicates whether to use the IP address of a public network exposure Istio Pilot.
+     * Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
      * 
      */
     @Import(name="pilotPublicEip")
     private @Nullable Output<Boolean> pilotPublicEip;
 
     /**
-     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot.
+     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
      * 
      */
     public Optional<Output<Boolean>> pilotPublicEip() {
@@ -62,14 +62,29 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The Instance ID of Pilot Load Balancer.
+     * the EIP instance id of Pilot load balancer.
+     * 
+     */
+    @Import(name="pilotPublicEipId")
+    private @Nullable Output<String> pilotPublicEipId;
+
+    /**
+     * @return the EIP instance id of Pilot load balancer.
+     * 
+     */
+    public Optional<Output<String>> pilotPublicEipId() {
+        return Optional.ofNullable(this.pilotPublicEipId);
+    }
+
+    /**
+     * The Instance ID of Pilot Load Balancer
      * 
      */
     @Import(name="pilotPublicLoadbalancerId")
     private @Nullable Output<String> pilotPublicLoadbalancerId;
 
     /**
-     * @return The Instance ID of Pilot Load Balancer.
+     * @return The Instance ID of Pilot Load Balancer
      * 
      */
     public Optional<Output<String>> pilotPublicLoadbalancerId() {
@@ -82,6 +97,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         this.apiServerLoadbalancerId = $.apiServerLoadbalancerId;
         this.apiServerPublicEip = $.apiServerPublicEip;
         this.pilotPublicEip = $.pilotPublicEip;
+        this.pilotPublicEipId = $.pilotPublicEipId;
         this.pilotPublicLoadbalancerId = $.pilotPublicLoadbalancerId;
     }
 
@@ -104,7 +120,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerLoadbalancerId The Instance ID of APIServer Load Balancer.
+         * @param apiServerLoadbalancerId The Instance ID of APIServer Load Balancer
          * 
          * @return builder
          * 
@@ -115,7 +131,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerLoadbalancerId The Instance ID of APIServer Load Balancer.
+         * @param apiServerLoadbalancerId The Instance ID of APIServer Load Balancer
          * 
          * @return builder
          * 
@@ -125,7 +141,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerPublicEip Indicates whether to use the IP address of a public network exposed API Server.
+         * @param apiServerPublicEip Indicates whether to use the IP address of a public network exposed API Server
          * 
          * @return builder
          * 
@@ -136,7 +152,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerPublicEip Indicates whether to use the IP address of a public network exposed API Server.
+         * @param apiServerPublicEip Indicates whether to use the IP address of a public network exposed API Server
          * 
          * @return builder
          * 
@@ -146,7 +162,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot.
+         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
          * 
          * @return builder
          * 
@@ -157,7 +173,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot.
+         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
          * 
          * @return builder
          * 
@@ -167,7 +183,28 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicLoadbalancerId The Instance ID of Pilot Load Balancer.
+         * @param pilotPublicEipId the EIP instance id of Pilot load balancer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pilotPublicEipId(@Nullable Output<String> pilotPublicEipId) {
+            $.pilotPublicEipId = pilotPublicEipId;
+            return this;
+        }
+
+        /**
+         * @param pilotPublicEipId the EIP instance id of Pilot load balancer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pilotPublicEipId(String pilotPublicEipId) {
+            return pilotPublicEipId(Output.of(pilotPublicEipId));
+        }
+
+        /**
+         * @param pilotPublicLoadbalancerId The Instance ID of Pilot Load Balancer
          * 
          * @return builder
          * 
@@ -178,7 +215,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicLoadbalancerId The Instance ID of Pilot Load Balancer.
+         * @param pilotPublicLoadbalancerId The Instance ID of Pilot Load Balancer
          * 
          * @return builder
          * 

@@ -154,7 +154,7 @@ def get_clusters(cluster_alias_name: Optional[str] = None,
     """
     This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in v1.94.0+.
+    > **NOTE:** Available since v1.94.0.
 
     ## Example Usage
 
@@ -162,17 +162,47 @@ def get_clusters(cluster_alias_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Create resource
+    example = alicloud.get_zones(available_resource_creation="VSwitch")
+    example_network = alicloud.vpc.Network("example",
+        vpc_name="terraform-example",
+        cidr_block="172.17.3.0/24")
+    example_switch = alicloud.vpc.Switch("example",
+        vswitch_name="terraform-example",
+        cidr_block="172.17.3.0/24",
+        vpc_id=example_network.id,
+        zone_id=example.zones[0].id)
+    example_cluster = alicloud.mse.Cluster("example",
+        cluster_specification="MSE_SC_1_2_60_c",
+        cluster_type="Nacos-Ans",
+        cluster_version="NACOS_2_0_0",
+        instance_count=3,
+        net_type="privatenet",
+        pub_network_flow="1",
+        connection_type="slb",
+        cluster_alias_name="terraform-example",
+        mse_version="mse_pro",
+        vswitch_id=example_switch.id,
+        vpc_id=example_network.id)
     # Declare the data source
-    example = alicloud.mse.get_clusters(ids=["mse-cn-0d9xxxx"],
-        status="INIT_SUCCESS")
-    pulumi.export("clusterId", example.clusters[0].id)
+    example_get_clusters = pulumi.Output.all(
+        id=example_cluster.id,
+        cluster_alias_name=example_cluster.cluster_alias_name
+    ).apply(lambda resolved_outputs: alicloud.mse.get_clusters_output(enable_details=True,
+        ids=[resolved_outputs['id']],
+        status="INIT_SUCCESS",
+        name_regex=resolved_outputs['cluster_alias_name']))
+
+    pulumi.export("instanceId", example_get_clusters.clusters[0].id)
     ```
 
 
     :param str cluster_alias_name: The alias name of MSE Cluster.
-    :param Sequence[str] ids: A list of MSE Cluster ids.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of MSE Cluster ids. It is formatted to `<instance_id>`
     :param str name_regex: A regex string to filter the results by the cluster alias name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str request_pars: The extended request parameters. The JSON format is supported.
     :param str status: The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
     """
     __args__ = dict()
@@ -208,7 +238,7 @@ def get_clusters_output(cluster_alias_name: Optional[pulumi.Input[Optional[str]]
     """
     This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
 
-    > **NOTE:** Available in v1.94.0+.
+    > **NOTE:** Available since v1.94.0.
 
     ## Example Usage
 
@@ -216,17 +246,47 @@ def get_clusters_output(cluster_alias_name: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Create resource
+    example = alicloud.get_zones(available_resource_creation="VSwitch")
+    example_network = alicloud.vpc.Network("example",
+        vpc_name="terraform-example",
+        cidr_block="172.17.3.0/24")
+    example_switch = alicloud.vpc.Switch("example",
+        vswitch_name="terraform-example",
+        cidr_block="172.17.3.0/24",
+        vpc_id=example_network.id,
+        zone_id=example.zones[0].id)
+    example_cluster = alicloud.mse.Cluster("example",
+        cluster_specification="MSE_SC_1_2_60_c",
+        cluster_type="Nacos-Ans",
+        cluster_version="NACOS_2_0_0",
+        instance_count=3,
+        net_type="privatenet",
+        pub_network_flow="1",
+        connection_type="slb",
+        cluster_alias_name="terraform-example",
+        mse_version="mse_pro",
+        vswitch_id=example_switch.id,
+        vpc_id=example_network.id)
     # Declare the data source
-    example = alicloud.mse.get_clusters(ids=["mse-cn-0d9xxxx"],
-        status="INIT_SUCCESS")
-    pulumi.export("clusterId", example.clusters[0].id)
+    example_get_clusters = pulumi.Output.all(
+        id=example_cluster.id,
+        cluster_alias_name=example_cluster.cluster_alias_name
+    ).apply(lambda resolved_outputs: alicloud.mse.get_clusters_output(enable_details=True,
+        ids=[resolved_outputs['id']],
+        status="INIT_SUCCESS",
+        name_regex=resolved_outputs['cluster_alias_name']))
+
+    pulumi.export("instanceId", example_get_clusters.clusters[0].id)
     ```
 
 
     :param str cluster_alias_name: The alias name of MSE Cluster.
-    :param Sequence[str] ids: A list of MSE Cluster ids.
+    :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
+    :param Sequence[str] ids: A list of MSE Cluster ids. It is formatted to `<instance_id>`
     :param str name_regex: A regex string to filter the results by the cluster alias name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str request_pars: The extended request parameters. The JSON format is supported.
     :param str status: The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
     """
     __args__ = dict()

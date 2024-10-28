@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfigAudit
     {
         /// <summary>
-        /// Enable CNI.
+        /// Enable CNI
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

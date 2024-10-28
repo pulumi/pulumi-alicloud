@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Privatelink Vpc Endpoint Services of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.109.0+.
+// > **NOTE:** Available since v1.109.0.
 //
 // ## Example Usage
 //
@@ -31,16 +31,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := privatelink.GetVpcEndpointServices(ctx, &privatelink.GetVpcEndpointServicesArgs{
-//				Ids: []string{
-//					"example_value",
-//				},
-//				NameRegex: pulumi.StringRef("the_resource_name"),
-//			}, nil)
+//			exampleVpcEndpointService, err := privatelink.NewVpcEndpointService(ctx, "example", &privatelink.VpcEndpointServiceArgs{
+//				ServiceDescription:   pulumi.String("terraform-example"),
+//				ConnectBandwidth:     pulumi.Int(103),
+//				AutoAcceptConnection: pulumi.Bool(false),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstPrivatelinkVpcEndpointServiceId", example.Services[0].Id)
+//			example := privatelink.GetVpcEndpointServicesOutput(ctx, privatelink.GetVpcEndpointServicesOutputArgs{
+//				Ids: pulumi.StringArray{
+//					exampleVpcEndpointService.ID(),
+//				},
+//			}, nil)
+//			ctx.Export("firstPrivatelinkVpcEndpointServiceId", example.ApplyT(func(example privatelink.GetVpcEndpointServicesResult) (*string, error) {
+//				return &example.Services[0].Id, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}
@@ -70,23 +76,33 @@ type GetVpcEndpointServicesArgs struct {
 	ServiceBusinessStatus *string `pulumi:"serviceBusinessStatus"`
 	// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
 	Status *string `pulumi:"status"`
+	// The tags of Vpc Endpoint Service.
+	Tags map[string]string `pulumi:"tags"`
 	// The name of Vpc Endpoint Service.
 	VpcEndpointServiceName *string `pulumi:"vpcEndpointServiceName"`
 }
 
 // A collection of values returned by getVpcEndpointServices.
 type GetVpcEndpointServicesResult struct {
+	// Whether to automatically accept terminal node connections..
 	AutoAcceptConnection *bool `pulumi:"autoAcceptConnection"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string                          `pulumi:"id"`
-	Ids                    []string                        `pulumi:"ids"`
-	NameRegex              *string                         `pulumi:"nameRegex"`
-	Names                  []string                        `pulumi:"names"`
-	OutputFile             *string                         `pulumi:"outputFile"`
-	ServiceBusinessStatus  *string                         `pulumi:"serviceBusinessStatus"`
-	Services               []GetVpcEndpointServicesService `pulumi:"services"`
-	Status                 *string                         `pulumi:"status"`
-	VpcEndpointServiceName *string                         `pulumi:"vpcEndpointServiceName"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Vpc Endpoint Service names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// The business status of the terminal node service..
+	ServiceBusinessStatus *string `pulumi:"serviceBusinessStatus"`
+	// A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
+	Services []GetVpcEndpointServicesService `pulumi:"services"`
+	// The Status of Vpc Endpoint Service.
+	Status *string `pulumi:"status"`
+	// The tags of Vpc Endpoint Service.
+	Tags map[string]string `pulumi:"tags"`
+	// The name of Vpc Endpoint Service.
+	VpcEndpointServiceName *string `pulumi:"vpcEndpointServiceName"`
 }
 
 func GetVpcEndpointServicesOutput(ctx *pulumi.Context, args GetVpcEndpointServicesOutputArgs, opts ...pulumi.InvokeOption) GetVpcEndpointServicesResultOutput {
@@ -122,6 +138,8 @@ type GetVpcEndpointServicesOutputArgs struct {
 	ServiceBusinessStatus pulumi.StringPtrInput `pulumi:"serviceBusinessStatus"`
 	// The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
+	// The tags of Vpc Endpoint Service.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
 	// The name of Vpc Endpoint Service.
 	VpcEndpointServiceName pulumi.StringPtrInput `pulumi:"vpcEndpointServiceName"`
 }
@@ -145,6 +163,7 @@ func (o GetVpcEndpointServicesResultOutput) ToGetVpcEndpointServicesResultOutput
 	return o
 }
 
+// Whether to automatically accept terminal node connections..
 func (o GetVpcEndpointServicesResultOutput) AutoAcceptConnection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesResult) *bool { return v.AutoAcceptConnection }).(pulumi.BoolPtrOutput)
 }
@@ -162,6 +181,7 @@ func (o GetVpcEndpointServicesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Vpc Endpoint Service names.
 func (o GetVpcEndpointServicesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -170,18 +190,27 @@ func (o GetVpcEndpointServicesResultOutput) OutputFile() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetVpcEndpointServicesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// The business status of the terminal node service..
 func (o GetVpcEndpointServicesResultOutput) ServiceBusinessStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesResult) *string { return v.ServiceBusinessStatus }).(pulumi.StringPtrOutput)
 }
 
+// A list of Privatelink Vpc Endpoint Services. Each element contains the following attributes:
 func (o GetVpcEndpointServicesResultOutput) Services() GetVpcEndpointServicesServiceArrayOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesResult) []GetVpcEndpointServicesService { return v.Services }).(GetVpcEndpointServicesServiceArrayOutput)
 }
 
+// The Status of Vpc Endpoint Service.
 func (o GetVpcEndpointServicesResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The tags of Vpc Endpoint Service.
+func (o GetVpcEndpointServicesResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetVpcEndpointServicesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The name of Vpc Endpoint Service.
 func (o GetVpcEndpointServicesResultOutput) VpcEndpointServiceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVpcEndpointServicesResult) *string { return v.VpcEndpointServiceName }).(pulumi.StringPtrOutput)
 }

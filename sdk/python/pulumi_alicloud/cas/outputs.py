@@ -165,7 +165,7 @@ class GetCertificatesCertificateResult(dict):
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.""")
     def name(self) -> str:
         """
         The cert's name.
@@ -227,23 +227,24 @@ class GetServiceCertificatesCertificateResult(dict):
                  sans: str,
                  start_date: str):
         """
-        :param bool buy_in_aliyun: The cert is buy from aliyun or not.
-        :param str cert: The cert's Cert.
-        :param str cert_id: The cert's id.
-        :param str certificate_name: The cert's name.
-        :param str city: The cert's city.
-        :param str common: The cert's common name.
-        :param str country: The cert's country.
-        :param str end_date: The cert's not valid after time.
-        :param bool expired: The cert is expired or not.
-        :param str fingerprint: The cert's finger.
-        :param str id: The cert's id.
-        :param str issuer: The cert's Issuer.
-        :param str key: The cert's Keye.
-        :param str org_name: The cert's organization.
-        :param str province: The cert's province.
-        :param str sans: The cert's subject alternative name.
-        :param str start_date: The cert's not valid before time.
+        :param bool buy_in_aliyun: Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buy_in_aliyun` takes effect only if `enable_details` is set to `true`.
+        :param str cert: The Cert of the certificate. **Note:** `cert` takes effect only if `enable_details` is set to `true`.
+        :param str cert_id: The ID of the certificate.
+        :param str certificate_name: The name of the certificate.
+        :param str city: The city in which the organization is located.
+        :param str common: The parent domain name of the certificate.
+        :param str country: The code of the country in which the organization is located.
+        :param str end_date: The time at which the certificate expires.
+        :param bool expired: Whether the certificate has expired.
+        :param str fingerprint: The fingerprint of the certificate.
+        :param str id: The ID of the Ssl Certificates Service Certificate.
+        :param str issuer: The issuer of the certificate.
+        :param str key: The Key of the certificate. **Note:** `key` takes effect only if `enable_details` is set to `true`.
+        :param str name: (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
+        :param str org_name: The name of the organization that is associated with the certificate.
+        :param str province: The province or autonomous region in which the organization is located.
+        :param str sans: All domain names that are bound to the certificate.
+        :param str start_date: The time at which the certificate starts to take effect.
         """
         pulumi.set(__self__, "buy_in_aliyun", buy_in_aliyun)
         pulumi.set(__self__, "cert", cert)
@@ -268,7 +269,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter(name="buyInAliyun")
     def buy_in_aliyun(self) -> bool:
         """
-        The cert is buy from aliyun or not.
+        Whether the certificate was purchased from Aliyun. **Note:** From version 1.232.0, `buy_in_aliyun` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "buy_in_aliyun")
 
@@ -276,7 +277,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def cert(self) -> str:
         """
-        The cert's Cert.
+        The Cert of the certificate. **Note:** `cert` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "cert")
 
@@ -284,7 +285,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter(name="certId")
     def cert_id(self) -> str:
         """
-        The cert's id.
+        The ID of the certificate.
         """
         return pulumi.get(self, "cert_id")
 
@@ -292,7 +293,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> str:
         """
-        The cert's name.
+        The name of the certificate.
         """
         return pulumi.get(self, "certificate_name")
 
@@ -300,7 +301,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def city(self) -> str:
         """
-        The cert's city.
+        The city in which the organization is located.
         """
         return pulumi.get(self, "city")
 
@@ -308,7 +309,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def common(self) -> str:
         """
-        The cert's common name.
+        The parent domain name of the certificate.
         """
         return pulumi.get(self, "common")
 
@@ -316,7 +317,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def country(self) -> str:
         """
-        The cert's country.
+        The code of the country in which the organization is located.
         """
         return pulumi.get(self, "country")
 
@@ -324,7 +325,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter(name="endDate")
     def end_date(self) -> str:
         """
-        The cert's not valid after time.
+        The time at which the certificate expires.
         """
         return pulumi.get(self, "end_date")
 
@@ -332,7 +333,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def expired(self) -> bool:
         """
-        The cert is expired or not.
+        Whether the certificate has expired.
         """
         return pulumi.get(self, "expired")
 
@@ -340,7 +341,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def fingerprint(self) -> str:
         """
-        The cert's finger.
+        The fingerprint of the certificate.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -348,7 +349,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The cert's id.
+        The ID of the Ssl Certificates Service Certificate.
         """
         return pulumi.get(self, "id")
 
@@ -356,7 +357,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def issuer(self) -> str:
         """
-        The cert's Issuer.
+        The issuer of the certificate.
         """
         return pulumi.get(self, "issuer")
 
@@ -364,21 +365,24 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The cert's Keye.
+        The Key of the certificate. **Note:** `key` takes effect only if `enable_details` is set to `true`.
         """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
-    @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.""")
     def name(self) -> str:
+        """
+        (Deprecated since v1.129.0) The name of the certificate. **Note:** Field `name` has been deprecated from provider version 1.129.0. New field `certificate_name` instead.
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="orgName")
     def org_name(self) -> str:
         """
-        The cert's organization.
+        The name of the organization that is associated with the certificate.
         """
         return pulumi.get(self, "org_name")
 
@@ -386,7 +390,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def province(self) -> str:
         """
-        The cert's province.
+        The province or autonomous region in which the organization is located.
         """
         return pulumi.get(self, "province")
 
@@ -394,7 +398,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter
     def sans(self) -> str:
         """
-        The cert's subject alternative name.
+        All domain names that are bound to the certificate.
         """
         return pulumi.get(self, "sans")
 
@@ -402,7 +406,7 @@ class GetServiceCertificatesCertificateResult(dict):
     @pulumi.getter(name="startDate")
     def start_date(self) -> str:
         """
-        The cert's not valid before time.
+        The time at which the certificate starts to take effect.
         """
         return pulumi.get(self, "start_date")
 

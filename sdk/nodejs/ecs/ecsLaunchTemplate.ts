@@ -179,6 +179,22 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly hostName!: pulumi.Output<string | undefined>;
     /**
+     * Whether to enable access to instance metadata. Valid values:
+     * - enabled: Enabled.
+     * - disabled: Disabled.
+     */
+    public readonly httpEndpoint!: pulumi.Output<string>;
+    /**
+     * The HTTP PUT response hop limit required for instance metadata requests.
+     */
+    public readonly httpPutResponseHopLimit!: pulumi.Output<number>;
+    /**
+     * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+     * - optional: Not mandatory.
+     * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     */
+    public readonly httpTokens!: pulumi.Output<string>;
+    /**
      * The Image ID.
      */
     public readonly imageId!: pulumi.Output<string | undefined>;
@@ -378,6 +394,9 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["enableVmOsConfig"] = state ? state.enableVmOsConfig : undefined;
             resourceInputs["hostName"] = state ? state.hostName : undefined;
+            resourceInputs["httpEndpoint"] = state ? state.httpEndpoint : undefined;
+            resourceInputs["httpPutResponseHopLimit"] = state ? state.httpPutResponseHopLimit : undefined;
+            resourceInputs["httpTokens"] = state ? state.httpTokens : undefined;
             resourceInputs["imageId"] = state ? state.imageId : undefined;
             resourceInputs["imageOwnerAlias"] = state ? state.imageOwnerAlias : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
@@ -428,6 +447,9 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableVmOsConfig"] = args ? args.enableVmOsConfig : undefined;
             resourceInputs["hostName"] = args ? args.hostName : undefined;
+            resourceInputs["httpEndpoint"] = args ? args.httpEndpoint : undefined;
+            resourceInputs["httpPutResponseHopLimit"] = args ? args.httpPutResponseHopLimit : undefined;
+            resourceInputs["httpTokens"] = args ? args.httpTokens : undefined;
             resourceInputs["imageId"] = args ? args.imageId : undefined;
             resourceInputs["imageOwnerAlias"] = args ? args.imageOwnerAlias : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
@@ -510,6 +532,22 @@ export interface EcsLaunchTemplateState {
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
     hostName?: pulumi.Input<string>;
+    /**
+     * Whether to enable access to instance metadata. Valid values:
+     * - enabled: Enabled.
+     * - disabled: Disabled.
+     */
+    httpEndpoint?: pulumi.Input<string>;
+    /**
+     * The HTTP PUT response hop limit required for instance metadata requests.
+     */
+    httpPutResponseHopLimit?: pulumi.Input<number>;
+    /**
+     * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+     * - optional: Not mandatory.
+     * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     */
+    httpTokens?: pulumi.Input<string>;
     /**
      * The Image ID.
      */
@@ -726,6 +764,22 @@ export interface EcsLaunchTemplateArgs {
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
     hostName?: pulumi.Input<string>;
+    /**
+     * Whether to enable access to instance metadata. Valid values:
+     * - enabled: Enabled.
+     * - disabled: Disabled.
+     */
+    httpEndpoint?: pulumi.Input<string>;
+    /**
+     * The HTTP PUT response hop limit required for instance metadata requests.
+     */
+    httpPutResponseHopLimit?: pulumi.Input<number>;
+    /**
+     * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+     * - optional: Not mandatory.
+     * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+     */
+    httpTokens?: pulumi.Input<string>;
     /**
      * The Image ID.
      */

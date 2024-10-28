@@ -7,8 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Elastic Cloud Phone (ECP) Instance resource.
  *
- * For information about Elastic Cloud Phone (ECP) Instance and how to use it,
- * see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
+ * For information about Elastic Cloud Phone (ECP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
  *
  * > **NOTE:** Available since v1.158.0.
  *
@@ -22,42 +21,41 @@ import * as utilities from "../utilities";
  * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.ecp.getZones({});
+ * const defaultGetInstanceTypes = alicloud.ecp.getInstanceTypes({});
  * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const default = alicloud.ecp.getZones({});
- * const defaultGetInstanceTypes = alicloud.ecp.getInstanceTypes({});
- * const countSize = _default.then(_default => _default.zones).length;
- * const zoneId = Promise.all([_default, countSize]).then(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
- * const instanceTypeCountSize = defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes).length;
- * const instanceType = Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType);
- * const defaultGetNetworks = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: `${name}-${defaultInteger.result}`,
+ *     cidrBlock: "192.168.0.0/16",
  * });
- * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultGetNetworks.ids?.[0],
- *     zoneId: zoneId,
- * }));
- * const group = new alicloud.ecs.SecurityGroup("group", {
- *     name: name,
- *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: `${name}-${defaultInteger.result}`,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: `${name}-${defaultInteger.result}`,
+ *     vpcId: defaultNetwork.id,
  * });
  * const defaultKeyPair = new alicloud.ecp.KeyPair("default", {
  *     keyPairName: `${name}-${defaultInteger.result}`,
  *     publicKeyBody: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
  * });
  * const defaultInstance = new alicloud.ecp.Instance("default", {
- *     instanceName: name,
- *     description: name,
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.instanceType),
+ *     imageId: "android-image-release5501072_a11_20240530.raw",
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroupId: defaultSecurityGroup.id,
  *     keyPairName: defaultKeyPair.keyPairName,
- *     securityGroupId: group.id,
- *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
- *     imageId: "android_9_0_0_release_2851157_20211201.vhd",
- *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[1]?.instanceType),
  *     vncPassword: "Ecp123",
  *     paymentType: "PayAsYouGo",
+ *     instanceName: name,
+ *     description: name,
  *     force: true,
  * });
  * ```
@@ -99,79 +97,73 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The auto pay.
+     * Specifies whether to enable the auto-payment feature. Valid values:
      */
     public readonly autoPay!: pulumi.Output<boolean | undefined>;
     /**
-     * The auto renew.
+     * Specifies whether to enable the auto-renewal feature. Valid values:
      */
     public readonly autoRenew!: pulumi.Output<boolean | undefined>;
     /**
-     * Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-     * start with `http://` and `https`.
+     * The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The eip bandwidth.
+     * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
      */
     public readonly eipBandwidth!: pulumi.Output<number | undefined>;
     /**
-     * The force.
+     * Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID Of The Image.
+     * The ID of the image.
      */
     public readonly imageId!: pulumi.Output<string>;
     /**
-     * The name of the instance. It must be 2 to 128 characters in length and must start with an
-     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-     * the instance.
+     * The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      */
-    public readonly instanceName!: pulumi.Output<string | undefined>;
+    public readonly instanceName!: pulumi.Output<string>;
     /**
-     * Instance Type.
+     * The specifications of the ECP instance.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
-     * The name of the key pair of the mobile phone instance.
+     * The name of the key pair that you want to use to connect to the instance.
      */
     public readonly keyPairName!: pulumi.Output<string | undefined>;
     /**
-     * The payment type.Valid values: `PayAsYouGo`,`Subscription`
+     * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
      */
-    public readonly paymentType!: pulumi.Output<string | undefined>;
+    public readonly paymentType!: pulumi.Output<string>;
     /**
-     * The period. It is valid when `periodUnit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-     * is valid when `periodUnit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+     * The subscription duration. Default value: `1`. Valid values:
+     * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
      */
     public readonly period!: pulumi.Output<string | undefined>;
     /**
-     * The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-     * to `Month`.
+     * The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
-     * The selected resolution for the cloud mobile phone instance.
+     * The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
      */
     public readonly resolution!: pulumi.Output<string>;
     /**
-     * The ID of the security group. The security group is the same as that of the
-     * ECS instance.
+     * The ID of the security group.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
-     * Instance status. Valid values: `Running`, `Stopped`.
+     * The status of the Instance. Valid values: `Running`, `Stopped`.
      */
     public readonly status!: pulumi.Output<string>;
     /**
-     * Cloud mobile phone VNC password. The password must be six characters in length and must
-     * contain only uppercase, lowercase English letters and Arabic numerals.
+     * The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
      */
     public readonly vncPassword!: pulumi.Output<string | undefined>;
     /**
-     * The vswitch id.
+     * The ID of the vSwitch.
      */
     public readonly vswitchId!: pulumi.Output<string>;
 
@@ -249,79 +241,73 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceState {
     /**
-     * The auto pay.
+     * Specifies whether to enable the auto-payment feature. Valid values:
      */
     autoPay?: pulumi.Input<boolean>;
     /**
-     * The auto renew.
+     * Specifies whether to enable the auto-renewal feature. Valid values:
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-     * start with `http://` and `https`.
+     * The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
-     * The eip bandwidth.
+     * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
      */
     eipBandwidth?: pulumi.Input<number>;
     /**
-     * The force.
+     * Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The ID Of The Image.
+     * The ID of the image.
      */
     imageId?: pulumi.Input<string>;
     /**
-     * The name of the instance. It must be 2 to 128 characters in length and must start with an
-     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-     * the instance.
+     * The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * Instance Type.
+     * The specifications of the ECP instance.
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * The name of the key pair of the mobile phone instance.
+     * The name of the key pair that you want to use to connect to the instance.
      */
     keyPairName?: pulumi.Input<string>;
     /**
-     * The payment type.Valid values: `PayAsYouGo`,`Subscription`
+     * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The period. It is valid when `periodUnit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-     * is valid when `periodUnit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+     * The subscription duration. Default value: `1`. Valid values:
+     * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
      */
     period?: pulumi.Input<string>;
     /**
-     * The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-     * to `Month`.
+     * The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
      */
     periodUnit?: pulumi.Input<string>;
     /**
-     * The selected resolution for the cloud mobile phone instance.
+     * The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
      */
     resolution?: pulumi.Input<string>;
     /**
-     * The ID of the security group. The security group is the same as that of the
-     * ECS instance.
+     * The ID of the security group.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * Instance status. Valid values: `Running`, `Stopped`.
+     * The status of the Instance. Valid values: `Running`, `Stopped`.
      */
     status?: pulumi.Input<string>;
     /**
-     * Cloud mobile phone VNC password. The password must be six characters in length and must
-     * contain only uppercase, lowercase English letters and Arabic numerals.
+     * The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
      */
     vncPassword?: pulumi.Input<string>;
     /**
-     * The vswitch id.
+     * The ID of the vSwitch.
      */
     vswitchId?: pulumi.Input<string>;
 }
@@ -331,79 +317,73 @@ export interface InstanceState {
  */
 export interface InstanceArgs {
     /**
-     * The auto pay.
+     * Specifies whether to enable the auto-payment feature. Valid values:
      */
     autoPay?: pulumi.Input<boolean>;
     /**
-     * The auto renew.
+     * Specifies whether to enable the auto-renewal feature. Valid values:
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-     * start with `http://` and `https`.
+     * The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
-     * The eip bandwidth.
+     * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
      */
     eipBandwidth?: pulumi.Input<number>;
     /**
-     * The force.
+     * Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The ID Of The Image.
+     * The ID of the image.
      */
     imageId: pulumi.Input<string>;
     /**
-     * The name of the instance. It must be 2 to 128 characters in length and must start with an
-     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-     * the instance.
+     * The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * Instance Type.
+     * The specifications of the ECP instance.
      */
     instanceType: pulumi.Input<string>;
     /**
-     * The name of the key pair of the mobile phone instance.
+     * The name of the key pair that you want to use to connect to the instance.
      */
     keyPairName?: pulumi.Input<string>;
     /**
-     * The payment type.Valid values: `PayAsYouGo`,`Subscription`
+     * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * The period. It is valid when `periodUnit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-     * is valid when `periodUnit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+     * The subscription duration. Default value: `1`. Valid values:
+     * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+     * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
      */
     period?: pulumi.Input<string>;
     /**
-     * The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-     * to `Month`.
+     * The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
      */
     periodUnit?: pulumi.Input<string>;
     /**
-     * The selected resolution for the cloud mobile phone instance.
+     * The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
      */
     resolution?: pulumi.Input<string>;
     /**
-     * The ID of the security group. The security group is the same as that of the
-     * ECS instance.
+     * The ID of the security group.
      */
     securityGroupId: pulumi.Input<string>;
     /**
-     * Instance status. Valid values: `Running`, `Stopped`.
+     * The status of the Instance. Valid values: `Running`, `Stopped`.
      */
     status?: pulumi.Input<string>;
     /**
-     * Cloud mobile phone VNC password. The password must be six characters in length and must
-     * contain only uppercase, lowercase English letters and Arabic numerals.
+     * The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
      */
     vncPassword?: pulumi.Input<string>;
     /**
-     * The vswitch id.
+     * The ID of the vSwitch.
      */
     vswitchId: pulumi.Input<string>;
 }

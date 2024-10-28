@@ -153,6 +153,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<Outputs.ScalingConfigurationDataDisk>> DataDisks { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         /// </summary>
         [Output("enable")]
@@ -181,6 +187,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("imageName")]
         public Output<string?> ImageName { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        /// </summary>
+        [Output("imageOptionsLoginAsNonRoot")]
+        public Output<bool?> ImageOptionsLoginAsNonRoot { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+        /// </summary>
+        [Output("instanceDescription")]
+        public Output<string?> InstanceDescription { get; private set; } = null!;
 
         /// <summary>
         /// It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
@@ -309,6 +327,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ScalingGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        /// </summary>
+        [Output("securityEnhancementStrategy")]
+        public Output<string?> SecurityEnhancementStrategy { get; private set; } = null!;
+
+        /// <summary>
         /// ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         /// </summary>
         [Output("securityGroupId")]
@@ -319,6 +343,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("securityGroupIds")]
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
+
+        /// <summary>
+        /// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        /// </summary>
+        [Output("spotDuration")]
+        public Output<int?> SpotDuration { get; private set; } = null!;
 
         /// <summary>
         /// Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
@@ -371,10 +401,22 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> SystemDiskDescription { get; private set; } = null!;
 
         /// <summary>
+        /// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+        /// </summary>
+        [Output("systemDiskEncryptAlgorithm")]
+        public Output<string?> SystemDiskEncryptAlgorithm { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to encrypt the system disk.
         /// </summary>
         [Output("systemDiskEncrypted")]
         public Output<bool?> SystemDiskEncrypted { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the KMS key that you want to use to encrypt the system disk.
+        /// </summary>
+        [Output("systemDiskKmsKeyId")]
+        public Output<string?> SystemDiskKmsKeyId { get; private set; } = null!;
 
         /// <summary>
         /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
@@ -387,6 +429,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("systemDiskPerformanceLevel")]
         public Output<string?> SystemDiskPerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// IOPS measures the number of read and write operations that an EBS device can process per second.
+        /// </summary>
+        [Output("systemDiskProvisionedIops")]
+        public Output<int?> SystemDiskProvisionedIops { get; private set; } = null!;
 
         /// <summary>
         /// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
@@ -479,6 +527,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         /// </summary>
         [Input("enable")]
@@ -507,6 +561,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
+
+        /// <summary>
+        /// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        /// </summary>
+        [Input("imageOptionsLoginAsNonRoot")]
+        public Input<bool>? ImageOptionsLoginAsNonRoot { get; set; }
+
+        /// <summary>
+        /// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+        /// </summary>
+        [Input("instanceDescription")]
+        public Input<string>? InstanceDescription { get; set; }
 
         [Input("instanceIds")]
         private InputList<string>? _instanceIds;
@@ -666,6 +732,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<string> ScalingGroupId { get; set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        /// </summary>
+        [Input("securityEnhancementStrategy")]
+        public Input<string>? SecurityEnhancementStrategy { get; set; }
+
+        /// <summary>
         /// ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         /// </summary>
         [Input("securityGroupId")]
@@ -682,6 +754,12 @@ namespace Pulumi.AliCloud.Ess
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        /// <summary>
+        /// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        /// </summary>
+        [Input("spotDuration")]
+        public Input<int>? SpotDuration { get; set; }
 
         [Input("spotPriceLimits")]
         private InputList<Inputs.ScalingConfigurationSpotPriceLimitArgs>? _spotPriceLimits;
@@ -740,10 +818,22 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
+        /// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+        /// </summary>
+        [Input("systemDiskEncryptAlgorithm")]
+        public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
+
+        /// <summary>
         /// Whether to encrypt the system disk.
         /// </summary>
         [Input("systemDiskEncrypted")]
         public Input<bool>? SystemDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The ID of the KMS key that you want to use to encrypt the system disk.
+        /// </summary>
+        [Input("systemDiskKmsKeyId")]
+        public Input<string>? SystemDiskKmsKeyId { get; set; }
 
         /// <summary>
         /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
@@ -756,6 +846,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
+
+        /// <summary>
+        /// IOPS measures the number of read and write operations that an EBS device can process per second.
+        /// </summary>
+        [Input("systemDiskProvisionedIops")]
+        public Input<int>? SystemDiskProvisionedIops { get; set; }
 
         /// <summary>
         /// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.
@@ -816,6 +912,12 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
+        /// Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         /// </summary>
         [Input("enable")]
@@ -844,6 +946,18 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("imageName")]
         public Input<string>? ImageName { get; set; }
+
+        /// <summary>
+        /// Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
+        /// </summary>
+        [Input("imageOptionsLoginAsNonRoot")]
+        public Input<bool>? ImageOptionsLoginAsNonRoot { get; set; }
+
+        /// <summary>
+        /// The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
+        /// </summary>
+        [Input("instanceDescription")]
+        public Input<string>? InstanceDescription { get; set; }
 
         [Input("instanceIds")]
         private InputList<string>? _instanceIds;
@@ -1003,6 +1117,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ScalingGroupId { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
+        /// </summary>
+        [Input("securityEnhancementStrategy")]
+        public Input<string>? SecurityEnhancementStrategy { get; set; }
+
+        /// <summary>
         /// ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         /// </summary>
         [Input("securityGroupId")]
@@ -1019,6 +1139,12 @@ namespace Pulumi.AliCloud.Ess
             get => _securityGroupIds ?? (_securityGroupIds = new InputList<string>());
             set => _securityGroupIds = value;
         }
+
+        /// <summary>
+        /// The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
+        /// </summary>
+        [Input("spotDuration")]
+        public Input<int>? SpotDuration { get; set; }
 
         [Input("spotPriceLimits")]
         private InputList<Inputs.ScalingConfigurationSpotPriceLimitGetArgs>? _spotPriceLimits;
@@ -1077,10 +1203,22 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
+        /// The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
+        /// </summary>
+        [Input("systemDiskEncryptAlgorithm")]
+        public Input<string>? SystemDiskEncryptAlgorithm { get; set; }
+
+        /// <summary>
         /// Whether to encrypt the system disk.
         /// </summary>
         [Input("systemDiskEncrypted")]
         public Input<bool>? SystemDiskEncrypted { get; set; }
+
+        /// <summary>
+        /// The ID of the KMS key that you want to use to encrypt the system disk.
+        /// </summary>
+        [Input("systemDiskKmsKeyId")]
+        public Input<string>? SystemDiskKmsKeyId { get; set; }
 
         /// <summary>
         /// The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
@@ -1093,6 +1231,12 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("systemDiskPerformanceLevel")]
         public Input<string>? SystemDiskPerformanceLevel { get; set; }
+
+        /// <summary>
+        /// IOPS measures the number of read and write operations that an EBS device can process per second.
+        /// </summary>
+        [Input("systemDiskProvisionedIops")]
+        public Input<int>? SystemDiskProvisionedIops { get; set; }
 
         /// <summary>
         /// Size of system disk, in GiB. Optional values: cloud: 20-500, cloud_efficiency: 20-500, cloud_ssd: 20-500, ephemeral_ssd: 20-500 The default value is max{40, ImageSize}. If this parameter is set, the system disk size must be greater than or equal to max{40, ImageSize}.

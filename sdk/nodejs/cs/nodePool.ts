@@ -223,6 +223,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly platform!: pulumi.Output<string>;
     /**
+     * Node pre custom data, base64-encoded, the script executed before the node is initialized.
+     */
+    public readonly preUserData!: pulumi.Output<string | undefined>;
+    /**
      * Private node pool configuration. See `privatePoolOptions` below.
      */
     public readonly privatePoolOptions!: pulumi.Output<outputs.cs.NodePoolPrivatePoolOptions | undefined>;
@@ -274,6 +278,7 @@ export class NodePool extends pulumi.CustomResource {
     public readonly securityHardeningOs!: pulumi.Output<boolean | undefined>;
     /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+     *
      * > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      */
     public readonly socEnabled!: pulumi.Output<boolean | undefined>;
@@ -341,7 +346,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly systemDiskSnapshotPolicyId!: pulumi.Output<string | undefined>;
     /**
-     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -361,7 +366,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly updateNodes!: pulumi.Output<boolean | undefined>;
     /**
-     * Node custom data.
+     * Node custom data, base64-encoded.
      */
     public readonly userData!: pulumi.Output<string | undefined>;
     /**
@@ -421,6 +426,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["periodUnit"] = state ? state.periodUnit : undefined;
             resourceInputs["platform"] = state ? state.platform : undefined;
+            resourceInputs["preUserData"] = state ? state.preUserData : undefined;
             resourceInputs["privatePoolOptions"] = state ? state.privatePoolOptions : undefined;
             resourceInputs["rdsInstances"] = state ? state.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
@@ -504,6 +510,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["periodUnit"] = args ? args.periodUnit : undefined;
             resourceInputs["platform"] = args ? args.platform : undefined;
+            resourceInputs["preUserData"] = args ? args.preUserData : undefined;
             resourceInputs["privatePoolOptions"] = args ? args.privatePoolOptions : undefined;
             resourceInputs["rdsInstances"] = args ? args.rdsInstances : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -727,6 +734,10 @@ export interface NodePoolState {
      */
     platform?: pulumi.Input<string>;
     /**
+     * Node pre custom data, base64-encoded, the script executed before the node is initialized.
+     */
+    preUserData?: pulumi.Input<string>;
+    /**
      * Private node pool configuration. See `privatePoolOptions` below.
      */
     privatePoolOptions?: pulumi.Input<inputs.cs.NodePoolPrivatePoolOptions>;
@@ -778,6 +789,7 @@ export interface NodePoolState {
     securityHardeningOs?: pulumi.Input<boolean>;
     /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+     *
      * > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      */
     socEnabled?: pulumi.Input<boolean>;
@@ -845,7 +857,7 @@ export interface NodePoolState {
      */
     systemDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -865,7 +877,7 @@ export interface NodePoolState {
      */
     updateNodes?: pulumi.Input<boolean>;
     /**
-     * Node custom data.
+     * Node custom data, base64-encoded.
      */
     userData?: pulumi.Input<string>;
     /**
@@ -1050,6 +1062,10 @@ export interface NodePoolArgs {
      */
     platform?: pulumi.Input<string>;
     /**
+     * Node pre custom data, base64-encoded, the script executed before the node is initialized.
+     */
+    preUserData?: pulumi.Input<string>;
+    /**
      * Private node pool configuration. See `privatePoolOptions` below.
      */
     privatePoolOptions?: pulumi.Input<inputs.cs.NodePoolPrivatePoolOptions>;
@@ -1097,6 +1113,7 @@ export interface NodePoolArgs {
     securityHardeningOs?: pulumi.Input<boolean>;
     /**
      * Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+     *
      * > **NOTE:**  It is forbidden to set both `securityHardeningOs` and `socEnabled` to `true` at the same time.
      */
     socEnabled?: pulumi.Input<boolean>;
@@ -1164,7 +1181,7 @@ export interface NodePoolArgs {
      */
     systemDiskSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+     * Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -1184,7 +1201,7 @@ export interface NodePoolArgs {
      */
     updateNodes?: pulumi.Input<boolean>;
     /**
-     * Node custom data.
+     * Node custom data, base64-encoded.
      */
     userData?: pulumi.Input<string>;
     /**

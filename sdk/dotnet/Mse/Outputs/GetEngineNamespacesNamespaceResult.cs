@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Mse.Outputs
         /// </summary>
         public readonly int ConfigCount;
         /// <summary>
-        /// The ID of the Engine Namespace. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+        /// The ID of the Engine Namespace. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
         /// </summary>
         public readonly string Id;
         /// <summary>

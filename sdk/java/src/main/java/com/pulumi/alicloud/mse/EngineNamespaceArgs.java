@@ -32,33 +32,67 @@ public final class EngineNamespaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The id of the cluster.
+     * The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      * 
      */
-    @Import(name="clusterId", required=true)
-    private Output<String> clusterId;
+    @Import(name="clusterId")
+    private @Nullable Output<String> clusterId;
 
     /**
-     * @return The id of the cluster.
+     * @return The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      * 
      */
-    public Output<String> clusterId() {
-        return this.clusterId;
+    public Optional<Output<String>> clusterId() {
+        return Optional.ofNullable(this.clusterId);
+    }
+
+    /**
+     * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+     * 
+     */
+    @Import(name="instanceId")
+    private @Nullable Output<String> instanceId;
+
+    /**
+     * @return The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+     * 
+     */
+    public Optional<Output<String>> instanceId() {
+        return Optional.ofNullable(this.instanceId);
+    }
+
+    /**
+     * The description of the namespace.
+     * 
+     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * 
+     */
+    @Import(name="namespaceDesc")
+    private @Nullable Output<String> namespaceDesc;
+
+    /**
+     * @return The description of the namespace.
+     * 
+     * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+     * 
+     */
+    public Optional<Output<String>> namespaceDesc() {
+        return Optional.ofNullable(this.namespaceDesc);
     }
 
     /**
      * The id of Namespace.
      * 
      */
-    @Import(name="namespaceId", required=true)
-    private Output<String> namespaceId;
+    @Import(name="namespaceId")
+    private @Nullable Output<String> namespaceId;
 
     /**
      * @return The id of Namespace.
      * 
      */
-    public Output<String> namespaceId() {
-        return this.namespaceId;
+    public Optional<Output<String>> namespaceId() {
+        return Optional.ofNullable(this.namespaceId);
     }
 
     /**
@@ -81,6 +115,8 @@ public final class EngineNamespaceArgs extends com.pulumi.resources.ResourceArgs
     private EngineNamespaceArgs(EngineNamespaceArgs $) {
         this.acceptLanguage = $.acceptLanguage;
         this.clusterId = $.clusterId;
+        this.instanceId = $.instanceId;
+        this.namespaceDesc = $.namespaceDesc;
         this.namespaceId = $.namespaceId;
         this.namespaceShowName = $.namespaceShowName;
     }
@@ -125,18 +161,18 @@ public final class EngineNamespaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param clusterId The id of the cluster.
+         * @param clusterId The id of the cluster.It is formatted to `mse-xxxxxxxx`.
          * 
          * @return builder
          * 
          */
-        public Builder clusterId(Output<String> clusterId) {
+        public Builder clusterId(@Nullable Output<String> clusterId) {
             $.clusterId = clusterId;
             return this;
         }
 
         /**
-         * @param clusterId The id of the cluster.
+         * @param clusterId The id of the cluster.It is formatted to `mse-xxxxxxxx`.
          * 
          * @return builder
          * 
@@ -146,12 +182,58 @@ public final class EngineNamespaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param instanceId The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(@Nullable Output<String> instanceId) {
+            $.instanceId = instanceId;
+            return this;
+        }
+
+        /**
+         * @param instanceId The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceId(String instanceId) {
+            return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param namespaceDesc The description of the namespace.
+         * 
+         * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceDesc(@Nullable Output<String> namespaceDesc) {
+            $.namespaceDesc = namespaceDesc;
+            return this;
+        }
+
+        /**
+         * @param namespaceDesc The description of the namespace.
+         * 
+         * **NOTE:** You must set `cluster_id` or `instance_id` or both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder namespaceDesc(String namespaceDesc) {
+            return namespaceDesc(Output.of(namespaceDesc));
+        }
+
+        /**
          * @param namespaceId The id of Namespace.
          * 
          * @return builder
          * 
          */
-        public Builder namespaceId(Output<String> namespaceId) {
+        public Builder namespaceId(@Nullable Output<String> namespaceId) {
             $.namespaceId = namespaceId;
             return this;
         }
@@ -188,12 +270,6 @@ public final class EngineNamespaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public EngineNamespaceArgs build() {
-            if ($.clusterId == null) {
-                throw new MissingRequiredPropertyException("EngineNamespaceArgs", "clusterId");
-            }
-            if ($.namespaceId == null) {
-                throw new MissingRequiredPropertyException("EngineNamespaceArgs", "namespaceId");
-            }
             if ($.namespaceShowName == null) {
                 throw new MissingRequiredPropertyException("EngineNamespaceArgs", "namespaceShowName");
             }

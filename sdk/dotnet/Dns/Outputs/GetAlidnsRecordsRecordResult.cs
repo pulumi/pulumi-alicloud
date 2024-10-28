@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
+        /// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
         /// </summary>
         public readonly string Line;
         /// <summary>

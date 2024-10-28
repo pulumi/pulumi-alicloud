@@ -195,14 +195,14 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> encrypted;
+    private Output<Boolean> encrypted;
 
     /**
      * @return If true, the disk will be encrypted, conflict with `snapshot_id`.
      * 
      */
-    public Output<Optional<Boolean>> encrypted() {
-        return Codegen.optional(this.encrypted);
+    public Output<Boolean> encrypted() {
+        return this.encrypted;
     }
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
@@ -303,14 +303,14 @@ public class Disk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="snapshotId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> snapshotId;
+    private Output<String> snapshotId;
 
     /**
      * @return A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      * 
      */
-    public Output<Optional<String>> snapshotId() {
-        return Codegen.optional(this.snapshotId);
+    public Output<String> snapshotId() {
+        return this.snapshotId;
     }
     /**
      * The disk status.

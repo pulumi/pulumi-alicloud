@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Mse
         /// <summary>
         /// This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.166.0+.
+        /// &gt; **NOTE:** Available since v1.166.0.
         /// 
         /// ## Example Usage
         /// 
@@ -28,29 +28,69 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
+        ///     var example = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         ClusterId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///     });
+        /// 
+        ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+        ///     {
+        ///         VswitchName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///         VpcId = exampleNetwork.Id,
+        ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var exampleCluster = new AliCloud.Mse.Cluster("example", new()
+        ///     {
+        ///         ClusterSpecification = "MSE_SC_1_2_60_c",
+        ///         ClusterType = "Nacos-Ans",
+        ///         ClusterVersion = "NACOS_2_0_0",
+        ///         InstanceCount = 3,
+        ///         NetType = "privatenet",
+        ///         PubNetworkFlow = "1",
+        ///         ConnectionType = "slb",
+        ///         ClusterAliasName = "terraform-example",
+        ///         MseVersion = "mse_pro",
+        ///         VswitchId = exampleSwitch.Id,
+        ///         VpcId = exampleNetwork.Id,
+        ///     });
+        /// 
+        ///     var exampleEngineNamespace = new AliCloud.Mse.EngineNamespace("example", new()
+        ///     {
+        ///         InstanceId = exampleCluster.Id,
+        ///         NamespaceShowName = "terraform-example",
+        ///         NamespaceId = "terraform-example",
+        ///         NamespaceDesc = "description",
+        ///     });
+        /// 
+        ///     // Declare the data source
+        ///     var exampleGetEngineNamespaces = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
+        ///     {
+        ///         InstanceId = exampleEngineNamespace.InstanceId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["mseEngineNamespaceId1"] = ids.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[0]?.Id),
+        ///         ["mseEngineNamespaceIdPublic"] = exampleGetEngineNamespaces.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[0]?.Id),
+        ///         ["mseEngineNamespaceIdExample"] = exampleGetEngineNamespaces.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[1]?.Id),
         ///     };
         /// });
         /// ```
         /// </summary>
-        public static Task<GetEngineNamespacesResult> InvokeAsync(GetEngineNamespacesArgs args, InvokeOptions? options = null)
+        public static Task<GetEngineNamespacesResult> InvokeAsync(GetEngineNamespacesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEngineNamespacesResult>("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args ?? new GetEngineNamespacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.166.0+.
+        /// &gt; **NOTE:** Available since v1.166.0.
         /// 
         /// ## Example Usage
         /// 
@@ -64,23 +104,63 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
+        ///     var example = AliCloud.GetZones.Invoke(new()
         ///     {
-        ///         ClusterId = "example_value",
-        ///         Ids = new[]
-        ///         {
-        ///             "example_value",
-        ///         },
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
+        ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+        ///     {
+        ///         VpcName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///     });
+        /// 
+        ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+        ///     {
+        ///         VswitchName = "terraform-example",
+        ///         CidrBlock = "172.17.3.0/24",
+        ///         VpcId = exampleNetwork.Id,
+        ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///     });
+        /// 
+        ///     var exampleCluster = new AliCloud.Mse.Cluster("example", new()
+        ///     {
+        ///         ClusterSpecification = "MSE_SC_1_2_60_c",
+        ///         ClusterType = "Nacos-Ans",
+        ///         ClusterVersion = "NACOS_2_0_0",
+        ///         InstanceCount = 3,
+        ///         NetType = "privatenet",
+        ///         PubNetworkFlow = "1",
+        ///         ConnectionType = "slb",
+        ///         ClusterAliasName = "terraform-example",
+        ///         MseVersion = "mse_pro",
+        ///         VswitchId = exampleSwitch.Id,
+        ///         VpcId = exampleNetwork.Id,
+        ///     });
+        /// 
+        ///     var exampleEngineNamespace = new AliCloud.Mse.EngineNamespace("example", new()
+        ///     {
+        ///         InstanceId = exampleCluster.Id,
+        ///         NamespaceShowName = "terraform-example",
+        ///         NamespaceId = "terraform-example",
+        ///         NamespaceDesc = "description",
+        ///     });
+        /// 
+        ///     // Declare the data source
+        ///     var exampleGetEngineNamespaces = AliCloud.Mse.GetEngineNamespaces.Invoke(new()
+        ///     {
+        ///         InstanceId = exampleEngineNamespace.InstanceId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["mseEngineNamespaceId1"] = ids.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[0]?.Id),
+        ///         ["mseEngineNamespaceIdPublic"] = exampleGetEngineNamespaces.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[0]?.Id),
+        ///         ["mseEngineNamespaceIdExample"] = exampleGetEngineNamespaces.Apply(getEngineNamespacesResult =&gt; getEngineNamespacesResult.Namespaces[1]?.Id),
         ///     };
         /// });
         /// ```
         /// </summary>
-        public static Output<GetEngineNamespacesResult> Invoke(GetEngineNamespacesInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetEngineNamespacesResult> Invoke(GetEngineNamespacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEngineNamespacesResult>("alicloud:mse/getEngineNamespaces:getEngineNamespaces", args ?? new GetEngineNamespacesInvokeArgs(), options.WithDefaults());
     }
 
@@ -94,16 +174,16 @@ namespace Pulumi.AliCloud.Mse
         public string? AcceptLanguage { get; set; }
 
         /// <summary>
-        /// The id of the cluster.
+        /// The ID of the cluster.
         /// </summary>
-        [Input("clusterId", required: true)]
-        public string ClusterId { get; set; } = null!;
+        [Input("clusterId")]
+        public string? ClusterId { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of Engine Namespace IDs. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+        /// A list of Engine Namespace IDs. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
         /// </summary>
         public List<string> Ids
         {
@@ -112,7 +192,15 @@ namespace Pulumi.AliCloud.Mse
         }
 
         /// <summary>
+        /// The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
+        /// </summary>
+        [Input("instanceId")]
+        public string? InstanceId { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
+        /// 
+        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
         /// </summary>
         [Input("outputFile")]
         public string? OutputFile { get; set; }
@@ -132,16 +220,16 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? AcceptLanguage { get; set; }
 
         /// <summary>
-        /// The id of the cluster.
+        /// The ID of the cluster.
         /// </summary>
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
+        [Input("clusterId")]
+        public Input<string>? ClusterId { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of Engine Namespace IDs. It is formatted to `&lt;cluster_id&gt;:&lt;namespace_id&gt;`.
+        /// A list of Engine Namespace IDs. It is formatted to `&lt;instance_id&gt;:&lt;namespace_id&gt;`.
         /// </summary>
         public InputList<string> Ids
         {
@@ -150,7 +238,15 @@ namespace Pulumi.AliCloud.Mse
         }
 
         /// <summary>
+        /// The ID of the MSE Cluster Instance.It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0
+        /// </summary>
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
         /// File name where to save data source results (after running `pulumi preview`).
+        /// 
+        /// **NOTE:** You must set `cluster_id` or `instance_id` or both.
         /// </summary>
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
@@ -166,12 +262,16 @@ namespace Pulumi.AliCloud.Mse
     public sealed class GetEngineNamespacesResult
     {
         public readonly string? AcceptLanguage;
-        public readonly string ClusterId;
+        public readonly string? ClusterId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
+        public readonly string? InstanceId;
+        /// <summary>
+        /// A list of Mse Engine Namespaces. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetEngineNamespacesNamespaceResult> Namespaces;
         public readonly string? OutputFile;
 
@@ -179,11 +279,13 @@ namespace Pulumi.AliCloud.Mse
         private GetEngineNamespacesResult(
             string? acceptLanguage,
 
-            string clusterId,
+            string? clusterId,
 
             string id,
 
             ImmutableArray<string> ids,
+
+            string? instanceId,
 
             ImmutableArray<Outputs.GetEngineNamespacesNamespaceResult> namespaces,
 
@@ -193,6 +295,7 @@ namespace Pulumi.AliCloud.Mse
             ClusterId = clusterId;
             Id = id;
             Ids = ids;
+            InstanceId = instanceId;
             Namespaces = namespaces;
             OutputFile = outputFile;
         }

@@ -149,6 +149,7 @@ def get_serverless_kubernetes_clusters(enable_details: Optional[bool] = None,
     ```
 
 
+    :param bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletion_protection`, `connections`. See full list in attributes.
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
     :param str name_regex: A regex string to filter results by cluster name.
@@ -199,6 +200,7 @@ def get_serverless_kubernetes_clusters_output(enable_details: Optional[pulumi.In
     ```
 
 
+    :param bool enable_details: Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletion_protection`, `connections`. See full list in attributes.
     :param Sequence[str] ids: Cluster IDs to filter.
     :param str kube_config_file_prefix: The path prefix of kube config. You could store kube config in a specified directory by specifying this field, like `~/.kube/serverless`, then it will be named with `~/.kube/serverless-clusterID-kubeconfig`. From version 1.187.0+, kube_config will not export kube_config if this field is not set.
     :param str name_regex: A regex string to filter results by cluster name.

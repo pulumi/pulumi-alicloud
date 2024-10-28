@@ -85,6 +85,9 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetServerlessKubernetesClustersArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletion_protection`, `connections`. See full list in attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -126,6 +129,9 @@ namespace Pulumi.AliCloud.CS
 
     public sealed class GetServerlessKubernetesClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Boolean, false by default, only `id` and `name` are exported. Set to true if more details are needed, e.g.,  `deletion_protection`, `connections`. See full list in attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 

@@ -38,31 +38,25 @@ class InstanceArgs:
                  vnc_password: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] image_id: The ID Of The Image.
-        :param pulumi.Input[str] instance_type: Instance Type.
-        :param pulumi.Input[str] security_group_id: The ID of the security group. The security group is the same as that of the
-               ECS instance.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
-        :param pulumi.Input[bool] auto_pay: The auto pay.
-        :param pulumi.Input[bool] auto_renew: The auto renew.
-        :param pulumi.Input[str] description: Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-               start with `http://` and `https`.
-        :param pulumi.Input[int] eip_bandwidth: The eip bandwidth.
-        :param pulumi.Input[bool] force: The force.
-        :param pulumi.Input[str] instance_name: The name of the instance. It must be 2 to 128 characters in length and must start with an
-               uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-               half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-               the instance.
-        :param pulumi.Input[str] key_pair_name: The name of the key pair of the mobile phone instance.
-        :param pulumi.Input[str] payment_type: The payment type.Valid values: `PayAsYouGo`,`Subscription`
-        :param pulumi.Input[str] period: The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-               is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
-        :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-               to `Month`.
-        :param pulumi.Input[str] resolution: The selected resolution for the cloud mobile phone instance.
-        :param pulumi.Input[str] status: Instance status. Valid values: `Running`, `Stopped`.
-        :param pulumi.Input[str] vnc_password: Cloud mobile phone VNC password. The password must be six characters in length and must
-               contain only uppercase, lowercase English letters and Arabic numerals.
+        :param pulumi.Input[str] image_id: The ID of the image.
+        :param pulumi.Input[str] instance_type: The specifications of the ECP instance.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[bool] auto_pay: Specifies whether to enable the auto-payment feature. Valid values:
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable the auto-renewal feature. Valid values:
+        :param pulumi.Input[str] description: The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+        :param pulumi.Input[bool] force: Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
+        :param pulumi.Input[str] instance_name: The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        :param pulumi.Input[str] key_pair_name: The name of the key pair that you want to use to connect to the instance.
+        :param pulumi.Input[str] payment_type: The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+        :param pulumi.Input[str] period: The subscription duration. Default value: `1`. Valid values:
+               - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+               - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] resolution: The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
+        :param pulumi.Input[str] status: The status of the Instance. Valid values: `Running`, `Stopped`.
+        :param pulumi.Input[str] vnc_password: The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
         """
         pulumi.set(__self__, "image_id", image_id)
         pulumi.set(__self__, "instance_type", instance_type)
@@ -99,7 +93,7 @@ class InstanceArgs:
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Input[str]:
         """
-        The ID Of The Image.
+        The ID of the image.
         """
         return pulumi.get(self, "image_id")
 
@@ -111,7 +105,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
         """
-        Instance Type.
+        The specifications of the ECP instance.
         """
         return pulumi.get(self, "instance_type")
 
@@ -123,8 +117,7 @@ class InstanceArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[str]:
         """
-        The ID of the security group. The security group is the same as that of the
-        ECS instance.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -136,7 +129,7 @@ class InstanceArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The vswitch id.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -148,7 +141,7 @@ class InstanceArgs:
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> Optional[pulumi.Input[bool]]:
         """
-        The auto pay.
+        Specifies whether to enable the auto-payment feature. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
@@ -160,7 +153,7 @@ class InstanceArgs:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        The auto renew.
+        Specifies whether to enable the auto-renewal feature. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
@@ -172,8 +165,7 @@ class InstanceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-        start with `http://` and `https`.
+        The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -185,7 +177,7 @@ class InstanceArgs:
     @pulumi.getter(name="eipBandwidth")
     def eip_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The eip bandwidth.
+        The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
         """
         return pulumi.get(self, "eip_bandwidth")
 
@@ -197,7 +189,7 @@ class InstanceArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        The force.
+        Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -209,10 +201,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance. It must be 2 to 128 characters in length and must start with an
-        uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-        half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-        the instance.
+        The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         """
         return pulumi.get(self, "instance_name")
 
@@ -224,7 +213,7 @@ class InstanceArgs:
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the key pair of the mobile phone instance.
+        The name of the key pair that you want to use to connect to the instance.
         """
         return pulumi.get(self, "key_pair_name")
 
@@ -236,7 +225,7 @@ class InstanceArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type.Valid values: `PayAsYouGo`,`Subscription`
+        The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
         """
         return pulumi.get(self, "payment_type")
 
@@ -248,8 +237,9 @@ class InstanceArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[str]]:
         """
-        The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-        is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+        The subscription duration. Default value: `1`. Valid values:
+        - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+        - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
         """
         return pulumi.get(self, "period")
 
@@ -261,8 +251,7 @@ class InstanceArgs:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-        to `Month`.
+        The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -274,7 +263,7 @@ class InstanceArgs:
     @pulumi.getter
     def resolution(self) -> Optional[pulumi.Input[str]]:
         """
-        The selected resolution for the cloud mobile phone instance.
+        The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
         """
         return pulumi.get(self, "resolution")
 
@@ -286,7 +275,7 @@ class InstanceArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance status. Valid values: `Running`, `Stopped`.
+        The status of the Instance. Valid values: `Running`, `Stopped`.
         """
         return pulumi.get(self, "status")
 
@@ -298,8 +287,7 @@ class InstanceArgs:
     @pulumi.getter(name="vncPassword")
     def vnc_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud mobile phone VNC password. The password must be six characters in length and must
-        contain only uppercase, lowercase English letters and Arabic numerals.
+        The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
         """
         return pulumi.get(self, "vnc_password")
 
@@ -330,31 +318,25 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[bool] auto_pay: The auto pay.
-        :param pulumi.Input[bool] auto_renew: The auto renew.
-        :param pulumi.Input[str] description: Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-               start with `http://` and `https`.
-        :param pulumi.Input[int] eip_bandwidth: The eip bandwidth.
-        :param pulumi.Input[bool] force: The force.
-        :param pulumi.Input[str] image_id: The ID Of The Image.
-        :param pulumi.Input[str] instance_name: The name of the instance. It must be 2 to 128 characters in length and must start with an
-               uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-               half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-               the instance.
-        :param pulumi.Input[str] instance_type: Instance Type.
-        :param pulumi.Input[str] key_pair_name: The name of the key pair of the mobile phone instance.
-        :param pulumi.Input[str] payment_type: The payment type.Valid values: `PayAsYouGo`,`Subscription`
-        :param pulumi.Input[str] period: The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-               is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
-        :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-               to `Month`.
-        :param pulumi.Input[str] resolution: The selected resolution for the cloud mobile phone instance.
-        :param pulumi.Input[str] security_group_id: The ID of the security group. The security group is the same as that of the
-               ECS instance.
-        :param pulumi.Input[str] status: Instance status. Valid values: `Running`, `Stopped`.
-        :param pulumi.Input[str] vnc_password: Cloud mobile phone VNC password. The password must be six characters in length and must
-               contain only uppercase, lowercase English letters and Arabic numerals.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[bool] auto_pay: Specifies whether to enable the auto-payment feature. Valid values:
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable the auto-renewal feature. Valid values:
+        :param pulumi.Input[str] description: The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+        :param pulumi.Input[bool] force: Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
+        :param pulumi.Input[str] image_id: The ID of the image.
+        :param pulumi.Input[str] instance_name: The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        :param pulumi.Input[str] instance_type: The specifications of the ECP instance.
+        :param pulumi.Input[str] key_pair_name: The name of the key pair that you want to use to connect to the instance.
+        :param pulumi.Input[str] payment_type: The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+        :param pulumi.Input[str] period: The subscription duration. Default value: `1`. Valid values:
+               - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+               - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] resolution: The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] status: The status of the Instance. Valid values: `Running`, `Stopped`.
+        :param pulumi.Input[str] vnc_password: The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
@@ -395,7 +377,7 @@ class _InstanceState:
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> Optional[pulumi.Input[bool]]:
         """
-        The auto pay.
+        Specifies whether to enable the auto-payment feature. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
@@ -407,7 +389,7 @@ class _InstanceState:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        The auto renew.
+        Specifies whether to enable the auto-renewal feature. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
@@ -419,8 +401,7 @@ class _InstanceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-        start with `http://` and `https`.
+        The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -432,7 +413,7 @@ class _InstanceState:
     @pulumi.getter(name="eipBandwidth")
     def eip_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The eip bandwidth.
+        The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
         """
         return pulumi.get(self, "eip_bandwidth")
 
@@ -444,7 +425,7 @@ class _InstanceState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        The force.
+        Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -456,7 +437,7 @@ class _InstanceState:
     @pulumi.getter(name="imageId")
     def image_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID Of The Image.
+        The ID of the image.
         """
         return pulumi.get(self, "image_id")
 
@@ -468,10 +449,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the instance. It must be 2 to 128 characters in length and must start with an
-        uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-        half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-        the instance.
+        The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         """
         return pulumi.get(self, "instance_name")
 
@@ -483,7 +461,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance Type.
+        The specifications of the ECP instance.
         """
         return pulumi.get(self, "instance_type")
 
@@ -495,7 +473,7 @@ class _InstanceState:
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the key pair of the mobile phone instance.
+        The name of the key pair that you want to use to connect to the instance.
         """
         return pulumi.get(self, "key_pair_name")
 
@@ -507,7 +485,7 @@ class _InstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The payment type.Valid values: `PayAsYouGo`,`Subscription`
+        The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
         """
         return pulumi.get(self, "payment_type")
 
@@ -519,8 +497,9 @@ class _InstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[str]]:
         """
-        The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-        is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+        The subscription duration. Default value: `1`. Valid values:
+        - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+        - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
         """
         return pulumi.get(self, "period")
 
@@ -532,8 +511,7 @@ class _InstanceState:
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> Optional[pulumi.Input[str]]:
         """
-        The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-        to `Month`.
+        The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -545,7 +523,7 @@ class _InstanceState:
     @pulumi.getter
     def resolution(self) -> Optional[pulumi.Input[str]]:
         """
-        The selected resolution for the cloud mobile phone instance.
+        The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
         """
         return pulumi.get(self, "resolution")
 
@@ -557,8 +535,7 @@ class _InstanceState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the security group. The security group is the same as that of the
-        ECS instance.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -570,7 +547,7 @@ class _InstanceState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance status. Valid values: `Running`, `Stopped`.
+        The status of the Instance. Valid values: `Running`, `Stopped`.
         """
         return pulumi.get(self, "status")
 
@@ -582,8 +559,7 @@ class _InstanceState:
     @pulumi.getter(name="vncPassword")
     def vnc_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud mobile phone VNC password. The password must be six characters in length and must
-        contain only uppercase, lowercase English letters and Arabic numerals.
+        The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
         """
         return pulumi.get(self, "vnc_password")
 
@@ -595,7 +571,7 @@ class _InstanceState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The vswitch id.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -630,8 +606,7 @@ class Instance(pulumi.CustomResource):
         """
         Provides a Elastic Cloud Phone (ECP) Instance resource.
 
-        For information about Elastic Cloud Phone (ECP) Instance and how to use it,
-        see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
+        For information about Elastic Cloud Phone (ECP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
 
         > **NOTE:** Available since v1.158.0.
 
@@ -647,35 +622,36 @@ class Instance(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
+        default = alicloud.ecp.get_zones()
+        default_get_instance_types = alicloud.ecp.get_instance_types()
         default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default = alicloud.ecp.get_zones()
-        default_get_instance_types = alicloud.ecp.get_instance_types()
-        count_size = len(default.zones)
-        zone_id = default.zones[count_size - 1].zone_id
-        instance_type_count_size = len(default_get_instance_types.instance_types)
-        instance_type = default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
-            zone_id=zone_id)
-        group = alicloud.ecs.SecurityGroup("group",
-            name=name,
-            vpc_id=default_get_networks.ids[0])
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=f"{name}-{default_integer['result']}",
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=f"{name}-{default_integer['result']}",
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].zone_id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=f"{name}-{default_integer['result']}",
+            vpc_id=default_network.id)
         default_key_pair = alicloud.ecp.KeyPair("default",
             key_pair_name=f"{name}-{default_integer['result']}",
             public_key_body="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
         default_instance = alicloud.ecp.Instance("default",
-            instance_name=name,
-            description=name,
+            instance_type=default_get_instance_types.instance_types[0].instance_type,
+            image_id="android-image-release5501072_a11_20240530.raw",
+            vswitch_id=default_switch.id,
+            security_group_id=default_security_group.id,
             key_pair_name=default_key_pair.key_pair_name,
-            security_group_id=group.id,
-            vswitch_id=default_get_switches.ids[0],
-            image_id="android_9_0_0_release_2851157_20211201.vhd",
-            instance_type=default_get_instance_types.instance_types[1].instance_type,
             vnc_password="Ecp123",
             payment_type="PayAsYouGo",
+            instance_name=name,
+            description=name,
             force=True)
         ```
 
@@ -689,31 +665,25 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_pay: The auto pay.
-        :param pulumi.Input[bool] auto_renew: The auto renew.
-        :param pulumi.Input[str] description: Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-               start with `http://` and `https`.
-        :param pulumi.Input[int] eip_bandwidth: The eip bandwidth.
-        :param pulumi.Input[bool] force: The force.
-        :param pulumi.Input[str] image_id: The ID Of The Image.
-        :param pulumi.Input[str] instance_name: The name of the instance. It must be 2 to 128 characters in length and must start with an
-               uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-               half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-               the instance.
-        :param pulumi.Input[str] instance_type: Instance Type.
-        :param pulumi.Input[str] key_pair_name: The name of the key pair of the mobile phone instance.
-        :param pulumi.Input[str] payment_type: The payment type.Valid values: `PayAsYouGo`,`Subscription`
-        :param pulumi.Input[str] period: The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-               is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
-        :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-               to `Month`.
-        :param pulumi.Input[str] resolution: The selected resolution for the cloud mobile phone instance.
-        :param pulumi.Input[str] security_group_id: The ID of the security group. The security group is the same as that of the
-               ECS instance.
-        :param pulumi.Input[str] status: Instance status. Valid values: `Running`, `Stopped`.
-        :param pulumi.Input[str] vnc_password: Cloud mobile phone VNC password. The password must be six characters in length and must
-               contain only uppercase, lowercase English letters and Arabic numerals.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[bool] auto_pay: Specifies whether to enable the auto-payment feature. Valid values:
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable the auto-renewal feature. Valid values:
+        :param pulumi.Input[str] description: The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+        :param pulumi.Input[bool] force: Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
+        :param pulumi.Input[str] image_id: The ID of the image.
+        :param pulumi.Input[str] instance_name: The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        :param pulumi.Input[str] instance_type: The specifications of the ECP instance.
+        :param pulumi.Input[str] key_pair_name: The name of the key pair that you want to use to connect to the instance.
+        :param pulumi.Input[str] payment_type: The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+        :param pulumi.Input[str] period: The subscription duration. Default value: `1`. Valid values:
+               - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+               - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] resolution: The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] status: The status of the Instance. Valid values: `Running`, `Stopped`.
+        :param pulumi.Input[str] vnc_password: The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         ...
     @overload
@@ -724,8 +694,7 @@ class Instance(pulumi.CustomResource):
         """
         Provides a Elastic Cloud Phone (ECP) Instance resource.
 
-        For information about Elastic Cloud Phone (ECP) Instance and how to use it,
-        see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
+        For information about Elastic Cloud Phone (ECP) Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
 
         > **NOTE:** Available since v1.158.0.
 
@@ -741,35 +710,36 @@ class Instance(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
+        default = alicloud.ecp.get_zones()
+        default_get_instance_types = alicloud.ecp.get_instance_types()
         default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default = alicloud.ecp.get_zones()
-        default_get_instance_types = alicloud.ecp.get_instance_types()
-        count_size = len(default.zones)
-        zone_id = default.zones[count_size - 1].zone_id
-        instance_type_count_size = len(default_get_instance_types.instance_types)
-        instance_type = default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type
-        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
-            zone_id=zone_id)
-        group = alicloud.ecs.SecurityGroup("group",
-            name=name,
-            vpc_id=default_get_networks.ids[0])
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=f"{name}-{default_integer['result']}",
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=f"{name}-{default_integer['result']}",
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].zone_id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=f"{name}-{default_integer['result']}",
+            vpc_id=default_network.id)
         default_key_pair = alicloud.ecp.KeyPair("default",
             key_pair_name=f"{name}-{default_integer['result']}",
             public_key_body="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
         default_instance = alicloud.ecp.Instance("default",
-            instance_name=name,
-            description=name,
+            instance_type=default_get_instance_types.instance_types[0].instance_type,
+            image_id="android-image-release5501072_a11_20240530.raw",
+            vswitch_id=default_switch.id,
+            security_group_id=default_security_group.id,
             key_pair_name=default_key_pair.key_pair_name,
-            security_group_id=group.id,
-            vswitch_id=default_get_switches.ids[0],
-            image_id="android_9_0_0_release_2851157_20211201.vhd",
-            instance_type=default_get_instance_types.instance_types[1].instance_type,
             vnc_password="Ecp123",
             payment_type="PayAsYouGo",
+            instance_name=name,
+            description=name,
             force=True)
         ```
 
@@ -883,31 +853,25 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_pay: The auto pay.
-        :param pulumi.Input[bool] auto_renew: The auto renew.
-        :param pulumi.Input[str] description: Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-               start with `http://` and `https`.
-        :param pulumi.Input[int] eip_bandwidth: The eip bandwidth.
-        :param pulumi.Input[bool] force: The force.
-        :param pulumi.Input[str] image_id: The ID Of The Image.
-        :param pulumi.Input[str] instance_name: The name of the instance. It must be 2 to 128 characters in length and must start with an
-               uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-               half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-               the instance.
-        :param pulumi.Input[str] instance_type: Instance Type.
-        :param pulumi.Input[str] key_pair_name: The name of the key pair of the mobile phone instance.
-        :param pulumi.Input[str] payment_type: The payment type.Valid values: `PayAsYouGo`,`Subscription`
-        :param pulumi.Input[str] period: The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-               is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
-        :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-               to `Month`.
-        :param pulumi.Input[str] resolution: The selected resolution for the cloud mobile phone instance.
-        :param pulumi.Input[str] security_group_id: The ID of the security group. The security group is the same as that of the
-               ECS instance.
-        :param pulumi.Input[str] status: Instance status. Valid values: `Running`, `Stopped`.
-        :param pulumi.Input[str] vnc_password: Cloud mobile phone VNC password. The password must be six characters in length and must
-               contain only uppercase, lowercase English letters and Arabic numerals.
-        :param pulumi.Input[str] vswitch_id: The vswitch id.
+        :param pulumi.Input[bool] auto_pay: Specifies whether to enable the auto-payment feature. Valid values:
+        :param pulumi.Input[bool] auto_renew: Specifies whether to enable the auto-renewal feature. Valid values:
+        :param pulumi.Input[str] description: The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[int] eip_bandwidth: The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
+        :param pulumi.Input[bool] force: Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
+        :param pulumi.Input[str] image_id: The ID of the image.
+        :param pulumi.Input[str] instance_name: The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        :param pulumi.Input[str] instance_type: The specifications of the ECP instance.
+        :param pulumi.Input[str] key_pair_name: The name of the key pair that you want to use to connect to the instance.
+        :param pulumi.Input[str] payment_type: The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
+        :param pulumi.Input[str] period: The subscription duration. Default value: `1`. Valid values:
+               - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+               - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
+        :param pulumi.Input[str] period_unit: The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
+        :param pulumi.Input[str] resolution: The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
+        :param pulumi.Input[str] security_group_id: The ID of the security group.
+        :param pulumi.Input[str] status: The status of the Instance. Valid values: `Running`, `Stopped`.
+        :param pulumi.Input[str] vnc_password: The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -936,7 +900,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="autoPay")
     def auto_pay(self) -> pulumi.Output[Optional[bool]]:
         """
-        The auto pay.
+        Specifies whether to enable the auto-payment feature. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
@@ -944,7 +908,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[Optional[bool]]:
         """
-        The auto renew.
+        Specifies whether to enable the auto-renewal feature. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
@@ -952,8 +916,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the instance. 2 to 256 English or Chinese characters in length and cannot
-        start with `http://` and `https`.
+        The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -961,7 +924,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="eipBandwidth")
     def eip_bandwidth(self) -> pulumi.Output[Optional[int]]:
         """
-        The eip bandwidth.
+        The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eip_bandwidth` cannot be modified.
         """
         return pulumi.get(self, "eip_bandwidth")
 
@@ -969,7 +932,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        The force.
+        Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -977,18 +940,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="imageId")
     def image_id(self) -> pulumi.Output[str]:
         """
-        The ID Of The Image.
+        The ID of the image.
         """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> pulumi.Output[Optional[str]]:
+    def instance_name(self) -> pulumi.Output[str]:
         """
-        The name of the instance. It must be 2 to 128 characters in length and must start with an
-        uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
-        half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
-        the instance.
+        The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         """
         return pulumi.get(self, "instance_name")
 
@@ -996,7 +956,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        Instance Type.
+        The specifications of the ECP instance.
         """
         return pulumi.get(self, "instance_type")
 
@@ -1004,15 +964,15 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="keyPairName")
     def key_pair_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the key pair of the mobile phone instance.
+        The name of the key pair that you want to use to connect to the instance.
         """
         return pulumi.get(self, "key_pair_name")
 
     @property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> pulumi.Output[Optional[str]]:
+    def payment_type(self) -> pulumi.Output[str]:
         """
-        The payment type.Valid values: `PayAsYouGo`,`Subscription`
+        The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `payment_type` cannot be modified.
         """
         return pulumi.get(self, "payment_type")
 
@@ -1020,8 +980,9 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[str]]:
         """
-        The period. It is valid when `period_unit` is 'Year'. Valid value: `1`, `2`, `3`, `4`, `5`. It
-        is valid when `period_unit` is 'Month'. Valid value: `1`, `2`, `3`, `5`
+        The subscription duration. Default value: `1`. Valid values:
+        - If `period_unit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
+        - If `period_unit` is set to `Year`. Valid values: `1` to `5`.
         """
         return pulumi.get(self, "period")
 
@@ -1029,8 +990,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="periodUnit")
     def period_unit(self) -> pulumi.Output[Optional[str]]:
         """
-        The duration unit that you will buy the resource. Valid value: `Year`,`Month`. Default
-        to `Month`.
+        The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "period_unit")
 
@@ -1038,7 +998,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def resolution(self) -> pulumi.Output[str]:
         """
-        The selected resolution for the cloud mobile phone instance.
+        The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
         """
         return pulumi.get(self, "resolution")
 
@@ -1046,8 +1006,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the security group. The security group is the same as that of the
-        ECS instance.
+        The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1055,7 +1014,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Instance status. Valid values: `Running`, `Stopped`.
+        The status of the Instance. Valid values: `Running`, `Stopped`.
         """
         return pulumi.get(self, "status")
 
@@ -1063,8 +1022,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="vncPassword")
     def vnc_password(self) -> pulumi.Output[Optional[str]]:
         """
-        Cloud mobile phone VNC password. The password must be six characters in length and must
-        contain only uppercase, lowercase English letters and Arabic numerals.
+        The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
         """
         return pulumi.get(self, "vnc_password")
 
@@ -1072,7 +1030,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        The vswitch id.
+        The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 

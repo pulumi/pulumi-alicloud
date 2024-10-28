@@ -18,6 +18,10 @@ namespace Pulumi.AliCloud.Ess.Outputs
         /// </summary>
         public readonly string? Content;
         /// <summary>
+        /// The permissions on the ConfigFileVolume directory.
+        /// </summary>
+        public readonly int? Mode;
+        /// <summary>
         /// The relative file path.
         /// </summary>
         public readonly string? Path;
@@ -26,9 +30,12 @@ namespace Pulumi.AliCloud.Ess.Outputs
         private EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(
             string? content,
 
+            int? mode,
+
             string? path)
         {
             Content = content;
+            Mode = mode;
             Path = path;
         }
     }

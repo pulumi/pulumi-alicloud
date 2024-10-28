@@ -60,6 +60,7 @@ class NodePoolArgs:
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 pre_user_data: Optional[pulumi.Input[str]] = None,
                  private_pool_options: Optional[pulumi.Input['NodePoolPrivatePoolOptionsArgs']] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -144,6 +145,7 @@ class NodePoolArgs:
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
+        :param pulumi.Input[str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
         :param pulumi.Input['NodePoolPrivatePoolOptionsArgs'] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
@@ -156,6 +158,7 @@ class NodePoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[bool] security_hardening_os: Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+               
                > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
@@ -178,12 +181,12 @@ class NodePoolArgs:
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input['NodePoolTeeConfigArgs'] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
         :param pulumi.Input[bool] update_nodes: Synchronously update node labels and taints.
-        :param pulumi.Input[str] user_data: Node custom data.
+        :param pulumi.Input[str] user_data: Node custom data, base64-encoded.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "instance_types", instance_types)
@@ -272,6 +275,8 @@ class NodePoolArgs:
             pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""")
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
+        if pre_user_data is not None:
+            pulumi.set(__self__, "pre_user_data", pre_user_data)
         if private_pool_options is not None:
             pulumi.set(__self__, "private_pool_options", private_pool_options)
         if rds_instances is not None:
@@ -824,6 +829,18 @@ class NodePoolArgs:
         pulumi.set(self, "platform", value)
 
     @property
+    @pulumi.getter(name="preUserData")
+    def pre_user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node pre custom data, base64-encoded, the script executed before the node is initialized.
+        """
+        return pulumi.get(self, "pre_user_data")
+
+    @pre_user_data.setter
+    def pre_user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pre_user_data", value)
+
+    @property
     @pulumi.getter(name="privatePoolOptions")
     def private_pool_options(self) -> Optional[pulumi.Input['NodePoolPrivatePoolOptionsArgs']]:
         """
@@ -961,6 +978,7 @@ class NodePoolArgs:
     def soc_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+
         > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         """
         return pulumi.get(self, "soc_enabled")
@@ -1148,7 +1166,7 @@ class NodePoolArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         """
         return pulumi.get(self, "tags")
 
@@ -1208,7 +1226,7 @@ class NodePoolArgs:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        Node custom data.
+        Node custom data, base64-encoded.
         """
         return pulumi.get(self, "user_data")
 
@@ -1259,6 +1277,7 @@ class _NodePoolState:
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 pre_user_data: Optional[pulumi.Input[str]] = None,
                  private_pool_options: Optional[pulumi.Input['NodePoolPrivatePoolOptionsArgs']] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -1345,6 +1364,7 @@ class _NodePoolState:
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
+        :param pulumi.Input[str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
         :param pulumi.Input['NodePoolPrivatePoolOptionsArgs'] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
@@ -1358,6 +1378,7 @@ class _NodePoolState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[bool] security_hardening_os: Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+               
                > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
@@ -1380,12 +1401,12 @@ class _NodePoolState:
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input['NodePoolTeeConfigArgs'] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
         :param pulumi.Input[bool] update_nodes: Synchronously update node labels and taints.
-        :param pulumi.Input[str] user_data: Node custom data.
+        :param pulumi.Input[str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
         if auto_renew is not None:
@@ -1478,6 +1499,8 @@ class _NodePoolState:
             pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. Operating system release, using `image_type` instead.""")
         if platform is not None:
             pulumi.set(__self__, "platform", platform)
+        if pre_user_data is not None:
+            pulumi.set(__self__, "pre_user_data", pre_user_data)
         if private_pool_options is not None:
             pulumi.set(__self__, "private_pool_options", private_pool_options)
         if rds_instances is not None:
@@ -2034,6 +2057,18 @@ class _NodePoolState:
         pulumi.set(self, "platform", value)
 
     @property
+    @pulumi.getter(name="preUserData")
+    def pre_user_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Node pre custom data, base64-encoded, the script executed before the node is initialized.
+        """
+        return pulumi.get(self, "pre_user_data")
+
+    @pre_user_data.setter
+    def pre_user_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pre_user_data", value)
+
+    @property
     @pulumi.getter(name="privatePoolOptions")
     def private_pool_options(self) -> Optional[pulumi.Input['NodePoolPrivatePoolOptionsArgs']]:
         """
@@ -2183,6 +2218,7 @@ class _NodePoolState:
     def soc_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+
         > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         """
         return pulumi.get(self, "soc_enabled")
@@ -2370,7 +2406,7 @@ class _NodePoolState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         """
         return pulumi.get(self, "tags")
 
@@ -2430,7 +2466,7 @@ class _NodePoolState:
     @pulumi.getter(name="userData")
     def user_data(self) -> Optional[pulumi.Input[str]]:
         """
-        Node custom data.
+        Node custom data, base64-encoded.
         """
         return pulumi.get(self, "user_data")
 
@@ -2494,6 +2530,7 @@ class NodePool(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 pre_user_data: Optional[pulumi.Input[str]] = None,
                  private_pool_options: Optional[pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -2592,6 +2629,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
+        :param pulumi.Input[str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
         :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
@@ -2604,6 +2642,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[bool] security_hardening_os: Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+               
                > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
@@ -2626,12 +2665,12 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
         :param pulumi.Input[bool] update_nodes: Synchronously update node labels and taints.
-        :param pulumi.Input[str] user_data: Node custom data.
+        :param pulumi.Input[str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
         ...
@@ -2706,6 +2745,7 @@ class NodePool(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  period_unit: Optional[pulumi.Input[str]] = None,
                  platform: Optional[pulumi.Input[str]] = None,
+                 pre_user_data: Optional[pulumi.Input[str]] = None,
                  private_pool_options: Optional[pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']]] = None,
                  rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -2790,6 +2830,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
             __props__.__dict__["platform"] = platform
+            __props__.__dict__["pre_user_data"] = pre_user_data
             __props__.__dict__["private_pool_options"] = private_pool_options
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
@@ -2878,6 +2919,7 @@ class NodePool(pulumi.CustomResource):
             period: Optional[pulumi.Input[int]] = None,
             period_unit: Optional[pulumi.Input[str]] = None,
             platform: Optional[pulumi.Input[str]] = None,
+            pre_user_data: Optional[pulumi.Input[str]] = None,
             private_pool_options: Optional[pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']]] = None,
             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -2969,6 +3011,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] period: Node payment period. Its valid value is one of {1, 2, 3, 6, 12}.
         :param pulumi.Input[str] period_unit: Node payment period unit, valid value: `Month`. Default is `Month`.
         :param pulumi.Input[str] platform: Operating system release, using `image_type` instead.
+        :param pulumi.Input[str] pre_user_data: Node pre custom data, base64-encoded, the script executed before the node is initialized.
         :param pulumi.Input[Union['NodePoolPrivatePoolOptionsArgs', 'NodePoolPrivatePoolOptionsArgsDict']] private_pool_options: Private node pool configuration. See `private_pool_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rds_instances: The list of RDS instances.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group
@@ -2982,6 +3025,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
         :param pulumi.Input[bool] security_hardening_os: Alibaba Cloud OS security reinforcement. Default value: `false`. Value:
         :param pulumi.Input[bool] soc_enabled: Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+               
                > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         :param pulumi.Input[int] spot_instance_pools: The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         :param pulumi.Input[bool] spot_instance_remedy: Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If you set the value to true, Auto Scaling attempts to create a new preemptible instance when the system notifies that an existing preemptible instance is about to be reclaimed. Valid values: `true`: enables the supplementation of preemptible instances. `false`: disables the supplementation of preemptible instances.
@@ -3004,12 +3048,12 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[int] system_disk_provisioned_iops: The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}. This parameter is supported only when `system_disk_category` is set to `cloud_auto`.
         :param pulumi.Input[int] system_disk_size: The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
         :param pulumi.Input[str] system_disk_snapshot_policy_id: The ID of the automatic snapshot policy used by the system disk.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NodePoolTaintArgs', 'NodePoolTaintArgsDict']]]] taints: A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
         :param pulumi.Input[Union['NodePoolTeeConfigArgs', 'NodePoolTeeConfigArgsDict']] tee_config: The configuration about confidential computing for the cluster. See `tee_config` below.
         :param pulumi.Input[bool] unschedulable: Whether the node after expansion can be scheduled.
         :param pulumi.Input[bool] update_nodes: Synchronously update node labels and taints.
-        :param pulumi.Input[str] user_data: Node custom data.
+        :param pulumi.Input[str] user_data: Node custom data, base64-encoded.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -3055,6 +3099,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["period"] = period
         __props__.__dict__["period_unit"] = period_unit
         __props__.__dict__["platform"] = platform
+        __props__.__dict__["pre_user_data"] = pre_user_data
         __props__.__dict__["private_pool_options"] = private_pool_options
         __props__.__dict__["rds_instances"] = rds_instances
         __props__.__dict__["resource_group_id"] = resource_group_id
@@ -3419,6 +3464,14 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "platform")
 
     @property
+    @pulumi.getter(name="preUserData")
+    def pre_user_data(self) -> pulumi.Output[Optional[str]]:
+        """
+        Node pre custom data, base64-encoded, the script executed before the node is initialized.
+        """
+        return pulumi.get(self, "pre_user_data")
+
+    @property
     @pulumi.getter(name="privatePoolOptions")
     def private_pool_options(self) -> pulumi.Output[Optional['outputs.NodePoolPrivatePoolOptions']]:
         """
@@ -3520,6 +3573,7 @@ class NodePool(pulumi.CustomResource):
     def soc_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether enable worker node to support soc security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [SOC Reinforcement](https://help.aliyun.com/document_detail/196148.html).
+
         > **NOTE:**  It is forbidden to set both `security_hardening_os` and `soc_enabled` to `true` at the same time.
         """
         return pulumi.get(self, "soc_enabled")
@@ -3647,7 +3701,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://".
+        Add tags only for ECS instances. The maximum length of the tag key is 128 characters. The tag key and value cannot start with aliyun or acs:, or contain https:// or http://.
         """
         return pulumi.get(self, "tags")
 
@@ -3687,7 +3741,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter(name="userData")
     def user_data(self) -> pulumi.Output[Optional[str]]:
         """
-        Node custom data.
+        Node custom data, base64-encoded.
         """
         return pulumi.get(self, "user_data")
 

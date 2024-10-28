@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        /// Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
@@ -76,10 +76,10 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> EncryptAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the disk will be encrypted, conflict with `snapshot_id`.
+        /// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         /// </summary>
         [Output("encrypted")]
-        public Output<bool?> Encrypted { get; private set; } = null!;
+        public Output<bool> Encrypted { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the instance to which the created subscription disk is automatically attached.
@@ -109,10 +109,10 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-        /// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        /// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Output("performanceLevel")]
         public Output<string> PerformanceLevel { get; private set; } = null!;
@@ -124,16 +124,28 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        /// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        /// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+        /// - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+        /// - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+        /// - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+        /// - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        /// - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+        /// - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+        /// - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+        /// - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+        /// - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+        /// - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+        /// - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        /// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         /// </summary>
         [Output("snapshotId")]
-        public Output<string?> SnapshotId { get; private set; } = null!;
+        public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
         /// The disk status.
@@ -227,7 +239,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        /// Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -272,7 +284,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? EncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// If true, the disk will be encrypted, conflict with `snapshot_id`.
+        /// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -305,10 +317,10 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-        /// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        /// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
@@ -320,13 +332,25 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        /// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        /// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+        /// - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+        /// - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+        /// - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+        /// - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        /// - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+        /// - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+        /// - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+        /// - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+        /// - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+        /// - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+        /// - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        /// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
@@ -385,7 +409,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`. Default is `cloud_efficiency`.
+        /// Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -430,7 +454,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? EncryptAlgorithm { get; set; }
 
         /// <summary>
-        /// If true, the disk will be encrypted, conflict with `snapshot_id`.
+        /// Specifies whether to encrypt the disk. Default value: `false`. Valid values:
         /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
@@ -463,10 +487,10 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
-        /// * `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
-        /// * `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
-        /// * `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
-        /// * `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
+        /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
+        /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
+        /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
+        /// - `PL3`: A single ESSD delivers up to 1,000,000 random read/write IOPS.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
@@ -478,13 +502,25 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
+        /// The size of the disk. Unit: GiB. This parameter is required. Valid values:
+        /// - If `category` is set to `cloud`. Valid values: `5` to `2000`.
+        /// - If `category` is set to `cloud_efficiency`. Valid values: `20` to `32768`.
+        /// - If `category` is set to `cloud_ssd`. Valid values: `20` to `32768`.
+        /// - If `category` is set to `cloud_auto`. Valid values: `1` to `65536`.
+        /// - If `category` is set to `cloud_essd_entry`. Valid values: `10` to `32768`.
+        /// - If `category` is set to `elastic_ephemeral_disk_standard`. Valid values: `64` to `8192`.
+        /// - If `category` is set to `elastic_ephemeral_disk_premium`. Valid values: `64` to `8192`.
+        /// - If `category` is set to `cloud_essd`, the valid values are related to `performance_level`. Valid values:
+        /// - If `performance_level` is set to `PL0`. Valid values: `1` to `65536`.
+        /// - If `performance_level` is set to `PL1`. Valid values: `20` to `65536`.
+        /// - If `performance_level` is set to `PL2`. Valid values: `461` to `65536`.
+        /// - If `performance_level` is set to `PL3`. Valid values: `1261` to `65536`.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
+        /// The ID of the snapshot to use to create the disk. **NOTE:** If the size of the snapshot specified by `snapshot_id` is larger than the value of `size`, the size of the created disk is equal to the specified snapshot size. If the size of the snapshot specified by `snapshot_id` is smaller than the value of `size`, the size of the created disk is equal to the value of `size`.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }

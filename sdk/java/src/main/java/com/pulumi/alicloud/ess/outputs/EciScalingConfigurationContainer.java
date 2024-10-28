@@ -192,6 +192,16 @@ public final class EciScalingConfigurationContainer {
      */
     private @Nullable Integer securityContextRunAsUser;
     /**
+     * @return Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+     * 
+     */
+    private @Nullable Boolean stdin;
+    /**
+     * @return Specifies whether to enable the Interaction feature. Valid values: true, false.
+     * 
+     */
+    private @Nullable Boolean tty;
+    /**
      * @return The structure of volumeMounts.
      * See `volume_mounts` below for details.
      * 
@@ -446,6 +456,20 @@ public final class EciScalingConfigurationContainer {
         return Optional.ofNullable(this.securityContextRunAsUser);
     }
     /**
+     * @return Specifies whether container N allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs.
+     * 
+     */
+    public Optional<Boolean> stdin() {
+        return Optional.ofNullable(this.stdin);
+    }
+    /**
+     * @return Specifies whether to enable the Interaction feature. Valid values: true, false.
+     * 
+     */
+    public Optional<Boolean> tty() {
+        return Optional.ofNullable(this.tty);
+    }
+    /**
      * @return The structure of volumeMounts.
      * See `volume_mounts` below for details.
      * 
@@ -504,6 +528,8 @@ public final class EciScalingConfigurationContainer {
         private @Nullable List<String> securityContextCapabilityAdds;
         private @Nullable Boolean securityContextReadOnlyRootFileSystem;
         private @Nullable Integer securityContextRunAsUser;
+        private @Nullable Boolean stdin;
+        private @Nullable Boolean tty;
         private @Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts;
         private @Nullable String workingDir;
         public Builder() {}
@@ -543,6 +569,8 @@ public final class EciScalingConfigurationContainer {
     	      this.securityContextCapabilityAdds = defaults.securityContextCapabilityAdds;
     	      this.securityContextReadOnlyRootFileSystem = defaults.securityContextReadOnlyRootFileSystem;
     	      this.securityContextRunAsUser = defaults.securityContextRunAsUser;
+    	      this.stdin = defaults.stdin;
+    	      this.tty = defaults.tty;
     	      this.volumeMounts = defaults.volumeMounts;
     	      this.workingDir = defaults.workingDir;
         }
@@ -776,6 +804,18 @@ public final class EciScalingConfigurationContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder stdin(@Nullable Boolean stdin) {
+
+            this.stdin = stdin;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tty(@Nullable Boolean tty) {
+
+            this.tty = tty;
+            return this;
+        }
+        @CustomType.Setter
         public Builder volumeMounts(@Nullable List<EciScalingConfigurationContainerVolumeMount> volumeMounts) {
 
             this.volumeMounts = volumeMounts;
@@ -826,6 +866,8 @@ public final class EciScalingConfigurationContainer {
             _resultValue.securityContextCapabilityAdds = securityContextCapabilityAdds;
             _resultValue.securityContextReadOnlyRootFileSystem = securityContextReadOnlyRootFileSystem;
             _resultValue.securityContextRunAsUser = securityContextRunAsUser;
+            _resultValue.stdin = stdin;
+            _resultValue.tty = tty;
             _resultValue.volumeMounts = volumeMounts;
             _resultValue.workingDir = workingDir;
             return _resultValue;

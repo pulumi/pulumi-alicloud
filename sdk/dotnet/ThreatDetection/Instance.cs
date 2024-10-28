@@ -29,6 +29,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Container Image security scan. Interval type, value interval:[0,200000].
+        /// 
         /// &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         /// </summary>
         [Output("containerImageScan")]
@@ -36,19 +37,21 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Container Image security scan. Interval type, value interval:[0,200000].
+        /// 
         /// &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         /// </summary>
         [Output("containerImageScanNew")]
         public Output<string?> ContainerImageScanNew { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
         /// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
         /// </summary>
         [Output("honeypot")]
@@ -71,13 +74,14 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// The payment type of the resource.
+        /// The payment type of the resource
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
         /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+        /// 
         /// &gt; **NOTE:**  must be set when creating a prepaid instance.
         /// </summary>
         [Output("period")]
@@ -91,7 +95,8 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Automatic renewal cycle, in months.
-        /// &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+        /// 
+        /// &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
         /// </summary>
         [Output("renewPeriod")]
         public Output<int> RenewPeriod { get; private set; } = null!;
@@ -100,29 +105,34 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// Automatic renewal period unit, value:
         /// - M: month.
         /// - Y: years.
+        /// 
         /// &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
         /// </summary>
         [Output("renewalPeriodUnit")]
         public Output<string> RenewalPeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal status, default ManualRenewal, valid values:
+        /// Automatic renewal status, value:
         /// - AutoRenewal: automatic renewal.
         /// - ManualRenewal: manual renewal.
+        /// 
+        /// Default ManualRenewal.
         /// </summary>
         [Output("renewalStatus")]
         public Output<string?> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
         /// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+        /// 
         /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Output("sasAntiRansomware")]
         public Output<string?> SasAntiRansomware { get; private set; } = null!;
 
         /// <summary>
-        /// Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-        /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        /// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+        /// 
+        /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
         /// </summary>
         [Output("sasCspm")]
         public Output<string?> SasCspm { get; private set; } = null!;
@@ -145,6 +155,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Output("sasSdk")]
@@ -158,6 +169,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+        /// 
         /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Output("sasSlsStorage")]
@@ -180,17 +192,34 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string?> SasWebguardOrderNum { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
         /// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Output("threatAnalysis")]
         public Output<string?> ThreatAnalysis { get; private set; } = null!;
+
+        /// <summary>
+        /// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+        /// 
+        /// &gt; **NOTE:**  Step size is 1.
+        /// </summary>
+        [Output("threatAnalysisFlow")]
+        public Output<string?> ThreatAnalysisFlow { get; private set; } = null!;
+
+        /// <summary>
+        /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        /// 
+        /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        /// </summary>
+        [Output("threatAnalysisSlsStorage")]
+        public Output<string?> ThreatAnalysisSlsStorage { get; private set; } = null!;
 
         /// <summary>
         /// Threat analysis. Value:
@@ -199,6 +228,14 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         [Output("threatAnalysisSwitch")]
         public Output<string> ThreatAnalysisSwitch { get; private set; } = null!;
+
+        /// <summary>
+        /// Threat analysis and response switch (new), values:
+        /// - 0: No
+        /// - 1: Yes
+        /// </summary>
+        [Output("threatAnalysisSwitch1")]
+        public Output<string> ThreatAnalysisSwitch1 { get; private set; } = null!;
 
         /// <summary>
         /// Number of cores.
@@ -219,6 +256,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Vulnerability repair times, interval type, value range:[20,100000000].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
         /// </summary>
         [Output("vulCount")]
@@ -228,6 +266,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// Vulnerability fix switch. Value:
         /// - 0: No.
         /// - 1: Yes.
+        /// 
         /// &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         /// </summary>
         [Output("vulSwitch")]
@@ -287,6 +326,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Container Image security scan. Interval type, value interval:[0,200000].
+        /// 
         /// &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         /// </summary>
         [Input("containerImageScan")]
@@ -294,6 +334,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Container Image security scan. Interval type, value interval:[0,200000].
+        /// 
         /// &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         /// </summary>
         [Input("containerImageScanNew")]
@@ -301,6 +342,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
         /// </summary>
         [Input("honeypot")]
@@ -323,13 +365,14 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource.
+        /// The payment type of the resource
         /// </summary>
         [Input("paymentType", required: true)]
         public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
         /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+        /// 
         /// &gt; **NOTE:**  must be set when creating a prepaid instance.
         /// </summary>
         [Input("period")]
@@ -343,7 +386,8 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Automatic renewal cycle, in months.
-        /// &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+        /// 
+        /// &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
@@ -352,29 +396,34 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// Automatic renewal period unit, value:
         /// - M: month.
         /// - Y: years.
+        /// 
         /// &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
         /// </summary>
         [Input("renewalPeriodUnit")]
         public Input<string>? RenewalPeriodUnit { get; set; }
 
         /// <summary>
-        /// Automatic renewal status, default ManualRenewal, valid values:
+        /// Automatic renewal status, value:
         /// - AutoRenewal: automatic renewal.
         /// - ManualRenewal: manual renewal.
+        /// 
+        /// Default ManualRenewal.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
         /// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+        /// 
         /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("sasAntiRansomware")]
         public Input<string>? SasAntiRansomware { get; set; }
 
         /// <summary>
-        /// Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-        /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        /// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+        /// 
+        /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
         /// </summary>
         [Input("sasCspm")]
         public Input<string>? SasCspm { get; set; }
@@ -397,6 +446,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("sasSdk")]
@@ -410,6 +460,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+        /// 
         /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("sasSlsStorage")]
@@ -433,10 +484,27 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("threatAnalysis")]
         public Input<string>? ThreatAnalysis { get; set; }
+
+        /// <summary>
+        /// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+        /// 
+        /// &gt; **NOTE:**  Step size is 1.
+        /// </summary>
+        [Input("threatAnalysisFlow")]
+        public Input<string>? ThreatAnalysisFlow { get; set; }
+
+        /// <summary>
+        /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        /// 
+        /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        /// </summary>
+        [Input("threatAnalysisSlsStorage")]
+        public Input<string>? ThreatAnalysisSlsStorage { get; set; }
 
         /// <summary>
         /// Threat analysis. Value:
@@ -445,6 +513,14 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         [Input("threatAnalysisSwitch")]
         public Input<string>? ThreatAnalysisSwitch { get; set; }
+
+        /// <summary>
+        /// Threat analysis and response switch (new), values:
+        /// - 0: No
+        /// - 1: Yes
+        /// </summary>
+        [Input("threatAnalysisSwitch1")]
+        public Input<string>? ThreatAnalysisSwitch1 { get; set; }
 
         /// <summary>
         /// Number of cores.
@@ -465,6 +541,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Vulnerability repair times, interval type, value range:[20,100000000].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
         /// </summary>
         [Input("vulCount")]
@@ -474,6 +551,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// Vulnerability fix switch. Value:
         /// - 0: No.
         /// - 1: Yes.
+        /// 
         /// &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         /// </summary>
         [Input("vulSwitch")]
@@ -495,6 +573,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Container Image security scan. Interval type, value interval:[0,200000].
+        /// 
         /// &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         /// </summary>
         [Input("containerImageScan")]
@@ -502,19 +581,21 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Container Image security scan. Interval type, value interval:[0,200000].
+        /// 
         /// &gt; **NOTE:**  The step size is 20, that is, only multiples of 20 can be filled in.
         /// </summary>
         [Input("containerImageScanNew")]
         public Input<string>? ContainerImageScanNew { get; set; }
 
         /// <summary>
-        /// The creation time of the resource.
+        /// The creation time of the resource
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Number of cloud honeypot licenses. Interval type, value interval:[20,500].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when honeypot_switch = 1, starting with 20.
         /// </summary>
         [Input("honeypot")]
@@ -537,13 +618,14 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// The payment type of the resource.
+        /// The payment type of the resource
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
         /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+        /// 
         /// &gt; **NOTE:**  must be set when creating a prepaid instance.
         /// </summary>
         [Input("period")]
@@ -557,7 +639,8 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Automatic renewal cycle, in months.
-        /// &gt; **NOTE:**  When **RenewalStatus** is set to **AutoRenewal**, it must be set.
+        /// 
+        /// &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
@@ -566,29 +649,34 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// Automatic renewal period unit, value:
         /// - M: month.
         /// - Y: years.
+        /// 
         /// &gt; **NOTE:**  Must be set when RenewalStatus = AutoRenewal.
         /// </summary>
         [Input("renewalPeriodUnit")]
         public Input<string>? RenewalPeriodUnit { get; set; }
 
         /// <summary>
-        /// Automatic renewal status, default ManualRenewal, valid values:
+        /// Automatic renewal status, value:
         /// - AutoRenewal: automatic renewal.
         /// - ManualRenewal: manual renewal.
+        /// 
+        /// Default ManualRenewal.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
         /// Anti-ransomware capacity. Unit: GB. Interval type, value interval:[0,9999999999].
+        /// 
         /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("sasAntiRansomware")]
         public Input<string>? SasAntiRansomware { get; set; }
 
         /// <summary>
-        /// Cloud platform configuration check scan times, interval type, value range:[1000,9999999999].
-        /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 100, that is, only multiples of 10 can be filled in.
+        /// Cloud platform configuration check scan times, interval type, value range:[15000,9999999999].
+        /// 
+        /// &gt; **NOTE:**  You must have sas_cspm_switch = 1 to purchase this module. The step size is 55000, that is, only multiples of 55000 can be filled in.
         /// </summary>
         [Input("sasCspm")]
         public Input<string>? SasCspm { get; set; }
@@ -611,6 +699,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Number of malicious file detections. Unit: 10,000 times. Interval type, value interval:[10,9999999999].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when sas_sdk_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("sasSdk")]
@@ -624,6 +713,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Log analysis storage capacity. Unit: GB. Interval type, value interval:[0,600000].
+        /// 
         /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("sasSlsStorage")]
@@ -646,17 +736,34 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? SasWebguardOrderNum { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Threat Analysis log storage capacity. Interval type, value interval:[0,9999999999].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when Threat_analysis_switch = 1. The step size is 10, that is, only multiples of 10 can be filled in.
         /// </summary>
         [Input("threatAnalysis")]
         public Input<string>? ThreatAnalysis { get; set; }
+
+        /// <summary>
+        /// Threat analysis and response log access traffic. After ThreatAnalysisSwitch1 is selected, it must be selected. Interval type, value interval:[0,9999999999].
+        /// 
+        /// &gt; **NOTE:**  Step size is 1.
+        /// </summary>
+        [Input("threatAnalysisFlow")]
+        public Input<string>? ThreatAnalysisFlow { get; set; }
+
+        /// <summary>
+        /// Threat analysis and response log storage capacity. Interval type, value interval:[0,9999999999].
+        /// 
+        /// &gt; **NOTE:**  The step size is 10, that is, only multiples of 10 can be filled in.
+        /// </summary>
+        [Input("threatAnalysisSlsStorage")]
+        public Input<string>? ThreatAnalysisSlsStorage { get; set; }
 
         /// <summary>
         /// Threat analysis. Value:
@@ -665,6 +772,14 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// </summary>
         [Input("threatAnalysisSwitch")]
         public Input<string>? ThreatAnalysisSwitch { get; set; }
+
+        /// <summary>
+        /// Threat analysis and response switch (new), values:
+        /// - 0: No
+        /// - 1: Yes
+        /// </summary>
+        [Input("threatAnalysisSwitch1")]
+        public Input<string>? ThreatAnalysisSwitch1 { get; set; }
 
         /// <summary>
         /// Number of cores.
@@ -685,6 +800,7 @@ namespace Pulumi.AliCloud.ThreatDetection
 
         /// <summary>
         /// Vulnerability repair times, interval type, value range:[20,100000000].
+        /// 
         /// &gt; **NOTE:**  This module can only be purchased when vul_switch = 1. Only when the version_code value is level7 or level10. other versions do not need to be purchased separately.
         /// </summary>
         [Input("vulCount")]
@@ -694,6 +810,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// Vulnerability fix switch. Value:
         /// - 0: No.
         /// - 1: Yes.
+        /// 
         /// &gt; **NOTE:**  When the value of version_code is level7 or level10, the purchase is allowed. Other versions do not need to be purchased separately.
         /// </summary>
         [Input("vulSwitch")]

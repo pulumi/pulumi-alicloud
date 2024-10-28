@@ -15,8 +15,6 @@ var _ = internal.GetEnvOrDefault
 
 type InstanceEcsList struct {
 	// The ID of the ECS instance.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	EcsId *string `pulumi:"ecsId"`
 }
 
@@ -33,8 +31,6 @@ type InstanceEcsListInput interface {
 
 type InstanceEcsListArgs struct {
 	// The ID of the ECS instance.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
 	EcsId pulumi.StringPtrInput `pulumi:"ecsId"`
 }
 
@@ -90,8 +86,6 @@ func (o InstanceEcsListOutput) ToInstanceEcsListOutputWithContext(ctx context.Co
 }
 
 // The ID of the ECS instance.
-//
-// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o InstanceEcsListOutput) EcsId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceEcsList) *string { return v.EcsId }).(pulumi.StringPtrOutput)
 }

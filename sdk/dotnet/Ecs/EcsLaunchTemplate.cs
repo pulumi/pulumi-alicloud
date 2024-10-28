@@ -201,6 +201,28 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> HostName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to enable access to instance metadata. Valid values:
+        /// - enabled: Enabled.
+        /// - disabled: Disabled.
+        /// </summary>
+        [Output("httpEndpoint")]
+        public Output<string> HttpEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// </summary>
+        [Output("httpPutResponseHopLimit")]
+        public Output<int> HttpPutResponseHopLimit { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+        /// - optional: Not mandatory.
+        /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+        /// </summary>
+        [Output("httpTokens")]
+        public Output<string> HttpTokens { get; private set; } = null!;
+
+        /// <summary>
         /// The Image ID.
         /// </summary>
         [Output("imageId")]
@@ -547,6 +569,28 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HostName { get; set; }
 
         /// <summary>
+        /// Whether to enable access to instance metadata. Valid values:
+        /// - enabled: Enabled.
+        /// - disabled: Disabled.
+        /// </summary>
+        [Input("httpEndpoint")]
+        public Input<string>? HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// </summary>
+        [Input("httpPutResponseHopLimit")]
+        public Input<int>? HttpPutResponseHopLimit { get; set; }
+
+        /// <summary>
+        /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+        /// - optional: Not mandatory.
+        /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+        /// </summary>
+        [Input("httpTokens")]
+        public Input<string>? HttpTokens { get; set; }
+
+        /// <summary>
         /// The Image ID.
         /// </summary>
         [Input("imageId")]
@@ -871,6 +915,28 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("hostName")]
         public Input<string>? HostName { get; set; }
+
+        /// <summary>
+        /// Whether to enable access to instance metadata. Valid values:
+        /// - enabled: Enabled.
+        /// - disabled: Disabled.
+        /// </summary>
+        [Input("httpEndpoint")]
+        public Input<string>? HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// The HTTP PUT response hop limit required for instance metadata requests.
+        /// </summary>
+        [Input("httpPutResponseHopLimit")]
+        public Input<int>? HttpPutResponseHopLimit { get; set; }
+
+        /// <summary>
+        /// Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+        /// - optional: Not mandatory.
+        /// - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
+        /// </summary>
+        [Input("httpTokens")]
+        public Input<string>? HttpTokens { get; set; }
 
         /// <summary>
         /// The Image ID.

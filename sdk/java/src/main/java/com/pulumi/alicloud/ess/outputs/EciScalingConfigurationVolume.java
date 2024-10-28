@@ -22,6 +22,11 @@ public final class EciScalingConfigurationVolume {
      */
     private @Nullable List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths;
     /**
+     * @return The default permissions on the ConfigFileVolume.
+     * 
+     */
+    private @Nullable Integer configFileVolumeDefaultMode;
+    /**
      * @return The ID of DiskVolume.
      * 
      */
@@ -36,6 +41,16 @@ public final class EciScalingConfigurationVolume {
      * 
      */
     private @Nullable String diskVolumeFsType;
+    /**
+     * @return The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+     * 
+     */
+    private @Nullable String emptyDirVolumeMedium;
+    /**
+     * @return The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+     * 
+     */
+    private @Nullable String emptyDirVolumeSizeLimit;
     /**
      * @return The name of the FlexVolume driver.
      * 
@@ -53,6 +68,16 @@ public final class EciScalingConfigurationVolume {
      * 
      */
     private @Nullable String flexVolumeOptions;
+    /**
+     * @return The absolute path on the host.
+     * 
+     */
+    private @Nullable String hostPathVolumePath;
+    /**
+     * @return The type of the host path. Examples: File, Directory, and Socket.
+     * 
+     */
+    private @Nullable String hostPathVolumeType;
     /**
      * @return The name of the volume.
      * 
@@ -91,6 +116,13 @@ public final class EciScalingConfigurationVolume {
         return this.configFileVolumeConfigFileToPaths == null ? List.of() : this.configFileVolumeConfigFileToPaths;
     }
     /**
+     * @return The default permissions on the ConfigFileVolume.
+     * 
+     */
+    public Optional<Integer> configFileVolumeDefaultMode() {
+        return Optional.ofNullable(this.configFileVolumeDefaultMode);
+    }
+    /**
      * @return The ID of DiskVolume.
      * 
      */
@@ -110,6 +142,20 @@ public final class EciScalingConfigurationVolume {
      */
     public Optional<String> diskVolumeFsType() {
         return Optional.ofNullable(this.diskVolumeFsType);
+    }
+    /**
+     * @return The storage medium of the EmptyDirVolume. If you leave this parameter empty, the file system of the node is used as the storage medium. If you set this parameter to memory, the memory is used as the storage medium.
+     * 
+     */
+    public Optional<String> emptyDirVolumeMedium() {
+        return Optional.ofNullable(this.emptyDirVolumeMedium);
+    }
+    /**
+     * @return The storage size of the EmptyDirVolume. Unit: GiB or MiB.
+     * 
+     */
+    public Optional<String> emptyDirVolumeSizeLimit() {
+        return Optional.ofNullable(this.emptyDirVolumeSizeLimit);
     }
     /**
      * @return The name of the FlexVolume driver.
@@ -133,6 +179,20 @@ public final class EciScalingConfigurationVolume {
      */
     public Optional<String> flexVolumeOptions() {
         return Optional.ofNullable(this.flexVolumeOptions);
+    }
+    /**
+     * @return The absolute path on the host.
+     * 
+     */
+    public Optional<String> hostPathVolumePath() {
+        return Optional.ofNullable(this.hostPathVolumePath);
+    }
+    /**
+     * @return The type of the host path. Examples: File, Directory, and Socket.
+     * 
+     */
+    public Optional<String> hostPathVolumeType() {
+        return Optional.ofNullable(this.hostPathVolumeType);
     }
     /**
      * @return The name of the volume.
@@ -182,12 +242,17 @@ public final class EciScalingConfigurationVolume {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath> configFileVolumeConfigFileToPaths;
+        private @Nullable Integer configFileVolumeDefaultMode;
         private @Nullable String diskVolumeDiskId;
         private @Nullable Integer diskVolumeDiskSize;
         private @Nullable String diskVolumeFsType;
+        private @Nullable String emptyDirVolumeMedium;
+        private @Nullable String emptyDirVolumeSizeLimit;
         private @Nullable String flexVolumeDriver;
         private @Nullable String flexVolumeFsType;
         private @Nullable String flexVolumeOptions;
+        private @Nullable String hostPathVolumePath;
+        private @Nullable String hostPathVolumeType;
         private @Nullable String name;
         private @Nullable String nfsVolumePath;
         private @Nullable Boolean nfsVolumeReadOnly;
@@ -197,12 +262,17 @@ public final class EciScalingConfigurationVolume {
         public Builder(EciScalingConfigurationVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configFileVolumeConfigFileToPaths = defaults.configFileVolumeConfigFileToPaths;
+    	      this.configFileVolumeDefaultMode = defaults.configFileVolumeDefaultMode;
     	      this.diskVolumeDiskId = defaults.diskVolumeDiskId;
     	      this.diskVolumeDiskSize = defaults.diskVolumeDiskSize;
     	      this.diskVolumeFsType = defaults.diskVolumeFsType;
+    	      this.emptyDirVolumeMedium = defaults.emptyDirVolumeMedium;
+    	      this.emptyDirVolumeSizeLimit = defaults.emptyDirVolumeSizeLimit;
     	      this.flexVolumeDriver = defaults.flexVolumeDriver;
     	      this.flexVolumeFsType = defaults.flexVolumeFsType;
     	      this.flexVolumeOptions = defaults.flexVolumeOptions;
+    	      this.hostPathVolumePath = defaults.hostPathVolumePath;
+    	      this.hostPathVolumeType = defaults.hostPathVolumeType;
     	      this.name = defaults.name;
     	      this.nfsVolumePath = defaults.nfsVolumePath;
     	      this.nfsVolumeReadOnly = defaults.nfsVolumeReadOnly;
@@ -218,6 +288,12 @@ public final class EciScalingConfigurationVolume {
         }
         public Builder configFileVolumeConfigFileToPaths(EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath... configFileVolumeConfigFileToPaths) {
             return configFileVolumeConfigFileToPaths(List.of(configFileVolumeConfigFileToPaths));
+        }
+        @CustomType.Setter
+        public Builder configFileVolumeDefaultMode(@Nullable Integer configFileVolumeDefaultMode) {
+
+            this.configFileVolumeDefaultMode = configFileVolumeDefaultMode;
+            return this;
         }
         @CustomType.Setter
         public Builder diskVolumeDiskId(@Nullable String diskVolumeDiskId) {
@@ -238,6 +314,18 @@ public final class EciScalingConfigurationVolume {
             return this;
         }
         @CustomType.Setter
+        public Builder emptyDirVolumeMedium(@Nullable String emptyDirVolumeMedium) {
+
+            this.emptyDirVolumeMedium = emptyDirVolumeMedium;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder emptyDirVolumeSizeLimit(@Nullable String emptyDirVolumeSizeLimit) {
+
+            this.emptyDirVolumeSizeLimit = emptyDirVolumeSizeLimit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder flexVolumeDriver(@Nullable String flexVolumeDriver) {
 
             this.flexVolumeDriver = flexVolumeDriver;
@@ -253,6 +341,18 @@ public final class EciScalingConfigurationVolume {
         public Builder flexVolumeOptions(@Nullable String flexVolumeOptions) {
 
             this.flexVolumeOptions = flexVolumeOptions;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostPathVolumePath(@Nullable String hostPathVolumePath) {
+
+            this.hostPathVolumePath = hostPathVolumePath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostPathVolumeType(@Nullable String hostPathVolumeType) {
+
+            this.hostPathVolumeType = hostPathVolumeType;
             return this;
         }
         @CustomType.Setter
@@ -288,12 +388,17 @@ public final class EciScalingConfigurationVolume {
         public EciScalingConfigurationVolume build() {
             final var _resultValue = new EciScalingConfigurationVolume();
             _resultValue.configFileVolumeConfigFileToPaths = configFileVolumeConfigFileToPaths;
+            _resultValue.configFileVolumeDefaultMode = configFileVolumeDefaultMode;
             _resultValue.diskVolumeDiskId = diskVolumeDiskId;
             _resultValue.diskVolumeDiskSize = diskVolumeDiskSize;
             _resultValue.diskVolumeFsType = diskVolumeFsType;
+            _resultValue.emptyDirVolumeMedium = emptyDirVolumeMedium;
+            _resultValue.emptyDirVolumeSizeLimit = emptyDirVolumeSizeLimit;
             _resultValue.flexVolumeDriver = flexVolumeDriver;
             _resultValue.flexVolumeFsType = flexVolumeFsType;
             _resultValue.flexVolumeOptions = flexVolumeOptions;
+            _resultValue.hostPathVolumePath = hostPathVolumePath;
+            _resultValue.hostPathVolumeType = hostPathVolumeType;
             _resultValue.name = name;
             _resultValue.nfsVolumePath = nfsVolumePath;
             _resultValue.nfsVolumeReadOnly = nfsVolumeReadOnly;

@@ -5,9 +5,11 @@ package com.pulumi.alicloud.ess.inputs;
 
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationAcrRegistryInfoArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationContainerArgs;
+import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationDnsConfigOptionArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationHostAliasArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationImageRegistryCredentialArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationInitContainerArgs;
+import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationSecurityContextSysctlArgs;
 import com.pulumi.alicloud.ess.inputs.EciScalingConfigurationVolumeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -136,6 +138,21 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
+     * Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+     * 
+     */
+    @Import(name="costOptimization")
+    private @Nullable Output<Boolean> costOptimization;
+
+    /**
+     * @return Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+     * 
+     */
+    public Optional<Output<Boolean>> costOptimization() {
+        return Optional.ofNullable(this.costOptimization);
+    }
+
+    /**
      * The amount of CPU resources allocated to the container group.
      * 
      */
@@ -195,6 +212,23 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+     * details.
+     * 
+     */
+    @Import(name="dnsConfigOptions")
+    private @Nullable Output<List<EciScalingConfigurationDnsConfigOptionArgs>> dnsConfigOptions;
+
+    /**
+     * @return The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+     * details.
+     * 
+     */
+    public Optional<Output<List<EciScalingConfigurationDnsConfigOptionArgs>>> dnsConfigOptions() {
+        return Optional.ofNullable(this.dnsConfigOptions);
     }
 
     /**
@@ -382,6 +416,21 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
+     * The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+     * 
+     */
+    @Import(name="instanceFamilyLevel")
+    private @Nullable Output<String> instanceFamilyLevel;
+
+    /**
+     * @return The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+     * 
+     */
+    public Optional<Output<String>> instanceFamilyLevel() {
+        return Optional.ofNullable(this.instanceFamilyLevel);
+    }
+
+    /**
      * The specified ECS instance types. You can specify up to five ECS instance types.
      * 
      */
@@ -523,6 +572,23 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
+     * The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+     * details.
+     * 
+     */
+    @Import(name="securityContextSysctls")
+    private @Nullable Output<List<EciScalingConfigurationSecurityContextSysctlArgs>> securityContextSysctls;
+
+    /**
+     * @return The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+     * details.
+     * 
+     */
+    public Optional<Output<List<EciScalingConfigurationSecurityContextSysctlArgs>>> securityContextSysctls() {
+        return Optional.ofNullable(this.securityContextSysctls);
+    }
+
+    /**
      * ID of the security group used to create new instance. It is conflict
      * with `security_group_ids`.
      * 
@@ -634,10 +700,12 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         this.autoMatchImageCache = $.autoMatchImageCache;
         this.containerGroupName = $.containerGroupName;
         this.containers = $.containers;
+        this.costOptimization = $.costOptimization;
         this.cpu = $.cpu;
         this.cpuOptionsCore = $.cpuOptionsCore;
         this.cpuOptionsThreadsPerCore = $.cpuOptionsThreadsPerCore;
         this.description = $.description;
+        this.dnsConfigOptions = $.dnsConfigOptions;
         this.dnsPolicy = $.dnsPolicy;
         this.egressBandwidth = $.egressBandwidth;
         this.eipBandwidth = $.eipBandwidth;
@@ -650,6 +718,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         this.imageSnapshotId = $.imageSnapshotId;
         this.ingressBandwidth = $.ingressBandwidth;
         this.initContainers = $.initContainers;
+        this.instanceFamilyLevel = $.instanceFamilyLevel;
         this.instanceTypes = $.instanceTypes;
         this.ipv6AddressCount = $.ipv6AddressCount;
         this.loadBalancerWeight = $.loadBalancerWeight;
@@ -659,6 +728,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         this.restartPolicy = $.restartPolicy;
         this.scalingConfigurationName = $.scalingConfigurationName;
         this.scalingGroupId = $.scalingGroupId;
+        this.securityContextSysctls = $.securityContextSysctls;
         this.securityGroupId = $.securityGroupId;
         this.spotPriceLimit = $.spotPriceLimit;
         this.spotStrategy = $.spotStrategy;
@@ -857,6 +927,27 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
+         * @param costOptimization Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder costOptimization(@Nullable Output<Boolean> costOptimization) {
+            $.costOptimization = costOptimization;
+            return this;
+        }
+
+        /**
+         * @param costOptimization Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder costOptimization(Boolean costOptimization) {
+            return costOptimization(Output.of(costOptimization));
+        }
+
+        /**
          * @param cpu The amount of CPU resources allocated to the container group.
          * 
          * @return builder
@@ -940,6 +1031,40 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param dnsConfigOptions The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+         * details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsConfigOptions(@Nullable Output<List<EciScalingConfigurationDnsConfigOptionArgs>> dnsConfigOptions) {
+            $.dnsConfigOptions = dnsConfigOptions;
+            return this;
+        }
+
+        /**
+         * @param dnsConfigOptions The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+         * details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsConfigOptions(List<EciScalingConfigurationDnsConfigOptionArgs> dnsConfigOptions) {
+            return dnsConfigOptions(Output.of(dnsConfigOptions));
+        }
+
+        /**
+         * @param dnsConfigOptions The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dns_config_options` below for
+         * details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsConfigOptions(EciScalingConfigurationDnsConfigOptionArgs... dnsConfigOptions) {
+            return dnsConfigOptions(List.of(dnsConfigOptions));
         }
 
         /**
@@ -1230,6 +1355,27 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         }
 
         /**
+         * @param instanceFamilyLevel The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFamilyLevel(@Nullable Output<String> instanceFamilyLevel) {
+            $.instanceFamilyLevel = instanceFamilyLevel;
+            return this;
+        }
+
+        /**
+         * @param instanceFamilyLevel The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFamilyLevel(String instanceFamilyLevel) {
+            return instanceFamilyLevel(Output.of(instanceFamilyLevel));
+        }
+
+        /**
          * @param instanceTypes The specified ECS instance types. You can specify up to five ECS instance types.
          * 
          * @return builder
@@ -1432,6 +1578,40 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
          */
         public Builder scalingGroupId(String scalingGroupId) {
             return scalingGroupId(Output.of(scalingGroupId));
+        }
+
+        /**
+         * @param securityContextSysctls The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+         * details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextSysctls(@Nullable Output<List<EciScalingConfigurationSecurityContextSysctlArgs>> securityContextSysctls) {
+            $.securityContextSysctls = securityContextSysctls;
+            return this;
+        }
+
+        /**
+         * @param securityContextSysctls The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+         * details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextSysctls(List<EciScalingConfigurationSecurityContextSysctlArgs> securityContextSysctls) {
+            return securityContextSysctls(Output.of(securityContextSysctls));
+        }
+
+        /**
+         * @param securityContextSysctls The system information about the security context in which the elastic container instance is run.   See `security_context_sysctls` below for
+         * details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityContextSysctls(EciScalingConfigurationSecurityContextSysctlArgs... securityContextSysctls) {
+            return securityContextSysctls(List.of(securityContextSysctls));
         }
 
         /**
