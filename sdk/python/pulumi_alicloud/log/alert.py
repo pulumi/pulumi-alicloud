@@ -1251,14 +1251,14 @@ class Alert(pulumi.CustomResource):
                 "annotations": {},
                 "tokens": {
                     "interval_minute": "5",
-                    "default_action_policy": "sls.app.ack.builtin",
-                    "default_severity": "6",
-                    "send_resolved": "false",
-                    "default_project": example.project_name,
-                    "default_logstore": "k8s-event",
-                    "default_repeat_interval": "4h",
+                    "default.action_policy": "sls.app.ack.builtin",
+                    "default.severity": "6",
+                    "sendResolved": "false",
+                    "default.project": example.project_name,
+                    "default.logstore": "k8s-event",
+                    "default.repeatInterval": "4h",
                     "trigger_threshold": "1",
-                    "default_cluster_id": "example-cluster-id",
+                    "default.clusterId": "example-cluster-id",
                 },
             })
         ```
@@ -1549,14 +1549,14 @@ class Alert(pulumi.CustomResource):
                 "annotations": {},
                 "tokens": {
                     "interval_minute": "5",
-                    "default_action_policy": "sls.app.ack.builtin",
-                    "default_severity": "6",
-                    "send_resolved": "false",
-                    "default_project": example.project_name,
-                    "default_logstore": "k8s-event",
-                    "default_repeat_interval": "4h",
+                    "default.action_policy": "sls.app.ack.builtin",
+                    "default.severity": "6",
+                    "sendResolved": "false",
+                    "default.project": example.project_name,
+                    "default.logstore": "k8s-event",
+                    "default.repeatInterval": "4h",
                     "trigger_threshold": "1",
-                    "default_cluster_id": "example-cluster-id",
+                    "default.clusterId": "example-cluster-id",
                 },
             })
         ```
