@@ -210,7 +210,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/switch:Switch")
 public class Switch extends com.pulumi.resources.CustomResource {
     /**
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
+     * Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -221,21 +221,21 @@ public class Switch extends com.pulumi.resources.CustomResource {
     private Output<String> availabilityZone;
 
     /**
-     * @return Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
+     * @return Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
      * 
      */
     public Output<String> availabilityZone() {
         return this.availabilityZone;
     }
     /**
-     * The IPv4 CIDR block of the VSwitch.
+     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
      * 
      */
     @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
-     * @return The IPv4 CIDR block of the VSwitch.
+     * @return The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
      * 
      */
     public Output<String> cidrBlock() {
@@ -271,8 +271,6 @@ public class Switch extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether the IPv6 function is enabled in the switch. Value:
-     * - **true**: enables IPv6.
-     * - **false** (default): IPv6 is not enabled.
      * 
      */
     @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
@@ -280,8 +278,6 @@ public class Switch extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether the IPv6 function is enabled in the switch. Value:
-     * - **true**: enables IPv6.
-     * - **false** (default): IPv6 is not enabled.
      * 
      */
     public Output<Optional<Boolean>> enableIpv6() {
@@ -316,7 +312,21 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.ipv6CidrBlockMask;
     }
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isDefault;
+
+    /**
+     * @return Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> isDefault() {
+        return Codegen.optional(this.isDefault);
+    }
+    /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -327,7 +337,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
+     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
      * 
      */
     public Output<String> name() {
@@ -362,18 +372,14 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The VPC ID.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPC ID.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * @return The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
      * 
      */
     public Output<String> vpcId() {
@@ -420,7 +426,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Switch(java.lang.String name, SwitchArgs args) {
+    public Switch(java.lang.String name, @Nullable SwitchArgs args) {
         this(name, args, null);
     }
     /**
@@ -429,7 +435,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Switch(java.lang.String name, SwitchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Switch(java.lang.String name, @Nullable SwitchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:vpc/switch:Switch", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -437,7 +443,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
         super("alicloud:vpc/switch:Switch", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static SwitchArgs makeArgs(SwitchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static SwitchArgs makeArgs(@Nullable SwitchArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

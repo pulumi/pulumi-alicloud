@@ -144,13 +144,13 @@ namespace Pulumi.AliCloud.Vpc
     public partial class Switch : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 CIDR block of the VSwitch.
+        /// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         /// </summary>
         [Output("cidrBlock")]
         public Output<string> CidrBlock { get; private set; } = null!;
@@ -169,8 +169,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Whether the IPv6 function is enabled in the switch. Value:
-        /// - **true**: enables IPv6.
-        /// - **false** (default): IPv6 is not enabled.
         /// </summary>
         [Output("enableIpv6")]
         public Output<bool?> EnableIpv6 { get; private set; } = null!;
@@ -188,7 +186,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<int> Ipv6CidrBlockMask { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        /// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+        /// </summary>
+        [Output("isDefault")]
+        public Output<bool?> IsDefault { get; private set; } = null!;
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -206,9 +210,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC ID.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -233,7 +235,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Switch(string name, SwitchArgs args, CustomResourceOptions? options = null)
+        public Switch(string name, SwitchArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:vpc/switch:Switch", name, args ?? new SwitchArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -272,16 +274,16 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SwitchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// The IPv4 CIDR block of the VSwitch.
+        /// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         /// </summary>
-        [Input("cidrBlock", required: true)]
-        public Input<string> CidrBlock { get; set; } = null!;
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
 
         /// <summary>
         /// The description of VSwitch.
@@ -291,8 +293,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Whether the IPv6 function is enabled in the switch. Value:
-        /// - **true**: enables IPv6.
-        /// - **false** (default): IPv6 is not enabled.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
@@ -304,7 +304,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? Ipv6CidrBlockMask { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        /// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -322,12 +328,10 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The VPC ID.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
         /// </summary>
-        [Input("vpcId", required: true)]
-        public Input<string> VpcId { get; set; } = null!;
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         /// <summary>
         /// The name of the VSwitch.
@@ -350,13 +354,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SwitchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        /// Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// The IPv4 CIDR block of the VSwitch.
+        /// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
         /// </summary>
         [Input("cidrBlock")]
         public Input<string>? CidrBlock { get; set; }
@@ -375,8 +379,6 @@ namespace Pulumi.AliCloud.Vpc
 
         /// <summary>
         /// Whether the IPv6 function is enabled in the switch. Value:
-        /// - **true**: enables IPv6.
-        /// - **false** (default): IPv6 is not enabled.
         /// </summary>
         [Input("enableIpv6")]
         public Input<bool>? EnableIpv6 { get; set; }
@@ -394,7 +396,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? Ipv6CidrBlockMask { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        /// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+        /// </summary>
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
+
+        /// <summary>
+        /// Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -418,9 +426,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The VPC ID.
-        /// 
-        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

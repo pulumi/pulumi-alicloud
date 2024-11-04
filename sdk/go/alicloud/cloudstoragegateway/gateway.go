@@ -14,9 +14,89 @@ import (
 
 // Provides a Cloud Storage Gateway Gateway resource.
 //
-// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
+// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/csg/developer-reference/api-mnz46x).
 //
 // > **NOTE:** Available since v1.132.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudstoragegateway"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultStorageBundle, err := cloudstoragegateway.NewStorageBundle(ctx, "default", &cloudstoragegateway.StorageBundleArgs{
+//				StorageBundleName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+//				VpcId:       defaultNetwork.ID(),
+//				CidrBlock:   pulumi.String("192.168.192.0/24"),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudstoragegateway.NewGateway(ctx, "default", &cloudstoragegateway.GatewayArgs{
+//				StorageBundleId:        defaultStorageBundle.ID(),
+//				Type:                   pulumi.String("File"),
+//				Location:               pulumi.String("Cloud"),
+//				GatewayName:            pulumi.String(name),
+//				GatewayClass:           pulumi.String("Standard"),
+//				VswitchId:              defaultSwitch.ID(),
+//				PublicNetworkBandwidth: pulumi.Int(50),
+//				PaymentType:            pulumi.String("PayAsYouGo"),
+//				Description:            pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -30,21 +110,21 @@ type Gateway struct {
 
 	// The description of the gateway.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+	// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
 	GatewayClass pulumi.StringPtrOutput `pulumi:"gatewayClass"`
-	// The name of the gateway.
+	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName pulumi.StringOutput `pulumi:"gatewayName"`
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The Payment type of gateway. Valid values: `PayAsYouGo`.
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `paymentType` can be set to `Subscription`.
 	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
-	// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth pulumi.IntOutput `pulumi:"publicNetworkBandwidth"`
-	// The reason detail of gateway.
+	// The detailed reason why you want to delete the gateway.
 	ReasonDetail pulumi.StringPtrOutput `pulumi:"reasonDetail"`
-	// The reason type when user deletes the gateway.
+	// The type of the reason why you want to delete the gateway.
 	ReasonType pulumi.StringPtrOutput `pulumi:"reasonType"`
-	// Whether to release the gateway due to expiration.
+	// Specifies whether to release the gateway after the subscription expires. Valid values:
 	ReleaseAfterExpiration pulumi.BoolPtrOutput `pulumi:"releaseAfterExpiration"`
 	// The status of the Gateway.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -52,7 +132,7 @@ type Gateway struct {
 	StorageBundleId pulumi.StringOutput `pulumi:"storageBundleId"`
 	// The type of the gateway. Valid values: `File`, `Iscsi`.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The ID of the vSwitch.
+	// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 }
 
@@ -100,21 +180,21 @@ func GetGateway(ctx *pulumi.Context,
 type gatewayState struct {
 	// The description of the gateway.
 	Description *string `pulumi:"description"`
-	// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+	// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
 	GatewayClass *string `pulumi:"gatewayClass"`
-	// The name of the gateway.
+	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName *string `pulumi:"gatewayName"`
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
 	Location *string `pulumi:"location"`
-	// The Payment type of gateway. Valid values: `PayAsYouGo`.
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `paymentType` can be set to `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth *int `pulumi:"publicNetworkBandwidth"`
-	// The reason detail of gateway.
+	// The detailed reason why you want to delete the gateway.
 	ReasonDetail *string `pulumi:"reasonDetail"`
-	// The reason type when user deletes the gateway.
+	// The type of the reason why you want to delete the gateway.
 	ReasonType *string `pulumi:"reasonType"`
-	// Whether to release the gateway due to expiration.
+	// Specifies whether to release the gateway after the subscription expires. Valid values:
 	ReleaseAfterExpiration *bool `pulumi:"releaseAfterExpiration"`
 	// The status of the Gateway.
 	Status *string `pulumi:"status"`
@@ -122,28 +202,28 @@ type gatewayState struct {
 	StorageBundleId *string `pulumi:"storageBundleId"`
 	// The type of the gateway. Valid values: `File`, `Iscsi`.
 	Type *string `pulumi:"type"`
-	// The ID of the vSwitch.
+	// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
 type GatewayState struct {
 	// The description of the gateway.
 	Description pulumi.StringPtrInput
-	// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+	// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
 	GatewayClass pulumi.StringPtrInput
-	// The name of the gateway.
+	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName pulumi.StringPtrInput
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
 	Location pulumi.StringPtrInput
-	// The Payment type of gateway. Valid values: `PayAsYouGo`.
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `paymentType` can be set to `Subscription`.
 	PaymentType pulumi.StringPtrInput
-	// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth pulumi.IntPtrInput
-	// The reason detail of gateway.
+	// The detailed reason why you want to delete the gateway.
 	ReasonDetail pulumi.StringPtrInput
-	// The reason type when user deletes the gateway.
+	// The type of the reason why you want to delete the gateway.
 	ReasonType pulumi.StringPtrInput
-	// Whether to release the gateway due to expiration.
+	// Specifies whether to release the gateway after the subscription expires. Valid values:
 	ReleaseAfterExpiration pulumi.BoolPtrInput
 	// The status of the Gateway.
 	Status pulumi.StringPtrInput
@@ -151,7 +231,7 @@ type GatewayState struct {
 	StorageBundleId pulumi.StringPtrInput
 	// The type of the gateway. Valid values: `File`, `Iscsi`.
 	Type pulumi.StringPtrInput
-	// The ID of the vSwitch.
+	// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -162,27 +242,27 @@ func (GatewayState) ElementType() reflect.Type {
 type gatewayArgs struct {
 	// The description of the gateway.
 	Description *string `pulumi:"description"`
-	// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+	// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
 	GatewayClass *string `pulumi:"gatewayClass"`
-	// The name of the gateway.
+	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName string `pulumi:"gatewayName"`
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
 	Location string `pulumi:"location"`
-	// The Payment type of gateway. Valid values: `PayAsYouGo`.
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `paymentType` can be set to `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth *int `pulumi:"publicNetworkBandwidth"`
-	// The reason detail of gateway.
+	// The detailed reason why you want to delete the gateway.
 	ReasonDetail *string `pulumi:"reasonDetail"`
-	// The reason type when user deletes the gateway.
+	// The type of the reason why you want to delete the gateway.
 	ReasonType *string `pulumi:"reasonType"`
-	// Whether to release the gateway due to expiration.
+	// Specifies whether to release the gateway after the subscription expires. Valid values:
 	ReleaseAfterExpiration *bool `pulumi:"releaseAfterExpiration"`
 	// The ID of the gateway cluster.
 	StorageBundleId string `pulumi:"storageBundleId"`
 	// The type of the gateway. Valid values: `File`, `Iscsi`.
 	Type string `pulumi:"type"`
-	// The ID of the vSwitch.
+	// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -190,27 +270,27 @@ type gatewayArgs struct {
 type GatewayArgs struct {
 	// The description of the gateway.
 	Description pulumi.StringPtrInput
-	// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+	// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
 	GatewayClass pulumi.StringPtrInput
-	// The name of the gateway.
+	// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 	GatewayName pulumi.StringInput
 	// The location of the gateway. Valid values: `Cloud`, `On_Premise`.
 	Location pulumi.StringInput
-	// The Payment type of gateway. Valid values: `PayAsYouGo`.
+	// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `paymentType` can be set to `Subscription`.
 	PaymentType pulumi.StringPtrInput
-	// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+	// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 	PublicNetworkBandwidth pulumi.IntPtrInput
-	// The reason detail of gateway.
+	// The detailed reason why you want to delete the gateway.
 	ReasonDetail pulumi.StringPtrInput
-	// The reason type when user deletes the gateway.
+	// The type of the reason why you want to delete the gateway.
 	ReasonType pulumi.StringPtrInput
-	// Whether to release the gateway due to expiration.
+	// Specifies whether to release the gateway after the subscription expires. Valid values:
 	ReleaseAfterExpiration pulumi.BoolPtrInput
 	// The ID of the gateway cluster.
 	StorageBundleId pulumi.StringInput
 	// The type of the gateway. Valid values: `File`, `Iscsi`.
 	Type pulumi.StringInput
-	// The ID of the vSwitch.
+	// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
 	VswitchId pulumi.StringPtrInput
 }
 
@@ -306,12 +386,12 @@ func (o GatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gatewayClass` is required. Otherwise, `gatewayClass` will be ignored. If `paymentType` is set to `Subscription`, `gatewayClass` cannot be modified.
 func (o GatewayOutput) GatewayClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.GatewayClass }).(pulumi.StringPtrOutput)
 }
 
-// The name of the gateway.
+// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
 func (o GatewayOutput) GatewayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayName }).(pulumi.StringOutput)
 }
@@ -321,27 +401,27 @@ func (o GatewayOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The Payment type of gateway. Valid values: `PayAsYouGo`.
+// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `paymentType` can be set to `Subscription`.
 func (o GatewayOutput) PaymentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
 }
 
-// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `publicNetworkBandwidth` is only valid when `location` is `Cloud`. If `paymentType` is set to `Subscription`, `publicNetworkBandwidth` cannot be modified.
 func (o GatewayOutput) PublicNetworkBandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntOutput { return v.PublicNetworkBandwidth }).(pulumi.IntOutput)
 }
 
-// The reason detail of gateway.
+// The detailed reason why you want to delete the gateway.
 func (o GatewayOutput) ReasonDetail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.ReasonDetail }).(pulumi.StringPtrOutput)
 }
 
-// The reason type when user deletes the gateway.
+// The type of the reason why you want to delete the gateway.
 func (o GatewayOutput) ReasonType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.ReasonType }).(pulumi.StringPtrOutput)
 }
 
-// Whether to release the gateway due to expiration.
+// Specifies whether to release the gateway after the subscription expires. Valid values:
 func (o GatewayOutput) ReleaseAfterExpiration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.ReleaseAfterExpiration }).(pulumi.BoolPtrOutput)
 }
@@ -361,7 +441,7 @@ func (o GatewayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The ID of the vSwitch.
+// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitchId` is required. Otherwise, `vswitchId` will be ignored.
 func (o GatewayOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

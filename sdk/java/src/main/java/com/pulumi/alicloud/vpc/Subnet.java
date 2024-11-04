@@ -73,6 +73,12 @@ public class Subnet extends com.pulumi.resources.CustomResource {
     public Output<Integer> ipv6CidrBlockMask() {
         return this.ipv6CidrBlockMask;
     }
+    @Export(name="isDefault", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> isDefault;
+
+    public Output<Optional<Boolean>> isDefault() {
+        return Codegen.optional(this.isDefault);
+    }
     /**
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -128,7 +134,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Subnet(java.lang.String name, SubnetArgs args) {
+    public Subnet(java.lang.String name, @Nullable SubnetArgs args) {
         this(name, args, null);
     }
     /**
@@ -137,7 +143,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Subnet(java.lang.String name, SubnetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Subnet(java.lang.String name, @Nullable SubnetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:vpc/subnet:Subnet", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -145,7 +151,7 @@ public class Subnet extends com.pulumi.resources.CustomResource {
         super("alicloud:vpc/subnet:Subnet", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static SubnetArgs makeArgs(SubnetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static SubnetArgs makeArgs(@Nullable SubnetArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

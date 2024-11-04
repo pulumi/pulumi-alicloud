@@ -5443,7 +5443,7 @@ func (o V3FunctionCodePtrOutput) ZipFile() pulumi.StringPtrOutput {
 }
 
 type V3FunctionCustomContainerConfig struct {
-	// Image Acceleration Information (Obsolete).
+	// (Deprecated) Image Acceleration Information (Obsolete).
 	//
 	// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 	AccelerationInfo *V3FunctionCustomContainerConfigAccelerationInfo `pulumi:"accelerationInfo"`
@@ -5481,7 +5481,7 @@ type V3FunctionCustomContainerConfigInput interface {
 }
 
 type V3FunctionCustomContainerConfigArgs struct {
-	// Image Acceleration Information (Obsolete).
+	// (Deprecated) Image Acceleration Information (Obsolete).
 	//
 	// Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 	AccelerationInfo V3FunctionCustomContainerConfigAccelerationInfoPtrInput `pulumi:"accelerationInfo"`
@@ -5584,7 +5584,7 @@ func (o V3FunctionCustomContainerConfigOutput) ToV3FunctionCustomContainerConfig
 	}).(V3FunctionCustomContainerConfigPtrOutput)
 }
 
-// Image Acceleration Information (Obsolete).
+// (Deprecated) Image Acceleration Information (Obsolete).
 //
 // Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 func (o V3FunctionCustomContainerConfigOutput) AccelerationInfo() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {
@@ -5663,7 +5663,7 @@ func (o V3FunctionCustomContainerConfigPtrOutput) Elem() V3FunctionCustomContain
 	}).(V3FunctionCustomContainerConfigOutput)
 }
 
-// Image Acceleration Information (Obsolete).
+// (Deprecated) Image Acceleration Information (Obsolete).
 //
 // Deprecated: Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
 func (o V3FunctionCustomContainerConfigPtrOutput) AccelerationInfo() V3FunctionCustomContainerConfigAccelerationInfoPtrOutput {

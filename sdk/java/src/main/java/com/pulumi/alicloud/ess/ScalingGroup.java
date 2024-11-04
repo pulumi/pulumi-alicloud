@@ -210,6 +210,20 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.azBalance);
     }
     /**
+     * The ID of the elastic container instance.
+     * 
+     */
+    @Export(name="containerGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> containerGroupId;
+
+    /**
+     * @return The ID of the elastic container instance.
+     * 
+     */
+    public Output<Optional<String>> containerGroupId() {
+        return Codegen.optional(this.containerGroupId);
+    }
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -298,14 +312,14 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return this.healthCheckType;
     }
     /**
-     * The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
      * 
      */
     @Export(name="healthCheckTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> healthCheckTypes;
 
     /**
-     * @return The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * @return The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
      * 
      */
     public Output<Optional<List<String>>> healthCheckTypes() {

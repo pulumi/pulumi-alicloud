@@ -991,7 +991,7 @@ class BaseInstance(pulumi.CustomResource):
             auto_renew=False,
             disk_size=100,
             payment_type="PayAsYouGo",
-            instance_class="8C32GB",
+            instance_class="8C32G",
             backup_retain_mode="delete_all",
             series="normal",
             instance_name=name)
@@ -1123,7 +1123,7 @@ class BaseInstance(pulumi.CustomResource):
             auto_renew=False,
             disk_size=100,
             payment_type="PayAsYouGo",
-            instance_class="8C32GB",
+            instance_class="8C32G",
             backup_retain_mode="delete_all",
             series="normal",
             instance_name=name)

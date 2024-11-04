@@ -157,6 +157,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> AzBalance { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the elastic container instance.
+        /// </summary>
+        [Output("containerGroupId")]
+        public Output<string?> ContainerGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
         /// - The specified RDS instance must be in running status.
         /// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -195,7 +201,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> HealthCheckType { get; private set; } = null!;
 
         /// <summary>
-        /// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        /// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         /// </summary>
         [Output("healthCheckTypes")]
         public Output<ImmutableArray<string>> HealthCheckTypes { get; private set; } = null!;
@@ -415,6 +421,12 @@ namespace Pulumi.AliCloud.Ess
         [Input("azBalance")]
         public Input<bool>? AzBalance { get; set; }
 
+        /// <summary>
+        /// The ID of the elastic container instance.
+        /// </summary>
+        [Input("containerGroupId")]
+        public Input<string>? ContainerGroupId { get; set; }
+
         [Input("dbInstanceIds")]
         private InputList<string>? _dbInstanceIds;
 
@@ -463,7 +475,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<string>? _healthCheckTypes;
 
         /// <summary>
-        /// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        /// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         /// </summary>
         public InputList<string> HealthCheckTypes
         {
@@ -684,6 +696,12 @@ namespace Pulumi.AliCloud.Ess
         [Input("azBalance")]
         public Input<bool>? AzBalance { get; set; }
 
+        /// <summary>
+        /// The ID of the elastic container instance.
+        /// </summary>
+        [Input("containerGroupId")]
+        public Input<string>? ContainerGroupId { get; set; }
+
         [Input("dbInstanceIds")]
         private InputList<string>? _dbInstanceIds;
 
@@ -732,7 +750,7 @@ namespace Pulumi.AliCloud.Ess
         private InputList<string>? _healthCheckTypes;
 
         /// <summary>
-        /// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        /// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         /// </summary>
         public InputList<string> HealthCheckTypes
         {

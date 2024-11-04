@@ -34,14 +34,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+     * The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
      * 
      */
     @Import(name="gatewayClass")
     private @Nullable Output<String> gatewayClass;
 
     /**
-     * @return The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+     * @return The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
      * 
      */
     public Optional<Output<String>> gatewayClass() {
@@ -49,14 +49,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the gateway.
+     * The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     @Import(name="gatewayName", required=true)
     private Output<String> gatewayName;
 
     /**
-     * @return The name of the gateway.
+     * @return The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     public Output<String> gatewayName() {
@@ -79,14 +79,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Payment type of gateway. Valid values: `PayAsYouGo`.
+     * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The Payment type of gateway. Valid values: `PayAsYouGo`.
+     * @return The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -94,14 +94,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+     * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
      * 
      */
     @Import(name="publicNetworkBandwidth")
     private @Nullable Output<Integer> publicNetworkBandwidth;
 
     /**
-     * @return The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+     * @return The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
      * 
      */
     public Optional<Output<Integer>> publicNetworkBandwidth() {
@@ -109,14 +109,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The reason detail of gateway.
+     * The detailed reason why you want to delete the gateway.
      * 
      */
     @Import(name="reasonDetail")
     private @Nullable Output<String> reasonDetail;
 
     /**
-     * @return The reason detail of gateway.
+     * @return The detailed reason why you want to delete the gateway.
      * 
      */
     public Optional<Output<String>> reasonDetail() {
@@ -124,14 +124,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The reason type when user deletes the gateway.
+     * The type of the reason why you want to delete the gateway.
      * 
      */
     @Import(name="reasonType")
     private @Nullable Output<String> reasonType;
 
     /**
-     * @return The reason type when user deletes the gateway.
+     * @return The type of the reason why you want to delete the gateway.
      * 
      */
     public Optional<Output<String>> reasonType() {
@@ -139,14 +139,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to release the gateway due to expiration.
+     * Specifies whether to release the gateway after the subscription expires. Valid values:
      * 
      */
     @Import(name="releaseAfterExpiration")
     private @Nullable Output<Boolean> releaseAfterExpiration;
 
     /**
-     * @return Whether to release the gateway due to expiration.
+     * @return Specifies whether to release the gateway after the subscription expires. Valid values:
      * 
      */
     public Optional<Output<Boolean>> releaseAfterExpiration() {
@@ -184,14 +184,14 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the vSwitch.
+     * The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch.
+     * @return The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -255,7 +255,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayClass The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+         * @param gatewayClass The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayClass The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+         * @param gatewayClass The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayName The name of the gateway.
+         * @param gatewayName The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param gatewayName The name of the gateway.
+         * @param gatewayName The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`.
+         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`.
+         * @param paymentType The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicNetworkBandwidth The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+         * @param publicNetworkBandwidth The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicNetworkBandwidth The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+         * @param publicNetworkBandwidth The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reasonDetail The reason detail of gateway.
+         * @param reasonDetail The detailed reason why you want to delete the gateway.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reasonDetail The reason detail of gateway.
+         * @param reasonDetail The detailed reason why you want to delete the gateway.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reasonType The reason type when user deletes the gateway.
+         * @param reasonType The type of the reason why you want to delete the gateway.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reasonType The reason type when user deletes the gateway.
+         * @param reasonType The type of the reason why you want to delete the gateway.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param releaseAfterExpiration Whether to release the gateway due to expiration.
+         * @param releaseAfterExpiration Specifies whether to release the gateway after the subscription expires. Valid values:
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param releaseAfterExpiration Whether to release the gateway due to expiration.
+         * @param releaseAfterExpiration Specifies whether to release the gateway after the subscription expires. Valid values:
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch.
+         * @param vswitchId The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch.
+         * @param vswitchId The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
          * 
          * @return builder
          * 

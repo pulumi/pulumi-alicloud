@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class ManagedKubernetesOperationPolicyClusterAutoUpgradeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+        /// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
         /// 
         /// for example:
         /// ```

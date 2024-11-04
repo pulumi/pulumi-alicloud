@@ -19,32 +19,35 @@ __all__ = ['SubnetArgs', 'Subnet']
 @pulumi.input_type
 class SubnetArgs:
     def __init__(__self__, *,
-                 cidr_block: pulumi.Input[str],
-                 vpc_id: pulumi.Input[str],
                  availability_zone: Optional[pulumi.Input[str]] = None,
+                 cidr_block: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Subnet resource.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "vpc_id", vpc_id)
         if availability_zone is not None:
             warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.""")
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
+        if cidr_block is not None:
+            pulumi.set(__self__, "cidr_block", cidr_block)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_ipv6 is not None:
             pulumi.set(__self__, "enable_ipv6", enable_ipv6)
         if ipv6_cidr_block_mask is not None:
             pulumi.set(__self__, "ipv6_cidr_block_mask", ipv6_cidr_block_mask)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
@@ -52,28 +55,12 @@ class SubnetArgs:
             pulumi.set(__self__, "name", name)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_name is not None:
             pulumi.set(__self__, "vswitch_name", vswitch_name)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "cidr_block")
-
-    @cidr_block.setter
-    def cidr_block(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cidr_block", value)
-
-    @property
-    @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "vpc_id")
-
-    @vpc_id.setter
-    def vpc_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "vpc_id", value)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -84,6 +71,15 @@ class SubnetArgs:
     @availability_zone.setter
     def availability_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "availability_zone", value)
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cidr_block")
+
+    @cidr_block.setter
+    def cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cidr_block", value)
 
     @property
     @pulumi.getter
@@ -113,6 +109,15 @@ class SubnetArgs:
         pulumi.set(self, "ipv6_cidr_block_mask", value)
 
     @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default", value)
+
+    @property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
@@ -130,6 +135,15 @@ class SubnetArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vpc_id", value)
 
     @property
     @pulumi.getter(name="vswitchName")
@@ -160,6 +174,7 @@ class _SubnetState:
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
                  ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -186,6 +201,8 @@ class _SubnetState:
             pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
         if ipv6_cidr_block_mask is not None:
             pulumi.set(__self__, "ipv6_cidr_block_mask", ipv6_cidr_block_mask)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
@@ -267,6 +284,15 @@ class _SubnetState:
         pulumi.set(self, "ipv6_cidr_block_mask", value)
 
     @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_default", value)
+
+    @property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
@@ -337,6 +363,7 @@ class Subnet(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -352,7 +379,7 @@ class Subnet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: SubnetArgs,
+                 args: Optional[SubnetArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a Subnet resource with the given unique name, props, and options.
@@ -376,6 +403,7 @@ class Subnet(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
+                 is_default: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -392,16 +420,13 @@ class Subnet(pulumi.CustomResource):
             __props__ = SubnetArgs.__new__(SubnetArgs)
 
             __props__.__dict__["availability_zone"] = availability_zone
-            if cidr_block is None and not opts.urn:
-                raise TypeError("Missing required property 'cidr_block'")
             __props__.__dict__["cidr_block"] = cidr_block
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_ipv6"] = enable_ipv6
             __props__.__dict__["ipv6_cidr_block_mask"] = ipv6_cidr_block_mask
+            __props__.__dict__["is_default"] = is_default
             __props__.__dict__["name"] = name
             __props__.__dict__["tags"] = tags
-            if vpc_id is None and not opts.urn:
-                raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_name"] = vswitch_name
             __props__.__dict__["zone_id"] = zone_id
@@ -425,6 +450,7 @@ class Subnet(pulumi.CustomResource):
             enable_ipv6: Optional[pulumi.Input[bool]] = None,
             ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
             ipv6_cidr_block_mask: Optional[pulumi.Input[int]] = None,
+            is_default: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -450,6 +476,7 @@ class Subnet(pulumi.CustomResource):
         __props__.__dict__["enable_ipv6"] = enable_ipv6
         __props__.__dict__["ipv6_cidr_block"] = ipv6_cidr_block
         __props__.__dict__["ipv6_cidr_block_mask"] = ipv6_cidr_block_mask
+        __props__.__dict__["is_default"] = is_default
         __props__.__dict__["name"] = name
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -493,6 +520,11 @@ class Subnet(pulumi.CustomResource):
     @pulumi.getter(name="ipv6CidrBlockMask")
     def ipv6_cidr_block_mask(self) -> pulumi.Output[int]:
         return pulumi.get(self, "ipv6_cidr_block_mask")
+
+    @property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "is_default")
 
     @property
     @pulumi.getter

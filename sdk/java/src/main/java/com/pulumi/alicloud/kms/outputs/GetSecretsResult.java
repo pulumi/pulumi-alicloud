@@ -42,7 +42,7 @@ public final class GetSecretsResult {
      */
     private List<GetSecretsSecret> secrets;
     /**
-     * @return (Optional) A mapping of tags to assign to the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     private @Nullable Map<String,String> tags;
@@ -92,7 +92,7 @@ public final class GetSecretsResult {
         return this.secrets;
     }
     /**
-     * @return (Optional) A mapping of tags to assign to the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Map<String,String> tags() {

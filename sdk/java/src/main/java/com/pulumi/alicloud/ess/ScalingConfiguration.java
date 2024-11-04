@@ -427,14 +427,14 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="internetMaxBandwidthIn", refs={Integer.class}, tree="[0]")
-    private Output<Integer> internetMaxBandwidthIn;
+    private Output</* @Nullable */ Integer> internetMaxBandwidthIn;
 
     /**
      * @return Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
      * 
      */
-    public Output<Integer> internetMaxBandwidthIn() {
-        return this.internetMaxBandwidthIn;
+    public Output<Optional<Integer>> internetMaxBandwidthIn() {
+        return Codegen.optional(this.internetMaxBandwidthIn);
     }
     /**
      * Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].

@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     autoRenew: false,
  *     diskSize: 100,
  *     paymentType: "PayAsYouGo",
- *     instanceClass: "8C32GB",
+ *     instanceClass: "8C32G",
  *     backupRetainMode: "delete_all",
  *     series: "normal",
  *     instanceName: name,

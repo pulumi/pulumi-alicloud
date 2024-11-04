@@ -203,7 +203,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
      */
-    public readonly internetMaxBandwidthIn!: pulumi.Output<number>;
+    public readonly internetMaxBandwidthIn!: pulumi.Output<number | undefined>;
     /**
      * Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
      */

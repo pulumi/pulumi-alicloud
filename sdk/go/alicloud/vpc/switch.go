@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -178,25 +177,25 @@ import (
 type Switch struct {
 	pulumi.CustomResourceState
 
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// The IPv4 CIDR block of the VSwitch.
+	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 	CidrBlock pulumi.StringOutput `pulumi:"cidrBlock"`
 	// The creation time of the VSwitch.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of VSwitch.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the IPv6 function is enabled in the switch. Value:
-	// - **true**: enables IPv6.
-	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask pulumi.IntOutput `pulumi:"ipv6CidrBlockMask"`
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -204,9 +203,7 @@ type Switch struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tags of VSwitch.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The VPC ID.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The name of the VSwitch.
 	VswitchName pulumi.StringOutput `pulumi:"vswitchName"`
@@ -218,15 +215,9 @@ type Switch struct {
 func NewSwitch(ctx *pulumi.Context,
 	name string, args *SwitchArgs, opts ...pulumi.ResourceOption) (*Switch, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SwitchArgs{}
 	}
 
-	if args.CidrBlock == nil {
-		return nil, errors.New("invalid value for required argument 'CidrBlock'")
-	}
-	if args.VpcId == nil {
-		return nil, errors.New("invalid value for required argument 'VpcId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Switch
 	err := ctx.RegisterResource("alicloud:vpc/switch:Switch", name, args, &resource, opts...)
@@ -250,25 +241,25 @@ func GetSwitch(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Switch resources.
 type switchState struct {
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The IPv4 CIDR block of the VSwitch.
+	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 	CidrBlock *string `pulumi:"cidrBlock"`
 	// The creation time of the VSwitch.
 	CreateTime *string `pulumi:"createTime"`
 	// The description of VSwitch.
 	Description *string `pulumi:"description"`
 	// Whether the IPv6 function is enabled in the switch. Value:
-	// - **true**: enables IPv6.
-	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+	IsDefault *bool `pulumi:"isDefault"`
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name *string `pulumi:"name"`
@@ -276,9 +267,7 @@ type switchState struct {
 	Status *string `pulumi:"status"`
 	// The tags of VSwitch.
 	Tags map[string]string `pulumi:"tags"`
-	// The VPC ID.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 	VpcId *string `pulumi:"vpcId"`
 	// The name of the VSwitch.
 	VswitchName *string `pulumi:"vswitchName"`
@@ -287,25 +276,25 @@ type switchState struct {
 }
 
 type SwitchState struct {
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
-	// The IPv4 CIDR block of the VSwitch.
+	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 	CidrBlock pulumi.StringPtrInput
 	// The creation time of the VSwitch.
 	CreateTime pulumi.StringPtrInput
 	// The description of VSwitch.
 	Description pulumi.StringPtrInput
 	// Whether the IPv6 function is enabled in the switch. Value:
-	// - **true**: enables IPv6.
-	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 pulumi.BoolPtrInput
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlock pulumi.StringPtrInput
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask pulumi.IntPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+	IsDefault pulumi.BoolPtrInput
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringPtrInput
@@ -313,9 +302,7 @@ type SwitchState struct {
 	Status pulumi.StringPtrInput
 	// The tags of VSwitch.
 	Tags pulumi.StringMapInput
-	// The VPC ID.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
+	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 	VpcId pulumi.StringPtrInput
 	// The name of the VSwitch.
 	VswitchName pulumi.StringPtrInput
@@ -328,30 +315,28 @@ func (SwitchState) ElementType() reflect.Type {
 }
 
 type switchArgs struct {
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The IPv4 CIDR block of the VSwitch.
-	CidrBlock string `pulumi:"cidrBlock"`
+	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+	CidrBlock *string `pulumi:"cidrBlock"`
 	// The description of VSwitch.
 	Description *string `pulumi:"description"`
 	// Whether the IPv6 function is enabled in the switch. Value:
-	// - **true**: enables IPv6.
-	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+	IsDefault *bool `pulumi:"isDefault"`
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name *string `pulumi:"name"`
 	// The tags of VSwitch.
 	Tags map[string]string `pulumi:"tags"`
-	// The VPC ID.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
-	VpcId string `pulumi:"vpcId"`
+	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+	VpcId *string `pulumi:"vpcId"`
 	// The name of the VSwitch.
 	VswitchName *string `pulumi:"vswitchName"`
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
@@ -360,30 +345,28 @@ type switchArgs struct {
 
 // The set of arguments for constructing a Switch resource.
 type SwitchArgs struct {
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
-	// The IPv4 CIDR block of the VSwitch.
-	CidrBlock pulumi.StringInput
+	// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
+	CidrBlock pulumi.StringPtrInput
 	// The description of VSwitch.
 	Description pulumi.StringPtrInput
 	// Whether the IPv6 function is enabled in the switch. Value:
-	// - **true**: enables IPv6.
-	// - **false** (default): IPv6 is not enabled.
 	EnableIpv6 pulumi.BoolPtrInput
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask pulumi.IntPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+	IsDefault pulumi.BoolPtrInput
+	// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringPtrInput
 	// The tags of VSwitch.
 	Tags pulumi.StringMapInput
-	// The VPC ID.
-	//
-	// The following arguments will be discarded. Please use new fields as soon as possible:
-	VpcId pulumi.StringInput
+	// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
+	VpcId pulumi.StringPtrInput
 	// The name of the VSwitch.
 	VswitchName pulumi.StringPtrInput
 	// The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
@@ -477,14 +460,14 @@ func (o SwitchOutput) ToSwitchOutputWithContext(ctx context.Context) SwitchOutpu
 	return o
 }
 
-// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+// Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
 //
 // Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 func (o SwitchOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// The IPv4 CIDR block of the VSwitch.
+// The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
 func (o SwitchOutput) CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.CidrBlock }).(pulumi.StringOutput)
 }
@@ -500,8 +483,6 @@ func (o SwitchOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Whether the IPv6 function is enabled in the switch. Value:
-// - **true**: enables IPv6.
-// - **false** (default): IPv6 is not enabled.
 func (o SwitchOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Switch) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
 }
@@ -516,7 +497,12 @@ func (o SwitchOutput) Ipv6CidrBlockMask() pulumi.IntOutput {
 	return o.ApplyT(func(v *Switch) pulumi.IntOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntOutput)
 }
 
-// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+// Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+func (o SwitchOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Switch) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+// Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 func (o SwitchOutput) Name() pulumi.StringOutput {
@@ -533,9 +519,7 @@ func (o SwitchOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The VPC ID.
-//
-// The following arguments will be discarded. Please use new fields as soon as possible:
+// The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
 func (o SwitchOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Switch) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

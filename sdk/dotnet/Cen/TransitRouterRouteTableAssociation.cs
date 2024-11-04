@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation)
+    /// Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
+    /// 
+    /// For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
     /// 
     /// &gt; **NOTE:** Available since v1.126.0.
     /// 
@@ -27,78 +29,78 @@ namespace Pulumi.AliCloud.Cen
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
     /// 
     ///     var masterZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.MasterZones[0]));
     /// 
     ///     var slaveZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[1]));
     /// 
-    ///     var example = new AliCloud.Vpc.Network("example", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var exampleMaster = new AliCloud.Vpc.Switch("example_master", new()
+    ///     var defaultMaster = new AliCloud.Vpc.Switch("default_master", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "192.168.1.0/24",
-    ///         VpcId = example.Id,
+    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = masterZone,
     ///     });
     /// 
-    ///     var exampleSlave = new AliCloud.Vpc.Switch("example_slave", new()
+    ///     var defaultSlave = new AliCloud.Vpc.Switch("default_slave", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "192.168.2.0/24",
-    ///         VpcId = example.Id,
+    ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = slaveZone,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("example", new()
+    ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
     ///     {
     ///         CenInstanceName = name,
     ///         ProtectionLevel = "REDUCED",
     ///     });
     /// 
-    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("example", new()
+    ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
     ///     {
     ///         TransitRouterName = name,
-    ///         CenId = exampleInstance.Id,
+    ///         CenId = defaultInstance.Id,
     ///     });
     /// 
-    ///     var exampleTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("example", new()
+    ///     var defaultTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("default", new()
     ///     {
-    ///         CenId = exampleInstance.Id,
-    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
-    ///         VpcId = example.Id,
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///     });
+    /// 
+    ///     var defaultTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("default", new()
+    ///     {
+    ///         CenId = defaultInstance.Id,
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         VpcId = defaultNetwork.Id,
+    ///         TransitRouterVpcAttachmentName = name,
+    ///         TransitRouterAttachmentDescription = name,
     ///         ZoneMappings = new[]
     ///         {
     ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
     ///             {
     ///                 ZoneId = masterZone,
-    ///                 VswitchId = exampleMaster.Id,
+    ///                 VswitchId = defaultMaster.Id,
     ///             },
     ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs
     ///             {
     ///                 ZoneId = slaveZone,
-    ///                 VswitchId = exampleSlave.Id,
+    ///                 VswitchId = defaultSlave.Id,
     ///             },
     ///         },
-    ///         TransitRouterAttachmentName = name,
-    ///         TransitRouterAttachmentDescription = name,
     ///     });
     /// 
-    ///     var exampleTransitRouterRouteTable = new AliCloud.Cen.TransitRouterRouteTable("example", new()
+    ///     var defaultTransitRouterRouteTableAssociation = new AliCloud.Cen.TransitRouterRouteTableAssociation("default", new()
     ///     {
-    ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
-    ///     });
-    /// 
-    ///     var exampleTransitRouterRouteTableAssociation = new AliCloud.Cen.TransitRouterRouteTableAssociation("example", new()
-    ///     {
-    ///         TransitRouterRouteTableId = exampleTransitRouterRouteTable.TransitRouterRouteTableId,
-    ///         TransitRouterAttachmentId = exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
+    ///         TransitRouterRouteTableId = defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+    ///         TransitRouterAttachmentId = defaultTransitRouterVpcAttachment.TransitRouterAttachmentId,
     ///     });
     /// 
     /// });
@@ -106,10 +108,10 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN transit router route table association can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+    /// $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example &lt;transit_router_id&gt;:&lt;transit_router_attachment_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation")]
@@ -124,19 +126,19 @@ namespace Pulumi.AliCloud.Cen
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The associating status of the network.
+        /// The status of the Transit Router Route Table Association.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The ID the transit router attachment.
+        /// The ID the Transit Router Attachment.
         /// </summary>
         [Output("transitRouterAttachmentId")]
         public Output<string> TransitRouterAttachmentId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the transit router route table.
+        /// The ID of the Transit Router Route Table.
         /// </summary>
         [Output("transitRouterRouteTableId")]
         public Output<string> TransitRouterRouteTableId { get; private set; } = null!;
@@ -196,13 +198,13 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID the transit router attachment.
+        /// The ID the Transit Router Attachment.
         /// </summary>
         [Input("transitRouterAttachmentId", required: true)]
         public Input<string> TransitRouterAttachmentId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the transit router route table.
+        /// The ID of the Transit Router Route Table.
         /// </summary>
         [Input("transitRouterRouteTableId", required: true)]
         public Input<string> TransitRouterRouteTableId { get; set; } = null!;
@@ -224,19 +226,19 @@ namespace Pulumi.AliCloud.Cen
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The associating status of the network.
+        /// The status of the Transit Router Route Table Association.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID the transit router attachment.
+        /// The ID the Transit Router Attachment.
         /// </summary>
         [Input("transitRouterAttachmentId")]
         public Input<string>? TransitRouterAttachmentId { get; set; }
 
         /// <summary>
-        /// The ID of the transit router route table.
+        /// The ID of the Transit Router Route Table.
         /// </summary>
         [Input("transitRouterRouteTableId")]
         public Input<string>? TransitRouterRouteTableId { get; set; }

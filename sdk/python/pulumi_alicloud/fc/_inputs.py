@@ -2313,7 +2313,7 @@ if not MYPY:
     class V3FunctionCustomContainerConfigArgsDict(TypedDict):
         acceleration_info: NotRequired[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgsDict']]
         """
-        Image Acceleration Information (Obsolete).
+        (Deprecated) Image Acceleration Information (Obsolete).
         """
         acceleration_type: NotRequired[pulumi.Input[str]]
         """
@@ -2363,7 +2363,7 @@ class V3FunctionCustomContainerConfigArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  resolved_image_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs'] acceleration_info: Image Acceleration Information (Obsolete).
+        :param pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs'] acceleration_info: (Deprecated) Image Acceleration Information (Obsolete).
         :param pulumi.Input[str] acceleration_type: Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete).
         :param pulumi.Input[str] acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Container startup parameters.
@@ -2406,7 +2406,7 @@ class V3FunctionCustomContainerConfigArgs:
     @_utilities.deprecated("""Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)""")
     def acceleration_info(self) -> Optional[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs']]:
         """
-        Image Acceleration Information (Obsolete).
+        (Deprecated) Image Acceleration Information (Obsolete).
         """
         return pulumi.get(self, "acceleration_info")
 

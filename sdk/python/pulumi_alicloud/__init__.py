@@ -213,6 +213,8 @@ if typing.TYPE_CHECKING:
     oss = __oss
     import pulumi_alicloud.ots as __ots
     ots = __ots
+    import pulumi_alicloud.pai as __pai
+    pai = __pai
     import pulumi_alicloud.polardb as __polardb
     polardb = __polardb
     import pulumi_alicloud.privatelink as __privatelink
@@ -381,6 +383,7 @@ else:
     opensearch = _utilities.lazy_import('pulumi_alicloud.opensearch')
     oss = _utilities.lazy_import('pulumi_alicloud.oss')
     ots = _utilities.lazy_import('pulumi_alicloud.ots')
+    pai = _utilities.lazy_import('pulumi_alicloud.pai')
     polardb = _utilities.lazy_import('pulumi_alicloud.polardb')
     privatelink = _utilities.lazy_import('pulumi_alicloud.privatelink')
     pvtz = _utilities.lazy_import('pulumi_alicloud.pvtz')
@@ -5167,6 +5170,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "mse/nacosConfig",
+  "fqn": "pulumi_alicloud.mse",
+  "classes": {
+   "alicloud:mse/nacosConfig:NacosConfig": "NacosConfig"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "mse/znode",
   "fqn": "pulumi_alicloud.mse",
   "classes": {
@@ -5627,6 +5638,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ots",
   "classes": {
    "alicloud:ots/tunnel:Tunnel": "Tunnel"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/workspaceWorkspace",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceWorkspace:WorkspaceWorkspace": "WorkspaceWorkspace"
   }
  },
  {

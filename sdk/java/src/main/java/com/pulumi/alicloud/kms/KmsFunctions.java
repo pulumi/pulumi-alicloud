@@ -1394,7 +1394,7 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -1445,7 +1445,7 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -1496,7 +1496,7 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -1547,7 +1547,7 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -1598,7 +1598,7 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 
@@ -1649,7 +1649,7 @@ public final class KmsFunctions {
     /**
      * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
      * 
-     * &gt; **NOTE:** Available in v1.86.0+.
+     * &gt; **NOTE:** Available since v1.86.0.
      * 
      * ## Example Usage
      * 

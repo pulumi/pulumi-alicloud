@@ -33,18 +33,18 @@ class GatewayArgs:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
-        :param pulumi.Input[str] gateway_name: The name of the gateway.
+        :param pulumi.Input[str] gateway_name: The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
         :param pulumi.Input[str] storage_bundle_id: The ID of the gateway cluster.
         :param pulumi.Input[str] type: The type of the gateway. Valid values: `File`, `Iscsi`.
         :param pulumi.Input[str] description: The description of the gateway.
-        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
-        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`.
-        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
-        :param pulumi.Input[str] reason_detail: The reason detail of gateway.
-        :param pulumi.Input[str] reason_type: The reason type when user deletes the gateway.
-        :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
+        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[int] public_network_bandwidth: The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
+        :param pulumi.Input[str] reason_detail: The detailed reason why you want to delete the gateway.
+        :param pulumi.Input[str] reason_type: The type of the reason why you want to delete the gateway.
+        :param pulumi.Input[bool] release_after_expiration: Specifies whether to release the gateway after the subscription expires. Valid values:
+        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         """
         pulumi.set(__self__, "gateway_name", gateway_name)
         pulumi.set(__self__, "location", location)
@@ -71,7 +71,7 @@ class GatewayArgs:
     @pulumi.getter(name="gatewayName")
     def gateway_name(self) -> pulumi.Input[str]:
         """
-        The name of the gateway.
+        The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "gateway_name")
 
@@ -131,7 +131,7 @@ class GatewayArgs:
     @pulumi.getter(name="gatewayClass")
     def gateway_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         """
         return pulumi.get(self, "gateway_class")
 
@@ -143,7 +143,7 @@ class GatewayArgs:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Payment type of gateway. Valid values: `PayAsYouGo`.
+        The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -155,7 +155,7 @@ class GatewayArgs:
     @pulumi.getter(name="publicNetworkBandwidth")
     def public_network_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+        The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         """
         return pulumi.get(self, "public_network_bandwidth")
 
@@ -167,7 +167,7 @@ class GatewayArgs:
     @pulumi.getter(name="reasonDetail")
     def reason_detail(self) -> Optional[pulumi.Input[str]]:
         """
-        The reason detail of gateway.
+        The detailed reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_detail")
 
@@ -179,7 +179,7 @@ class GatewayArgs:
     @pulumi.getter(name="reasonType")
     def reason_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The reason type when user deletes the gateway.
+        The type of the reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_type")
 
@@ -191,7 +191,7 @@ class GatewayArgs:
     @pulumi.getter(name="releaseAfterExpiration")
     def release_after_expiration(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to release the gateway due to expiration.
+        Specifies whether to release the gateway after the subscription expires. Valid values:
         """
         return pulumi.get(self, "release_after_expiration")
 
@@ -203,7 +203,7 @@ class GatewayArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the vSwitch.
+        The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -231,18 +231,18 @@ class _GatewayState:
         """
         Input properties used for looking up and filtering Gateway resources.
         :param pulumi.Input[str] description: The description of the gateway.
-        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
-        :param pulumi.Input[str] gateway_name: The name of the gateway.
+        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
+        :param pulumi.Input[str] gateway_name: The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
-        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`.
-        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
-        :param pulumi.Input[str] reason_detail: The reason detail of gateway.
-        :param pulumi.Input[str] reason_type: The reason type when user deletes the gateway.
-        :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
+        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[int] public_network_bandwidth: The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
+        :param pulumi.Input[str] reason_detail: The detailed reason why you want to delete the gateway.
+        :param pulumi.Input[str] reason_type: The type of the reason why you want to delete the gateway.
+        :param pulumi.Input[bool] release_after_expiration: Specifies whether to release the gateway after the subscription expires. Valid values:
         :param pulumi.Input[str] status: The status of the Gateway.
         :param pulumi.Input[str] storage_bundle_id: The ID of the gateway cluster.
         :param pulumi.Input[str] type: The type of the gateway. Valid values: `File`, `Iscsi`.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -287,7 +287,7 @@ class _GatewayState:
     @pulumi.getter(name="gatewayClass")
     def gateway_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         """
         return pulumi.get(self, "gateway_class")
 
@@ -299,7 +299,7 @@ class _GatewayState:
     @pulumi.getter(name="gatewayName")
     def gateway_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the gateway.
+        The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "gateway_name")
 
@@ -323,7 +323,7 @@ class _GatewayState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Payment type of gateway. Valid values: `PayAsYouGo`.
+        The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -335,7 +335,7 @@ class _GatewayState:
     @pulumi.getter(name="publicNetworkBandwidth")
     def public_network_bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+        The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         """
         return pulumi.get(self, "public_network_bandwidth")
 
@@ -347,7 +347,7 @@ class _GatewayState:
     @pulumi.getter(name="reasonDetail")
     def reason_detail(self) -> Optional[pulumi.Input[str]]:
         """
-        The reason detail of gateway.
+        The detailed reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_detail")
 
@@ -359,7 +359,7 @@ class _GatewayState:
     @pulumi.getter(name="reasonType")
     def reason_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The reason type when user deletes the gateway.
+        The type of the reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_type")
 
@@ -371,7 +371,7 @@ class _GatewayState:
     @pulumi.getter(name="releaseAfterExpiration")
     def release_after_expiration(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to release the gateway due to expiration.
+        Specifies whether to release the gateway after the subscription expires. Valid values:
         """
         return pulumi.get(self, "release_after_expiration")
 
@@ -419,7 +419,7 @@ class _GatewayState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the vSwitch.
+        The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -449,9 +449,47 @@ class Gateway(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway resource.
 
-        For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
+        For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/csg/developer-reference/api-mnz46x).
 
         > **NOTE:** Available since v1.132.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones()
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=f"{name}-{default_integer['result']}")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=f"{name}-{default_integer['result']}",
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=f"{name}-{default_integer['result']}",
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            storage_bundle_id=default_storage_bundle.id,
+            type="File",
+            location="Cloud",
+            gateway_name=name,
+            gateway_class="Standard",
+            vswitch_id=default_switch.id,
+            public_network_bandwidth=50,
+            payment_type="PayAsYouGo",
+            description=name)
+        ```
 
         ## Import
 
@@ -464,17 +502,17 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the gateway.
-        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
-        :param pulumi.Input[str] gateway_name: The name of the gateway.
+        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
+        :param pulumi.Input[str] gateway_name: The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
-        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`.
-        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
-        :param pulumi.Input[str] reason_detail: The reason detail of gateway.
-        :param pulumi.Input[str] reason_type: The reason type when user deletes the gateway.
-        :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
+        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[int] public_network_bandwidth: The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
+        :param pulumi.Input[str] reason_detail: The detailed reason why you want to delete the gateway.
+        :param pulumi.Input[str] reason_type: The type of the reason why you want to delete the gateway.
+        :param pulumi.Input[bool] release_after_expiration: Specifies whether to release the gateway after the subscription expires. Valid values:
         :param pulumi.Input[str] storage_bundle_id: The ID of the gateway cluster.
         :param pulumi.Input[str] type: The type of the gateway. Valid values: `File`, `Iscsi`.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         """
         ...
     @overload
@@ -485,9 +523,47 @@ class Gateway(pulumi.CustomResource):
         """
         Provides a Cloud Storage Gateway Gateway resource.
 
-        For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
+        For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/csg/developer-reference/api-mnz46x).
 
         > **NOTE:** Available since v1.132.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.get_zones()
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_storage_bundle = alicloud.cloudstoragegateway.StorageBundle("default", storage_bundle_name=f"{name}-{default_integer['result']}")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=f"{name}-{default_integer['result']}",
+            cidr_block="192.168.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=f"{name}-{default_integer['result']}",
+            vpc_id=default_network.id,
+            cidr_block="192.168.192.0/24",
+            zone_id=default.zones[0].id)
+        default_gateway = alicloud.cloudstoragegateway.Gateway("default",
+            storage_bundle_id=default_storage_bundle.id,
+            type="File",
+            location="Cloud",
+            gateway_name=name,
+            gateway_class="Standard",
+            vswitch_id=default_switch.id,
+            public_network_bandwidth=50,
+            payment_type="PayAsYouGo",
+            description=name)
+        ```
 
         ## Import
 
@@ -585,18 +661,18 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the gateway.
-        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
-        :param pulumi.Input[str] gateway_name: The name of the gateway.
+        :param pulumi.Input[str] gateway_class: The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
+        :param pulumi.Input[str] gateway_name: The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         :param pulumi.Input[str] location: The location of the gateway. Valid values: `Cloud`, `On_Premise`.
-        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`.
-        :param pulumi.Input[int] public_network_bandwidth: The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
-        :param pulumi.Input[str] reason_detail: The reason detail of gateway.
-        :param pulumi.Input[str] reason_type: The reason type when user deletes the gateway.
-        :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
+        :param pulumi.Input[str] payment_type: The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
+        :param pulumi.Input[int] public_network_bandwidth: The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
+        :param pulumi.Input[str] reason_detail: The detailed reason why you want to delete the gateway.
+        :param pulumi.Input[str] reason_type: The type of the reason why you want to delete the gateway.
+        :param pulumi.Input[bool] release_after_expiration: Specifies whether to release the gateway after the subscription expires. Valid values:
         :param pulumi.Input[str] status: The status of the Gateway.
         :param pulumi.Input[str] storage_bundle_id: The ID of the gateway cluster.
         :param pulumi.Input[str] type: The type of the gateway. Valid values: `File`, `Iscsi`.
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
+        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -629,7 +705,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="gatewayClass")
     def gateway_class(self) -> pulumi.Output[Optional[str]]:
         """
-        The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         """
         return pulumi.get(self, "gateway_class")
 
@@ -637,7 +713,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="gatewayName")
     def gateway_name(self) -> pulumi.Output[str]:
         """
-        The name of the gateway.
+        The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "gateway_name")
 
@@ -653,7 +729,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The Payment type of gateway. Valid values: `PayAsYouGo`.
+        The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
@@ -661,7 +737,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="publicNetworkBandwidth")
     def public_network_bandwidth(self) -> pulumi.Output[int]:
         """
-        The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+        The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         """
         return pulumi.get(self, "public_network_bandwidth")
 
@@ -669,7 +745,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="reasonDetail")
     def reason_detail(self) -> pulumi.Output[Optional[str]]:
         """
-        The reason detail of gateway.
+        The detailed reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_detail")
 
@@ -677,7 +753,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="reasonType")
     def reason_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The reason type when user deletes the gateway.
+        The type of the reason why you want to delete the gateway.
         """
         return pulumi.get(self, "reason_type")
 
@@ -685,7 +761,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="releaseAfterExpiration")
     def release_after_expiration(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to release the gateway due to expiration.
+        Specifies whether to release the gateway after the subscription expires. Valid values:
         """
         return pulumi.get(self, "release_after_expiration")
 
@@ -717,7 +793,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the vSwitch.
+        The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         """
         return pulumi.get(self, "vswitch_id")
 

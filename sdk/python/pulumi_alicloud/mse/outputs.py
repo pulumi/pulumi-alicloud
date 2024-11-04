@@ -22,6 +22,7 @@ __all__ = [
     'GetEngineNamespacesNamespaceResult',
     'GetGatewaysGatewayResult',
     'GetGatewaysGatewaySlbListResult',
+    'GetNacosConfigsConfigResult',
     'GetZnodesZnodeResult',
 ]
 
@@ -821,6 +822,134 @@ class GetGatewaysGatewaySlbListResult(dict):
     def type(self) -> str:
         """
         The type of the gateway slb.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetNacosConfigsConfigResult(dict):
+    def __init__(__self__, *,
+                 app_name: str,
+                 beta_ips: str,
+                 content: str,
+                 data_id: str,
+                 desc: str,
+                 encrypted_data_key: str,
+                 group: str,
+                 id: str,
+                 md5: str,
+                 tags: str,
+                 type: str):
+        """
+        :param str app_name: The name of the application.
+        :param str beta_ips: The list of IP addresses where the beta release of the configuration is performed.
+        :param str content: The content of the configuration.
+        :param str data_id: The ID of the data.
+        :param str desc: The description of the configuration.
+        :param str encrypted_data_key: The encryption key.
+        :param str group: The ID of the group.
+        :param str id: The ID of the Nacos Config. It is formatted to `<instance_id>:<namespace_id>:<data_id>:<group>`.
+        :param str md5: The message digest of the configuration.
+        :param str tags: The tags of the configuration.
+        :param str type: The format of the configuration. Supported formats include TEXT, JSON, and XML.
+        """
+        pulumi.set(__self__, "app_name", app_name)
+        pulumi.set(__self__, "beta_ips", beta_ips)
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "data_id", data_id)
+        pulumi.set(__self__, "desc", desc)
+        pulumi.set(__self__, "encrypted_data_key", encrypted_data_key)
+        pulumi.set(__self__, "group", group)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "md5", md5)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="appName")
+    def app_name(self) -> str:
+        """
+        The name of the application.
+        """
+        return pulumi.get(self, "app_name")
+
+    @property
+    @pulumi.getter(name="betaIps")
+    def beta_ips(self) -> str:
+        """
+        The list of IP addresses where the beta release of the configuration is performed.
+        """
+        return pulumi.get(self, "beta_ips")
+
+    @property
+    @pulumi.getter
+    def content(self) -> str:
+        """
+        The content of the configuration.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="dataId")
+    def data_id(self) -> str:
+        """
+        The ID of the data.
+        """
+        return pulumi.get(self, "data_id")
+
+    @property
+    @pulumi.getter
+    def desc(self) -> str:
+        """
+        The description of the configuration.
+        """
+        return pulumi.get(self, "desc")
+
+    @property
+    @pulumi.getter(name="encryptedDataKey")
+    def encrypted_data_key(self) -> str:
+        """
+        The encryption key.
+        """
+        return pulumi.get(self, "encrypted_data_key")
+
+    @property
+    @pulumi.getter
+    def group(self) -> str:
+        """
+        The ID of the group.
+        """
+        return pulumi.get(self, "group")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Nacos Config. It is formatted to `<instance_id>:<namespace_id>:<data_id>:<group>`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def md5(self) -> str:
+        """
+        The message digest of the configuration.
+        """
+        return pulumi.get(self, "md5")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> str:
+        """
+        The tags of the configuration.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The format of the configuration. Supported formats include TEXT, JSON, and XML.
         """
         return pulumi.get(self, "type")
 

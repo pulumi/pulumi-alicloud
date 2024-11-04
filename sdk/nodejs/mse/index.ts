@@ -35,10 +35,20 @@ export const getGateways: typeof import("./getGateways").getGateways = null as a
 export const getGatewaysOutput: typeof import("./getGateways").getGatewaysOutput = null as any;
 utilities.lazyLoad(exports, ["getGateways","getGatewaysOutput"], () => require("./getGateways"));
 
+export { GetNacosConfigsArgs, GetNacosConfigsResult, GetNacosConfigsOutputArgs } from "./getNacosConfigs";
+export const getNacosConfigs: typeof import("./getNacosConfigs").getNacosConfigs = null as any;
+export const getNacosConfigsOutput: typeof import("./getNacosConfigs").getNacosConfigsOutput = null as any;
+utilities.lazyLoad(exports, ["getNacosConfigs","getNacosConfigsOutput"], () => require("./getNacosConfigs"));
+
 export { GetZnodesArgs, GetZnodesResult, GetZnodesOutputArgs } from "./getZnodes";
 export const getZnodes: typeof import("./getZnodes").getZnodes = null as any;
 export const getZnodesOutput: typeof import("./getZnodes").getZnodesOutput = null as any;
 utilities.lazyLoad(exports, ["getZnodes","getZnodesOutput"], () => require("./getZnodes"));
+
+export { NacosConfigArgs, NacosConfigState } from "./nacosConfig";
+export type NacosConfig = import("./nacosConfig").NacosConfig;
+export const NacosConfig: typeof import("./nacosConfig").NacosConfig = null as any;
+utilities.lazyLoad(exports, ["NacosConfig"], () => require("./nacosConfig"));
 
 export { ZnodeArgs, ZnodeState } from "./znode";
 export type Znode = import("./znode").Znode;
@@ -56,6 +66,8 @@ const _module = {
                 return new EngineNamespace(name, <any>undefined, { urn })
             case "alicloud:mse/gateway:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "alicloud:mse/nacosConfig:NacosConfig":
+                return new NacosConfig(name, <any>undefined, { urn })
             case "alicloud:mse/znode:Znode":
                 return new Znode(name, <any>undefined, { urn })
             default:
@@ -66,4 +78,5 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "mse/cluster", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mse/engineNamespace", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mse/gateway", _module)
+pulumi.runtime.registerResourceModule("alicloud", "mse/nacosConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "mse/znode", _module)

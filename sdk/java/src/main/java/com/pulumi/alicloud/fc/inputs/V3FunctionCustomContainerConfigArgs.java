@@ -20,7 +20,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     public static final V3FunctionCustomContainerConfigArgs Empty = new V3FunctionCustomContainerConfigArgs();
 
     /**
-     * Image Acceleration Information (Obsolete).
+     * (Deprecated) Image Acceleration Information (Obsolete).
      * 
      * @deprecated
      * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
@@ -31,7 +31,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     private @Nullable Output<V3FunctionCustomContainerConfigAccelerationInfoArgs> accelerationInfo;
 
     /**
-     * @return Image Acceleration Information (Obsolete).
+     * @return (Deprecated) Image Acceleration Information (Obsolete).
      * 
      * @deprecated
      * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
@@ -211,7 +211,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accelerationInfo Image Acceleration Information (Obsolete).
+         * @param accelerationInfo (Deprecated) Image Acceleration Information (Obsolete).
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param accelerationInfo Image Acceleration Information (Obsolete).
+         * @param accelerationInfo (Deprecated) Image Acceleration Information (Obsolete).
          * 
          * @return builder
          * 

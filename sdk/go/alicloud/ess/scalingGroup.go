@@ -168,6 +168,8 @@ type ScalingGroup struct {
 	AllocationStrategy pulumi.StringOutput `pulumi:"allocationStrategy"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance pulumi.BoolPtrOutput `pulumi:"azBalance"`
+	// The ID of the elastic container instance.
+	ContainerGroupId pulumi.StringPtrOutput `pulumi:"containerGroupId"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -182,7 +184,7 @@ type ScalingGroup struct {
 	GroupType pulumi.StringOutput `pulumi:"groupType"`
 	// Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType pulumi.StringOutput `pulumi:"healthCheckType"`
-	// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+	// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
 	HealthCheckTypes pulumi.StringArrayOutput `pulumi:"healthCheckTypes"`
 	// The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
 	InstanceId pulumi.StringPtrOutput `pulumi:"instanceId"`
@@ -287,6 +289,8 @@ type scalingGroupState struct {
 	AllocationStrategy *string `pulumi:"allocationStrategy"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance *bool `pulumi:"azBalance"`
+	// The ID of the elastic container instance.
+	ContainerGroupId *string `pulumi:"containerGroupId"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -301,7 +305,7 @@ type scalingGroupState struct {
 	GroupType *string `pulumi:"groupType"`
 	// Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+	// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
 	HealthCheckTypes []string `pulumi:"healthCheckTypes"`
 	// The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
 	InstanceId *string `pulumi:"instanceId"`
@@ -371,6 +375,8 @@ type ScalingGroupState struct {
 	AllocationStrategy pulumi.StringPtrInput
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance pulumi.BoolPtrInput
+	// The ID of the elastic container instance.
+	ContainerGroupId pulumi.StringPtrInput
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -385,7 +391,7 @@ type ScalingGroupState struct {
 	GroupType pulumi.StringPtrInput
 	// Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType pulumi.StringPtrInput
-	// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+	// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
 	HealthCheckTypes pulumi.StringArrayInput
 	// The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
 	InstanceId pulumi.StringPtrInput
@@ -459,6 +465,8 @@ type scalingGroupArgs struct {
 	AllocationStrategy *string `pulumi:"allocationStrategy"`
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance *bool `pulumi:"azBalance"`
+	// The ID of the elastic container instance.
+	ContainerGroupId *string `pulumi:"containerGroupId"`
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -473,7 +481,7 @@ type scalingGroupArgs struct {
 	GroupType *string `pulumi:"groupType"`
 	// Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType *string `pulumi:"healthCheckType"`
-	// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+	// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
 	HealthCheckTypes []string `pulumi:"healthCheckTypes"`
 	// The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
 	InstanceId *string `pulumi:"instanceId"`
@@ -544,6 +552,8 @@ type ScalingGroupArgs struct {
 	AllocationStrategy pulumi.StringPtrInput
 	// Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
 	AzBalance pulumi.BoolPtrInput
+	// The ID of the elastic container instance.
+	ContainerGroupId pulumi.StringPtrInput
 	// If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 	// - The specified RDS instance must be in running status.
 	// - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -558,7 +568,7 @@ type ScalingGroupArgs struct {
 	GroupType pulumi.StringPtrInput
 	// Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
 	HealthCheckType pulumi.StringPtrInput
-	// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+	// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
 	HealthCheckTypes pulumi.StringArrayInput
 	// The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
 	InstanceId pulumi.StringPtrInput
@@ -723,6 +733,11 @@ func (o ScalingGroupOutput) AzBalance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.BoolPtrOutput { return v.AzBalance }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the elastic container instance.
+func (o ScalingGroupOutput) ContainerGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScalingGroup) pulumi.StringPtrOutput { return v.ContainerGroupId }).(pulumi.StringPtrOutput)
+}
+
 // If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
 // - The specified RDS instance must be in running status.
 // - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -755,7 +770,7 @@ func (o ScalingGroupOutput) HealthCheckType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringOutput { return v.HealthCheckType }).(pulumi.StringOutput)
 }
 
-// The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+// The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
 func (o ScalingGroupOutput) HealthCheckTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.StringArrayOutput { return v.HealthCheckTypes }).(pulumi.StringArrayOutput)
 }

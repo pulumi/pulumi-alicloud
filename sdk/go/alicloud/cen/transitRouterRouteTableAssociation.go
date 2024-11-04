@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation)
+// Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
+//
+// For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
 //
 // > **NOTE:** Available since v1.126.0.
 //
@@ -35,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf_example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -45,74 +47,74 @@ import (
 //			}
 //			masterZone := _default.Resources[0].MasterZones[0]
 //			slaveZone := _default.Resources[0].SlaveZones[1]
-//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleMaster, err := vpc.NewSwitch(ctx, "example_master", &vpc.SwitchArgs{
+//			defaultMaster, err := vpc.NewSwitch(ctx, "default_master", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.1.0/24"),
-//				VpcId:       example.ID(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(masterZone),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSlave, err := vpc.NewSwitch(ctx, "example_slave", &vpc.SwitchArgs{
+//			defaultSlave, err := vpc.NewSwitch(ctx, "default_slave", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.2.0/24"),
-//				VpcId:       example.ID(),
+//				VpcId:       defaultNetwork.ID(),
 //				ZoneId:      pulumi.String(slaveZone),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
+//			defaultInstance, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
+//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
 //				TransitRouterName: pulumi.String(name),
-//				CenId:             exampleInstance.ID(),
+//				CenId:             defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "example", &cen.TransitRouterVpcAttachmentArgs{
-//				CenId:           exampleInstance.ID(),
-//				TransitRouterId: exampleTransitRouter.TransitRouterId,
-//				VpcId:           example.ID(),
+//			defaultTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "default", &cen.TransitRouterRouteTableArgs{
+//				TransitRouterId: defaultTransitRouter.TransitRouterId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterVpcAttachment, err := cen.NewTransitRouterVpcAttachment(ctx, "default", &cen.TransitRouterVpcAttachmentArgs{
+//				CenId:                              defaultInstance.ID(),
+//				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
+//				VpcId:                              defaultNetwork.ID(),
+//				TransitRouterVpcAttachmentName:     pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
 //				ZoneMappings: cen.TransitRouterVpcAttachmentZoneMappingArray{
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    pulumi.String(masterZone),
-//						VswitchId: exampleMaster.ID(),
+//						VswitchId: defaultMaster.ID(),
 //					},
 //					&cen.TransitRouterVpcAttachmentZoneMappingArgs{
 //						ZoneId:    pulumi.String(slaveZone),
-//						VswitchId: exampleSlave.ID(),
+//						VswitchId: defaultSlave.ID(),
 //					},
 //				},
-//				TransitRouterAttachmentName:        pulumi.String(name),
-//				TransitRouterAttachmentDescription: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouterRouteTable, err := cen.NewTransitRouterRouteTable(ctx, "example", &cen.TransitRouterRouteTableArgs{
-//				TransitRouterId: exampleTransitRouter.TransitRouterId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cen.NewTransitRouterRouteTableAssociation(ctx, "example", &cen.TransitRouterRouteTableAssociationArgs{
-//				TransitRouterRouteTableId: exampleTransitRouterRouteTable.TransitRouterRouteTableId,
-//				TransitRouterAttachmentId: exampleTransitRouterVpcAttachment.TransitRouterAttachmentId,
+//			_, err = cen.NewTransitRouterRouteTableAssociation(ctx, "default", &cen.TransitRouterRouteTableAssociationArgs{
+//				TransitRouterRouteTableId: defaultTransitRouterRouteTable.TransitRouterRouteTableId,
+//				TransitRouterAttachmentId: defaultTransitRouterVpcAttachment.TransitRouterAttachmentId,
 //			})
 //			if err != nil {
 //				return err
@@ -125,10 +127,10 @@ import (
 //
 // ## Import
 //
-// CEN transit router route table association can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+// $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_id>:<transit_router_attachment_id>
 // ```
 type TransitRouterRouteTableAssociation struct {
 	pulumi.CustomResourceState
@@ -137,11 +139,11 @@ type TransitRouterRouteTableAssociation struct {
 	//
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The associating status of the network.
+	// The status of the Transit Router Route Table Association.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The ID the transit router attachment.
+	// The ID the Transit Router Attachment.
 	TransitRouterAttachmentId pulumi.StringOutput `pulumi:"transitRouterAttachmentId"`
-	// The ID of the transit router route table.
+	// The ID of the Transit Router Route Table.
 	TransitRouterRouteTableId pulumi.StringOutput `pulumi:"transitRouterRouteTableId"`
 }
 
@@ -185,11 +187,11 @@ type transitRouterRouteTableAssociationState struct {
 	//
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun *bool `pulumi:"dryRun"`
-	// The associating status of the network.
+	// The status of the Transit Router Route Table Association.
 	Status *string `pulumi:"status"`
-	// The ID the transit router attachment.
+	// The ID the Transit Router Attachment.
 	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
-	// The ID of the transit router route table.
+	// The ID of the Transit Router Route Table.
 	TransitRouterRouteTableId *string `pulumi:"transitRouterRouteTableId"`
 }
 
@@ -198,11 +200,11 @@ type TransitRouterRouteTableAssociationState struct {
 	//
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun pulumi.BoolPtrInput
-	// The associating status of the network.
+	// The status of the Transit Router Route Table Association.
 	Status pulumi.StringPtrInput
-	// The ID the transit router attachment.
+	// The ID the Transit Router Attachment.
 	TransitRouterAttachmentId pulumi.StringPtrInput
-	// The ID of the transit router route table.
+	// The ID of the Transit Router Route Table.
 	TransitRouterRouteTableId pulumi.StringPtrInput
 }
 
@@ -215,9 +217,9 @@ type transitRouterRouteTableAssociationArgs struct {
 	//
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID the transit router attachment.
+	// The ID the Transit Router Attachment.
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
-	// The ID of the transit router route table.
+	// The ID of the Transit Router Route Table.
 	TransitRouterRouteTableId string `pulumi:"transitRouterRouteTableId"`
 }
 
@@ -227,9 +229,9 @@ type TransitRouterRouteTableAssociationArgs struct {
 	//
 	// > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zoneId of zoneMapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
 	DryRun pulumi.BoolPtrInput
-	// The ID the transit router attachment.
+	// The ID the Transit Router Attachment.
 	TransitRouterAttachmentId pulumi.StringInput
-	// The ID of the transit router route table.
+	// The ID of the Transit Router Route Table.
 	TransitRouterRouteTableId pulumi.StringInput
 }
 
@@ -327,17 +329,17 @@ func (o TransitRouterRouteTableAssociationOutput) DryRun() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The associating status of the network.
+// The status of the Transit Router Route Table Association.
 func (o TransitRouterRouteTableAssociationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID the transit router attachment.
+// The ID the Transit Router Attachment.
 func (o TransitRouterRouteTableAssociationOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
 }
 
-// The ID of the transit router route table.
+// The ID of the Transit Router Route Table.
 func (o TransitRouterRouteTableAssociationOutput) TransitRouterRouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterRouteTableAssociation) pulumi.StringOutput { return v.TransitRouterRouteTableId }).(pulumi.StringOutput)
 }

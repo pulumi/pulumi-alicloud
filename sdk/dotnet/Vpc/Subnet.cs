@@ -34,6 +34,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("ipv6CidrBlockMask")]
         public Output<int> Ipv6CidrBlockMask { get; private set; } = null!;
 
+        [Output("isDefault")]
+        public Output<bool?> IsDefault { get; private set; } = null!;
+
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -60,7 +63,7 @@ namespace Pulumi.AliCloud.Vpc
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Subnet(string name, SubnetArgs args, CustomResourceOptions? options = null)
+        public Subnet(string name, SubnetArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:vpc/subnet:Subnet", name, args ?? new SubnetArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -101,8 +104,8 @@ namespace Pulumi.AliCloud.Vpc
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
-        [Input("cidrBlock", required: true)]
-        public Input<string> CidrBlock { get; set; } = null!;
+        [Input("cidrBlock")]
+        public Input<string>? CidrBlock { get; set; }
 
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -112,6 +115,9 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("ipv6CidrBlockMask")]
         public Input<int>? Ipv6CidrBlockMask { get; set; }
+
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -124,8 +130,8 @@ namespace Pulumi.AliCloud.Vpc
             set => _tags = value;
         }
 
-        [Input("vpcId", required: true)]
-        public Input<string> VpcId { get; set; } = null!;
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         [Input("vswitchName")]
         public Input<string>? VswitchName { get; set; }
@@ -161,6 +167,9 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("ipv6CidrBlockMask")]
         public Input<int>? Ipv6CidrBlockMask { get; set; }
+
+        [Input("isDefault")]
+        public Input<bool>? IsDefault { get; set; }
 
         [Input("name")]
         public Input<string>? Name { get; set; }

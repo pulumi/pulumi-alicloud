@@ -17,7 +17,7 @@ public final class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs ext
     public static final ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs Empty = new ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs();
 
     /**
-     * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+     * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
      * 
      * for example:
      * 
@@ -26,7 +26,7 @@ public final class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs ext
     private @Nullable Output<String> channel;
 
     /**
-     * @return The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+     * @return The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
      * 
      * for example:
      * 
@@ -76,7 +76,7 @@ public final class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs ext
         }
 
         /**
-         * @param channel The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         * @param channel The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          * 
          * for example:
          * 
@@ -89,7 +89,7 @@ public final class ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs ext
         }
 
         /**
-         * @param channel The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         * @param channel The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          * 
          * for example:
          * 

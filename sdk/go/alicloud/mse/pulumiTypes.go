@@ -1135,6 +1135,193 @@ func (o GetGatewaysGatewaySlbListArrayOutput) Index(i pulumi.IntInput) GetGatewa
 	}).(GetGatewaysGatewaySlbListOutput)
 }
 
+type GetNacosConfigsConfig struct {
+	// The name of the application.
+	AppName string `pulumi:"appName"`
+	// The list of IP addresses where the beta release of the configuration is performed.
+	BetaIps string `pulumi:"betaIps"`
+	// The content of the configuration.
+	Content string `pulumi:"content"`
+	// The ID of the data.
+	DataId string `pulumi:"dataId"`
+	// The description of the configuration.
+	Desc string `pulumi:"desc"`
+	// The encryption key.
+	EncryptedDataKey string `pulumi:"encryptedDataKey"`
+	// The ID of the group.
+	Group string `pulumi:"group"`
+	// The ID of the Nacos Config. It is formatted to `<instance_id>:<namespace_id>:<data_id>:<group>`.
+	Id string `pulumi:"id"`
+	// The message digest of the configuration.
+	Md5 string `pulumi:"md5"`
+	// The tags of the configuration.
+	Tags string `pulumi:"tags"`
+	// The format of the configuration. Supported formats include TEXT, JSON, and XML.
+	Type string `pulumi:"type"`
+}
+
+// GetNacosConfigsConfigInput is an input type that accepts GetNacosConfigsConfigArgs and GetNacosConfigsConfigOutput values.
+// You can construct a concrete instance of `GetNacosConfigsConfigInput` via:
+//
+//	GetNacosConfigsConfigArgs{...}
+type GetNacosConfigsConfigInput interface {
+	pulumi.Input
+
+	ToGetNacosConfigsConfigOutput() GetNacosConfigsConfigOutput
+	ToGetNacosConfigsConfigOutputWithContext(context.Context) GetNacosConfigsConfigOutput
+}
+
+type GetNacosConfigsConfigArgs struct {
+	// The name of the application.
+	AppName pulumi.StringInput `pulumi:"appName"`
+	// The list of IP addresses where the beta release of the configuration is performed.
+	BetaIps pulumi.StringInput `pulumi:"betaIps"`
+	// The content of the configuration.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The ID of the data.
+	DataId pulumi.StringInput `pulumi:"dataId"`
+	// The description of the configuration.
+	Desc pulumi.StringInput `pulumi:"desc"`
+	// The encryption key.
+	EncryptedDataKey pulumi.StringInput `pulumi:"encryptedDataKey"`
+	// The ID of the group.
+	Group pulumi.StringInput `pulumi:"group"`
+	// The ID of the Nacos Config. It is formatted to `<instance_id>:<namespace_id>:<data_id>:<group>`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The message digest of the configuration.
+	Md5 pulumi.StringInput `pulumi:"md5"`
+	// The tags of the configuration.
+	Tags pulumi.StringInput `pulumi:"tags"`
+	// The format of the configuration. Supported formats include TEXT, JSON, and XML.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetNacosConfigsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNacosConfigsConfig)(nil)).Elem()
+}
+
+func (i GetNacosConfigsConfigArgs) ToGetNacosConfigsConfigOutput() GetNacosConfigsConfigOutput {
+	return i.ToGetNacosConfigsConfigOutputWithContext(context.Background())
+}
+
+func (i GetNacosConfigsConfigArgs) ToGetNacosConfigsConfigOutputWithContext(ctx context.Context) GetNacosConfigsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNacosConfigsConfigOutput)
+}
+
+// GetNacosConfigsConfigArrayInput is an input type that accepts GetNacosConfigsConfigArray and GetNacosConfigsConfigArrayOutput values.
+// You can construct a concrete instance of `GetNacosConfigsConfigArrayInput` via:
+//
+//	GetNacosConfigsConfigArray{ GetNacosConfigsConfigArgs{...} }
+type GetNacosConfigsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetNacosConfigsConfigArrayOutput() GetNacosConfigsConfigArrayOutput
+	ToGetNacosConfigsConfigArrayOutputWithContext(context.Context) GetNacosConfigsConfigArrayOutput
+}
+
+type GetNacosConfigsConfigArray []GetNacosConfigsConfigInput
+
+func (GetNacosConfigsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNacosConfigsConfig)(nil)).Elem()
+}
+
+func (i GetNacosConfigsConfigArray) ToGetNacosConfigsConfigArrayOutput() GetNacosConfigsConfigArrayOutput {
+	return i.ToGetNacosConfigsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetNacosConfigsConfigArray) ToGetNacosConfigsConfigArrayOutputWithContext(ctx context.Context) GetNacosConfigsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNacosConfigsConfigArrayOutput)
+}
+
+type GetNacosConfigsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetNacosConfigsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNacosConfigsConfig)(nil)).Elem()
+}
+
+func (o GetNacosConfigsConfigOutput) ToGetNacosConfigsConfigOutput() GetNacosConfigsConfigOutput {
+	return o
+}
+
+func (o GetNacosConfigsConfigOutput) ToGetNacosConfigsConfigOutputWithContext(ctx context.Context) GetNacosConfigsConfigOutput {
+	return o
+}
+
+// The name of the application.
+func (o GetNacosConfigsConfigOutput) AppName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.AppName }).(pulumi.StringOutput)
+}
+
+// The list of IP addresses where the beta release of the configuration is performed.
+func (o GetNacosConfigsConfigOutput) BetaIps() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.BetaIps }).(pulumi.StringOutput)
+}
+
+// The content of the configuration.
+func (o GetNacosConfigsConfigOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The ID of the data.
+func (o GetNacosConfigsConfigOutput) DataId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.DataId }).(pulumi.StringOutput)
+}
+
+// The description of the configuration.
+func (o GetNacosConfigsConfigOutput) Desc() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.Desc }).(pulumi.StringOutput)
+}
+
+// The encryption key.
+func (o GetNacosConfigsConfigOutput) EncryptedDataKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.EncryptedDataKey }).(pulumi.StringOutput)
+}
+
+// The ID of the group.
+func (o GetNacosConfigsConfigOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.Group }).(pulumi.StringOutput)
+}
+
+// The ID of the Nacos Config. It is formatted to `<instance_id>:<namespace_id>:<data_id>:<group>`.
+func (o GetNacosConfigsConfigOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The message digest of the configuration.
+func (o GetNacosConfigsConfigOutput) Md5() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.Md5 }).(pulumi.StringOutput)
+}
+
+// The tags of the configuration.
+func (o GetNacosConfigsConfigOutput) Tags() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.Tags }).(pulumi.StringOutput)
+}
+
+// The format of the configuration. Supported formats include TEXT, JSON, and XML.
+func (o GetNacosConfigsConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNacosConfigsConfig) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetNacosConfigsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNacosConfigsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNacosConfigsConfig)(nil)).Elem()
+}
+
+func (o GetNacosConfigsConfigArrayOutput) ToGetNacosConfigsConfigArrayOutput() GetNacosConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetNacosConfigsConfigArrayOutput) ToGetNacosConfigsConfigArrayOutputWithContext(ctx context.Context) GetNacosConfigsConfigArrayOutput {
+	return o
+}
+
+func (o GetNacosConfigsConfigArrayOutput) Index(i pulumi.IntInput) GetNacosConfigsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNacosConfigsConfig {
+		return vs[0].([]GetNacosConfigsConfig)[vs[1].(int)]
+	}).(GetNacosConfigsConfigOutput)
+}
+
 type GetZnodesZnode struct {
 	// The ID of the Cluster.
 	ClusterId string `pulumi:"clusterId"`
@@ -1290,6 +1477,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewayArrayInput)(nil)).Elem(), GetGatewaysGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySlbListInput)(nil)).Elem(), GetGatewaysGatewaySlbListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewaysGatewaySlbListArrayInput)(nil)).Elem(), GetGatewaysGatewaySlbListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNacosConfigsConfigInput)(nil)).Elem(), GetNacosConfigsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNacosConfigsConfigArrayInput)(nil)).Elem(), GetNacosConfigsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZnodesZnodeInput)(nil)).Elem(), GetZnodesZnodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZnodesZnodeArrayInput)(nil)).Elem(), GetZnodesZnodeArray{})
 	pulumi.RegisterOutputType(GatewaySlbListOutput{})
@@ -1304,6 +1493,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGatewaysGatewayArrayOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewaySlbListOutput{})
 	pulumi.RegisterOutputType(GetGatewaysGatewaySlbListArrayOutput{})
+	pulumi.RegisterOutputType(GetNacosConfigsConfigOutput{})
+	pulumi.RegisterOutputType(GetNacosConfigsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetZnodesZnodeOutput{})
 	pulumi.RegisterOutputType(GetZnodesZnodeArrayOutput{})
 }

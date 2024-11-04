@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EngineNamespace{}
 	case "alicloud:mse/gateway:Gateway":
 		r = &Gateway{}
+	case "alicloud:mse/nacosConfig:NacosConfig":
+		r = &NacosConfig{}
 	case "alicloud:mse/znode:Znode":
 		r = &Znode{}
 	default:
@@ -55,6 +57,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"mse/gateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"mse/nacosConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

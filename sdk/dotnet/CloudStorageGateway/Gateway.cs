@@ -12,9 +12,67 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// <summary>
     /// Provides a Cloud Storage Gateway Gateway resource.
     /// 
-    /// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
+    /// For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/csg/developer-reference/api-mnz46x).
     /// 
     /// &gt; **NOTE:** Available since v1.132.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.GetZones.Invoke();
+    /// 
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("default", new()
+    ///     {
+    ///         StorageBundleName = $"{name}-{defaultInteger.Result}",
+    ///     });
+    /// 
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+    ///     {
+    ///         VpcName = $"{name}-{defaultInteger.Result}",
+    ///         CidrBlock = "192.168.0.0/16",
+    ///     });
+    /// 
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+    ///     {
+    ///         VswitchName = $"{name}-{defaultInteger.Result}",
+    ///         VpcId = defaultNetwork.Id,
+    ///         CidrBlock = "192.168.192.0/24",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///     });
+    /// 
+    ///     var defaultGateway = new AliCloud.CloudStorageGateway.Gateway("default", new()
+    ///     {
+    ///         StorageBundleId = defaultStorageBundle.Id,
+    ///         Type = "File",
+    ///         Location = "Cloud",
+    ///         GatewayName = name,
+    ///         GatewayClass = "Standard",
+    ///         VswitchId = defaultSwitch.Id,
+    ///         PublicNetworkBandwidth = 50,
+    ///         PaymentType = "PayAsYouGo",
+    ///         Description = name,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -34,13 +92,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        /// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         /// </summary>
         [Output("gatewayClass")]
         public Output<string?> GatewayClass { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the gateway.
+        /// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Output("gatewayName")]
         public Output<string> GatewayName { get; private set; } = null!;
@@ -52,31 +110,31 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The Payment type of gateway. Valid values: `PayAsYouGo`.
+        /// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
         /// </summary>
         [Output("paymentType")]
         public Output<string?> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+        /// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         /// </summary>
         [Output("publicNetworkBandwidth")]
         public Output<int> PublicNetworkBandwidth { get; private set; } = null!;
 
         /// <summary>
-        /// The reason detail of gateway.
+        /// The detailed reason why you want to delete the gateway.
         /// </summary>
         [Output("reasonDetail")]
         public Output<string?> ReasonDetail { get; private set; } = null!;
 
         /// <summary>
-        /// The reason type when user deletes the gateway.
+        /// The type of the reason why you want to delete the gateway.
         /// </summary>
         [Output("reasonType")]
         public Output<string?> ReasonType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to release the gateway due to expiration.
+        /// Specifies whether to release the gateway after the subscription expires. Valid values:
         /// </summary>
         [Output("releaseAfterExpiration")]
         public Output<bool?> ReleaseAfterExpiration { get; private set; } = null!;
@@ -100,7 +158,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the vSwitch.
+        /// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -158,13 +216,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        /// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         /// </summary>
         [Input("gatewayClass")]
         public Input<string>? GatewayClass { get; set; }
 
         /// <summary>
-        /// The name of the gateway.
+        /// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("gatewayName", required: true)]
         public Input<string> GatewayName { get; set; } = null!;
@@ -176,31 +234,31 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The Payment type of gateway. Valid values: `PayAsYouGo`.
+        /// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+        /// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         /// </summary>
         [Input("publicNetworkBandwidth")]
         public Input<int>? PublicNetworkBandwidth { get; set; }
 
         /// <summary>
-        /// The reason detail of gateway.
+        /// The detailed reason why you want to delete the gateway.
         /// </summary>
         [Input("reasonDetail")]
         public Input<string>? ReasonDetail { get; set; }
 
         /// <summary>
-        /// The reason type when user deletes the gateway.
+        /// The type of the reason why you want to delete the gateway.
         /// </summary>
         [Input("reasonType")]
         public Input<string>? ReasonType { get; set; }
 
         /// <summary>
-        /// Whether to release the gateway due to expiration.
+        /// Specifies whether to release the gateway after the subscription expires. Valid values:
         /// </summary>
         [Input("releaseAfterExpiration")]
         public Input<bool>? ReleaseAfterExpiration { get; set; }
@@ -218,7 +276,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the vSwitch.
+        /// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -238,13 +296,13 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+        /// The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
         /// </summary>
         [Input("gatewayClass")]
         public Input<string>? GatewayClass { get; set; }
 
         /// <summary>
-        /// The name of the gateway.
+        /// The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("gatewayName")]
         public Input<string>? GatewayName { get; set; }
@@ -256,31 +314,31 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The Payment type of gateway. Valid values: `PayAsYouGo`.
+        /// The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+        /// The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
         /// </summary>
         [Input("publicNetworkBandwidth")]
         public Input<int>? PublicNetworkBandwidth { get; set; }
 
         /// <summary>
-        /// The reason detail of gateway.
+        /// The detailed reason why you want to delete the gateway.
         /// </summary>
         [Input("reasonDetail")]
         public Input<string>? ReasonDetail { get; set; }
 
         /// <summary>
-        /// The reason type when user deletes the gateway.
+        /// The type of the reason why you want to delete the gateway.
         /// </summary>
         [Input("reasonType")]
         public Input<string>? ReasonType { get; set; }
 
         /// <summary>
-        /// Whether to release the gateway due to expiration.
+        /// Specifies whether to release the gateway after the subscription expires. Valid values:
         /// </summary>
         [Input("releaseAfterExpiration")]
         public Input<bool>? ReleaseAfterExpiration { get; set; }
@@ -304,7 +362,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The ID of the vSwitch.
+        /// The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

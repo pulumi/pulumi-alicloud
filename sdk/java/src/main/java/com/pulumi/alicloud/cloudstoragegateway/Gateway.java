@@ -19,9 +19,89 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloud Storage Gateway Gateway resource.
  * 
- * For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/cloud-storage-gateway/latest/deploygateway).
+ * For information about Cloud Storage Gateway Gateway and how to use it, see [What is Gateway](https://www.alibabacloud.com/help/en/csg/developer-reference/api-mnz46x).
  * 
  * &gt; **NOTE:** Available since v1.132.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.StorageBundle;
+ * import com.pulumi.alicloud.cloudstoragegateway.StorageBundleArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.cloudstoragegateway.Gateway;
+ * import com.pulumi.alicloud.cloudstoragegateway.GatewayArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = AlicloudFunctions.getZones();
+ * 
+ *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultStorageBundle = new StorageBundle("defaultStorageBundle", StorageBundleArgs.builder()
+ *             .storageBundleName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .build());
+ * 
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .cidrBlock("192.168.0.0/16")
+ *             .build());
+ * 
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(String.format("%s-%s", name,defaultInteger.result()))
+ *             .vpcId(defaultNetwork.id())
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
+ * 
+ *         var defaultGateway = new Gateway("defaultGateway", GatewayArgs.builder()
+ *             .storageBundleId(defaultStorageBundle.id())
+ *             .type("File")
+ *             .location("Cloud")
+ *             .gatewayName(name)
+ *             .gatewayClass("Standard")
+ *             .vswitchId(defaultSwitch.id())
+ *             .publicNetworkBandwidth(50)
+ *             .paymentType("PayAsYouGo")
+ *             .description(name)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -49,28 +129,28 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+     * The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
      * 
      */
     @Export(name="gatewayClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayClass;
 
     /**
-     * @return The specification of the gateway. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
+     * @return The specification of the gateway. Valid values: `Basic`, `Standard`, `Enhanced`, `Advanced`. **NOTE:** If `location` is set to `Cloud`, `gateway_class` is required. Otherwise, `gateway_class` will be ignored. If `payment_type` is set to `Subscription`, `gateway_class` cannot be modified.
      * 
      */
     public Output<Optional<String>> gatewayClass() {
         return Codegen.optional(this.gatewayClass);
     }
     /**
-     * The name of the gateway.
+     * The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     @Export(name="gatewayName", refs={String.class}, tree="[0]")
     private Output<String> gatewayName;
 
     /**
-     * @return The name of the gateway.
+     * @return The name of the gateway. The name must be `1` to `60` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
     public Output<String> gatewayName() {
@@ -91,70 +171,70 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * The Payment type of gateway. Valid values: `PayAsYouGo`.
+     * The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
-     * @return The Payment type of gateway. Valid values: `PayAsYouGo`.
+     * @return The Payment type of gateway. Valid values: `PayAsYouGo`, `Subscription`. **NOTE:** From version 1.233.0, `payment_type` can be set to `Subscription`.
      * 
      */
     public Output<Optional<String>> paymentType() {
         return Codegen.optional(this.paymentType);
     }
     /**
-     * The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+     * The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
      * 
      */
     @Export(name="publicNetworkBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> publicNetworkBandwidth;
 
     /**
-     * @return The public network bandwidth of gateway. Default value: `5`. Valid values: `5` to `200`.
+     * @return The public bandwidth of the gateway. Default value: `5`. Valid values: `5` to `200`. **NOTE:** `public_network_bandwidth` is only valid when `location` is `Cloud`. If `payment_type` is set to `Subscription`, `public_network_bandwidth` cannot be modified.
      * 
      */
     public Output<Integer> publicNetworkBandwidth() {
         return this.publicNetworkBandwidth;
     }
     /**
-     * The reason detail of gateway.
+     * The detailed reason why you want to delete the gateway.
      * 
      */
     @Export(name="reasonDetail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reasonDetail;
 
     /**
-     * @return The reason detail of gateway.
+     * @return The detailed reason why you want to delete the gateway.
      * 
      */
     public Output<Optional<String>> reasonDetail() {
         return Codegen.optional(this.reasonDetail);
     }
     /**
-     * The reason type when user deletes the gateway.
+     * The type of the reason why you want to delete the gateway.
      * 
      */
     @Export(name="reasonType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reasonType;
 
     /**
-     * @return The reason type when user deletes the gateway.
+     * @return The type of the reason why you want to delete the gateway.
      * 
      */
     public Output<Optional<String>> reasonType() {
         return Codegen.optional(this.reasonType);
     }
     /**
-     * Whether to release the gateway due to expiration.
+     * Specifies whether to release the gateway after the subscription expires. Valid values:
      * 
      */
     @Export(name="releaseAfterExpiration", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> releaseAfterExpiration;
 
     /**
-     * @return Whether to release the gateway due to expiration.
+     * @return Specifies whether to release the gateway after the subscription expires. Valid values:
      * 
      */
     public Output<Optional<Boolean>> releaseAfterExpiration() {
@@ -203,14 +283,14 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The ID of the vSwitch.
+     * The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch.
+     * @return The ID of the VSwitch. **NOTE:** If `location` is set to `Cloud`, `vswitch_id` is required. Otherwise, `vswitch_id` will be ignored.
      * 
      */
     public Output<Optional<String>> vswitchId() {

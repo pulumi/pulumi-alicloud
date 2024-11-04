@@ -17,7 +17,7 @@ public final class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs extend
     public static final ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs Empty = new ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs();
 
     /**
-     * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+     * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
      * 
      * for example:
      * 
@@ -26,7 +26,7 @@ public final class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs extend
     private @Nullable Output<String> channel;
 
     /**
-     * @return The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+     * @return The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
      * 
      * for example:
      * 
@@ -76,7 +76,7 @@ public final class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs extend
         }
 
         /**
-         * @param channel The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         * @param channel The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          * 
          * for example:
          * 
@@ -89,7 +89,7 @@ public final class ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs extend
         }
 
         /**
-         * @param channel The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         * @param channel The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          * 
          * for example:
          * 

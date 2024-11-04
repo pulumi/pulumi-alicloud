@@ -24,8 +24,8 @@ class TransitRouterRouteTableAssociationArgs:
                  dry_run: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a TransitRouterRouteTableAssociation resource.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID the transit router attachment.
-        :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID the Transit Router Attachment.
+        :param pulumi.Input[str] transit_router_route_table_id: The ID of the Transit Router Route Table.
         :param pulumi.Input[bool] dry_run: The dry run.
                
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
@@ -39,7 +39,7 @@ class TransitRouterRouteTableAssociationArgs:
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> pulumi.Input[str]:
         """
-        The ID the transit router attachment.
+        The ID the Transit Router Attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -51,7 +51,7 @@ class TransitRouterRouteTableAssociationArgs:
     @pulumi.getter(name="transitRouterRouteTableId")
     def transit_router_route_table_id(self) -> pulumi.Input[str]:
         """
-        The ID of the transit router route table.
+        The ID of the Transit Router Route Table.
         """
         return pulumi.get(self, "transit_router_route_table_id")
 
@@ -86,9 +86,9 @@ class _TransitRouterRouteTableAssociationState:
         :param pulumi.Input[bool] dry_run: The dry run.
                
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
-        :param pulumi.Input[str] status: The associating status of the network.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID the transit router attachment.
-        :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
+        :param pulumi.Input[str] status: The status of the Transit Router Route Table Association.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID the Transit Router Attachment.
+        :param pulumi.Input[str] transit_router_route_table_id: The ID of the Transit Router Route Table.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -117,7 +117,7 @@ class _TransitRouterRouteTableAssociationState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The associating status of the network.
+        The status of the Transit Router Route Table Association.
         """
         return pulumi.get(self, "status")
 
@@ -129,7 +129,7 @@ class _TransitRouterRouteTableAssociationState:
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID the transit router attachment.
+        The ID the Transit Router Attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -141,7 +141,7 @@ class _TransitRouterRouteTableAssociationState:
     @pulumi.getter(name="transitRouterRouteTableId")
     def transit_router_route_table_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the transit router route table.
+        The ID of the Transit Router Route Table.
         """
         return pulumi.get(self, "transit_router_route_table_id")
 
@@ -160,7 +160,9 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
                  transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation)
+        Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
+
+        For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -175,57 +177,57 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example"
+            name = "terraform-example"
         default = alicloud.cen.get_transit_router_available_resources()
         master_zone = default.resources[0].master_zones[0]
         slave_zone = default.resources[0].slave_zones[1]
-        example = alicloud.vpc.Network("example",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        example_master = alicloud.vpc.Switch("example_master",
+        default_master = alicloud.vpc.Switch("default_master",
             vswitch_name=name,
             cidr_block="192.168.1.0/24",
-            vpc_id=example.id,
+            vpc_id=default_network.id,
             zone_id=master_zone)
-        example_slave = alicloud.vpc.Switch("example_slave",
+        default_slave = alicloud.vpc.Switch("default_slave",
             vswitch_name=name,
             cidr_block="192.168.2.0/24",
-            vpc_id=example.id,
+            vpc_id=default_network.id,
             zone_id=slave_zone)
-        example_instance = alicloud.cen.Instance("example",
+        default_instance = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
-        example_transit_router = alicloud.cen.TransitRouter("example",
+        default_transit_router = alicloud.cen.TransitRouter("default",
             transit_router_name=name,
-            cen_id=example_instance.id)
-        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("example",
-            cen_id=example_instance.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            vpc_id=example.id,
+            cen_id=default_instance.id)
+        default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("default", transit_router_id=default_transit_router.transit_router_id)
+        default_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("default",
+            cen_id=default_instance.id,
+            transit_router_id=default_transit_router.transit_router_id,
+            vpc_id=default_network.id,
+            transit_router_vpc_attachment_name=name,
+            transit_router_attachment_description=name,
             zone_mappings=[
                 {
                     "zone_id": master_zone,
-                    "vswitch_id": example_master.id,
+                    "vswitch_id": default_master.id,
                 },
                 {
                     "zone_id": slave_zone,
-                    "vswitch_id": example_slave.id,
+                    "vswitch_id": default_slave.id,
                 },
-            ],
-            transit_router_attachment_name=name,
-            transit_router_attachment_description=name)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("example", transit_router_id=example_transit_router.transit_router_id)
-        example_transit_router_route_table_association = alicloud.cen.TransitRouterRouteTableAssociation("example",
-            transit_router_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
-            transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id)
+            ])
+        default_transit_router_route_table_association = alicloud.cen.TransitRouterRouteTableAssociation("default",
+            transit_router_route_table_id=default_transit_router_route_table.transit_router_route_table_id,
+            transit_router_attachment_id=default_transit_router_vpc_attachment.transit_router_attachment_id)
         ```
 
         ## Import
 
-        CEN transit router route table association can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+        $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -233,8 +235,8 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: The dry run.
                
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
-        :param pulumi.Input[str] transit_router_attachment_id: The ID the transit router attachment.
-        :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID the Transit Router Attachment.
+        :param pulumi.Input[str] transit_router_route_table_id: The ID of the Transit Router Route Table.
         """
         ...
     @overload
@@ -243,7 +245,9 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
                  args: TransitRouterRouteTableAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation)
+        Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
+
+        For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -258,57 +262,57 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example"
+            name = "terraform-example"
         default = alicloud.cen.get_transit_router_available_resources()
         master_zone = default.resources[0].master_zones[0]
         slave_zone = default.resources[0].slave_zones[1]
-        example = alicloud.vpc.Network("example",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        example_master = alicloud.vpc.Switch("example_master",
+        default_master = alicloud.vpc.Switch("default_master",
             vswitch_name=name,
             cidr_block="192.168.1.0/24",
-            vpc_id=example.id,
+            vpc_id=default_network.id,
             zone_id=master_zone)
-        example_slave = alicloud.vpc.Switch("example_slave",
+        default_slave = alicloud.vpc.Switch("default_slave",
             vswitch_name=name,
             cidr_block="192.168.2.0/24",
-            vpc_id=example.id,
+            vpc_id=default_network.id,
             zone_id=slave_zone)
-        example_instance = alicloud.cen.Instance("example",
+        default_instance = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
-        example_transit_router = alicloud.cen.TransitRouter("example",
+        default_transit_router = alicloud.cen.TransitRouter("default",
             transit_router_name=name,
-            cen_id=example_instance.id)
-        example_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("example",
-            cen_id=example_instance.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            vpc_id=example.id,
+            cen_id=default_instance.id)
+        default_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("default", transit_router_id=default_transit_router.transit_router_id)
+        default_transit_router_vpc_attachment = alicloud.cen.TransitRouterVpcAttachment("default",
+            cen_id=default_instance.id,
+            transit_router_id=default_transit_router.transit_router_id,
+            vpc_id=default_network.id,
+            transit_router_vpc_attachment_name=name,
+            transit_router_attachment_description=name,
             zone_mappings=[
                 {
                     "zone_id": master_zone,
-                    "vswitch_id": example_master.id,
+                    "vswitch_id": default_master.id,
                 },
                 {
                     "zone_id": slave_zone,
-                    "vswitch_id": example_slave.id,
+                    "vswitch_id": default_slave.id,
                 },
-            ],
-            transit_router_attachment_name=name,
-            transit_router_attachment_description=name)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("example", transit_router_id=example_transit_router.transit_router_id)
-        example_transit_router_route_table_association = alicloud.cen.TransitRouterRouteTableAssociation("example",
-            transit_router_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
-            transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id)
+            ])
+        default_transit_router_route_table_association = alicloud.cen.TransitRouterRouteTableAssociation("default",
+            transit_router_route_table_id=default_transit_router_route_table.transit_router_route_table_id,
+            transit_router_attachment_id=default_transit_router_vpc_attachment.transit_router_attachment_id)
         ```
 
         ## Import
 
-        CEN transit router route table association can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+        $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -370,9 +374,9 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: The dry run.
                
                > **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
-        :param pulumi.Input[str] status: The associating status of the network.
-        :param pulumi.Input[str] transit_router_attachment_id: The ID the transit router attachment.
-        :param pulumi.Input[str] transit_router_route_table_id: The ID of the transit router route table.
+        :param pulumi.Input[str] status: The status of the Transit Router Route Table Association.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID the Transit Router Attachment.
+        :param pulumi.Input[str] transit_router_route_table_id: The ID of the Transit Router Route Table.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -398,7 +402,7 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The associating status of the network.
+        The status of the Transit Router Route Table Association.
         """
         return pulumi.get(self, "status")
 
@@ -406,7 +410,7 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> pulumi.Output[str]:
         """
-        The ID the transit router attachment.
+        The ID the Transit Router Attachment.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -414,7 +418,7 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterRouteTableId")
     def transit_router_route_table_id(self) -> pulumi.Output[str]:
         """
-        The ID of the transit router route table.
+        The ID of the Transit Router Route Table.
         """
         return pulumi.get(self, "transit_router_route_table_id")
 

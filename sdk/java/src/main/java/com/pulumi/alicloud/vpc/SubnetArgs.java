@@ -5,7 +5,6 @@ package com.pulumi.alicloud.vpc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -38,11 +37,11 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.availabilityZone);
     }
 
-    @Import(name="cidrBlock", required=true)
-    private Output<String> cidrBlock;
+    @Import(name="cidrBlock")
+    private @Nullable Output<String> cidrBlock;
 
-    public Output<String> cidrBlock() {
-        return this.cidrBlock;
+    public Optional<Output<String>> cidrBlock() {
+        return Optional.ofNullable(this.cidrBlock);
     }
 
     @Import(name="description")
@@ -64,6 +63,13 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<Integer>> ipv6CidrBlockMask() {
         return Optional.ofNullable(this.ipv6CidrBlockMask);
+    }
+
+    @Import(name="isDefault")
+    private @Nullable Output<Boolean> isDefault;
+
+    public Optional<Output<Boolean>> isDefault() {
+        return Optional.ofNullable(this.isDefault);
     }
 
     /**
@@ -92,11 +98,11 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    @Import(name="vpcId", required=true)
-    private Output<String> vpcId;
+    @Import(name="vpcId")
+    private @Nullable Output<String> vpcId;
 
-    public Output<String> vpcId() {
-        return this.vpcId;
+    public Optional<Output<String>> vpcId() {
+        return Optional.ofNullable(this.vpcId);
     }
 
     @Import(name="vswitchName")
@@ -121,6 +127,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.enableIpv6 = $.enableIpv6;
         this.ipv6CidrBlockMask = $.ipv6CidrBlockMask;
+        this.isDefault = $.isDefault;
         this.name = $.name;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
@@ -171,7 +178,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
             return availabilityZone(Output.of(availabilityZone));
         }
 
-        public Builder cidrBlock(Output<String> cidrBlock) {
+        public Builder cidrBlock(@Nullable Output<String> cidrBlock) {
             $.cidrBlock = cidrBlock;
             return this;
         }
@@ -205,6 +212,15 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder ipv6CidrBlockMask(Integer ipv6CidrBlockMask) {
             return ipv6CidrBlockMask(Output.of(ipv6CidrBlockMask));
+        }
+
+        public Builder isDefault(@Nullable Output<Boolean> isDefault) {
+            $.isDefault = isDefault;
+            return this;
+        }
+
+        public Builder isDefault(Boolean isDefault) {
+            return isDefault(Output.of(isDefault));
         }
 
         /**
@@ -241,7 +257,7 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
             return tags(Output.of(tags));
         }
 
-        public Builder vpcId(Output<String> vpcId) {
+        public Builder vpcId(@Nullable Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
@@ -269,12 +285,6 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SubnetArgs build() {
-            if ($.cidrBlock == null) {
-                throw new MissingRequiredPropertyException("SubnetArgs", "cidrBlock");
-            }
-            if ($.vpcId == null) {
-                throw new MissingRequiredPropertyException("SubnetArgs", "vpcId");
-            }
             return $;
         }
     }

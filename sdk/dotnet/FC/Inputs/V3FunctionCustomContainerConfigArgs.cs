@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3FunctionCustomContainerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Image Acceleration Information (Obsolete).
+        /// (Deprecated) Image Acceleration Information (Obsolete).
         /// </summary>
         [Input("accelerationInfo")]
         public Input<Inputs.V3FunctionCustomContainerConfigAccelerationInfoArgs>? AccelerationInfo { get; set; }

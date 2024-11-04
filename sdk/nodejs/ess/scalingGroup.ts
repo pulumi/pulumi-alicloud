@@ -145,6 +145,10 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly azBalance!: pulumi.Output<boolean | undefined>;
     /**
+     * The ID of the elastic container instance.
+     */
+    public readonly containerGroupId!: pulumi.Output<string | undefined>;
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -171,7 +175,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly healthCheckType!: pulumi.Output<string>;
     /**
-     * The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
      */
     public readonly healthCheckTypes!: pulumi.Output<string[] | undefined>;
     /**
@@ -294,6 +298,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["albServerGroups"] = state ? state.albServerGroups : undefined;
             resourceInputs["allocationStrategy"] = state ? state.allocationStrategy : undefined;
             resourceInputs["azBalance"] = state ? state.azBalance : undefined;
+            resourceInputs["containerGroupId"] = state ? state.containerGroupId : undefined;
             resourceInputs["dbInstanceIds"] = state ? state.dbInstanceIds : undefined;
             resourceInputs["defaultCooldown"] = state ? state.defaultCooldown : undefined;
             resourceInputs["desiredCapacity"] = state ? state.desiredCapacity : undefined;
@@ -334,6 +339,7 @@ export class ScalingGroup extends pulumi.CustomResource {
             resourceInputs["albServerGroups"] = args ? args.albServerGroups : undefined;
             resourceInputs["allocationStrategy"] = args ? args.allocationStrategy : undefined;
             resourceInputs["azBalance"] = args ? args.azBalance : undefined;
+            resourceInputs["containerGroupId"] = args ? args.containerGroupId : undefined;
             resourceInputs["dbInstanceIds"] = args ? args.dbInstanceIds : undefined;
             resourceInputs["defaultCooldown"] = args ? args.defaultCooldown : undefined;
             resourceInputs["desiredCapacity"] = args ? args.desiredCapacity : undefined;
@@ -386,6 +392,10 @@ export interface ScalingGroupState {
      */
     azBalance?: pulumi.Input<boolean>;
     /**
+     * The ID of the elastic container instance.
+     */
+    containerGroupId?: pulumi.Input<string>;
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -412,7 +422,7 @@ export interface ScalingGroupState {
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
      */
     healthCheckTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -537,6 +547,10 @@ export interface ScalingGroupArgs {
      */
     azBalance?: pulumi.Input<boolean>;
     /**
+     * The ID of the elastic container instance.
+     */
+    containerGroupId?: pulumi.Input<string>;
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -563,7 +577,7 @@ export interface ScalingGroupArgs {
      */
     healthCheckType?: pulumi.Input<string>;
     /**
-     * The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
      */
     healthCheckTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**

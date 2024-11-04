@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,6 +23,7 @@ type Subnet struct {
 	EnableIpv6        pulumi.BoolPtrOutput   `pulumi:"enableIpv6"`
 	Ipv6CidrBlock     pulumi.StringOutput    `pulumi:"ipv6CidrBlock"`
 	Ipv6CidrBlockMask pulumi.IntOutput       `pulumi:"ipv6CidrBlockMask"`
+	IsDefault         pulumi.BoolPtrOutput   `pulumi:"isDefault"`
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name        pulumi.StringOutput    `pulumi:"name"`
 	Status      pulumi.StringOutput    `pulumi:"status"`
@@ -37,15 +37,9 @@ type Subnet struct {
 func NewSubnet(ctx *pulumi.Context,
 	name string, args *SubnetArgs, opts ...pulumi.ResourceOption) (*Subnet, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &SubnetArgs{}
 	}
 
-	if args.CidrBlock == nil {
-		return nil, errors.New("invalid value for required argument 'CidrBlock'")
-	}
-	if args.VpcId == nil {
-		return nil, errors.New("invalid value for required argument 'VpcId'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Subnet
 	err := ctx.RegisterResource("alicloud:vpc/subnet:Subnet", name, args, &resource, opts...)
@@ -77,6 +71,7 @@ type subnetState struct {
 	EnableIpv6        *bool   `pulumi:"enableIpv6"`
 	Ipv6CidrBlock     *string `pulumi:"ipv6CidrBlock"`
 	Ipv6CidrBlockMask *int    `pulumi:"ipv6CidrBlockMask"`
+	IsDefault         *bool   `pulumi:"isDefault"`
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name        *string           `pulumi:"name"`
 	Status      *string           `pulumi:"status"`
@@ -95,6 +90,7 @@ type SubnetState struct {
 	EnableIpv6        pulumi.BoolPtrInput
 	Ipv6CidrBlock     pulumi.StringPtrInput
 	Ipv6CidrBlockMask pulumi.IntPtrInput
+	IsDefault         pulumi.BoolPtrInput
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name        pulumi.StringPtrInput
 	Status      pulumi.StringPtrInput
@@ -111,14 +107,15 @@ func (SubnetState) ElementType() reflect.Type {
 type subnetArgs struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone  *string `pulumi:"availabilityZone"`
-	CidrBlock         string  `pulumi:"cidrBlock"`
+	CidrBlock         *string `pulumi:"cidrBlock"`
 	Description       *string `pulumi:"description"`
 	EnableIpv6        *bool   `pulumi:"enableIpv6"`
 	Ipv6CidrBlockMask *int    `pulumi:"ipv6CidrBlockMask"`
+	IsDefault         *bool   `pulumi:"isDefault"`
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name        *string           `pulumi:"name"`
 	Tags        map[string]string `pulumi:"tags"`
-	VpcId       string            `pulumi:"vpcId"`
+	VpcId       *string           `pulumi:"vpcId"`
 	VswitchName *string           `pulumi:"vswitchName"`
 	ZoneId      *string           `pulumi:"zoneId"`
 }
@@ -127,14 +124,15 @@ type subnetArgs struct {
 type SubnetArgs struct {
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone  pulumi.StringPtrInput
-	CidrBlock         pulumi.StringInput
+	CidrBlock         pulumi.StringPtrInput
 	Description       pulumi.StringPtrInput
 	EnableIpv6        pulumi.BoolPtrInput
 	Ipv6CidrBlockMask pulumi.IntPtrInput
+	IsDefault         pulumi.BoolPtrInput
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name        pulumi.StringPtrInput
 	Tags        pulumi.StringMapInput
-	VpcId       pulumi.StringInput
+	VpcId       pulumi.StringPtrInput
 	VswitchName pulumi.StringPtrInput
 	ZoneId      pulumi.StringPtrInput
 }
@@ -253,6 +251,10 @@ func (o SubnetOutput) Ipv6CidrBlock() pulumi.StringOutput {
 
 func (o SubnetOutput) Ipv6CidrBlockMask() pulumi.IntOutput {
 	return o.ApplyT(func(v *Subnet) pulumi.IntOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntOutput)
+}
+
+func (o SubnetOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Subnet) pulumi.BoolPtrOutput { return v.IsDefault }).(pulumi.BoolPtrOutput)
 }
 
 // Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
