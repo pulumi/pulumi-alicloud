@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Kms.Outputs
     public sealed class GetSecretsSecretResult
     {
         /// <summary>
-        /// (Available in 1.124.0+) A mapping of tags to assign to the resource.
+        /// (Available since v1.124.0) A mapping of tags to assign to the resource.
         /// </summary>
         public readonly string Arn;
         /// <summary>
-        /// (Available in 1.124.0+)  The description of the secret.
+        /// (Available since v1.124.0)  The description of the secret.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+        /// (Available since v1.124.0)  The ID of the KMS CMK that is used to encrypt the secret value.
         /// </summary>
         public readonly string EncryptionKeyId;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.AliCloud.Kms.Outputs
         /// </summary>
         public readonly string PlannedDeleteTime;
         /// <summary>
-        /// (Available in 1.124.0+)  The value of the secret that you want to create.
+        /// (Available since v1.124.0)  The value of the secret that you want to create.
         /// </summary>
         public readonly string SecretData;
         /// <summary>
-        /// (Available in 1.124.0+)  The type of the secret data value.
+        /// (Available since v1.124.0)  The type of the secret data value.
         /// </summary>
         public readonly string SecretDataType;
         /// <summary>
@@ -46,19 +46,19 @@ namespace Pulumi.AliCloud.Kms.Outputs
         /// </summary>
         public readonly string SecretName;
         /// <summary>
-        /// (Available in 1.124.0+)  The type of the secret.
+        /// (Available since v1.124.0)  The type of the secret.
         /// </summary>
         public readonly string SecretType;
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// A mapping of tags to assign to the resource, and can be used to filter secrets.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Tags;
         /// <summary>
-        /// (Available in 1.124.0+)  The version number of the initial version.
+        /// (Available since v1.124.0)  The version number of the initial version.
         /// </summary>
         public readonly string VersionId;
         /// <summary>
-        /// (Available in 1.124.0+)  The stage labels that mark the new secret version.
+        /// (Available since v1.124.0)  The stage labels that mark the new secret version.
         /// </summary>
         public readonly ImmutableArray<string> VersionStages;
 

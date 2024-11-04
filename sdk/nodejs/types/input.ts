@@ -4346,7 +4346,7 @@ export namespace cs {
 
     export interface ManagedKubernetesOperationPolicyClusterAutoUpgrade {
         /**
-         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          *
          * for example:
          * ```
@@ -4818,7 +4818,7 @@ export namespace cs {
 
     export interface ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
         /**
-         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          *
          * for example:
          * ```
@@ -9582,7 +9582,7 @@ export namespace fc {
 
     export interface V3FunctionCustomContainerConfig {
         /**
-         * Image Acceleration Information (Obsolete).
+         * (Deprecated) Image Acceleration Information (Obsolete).
          *
          * @deprecated Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
          */

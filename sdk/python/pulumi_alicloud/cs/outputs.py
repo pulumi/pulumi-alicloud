@@ -1729,7 +1729,7 @@ class ManagedKubernetesOperationPolicyClusterAutoUpgrade(dict):
                  channel: Optional[str] = None,
                  enabled: Optional[bool] = None):
         """
-        :param str channel: The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+        :param str channel: The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
                
                for example:
                ```
@@ -1751,7 +1751,7 @@ class ManagedKubernetesOperationPolicyClusterAutoUpgrade(dict):
     @pulumi.getter
     def channel(self) -> Optional[str]:
         """
-        The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+        The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 
         for example:
         ```
@@ -3355,7 +3355,7 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgrade(dict):
                  channel: Optional[str] = None,
                  enabled: Optional[bool] = None):
         """
-        :param str channel: The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+        :param str channel: The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
                
                for example:
                ```
@@ -3377,7 +3377,7 @@ class ServerlessKubernetesOperationPolicyClusterAutoUpgrade(dict):
     @pulumi.getter
     def channel(self) -> Optional[str]:
         """
-        The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+        The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 
         for example:
         ```

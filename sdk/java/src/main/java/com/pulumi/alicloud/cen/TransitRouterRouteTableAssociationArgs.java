@@ -37,14 +37,14 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
     }
 
     /**
-     * The ID the transit router attachment.
+     * The ID the Transit Router Attachment.
      * 
      */
     @Import(name="transitRouterAttachmentId", required=true)
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID the transit router attachment.
+     * @return The ID the Transit Router Attachment.
      * 
      */
     public Output<String> transitRouterAttachmentId() {
@@ -52,14 +52,14 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
     }
 
     /**
-     * The ID of the transit router route table.
+     * The ID of the Transit Router Route Table.
      * 
      */
     @Import(name="transitRouterRouteTableId", required=true)
     private Output<String> transitRouterRouteTableId;
 
     /**
-     * @return The ID of the transit router route table.
+     * @return The ID of the Transit Router Route Table.
      * 
      */
     public Output<String> transitRouterRouteTableId() {
@@ -118,7 +118,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param transitRouterAttachmentId The ID the transit router attachment.
+         * @param transitRouterAttachmentId The ID the Transit Router Attachment.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param transitRouterAttachmentId The ID the transit router attachment.
+         * @param transitRouterAttachmentId The ID the Transit Router Attachment.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param transitRouterRouteTableId The ID of the transit router route table.
+         * @param transitRouterRouteTableId The ID of the Transit Router Route Table.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class TransitRouterRouteTableAssociationArgs extends com.pulumi.res
         }
 
         /**
-         * @param transitRouterRouteTableId The ID of the transit router route table.
+         * @param transitRouterRouteTableId The ID of the Transit Router Route Table.
          * 
          * @return builder
          * 

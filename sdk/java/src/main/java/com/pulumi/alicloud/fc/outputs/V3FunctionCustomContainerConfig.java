@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionCustomContainerConfig {
     /**
-     * @return Image Acceleration Information (Obsolete).
+     * @return (Deprecated) Image Acceleration Information (Obsolete).
      * 
      * @deprecated
      * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
@@ -75,7 +75,7 @@ public final class V3FunctionCustomContainerConfig {
 
     private V3FunctionCustomContainerConfig() {}
     /**
-     * @return Image Acceleration Information (Obsolete).
+     * @return (Deprecated) Image Acceleration Information (Obsolete).
      * 
      * @deprecated
      * Field &#39;acceleration_info&#39; has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)

@@ -19,7 +19,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     public static final SwitchState Empty = new SwitchState();
 
     /**
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
+     * Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -30,7 +30,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
+     * @return Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -42,14 +42,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IPv4 CIDR block of the VSwitch.
+     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
      * 
      */
     @Import(name="cidrBlock")
     private @Nullable Output<String> cidrBlock;
 
     /**
-     * @return The IPv4 CIDR block of the VSwitch.
+     * @return The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
      * 
      */
     public Optional<Output<String>> cidrBlock() {
@@ -88,8 +88,6 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether the IPv6 function is enabled in the switch. Value:
-     * - **true**: enables IPv6.
-     * - **false** (default): IPv6 is not enabled.
      * 
      */
     @Import(name="enableIpv6")
@@ -97,8 +95,6 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether the IPv6 function is enabled in the switch. Value:
-     * - **true**: enables IPv6.
-     * - **false** (default): IPv6 is not enabled.
      * 
      */
     public Optional<Output<Boolean>> enableIpv6() {
@@ -136,7 +132,22 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="isDefault")
+    private @Nullable Output<Boolean> isDefault;
+
+    /**
+     * @return Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> isDefault() {
+        return Optional.ofNullable(this.isDefault);
+    }
+
+    /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -147,7 +158,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
+     * @return Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -189,18 +200,14 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPC ID.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The VPC ID.
-     * 
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * @return The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -247,6 +254,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         this.enableIpv6 = $.enableIpv6;
         this.ipv6CidrBlock = $.ipv6CidrBlock;
         this.ipv6CidrBlockMask = $.ipv6CidrBlockMask;
+        this.isDefault = $.isDefault;
         this.name = $.name;
         this.status = $.status;
         this.tags = $.tags;
@@ -274,7 +282,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
+         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
          * 
          * @return builder
          * 
@@ -289,7 +297,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
+         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.119.0. New field `zone_id` instead.
          * 
          * @return builder
          * 
@@ -303,7 +311,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidrBlock The IPv4 CIDR block of the VSwitch.
+         * @param cidrBlock The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
          * 
          * @return builder
          * 
@@ -314,7 +322,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cidrBlock The IPv4 CIDR block of the VSwitch.
+         * @param cidrBlock The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `cidr_block` is required.
          * 
          * @return builder
          * 
@@ -367,8 +375,6 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableIpv6 Whether the IPv6 function is enabled in the switch. Value:
-         * - **true**: enables IPv6.
-         * - **false** (default): IPv6 is not enabled.
          * 
          * @return builder
          * 
@@ -380,8 +386,6 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enableIpv6 Whether the IPv6 function is enabled in the switch. Value:
-         * - **true**: enables IPv6.
-         * - **false** (default): IPv6 is not enabled.
          * 
          * @return builder
          * 
@@ -433,7 +437,28 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
+         * @param isDefault Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(@Nullable Output<Boolean> isDefault) {
+            $.isDefault = isDefault;
+            return this;
+        }
+
+        /**
+         * @param isDefault Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDefault(Boolean isDefault) {
+            return isDefault(Output.of(isDefault));
+        }
+
+        /**
+         * @param name Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
          * 
          * @return builder
          * 
@@ -448,7 +473,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
+         * @param name Field `name` has been deprecated from provider version 1.119.0. New field `vswitch_name` instead.
          * 
          * @return builder
          * 
@@ -504,9 +529,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPC ID.
-         * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * @param vpcId The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
          * 
          * @return builder
          * 
@@ -517,9 +540,7 @@ public final class SwitchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPC ID.
-         * 
-         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * @param vpcId The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
          * 
          * @return builder
          * 

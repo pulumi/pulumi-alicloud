@@ -5776,6 +5776,9 @@
                     }
                 }
             },
+            "alicloud_mse_nacos_config": {
+                "current": "alicloud:mse/nacosConfig:NacosConfig"
+            },
             "alicloud_mse_znode": {
                 "current": "alicloud:mse/znode:Znode"
             },
@@ -6338,6 +6341,14 @@
                 "current": "alicloud:ots/tunnel:Tunnel",
                 "fields": {
                     "channels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_pai_workspace_workspace": {
+                "current": "alicloud:pai/workspaceWorkspace:WorkspaceWorkspace",
+                "fields": {
+                    "env_types": {
                         "maxItemsOne": false
                     }
                 }
@@ -16337,6 +16348,17 @@
                         "maxItemsOne": false
                     },
                     "names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_mse_nacos_configs": {
+                "current": "alicloud:mse/getNacosConfigs:getNacosConfigs",
+                "fields": {
+                    "configs": {
+                        "maxItemsOne": false
+                    },
+                    "ids": {
                         "maxItemsOne": false
                     }
                 }

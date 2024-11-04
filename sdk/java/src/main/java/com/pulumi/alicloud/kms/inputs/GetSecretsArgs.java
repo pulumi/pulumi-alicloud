@@ -111,14 +111,14 @@ public final class GetSecretsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A mapping of tags to assign to the resource.
+     * A mapping of tags to assign to the resource, and can be used to filter secrets.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return A mapping of tags to assign to the resource, and can be used to filter secrets.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -294,7 +294,7 @@ public final class GetSecretsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags A mapping of tags to assign to the resource, and can be used to filter secrets.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class GetSecretsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A mapping of tags to assign to the resource.
+         * @param tags A mapping of tags to assign to the resource, and can be used to filter secrets.
          * 
          * @return builder
          * 

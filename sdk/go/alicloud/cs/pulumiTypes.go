@@ -3482,7 +3482,7 @@ func (o ManagedKubernetesOperationPolicyPtrOutput) ClusterAutoUpgrade() ManagedK
 }
 
 type ManagedKubernetesOperationPolicyClusterAutoUpgrade struct {
-	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 	//
 	// for example:
 	Channel *string `pulumi:"channel"`
@@ -3502,7 +3502,7 @@ type ManagedKubernetesOperationPolicyClusterAutoUpgradeInput interface {
 }
 
 type ManagedKubernetesOperationPolicyClusterAutoUpgradeArgs struct {
-	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 	//
 	// for example:
 	Channel pulumi.StringPtrInput `pulumi:"channel"`
@@ -3587,7 +3587,7 @@ func (o ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput) ToManagedKuber
 	}).(ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
 }
 
-// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 //
 // for example:
 func (o ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput) Channel() pulumi.StringPtrOutput {
@@ -3623,7 +3623,7 @@ func (o ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Elem() Mana
 	}).(ManagedKubernetesOperationPolicyClusterAutoUpgradeOutput)
 }
 
-// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 //
 // for example:
 func (o ManagedKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Channel() pulumi.StringPtrOutput {
@@ -6887,7 +6887,7 @@ func (o ServerlessKubernetesOperationPolicyPtrOutput) ClusterAutoUpgrade() Serve
 }
 
 type ServerlessKubernetesOperationPolicyClusterAutoUpgrade struct {
-	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 	//
 	// for example:
 	Channel *string `pulumi:"channel"`
@@ -6907,7 +6907,7 @@ type ServerlessKubernetesOperationPolicyClusterAutoUpgradeInput interface {
 }
 
 type ServerlessKubernetesOperationPolicyClusterAutoUpgradeArgs struct {
-	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+	// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 	//
 	// for example:
 	Channel pulumi.StringPtrInput `pulumi:"channel"`
@@ -6992,7 +6992,7 @@ func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput) ToServerles
 	}).(ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput)
 }
 
-// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 //
 // for example:
 func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput) Channel() pulumi.StringPtrOutput {
@@ -7028,7 +7028,7 @@ func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Elem() S
 	}).(ServerlessKubernetesOperationPolicyClusterAutoUpgradeOutput)
 }
 
-// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
 //
 // for example:
 func (o ServerlessKubernetesOperationPolicyClusterAutoUpgradePtrOutput) Channel() pulumi.StringPtrOutput {

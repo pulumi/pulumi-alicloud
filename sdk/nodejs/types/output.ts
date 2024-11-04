@@ -14325,7 +14325,7 @@ export namespace cs {
 
     export interface ManagedKubernetesOperationPolicyClusterAutoUpgrade {
         /**
-         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          *
          * for example:
          * ```
@@ -14797,7 +14797,7 @@ export namespace cs {
 
     export interface ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
         /**
-         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+         * The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
          *
          * for example:
          * ```
@@ -30343,7 +30343,7 @@ export namespace fc {
 
     export interface V3FunctionCustomContainerConfig {
         /**
-         * Image Acceleration Information (Obsolete).
+         * (Deprecated) Image Acceleration Information (Obsolete).
          *
          * @deprecated Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)
          */
@@ -34573,15 +34573,15 @@ export namespace kms {
 
     export interface GetSecretsSecret {
         /**
-         * (Available in 1.124.0+) A mapping of tags to assign to the resource.
+         * (Available since v1.124.0) A mapping of tags to assign to the resource.
          */
         arn: string;
         /**
-         * (Available in 1.124.0+)  The description of the secret.
+         * (Available since v1.124.0)  The description of the secret.
          */
         description: string;
         /**
-         * (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+         * (Available since v1.124.0)  The ID of the KMS CMK that is used to encrypt the secret value.
          */
         encryptionKeyId: string;
         /**
@@ -34593,11 +34593,11 @@ export namespace kms {
          */
         plannedDeleteTime: string;
         /**
-         * (Available in 1.124.0+)  The value of the secret that you want to create.
+         * (Available since v1.124.0)  The value of the secret that you want to create.
          */
         secretData: string;
         /**
-         * (Available in 1.124.0+)  The type of the secret data value.
+         * (Available since v1.124.0)  The type of the secret data value.
          */
         secretDataType: string;
         /**
@@ -34605,19 +34605,19 @@ export namespace kms {
          */
         secretName: string;
         /**
-         * (Available in 1.124.0+)  The type of the secret.
+         * (Available since v1.124.0)  The type of the secret.
          */
         secretType: string;
         /**
-         * A mapping of tags to assign to the resource.
+         * A mapping of tags to assign to the resource, and can be used to filter secrets.
          */
         tags: {[key: string]: string};
         /**
-         * (Available in 1.124.0+)  The version number of the initial version.
+         * (Available since v1.124.0)  The version number of the initial version.
          */
         versionId: string;
         /**
-         * (Available in 1.124.0+)  The stage labels that mark the new secret version.
+         * (Available since v1.124.0)  The stage labels that mark the new secret version.
          */
         versionStages: string[];
     }
@@ -37119,6 +37119,53 @@ export namespace mse {
         slbPort: string;
         /**
          * The type of the gateway slb.
+         */
+        type: string;
+    }
+
+    export interface GetNacosConfigsConfig {
+        /**
+         * The name of the application.
+         */
+        appName: string;
+        /**
+         * The list of IP addresses where the beta release of the configuration is performed.
+         */
+        betaIps: string;
+        /**
+         * The content of the configuration.
+         */
+        content: string;
+        /**
+         * The ID of the data.
+         */
+        dataId: string;
+        /**
+         * The description of the configuration.
+         */
+        desc: string;
+        /**
+         * The encryption key.
+         */
+        encryptedDataKey: string;
+        /**
+         * The ID of the group.
+         */
+        group: string;
+        /**
+         * The ID of the Nacos Config. It is formatted to `<instance_id>:<namespace_id>:<data_id>:<group>`.
+         */
+        id: string;
+        /**
+         * The message digest of the configuration.
+         */
+        md5: string;
+        /**
+         * The tags of the configuration.
+         */
+        tags: string;
+        /**
+         * The format of the configuration. Supported formats include TEXT, JSON, and XML.
          */
         type: string;
     }

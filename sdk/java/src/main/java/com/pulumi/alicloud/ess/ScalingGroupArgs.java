@@ -68,6 +68,21 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the elastic container instance.
+     * 
+     */
+    @Import(name="containerGroupId")
+    private @Nullable Output<String> containerGroupId;
+
+    /**
+     * @return The ID of the elastic container instance.
+     * 
+     */
+    public Optional<Output<String>> containerGroupId() {
+        return Optional.ofNullable(this.containerGroupId);
+    }
+
+    /**
      * If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
      * - The specified RDS instance must be in running status.
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -162,14 +177,14 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
      * 
      */
     @Import(name="healthCheckTypes")
     private @Nullable Output<List<String>> healthCheckTypes;
 
     /**
-     * @return The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+     * @return The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
      * 
      */
     public Optional<Output<List<String>>> healthCheckTypes() {
@@ -546,6 +561,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         this.albServerGroups = $.albServerGroups;
         this.allocationStrategy = $.allocationStrategy;
         this.azBalance = $.azBalance;
+        this.containerGroupId = $.containerGroupId;
         this.dbInstanceIds = $.dbInstanceIds;
         this.defaultCooldown = $.defaultCooldown;
         this.desiredCapacity = $.desiredCapacity;
@@ -666,6 +682,27 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder azBalance(Boolean azBalance) {
             return azBalance(Output.of(azBalance));
+        }
+
+        /**
+         * @param containerGroupId The ID of the elastic container instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerGroupId(@Nullable Output<String> containerGroupId) {
+            $.containerGroupId = containerGroupId;
+            return this;
+        }
+
+        /**
+         * @param containerGroupId The ID of the elastic container instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder containerGroupId(String containerGroupId) {
+            return containerGroupId(Output.of(containerGroupId));
         }
 
         /**
@@ -811,7 +848,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckTypes The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+         * @param healthCheckTypes The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
          * 
          * @return builder
          * 
@@ -822,7 +859,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckTypes The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+         * @param healthCheckTypes The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
          * 
          * @return builder
          * 
@@ -832,7 +869,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param healthCheckTypes The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+         * @param healthCheckTypes The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
          * 
          * @return builder
          * 

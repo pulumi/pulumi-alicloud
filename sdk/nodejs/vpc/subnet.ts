@@ -46,6 +46,7 @@ export class Subnet extends pulumi.CustomResource {
     public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly ipv6CidrBlock!: pulumi.Output<string>;
     public readonly ipv6CidrBlockMask!: pulumi.Output<number>;
+    public readonly isDefault!: pulumi.Output<boolean | undefined>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -64,7 +65,7 @@ export class Subnet extends pulumi.CustomResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     /** @deprecated This resource has been deprecated and replaced by the Switch resource. */
-    constructor(name: string, args: SubnetArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: SubnetArgs, opts?: pulumi.CustomResourceOptions)
     /** @deprecated This resource has been deprecated and replaced by the Switch resource. */
     constructor(name: string, argsOrState?: SubnetArgs | SubnetState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("Subnet is deprecated: This resource has been deprecated and replaced by the Switch resource.")
@@ -79,6 +80,7 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
             resourceInputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
             resourceInputs["ipv6CidrBlockMask"] = state ? state.ipv6CidrBlockMask : undefined;
+            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -87,17 +89,12 @@ export class Subnet extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SubnetArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cidrBlock'");
-            }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vpcId'");
-            }
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
             resourceInputs["ipv6CidrBlockMask"] = args ? args.ipv6CidrBlockMask : undefined;
+            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -126,6 +123,7 @@ export interface SubnetState {
     enableIpv6?: pulumi.Input<boolean>;
     ipv6CidrBlock?: pulumi.Input<string>;
     ipv6CidrBlockMask?: pulumi.Input<number>;
+    isDefault?: pulumi.Input<boolean>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -145,16 +143,17 @@ export interface SubnetArgs {
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
     availabilityZone?: pulumi.Input<string>;
-    cidrBlock: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
     description?: pulumi.Input<string>;
     enableIpv6?: pulumi.Input<boolean>;
     ipv6CidrBlockMask?: pulumi.Input<number>;
+    isDefault?: pulumi.Input<boolean>;
     /**
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
     name?: pulumi.Input<string>;
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    vpcId: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     vswitchName?: pulumi.Input<string>;
     zoneId?: pulumi.Input<string>;
 }

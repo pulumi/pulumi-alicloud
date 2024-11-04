@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
         ///  
-        /// &gt; **NOTE:** Available in v1.86.0+.
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Kms
         /// <summary>
         /// This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
         ///  
-        /// &gt; **NOTE:** Available in v1.86.0+.
+        /// &gt; **NOTE:** Available since v1.86.0.
         /// 
         /// ## Example Usage
         /// 
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Kms
         private Dictionary<string, string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// A mapping of tags to assign to the resource, and can be used to filter secrets.
         /// </summary>
         public Dictionary<string, string> Tags
         {
@@ -199,7 +199,7 @@ namespace Pulumi.AliCloud.Kms
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// A mapping of tags to assign to the resource.
+        /// A mapping of tags to assign to the resource, and can be used to filter secrets.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSecretsSecretResult> Secrets;
         /// <summary>
-        /// (Optional) A mapping of tags to assign to the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tags;
 

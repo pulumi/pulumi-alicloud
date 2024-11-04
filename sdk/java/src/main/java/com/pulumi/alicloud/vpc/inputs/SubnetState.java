@@ -79,6 +79,13 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ipv6CidrBlockMask);
     }
 
+    @Import(name="isDefault")
+    private @Nullable Output<Boolean> isDefault;
+
+    public Optional<Output<Boolean>> isDefault() {
+        return Optional.ofNullable(this.isDefault);
+    }
+
     /**
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -143,6 +150,7 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
         this.enableIpv6 = $.enableIpv6;
         this.ipv6CidrBlock = $.ipv6CidrBlock;
         this.ipv6CidrBlockMask = $.ipv6CidrBlockMask;
+        this.isDefault = $.isDefault;
         this.name = $.name;
         this.status = $.status;
         this.tags = $.tags;
@@ -246,6 +254,15 @@ public final class SubnetState extends com.pulumi.resources.ResourceArgs {
 
         public Builder ipv6CidrBlockMask(Integer ipv6CidrBlockMask) {
             return ipv6CidrBlockMask(Output.of(ipv6CidrBlockMask));
+        }
+
+        public Builder isDefault(@Nullable Output<Boolean> isDefault) {
+            $.isDefault = isDefault;
+            return this;
+        }
+
+        public Builder isDefault(Boolean isDefault) {
+            return isDefault(Output.of(isDefault));
         }
 
         /**

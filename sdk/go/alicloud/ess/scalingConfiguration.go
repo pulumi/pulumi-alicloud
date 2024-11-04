@@ -197,7 +197,7 @@ type ScalingConfiguration struct {
 	// Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
-	InternetMaxBandwidthIn pulumi.IntOutput `pulumi:"internetMaxBandwidthIn"`
+	InternetMaxBandwidthIn pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
 	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
 	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
@@ -1003,8 +1003,8 @@ func (o ScalingConfigurationOutput) InternetChargeType() pulumi.StringPtrOutput 
 }
 
 // Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
-func (o ScalingConfigurationOutput) InternetMaxBandwidthIn() pulumi.IntOutput {
-	return o.ApplyT(func(v *ScalingConfiguration) pulumi.IntOutput { return v.InternetMaxBandwidthIn }).(pulumi.IntOutput)
+func (o ScalingConfigurationOutput) InternetMaxBandwidthIn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) pulumi.IntPtrOutput { return v.InternetMaxBandwidthIn }).(pulumi.IntPtrOutput)
 }
 
 // Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].

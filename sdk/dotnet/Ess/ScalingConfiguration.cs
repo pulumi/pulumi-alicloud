@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Ess
         /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
         /// </summary>
         [Output("internetMaxBandwidthIn")]
-        public Output<int> InternetMaxBandwidthIn { get; private set; } = null!;
+        public Output<int?> InternetMaxBandwidthIn { get; private set; } = null!;
 
         /// <summary>
         /// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].

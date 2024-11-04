@@ -126,13 +126,13 @@ export class Switch extends pulumi.CustomResource {
     }
 
     /**
-     * Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+     * Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * The IPv4 CIDR block of the VSwitch.
+     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      */
     public readonly cidrBlock!: pulumi.Output<string>;
     /**
@@ -145,8 +145,6 @@ export class Switch extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Whether the IPv6 function is enabled in the switch. Value:
-     * - **true**: enables IPv6.
-     * - **false** (default): IPv6 is not enabled.
      */
     public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
     /**
@@ -158,7 +156,11 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly ipv6CidrBlockMask!: pulumi.Output<number>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     */
+    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -172,9 +174,7 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The VPC ID.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
@@ -193,7 +193,7 @@ export class Switch extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: SwitchArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: SwitchArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SwitchArgs | SwitchState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -206,6 +206,7 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
             resourceInputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
             resourceInputs["ipv6CidrBlockMask"] = state ? state.ipv6CidrBlockMask : undefined;
+            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -214,17 +215,12 @@ export class Switch extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SwitchArgs | undefined;
-            if ((!args || args.cidrBlock === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cidrBlock'");
-            }
-            if ((!args || args.vpcId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'vpcId'");
-            }
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
             resourceInputs["ipv6CidrBlockMask"] = args ? args.ipv6CidrBlockMask : undefined;
+            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -244,13 +240,13 @@ export class Switch extends pulumi.CustomResource {
  */
 export interface SwitchState {
     /**
-     * Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+     * Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * The IPv4 CIDR block of the VSwitch.
+     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      */
     cidrBlock?: pulumi.Input<string>;
     /**
@@ -263,8 +259,6 @@ export interface SwitchState {
     description?: pulumi.Input<string>;
     /**
      * Whether the IPv6 function is enabled in the switch. Value:
-     * - **true**: enables IPv6.
-     * - **false** (default): IPv6 is not enabled.
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
@@ -276,7 +270,11 @@ export interface SwitchState {
      */
     ipv6CidrBlockMask?: pulumi.Input<number>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -290,9 +288,7 @@ export interface SwitchState {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The VPC ID.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      */
     vpcId?: pulumi.Input<string>;
     /**
@@ -310,23 +306,21 @@ export interface SwitchState {
  */
 export interface SwitchArgs {
     /**
-     * Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+     * Field `availabilityZone` has been deprecated from provider version 1.119.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * The IPv4 CIDR block of the VSwitch.
+     * The IPv4 CIDR block of the VSwitch. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `cidrBlock` is required.
      */
-    cidrBlock: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string>;
     /**
      * The description of VSwitch.
      */
     description?: pulumi.Input<string>;
     /**
      * Whether the IPv6 function is enabled in the switch. Value:
-     * - **true**: enables IPv6.
-     * - **false** (default): IPv6 is not enabled.
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
@@ -334,7 +328,11 @@ export interface SwitchArgs {
      */
     ipv6CidrBlockMask?: pulumi.Input<number>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+     * Specifies whether to create the default VSwitch. Default value: `false`. Valid values:
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * Field `name` has been deprecated from provider version 1.119.0. New field `vswitchName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -344,11 +342,9 @@ export interface SwitchArgs {
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The VPC ID.
-     *
-     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * The VPC ID. **NOTE:** From version 1.233.0, if you do not set `isDefault`, or set `isDefault` to `false`, `vpcId` is required.
      */
-    vpcId: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string>;
     /**
      * The name of the VSwitch.
      */

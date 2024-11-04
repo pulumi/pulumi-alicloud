@@ -13,17 +13,17 @@ import java.util.Objects;
 @CustomType
 public final class GetSecretsSecret {
     /**
-     * @return (Available in 1.124.0+) A mapping of tags to assign to the resource.
+     * @return (Available since v1.124.0) A mapping of tags to assign to the resource.
      * 
      */
     private String arn;
     /**
-     * @return (Available in 1.124.0+)  The description of the secret.
+     * @return (Available since v1.124.0)  The description of the secret.
      * 
      */
     private String description;
     /**
-     * @return (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+     * @return (Available since v1.124.0)  The ID of the KMS CMK that is used to encrypt the secret value.
      * 
      */
     private String encryptionKeyId;
@@ -38,12 +38,12 @@ public final class GetSecretsSecret {
      */
     private String plannedDeleteTime;
     /**
-     * @return (Available in 1.124.0+)  The value of the secret that you want to create.
+     * @return (Available since v1.124.0)  The value of the secret that you want to create.
      * 
      */
     private String secretData;
     /**
-     * @return (Available in 1.124.0+)  The type of the secret data value.
+     * @return (Available since v1.124.0)  The type of the secret data value.
      * 
      */
     private String secretDataType;
@@ -53,43 +53,43 @@ public final class GetSecretsSecret {
      */
     private String secretName;
     /**
-     * @return (Available in 1.124.0+)  The type of the secret.
+     * @return (Available since v1.124.0)  The type of the secret.
      * 
      */
     private String secretType;
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return A mapping of tags to assign to the resource, and can be used to filter secrets.
      * 
      */
     private Map<String,String> tags;
     /**
-     * @return (Available in 1.124.0+)  The version number of the initial version.
+     * @return (Available since v1.124.0)  The version number of the initial version.
      * 
      */
     private String versionId;
     /**
-     * @return (Available in 1.124.0+)  The stage labels that mark the new secret version.
+     * @return (Available since v1.124.0)  The stage labels that mark the new secret version.
      * 
      */
     private List<String> versionStages;
 
     private GetSecretsSecret() {}
     /**
-     * @return (Available in 1.124.0+) A mapping of tags to assign to the resource.
+     * @return (Available since v1.124.0) A mapping of tags to assign to the resource.
      * 
      */
     public String arn() {
         return this.arn;
     }
     /**
-     * @return (Available in 1.124.0+)  The description of the secret.
+     * @return (Available since v1.124.0)  The description of the secret.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+     * @return (Available since v1.124.0)  The ID of the KMS CMK that is used to encrypt the secret value.
      * 
      */
     public String encryptionKeyId() {
@@ -110,14 +110,14 @@ public final class GetSecretsSecret {
         return this.plannedDeleteTime;
     }
     /**
-     * @return (Available in 1.124.0+)  The value of the secret that you want to create.
+     * @return (Available since v1.124.0)  The value of the secret that you want to create.
      * 
      */
     public String secretData() {
         return this.secretData;
     }
     /**
-     * @return (Available in 1.124.0+)  The type of the secret data value.
+     * @return (Available since v1.124.0)  The type of the secret data value.
      * 
      */
     public String secretDataType() {
@@ -131,28 +131,28 @@ public final class GetSecretsSecret {
         return this.secretName;
     }
     /**
-     * @return (Available in 1.124.0+)  The type of the secret.
+     * @return (Available since v1.124.0)  The type of the secret.
      * 
      */
     public String secretType() {
         return this.secretType;
     }
     /**
-     * @return A mapping of tags to assign to the resource.
+     * @return A mapping of tags to assign to the resource, and can be used to filter secrets.
      * 
      */
     public Map<String,String> tags() {
         return this.tags;
     }
     /**
-     * @return (Available in 1.124.0+)  The version number of the initial version.
+     * @return (Available since v1.124.0)  The version number of the initial version.
      * 
      */
     public String versionId() {
         return this.versionId;
     }
     /**
-     * @return (Available in 1.124.0+)  The stage labels that mark the new secret version.
+     * @return (Available since v1.124.0)  The stage labels that mark the new secret version.
      * 
      */
     public List<String> versionStages() {

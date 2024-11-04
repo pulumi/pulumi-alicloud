@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
     /**
-     * @return The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+     * @return The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
      * 
      * for example:
      * 
@@ -27,7 +27,7 @@ public final class ServerlessKubernetesOperationPolicyClusterAutoUpgrade {
 
     private ServerlessKubernetesOperationPolicyClusterAutoUpgrade() {}
     /**
-     * @return The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+     * @return The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
      * 
      * for example:
      * 

@@ -167,6 +167,7 @@ import * as oos from "./oos";
 import * as opensearch from "./opensearch";
 import * as oss from "./oss";
 import * as ots from "./ots";
+import * as pai from "./pai";
 import * as polardb from "./polardb";
 import * as privatelink from "./privatelink";
 import * as pvtz from "./pvtz";
@@ -301,6 +302,7 @@ export {
     opensearch,
     oss,
     ots,
+    pai,
     polardb,
     privatelink,
     pvtz,

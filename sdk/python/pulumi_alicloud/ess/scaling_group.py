@@ -26,6 +26,7 @@ class ScalingGroupArgs:
                  alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]] = None,
                  allocation_strategy: Optional[pulumi.Input[str]] = None,
                  az_balance: Optional[pulumi.Input[bool]] = None,
+                 container_group_id: Optional[pulumi.Input[str]] = None,
                  db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_cooldown: Optional[pulumi.Input[int]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -62,6 +63,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[str] container_group_id: The ID of the elastic container instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_instance_ids: If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
                - The specified RDS instance must be in running status.
                - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -70,7 +72,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         :param pulumi.Input[str] instance_id: The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
@@ -111,6 +113,8 @@ class ScalingGroupArgs:
             pulumi.set(__self__, "allocation_strategy", allocation_strategy)
         if az_balance is not None:
             pulumi.set(__self__, "az_balance", az_balance)
+        if container_group_id is not None:
+            pulumi.set(__self__, "container_group_id", container_group_id)
         if db_instance_ids is not None:
             pulumi.set(__self__, "db_instance_ids", db_instance_ids)
         if default_cooldown is not None:
@@ -232,6 +236,18 @@ class ScalingGroupArgs:
         pulumi.set(self, "az_balance", value)
 
     @property
+    @pulumi.getter(name="containerGroupId")
+    def container_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the elastic container instance.
+        """
+        return pulumi.get(self, "container_group_id")
+
+    @container_group_id.setter
+    def container_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_group_id", value)
+
+    @property
     @pulumi.getter(name="dbInstanceIds")
     def db_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -309,7 +325,7 @@ class ScalingGroupArgs:
     @pulumi.getter(name="healthCheckTypes")
     def health_check_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         """
         return pulumi.get(self, "health_check_types")
 
@@ -576,6 +592,7 @@ class _ScalingGroupState:
                  alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]] = None,
                  allocation_strategy: Optional[pulumi.Input[str]] = None,
                  az_balance: Optional[pulumi.Input[bool]] = None,
+                 container_group_id: Optional[pulumi.Input[str]] = None,
                  db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_cooldown: Optional[pulumi.Input[int]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -610,6 +627,7 @@ class _ScalingGroupState:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[str] container_group_id: The ID of the elastic container instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_instance_ids: If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
                - The specified RDS instance must be in running status.
                - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -618,7 +636,7 @@ class _ScalingGroupState:
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         :param pulumi.Input[str] instance_id: The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
@@ -661,6 +679,8 @@ class _ScalingGroupState:
             pulumi.set(__self__, "allocation_strategy", allocation_strategy)
         if az_balance is not None:
             pulumi.set(__self__, "az_balance", az_balance)
+        if container_group_id is not None:
+            pulumi.set(__self__, "container_group_id", container_group_id)
         if db_instance_ids is not None:
             pulumi.set(__self__, "db_instance_ids", db_instance_ids)
         if default_cooldown is not None:
@@ -760,6 +780,18 @@ class _ScalingGroupState:
         pulumi.set(self, "az_balance", value)
 
     @property
+    @pulumi.getter(name="containerGroupId")
+    def container_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the elastic container instance.
+        """
+        return pulumi.get(self, "container_group_id")
+
+    @container_group_id.setter
+    def container_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "container_group_id", value)
+
+    @property
     @pulumi.getter(name="dbInstanceIds")
     def db_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -837,7 +869,7 @@ class _ScalingGroupState:
     @pulumi.getter(name="healthCheckTypes")
     def health_check_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         """
         return pulumi.get(self, "health_check_types")
 
@@ -1132,6 +1164,7 @@ class ScalingGroup(pulumi.CustomResource):
                  alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
                  allocation_strategy: Optional[pulumi.Input[str]] = None,
                  az_balance: Optional[pulumi.Input[bool]] = None,
+                 container_group_id: Optional[pulumi.Input[str]] = None,
                  db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_cooldown: Optional[pulumi.Input[int]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -1254,6 +1287,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[str] container_group_id: The ID of the elastic container instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_instance_ids: If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
                - The specified RDS instance must be in running status.
                - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -1262,7 +1296,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         :param pulumi.Input[str] instance_id: The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
@@ -1410,6 +1444,7 @@ class ScalingGroup(pulumi.CustomResource):
                  alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
                  allocation_strategy: Optional[pulumi.Input[str]] = None,
                  az_balance: Optional[pulumi.Input[bool]] = None,
+                 container_group_id: Optional[pulumi.Input[str]] = None,
                  db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  default_cooldown: Optional[pulumi.Input[int]] = None,
                  desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -1451,6 +1486,7 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["alb_server_groups"] = alb_server_groups
             __props__.__dict__["allocation_strategy"] = allocation_strategy
             __props__.__dict__["az_balance"] = az_balance
+            __props__.__dict__["container_group_id"] = container_group_id
             __props__.__dict__["db_instance_ids"] = db_instance_ids
             __props__.__dict__["default_cooldown"] = default_cooldown
             __props__.__dict__["desired_capacity"] = desired_capacity
@@ -1497,6 +1533,7 @@ class ScalingGroup(pulumi.CustomResource):
             alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
             allocation_strategy: Optional[pulumi.Input[str]] = None,
             az_balance: Optional[pulumi.Input[bool]] = None,
+            container_group_id: Optional[pulumi.Input[str]] = None,
             db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             default_cooldown: Optional[pulumi.Input[int]] = None,
             desired_capacity: Optional[pulumi.Input[int]] = None,
@@ -1536,6 +1573,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]] alb_server_groups: If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         :param pulumi.Input[str] allocation_strategy: The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         :param pulumi.Input[bool] az_balance: Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
+        :param pulumi.Input[str] container_group_id: The ID of the elastic container instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_instance_ids: If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
                - The specified RDS instance must be in running status.
                - The specified RDS instance’s whitelist must have room for more IP addresses.
@@ -1544,7 +1582,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[bool] group_deletion_protection: Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         :param pulumi.Input[str] group_type: Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         :param pulumi.Input[str] health_check_type: Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_types: The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         :param pulumi.Input[str] instance_id: The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
         :param pulumi.Input[str] launch_template_id: Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]] launch_template_overrides: The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
@@ -1588,6 +1626,7 @@ class ScalingGroup(pulumi.CustomResource):
         __props__.__dict__["alb_server_groups"] = alb_server_groups
         __props__.__dict__["allocation_strategy"] = allocation_strategy
         __props__.__dict__["az_balance"] = az_balance
+        __props__.__dict__["container_group_id"] = container_group_id
         __props__.__dict__["db_instance_ids"] = db_instance_ids
         __props__.__dict__["default_cooldown"] = default_cooldown
         __props__.__dict__["desired_capacity"] = desired_capacity
@@ -1644,6 +1683,14 @@ class ScalingGroup(pulumi.CustomResource):
         return pulumi.get(self, "az_balance")
 
     @property
+    @pulumi.getter(name="containerGroupId")
+    def container_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the elastic container instance.
+        """
+        return pulumi.get(self, "container_group_id")
+
+    @property
     @pulumi.getter(name="dbInstanceIds")
     def db_instance_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
@@ -1697,7 +1744,7 @@ class ScalingGroup(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckTypes")
     def health_check_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The health check modes of the scaling group. Valid values: ECS, ECI, NONE, LOAD_BALANCER.
+        The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         """
         return pulumi.get(self, "health_check_types")
 

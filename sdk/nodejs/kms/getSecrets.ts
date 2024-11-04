@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.86.0+.
+ * > **NOTE:** Available since v1.86.0.
  *
  * ## Example Usage
  *
@@ -73,7 +73,7 @@ export interface GetSecretsArgs {
      */
     outputFile?: string;
     /**
-     * A mapping of tags to assign to the resource.
+     * A mapping of tags to assign to the resource, and can be used to filter secrets.
      */
     tags?: {[key: string]: string};
 }
@@ -104,14 +104,14 @@ export interface GetSecretsResult {
      */
     readonly secrets: outputs.kms.GetSecretsSecret[];
     /**
-     * (Optional) A mapping of tags to assign to the resource.
+     * A mapping of tags to assign to the resource.
      */
     readonly tags?: {[key: string]: string};
 }
 /**
  * This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in v1.86.0+.
+ * > **NOTE:** Available since v1.86.0.
  *
  * ## Example Usage
  *
@@ -175,7 +175,7 @@ export interface GetSecretsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * A mapping of tags to assign to the resource.
+     * A mapping of tags to assign to the resource, and can be used to filter secrets.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

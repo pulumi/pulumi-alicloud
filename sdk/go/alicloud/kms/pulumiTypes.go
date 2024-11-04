@@ -769,29 +769,29 @@ func (o GetSecretVersionsVersionArrayOutput) Index(i pulumi.IntInput) GetSecretV
 }
 
 type GetSecretsSecret struct {
-	// (Available in 1.124.0+) A mapping of tags to assign to the resource.
+	// (Available since v1.124.0) A mapping of tags to assign to the resource.
 	Arn string `pulumi:"arn"`
-	// (Available in 1.124.0+)  The description of the secret.
+	// (Available since v1.124.0)  The description of the secret.
 	Description string `pulumi:"description"`
-	// (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+	// (Available since v1.124.0)  The ID of the KMS CMK that is used to encrypt the secret value.
 	EncryptionKeyId string `pulumi:"encryptionKeyId"`
 	// ID of the Kms Secret. The value is same as KMS secret_name.
 	Id string `pulumi:"id"`
 	// Schedule deletion time.
 	PlannedDeleteTime string `pulumi:"plannedDeleteTime"`
-	// (Available in 1.124.0+)  The value of the secret that you want to create.
+	// (Available since v1.124.0)  The value of the secret that you want to create.
 	SecretData string `pulumi:"secretData"`
-	// (Available in 1.124.0+)  The type of the secret data value.
+	// (Available since v1.124.0)  The type of the secret data value.
 	SecretDataType string `pulumi:"secretDataType"`
 	// Name of the KMS Secret.
 	SecretName string `pulumi:"secretName"`
-	// (Available in 1.124.0+)  The type of the secret.
+	// (Available since v1.124.0)  The type of the secret.
 	SecretType string `pulumi:"secretType"`
-	// A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource, and can be used to filter secrets.
 	Tags map[string]string `pulumi:"tags"`
-	// (Available in 1.124.0+)  The version number of the initial version.
+	// (Available since v1.124.0)  The version number of the initial version.
 	VersionId string `pulumi:"versionId"`
-	// (Available in 1.124.0+)  The stage labels that mark the new secret version.
+	// (Available since v1.124.0)  The stage labels that mark the new secret version.
 	VersionStages []string `pulumi:"versionStages"`
 }
 
@@ -807,29 +807,29 @@ type GetSecretsSecretInput interface {
 }
 
 type GetSecretsSecretArgs struct {
-	// (Available in 1.124.0+) A mapping of tags to assign to the resource.
+	// (Available since v1.124.0) A mapping of tags to assign to the resource.
 	Arn pulumi.StringInput `pulumi:"arn"`
-	// (Available in 1.124.0+)  The description of the secret.
+	// (Available since v1.124.0)  The description of the secret.
 	Description pulumi.StringInput `pulumi:"description"`
-	// (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+	// (Available since v1.124.0)  The ID of the KMS CMK that is used to encrypt the secret value.
 	EncryptionKeyId pulumi.StringInput `pulumi:"encryptionKeyId"`
 	// ID of the Kms Secret. The value is same as KMS secret_name.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Schedule deletion time.
 	PlannedDeleteTime pulumi.StringInput `pulumi:"plannedDeleteTime"`
-	// (Available in 1.124.0+)  The value of the secret that you want to create.
+	// (Available since v1.124.0)  The value of the secret that you want to create.
 	SecretData pulumi.StringInput `pulumi:"secretData"`
-	// (Available in 1.124.0+)  The type of the secret data value.
+	// (Available since v1.124.0)  The type of the secret data value.
 	SecretDataType pulumi.StringInput `pulumi:"secretDataType"`
 	// Name of the KMS Secret.
 	SecretName pulumi.StringInput `pulumi:"secretName"`
-	// (Available in 1.124.0+)  The type of the secret.
+	// (Available since v1.124.0)  The type of the secret.
 	SecretType pulumi.StringInput `pulumi:"secretType"`
-	// A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource, and can be used to filter secrets.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// (Available in 1.124.0+)  The version number of the initial version.
+	// (Available since v1.124.0)  The version number of the initial version.
 	VersionId pulumi.StringInput `pulumi:"versionId"`
-	// (Available in 1.124.0+)  The stage labels that mark the new secret version.
+	// (Available since v1.124.0)  The stage labels that mark the new secret version.
 	VersionStages pulumi.StringArrayInput `pulumi:"versionStages"`
 }
 
@@ -884,17 +884,17 @@ func (o GetSecretsSecretOutput) ToGetSecretsSecretOutputWithContext(ctx context.
 	return o
 }
 
-// (Available in 1.124.0+) A mapping of tags to assign to the resource.
+// (Available since v1.124.0) A mapping of tags to assign to the resource.
 func (o GetSecretsSecretOutput) Arn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.Arn }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.0+)  The description of the secret.
+// (Available since v1.124.0)  The description of the secret.
 func (o GetSecretsSecretOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.0+)  The ID of the KMS CMK that is used to encrypt the secret value.
+// (Available since v1.124.0)  The ID of the KMS CMK that is used to encrypt the secret value.
 func (o GetSecretsSecretOutput) EncryptionKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.EncryptionKeyId }).(pulumi.StringOutput)
 }
@@ -909,12 +909,12 @@ func (o GetSecretsSecretOutput) PlannedDeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.PlannedDeleteTime }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.0+)  The value of the secret that you want to create.
+// (Available since v1.124.0)  The value of the secret that you want to create.
 func (o GetSecretsSecretOutput) SecretData() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretData }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.0+)  The type of the secret data value.
+// (Available since v1.124.0)  The type of the secret data value.
 func (o GetSecretsSecretOutput) SecretDataType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretDataType }).(pulumi.StringOutput)
 }
@@ -924,22 +924,22 @@ func (o GetSecretsSecretOutput) SecretName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretName }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.0+)  The type of the secret.
+// (Available since v1.124.0)  The type of the secret.
 func (o GetSecretsSecretOutput) SecretType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.SecretType }).(pulumi.StringOutput)
 }
 
-// A mapping of tags to assign to the resource.
+// A mapping of tags to assign to the resource, and can be used to filter secrets.
 func (o GetSecretsSecretOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretsSecret) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// (Available in 1.124.0+)  The version number of the initial version.
+// (Available since v1.124.0)  The version number of the initial version.
 func (o GetSecretsSecretOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSecretsSecret) string { return v.VersionId }).(pulumi.StringOutput)
 }
 
-// (Available in 1.124.0+)  The stage labels that mark the new secret version.
+// (Available since v1.124.0)  The stage labels that mark the new secret version.
 func (o GetSecretsSecretOutput) VersionStages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSecretsSecret) []string { return v.VersionStages }).(pulumi.StringArrayOutput)
 }

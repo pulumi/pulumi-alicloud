@@ -13,7 +13,7 @@ import (
 
 // This data source provides a list of KMS Secrets in an Alibaba Cloud account according to the specified filters.
 //
-// > **NOTE:** Available in v1.86.0+.
+// > **NOTE:** Available since v1.86.0.
 //
 // ## Example Usage
 //
@@ -72,7 +72,7 @@ type GetSecretsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource, and can be used to filter secrets.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -91,7 +91,7 @@ type GetSecretsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	// A list of KMS Secrets. Each element contains the following attributes:
 	Secrets []GetSecretsSecret `pulumi:"secrets"`
-	// (Optional) A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -129,7 +129,7 @@ type GetSecretsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// A mapping of tags to assign to the resource.
+	// A mapping of tags to assign to the resource, and can be used to filter secrets.
 	Tags pulumi.StringMapInput `pulumi:"tags"`
 }
 
@@ -192,7 +192,7 @@ func (o GetSecretsResultOutput) Secrets() GetSecretsSecretArrayOutput {
 	return o.ApplyT(func(v GetSecretsResult) []GetSecretsSecret { return v.Secrets }).(GetSecretsSecretArrayOutput)
 }
 
-// (Optional) A mapping of tags to assign to the resource.
+// A mapping of tags to assign to the resource.
 func (o GetSecretsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetSecretsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }

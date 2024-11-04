@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Ocean
     ///         AutoRenew = false,
     ///         DiskSize = 100,
     ///         PaymentType = "PayAsYouGo",
-    ///         InstanceClass = "8C32GB",
+    ///         InstanceClass = "8C32G",
     ///         BackupRetainMode = "delete_all",
     ///         Series = "normal",
     ///         InstanceName = name,

@@ -2508,7 +2508,7 @@ class ScalingConfiguration(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="internetMaxBandwidthIn")
-    def internet_max_bandwidth_in(self) -> pulumi.Output[int]:
+    def internet_max_bandwidth_in(self) -> pulumi.Output[Optional[int]]:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
         """

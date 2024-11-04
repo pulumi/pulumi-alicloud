@@ -16,7 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation)
+ * Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
+ * 
+ * For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
  * 
  * &gt; **NOTE:** Available since v1.126.0.
  * 
@@ -42,11 +44,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.TransitRouter;
  * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterRouteTable;
+ * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
  * import com.pulumi.alicloud.cen.TransitRouterVpcAttachment;
  * import com.pulumi.alicloud.cen.TransitRouterVpcAttachmentArgs;
  * import com.pulumi.alicloud.cen.inputs.TransitRouterVpcAttachmentZoneMappingArgs;
- * import com.pulumi.alicloud.cen.TransitRouterRouteTable;
- * import com.pulumi.alicloud.cen.TransitRouterRouteTableArgs;
  * import com.pulumi.alicloud.cen.TransitRouterRouteTableAssociation;
  * import com.pulumi.alicloud.cen.TransitRouterRouteTableAssociationArgs;
  * import java.util.List;
@@ -63,66 +65,66 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf_example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var default = CenFunctions.getTransitRouterAvailableResources();
  * 
  *         final var masterZone = default_.resources()[0].masterZones()[0];
  * 
  *         final var slaveZone = default_.resources()[0].slaveZones()[1];
  * 
- *         var example = new Network("example", NetworkArgs.builder()
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
  *             .vpcName(name)
  *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
- *         var exampleMaster = new Switch("exampleMaster", SwitchArgs.builder()
+ *         var defaultMaster = new Switch("defaultMaster", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("192.168.1.0/24")
- *             .vpcId(example.id())
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(masterZone)
  *             .build());
  * 
- *         var exampleSlave = new Switch("exampleSlave", SwitchArgs.builder()
+ *         var defaultSlave = new Switch("defaultSlave", SwitchArgs.builder()
  *             .vswitchName(name)
  *             .cidrBlock("192.168.2.0/24")
- *             .vpcId(example.id())
+ *             .vpcId(defaultNetwork.id())
  *             .zoneId(slaveZone)
  *             .build());
  * 
- *         var exampleInstance = new Instance("exampleInstance", InstanceArgs.builder()
+ *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .protectionLevel("REDUCED")
  *             .build());
  * 
- *         var exampleTransitRouter = new TransitRouter("exampleTransitRouter", TransitRouterArgs.builder()
+ *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
  *             .transitRouterName(name)
- *             .cenId(exampleInstance.id())
+ *             .cenId(defaultInstance.id())
  *             .build());
  * 
- *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
- *             .cenId(exampleInstance.id())
- *             .transitRouterId(exampleTransitRouter.transitRouterId())
- *             .vpcId(example.id())
+ *         var defaultTransitRouterRouteTable = new TransitRouterRouteTable("defaultTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .build());
+ * 
+ *         var defaultTransitRouterVpcAttachment = new TransitRouterVpcAttachment("defaultTransitRouterVpcAttachment", TransitRouterVpcAttachmentArgs.builder()
+ *             .cenId(defaultInstance.id())
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .vpcId(defaultNetwork.id())
+ *             .transitRouterVpcAttachmentName(name)
+ *             .transitRouterAttachmentDescription(name)
  *             .zoneMappings(            
  *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
  *                     .zoneId(masterZone)
- *                     .vswitchId(exampleMaster.id())
+ *                     .vswitchId(defaultMaster.id())
  *                     .build(),
  *                 TransitRouterVpcAttachmentZoneMappingArgs.builder()
  *                     .zoneId(slaveZone)
- *                     .vswitchId(exampleSlave.id())
+ *                     .vswitchId(defaultSlave.id())
  *                     .build())
- *             .transitRouterAttachmentName(name)
- *             .transitRouterAttachmentDescription(name)
  *             .build());
  * 
- *         var exampleTransitRouterRouteTable = new TransitRouterRouteTable("exampleTransitRouterRouteTable", TransitRouterRouteTableArgs.builder()
- *             .transitRouterId(exampleTransitRouter.transitRouterId())
- *             .build());
- * 
- *         var exampleTransitRouterRouteTableAssociation = new TransitRouterRouteTableAssociation("exampleTransitRouterRouteTableAssociation", TransitRouterRouteTableAssociationArgs.builder()
- *             .transitRouterRouteTableId(exampleTransitRouterRouteTable.transitRouterRouteTableId())
- *             .transitRouterAttachmentId(exampleTransitRouterVpcAttachment.transitRouterAttachmentId())
+ *         var defaultTransitRouterRouteTableAssociation = new TransitRouterRouteTableAssociation("defaultTransitRouterRouteTableAssociation", TransitRouterRouteTableAssociationArgs.builder()
+ *             .transitRouterRouteTableId(defaultTransitRouterRouteTable.transitRouterRouteTableId())
+ *             .transitRouterAttachmentId(defaultTransitRouterVpcAttachment.transitRouterAttachmentId())
  *             .build());
  * 
  *     }
@@ -133,10 +135,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN transit router route table association can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+ * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example &lt;transit_router_id&gt;:&lt;transit_router_attachment_id&gt;
  * ```
  * 
  */
@@ -161,42 +163,42 @@ public class TransitRouterRouteTableAssociation extends com.pulumi.resources.Cus
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The associating status of the network.
+     * The status of the Transit Router Route Table Association.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The associating status of the network.
+     * @return The status of the Transit Router Route Table Association.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The ID the transit router attachment.
+     * The ID the Transit Router Attachment.
      * 
      */
     @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID the transit router attachment.
+     * @return The ID the Transit Router Attachment.
      * 
      */
     public Output<String> transitRouterAttachmentId() {
         return this.transitRouterAttachmentId;
     }
     /**
-     * The ID of the transit router route table.
+     * The ID of the Transit Router Route Table.
      * 
      */
     @Export(name="transitRouterRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteTableId;
 
     /**
-     * @return The ID of the transit router route table.
+     * @return The ID of the Transit Router Route Table.
      * 
      */
     public Output<String> transitRouterRouteTableId() {

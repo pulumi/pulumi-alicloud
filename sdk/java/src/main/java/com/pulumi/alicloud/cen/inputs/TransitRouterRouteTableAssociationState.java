@@ -36,14 +36,14 @@ public final class TransitRouterRouteTableAssociationState extends com.pulumi.re
     }
 
     /**
-     * The associating status of the network.
+     * The status of the Transit Router Route Table Association.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The associating status of the network.
+     * @return The status of the Transit Router Route Table Association.
      * 
      */
     public Optional<Output<String>> status() {
@@ -51,14 +51,14 @@ public final class TransitRouterRouteTableAssociationState extends com.pulumi.re
     }
 
     /**
-     * The ID the transit router attachment.
+     * The ID the Transit Router Attachment.
      * 
      */
     @Import(name="transitRouterAttachmentId")
     private @Nullable Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID the transit router attachment.
+     * @return The ID the Transit Router Attachment.
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentId() {
@@ -66,14 +66,14 @@ public final class TransitRouterRouteTableAssociationState extends com.pulumi.re
     }
 
     /**
-     * The ID of the transit router route table.
+     * The ID of the Transit Router Route Table.
      * 
      */
     @Import(name="transitRouterRouteTableId")
     private @Nullable Output<String> transitRouterRouteTableId;
 
     /**
-     * @return The ID of the transit router route table.
+     * @return The ID of the Transit Router Route Table.
      * 
      */
     public Optional<Output<String>> transitRouterRouteTableId() {
@@ -133,7 +133,7 @@ public final class TransitRouterRouteTableAssociationState extends com.pulumi.re
         }
 
         /**
-         * @param status The associating status of the network.
+         * @param status The status of the Transit Router Route Table Association.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class TransitRouterRouteTableAssociationState extends com.pulumi.re
         }
 
         /**
-         * @param status The associating status of the network.
+         * @param status The status of the Transit Router Route Table Association.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class TransitRouterRouteTableAssociationState extends com.pulumi.re
         }
 
         /**
-         * @param transitRouterAttachmentId The ID the transit router attachment.
+         * @param transitRouterAttachmentId The ID the Transit Router Attachment.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class TransitRouterRouteTableAssociationState extends com.pulumi.re
         }
 
         /**
-         * @param transitRouterAttachmentId The ID the transit router attachment.
+         * @param transitRouterAttachmentId The ID the Transit Router Attachment.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class TransitRouterRouteTableAssociationState extends com.pulumi.re
         }
 
         /**
-         * @param transitRouterRouteTableId The ID of the transit router route table.
+         * @param transitRouterRouteTableId The ID of the Transit Router Route Table.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class TransitRouterRouteTableAssociationState extends com.pulumi.re
         }
 
         /**
-         * @param transitRouterRouteTableId The ID of the transit router route table.
+         * @param transitRouterRouteTableId The ID of the Transit Router Route Table.
          * 
          * @return builder
          * 

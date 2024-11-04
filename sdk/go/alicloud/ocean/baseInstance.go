@@ -60,7 +60,7 @@ import (
 //				AutoRenew:        pulumi.Bool(false),
 //				DiskSize:         pulumi.Int(100),
 //				PaymentType:      pulumi.String("PayAsYouGo"),
-//				InstanceClass:    pulumi.String("8C32GB"),
+//				InstanceClass:    pulumi.String("8C32G"),
 //				BackupRetainMode: pulumi.String("delete_all"),
 //				Series:           pulumi.String("normal"),
 //				InstanceName:     pulumi.String(name),

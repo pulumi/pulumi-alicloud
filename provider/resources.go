@@ -266,6 +266,7 @@ var mappedMods = map[string]string{
 	"open_search":           openSearchMod,
 	"oss":                   ossMod,
 	"ots":                   otsMod,
+	"pai":                   "Pai",
 	"polardb":               polarDbMod,
 	"privatelink":           privateLinkMod,
 	"pvtz":                  pvtzMod,

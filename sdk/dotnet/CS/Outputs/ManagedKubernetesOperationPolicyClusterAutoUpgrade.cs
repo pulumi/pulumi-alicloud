@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ManagedKubernetesOperationPolicyClusterAutoUpgrade
     {
         /// <summary>
-        /// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapic`.
+        /// The automatic cluster upgrade channel. Valid values: `patch`, `stable`, `rapid`.
         /// 
         /// for example:
         /// ```

@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CEN transit router route table association resource.[What is Cen Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation)
+ * Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
+ *
+ * For information about Cloud Enterprise Network (CEN) Transit Router Route Table Association and how to use it, see [What is Transit Router Route Table Association](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-associatetransitrouterattachmentwithroutetable)
  *
  * > **NOTE:** Available since v1.126.0.
  *
@@ -18,64 +20,64 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example";
+ * const name = config.get("name") || "terraform-example";
  * const default = alicloud.cen.getTransitRouterAvailableResources({});
  * const masterZone = _default.then(_default => _default.resources?.[0]?.masterZones?.[0]);
  * const slaveZone = _default.then(_default => _default.resources?.[0]?.slaveZones?.[1]);
- * const example = new alicloud.vpc.Network("example", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
  * });
- * const exampleMaster = new alicloud.vpc.Switch("example_master", {
+ * const defaultMaster = new alicloud.vpc.Switch("default_master", {
  *     vswitchName: name,
  *     cidrBlock: "192.168.1.0/24",
- *     vpcId: example.id,
+ *     vpcId: defaultNetwork.id,
  *     zoneId: masterZone,
  * });
- * const exampleSlave = new alicloud.vpc.Switch("example_slave", {
+ * const defaultSlave = new alicloud.vpc.Switch("default_slave", {
  *     vswitchName: name,
  *     cidrBlock: "192.168.2.0/24",
- *     vpcId: example.id,
+ *     vpcId: defaultNetwork.id,
  *     zoneId: slaveZone,
  * });
- * const exampleInstance = new alicloud.cen.Instance("example", {
+ * const defaultInstance = new alicloud.cen.Instance("default", {
  *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {
  *     transitRouterName: name,
- *     cenId: exampleInstance.id,
+ *     cenId: defaultInstance.id,
  * });
- * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("example", {
- *     cenId: exampleInstance.id,
- *     transitRouterId: exampleTransitRouter.transitRouterId,
- *     vpcId: example.id,
+ * const defaultTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("default", {transitRouterId: defaultTransitRouter.transitRouterId});
+ * const defaultTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("default", {
+ *     cenId: defaultInstance.id,
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     vpcId: defaultNetwork.id,
+ *     transitRouterVpcAttachmentName: name,
+ *     transitRouterAttachmentDescription: name,
  *     zoneMappings: [
  *         {
  *             zoneId: masterZone,
- *             vswitchId: exampleMaster.id,
+ *             vswitchId: defaultMaster.id,
  *         },
  *         {
  *             zoneId: slaveZone,
- *             vswitchId: exampleSlave.id,
+ *             vswitchId: defaultSlave.id,
  *         },
  *     ],
- *     transitRouterAttachmentName: name,
- *     transitRouterAttachmentDescription: name,
  * });
- * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("example", {transitRouterId: exampleTransitRouter.transitRouterId});
- * const exampleTransitRouterRouteTableAssociation = new alicloud.cen.TransitRouterRouteTableAssociation("example", {
- *     transitRouterRouteTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
- *     transitRouterAttachmentId: exampleTransitRouterVpcAttachment.transitRouterAttachmentId,
+ * const defaultTransitRouterRouteTableAssociation = new alicloud.cen.TransitRouterRouteTableAssociation("default", {
+ *     transitRouterRouteTableId: defaultTransitRouterRouteTable.transitRouterRouteTableId,
+ *     transitRouterAttachmentId: defaultTransitRouterVpcAttachment.transitRouterAttachmentId,
  * });
  * ```
  *
  * ## Import
  *
- * CEN transit router route table association can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router Route Table Association can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation default tr-********:tr-attach-********
+ * $ pulumi import alicloud:cen/transitRouterRouteTableAssociation:TransitRouterRouteTableAssociation example <transit_router_id>:<transit_router_attachment_id>
  * ```
  */
 export class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
@@ -113,15 +115,15 @@ export class TransitRouterRouteTableAssociation extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The associating status of the network.
+     * The status of the Transit Router Route Table Association.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The ID the transit router attachment.
+     * The ID the Transit Router Attachment.
      */
     public readonly transitRouterAttachmentId!: pulumi.Output<string>;
     /**
-     * The ID of the transit router route table.
+     * The ID of the Transit Router Route Table.
      */
     public readonly transitRouterRouteTableId!: pulumi.Output<string>;
 
@@ -171,15 +173,15 @@ export interface TransitRouterRouteTableAssociationState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The associating status of the network.
+     * The status of the Transit Router Route Table Association.
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID the transit router attachment.
+     * The ID the Transit Router Attachment.
      */
     transitRouterAttachmentId?: pulumi.Input<string>;
     /**
-     * The ID of the transit router route table.
+     * The ID of the Transit Router Route Table.
      */
     transitRouterRouteTableId?: pulumi.Input<string>;
 }
@@ -195,11 +197,11 @@ export interface TransitRouterRouteTableAssociationArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID the transit router attachment.
+     * The ID the Transit Router Attachment.
      */
     transitRouterAttachmentId: pulumi.Input<string>;
     /**
-     * The ID of the transit router route table.
+     * The ID of the Transit Router Route Table.
      */
     transitRouterRouteTableId: pulumi.Input<string>;
 }
