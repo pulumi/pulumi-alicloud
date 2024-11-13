@@ -201,7 +201,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly internetChargeType!: pulumi.Output<string | undefined>;
     /**
-     * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+     * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
      */
     public readonly internetMaxBandwidthIn!: pulumi.Output<number | undefined>;
     /**
@@ -556,7 +556,7 @@ export interface ScalingConfigurationState {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+     * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
      */
     internetMaxBandwidthIn?: pulumi.Input<number>;
     /**
@@ -786,7 +786,7 @@ export interface ScalingConfigurationArgs {
      */
     internetChargeType?: pulumi.Input<string>;
     /**
-     * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+     * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
      */
     internetMaxBandwidthIn?: pulumi.Input<number>;
     /**

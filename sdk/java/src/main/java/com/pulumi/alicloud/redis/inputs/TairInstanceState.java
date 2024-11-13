@@ -19,6 +19,21 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     public static final TairInstanceState Empty = new TairInstanceState();
 
     /**
+     * The architecture of the instance.  cluster, standard, rwsplit.
+     * 
+     */
+    @Import(name="architectureType")
+    private @Nullable Output<String> architectureType;
+
+    /**
+     * @return The architecture of the instance.  cluster, standard, rwsplit.
+     * 
+     */
+    public Optional<Output<String>> architectureType() {
+        return Optional.ofNullable(this.architectureType);
+    }
+
+    /**
      * Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
      * 
      */
@@ -49,18 +64,52 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the backup set of the cluster.
+     * You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+     * 
+     * If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+     * 
+     */
+    @Import(name="backupId")
+    private @Nullable Output<String> backupId;
+
+    /**
+     * @return You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+     * 
+     * If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+     * 
+     */
+    public Optional<Output<String>> backupId() {
+        return Optional.ofNullable(this.backupId);
+    }
+
+    /**
+     * This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
      * 
      */
     @Import(name="clusterBackupId")
     private @Nullable Output<String> clusterBackupId;
 
     /**
-     * @return The ID of the backup set of the cluster.
+     * @return This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
      * 
      */
     public Optional<Output<String>> clusterBackupId() {
         return Optional.ofNullable(this.clusterBackupId);
+    }
+
+    /**
+     * The internal endpoint of the instance.
+     * 
+     */
+    @Import(name="connectionDomain")
+    private @Nullable Output<String> connectionDomain;
+
+    /**
+     * @return The internal endpoint of the instance.
+     * 
+     */
+    public Optional<Output<String>> connectionDomain() {
+        return Optional.ofNullable(this.connectionDomain);
     }
 
     /**
@@ -94,14 +143,30 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * Database version. Default value: 1.0.
+     * 
+     * Rules for transferring parameters of different tair product types:
+     * 
+     * tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+     * 
+     * tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+     * 
+     * tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
      * 
      */
     @Import(name="engineVersion")
     private @Nullable Output<String> engineVersion;
 
     /**
-     * @return Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+     * @return Database version. Default value: 1.0.
+     * 
+     * Rules for transferring parameters of different tair product types:
+     * 
+     * tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+     * 
+     * tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+     * 
+     * tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
      * 
      */
     public Optional<Output<String>> engineVersion() {
@@ -121,6 +186,33 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> forceUpgrade() {
         return Optional.ofNullable(this.forceUpgrade);
+    }
+
+    /**
+     * The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+     * 
+     * 1. Enter true if you want the new instance to be the first child instance.
+     * 
+     * 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+     * 
+     * 3. Not as a distributed instance, you do not need to enter any values.
+     * 
+     */
+    @Import(name="globalInstanceId")
+    private @Nullable Output<String> globalInstanceId;
+
+    /**
+     * @return The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+     * 
+     * 1. Enter true if you want the new instance to be the first child instance.
+     * 
+     * 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+     * 
+     * 3. Not as a distributed instance, you do not need to enter any values.
+     * 
+     */
+    public Optional<Output<String>> globalInstanceId() {
+        return Optional.ofNullable(this.globalInstanceId);
     }
 
     /**
@@ -154,18 +246,162 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * Instance intranet bandwidth
+     * 
+     */
+    @Import(name="intranetBandwidth")
+    private @Nullable Output<Integer> intranetBandwidth;
+
+    /**
+     * @return Instance intranet bandwidth
+     * 
+     */
+    public Optional<Output<Integer>> intranetBandwidth() {
+        return Optional.ofNullable(this.intranetBandwidth);
+    }
+
+    /**
+     * The maximum number of connections supported by the instance.
+     * 
+     */
+    @Import(name="maxConnections")
+    private @Nullable Output<Integer> maxConnections;
+
+    /**
+     * @return The maximum number of connections supported by the instance.
+     * 
+     */
+    public Optional<Output<Integer>> maxConnections() {
+        return Optional.ofNullable(this.maxConnections);
+    }
+
+    /**
+     * The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+     * 
+     */
+    @Import(name="modifyMode")
+    private @Nullable Output<String> modifyMode;
+
+    /**
+     * @return The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+     * 
+     */
+    public Optional<Output<String>> modifyMode() {
+        return Optional.ofNullable(this.modifyMode);
+    }
+
+    /**
+     * The network type of the instance.  CLASSIC(classic network), VPC.
+     * 
+     */
+    @Import(name="networkType")
+    private @Nullable Output<String> networkType;
+
+    /**
+     * @return The network type of the instance.  CLASSIC(classic network), VPC.
+     * 
+     */
+    public Optional<Output<String>> networkType() {
+        return Optional.ofNullable(this.networkType);
+    }
+
+    /**
+     * Node type, value:
+     * 
+     * MASTER_SLAVE: high availability (dual copy)
+     * 
+     * STAND_ALONE: single copy
+     * 
+     * double: double copy
+     * 
+     * single: single copy
+     * 
+     * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
      * 
      */
     @Import(name="nodeType")
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * @return Node type, value:
+     * 
+     * MASTER_SLAVE: high availability (dual copy)
+     * 
+     * STAND_ALONE: single copy
+     * 
+     * double: double copy
+     * 
+     * single: single copy
+     * 
+     * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
      * 
      */
     public Optional<Output<String>> nodeType() {
         return Optional.ofNullable(this.nodeType);
+    }
+
+    /**
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+     * 
+     */
+    @Import(name="paramNoLooseSentinelEnabled")
+    private @Nullable Output<String> paramNoLooseSentinelEnabled;
+
+    /**
+     * @return sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+     * 
+     */
+    public Optional<Output<String>> paramNoLooseSentinelEnabled() {
+        return Optional.ofNullable(this.paramNoLooseSentinelEnabled);
+    }
+
+    /**
+     * The value is semisync or async. The default value is async.
+     * 
+     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+     * 
+     */
+    @Import(name="paramReplMode")
+    private @Nullable Output<String> paramReplMode;
+
+    /**
+     * @return The value is semisync or async. The default value is async.
+     * 
+     * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+     * 
+     */
+    public Optional<Output<String>> paramReplMode() {
+        return Optional.ofNullable(this.paramReplMode);
+    }
+
+    /**
+     * The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+     * 
+     */
+    @Import(name="paramSemisyncReplTimeout")
+    private @Nullable Output<String> paramSemisyncReplTimeout;
+
+    /**
+     * @return The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+     * 
+     */
+    public Optional<Output<String>> paramSemisyncReplTimeout() {
+        return Optional.ofNullable(this.paramSemisyncReplTimeout);
+    }
+
+    /**
+     * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+     * 
+     */
+    @Import(name="paramSentinelCompatEnable")
+    private @Nullable Output<String> paramSentinelCompatEnable;
+
+    /**
+     * @return sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+     * 
+     */
+    public Optional<Output<String>> paramSentinelCompatEnable() {
+        return Optional.ofNullable(this.paramSentinelCompatEnable);
     }
 
     /**
@@ -184,14 +420,14 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+     * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+     * @return Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -229,18 +465,41 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+     * 
+     * If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+     * 
+     * If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
      * 
      */
     @Import(name="readOnlyCount")
     private @Nullable Output<Integer> readOnlyCount;
 
     /**
-     * @return Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+     * @return Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+     * 
+     * If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+     * 
+     * If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
      * 
      */
     public Optional<Output<Integer>> readOnlyCount() {
         return Optional.ofNullable(this.readOnlyCount);
+    }
+
+    /**
+     * Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+     * 
+     */
+    @Import(name="recoverConfigMode")
+    private @Nullable Output<String> recoverConfigMode;
+
+    /**
+     * @return Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+     * 
+     */
+    public Optional<Output<String>> recoverConfigMode() {
+        return Optional.ofNullable(this.recoverConfigMode);
     }
 
     /**
@@ -274,18 +533,48 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Security group ID
+     * Security group id
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return Security group ID
+     * @return Security group id
      * 
      */
     public Optional<Output<String>> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
+    }
+
+    /**
+     * The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+     * 
+     */
+    @Import(name="securityIpGroupName")
+    private @Nullable Output<String> securityIpGroupName;
+
+    /**
+     * @return The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+     * 
+     */
+    public Optional<Output<String>> securityIpGroupName() {
+        return Optional.ofNullable(this.securityIpGroupName);
+    }
+
+    /**
+     * The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+     * 
+     */
+    @Import(name="securityIps")
+    private @Nullable Output<String> securityIps;
+
+    /**
+     * @return The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+     * 
+     */
+    public Optional<Output<String>> securityIps() {
+        return Optional.ofNullable(this.securityIps);
     }
 
     /**
@@ -304,14 +593,18 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+     * Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+     * 
+     * Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
      * 
      */
     @Import(name="slaveReadOnlyCount")
     private @Nullable Output<Integer> slaveReadOnlyCount;
 
     /**
-     * @return Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+     * @return Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+     * 
+     * Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
      * 
      */
     public Optional<Output<Integer>> slaveReadOnlyCount() {
@@ -319,14 +612,29 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+     * If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+     * 
+     */
+    @Import(name="srcDbInstanceId")
+    private @Nullable Output<String> srcDbInstanceId;
+
+    /**
+     * @return If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+     * 
+     */
+    public Optional<Output<String>> srcDbInstanceId() {
+        return Optional.ofNullable(this.srcDbInstanceId);
+    }
+
+    /**
+     * Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
      * 
      */
     @Import(name="sslEnabled")
     private @Nullable Output<String> sslEnabled;
 
     /**
-     * @return Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+     * @return Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
      * 
      */
     public Optional<Output<String>> sslEnabled() {
@@ -349,14 +657,26 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+     * The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+     * 
+     * If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+     * 
+     * If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+     * 
+     * If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
      * 
      */
     @Import(name="storagePerformanceLevel")
     private @Nullable Output<String> storagePerformanceLevel;
 
     /**
-     * @return The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+     * @return The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+     * 
+     * If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+     * 
+     * If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+     * 
+     * If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
      * 
      */
     public Optional<Output<String>> storagePerformanceLevel() {
@@ -364,14 +684,14 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
      * 
      */
     @Import(name="storageSizeGb")
     private @Nullable Output<Integer> storageSizeGb;
 
     /**
-     * @return The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+     * @return Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
      * 
      */
     public Optional<Output<Integer>> storageSizeGb() {
@@ -394,6 +714,21 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID of the resource.
+     * 
+     */
+    @Import(name="tairInstanceId")
+    private @Nullable Output<String> tairInstanceId;
+
+    /**
+     * @return The ID of the resource.
+     * 
+     */
+    public Optional<Output<String>> tairInstanceId() {
+        return Optional.ofNullable(this.tairInstanceId);
+    }
+
+    /**
      * The name of the resource.
      * 
      */
@@ -406,6 +741,21 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> tairInstanceName() {
         return Optional.ofNullable(this.tairInstanceName);
+    }
+
+    /**
+     * The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+     * 
+     */
+    @Import(name="vpcAuthMode")
+    private @Nullable Output<String> vpcAuthMode;
+
+    /**
+     * @return The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+     * 
+     */
+    public Optional<Output<String>> vpcAuthMode() {
+        return Optional.ofNullable(this.vpcAuthMode);
     }
 
     /**
@@ -456,32 +806,50 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     private TairInstanceState() {}
 
     private TairInstanceState(TairInstanceState $) {
+        this.architectureType = $.architectureType;
         this.autoRenew = $.autoRenew;
         this.autoRenewPeriod = $.autoRenewPeriod;
+        this.backupId = $.backupId;
         this.clusterBackupId = $.clusterBackupId;
+        this.connectionDomain = $.connectionDomain;
         this.createTime = $.createTime;
         this.effectiveTime = $.effectiveTime;
         this.engineVersion = $.engineVersion;
         this.forceUpgrade = $.forceUpgrade;
+        this.globalInstanceId = $.globalInstanceId;
         this.instanceClass = $.instanceClass;
         this.instanceType = $.instanceType;
+        this.intranetBandwidth = $.intranetBandwidth;
+        this.maxConnections = $.maxConnections;
+        this.modifyMode = $.modifyMode;
+        this.networkType = $.networkType;
         this.nodeType = $.nodeType;
+        this.paramNoLooseSentinelEnabled = $.paramNoLooseSentinelEnabled;
+        this.paramReplMode = $.paramReplMode;
+        this.paramSemisyncReplTimeout = $.paramSemisyncReplTimeout;
+        this.paramSentinelCompatEnable = $.paramSentinelCompatEnable;
         this.password = $.password;
         this.paymentType = $.paymentType;
         this.period = $.period;
         this.port = $.port;
         this.readOnlyCount = $.readOnlyCount;
+        this.recoverConfigMode = $.recoverConfigMode;
         this.resourceGroupId = $.resourceGroupId;
         this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
+        this.securityIpGroupName = $.securityIpGroupName;
+        this.securityIps = $.securityIps;
         this.shardCount = $.shardCount;
         this.slaveReadOnlyCount = $.slaveReadOnlyCount;
+        this.srcDbInstanceId = $.srcDbInstanceId;
         this.sslEnabled = $.sslEnabled;
         this.status = $.status;
         this.storagePerformanceLevel = $.storagePerformanceLevel;
         this.storageSizeGb = $.storageSizeGb;
         this.tags = $.tags;
+        this.tairInstanceId = $.tairInstanceId;
         this.tairInstanceName = $.tairInstanceName;
+        this.vpcAuthMode = $.vpcAuthMode;
         this.vpcId = $.vpcId;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
@@ -503,6 +871,27 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TairInstanceState defaults) {
             $ = new TairInstanceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param architectureType The architecture of the instance.  cluster, standard, rwsplit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architectureType(@Nullable Output<String> architectureType) {
+            $.architectureType = architectureType;
+            return this;
+        }
+
+        /**
+         * @param architectureType The architecture of the instance.  cluster, standard, rwsplit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder architectureType(String architectureType) {
+            return architectureType(Output.of(architectureType));
         }
 
         /**
@@ -548,7 +937,32 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterBackupId The ID of the backup set of the cluster.
+         * @param backupId You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+         * 
+         * If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupId(@Nullable Output<String> backupId) {
+            $.backupId = backupId;
+            return this;
+        }
+
+        /**
+         * @param backupId You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+         * 
+         * If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupId(String backupId) {
+            return backupId(Output.of(backupId));
+        }
+
+        /**
+         * @param clusterBackupId This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
          * 
          * @return builder
          * 
@@ -559,13 +973,34 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clusterBackupId The ID of the backup set of the cluster.
+         * @param clusterBackupId This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
          * 
          * @return builder
          * 
          */
         public Builder clusterBackupId(String clusterBackupId) {
             return clusterBackupId(Output.of(clusterBackupId));
+        }
+
+        /**
+         * @param connectionDomain The internal endpoint of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionDomain(@Nullable Output<String> connectionDomain) {
+            $.connectionDomain = connectionDomain;
+            return this;
+        }
+
+        /**
+         * @param connectionDomain The internal endpoint of the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionDomain(String connectionDomain) {
+            return connectionDomain(Output.of(connectionDomain));
         }
 
         /**
@@ -611,7 +1046,15 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+         * @param engineVersion Database version. Default value: 1.0.
+         * 
+         * Rules for transferring parameters of different tair product types:
+         * 
+         * tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+         * 
+         * tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+         * 
+         * tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
          * 
          * @return builder
          * 
@@ -622,7 +1065,15 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param engineVersion Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+         * @param engineVersion Database version. Default value: 1.0.
+         * 
+         * Rules for transferring parameters of different tair product types:
+         * 
+         * tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+         * 
+         * tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+         * 
+         * tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
          * 
          * @return builder
          * 
@@ -650,6 +1101,39 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder forceUpgrade(Boolean forceUpgrade) {
             return forceUpgrade(Output.of(forceUpgrade));
+        }
+
+        /**
+         * @param globalInstanceId The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+         * 
+         * 1. Enter true if you want the new instance to be the first child instance.
+         * 
+         * 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+         * 
+         * 3. Not as a distributed instance, you do not need to enter any values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalInstanceId(@Nullable Output<String> globalInstanceId) {
+            $.globalInstanceId = globalInstanceId;
+            return this;
+        }
+
+        /**
+         * @param globalInstanceId The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+         * 
+         * 1. Enter true if you want the new instance to be the first child instance.
+         * 
+         * 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+         * 
+         * 3. Not as a distributed instance, you do not need to enter any values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder globalInstanceId(String globalInstanceId) {
+            return globalInstanceId(Output.of(globalInstanceId));
         }
 
         /**
@@ -695,7 +1179,101 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+         * @param intranetBandwidth Instance intranet bandwidth
+         * 
+         * @return builder
+         * 
+         */
+        public Builder intranetBandwidth(@Nullable Output<Integer> intranetBandwidth) {
+            $.intranetBandwidth = intranetBandwidth;
+            return this;
+        }
+
+        /**
+         * @param intranetBandwidth Instance intranet bandwidth
+         * 
+         * @return builder
+         * 
+         */
+        public Builder intranetBandwidth(Integer intranetBandwidth) {
+            return intranetBandwidth(Output.of(intranetBandwidth));
+        }
+
+        /**
+         * @param maxConnections The maximum number of connections supported by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConnections(@Nullable Output<Integer> maxConnections) {
+            $.maxConnections = maxConnections;
+            return this;
+        }
+
+        /**
+         * @param maxConnections The maximum number of connections supported by the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConnections(Integer maxConnections) {
+            return maxConnections(Output.of(maxConnections));
+        }
+
+        /**
+         * @param modifyMode The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyMode(@Nullable Output<String> modifyMode) {
+            $.modifyMode = modifyMode;
+            return this;
+        }
+
+        /**
+         * @param modifyMode The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder modifyMode(String modifyMode) {
+            return modifyMode(Output.of(modifyMode));
+        }
+
+        /**
+         * @param networkType The network type of the instance.  CLASSIC(classic network), VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkType(@Nullable Output<String> networkType) {
+            $.networkType = networkType;
+            return this;
+        }
+
+        /**
+         * @param networkType The network type of the instance.  CLASSIC(classic network), VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkType(String networkType) {
+            return networkType(Output.of(networkType));
+        }
+
+        /**
+         * @param nodeType Node type, value:
+         * 
+         * MASTER_SLAVE: high availability (dual copy)
+         * 
+         * STAND_ALONE: single copy
+         * 
+         * double: double copy
+         * 
+         * single: single copy
+         * 
+         * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
          * 
          * @return builder
          * 
@@ -706,13 +1284,111 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+         * @param nodeType Node type, value:
+         * 
+         * MASTER_SLAVE: high availability (dual copy)
+         * 
+         * STAND_ALONE: single copy
+         * 
+         * double: double copy
+         * 
+         * single: single copy
+         * 
+         * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
          * 
          * @return builder
          * 
          */
         public Builder nodeType(String nodeType) {
             return nodeType(Output.of(nodeType));
+        }
+
+        /**
+         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramNoLooseSentinelEnabled(@Nullable Output<String> paramNoLooseSentinelEnabled) {
+            $.paramNoLooseSentinelEnabled = paramNoLooseSentinelEnabled;
+            return this;
+        }
+
+        /**
+         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramNoLooseSentinelEnabled(String paramNoLooseSentinelEnabled) {
+            return paramNoLooseSentinelEnabled(Output.of(paramNoLooseSentinelEnabled));
+        }
+
+        /**
+         * @param paramReplMode The value is semisync or async. The default value is async.
+         * 
+         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramReplMode(@Nullable Output<String> paramReplMode) {
+            $.paramReplMode = paramReplMode;
+            return this;
+        }
+
+        /**
+         * @param paramReplMode The value is semisync or async. The default value is async.
+         * 
+         * The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramReplMode(String paramReplMode) {
+            return paramReplMode(Output.of(paramReplMode));
+        }
+
+        /**
+         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramSemisyncReplTimeout(@Nullable Output<String> paramSemisyncReplTimeout) {
+            $.paramSemisyncReplTimeout = paramSemisyncReplTimeout;
+            return this;
+        }
+
+        /**
+         * @param paramSemisyncReplTimeout The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramSemisyncReplTimeout(String paramSemisyncReplTimeout) {
+            return paramSemisyncReplTimeout(Output.of(paramSemisyncReplTimeout));
+        }
+
+        /**
+         * @param paramSentinelCompatEnable sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramSentinelCompatEnable(@Nullable Output<String> paramSentinelCompatEnable) {
+            $.paramSentinelCompatEnable = paramSentinelCompatEnable;
+            return this;
+        }
+
+        /**
+         * @param paramSentinelCompatEnable sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramSentinelCompatEnable(String paramSentinelCompatEnable) {
+            return paramSentinelCompatEnable(Output.of(paramSentinelCompatEnable));
         }
 
         /**
@@ -737,7 +1413,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
          * 
          * @return builder
          * 
@@ -748,7 +1424,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+         * @param paymentType Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
          * 
          * @return builder
          * 
@@ -800,7 +1476,11 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnlyCount Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+         * @param readOnlyCount Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+         * 
+         * If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+         * 
+         * If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
          * 
          * @return builder
          * 
@@ -811,13 +1491,38 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param readOnlyCount Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+         * @param readOnlyCount Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+         * 
+         * If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+         * 
+         * If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
          * 
          * @return builder
          * 
          */
         public Builder readOnlyCount(Integer readOnlyCount) {
             return readOnlyCount(Output.of(readOnlyCount));
+        }
+
+        /**
+         * @param recoverConfigMode Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recoverConfigMode(@Nullable Output<String> recoverConfigMode) {
+            $.recoverConfigMode = recoverConfigMode;
+            return this;
+        }
+
+        /**
+         * @param recoverConfigMode Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recoverConfigMode(String recoverConfigMode) {
+            return recoverConfigMode(Output.of(recoverConfigMode));
         }
 
         /**
@@ -863,7 +1568,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId Security group ID
+         * @param securityGroupId Security group id
          * 
          * @return builder
          * 
@@ -874,13 +1579,55 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId Security group ID
+         * @param securityGroupId Security group id
          * 
          * @return builder
          * 
          */
         public Builder securityGroupId(String securityGroupId) {
             return securityGroupId(Output.of(securityGroupId));
+        }
+
+        /**
+         * @param securityIpGroupName The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIpGroupName(@Nullable Output<String> securityIpGroupName) {
+            $.securityIpGroupName = securityIpGroupName;
+            return this;
+        }
+
+        /**
+         * @param securityIpGroupName The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIpGroupName(String securityIpGroupName) {
+            return securityIpGroupName(Output.of(securityIpGroupName));
+        }
+
+        /**
+         * @param securityIps The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIps(@Nullable Output<String> securityIps) {
+            $.securityIps = securityIps;
+            return this;
+        }
+
+        /**
+         * @param securityIps The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityIps(String securityIps) {
+            return securityIps(Output.of(securityIps));
         }
 
         /**
@@ -905,7 +1652,9 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slaveReadOnlyCount Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+         * @param slaveReadOnlyCount Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+         * 
+         * Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
          * 
          * @return builder
          * 
@@ -916,7 +1665,9 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slaveReadOnlyCount Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+         * @param slaveReadOnlyCount Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+         * 
+         * Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
          * 
          * @return builder
          * 
@@ -926,7 +1677,28 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslEnabled Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+         * @param srcDbInstanceId If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcDbInstanceId(@Nullable Output<String> srcDbInstanceId) {
+            $.srcDbInstanceId = srcDbInstanceId;
+            return this;
+        }
+
+        /**
+         * @param srcDbInstanceId If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcDbInstanceId(String srcDbInstanceId) {
+            return srcDbInstanceId(Output.of(srcDbInstanceId));
+        }
+
+        /**
+         * @param sslEnabled Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
          * 
          * @return builder
          * 
@@ -937,7 +1709,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslEnabled Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+         * @param sslEnabled Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
          * 
          * @return builder
          * 
@@ -968,7 +1740,13 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePerformanceLevel The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+         * @param storagePerformanceLevel The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+         * 
+         * If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+         * 
+         * If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+         * 
+         * If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
          * 
          * @return builder
          * 
@@ -979,7 +1757,13 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePerformanceLevel The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+         * @param storagePerformanceLevel The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+         * 
+         * If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+         * 
+         * If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+         * 
+         * If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
          * 
          * @return builder
          * 
@@ -989,7 +1773,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageSizeGb The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+         * @param storageSizeGb Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
          * 
          * @return builder
          * 
@@ -1000,7 +1784,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageSizeGb The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
+         * @param storageSizeGb Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
          * 
          * @return builder
          * 
@@ -1031,6 +1815,27 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param tairInstanceId The ID of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tairInstanceId(@Nullable Output<String> tairInstanceId) {
+            $.tairInstanceId = tairInstanceId;
+            return this;
+        }
+
+        /**
+         * @param tairInstanceId The ID of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tairInstanceId(String tairInstanceId) {
+            return tairInstanceId(Output.of(tairInstanceId));
+        }
+
+        /**
          * @param tairInstanceName The name of the resource.
          * 
          * @return builder
@@ -1049,6 +1854,27 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tairInstanceName(String tairInstanceName) {
             return tairInstanceName(Output.of(tairInstanceName));
+        }
+
+        /**
+         * @param vpcAuthMode The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcAuthMode(@Nullable Output<String> vpcAuthMode) {
+            $.vpcAuthMode = vpcAuthMode;
+            return this;
+        }
+
+        /**
+         * @param vpcAuthMode The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcAuthMode(String vpcAuthMode) {
+            return vpcAuthMode(Output.of(vpcAuthMode));
         }
 
         /**

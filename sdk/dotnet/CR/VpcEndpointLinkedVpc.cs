@@ -25,11 +25,18 @@ namespace Pulumi.AliCloud.CR
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 100000,
+    ///         Max = 999999,
+    ///     });
+    /// 
     ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
@@ -37,13 +44,13 @@ namespace Pulumi.AliCloud.CR
     /// 
     ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         VpcName = name,
+    ///         VpcName = $"{name}-{defaultInteger.Result}",
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
     ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         VswitchName = name,
+    ///         VswitchName = $"{name}-{defaultInteger.Result}",
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
@@ -56,7 +63,7 @@ namespace Pulumi.AliCloud.CR
     ///         RenewPeriod = 0,
     ///         RenewalStatus = "ManualRenewal",
     ///         InstanceType = "Advanced",
-    ///         InstanceName = name,
+    ///         InstanceName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
     ///     var defaultVpcEndpointLinkedVpc = new AliCloud.CR.VpcEndpointLinkedVpc("default", new()

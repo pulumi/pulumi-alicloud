@@ -285,6 +285,7 @@ class _InstanceState:
                  bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]]] = None,
                  ca_certificate_chain_pem: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 end_date: Optional[pulumi.Input[str]] = None,
                  force_delete_without_backup: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  key_num: Optional[pulumi.Input[int]] = None,
@@ -307,6 +308,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceBindVpcArgs']]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
         :param pulumi.Input[str] ca_certificate_chain_pem: KMS instance certificate chain in PEM format.
         :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] end_date: (Available since v1.233.1) Instance expiration time.
         :param pulumi.Input[str] force_delete_without_backup: Whether to force deletion even without backup.
         :param pulumi.Input[str] instance_name: The name of the resource.
         :param pulumi.Input[int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -331,6 +333,8 @@ class _InstanceState:
             pulumi.set(__self__, "ca_certificate_chain_pem", ca_certificate_chain_pem)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
         if force_delete_without_backup is not None:
             pulumi.set(__self__, "force_delete_without_backup", force_delete_without_backup)
         if instance_name is not None:
@@ -401,6 +405,18 @@ class _InstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.233.1) Instance expiration time.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_date", value)
 
     @property
     @pulumi.getter(name="forceDeleteWithoutBackup")
@@ -808,6 +824,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["zone_ids"] = zone_ids
             __props__.__dict__["ca_certificate_chain_pem"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["end_date"] = None
             __props__.__dict__["instance_name"] = None
             __props__.__dict__["status"] = None
         super(Instance, __self__).__init__(
@@ -823,6 +840,7 @@ class Instance(pulumi.CustomResource):
             bind_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]]] = None,
             ca_certificate_chain_pem: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            end_date: Optional[pulumi.Input[str]] = None,
             force_delete_without_backup: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             key_num: Optional[pulumi.Input[int]] = None,
@@ -850,6 +868,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceBindVpcArgs', 'InstanceBindVpcArgsDict']]]] bind_vpcs: Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
         :param pulumi.Input[str] ca_certificate_chain_pem: KMS instance certificate chain in PEM format.
         :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] end_date: (Available since v1.233.1) Instance expiration time.
         :param pulumi.Input[str] force_delete_without_backup: Whether to force deletion even without backup.
         :param pulumi.Input[str] instance_name: The name of the resource.
         :param pulumi.Input[int] key_num: Maximum number of stored keys. The attribute is valid when the attribute `payment_type` is `Subscription`.
@@ -875,6 +894,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["bind_vpcs"] = bind_vpcs
         __props__.__dict__["ca_certificate_chain_pem"] = ca_certificate_chain_pem
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["end_date"] = end_date
         __props__.__dict__["force_delete_without_backup"] = force_delete_without_backup
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["key_num"] = key_num
@@ -917,6 +937,14 @@ class Instance(pulumi.CustomResource):
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.233.1) Instance expiration time.
+        """
+        return pulumi.get(self, "end_date")
 
     @property
     @pulumi.getter(name="forceDeleteWithoutBackup")

@@ -52,8 +52,8 @@ import (
 //				Namespace: example.Name,
 //				Name:      pulumi.String(name),
 //				Summary:   pulumi.String("this is summary of my new repo"),
-//				RepoType:  pulumi.String("PUBLIC"),
-//				Detail:    pulumi.String("this is a public repo"),
+//				RepoType:  pulumi.String("PRIVATE"),
+//				Detail:    pulumi.String("this is a private repo"),
 //			})
 //			if err != nil {
 //				return err
@@ -76,7 +76,7 @@ type Repo struct {
 
 	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
 	Detail pulumi.StringPtrOutput `pulumi:"detail"`
-	// The repository domain list.
+	// (Optional) The repository domain list.
 	DomainList RepoDomainListOutput `pulumi:"domainList"`
 	// Name of container registry repository.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -129,7 +129,7 @@ func GetRepo(ctx *pulumi.Context,
 type repoState struct {
 	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
 	Detail *string `pulumi:"detail"`
-	// The repository domain list.
+	// (Optional) The repository domain list.
 	DomainList *RepoDomainList `pulumi:"domainList"`
 	// Name of container registry repository.
 	Name *string `pulumi:"name"`
@@ -144,7 +144,7 @@ type repoState struct {
 type RepoState struct {
 	// The repository specific information. MarkDown format is supported, and the length limit is 2000.
 	Detail pulumi.StringPtrInput
-	// The repository domain list.
+	// (Optional) The repository domain list.
 	DomainList RepoDomainListPtrInput
 	// Name of container registry repository.
 	Name pulumi.StringPtrInput
@@ -279,7 +279,7 @@ func (o RepoOutput) Detail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repo) pulumi.StringPtrOutput { return v.Detail }).(pulumi.StringPtrOutput)
 }
 
-// The repository domain list.
+// (Optional) The repository domain list.
 func (o RepoOutput) DomainList() RepoDomainListOutput {
 	return o.ApplyT(func(v *Repo) RepoDomainListOutput { return v.DomainList }).(RepoDomainListOutput)
 }

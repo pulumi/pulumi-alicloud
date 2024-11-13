@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Alb
         /// The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
         /// </summary>
         [Output("bandwidthPackageId")]
-        public Output<string?> BandwidthPackageId { get; private set; } = null!;
+        public Output<string> BandwidthPackageId { get; private set; } = null!;
 
         /// <summary>
         /// The time when the resource was created.

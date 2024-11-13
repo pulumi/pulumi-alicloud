@@ -31,7 +31,7 @@ class EnvironmentArgs:
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] environment_sub_type: Subtype of environment:
-               - Type of CS: ACK is currently supported.
+               - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
                - Type of ECS: currently supports ECS.
                - Type of Cloud: currently supports Cloud.
         :param pulumi.Input[str] environment_type: Type of environment.
@@ -68,7 +68,7 @@ class EnvironmentArgs:
     def environment_sub_type(self) -> pulumi.Input[str]:
         """
         Subtype of environment:
-        - Type of CS: ACK is currently supported.
+        - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
         - Type of ECS: currently supports ECS.
         - Type of Cloud: currently supports Cloud.
         """
@@ -199,7 +199,7 @@ class _EnvironmentState:
         :param pulumi.Input[str] environment_id: The first ID of the resource.
         :param pulumi.Input[str] environment_name: The name of the resource.
         :param pulumi.Input[str] environment_sub_type: Subtype of environment:
-               - Type of CS: ACK is currently supported.
+               - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
                - Type of ECS: currently supports ECS.
                - Type of Cloud: currently supports Cloud.
         :param pulumi.Input[str] environment_type: Type of environment.
@@ -296,7 +296,7 @@ class _EnvironmentState:
     def environment_sub_type(self) -> Optional[pulumi.Input[str]]:
         """
         Subtype of environment:
-        - Type of CS: ACK is currently supported.
+        - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
         - Type of ECS: currently supports ECS.
         - Type of Cloud: currently supports Cloud.
         """
@@ -395,7 +395,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] drop_metrics: List of abandoned indicators.
         :param pulumi.Input[str] environment_name: The name of the resource.
         :param pulumi.Input[str] environment_sub_type: Subtype of environment:
-               - Type of CS: ACK is currently supported.
+               - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
                - Type of ECS: currently supports ECS.
                - Type of Cloud: currently supports Cloud.
         :param pulumi.Input[str] environment_type: Type of environment.
@@ -507,7 +507,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] environment_id: The first ID of the resource.
         :param pulumi.Input[str] environment_name: The name of the resource.
         :param pulumi.Input[str] environment_sub_type: Subtype of environment:
-               - Type of CS: ACK is currently supported.
+               - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
                - Type of ECS: currently supports ECS.
                - Type of Cloud: currently supports Cloud.
         :param pulumi.Input[str] environment_type: Type of environment.
@@ -579,7 +579,7 @@ class Environment(pulumi.CustomResource):
     def environment_sub_type(self) -> pulumi.Output[str]:
         """
         Subtype of environment:
-        - Type of CS: ACK is currently supported.
+        - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
         - Type of ECS: currently supports ECS.
         - Type of Cloud: currently supports Cloud.
         """

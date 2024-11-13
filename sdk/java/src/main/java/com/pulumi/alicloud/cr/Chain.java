@@ -35,6 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
  * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
  * import com.pulumi.alicloud.cs.RegistryEnterpriseNamespace;
@@ -59,26 +61,31 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         var default_ = new RegistryEnterpriseInstance("default", RegistryEnterpriseInstanceArgs.builder()
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(100000)
+ *             .max(999999)
+ *             .build());
+ * 
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
  *             .paymentType("Subscription")
  *             .period(1)
  *             .renewPeriod(0)
  *             .renewalStatus("ManualRenewal")
  *             .instanceType("Advanced")
- *             .instanceName(name)
+ *             .instanceName(String.format("%s-%s", name,default_.result()))
  *             .build());
  * 
  *         var defaultRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", RegistryEnterpriseNamespaceArgs.builder()
- *             .instanceId(default_.id())
- *             .name(name)
+ *             .instanceId(defaultRegistryEnterpriseInstance.id())
+ *             .name(String.format("%s-%s", name,default_.result()))
  *             .autoCreate(false)
  *             .defaultVisibility("PUBLIC")
  *             .build());
  * 
  *         var defaultRegistryEnterpriseRepo = new RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", RegistryEnterpriseRepoArgs.builder()
- *             .instanceId(default_.id())
+ *             .instanceId(defaultRegistryEnterpriseInstance.id())
  *             .namespace(defaultRegistryEnterpriseNamespace.name())
- *             .name(name)
+ *             .name(String.format("%s-%s", name,default_.result()))
  *             .summary("this is summary of my new repo")
  *             .repoType("PUBLIC")
  *             .detail("this is a public repo")
@@ -191,7 +198,7 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                 .build())
- *             .chainName(name)
+ *             .chainName(String.format("%s-%s", name,default_.result()))
  *             .description(name)
  *             .instanceId(defaultRegistryEnterpriseNamespace.instanceId())
  *             .repoName(defaultRegistryEnterpriseRepo.name())

@@ -850,7 +850,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
-    def bandwidth_package_id(self) -> pulumi.Output[Optional[str]]:
+    def bandwidth_package_id(self) -> pulumi.Output[str]:
         """
         The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
         """

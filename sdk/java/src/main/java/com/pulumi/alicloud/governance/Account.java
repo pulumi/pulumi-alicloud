@@ -6,12 +6,14 @@ package com.pulumi.alicloud.governance;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.governance.AccountArgs;
 import com.pulumi.alicloud.governance.inputs.AccountState;
+import com.pulumi.alicloud.governance.outputs.AccountAccountTag;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -64,6 +66,20 @@ public class Account extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountNamePrefix);
     }
     /**
+     * The tags of the account See `account_tags` below.
+     * 
+     */
+    @Export(name="accountTags", refs={List.class,AccountAccountTag.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AccountAccountTag>> accountTags;
+
+    /**
+     * @return The tags of the account See `account_tags` below.
+     * 
+     */
+    public Output<Optional<List<AccountAccountTag>>> accountTags() {
+        return Codegen.optional(this.accountTags);
+    }
+    /**
      * The baseline ID.
      * 
      * If it is left blank, the system default baseline is used by default.
@@ -84,16 +100,12 @@ public class Account extends com.pulumi.resources.CustomResource {
     /**
      * The domain name is used to qualify the login name of RAM users and RAM roles.
      * 
-     * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
-     * 
      */
     @Export(name="defaultDomainName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultDomainName;
 
     /**
      * @return The domain name is used to qualify the login name of RAM users and RAM roles.
-     * 
-     * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
      * 
      */
     public Output<Optional<String>> defaultDomainName() {

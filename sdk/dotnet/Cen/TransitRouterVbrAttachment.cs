@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
+    /// Provides a Cloud Enterprise Network (CEN) Transit Router VBR Attachment resource.
+    /// 
+    /// For information about Cloud Enterprise Network (CEN) Transit Router VBR Attachment and how to use it, see [What is Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
     /// 
     /// &gt; **NOTE:** Available since v1.126.0.
     /// 
@@ -28,6 +30,11 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var nameRegex = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     {
+    ///         NameRegex = "^preserved-NODELETING",
+    ///     });
+    /// 
     ///     var @default = new AliCloud.Cen.Instance("default", new()
     ///     {
     ///         CenInstanceName = name,
@@ -37,11 +44,6 @@ namespace Pulumi.AliCloud.Cen
     ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
     ///     {
     ///         CenId = @default.Id,
-    ///     });
-    /// 
-    ///     var nameRegex = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
-    ///     {
-    ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
     ///     var defaultVirtualBorderRouter = new AliCloud.ExpressConnect.VirtualBorderRouter("default", new()
@@ -59,11 +61,11 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var defaultTransitRouterVbrAttachment = new AliCloud.Cen.TransitRouterVbrAttachment("default", new()
     ///     {
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
-    ///         TransitRouterAttachmentName = "example",
-    ///         TransitRouterAttachmentDescription = "example",
-    ///         VbrId = defaultVirtualBorderRouter.Id,
     ///         CenId = @default.Id,
+    ///         VbrId = defaultVirtualBorderRouter.Id,
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterAttachmentName = name,
+    ///         TransitRouterAttachmentDescription = name,
     ///     });
     /// 
     /// });
@@ -71,20 +73,20 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN transit router VBR attachment can be imported using the id, e.g.
+    /// Cloud Enterprise Network (CEN) Transit Router VBR Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+    /// $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment")]
     public partial class TransitRouterVbrAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Auto publish route enabled.Default value is `false`.
+        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         /// </summary>
         [Output("autoPublishRouteEnabled")]
-        public Output<bool> AutoPublishRouteEnabled { get; private set; } = null!;
+        public Output<bool?> AutoPublishRouteEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the CEN.
@@ -93,33 +95,33 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-        /// 
-        /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+        /// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
         /// </summary>
         [Output("resourceType")]
         public Output<string?> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enabled route table association. The system default value is `true`.
+        /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         /// </summary>
         [Output("routeTableAssociationEnabled")]
         public Output<bool?> RouteTableAssociationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enabled route table propagation. The system default value is `true`.
+        /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// 
+        /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
         /// </summary>
         [Output("routeTablePropagationEnabled")]
         public Output<bool?> RouteTablePropagationEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The associating status of the network.
+        /// The status of the Transit Router VBR Attachment.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -137,7 +139,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string?> TransitRouterAttachmentDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the transit router vbr attachment.
+        /// The ID of the VBR connection.
         /// </summary>
         [Output("transitRouterAttachmentId")]
         public Output<string> TransitRouterAttachmentId { get; private set; } = null!;
@@ -152,7 +154,7 @@ namespace Pulumi.AliCloud.Cen
         /// The ID of the transit router.
         /// </summary>
         [Output("transitRouterId")]
-        public Output<string?> TransitRouterId { get; private set; } = null!;
+        public Output<string> TransitRouterId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VBR.
@@ -161,7 +163,7 @@ namespace Pulumi.AliCloud.Cen
         public Output<string> VbrId { get; private set; } = null!;
 
         /// <summary>
-        /// The owner id of the transit router vbr attachment.
+        /// The owner id of the vbr.
         /// </summary>
         [Output("vbrOwnerId")]
         public Output<string> VbrOwnerId { get; private set; } = null!;
@@ -213,7 +215,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterVbrAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto publish route enabled.Default value is `false`.
+        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         /// </summary>
         [Input("autoPublishRouteEnabled")]
         public Input<bool>? AutoPublishRouteEnabled { get; set; }
@@ -225,27 +227,27 @@ namespace Pulumi.AliCloud.Cen
         public Input<string> CenId { get; set; } = null!;
 
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-        /// 
-        /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+        /// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table association. The system default value is `true`.
+        /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table propagation. The system default value is `true`.
+        /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// 
+        /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
         /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
@@ -287,7 +289,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string> VbrId { get; set; } = null!;
 
         /// <summary>
-        /// The owner id of the transit router vbr attachment.
+        /// The owner id of the vbr.
         /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }
@@ -301,7 +303,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class TransitRouterVbrAttachmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Auto publish route enabled.Default value is `false`.
+        /// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         /// </summary>
         [Input("autoPublishRouteEnabled")]
         public Input<bool>? AutoPublishRouteEnabled { get; set; }
@@ -313,33 +315,33 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-        /// 
-        /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+        /// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table association. The system default value is `true`.
+        /// Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         /// </summary>
         [Input("routeTableAssociationEnabled")]
         public Input<bool>? RouteTableAssociationEnabled { get; set; }
 
         /// <summary>
-        /// Whether to enabled route table propagation. The system default value is `true`.
+        /// Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+        /// 
+        /// -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
         /// </summary>
         [Input("routeTablePropagationEnabled")]
         public Input<bool>? RouteTablePropagationEnabled { get; set; }
 
         /// <summary>
-        /// The associating status of the network.
+        /// The status of the Transit Router VBR Attachment.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -363,7 +365,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? TransitRouterAttachmentDescription { get; set; }
 
         /// <summary>
-        /// The id of the transit router vbr attachment.
+        /// The ID of the VBR connection.
         /// </summary>
         [Input("transitRouterAttachmentId")]
         public Input<string>? TransitRouterAttachmentId { get; set; }
@@ -387,7 +389,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? VbrId { get; set; }
 
         /// <summary>
-        /// The owner id of the transit router vbr attachment.
+        /// The owner id of the vbr.
         /// </summary>
         [Input("vbrOwnerId")]
         public Input<string>? VbrOwnerId { get; set; }

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a DBFS Snapshot resource.
+ * Provides a Database File System (DBFS) Snapshot resource.
  *
- * For information about DBFS Snapshot and how to use it.
+ * For information about Database File System (DBFS) Snapshot and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-createsnapshot).
  *
  * > **NOTE:** Available since v1.156.0.
  *
@@ -20,59 +20,19 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
- * const zoneId = "cn-hangzhou-i";
- * const example = alicloud.ecs.getInstanceTypes({
- *     availabilityZone: zoneId,
- *     instanceTypeFamily: "ecs.g7se",
- * });
- * const exampleGetImages = Promise.all([example, example.then(example => example.instanceTypes).length]).then(([example, length]) => alicloud.ecs.getImages({
- *     instanceType: example.instanceTypes[length - 1].id,
- *     nameRegex: "^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
- *     owners: "system",
- * }));
- * const default = alicloud.vpc.getNetworks({
- *     nameRegex: "^default-NODELETING$",
- * });
- * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
- *     vpcId: _default.ids?.[0],
- *     zoneId: zoneId,
- * }));
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
- *     name: name,
- *     vpcId: _default.then(_default => _default.ids?.[0]),
- * });
- * const defaultInstance = new alicloud.ecs.Instance("default", {
- *     availabilityZone: zoneId,
- *     instanceName: name,
- *     imageId: exampleGetImages.then(exampleGetImages => exampleGetImages.images?.[0]?.id),
- *     instanceType: Promise.all([example, example.then(example => example.instanceTypes).length]).then(([example, length]) => example.instanceTypes[length - 1].id),
- *     securityGroups: [exampleSecurityGroup.id],
- *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
- *     systemDiskCategory: "cloud_essd",
- * });
- * const defaultInstance2 = new alicloud.databasefilesystem.Instance("default", {
- *     category: "enterprise",
- *     zoneId: defaultInstance.availabilityZone,
- *     performanceLevel: "PL1",
- *     fsName: name,
- *     size: 100,
- * });
- * const defaultInstanceAttachment = new alicloud.databasefilesystem.InstanceAttachment("default", {
- *     ecsId: defaultInstance.id,
- *     instanceId: defaultInstance2.id,
- * });
- * const exampleSnapshot = new alicloud.databasefilesystem.Snapshot("example", {
- *     instanceId: defaultInstanceAttachment.instanceId,
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.databasefilesystem.getInstances({});
+ * const example = new alicloud.databasefilesystem.Snapshot("example", {
+ *     instanceId: _default.then(_default => _default.instances?.[0]?.id),
+ *     retentionDays: 50,
  *     snapshotName: name,
- *     description: name,
- *     retentionDays: 30,
+ *     description: "DbfsSnapshot",
  * });
  * ```
  *
  * ## Import
  *
- * DBFS Snapshot can be imported using the id, e.g.
+ * Database File System (DBFS) Snapshot can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
@@ -107,23 +67,23 @@ export class Snapshot extends pulumi.CustomResource {
     }
 
     /**
-     * Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+     * The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether to force deletion of snapshots.
+     * Specifies whether to force delete the snapshot. Valid values:
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+     * The retention period of the snapshot. Valid values: `1` to `65536`.
      */
     public readonly retentionDays!: pulumi.Output<number | undefined>;
     /**
-     * The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+     * The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
      */
     public readonly snapshotName!: pulumi.Output<string | undefined>;
     /**
@@ -172,23 +132,23 @@ export class Snapshot extends pulumi.CustomResource {
  */
 export interface SnapshotState {
     /**
-     * Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+     * The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to force deletion of snapshots.
+     * Specifies whether to force delete the snapshot. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+     * The retention period of the snapshot. Valid values: `1` to `65536`.
      */
     retentionDays?: pulumi.Input<number>;
     /**
-     * The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+     * The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
      */
     snapshotName?: pulumi.Input<string>;
     /**
@@ -202,23 +162,23 @@ export interface SnapshotState {
  */
 export interface SnapshotArgs {
     /**
-     * Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+     * The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to force deletion of snapshots.
+     * Specifies whether to force delete the snapshot. Valid values:
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+     * The retention period of the snapshot. Valid values: `1` to `65536`.
      */
     retentionDays?: pulumi.Input<number>;
     /**
-     * The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+     * The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
      */
     snapshotName?: pulumi.Input<string>;
 }

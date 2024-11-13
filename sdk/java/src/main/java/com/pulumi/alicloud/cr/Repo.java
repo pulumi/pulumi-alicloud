@@ -63,8 +63,8 @@ import javax.annotation.Nullable;
  *             .namespace(example.name())
  *             .name(name)
  *             .summary("this is summary of my new repo")
- *             .repoType("PUBLIC")
- *             .detail("this is a public repo")
+ *             .repoType("PRIVATE")
+ *             .detail("this is a private repo")
  *             .build());
  * 
  *     }
@@ -99,14 +99,14 @@ public class Repo extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.detail);
     }
     /**
-     * The repository domain list.
+     * (Optional) The repository domain list.
      * 
      */
     @Export(name="domainList", refs={RepoDomainList.class}, tree="[0]")
     private Output<RepoDomainList> domainList;
 
     /**
-     * @return The repository domain list.
+     * @return (Optional) The repository domain list.
      * 
      */
     public Output<RepoDomainList> domainList() {

@@ -32,14 +32,14 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The repository domain list.
+     * (Optional) The repository domain list.
      * 
      */
     @Import(name="domainList")
     private @Nullable Output<RepoDomainListArgs> domainList;
 
     /**
-     * @return The repository domain list.
+     * @return (Optional) The repository domain list.
      * 
      */
     public Optional<Output<RepoDomainListArgs>> domainList() {
@@ -157,7 +157,7 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainList The repository domain list.
+         * @param domainList (Optional) The repository domain list.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class RepoState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domainList The repository domain list.
+         * @param domainList (Optional) The repository domain list.
          * 
          * @return builder
          * 

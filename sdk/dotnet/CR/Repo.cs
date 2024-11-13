@@ -42,8 +42,8 @@ namespace Pulumi.AliCloud.CR
     ///         Namespace = example.Name,
     ///         Name = name,
     ///         Summary = "this is summary of my new repo",
-    ///         RepoType = "PUBLIC",
-    ///         Detail = "this is a public repo",
+    ///         RepoType = "PRIVATE",
+    ///         Detail = "this is a private repo",
     ///     });
     /// 
     /// });
@@ -67,7 +67,7 @@ namespace Pulumi.AliCloud.CR
         public Output<string?> Detail { get; private set; } = null!;
 
         /// <summary>
-        /// The repository domain list.
+        /// (Optional) The repository domain list.
         /// </summary>
         [Output("domainList")]
         public Output<Outputs.RepoDomainList> DomainList { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.CR
         public Input<string>? Detail { get; set; }
 
         /// <summary>
-        /// The repository domain list.
+        /// (Optional) The repository domain list.
         /// </summary>
         [Input("domainList")]
         public Input<Inputs.RepoDomainListGetArgs>? DomainList { get; set; }

@@ -449,14 +449,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.httpEndpoint;
     }
     /**
-     * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     * **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
      * 
      */
     @Export(name="httpPutResponseHopLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> httpPutResponseHopLimit;
 
     /**
-     * @return The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     * @return **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
      * 
      */
     public Output<Integer> httpPutResponseHopLimit() {

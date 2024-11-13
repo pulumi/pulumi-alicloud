@@ -121,9 +121,9 @@ def get_remote_writes(cluster_id: Optional[str] = None,
     """
     This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.204.0+.
+    > **NOTE:** Available since v1.204.0.
 
-    > **NOTE:** deprecated since v1.228.0.
+    > **DEPRECATED:** This resource has been deprecated since v1.228.0.
 
     ## Example Usage
 
@@ -171,9 +171,9 @@ def get_remote_writes_output(cluster_id: Optional[pulumi.Input[str]] = None,
     """
     This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
 
-    > **NOTE:** Available in v1.204.0+.
+    > **NOTE:** Available since v1.204.0.
 
-    > **NOTE:** deprecated since v1.228.0.
+    > **DEPRECATED:** This resource has been deprecated since v1.228.0.
 
     ## Example Usage
 

@@ -19,14 +19,14 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     public static final SnapshotArgs Empty = new SnapshotArgs();
 
     /**
-     * Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+     * The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+     * @return The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
      * 
      */
     public Optional<Output<String>> description() {
@@ -34,14 +34,14 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to force deletion of snapshots.
+     * Specifies whether to force delete the snapshot. Valid values:
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Whether to force deletion of snapshots.
+     * @return Specifies whether to force delete the snapshot. Valid values:
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -49,14 +49,14 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the database file system.
+     * @return The ID of the Database File System.
      * 
      */
     public Output<String> instanceId() {
@@ -64,14 +64,14 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+     * The retention period of the snapshot. Valid values: `1` to `65536`.
      * 
      */
     @Import(name="retentionDays")
     private @Nullable Output<Integer> retentionDays;
 
     /**
-     * @return The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+     * @return The retention period of the snapshot. Valid values: `1` to `65536`.
      * 
      */
     public Optional<Output<Integer>> retentionDays() {
@@ -79,14 +79,14 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+     * The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
      * 
      */
     @Import(name="snapshotName")
     private @Nullable Output<String> snapshotName;
 
     /**
-     * @return The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+     * @return The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
      * 
      */
     public Optional<Output<String>> snapshotName() {
@@ -122,7 +122,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+         * @param description The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+         * @param description The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Whether to force deletion of snapshots.
+         * @param force Specifies whether to force delete the snapshot. Valid values:
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param force Whether to force deletion of snapshots.
+         * @param force Specifies whether to force delete the snapshot. Valid values:
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the database file system.
+         * @param instanceId The ID of the Database File System.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The ID of the database file system.
+         * @param instanceId The ID of the Database File System.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionDays The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+         * @param retentionDays The retention period of the snapshot. Valid values: `1` to `65536`.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionDays The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+         * @param retentionDays The retention period of the snapshot. Valid values: `1` to `65536`.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotName The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+         * @param snapshotName The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotName The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+         * @param snapshotName The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
          * 
          * @return builder
          * 

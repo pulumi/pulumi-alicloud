@@ -15,11 +15,65 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AccountAccountTagArgs',
+    'AccountAccountTagArgsDict',
     'BaselineBaselineItemArgs',
     'BaselineBaselineItemArgsDict',
 ]
 
 MYPY = False
+
+if not MYPY:
+    class AccountAccountTagArgsDict(TypedDict):
+        tag_key: NotRequired[pulumi.Input[str]]
+        """
+        The key of the tags
+        """
+        tag_value: NotRequired[pulumi.Input[str]]
+        """
+        The value of the tags
+        """
+elif False:
+    AccountAccountTagArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AccountAccountTagArgs:
+    def __init__(__self__, *,
+                 tag_key: Optional[pulumi.Input[str]] = None,
+                 tag_value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] tag_key: The key of the tags
+        :param pulumi.Input[str] tag_value: The value of the tags
+        """
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key of the tags
+        """
+        return pulumi.get(self, "tag_key")
+
+    @tag_key.setter
+    def tag_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_key", value)
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the tags
+        """
+        return pulumi.get(self, "tag_value")
+
+    @tag_value.setter
+    def tag_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_value", value)
+
 
 if not MYPY:
     class BaselineBaselineItemArgsDict(TypedDict):

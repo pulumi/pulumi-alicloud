@@ -14,9 +14,9 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a DBFS Instance Attachment resource.
+ * Provides a Database File System (DBFS) Instance Attachment resource.
  * 
- * For information about DBFS Instance Attachment and how to use it.
+ * For information about Database File System (DBFS) Instance Attachment and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-attachdbfs).
  * 
  * &gt; **NOTE:** Available since v1.156.0.
  * 
@@ -32,6 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+ * import com.pulumi.alicloud.databasefilesystem.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
  * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
  * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
@@ -42,8 +44,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.Instance;
  * import com.pulumi.alicloud.ecs.InstanceArgs;
- * import com.pulumi.alicloud.databasefilesystem.Instance;
- * import com.pulumi.alicloud.databasefilesystem.InstanceArgs;
  * import com.pulumi.alicloud.databasefilesystem.InstanceAttachment;
  * import com.pulumi.alicloud.databasefilesystem.InstanceAttachmentArgs;
  * import java.util.List;
@@ -60,55 +60,52 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
+ *         final var name = config.get("name").orElse("terraform-example");
  *         final var zoneId = "cn-hangzhou-i";
  * 
- *         final var example = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *         final var default = DatabasefilesystemFunctions.getInstances();
+ * 
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(zoneId)
  *             .instanceTypeFamily("ecs.g7se")
  *             .build());
  * 
- *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .instanceType(example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length() - 1].id())
- *             .nameRegex("^aliyun_2_1903_x64_20G_alibase_20240628.vhd")
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .nameRegex("^aliyun_2_19")
  *             .owners("system")
  *             .build());
  * 
- *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex("^default-NODELETING$")
  *             .build());
  * 
  *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(default_.ids()[0])
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .zoneId(zoneId)
  *             .build());
  * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
+ *         var defaultSecurityGroup = new SecurityGroup("defaultSecurityGroup", SecurityGroupArgs.builder()
  *             .name(name)
- *             .vpcId(default_.ids()[0])
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -> getNetworksResult.ids()[0]))
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .availabilityZone(zoneId)
- *             .instanceName(name)
- *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length() - 1].id())
- *             .securityGroups(exampleSecurityGroup.id())
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .securityGroups(defaultSecurityGroup.stream().map(element -> element.id()).collect(toList()))
+ *             .internetChargeType("PayByTraffic")
+ *             .internetMaxBandwidthOut("10")
+ *             .availabilityZone(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()[0].availabilityZones()[0]))
+ *             .instanceChargeType("PostPaid")
  *             .systemDiskCategory("cloud_essd")
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
+ *             .instanceName(name)
  *             .build());
  * 
- *         var defaultInstance2 = new Instance("defaultInstance2", InstanceArgs.builder()
- *             .category("enterprise")
- *             .zoneId(defaultInstance.availabilityZone())
- *             .performanceLevel("PL1")
- *             .fsName(name)
- *             .size(100)
- *             .build());
- * 
- *         var exampleInstanceAttachment = new InstanceAttachment("exampleInstanceAttachment", InstanceAttachmentArgs.builder()
+ *         var defaultInstanceAttachment = new InstanceAttachment("defaultInstanceAttachment", InstanceAttachmentArgs.builder()
+ *             .instanceId(default_.instances()[0].id())
  *             .ecsId(defaultInstance.id())
- *             .instanceId(defaultInstance2.id())
  *             .build());
  * 
  *     }
@@ -119,7 +116,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DBFS Instance Attachment can be imported using the id, e.g.
+ * Database File System (DBFS) Instance Attachment can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example &lt;instance_id&gt;:&lt;ecs_id&gt;
@@ -143,28 +140,28 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
         return this.ecsId;
     }
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the database file system.
+     * @return The ID of the Database File System.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     * The status of Instance Attachment.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     * @return The status of Instance Attachment.
      * 
      */
     public Output<String> status() {

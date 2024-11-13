@@ -25,6 +25,65 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.136.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.arms.Prometheus;
+ * import com.pulumi.alicloud.arms.PrometheusArgs;
+ * import com.pulumi.alicloud.arms.PrometheusAlertRule;
+ * import com.pulumi.alicloud.arms.PrometheusAlertRuleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         var defaultPrometheus = new Prometheus("defaultPrometheus", PrometheusArgs.builder()
+ *             .clusterType("remote-write")
+ *             .clusterName(String.format("%s-%s", name,default_.result()))
+ *             .grafanaInstanceId("free")
+ *             .build());
+ * 
+ *         var example = new PrometheusAlertRule("example", PrometheusAlertRuleArgs.builder()
+ *             .clusterId(defaultPrometheus.clusterId())
+ *             .duration(1)
+ *             .expression("node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10")
+ *             .message("node available memory is less than 10%")
+ *             .prometheusAlertRuleName(name)
+ *             .notifyType("ALERT_MANAGER")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.

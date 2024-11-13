@@ -103,6 +103,12 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<bool> CreateSampleData { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+        /// </summary>
+        [Output("dataShareStatus")]
+        public Output<string> DataShareStatus { get; private set; } = null!;
+
+        /// <summary>
         /// The db instance category. Valid values: `Basic`, `HighAvailability`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         /// </summary>
@@ -244,6 +250,12 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> PrivateIpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+        /// </summary>
+        [Output("prodType")]
+        public Output<string> ProdType { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the enterprise resource group to which the instance belongs.
         /// </summary>
         [Output("resourceGroupId")]
@@ -262,6 +274,12 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<ImmutableArray<string>> SecurityIpLists { get; private set; } = null!;
 
         /// <summary>
+        /// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+        /// </summary>
+        [Output("segDiskPerformanceLevel")]
+        public Output<string> SegDiskPerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
         /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         /// </summary>
@@ -269,11 +287,16 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<int> SegNodeNum { get; private set; } = null!;
 
         /// <summary>
-        /// The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-        /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        /// The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         /// </summary>
         [Output("segStorageType")]
-        public Output<string?> SegStorageType { get; private set; } = null!;
+        public Output<string> SegStorageType { get; private set; } = null!;
+
+        /// <summary>
+        /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        /// </summary>
+        [Output("serverlessMode")]
+        public Output<string> ServerlessMode { get; private set; } = null!;
 
         /// <summary>
         /// Enable or disable SSL. Valid values: `0` and `1`.
@@ -387,6 +410,12 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Input("createSampleData")]
         public Input<bool>? CreateSampleData { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+        /// </summary>
+        [Input("dataShareStatus")]
+        public Input<string>? DataShareStatus { get; set; }
 
         /// <summary>
         /// The db instance category. Valid values: `Basic`, `HighAvailability`.
@@ -536,6 +565,12 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
+        /// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+        /// </summary>
+        [Input("prodType")]
+        public Input<string>? ProdType { get; set; }
+
+        /// <summary>
         /// The ID of the enterprise resource group to which the instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -561,6 +596,12 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
+        /// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+        /// </summary>
+        [Input("segDiskPerformanceLevel")]
+        public Input<string>? SegDiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         /// </summary>
@@ -568,11 +609,16 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? SegNodeNum { get; set; }
 
         /// <summary>
-        /// The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-        /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        /// The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         /// </summary>
         [Input("segStorageType")]
         public Input<string>? SegStorageType { get; set; }
+
+        /// <summary>
+        /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        /// </summary>
+        [Input("serverlessMode")]
+        public Input<string>? ServerlessMode { get; set; }
 
         /// <summary>
         /// Enable or disable SSL. Valid values: `0` and `1`.
@@ -654,6 +700,12 @@ namespace Pulumi.AliCloud.Gpdb
         /// </summary>
         [Input("createSampleData")]
         public Input<bool>? CreateSampleData { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+        /// </summary>
+        [Input("dataShareStatus")]
+        public Input<string>? DataShareStatus { get; set; }
 
         /// <summary>
         /// The db instance category. Valid values: `Basic`, `HighAvailability`.
@@ -809,6 +861,12 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
+        /// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+        /// </summary>
+        [Input("prodType")]
+        public Input<string>? ProdType { get; set; }
+
+        /// <summary>
         /// The ID of the enterprise resource group to which the instance belongs.
         /// </summary>
         [Input("resourceGroupId")]
@@ -834,6 +892,12 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
+        /// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+        /// </summary>
+        [Input("segDiskPerformanceLevel")]
+        public Input<string>? SegDiskPerformanceLevel { get; set; }
+
+        /// <summary>
         /// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
         /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
         /// </summary>
@@ -841,11 +905,16 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<int>? SegNodeNum { get; set; }
 
         /// <summary>
-        /// The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-        /// &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        /// The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         /// </summary>
         [Input("segStorageType")]
         public Input<string>? SegStorageType { get; set; }
+
+        /// <summary>
+        /// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        /// </summary>
+        [Input("serverlessMode")]
+        public Input<string>? ServerlessMode { get; set; }
 
         /// <summary>
         /// Enable or disable SSL. Valid values: `0` and `1`.

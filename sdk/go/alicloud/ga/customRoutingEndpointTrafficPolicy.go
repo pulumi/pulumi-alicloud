@@ -42,32 +42,33 @@ import (
 //			if param := cfg.Get("region"); param != "" {
 //				region = param
 //			}
-//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetAccelerators, err := ga.GetAccelerators(ctx, &ga.GetAcceleratorsArgs{
+//				Status:               pulumi.StringRef("active"),
+//				BandwidthBillingType: pulumi.StringRef("BandwidthPackage"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//				VpcName:   pulumi.String(name),
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-//				VswitchName: pulumi.String("terraform-example"),
-//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VswitchName: pulumi.String(name),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(_default.Zones[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultAccelerator, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
-//				Duration:      pulumi.Int(1),
-//				AutoUseCoupon: pulumi.Bool(true),
-//				Spec:          pulumi.String("1"),
+//				CidrBlock:   pulumi.String("192.168.192.0/24"),
+//				ZoneId:      pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
@@ -83,8 +84,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      defaultAccelerator.ID(),
+//				AcceleratorId:      pulumi.String(defaultGetAccelerators.Accelerators[1].Id),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
@@ -96,7 +103,7 @@ import (
 //				PortRanges: ga.ListenerPortRangeArray{
 //					&ga.ListenerPortRangeArgs{
 //						FromPort: pulumi.Int(10000),
-//						ToPort:   pulumi.Int(16000),
+//						ToPort:   pulumi.Int(26000),
 //					},
 //				},
 //			})
@@ -106,23 +113,14 @@ import (
 //			defaultCustomRoutingEndpointGroup, err := ga.NewCustomRoutingEndpointGroup(ctx, "default", &ga.CustomRoutingEndpointGroupArgs{
 //				AcceleratorId:                  defaultListener.AcceleratorId,
 //				ListenerId:                     defaultListener.ID(),
-//				EndpointGroupRegion:            pulumi.String(region),
-//				CustomRoutingEndpointGroupName: pulumi.String("terraform-example"),
-//				Description:                    pulumi.String("terraform-example"),
+//				EndpointGroupRegion:            pulumi.String(defaultGetRegions.Regions[0].Id),
+//				CustomRoutingEndpointGroupName: pulumi.String(name),
+//				Description:                    pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultCustomRoutingEndpoint, err := ga.NewCustomRoutingEndpoint(ctx, "default", &ga.CustomRoutingEndpointArgs{
-//				EndpointGroupId:         defaultCustomRoutingEndpointGroup.ID(),
-//				Endpoint:                defaultSwitch.ID(),
-//				Type:                    pulumi.String("PrivateSubNet"),
-//				TrafficToEndpointPolicy: pulumi.String("AllowCustom"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = ga.NewCustomRoutingEndpointGroupDestination(ctx, "default", &ga.CustomRoutingEndpointGroupDestinationArgs{
+//			defaultCustomRoutingEndpointGroupDestination, err := ga.NewCustomRoutingEndpointGroupDestination(ctx, "default", &ga.CustomRoutingEndpointGroupDestinationArgs{
 //				EndpointGroupId: defaultCustomRoutingEndpointGroup.ID(),
 //				Protocols: pulumi.StringArray{
 //					pulumi.String("TCP"),
@@ -133,13 +131,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			defaultCustomRoutingEndpoint, err := ga.NewCustomRoutingEndpoint(ctx, "default", &ga.CustomRoutingEndpointArgs{
+//				EndpointGroupId:         defaultCustomRoutingEndpointGroupDestination.EndpointGroupId,
+//				Endpoint:                defaultSwitch.ID(),
+//				Type:                    pulumi.String("PrivateSubNet"),
+//				TrafficToEndpointPolicy: pulumi.String("AllowAll"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = ga.NewCustomRoutingEndpointTrafficPolicy(ctx, "default", &ga.CustomRoutingEndpointTrafficPolicyArgs{
 //				EndpointId: defaultCustomRoutingEndpoint.CustomRoutingEndpointId,
-//				Address:    pulumi.String("172.17.3.0"),
+//				Address:    pulumi.String("192.168.192.2"),
 //				PortRanges: ga.CustomRoutingEndpointTrafficPolicyPortRangeArray{
 //					&ga.CustomRoutingEndpointTrafficPolicyPortRangeArgs{
 //						FromPort: pulumi.Int(1),
-//						ToPort:   pulumi.Int(10),
+//						ToPort:   pulumi.Int(2),
 //					},
 //				},
 //			})

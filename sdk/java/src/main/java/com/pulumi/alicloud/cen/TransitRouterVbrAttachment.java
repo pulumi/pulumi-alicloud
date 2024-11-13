@@ -17,7 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
+ * Provides a Cloud Enterprise Network (CEN) Transit Router VBR Attachment resource.
+ * 
+ * For information about Cloud Enterprise Network (CEN) Transit Router VBR Attachment and how to use it, see [What is Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
  * 
  * &gt; **NOTE:** Available since v1.126.0.
  * 
@@ -33,12 +35,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
+ * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.TransitRouter;
  * import com.pulumi.alicloud.cen.TransitRouterArgs;
- * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
- * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouter;
  * import com.pulumi.alicloud.expressconnect.VirtualBorderRouterArgs;
  * import com.pulumi.alicloud.cen.TransitRouterVbrAttachment;
@@ -58,6 +60,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
+ *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *             .nameRegex("^preserved-NODELETING")
+ *             .build());
+ * 
  *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .protectionLevel("REDUCED")
@@ -65,10 +71,6 @@ import javax.annotation.Nullable;
  * 
  *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
  *             .cenId(default_.id())
- *             .build());
- * 
- *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
- *             .nameRegex("^preserved-NODELETING")
  *             .build());
  * 
  *         var defaultVirtualBorderRouter = new VirtualBorderRouter("defaultVirtualBorderRouter", VirtualBorderRouterArgs.builder()
@@ -84,11 +86,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultTransitRouterVbrAttachment = new TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment", TransitRouterVbrAttachmentArgs.builder()
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
- *             .transitRouterAttachmentName("example")
- *             .transitRouterAttachmentDescription("example")
- *             .vbrId(defaultVirtualBorderRouter.id())
  *             .cenId(default_.id())
+ *             .vbrId(defaultVirtualBorderRouter.id())
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .transitRouterAttachmentName(name)
+ *             .transitRouterAttachmentDescription(name)
  *             .build());
  * 
  *     }
@@ -99,28 +101,28 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN transit router VBR attachment can be imported using the id, e.g.
+ * Cloud Enterprise Network (CEN) Transit Router VBR Attachment can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+ * $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example &lt;cen_id&gt;:&lt;transit_router_attachment_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment")
 public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Auto publish route enabled.Default value is `false`.
+     * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
      * 
      */
     @Export(name="autoPublishRouteEnabled", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> autoPublishRouteEnabled;
+    private Output</* @Nullable */ Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Auto publish route enabled.Default value is `false`.
+     * @return Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
      * 
      */
-    public Output<Boolean> autoPublishRouteEnabled() {
-        return this.autoPublishRouteEnabled;
+    public Output<Optional<Boolean>> autoPublishRouteEnabled() {
+        return Codegen.optional(this.autoPublishRouteEnabled);
     }
     /**
      * The ID of the CEN.
@@ -137,74 +139,82 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
         return this.cenId;
     }
     /**
-     * The dry run.
+     * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-     * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceType;
 
     /**
-     * @return The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-     * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * @return The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      * 
      */
     public Output<Optional<String>> resourceType() {
         return Codegen.optional(this.resourceType);
     }
     /**
-     * Whether to enabled route table association. The system default value is `true`.
+     * Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * 
+     * @deprecated
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      * 
      */
+    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
     @Export(name="routeTableAssociationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Whether to enabled route table association. The system default value is `true`.
+     * @return Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
      */
     public Output<Optional<Boolean>> routeTableAssociationEnabled() {
         return Codegen.optional(this.routeTableAssociationEnabled);
     }
     /**
-     * Whether to enabled route table propagation. The system default value is `true`.
+     * Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * 
+     * @deprecated
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
      */
+    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
     @Export(name="routeTablePropagationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Whether to enabled route table propagation. The system default value is `true`.
+     * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
      * 
      */
     public Output<Optional<Boolean>> routeTablePropagationEnabled() {
         return Codegen.optional(this.routeTablePropagationEnabled);
     }
     /**
-     * The associating status of the network.
+     * The status of the Transit Router VBR Attachment.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The associating status of the network.
+     * @return The status of the Transit Router VBR Attachment.
      * 
      */
     public Output<String> status() {
@@ -239,14 +249,14 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.transitRouterAttachmentDescription);
     }
     /**
-     * The id of the transit router vbr attachment.
+     * The ID of the VBR connection.
      * 
      */
     @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The id of the transit router vbr attachment.
+     * @return The ID of the VBR connection.
      * 
      */
     public Output<String> transitRouterAttachmentId() {
@@ -271,14 +281,14 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="transitRouterId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> transitRouterId;
+    private Output<String> transitRouterId;
 
     /**
      * @return The ID of the transit router.
      * 
      */
-    public Output<Optional<String>> transitRouterId() {
-        return Codegen.optional(this.transitRouterId);
+    public Output<String> transitRouterId() {
+        return this.transitRouterId;
     }
     /**
      * The ID of the VBR.
@@ -295,14 +305,14 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
         return this.vbrId;
     }
     /**
-     * The owner id of the transit router vbr attachment.
+     * The owner id of the vbr.
      * 
      */
     @Export(name="vbrOwnerId", refs={String.class}, tree="[0]")
     private Output<String> vbrOwnerId;
 
     /**
-     * @return The owner id of the transit router vbr attachment.
+     * @return The owner id of the vbr.
      * 
      */
     public Output<String> vbrOwnerId() {

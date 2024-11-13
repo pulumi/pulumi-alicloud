@@ -27,7 +27,10 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -40,20 +43,27 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 100000,
+//				Max: 999999,
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			example, err := cr.NewRegistryEnterpriseInstance(ctx, "example", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
 //				Period:        pulumi.Int(1),
 //				RenewPeriod:   pulumi.Int(0),
 //				RenewalStatus: pulumi.String("ManualRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(name),
+//				InstanceName:  pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			exampleChartNamespace, err := cr.NewChartNamespace(ctx, "example", &cr.ChartNamespaceArgs{
 //				InstanceId:    example.ID(),
-//				NamespaceName: pulumi.String(name),
+//				NamespaceName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
@@ -61,7 +71,7 @@ import (
 //			_, err = cr.NewChartRepository(ctx, "example", &cr.ChartRepositoryArgs{
 //				RepoNamespaceName: exampleChartNamespace.NamespaceName,
 //				InstanceId:        exampleChartNamespace.InstanceId,
-//				RepoName:          pulumi.String(name),
+//				RepoName:          pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err

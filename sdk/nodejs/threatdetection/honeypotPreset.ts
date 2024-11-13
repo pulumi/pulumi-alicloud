@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *     meta: {
  *         portraitOption: true,
  *         burp: "open",
+ *         trojanGit: "open",
  *     },
  * });
  * ```

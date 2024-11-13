@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a DBFS Snapshot resource.
+ * Provides a Database File System (DBFS) Snapshot resource.
  * 
- * For information about DBFS Snapshot and how to use it.
+ * For information about Database File System (DBFS) Snapshot and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-createsnapshot).
  * 
  * &gt; **NOTE:** Available since v1.156.0.
  * 
@@ -35,20 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.ecs.EcsFunctions;
- * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
- * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
- * import com.pulumi.alicloud.vpc.VpcFunctions;
- * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
- * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
- * import com.pulumi.alicloud.ecs.SecurityGroup;
- * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
- * import com.pulumi.alicloud.ecs.Instance;
- * import com.pulumi.alicloud.ecs.InstanceArgs;
- * import com.pulumi.alicloud.databasefilesystem.Instance;
- * import com.pulumi.alicloud.databasefilesystem.InstanceArgs;
- * import com.pulumi.alicloud.databasefilesystem.InstanceAttachment;
- * import com.pulumi.alicloud.databasefilesystem.InstanceAttachmentArgs;
+ * import com.pulumi.alicloud.databasefilesystem.DatabasefilesystemFunctions;
+ * import com.pulumi.alicloud.databasefilesystem.inputs.GetInstancesArgs;
  * import com.pulumi.alicloud.databasefilesystem.Snapshot;
  * import com.pulumi.alicloud.databasefilesystem.SnapshotArgs;
  * import java.util.List;
@@ -65,62 +53,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("tf-example");
- *         final var zoneId = "cn-hangzhou-i";
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = DatabasefilesystemFunctions.getInstances();
  * 
- *         final var example = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(zoneId)
- *             .instanceTypeFamily("ecs.g7se")
- *             .build());
- * 
- *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .instanceType(example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length() - 1].id())
- *             .nameRegex("^aliyun_2_1903_x64_20G_alibase_20240628.vhd")
- *             .owners("system")
- *             .build());
- * 
- *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
- *             .nameRegex("^default-NODELETING$")
- *             .build());
- * 
- *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(default_.ids()[0])
- *             .zoneId(zoneId)
- *             .build());
- * 
- *         var exampleSecurityGroup = new SecurityGroup("exampleSecurityGroup", SecurityGroupArgs.builder()
- *             .name(name)
- *             .vpcId(default_.ids()[0])
- *             .build());
- * 
- *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
- *             .availabilityZone(zoneId)
- *             .instanceName(name)
- *             .imageId(exampleGetImages.applyValue(getImagesResult -> getImagesResult.images()[0].id()))
- *             .instanceType(example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -> getInstanceTypesResult.instanceTypes()).length() - 1].id())
- *             .securityGroups(exampleSecurityGroup.id())
- *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -> getSwitchesResult.ids()[0]))
- *             .systemDiskCategory("cloud_essd")
- *             .build());
- * 
- *         var defaultInstance2 = new Instance("defaultInstance2", InstanceArgs.builder()
- *             .category("enterprise")
- *             .zoneId(defaultInstance.availabilityZone())
- *             .performanceLevel("PL1")
- *             .fsName(name)
- *             .size(100)
- *             .build());
- * 
- *         var defaultInstanceAttachment = new InstanceAttachment("defaultInstanceAttachment", InstanceAttachmentArgs.builder()
- *             .ecsId(defaultInstance.id())
- *             .instanceId(defaultInstance2.id())
- *             .build());
- * 
- *         var exampleSnapshot = new Snapshot("exampleSnapshot", SnapshotArgs.builder()
- *             .instanceId(defaultInstanceAttachment.instanceId())
+ *         var example = new Snapshot("example", SnapshotArgs.builder()
+ *             .instanceId(default_.instances()[0].id())
+ *             .retentionDays(50)
  *             .snapshotName(name)
- *             .description(name)
- *             .retentionDays(30)
+ *             .description("DbfsSnapshot")
  *             .build());
  * 
  *     }
@@ -131,7 +71,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DBFS Snapshot can be imported using the id, e.g.
+ * Database File System (DBFS) Snapshot can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example &lt;id&gt;
@@ -141,70 +81,70 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:databasefilesystem/snapshot:Snapshot")
 public class Snapshot extends com.pulumi.resources.CustomResource {
     /**
-     * Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+     * The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+     * @return The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to force deletion of snapshots.
+     * Specifies whether to force delete the snapshot. Valid values:
      * 
      */
     @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Whether to force deletion of snapshots.
+     * @return Specifies whether to force delete the snapshot. Valid values:
      * 
      */
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the database file system.
+     * @return The ID of the Database File System.
      * 
      */
     public Output<String> instanceId() {
         return this.instanceId;
     }
     /**
-     * The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+     * The retention period of the snapshot. Valid values: `1` to `65536`.
      * 
      */
     @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**
-     * @return The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+     * @return The retention period of the snapshot. Valid values: `1` to `65536`.
      * 
      */
     public Output<Optional<Integer>> retentionDays() {
         return Codegen.optional(this.retentionDays);
     }
     /**
-     * The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+     * The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
      * 
      */
     @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotName;
 
     /**
-     * @return The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+     * @return The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
      * 
      */
     public Output<Optional<String>> snapshotName() {

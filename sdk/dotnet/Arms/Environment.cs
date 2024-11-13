@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Arms
 
         /// <summary>
         /// Subtype of environment:
-        /// - Type of CS: ACK is currently supported.
+        /// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
         /// - Type of ECS: currently supports ECS.
         /// - Type of Cloud: currently supports Cloud.
         /// </summary>
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.Arms
 
         /// <summary>
         /// Subtype of environment:
-        /// - Type of CS: ACK is currently supported.
+        /// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
         /// - Type of ECS: currently supports ECS.
         /// - Type of Cloud: currently supports Cloud.
         /// </summary>
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Arms
 
         /// <summary>
         /// Subtype of environment:
-        /// - Type of CS: ACK is currently supported.
+        /// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
         /// - Type of ECS: currently supports ECS.
         /// - Type of Cloud: currently supports Cloud.
         /// </summary>

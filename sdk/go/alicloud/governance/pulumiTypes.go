@@ -13,6 +13,112 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AccountAccountTag struct {
+	// The key of the tags
+	TagKey *string `pulumi:"tagKey"`
+	// The value of the tags
+	TagValue *string `pulumi:"tagValue"`
+}
+
+// AccountAccountTagInput is an input type that accepts AccountAccountTagArgs and AccountAccountTagOutput values.
+// You can construct a concrete instance of `AccountAccountTagInput` via:
+//
+//	AccountAccountTagArgs{...}
+type AccountAccountTagInput interface {
+	pulumi.Input
+
+	ToAccountAccountTagOutput() AccountAccountTagOutput
+	ToAccountAccountTagOutputWithContext(context.Context) AccountAccountTagOutput
+}
+
+type AccountAccountTagArgs struct {
+	// The key of the tags
+	TagKey pulumi.StringPtrInput `pulumi:"tagKey"`
+	// The value of the tags
+	TagValue pulumi.StringPtrInput `pulumi:"tagValue"`
+}
+
+func (AccountAccountTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAccountTag)(nil)).Elem()
+}
+
+func (i AccountAccountTagArgs) ToAccountAccountTagOutput() AccountAccountTagOutput {
+	return i.ToAccountAccountTagOutputWithContext(context.Background())
+}
+
+func (i AccountAccountTagArgs) ToAccountAccountTagOutputWithContext(ctx context.Context) AccountAccountTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAccountTagOutput)
+}
+
+// AccountAccountTagArrayInput is an input type that accepts AccountAccountTagArray and AccountAccountTagArrayOutput values.
+// You can construct a concrete instance of `AccountAccountTagArrayInput` via:
+//
+//	AccountAccountTagArray{ AccountAccountTagArgs{...} }
+type AccountAccountTagArrayInput interface {
+	pulumi.Input
+
+	ToAccountAccountTagArrayOutput() AccountAccountTagArrayOutput
+	ToAccountAccountTagArrayOutputWithContext(context.Context) AccountAccountTagArrayOutput
+}
+
+type AccountAccountTagArray []AccountAccountTagInput
+
+func (AccountAccountTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccountAccountTag)(nil)).Elem()
+}
+
+func (i AccountAccountTagArray) ToAccountAccountTagArrayOutput() AccountAccountTagArrayOutput {
+	return i.ToAccountAccountTagArrayOutputWithContext(context.Background())
+}
+
+func (i AccountAccountTagArray) ToAccountAccountTagArrayOutputWithContext(ctx context.Context) AccountAccountTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountAccountTagArrayOutput)
+}
+
+type AccountAccountTagOutput struct{ *pulumi.OutputState }
+
+func (AccountAccountTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountAccountTag)(nil)).Elem()
+}
+
+func (o AccountAccountTagOutput) ToAccountAccountTagOutput() AccountAccountTagOutput {
+	return o
+}
+
+func (o AccountAccountTagOutput) ToAccountAccountTagOutputWithContext(ctx context.Context) AccountAccountTagOutput {
+	return o
+}
+
+// The key of the tags
+func (o AccountAccountTagOutput) TagKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAccountTag) *string { return v.TagKey }).(pulumi.StringPtrOutput)
+}
+
+// The value of the tags
+func (o AccountAccountTagOutput) TagValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccountAccountTag) *string { return v.TagValue }).(pulumi.StringPtrOutput)
+}
+
+type AccountAccountTagArrayOutput struct{ *pulumi.OutputState }
+
+func (AccountAccountTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccountAccountTag)(nil)).Elem()
+}
+
+func (o AccountAccountTagArrayOutput) ToAccountAccountTagArrayOutput() AccountAccountTagArrayOutput {
+	return o
+}
+
+func (o AccountAccountTagArrayOutput) ToAccountAccountTagArrayOutputWithContext(ctx context.Context) AccountAccountTagArrayOutput {
+	return o
+}
+
+func (o AccountAccountTagArrayOutput) Index(i pulumi.IntInput) AccountAccountTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccountAccountTag {
+		return vs[0].([]AccountAccountTag)[vs[1].(int)]
+	}).(AccountAccountTagOutput)
+}
+
 type BaselineBaselineItem struct {
 	// Baseline item configuration. The format is a JSON string.
 	Config *string `pulumi:"config"`
@@ -244,10 +350,14 @@ func (o GetBaselinesBaselineArrayOutput) Index(i pulumi.IntInput) GetBaselinesBa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAccountTagInput)(nil)).Elem(), AccountAccountTagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccountAccountTagArrayInput)(nil)).Elem(), AccountAccountTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BaselineBaselineItemInput)(nil)).Elem(), BaselineBaselineItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BaselineBaselineItemArrayInput)(nil)).Elem(), BaselineBaselineItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBaselinesBaselineInput)(nil)).Elem(), GetBaselinesBaselineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBaselinesBaselineArrayInput)(nil)).Elem(), GetBaselinesBaselineArray{})
+	pulumi.RegisterOutputType(AccountAccountTagOutput{})
+	pulumi.RegisterOutputType(AccountAccountTagArrayOutput{})
 	pulumi.RegisterOutputType(BaselineBaselineItemOutput{})
 	pulumi.RegisterOutputType(BaselineBaselineItemArrayOutput{})
 	pulumi.RegisterOutputType(GetBaselinesBaselineOutput{})

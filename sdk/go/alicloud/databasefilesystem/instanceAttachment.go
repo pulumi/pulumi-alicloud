@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DBFS Instance Attachment resource.
+// Provides a Database File System (DBFS) Instance Attachment resource.
 //
-// For information about DBFS Instance Attachment and how to use it.
+// For information about Database File System (DBFS) Instance Attachment and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-attachdbfs).
 //
 // > **NOTE:** Available since v1.156.0.
 //
@@ -34,90 +34,88 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			zoneId := "cn-hangzhou-i"
-//			example, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone:   pulumi.StringRef(zoneId),
-//				InstanceTypeFamily: pulumi.StringRef("ecs.g7se"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				InstanceType: pulumi.StringRef(example.InstanceTypes[len(example.InstanceTypes)-1].Id),
-//				NameRegex:    pulumi.StringRef("^aliyun_2_1903_x64_20G_alibase_20240628.vhd"),
-//				Owners:       pulumi.StringRef("system"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(_default.Ids[0]),
-//				ZoneId: pulumi.StringRef(zoneId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
-//				VpcId: pulumi.String(_default.Ids[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(zoneId),
-//				InstanceName:     pulumi.String(name),
-//				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
-//				InstanceType:     example.InstanceTypes[len(example.InstanceTypes)-1].Id,
-//				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
-//				},
-//				VswitchId:          pulumi.String(defaultGetSwitches.Ids[0]),
-//				SystemDiskCategory: pulumi.String("cloud_essd"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstance2, err := databasefilesystem.NewInstance(ctx, "default", &databasefilesystem.InstanceArgs{
-//				Category:         pulumi.String("enterprise"),
-//				ZoneId:           defaultInstance.AvailabilityZone,
-//				PerformanceLevel: pulumi.String("PL1"),
-//				FsName:           pulumi.String(name),
-//				Size:             pulumi.Int(100),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = databasefilesystem.NewInstanceAttachment(ctx, "example", &databasefilesystem.InstanceAttachmentArgs{
-//				EcsId:      defaultInstance.ID(),
-//				InstanceId: defaultInstance2.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// zoneId := "cn-hangzhou-i";
+// _default, err := databasefilesystem.GetInstances(ctx, &databasefilesystem.GetInstancesArgs{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(zoneId),
+// InstanceTypeFamily: pulumi.StringRef("ecs.g7se"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// InstanceType: pulumi.StringRef(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// NameRegex: pulumi.StringRef("^aliyun_2_19"),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// NameRegex: pulumi.StringRef("^default-NODELETING$"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+// ZoneId: pulumi.StringRef(zoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
+// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].AvailabilityZones[0]),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_essd"),
+// VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
+// InstanceName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = databasefilesystem.NewInstanceAttachment(ctx, "default", &databasefilesystem.InstanceAttachmentArgs{
+// InstanceId: pulumi.String(_default.Instances[0].Id),
+// EcsId: defaultInstance.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 //
 // ## Import
 //
-// DBFS Instance Attachment can be imported using the id, e.g.
+// Database File System (DBFS) Instance Attachment can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
@@ -127,9 +125,9 @@ type InstanceAttachment struct {
 
 	// The ID of the ECS instance.
 	EcsId pulumi.StringOutput `pulumi:"ecsId"`
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+	// The status of Instance Attachment.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -171,18 +169,18 @@ func GetInstanceAttachment(ctx *pulumi.Context,
 type instanceAttachmentState struct {
 	// The ID of the ECS instance.
 	EcsId *string `pulumi:"ecsId"`
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId *string `pulumi:"instanceId"`
-	// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+	// The status of Instance Attachment.
 	Status *string `pulumi:"status"`
 }
 
 type InstanceAttachmentState struct {
 	// The ID of the ECS instance.
 	EcsId pulumi.StringPtrInput
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId pulumi.StringPtrInput
-	// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+	// The status of Instance Attachment.
 	Status pulumi.StringPtrInput
 }
 
@@ -193,7 +191,7 @@ func (InstanceAttachmentState) ElementType() reflect.Type {
 type instanceAttachmentArgs struct {
 	// The ID of the ECS instance.
 	EcsId string `pulumi:"ecsId"`
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId string `pulumi:"instanceId"`
 }
 
@@ -201,7 +199,7 @@ type instanceAttachmentArgs struct {
 type InstanceAttachmentArgs struct {
 	// The ID of the ECS instance.
 	EcsId pulumi.StringInput
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId pulumi.StringInput
 }
 
@@ -297,12 +295,12 @@ func (o InstanceAttachmentOutput) EcsId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.EcsId }).(pulumi.StringOutput)
 }
 
-// The ID of the database file system.
+// The ID of the Database File System.
 func (o InstanceAttachmentOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+// The status of Instance Attachment.
 func (o InstanceAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

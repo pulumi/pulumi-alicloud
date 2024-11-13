@@ -27,6 +27,7 @@ class InstanceArgs:
                  vswitch_id: pulumi.Input[str],
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  create_sample_data: Optional[pulumi.Input[bool]] = None,
+                 data_share_status: Optional[pulumi.Input[str]] = None,
                  db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -45,11 +46,14 @@ class InstanceArgs:
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
+                 prod_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  resource_management_mode: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 seg_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
+                 serverless_mode: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -65,6 +69,7 @@ class InstanceArgs:
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        :param pulumi.Input[str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
@@ -92,13 +97,15 @@ class InstanceArgs:
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[str] prod_type: The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
         :param pulumi.Input[str] resource_management_mode: Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param pulumi.Input[str] seg_disk_performance_level: The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
         :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
-        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+        :param pulumi.Input[str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
@@ -119,6 +126,8 @@ class InstanceArgs:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if create_sample_data is not None:
             pulumi.set(__self__, "create_sample_data", create_sample_data)
+        if data_share_status is not None:
+            pulumi.set(__self__, "data_share_status", data_share_status)
         if db_instance_category is not None:
             pulumi.set(__self__, "db_instance_category", db_instance_category)
         if db_instance_class is not None:
@@ -164,6 +173,8 @@ class InstanceArgs:
             pulumi.log.warn("""private_ip_address is deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.""")
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if prod_type is not None:
+            pulumi.set(__self__, "prod_type", prod_type)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_management_mode is not None:
@@ -173,10 +184,14 @@ class InstanceArgs:
             pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+        if seg_disk_performance_level is not None:
+            pulumi.set(__self__, "seg_disk_performance_level", seg_disk_performance_level)
         if seg_node_num is not None:
             pulumi.set(__self__, "seg_node_num", seg_node_num)
         if seg_storage_type is not None:
             pulumi.set(__self__, "seg_storage_type", seg_storage_type)
+        if serverless_mode is not None:
+            pulumi.set(__self__, "serverless_mode", serverless_mode)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if storage_size is not None:
@@ -264,6 +279,18 @@ class InstanceArgs:
     @create_sample_data.setter
     def create_sample_data(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "create_sample_data", value)
+
+    @property
+    @pulumi.getter(name="dataShareStatus")
+    def data_share_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+        """
+        return pulumi.get(self, "data_share_status")
+
+    @data_share_status.setter
+    def data_share_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_share_status", value)
 
     @property
     @pulumi.getter(name="dbInstanceCategory")
@@ -494,6 +521,18 @@ class InstanceArgs:
         pulumi.set(self, "private_ip_address", value)
 
     @property
+    @pulumi.getter(name="prodType")
+    def prod_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+        """
+        return pulumi.get(self, "prod_type")
+
+    @prod_type.setter
+    def prod_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prod_type", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -531,6 +570,18 @@ class InstanceArgs:
         pulumi.set(self, "security_ip_lists", value)
 
     @property
+    @pulumi.getter(name="segDiskPerformanceLevel")
+    def seg_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+        """
+        return pulumi.get(self, "seg_disk_performance_level")
+
+    @seg_disk_performance_level.setter
+    def seg_disk_performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "seg_disk_performance_level", value)
+
+    @property
     @pulumi.getter(name="segNodeNum")
     def seg_node_num(self) -> Optional[pulumi.Input[int]]:
         """
@@ -547,14 +598,25 @@ class InstanceArgs:
     @pulumi.getter(name="segStorageType")
     def seg_storage_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-        > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         """
         return pulumi.get(self, "seg_storage_type")
 
     @seg_storage_type.setter
     def seg_storage_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "seg_storage_type", value)
+
+    @property
+    @pulumi.getter(name="serverlessMode")
+    def serverless_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        """
+        return pulumi.get(self, "serverless_mode")
+
+    @serverless_mode.setter
+    def serverless_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serverless_mode", value)
 
     @property
     @pulumi.getter(name="sslEnabled")
@@ -648,6 +710,7 @@ class _InstanceState:
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  connection_string: Optional[pulumi.Input[str]] = None,
                  create_sample_data: Optional[pulumi.Input[bool]] = None,
+                 data_share_status: Optional[pulumi.Input[str]] = None,
                  db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_mode: Optional[pulumi.Input[str]] = None,
@@ -670,11 +733,14 @@ class _InstanceState:
                  period: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
+                 prod_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  resource_management_mode: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 seg_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
+                 serverless_mode: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
@@ -689,6 +755,7 @@ class _InstanceState:
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         :param pulumi.Input[str] connection_string: (Available since v1.196.0) The connection string of the instance.
         :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        :param pulumi.Input[str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
@@ -720,13 +787,15 @@ class _InstanceState:
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[str] prod_type: The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
         :param pulumi.Input[str] resource_management_mode: Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param pulumi.Input[str] seg_disk_performance_level: The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
         :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
-        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+        :param pulumi.Input[str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[str] status: The status of the instance.
         :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
@@ -747,6 +816,8 @@ class _InstanceState:
             pulumi.set(__self__, "connection_string", connection_string)
         if create_sample_data is not None:
             pulumi.set(__self__, "create_sample_data", create_sample_data)
+        if data_share_status is not None:
+            pulumi.set(__self__, "data_share_status", data_share_status)
         if db_instance_category is not None:
             pulumi.set(__self__, "db_instance_category", db_instance_category)
         if db_instance_class is not None:
@@ -800,6 +871,8 @@ class _InstanceState:
             pulumi.log.warn("""private_ip_address is deprecated: Field `private_ip_address` has been deprecated from provider version 1.213.0.""")
         if private_ip_address is not None:
             pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if prod_type is not None:
+            pulumi.set(__self__, "prod_type", prod_type)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_management_mode is not None:
@@ -809,10 +882,14 @@ class _InstanceState:
             pulumi.log.warn("""security_ip_lists is deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.""")
         if security_ip_lists is not None:
             pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+        if seg_disk_performance_level is not None:
+            pulumi.set(__self__, "seg_disk_performance_level", seg_disk_performance_level)
         if seg_node_num is not None:
             pulumi.set(__self__, "seg_node_num", seg_node_num)
         if seg_storage_type is not None:
             pulumi.set(__self__, "seg_storage_type", seg_storage_type)
+        if serverless_mode is not None:
+            pulumi.set(__self__, "serverless_mode", serverless_mode)
         if ssl_enabled is not None:
             pulumi.set(__self__, "ssl_enabled", ssl_enabled)
         if status is not None:
@@ -868,6 +945,18 @@ class _InstanceState:
     @create_sample_data.setter
     def create_sample_data(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "create_sample_data", value)
+
+    @property
+    @pulumi.getter(name="dataShareStatus")
+    def data_share_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+        """
+        return pulumi.get(self, "data_share_status")
+
+    @data_share_status.setter
+    def data_share_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_share_status", value)
 
     @property
     @pulumi.getter(name="dbInstanceCategory")
@@ -1146,6 +1235,18 @@ class _InstanceState:
         pulumi.set(self, "private_ip_address", value)
 
     @property
+    @pulumi.getter(name="prodType")
+    def prod_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+        """
+        return pulumi.get(self, "prod_type")
+
+    @prod_type.setter
+    def prod_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prod_type", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1183,6 +1284,18 @@ class _InstanceState:
         pulumi.set(self, "security_ip_lists", value)
 
     @property
+    @pulumi.getter(name="segDiskPerformanceLevel")
+    def seg_disk_performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+        """
+        return pulumi.get(self, "seg_disk_performance_level")
+
+    @seg_disk_performance_level.setter
+    def seg_disk_performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "seg_disk_performance_level", value)
+
+    @property
     @pulumi.getter(name="segNodeNum")
     def seg_node_num(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1199,14 +1312,25 @@ class _InstanceState:
     @pulumi.getter(name="segStorageType")
     def seg_storage_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-        > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         """
         return pulumi.get(self, "seg_storage_type")
 
     @seg_storage_type.setter
     def seg_storage_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "seg_storage_type", value)
+
+    @property
+    @pulumi.getter(name="serverlessMode")
+    def serverless_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        """
+        return pulumi.get(self, "serverless_mode")
+
+    @serverless_mode.setter
+    def serverless_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serverless_mode", value)
 
     @property
     @pulumi.getter(name="sslEnabled")
@@ -1325,6 +1449,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  create_sample_data: Optional[pulumi.Input[bool]] = None,
+                 data_share_status: Optional[pulumi.Input[str]] = None,
                  db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_mode: Optional[pulumi.Input[str]] = None,
@@ -1346,11 +1471,14 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
+                 prod_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  resource_management_mode: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 seg_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
+                 serverless_mode: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1416,6 +1544,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        :param pulumi.Input[str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
@@ -1446,13 +1575,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[str] prod_type: The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
         :param pulumi.Input[str] resource_management_mode: Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param pulumi.Input[str] seg_disk_performance_level: The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
         :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
-        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+        :param pulumi.Input[str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
@@ -1538,6 +1669,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[str]] = None,
                  create_sample_data: Optional[pulumi.Input[bool]] = None,
+                 data_share_status: Optional[pulumi.Input[str]] = None,
                  db_instance_category: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
                  db_instance_mode: Optional[pulumi.Input[str]] = None,
@@ -1559,11 +1691,14 @@ class Instance(pulumi.CustomResource):
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
                  private_ip_address: Optional[pulumi.Input[str]] = None,
+                 prod_type: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  resource_management_mode: Optional[pulumi.Input[str]] = None,
                  security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 seg_disk_performance_level: Optional[pulumi.Input[str]] = None,
                  seg_node_num: Optional[pulumi.Input[int]] = None,
                  seg_storage_type: Optional[pulumi.Input[str]] = None,
+                 serverless_mode: Optional[pulumi.Input[str]] = None,
                  ssl_enabled: Optional[pulumi.Input[int]] = None,
                  storage_size: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1583,6 +1718,7 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["create_sample_data"] = create_sample_data
+            __props__.__dict__["data_share_status"] = data_share_status
             __props__.__dict__["db_instance_category"] = db_instance_category
             __props__.__dict__["db_instance_class"] = db_instance_class
             if db_instance_mode is None and not opts.urn:
@@ -1610,11 +1746,14 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["private_ip_address"] = private_ip_address
+            __props__.__dict__["prod_type"] = prod_type
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["resource_management_mode"] = resource_management_mode
             __props__.__dict__["security_ip_lists"] = security_ip_lists
+            __props__.__dict__["seg_disk_performance_level"] = seg_disk_performance_level
             __props__.__dict__["seg_node_num"] = seg_node_num
             __props__.__dict__["seg_storage_type"] = seg_storage_type
+            __props__.__dict__["serverless_mode"] = serverless_mode
             __props__.__dict__["ssl_enabled"] = ssl_enabled
             __props__.__dict__["storage_size"] = storage_size
             __props__.__dict__["tags"] = tags
@@ -1641,6 +1780,7 @@ class Instance(pulumi.CustomResource):
             availability_zone: Optional[pulumi.Input[str]] = None,
             connection_string: Optional[pulumi.Input[str]] = None,
             create_sample_data: Optional[pulumi.Input[bool]] = None,
+            data_share_status: Optional[pulumi.Input[str]] = None,
             db_instance_category: Optional[pulumi.Input[str]] = None,
             db_instance_class: Optional[pulumi.Input[str]] = None,
             db_instance_mode: Optional[pulumi.Input[str]] = None,
@@ -1663,11 +1803,14 @@ class Instance(pulumi.CustomResource):
             period: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[str]] = None,
             private_ip_address: Optional[pulumi.Input[str]] = None,
+            prod_type: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             resource_management_mode: Optional[pulumi.Input[str]] = None,
             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            seg_disk_performance_level: Optional[pulumi.Input[str]] = None,
             seg_node_num: Optional[pulumi.Input[int]] = None,
             seg_storage_type: Optional[pulumi.Input[str]] = None,
+            serverless_mode: Optional[pulumi.Input[str]] = None,
             ssl_enabled: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             storage_size: Optional[pulumi.Input[int]] = None,
@@ -1687,6 +1830,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.187.0. New field `zone_id` instead.
         :param pulumi.Input[str] connection_string: (Available since v1.196.0) The connection string of the instance.
         :param pulumi.Input[bool] create_sample_data: Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
+        :param pulumi.Input[str] data_share_status: Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
         :param pulumi.Input[str] db_instance_category: The db instance category. Valid values: `Basic`, `HighAvailability`.
                > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
         :param pulumi.Input[str] db_instance_class: The db instance class. see [Instance specifications](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/instance-types).
@@ -1718,13 +1862,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] period: The duration that you will buy the resource, in month. required when `payment_type` is `Subscription`. Valid values: `Year`, `Month`.
         :param pulumi.Input[str] port: (Available since v1.196.0) The connection port of the instance.
         :param pulumi.Input[str] private_ip_address: The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
+        :param pulumi.Input[str] prod_type: The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance belongs.
         :param pulumi.Input[str] resource_management_mode: Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
+        :param pulumi.Input[str] seg_disk_performance_level: The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
         :param pulumi.Input[int] seg_node_num: Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
                > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
-        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-               > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        :param pulumi.Input[str] seg_storage_type: The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
+        :param pulumi.Input[str] serverless_mode: The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
         :param pulumi.Input[int] ssl_enabled: Enable or disable SSL. Valid values: `0` and `1`.
         :param pulumi.Input[str] status: The status of the instance.
         :param pulumi.Input[int] storage_size: The storage capacity. Unit: GB. Valid values: `50` to `4000`.
@@ -1743,6 +1889,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["connection_string"] = connection_string
         __props__.__dict__["create_sample_data"] = create_sample_data
+        __props__.__dict__["data_share_status"] = data_share_status
         __props__.__dict__["db_instance_category"] = db_instance_category
         __props__.__dict__["db_instance_class"] = db_instance_class
         __props__.__dict__["db_instance_mode"] = db_instance_mode
@@ -1765,11 +1912,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["period"] = period
         __props__.__dict__["port"] = port
         __props__.__dict__["private_ip_address"] = private_ip_address
+        __props__.__dict__["prod_type"] = prod_type
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["resource_management_mode"] = resource_management_mode
         __props__.__dict__["security_ip_lists"] = security_ip_lists
+        __props__.__dict__["seg_disk_performance_level"] = seg_disk_performance_level
         __props__.__dict__["seg_node_num"] = seg_node_num
         __props__.__dict__["seg_storage_type"] = seg_storage_type
+        __props__.__dict__["serverless_mode"] = serverless_mode
         __props__.__dict__["ssl_enabled"] = ssl_enabled
         __props__.__dict__["status"] = status
         __props__.__dict__["storage_size"] = storage_size
@@ -1805,6 +1955,14 @@ class Instance(pulumi.CustomResource):
         Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "create_sample_data")
+
+    @property
+    @pulumi.getter(name="dataShareStatus")
+    def data_share_status(self) -> pulumi.Output[str]:
+        """
+        Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+        """
+        return pulumi.get(self, "data_share_status")
 
     @property
     @pulumi.getter(name="dbInstanceCategory")
@@ -1995,6 +2153,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "private_ip_address")
 
     @property
+    @pulumi.getter(name="prodType")
+    def prod_type(self) -> pulumi.Output[str]:
+        """
+        The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+        """
+        return pulumi.get(self, "prod_type")
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
@@ -2020,6 +2186,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "security_ip_lists")
 
     @property
+    @pulumi.getter(name="segDiskPerformanceLevel")
+    def seg_disk_performance_level(self) -> pulumi.Output[str]:
+        """
+        The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+        """
+        return pulumi.get(self, "seg_disk_performance_level")
+
+    @property
     @pulumi.getter(name="segNodeNum")
     def seg_node_num(self) -> pulumi.Output[int]:
         """
@@ -2030,12 +2204,19 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="segStorageType")
-    def seg_storage_type(self) -> pulumi.Output[Optional[str]]:
+    def seg_storage_type(self) -> pulumi.Output[str]:
         """
-        The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-        > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+        The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
         """
         return pulumi.get(self, "seg_storage_type")
+
+    @property
+    @pulumi.getter(name="serverlessMode")
+    def serverless_mode(self) -> pulumi.Output[str]:
+        """
+        The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+        """
+        return pulumi.get(self, "serverless_mode")
 
     @property
     @pulumi.getter(name="sslEnabled")

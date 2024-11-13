@@ -560,6 +560,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.amqp.VirtualHostArgs;
  * import com.pulumi.alicloud.amqp.Queue;
  * import com.pulumi.alicloud.amqp.QueueArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -626,23 +627,28 @@ import javax.annotation.Nullable;
  *             .function(defaultFunction.name())
  *             .name("terraform-example-oss")
  *             .type("eventbridge")
- *             .config("""
- *     {
- *         "triggerEnable": false,
- *         "asyncInvocationType": false,
- *         "eventRuleFilterPattern": {
- *           "source":[
- *             "acs.oss"
- *             ],
- *             "type":[
- *               "oss:BucketCreated:PutBucket"
- *             ]
- *         },
- *         "eventSourceConfig": {
- *             "eventSourceType": "Default"
- *         }
- *     }
- *             """)
+ *             .config(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("triggerEnable", false),
+ *                     jsonProperty("asyncInvocationType", false),
+ *                     jsonProperty("eventSourceConfig", jsonObject(
+ *                         jsonProperty("eventSourceType", "Default")
+ *                     )),
+ *                     jsonProperty("eventRuleFilterPattern", "{\"source\":[\"acs.oss\"],\"type\":[\"oss:BucketCreated:PutBucket\"]}"),
+ *                     jsonProperty("eventSinkConfig", jsonObject(
+ *                         jsonProperty("deliveryOption", jsonObject(
+ *                             jsonProperty("mode", "event-driven"),
+ *                             jsonProperty("eventSchema", "CloudEvents")
+ *                         ))
+ *                     )),
+ *                     jsonProperty("runOptions", jsonObject(
+ *                         jsonProperty("retryStrategy", jsonObject(
+ *                             jsonProperty("PushRetryStrategy", "BACKOFF_RETRY")
+ *                         )),
+ *                         jsonProperty("errorsTolerance", "ALL"),
+ *                         jsonProperty("mode", "event-driven")
+ *                     ))
+ *                 )))
  *             .build());
  * 
  *         var mnsTrigger = new Trigger("mnsTrigger", TriggerArgs.builder()
@@ -650,23 +656,35 @@ import javax.annotation.Nullable;
  *             .function(defaultFunction.name())
  *             .name("terraform-example-mns")
  *             .type("eventbridge")
- *             .config("""
- *     {
- *         "triggerEnable": false,
- *         "asyncInvocationType": false,
- *         "eventRuleFilterPattern": "{}",
- *         "eventSourceConfig": {
- *             "eventSourceType": "MNS",
- *             "eventSourceParameters": {
- *                 "sourceMNSParameters": {
- *                     "RegionId": "cn-hangzhou",
- *                     "QueueName": "mns-queue",
- *                     "IsBase64Decode": true
- *                 }
- *             }
- *         }
- *     }
- *             """)
+ *             .config(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("triggerEnable", false),
+ *                     jsonProperty("asyncInvocationType", false),
+ *                     jsonProperty("eventSourceConfig", jsonObject(
+ *                         jsonProperty("eventSourceType", "MNS"),
+ *                         jsonProperty("eventSourceParameters", jsonObject(
+ *                             jsonProperty("sourceMNSParameters", jsonObject(
+ *                                 jsonProperty("RegionId", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id())),
+ *                                 jsonProperty("QueueName", "mns-queue"),
+ *                                 jsonProperty("IsBase64Decode", true)
+ *                             ))
+ *                         ))
+ *                     )),
+ *                     jsonProperty("eventRuleFilterPattern", "{}"),
+ *                     jsonProperty("eventSinkConfig", jsonObject(
+ *                         jsonProperty("deliveryOption", jsonObject(
+ *                             jsonProperty("mode", "event-driven"),
+ *                             jsonProperty("eventSchema", "CloudEvents")
+ *                         ))
+ *                     )),
+ *                     jsonProperty("runOptions", jsonObject(
+ *                         jsonProperty("retryStrategy", jsonObject(
+ *                             jsonProperty("PushRetryStrategy", "BACKOFF_RETRY")
+ *                         )),
+ *                         jsonProperty("errorsTolerance", "ALL"),
+ *                         jsonProperty("mode", "event-driven")
+ *                     ))
+ *                 )))
  *             .build());
  * 
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
@@ -696,27 +714,39 @@ import javax.annotation.Nullable;
  *                 var id = values.t1;
  *                 var groupName = values.t2;
  *                 var topicName = values.t3;
- *                 return """
- *     {
- *         "triggerEnable": false,
- *         "asyncInvocationType": false,
- *         "eventRuleFilterPattern": "{}",
- *         "eventSourceConfig": {
- *             "eventSourceType": "RocketMQ",
- *             "eventSourceParameters": {
- *                 "sourceRocketMQParameters": {
- *                     "RegionId": "%s",
- *                     "InstanceId": "%s",
- *                     "GroupID": "%s",
- *                     "Topic": "%s",
- *                     "Timestamp": 1686296162,
- *                     "Tag": "example-tag",
- *                     "Offset": "CONSUME_FROM_LAST_OFFSET"
- *                 }
- *             }
- *         }
- *     }
- * ", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),id,groupName,topicName);
+ *                 return serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("triggerEnable", false),
+ *                         jsonProperty("asyncInvocationType", false),
+ *                         jsonProperty("eventRuleFilterPattern", "{}"),
+ *                         jsonProperty("eventSinkConfig", jsonObject(
+ *                             jsonProperty("deliveryOption", jsonObject(
+ *                                 jsonProperty("mode", "event-driven"),
+ *                                 jsonProperty("eventSchema", "CloudEvents")
+ *                             ))
+ *                         )),
+ *                         jsonProperty("eventSourceConfig", jsonObject(
+ *                             jsonProperty("eventSourceType", "RocketMQ"),
+ *                             jsonProperty("eventSourceParameters", jsonObject(
+ *                                 jsonProperty("sourceRocketMQParameters", jsonObject(
+ *                                     jsonProperty("RegionId", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id())),
+ *                                     jsonProperty("InstanceId", id),
+ *                                     jsonProperty("GroupID", groupName),
+ *                                     jsonProperty("Topic", topicName),
+ *                                     jsonProperty("Timestamp", 1686296162),
+ *                                     jsonProperty("Tag", "example-tag"),
+ *                                     jsonProperty("Offset", "CONSUME_FROM_LAST_OFFSET")
+ *                                 ))
+ *                             ))
+ *                         )),
+ *                         jsonProperty("runOptions", jsonObject(
+ *                             jsonProperty("retryStrategy", jsonObject(
+ *                                 jsonProperty("PushRetryStrategy", "BACKOFF_RETRY")
+ *                             )),
+ *                             jsonProperty("errorsTolerance", "ALL"),
+ *                             jsonProperty("mode", "event-driven")
+ *                         ))
+ *                     ));
  *             }))
  *             .build());
  * 
@@ -751,24 +781,36 @@ import javax.annotation.Nullable;
  *                 var id = values.t1;
  *                 var virtualHostName = values.t2;
  *                 var queueName = values.t3;
- *                 return """
- *     {
- *         "triggerEnable": false,
- *         "asyncInvocationType": false,
- *         "eventRuleFilterPattern": "{}",
- *         "eventSourceConfig": {
- *             "eventSourceType": "RabbitMQ",
- *             "eventSourceParameters": {
- *                 "sourceRabbitMQParameters": {
- *                     "RegionId": "%s",
- *                     "InstanceId": "%s",
- *                     "VirtualHostName": "%s",
- *                     "QueueName": "%s"
- *                 }
- *             }
- *         }
- *     }
- * ", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()),id,virtualHostName,queueName);
+ *                 return serializeJson(
+ *                     jsonObject(
+ *                         jsonProperty("triggerEnable", false),
+ *                         jsonProperty("asyncInvocationType", false),
+ *                         jsonProperty("eventRuleFilterPattern", "{}"),
+ *                         jsonProperty("eventSourceConfig", jsonObject(
+ *                             jsonProperty("eventSourceType", "RabbitMQ"),
+ *                             jsonProperty("eventSourceParameters", jsonObject(
+ *                                 jsonProperty("sourceRabbitMQParameters", jsonObject(
+ *                                     jsonProperty("RegionId", defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id())),
+ *                                     jsonProperty("InstanceId", id),
+ *                                     jsonProperty("VirtualHostName", virtualHostName),
+ *                                     jsonProperty("QueueName", queueName)
+ *                                 ))
+ *                             ))
+ *                         )),
+ *                         jsonProperty("eventSinkConfig", jsonObject(
+ *                             jsonProperty("deliveryOption", jsonObject(
+ *                                 jsonProperty("mode", "event-driven"),
+ *                                 jsonProperty("eventSchema", "CloudEvents")
+ *                             ))
+ *                         )),
+ *                         jsonProperty("runOptions", jsonObject(
+ *                             jsonProperty("retryStrategy", jsonObject(
+ *                                 jsonProperty("PushRetryStrategy", "BACKOFF_RETRY")
+ *                             )),
+ *                             jsonProperty("errorsTolerance", "ALL"),
+ *                             jsonProperty("mode", "event-driven")
+ *                         ))
+ *                     ));
  *             }))
  *             .build());
  * 

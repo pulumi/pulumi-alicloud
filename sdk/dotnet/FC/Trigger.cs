@@ -453,6 +453,7 @@ namespace Pulumi.AliCloud.FC
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
     /// using Random = Pulumi.Random;
@@ -519,22 +520,33 @@ namespace Pulumi.AliCloud.FC
     ///         Function = defaultFunction.Name,
     ///         Name = "terraform-example-oss",
     ///         Type = "eventbridge",
-    ///         Config = @"    {
-    ///         ""triggerEnable"": false,
-    ///         ""asyncInvocationType"": false,
-    ///         ""eventRuleFilterPattern"": {
-    ///           ""source"":[
-    ///             ""acs.oss""
-    ///             ],
-    ///             ""type"":[
-    ///               ""oss:BucketCreated:PutBucket""
-    ///             ]
-    ///         },
-    ///         ""eventSourceConfig"": {
-    ///             ""eventSourceType"": ""Default""
-    ///         }
-    ///     }
-    /// ",
+    ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["triggerEnable"] = false,
+    ///             ["asyncInvocationType"] = false,
+    ///             ["eventSourceConfig"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["eventSourceType"] = "Default",
+    ///             },
+    ///             ["eventRuleFilterPattern"] = "{\"source\":[\"acs.oss\"],\"type\":[\"oss:BucketCreated:PutBucket\"]}",
+    ///             ["eventSinkConfig"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["deliveryOption"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["mode"] = "event-driven",
+    ///                     ["eventSchema"] = "CloudEvents",
+    ///                 },
+    ///             },
+    ///             ["runOptions"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["retryStrategy"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["PushRetryStrategy"] = "BACKOFF_RETRY",
+    ///                 },
+    ///                 ["errorsTolerance"] = "ALL",
+    ///                 ["mode"] = "event-driven",
+    ///             },
+    ///         }),
     ///     });
     /// 
     ///     var mnsTrigger = new AliCloud.FC.Trigger("mns_trigger", new()
@@ -543,22 +555,42 @@ namespace Pulumi.AliCloud.FC
     ///         Function = defaultFunction.Name,
     ///         Name = "terraform-example-mns",
     ///         Type = "eventbridge",
-    ///         Config = @"    {
-    ///         ""triggerEnable"": false,
-    ///         ""asyncInvocationType"": false,
-    ///         ""eventRuleFilterPattern"": ""{}"",
-    ///         ""eventSourceConfig"": {
-    ///             ""eventSourceType"": ""MNS"",
-    ///             ""eventSourceParameters"": {
-    ///                 ""sourceMNSParameters"": {
-    ///                     ""RegionId"": ""cn-hangzhou"",
-    ///                     ""QueueName"": ""mns-queue"",
-    ///                     ""IsBase64Decode"": true
-    ///                 }
-    ///             }
-    ///         }
-    ///     }
-    /// ",
+    ///         Config = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///         {
+    ///             ["triggerEnable"] = false,
+    ///             ["asyncInvocationType"] = false,
+    ///             ["eventSourceConfig"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["eventSourceType"] = "MNS",
+    ///                 ["eventSourceParameters"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["sourceMNSParameters"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["RegionId"] = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///                         ["QueueName"] = "mns-queue",
+    ///                         ["IsBase64Decode"] = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ["eventRuleFilterPattern"] = "{}",
+    ///             ["eventSinkConfig"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["deliveryOption"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["mode"] = "event-driven",
+    ///                     ["eventSchema"] = "CloudEvents",
+    ///                 },
+    ///             },
+    ///             ["runOptions"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["retryStrategy"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["PushRetryStrategy"] = "BACKOFF_RETRY",
+    ///                 },
+    ///                 ["errorsTolerance"] = "ALL",
+    ///                 ["mode"] = "event-driven",
+    ///             },
+    ///         }),
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.RocketMQ.Instance("default", new()
@@ -588,33 +620,46 @@ namespace Pulumi.AliCloud.FC
     ///         Function = defaultFunction.Name,
     ///         Name = "terraform-example-rocketmq",
     ///         Type = "eventbridge",
-    ///         Config = Output.Tuple(defaultGetRegions, defaultInstance.Id, defaultGroup.GroupName, defaultTopic.TopicName).Apply(values =&gt;
+    ///         Config = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             var defaultGetRegions = values.Item1;
-    ///             var id = values.Item2;
-    ///             var groupName = values.Item3;
-    ///             var topicName = values.Item4;
-    ///             return @$"    {{
-    ///         ""triggerEnable"": false,
-    ///         ""asyncInvocationType"": false,
-    ///         ""eventRuleFilterPattern"": ""{{}}"",
-    ///         ""eventSourceConfig"": {{
-    ///             ""eventSourceType"": ""RocketMQ"",
-    ///             ""eventSourceParameters"": {{
-    ///                 ""sourceRocketMQParameters"": {{
-    ///                     ""RegionId"": ""{defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}"",
-    ///                     ""InstanceId"": ""{id}"",
-    ///                     ""GroupID"": ""{groupName}"",
-    ///                     ""Topic"": ""{topicName}"",
-    ///                     ""Timestamp"": 1686296162,
-    ///                     ""Tag"": ""example-tag"",
-    ///                     ""Offset"": ""CONSUME_FROM_LAST_OFFSET""
-    ///                 }}
-    ///             }}
-    ///         }}
-    ///     }}
-    /// ";
-    ///         }),
+    ///             ["triggerEnable"] = false,
+    ///             ["asyncInvocationType"] = false,
+    ///             ["eventRuleFilterPattern"] = "{}",
+    ///             ["eventSinkConfig"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["deliveryOption"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["mode"] = "event-driven",
+    ///                     ["eventSchema"] = "CloudEvents",
+    ///                 },
+    ///             },
+    ///             ["eventSourceConfig"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["eventSourceType"] = "RocketMQ",
+    ///                 ["eventSourceParameters"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["sourceRocketMQParameters"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["RegionId"] = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///                         ["InstanceId"] = defaultInstance.Id,
+    ///                         ["GroupID"] = defaultGroup.GroupName,
+    ///                         ["Topic"] = defaultTopic.TopicName,
+    ///                         ["Timestamp"] = 1686296162,
+    ///                         ["Tag"] = "example-tag",
+    ///                         ["Offset"] = "CONSUME_FROM_LAST_OFFSET",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ["runOptions"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["retryStrategy"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["PushRetryStrategy"] = "BACKOFF_RETRY",
+    ///                 },
+    ///                 ["errorsTolerance"] = "ALL",
+    ///                 ["mode"] = "event-driven",
+    ///             },
+    ///         })),
     ///     });
     /// 
     ///     var defaultInstance2 = new AliCloud.Amqp.Instance("default", new()
@@ -648,30 +693,43 @@ namespace Pulumi.AliCloud.FC
     ///         Function = defaultFunction.Name,
     ///         Name = "terraform-example-rabbitmq",
     ///         Type = "eventbridge",
-    ///         Config = Output.Tuple(defaultGetRegions, defaultInstance2.Id, defaultVirtualHost.VirtualHostName, defaultQueue.QueueName).Apply(values =&gt;
+    ///         Config = Output.JsonSerialize(Output.Create(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             var defaultGetRegions = values.Item1;
-    ///             var id = values.Item2;
-    ///             var virtualHostName = values.Item3;
-    ///             var queueName = values.Item4;
-    ///             return @$"    {{
-    ///         ""triggerEnable"": false,
-    ///         ""asyncInvocationType"": false,
-    ///         ""eventRuleFilterPattern"": ""{{}}"",
-    ///         ""eventSourceConfig"": {{
-    ///             ""eventSourceType"": ""RabbitMQ"",
-    ///             ""eventSourceParameters"": {{
-    ///                 ""sourceRabbitMQParameters"": {{
-    ///                     ""RegionId"": ""{defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}"",
-    ///                     ""InstanceId"": ""{id}"",
-    ///                     ""VirtualHostName"": ""{virtualHostName}"",
-    ///                     ""QueueName"": ""{queueName}""
-    ///                 }}
-    ///             }}
-    ///         }}
-    ///     }}
-    /// ";
-    ///         }),
+    ///             ["triggerEnable"] = false,
+    ///             ["asyncInvocationType"] = false,
+    ///             ["eventRuleFilterPattern"] = "{}",
+    ///             ["eventSourceConfig"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["eventSourceType"] = "RabbitMQ",
+    ///                 ["eventSourceParameters"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["sourceRabbitMQParameters"] = new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["RegionId"] = defaultGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///                         ["InstanceId"] = defaultInstance2.Id,
+    ///                         ["VirtualHostName"] = defaultVirtualHost.VirtualHostName,
+    ///                         ["QueueName"] = defaultQueue.QueueName,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ["eventSinkConfig"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["deliveryOption"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["mode"] = "event-driven",
+    ///                     ["eventSchema"] = "CloudEvents",
+    ///                 },
+    ///             },
+    ///             ["runOptions"] = new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["retryStrategy"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["PushRetryStrategy"] = "BACKOFF_RETRY",
+    ///                 },
+    ///                 ["errorsTolerance"] = "ALL",
+    ///                 ["mode"] = "event-driven",
+    ///             },
+    ///         })),
     ///     });
     /// 
     /// });

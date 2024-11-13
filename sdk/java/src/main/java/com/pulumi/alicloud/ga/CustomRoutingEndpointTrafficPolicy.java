@@ -37,14 +37,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ga.GaFunctions;
+ * import com.pulumi.alicloud.ga.inputs.GetAcceleratorsArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.alicloud.ga.Accelerator;
- * import com.pulumi.alicloud.ga.AcceleratorArgs;
  * import com.pulumi.alicloud.ga.BandwidthPackage;
  * import com.pulumi.alicloud.ga.BandwidthPackageArgs;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.ga.BandwidthPackageAttachment;
  * import com.pulumi.alicloud.ga.BandwidthPackageAttachmentArgs;
  * import com.pulumi.alicloud.ga.Listener;
@@ -52,10 +53,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ga.inputs.ListenerPortRangeArgs;
  * import com.pulumi.alicloud.ga.CustomRoutingEndpointGroup;
  * import com.pulumi.alicloud.ga.CustomRoutingEndpointGroupArgs;
- * import com.pulumi.alicloud.ga.CustomRoutingEndpoint;
- * import com.pulumi.alicloud.ga.CustomRoutingEndpointArgs;
  * import com.pulumi.alicloud.ga.CustomRoutingEndpointGroupDestination;
  * import com.pulumi.alicloud.ga.CustomRoutingEndpointGroupDestinationArgs;
+ * import com.pulumi.alicloud.ga.CustomRoutingEndpoint;
+ * import com.pulumi.alicloud.ga.CustomRoutingEndpointArgs;
  * import com.pulumi.alicloud.ga.CustomRoutingEndpointTrafficPolicy;
  * import com.pulumi.alicloud.ga.CustomRoutingEndpointTrafficPolicyArgs;
  * import com.pulumi.alicloud.ga.inputs.CustomRoutingEndpointTrafficPolicyPortRangeArgs;
@@ -74,26 +75,24 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get("region").orElse("cn-hangzhou");
- *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation("VSwitch")
+ *         final var name = config.get("name").orElse("tf-example");
+ *         final var default = AlicloudFunctions.getZones();
+ * 
+ *         final var defaultGetAccelerators = GaFunctions.getAccelerators(GetAcceleratorsArgs.builder()
+ *             .status("active")
+ *             .bandwidthBillingType("BandwidthPackage")
  *             .build());
  * 
  *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
- *             .vpcName("terraform-example")
- *             .cidrBlock("172.17.3.0/24")
+ *             .vpcName(name)
+ *             .cidrBlock("192.168.0.0/16")
  *             .build());
  * 
  *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
- *             .vswitchName("terraform-example")
- *             .cidrBlock("172.17.3.0/24")
+ *             .vswitchName(name)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(default_.zones()[0].id())
- *             .build());
- * 
- *         var defaultAccelerator = new Accelerator("defaultAccelerator", AcceleratorArgs.builder()
- *             .duration(1)
- *             .autoUseCoupon(true)
- *             .spec("1")
+ *             .cidrBlock("192.168.192.0/24")
+ *             .zoneId(default_.ids()[0])
  *             .build());
  * 
  *         var defaultBandwidthPackage = new BandwidthPackage("defaultBandwidthPackage", BandwidthPackageArgs.builder()
@@ -105,8 +104,12 @@ import javax.annotation.Nullable;
  *             .ratio(30)
  *             .build());
  * 
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
  *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment("defaultBandwidthPackageAttachment", BandwidthPackageAttachmentArgs.builder()
- *             .acceleratorId(defaultAccelerator.id())
+ *             .acceleratorId(defaultGetAccelerators.applyValue(getAcceleratorsResult -> getAcceleratorsResult.accelerators()[1].id()))
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
  *             .build());
  * 
@@ -115,23 +118,16 @@ import javax.annotation.Nullable;
  *             .listenerType("CustomRouting")
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(10000)
- *                 .toPort(16000)
+ *                 .toPort(26000)
  *                 .build())
  *             .build());
  * 
  *         var defaultCustomRoutingEndpointGroup = new CustomRoutingEndpointGroup("defaultCustomRoutingEndpointGroup", CustomRoutingEndpointGroupArgs.builder()
  *             .acceleratorId(defaultListener.acceleratorId())
  *             .listenerId(defaultListener.id())
- *             .endpointGroupRegion(region)
- *             .customRoutingEndpointGroupName("terraform-example")
- *             .description("terraform-example")
- *             .build());
- * 
- *         var defaultCustomRoutingEndpoint = new CustomRoutingEndpoint("defaultCustomRoutingEndpoint", CustomRoutingEndpointArgs.builder()
- *             .endpointGroupId(defaultCustomRoutingEndpointGroup.id())
- *             .endpoint(defaultSwitch.id())
- *             .type("PrivateSubNet")
- *             .trafficToEndpointPolicy("AllowCustom")
+ *             .endpointGroupRegion(defaultGetRegions.applyValue(getRegionsResult -> getRegionsResult.regions()[0].id()))
+ *             .customRoutingEndpointGroupName(name)
+ *             .description(name)
  *             .build());
  * 
  *         var defaultCustomRoutingEndpointGroupDestination = new CustomRoutingEndpointGroupDestination("defaultCustomRoutingEndpointGroupDestination", CustomRoutingEndpointGroupDestinationArgs.builder()
@@ -141,12 +137,19 @@ import javax.annotation.Nullable;
  *             .toPort(10)
  *             .build());
  * 
+ *         var defaultCustomRoutingEndpoint = new CustomRoutingEndpoint("defaultCustomRoutingEndpoint", CustomRoutingEndpointArgs.builder()
+ *             .endpointGroupId(defaultCustomRoutingEndpointGroupDestination.endpointGroupId())
+ *             .endpoint(defaultSwitch.id())
+ *             .type("PrivateSubNet")
+ *             .trafficToEndpointPolicy("AllowAll")
+ *             .build());
+ * 
  *         var defaultCustomRoutingEndpointTrafficPolicy = new CustomRoutingEndpointTrafficPolicy("defaultCustomRoutingEndpointTrafficPolicy", CustomRoutingEndpointTrafficPolicyArgs.builder()
  *             .endpointId(defaultCustomRoutingEndpoint.customRoutingEndpointId())
- *             .address("172.17.3.0")
+ *             .address("192.168.192.2")
  *             .portRanges(CustomRoutingEndpointTrafficPolicyPortRangeArgs.builder()
  *                 .fromPort(1)
- *                 .toPort(10)
+ *                 .toPort(2)
  *                 .build())
  *             .build());
  * 

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Apsara File Storage (NAS) Recycle Bin resource.
+ * Provides a File Storage (NAS) Recycle Bin resource.
  *
- * For information about Apsara File Storage (NAS) Recycle Bin and how to use it, see [What is Recycle Bin](https://www.alibabacloud.com/help/en/doc-detail/264185.html).
+ * For information about File Storage (NAS) Recycle Bin and how to use it, see [What is Recycle Bin](https://www.alibabacloud.com/help/en/doc-detail/264185.html).
  *
  * > **NOTE:** Available in v1.155.0+.
  *
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Apsara File Storage (NAS) Recycle Bin can be imported using the id, e.g.
+ * File Storage (NAS) Recycle Bin can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nas/recycleBin:RecycleBin example <file_system_id>

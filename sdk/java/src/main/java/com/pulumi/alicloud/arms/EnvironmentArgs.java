@@ -79,7 +79,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Subtype of environment:
-     * - Type of CS: ACK is currently supported.
+     * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
      * - Type of ECS: currently supports ECS.
      * - Type of Cloud: currently supports Cloud.
      * 
@@ -89,7 +89,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Subtype of environment:
-     * - Type of CS: ACK is currently supported.
+     * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
      * - Type of ECS: currently supports ECS.
      * - Type of Cloud: currently supports Cloud.
      * 
@@ -282,7 +282,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param environmentSubType Subtype of environment:
-         * - Type of CS: ACK is currently supported.
+         * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
          * - Type of ECS: currently supports ECS.
          * - Type of Cloud: currently supports Cloud.
          * 
@@ -296,7 +296,7 @@ public final class EnvironmentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param environmentSubType Subtype of environment:
-         * - Type of CS: ACK is currently supported.
+         * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
          * - Type of ECS: currently supports ECS.
          * - Type of Cloud: currently supports Cloud.
          * 

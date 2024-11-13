@@ -206,7 +206,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly httpEndpoint!: pulumi.Output<string>;
     /**
-     * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     * **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
      */
     public readonly httpPutResponseHopLimit!: pulumi.Output<number>;
     /**
@@ -800,7 +800,7 @@ export interface InstanceState {
      */
     httpEndpoint?: pulumi.Input<string>;
     /**
-     * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     * **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
      */
     httpPutResponseHopLimit?: pulumi.Input<number>;
     /**
@@ -1182,7 +1182,7 @@ export interface InstanceArgs {
      */
     httpEndpoint?: pulumi.Input<string>;
     /**
-     * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     * **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
      */
     httpPutResponseHopLimit?: pulumi.Input<number>;
     /**

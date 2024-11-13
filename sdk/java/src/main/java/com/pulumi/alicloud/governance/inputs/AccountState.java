@@ -3,10 +3,12 @@
 
 package com.pulumi.alicloud.governance.inputs;
 
+import com.pulumi.alicloud.governance.inputs.AccountAccountTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -55,6 +57,21 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The tags of the account See `account_tags` below.
+     * 
+     */
+    @Import(name="accountTags")
+    private @Nullable Output<List<AccountAccountTagArgs>> accountTags;
+
+    /**
+     * @return The tags of the account See `account_tags` below.
+     * 
+     */
+    public Optional<Output<List<AccountAccountTagArgs>>> accountTags() {
+        return Optional.ofNullable(this.accountTags);
+    }
+
+    /**
      * The baseline ID.
      * 
      * If it is left blank, the system default baseline is used by default.
@@ -76,16 +93,12 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     /**
      * The domain name is used to qualify the login name of RAM users and RAM roles.
      * 
-     * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
-     * 
      */
     @Import(name="defaultDomainName")
     private @Nullable Output<String> defaultDomainName;
 
     /**
      * @return The domain name is used to qualify the login name of RAM users and RAM roles.
-     * 
-     * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
      * 
      */
     public Optional<Output<String>> defaultDomainName() {
@@ -169,6 +182,7 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
     private AccountState(AccountState $) {
         this.accountId = $.accountId;
         this.accountNamePrefix = $.accountNamePrefix;
+        this.accountTags = $.accountTags;
         this.baselineId = $.baselineId;
         this.defaultDomainName = $.defaultDomainName;
         this.displayName = $.displayName;
@@ -246,6 +260,37 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param accountTags The tags of the account See `account_tags` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountTags(@Nullable Output<List<AccountAccountTagArgs>> accountTags) {
+            $.accountTags = accountTags;
+            return this;
+        }
+
+        /**
+         * @param accountTags The tags of the account See `account_tags` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountTags(List<AccountAccountTagArgs> accountTags) {
+            return accountTags(Output.of(accountTags));
+        }
+
+        /**
+         * @param accountTags The tags of the account See `account_tags` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountTags(AccountAccountTagArgs... accountTags) {
+            return accountTags(List.of(accountTags));
+        }
+
+        /**
          * @param baselineId The baseline ID.
          * 
          * If it is left blank, the system default baseline is used by default.
@@ -273,8 +318,6 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param defaultDomainName The domain name is used to qualify the login name of RAM users and RAM roles.
          * 
-         * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
-         * 
          * @return builder
          * 
          */
@@ -285,8 +328,6 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param defaultDomainName The domain name is used to qualify the login name of RAM users and RAM roles.
-         * 
-         * Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
          * 
          * @return builder
          * 

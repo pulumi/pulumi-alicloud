@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// For information about VPN Gateway Vco Route and how to use it, see [What is Vco Route](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvcorouteentry).
     /// 
-    /// &gt; **NOTE:** Available in v1.183.0+.
+    /// &gt; **NOTE:** Available since v1.183.0+.
     /// 
     /// ## Example Usage
     /// 
@@ -28,6 +28,8 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
     ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
     ///     {
     ///         CenInstanceName = name,
@@ -44,10 +46,10 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     ///     var defaultCustomerGateway = new AliCloud.Vpn.CustomerGateway("default", new()
     ///     {
-    ///         Name = name,
+    ///         CustomerGatewayName = name,
     ///         IpAddress = "42.104.22.210",
     ///         Asn = "45014",
-    ///         Description = "testAccVpnConnectionDesc",
+    ///         Description = name,
     ///     });
     /// 
     ///     var defaultGatewayVpnAttachment = new AliCloud.Vpn.GatewayVpnAttachment("default", new()
@@ -97,13 +99,22 @@ namespace Pulumi.AliCloud.Vpn
     ///         VpnAttachmentName = name,
     ///     });
     /// 
+    ///     var defaultTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("default", new()
+    ///     {
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         Cidr = "192.168.0.0/16",
+    ///         TransitRouterCidrName = name,
+    ///         Description = name,
+    ///         PublishCidrRoute = true,
+    ///     });
+    /// 
     ///     var defaultTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("default", new()
     ///     {
     ///         AutoPublishRouteEnabled = false,
     ///         TransitRouterAttachmentDescription = name,
     ///         TransitRouterAttachmentName = name,
     ///         CenId = defaultTransitRouter.CenId,
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         TransitRouterId = defaultTransitRouterCidr.TransitRouterId,
     ///         VpnId = defaultGatewayVpnAttachment.Id,
     ///         Zones = new[]
     ///         {

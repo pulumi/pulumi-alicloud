@@ -64,6 +64,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.233.1) Instance expiration time.
+     * 
+     */
+    @Import(name="endDate")
+    private @Nullable Output<String> endDate;
+
+    /**
+     * @return (Available since v1.233.1) Instance expiration time.
+     * 
+     */
+    public Optional<Output<String>> endDate() {
+        return Optional.ofNullable(this.endDate);
+    }
+
+    /**
      * Whether to force deletion even without backup.
      * 
      */
@@ -324,6 +339,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.bindVpcs = $.bindVpcs;
         this.caCertificateChainPem = $.caCertificateChainPem;
         this.createTime = $.createTime;
+        this.endDate = $.endDate;
         this.forceDeleteWithoutBackup = $.forceDeleteWithoutBackup;
         this.instanceName = $.instanceName;
         this.keyNum = $.keyNum;
@@ -432,6 +448,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param endDate (Available since v1.233.1) Instance expiration time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endDate(@Nullable Output<String> endDate) {
+            $.endDate = endDate;
+            return this;
+        }
+
+        /**
+         * @param endDate (Available since v1.233.1) Instance expiration time.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endDate(String endDate) {
+            return endDate(Output.of(endDate));
         }
 
         /**

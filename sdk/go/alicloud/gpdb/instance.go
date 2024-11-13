@@ -111,6 +111,8 @@ type Instance struct {
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData pulumi.BoolOutput `pulumi:"createSampleData"`
+	// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+	DataShareStatus pulumi.StringOutput `pulumi:"dataShareStatus"`
 	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory pulumi.StringOutput `pulumi:"dbInstanceCategory"`
@@ -170,6 +172,8 @@ type Instance struct {
 	//
 	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress pulumi.StringPtrOutput `pulumi:"privateIpAddress"`
+	// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+	ProdType pulumi.StringOutput `pulumi:"prodType"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
@@ -178,12 +182,15 @@ type Instance struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists pulumi.StringArrayOutput `pulumi:"securityIpLists"`
+	// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+	SegDiskPerformanceLevel pulumi.StringOutput `pulumi:"segDiskPerformanceLevel"`
 	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum pulumi.IntOutput `pulumi:"segNodeNum"`
-	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
-	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
-	SegStorageType pulumi.StringPtrOutput `pulumi:"segStorageType"`
+	// The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
+	SegStorageType pulumi.StringOutput `pulumi:"segStorageType"`
+	// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
+	ServerlessMode pulumi.StringOutput `pulumi:"serverlessMode"`
 	// Enable or disable SSL. Valid values: `0` and `1`.
 	SslEnabled pulumi.IntOutput `pulumi:"sslEnabled"`
 	// The status of the instance.
@@ -255,6 +262,8 @@ type instanceState struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData *bool `pulumi:"createSampleData"`
+	// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+	DataShareStatus *string `pulumi:"dataShareStatus"`
 	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory *string `pulumi:"dbInstanceCategory"`
@@ -314,6 +323,8 @@ type instanceState struct {
 	//
 	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+	ProdType *string `pulumi:"prodType"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
@@ -322,12 +333,15 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
+	// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+	SegDiskPerformanceLevel *string `pulumi:"segDiskPerformanceLevel"`
 	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum *int `pulumi:"segNodeNum"`
-	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
-	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+	// The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
 	SegStorageType *string `pulumi:"segStorageType"`
+	// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
+	ServerlessMode *string `pulumi:"serverlessMode"`
 	// Enable or disable SSL. Valid values: `0` and `1`.
 	SslEnabled *int `pulumi:"sslEnabled"`
 	// The status of the instance.
@@ -358,6 +372,8 @@ type InstanceState struct {
 	ConnectionString pulumi.StringPtrInput
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData pulumi.BoolPtrInput
+	// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+	DataShareStatus pulumi.StringPtrInput
 	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory pulumi.StringPtrInput
@@ -417,6 +433,8 @@ type InstanceState struct {
 	//
 	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress pulumi.StringPtrInput
+	// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+	ProdType pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
@@ -425,12 +443,15 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists pulumi.StringArrayInput
+	// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+	SegDiskPerformanceLevel pulumi.StringPtrInput
 	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum pulumi.IntPtrInput
-	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
-	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+	// The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
 	SegStorageType pulumi.StringPtrInput
+	// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
+	ServerlessMode pulumi.StringPtrInput
 	// Enable or disable SSL. Valid values: `0` and `1`.
 	SslEnabled pulumi.IntPtrInput
 	// The status of the instance.
@@ -463,6 +484,8 @@ type instanceArgs struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData *bool `pulumi:"createSampleData"`
+	// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+	DataShareStatus *string `pulumi:"dataShareStatus"`
 	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory *string `pulumi:"dbInstanceCategory"`
@@ -520,6 +543,8 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+	ProdType *string `pulumi:"prodType"`
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
@@ -528,12 +553,15 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists []string `pulumi:"securityIpLists"`
+	// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+	SegDiskPerformanceLevel *string `pulumi:"segDiskPerformanceLevel"`
 	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum *int `pulumi:"segNodeNum"`
-	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
-	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+	// The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
 	SegStorageType *string `pulumi:"segStorageType"`
+	// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
+	ServerlessMode *string `pulumi:"serverlessMode"`
 	// Enable or disable SSL. Valid values: `0` and `1`.
 	SslEnabled *int `pulumi:"sslEnabled"`
 	// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
@@ -561,6 +589,8 @@ type InstanceArgs struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 	CreateSampleData pulumi.BoolPtrInput
+	// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+	DataShareStatus pulumi.StringPtrInput
 	// The db instance category. Valid values: `Basic`, `HighAvailability`.
 	// > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
 	DbInstanceCategory pulumi.StringPtrInput
@@ -618,6 +648,8 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field `privateIpAddress` has been deprecated from provider version 1.213.0.
 	PrivateIpAddress pulumi.StringPtrInput
+	// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+	ProdType pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// Resource management mode. Valid values: `resourceGroup`, `resourceQueue`.
@@ -626,12 +658,15 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'security_ip_list' has been deprecated from version 1.187.0. Use 'ip_whitelist' instead.
 	SecurityIpLists pulumi.StringArrayInput
+	// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+	SegDiskPerformanceLevel pulumi.StringPtrInput
 	// Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 	SegNodeNum pulumi.IntPtrInput
-	// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
-	// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+	// The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
 	SegStorageType pulumi.StringPtrInput
+	// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
+	ServerlessMode pulumi.StringPtrInput
 	// Enable or disable SSL. Valid values: `0` and `1`.
 	SslEnabled pulumi.IntPtrInput
 	// The storage capacity. Unit: GB. Valid values: `50` to `4000`.
@@ -753,6 +788,11 @@ func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
 // Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
 func (o InstanceOutput) CreateSampleData() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.CreateSampleData }).(pulumi.BoolOutput)
+}
+
+// Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+func (o InstanceOutput) DataShareStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DataShareStatus }).(pulumi.StringOutput)
 }
 
 // The db instance category. Valid values: `Basic`, `HighAvailability`.
@@ -880,6 +920,11 @@ func (o InstanceOutput) PrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
 }
 
+// The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+func (o InstanceOutput) ProdType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ProdType }).(pulumi.StringOutput)
+}
+
 // The ID of the enterprise resource group to which the instance belongs.
 func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
@@ -897,16 +942,25 @@ func (o InstanceOutput) SecurityIpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityIpLists }).(pulumi.StringArrayOutput)
 }
 
+// The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+func (o InstanceOutput) SegDiskPerformanceLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SegDiskPerformanceLevel }).(pulumi.StringOutput)
+}
+
 // Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
 // > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
 func (o InstanceOutput) SegNodeNum() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.SegNodeNum }).(pulumi.IntOutput)
 }
 
-// The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
-// > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
-func (o InstanceOutput) SegStorageType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SegStorageType }).(pulumi.StringPtrOutput)
+// The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
+func (o InstanceOutput) SegStorageType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SegStorageType }).(pulumi.StringOutput)
+}
+
+// The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
+func (o InstanceOutput) ServerlessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ServerlessMode }).(pulumi.StringOutput)
 }
 
 // Enable or disable SSL. Valid values: `0` and `1`.

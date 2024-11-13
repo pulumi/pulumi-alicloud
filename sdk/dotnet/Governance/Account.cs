@@ -38,6 +38,12 @@ namespace Pulumi.AliCloud.Governance
         public Output<string?> AccountNamePrefix { get; private set; } = null!;
 
         /// <summary>
+        /// The tags of the account See `account_tags` below.
+        /// </summary>
+        [Output("accountTags")]
+        public Output<ImmutableArray<Outputs.AccountAccountTag>> AccountTags { get; private set; } = null!;
+
+        /// <summary>
         /// The baseline ID.
         /// 
         /// If it is left blank, the system default baseline is used by default.
@@ -47,8 +53,6 @@ namespace Pulumi.AliCloud.Governance
 
         /// <summary>
         /// The domain name is used to qualify the login name of RAM users and RAM roles.
-        /// 
-        /// Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
         /// </summary>
         [Output("defaultDomainName")]
         public Output<string?> DefaultDomainName { get; private set; } = null!;
@@ -145,6 +149,18 @@ namespace Pulumi.AliCloud.Governance
         [Input("accountNamePrefix")]
         public Input<string>? AccountNamePrefix { get; set; }
 
+        [Input("accountTags")]
+        private InputList<Inputs.AccountAccountTagArgs>? _accountTags;
+
+        /// <summary>
+        /// The tags of the account See `account_tags` below.
+        /// </summary>
+        public InputList<Inputs.AccountAccountTagArgs> AccountTags
+        {
+            get => _accountTags ?? (_accountTags = new InputList<Inputs.AccountAccountTagArgs>());
+            set => _accountTags = value;
+        }
+
         /// <summary>
         /// The baseline ID.
         /// 
@@ -155,8 +171,6 @@ namespace Pulumi.AliCloud.Governance
 
         /// <summary>
         /// The domain name is used to qualify the login name of RAM users and RAM roles.
-        /// 
-        /// Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
         /// </summary>
         [Input("defaultDomainName")]
         public Input<string>? DefaultDomainName { get; set; }
@@ -209,6 +223,18 @@ namespace Pulumi.AliCloud.Governance
         [Input("accountNamePrefix")]
         public Input<string>? AccountNamePrefix { get; set; }
 
+        [Input("accountTags")]
+        private InputList<Inputs.AccountAccountTagGetArgs>? _accountTags;
+
+        /// <summary>
+        /// The tags of the account See `account_tags` below.
+        /// </summary>
+        public InputList<Inputs.AccountAccountTagGetArgs> AccountTags
+        {
+            get => _accountTags ?? (_accountTags = new InputList<Inputs.AccountAccountTagGetArgs>());
+            set => _accountTags = value;
+        }
+
         /// <summary>
         /// The baseline ID.
         /// 
@@ -219,8 +245,6 @@ namespace Pulumi.AliCloud.Governance
 
         /// <summary>
         /// The domain name is used to qualify the login name of RAM users and RAM roles.
-        /// 
-        /// Format: \&lt;AccountAlias&gt;.onaliyun.com where \&lt;AccountAlias&gt; is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
         /// </summary>
         [Input("defaultDomainName")]
         public Input<string>? DefaultDomainName { get; set; }

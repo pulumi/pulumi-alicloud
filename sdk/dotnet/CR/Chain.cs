@@ -25,34 +25,41 @@ namespace Pulumi.AliCloud.CR
     /// using System.Linq;
     /// using Pulumi;
     /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new AliCloud.CR.RegistryEnterpriseInstance("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 100000,
+    ///         Max = 999999,
+    ///     });
+    /// 
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("default", new()
     ///     {
     ///         PaymentType = "Subscription",
     ///         Period = 1,
     ///         RenewPeriod = 0,
     ///         RenewalStatus = "ManualRenewal",
     ///         InstanceType = "Advanced",
-    ///         InstanceName = name,
+    ///         InstanceName = $"{name}-{@default.Result}",
     ///     });
     /// 
     ///     var defaultRegistryEnterpriseNamespace = new AliCloud.CS.RegistryEnterpriseNamespace("default", new()
     ///     {
-    ///         InstanceId = @default.Id,
-    ///         Name = name,
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
+    ///         Name = $"{name}-{@default.Result}",
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
     /// 
     ///     var defaultRegistryEnterpriseRepo = new AliCloud.CS.RegistryEnterpriseRepo("default", new()
     ///     {
-    ///         InstanceId = @default.Id,
+    ///         InstanceId = defaultRegistryEnterpriseInstance.Id,
     ///         Namespace = defaultRegistryEnterpriseNamespace.Name,
-    ///         Name = name,
+    ///         Name = $"{name}-{@default.Result}",
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
     ///         Detail = "this is a public repo",
@@ -285,7 +292,7 @@ namespace Pulumi.AliCloud.CR
     ///                 },
     ///             },
     ///         },
-    ///         ChainName = name,
+    ///         ChainName = $"{name}-{@default.Result}",
     ///         Description = name,
     ///         InstanceId = defaultRegistryEnterpriseNamespace.InstanceId,
     ///         RepoName = defaultRegistryEnterpriseRepo.Name,

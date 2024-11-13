@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Apsara File Storage (NAS) Lifecycle Policy resource.
+// Provides a File Storage (NAS) Lifecycle Policy resource.
 //
-// For information about Apsara File Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
+// For information about File Storage (NAS) Lifecycle Policy and how to use it, see [What is Lifecycle Policy](https://www.alibabacloud.com/help/en/doc-detail/169362.html).
 //
 // > **NOTE:** Available in v1.153.0+.
 //
@@ -61,7 +61,7 @@ import (
 //
 // ## Import
 //
-// Apsara File Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
+// File Storage (NAS) Lifecycle Policy can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:nas/lifecyclePolicy:LifecyclePolicy example <file_system_id>:<lifecycle_policy_name>

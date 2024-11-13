@@ -161,6 +161,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createSampleData;
     }
     /**
+     * Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+     * 
+     */
+    @Export(name="dataShareStatus", refs={String.class}, tree="[0]")
+    private Output<String> dataShareStatus;
+
+    /**
+     * @return Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+     * 
+     */
+    public Output<String> dataShareStatus() {
+        return this.dataShareStatus;
+    }
+    /**
      * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      * 
@@ -499,6 +513,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.privateIpAddress);
     }
     /**
+     * The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+     * 
+     */
+    @Export(name="prodType", refs={String.class}, tree="[0]")
+    private Output<String> prodType;
+
+    /**
+     * @return The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+     * 
+     */
+    public Output<String> prodType() {
+        return this.prodType;
+    }
+    /**
      * The ID of the enterprise resource group to which the instance belongs.
      * 
      */
@@ -545,6 +573,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityIpLists);
     }
     /**
+     * The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+     * 
+     */
+    @Export(name="segDiskPerformanceLevel", refs={String.class}, tree="[0]")
+    private Output<String> segDiskPerformanceLevel;
+
+    /**
+     * @return The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+     * 
+     */
+    public Output<String> segDiskPerformanceLevel() {
+        return this.segDiskPerformanceLevel;
+    }
+    /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      * 
@@ -561,20 +603,32 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.segNodeNum;
     }
     /**
-     * The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     * The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
      * 
      */
     @Export(name="segStorageType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> segStorageType;
+    private Output<String> segStorageType;
 
     /**
-     * @return The seg storage type. Valid values: `cloud_essd`, `cloud_efficiency`.
-     * &gt; **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     * @return The seg storage type. Valid values: `cloud_essd`. **NOTE:** If `db_instance_mode` is set to `StorageElastic`, `seg_storage_type` is required. From version 1.233.1, `seg_storage_type` cannot be modified, or set to `cloud_efficiency`. `seg_storage_type` can only be set to `cloud_essd`.
      * 
      */
-    public Output<Optional<String>> segStorageType() {
-        return Codegen.optional(this.segStorageType);
+    public Output<String> segStorageType() {
+        return this.segStorageType;
+    }
+    /**
+     * The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+     * 
+     */
+    @Export(name="serverlessMode", refs={String.class}, tree="[0]")
+    private Output<String> serverlessMode;
+
+    /**
+     * @return The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverless_mode` is valid only when `db_instance_mode` is set to `Serverless`.
+     * 
+     */
+    public Output<String> serverlessMode() {
+        return this.serverlessMode;
     }
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.

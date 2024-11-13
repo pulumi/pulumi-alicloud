@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about VPN Gateway Vco Route and how to use it, see [What is Vco Route](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvcorouteentry).
  *
- * > **NOTE:** Available in v1.183.0+.
+ * > **NOTE:** Available since v1.183.0+.
  *
  * ## Example Usage
  *
@@ -19,6 +19,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
  * const defaultInstance = new alicloud.cen.Instance("default", {cenInstanceName: name});
  * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {
  *     cenId: defaultInstance.id,
@@ -27,10 +29,10 @@ import * as utilities from "../utilities";
  * });
  * const default = alicloud.cen.getTransitRouterAvailableResources({});
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
- *     name: name,
+ *     customerGatewayName: name,
  *     ipAddress: "42.104.22.210",
  *     asn: "45014",
- *     description: "testAccVpnConnectionDesc",
+ *     description: name,
  * });
  * const defaultGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("default", {
  *     customerGatewayId: defaultCustomerGateway.id,
@@ -73,12 +75,19 @@ import * as utilities from "../utilities";
  *     enableNatTraversal: true,
  *     vpnAttachmentName: name,
  * });
+ * const defaultTransitRouterCidr = new alicloud.cen.TransitRouterCidr("default", {
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     cidr: "192.168.0.0/16",
+ *     transitRouterCidrName: name,
+ *     description: name,
+ *     publishCidrRoute: true,
+ * });
  * const defaultTransitRouterVpnAttachment = new alicloud.cen.TransitRouterVpnAttachment("default", {
  *     autoPublishRouteEnabled: false,
  *     transitRouterAttachmentDescription: name,
  *     transitRouterAttachmentName: name,
  *     cenId: defaultTransitRouter.cenId,
- *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     transitRouterId: defaultTransitRouterCidr.transitRouterId,
  *     vpnId: defaultGatewayVpnAttachment.id,
  *     zones: [{
  *         zoneId: _default.then(_default => _default.resources?.[0]?.masterZones?.[0]),

@@ -115,7 +115,7 @@ class _RepoState:
         """
         Input properties used for looking up and filtering Repo resources.
         :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
-        :param pulumi.Input['RepoDomainListArgs'] domain_list: The repository domain list.
+        :param pulumi.Input['RepoDomainListArgs'] domain_list: (Optional) The repository domain list.
         :param pulumi.Input[str] name: Name of container registry repository.
         :param pulumi.Input[str] namespace: Name of container registry namespace where repository is located.
         :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
@@ -150,7 +150,7 @@ class _RepoState:
     @pulumi.getter(name="domainList")
     def domain_list(self) -> Optional[pulumi.Input['RepoDomainListArgs']]:
         """
-        The repository domain list.
+        (Optional) The repository domain list.
         """
         return pulumi.get(self, "domain_list")
 
@@ -245,8 +245,8 @@ class Repo(pulumi.CustomResource):
             namespace=example.name,
             name=name,
             summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
+            repo_type="PRIVATE",
+            detail="this is a private repo")
         ```
 
         ## Import
@@ -298,8 +298,8 @@ class Repo(pulumi.CustomResource):
             namespace=example.name,
             name=name,
             summary="this is summary of my new repo",
-            repo_type="PUBLIC",
-            detail="this is a public repo")
+            repo_type="PRIVATE",
+            detail="this is a private repo")
         ```
 
         ## Import
@@ -375,7 +375,7 @@ class Repo(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] detail: The repository specific information. MarkDown format is supported, and the length limit is 2000.
-        :param pulumi.Input[Union['RepoDomainListArgs', 'RepoDomainListArgsDict']] domain_list: The repository domain list.
+        :param pulumi.Input[Union['RepoDomainListArgs', 'RepoDomainListArgsDict']] domain_list: (Optional) The repository domain list.
         :param pulumi.Input[str] name: Name of container registry repository.
         :param pulumi.Input[str] namespace: Name of container registry namespace where repository is located.
         :param pulumi.Input[str] repo_type: `PUBLIC` or `PRIVATE`, repo's visibility.
@@ -405,7 +405,7 @@ class Repo(pulumi.CustomResource):
     @pulumi.getter(name="domainList")
     def domain_list(self) -> pulumi.Output['outputs.RepoDomainList']:
         """
-        The repository domain list.
+        (Optional) The repository domain list.
         """
         return pulumi.get(self, "domain_list")
 

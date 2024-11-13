@@ -95,6 +95,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * (Available since v1.233.1) Instance expiration time.
+     */
+    public /*out*/ readonly endDate!: pulumi.Output<string>;
+    /**
      * Whether to force deletion even without backup.
      */
     public readonly forceDeleteWithoutBackup!: pulumi.Output<string | undefined>;
@@ -179,6 +183,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["bindVpcs"] = state ? state.bindVpcs : undefined;
             resourceInputs["caCertificateChainPem"] = state ? state.caCertificateChainPem : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["endDate"] = state ? state.endDate : undefined;
             resourceInputs["forceDeleteWithoutBackup"] = state ? state.forceDeleteWithoutBackup : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["keyNum"] = state ? state.keyNum : undefined;
@@ -225,6 +230,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["zoneIds"] = args ? args.zoneIds : undefined;
             resourceInputs["caCertificateChainPem"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["endDate"] = undefined /*out*/;
             resourceInputs["instanceName"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -249,6 +255,10 @@ export interface InstanceState {
      * The creation time of the resource.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * (Available since v1.233.1) Instance expiration time.
+     */
+    endDate?: pulumi.Input<string>;
     /**
      * Whether to force deletion even without backup.
      */

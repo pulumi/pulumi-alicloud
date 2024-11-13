@@ -72,6 +72,7 @@ import javax.annotation.Nullable;
  *             .meta(HoneypotPresetMetaArgs.builder()
  *                 .portraitOption(true)
  *                 .burp("open")
+ *                 .trojanGit("open")
  *                 .build())
  *             .build());
  * 

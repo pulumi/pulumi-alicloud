@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a DBFS Instance Attachment resource.
+ * Provides a Database File System (DBFS) Instance Attachment resource.
  *
- * For information about DBFS Instance Attachment and how to use it.
+ * For information about Database File System (DBFS) Instance Attachment and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-attachdbfs).
  *
  * > **NOTE:** Available since v1.156.0.
  *
@@ -20,53 +20,50 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf-example";
+ * const name = config.get("name") || "terraform-example";
  * const zoneId = "cn-hangzhou-i";
- * const example = alicloud.ecs.getInstanceTypes({
+ * const default = alicloud.databasefilesystem.getInstances({});
+ * const defaultGetInstanceTypes = alicloud.ecs.getInstanceTypes({
  *     availabilityZone: zoneId,
  *     instanceTypeFamily: "ecs.g7se",
  * });
- * const exampleGetImages = Promise.all([example, example.then(example => example.instanceTypes).length]).then(([example, length]) => alicloud.ecs.getImages({
- *     instanceType: example.instanceTypes[length - 1].id,
- *     nameRegex: "^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
+ * const defaultGetImages = defaultGetInstanceTypes.then(defaultGetInstanceTypes => alicloud.ecs.getImages({
+ *     instanceType: defaultGetInstanceTypes.instanceTypes?.[0]?.id,
+ *     nameRegex: "^aliyun_2_19",
  *     owners: "system",
  * }));
- * const default = alicloud.vpc.getNetworks({
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
- *     vpcId: _default.ids?.[0],
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
  *     zoneId: zoneId,
  * }));
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
  *     name: name,
- *     vpcId: _default.then(_default => _default.ids?.[0]),
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
  * });
  * const defaultInstance = new alicloud.ecs.Instance("default", {
- *     availabilityZone: zoneId,
- *     instanceName: name,
- *     imageId: exampleGetImages.then(exampleGetImages => exampleGetImages.images?.[0]?.id),
- *     instanceType: Promise.all([example, example.then(example => example.instanceTypes).length]).then(([example, length]) => example.instanceTypes[length - 1].id),
- *     securityGroups: [exampleSecurityGroup.id],
- *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *     internetChargeType: "PayByTraffic",
+ *     internetMaxBandwidthOut: 10,
+ *     availabilityZone: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.availabilityZones?.[0]),
+ *     instanceChargeType: "PostPaid",
  *     systemDiskCategory: "cloud_essd",
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     instanceName: name,
  * });
- * const defaultInstance2 = new alicloud.databasefilesystem.Instance("default", {
- *     category: "enterprise",
- *     zoneId: defaultInstance.availabilityZone,
- *     performanceLevel: "PL1",
- *     fsName: name,
- *     size: 100,
- * });
- * const exampleInstanceAttachment = new alicloud.databasefilesystem.InstanceAttachment("example", {
+ * const defaultInstanceAttachment = new alicloud.databasefilesystem.InstanceAttachment("default", {
+ *     instanceId: _default.then(_default => _default.instances?.[0]?.id),
  *     ecsId: defaultInstance.id,
- *     instanceId: defaultInstance2.id,
  * });
  * ```
  *
  * ## Import
  *
- * DBFS Instance Attachment can be imported using the id, e.g.
+ * Database File System (DBFS) Instance Attachment can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
@@ -105,11 +102,11 @@ export class InstanceAttachment extends pulumi.CustomResource {
      */
     public readonly ecsId!: pulumi.Output<string>;
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     * The status of Instance Attachment.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -155,11 +152,11 @@ export interface InstanceAttachmentState {
      */
     ecsId?: pulumi.Input<string>;
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     * The status of Instance Attachment.
      */
     status?: pulumi.Input<string>;
 }
@@ -173,7 +170,7 @@ export interface InstanceAttachmentArgs {
      */
     ecsId: pulumi.Input<string>;
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      */
     instanceId: pulumi.Input<string>;
 }

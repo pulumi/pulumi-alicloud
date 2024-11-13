@@ -139,6 +139,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * (Available since v1.233.1) Instance expiration time.
+     * 
+     */
+    @Export(name="endDate", refs={String.class}, tree="[0]")
+    private Output<String> endDate;
+
+    /**
+     * @return (Available since v1.233.1) Instance expiration time.
+     * 
+     */
+    public Output<String> endDate() {
+        return this.endDate;
+    }
+    /**
      * Whether to force deletion even without backup.
      * 
      */
