@@ -24,7 +24,7 @@ class InstanceAttachmentArgs:
         """
         The set of arguments for constructing a InstanceAttachment resource.
         :param pulumi.Input[str] ecs_id: The ID of the ECS instance.
-        :param pulumi.Input[str] instance_id: The ID of the database file system.
+        :param pulumi.Input[str] instance_id: The ID of the Database File System.
         """
         pulumi.set(__self__, "ecs_id", ecs_id)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -45,7 +45,7 @@ class InstanceAttachmentArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The ID of the database file system.
+        The ID of the Database File System.
         """
         return pulumi.get(self, "instance_id")
 
@@ -63,8 +63,8 @@ class _InstanceAttachmentState:
         """
         Input properties used for looking up and filtering InstanceAttachment resources.
         :param pulumi.Input[str] ecs_id: The ID of the ECS instance.
-        :param pulumi.Input[str] instance_id: The ID of the database file system.
-        :param pulumi.Input[str] status: The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        :param pulumi.Input[str] instance_id: The ID of the Database File System.
+        :param pulumi.Input[str] status: The status of Instance Attachment.
         """
         if ecs_id is not None:
             pulumi.set(__self__, "ecs_id", ecs_id)
@@ -89,7 +89,7 @@ class _InstanceAttachmentState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the database file system.
+        The ID of the Database File System.
         """
         return pulumi.get(self, "instance_id")
 
@@ -101,7 +101,7 @@ class _InstanceAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        The status of Instance Attachment.
         """
         return pulumi.get(self, "status")
 
@@ -119,9 +119,9 @@ class InstanceAttachment(pulumi.CustomResource):
                  instance_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a DBFS Instance Attachment resource.
+        Provides a Database File System (DBFS) Instance Attachment resource.
 
-        For information about DBFS Instance Attachment and how to use it.
+        For information about Database File System (DBFS) Instance Attachment and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-attachdbfs).
 
         > **NOTE:** Available since v1.156.0.
 
@@ -136,41 +136,39 @@ class InstanceAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         zone_id = "cn-hangzhou-i"
-        example = alicloud.ecs.get_instance_types(availability_zone=zone_id,
+        default = alicloud.databasefilesystem.get_instances()
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=zone_id,
             instance_type_family="ecs.g7se")
-        example_get_images = alicloud.ecs.get_images(instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            name_regex="^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
+        default_get_images = alicloud.ecs.get_images(instance_type=default_get_instance_types.instance_types[0].id,
+            name_regex="^aliyun_2_19",
             owners="system")
-        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=zone_id)
-        example_security_group = alicloud.ecs.SecurityGroup("example",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
-            vpc_id=default.ids[0])
+            vpc_id=default_get_networks.ids[0])
         default_instance = alicloud.ecs.Instance("default",
-            availability_zone=zone_id,
-            instance_name=name,
-            image_id=example_get_images.images[0].id,
-            instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            security_groups=[example_security_group.id],
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_essd",
             vswitch_id=default_get_switches.ids[0],
-            system_disk_category="cloud_essd")
-        default_instance2 = alicloud.databasefilesystem.Instance("default",
-            category="enterprise",
-            zone_id=default_instance.availability_zone,
-            performance_level="PL1",
-            fs_name=name,
-            size=100)
-        example_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("example",
-            ecs_id=default_instance.id,
-            instance_id=default_instance2.id)
+            instance_name=name)
+        default_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("default",
+            instance_id=default.instances[0].id,
+            ecs_id=default_instance.id)
         ```
 
         ## Import
 
-        DBFS Instance Attachment can be imported using the id, e.g.
+        Database File System (DBFS) Instance Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
@@ -179,7 +177,7 @@ class InstanceAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ecs_id: The ID of the ECS instance.
-        :param pulumi.Input[str] instance_id: The ID of the database file system.
+        :param pulumi.Input[str] instance_id: The ID of the Database File System.
         """
         ...
     @overload
@@ -188,9 +186,9 @@ class InstanceAttachment(pulumi.CustomResource):
                  args: InstanceAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a DBFS Instance Attachment resource.
+        Provides a Database File System (DBFS) Instance Attachment resource.
 
-        For information about DBFS Instance Attachment and how to use it.
+        For information about Database File System (DBFS) Instance Attachment and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-attachdbfs).
 
         > **NOTE:** Available since v1.156.0.
 
@@ -205,41 +203,39 @@ class InstanceAttachment(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
+            name = "terraform-example"
         zone_id = "cn-hangzhou-i"
-        example = alicloud.ecs.get_instance_types(availability_zone=zone_id,
+        default = alicloud.databasefilesystem.get_instances()
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=zone_id,
             instance_type_family="ecs.g7se")
-        example_get_images = alicloud.ecs.get_images(instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            name_regex="^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
+        default_get_images = alicloud.ecs.get_images(instance_type=default_get_instance_types.instance_types[0].id,
+            name_regex="^aliyun_2_19",
             owners="system")
-        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=zone_id)
-        example_security_group = alicloud.ecs.SecurityGroup("example",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
-            vpc_id=default.ids[0])
+            vpc_id=default_get_networks.ids[0])
         default_instance = alicloud.ecs.Instance("default",
-            availability_zone=zone_id,
-            instance_name=name,
-            image_id=example_get_images.images[0].id,
-            instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            security_groups=[example_security_group.id],
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default_get_instance_types.instance_types[0].availability_zones[0],
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_essd",
             vswitch_id=default_get_switches.ids[0],
-            system_disk_category="cloud_essd")
-        default_instance2 = alicloud.databasefilesystem.Instance("default",
-            category="enterprise",
-            zone_id=default_instance.availability_zone,
-            performance_level="PL1",
-            fs_name=name,
-            size=100)
-        example_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("example",
-            ecs_id=default_instance.id,
-            instance_id=default_instance2.id)
+            instance_name=name)
+        default_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("default",
+            instance_id=default.instances[0].id,
+            ecs_id=default_instance.id)
         ```
 
         ## Import
 
-        DBFS Instance Attachment can be imported using the id, e.g.
+        Database File System (DBFS) Instance Attachment can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example <instance_id>:<ecs_id>
@@ -299,8 +295,8 @@ class InstanceAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ecs_id: The ID of the ECS instance.
-        :param pulumi.Input[str] instance_id: The ID of the database file system.
-        :param pulumi.Input[str] status: The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        :param pulumi.Input[str] instance_id: The ID of the Database File System.
+        :param pulumi.Input[str] status: The status of Instance Attachment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -323,7 +319,7 @@ class InstanceAttachment(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The ID of the database file system.
+        The ID of the Database File System.
         """
         return pulumi.get(self, "instance_id")
 
@@ -331,7 +327,7 @@ class InstanceAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        The status of Instance Attachment.
         """
         return pulumi.get(self, "status")
 

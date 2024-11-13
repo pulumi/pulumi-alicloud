@@ -18,25 +18,30 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 100000,
+ *     max: 999999,
+ * });
  * const example = new alicloud.cr.RegistryEnterpriseInstance("example", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
  *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: name,
+ *     instanceName: `${name}-${_default.result}`,
  * });
  * const exampleChartNamespace = new alicloud.cr.ChartNamespace("example", {
  *     instanceId: example.id,
- *     namespaceName: name,
+ *     namespaceName: `${name}-${_default.result}`,
  * });
  * const exampleChartRepository = new alicloud.cr.ChartRepository("example", {
  *     repoNamespaceName: exampleChartNamespace.namespaceName,
  *     instanceId: exampleChartNamespace.instanceId,
- *     repoName: name,
+ *     repoName: `${name}-${_default.result}`,
  * });
  * ```
  *

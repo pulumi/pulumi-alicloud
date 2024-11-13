@@ -215,6 +215,7 @@ class HoneypotPreset(pulumi.CustomResource):
             meta={
                 "portrait_option": True,
                 "burp": "open",
+                "trojan_git": "open",
             })
         ```
 
@@ -270,6 +271,7 @@ class HoneypotPreset(pulumi.CustomResource):
             meta={
                 "portrait_option": True,
                 "burp": "open",
+                "trojan_git": "open",
             })
         ```
 

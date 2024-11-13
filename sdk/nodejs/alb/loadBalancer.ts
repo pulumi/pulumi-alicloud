@@ -68,7 +68,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
      */
-    public readonly bandwidthPackageId!: pulumi.Output<string | undefined>;
+    public readonly bandwidthPackageId!: pulumi.Output<string>;
     /**
      * The time when the resource was created.
      */

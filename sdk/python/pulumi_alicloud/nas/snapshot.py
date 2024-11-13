@@ -190,9 +190,9 @@ class Snapshot(pulumi.CustomResource):
                  snapshot_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Apsara File Storage (NAS) Snapshot resource.
+        Provides a File Storage (NAS) Snapshot resource.
 
-        For information about Apsara File Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
+        For information about File Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
 
         > **NOTE:** Available in v1.152.0+.
 
@@ -226,7 +226,7 @@ class Snapshot(pulumi.CustomResource):
 
         ## Import
 
-        Apsara File Storage (NAS) Snapshot can be imported using the id, e.g.
+        File Storage (NAS) Snapshot can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/snapshot:Snapshot example <id>
@@ -247,9 +247,9 @@ class Snapshot(pulumi.CustomResource):
                  args: SnapshotArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Apsara File Storage (NAS) Snapshot resource.
+        Provides a File Storage (NAS) Snapshot resource.
 
-        For information about Apsara File Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
+        For information about File Storage (NAS) Snapshot and how to use it, see [What is Snapshot](https://www.alibabacloud.com/help/en/doc-detail/126549.html).
 
         > **NOTE:** Available in v1.152.0+.
 
@@ -283,7 +283,7 @@ class Snapshot(pulumi.CustomResource):
 
         ## Import
 
-        Apsara File Storage (NAS) Snapshot can be imported using the id, e.g.
+        File Storage (NAS) Snapshot can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:nas/snapshot:Snapshot example <id>

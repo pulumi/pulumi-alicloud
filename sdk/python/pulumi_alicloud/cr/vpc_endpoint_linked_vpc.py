@@ -237,17 +237,21 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default_integer = random.index.Integer("default",
+            min=100000,
+            max=999999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
+            vpc_name=f"{name}-{default_integer['result']}",
             cidr_block="10.4.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
+            vswitch_name=f"{name}-{default_integer['result']}",
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
@@ -257,7 +261,7 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default_integer['result']}")
         default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("default",
             instance_id=default_registry_enterprise_instance.id,
             vpc_id=default_network.id,
@@ -304,17 +308,21 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default_integer = random.index.Integer("default",
+            min=100000,
+            max=999999)
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_network = alicloud.vpc.Network("default",
-            vpc_name=name,
+            vpc_name=f"{name}-{default_integer['result']}",
             cidr_block="10.4.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
-            vswitch_name=name,
+            vswitch_name=f"{name}-{default_integer['result']}",
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
@@ -324,7 +332,7 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default_integer['result']}")
         default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("default",
             instance_id=default_registry_enterprise_instance.id,
             vpc_id=default_network.id,

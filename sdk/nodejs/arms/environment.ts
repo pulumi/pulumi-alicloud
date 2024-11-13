@@ -69,7 +69,7 @@ export class Environment extends pulumi.CustomResource {
     public readonly environmentName!: pulumi.Output<string | undefined>;
     /**
      * Subtype of environment:
-     * - Type of CS: ACK is currently supported.
+     * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
      * - Type of ECS: currently supports ECS.
      * - Type of Cloud: currently supports Cloud.
      */
@@ -167,7 +167,7 @@ export interface EnvironmentState {
     environmentName?: pulumi.Input<string>;
     /**
      * Subtype of environment:
-     * - Type of CS: ACK is currently supported.
+     * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
      * - Type of ECS: currently supports ECS.
      * - Type of Cloud: currently supports Cloud.
      */
@@ -215,7 +215,7 @@ export interface EnvironmentArgs {
     environmentName?: pulumi.Input<string>;
     /**
      * Subtype of environment:
-     * - Type of CS: ACK is currently supported.
+     * - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
      * - Type of ECS: currently supports ECS.
      * - Type of Cloud: currently supports Cloud.
      */

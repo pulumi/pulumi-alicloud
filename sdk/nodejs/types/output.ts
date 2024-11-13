@@ -31913,6 +31913,17 @@ export namespace ga {
 }
 
 export namespace governance {
+    export interface AccountAccountTag {
+        /**
+         * The key of the tags
+         */
+        tagKey?: string;
+        /**
+         * The value of the tags
+         */
+        tagValue?: string;
+    }
+
     export interface BaselineBaselineItem {
         /**
          * Baseline item configuration. The format is a JSON string.

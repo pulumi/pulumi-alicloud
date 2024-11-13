@@ -19,14 +19,14 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
     public static final TransitRouterVbrAttachmentArgs Empty = new TransitRouterVbrAttachmentArgs();
 
     /**
-     * Auto publish route enabled.Default value is `false`.
+     * Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
      * 
      */
     @Import(name="autoPublishRouteEnabled")
     private @Nullable Output<Boolean> autoPublishRouteEnabled;
 
     /**
-     * @return Auto publish route enabled.Default value is `false`.
+     * @return Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
      * 
      */
     public Optional<Output<Boolean>> autoPublishRouteEnabled() {
@@ -49,14 +49,14 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The dry run.
+     * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -64,18 +64,14 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-     * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-     * 
-     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * @return The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -83,31 +79,51 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Whether to enabled route table association. The system default value is `true`.
+     * Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * 
+     * @deprecated
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      * 
      */
+    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
     @Import(name="routeTableAssociationEnabled")
     private @Nullable Output<Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Whether to enabled route table association. The system default value is `true`.
+     * @return Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * 
+     * @deprecated
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
      * 
      */
+    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
     public Optional<Output<Boolean>> routeTableAssociationEnabled() {
         return Optional.ofNullable(this.routeTableAssociationEnabled);
     }
 
     /**
-     * Whether to enabled route table propagation. The system default value is `true`.
+     * Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * 
+     * @deprecated
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
      */
+    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
     @Import(name="routeTablePropagationEnabled")
     private @Nullable Output<Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Whether to enabled route table propagation. The system default value is `true`.
+     * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * 
+     * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+     * 
+     * @deprecated
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
      * 
      */
+    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
     public Optional<Output<Boolean>> routeTablePropagationEnabled() {
         return Optional.ofNullable(this.routeTablePropagationEnabled);
     }
@@ -188,14 +204,14 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The owner id of the transit router vbr attachment.
+     * The owner id of the vbr.
      * 
      */
     @Import(name="vbrOwnerId")
     private @Nullable Output<String> vbrOwnerId;
 
     /**
-     * @return The owner id of the transit router vbr attachment.
+     * @return The owner id of the vbr.
      * 
      */
     public Optional<Output<String>> vbrOwnerId() {
@@ -238,7 +254,7 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param autoPublishRouteEnabled Auto publish route enabled.Default value is `false`.
+         * @param autoPublishRouteEnabled Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -249,7 +265,7 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param autoPublishRouteEnabled Auto publish route enabled.Default value is `false`.
+         * @param autoPublishRouteEnabled Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
          * 
          * @return builder
          * 
@@ -280,7 +296,7 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -291,7 +307,7 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -301,9 +317,7 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param resourceType The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-         * 
-         * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+         * @param resourceType The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
          * 
          * @return builder
          * 
@@ -314,9 +328,7 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param resourceType The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-         * 
-         * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
+         * @param resourceType The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
          * 
          * @return builder
          * 
@@ -326,43 +338,63 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to enabled route table association. The system default value is `true`.
+         * @param routeTableAssociationEnabled Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+         * 
          */
+        @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
         public Builder routeTableAssociationEnabled(@Nullable Output<Boolean> routeTableAssociationEnabled) {
             $.routeTableAssociationEnabled = routeTableAssociationEnabled;
             return this;
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to enabled route table association. The system default value is `true`.
+         * @param routeTableAssociationEnabled Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead.
+         * 
          */
+        @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead. */
         public Builder routeTableAssociationEnabled(Boolean routeTableAssociationEnabled) {
             return routeTableAssociationEnabled(Output.of(routeTableAssociationEnabled));
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to enabled route table propagation. The system default value is `true`.
+         * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+         * 
+         * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+         * 
          */
+        @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
         public Builder routeTablePropagationEnabled(@Nullable Output<Boolean> routeTablePropagationEnabled) {
             $.routeTablePropagationEnabled = routeTablePropagationEnabled;
             return this;
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to enabled route table propagation. The system default value is `true`.
+         * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+         * 
+         * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead.
+         * 
          */
+        @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead. */
         public Builder routeTablePropagationEnabled(Boolean routeTablePropagationEnabled) {
             return routeTablePropagationEnabled(Output.of(routeTablePropagationEnabled));
         }
@@ -473,7 +505,7 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vbrOwnerId The owner id of the transit router vbr attachment.
+         * @param vbrOwnerId The owner id of the vbr.
          * 
          * @return builder
          * 
@@ -484,7 +516,7 @@ public final class TransitRouterVbrAttachmentArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param vbrOwnerId The owner id of the transit router vbr attachment.
+         * @param vbrOwnerId The owner id of the vbr.
          * 
          * @return builder
          * 

@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> HttpEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        /// **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         /// </summary>
         [Output("httpPutResponseHopLimit")]
         public Output<int> HttpPutResponseHopLimit { get; private set; } = null!;
@@ -840,7 +840,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
-        /// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        /// **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         /// </summary>
         [Input("httpPutResponseHopLimit")]
         public Input<int>? HttpPutResponseHopLimit { get; set; }
@@ -1414,7 +1414,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HttpEndpoint { get; set; }
 
         /// <summary>
-        /// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        /// **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         /// </summary>
         [Input("httpPutResponseHopLimit")]
         public Input<int>? HttpPutResponseHopLimit { get; set; }

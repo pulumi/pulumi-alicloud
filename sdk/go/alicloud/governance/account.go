@@ -30,13 +30,13 @@ type Account struct {
 	// - This parameter is required if you are creating a new resource account.
 	// - If the registration application is applied to an existing account, this parameter does not need to be filled in.
 	AccountNamePrefix pulumi.StringPtrOutput `pulumi:"accountNamePrefix"`
+	// The tags of the account See `accountTags` below.
+	AccountTags AccountAccountTagArrayOutput `pulumi:"accountTags"`
 	// The baseline ID.
 	//
 	// If it is left blank, the system default baseline is used by default.
 	BaselineId pulumi.StringOutput `pulumi:"baselineId"`
 	// The domain name is used to qualify the login name of RAM users and RAM roles.
-	//
-	// Format: \<AccountAlias>.onaliyun.com where \<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
 	DefaultDomainName pulumi.StringPtrOutput `pulumi:"defaultDomainName"`
 	// The account display name.
 	// - This parameter is required if you are creating a new resource account.
@@ -95,13 +95,13 @@ type accountState struct {
 	// - This parameter is required if you are creating a new resource account.
 	// - If the registration application is applied to an existing account, this parameter does not need to be filled in.
 	AccountNamePrefix *string `pulumi:"accountNamePrefix"`
+	// The tags of the account See `accountTags` below.
+	AccountTags []AccountAccountTag `pulumi:"accountTags"`
 	// The baseline ID.
 	//
 	// If it is left blank, the system default baseline is used by default.
 	BaselineId *string `pulumi:"baselineId"`
 	// The domain name is used to qualify the login name of RAM users and RAM roles.
-	//
-	// Format: \<AccountAlias>.onaliyun.com where \<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
 	DefaultDomainName *string `pulumi:"defaultDomainName"`
 	// The account display name.
 	// - This parameter is required if you are creating a new resource account.
@@ -128,13 +128,13 @@ type AccountState struct {
 	// - This parameter is required if you are creating a new resource account.
 	// - If the registration application is applied to an existing account, this parameter does not need to be filled in.
 	AccountNamePrefix pulumi.StringPtrInput
+	// The tags of the account See `accountTags` below.
+	AccountTags AccountAccountTagArrayInput
 	// The baseline ID.
 	//
 	// If it is left blank, the system default baseline is used by default.
 	BaselineId pulumi.StringPtrInput
 	// The domain name is used to qualify the login name of RAM users and RAM roles.
-	//
-	// Format: \<AccountAlias>.onaliyun.com where \<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
 	DefaultDomainName pulumi.StringPtrInput
 	// The account display name.
 	// - This parameter is required if you are creating a new resource account.
@@ -165,13 +165,13 @@ type accountArgs struct {
 	// - This parameter is required if you are creating a new resource account.
 	// - If the registration application is applied to an existing account, this parameter does not need to be filled in.
 	AccountNamePrefix *string `pulumi:"accountNamePrefix"`
+	// The tags of the account See `accountTags` below.
+	AccountTags []AccountAccountTag `pulumi:"accountTags"`
 	// The baseline ID.
 	//
 	// If it is left blank, the system default baseline is used by default.
 	BaselineId string `pulumi:"baselineId"`
 	// The domain name is used to qualify the login name of RAM users and RAM roles.
-	//
-	// Format: \<AccountAlias>.onaliyun.com where \<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
 	DefaultDomainName *string `pulumi:"defaultDomainName"`
 	// The account display name.
 	// - This parameter is required if you are creating a new resource account.
@@ -197,13 +197,13 @@ type AccountArgs struct {
 	// - This parameter is required if you are creating a new resource account.
 	// - If the registration application is applied to an existing account, this parameter does not need to be filled in.
 	AccountNamePrefix pulumi.StringPtrInput
+	// The tags of the account See `accountTags` below.
+	AccountTags AccountAccountTagArrayInput
 	// The baseline ID.
 	//
 	// If it is left blank, the system default baseline is used by default.
 	BaselineId pulumi.StringInput
 	// The domain name is used to qualify the login name of RAM users and RAM roles.
-	//
-	// Format: \<AccountAlias>.onaliyun.com where \<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
 	DefaultDomainName pulumi.StringPtrInput
 	// The account display name.
 	// - This parameter is required if you are creating a new resource account.
@@ -320,6 +320,11 @@ func (o AccountOutput) AccountNamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.AccountNamePrefix }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the account See `accountTags` below.
+func (o AccountOutput) AccountTags() AccountAccountTagArrayOutput {
+	return o.ApplyT(func(v *Account) AccountAccountTagArrayOutput { return v.AccountTags }).(AccountAccountTagArrayOutput)
+}
+
 // The baseline ID.
 //
 // If it is left blank, the system default baseline is used by default.
@@ -328,8 +333,6 @@ func (o AccountOutput) BaselineId() pulumi.StringOutput {
 }
 
 // The domain name is used to qualify the login name of RAM users and RAM roles.
-//
-// Format: \<AccountAlias>.onaliyun.com where \<AccountAlias> is the account alias, and the default value is the Aliyun account ID. The default domain name must end with the .onaliyun.com suffix. The maximum length of the default domain name (including suffix) is 64 characters. It can contain English letters, numbers, English periods (.) , dashes (-) and underscores (_).
 func (o AccountOutput) DefaultDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.DefaultDomainName }).(pulumi.StringPtrOutput)
 }

@@ -18,18 +18,23 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 100000,
+ *     max: 999999,
+ * });
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultNetwork = new alicloud.vpc.Network("default", {
- *     vpcName: name,
+ *     vpcName: `${name}-${defaultInteger.result}`,
  *     cidrBlock: "10.4.0.0/16",
  * });
  * const defaultSwitch = new alicloud.vpc.Switch("default", {
- *     vswitchName: name,
+ *     vswitchName: `${name}-${defaultInteger.result}`,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
@@ -40,7 +45,7 @@ import * as utilities from "../utilities";
  *     renewPeriod: 0,
  *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: name,
+ *     instanceName: `${name}-${defaultInteger.result}`,
  * });
  * const defaultVpcEndpointLinkedVpc = new alicloud.cr.VpcEndpointLinkedVpc("default", {
  *     instanceId: defaultRegistryEnterpriseInstance.id,

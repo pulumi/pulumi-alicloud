@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> InternetChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         /// </summary>
         [Output("internetMaxBandwidthIn")]
         public Output<int?> InternetMaxBandwidthIn { get; private set; } = null!;
@@ -642,7 +642,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         /// </summary>
         [Input("internetMaxBandwidthIn")]
         public Input<int>? InternetMaxBandwidthIn { get; set; }
@@ -1027,7 +1027,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? InternetChargeType { get; set; }
 
         /// <summary>
-        /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        /// Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         /// </summary>
         [Input("internetMaxBandwidthIn")]
         public Input<int>? InternetMaxBandwidthIn { get; set; }

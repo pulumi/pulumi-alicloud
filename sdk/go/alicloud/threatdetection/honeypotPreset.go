@@ -63,6 +63,7 @@ import (
 //				Meta: &threatdetection.HoneypotPresetMetaArgs{
 //					PortraitOption: pulumi.Bool(true),
 //					Burp:           pulumi.String("open"),
+//					TrojanGit:      pulumi.String("open"),
 //				},
 //			})
 //			if err != nil {

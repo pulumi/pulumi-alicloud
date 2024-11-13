@@ -30,14 +30,14 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      * 
      */
     @Import(name="instanceId", required=true)
     private Output<String> instanceId;
 
     /**
-     * @return The ID of the database file system.
+     * @return The ID of the Database File System.
      * 
      */
     public Output<String> instanceId() {
@@ -91,7 +91,7 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceId The ID of the database file system.
+         * @param instanceId The ID of the Database File System.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceId The ID of the database file system.
+         * @param instanceId The ID of the Database File System.
          * 
          * @return builder
          * 

@@ -32,8 +32,8 @@ import * as utilities from "../utilities";
  *     namespace: example.name,
  *     name: name,
  *     summary: "this is summary of my new repo",
- *     repoType: "PUBLIC",
- *     detail: "this is a public repo",
+ *     repoType: "PRIVATE",
+ *     detail: "this is a private repo",
  * });
  * ```
  *
@@ -78,7 +78,7 @@ export class Repo extends pulumi.CustomResource {
      */
     public readonly detail!: pulumi.Output<string | undefined>;
     /**
-     * The repository domain list.
+     * (Optional) The repository domain list.
      */
     public /*out*/ readonly domainList!: pulumi.Output<outputs.cr.RepoDomainList>;
     /**
@@ -149,7 +149,7 @@ export interface RepoState {
      */
     detail?: pulumi.Input<string>;
     /**
-     * The repository domain list.
+     * (Optional) The repository domain list.
      */
     domainList?: pulumi.Input<inputs.cr.RepoDomainList>;
     /**

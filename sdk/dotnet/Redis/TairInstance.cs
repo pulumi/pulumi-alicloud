@@ -22,6 +22,12 @@ namespace Pulumi.AliCloud.Redis
     public partial class TairInstance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The architecture of the instance.  cluster, standard, rwsplit.
+        /// </summary>
+        [Output("architectureType")]
+        public Output<string> ArchitectureType { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         /// </summary>
         [Output("autoRenew")]
@@ -34,10 +40,24 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the backup set of the cluster.
+        /// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+        /// 
+        /// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+        /// </summary>
+        [Output("backupId")]
+        public Output<string?> BackupId { get; private set; } = null!;
+
+        /// <summary>
+        /// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
         /// </summary>
         [Output("clusterBackupId")]
         public Output<string?> ClusterBackupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The internal endpoint of the instance.
+        /// </summary>
+        [Output("connectionDomain")]
+        public Output<string> ConnectionDomain { get; private set; } = null!;
 
         /// <summary>
         /// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -52,7 +72,15 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> EffectiveTime { get; private set; } = null!;
 
         /// <summary>
-        /// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+        /// Database version. Default value: 1.0.
+        /// 
+        /// Rules for transferring parameters of different tair product types:
+        /// 
+        /// tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+        /// 
+        /// tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+        /// 
+        /// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         /// </summary>
         [Output("engineVersion")]
         public Output<string> EngineVersion { get; private set; } = null!;
@@ -62,6 +90,18 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Output("forceUpgrade")]
         public Output<bool?> ForceUpgrade { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+        /// 
+        /// 1. Enter true if you want the new instance to be the first child instance.
+        /// 
+        /// 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+        /// 
+        /// 3. Not as a distributed instance, you do not need to enter any values.
+        /// </summary>
+        [Output("globalInstanceId")]
+        public Output<string?> GlobalInstanceId { get; private set; } = null!;
 
         /// <summary>
         /// The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
@@ -76,10 +116,70 @@ namespace Pulumi.AliCloud.Redis
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// Instance intranet bandwidth
+        /// </summary>
+        [Output("intranetBandwidth")]
+        public Output<int> IntranetBandwidth { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of connections supported by the instance.
+        /// </summary>
+        [Output("maxConnections")]
+        public Output<int> MaxConnections { get; private set; } = null!;
+
+        /// <summary>
+        /// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+        /// </summary>
+        [Output("modifyMode")]
+        public Output<string?> ModifyMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The network type of the instance.  CLASSIC(classic network), VPC.
+        /// </summary>
+        [Output("networkType")]
+        public Output<string> NetworkType { get; private set; } = null!;
+
+        /// <summary>
+        /// Node type, value:
+        /// 
+        /// MASTER_SLAVE: high availability (dual copy)
+        /// 
+        /// STAND_ALONE: single copy
+        /// 
+        /// double: double copy
+        /// 
+        /// single: single copy
+        /// 
+        /// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
+
+        /// <summary>
+        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+        /// </summary>
+        [Output("paramNoLooseSentinelEnabled")]
+        public Output<string> ParamNoLooseSentinelEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The value is semisync or async. The default value is async.
+        /// 
+        /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+        /// </summary>
+        [Output("paramReplMode")]
+        public Output<string> ParamReplMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+        /// </summary>
+        [Output("paramSemisyncReplTimeout")]
+        public Output<string> ParamSemisyncReplTimeout { get; private set; } = null!;
+
+        /// <summary>
+        /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+        /// </summary>
+        [Output("paramSentinelCompatEnable")]
+        public Output<string?> ParamSentinelCompatEnable { get; private set; } = null!;
 
         /// <summary>
         /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =
@@ -88,7 +188,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
@@ -106,10 +206,20 @@ namespace Pulumi.AliCloud.Redis
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+        /// 
+        /// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+        /// 
+        /// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         /// </summary>
         [Output("readOnlyCount")]
         public Output<int?> ReadOnlyCount { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+        /// </summary>
+        [Output("recoverConfigMode")]
+        public Output<string?> RecoverConfigMode { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group to which the instance belongs.
@@ -124,10 +234,22 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> SecondaryZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// Security group ID
+        /// Security group id
         /// </summary>
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+        /// </summary>
+        [Output("securityIpGroupName")]
+        public Output<string> SecurityIpGroupName { get; private set; } = null!;
+
+        /// <summary>
+        /// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+        /// </summary>
+        [Output("securityIps")]
+        public Output<string> SecurityIps { get; private set; } = null!;
 
         /// <summary>
         /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
@@ -136,13 +258,21 @@ namespace Pulumi.AliCloud.Redis
         public Output<int> ShardCount { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+        /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+        /// 
+        /// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
         /// </summary>
         [Output("slaveReadOnlyCount")]
         public Output<int?> SlaveReadOnlyCount { get; private set; } = null!;
 
         /// <summary>
-        /// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+        /// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+        /// </summary>
+        [Output("srcDbInstanceId")]
+        public Output<string?> SrcDbInstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
         /// </summary>
         [Output("sslEnabled")]
         public Output<string> SslEnabled { get; private set; } = null!;
@@ -154,13 +284,19 @@ namespace Pulumi.AliCloud.Redis
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+        /// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+        /// 
+        /// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+        /// 
+        /// If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+        /// 
+        /// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
         /// </summary>
         [Output("storagePerformanceLevel")]
         public Output<string?> StoragePerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         /// </summary>
         [Output("storageSizeGb")]
         public Output<int> StorageSizeGb { get; private set; } = null!;
@@ -172,10 +308,22 @@ namespace Pulumi.AliCloud.Redis
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the resource.
+        /// </summary>
+        [Output("tairInstanceId")]
+        public Output<string> TairInstanceId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the resource.
         /// </summary>
         [Output("tairInstanceName")]
         public Output<string?> TairInstanceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+        /// </summary>
+        [Output("vpcAuthMode")]
+        public Output<string> VpcAuthMode { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC).
@@ -258,7 +406,15 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The ID of the backup set of the cluster.
+        /// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+        /// 
+        /// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+        /// </summary>
+        [Input("backupId")]
+        public Input<string>? BackupId { get; set; }
+
+        /// <summary>
+        /// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
         /// </summary>
         [Input("clusterBackupId")]
         public Input<string>? ClusterBackupId { get; set; }
@@ -270,7 +426,15 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
-        /// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+        /// Database version. Default value: 1.0.
+        /// 
+        /// Rules for transferring parameters of different tair product types:
+        /// 
+        /// tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+        /// 
+        /// tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+        /// 
+        /// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -280,6 +444,18 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
+
+        /// <summary>
+        /// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+        /// 
+        /// 1. Enter true if you want the new instance to be the first child instance.
+        /// 
+        /// 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+        /// 
+        /// 3. Not as a distributed instance, you do not need to enter any values.
+        /// </summary>
+        [Input("globalInstanceId")]
+        public Input<string>? GlobalInstanceId { get; set; }
 
         /// <summary>
         /// The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
@@ -294,10 +470,58 @@ namespace Pulumi.AliCloud.Redis
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// Instance intranet bandwidth
+        /// </summary>
+        [Input("intranetBandwidth")]
+        public Input<int>? IntranetBandwidth { get; set; }
+
+        /// <summary>
+        /// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+        /// </summary>
+        [Input("modifyMode")]
+        public Input<string>? ModifyMode { get; set; }
+
+        /// <summary>
+        /// Node type, value:
+        /// 
+        /// MASTER_SLAVE: high availability (dual copy)
+        /// 
+        /// STAND_ALONE: single copy
+        /// 
+        /// double: double copy
+        /// 
+        /// single: single copy
+        /// 
+        /// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
+
+        /// <summary>
+        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+        /// </summary>
+        [Input("paramNoLooseSentinelEnabled")]
+        public Input<string>? ParamNoLooseSentinelEnabled { get; set; }
+
+        /// <summary>
+        /// The value is semisync or async. The default value is async.
+        /// 
+        /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+        /// </summary>
+        [Input("paramReplMode")]
+        public Input<string>? ParamReplMode { get; set; }
+
+        /// <summary>
+        /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+        /// </summary>
+        [Input("paramSemisyncReplTimeout")]
+        public Input<string>? ParamSemisyncReplTimeout { get; set; }
+
+        /// <summary>
+        /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+        /// </summary>
+        [Input("paramSentinelCompatEnable")]
+        public Input<string>? ParamSentinelCompatEnable { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
@@ -316,7 +540,7 @@ namespace Pulumi.AliCloud.Redis
         }
 
         /// <summary>
-        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -334,10 +558,20 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+        /// 
+        /// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+        /// 
+        /// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         /// </summary>
         [Input("readOnlyCount")]
         public Input<int>? ReadOnlyCount { get; set; }
+
+        /// <summary>
+        /// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+        /// </summary>
+        [Input("recoverConfigMode")]
+        public Input<string>? RecoverConfigMode { get; set; }
 
         /// <summary>
         /// The ID of the resource group to which the instance belongs.
@@ -352,10 +586,22 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
-        /// Security group ID
+        /// Security group id
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+        /// </summary>
+        [Input("securityIpGroupName")]
+        public Input<string>? SecurityIpGroupName { get; set; }
+
+        /// <summary>
+        /// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+        /// </summary>
+        [Input("securityIps")]
+        public Input<string>? SecurityIps { get; set; }
 
         /// <summary>
         /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
@@ -364,25 +610,39 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? ShardCount { get; set; }
 
         /// <summary>
-        /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+        /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+        /// 
+        /// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
         /// </summary>
         [Input("slaveReadOnlyCount")]
         public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
-        /// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+        /// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+        /// </summary>
+        [Input("srcDbInstanceId")]
+        public Input<string>? SrcDbInstanceId { get; set; }
+
+        /// <summary>
+        /// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
         /// </summary>
         [Input("sslEnabled")]
         public Input<string>? SslEnabled { get; set; }
 
         /// <summary>
-        /// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+        /// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+        /// 
+        /// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+        /// 
+        /// If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+        /// 
+        /// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
         /// </summary>
         [Input("storagePerformanceLevel")]
         public Input<string>? StoragePerformanceLevel { get; set; }
 
         /// <summary>
-        /// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         /// </summary>
         [Input("storageSizeGb")]
         public Input<int>? StorageSizeGb { get; set; }
@@ -404,6 +664,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("tairInstanceName")]
         public Input<string>? TairInstanceName { get; set; }
+
+        /// <summary>
+        /// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+        /// </summary>
+        [Input("vpcAuthMode")]
+        public Input<string>? VpcAuthMode { get; set; }
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC).
@@ -432,6 +698,12 @@ namespace Pulumi.AliCloud.Redis
     public sealed class TairInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The architecture of the instance.  cluster, standard, rwsplit.
+        /// </summary>
+        [Input("architectureType")]
+        public Input<string>? ArchitectureType { get; set; }
+
+        /// <summary>
         /// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
         /// </summary>
         [Input("autoRenew")]
@@ -444,10 +716,24 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The ID of the backup set of the cluster.
+        /// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+        /// 
+        /// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+        /// </summary>
+        [Input("backupId")]
+        public Input<string>? BackupId { get; set; }
+
+        /// <summary>
+        /// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
         /// </summary>
         [Input("clusterBackupId")]
         public Input<string>? ClusterBackupId { get; set; }
+
+        /// <summary>
+        /// The internal endpoint of the instance.
+        /// </summary>
+        [Input("connectionDomain")]
+        public Input<string>? ConnectionDomain { get; set; }
 
         /// <summary>
         /// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -462,7 +748,15 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? EffectiveTime { get; set; }
 
         /// <summary>
-        /// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+        /// Database version. Default value: 1.0.
+        /// 
+        /// Rules for transferring parameters of different tair product types:
+        /// 
+        /// tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+        /// 
+        /// tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+        /// 
+        /// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
         /// </summary>
         [Input("engineVersion")]
         public Input<string>? EngineVersion { get; set; }
@@ -472,6 +766,18 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("forceUpgrade")]
         public Input<bool>? ForceUpgrade { get; set; }
+
+        /// <summary>
+        /// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+        /// 
+        /// 1. Enter true if you want the new instance to be the first child instance.
+        /// 
+        /// 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+        /// 
+        /// 3. Not as a distributed instance, you do not need to enter any values.
+        /// </summary>
+        [Input("globalInstanceId")]
+        public Input<string>? GlobalInstanceId { get; set; }
 
         /// <summary>
         /// The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
@@ -486,10 +792,70 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// Instance intranet bandwidth
+        /// </summary>
+        [Input("intranetBandwidth")]
+        public Input<int>? IntranetBandwidth { get; set; }
+
+        /// <summary>
+        /// The maximum number of connections supported by the instance.
+        /// </summary>
+        [Input("maxConnections")]
+        public Input<int>? MaxConnections { get; set; }
+
+        /// <summary>
+        /// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+        /// </summary>
+        [Input("modifyMode")]
+        public Input<string>? ModifyMode { get; set; }
+
+        /// <summary>
+        /// The network type of the instance.  CLASSIC(classic network), VPC.
+        /// </summary>
+        [Input("networkType")]
+        public Input<string>? NetworkType { get; set; }
+
+        /// <summary>
+        /// Node type, value:
+        /// 
+        /// MASTER_SLAVE: high availability (dual copy)
+        /// 
+        /// STAND_ALONE: single copy
+        /// 
+        /// double: double copy
+        /// 
+        /// single: single copy
+        /// 
+        /// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
+
+        /// <summary>
+        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+        /// </summary>
+        [Input("paramNoLooseSentinelEnabled")]
+        public Input<string>? ParamNoLooseSentinelEnabled { get; set; }
+
+        /// <summary>
+        /// The value is semisync or async. The default value is async.
+        /// 
+        /// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+        /// </summary>
+        [Input("paramReplMode")]
+        public Input<string>? ParamReplMode { get; set; }
+
+        /// <summary>
+        /// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+        /// </summary>
+        [Input("paramSemisyncReplTimeout")]
+        public Input<string>? ParamSemisyncReplTimeout { get; set; }
+
+        /// <summary>
+        /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+        /// </summary>
+        [Input("paramSentinelCompatEnable")]
+        public Input<string>? ParamSentinelCompatEnable { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
@@ -508,7 +874,7 @@ namespace Pulumi.AliCloud.Redis
         }
 
         /// <summary>
-        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+        /// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -526,10 +892,20 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+        /// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+        /// 
+        /// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+        /// 
+        /// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         /// </summary>
         [Input("readOnlyCount")]
         public Input<int>? ReadOnlyCount { get; set; }
+
+        /// <summary>
+        /// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+        /// </summary>
+        [Input("recoverConfigMode")]
+        public Input<string>? RecoverConfigMode { get; set; }
 
         /// <summary>
         /// The ID of the resource group to which the instance belongs.
@@ -544,10 +920,22 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
-        /// Security group ID
+        /// Security group id
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+        /// </summary>
+        [Input("securityIpGroupName")]
+        public Input<string>? SecurityIpGroupName { get; set; }
+
+        /// <summary>
+        /// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+        /// </summary>
+        [Input("securityIps")]
+        public Input<string>? SecurityIps { get; set; }
 
         /// <summary>
         /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
@@ -556,13 +944,21 @@ namespace Pulumi.AliCloud.Redis
         public Input<int>? ShardCount { get; set; }
 
         /// <summary>
-        /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+        /// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+        /// 
+        /// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
         /// </summary>
         [Input("slaveReadOnlyCount")]
         public Input<int>? SlaveReadOnlyCount { get; set; }
 
         /// <summary>
-        /// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+        /// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+        /// </summary>
+        [Input("srcDbInstanceId")]
+        public Input<string>? SrcDbInstanceId { get; set; }
+
+        /// <summary>
+        /// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
         /// </summary>
         [Input("sslEnabled")]
         public Input<string>? SslEnabled { get; set; }
@@ -574,13 +970,19 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+        /// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+        /// 
+        /// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+        /// 
+        /// If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+        /// 
+        /// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
         /// </summary>
         [Input("storagePerformanceLevel")]
         public Input<string>? StoragePerformanceLevel { get; set; }
 
         /// <summary>
-        /// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// Different specifications have different value ranges. When the instance_type value is tair_essd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
         /// </summary>
         [Input("storageSizeGb")]
         public Input<int>? StorageSizeGb { get; set; }
@@ -598,10 +1000,22 @@ namespace Pulumi.AliCloud.Redis
         }
 
         /// <summary>
+        /// The ID of the resource.
+        /// </summary>
+        [Input("tairInstanceId")]
+        public Input<string>? TairInstanceId { get; set; }
+
+        /// <summary>
         /// The name of the resource.
         /// </summary>
         [Input("tairInstanceName")]
         public Input<string>? TairInstanceName { get; set; }
+
+        /// <summary>
+        /// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+        /// </summary>
+        [Input("vpcAuthMode")]
+        public Input<string>? VpcAuthMode { get; set; }
 
         /// <summary>
         /// The ID of the virtual private cloud (VPC).

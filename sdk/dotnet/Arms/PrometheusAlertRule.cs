@@ -16,6 +16,47 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// &gt; **NOTE:** Available since v1.136.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("default", new()
+    ///     {
+    ///         ClusterType = "remote-write",
+    ///         ClusterName = $"{name}-{@default.Result}",
+    ///         GrafanaInstanceId = "free",
+    ///     });
+    /// 
+    ///     var example = new AliCloud.Arms.PrometheusAlertRule("example", new()
+    ///     {
+    ///         ClusterId = defaultPrometheus.ClusterId,
+    ///         Duration = "1",
+    ///         Expression = "node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 &lt; 10",
+    ///         Message = "node available memory is less than 10%",
+    ///         PrometheusAlertRuleName = name,
+    ///         NotifyType = "ALERT_MANAGER",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.

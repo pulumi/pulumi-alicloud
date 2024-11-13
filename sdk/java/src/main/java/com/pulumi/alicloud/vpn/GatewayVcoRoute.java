@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * 
  * For information about VPN Gateway Vco Route and how to use it, see [What is Vco Route](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvcorouteentry).
  * 
- * &gt; **NOTE:** Available in v1.183.0+.
+ * &gt; **NOTE:** Available since v1.183.0+.
  * 
  * ## Example Usage
  * 
@@ -47,6 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterCidr;
+ * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
  * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
  * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
  * import com.pulumi.alicloud.cen.inputs.TransitRouterVpnAttachmentZoneArgs;
@@ -65,6 +67,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("tf-example");
  *         var defaultInstance = new Instance("defaultInstance", InstanceArgs.builder()
  *             .cenInstanceName(name)
  *             .build());
@@ -78,10 +82,10 @@ import javax.annotation.Nullable;
  *         final var default = CenFunctions.getTransitRouterAvailableResources();
  * 
  *         var defaultCustomerGateway = new CustomerGateway("defaultCustomerGateway", CustomerGatewayArgs.builder()
- *             .name(name)
+ *             .customerGatewayName(name)
  *             .ipAddress("42.104.22.210")
  *             .asn("45014")
- *             .description("testAccVpnConnectionDesc")
+ *             .description(name)
  *             .build());
  * 
  *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment("defaultGatewayVpnAttachment", GatewayVpnAttachmentArgs.builder()
@@ -126,12 +130,20 @@ import javax.annotation.Nullable;
  *             .vpnAttachmentName(name)
  *             .build());
  * 
+ *         var defaultTransitRouterCidr = new TransitRouterCidr("defaultTransitRouterCidr", TransitRouterCidrArgs.builder()
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .cidr("192.168.0.0/16")
+ *             .transitRouterCidrName(name)
+ *             .description(name)
+ *             .publishCidrRoute(true)
+ *             .build());
+ * 
  *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
  *             .autoPublishRouteEnabled(false)
  *             .transitRouterAttachmentDescription(name)
  *             .transitRouterAttachmentName(name)
  *             .cenId(defaultTransitRouter.cenId())
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .transitRouterId(defaultTransitRouterCidr.transitRouterId())
  *             .vpnId(defaultGatewayVpnAttachment.id())
  *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
  *                 .zoneId(default_.resources()[0].masterZones()[0])

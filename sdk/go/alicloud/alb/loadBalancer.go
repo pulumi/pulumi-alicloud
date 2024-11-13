@@ -37,7 +37,7 @@ type LoadBalancer struct {
 	// The type of the address of the ALB instance. Valid values: `Internet`, `Intranet`.
 	AddressType pulumi.StringOutput `pulumi:"addressType"`
 	// The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
-	BandwidthPackageId pulumi.StringPtrOutput `pulumi:"bandwidthPackageId"`
+	BandwidthPackageId pulumi.StringOutput `pulumi:"bandwidthPackageId"`
 	// The time when the resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Specifies whether to enable deletion protection. Default value: `false`. Valid values:
@@ -377,8 +377,8 @@ func (o LoadBalancerOutput) AddressType() pulumi.StringOutput {
 }
 
 // The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
-func (o LoadBalancerOutput) BandwidthPackageId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.BandwidthPackageId }).(pulumi.StringPtrOutput)
+func (o LoadBalancerOutput) BandwidthPackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.BandwidthPackageId }).(pulumi.StringOutput)
 }
 
 // The time when the resource was created.

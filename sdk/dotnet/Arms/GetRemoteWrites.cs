@@ -14,9 +14,9 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.204.0+.
+        /// &gt; **NOTE:** Available since v1.204.0.
         /// 
-        /// &gt; **NOTE:** deprecated since v1.228.0.
+        /// &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
         /// 
         /// ## Example Usage
         /// 
@@ -59,9 +59,9 @@ namespace Pulumi.AliCloud.Arms
         /// <summary>
         /// This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.204.0+.
+        /// &gt; **NOTE:** Available since v1.204.0.
         /// 
-        /// &gt; **NOTE:** deprecated since v1.228.0.
+        /// &gt; **DEPRECATED:** This resource has been deprecated since v1.228.0.
         /// 
         /// ## Example Usage
         /// 

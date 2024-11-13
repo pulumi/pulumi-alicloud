@@ -266,27 +266,31 @@ class Chain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.cr.RegistryEnterpriseInstance("default",
+        default = random.index.Integer("default",
+            min=100000,
+            max=999999)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default['result']}")
         default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
-            instance_id=default.id,
-            name=name,
+            instance_id=default_registry_enterprise_instance.id,
+            name=f"{name}-{default['result']}",
             auto_create=False,
             default_visibility="PUBLIC")
         default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("default",
-            instance_id=default.id,
+            instance_id=default_registry_enterprise_instance.id,
             namespace=default_registry_enterprise_namespace.name,
-            name=name,
+            name=f"{name}-{default['result']}",
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")
@@ -399,7 +403,7 @@ class Chain(pulumi.CustomResource):
                     },
                 ],
             }],
-            chain_name=name,
+            chain_name=f"{name}-{default['result']}",
             description=name,
             instance_id=default_registry_enterprise_namespace.instance_id,
             repo_name=default_registry_enterprise_repo.name,
@@ -443,27 +447,31 @@ class Chain(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = alicloud.cr.RegistryEnterpriseInstance("default",
+        default = random.index.Integer("default",
+            min=100000,
+            max=999999)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default['result']}")
         default_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("default",
-            instance_id=default.id,
-            name=name,
+            instance_id=default_registry_enterprise_instance.id,
+            name=f"{name}-{default['result']}",
             auto_create=False,
             default_visibility="PUBLIC")
         default_registry_enterprise_repo = alicloud.cs.RegistryEnterpriseRepo("default",
-            instance_id=default.id,
+            instance_id=default_registry_enterprise_instance.id,
             namespace=default_registry_enterprise_namespace.name,
-            name=name,
+            name=f"{name}-{default['result']}",
             summary="this is summary of my new repo",
             repo_type="PUBLIC",
             detail="this is a public repo")
@@ -576,7 +584,7 @@ class Chain(pulumi.CustomResource):
                     },
                 ],
             }],
-            chain_name=name,
+            chain_name=f"{name}-{default['result']}",
             description=name,
             instance_id=default_registry_enterprise_namespace.instance_id,
             repo_name=default_registry_enterprise_repo.name,

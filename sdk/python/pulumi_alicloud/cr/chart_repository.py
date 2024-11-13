@@ -214,25 +214,29 @@ class ChartRepository(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.index.Integer("default",
+            min=100000,
+            max=999999)
         example = alicloud.cr.RegistryEnterpriseInstance("example",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default['result']}")
         example_chart_namespace = alicloud.cr.ChartNamespace("example",
             instance_id=example.id,
-            namespace_name=name)
+            namespace_name=f"{name}-{default['result']}")
         example_chart_repository = alicloud.cr.ChartRepository("example",
             repo_namespace_name=example_chart_namespace.namespace_name,
             instance_id=example_chart_namespace.instance_id,
-            repo_name=name)
+            repo_name=f"{name}-{default['result']}")
         ```
 
         ## Import
@@ -271,25 +275,29 @@ class ChartRepository(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
+        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "tf-example"
+        default = random.index.Integer("default",
+            min=100000,
+            max=999999)
         example = alicloud.cr.RegistryEnterpriseInstance("example",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
-            instance_name=name)
+            instance_name=f"{name}-{default['result']}")
         example_chart_namespace = alicloud.cr.ChartNamespace("example",
             instance_id=example.id,
-            namespace_name=name)
+            namespace_name=f"{name}-{default['result']}")
         example_chart_repository = alicloud.cr.ChartRepository("example",
             repo_namespace_name=example_chart_namespace.namespace_name,
             instance_id=example_chart_namespace.instance_id,
-            repo_name=name)
+            repo_name=f"{name}-{default['result']}")
         ```
 
         ## Import

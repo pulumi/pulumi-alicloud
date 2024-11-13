@@ -31,14 +31,14 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The ID of the database file system.
+     * The ID of the Database File System.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The ID of the database file system.
+     * @return The ID of the Database File System.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -46,14 +46,14 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     * The status of Instance Attachment.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+     * @return The status of Instance Attachment.
      * 
      */
     public Optional<Output<String>> status() {
@@ -108,7 +108,7 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param instanceId The ID of the database file system.
+         * @param instanceId The ID of the Database File System.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param instanceId The ID of the database file system.
+         * @param instanceId The ID of the Database File System.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+         * @param status The status of Instance Attachment.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class InstanceAttachmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+         * @param status The status of Instance Attachment.
          * 
          * @return builder
          * 

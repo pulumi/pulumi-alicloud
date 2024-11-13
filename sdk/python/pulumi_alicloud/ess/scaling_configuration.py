@@ -93,7 +93,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
@@ -483,7 +483,7 @@ class ScalingConfigurationArgs:
     @pulumi.getter(name="internetMaxBandwidthIn")
     def internet_max_bandwidth_in(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         """
         return pulumi.get(self, "internet_max_bandwidth_in")
 
@@ -955,7 +955,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
@@ -1335,7 +1335,7 @@ class _ScalingConfigurationState:
     @pulumi.getter(name="internetMaxBandwidthIn")
     def internet_max_bandwidth_in(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         """
         return pulumi.get(self, "internet_max_bandwidth_in")
 
@@ -1903,7 +1903,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
@@ -2254,7 +2254,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]] instance_type_overrides: specify the weight of instance type.  See `instance_type_override` below for details.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: Resource types of an ECS instance.
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
-        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
@@ -2510,7 +2510,7 @@ class ScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="internetMaxBandwidthIn")
     def internet_max_bandwidth_in(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+        Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         """
         return pulumi.get(self, "internet_max_bandwidth_in")
 

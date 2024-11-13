@@ -35,18 +35,18 @@ class TransitRouterVbrAttachmentArgs:
         The set of arguments for constructing a TransitRouterVbrAttachment resource.
         :param pulumi.Input[str] cen_id: The ID of the CEN.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
-        :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled.Default value is `false`.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        :param pulumi.Input[bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
+        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
                
                ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
-        :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
+        :param pulumi.Input[str] vbr_owner_id: The owner id of the vbr.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "vbr_id", vbr_id)
@@ -57,7 +57,13 @@ class TransitRouterVbrAttachmentArgs:
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
+            warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
+        if route_table_association_enabled is not None:
             pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
+        if route_table_propagation_enabled is not None:
+            warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
         if route_table_propagation_enabled is not None:
             pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
         if tags is not None:
@@ -99,7 +105,7 @@ class TransitRouterVbrAttachmentArgs:
     @pulumi.getter(name="autoPublishRouteEnabled")
     def auto_publish_route_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Auto publish route enabled.Default value is `false`.
+        Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
@@ -111,7 +117,7 @@ class TransitRouterVbrAttachmentArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "dry_run")
 
@@ -123,9 +129,7 @@ class TransitRouterVbrAttachmentArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-
-        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
+        The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -135,9 +139,10 @@ class TransitRouterVbrAttachmentArgs:
 
     @property
     @pulumi.getter(name="routeTableAssociationEnabled")
+    @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
     def route_table_association_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enabled route table association. The system default value is `true`.
+        Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
         return pulumi.get(self, "route_table_association_enabled")
 
@@ -147,9 +152,12 @@ class TransitRouterVbrAttachmentArgs:
 
     @property
     @pulumi.getter(name="routeTablePropagationEnabled")
+    @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
     def route_table_propagation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enabled route table propagation. The system default value is `true`.
+        Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+
+        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
@@ -209,7 +217,7 @@ class TransitRouterVbrAttachmentArgs:
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner id of the transit router vbr attachment.
+        The owner id of the vbr.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -237,22 +245,22 @@ class _TransitRouterVbrAttachmentState:
                  vbr_owner_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterVbrAttachment resources.
-        :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled.Default value is `false`.
+        :param pulumi.Input[bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         :param pulumi.Input[str] cen_id: The ID of the CEN.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
+        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
                
                ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
-        :param pulumi.Input[str] status: The associating status of the network.
+        :param pulumi.Input[str] status: The status of the Transit Router VBR Attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_attachment_id: The id of the transit router vbr attachment.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID of the VBR connection.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
-        :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
+        :param pulumi.Input[str] vbr_owner_id: The owner id of the vbr.
         """
         if auto_publish_route_enabled is not None:
             pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
@@ -263,7 +271,13 @@ class _TransitRouterVbrAttachmentState:
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if route_table_association_enabled is not None:
+            warnings.warn("""Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_association_enabled is deprecated: Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
+        if route_table_association_enabled is not None:
             pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
+        if route_table_propagation_enabled is not None:
+            warnings.warn("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""", DeprecationWarning)
+            pulumi.log.warn("""route_table_propagation_enabled is deprecated: Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
         if route_table_propagation_enabled is not None:
             pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
         if status is not None:
@@ -287,7 +301,7 @@ class _TransitRouterVbrAttachmentState:
     @pulumi.getter(name="autoPublishRouteEnabled")
     def auto_publish_route_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Auto publish route enabled.Default value is `false`.
+        Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
@@ -311,7 +325,7 @@ class _TransitRouterVbrAttachmentState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "dry_run")
 
@@ -323,9 +337,7 @@ class _TransitRouterVbrAttachmentState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-
-        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
+        The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
         """
         return pulumi.get(self, "resource_type")
 
@@ -335,9 +347,10 @@ class _TransitRouterVbrAttachmentState:
 
     @property
     @pulumi.getter(name="routeTableAssociationEnabled")
+    @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
     def route_table_association_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enabled route table association. The system default value is `true`.
+        Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
         return pulumi.get(self, "route_table_association_enabled")
 
@@ -347,9 +360,12 @@ class _TransitRouterVbrAttachmentState:
 
     @property
     @pulumi.getter(name="routeTablePropagationEnabled")
+    @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
     def route_table_propagation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enabled route table propagation. The system default value is `true`.
+        Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+
+        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
@@ -361,7 +377,7 @@ class _TransitRouterVbrAttachmentState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The associating status of the network.
+        The status of the Transit Router VBR Attachment.
         """
         return pulumi.get(self, "status")
 
@@ -397,7 +413,7 @@ class _TransitRouterVbrAttachmentState:
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the transit router vbr attachment.
+        The ID of the VBR connection.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -445,7 +461,7 @@ class _TransitRouterVbrAttachmentState:
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The owner id of the transit router vbr attachment.
+        The owner id of the vbr.
         """
         return pulumi.get(self, "vbr_owner_id")
 
@@ -473,7 +489,9 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
                  vbr_owner_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
+        Provides a Cloud Enterprise Network (CEN) Transit Router VBR Attachment resource.
+
+        For information about Cloud Enterprise Network (CEN) Transit Router VBR Attachment and how to use it, see [What is Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -489,11 +507,11 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
         default = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
         default_transit_router = alicloud.cen.TransitRouter("default", cen_id=default.id)
-        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
         default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
@@ -505,37 +523,37 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             min_tx_interval=1000,
             detect_multiplier=10)
         default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("default",
-            transit_router_id=default_transit_router.transit_router_id,
-            transit_router_attachment_name="example",
-            transit_router_attachment_description="example",
+            cen_id=default.id,
             vbr_id=default_virtual_border_router.id,
-            cen_id=default.id)
+            transit_router_id=default_transit_router.transit_router_id,
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
         ```
 
         ## Import
 
-        CEN transit router VBR attachment can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router VBR Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+        $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled.Default value is `false`.
+        :param pulumi.Input[bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         :param pulumi.Input[str] cen_id: The ID of the CEN.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
+        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
                
                ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
-        :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
+        :param pulumi.Input[str] vbr_owner_id: The owner id of the vbr.
         """
         ...
     @overload
@@ -544,7 +562,9 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
                  args: TransitRouterVbrAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
+        Provides a Cloud Enterprise Network (CEN) Transit Router VBR Attachment resource.
+
+        For information about Cloud Enterprise Network (CEN) Transit Router VBR Attachment and how to use it, see [What is Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -560,11 +580,11 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
+        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
         default = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
         default_transit_router = alicloud.cen.TransitRouter("default", cen_id=default.id)
-        name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
         default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
@@ -576,19 +596,19 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             min_tx_interval=1000,
             detect_multiplier=10)
         default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("default",
-            transit_router_id=default_transit_router.transit_router_id,
-            transit_router_attachment_name="example",
-            transit_router_attachment_description="example",
+            cen_id=default.id,
             vbr_id=default_virtual_border_router.id,
-            cen_id=default.id)
+            transit_router_id=default_transit_router.transit_router_id,
+            transit_router_attachment_name=name,
+            transit_router_attachment_description=name)
         ```
 
         ## Import
 
-        CEN transit router VBR attachment can be imported using the id, e.g.
+        Cloud Enterprise Network (CEN) Transit Router VBR Attachment can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+        $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example <cen_id>:<transit_router_attachment_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -676,22 +696,22 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_publish_route_enabled: Auto publish route enabled.Default value is `false`.
+        :param pulumi.Input[bool] auto_publish_route_enabled: Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         :param pulumi.Input[str] cen_id: The ID of the CEN.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] resource_type: The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
+        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
                
                ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-        :param pulumi.Input[bool] route_table_association_enabled: Whether to enabled route table association. The system default value is `true`.
-        :param pulumi.Input[bool] route_table_propagation_enabled: Whether to enabled route table propagation. The system default value is `true`.
-        :param pulumi.Input[str] status: The associating status of the network.
+        :param pulumi.Input[str] status: The status of the Transit Router VBR Attachment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] transit_router_attachment_description: The description of the transit router vbr attachment.
-        :param pulumi.Input[str] transit_router_attachment_id: The id of the transit router vbr attachment.
+        :param pulumi.Input[str] transit_router_attachment_id: The ID of the VBR connection.
         :param pulumi.Input[str] transit_router_attachment_name: The name of the transit router vbr attachment.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         :param pulumi.Input[str] vbr_id: The ID of the VBR.
-        :param pulumi.Input[str] vbr_owner_id: The owner id of the transit router vbr attachment.
+        :param pulumi.Input[str] vbr_owner_id: The owner id of the vbr.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -715,9 +735,9 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
-    def auto_publish_route_enabled(self) -> pulumi.Output[bool]:
+    def auto_publish_route_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Auto publish route enabled.Default value is `false`.
+        Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
@@ -733,7 +753,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        The dry run.
+        Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "dry_run")
 
@@ -741,25 +761,27 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-
-        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
+        The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
         """
         return pulumi.get(self, "resource_type")
 
     @property
     @pulumi.getter(name="routeTableAssociationEnabled")
+    @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
     def route_table_association_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enabled route table association. The system default value is `true`.
+        Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
         return pulumi.get(self, "route_table_association_enabled")
 
     @property
     @pulumi.getter(name="routeTablePropagationEnabled")
+    @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
     def route_table_propagation_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to enabled route table propagation. The system default value is `true`.
+        Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+
+        ->**NOTE:** Ensure that the vbr is not used in Express Connect.
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
@@ -767,7 +789,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The associating status of the network.
+        The status of the Transit Router VBR Attachment.
         """
         return pulumi.get(self, "status")
 
@@ -791,7 +813,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     @pulumi.getter(name="transitRouterAttachmentId")
     def transit_router_attachment_id(self) -> pulumi.Output[str]:
         """
-        The id of the transit router vbr attachment.
+        The ID of the VBR connection.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
@@ -805,7 +827,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> pulumi.Output[Optional[str]]:
+    def transit_router_id(self) -> pulumi.Output[str]:
         """
         The ID of the transit router.
         """
@@ -823,7 +845,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
     @pulumi.getter(name="vbrOwnerId")
     def vbr_owner_id(self) -> pulumi.Output[str]:
         """
-        The owner id of the transit router vbr attachment.
+        The owner id of the vbr.
         """
         return pulumi.get(self, "vbr_owner_id")
 

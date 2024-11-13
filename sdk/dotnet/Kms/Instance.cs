@@ -94,6 +94,12 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.233.1) Instance expiration time.
+        /// </summary>
+        [Output("endDate")]
+        public Output<string> EndDate { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to force deletion even without backup.
         /// </summary>
         [Output("forceDeleteWithoutBackup")]
@@ -386,6 +392,12 @@ namespace Pulumi.AliCloud.Kms
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// (Available since v1.233.1) Instance expiration time.
+        /// </summary>
+        [Input("endDate")]
+        public Input<string>? EndDate { get; set; }
 
         /// <summary>
         /// Whether to force deletion even without backup.

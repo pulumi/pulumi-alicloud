@@ -54,6 +54,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     ///         {
     ///             PortraitOption = true,
     ///             Burp = "open",
+    ///             TrojanGit = "open",
     ///         },
     ///     });
     /// 

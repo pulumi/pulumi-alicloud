@@ -13,6 +13,36 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.136.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultPrometheus = new alicloud.arms.Prometheus("default", {
+ *     clusterType: "remote-write",
+ *     clusterName: `${name}-${_default.result}`,
+ *     grafanaInstanceId: "free",
+ * });
+ * const example = new alicloud.arms.PrometheusAlertRule("example", {
+ *     clusterId: defaultPrometheus.clusterId,
+ *     duration: "1",
+ *     expression: "node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10",
+ *     message: "node available memory is less than 10%",
+ *     prometheusAlertRuleName: name,
+ *     notifyType: "ALERT_MANAGER",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.

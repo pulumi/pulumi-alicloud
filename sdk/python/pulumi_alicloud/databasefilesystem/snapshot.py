@@ -26,11 +26,11 @@ class SnapshotArgs:
                  snapshot_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Snapshot resource.
-        :param pulumi.Input[str] instance_id: The ID of the database file system.
-        :param pulumi.Input[str] description: Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[bool] force: Whether to force deletion of snapshots.
-        :param pulumi.Input[int] retention_days: The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
-        :param pulumi.Input[str] snapshot_name: The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        :param pulumi.Input[str] instance_id: The ID of the Database File System.
+        :param pulumi.Input[str] description: The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot. Valid values:
+        :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`.
+        :param pulumi.Input[str] snapshot_name: The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if description is not None:
@@ -46,7 +46,7 @@ class SnapshotArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The ID of the database file system.
+        The ID of the Database File System.
         """
         return pulumi.get(self, "instance_id")
 
@@ -58,7 +58,7 @@ class SnapshotArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+        The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
         """
         return pulumi.get(self, "description")
 
@@ -70,7 +70,7 @@ class SnapshotArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to force deletion of snapshots.
+        Specifies whether to force delete the snapshot. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -82,7 +82,7 @@ class SnapshotArgs:
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+        The retention period of the snapshot. Valid values: `1` to `65536`.
         """
         return pulumi.get(self, "retention_days")
 
@@ -94,7 +94,7 @@ class SnapshotArgs:
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         """
         return pulumi.get(self, "snapshot_name")
 
@@ -114,11 +114,11 @@ class _SnapshotState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Snapshot resources.
-        :param pulumi.Input[str] description: Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[bool] force: Whether to force deletion of snapshots.
-        :param pulumi.Input[str] instance_id: The ID of the database file system.
-        :param pulumi.Input[int] retention_days: The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
-        :param pulumi.Input[str] snapshot_name: The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        :param pulumi.Input[str] description: The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot. Valid values:
+        :param pulumi.Input[str] instance_id: The ID of the Database File System.
+        :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`.
+        :param pulumi.Input[str] snapshot_name: The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         :param pulumi.Input[str] status: The status of the Snapshot.
         """
         if description is not None:
@@ -138,7 +138,7 @@ class _SnapshotState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+        The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
         """
         return pulumi.get(self, "description")
 
@@ -150,7 +150,7 @@ class _SnapshotState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to force deletion of snapshots.
+        Specifies whether to force delete the snapshot. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -162,7 +162,7 @@ class _SnapshotState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the database file system.
+        The ID of the Database File System.
         """
         return pulumi.get(self, "instance_id")
 
@@ -174,7 +174,7 @@ class _SnapshotState:
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+        The retention period of the snapshot. Valid values: `1` to `65536`.
         """
         return pulumi.get(self, "retention_days")
 
@@ -186,7 +186,7 @@ class _SnapshotState:
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         """
         return pulumi.get(self, "snapshot_name")
 
@@ -219,9 +219,9 @@ class Snapshot(pulumi.CustomResource):
                  snapshot_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a DBFS Snapshot resource.
+        Provides a Database File System (DBFS) Snapshot resource.
 
-        For information about DBFS Snapshot and how to use it.
+        For information about Database File System (DBFS) Snapshot and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-createsnapshot).
 
         > **NOTE:** Available since v1.156.0.
 
@@ -236,46 +236,18 @@ class Snapshot(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        zone_id = "cn-hangzhou-i"
-        example = alicloud.ecs.get_instance_types(availability_zone=zone_id,
-            instance_type_family="ecs.g7se")
-        example_get_images = alicloud.ecs.get_images(instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            name_regex="^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
-            owners="system")
-        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
-            zone_id=zone_id)
-        example_security_group = alicloud.ecs.SecurityGroup("example",
-            name=name,
-            vpc_id=default.ids[0])
-        default_instance = alicloud.ecs.Instance("default",
-            availability_zone=zone_id,
-            instance_name=name,
-            image_id=example_get_images.images[0].id,
-            instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=default_get_switches.ids[0],
-            system_disk_category="cloud_essd")
-        default_instance2 = alicloud.databasefilesystem.Instance("default",
-            category="enterprise",
-            zone_id=default_instance.availability_zone,
-            performance_level="PL1",
-            fs_name=name,
-            size=100)
-        default_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("default",
-            ecs_id=default_instance.id,
-            instance_id=default_instance2.id)
-        example_snapshot = alicloud.databasefilesystem.Snapshot("example",
-            instance_id=default_instance_attachment.instance_id,
+            name = "terraform-example"
+        default = alicloud.databasefilesystem.get_instances()
+        example = alicloud.databasefilesystem.Snapshot("example",
+            instance_id=default.instances[0].id,
+            retention_days=50,
             snapshot_name=name,
-            description=name,
-            retention_days=30)
+            description="DbfsSnapshot")
         ```
 
         ## Import
 
-        DBFS Snapshot can be imported using the id, e.g.
+        Database File System (DBFS) Snapshot can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
@@ -283,11 +255,11 @@ class Snapshot(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[bool] force: Whether to force deletion of snapshots.
-        :param pulumi.Input[str] instance_id: The ID of the database file system.
-        :param pulumi.Input[int] retention_days: The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
-        :param pulumi.Input[str] snapshot_name: The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        :param pulumi.Input[str] description: The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot. Valid values:
+        :param pulumi.Input[str] instance_id: The ID of the Database File System.
+        :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`.
+        :param pulumi.Input[str] snapshot_name: The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         """
         ...
     @overload
@@ -296,9 +268,9 @@ class Snapshot(pulumi.CustomResource):
                  args: SnapshotArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a DBFS Snapshot resource.
+        Provides a Database File System (DBFS) Snapshot resource.
 
-        For information about DBFS Snapshot and how to use it.
+        For information about Database File System (DBFS) Snapshot and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-createsnapshot).
 
         > **NOTE:** Available since v1.156.0.
 
@@ -313,46 +285,18 @@ class Snapshot(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf-example"
-        zone_id = "cn-hangzhou-i"
-        example = alicloud.ecs.get_instance_types(availability_zone=zone_id,
-            instance_type_family="ecs.g7se")
-        example_get_images = alicloud.ecs.get_images(instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            name_regex="^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
-            owners="system")
-        default = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0],
-            zone_id=zone_id)
-        example_security_group = alicloud.ecs.SecurityGroup("example",
-            name=name,
-            vpc_id=default.ids[0])
-        default_instance = alicloud.ecs.Instance("default",
-            availability_zone=zone_id,
-            instance_name=name,
-            image_id=example_get_images.images[0].id,
-            instance_type=example.instance_types[len(example.instance_types) - 1].id,
-            security_groups=[example_security_group.id],
-            vswitch_id=default_get_switches.ids[0],
-            system_disk_category="cloud_essd")
-        default_instance2 = alicloud.databasefilesystem.Instance("default",
-            category="enterprise",
-            zone_id=default_instance.availability_zone,
-            performance_level="PL1",
-            fs_name=name,
-            size=100)
-        default_instance_attachment = alicloud.databasefilesystem.InstanceAttachment("default",
-            ecs_id=default_instance.id,
-            instance_id=default_instance2.id)
-        example_snapshot = alicloud.databasefilesystem.Snapshot("example",
-            instance_id=default_instance_attachment.instance_id,
+            name = "terraform-example"
+        default = alicloud.databasefilesystem.get_instances()
+        example = alicloud.databasefilesystem.Snapshot("example",
+            instance_id=default.instances[0].id,
+            retention_days=50,
             snapshot_name=name,
-            description=name,
-            retention_days=30)
+            description="DbfsSnapshot")
         ```
 
         ## Import
 
-        DBFS Snapshot can be imported using the id, e.g.
+        Database File System (DBFS) Snapshot can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
@@ -418,11 +362,11 @@ class Snapshot(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
-        :param pulumi.Input[bool] force: Whether to force deletion of snapshots.
-        :param pulumi.Input[str] instance_id: The ID of the database file system.
-        :param pulumi.Input[int] retention_days: The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
-        :param pulumi.Input[str] snapshot_name: The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        :param pulumi.Input[str] description: The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
+        :param pulumi.Input[bool] force: Specifies whether to force delete the snapshot. Valid values:
+        :param pulumi.Input[str] instance_id: The ID of the Database File System.
+        :param pulumi.Input[int] retention_days: The retention period of the snapshot. Valid values: `1` to `65536`.
+        :param pulumi.Input[str] snapshot_name: The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         :param pulumi.Input[str] status: The status of the Snapshot.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -441,7 +385,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+        The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
         """
         return pulumi.get(self, "description")
 
@@ -449,7 +393,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to force deletion of snapshots.
+        Specifies whether to force delete the snapshot. Valid values:
         """
         return pulumi.get(self, "force")
 
@@ -457,7 +401,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The ID of the database file system.
+        The ID of the Database File System.
         """
         return pulumi.get(self, "instance_id")
 
@@ -465,7 +409,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Output[Optional[int]]:
         """
-        The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+        The retention period of the snapshot. Valid values: `1` to `65536`.
         """
         return pulumi.get(self, "retention_days")
 
@@ -473,7 +417,7 @@ class Snapshot(pulumi.CustomResource):
     @pulumi.getter(name="snapshotName")
     def snapshot_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         """
         return pulumi.get(self, "snapshot_name")
 

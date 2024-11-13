@@ -124,7 +124,7 @@ class InstanceArgs:
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
-        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        :param pulumi.Input[int] http_put_response_hop_limit: **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         :param pulumi.Input[str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
@@ -580,7 +580,7 @@ class InstanceArgs:
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         """
         return pulumi.get(self, "http_put_response_hop_limit")
 
@@ -1438,7 +1438,7 @@ class _InstanceState:
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
-        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        :param pulumi.Input[int] http_put_response_hop_limit: **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         :param pulumi.Input[str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
@@ -1974,7 +1974,7 @@ class _InstanceState:
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> Optional[pulumi.Input[int]]:
         """
-        The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         """
         return pulumi.get(self, "http_put_response_hop_limit")
 
@@ -2993,7 +2993,7 @@ class Instance(pulumi.CustomResource):
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
-        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        :param pulumi.Input[int] http_put_response_hop_limit: **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         :param pulumi.Input[str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
@@ -3491,7 +3491,7 @@ class Instance(pulumi.CustomResource):
                On other OSs such as Linux, the host name can contain a maximum of 64 characters, which can be segments separated by dots (“.”), where each segment can contain uppercase/lowercase letters, numerals, or “_“. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] hpc_cluster_id: The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
         :param pulumi.Input[str] http_endpoint: Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
-        :param pulumi.Input[int] http_put_response_hop_limit: The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        :param pulumi.Input[int] http_put_response_hop_limit: **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         :param pulumi.Input[str] http_tokens: Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
                - optional: does not forcefully use the security-enhanced mode (IMDSv2).
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
@@ -3859,7 +3859,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="httpPutResponseHopLimit")
     def http_put_response_hop_limit(self) -> pulumi.Output[int]:
         """
-        The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+        **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
         """
         return pulumi.get(self, "http_put_response_hop_limit")
 

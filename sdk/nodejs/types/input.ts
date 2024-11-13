@@ -10105,6 +10105,17 @@ export namespace ga {
 }
 
 export namespace governance {
+    export interface AccountAccountTag {
+        /**
+         * The key of the tags
+         */
+        tagKey?: pulumi.Input<string>;
+        /**
+         * The value of the tags
+         */
+        tagValue?: pulumi.Input<string>;
+    }
+
     export interface BaselineBaselineItem {
         /**
          * Baseline item configuration. The format is a JSON string.

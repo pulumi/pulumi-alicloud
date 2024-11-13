@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.DatabaseFilesystem
 {
     /// <summary>
-    /// Provides a DBFS Instance Attachment resource.
+    /// Provides a Database File System (DBFS) Instance Attachment resource.
     /// 
-    /// For information about DBFS Instance Attachment and how to use it.
+    /// For information about Database File System (DBFS) Instance Attachment and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-attachdbfs).
     /// 
     /// &gt; **NOTE:** Available since v1.156.0.
     /// 
@@ -29,71 +29,62 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var name = config.Get("name") ?? "terraform-example";
     ///     var zoneId = "cn-hangzhou-i";
     /// 
-    ///     var example = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var @default = AliCloud.DatabaseFilesystem.GetInstances.Invoke();
+    /// 
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         AvailabilityZone = zoneId,
     ///         InstanceTypeFamily = "ecs.g7se",
     ///     });
     /// 
-    ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         InstanceType = example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length - 1].Id,
-    ///         NameRegex = "^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         NameRegex = "^aliyun_2_19",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
     ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = zoneId,
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         Name = name,
-    ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
     ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
     ///     {
-    ///         AvailabilityZone = zoneId,
-    ///         InstanceName = name,
-    ///         ImageId = exampleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = Output.Tuple(example, example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length).Apply(values =&gt;
-    ///         {
-    ///             var example = values.Item1;
-    ///             var length = values.Item2;
-    ///             return example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[length - 1].Id;
-    ///         }),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         SecurityGroups = new[]
     ///         {
-    ///             exampleSecurityGroup.Id,
-    ///         },
-    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///             defaultSecurityGroup,
+    ///         }.Select(__item =&gt; __item.Id).ToList(),
+    ///         InternetChargeType = "PayByTraffic",
+    ///         InternetMaxBandwidthOut = 10,
+    ///         AvailabilityZone = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.AvailabilityZones[0]),
+    ///         InstanceChargeType = "PostPaid",
     ///         SystemDiskCategory = "cloud_essd",
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         InstanceName = name,
     ///     });
     /// 
-    ///     var defaultInstance2 = new AliCloud.DatabaseFilesystem.Instance("default", new()
+    ///     var defaultInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("default", new()
     ///     {
-    ///         Category = "enterprise",
-    ///         ZoneId = defaultInstance.AvailabilityZone,
-    ///         PerformanceLevel = "PL1",
-    ///         FsName = name,
-    ///         Size = 100,
-    ///     });
-    /// 
-    ///     var exampleInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("example", new()
-    ///     {
+    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
     ///         EcsId = defaultInstance.Id,
-    ///         InstanceId = defaultInstance2.Id,
     ///     });
     /// 
     /// });
@@ -101,7 +92,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// ## Import
     /// 
-    /// DBFS Instance Attachment can be imported using the id, e.g.
+    /// Database File System (DBFS) Instance Attachment can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:databasefilesystem/instanceAttachment:InstanceAttachment example &lt;instance_id&gt;:&lt;ecs_id&gt;
@@ -117,13 +108,13 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Output<string> EcsId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the database file system.
+        /// The ID of the Database File System.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        /// The status of Instance Attachment.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -181,7 +172,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Input<string> EcsId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the database file system.
+        /// The ID of the Database File System.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -201,13 +192,13 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Input<string>? EcsId { get; set; }
 
         /// <summary>
-        /// The ID of the database file system.
+        /// The ID of the Database File System.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The status of Database file system. Valid values: `attached`, `attaching`, `unattached`, `detaching`.
+        /// The status of Instance Attachment.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -18,6 +18,63 @@ import (
 //
 // > **NOTE:** Available since v1.136.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/arms"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultPrometheus, err := arms.NewPrometheus(ctx, "default", &arms.PrometheusArgs{
+//				ClusterType:       pulumi.String("remote-write"),
+//				ClusterName:       pulumi.Sprintf("%v-%v", name, _default.Result),
+//				GrafanaInstanceId: pulumi.String("free"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = arms.NewPrometheusAlertRule(ctx, "example", &arms.PrometheusAlertRuleArgs{
+//				ClusterId:               defaultPrometheus.ClusterId,
+//				Duration:                pulumi.String("1"),
+//				Expression:              pulumi.String("node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10"),
+//				Message:                 pulumi.String("node available memory is less than 10%"),
+//				PrometheusAlertRuleName: pulumi.String(name),
+//				NotifyType:              pulumi.String("ALERT_MANAGER"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.

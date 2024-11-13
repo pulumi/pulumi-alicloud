@@ -15,9 +15,60 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'AccountAccountTag',
     'BaselineBaselineItem',
     'GetBaselinesBaselineResult',
 ]
+
+@pulumi.output_type
+class AccountAccountTag(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tagKey":
+            suggest = "tag_key"
+        elif key == "tagValue":
+            suggest = "tag_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccountAccountTag. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccountAccountTag.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccountAccountTag.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 tag_key: Optional[str] = None,
+                 tag_value: Optional[str] = None):
+        """
+        :param str tag_key: The key of the tags
+        :param str tag_value: The value of the tags
+        """
+        if tag_key is not None:
+            pulumi.set(__self__, "tag_key", tag_key)
+        if tag_value is not None:
+            pulumi.set(__self__, "tag_value", tag_value)
+
+    @property
+    @pulumi.getter(name="tagKey")
+    def tag_key(self) -> Optional[str]:
+        """
+        The key of the tags
+        """
+        return pulumi.get(self, "tag_key")
+
+    @property
+    @pulumi.getter(name="tagValue")
+    def tag_value(self) -> Optional[str]:
+        """
+        The value of the tags
+        """
+        return pulumi.get(self, "tag_value")
+
 
 @pulumi.output_type
 class BaselineBaselineItem(dict):

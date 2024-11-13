@@ -303,14 +303,14 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+     * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
      * 
      */
     @Import(name="internetMaxBandwidthIn")
     private @Nullable Output<Integer> internetMaxBandwidthIn;
 
     /**
-     * @return Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+     * @return Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
      * 
      */
     public Optional<Output<Integer>> internetMaxBandwidthIn() {
@@ -1352,7 +1352,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param internetMaxBandwidthIn Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+         * @param internetMaxBandwidthIn Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
          * 
          * @return builder
          * 
@@ -1363,7 +1363,7 @@ public final class ScalingConfigurationArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param internetMaxBandwidthIn Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
+         * @param internetMaxBandwidthIn Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
          * 
          * @return builder
          * 

@@ -370,44 +370,61 @@ import * as utilities from "../utilities";
  *     "function": defaultFunction.name,
  *     name: "terraform-example-oss",
  *     type: "eventbridge",
- *     config: `    {
- *         "triggerEnable": false,
- *         "asyncInvocationType": false,
- *         "eventRuleFilterPattern": {
- *           "source":[
- *             "acs.oss"
- *             ],
- *             "type":[
- *               "oss:BucketCreated:PutBucket"
- *             ]
+ *     config: JSON.stringify({
+ *         triggerEnable: false,
+ *         asyncInvocationType: false,
+ *         eventSourceConfig: {
+ *             eventSourceType: "Default",
  *         },
- *         "eventSourceConfig": {
- *             "eventSourceType": "Default"
- *         }
- *     }
- * `,
+ *         eventRuleFilterPattern: "{\"source\":[\"acs.oss\"],\"type\":[\"oss:BucketCreated:PutBucket\"]}",
+ *         eventSinkConfig: {
+ *             deliveryOption: {
+ *                 mode: "event-driven",
+ *                 eventSchema: "CloudEvents",
+ *             },
+ *         },
+ *         runOptions: {
+ *             retryStrategy: {
+ *                 PushRetryStrategy: "BACKOFF_RETRY",
+ *             },
+ *             errorsTolerance: "ALL",
+ *             mode: "event-driven",
+ *         },
+ *     }),
  * });
  * const mnsTrigger = new alicloud.fc.Trigger("mns_trigger", {
  *     service: defaultService.name,
  *     "function": defaultFunction.name,
  *     name: "terraform-example-mns",
  *     type: "eventbridge",
- *     config: `    {
- *         "triggerEnable": false,
- *         "asyncInvocationType": false,
- *         "eventRuleFilterPattern": "{}",
- *         "eventSourceConfig": {
- *             "eventSourceType": "MNS",
- *             "eventSourceParameters": {
- *                 "sourceMNSParameters": {
- *                     "RegionId": "cn-hangzhou",
- *                     "QueueName": "mns-queue",
- *                     "IsBase64Decode": true
- *                 }
- *             }
- *         }
- *     }
- * `,
+ *     config: JSON.stringify({
+ *         triggerEnable: false,
+ *         asyncInvocationType: false,
+ *         eventSourceConfig: {
+ *             eventSourceType: "MNS",
+ *             eventSourceParameters: {
+ *                 sourceMNSParameters: {
+ *                     RegionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
+ *                     QueueName: "mns-queue",
+ *                     IsBase64Decode: true,
+ *                 },
+ *             },
+ *         },
+ *         eventRuleFilterPattern: "{}",
+ *         eventSinkConfig: {
+ *             deliveryOption: {
+ *                 mode: "event-driven",
+ *                 eventSchema: "CloudEvents",
+ *             },
+ *         },
+ *         runOptions: {
+ *             retryStrategy: {
+ *                 PushRetryStrategy: "BACKOFF_RETRY",
+ *             },
+ *             errorsTolerance: "ALL",
+ *             mode: "event-driven",
+ *         },
+ *     }),
  * });
  * const defaultInstance = new alicloud.rocketmq.Instance("default", {
  *     instanceName: `terraform-example-${defaultInteger.result}`,
@@ -429,26 +446,38 @@ import * as utilities from "../utilities";
  *     "function": defaultFunction.name,
  *     name: "terraform-example-rocketmq",
  *     type: "eventbridge",
- *     config: pulumi.all([defaultGetRegions, defaultInstance.id, defaultGroup.groupName, defaultTopic.topicName]).apply(([defaultGetRegions, id, groupName, topicName]) => `    {
- *         "triggerEnable": false,
- *         "asyncInvocationType": false,
- *         "eventRuleFilterPattern": "{}",
- *         "eventSourceConfig": {
- *             "eventSourceType": "RocketMQ",
- *             "eventSourceParameters": {
- *                 "sourceRocketMQParameters": {
- *                     "RegionId": "${defaultGetRegions.regions?.[0]?.id}",
- *                     "InstanceId": "${id}",
- *                     "GroupID": "${groupName}",
- *                     "Topic": "${topicName}",
- *                     "Timestamp": 1686296162,
- *                     "Tag": "example-tag",
- *                     "Offset": "CONSUME_FROM_LAST_OFFSET"
- *                 }
- *             }
- *         }
- *     }
- * `),
+ *     config: pulumi.jsonStringify({
+ *         triggerEnable: false,
+ *         asyncInvocationType: false,
+ *         eventRuleFilterPattern: "{}",
+ *         eventSinkConfig: {
+ *             deliveryOption: {
+ *                 mode: "event-driven",
+ *                 eventSchema: "CloudEvents",
+ *             },
+ *         },
+ *         eventSourceConfig: {
+ *             eventSourceType: "RocketMQ",
+ *             eventSourceParameters: {
+ *                 sourceRocketMQParameters: {
+ *                     RegionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
+ *                     InstanceId: defaultInstance.id,
+ *                     GroupID: defaultGroup.groupName,
+ *                     Topic: defaultTopic.topicName,
+ *                     Timestamp: 1686296162,
+ *                     Tag: "example-tag",
+ *                     Offset: "CONSUME_FROM_LAST_OFFSET",
+ *                 },
+ *             },
+ *         },
+ *         runOptions: {
+ *             retryStrategy: {
+ *                 PushRetryStrategy: "BACKOFF_RETRY",
+ *             },
+ *             errorsTolerance: "ALL",
+ *             mode: "event-driven",
+ *         },
+ *     }),
  * });
  * const defaultInstance2 = new alicloud.amqp.Instance("default", {
  *     instanceName: `terraform-example-${defaultInteger.result}`,
@@ -474,23 +503,35 @@ import * as utilities from "../utilities";
  *     "function": defaultFunction.name,
  *     name: "terraform-example-rabbitmq",
  *     type: "eventbridge",
- *     config: pulumi.all([defaultGetRegions, defaultInstance2.id, defaultVirtualHost.virtualHostName, defaultQueue.queueName]).apply(([defaultGetRegions, id, virtualHostName, queueName]) => `    {
- *         "triggerEnable": false,
- *         "asyncInvocationType": false,
- *         "eventRuleFilterPattern": "{}",
- *         "eventSourceConfig": {
- *             "eventSourceType": "RabbitMQ",
- *             "eventSourceParameters": {
- *                 "sourceRabbitMQParameters": {
- *                     "RegionId": "${defaultGetRegions.regions?.[0]?.id}",
- *                     "InstanceId": "${id}",
- *                     "VirtualHostName": "${virtualHostName}",
- *                     "QueueName": "${queueName}"
- *                 }
- *             }
- *         }
- *     }
- * `),
+ *     config: pulumi.jsonStringify({
+ *         triggerEnable: false,
+ *         asyncInvocationType: false,
+ *         eventRuleFilterPattern: "{}",
+ *         eventSourceConfig: {
+ *             eventSourceType: "RabbitMQ",
+ *             eventSourceParameters: {
+ *                 sourceRabbitMQParameters: {
+ *                     RegionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
+ *                     InstanceId: defaultInstance2.id,
+ *                     VirtualHostName: defaultVirtualHost.virtualHostName,
+ *                     QueueName: defaultQueue.queueName,
+ *                 },
+ *             },
+ *         },
+ *         eventSinkConfig: {
+ *             deliveryOption: {
+ *                 mode: "event-driven",
+ *                 eventSchema: "CloudEvents",
+ *             },
+ *         },
+ *         runOptions: {
+ *             retryStrategy: {
+ *                 PushRetryStrategy: "BACKOFF_RETRY",
+ *             },
+ *             errorsTolerance: "ALL",
+ *             mode: "event-driven",
+ *         },
+ *     }),
  * });
  * ```
  *

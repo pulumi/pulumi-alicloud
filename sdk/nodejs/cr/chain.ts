@@ -20,27 +20,32 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const _default = new alicloud.cr.RegistryEnterpriseInstance("default", {
+ * const _default = new random.index.Integer("default", {
+ *     min: 100000,
+ *     max: 999999,
+ * });
+ * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("default", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
  *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
- *     instanceName: name,
+ *     instanceName: `${name}-${_default.result}`,
  * });
  * const defaultRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("default", {
- *     instanceId: _default.id,
- *     name: name,
+ *     instanceId: defaultRegistryEnterpriseInstance.id,
+ *     name: `${name}-${_default.result}`,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
  * const defaultRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("default", {
- *     instanceId: _default.id,
+ *     instanceId: defaultRegistryEnterpriseInstance.id,
  *     namespace: defaultRegistryEnterpriseNamespace.name,
- *     name: name,
+ *     name: `${name}-${_default.result}`,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
  *     detail: "this is a public repo",
@@ -154,7 +159,7 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *     }],
- *     chainName: name,
+ *     chainName: `${name}-${_default.result}`,
  *     description: name,
  *     instanceId: defaultRegistryEnterpriseNamespace.instanceId,
  *     repoName: defaultRegistryEnterpriseRepo.name,

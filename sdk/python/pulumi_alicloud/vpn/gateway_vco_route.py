@@ -187,7 +187,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
 
         For information about VPN Gateway Vco Route and how to use it, see [What is Vco Route](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvcorouteentry).
 
-        > **NOTE:** Available in v1.183.0+.
+        > **NOTE:** Available since v1.183.0+.
 
         ## Example Usage
 
@@ -197,6 +197,10 @@ class GatewayVcoRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
         default_transit_router = alicloud.cen.TransitRouter("default",
             cen_id=default_instance.id,
@@ -204,10 +208,10 @@ class GatewayVcoRoute(pulumi.CustomResource):
             transit_router_name=name)
         default = alicloud.cen.get_transit_router_available_resources()
         default_customer_gateway = alicloud.vpn.CustomerGateway("default",
-            name=name,
+            customer_gateway_name=name,
             ip_address="42.104.22.210",
             asn="45014",
-            description="testAccVpnConnectionDesc")
+            description=name)
         default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("default",
             customer_gateway_id=default_customer_gateway.id,
             network_type="public",
@@ -248,12 +252,18 @@ class GatewayVcoRoute(pulumi.CustomResource):
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
+        default_transit_router_cidr = alicloud.cen.TransitRouterCidr("default",
+            transit_router_id=default_transit_router.transit_router_id,
+            cidr="192.168.0.0/16",
+            transit_router_cidr_name=name,
+            description=name,
+            publish_cidr_route=True)
         default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
             auto_publish_route_enabled=False,
             transit_router_attachment_description=name,
             transit_router_attachment_name=name,
             cen_id=default_transit_router.cen_id,
-            transit_router_id=default_transit_router.transit_router_id,
+            transit_router_id=default_transit_router_cidr.transit_router_id,
             vpn_id=default_gateway_vpn_attachment.id,
             zones=[{
                 "zone_id": default.resources[0].master_zones[0],
@@ -291,7 +301,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
 
         For information about VPN Gateway Vco Route and how to use it, see [What is Vco Route](https://www.alibabacloud.com/help/zh/virtual-private-cloud/latest/createvcorouteentry).
 
-        > **NOTE:** Available in v1.183.0+.
+        > **NOTE:** Available since v1.183.0+.
 
         ## Example Usage
 
@@ -301,6 +311,10 @@ class GatewayVcoRoute(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
         default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
         default_transit_router = alicloud.cen.TransitRouter("default",
             cen_id=default_instance.id,
@@ -308,10 +322,10 @@ class GatewayVcoRoute(pulumi.CustomResource):
             transit_router_name=name)
         default = alicloud.cen.get_transit_router_available_resources()
         default_customer_gateway = alicloud.vpn.CustomerGateway("default",
-            name=name,
+            customer_gateway_name=name,
             ip_address="42.104.22.210",
             asn="45014",
-            description="testAccVpnConnectionDesc")
+            description=name)
         default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("default",
             customer_gateway_id=default_customer_gateway.id,
             network_type="public",
@@ -352,12 +366,18 @@ class GatewayVcoRoute(pulumi.CustomResource):
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
+        default_transit_router_cidr = alicloud.cen.TransitRouterCidr("default",
+            transit_router_id=default_transit_router.transit_router_id,
+            cidr="192.168.0.0/16",
+            transit_router_cidr_name=name,
+            description=name,
+            publish_cidr_route=True)
         default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
             auto_publish_route_enabled=False,
             transit_router_attachment_description=name,
             transit_router_attachment_name=name,
             cen_id=default_transit_router.cen_id,
-            transit_router_id=default_transit_router.transit_router_id,
+            transit_router_id=default_transit_router_cidr.transit_router_id,
             vpn_id=default_gateway_vpn_attachment.id,
             zones=[{
                 "zone_id": default.resources[0].master_zones[0],

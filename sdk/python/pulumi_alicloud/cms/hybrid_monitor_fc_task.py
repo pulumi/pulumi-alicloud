@@ -177,23 +177,24 @@ class HybridMonitorFcTask(pulumi.CustomResource):
             specification="cms.s1.large")
         default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("default",
             namespace=default_namespace.id,
-            yarm_config=\"\"\"products:
-        - namespace: acs_ecs_dashboard
+            yarm_config=\"\"\"---
+        products:
+        - namespace: "acs_ecs_dashboard"
           metric_info:
           - metric_list:
-            - cpu_total
-            - cpu_idle
-            - diskusage_utilization
-            - CPUUtilization
-            - DiskReadBPS
-            - InternetOut
-            - IntranetOut
-            - cpu_system
-        - namespace: acs_rds_dashboard
+            - "CPUUtilization"
+            - "DiskReadBPS"
+            - "InternetOut"
+            - "IntranetOut"
+            - "cpu_idle"
+            - "cpu_system"
+            - "cpu_total"
+            - "diskusage_utilization"
+        - namespace: "acs_rds_dashboard"
           metric_info:
           - metric_list:
-            - MySQL_QPS
-            - MySQL_TPS
+            - "MySQL_QPS"
+            - "MySQL_TPS"
         \"\"\",
             target_user_id=default.id)
         ```
@@ -244,23 +245,24 @@ class HybridMonitorFcTask(pulumi.CustomResource):
             specification="cms.s1.large")
         default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("default",
             namespace=default_namespace.id,
-            yarm_config=\"\"\"products:
-        - namespace: acs_ecs_dashboard
+            yarm_config=\"\"\"---
+        products:
+        - namespace: "acs_ecs_dashboard"
           metric_info:
           - metric_list:
-            - cpu_total
-            - cpu_idle
-            - diskusage_utilization
-            - CPUUtilization
-            - DiskReadBPS
-            - InternetOut
-            - IntranetOut
-            - cpu_system
-        - namespace: acs_rds_dashboard
+            - "CPUUtilization"
+            - "DiskReadBPS"
+            - "InternetOut"
+            - "IntranetOut"
+            - "cpu_idle"
+            - "cpu_system"
+            - "cpu_total"
+            - "diskusage_utilization"
+        - namespace: "acs_rds_dashboard"
           metric_info:
           - metric_list:
-            - MySQL_QPS
-            - MySQL_TPS
+            - "MySQL_QPS"
+            - "MySQL_TPS"
         \"\"\",
             target_user_id=default.id)
         ```

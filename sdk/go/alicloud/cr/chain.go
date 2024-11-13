@@ -27,8 +27,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -41,20 +44,27 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := cr.NewRegistryEnterpriseInstance(ctx, "default", &cr.RegistryEnterpriseInstanceArgs{
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 100000,
+//				Max: 999999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "default", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
 //				Period:        pulumi.Int(1),
 //				RenewPeriod:   pulumi.Int(0),
 //				RenewalStatus: pulumi.String("ManualRenewal"),
 //				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(name),
+//				InstanceName:  pulumi.Sprintf("%v-%v", name, _default.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultRegistryEnterpriseNamespace, err := cs.NewRegistryEnterpriseNamespace(ctx, "default", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        _default.ID(),
-//				Name:              pulumi.String(name),
+//				InstanceId:        defaultRegistryEnterpriseInstance.ID(),
+//				Name:              pulumi.Sprintf("%v-%v", name, _default.Result),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})
@@ -62,9 +72,9 @@ import (
 //				return err
 //			}
 //			defaultRegistryEnterpriseRepo, err := cs.NewRegistryEnterpriseRepo(ctx, "default", &cs.RegistryEnterpriseRepoArgs{
-//				InstanceId: _default.ID(),
+//				InstanceId: defaultRegistryEnterpriseInstance.ID(),
 //				Namespace:  defaultRegistryEnterpriseNamespace.Name,
-//				Name:       pulumi.String(name),
+//				Name:       pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Summary:    pulumi.String("this is summary of my new repo"),
 //				RepoType:   pulumi.String("PUBLIC"),
 //				Detail:     pulumi.String("this is a public repo"),
@@ -235,7 +245,7 @@ import (
 //						},
 //					},
 //				},
-//				ChainName:         pulumi.String(name),
+//				ChainName:         pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Description:       pulumi.String(name),
 //				InstanceId:        defaultRegistryEnterpriseNamespace.InstanceId,
 //				RepoName:          defaultRegistryEnterpriseRepo.Name,

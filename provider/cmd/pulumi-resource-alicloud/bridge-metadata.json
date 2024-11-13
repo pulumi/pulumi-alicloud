@@ -4945,7 +4945,12 @@
                 }
             },
             "alicloud_governance_account": {
-                "current": "alicloud:governance/account:Account"
+                "current": "alicloud:governance/account:Account",
+                "fields": {
+                    "account_tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_governance_baseline": {
                 "current": "alicloud:governance/baseline:Baseline",

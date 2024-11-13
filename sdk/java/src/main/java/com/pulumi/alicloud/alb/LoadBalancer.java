@@ -100,14 +100,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> bandwidthPackageId;
+    private Output<String> bandwidthPackageId;
 
     /**
      * @return The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing ALB instance.
      * 
      */
-    public Output<Optional<String>> bandwidthPackageId() {
-        return Codegen.optional(this.bandwidthPackageId);
+    public Output<String> bandwidthPackageId() {
+        return this.bandwidthPackageId;
     }
     /**
      * The time when the resource was created.

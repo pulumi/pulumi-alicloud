@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DBFS Snapshot resource.
+// Provides a Database File System (DBFS) Snapshot resource.
 //
-// For information about DBFS Snapshot and how to use it.
+// For information about Database File System (DBFS) Snapshot and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-createsnapshot).
 //
 // > **NOTE:** Available since v1.156.0.
 //
@@ -28,8 +28,6 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/databasefilesystem"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
@@ -38,82 +36,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			zoneId := "cn-hangzhou-i"
-//			example, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone:   pulumi.StringRef(zoneId),
-//				InstanceTypeFamily: pulumi.StringRef("ecs.g7se"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				InstanceType: pulumi.StringRef(example.InstanceTypes[len(example.InstanceTypes)-1].Id),
-//				NameRegex:    pulumi.StringRef("^aliyun_2_1903_x64_20G_alibase_20240628.vhd"),
-//				Owners:       pulumi.StringRef("system"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
-//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(_default.Ids[0]),
-//				ZoneId: pulumi.StringRef(zoneId),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
-//				Name:  pulumi.String(name),
-//				VpcId: pulumi.String(_default.Ids[0]),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(zoneId),
-//				InstanceName:     pulumi.String(name),
-//				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
-//				InstanceType:     example.InstanceTypes[len(example.InstanceTypes)-1].Id,
-//				SecurityGroups: pulumi.StringArray{
-//					exampleSecurityGroup.ID(),
-//				},
-//				VswitchId:          pulumi.String(defaultGetSwitches.Ids[0]),
-//				SystemDiskCategory: pulumi.String("cloud_essd"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstance2, err := databasefilesystem.NewInstance(ctx, "default", &databasefilesystem.InstanceArgs{
-//				Category:         pulumi.String("enterprise"),
-//				ZoneId:           defaultInstance.AvailabilityZone,
-//				PerformanceLevel: pulumi.String("PL1"),
-//				FsName:           pulumi.String(name),
-//				Size:             pulumi.Int(100),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultInstanceAttachment, err := databasefilesystem.NewInstanceAttachment(ctx, "default", &databasefilesystem.InstanceAttachmentArgs{
-//				EcsId:      defaultInstance.ID(),
-//				InstanceId: defaultInstance2.ID(),
-//			})
+//			_default, err := databasefilesystem.GetInstances(ctx, &databasefilesystem.GetInstancesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = databasefilesystem.NewSnapshot(ctx, "example", &databasefilesystem.SnapshotArgs{
-//				InstanceId:    defaultInstanceAttachment.InstanceId,
+//				InstanceId:    pulumi.String(_default.Instances[0].Id),
+//				RetentionDays: pulumi.Int(50),
 //				SnapshotName:  pulumi.String(name),
-//				Description:   pulumi.String(name),
-//				RetentionDays: pulumi.Int(30),
+//				Description:   pulumi.String("DbfsSnapshot"),
 //			})
 //			if err != nil {
 //				return err
@@ -126,7 +61,7 @@ import (
 //
 // ## Import
 //
-// DBFS Snapshot can be imported using the id, e.g.
+// Database File System (DBFS) Snapshot can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example <id>
@@ -134,15 +69,15 @@ import (
 type Snapshot struct {
 	pulumi.CustomResourceState
 
-	// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+	// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to force deletion of snapshots.
+	// Specifies whether to force delete the snapshot. Valid values:
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+	// The retention period of the snapshot. Valid values: `1` to `65536`.
 	RetentionDays pulumi.IntPtrOutput `pulumi:"retentionDays"`
-	// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+	// The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
 	SnapshotName pulumi.StringPtrOutput `pulumi:"snapshotName"`
 	// The status of the Snapshot.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -181,30 +116,30 @@ func GetSnapshot(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Snapshot resources.
 type snapshotState struct {
-	// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+	// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
 	Description *string `pulumi:"description"`
-	// Whether to force deletion of snapshots.
+	// Specifies whether to force delete the snapshot. Valid values:
 	Force *bool `pulumi:"force"`
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId *string `pulumi:"instanceId"`
-	// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+	// The retention period of the snapshot. Valid values: `1` to `65536`.
 	RetentionDays *int `pulumi:"retentionDays"`
-	// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+	// The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
 	SnapshotName *string `pulumi:"snapshotName"`
 	// The status of the Snapshot.
 	Status *string `pulumi:"status"`
 }
 
 type SnapshotState struct {
-	// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+	// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
 	Description pulumi.StringPtrInput
-	// Whether to force deletion of snapshots.
+	// Specifies whether to force delete the snapshot. Valid values:
 	Force pulumi.BoolPtrInput
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId pulumi.StringPtrInput
-	// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+	// The retention period of the snapshot. Valid values: `1` to `65536`.
 	RetentionDays pulumi.IntPtrInput
-	// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+	// The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
 	SnapshotName pulumi.StringPtrInput
 	// The status of the Snapshot.
 	Status pulumi.StringPtrInput
@@ -215,29 +150,29 @@ func (SnapshotState) ElementType() reflect.Type {
 }
 
 type snapshotArgs struct {
-	// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+	// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
 	Description *string `pulumi:"description"`
-	// Whether to force deletion of snapshots.
+	// Specifies whether to force delete the snapshot. Valid values:
 	Force *bool `pulumi:"force"`
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId string `pulumi:"instanceId"`
-	// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+	// The retention period of the snapshot. Valid values: `1` to `65536`.
 	RetentionDays *int `pulumi:"retentionDays"`
-	// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+	// The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
 	SnapshotName *string `pulumi:"snapshotName"`
 }
 
 // The set of arguments for constructing a Snapshot resource.
 type SnapshotArgs struct {
-	// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+	// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
 	Description pulumi.StringPtrInput
-	// Whether to force deletion of snapshots.
+	// Specifies whether to force delete the snapshot. Valid values:
 	Force pulumi.BoolPtrInput
-	// The ID of the database file system.
+	// The ID of the Database File System.
 	InstanceId pulumi.StringInput
-	// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+	// The retention period of the snapshot. Valid values: `1` to `65536`.
 	RetentionDays pulumi.IntPtrInput
-	// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+	// The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
 	SnapshotName pulumi.StringPtrInput
 }
 
@@ -328,27 +263,27 @@ func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) Snapsho
 	return o
 }
 
-// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
 func (o SnapshotOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Whether to force deletion of snapshots.
+// Specifies whether to force delete the snapshot. Valid values:
 func (o SnapshotOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the database file system.
+// The ID of the Database File System.
 func (o SnapshotOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+// The retention period of the snapshot. Valid values: `1` to `65536`.
 func (o SnapshotOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
 }
 
-// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+// The name of the snapshot. The `snapshotName` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshotName` can be modified.
 func (o SnapshotOutput) SnapshotName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.StringPtrOutput { return v.SnapshotName }).(pulumi.StringPtrOutput)
 }

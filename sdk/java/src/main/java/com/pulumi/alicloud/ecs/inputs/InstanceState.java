@@ -352,14 +352,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     * **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
      * 
      */
     @Import(name="httpPutResponseHopLimit")
     private @Nullable Output<Integer> httpPutResponseHopLimit;
 
     /**
-     * @return The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+     * @return **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
      * 
      */
     public Optional<Output<Integer>> httpPutResponseHopLimit() {
@@ -1991,7 +1991,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpPutResponseHopLimit The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+         * @param httpPutResponseHopLimit **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
          * 
          * @return builder
          * 
@@ -2002,7 +2002,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param httpPutResponseHopLimit The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+         * @param httpPutResponseHopLimit **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
          * 
          * @return builder
          * 

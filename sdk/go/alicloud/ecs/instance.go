@@ -190,7 +190,7 @@ type Instance struct {
 	HpcClusterId pulumi.StringPtrOutput `pulumi:"hpcClusterId"`
 	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
 	HttpEndpoint pulumi.StringOutput `pulumi:"httpEndpoint"`
-	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	// **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
 	HttpPutResponseHopLimit pulumi.IntOutput `pulumi:"httpPutResponseHopLimit"`
 	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
@@ -449,7 +449,7 @@ type instanceState struct {
 	HpcClusterId *string `pulumi:"hpcClusterId"`
 	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
 	HttpEndpoint *string `pulumi:"httpEndpoint"`
-	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	// **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
 	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
@@ -672,7 +672,7 @@ type InstanceState struct {
 	HpcClusterId pulumi.StringPtrInput
 	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
 	HttpEndpoint pulumi.StringPtrInput
-	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	// **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
 	HttpPutResponseHopLimit pulumi.IntPtrInput
 	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
@@ -891,7 +891,7 @@ type instanceArgs struct {
 	HpcClusterId *string `pulumi:"hpcClusterId"`
 	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
 	HttpEndpoint *string `pulumi:"httpEndpoint"`
-	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	// **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
 	HttpPutResponseHopLimit *int `pulumi:"httpPutResponseHopLimit"`
 	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
@@ -1091,7 +1091,7 @@ type InstanceArgs struct {
 	HpcClusterId pulumi.StringPtrInput
 	// Specifies whether to enable the access channel for instance metadata. Valid values: `enabled`, `disabled`. Default value: `enabled`.
 	HttpEndpoint pulumi.StringPtrInput
-	// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+	// **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
 	HttpPutResponseHopLimit pulumi.IntPtrInput
 	// Specifies whether to forcefully use the security-enhanced mode (IMDSv2) to access instance metadata. Default value: optional. Valid values:
 	// - optional: does not forcefully use the security-enhanced mode (IMDSv2).
@@ -1444,7 +1444,7 @@ func (o InstanceOutput) HttpEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.HttpEndpoint }).(pulumi.StringOutput)
 }
 
-// The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
+// **NOTE:**: This parameter is not available for use yet. The HTTP PUT response hop limit for accessing instance metadata. Valid values: 1 to 64. Default value: 1.
 func (o InstanceOutput) HttpPutResponseHopLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.HttpPutResponseHopLimit }).(pulumi.IntOutput)
 }

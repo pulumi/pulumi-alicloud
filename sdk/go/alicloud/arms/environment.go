@@ -39,7 +39,7 @@ type Environment struct {
 	// The name of the resource.
 	EnvironmentName pulumi.StringPtrOutput `pulumi:"environmentName"`
 	// Subtype of environment:
-	// - Type of CS: ACK is currently supported.
+	// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
 	// - Type of ECS: currently supports ECS.
 	// - Type of Cloud: currently supports Cloud.
 	EnvironmentSubType pulumi.StringOutput `pulumi:"environmentSubType"`
@@ -103,7 +103,7 @@ type environmentState struct {
 	// The name of the resource.
 	EnvironmentName *string `pulumi:"environmentName"`
 	// Subtype of environment:
-	// - Type of CS: ACK is currently supported.
+	// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
 	// - Type of ECS: currently supports ECS.
 	// - Type of Cloud: currently supports Cloud.
 	EnvironmentSubType *string `pulumi:"environmentSubType"`
@@ -132,7 +132,7 @@ type EnvironmentState struct {
 	// The name of the resource.
 	EnvironmentName pulumi.StringPtrInput
 	// Subtype of environment:
-	// - Type of CS: ACK is currently supported.
+	// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
 	// - Type of ECS: currently supports ECS.
 	// - Type of Cloud: currently supports Cloud.
 	EnvironmentSubType pulumi.StringPtrInput
@@ -163,7 +163,7 @@ type environmentArgs struct {
 	// The name of the resource.
 	EnvironmentName *string `pulumi:"environmentName"`
 	// Subtype of environment:
-	// - Type of CS: ACK is currently supported.
+	// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
 	// - Type of ECS: currently supports ECS.
 	// - Type of Cloud: currently supports Cloud.
 	EnvironmentSubType string `pulumi:"environmentSubType"`
@@ -191,7 +191,7 @@ type EnvironmentArgs struct {
 	// The name of the resource.
 	EnvironmentName pulumi.StringPtrInput
 	// Subtype of environment:
-	// - Type of CS: ACK is currently supported.
+	// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
 	// - Type of ECS: currently supports ECS.
 	// - Type of Cloud: currently supports Cloud.
 	EnvironmentSubType pulumi.StringInput
@@ -321,7 +321,7 @@ func (o EnvironmentOutput) EnvironmentName() pulumi.StringPtrOutput {
 }
 
 // Subtype of environment:
-// - Type of CS: ACK is currently supported.
+// - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
 // - Type of ECS: currently supports ECS.
 // - Type of Cloud: currently supports Cloud.
 func (o EnvironmentOutput) EnvironmentSubType() pulumi.StringOutput {

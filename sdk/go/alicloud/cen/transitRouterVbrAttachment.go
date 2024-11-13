@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
+// Provides a Cloud Enterprise Network (CEN) Transit Router VBR Attachment resource.
+//
+// For information about Cloud Enterprise Network (CEN) Transit Router VBR Attachment and how to use it, see [What is Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
 //
 // > **NOTE:** Available since v1.126.0.
 //
@@ -39,7 +41,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
+//			nameRegex, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cen.NewInstance(ctx, "default", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
@@ -49,12 +57,6 @@ import (
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
 //				CenId: _default.ID(),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			nameRegex, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
-//				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
-//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -73,11 +75,11 @@ import (
 //				return err
 //			}
 //			_, err = cen.NewTransitRouterVbrAttachment(ctx, "default", &cen.TransitRouterVbrAttachmentArgs{
-//				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
-//				TransitRouterAttachmentName:        pulumi.String("example"),
-//				TransitRouterAttachmentDescription: pulumi.String("example"),
-//				VbrId:                              defaultVirtualBorderRouter.ID(),
 //				CenId:                              _default.ID(),
+//				VbrId:                              defaultVirtualBorderRouter.ID(),
+//				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
+//				TransitRouterAttachmentName:        pulumi.String(name),
+//				TransitRouterAttachmentDescription: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
@@ -90,43 +92,47 @@ import (
 //
 // ## Import
 //
-// CEN transit router VBR attachment can be imported using the id, e.g.
+// Cloud Enterprise Network (CEN) Transit Router VBR Attachment can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example tr-********:tr-attach-********
+// $ pulumi import alicloud:cen/transitRouterVbrAttachment:TransitRouterVbrAttachment example <cen_id>:<transit_router_attachment_id>
 // ```
 type TransitRouterVbrAttachment struct {
 	pulumi.CustomResourceState
 
-	// Auto publish route enabled.Default value is `false`.
-	AutoPublishRouteEnabled pulumi.BoolOutput `pulumi:"autoPublishRouteEnabled"`
+	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+	AutoPublishRouteEnabled pulumi.BoolPtrOutput `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the CEN.
 	CenId pulumi.StringOutput `pulumi:"cenId"`
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
+	ResourceType pulumi.StringPtrOutput `pulumi:"resourceType"`
+	// Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.
+	RouteTableAssociationEnabled pulumi.BoolPtrOutput `pulumi:"routeTableAssociationEnabled"`
+	// Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
 	//
 	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-	ResourceType pulumi.StringPtrOutput `pulumi:"resourceType"`
-	// Whether to enabled route table association. The system default value is `true`.
-	RouteTableAssociationEnabled pulumi.BoolPtrOutput `pulumi:"routeTableAssociationEnabled"`
-	// Whether to enabled route table propagation. The system default value is `true`.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.
 	RouteTablePropagationEnabled pulumi.BoolPtrOutput `pulumi:"routeTablePropagationEnabled"`
-	// The associating status of the network.
+	// The status of the Transit Router VBR Attachment.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentDescription"`
-	// The id of the transit router vbr attachment.
+	// The ID of the VBR connection.
 	TransitRouterAttachmentId pulumi.StringOutput `pulumi:"transitRouterAttachmentId"`
 	// The name of the transit router vbr attachment.
 	TransitRouterAttachmentName pulumi.StringPtrOutput `pulumi:"transitRouterAttachmentName"`
 	// The ID of the transit router.
-	TransitRouterId pulumi.StringPtrOutput `pulumi:"transitRouterId"`
+	TransitRouterId pulumi.StringOutput `pulumi:"transitRouterId"`
 	// The ID of the VBR.
 	VbrId pulumi.StringOutput `pulumi:"vbrId"`
-	// The owner id of the transit router vbr attachment.
+	// The owner id of the vbr.
 	VbrOwnerId pulumi.StringOutput `pulumi:"vbrOwnerId"`
 }
 
@@ -166,27 +172,31 @@ func GetTransitRouterVbrAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitRouterVbrAttachment resources.
 type transitRouterVbrAttachmentState struct {
-	// Auto publish route enabled.Default value is `false`.
+	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the CEN.
 	CenId *string `pulumi:"cenId"`
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun *bool `pulumi:"dryRun"`
-	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
+	ResourceType *string `pulumi:"resourceType"`
+	// Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.
+	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
+	// Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
 	//
 	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-	ResourceType *string `pulumi:"resourceType"`
-	// Whether to enabled route table association. The system default value is `true`.
-	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
-	// Whether to enabled route table propagation. The system default value is `true`.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
-	// The associating status of the network.
+	// The status of the Transit Router VBR Attachment.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription *string `pulumi:"transitRouterAttachmentDescription"`
-	// The id of the transit router vbr attachment.
+	// The ID of the VBR connection.
 	TransitRouterAttachmentId *string `pulumi:"transitRouterAttachmentId"`
 	// The name of the transit router vbr attachment.
 	TransitRouterAttachmentName *string `pulumi:"transitRouterAttachmentName"`
@@ -194,32 +204,36 @@ type transitRouterVbrAttachmentState struct {
 	TransitRouterId *string `pulumi:"transitRouterId"`
 	// The ID of the VBR.
 	VbrId *string `pulumi:"vbrId"`
-	// The owner id of the transit router vbr attachment.
+	// The owner id of the vbr.
 	VbrOwnerId *string `pulumi:"vbrOwnerId"`
 }
 
 type TransitRouterVbrAttachmentState struct {
-	// Auto publish route enabled.Default value is `false`.
+	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
 	AutoPublishRouteEnabled pulumi.BoolPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringPtrInput
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun pulumi.BoolPtrInput
-	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
+	ResourceType pulumi.StringPtrInput
+	// Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.
+	RouteTableAssociationEnabled pulumi.BoolPtrInput
+	// Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
 	//
 	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-	ResourceType pulumi.StringPtrInput
-	// Whether to enabled route table association. The system default value is `true`.
-	RouteTableAssociationEnabled pulumi.BoolPtrInput
-	// Whether to enabled route table propagation. The system default value is `true`.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
-	// The associating status of the network.
+	// The status of the Transit Router VBR Attachment.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
 	// The description of the transit router vbr attachment.
 	TransitRouterAttachmentDescription pulumi.StringPtrInput
-	// The id of the transit router vbr attachment.
+	// The ID of the VBR connection.
 	TransitRouterAttachmentId pulumi.StringPtrInput
 	// The name of the transit router vbr attachment.
 	TransitRouterAttachmentName pulumi.StringPtrInput
@@ -227,7 +241,7 @@ type TransitRouterVbrAttachmentState struct {
 	TransitRouterId pulumi.StringPtrInput
 	// The ID of the VBR.
 	VbrId pulumi.StringPtrInput
-	// The owner id of the transit router vbr attachment.
+	// The owner id of the vbr.
 	VbrOwnerId pulumi.StringPtrInput
 }
 
@@ -236,19 +250,23 @@ func (TransitRouterVbrAttachmentState) ElementType() reflect.Type {
 }
 
 type transitRouterVbrAttachmentArgs struct {
-	// Auto publish route enabled.Default value is `false`.
+	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
 	AutoPublishRouteEnabled *bool `pulumi:"autoPublishRouteEnabled"`
 	// The ID of the CEN.
 	CenId string `pulumi:"cenId"`
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun *bool `pulumi:"dryRun"`
-	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
+	ResourceType *string `pulumi:"resourceType"`
+	// Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.
+	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
+	// Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
 	//
 	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-	ResourceType *string `pulumi:"resourceType"`
-	// Whether to enabled route table association. The system default value is `true`.
-	RouteTableAssociationEnabled *bool `pulumi:"routeTableAssociationEnabled"`
-	// Whether to enabled route table propagation. The system default value is `true`.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.
 	RouteTablePropagationEnabled *bool `pulumi:"routeTablePropagationEnabled"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
@@ -260,25 +278,29 @@ type transitRouterVbrAttachmentArgs struct {
 	TransitRouterId *string `pulumi:"transitRouterId"`
 	// The ID of the VBR.
 	VbrId string `pulumi:"vbrId"`
-	// The owner id of the transit router vbr attachment.
+	// The owner id of the vbr.
 	VbrOwnerId *string `pulumi:"vbrOwnerId"`
 }
 
 // The set of arguments for constructing a TransitRouterVbrAttachment resource.
 type TransitRouterVbrAttachmentArgs struct {
-	// Auto publish route enabled.Default value is `false`.
+	// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
 	AutoPublishRouteEnabled pulumi.BoolPtrInput
 	// The ID of the CEN.
 	CenId pulumi.StringInput
-	// The dry run.
+	// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 	DryRun pulumi.BoolPtrInput
-	// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
+	// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
+	ResourceType pulumi.StringPtrInput
+	// Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+	//
+	// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.
+	RouteTableAssociationEnabled pulumi.BoolPtrInput
+	// Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
 	//
 	// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
-	ResourceType pulumi.StringPtrInput
-	// Whether to enabled route table association. The system default value is `true`.
-	RouteTableAssociationEnabled pulumi.BoolPtrInput
-	// Whether to enabled route table propagation. The system default value is `true`.
+	//
+	// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.
 	RouteTablePropagationEnabled pulumi.BoolPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
@@ -290,7 +312,7 @@ type TransitRouterVbrAttachmentArgs struct {
 	TransitRouterId pulumi.StringPtrInput
 	// The ID of the VBR.
 	VbrId pulumi.StringInput
-	// The owner id of the transit router vbr attachment.
+	// The owner id of the vbr.
 	VbrOwnerId pulumi.StringPtrInput
 }
 
@@ -381,9 +403,9 @@ func (o TransitRouterVbrAttachmentOutput) ToTransitRouterVbrAttachmentOutputWith
 	return o
 }
 
-// Auto publish route enabled.Default value is `false`.
-func (o TransitRouterVbrAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.BoolOutput { return v.AutoPublishRouteEnabled }).(pulumi.BoolOutput)
+// Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to the VBR. Default value: `false`. Valid values:
+func (o TransitRouterVbrAttachmentOutput) AutoPublishRouteEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.BoolPtrOutput { return v.AutoPublishRouteEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The ID of the CEN.
@@ -391,29 +413,33 @@ func (o TransitRouterVbrAttachmentOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.CenId }).(pulumi.StringOutput)
 }
 
-// The dry run.
+// Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
 func (o TransitRouterVbrAttachmentOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The resource type of the transit router vbr attachment.  Valid values: `VPC`, `CCN`, `VBR`, `TR`.
-//
-// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
+// The resource type of the transit router vbr attachment. Default value: `VBR`. Valid values: `VBR`.
 func (o TransitRouterVbrAttachmentOutput) ResourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringPtrOutput { return v.ResourceType }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enabled route table association. The system default value is `true`.
+// Whether to enabled route table association. **NOTE:** "Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
+//
+// Deprecated: Field `routeTableAssociationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.
 func (o TransitRouterVbrAttachmentOutput) RouteTableAssociationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.BoolPtrOutput { return v.RouteTableAssociationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enabled route table propagation. The system default value is `true`.
+// Whether to enabled route table propagation. **NOTE:** "Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
+//
+// ->**NOTE:** Ensure that the vbr is not used in Express Connect.
+//
+// Deprecated: Field `routeTablePropagationEnabled` has been deprecated from provider version 1.233.1. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.
 func (o TransitRouterVbrAttachmentOutput) RouteTablePropagationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.BoolPtrOutput { return v.RouteTablePropagationEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The associating status of the network.
+// The status of the Transit Router VBR Attachment.
 func (o TransitRouterVbrAttachmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -430,7 +456,7 @@ func (o TransitRouterVbrAttachmentOutput) TransitRouterAttachmentDescription() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// The id of the transit router vbr attachment.
+// The ID of the VBR connection.
 func (o TransitRouterVbrAttachmentOutput) TransitRouterAttachmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
 }
@@ -441,8 +467,8 @@ func (o TransitRouterVbrAttachmentOutput) TransitRouterAttachmentName() pulumi.S
 }
 
 // The ID of the transit router.
-func (o TransitRouterVbrAttachmentOutput) TransitRouterId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringPtrOutput { return v.TransitRouterId }).(pulumi.StringPtrOutput)
+func (o TransitRouterVbrAttachmentOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.TransitRouterId }).(pulumi.StringOutput)
 }
 
 // The ID of the VBR.
@@ -450,7 +476,7 @@ func (o TransitRouterVbrAttachmentOutput) VbrId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.VbrId }).(pulumi.StringOutput)
 }
 
-// The owner id of the transit router vbr attachment.
+// The owner id of the vbr.
 func (o TransitRouterVbrAttachmentOutput) VbrOwnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransitRouterVbrAttachment) pulumi.StringOutput { return v.VbrOwnerId }).(pulumi.StringOutput)
 }

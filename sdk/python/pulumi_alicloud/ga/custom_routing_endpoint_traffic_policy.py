@@ -236,19 +236,20 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones()
+        default_get_accelerators = alicloud.ga.get_accelerators(status="active",
+            bandwidth_billing_type="BandwidthPackage")
         default_network = alicloud.vpc.Network("default",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
+            vswitch_name=name,
             vpc_id=default_network.id,
-            zone_id=default.zones[0].id)
-        default_accelerator = alicloud.ga.Accelerator("default",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
+            cidr_block="192.168.192.0/24",
+            zone_id=default.ids[0])
         default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
@@ -256,38 +257,39 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
+        default_get_regions = alicloud.get_regions(current=True)
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
-            accelerator_id=default_accelerator.id,
+            accelerator_id=default_get_accelerators.accelerators[1].id,
             bandwidth_package_id=default_bandwidth_package.id)
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             listener_type="CustomRouting",
             port_ranges=[{
                 "from_port": 10000,
-                "to_port": 16000,
+                "to_port": 26000,
             }])
         default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
             listener_id=default_listener.id,
-            endpoint_group_region=region,
-            custom_routing_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        default_custom_routing_endpoint = alicloud.ga.CustomRoutingEndpoint("default",
-            endpoint_group_id=default_custom_routing_endpoint_group.id,
-            endpoint=default_switch.id,
-            type="PrivateSubNet",
-            traffic_to_endpoint_policy="AllowCustom")
+            endpoint_group_region=default_get_regions.regions[0].id,
+            custom_routing_endpoint_group_name=name,
+            description=name)
         default_custom_routing_endpoint_group_destination = alicloud.ga.CustomRoutingEndpointGroupDestination("default",
             endpoint_group_id=default_custom_routing_endpoint_group.id,
             protocols=["TCP"],
             from_port=1,
             to_port=10)
+        default_custom_routing_endpoint = alicloud.ga.CustomRoutingEndpoint("default",
+            endpoint_group_id=default_custom_routing_endpoint_group_destination.endpoint_group_id,
+            endpoint=default_switch.id,
+            type="PrivateSubNet",
+            traffic_to_endpoint_policy="AllowAll")
         default_custom_routing_endpoint_traffic_policy = alicloud.ga.CustomRoutingEndpointTrafficPolicy("default",
             endpoint_id=default_custom_routing_endpoint.custom_routing_endpoint_id,
-            address="172.17.3.0",
+            address="192.168.192.2",
             port_ranges=[{
                 "from_port": 1,
-                "to_port": 10,
+                "to_port": 2,
             }])
         ```
 
@@ -330,19 +332,20 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_zones()
+        default_get_accelerators = alicloud.ga.get_accelerators(status="active",
+            bandwidth_billing_type="BandwidthPackage")
         default_network = alicloud.vpc.Network("default",
-            vpc_name="terraform-example",
-            cidr_block="172.17.3.0/24")
+            vpc_name=name,
+            cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
-            vswitch_name="terraform-example",
-            cidr_block="172.17.3.0/24",
+            vswitch_name=name,
             vpc_id=default_network.id,
-            zone_id=default.zones[0].id)
-        default_accelerator = alicloud.ga.Accelerator("default",
-            duration=1,
-            auto_use_coupon=True,
-            spec="1")
+            cidr_block="192.168.192.0/24",
+            zone_id=default.ids[0])
         default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
@@ -350,38 +353,39 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
+        default_get_regions = alicloud.get_regions(current=True)
         default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
-            accelerator_id=default_accelerator.id,
+            accelerator_id=default_get_accelerators.accelerators[1].id,
             bandwidth_package_id=default_bandwidth_package.id)
         default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             listener_type="CustomRouting",
             port_ranges=[{
                 "from_port": 10000,
-                "to_port": 16000,
+                "to_port": 26000,
             }])
         default_custom_routing_endpoint_group = alicloud.ga.CustomRoutingEndpointGroup("default",
             accelerator_id=default_listener.accelerator_id,
             listener_id=default_listener.id,
-            endpoint_group_region=region,
-            custom_routing_endpoint_group_name="terraform-example",
-            description="terraform-example")
-        default_custom_routing_endpoint = alicloud.ga.CustomRoutingEndpoint("default",
-            endpoint_group_id=default_custom_routing_endpoint_group.id,
-            endpoint=default_switch.id,
-            type="PrivateSubNet",
-            traffic_to_endpoint_policy="AllowCustom")
+            endpoint_group_region=default_get_regions.regions[0].id,
+            custom_routing_endpoint_group_name=name,
+            description=name)
         default_custom_routing_endpoint_group_destination = alicloud.ga.CustomRoutingEndpointGroupDestination("default",
             endpoint_group_id=default_custom_routing_endpoint_group.id,
             protocols=["TCP"],
             from_port=1,
             to_port=10)
+        default_custom_routing_endpoint = alicloud.ga.CustomRoutingEndpoint("default",
+            endpoint_group_id=default_custom_routing_endpoint_group_destination.endpoint_group_id,
+            endpoint=default_switch.id,
+            type="PrivateSubNet",
+            traffic_to_endpoint_policy="AllowAll")
         default_custom_routing_endpoint_traffic_policy = alicloud.ga.CustomRoutingEndpointTrafficPolicy("default",
             endpoint_id=default_custom_routing_endpoint.custom_routing_endpoint_id,
-            address="172.17.3.0",
+            address="192.168.192.2",
             port_ranges=[{
                 "from_port": 1,
-                "to_port": 10,
+                "to_port": 2,
             }])
         ```
 

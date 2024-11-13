@@ -95,6 +95,8 @@ type Instance struct {
 	CaCertificateChainPem pulumi.StringOutput `pulumi:"caCertificateChainPem"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// (Available since v1.233.1) Instance expiration time.
+	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// Whether to force deletion even without backup.
 	ForceDeleteWithoutBackup pulumi.StringPtrOutput `pulumi:"forceDeleteWithoutBackup"`
 	// The name of the resource.
@@ -176,6 +178,8 @@ type instanceState struct {
 	CaCertificateChainPem *string `pulumi:"caCertificateChainPem"`
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
+	// (Available since v1.233.1) Instance expiration time.
+	EndDate *string `pulumi:"endDate"`
 	// Whether to force deletion even without backup.
 	ForceDeleteWithoutBackup *string `pulumi:"forceDeleteWithoutBackup"`
 	// The name of the resource.
@@ -219,6 +223,8 @@ type InstanceState struct {
 	CaCertificateChainPem pulumi.StringPtrInput
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
+	// (Available since v1.233.1) Instance expiration time.
+	EndDate pulumi.StringPtrInput
 	// Whether to force deletion even without backup.
 	ForceDeleteWithoutBackup pulumi.StringPtrInput
 	// The name of the resource.
@@ -430,6 +436,11 @@ func (o InstanceOutput) CaCertificateChainPem() pulumi.StringOutput {
 // The creation time of the resource.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// (Available since v1.233.1) Instance expiration time.
+func (o InstanceOutput) EndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EndDate }).(pulumi.StringOutput)
 }
 
 // Whether to force deletion even without backup.

@@ -404,6 +404,35 @@ class PrometheusAlertRule(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.136.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_prometheus = alicloud.arms.Prometheus("default",
+            cluster_type="remote-write",
+            cluster_name=f"{name}-{default['result']}",
+            grafana_instance_id="free")
+        example = alicloud.arms.PrometheusAlertRule("example",
+            cluster_id=default_prometheus.cluster_id,
+            duration="1",
+            expression="node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10",
+            message="node available memory is less than 10%",
+            prometheus_alert_rule_name=name,
+            notify_type="ALERT_MANAGER")
+        ```
+
         ## Import
 
         Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule can be imported using the id, e.g.
@@ -437,6 +466,35 @@ class PrometheusAlertRule(pulumi.CustomResource):
         For information about Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule and how to use it, see [What is Prometheus Alert Rule](https://www.alibabacloud.com/help/en/doc-detail/212056.htm).
 
         > **NOTE:** Available since v1.136.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_prometheus = alicloud.arms.Prometheus("default",
+            cluster_type="remote-write",
+            cluster_name=f"{name}-{default['result']}",
+            grafana_instance_id="free")
+        example = alicloud.arms.PrometheusAlertRule("example",
+            cluster_id=default_prometheus.cluster_id,
+            duration="1",
+            expression="node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10",
+            message="node available memory is less than 10%",
+            prometheus_alert_rule_name=name,
+            notify_type="ALERT_MANAGER")
+        ```
 
         ## Import
 

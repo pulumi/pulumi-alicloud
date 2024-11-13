@@ -525,6 +525,7 @@ import (
 //
 // import (
 //
+//	"encoding/json"
 //	"fmt"
 //
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
@@ -599,56 +600,79 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"triggerEnable":       false,
+//				"asyncInvocationType": false,
+//				"eventSourceConfig": map[string]interface{}{
+//					"eventSourceType": "Default",
+//				},
+//				"eventRuleFilterPattern": "{\"source\":[\"acs.oss\"],\"type\":[\"oss:BucketCreated:PutBucket\"]}",
+//				"eventSinkConfig": map[string]interface{}{
+//					"deliveryOption": map[string]interface{}{
+//						"mode":        "event-driven",
+//						"eventSchema": "CloudEvents",
+//					},
+//				},
+//				"runOptions": map[string]interface{}{
+//					"retryStrategy": map[string]interface{}{
+//						"PushRetryStrategy": "BACKOFF_RETRY",
+//					},
+//					"errorsTolerance": "ALL",
+//					"mode":            "event-driven",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
 //			_, err = fc.NewTrigger(ctx, "oss_trigger", &fc.TriggerArgs{
 //				Service:  defaultService.Name,
 //				Function: defaultFunction.Name,
 //				Name:     pulumi.String("terraform-example-oss"),
 //				Type:     pulumi.String("eventbridge"),
-//				Config: pulumi.String(`    {
-//	        "triggerEnable": false,
-//	        "asyncInvocationType": false,
-//	        "eventRuleFilterPattern": {
-//	          "source":[
-//	            "acs.oss"
-//	            ],
-//	            "type":[
-//	              "oss:BucketCreated:PutBucket"
-//	            ]
-//	        },
-//	        "eventSourceConfig": {
-//	            "eventSourceType": "Default"
-//	        }
-//	    }
-//
-// `),
-//
+//				Config:   pulumi.String(json0),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			tmpJSON1, err := json.Marshal(map[string]interface{}{
+//				"triggerEnable":       false,
+//				"asyncInvocationType": false,
+//				"eventSourceConfig": map[string]interface{}{
+//					"eventSourceType": "MNS",
+//					"eventSourceParameters": map[string]interface{}{
+//						"sourceMNSParameters": map[string]interface{}{
+//							"RegionId":       defaultGetRegions.Regions[0].Id,
+//							"QueueName":      "mns-queue",
+//							"IsBase64Decode": true,
+//						},
+//					},
+//				},
+//				"eventRuleFilterPattern": "{}",
+//				"eventSinkConfig": map[string]interface{}{
+//					"deliveryOption": map[string]interface{}{
+//						"mode":        "event-driven",
+//						"eventSchema": "CloudEvents",
+//					},
+//				},
+//				"runOptions": map[string]interface{}{
+//					"retryStrategy": map[string]interface{}{
+//						"PushRetryStrategy": "BACKOFF_RETRY",
+//					},
+//					"errorsTolerance": "ALL",
+//					"mode":            "event-driven",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json1 := string(tmpJSON1)
 //			_, err = fc.NewTrigger(ctx, "mns_trigger", &fc.TriggerArgs{
 //				Service:  defaultService.Name,
 //				Function: defaultFunction.Name,
 //				Name:     pulumi.String("terraform-example-mns"),
 //				Type:     pulumi.String("eventbridge"),
-//				Config: pulumi.String(`    {
-//	        "triggerEnable": false,
-//	        "asyncInvocationType": false,
-//	        "eventRuleFilterPattern": "{}",
-//	        "eventSourceConfig": {
-//	            "eventSourceType": "MNS",
-//	            "eventSourceParameters": {
-//	                "sourceMNSParameters": {
-//	                    "RegionId": "cn-hangzhou",
-//	                    "QueueName": "mns-queue",
-//	                    "IsBase64Decode": true
-//	                }
-//	            }
-//	        }
-//	    }
-//
-// `),
-//
+//				Config:   pulumi.String(json1),
 //			})
 //			if err != nil {
 //				return err
@@ -686,28 +710,44 @@ import (
 //					id := _args[0].(string)
 //					groupName := _args[1].(string)
 //					topicName := _args[2].(string)
-//					return fmt.Sprintf(`    {
-//	        "triggerEnable": false,
-//	        "asyncInvocationType": false,
-//	        "eventRuleFilterPattern": "{}",
-//	        "eventSourceConfig": {
-//	            "eventSourceType": "RocketMQ",
-//	            "eventSourceParameters": {
-//	                "sourceRocketMQParameters": {
-//	                    "RegionId": "%v",
-//	                    "InstanceId": "%v",
-//	                    "GroupID": "%v",
-//	                    "Topic": "%v",
-//	                    "Timestamp": 1686296162,
-//	                    "Tag": "example-tag",
-//	                    "Offset": "CONSUME_FROM_LAST_OFFSET"
-//	                }
-//	            }
-//	        }
-//	    }
-//
-// `, defaultGetRegions.Regions[0].Id, id, groupName, topicName), nil
-//
+//					var _zero string
+//					tmpJSON2, err := json.Marshal(map[string]interface{}{
+//						"triggerEnable":          false,
+//						"asyncInvocationType":    false,
+//						"eventRuleFilterPattern": "{}",
+//						"eventSinkConfig": map[string]interface{}{
+//							"deliveryOption": map[string]interface{}{
+//								"mode":        "event-driven",
+//								"eventSchema": "CloudEvents",
+//							},
+//						},
+//						"eventSourceConfig": map[string]interface{}{
+//							"eventSourceType": "RocketMQ",
+//							"eventSourceParameters": map[string]interface{}{
+//								"sourceRocketMQParameters": map[string]interface{}{
+//									"RegionId":   defaultGetRegions.Regions[0].Id,
+//									"InstanceId": id,
+//									"GroupID":    groupName,
+//									"Topic":      topicName,
+//									"Timestamp":  1686296162,
+//									"Tag":        "example-tag",
+//									"Offset":     "CONSUME_FROM_LAST_OFFSET",
+//								},
+//							},
+//						},
+//						"runOptions": map[string]interface{}{
+//							"retryStrategy": map[string]interface{}{
+//								"PushRetryStrategy": "BACKOFF_RETRY",
+//							},
+//							"errorsTolerance": "ALL",
+//							"mode":            "event-driven",
+//						},
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json2 := string(tmpJSON2)
+//					return json2, nil
 //				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
@@ -750,25 +790,41 @@ import (
 //					id := _args[0].(string)
 //					virtualHostName := _args[1].(string)
 //					queueName := _args[2].(string)
-//					return fmt.Sprintf(`    {
-//	        "triggerEnable": false,
-//	        "asyncInvocationType": false,
-//	        "eventRuleFilterPattern": "{}",
-//	        "eventSourceConfig": {
-//	            "eventSourceType": "RabbitMQ",
-//	            "eventSourceParameters": {
-//	                "sourceRabbitMQParameters": {
-//	                    "RegionId": "%v",
-//	                    "InstanceId": "%v",
-//	                    "VirtualHostName": "%v",
-//	                    "QueueName": "%v"
-//	                }
-//	            }
-//	        }
-//	    }
-//
-// `, defaultGetRegions.Regions[0].Id, id, virtualHostName, queueName), nil
-//
+//					var _zero string
+//					tmpJSON3, err := json.Marshal(map[string]interface{}{
+//						"triggerEnable":          false,
+//						"asyncInvocationType":    false,
+//						"eventRuleFilterPattern": "{}",
+//						"eventSourceConfig": map[string]interface{}{
+//							"eventSourceType": "RabbitMQ",
+//							"eventSourceParameters": map[string]interface{}{
+//								"sourceRabbitMQParameters": map[string]interface{}{
+//									"RegionId":        defaultGetRegions.Regions[0].Id,
+//									"InstanceId":      id,
+//									"VirtualHostName": virtualHostName,
+//									"QueueName":       queueName,
+//								},
+//							},
+//						},
+//						"eventSinkConfig": map[string]interface{}{
+//							"deliveryOption": map[string]interface{}{
+//								"mode":        "event-driven",
+//								"eventSchema": "CloudEvents",
+//							},
+//						},
+//						"runOptions": map[string]interface{}{
+//							"retryStrategy": map[string]interface{}{
+//								"PushRetryStrategy": "BACKOFF_RETRY",
+//							},
+//							"errorsTolerance": "ALL",
+//							"mode":            "event-driven",
+//						},
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json3 := string(tmpJSON3)
+//					return json3, nil
 //				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {

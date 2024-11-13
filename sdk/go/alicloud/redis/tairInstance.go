@@ -22,58 +22,134 @@ import (
 type TairInstance struct {
 	pulumi.CustomResourceState
 
+	// The architecture of the instance.  cluster, standard, rwsplit.
+	ArchitectureType pulumi.StringOutput `pulumi:"architectureType"`
 	// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
 	AutoRenew pulumi.StringPtrOutput `pulumi:"autoRenew"`
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod pulumi.StringPtrOutput `pulumi:"autoRenewPeriod"`
-	// The ID of the backup set of the cluster.
+	// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+	//
+	// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+	BackupId pulumi.StringPtrOutput `pulumi:"backupId"`
+	// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
 	ClusterBackupId pulumi.StringPtrOutput `pulumi:"clusterBackupId"`
+	// The internal endpoint of the instance.
+	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
-	// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+	// Database version. Default value: 1.0.
+	//
+	// Rules for transferring parameters of different tair product types:
+	//
+	// tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+	//
+	// tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+	//
+	// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
 	ForceUpgrade pulumi.BoolPtrOutput `pulumi:"forceUpgrade"`
+	// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+	//
+	// 1. Enter true if you want the new instance to be the first child instance.
+	//
+	// 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+	//
+	// 3. Not as a distributed instance, you do not need to enter any values.
+	GlobalInstanceId pulumi.StringPtrOutput `pulumi:"globalInstanceId"`
 	// The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// Instance intranet bandwidth
+	IntranetBandwidth pulumi.IntOutput `pulumi:"intranetBandwidth"`
+	// The maximum number of connections supported by the instance.
+	MaxConnections pulumi.IntOutput `pulumi:"maxConnections"`
+	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+	ModifyMode pulumi.StringPtrOutput `pulumi:"modifyMode"`
+	// The network type of the instance.  CLASSIC(classic network), VPC.
+	NetworkType pulumi.StringOutput `pulumi:"networkType"`
+	// Node type, value:
+	//
+	// MASTER_SLAVE: high availability (dual copy)
+	//
+	// STAND_ALONE: single copy
+	//
+	// double: double copy
+	//
+	// single: single copy
+	//
+	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	ParamNoLooseSentinelEnabled pulumi.StringOutput `pulumi:"paramNoLooseSentinelEnabled"`
+	// The value is semisync or async. The default value is async.
+	//
+	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+	ParamReplMode pulumi.StringOutput `pulumi:"paramReplMode"`
+	// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+	ParamSemisyncReplTimeout pulumi.StringOutput `pulumi:"paramSemisyncReplTimeout"`
+	// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+	ParamSentinelCompatEnable pulumi.StringPtrOutput `pulumi:"paramSentinelCompatEnable"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port pulumi.IntOutput `pulumi:"port"`
-	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+	//
+	// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+	//
+	// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
 	ReadOnlyCount pulumi.IntPtrOutput `pulumi:"readOnlyCount"`
+	// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+	RecoverConfigMode pulumi.StringPtrOutput `pulumi:"recoverConfigMode"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
-	// Security group ID
+	// Security group id
 	SecurityGroupId pulumi.StringPtrOutput `pulumi:"securityGroupId"`
+	// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+	SecurityIpGroupName pulumi.StringOutput `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+	SecurityIps pulumi.StringOutput `pulumi:"securityIps"`
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount pulumi.IntOutput `pulumi:"shardCount"`
-	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+	//
+	// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
 	SlaveReadOnlyCount pulumi.IntPtrOutput `pulumi:"slaveReadOnlyCount"`
-	// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+	// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+	SrcDbInstanceId pulumi.StringPtrOutput `pulumi:"srcDbInstanceId"`
+	// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
 	SslEnabled pulumi.StringOutput `pulumi:"sslEnabled"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+	// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+	//
+	// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+	//
+	// If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+	//
+	// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
 	StoragePerformanceLevel pulumi.StringPtrOutput `pulumi:"storagePerformanceLevel"`
-	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+	// Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
 	StorageSizeGb pulumi.IntOutput `pulumi:"storageSizeGb"`
 	// The tag of the resource
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The ID of the resource.
+	TairInstanceId pulumi.StringOutput `pulumi:"tairInstanceId"`
 	// The name of the resource.
 	TairInstanceName pulumi.StringPtrOutput `pulumi:"tairInstanceName"`
+	// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+	VpcAuthMode pulumi.StringOutput `pulumi:"vpcAuthMode"`
 	// The ID of the virtual private cloud (VPC).
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of the vSwitch to which the instance is connected.
@@ -134,58 +210,134 @@ func GetTairInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TairInstance resources.
 type tairInstanceState struct {
+	// The architecture of the instance.  cluster, standard, rwsplit.
+	ArchitectureType *string `pulumi:"architectureType"`
 	// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
 	AutoRenew *string `pulumi:"autoRenew"`
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod *string `pulumi:"autoRenewPeriod"`
-	// The ID of the backup set of the cluster.
+	// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+	//
+	// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+	BackupId *string `pulumi:"backupId"`
+	// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
 	ClusterBackupId *string `pulumi:"clusterBackupId"`
+	// The internal endpoint of the instance.
+	ConnectionDomain *string `pulumi:"connectionDomain"`
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime *string `pulumi:"createTime"`
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
 	EffectiveTime *string `pulumi:"effectiveTime"`
-	// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+	// Database version. Default value: 1.0.
+	//
+	// Rules for transferring parameters of different tair product types:
+	//
+	// tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+	//
+	// tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+	//
+	// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
+	// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+	//
+	// 1. Enter true if you want the new instance to be the first child instance.
+	//
+	// 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+	//
+	// 3. Not as a distributed instance, you do not need to enter any values.
+	GlobalInstanceId *string `pulumi:"globalInstanceId"`
 	// The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType *string `pulumi:"instanceType"`
-	// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// Instance intranet bandwidth
+	IntranetBandwidth *int `pulumi:"intranetBandwidth"`
+	// The maximum number of connections supported by the instance.
+	MaxConnections *int `pulumi:"maxConnections"`
+	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+	ModifyMode *string `pulumi:"modifyMode"`
+	// The network type of the instance.  CLASSIC(classic network), VPC.
+	NetworkType *string `pulumi:"networkType"`
+	// Node type, value:
+	//
+	// MASTER_SLAVE: high availability (dual copy)
+	//
+	// STAND_ALONE: single copy
+	//
+	// double: double copy
+	//
+	// single: single copy
+	//
+	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
 	NodeType *string `pulumi:"nodeType"`
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	ParamNoLooseSentinelEnabled *string `pulumi:"paramNoLooseSentinelEnabled"`
+	// The value is semisync or async. The default value is async.
+	//
+	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+	ParamReplMode *string `pulumi:"paramReplMode"`
+	// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+	ParamSemisyncReplTimeout *string `pulumi:"paramSemisyncReplTimeout"`
+	// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+	ParamSentinelCompatEnable *string `pulumi:"paramSentinelCompatEnable"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	Password *string `pulumi:"password"`
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
 	PaymentType *string `pulumi:"paymentType"`
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period *int `pulumi:"period"`
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port *int `pulumi:"port"`
-	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+	//
+	// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+	//
+	// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
 	ReadOnlyCount *int `pulumi:"readOnlyCount"`
+	// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+	RecoverConfigMode *string `pulumi:"recoverConfigMode"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
-	// Security group ID
+	// Security group id
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+	SecurityIps *string `pulumi:"securityIps"`
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount *int `pulumi:"shardCount"`
-	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+	//
+	// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
 	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
-	// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+	// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
+	// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
 	SslEnabled *string `pulumi:"sslEnabled"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
-	// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+	// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+	//
+	// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+	//
+	// If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+	//
+	// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
 	StoragePerformanceLevel *string `pulumi:"storagePerformanceLevel"`
-	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+	// Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
 	StorageSizeGb *int `pulumi:"storageSizeGb"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
+	// The ID of the resource.
+	TairInstanceId *string `pulumi:"tairInstanceId"`
 	// The name of the resource.
 	TairInstanceName *string `pulumi:"tairInstanceName"`
+	// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+	VpcAuthMode *string `pulumi:"vpcAuthMode"`
 	// The ID of the virtual private cloud (VPC).
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of the vSwitch to which the instance is connected.
@@ -195,58 +347,134 @@ type tairInstanceState struct {
 }
 
 type TairInstanceState struct {
+	// The architecture of the instance.  cluster, standard, rwsplit.
+	ArchitectureType pulumi.StringPtrInput
 	// Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
 	AutoRenew pulumi.StringPtrInput
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod pulumi.StringPtrInput
-	// The ID of the backup set of the cluster.
+	// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+	//
+	// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+	BackupId pulumi.StringPtrInput
+	// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
 	ClusterBackupId pulumi.StringPtrInput
+	// The internal endpoint of the instance.
+	ConnectionDomain pulumi.StringPtrInput
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringPtrInput
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
 	EffectiveTime pulumi.StringPtrInput
-	// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+	// Database version. Default value: 1.0.
+	//
+	// Rules for transferring parameters of different tair product types:
+	//
+	// tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+	//
+	// tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+	//
+	// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
 	EngineVersion pulumi.StringPtrInput
 	// Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
 	ForceUpgrade pulumi.BoolPtrInput
+	// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+	//
+	// 1. Enter true if you want the new instance to be the first child instance.
+	//
+	// 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+	//
+	// 3. Not as a distributed instance, you do not need to enter any values.
+	GlobalInstanceId pulumi.StringPtrInput
 	// The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
 	InstanceClass pulumi.StringPtrInput
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType pulumi.StringPtrInput
-	// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// Instance intranet bandwidth
+	IntranetBandwidth pulumi.IntPtrInput
+	// The maximum number of connections supported by the instance.
+	MaxConnections pulumi.IntPtrInput
+	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+	ModifyMode pulumi.StringPtrInput
+	// The network type of the instance.  CLASSIC(classic network), VPC.
+	NetworkType pulumi.StringPtrInput
+	// Node type, value:
+	//
+	// MASTER_SLAVE: high availability (dual copy)
+	//
+	// STAND_ALONE: single copy
+	//
+	// double: double copy
+	//
+	// single: single copy
+	//
+	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
 	NodeType pulumi.StringPtrInput
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	ParamNoLooseSentinelEnabled pulumi.StringPtrInput
+	// The value is semisync or async. The default value is async.
+	//
+	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+	ParamReplMode pulumi.StringPtrInput
+	// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+	ParamSemisyncReplTimeout pulumi.StringPtrInput
+	// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+	ParamSentinelCompatEnable pulumi.StringPtrInput
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	Password pulumi.StringPtrInput
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
 	PaymentType pulumi.StringPtrInput
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period pulumi.IntPtrInput
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port pulumi.IntPtrInput
-	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+	//
+	// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+	//
+	// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
 	ReadOnlyCount pulumi.IntPtrInput
+	// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+	RecoverConfigMode pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId pulumi.StringPtrInput
-	// Security group ID
+	// Security group id
 	SecurityGroupId pulumi.StringPtrInput
+	// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+	SecurityIpGroupName pulumi.StringPtrInput
+	// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+	SecurityIps pulumi.StringPtrInput
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount pulumi.IntPtrInput
-	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+	//
+	// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
 	SlaveReadOnlyCount pulumi.IntPtrInput
-	// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+	// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+	SrcDbInstanceId pulumi.StringPtrInput
+	// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
 	SslEnabled pulumi.StringPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
-	// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+	// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+	//
+	// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+	//
+	// If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+	//
+	// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
 	StoragePerformanceLevel pulumi.StringPtrInput
-	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+	// Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
 	StorageSizeGb pulumi.IntPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
+	// The ID of the resource.
+	TairInstanceId pulumi.StringPtrInput
 	// The name of the resource.
 	TairInstanceName pulumi.StringPtrInput
+	// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+	VpcAuthMode pulumi.StringPtrInput
 	// The ID of the virtual private cloud (VPC).
 	VpcId pulumi.StringPtrInput
 	// The ID of the vSwitch to which the instance is connected.
@@ -264,50 +492,116 @@ type tairInstanceArgs struct {
 	AutoRenew *string `pulumi:"autoRenew"`
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod *string `pulumi:"autoRenewPeriod"`
-	// The ID of the backup set of the cluster.
+	// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+	//
+	// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+	BackupId *string `pulumi:"backupId"`
+	// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
 	ClusterBackupId *string `pulumi:"clusterBackupId"`
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
 	EffectiveTime *string `pulumi:"effectiveTime"`
-	// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+	// Database version. Default value: 1.0.
+	//
+	// Rules for transferring parameters of different tair product types:
+	//
+	// tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+	//
+	// tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+	//
+	// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
 	ForceUpgrade *bool `pulumi:"forceUpgrade"`
+	// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+	//
+	// 1. Enter true if you want the new instance to be the first child instance.
+	//
+	// 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+	//
+	// 3. Not as a distributed instance, you do not need to enter any values.
+	GlobalInstanceId *string `pulumi:"globalInstanceId"`
 	// The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
 	InstanceClass string `pulumi:"instanceClass"`
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType string `pulumi:"instanceType"`
-	// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// Instance intranet bandwidth
+	IntranetBandwidth *int `pulumi:"intranetBandwidth"`
+	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+	ModifyMode *string `pulumi:"modifyMode"`
+	// Node type, value:
+	//
+	// MASTER_SLAVE: high availability (dual copy)
+	//
+	// STAND_ALONE: single copy
+	//
+	// double: double copy
+	//
+	// single: single copy
+	//
+	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
 	NodeType *string `pulumi:"nodeType"`
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	ParamNoLooseSentinelEnabled *string `pulumi:"paramNoLooseSentinelEnabled"`
+	// The value is semisync or async. The default value is async.
+	//
+	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+	ParamReplMode *string `pulumi:"paramReplMode"`
+	// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+	ParamSemisyncReplTimeout *string `pulumi:"paramSemisyncReplTimeout"`
+	// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+	ParamSentinelCompatEnable *string `pulumi:"paramSentinelCompatEnable"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	Password *string `pulumi:"password"`
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
 	PaymentType *string `pulumi:"paymentType"`
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period *int `pulumi:"period"`
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port *int `pulumi:"port"`
-	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+	//
+	// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+	//
+	// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
 	ReadOnlyCount *int `pulumi:"readOnlyCount"`
+	// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+	RecoverConfigMode *string `pulumi:"recoverConfigMode"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
-	// Security group ID
+	// Security group id
 	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
+	// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+	SecurityIps *string `pulumi:"securityIps"`
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount *int `pulumi:"shardCount"`
-	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+	//
+	// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
 	SlaveReadOnlyCount *int `pulumi:"slaveReadOnlyCount"`
-	// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+	// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+	SrcDbInstanceId *string `pulumi:"srcDbInstanceId"`
+	// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
 	SslEnabled *string `pulumi:"sslEnabled"`
-	// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+	// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+	//
+	// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+	//
+	// If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+	//
+	// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
 	StoragePerformanceLevel *string `pulumi:"storagePerformanceLevel"`
-	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+	// Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
 	StorageSizeGb *int `pulumi:"storageSizeGb"`
 	// The tag of the resource
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the resource.
 	TairInstanceName *string `pulumi:"tairInstanceName"`
+	// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+	VpcAuthMode *string `pulumi:"vpcAuthMode"`
 	// The ID of the virtual private cloud (VPC).
 	VpcId string `pulumi:"vpcId"`
 	// The ID of the vSwitch to which the instance is connected.
@@ -322,50 +616,116 @@ type TairInstanceArgs struct {
 	AutoRenew pulumi.StringPtrInput
 	// The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
 	AutoRenewPeriod pulumi.StringPtrInput
-	// The ID of the backup set of the cluster.
+	// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+	//
+	// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+	BackupId pulumi.StringPtrInput
+	// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
 	ClusterBackupId pulumi.StringPtrInput
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
 	EffectiveTime pulumi.StringPtrInput
-	// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+	// Database version. Default value: 1.0.
+	//
+	// Rules for transferring parameters of different tair product types:
+	//
+	// tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+	//
+	// tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+	//
+	// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
 	EngineVersion pulumi.StringPtrInput
 	// Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
 	ForceUpgrade pulumi.BoolPtrInput
+	// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+	//
+	// 1. Enter true if you want the new instance to be the first child instance.
+	//
+	// 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+	//
+	// 3. Not as a distributed instance, you do not need to enter any values.
+	GlobalInstanceId pulumi.StringPtrInput
 	// The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
 	InstanceClass pulumi.StringInput
 	// The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
 	InstanceType pulumi.StringInput
-	// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// Instance intranet bandwidth
+	IntranetBandwidth pulumi.IntPtrInput
+	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+	ModifyMode pulumi.StringPtrInput
+	// Node type, value:
+	//
+	// MASTER_SLAVE: high availability (dual copy)
+	//
+	// STAND_ALONE: single copy
+	//
+	// double: double copy
+	//
+	// single: single copy
+	//
+	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
 	NodeType pulumi.StringPtrInput
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	ParamNoLooseSentinelEnabled pulumi.StringPtrInput
+	// The value is semisync or async. The default value is async.
+	//
+	// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+	ParamReplMode pulumi.StringPtrInput
+	// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+	ParamSemisyncReplTimeout pulumi.StringPtrInput
+	// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+	ParamSentinelCompatEnable pulumi.StringPtrInput
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	Password pulumi.StringPtrInput
-	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
 	PaymentType pulumi.StringPtrInput
 	// The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
 	Period pulumi.IntPtrInput
 	// The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
 	Port pulumi.IntPtrInput
-	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+	// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+	//
+	// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+	//
+	// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
 	ReadOnlyCount pulumi.IntPtrInput
+	// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+	RecoverConfigMode pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
 	SecondaryZoneId pulumi.StringPtrInput
-	// Security group ID
+	// Security group id
 	SecurityGroupId pulumi.StringPtrInput
+	// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+	SecurityIpGroupName pulumi.StringPtrInput
+	// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+	SecurityIps pulumi.StringPtrInput
 	// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
 	ShardCount pulumi.IntPtrInput
-	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+	// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+	//
+	// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
 	SlaveReadOnlyCount pulumi.IntPtrInput
-	// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+	// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+	SrcDbInstanceId pulumi.StringPtrInput
+	// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
 	SslEnabled pulumi.StringPtrInput
-	// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+	// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+	//
+	// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+	//
+	// If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+	//
+	// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
 	StoragePerformanceLevel pulumi.StringPtrInput
-	// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+	// Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
 	StorageSizeGb pulumi.IntPtrInput
 	// The tag of the resource
 	Tags pulumi.StringMapInput
 	// The name of the resource.
 	TairInstanceName pulumi.StringPtrInput
+	// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+	VpcAuthMode pulumi.StringPtrInput
 	// The ID of the virtual private cloud (VPC).
 	VpcId pulumi.StringInput
 	// The ID of the vSwitch to which the instance is connected.
@@ -461,6 +821,11 @@ func (o TairInstanceOutput) ToTairInstanceOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The architecture of the instance.  cluster, standard, rwsplit.
+func (o TairInstanceOutput) ArchitectureType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ArchitectureType }).(pulumi.StringOutput)
+}
+
 // Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
 func (o TairInstanceOutput) AutoRenew() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.AutoRenew }).(pulumi.StringPtrOutput)
@@ -471,9 +836,21 @@ func (o TairInstanceOutput) AutoRenewPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.AutoRenewPeriod }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the backup set of the cluster.
+// You can set the BackupId parameter to the backup set ID of the source instance. The system uses the data stored in the backup set to create an instance. You can call the DescribeBackups operation to query backup set IDs. If the source instance is a cluster instance, set the BackupId parameter to the backup set IDs of all shards of the source instance, separated by commas (,).
+//
+// If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
+func (o TairInstanceOutput) BackupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.BackupId }).(pulumi.StringPtrOutput)
+}
+
+// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
 func (o TairInstanceOutput) ClusterBackupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.ClusterBackupId }).(pulumi.StringPtrOutput)
+}
+
+// The internal endpoint of the instance.
+func (o TairInstanceOutput) ConnectionDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ConnectionDomain }).(pulumi.StringOutput)
 }
 
 // The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
@@ -486,7 +863,15 @@ func (o TairInstanceOutput) EffectiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.EffectiveTime }).(pulumi.StringPtrOutput)
 }
 
-// Database version. Default value: 1.0. Rules for transferring parameters of different tair product types: tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0. tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0. tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
+// Database version. Default value: 1.0.
+//
+// Rules for transferring parameters of different tair product types:
+//
+// tair_rdb:  Compatible with the Redis5.0 and Redis6.0 protocols, and is transmitted to 5.0 or 6.0.
+//
+// tair_scm: The Tair persistent memory is compatible with the Redis6.0 protocol and is passed 1.0.
+//
+// tair_essd: The disk (ESSD/SSD) is compatible with the Redis4.0 and Redis6.0 protocols, and is transmitted to 1.0 and 2.0 respectively.
 func (o TairInstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }
@@ -494,6 +879,17 @@ func (o TairInstanceOutput) EngineVersion() pulumi.StringOutput {
 // Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
 func (o TairInstanceOutput) ForceUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.BoolPtrOutput { return v.ForceUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of a distributed (Global Distributed Cache) instance, which indicates whether to use the newly created instance as a sub-instance of a distributed instance. You can use this method to create a distributed instance.
+//
+// 1. Enter true if you want the new instance to be the first child instance.
+//
+// 2. If you want the new instance to be used as the second and third sub-instances, enter the distributed instance ID.
+//
+// 3. Not as a distributed instance, you do not need to enter any values.
+func (o TairInstanceOutput) GlobalInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.GlobalInstanceId }).(pulumi.StringPtrOutput)
 }
 
 // The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
@@ -506,9 +902,61 @@ func (o TairInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// Node type, value: MASTER_SLAVE: high availability (dual copy) STAND_ALONE: single copy double: double copy single: single copy Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+// Instance intranet bandwidth
+func (o TairInstanceOutput) IntranetBandwidth() pulumi.IntOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.IntOutput { return v.IntranetBandwidth }).(pulumi.IntOutput)
+}
+
+// The maximum number of connections supported by the instance.
+func (o TairInstanceOutput) MaxConnections() pulumi.IntOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.IntOutput { return v.MaxConnections }).(pulumi.IntOutput)
+}
+
+// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
+func (o TairInstanceOutput) ModifyMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.ModifyMode }).(pulumi.StringPtrOutput)
+}
+
+// The network type of the instance.  CLASSIC(classic network), VPC.
+func (o TairInstanceOutput) NetworkType() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// Node type, value:
+//
+// MASTER_SLAVE: high availability (dual copy)
+//
+// STAND_ALONE: single copy
+//
+// double: double copy
+//
+// single: single copy
+//
+// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
 func (o TairInstanceOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+func (o TairInstanceOutput) ParamNoLooseSentinelEnabled() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ParamNoLooseSentinelEnabled }).(pulumi.StringOutput)
+}
+
+// The value is semisync or async. The default value is async.
+//
+// The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
+func (o TairInstanceOutput) ParamReplMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ParamReplMode }).(pulumi.StringOutput)
+}
+
+// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
+func (o TairInstanceOutput) ParamSemisyncReplTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ParamSemisyncReplTimeout }).(pulumi.StringOutput)
+}
+
+// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
+func (o TairInstanceOutput) ParamSentinelCompatEnable() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.ParamSentinelCompatEnable }).(pulumi.StringPtrOutput)
 }
 
 // The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
@@ -516,7 +964,7 @@ func (o TairInstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo. Since version 1.227.0, you can transfer prepaid instance to postpaid.
+// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
 func (o TairInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -531,9 +979,18 @@ func (o TairInstanceOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
 
-// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions: If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture. If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
+// Number of read-only nodes in the primary zone. Valid values: 0 to 5. This parameter is only applicable to the following conditions:
+//
+// If the instance is in the cloud disk version standard architecture, you can set this parameter to a value greater than 0 to enable the read/write splitting architecture.
+//
+// If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
 func (o TairInstanceOutput) ReadOnlyCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.IntPtrOutput { return v.ReadOnlyCount }).(pulumi.IntPtrOutput)
+}
+
+// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+func (o TairInstanceOutput) RecoverConfigMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.RecoverConfigMode }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the resource group to which the instance belongs.
@@ -546,9 +1003,19 @@ func (o TairInstanceOutput) SecondaryZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.SecondaryZoneId }).(pulumi.StringPtrOutput)
 }
 
-// Security group ID
+// Security group id
 func (o TairInstanceOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the IP address whitelist. You cannot modify the whitelist that is generated by the system. If you do not specify this parameter, the default whitelist is modified by default.
+func (o TairInstanceOutput) SecurityIpGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.SecurityIpGroupName }).(pulumi.StringOutput)
+}
+
+// The IP addresses in the whitelist. Up to 1,000 IP addresses can be specified in a whitelist. Separate multiple IP addresses with a comma (,). Specify an IP address in the 0.0.0.0/0, 10.23.12.24, or 10.23.12.24/24 format. In CIDR block 10.23.12.24/24, /24 specifies the length of the prefix of an IP address. The prefix length ranges from 1 to 32.
+func (o TairInstanceOutput) SecurityIps() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.SecurityIps }).(pulumi.StringOutput)
 }
 
 // The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
@@ -556,12 +1023,19 @@ func (o TairInstanceOutput) ShardCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.IntOutput { return v.ShardCount }).(pulumi.IntOutput)
 }
 
-// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance. Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
+// Specifies the number of read-only nodes in the secondary zone when creating a multi-zone read/write splitting instance.
+//
+// Note: To create a multi-zone read/write splitting instance, slaveadonlycount and SecondaryZoneId must be specified at the same time.
 func (o TairInstanceOutput) SlaveReadOnlyCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.IntPtrOutput { return v.SlaveReadOnlyCount }).(pulumi.IntPtrOutput)
 }
 
-// Modify the TLS(SSL) setting. Value: Expand Details Example values: Enable Enumeration value: Disable Enable Update Reference value Source: DescribeInstanceSSL
+// If you want to create an instance based on the backup set of an existing instance, set this parameter to the ID of the source instance. preceding three parameters. After you specify the SrcDBInstanceId parameter, use the BackupId, ClusterBackupId (recommended for cloud-native cluster instances), or RestoreTime parameter to specify the backup set or the specific point in time that you want to use to create an instance. The SrcDBInstanceId parameter must be used in combination with one of the preceding three parameters.
+func (o TairInstanceOutput) SrcDbInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.SrcDbInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// Modifies SSL encryption configurations. Valid values: 1. Disable (The SSL encryption is disabled) 2. Enable (The SSL encryption is enabled)  3. Update (The SSL certificate is updated)
 func (o TairInstanceOutput) SslEnabled() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.SslEnabled }).(pulumi.StringOutput)
 }
@@ -571,12 +1045,18 @@ func (o TairInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The storage type. The value is set to essd_pl1. Note This parameter is only available when the value of InstanceType is tair_essd.
+// The storage type. Valid values: PL1, PL2, and PL3. This parameter is available only when the value of InstanceType is tair_essd, that is, when an ESSD disk instance is selected.
+//
+// If the ESSD instance type is 4C, 8C, or 16C, you can specify the storage type as PL1.
+//
+// If the type of ESSD instance you select is 8C, 16C, 32C, or 52C, you can specify the storage type as PL2.
+//
+// If the ESSD instance type is 16C, 32C, or 52C, you can specify the storage type as PL3.
 func (o TairInstanceOutput) StoragePerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.StoragePerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+// Different specifications have different value ranges. When the instanceType value is tairEssd and the disk type is ESSD, this attribute takes effect and is required. When a Tair disk is an SSD, see-https://help.aliyun.com/zh/redis/product-overview/capacity-storage-type. The capacity field is defined as different fixed values according to different specifications, and does not need to be specified.
 func (o TairInstanceOutput) StorageSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.IntOutput { return v.StorageSizeGb }).(pulumi.IntOutput)
 }
@@ -586,9 +1066,19 @@ func (o TairInstanceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
+// The ID of the resource.
+func (o TairInstanceOutput) TairInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.TairInstanceId }).(pulumi.StringOutput)
+}
+
 // The name of the resource.
 func (o TairInstanceOutput) TairInstanceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.TairInstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The VPC authentication mode. Valid values: Open (enables password authentication), Close (disables password authentication and enables [password-free access](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/enable-password-free-access)).
+func (o TairInstanceOutput) VpcAuthMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.VpcAuthMode }).(pulumi.StringOutput)
 }
 
 // The ID of the virtual private cloud (VPC).

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.DatabaseFilesystem
 {
     /// <summary>
-    /// Provides a DBFS Snapshot resource.
+    /// Provides a Database File System (DBFS) Snapshot resource.
     /// 
-    /// For information about DBFS Snapshot and how to use it.
+    /// For information about Database File System (DBFS) Snapshot and how to use it, see [What is Snapshot](https://help.aliyun.com/zh/dbfs/developer-reference/api-dbfs-2020-04-18-createsnapshot).
     /// 
     /// &gt; **NOTE:** Available since v1.156.0.
     /// 
@@ -29,79 +29,15 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf-example";
-    ///     var zoneId = "cn-hangzhou-i";
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.DatabaseFilesystem.GetInstances.Invoke();
     /// 
-    ///     var example = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var example = new AliCloud.DatabaseFilesystem.Snapshot("example", new()
     ///     {
-    ///         AvailabilityZone = zoneId,
-    ///         InstanceTypeFamily = "ecs.g7se",
-    ///     });
-    /// 
-    ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
-    ///     {
-    ///         InstanceType = example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length - 1].Id,
-    ///         NameRegex = "^aliyun_2_1903_x64_20G_alibase_20240628.vhd",
-    ///         Owners = "system",
-    ///     });
-    /// 
-    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
-    ///     {
-    ///         NameRegex = "^default-NODELETING$",
-    ///     });
-    /// 
-    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
-    ///     {
-    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = zoneId,
-    ///     });
-    /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
-    ///     {
-    ///         Name = name,
-    ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
-    ///     });
-    /// 
-    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
-    ///     {
-    ///         AvailabilityZone = zoneId,
-    ///         InstanceName = name,
-    ///         ImageId = exampleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = Output.Tuple(example, example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length).Apply(values =&gt;
-    ///         {
-    ///             var example = values.Item1;
-    ///             var length = values.Item2;
-    ///             return example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[length - 1].Id;
-    ///         }),
-    ///         SecurityGroups = new[]
-    ///         {
-    ///             exampleSecurityGroup.Id,
-    ///         },
-    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
-    ///         SystemDiskCategory = "cloud_essd",
-    ///     });
-    /// 
-    ///     var defaultInstance2 = new AliCloud.DatabaseFilesystem.Instance("default", new()
-    ///     {
-    ///         Category = "enterprise",
-    ///         ZoneId = defaultInstance.AvailabilityZone,
-    ///         PerformanceLevel = "PL1",
-    ///         FsName = name,
-    ///         Size = 100,
-    ///     });
-    /// 
-    ///     var defaultInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("default", new()
-    ///     {
-    ///         EcsId = defaultInstance.Id,
-    ///         InstanceId = defaultInstance2.Id,
-    ///     });
-    /// 
-    ///     var exampleSnapshot = new AliCloud.DatabaseFilesystem.Snapshot("example", new()
-    ///     {
-    ///         InstanceId = defaultInstanceAttachment.InstanceId,
+    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Instances[0]?.Id)),
+    ///         RetentionDays = 50,
     ///         SnapshotName = name,
-    ///         Description = name,
-    ///         RetentionDays = 30,
+    ///         Description = "DbfsSnapshot",
     ///     });
     /// 
     /// });
@@ -109,7 +45,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// ## Import
     /// 
-    /// DBFS Snapshot can be imported using the id, e.g.
+    /// Database File System (DBFS) Snapshot can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:databasefilesystem/snapshot:Snapshot example &lt;id&gt;
@@ -119,31 +55,31 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+        /// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to force deletion of snapshots.
+        /// Specifies whether to force delete the snapshot. Valid values:
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the database file system.
+        /// The ID of the Database File System.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+        /// The retention period of the snapshot. Valid values: `1` to `65536`.
         /// </summary>
         [Output("retentionDays")]
         public Output<int?> RetentionDays { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        /// The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         /// </summary>
         [Output("snapshotName")]
         public Output<string?> SnapshotName { get; private set; } = null!;
@@ -201,31 +137,31 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+        /// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to force deletion of snapshots.
+        /// Specifies whether to force delete the snapshot. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The ID of the database file system.
+        /// The ID of the Database File System.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+        /// The retention period of the snapshot. Valid values: `1` to `65536`.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
 
         /// <summary>
-        /// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        /// The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }
@@ -239,31 +175,31 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     public sealed class SnapshotState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
+        /// The description of the snapshot. The `description` must be `2` to `256` characters in length. It cannot start with `http://` or `https://`. **NOTE:** From version 1.233.1, `description` can be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether to force deletion of snapshots.
+        /// Specifies whether to force delete the snapshot. Valid values:
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// The ID of the database file system.
+        /// The ID of the Database File System.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
+        /// The retention period of the snapshot. Valid values: `1` to `65536`.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
 
         /// <summary>
-        /// The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
+        /// The name of the snapshot. The `snapshot_name` must be `2` to `128` characters in length. It must start with a large or small letter or Chinese, and cannot start with `http://`, `https://`, `auto` or `dbfs-auto`. It can contain numbers, colons (:), underscores (_), or hyphens (-). **NOTE:** From version 1.233.1, `snapshot_name` can be modified.
         /// </summary>
         [Input("snapshotName")]
         public Input<string>? SnapshotName { get; set; }

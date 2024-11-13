@@ -5,15 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Apsara File Storage (NAS) Data Flow resource.
+ * Provides a File Storage (NAS) Data Flow resource.
  *
- * For information about Apsara File Storage (NAS) Data Flow and how to use it, see [What is Data Flow](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
+ * For information about File Storage (NAS) Data Flow and how to use it, see [What is Data Flow](https://www.alibabacloud.com/help/en/doc-detail/27530.html).
  *
  * > **NOTE:** Available since v1.153.0.
  *
  * ## Import
  *
- * Apsara File Storage (NAS) Data Flow can be imported using the id, e.g.
+ * File Storage (NAS) Data Flow can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:nas/dataFlow:DataFlow example <file_system_id>:<data_flow_id>

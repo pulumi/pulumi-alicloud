@@ -104,6 +104,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly createSampleData!: pulumi.Output<boolean>;
     /**
+     * Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+     */
+    public readonly dataShareStatus!: pulumi.Output<string>;
+    /**
      * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
      */
@@ -207,6 +211,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly privateIpAddress!: pulumi.Output<string | undefined>;
     /**
+     * The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+     */
+    public readonly prodType!: pulumi.Output<string>;
+    /**
      * The ID of the enterprise resource group to which the instance belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
@@ -221,15 +229,22 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityIpLists!: pulumi.Output<string[] | undefined>;
     /**
+     * The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+     */
+    public readonly segDiskPerformanceLevel!: pulumi.Output<string>;
+    /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
     public readonly segNodeNum!: pulumi.Output<number>;
     /**
-     * The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
-     * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     * The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
      */
-    public readonly segStorageType!: pulumi.Output<string | undefined>;
+    public readonly segStorageType!: pulumi.Output<string>;
+    /**
+     * The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
+     */
+    public readonly serverlessMode!: pulumi.Output<string>;
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
@@ -284,6 +299,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
             resourceInputs["createSampleData"] = state ? state.createSampleData : undefined;
+            resourceInputs["dataShareStatus"] = state ? state.dataShareStatus : undefined;
             resourceInputs["dbInstanceCategory"] = state ? state.dbInstanceCategory : undefined;
             resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
             resourceInputs["dbInstanceMode"] = state ? state.dbInstanceMode : undefined;
@@ -306,11 +322,14 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["period"] = state ? state.period : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["privateIpAddress"] = state ? state.privateIpAddress : undefined;
+            resourceInputs["prodType"] = state ? state.prodType : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["resourceManagementMode"] = state ? state.resourceManagementMode : undefined;
             resourceInputs["securityIpLists"] = state ? state.securityIpLists : undefined;
+            resourceInputs["segDiskPerformanceLevel"] = state ? state.segDiskPerformanceLevel : undefined;
             resourceInputs["segNodeNum"] = state ? state.segNodeNum : undefined;
             resourceInputs["segStorageType"] = state ? state.segStorageType : undefined;
+            resourceInputs["serverlessMode"] = state ? state.serverlessMode : undefined;
             resourceInputs["sslEnabled"] = state ? state.sslEnabled : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storageSize"] = state ? state.storageSize : undefined;
@@ -336,6 +355,7 @@ export class Instance extends pulumi.CustomResource {
             }
             resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
             resourceInputs["createSampleData"] = args ? args.createSampleData : undefined;
+            resourceInputs["dataShareStatus"] = args ? args.dataShareStatus : undefined;
             resourceInputs["dbInstanceCategory"] = args ? args.dbInstanceCategory : undefined;
             resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
             resourceInputs["dbInstanceMode"] = args ? args.dbInstanceMode : undefined;
@@ -357,11 +377,14 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["privateIpAddress"] = args ? args.privateIpAddress : undefined;
+            resourceInputs["prodType"] = args ? args.prodType : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["resourceManagementMode"] = args ? args.resourceManagementMode : undefined;
             resourceInputs["securityIpLists"] = args ? args.securityIpLists : undefined;
+            resourceInputs["segDiskPerformanceLevel"] = args ? args.segDiskPerformanceLevel : undefined;
             resourceInputs["segNodeNum"] = args ? args.segNodeNum : undefined;
             resourceInputs["segStorageType"] = args ? args.segStorageType : undefined;
+            resourceInputs["serverlessMode"] = args ? args.serverlessMode : undefined;
             resourceInputs["sslEnabled"] = args ? args.sslEnabled : undefined;
             resourceInputs["storageSize"] = args ? args.storageSize : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -397,6 +420,10 @@ export interface InstanceState {
      * Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
      */
     createSampleData?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+     */
+    dataShareStatus?: pulumi.Input<string>;
     /**
      * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
@@ -501,6 +528,10 @@ export interface InstanceState {
      */
     privateIpAddress?: pulumi.Input<string>;
     /**
+     * The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+     */
+    prodType?: pulumi.Input<string>;
+    /**
      * The ID of the enterprise resource group to which the instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -515,15 +546,22 @@ export interface InstanceState {
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+     */
+    segDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
     segNodeNum?: pulumi.Input<number>;
     /**
-     * The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
-     * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     * The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
      */
     segStorageType?: pulumi.Input<string>;
+    /**
+     * The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
+     */
+    serverlessMode?: pulumi.Input<string>;
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
@@ -577,6 +615,10 @@ export interface InstanceArgs {
      * Whether to load the sample dataset after the instance is created. Valid values: `true`, `false`.
      */
     createSampleData?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether to enable or disable data sharing. Default value: `closed`. Valid values:
+     */
+    dataShareStatus?: pulumi.Input<string>;
     /**
      * The db instance category. Valid values: `Basic`, `HighAvailability`.
      * > **NOTE:** This parameter must be passed in to create a storage reservation mode instance.
@@ -677,6 +719,10 @@ export interface InstanceArgs {
      */
     privateIpAddress?: pulumi.Input<string>;
     /**
+     * The type of the product. Default value: `standard`. Valid values: `standard`, `cost-effective`.
+     */
+    prodType?: pulumi.Input<string>;
+    /**
      * The ID of the enterprise resource group to which the instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -691,15 +737,22 @@ export interface InstanceArgs {
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The ESSD cloud disk performance level. Valid values: `pl0`, `pl1`, `pl2`.
+     */
+    segDiskPerformanceLevel?: pulumi.Input<string>;
+    /**
      * Calculate the number of nodes. Valid values: `2` to `512`. The value range of the high-availability version of the storage elastic mode is `4` to `512`, and the value must be a multiple of `4`. The value range of the basic version of the storage elastic mode is `2` to `512`, and the value must be a multiple of `2`. The-Serverless version has a value range of `2` to `512`. The value must be a multiple of `2`.
      * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance and a Serverless version instance. During the public beta of the Serverless version (from 0101, 2022 to 0131, 2022), a maximum of 12 compute nodes can be created.
      */
     segNodeNum?: pulumi.Input<number>;
     /**
-     * The seg storage type. Valid values: `cloudEssd`, `cloudEfficiency`.
-     * > **NOTE:** This parameter must be passed in to create a storage elastic mode instance. Storage Elastic Mode Basic Edition instances only support ESSD cloud disks.
+     * The seg storage type. Valid values: `cloudEssd`. **NOTE:** If `dbInstanceMode` is set to `StorageElastic`, `segStorageType` is required. From version 1.233.1, `segStorageType` cannot be modified, or set to `cloudEfficiency`. `segStorageType` can only be set to `cloudEssd`.
      */
     segStorageType?: pulumi.Input<string>;
+    /**
+     * The mode of the Serverless instance. Valid values: `Manual`, `Auto`. **NOTE:** `serverlessMode` is valid only when `dbInstanceMode` is set to `Serverless`.
+     */
+    serverlessMode?: pulumi.Input<string>;
     /**
      * Enable or disable SSL. Valid values: `0` and `1`.
      */
