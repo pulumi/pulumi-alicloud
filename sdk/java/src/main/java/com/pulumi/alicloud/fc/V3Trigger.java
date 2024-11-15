@@ -6,6 +6,7 @@ package com.pulumi.alicloud.fc;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.fc.V3TriggerArgs;
 import com.pulumi.alicloud.fc.inputs.V3TriggerState;
+import com.pulumi.alicloud.fc.outputs.V3TriggerHttpTrigger;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -156,6 +157,20 @@ public class V3Trigger extends com.pulumi.resources.CustomResource {
         return this.functionName;
     }
     /**
+     * (Available since v1.234.0) HTTP trigger information
+     * 
+     */
+    @Export(name="httpTrigger", refs={V3TriggerHttpTrigger.class}, tree="[0]")
+    private Output<V3TriggerHttpTrigger> httpTrigger;
+
+    /**
+     * @return (Available since v1.234.0) HTTP trigger information
+     * 
+     */
+    public Output<V3TriggerHttpTrigger> httpTrigger() {
+        return this.httpTrigger;
+    }
+    /**
      * The role required by the event source (such as OSS) to call the function.
      * 
      */
@@ -168,6 +183,20 @@ public class V3Trigger extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> invocationRole() {
         return Codegen.optional(this.invocationRole);
+    }
+    /**
+     * (Available since v1.234.0) The last modified time of the trigger
+     * 
+     */
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
+    private Output<String> lastModifiedTime;
+
+    /**
+     * @return (Available since v1.234.0) The last modified time of the trigger
+     * 
+     */
+    public Output<String> lastModifiedTime() {
+        return this.lastModifiedTime;
     }
     /**
      * The version or alias of the function
@@ -212,6 +241,20 @@ public class V3Trigger extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
+     * (Available since v1.234.0) Resource identity of the function
+     * 
+     */
+    @Export(name="targetArn", refs={String.class}, tree="[0]")
+    private Output<String> targetArn;
+
+    /**
+     * @return (Available since v1.234.0) Resource identity of the function
+     * 
+     */
+    public Output<String> targetArn() {
+        return this.targetArn;
+    }
+    /**
      * Trigger configuration. The configuration varies for different types of triggers.
      * 
      */
@@ -224,6 +267,20 @@ public class V3Trigger extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> triggerConfig() {
         return Codegen.optional(this.triggerConfig);
+    }
+    /**
+     * (Available since v1.234.0) Trigger ID
+     * 
+     */
+    @Export(name="triggerId", refs={String.class}, tree="[0]")
+    private Output<String> triggerId;
+
+    /**
+     * @return (Available since v1.234.0) Trigger ID
+     * 
+     */
+    public Output<String> triggerId() {
+        return this.triggerId;
     }
     /**
      * Trigger Name

@@ -1,12 +1,12 @@
 ---
 # *** WARNING: This file was auto-generated. Do not edit by hand unless you're certain you know what you are doing! ***
-title: Alicloud Provider
-meta_desc: Provides an overview on how to configure the Pulumi Alicloud provider.
+title: Alibaba Cloud Provider
+meta_desc: Provides an overview on how to configure the Pulumi Alibaba Cloud provider.
 layout: package
 ---
 ## Installation
 
-The alicloud provider is available as a package in all Pulumi languages:
+The Alibaba Cloud provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/alicloud`](https://www.npmjs.com/package/@pulumi/alicloud)
 * Python: [`pulumi-alicloud`](https://pypi.org/project/pulumi-alicloud/)

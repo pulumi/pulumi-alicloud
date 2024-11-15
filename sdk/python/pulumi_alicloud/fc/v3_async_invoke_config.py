@@ -127,7 +127,9 @@ class _V3AsyncInvokeConfigState:
                  async_task: Optional[pulumi.Input[bool]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  destination_config: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs']] = None,
+                 function_arn: Optional[pulumi.Input[str]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
+                 last_modified_time: Optional[pulumi.Input[str]] = None,
                  max_async_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
                  max_async_retry_attempts: Optional[pulumi.Input[int]] = None,
                  qualifier: Optional[pulumi.Input[str]] = None):
@@ -136,7 +138,9 @@ class _V3AsyncInvokeConfigState:
         :param pulumi.Input[bool] async_task: Whether to enable an asynchronous task
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input['V3AsyncInvokeConfigDestinationConfigArgs'] destination_config: Target Configuration See `destination_config` below.
+        :param pulumi.Input[str] function_arn: (Available since v1.234.0) Function resource identification
         :param pulumi.Input[str] function_name: Function Name
+        :param pulumi.Input[str] last_modified_time: (Available since v1.234.0) Last modification time
         :param pulumi.Input[int] max_async_event_age_in_seconds: Event maximum survival time
         :param pulumi.Input[int] max_async_retry_attempts: Number of Asynchronous call retries
         :param pulumi.Input[str] qualifier: Function version or alias
@@ -147,8 +151,12 @@ class _V3AsyncInvokeConfigState:
             pulumi.set(__self__, "create_time", create_time)
         if destination_config is not None:
             pulumi.set(__self__, "destination_config", destination_config)
+        if function_arn is not None:
+            pulumi.set(__self__, "function_arn", function_arn)
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
+        if last_modified_time is not None:
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
         if max_async_event_age_in_seconds is not None:
             pulumi.set(__self__, "max_async_event_age_in_seconds", max_async_event_age_in_seconds)
         if max_async_retry_attempts is not None:
@@ -193,6 +201,18 @@ class _V3AsyncInvokeConfigState:
         pulumi.set(self, "destination_config", value)
 
     @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) Function resource identification
+        """
+        return pulumi.get(self, "function_arn")
+
+    @function_arn.setter
+    def function_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_arn", value)
+
+    @property
     @pulumi.getter(name="functionName")
     def function_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -203,6 +223,18 @@ class _V3AsyncInvokeConfigState:
     @function_name.setter
     def function_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "function_name", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) Last modification time
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @last_modified_time.setter
+    def last_modified_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_time", value)
 
     @property
     @pulumi.getter(name="maxAsyncEventAgeInSeconds")
@@ -341,6 +373,8 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
             __props__.__dict__["max_async_retry_attempts"] = max_async_retry_attempts
             __props__.__dict__["qualifier"] = qualifier
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["function_arn"] = None
+            __props__.__dict__["last_modified_time"] = None
         super(V3AsyncInvokeConfig, __self__).__init__(
             'alicloud:fc/v3AsyncInvokeConfig:V3AsyncInvokeConfig',
             resource_name,
@@ -354,7 +388,9 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
             async_task: Optional[pulumi.Input[bool]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             destination_config: Optional[pulumi.Input[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+            function_arn: Optional[pulumi.Input[str]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
+            last_modified_time: Optional[pulumi.Input[str]] = None,
             max_async_event_age_in_seconds: Optional[pulumi.Input[int]] = None,
             max_async_retry_attempts: Optional[pulumi.Input[int]] = None,
             qualifier: Optional[pulumi.Input[str]] = None) -> 'V3AsyncInvokeConfig':
@@ -368,7 +404,9 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
         :param pulumi.Input[bool] async_task: Whether to enable an asynchronous task
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[Union['V3AsyncInvokeConfigDestinationConfigArgs', 'V3AsyncInvokeConfigDestinationConfigArgsDict']] destination_config: Target Configuration See `destination_config` below.
+        :param pulumi.Input[str] function_arn: (Available since v1.234.0) Function resource identification
         :param pulumi.Input[str] function_name: Function Name
+        :param pulumi.Input[str] last_modified_time: (Available since v1.234.0) Last modification time
         :param pulumi.Input[int] max_async_event_age_in_seconds: Event maximum survival time
         :param pulumi.Input[int] max_async_retry_attempts: Number of Asynchronous call retries
         :param pulumi.Input[str] qualifier: Function version or alias
@@ -380,7 +418,9 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
         __props__.__dict__["async_task"] = async_task
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["destination_config"] = destination_config
+        __props__.__dict__["function_arn"] = function_arn
         __props__.__dict__["function_name"] = function_name
+        __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["max_async_event_age_in_seconds"] = max_async_event_age_in_seconds
         __props__.__dict__["max_async_retry_attempts"] = max_async_retry_attempts
         __props__.__dict__["qualifier"] = qualifier
@@ -411,12 +451,28 @@ class V3AsyncInvokeConfig(pulumi.CustomResource):
         return pulumi.get(self, "destination_config")
 
     @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) Function resource identification
+        """
+        return pulumi.get(self, "function_arn")
+
+    @property
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Output[str]:
         """
         Function Name
         """
         return pulumi.get(self, "function_name")
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) Last modification time
+        """
+        return pulumi.get(self, "last_modified_time")
 
     @property
     @pulumi.getter(name="maxAsyncEventAgeInSeconds")

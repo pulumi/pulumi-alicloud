@@ -58,9 +58,9 @@ class AccessConfigurationPermissionPolicy(dict):
                  permission_policy_type: str,
                  permission_policy_document: Optional[str] = None):
         """
-        :param str permission_policy_name: The Policy Name of policy. The name of the resource.
-        :param str permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
-        :param str permission_policy_document: The Content of Policy.
+        :param str permission_policy_name: The name of the policy.
+        :param str permission_policy_type: The type of the policy. Valid values: `System`, `Inline`.
+        :param str permission_policy_document: The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
         """
         pulumi.set(__self__, "permission_policy_name", permission_policy_name)
         pulumi.set(__self__, "permission_policy_type", permission_policy_type)
@@ -71,7 +71,7 @@ class AccessConfigurationPermissionPolicy(dict):
     @pulumi.getter(name="permissionPolicyName")
     def permission_policy_name(self) -> str:
         """
-        The Policy Name of policy. The name of the resource.
+        The name of the policy.
         """
         return pulumi.get(self, "permission_policy_name")
 
@@ -79,7 +79,7 @@ class AccessConfigurationPermissionPolicy(dict):
     @pulumi.getter(name="permissionPolicyType")
     def permission_policy_type(self) -> str:
         """
-        The Policy Type of policy. Valid values: `System`, `Inline`.
+        The type of the policy. Valid values: `System`, `Inline`.
         """
         return pulumi.get(self, "permission_policy_type")
 
@@ -87,7 +87,7 @@ class AccessConfigurationPermissionPolicy(dict):
     @pulumi.getter(name="permissionPolicyDocument")
     def permission_policy_document(self) -> Optional[str]:
         """
-        The Content of Policy.
+        The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
         """
         return pulumi.get(self, "permission_policy_document")
 

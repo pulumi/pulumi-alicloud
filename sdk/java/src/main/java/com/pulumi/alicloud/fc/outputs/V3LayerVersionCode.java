@@ -17,17 +17,17 @@ public final class V3LayerVersionCode {
      */
     private @Nullable String checksum;
     /**
-     * @return Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+     * @return Name of the OSS Bucket where the user stores the Layer Code ZIP package
      * 
      */
     private @Nullable String ossBucketName;
     /**
-     * @return Name of the OSS Object where the user stores the Layer Code ZIP package.
+     * @return Name of the OSS Object where the user stores the Layer Code ZIP package
      * 
      */
     private @Nullable String ossObjectName;
     /**
-     * @return Base 64 encoding of Layer Code ZIP package.
+     * @return Base 64 encoding of Layer Code ZIP package
      * 
      */
     private @Nullable String zipFile;
@@ -41,21 +41,21 @@ public final class V3LayerVersionCode {
         return Optional.ofNullable(this.checksum);
     }
     /**
-     * @return Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+     * @return Name of the OSS Bucket where the user stores the Layer Code ZIP package
      * 
      */
     public Optional<String> ossBucketName() {
         return Optional.ofNullable(this.ossBucketName);
     }
     /**
-     * @return Name of the OSS Object where the user stores the Layer Code ZIP package.
+     * @return Name of the OSS Object where the user stores the Layer Code ZIP package
      * 
      */
     public Optional<String> ossObjectName() {
         return Optional.ofNullable(this.ossObjectName);
     }
     /**
-     * @return Base 64 encoding of Layer Code ZIP package.
+     * @return Base 64 encoding of Layer Code ZIP package
      * 
      */
     public Optional<String> zipFile() {

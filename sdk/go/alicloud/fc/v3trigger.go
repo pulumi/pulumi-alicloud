@@ -124,16 +124,24 @@ type V3Trigger struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Function Name
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
+	// (Available since v1.234.0) HTTP trigger information
+	HttpTrigger V3TriggerHttpTriggerOutput `pulumi:"httpTrigger"`
 	// The role required by the event source (such as OSS) to call the function.
 	InvocationRole pulumi.StringPtrOutput `pulumi:"invocationRole"`
+	// (Available since v1.234.0) The last modified time of the trigger
+	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The version or alias of the function
 	Qualifier pulumi.StringOutput `pulumi:"qualifier"`
 	// Trigger Event source ARN
 	SourceArn pulumi.StringPtrOutput `pulumi:"sourceArn"`
 	// The state of the trigger
 	Status pulumi.StringOutput `pulumi:"status"`
+	// (Available since v1.234.0) Resource identity of the function
+	TargetArn pulumi.StringOutput `pulumi:"targetArn"`
 	// Trigger configuration. The configuration varies for different types of triggers.
 	TriggerConfig pulumi.StringPtrOutput `pulumi:"triggerConfig"`
+	// (Available since v1.234.0) Trigger ID
+	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 	// Trigger Name
 	TriggerName pulumi.StringOutput `pulumi:"triggerName"`
 	// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
@@ -185,16 +193,24 @@ type v3triggerState struct {
 	Description *string `pulumi:"description"`
 	// Function Name
 	FunctionName *string `pulumi:"functionName"`
+	// (Available since v1.234.0) HTTP trigger information
+	HttpTrigger *V3TriggerHttpTrigger `pulumi:"httpTrigger"`
 	// The role required by the event source (such as OSS) to call the function.
 	InvocationRole *string `pulumi:"invocationRole"`
+	// (Available since v1.234.0) The last modified time of the trigger
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The version or alias of the function
 	Qualifier *string `pulumi:"qualifier"`
 	// Trigger Event source ARN
 	SourceArn *string `pulumi:"sourceArn"`
 	// The state of the trigger
 	Status *string `pulumi:"status"`
+	// (Available since v1.234.0) Resource identity of the function
+	TargetArn *string `pulumi:"targetArn"`
 	// Trigger configuration. The configuration varies for different types of triggers.
 	TriggerConfig *string `pulumi:"triggerConfig"`
+	// (Available since v1.234.0) Trigger ID
+	TriggerId *string `pulumi:"triggerId"`
 	// Trigger Name
 	TriggerName *string `pulumi:"triggerName"`
 	// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
@@ -208,16 +224,24 @@ type V3TriggerState struct {
 	Description pulumi.StringPtrInput
 	// Function Name
 	FunctionName pulumi.StringPtrInput
+	// (Available since v1.234.0) HTTP trigger information
+	HttpTrigger V3TriggerHttpTriggerPtrInput
 	// The role required by the event source (such as OSS) to call the function.
 	InvocationRole pulumi.StringPtrInput
+	// (Available since v1.234.0) The last modified time of the trigger
+	LastModifiedTime pulumi.StringPtrInput
 	// The version or alias of the function
 	Qualifier pulumi.StringPtrInput
 	// Trigger Event source ARN
 	SourceArn pulumi.StringPtrInput
 	// The state of the trigger
 	Status pulumi.StringPtrInput
+	// (Available since v1.234.0) Resource identity of the function
+	TargetArn pulumi.StringPtrInput
 	// Trigger configuration. The configuration varies for different types of triggers.
 	TriggerConfig pulumi.StringPtrInput
+	// (Available since v1.234.0) Trigger ID
+	TriggerId pulumi.StringPtrInput
 	// Trigger Name
 	TriggerName pulumi.StringPtrInput
 	// The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mnsTopic and eventbridge.
@@ -369,9 +393,19 @@ func (o V3TriggerOutput) FunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3Trigger) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
 }
 
+// (Available since v1.234.0) HTTP trigger information
+func (o V3TriggerOutput) HttpTrigger() V3TriggerHttpTriggerOutput {
+	return o.ApplyT(func(v *V3Trigger) V3TriggerHttpTriggerOutput { return v.HttpTrigger }).(V3TriggerHttpTriggerOutput)
+}
+
 // The role required by the event source (such as OSS) to call the function.
 func (o V3TriggerOutput) InvocationRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3Trigger) pulumi.StringPtrOutput { return v.InvocationRole }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.234.0) The last modified time of the trigger
+func (o V3TriggerOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3Trigger) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
 // The version or alias of the function
@@ -389,9 +423,19 @@ func (o V3TriggerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3Trigger) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
+// (Available since v1.234.0) Resource identity of the function
+func (o V3TriggerOutput) TargetArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3Trigger) pulumi.StringOutput { return v.TargetArn }).(pulumi.StringOutput)
+}
+
 // Trigger configuration. The configuration varies for different types of triggers.
 func (o V3TriggerOutput) TriggerConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3Trigger) pulumi.StringPtrOutput { return v.TriggerConfig }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.234.0) Trigger ID
+func (o V3TriggerOutput) TriggerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3Trigger) pulumi.StringOutput { return v.TriggerId }).(pulumi.StringOutput)
 }
 
 // Trigger Name

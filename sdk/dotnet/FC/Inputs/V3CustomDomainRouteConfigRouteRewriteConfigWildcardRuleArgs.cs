@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Matching Rules.
+        /// Matching Rules
         /// </summary>
         [Input("match")]
         public Input<string>? Match { get; set; }
 
         /// <summary>
-        /// Replace Rules.
+        /// Replace Rules
         /// </summary>
         [Input("replacement")]
         public Input<string>? Replacement { get; set; }

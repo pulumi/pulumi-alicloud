@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3CustomDomainWafConfig
     {
         /// <summary>
-        /// Enable WAF protection.
+        /// Enable WAF protection
         /// </summary>
         public readonly bool? EnableWaf;
 

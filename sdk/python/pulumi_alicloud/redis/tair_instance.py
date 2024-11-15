@@ -93,17 +93,9 @@ class TairInstanceArgs:
         :param pulumi.Input[int] intranet_bandwidth: Instance intranet bandwidth
         :param pulumi.Input[str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[str] node_type: Node type, value:
-               
-               MASTER_SLAVE: high availability (dual copy)
-               
-               STAND_ALONE: single copy
-               
-               double: double copy
-               
-               single: single copy
-               
-               Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
-        :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+               - `MASTER_SLAVE`: high availability (dual copy)
+               - `STAND_ALONE`: single copy
+        :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         :param pulumi.Input[str] param_repl_mode: The value is semisync or async. The default value is async.
                
                The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -419,16 +411,8 @@ class TairInstanceArgs:
     def node_type(self) -> Optional[pulumi.Input[str]]:
         """
         Node type, value:
-
-        MASTER_SLAVE: high availability (dual copy)
-
-        STAND_ALONE: single copy
-
-        double: double copy
-
-        single: single copy
-
-        Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        - `MASTER_SLAVE`: high availability (dual copy)
+        - `STAND_ALONE`: single copy
         """
         return pulumi.get(self, "node_type")
 
@@ -440,7 +424,7 @@ class TairInstanceArgs:
     @pulumi.getter(name="paramNoLooseSentinelEnabled")
     def param_no_loose_sentinel_enabled(self) -> Optional[pulumi.Input[str]]:
         """
-        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         """
         return pulumi.get(self, "param_no_loose_sentinel_enabled")
 
@@ -825,17 +809,9 @@ class _TairInstanceState:
         :param pulumi.Input[str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[str] network_type: The network type of the instance.  CLASSIC(classic network), VPC.
         :param pulumi.Input[str] node_type: Node type, value:
-               
-               MASTER_SLAVE: high availability (dual copy)
-               
-               STAND_ALONE: single copy
-               
-               double: double copy
-               
-               single: single copy
-               
-               Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
-        :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+               - `MASTER_SLAVE`: high availability (dual copy)
+               - `STAND_ALONE`: single copy
+        :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         :param pulumi.Input[str] param_repl_mode: The value is semisync or async. The default value is async.
                
                The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -1199,16 +1175,8 @@ class _TairInstanceState:
     def node_type(self) -> Optional[pulumi.Input[str]]:
         """
         Node type, value:
-
-        MASTER_SLAVE: high availability (dual copy)
-
-        STAND_ALONE: single copy
-
-        double: double copy
-
-        single: single copy
-
-        Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        - `MASTER_SLAVE`: high availability (dual copy)
+        - `STAND_ALONE`: single copy
         """
         return pulumi.get(self, "node_type")
 
@@ -1220,7 +1188,7 @@ class _TairInstanceState:
     @pulumi.getter(name="paramNoLooseSentinelEnabled")
     def param_no_loose_sentinel_enabled(self) -> Optional[pulumi.Input[str]]:
         """
-        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         """
         return pulumi.get(self, "param_no_loose_sentinel_enabled")
 
@@ -1665,17 +1633,9 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[int] intranet_bandwidth: Instance intranet bandwidth
         :param pulumi.Input[str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[str] node_type: Node type, value:
-               
-               MASTER_SLAVE: high availability (dual copy)
-               
-               STAND_ALONE: single copy
-               
-               double: double copy
-               
-               single: single copy
-               
-               Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
-        :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+               - `MASTER_SLAVE`: high availability (dual copy)
+               - `STAND_ALONE`: single copy
+        :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         :param pulumi.Input[str] param_repl_mode: The value is semisync or async. The default value is async.
                
                The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -1953,17 +1913,9 @@ class TairInstance(pulumi.CustomResource):
         :param pulumi.Input[str] modify_mode: The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
         :param pulumi.Input[str] network_type: The network type of the instance.  CLASSIC(classic network), VPC.
         :param pulumi.Input[str] node_type: Node type, value:
-               
-               MASTER_SLAVE: high availability (dual copy)
-               
-               STAND_ALONE: single copy
-               
-               double: double copy
-               
-               single: single copy
-               
-               Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
-        :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+               - `MASTER_SLAVE`: high availability (dual copy)
+               - `STAND_ALONE`: single copy
+        :param pulumi.Input[str] param_no_loose_sentinel_enabled: sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         :param pulumi.Input[str] param_repl_mode: The value is semisync or async. The default value is async.
                
                The default data synchronization mode is asynchronous replication. To modify the data synchronization mode, refer to https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance 。
@@ -2217,16 +2169,8 @@ class TairInstance(pulumi.CustomResource):
     def node_type(self) -> pulumi.Output[str]:
         """
         Node type, value:
-
-        MASTER_SLAVE: high availability (dual copy)
-
-        STAND_ALONE: single copy
-
-        double: double copy
-
-        single: single copy
-
-        Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        - `MASTER_SLAVE`: high availability (dual copy)
+        - `STAND_ALONE`: single copy
         """
         return pulumi.get(self, "node_type")
 
@@ -2234,7 +2178,7 @@ class TairInstance(pulumi.CustomResource):
     @pulumi.getter(name="paramNoLooseSentinelEnabled")
     def param_no_loose_sentinel_enabled(self) -> pulumi.Output[str]:
         """
-        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+        sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         """
         return pulumi.get(self, "param_no_loose_sentinel_enabled")
 

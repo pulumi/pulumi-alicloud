@@ -74,6 +74,8 @@ type V3LayerVersion struct {
 	Acl pulumi.StringPtrOutput `pulumi:"acl"`
 	// Layer code configuration See `code` below.
 	Code V3LayerVersionCodePtrOutput `pulumi:"code"`
+	// (Available since v1.234.0) The code package size of the layer, in bytes.
+	CodeSize pulumi.StringOutput `pulumi:"codeSize"`
 	// List of runtime environments supported by the layer
 	CompatibleRuntimes pulumi.StringArrayOutput `pulumi:"compatibleRuntimes"`
 	// The creation time of the resource
@@ -82,8 +84,12 @@ type V3LayerVersion struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the layer
 	LayerName pulumi.StringOutput `pulumi:"layerName"`
+	// (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+	LayerVersionArn pulumi.StringOutput `pulumi:"layerVersionArn"`
 	// Layer License Agreement
 	License pulumi.StringPtrOutput `pulumi:"license"`
+	// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+	Public pulumi.StringPtrOutput `pulumi:"public"`
 	// The version of the layer
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -125,6 +131,8 @@ type v3layerVersionState struct {
 	Acl *string `pulumi:"acl"`
 	// Layer code configuration See `code` below.
 	Code *V3LayerVersionCode `pulumi:"code"`
+	// (Available since v1.234.0) The code package size of the layer, in bytes.
+	CodeSize *string `pulumi:"codeSize"`
 	// List of runtime environments supported by the layer
 	CompatibleRuntimes []string `pulumi:"compatibleRuntimes"`
 	// The creation time of the resource
@@ -133,8 +141,12 @@ type v3layerVersionState struct {
 	Description *string `pulumi:"description"`
 	// Name of the layer
 	LayerName *string `pulumi:"layerName"`
+	// (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+	LayerVersionArn *string `pulumi:"layerVersionArn"`
 	// Layer License Agreement
 	License *string `pulumi:"license"`
+	// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+	Public *string `pulumi:"public"`
 	// The version of the layer
 	Version *string `pulumi:"version"`
 }
@@ -144,6 +156,8 @@ type V3LayerVersionState struct {
 	Acl pulumi.StringPtrInput
 	// Layer code configuration See `code` below.
 	Code V3LayerVersionCodePtrInput
+	// (Available since v1.234.0) The code package size of the layer, in bytes.
+	CodeSize pulumi.StringPtrInput
 	// List of runtime environments supported by the layer
 	CompatibleRuntimes pulumi.StringArrayInput
 	// The creation time of the resource
@@ -152,8 +166,12 @@ type V3LayerVersionState struct {
 	Description pulumi.StringPtrInput
 	// Name of the layer
 	LayerName pulumi.StringPtrInput
+	// (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+	LayerVersionArn pulumi.StringPtrInput
 	// Layer License Agreement
 	License pulumi.StringPtrInput
+	// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+	Public pulumi.StringPtrInput
 	// The version of the layer
 	Version pulumi.StringPtrInput
 }
@@ -175,6 +193,8 @@ type v3layerVersionArgs struct {
 	LayerName string `pulumi:"layerName"`
 	// Layer License Agreement
 	License *string `pulumi:"license"`
+	// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+	Public *string `pulumi:"public"`
 }
 
 // The set of arguments for constructing a V3LayerVersion resource.
@@ -191,6 +211,8 @@ type V3LayerVersionArgs struct {
 	LayerName pulumi.StringInput
 	// Layer License Agreement
 	License pulumi.StringPtrInput
+	// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+	Public pulumi.StringPtrInput
 }
 
 func (V3LayerVersionArgs) ElementType() reflect.Type {
@@ -290,6 +312,11 @@ func (o V3LayerVersionOutput) Code() V3LayerVersionCodePtrOutput {
 	return o.ApplyT(func(v *V3LayerVersion) V3LayerVersionCodePtrOutput { return v.Code }).(V3LayerVersionCodePtrOutput)
 }
 
+// (Available since v1.234.0) The code package size of the layer, in bytes.
+func (o V3LayerVersionOutput) CodeSize() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3LayerVersion) pulumi.StringOutput { return v.CodeSize }).(pulumi.StringOutput)
+}
+
 // List of runtime environments supported by the layer
 func (o V3LayerVersionOutput) CompatibleRuntimes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *V3LayerVersion) pulumi.StringArrayOutput { return v.CompatibleRuntimes }).(pulumi.StringArrayOutput)
@@ -310,9 +337,19 @@ func (o V3LayerVersionOutput) LayerName() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3LayerVersion) pulumi.StringOutput { return v.LayerName }).(pulumi.StringOutput)
 }
 
+// (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+func (o V3LayerVersionOutput) LayerVersionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3LayerVersion) pulumi.StringOutput { return v.LayerVersionArn }).(pulumi.StringOutput)
+}
+
 // Layer License Agreement
 func (o V3LayerVersionOutput) License() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3LayerVersion) pulumi.StringPtrOutput { return v.License }).(pulumi.StringPtrOutput)
+}
+
+// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+func (o V3LayerVersionOutput) Public() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3LayerVersion) pulumi.StringPtrOutput { return v.Public }).(pulumi.StringPtrOutput)
 }
 
 // The version of the layer

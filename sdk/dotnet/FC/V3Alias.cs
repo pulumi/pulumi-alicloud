@@ -90,6 +90,12 @@ namespace Pulumi.AliCloud.FC
         public Output<string> FunctionName { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) Last modification time
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
+
+        /// <summary>
         /// The version that the alias points
         /// </summary>
         [Output("versionId")]
@@ -220,6 +226,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) Last modification time
+        /// </summary>
+        [Input("lastModifiedTime")]
+        public Input<string>? LastModifiedTime { get; set; }
 
         /// <summary>
         /// The version that the alias points

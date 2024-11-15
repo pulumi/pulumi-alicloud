@@ -20,14 +20,14 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
     public static final AccessConfigurationState Empty = new AccessConfigurationState();
 
     /**
-     * The AccessConfigurationId of the Access Configuration.
+     * The ID of the Access Configuration.
      * 
      */
     @Import(name="accessConfigurationId")
     private @Nullable Output<String> accessConfigurationId;
 
     /**
-     * @return The AccessConfigurationId of the Access Configuration.
+     * @return The ID of the Access Configuration.
      * 
      */
     public Optional<Output<String>> accessConfigurationId() {
@@ -35,14 +35,14 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+     * The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      * 
      */
     @Import(name="accessConfigurationName")
     private @Nullable Output<String> accessConfigurationName;
 
     /**
-     * @return The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+     * @return The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      * 
      */
     public Optional<Output<String>> accessConfigurationName() {
@@ -50,14 +50,14 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The Description of the  Access Configuration. The description can be up to `1024` characters long.
+     * The description of the access configuration. The description can be up to `1024` characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The Description of the  Access Configuration. The description can be up to `1024` characters long.
+     * @return The description of the access configuration. The description can be up to `1024` characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -80,7 +80,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+     * This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
      * 
      * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
@@ -89,7 +89,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
     private @Nullable Output<Boolean> forceRemovePermissionPolicies;
 
     /**
-     * @return This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+     * @return This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
      * 
      * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
@@ -129,14 +129,14 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+     * The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<Integer> sessionDuration;
 
     /**
-     * @return The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+     * @return The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      * 
      */
     public Optional<Output<Integer>> sessionDuration() {
@@ -175,7 +175,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accessConfigurationId The AccessConfigurationId of the Access Configuration.
+         * @param accessConfigurationId The ID of the Access Configuration.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accessConfigurationId The AccessConfigurationId of the Access Configuration.
+         * @param accessConfigurationId The ID of the Access Configuration.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accessConfigurationName The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+         * @param accessConfigurationName The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accessConfigurationName The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+         * @param accessConfigurationName The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The Description of the  Access Configuration. The description can be up to `1024` characters long.
+         * @param description The description of the access configuration. The description can be up to `1024` characters in length.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param description The Description of the  Access Configuration. The description can be up to `1024` characters long.
+         * @param description The description of the access configuration. The description can be up to `1024` characters in length.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
          * 
          * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
          * 
@@ -272,7 +272,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
          * 
          * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
          * 
@@ -336,7 +336,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sessionDuration The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+         * @param sessionDuration The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class AccessConfigurationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param sessionDuration The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+         * @param sessionDuration The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
          * 
          * @return builder
          * 

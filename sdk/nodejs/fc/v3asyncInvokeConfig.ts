@@ -64,9 +64,17 @@ export class V3AsyncInvokeConfig extends pulumi.CustomResource {
      */
     public readonly destinationConfig!: pulumi.Output<outputs.fc.V3AsyncInvokeConfigDestinationConfig | undefined>;
     /**
+     * (Available since v1.234.0) Function resource identification
+     */
+    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    /**
      * Function Name
      */
     public readonly functionName!: pulumi.Output<string>;
+    /**
+     * (Available since v1.234.0) Last modification time
+     */
+    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
     /**
      * Event maximum survival time
      */
@@ -96,7 +104,9 @@ export class V3AsyncInvokeConfig extends pulumi.CustomResource {
             resourceInputs["asyncTask"] = state ? state.asyncTask : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["destinationConfig"] = state ? state.destinationConfig : undefined;
+            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
             resourceInputs["functionName"] = state ? state.functionName : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             resourceInputs["maxAsyncEventAgeInSeconds"] = state ? state.maxAsyncEventAgeInSeconds : undefined;
             resourceInputs["maxAsyncRetryAttempts"] = state ? state.maxAsyncRetryAttempts : undefined;
             resourceInputs["qualifier"] = state ? state.qualifier : undefined;
@@ -112,6 +122,8 @@ export class V3AsyncInvokeConfig extends pulumi.CustomResource {
             resourceInputs["maxAsyncRetryAttempts"] = args ? args.maxAsyncRetryAttempts : undefined;
             resourceInputs["qualifier"] = args ? args.qualifier : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["functionArn"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(V3AsyncInvokeConfig.__pulumiType, name, resourceInputs, opts);
@@ -135,9 +147,17 @@ export interface V3AsyncInvokeConfigState {
      */
     destinationConfig?: pulumi.Input<inputs.fc.V3AsyncInvokeConfigDestinationConfig>;
     /**
+     * (Available since v1.234.0) Function resource identification
+     */
+    functionArn?: pulumi.Input<string>;
+    /**
      * Function Name
      */
     functionName?: pulumi.Input<string>;
+    /**
+     * (Available since v1.234.0) Last modification time
+     */
+    lastModifiedTime?: pulumi.Input<string>;
     /**
      * Event maximum survival time
      */

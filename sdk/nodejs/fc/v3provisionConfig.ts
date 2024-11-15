@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     memorySize: 512,
  *     cpu: 0.5,
  *     handler: "index.handler",
- *     functionName: name,
+ *     functionName: `${name}-${_default.result}`,
  *     runtime: "python3.10",
  *     diskSize: 512,
  *     code: {
@@ -174,6 +174,18 @@ export class V3ProvisionConfig extends pulumi.CustomResource {
      */
     public readonly alwaysAllocateGpu!: pulumi.Output<boolean | undefined>;
     /**
+     * (Available since v1.234.0) Number of actual resources
+     */
+    public /*out*/ readonly current!: pulumi.Output<number>;
+    /**
+     * (Available since v1.234.0) Error message when a Reserved Instance creation fails
+     */
+    public /*out*/ readonly currentError!: pulumi.Output<string>;
+    /**
+     * (Available since v1.234.0) Resource Description of the function
+     */
+    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    /**
      * The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
      */
     public readonly functionName!: pulumi.Output<string>;
@@ -209,6 +221,9 @@ export class V3ProvisionConfig extends pulumi.CustomResource {
             const state = argsOrState as V3ProvisionConfigState | undefined;
             resourceInputs["alwaysAllocateCpu"] = state ? state.alwaysAllocateCpu : undefined;
             resourceInputs["alwaysAllocateGpu"] = state ? state.alwaysAllocateGpu : undefined;
+            resourceInputs["current"] = state ? state.current : undefined;
+            resourceInputs["currentError"] = state ? state.currentError : undefined;
+            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
             resourceInputs["functionName"] = state ? state.functionName : undefined;
             resourceInputs["qualifier"] = state ? state.qualifier : undefined;
             resourceInputs["scheduledActions"] = state ? state.scheduledActions : undefined;
@@ -226,6 +241,9 @@ export class V3ProvisionConfig extends pulumi.CustomResource {
             resourceInputs["scheduledActions"] = args ? args.scheduledActions : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["targetTrackingPolicies"] = args ? args.targetTrackingPolicies : undefined;
+            resourceInputs["current"] = undefined /*out*/;
+            resourceInputs["currentError"] = undefined /*out*/;
+            resourceInputs["functionArn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(V3ProvisionConfig.__pulumiType, name, resourceInputs, opts);
@@ -244,6 +262,18 @@ export interface V3ProvisionConfigState {
      * Whether to always assign GPU to function instance
      */
     alwaysAllocateGpu?: pulumi.Input<boolean>;
+    /**
+     * (Available since v1.234.0) Number of actual resources
+     */
+    current?: pulumi.Input<number>;
+    /**
+     * (Available since v1.234.0) Error message when a Reserved Instance creation fails
+     */
+    currentError?: pulumi.Input<string>;
+    /**
+     * (Available since v1.234.0) Resource Description of the function
+     */
+    functionArn?: pulumi.Input<string>;
     /**
      * The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
      */

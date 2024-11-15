@@ -21,6 +21,36 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
     public static final V3CustomDomainState Empty = new V3CustomDomainState();
 
     /**
+     * (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * 
+     */
+    @Import(name="accountId")
+    private @Nullable Output<String> accountId;
+
+    /**
+     * @return (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * 
+     */
+    public Optional<Output<String>> accountId() {
+        return Optional.ofNullable(this.accountId);
+    }
+
+    /**
+     * (Available since v1.234.0) API version of Function Compute
+     * 
+     */
+    @Import(name="apiVersion")
+    private @Nullable Output<String> apiVersion;
+
+    /**
+     * @return (Available since v1.234.0) API version of Function Compute
+     * 
+     */
+    public Optional<Output<String>> apiVersion() {
+        return Optional.ofNullable(this.apiVersion);
+    }
+
+    /**
      * Permission authentication configuration See `auth_config` below.
      * 
      */
@@ -81,6 +111,21 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * (Available since v1.234.0) The last time the custom domain name was Updated
+     * 
+     */
+    @Import(name="lastModifiedTime")
+    private @Nullable Output<String> lastModifiedTime;
+
+    /**
+     * @return (Available since v1.234.0) The last time the custom domain name was Updated
+     * 
+     */
+    public Optional<Output<String>> lastModifiedTime() {
+        return Optional.ofNullable(this.lastModifiedTime);
+    }
+
+    /**
      * The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
      * 
      */
@@ -108,6 +153,21 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<V3CustomDomainRouteConfigArgs>> routeConfig() {
         return Optional.ofNullable(this.routeConfig);
+    }
+
+    /**
+     * (Available since v1.234.0) Number of subdomains
+     * 
+     */
+    @Import(name="subdomainCount")
+    private @Nullable Output<String> subdomainCount;
+
+    /**
+     * @return (Available since v1.234.0) Number of subdomains
+     * 
+     */
+    public Optional<Output<String>> subdomainCount() {
+        return Optional.ofNullable(this.subdomainCount);
     }
 
     /**
@@ -143,12 +203,16 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
     private V3CustomDomainState() {}
 
     private V3CustomDomainState(V3CustomDomainState $) {
+        this.accountId = $.accountId;
+        this.apiVersion = $.apiVersion;
         this.authConfig = $.authConfig;
         this.certConfig = $.certConfig;
         this.createTime = $.createTime;
         this.customDomainName = $.customDomainName;
+        this.lastModifiedTime = $.lastModifiedTime;
         this.protocol = $.protocol;
         this.routeConfig = $.routeConfig;
+        this.subdomainCount = $.subdomainCount;
         this.tlsConfig = $.tlsConfig;
         this.wafConfig = $.wafConfig;
     }
@@ -169,6 +233,48 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
 
         public Builder(V3CustomDomainState defaults) {
             $ = new V3CustomDomainState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accountId (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(@Nullable Output<String> accountId) {
+            $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param accountId (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accountId(String accountId) {
+            return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param apiVersion (Available since v1.234.0) API version of Function Compute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiVersion(@Nullable Output<String> apiVersion) {
+            $.apiVersion = apiVersion;
+            return this;
+        }
+
+        /**
+         * @param apiVersion (Available since v1.234.0) API version of Function Compute
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apiVersion(String apiVersion) {
+            return apiVersion(Output.of(apiVersion));
         }
 
         /**
@@ -256,6 +362,27 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param lastModifiedTime (Available since v1.234.0) The last time the custom domain name was Updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(@Nullable Output<String> lastModifiedTime) {
+            $.lastModifiedTime = lastModifiedTime;
+            return this;
+        }
+
+        /**
+         * @param lastModifiedTime (Available since v1.234.0) The last time the custom domain name was Updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(String lastModifiedTime) {
+            return lastModifiedTime(Output.of(lastModifiedTime));
+        }
+
+        /**
          * @param protocol The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
          * 
          * @return builder
@@ -295,6 +422,27 @@ public final class V3CustomDomainState extends com.pulumi.resources.ResourceArgs
          */
         public Builder routeConfig(V3CustomDomainRouteConfigArgs routeConfig) {
             return routeConfig(Output.of(routeConfig));
+        }
+
+        /**
+         * @param subdomainCount (Available since v1.234.0) Number of subdomains
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subdomainCount(@Nullable Output<String> subdomainCount) {
+            $.subdomainCount = subdomainCount;
+            return this;
+        }
+
+        /**
+         * @param subdomainCount (Available since v1.234.0) Number of subdomains
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subdomainCount(String subdomainCount) {
+            return subdomainCount(Output.of(subdomainCount));
         }
 
         /**

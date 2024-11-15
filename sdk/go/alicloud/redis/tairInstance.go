@@ -73,18 +73,10 @@ type TairInstance struct {
 	// The network type of the instance.  CLASSIC(classic network), VPC.
 	NetworkType pulumi.StringOutput `pulumi:"networkType"`
 	// Node type, value:
-	//
-	// MASTER_SLAVE: high availability (dual copy)
-	//
-	// STAND_ALONE: single copy
-	//
-	// double: double copy
-	//
-	// single: single copy
-	//
-	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// - `MASTER_SLAVE`: high availability (dual copy)
+	// - `STAND_ALONE`: single copy
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
 	ParamNoLooseSentinelEnabled pulumi.StringOutput `pulumi:"paramNoLooseSentinelEnabled"`
 	// The value is semisync or async. The default value is async.
 	//
@@ -261,18 +253,10 @@ type tairInstanceState struct {
 	// The network type of the instance.  CLASSIC(classic network), VPC.
 	NetworkType *string `pulumi:"networkType"`
 	// Node type, value:
-	//
-	// MASTER_SLAVE: high availability (dual copy)
-	//
-	// STAND_ALONE: single copy
-	//
-	// double: double copy
-	//
-	// single: single copy
-	//
-	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// - `MASTER_SLAVE`: high availability (dual copy)
+	// - `STAND_ALONE`: single copy
 	NodeType *string `pulumi:"nodeType"`
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
 	ParamNoLooseSentinelEnabled *string `pulumi:"paramNoLooseSentinelEnabled"`
 	// The value is semisync or async. The default value is async.
 	//
@@ -398,18 +382,10 @@ type TairInstanceState struct {
 	// The network type of the instance.  CLASSIC(classic network), VPC.
 	NetworkType pulumi.StringPtrInput
 	// Node type, value:
-	//
-	// MASTER_SLAVE: high availability (dual copy)
-	//
-	// STAND_ALONE: single copy
-	//
-	// double: double copy
-	//
-	// single: single copy
-	//
-	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// - `MASTER_SLAVE`: high availability (dual copy)
+	// - `STAND_ALONE`: single copy
 	NodeType pulumi.StringPtrInput
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
 	ParamNoLooseSentinelEnabled pulumi.StringPtrInput
 	// The value is semisync or async. The default value is async.
 	//
@@ -529,18 +505,10 @@ type tairInstanceArgs struct {
 	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
 	ModifyMode *string `pulumi:"modifyMode"`
 	// Node type, value:
-	//
-	// MASTER_SLAVE: high availability (dual copy)
-	//
-	// STAND_ALONE: single copy
-	//
-	// double: double copy
-	//
-	// single: single copy
-	//
-	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// - `MASTER_SLAVE`: high availability (dual copy)
+	// - `STAND_ALONE`: single copy
 	NodeType *string `pulumi:"nodeType"`
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
 	ParamNoLooseSentinelEnabled *string `pulumi:"paramNoLooseSentinelEnabled"`
 	// The value is semisync or async. The default value is async.
 	//
@@ -653,18 +621,10 @@ type TairInstanceArgs struct {
 	// The modification method when modifying the IP whitelist. The value includes Cover (default): overwrite the original whitelist; Append: Append the whitelist; Delete: Delete the whitelist.
 	ModifyMode pulumi.StringPtrInput
 	// Node type, value:
-	//
-	// MASTER_SLAVE: high availability (dual copy)
-	//
-	// STAND_ALONE: single copy
-	//
-	// double: double copy
-	//
-	// single: single copy
-	//
-	// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+	// - `MASTER_SLAVE`: high availability (dual copy)
+	// - `STAND_ALONE`: single copy
 	NodeType pulumi.StringPtrInput
-	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+	// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
 	ParamNoLooseSentinelEnabled pulumi.StringPtrInput
 	// The value is semisync or async. The default value is async.
 	//
@@ -923,21 +883,13 @@ func (o TairInstanceOutput) NetworkType() pulumi.StringOutput {
 }
 
 // Node type, value:
-//
-// MASTER_SLAVE: high availability (dual copy)
-//
-// STAND_ALONE: single copy
-//
-// double: double copy
-//
-// single: single copy
-//
-// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+// - `MASTER_SLAVE`: high availability (dual copy)
+// - `STAND_ALONE`: single copy
 func (o TairInstanceOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }
 
-// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
 func (o TairInstanceOutput) ParamNoLooseSentinelEnabled() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ParamNoLooseSentinelEnabled }).(pulumi.StringOutput)
 }

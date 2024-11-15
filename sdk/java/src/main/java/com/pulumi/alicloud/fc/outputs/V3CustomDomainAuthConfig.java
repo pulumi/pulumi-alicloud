@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3CustomDomainAuthConfig {
     /**
-     * @return Authentication Information.
+     * @return Authentication Information
      * 
      */
     private @Nullable String authInfo;
@@ -24,7 +24,7 @@ public final class V3CustomDomainAuthConfig {
 
     private V3CustomDomainAuthConfig() {}
     /**
-     * @return Authentication Information.
+     * @return Authentication Information
      * 
      */
     public Optional<String> authInfo() {

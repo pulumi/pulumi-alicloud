@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3CustomDomainCertConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Certificate Name.
+        /// Certificate Name
         /// </summary>
         [Input("certName")]
         public Input<string>? CertName { get; set; }
 
         /// <summary>
-        /// PEM format certificate.
+        /// PEM format certificate
         /// </summary>
         [Input("certificate")]
         public Input<string>? Certificate { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private Input<string>? _privateKey;
 
         /// <summary>
-        /// Private Key in PEM format.
+        /// Private Key in PEM format
         /// </summary>
         public Input<string>? PrivateKey
         {

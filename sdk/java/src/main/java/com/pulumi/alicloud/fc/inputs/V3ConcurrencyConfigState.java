@@ -17,6 +17,21 @@ public final class V3ConcurrencyConfigState extends com.pulumi.resources.Resourc
     public static final V3ConcurrencyConfigState Empty = new V3ConcurrencyConfigState();
 
     /**
+     * (Available since v1.234.0) Resource identity of the function
+     * 
+     */
+    @Import(name="functionArn")
+    private @Nullable Output<String> functionArn;
+
+    /**
+     * @return (Available since v1.234.0) Resource identity of the function
+     * 
+     */
+    public Optional<Output<String>> functionArn() {
+        return Optional.ofNullable(this.functionArn);
+    }
+
+    /**
      * Function Name
      * 
      */
@@ -49,6 +64,7 @@ public final class V3ConcurrencyConfigState extends com.pulumi.resources.Resourc
     private V3ConcurrencyConfigState() {}
 
     private V3ConcurrencyConfigState(V3ConcurrencyConfigState $) {
+        this.functionArn = $.functionArn;
         this.functionName = $.functionName;
         this.reservedConcurrency = $.reservedConcurrency;
     }
@@ -69,6 +85,27 @@ public final class V3ConcurrencyConfigState extends com.pulumi.resources.Resourc
 
         public Builder(V3ConcurrencyConfigState defaults) {
             $ = new V3ConcurrencyConfigState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param functionArn (Available since v1.234.0) Resource identity of the function
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(@Nullable Output<String> functionArn) {
+            $.functionArn = functionArn;
+            return this;
+        }
+
+        /**
+         * @param functionArn (Available since v1.234.0) Resource identity of the function
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(String functionArn) {
+            return functionArn(Output.of(functionArn));
         }
 
         /**

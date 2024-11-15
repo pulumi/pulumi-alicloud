@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.FC
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net";
+    ///     var name = config.Get("name") ?? "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net";
     ///     var functionName1 = config.Get("functionName1") ?? "terraform-custom-domain-t1";
     ///     var authConfig = config.Get("authConfig") ?? @"{
     ///     ""jwks"": {
@@ -97,7 +97,7 @@ namespace Pulumi.AliCloud.FC
     /// ";
     ///     var @default = new AliCloud.FC.V3CustomDomain("default", new()
     ///     {
-    ///         CustomDomainName = "flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net",
+    ///         CustomDomainName = name,
     ///         RouteConfig = new AliCloud.FC.Inputs.V3CustomDomainRouteConfigArgs
     ///         {
     ///             Routes = new[]
@@ -239,6 +239,18 @@ namespace Pulumi.AliCloud.FC
     public partial class V3CustomDomain : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        /// </summary>
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.234.0) API version of Function Compute
+        /// </summary>
+        [Output("apiVersion")]
+        public Output<string> ApiVersion { get; private set; } = null!;
+
+        /// <summary>
         /// Permission authentication configuration See `auth_config` below.
         /// </summary>
         [Output("authConfig")]
@@ -248,7 +260,7 @@ namespace Pulumi.AliCloud.FC
         /// HTTPS certificate information See `cert_config` below.
         /// </summary>
         [Output("certConfig")]
-        public Output<Outputs.V3CustomDomainCertConfig?> CertConfig { get; private set; } = null!;
+        public Output<Outputs.V3CustomDomainCertConfig> CertConfig { get; private set; } = null!;
 
         /// <summary>
         /// The creation time of the resource
@@ -263,6 +275,12 @@ namespace Pulumi.AliCloud.FC
         public Output<string> CustomDomainName { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) The last time the custom domain name was Updated
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
+
+        /// <summary>
         /// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         /// </summary>
         [Output("protocol")]
@@ -275,10 +293,16 @@ namespace Pulumi.AliCloud.FC
         public Output<Outputs.V3CustomDomainRouteConfig?> RouteConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) Number of subdomains
+        /// </summary>
+        [Output("subdomainCount")]
+        public Output<string> SubdomainCount { get; private set; } = null!;
+
+        /// <summary>
         /// TLS configuration information See `tls_config` below.
         /// </summary>
         [Output("tlsConfig")]
-        public Output<Outputs.V3CustomDomainTlsConfig?> TlsConfig { get; private set; } = null!;
+        public Output<Outputs.V3CustomDomainTlsConfig> TlsConfig { get; private set; } = null!;
 
         /// <summary>
         /// Web application firewall configuration information See `waf_config` below.
@@ -383,6 +407,18 @@ namespace Pulumi.AliCloud.FC
     public sealed class V3CustomDomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) API version of Function Compute
+        /// </summary>
+        [Input("apiVersion")]
+        public Input<string>? ApiVersion { get; set; }
+
+        /// <summary>
         /// Permission authentication configuration See `auth_config` below.
         /// </summary>
         [Input("authConfig")]
@@ -407,6 +443,12 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? CustomDomainName { get; set; }
 
         /// <summary>
+        /// (Available since v1.234.0) The last time the custom domain name was Updated
+        /// </summary>
+        [Input("lastModifiedTime")]
+        public Input<string>? LastModifiedTime { get; set; }
+
+        /// <summary>
         /// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         /// </summary>
         [Input("protocol")]
@@ -417,6 +459,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("routeConfig")]
         public Input<Inputs.V3CustomDomainRouteConfigGetArgs>? RouteConfig { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) Number of subdomains
+        /// </summary>
+        [Input("subdomainCount")]
+        public Input<string>? SubdomainCount { get; set; }
 
         /// <summary>
         /// TLS configuration information See `tls_config` below.

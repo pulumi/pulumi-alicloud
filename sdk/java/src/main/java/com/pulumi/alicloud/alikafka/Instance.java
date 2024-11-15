@@ -92,6 +92,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.diskType;
     }
     /**
+     * (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+     * 
+     */
+    @Export(name="domainEndpoint", refs={String.class}, tree="[0]")
+    private Output<String> domainEndpoint;
+
+    /**
+     * @return (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+     * 
+     */
+    public Output<String> domainEndpoint() {
+        return this.domainEndpoint;
+    }
+    /**
      * The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
      * 
      */
@@ -292,6 +306,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+     * 
+     */
+    @Export(name="saslDomainEndpoint", refs={String.class}, tree="[0]")
+    private Output<String> saslDomainEndpoint;
+
+    /**
+     * @return (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+     * 
+     */
+    public Output<String> saslDomainEndpoint() {
+        return this.saslDomainEndpoint;
+    }
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      * 
      */
@@ -366,6 +394,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> specType() {
         return Codegen.optional(this.specType);
+    }
+    /**
+     * (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+     * 
+     */
+    @Export(name="sslDomainEndpoint", refs={String.class}, tree="[0]")
+    private Output<String> sslDomainEndpoint;
+
+    /**
+     * @return (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+     * 
+     */
+    public Output<String> sslDomainEndpoint() {
+        return this.sslDomainEndpoint;
+    }
+    /**
+     * (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+     * 
+     */
+    @Export(name="sslEndpoint", refs={String.class}, tree="[0]")
+    private Output<String> sslEndpoint;
+
+    /**
+     * @return (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+     * 
+     */
+    public Output<String> sslEndpoint() {
+        return this.sslEndpoint;
     }
     /**
      * The status of the instance.

@@ -16,14 +16,14 @@ public final class V3CustomDomainWafConfigArgs extends com.pulumi.resources.Reso
     public static final V3CustomDomainWafConfigArgs Empty = new V3CustomDomainWafConfigArgs();
 
     /**
-     * Enable WAF protection.
+     * Enable WAF protection
      * 
      */
     @Import(name="enableWaf")
     private @Nullable Output<Boolean> enableWaf;
 
     /**
-     * @return Enable WAF protection.
+     * @return Enable WAF protection
      * 
      */
     public Optional<Output<Boolean>> enableWaf() {
@@ -55,7 +55,7 @@ public final class V3CustomDomainWafConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enableWaf Enable WAF protection.
+         * @param enableWaf Enable WAF protection
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class V3CustomDomainWafConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param enableWaf Enable WAF protection.
+         * @param enableWaf Enable WAF protection
          * 
          * @return builder
          * 

@@ -31,14 +31,14 @@ public final class V3LayerVersionCodeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+     * Name of the OSS Bucket where the user stores the Layer Code ZIP package
      * 
      */
     @Import(name="ossBucketName")
     private @Nullable Output<String> ossBucketName;
 
     /**
-     * @return Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+     * @return Name of the OSS Bucket where the user stores the Layer Code ZIP package
      * 
      */
     public Optional<Output<String>> ossBucketName() {
@@ -46,14 +46,14 @@ public final class V3LayerVersionCodeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Name of the OSS Object where the user stores the Layer Code ZIP package.
+     * Name of the OSS Object where the user stores the Layer Code ZIP package
      * 
      */
     @Import(name="ossObjectName")
     private @Nullable Output<String> ossObjectName;
 
     /**
-     * @return Name of the OSS Object where the user stores the Layer Code ZIP package.
+     * @return Name of the OSS Object where the user stores the Layer Code ZIP package
      * 
      */
     public Optional<Output<String>> ossObjectName() {
@@ -61,14 +61,14 @@ public final class V3LayerVersionCodeArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Base 64 encoding of Layer Code ZIP package.
+     * Base 64 encoding of Layer Code ZIP package
      * 
      */
     @Import(name="zipFile")
     private @Nullable Output<String> zipFile;
 
     /**
-     * @return Base 64 encoding of Layer Code ZIP package.
+     * @return Base 64 encoding of Layer Code ZIP package
      * 
      */
     public Optional<Output<String>> zipFile() {
@@ -124,7 +124,7 @@ public final class V3LayerVersionCodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ossBucketName Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+         * @param ossBucketName Name of the OSS Bucket where the user stores the Layer Code ZIP package
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class V3LayerVersionCodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ossBucketName Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+         * @param ossBucketName Name of the OSS Bucket where the user stores the Layer Code ZIP package
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class V3LayerVersionCodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ossObjectName Name of the OSS Object where the user stores the Layer Code ZIP package.
+         * @param ossObjectName Name of the OSS Object where the user stores the Layer Code ZIP package
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class V3LayerVersionCodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ossObjectName Name of the OSS Object where the user stores the Layer Code ZIP package.
+         * @param ossObjectName Name of the OSS Object where the user stores the Layer Code ZIP package
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class V3LayerVersionCodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zipFile Base 64 encoding of Layer Code ZIP package.
+         * @param zipFile Base 64 encoding of Layer Code ZIP package
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class V3LayerVersionCodeArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param zipFile Base 64 encoding of Layer Code ZIP package.
+         * @param zipFile Base 64 encoding of Layer Code ZIP package
          * 
          * @return builder
          * 

@@ -151,6 +151,20 @@ public class V3Alias extends com.pulumi.resources.CustomResource {
         return this.functionName;
     }
     /**
+     * (Available since v1.234.0) Last modification time
+     * 
+     */
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
+    private Output<String> lastModifiedTime;
+
+    /**
+     * @return (Available since v1.234.0) Last modification time
+     * 
+     */
+    public Output<String> lastModifiedTime() {
+        return this.lastModifiedTime;
+    }
+    /**
      * The version that the alias points
      * 
      */

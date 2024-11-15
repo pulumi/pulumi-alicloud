@@ -131,6 +131,10 @@ export class V3Function extends pulumi.CustomResource {
      */
     public readonly code!: pulumi.Output<outputs.fc.V3FunctionCode | undefined>;
     /**
+     * The code package size of the function returned by the system, in byte Example : 1024
+     */
+    public /*out*/ readonly codeSize!: pulumi.Output<number>;
+    /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
      */
     public readonly cpu!: pulumi.Output<number>;
@@ -163,6 +167,14 @@ export class V3Function extends pulumi.CustomResource {
      */
     public readonly environmentVariables!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * ARN of function
+     */
+    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    /**
+     * The first ID of the resource
+     */
+    public /*out*/ readonly functionId!: pulumi.Output<string>;
+    /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      */
     public readonly functionName!: pulumi.Output<string>;
@@ -186,6 +198,22 @@ export class V3Function extends pulumi.CustomResource {
      * Allow function to access public network
      */
     public readonly internetAccess!: pulumi.Output<boolean>;
+    /**
+     * Last time the function was Updated
+     */
+    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    /**
+     * The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+     */
+    public /*out*/ readonly lastUpdateStatus!: pulumi.Output<string>;
+    /**
+     * The reason that caused the last function to update the Operation State to the current value
+     */
+    public /*out*/ readonly lastUpdateStatusReason!: pulumi.Output<string>;
+    /**
+     * Status code of the reason that caused the last function update operation status to the current value
+     */
+    public /*out*/ readonly lastUpdateStatusReasonCode!: pulumi.Output<string>;
     /**
      * The list of layers.
      */
@@ -215,9 +243,25 @@ export class V3Function extends pulumi.CustomResource {
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
+     * Function Status
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The reason why the function is in the current state
+     */
+    public /*out*/ readonly stateReason!: pulumi.Output<string>;
+    /**
+     * The status code of the reason the function is in the current state.
+     */
+    public /*out*/ readonly stateReasonCode!: pulumi.Output<string>;
+    /**
      * The maximum running time of the function, in seconds.
      */
     public readonly timeout!: pulumi.Output<number>;
+    /**
+     * Tracing configuration
+     */
+    public /*out*/ readonly tracingConfig!: pulumi.Output<outputs.fc.V3FunctionTracingConfig>;
     /**
      * VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpcConfig` below.
      */
@@ -237,6 +281,7 @@ export class V3Function extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as V3FunctionState | undefined;
             resourceInputs["code"] = state ? state.code : undefined;
+            resourceInputs["codeSize"] = state ? state.codeSize : undefined;
             resourceInputs["cpu"] = state ? state.cpu : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["customContainerConfig"] = state ? state.customContainerConfig : undefined;
@@ -245,12 +290,18 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
             resourceInputs["environmentVariables"] = state ? state.environmentVariables : undefined;
+            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
+            resourceInputs["functionId"] = state ? state.functionId : undefined;
             resourceInputs["functionName"] = state ? state.functionName : undefined;
             resourceInputs["gpuConfig"] = state ? state.gpuConfig : undefined;
             resourceInputs["handler"] = state ? state.handler : undefined;
             resourceInputs["instanceConcurrency"] = state ? state.instanceConcurrency : undefined;
             resourceInputs["instanceLifecycleConfig"] = state ? state.instanceLifecycleConfig : undefined;
             resourceInputs["internetAccess"] = state ? state.internetAccess : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
+            resourceInputs["lastUpdateStatus"] = state ? state.lastUpdateStatus : undefined;
+            resourceInputs["lastUpdateStatusReason"] = state ? state.lastUpdateStatusReason : undefined;
+            resourceInputs["lastUpdateStatusReasonCode"] = state ? state.lastUpdateStatusReasonCode : undefined;
             resourceInputs["layers"] = state ? state.layers : undefined;
             resourceInputs["logConfig"] = state ? state.logConfig : undefined;
             resourceInputs["memorySize"] = state ? state.memorySize : undefined;
@@ -258,7 +309,11 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["ossMountConfig"] = state ? state.ossMountConfig : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
             resourceInputs["runtime"] = state ? state.runtime : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["stateReason"] = state ? state.stateReason : undefined;
+            resourceInputs["stateReasonCode"] = state ? state.stateReasonCode : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["tracingConfig"] = state ? state.tracingConfig : undefined;
             resourceInputs["vpcConfig"] = state ? state.vpcConfig : undefined;
         } else {
             const args = argsOrState as V3FunctionArgs | undefined;
@@ -291,7 +346,18 @@ export class V3Function extends pulumi.CustomResource {
             resourceInputs["runtime"] = args ? args.runtime : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
             resourceInputs["vpcConfig"] = args ? args.vpcConfig : undefined;
+            resourceInputs["codeSize"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["functionArn"] = undefined /*out*/;
+            resourceInputs["functionId"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["lastUpdateStatus"] = undefined /*out*/;
+            resourceInputs["lastUpdateStatusReason"] = undefined /*out*/;
+            resourceInputs["lastUpdateStatusReasonCode"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateReason"] = undefined /*out*/;
+            resourceInputs["stateReasonCode"] = undefined /*out*/;
+            resourceInputs["tracingConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["layers"] };
@@ -308,6 +374,10 @@ export interface V3FunctionState {
      * Function code ZIP package. code and customContainerConfig. See `code` below.
      */
     code?: pulumi.Input<inputs.fc.V3FunctionCode>;
+    /**
+     * The code package size of the function returned by the system, in byte Example : 1024
+     */
+    codeSize?: pulumi.Input<number>;
     /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
      */
@@ -341,6 +411,14 @@ export interface V3FunctionState {
      */
     environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * ARN of function
+     */
+    functionArn?: pulumi.Input<string>;
+    /**
+     * The first ID of the resource
+     */
+    functionId?: pulumi.Input<string>;
+    /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      */
     functionName?: pulumi.Input<string>;
@@ -364,6 +442,22 @@ export interface V3FunctionState {
      * Allow function to access public network
      */
     internetAccess?: pulumi.Input<boolean>;
+    /**
+     * Last time the function was Updated
+     */
+    lastModifiedTime?: pulumi.Input<string>;
+    /**
+     * The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+     */
+    lastUpdateStatus?: pulumi.Input<string>;
+    /**
+     * The reason that caused the last function to update the Operation State to the current value
+     */
+    lastUpdateStatusReason?: pulumi.Input<string>;
+    /**
+     * Status code of the reason that caused the last function update operation status to the current value
+     */
+    lastUpdateStatusReasonCode?: pulumi.Input<string>;
     /**
      * The list of layers.
      */
@@ -393,9 +487,25 @@ export interface V3FunctionState {
      */
     runtime?: pulumi.Input<string>;
     /**
+     * Function Status
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * The reason why the function is in the current state
+     */
+    stateReason?: pulumi.Input<string>;
+    /**
+     * The status code of the reason the function is in the current state.
+     */
+    stateReasonCode?: pulumi.Input<string>;
+    /**
      * The maximum running time of the function, in seconds.
      */
     timeout?: pulumi.Input<number>;
+    /**
+     * Tracing configuration
+     */
+    tracingConfig?: pulumi.Input<inputs.fc.V3FunctionTracingConfig>;
     /**
      * VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpcConfig` below.
      */

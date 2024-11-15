@@ -92,6 +92,10 @@ export class V3Alias extends pulumi.CustomResource {
      */
     public readonly functionName!: pulumi.Output<string>;
     /**
+     * (Available since v1.234.0) Last modification time
+     */
+    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    /**
      * The version that the alias points
      */
     public readonly versionId!: pulumi.Output<string | undefined>;
@@ -114,6 +118,7 @@ export class V3Alias extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["functionName"] = state ? state.functionName : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             resourceInputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as V3AliasArgs | undefined;
@@ -126,6 +131,7 @@ export class V3Alias extends pulumi.CustomResource {
             resourceInputs["functionName"] = args ? args.functionName : undefined;
             resourceInputs["versionId"] = args ? args.versionId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(V3Alias.__pulumiType, name, resourceInputs, opts);
@@ -156,6 +162,10 @@ export interface V3AliasState {
      * Function Name
      */
     functionName?: pulumi.Input<string>;
+    /**
+     * (Available since v1.234.0) Last modification time
+     */
+    lastModifiedTime?: pulumi.Input<string>;
     /**
      * The version that the alias points
      */

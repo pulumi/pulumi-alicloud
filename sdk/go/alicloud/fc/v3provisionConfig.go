@@ -84,7 +84,7 @@ import (
 //				MemorySize:   pulumi.Int(512),
 //				Cpu:          pulumi.Float64(0.5),
 //				Handler:      pulumi.String("index.handler"),
-//				FunctionName: pulumi.String(name),
+//				FunctionName: pulumi.Sprintf("%v-%v", name, _default.Result),
 //				Runtime:      pulumi.String("python3.10"),
 //				DiskSize:     pulumi.Int(512),
 //				Code: &fc.V3FunctionCodeArgs{
@@ -187,6 +187,12 @@ type V3ProvisionConfig struct {
 	AlwaysAllocateCpu pulumi.BoolPtrOutput `pulumi:"alwaysAllocateCpu"`
 	// Whether to always assign GPU to function instance
 	AlwaysAllocateGpu pulumi.BoolPtrOutput `pulumi:"alwaysAllocateGpu"`
+	// (Available since v1.234.0) Number of actual resources
+	Current pulumi.IntOutput `pulumi:"current"`
+	// (Available since v1.234.0) Error message when a Reserved Instance creation fails
+	CurrentError pulumi.StringOutput `pulumi:"currentError"`
+	// (Available since v1.234.0) Resource Description of the function
+	FunctionArn pulumi.StringOutput `pulumi:"functionArn"`
 	// The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
 	// The function alias or LATEST.
@@ -236,6 +242,12 @@ type v3provisionConfigState struct {
 	AlwaysAllocateCpu *bool `pulumi:"alwaysAllocateCpu"`
 	// Whether to always assign GPU to function instance
 	AlwaysAllocateGpu *bool `pulumi:"alwaysAllocateGpu"`
+	// (Available since v1.234.0) Number of actual resources
+	Current *int `pulumi:"current"`
+	// (Available since v1.234.0) Error message when a Reserved Instance creation fails
+	CurrentError *string `pulumi:"currentError"`
+	// (Available since v1.234.0) Resource Description of the function
+	FunctionArn *string `pulumi:"functionArn"`
 	// The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
 	FunctionName *string `pulumi:"functionName"`
 	// The function alias or LATEST.
@@ -253,6 +265,12 @@ type V3ProvisionConfigState struct {
 	AlwaysAllocateCpu pulumi.BoolPtrInput
 	// Whether to always assign GPU to function instance
 	AlwaysAllocateGpu pulumi.BoolPtrInput
+	// (Available since v1.234.0) Number of actual resources
+	Current pulumi.IntPtrInput
+	// (Available since v1.234.0) Error message when a Reserved Instance creation fails
+	CurrentError pulumi.StringPtrInput
+	// (Available since v1.234.0) Resource Description of the function
+	FunctionArn pulumi.StringPtrInput
 	// The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
 	FunctionName pulumi.StringPtrInput
 	// The function alias or LATEST.
@@ -399,6 +417,21 @@ func (o V3ProvisionConfigOutput) AlwaysAllocateCpu() pulumi.BoolPtrOutput {
 // Whether to always assign GPU to function instance
 func (o V3ProvisionConfigOutput) AlwaysAllocateGpu() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *V3ProvisionConfig) pulumi.BoolPtrOutput { return v.AlwaysAllocateGpu }).(pulumi.BoolPtrOutput)
+}
+
+// (Available since v1.234.0) Number of actual resources
+func (o V3ProvisionConfigOutput) Current() pulumi.IntOutput {
+	return o.ApplyT(func(v *V3ProvisionConfig) pulumi.IntOutput { return v.Current }).(pulumi.IntOutput)
+}
+
+// (Available since v1.234.0) Error message when a Reserved Instance creation fails
+func (o V3ProvisionConfigOutput) CurrentError() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3ProvisionConfig) pulumi.StringOutput { return v.CurrentError }).(pulumi.StringOutput)
+}
+
+// (Available since v1.234.0) Resource Description of the function
+func (o V3ProvisionConfigOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3ProvisionConfig) pulumi.StringOutput { return v.FunctionArn }).(pulumi.StringOutput)
 }
 
 // The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.

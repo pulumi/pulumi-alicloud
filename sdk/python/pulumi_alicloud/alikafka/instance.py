@@ -403,6 +403,7 @@ class _InstanceState:
                  deploy_type: Optional[pulumi.Input[int]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[int]] = None,
+                 domain_endpoint: Optional[pulumi.Input[str]] = None,
                  eip_max: Optional[pulumi.Input[int]] = None,
                  end_point: Optional[pulumi.Input[str]] = None,
                  group_left: Optional[pulumi.Input[int]] = None,
@@ -417,10 +418,13 @@ class _InstanceState:
                  partition_num: Optional[pulumi.Input[int]] = None,
                  partition_used: Optional[pulumi.Input[int]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
+                 sasl_domain_endpoint: Optional[pulumi.Input[str]] = None,
                  security_group: Optional[pulumi.Input[str]] = None,
                  selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_version: Optional[pulumi.Input[str]] = None,
                  spec_type: Optional[pulumi.Input[str]] = None,
+                 ssl_domain_endpoint: Optional[pulumi.Input[str]] = None,
+                 ssl_endpoint: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  topic_left: Optional[pulumi.Input[int]] = None,
@@ -439,6 +443,7 @@ class _InstanceState:
                - 5: vpc instance.
         :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        :param pulumi.Input[str] domain_endpoint: (Available since v1.234.0) The default endpoint of the instance in domain name mode.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] group_left: (Available since v1.214.1) The number of available groups.
@@ -455,6 +460,7 @@ class _InstanceState:
         :param pulumi.Input[int] partition_num: The number of partitions.
         :param pulumi.Input[int] partition_used: (Available since v1.214.1) The number of used partitions.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        :param pulumi.Input[str] sasl_domain_endpoint: (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
@@ -469,6 +475,8 @@ class _InstanceState:
                |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        :param pulumi.Input[str] ssl_domain_endpoint: (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+        :param pulumi.Input[str] ssl_endpoint: (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
         :param pulumi.Input[int] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_left: (Available since v1.214.1) The number of available topics.
@@ -490,6 +498,8 @@ class _InstanceState:
             pulumi.set(__self__, "disk_size", disk_size)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if domain_endpoint is not None:
+            pulumi.set(__self__, "domain_endpoint", domain_endpoint)
         if eip_max is not None:
             pulumi.set(__self__, "eip_max", eip_max)
         if end_point is not None:
@@ -518,6 +528,8 @@ class _InstanceState:
             pulumi.set(__self__, "partition_used", partition_used)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if sasl_domain_endpoint is not None:
+            pulumi.set(__self__, "sasl_domain_endpoint", sasl_domain_endpoint)
         if security_group is not None:
             pulumi.set(__self__, "security_group", security_group)
         if selected_zones is not None:
@@ -526,6 +538,10 @@ class _InstanceState:
             pulumi.set(__self__, "service_version", service_version)
         if spec_type is not None:
             pulumi.set(__self__, "spec_type", spec_type)
+        if ssl_domain_endpoint is not None:
+            pulumi.set(__self__, "ssl_domain_endpoint", ssl_domain_endpoint)
+        if ssl_endpoint is not None:
+            pulumi.set(__self__, "ssl_endpoint", ssl_endpoint)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if tags is not None:
@@ -598,6 +614,18 @@ class _InstanceState:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="domainEndpoint")
+    def domain_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+        """
+        return pulumi.get(self, "domain_endpoint")
+
+    @domain_endpoint.setter
+    def domain_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_endpoint", value)
 
     @property
     @pulumi.getter(name="eipMax")
@@ -770,6 +798,18 @@ class _InstanceState:
         pulumi.set(self, "resource_group_id", value)
 
     @property
+    @pulumi.getter(name="saslDomainEndpoint")
+    def sasl_domain_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+        """
+        return pulumi.get(self, "sasl_domain_endpoint")
+
+    @sasl_domain_endpoint.setter
+    def sasl_domain_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sasl_domain_endpoint", value)
+
+    @property
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> Optional[pulumi.Input[str]]:
         """
@@ -826,6 +866,30 @@ class _InstanceState:
     @spec_type.setter
     def spec_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "spec_type", value)
+
+    @property
+    @pulumi.getter(name="sslDomainEndpoint")
+    def ssl_domain_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+        """
+        return pulumi.get(self, "ssl_domain_endpoint")
+
+    @ssl_domain_endpoint.setter
+    def ssl_domain_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_domain_endpoint", value)
+
+    @property
+    @pulumi.getter(name="sslEndpoint")
+    def ssl_endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+        """
+        return pulumi.get(self, "ssl_endpoint")
+
+    @ssl_endpoint.setter
+    def ssl_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_endpoint", value)
 
     @property
     @pulumi.getter
@@ -1107,12 +1171,16 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["domain_endpoint"] = None
             __props__.__dict__["end_point"] = None
             __props__.__dict__["group_left"] = None
             __props__.__dict__["group_used"] = None
             __props__.__dict__["is_partition_buy"] = None
             __props__.__dict__["partition_left"] = None
             __props__.__dict__["partition_used"] = None
+            __props__.__dict__["sasl_domain_endpoint"] = None
+            __props__.__dict__["ssl_domain_endpoint"] = None
+            __props__.__dict__["ssl_endpoint"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["topic_left"] = None
             __props__.__dict__["topic_num_of_buy"] = None
@@ -1131,6 +1199,7 @@ class Instance(pulumi.CustomResource):
             deploy_type: Optional[pulumi.Input[int]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
             disk_type: Optional[pulumi.Input[int]] = None,
+            domain_endpoint: Optional[pulumi.Input[str]] = None,
             eip_max: Optional[pulumi.Input[int]] = None,
             end_point: Optional[pulumi.Input[str]] = None,
             group_left: Optional[pulumi.Input[int]] = None,
@@ -1145,10 +1214,13 @@ class Instance(pulumi.CustomResource):
             partition_num: Optional[pulumi.Input[int]] = None,
             partition_used: Optional[pulumi.Input[int]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
+            sasl_domain_endpoint: Optional[pulumi.Input[str]] = None,
             security_group: Optional[pulumi.Input[str]] = None,
             selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_version: Optional[pulumi.Input[str]] = None,
             spec_type: Optional[pulumi.Input[str]] = None,
+            ssl_domain_endpoint: Optional[pulumi.Input[str]] = None,
+            ssl_endpoint: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[int]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             topic_left: Optional[pulumi.Input[int]] = None,
@@ -1172,6 +1244,7 @@ class Instance(pulumi.CustomResource):
                - 5: vpc instance.
         :param pulumi.Input[int] disk_size: The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[int] disk_type: The disk type of the instance. 0: efficient cloud disk , 1: SSD.
+        :param pulumi.Input[str] domain_endpoint: (Available since v1.234.0) The default endpoint of the instance in domain name mode.
         :param pulumi.Input[int] eip_max: The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         :param pulumi.Input[str] end_point: The EndPoint to access the kafka instance.
         :param pulumi.Input[int] group_left: (Available since v1.214.1) The number of available groups.
@@ -1188,6 +1261,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] partition_num: The number of partitions.
         :param pulumi.Input[int] partition_used: (Available since v1.214.1) The number of used partitions.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
+        :param pulumi.Input[str] sasl_domain_endpoint: (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         :param pulumi.Input[str] security_group: The ID of security group for this instance. If the security group is empty, system will create a default one.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] selected_zones: The zones among which you want to deploy the instance.
                
@@ -1202,6 +1276,8 @@ class Instance(pulumi.CustomResource):
                |120         |  2700-6100:100  |   150-450:1 |    1-500:1  |
         :param pulumi.Input[str] service_version: The version of the ApsaraMQ for Kafka instance. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
+        :param pulumi.Input[str] ssl_domain_endpoint: (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+        :param pulumi.Input[str] ssl_endpoint: (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
         :param pulumi.Input[int] status: The status of the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[int] topic_left: (Available since v1.214.1) The number of available topics.
@@ -1223,6 +1299,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["deploy_type"] = deploy_type
         __props__.__dict__["disk_size"] = disk_size
         __props__.__dict__["disk_type"] = disk_type
+        __props__.__dict__["domain_endpoint"] = domain_endpoint
         __props__.__dict__["eip_max"] = eip_max
         __props__.__dict__["end_point"] = end_point
         __props__.__dict__["group_left"] = group_left
@@ -1237,10 +1314,13 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["partition_num"] = partition_num
         __props__.__dict__["partition_used"] = partition_used
         __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["sasl_domain_endpoint"] = sasl_domain_endpoint
         __props__.__dict__["security_group"] = security_group
         __props__.__dict__["selected_zones"] = selected_zones
         __props__.__dict__["service_version"] = service_version
         __props__.__dict__["spec_type"] = spec_type
+        __props__.__dict__["ssl_domain_endpoint"] = ssl_domain_endpoint
+        __props__.__dict__["ssl_endpoint"] = ssl_endpoint
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
         __props__.__dict__["topic_left"] = topic_left
@@ -1286,6 +1366,14 @@ class Instance(pulumi.CustomResource):
         The disk type of the instance. 0: efficient cloud disk , 1: SSD.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="domainEndpoint")
+    def domain_endpoint(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+        """
+        return pulumi.get(self, "domain_endpoint")
 
     @property
     @pulumi.getter(name="eipMax")
@@ -1402,6 +1490,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "resource_group_id")
 
     @property
+    @pulumi.getter(name="saslDomainEndpoint")
+    def sasl_domain_endpoint(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+        """
+        return pulumi.get(self, "sasl_domain_endpoint")
+
+    @property
     @pulumi.getter(name="securityGroup")
     def security_group(self) -> pulumi.Output[str]:
         """
@@ -1442,6 +1538,22 @@ class Instance(pulumi.CustomResource):
         The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         """
         return pulumi.get(self, "spec_type")
+
+    @property
+    @pulumi.getter(name="sslDomainEndpoint")
+    def ssl_domain_endpoint(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+        """
+        return pulumi.get(self, "ssl_domain_endpoint")
+
+    @property
+    @pulumi.getter(name="sslEndpoint")
+    def ssl_endpoint(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+        """
+        return pulumi.get(self, "ssl_endpoint")
 
     @property
     @pulumi.getter

@@ -82,6 +82,8 @@ import (
 type V3ConcurrencyConfig struct {
 	pulumi.CustomResourceState
 
+	// (Available since v1.234.0) Resource identity of the function
+	FunctionArn pulumi.StringOutput `pulumi:"functionArn"`
 	// Function Name
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
 	// Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
@@ -121,6 +123,8 @@ func GetV3ConcurrencyConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering V3ConcurrencyConfig resources.
 type v3concurrencyConfigState struct {
+	// (Available since v1.234.0) Resource identity of the function
+	FunctionArn *string `pulumi:"functionArn"`
 	// Function Name
 	FunctionName *string `pulumi:"functionName"`
 	// Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
@@ -128,6 +132,8 @@ type v3concurrencyConfigState struct {
 }
 
 type V3ConcurrencyConfigState struct {
+	// (Available since v1.234.0) Resource identity of the function
+	FunctionArn pulumi.StringPtrInput
 	// Function Name
 	FunctionName pulumi.StringPtrInput
 	// Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
@@ -238,6 +244,11 @@ func (o V3ConcurrencyConfigOutput) ToV3ConcurrencyConfigOutput() V3ConcurrencyCo
 
 func (o V3ConcurrencyConfigOutput) ToV3ConcurrencyConfigOutputWithContext(ctx context.Context) V3ConcurrencyConfigOutput {
 	return o
+}
+
+// (Available since v1.234.0) Resource identity of the function
+func (o V3ConcurrencyConfigOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3ConcurrencyConfig) pulumi.StringOutput { return v.FunctionArn }).(pulumi.StringOutput)
 }
 
 // Function Name

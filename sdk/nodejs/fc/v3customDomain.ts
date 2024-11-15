@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net";
+ * const name = config.get("name") || "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net";
  * const functionName1 = config.get("functionName1") || "terraform-custom-domain-t1";
  * const authConfig = config.get("authConfig") || `{
  *     "jwks": {
@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  * -----END RSA PRIVATE KEY-----
  * `;
  * const _default = new alicloud.fc.V3CustomDomain("default", {
- *     customDomainName: "flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net",
+ *     customDomainName: name,
  *     routeConfig: {
  *         routes: [
  *             {
@@ -224,13 +224,21 @@ export class V3CustomDomain extends pulumi.CustomResource {
     }
 
     /**
+     * (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     */
+    public /*out*/ readonly accountId!: pulumi.Output<string>;
+    /**
+     * (Available since v1.234.0) API version of Function Compute
+     */
+    public /*out*/ readonly apiVersion!: pulumi.Output<string>;
+    /**
      * Permission authentication configuration See `authConfig` below.
      */
     public readonly authConfig!: pulumi.Output<outputs.fc.V3CustomDomainAuthConfig | undefined>;
     /**
      * HTTPS certificate information See `certConfig` below.
      */
-    public readonly certConfig!: pulumi.Output<outputs.fc.V3CustomDomainCertConfig | undefined>;
+    public readonly certConfig!: pulumi.Output<outputs.fc.V3CustomDomainCertConfig>;
     /**
      * The creation time of the resource
      */
@@ -240,6 +248,10 @@ export class V3CustomDomain extends pulumi.CustomResource {
      */
     public readonly customDomainName!: pulumi.Output<string>;
     /**
+     * (Available since v1.234.0) The last time the custom domain name was Updated
+     */
+    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
+    /**
      * The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
      */
     public readonly protocol!: pulumi.Output<string | undefined>;
@@ -248,9 +260,13 @@ export class V3CustomDomain extends pulumi.CustomResource {
      */
     public readonly routeConfig!: pulumi.Output<outputs.fc.V3CustomDomainRouteConfig | undefined>;
     /**
+     * (Available since v1.234.0) Number of subdomains
+     */
+    public /*out*/ readonly subdomainCount!: pulumi.Output<string>;
+    /**
      * TLS configuration information See `tlsConfig` below.
      */
-    public readonly tlsConfig!: pulumi.Output<outputs.fc.V3CustomDomainTlsConfig | undefined>;
+    public readonly tlsConfig!: pulumi.Output<outputs.fc.V3CustomDomainTlsConfig>;
     /**
      * Web application firewall configuration information See `wafConfig` below.
      */
@@ -269,12 +285,16 @@ export class V3CustomDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3CustomDomainState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["apiVersion"] = state ? state.apiVersion : undefined;
             resourceInputs["authConfig"] = state ? state.authConfig : undefined;
             resourceInputs["certConfig"] = state ? state.certConfig : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["customDomainName"] = state ? state.customDomainName : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["routeConfig"] = state ? state.routeConfig : undefined;
+            resourceInputs["subdomainCount"] = state ? state.subdomainCount : undefined;
             resourceInputs["tlsConfig"] = state ? state.tlsConfig : undefined;
             resourceInputs["wafConfig"] = state ? state.wafConfig : undefined;
         } else {
@@ -286,7 +306,11 @@ export class V3CustomDomain extends pulumi.CustomResource {
             resourceInputs["routeConfig"] = args ? args.routeConfig : undefined;
             resourceInputs["tlsConfig"] = args ? args.tlsConfig : undefined;
             resourceInputs["wafConfig"] = args ? args.wafConfig : undefined;
+            resourceInputs["accountId"] = undefined /*out*/;
+            resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
+            resourceInputs["subdomainCount"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(V3CustomDomain.__pulumiType, name, resourceInputs, opts);
@@ -297,6 +321,14 @@ export class V3CustomDomain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering V3CustomDomain resources.
  */
 export interface V3CustomDomainState {
+    /**
+     * (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * (Available since v1.234.0) API version of Function Compute
+     */
+    apiVersion?: pulumi.Input<string>;
     /**
      * Permission authentication configuration See `authConfig` below.
      */
@@ -314,6 +346,10 @@ export interface V3CustomDomainState {
      */
     customDomainName?: pulumi.Input<string>;
     /**
+     * (Available since v1.234.0) The last time the custom domain name was Updated
+     */
+    lastModifiedTime?: pulumi.Input<string>;
+    /**
      * The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
      */
     protocol?: pulumi.Input<string>;
@@ -321,6 +357,10 @@ export interface V3CustomDomainState {
      * Route matching rule configuration See `routeConfig` below.
      */
     routeConfig?: pulumi.Input<inputs.fc.V3CustomDomainRouteConfig>;
+    /**
+     * (Available since v1.234.0) Number of subdomains
+     */
+    subdomainCount?: pulumi.Input<string>;
     /**
      * TLS configuration information See `tlsConfig` below.
      */

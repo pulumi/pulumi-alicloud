@@ -270,6 +270,26 @@ export type HAVipAttachment = import("./havipAttachment").HAVipAttachment;
 export const HAVipAttachment: typeof import("./havipAttachment").HAVipAttachment = null as any;
 utilities.lazyLoad(exports, ["HAVipAttachment"], () => require("./havipAttachment"));
 
+export { IpamIpamArgs, IpamIpamState } from "./ipamIpam";
+export type IpamIpam = import("./ipamIpam").IpamIpam;
+export const IpamIpam: typeof import("./ipamIpam").IpamIpam = null as any;
+utilities.lazyLoad(exports, ["IpamIpam"], () => require("./ipamIpam"));
+
+export { IpamIpamPoolArgs, IpamIpamPoolState } from "./ipamIpamPool";
+export type IpamIpamPool = import("./ipamIpamPool").IpamIpamPool;
+export const IpamIpamPool: typeof import("./ipamIpamPool").IpamIpamPool = null as any;
+utilities.lazyLoad(exports, ["IpamIpamPool"], () => require("./ipamIpamPool"));
+
+export { IpamIpamPoolCidrArgs, IpamIpamPoolCidrState } from "./ipamIpamPoolCidr";
+export type IpamIpamPoolCidr = import("./ipamIpamPoolCidr").IpamIpamPoolCidr;
+export const IpamIpamPoolCidr: typeof import("./ipamIpamPoolCidr").IpamIpamPoolCidr = null as any;
+utilities.lazyLoad(exports, ["IpamIpamPoolCidr"], () => require("./ipamIpamPoolCidr"));
+
+export { IpamIpamScopeArgs, IpamIpamScopeState } from "./ipamIpamScope";
+export type IpamIpamScope = import("./ipamIpamScope").IpamIpamScope;
+export const IpamIpamScope: typeof import("./ipamIpamScope").IpamIpamScope = null as any;
+utilities.lazyLoad(exports, ["IpamIpamScope"], () => require("./ipamIpamScope"));
+
 export { Ipv4CidrBlockArgs, Ipv4CidrBlockState } from "./ipv4CidrBlock";
 export type Ipv4CidrBlock = import("./ipv4CidrBlock").Ipv4CidrBlock;
 export const Ipv4CidrBlock: typeof import("./ipv4CidrBlock").Ipv4CidrBlock = null as any;
@@ -480,6 +500,14 @@ const _module = {
                 return new HAVipAttachment(name, <any>undefined, { urn })
             case "alicloud:vpc/haVipv2:HaVipv2":
                 return new HaVipv2(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipamIpam:IpamIpam":
+                return new IpamIpam(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipamIpamPool:IpamIpamPool":
+                return new IpamIpamPool(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr":
+                return new IpamIpamPoolCidr(name, <any>undefined, { urn })
+            case "alicloud:vpc/ipamIpamScope:IpamIpamScope":
+                return new IpamIpamScope(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock":
                 return new Ipv4CidrBlock(name, <any>undefined, { urn })
             case "alicloud:vpc/ipv4Gateway:Ipv4Gateway":
@@ -570,6 +598,10 @@ pulumi.runtime.registerResourceModule("alicloud", "vpc/gatewayRouteTableAttachme
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVip", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/hAVipAttachment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/haVipv2", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpam", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamPool", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamPoolCidr", _module)
+pulumi.runtime.registerResourceModule("alicloud", "vpc/ipamIpamScope", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4CidrBlock", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv4Gateway", _module)
 pulumi.runtime.registerResourceModule("alicloud", "vpc/ipv6Address", _module)

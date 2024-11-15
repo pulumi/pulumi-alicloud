@@ -17,14 +17,14 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
     public static final AccessConfigurationPermissionPolicyArgs Empty = new AccessConfigurationPermissionPolicyArgs();
 
     /**
-     * The Content of Policy.
+     * The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
      * 
      */
     @Import(name="permissionPolicyDocument")
     private @Nullable Output<String> permissionPolicyDocument;
 
     /**
-     * @return The Content of Policy.
+     * @return The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
      * 
      */
     public Optional<Output<String>> permissionPolicyDocument() {
@@ -32,14 +32,14 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
     }
 
     /**
-     * The Policy Name of policy. The name of the resource.
+     * The name of the policy.
      * 
      */
     @Import(name="permissionPolicyName", required=true)
     private Output<String> permissionPolicyName;
 
     /**
-     * @return The Policy Name of policy. The name of the resource.
+     * @return The name of the policy.
      * 
      */
     public Output<String> permissionPolicyName() {
@@ -47,14 +47,14 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
     }
 
     /**
-     * The Policy Type of policy. Valid values: `System`, `Inline`.
+     * The type of the policy. Valid values: `System`, `Inline`.
      * 
      */
     @Import(name="permissionPolicyType", required=true)
     private Output<String> permissionPolicyType;
 
     /**
-     * @return The Policy Type of policy. Valid values: `System`, `Inline`.
+     * @return The type of the policy. Valid values: `System`, `Inline`.
      * 
      */
     public Output<String> permissionPolicyType() {
@@ -88,7 +88,7 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param permissionPolicyDocument The Content of Policy.
+         * @param permissionPolicyDocument The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param permissionPolicyDocument The Content of Policy.
+         * @param permissionPolicyDocument The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param permissionPolicyName The Policy Name of policy. The name of the resource.
+         * @param permissionPolicyName The name of the policy.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param permissionPolicyName The Policy Name of policy. The name of the resource.
+         * @param permissionPolicyName The name of the policy.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param permissionPolicyType The Policy Type of policy. Valid values: `System`, `Inline`.
+         * @param permissionPolicyType The type of the policy. Valid values: `System`, `Inline`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AccessConfigurationPermissionPolicyArgs extends com.pulumi.re
         }
 
         /**
-         * @param permissionPolicyType The Policy Type of policy. Valid values: `System`, `Inline`.
+         * @param permissionPolicyType The type of the policy. Valid values: `System`, `Inline`.
          * 
          * @return builder
          * 

@@ -14,37 +14,37 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3ProvisionConfigTargetTrackingPolicy {
     /**
-     * @return Policy expiration time.
+     * @return Policy expiration time
      * 
      */
     private @Nullable String endTime;
     /**
-     * @return Maximum value of expansion.
+     * @return Maximum value of expansion
      * 
      */
     private @Nullable Integer maxCapacity;
     /**
-     * @return Tracking value of the indicator.
+     * @return Tracking value of the indicator
      * 
      */
     private @Nullable Double metricTarget;
     /**
-     * @return Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+     * @return Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
      * 
      */
     private @Nullable String metricType;
     /**
-     * @return Minimum Shrinkage.
+     * @return Minimum Shrinkage
      * 
      */
     private @Nullable Integer minCapacity;
     /**
-     * @return Policy Name.
+     * @return Policy Name
      * 
      */
     private @Nullable String name;
     /**
-     * @return Policy Effective Time.
+     * @return Policy Effective Time
      * 
      */
     private @Nullable String startTime;
@@ -56,49 +56,49 @@ public final class V3ProvisionConfigTargetTrackingPolicy {
 
     private V3ProvisionConfigTargetTrackingPolicy() {}
     /**
-     * @return Policy expiration time.
+     * @return Policy expiration time
      * 
      */
     public Optional<String> endTime() {
         return Optional.ofNullable(this.endTime);
     }
     /**
-     * @return Maximum value of expansion.
+     * @return Maximum value of expansion
      * 
      */
     public Optional<Integer> maxCapacity() {
         return Optional.ofNullable(this.maxCapacity);
     }
     /**
-     * @return Tracking value of the indicator.
+     * @return Tracking value of the indicator
      * 
      */
     public Optional<Double> metricTarget() {
         return Optional.ofNullable(this.metricTarget);
     }
     /**
-     * @return Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+     * @return Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
      * 
      */
     public Optional<String> metricType() {
         return Optional.ofNullable(this.metricType);
     }
     /**
-     * @return Minimum Shrinkage.
+     * @return Minimum Shrinkage
      * 
      */
     public Optional<Integer> minCapacity() {
         return Optional.ofNullable(this.minCapacity);
     }
     /**
-     * @return Policy Name.
+     * @return Policy Name
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Policy Effective Time.
+     * @return Policy Effective Time
      * 
      */
     public Optional<String> startTime() {

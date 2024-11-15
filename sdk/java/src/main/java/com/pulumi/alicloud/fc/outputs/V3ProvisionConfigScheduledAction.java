@@ -13,27 +13,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3ProvisionConfigScheduledAction {
     /**
-     * @return Policy expiration time.
+     * @return Policy expiration time
      * 
      */
     private @Nullable String endTime;
     /**
-     * @return Policy Name.
+     * @return Policy Name
      * 
      */
     private @Nullable String name;
     /**
-     * @return Timing Configuration.
+     * @return Timing Configuration
      * 
      */
     private @Nullable String scheduleExpression;
     /**
-     * @return Policy effective time.
+     * @return Policy effective time
      * 
      */
     private @Nullable String startTime;
     /**
-     * @return Number of reserved target resources.
+     * @return Number of reserved target resources
      * 
      */
     private @Nullable Integer target;
@@ -45,35 +45,35 @@ public final class V3ProvisionConfigScheduledAction {
 
     private V3ProvisionConfigScheduledAction() {}
     /**
-     * @return Policy expiration time.
+     * @return Policy expiration time
      * 
      */
     public Optional<String> endTime() {
         return Optional.ofNullable(this.endTime);
     }
     /**
-     * @return Policy Name.
+     * @return Policy Name
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Timing Configuration.
+     * @return Timing Configuration
      * 
      */
     public Optional<String> scheduleExpression() {
         return Optional.ofNullable(this.scheduleExpression);
     }
     /**
-     * @return Policy effective time.
+     * @return Policy effective time
      * 
      */
     public Optional<String> startTime() {
         return Optional.ofNullable(this.startTime);
     }
     /**
-     * @return Number of reserved target resources.
+     * @return Number of reserved target resources
      * 
      */
     public Optional<Integer> target() {

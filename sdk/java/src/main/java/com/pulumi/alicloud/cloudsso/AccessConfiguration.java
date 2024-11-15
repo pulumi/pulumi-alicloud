@@ -25,7 +25,68 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.145.0.
  * 
- * &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
+ * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
+ * import com.pulumi.alicloud.cloudsso.AccessConfiguration;
+ * import com.pulumi.alicloud.cloudsso.AccessConfigurationArgs;
+ * import com.pulumi.alicloud.cloudsso.inputs.AccessConfigurationPermissionPolicyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = CloudssoFunctions.getDirectories();
+ * 
+ *         var defaultAccessConfiguration = new AccessConfiguration("defaultAccessConfiguration", AccessConfigurationArgs.builder()
+ *             .directoryId(default_.directories()[0].id())
+ *             .accessConfigurationName(name)
+ *             .permissionPolicies(AccessConfigurationPermissionPolicyArgs.builder()
+ *                 .permissionPolicyType("Inline")
+ *                 .permissionPolicyName(name)
+ *                 .permissionPolicyDocument("""
+ *     {
+ *         "Statement":[
+ *       {
+ *         "Action":"ecs:Get*",
+ *         "Effect":"Allow",
+ *         "Resource":[
+ *             "*"
+ *         ]
+ *       }
+ *       ],
+ *         "Version": "1"
+ *     }
+ *                 """)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -39,42 +100,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:cloudsso/accessConfiguration:AccessConfiguration")
 public class AccessConfiguration extends com.pulumi.resources.CustomResource {
     /**
-     * The AccessConfigurationId of the Access Configuration.
+     * The ID of the Access Configuration.
      * 
      */
     @Export(name="accessConfigurationId", refs={String.class}, tree="[0]")
     private Output<String> accessConfigurationId;
 
     /**
-     * @return The AccessConfigurationId of the Access Configuration.
+     * @return The ID of the Access Configuration.
      * 
      */
     public Output<String> accessConfigurationId() {
         return this.accessConfigurationId;
     }
     /**
-     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+     * The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      * 
      */
     @Export(name="accessConfigurationName", refs={String.class}, tree="[0]")
     private Output<String> accessConfigurationName;
 
     /**
-     * @return The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+     * @return The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      * 
      */
     public Output<String> accessConfigurationName() {
         return this.accessConfigurationName;
     }
     /**
-     * The Description of the  Access Configuration. The description can be up to `1024` characters long.
+     * The description of the access configuration. The description can be up to `1024` characters in length.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The Description of the  Access Configuration. The description can be up to `1024` characters long.
+     * @return The description of the access configuration. The description can be up to `1024` characters in length.
      * 
      */
     public Output<Optional<String>> description() {
@@ -95,7 +156,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
         return this.directoryId;
     }
     /**
-     * This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+     * This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
      * 
      * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
@@ -104,7 +165,7 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> forceRemovePermissionPolicies;
 
     /**
-     * @return This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+     * @return This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
      * 
      * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
@@ -141,14 +202,14 @@ public class AccessConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.relayState);
     }
     /**
-     * The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+     * The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      * 
      */
     @Export(name="sessionDuration", refs={Integer.class}, tree="[0]")
     private Output<Integer> sessionDuration;
 
     /**
-     * @return The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+     * @return The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      * 
      */
     public Output<Integer> sessionDuration() {

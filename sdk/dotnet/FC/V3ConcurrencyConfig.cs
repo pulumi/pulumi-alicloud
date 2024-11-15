@@ -71,6 +71,12 @@ namespace Pulumi.AliCloud.FC
     public partial class V3ConcurrencyConfig : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Available since v1.234.0) Resource identity of the function
+        /// </summary>
+        [Output("functionArn")]
+        public Output<string> FunctionArn { get; private set; } = null!;
+
+        /// <summary>
         /// Function Name
         /// </summary>
         [Output("functionName")]
@@ -148,6 +154,12 @@ namespace Pulumi.AliCloud.FC
 
     public sealed class V3ConcurrencyConfigState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Available since v1.234.0) Resource identity of the function
+        /// </summary>
+        [Input("functionArn")]
+        public Input<string>? FunctionArn { get; set; }
+
         /// <summary>
         /// Function Name
         /// </summary>

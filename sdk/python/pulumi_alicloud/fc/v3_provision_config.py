@@ -142,6 +142,9 @@ class _V3ProvisionConfigState:
     def __init__(__self__, *,
                  always_allocate_cpu: Optional[pulumi.Input[bool]] = None,
                  always_allocate_gpu: Optional[pulumi.Input[bool]] = None,
+                 current: Optional[pulumi.Input[int]] = None,
+                 current_error: Optional[pulumi.Input[str]] = None,
+                 function_arn: Optional[pulumi.Input[str]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  qualifier: Optional[pulumi.Input[str]] = None,
                  scheduled_actions: Optional[pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]]] = None,
@@ -151,6 +154,9 @@ class _V3ProvisionConfigState:
         Input properties used for looking up and filtering V3ProvisionConfig resources.
         :param pulumi.Input[bool] always_allocate_cpu: Whether the CPU is always allocated. The default value is true.
         :param pulumi.Input[bool] always_allocate_gpu: Whether to always assign GPU to function instance
+        :param pulumi.Input[int] current: (Available since v1.234.0) Number of actual resources
+        :param pulumi.Input[str] current_error: (Available since v1.234.0) Error message when a Reserved Instance creation fails
+        :param pulumi.Input[str] function_arn: (Available since v1.234.0) Resource Description of the function
         :param pulumi.Input[str] function_name: The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
         :param pulumi.Input[str] qualifier: The function alias or LATEST.
         :param pulumi.Input[Sequence[pulumi.Input['V3ProvisionConfigScheduledActionArgs']]] scheduled_actions: Timing policy configuration See `scheduled_actions` below.
@@ -161,6 +167,12 @@ class _V3ProvisionConfigState:
             pulumi.set(__self__, "always_allocate_cpu", always_allocate_cpu)
         if always_allocate_gpu is not None:
             pulumi.set(__self__, "always_allocate_gpu", always_allocate_gpu)
+        if current is not None:
+            pulumi.set(__self__, "current", current)
+        if current_error is not None:
+            pulumi.set(__self__, "current_error", current_error)
+        if function_arn is not None:
+            pulumi.set(__self__, "function_arn", function_arn)
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
         if qualifier is not None:
@@ -195,6 +207,42 @@ class _V3ProvisionConfigState:
     @always_allocate_gpu.setter
     def always_allocate_gpu(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "always_allocate_gpu", value)
+
+    @property
+    @pulumi.getter
+    def current(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Available since v1.234.0) Number of actual resources
+        """
+        return pulumi.get(self, "current")
+
+    @current.setter
+    def current(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "current", value)
+
+    @property
+    @pulumi.getter(name="currentError")
+    def current_error(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) Error message when a Reserved Instance creation fails
+        """
+        return pulumi.get(self, "current_error")
+
+    @current_error.setter
+    def current_error(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "current_error", value)
+
+    @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) Resource Description of the function
+        """
+        return pulumi.get(self, "function_arn")
+
+    @function_arn.setter
+    def function_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_arn", value)
 
     @property
     @pulumi.getter(name="functionName")
@@ -312,7 +360,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
             memory_size=512,
             cpu=0.5,
             handler="index.handler",
-            function_name=name,
+            function_name=f"{name}-{default['result']}",
             runtime="python3.10",
             disk_size=512,
             code={
@@ -454,7 +502,7 @@ class V3ProvisionConfig(pulumi.CustomResource):
             memory_size=512,
             cpu=0.5,
             handler="index.handler",
-            function_name=name,
+            function_name=f"{name}-{default['result']}",
             runtime="python3.10",
             disk_size=512,
             code={
@@ -578,6 +626,9 @@ class V3ProvisionConfig(pulumi.CustomResource):
             __props__.__dict__["scheduled_actions"] = scheduled_actions
             __props__.__dict__["target"] = target
             __props__.__dict__["target_tracking_policies"] = target_tracking_policies
+            __props__.__dict__["current"] = None
+            __props__.__dict__["current_error"] = None
+            __props__.__dict__["function_arn"] = None
         super(V3ProvisionConfig, __self__).__init__(
             'alicloud:fc/v3ProvisionConfig:V3ProvisionConfig',
             resource_name,
@@ -590,6 +641,9 @@ class V3ProvisionConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             always_allocate_cpu: Optional[pulumi.Input[bool]] = None,
             always_allocate_gpu: Optional[pulumi.Input[bool]] = None,
+            current: Optional[pulumi.Input[int]] = None,
+            current_error: Optional[pulumi.Input[str]] = None,
+            function_arn: Optional[pulumi.Input[str]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
             qualifier: Optional[pulumi.Input[str]] = None,
             scheduled_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]]] = None,
@@ -604,6 +658,9 @@ class V3ProvisionConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] always_allocate_cpu: Whether the CPU is always allocated. The default value is true.
         :param pulumi.Input[bool] always_allocate_gpu: Whether to always assign GPU to function instance
+        :param pulumi.Input[int] current: (Available since v1.234.0) Number of actual resources
+        :param pulumi.Input[str] current_error: (Available since v1.234.0) Error message when a Reserved Instance creation fails
+        :param pulumi.Input[str] function_arn: (Available since v1.234.0) Resource Description of the function
         :param pulumi.Input[str] function_name: The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
         :param pulumi.Input[str] qualifier: The function alias or LATEST.
         :param pulumi.Input[Sequence[pulumi.Input[Union['V3ProvisionConfigScheduledActionArgs', 'V3ProvisionConfigScheduledActionArgsDict']]]] scheduled_actions: Timing policy configuration See `scheduled_actions` below.
@@ -616,6 +673,9 @@ class V3ProvisionConfig(pulumi.CustomResource):
 
         __props__.__dict__["always_allocate_cpu"] = always_allocate_cpu
         __props__.__dict__["always_allocate_gpu"] = always_allocate_gpu
+        __props__.__dict__["current"] = current
+        __props__.__dict__["current_error"] = current_error
+        __props__.__dict__["function_arn"] = function_arn
         __props__.__dict__["function_name"] = function_name
         __props__.__dict__["qualifier"] = qualifier
         __props__.__dict__["scheduled_actions"] = scheduled_actions
@@ -638,6 +698,30 @@ class V3ProvisionConfig(pulumi.CustomResource):
         Whether to always assign GPU to function instance
         """
         return pulumi.get(self, "always_allocate_gpu")
+
+    @property
+    @pulumi.getter
+    def current(self) -> pulumi.Output[int]:
+        """
+        (Available since v1.234.0) Number of actual resources
+        """
+        return pulumi.get(self, "current")
+
+    @property
+    @pulumi.getter(name="currentError")
+    def current_error(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) Error message when a Reserved Instance creation fails
+        """
+        return pulumi.get(self, "current_error")
+
+    @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) Resource Description of the function
+        """
+        return pulumi.get(self, "function_arn")
 
     @property
     @pulumi.getter(name="functionName")

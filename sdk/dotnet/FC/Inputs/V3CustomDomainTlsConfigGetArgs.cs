@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<string>? _cipherSuites;
 
         /// <summary>
-        /// List of TLS cipher suites.
+        /// List of TLS cipher suites
         /// </summary>
         public InputList<string> CipherSuites
         {
@@ -25,13 +25,13 @@ namespace Pulumi.AliCloud.FC.Inputs
         }
 
         /// <summary>
-        /// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        /// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         /// </summary>
         [Input("maxVersion")]
         public Input<string>? MaxVersion { get; set; }
 
         /// <summary>
-        /// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        /// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         /// </summary>
         [Input("minVersion")]
         public Input<string>? MinVersion { get; set; }

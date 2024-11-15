@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3AsyncInvokeConfigDestinationConfig
     {
         /// <summary>
-        /// Failed callback target structure. See `on_failure` below.
+        /// Failed callback target structure See `on_failure` below.
         /// </summary>
         public readonly Outputs.V3AsyncInvokeConfigDestinationConfigOnFailure? OnFailure;
         /// <summary>
-        /// Successful callback target structure. See `on_success` below.
+        /// Successful callback target structure See `on_success` below.
         /// </summary>
         public readonly Outputs.V3AsyncInvokeConfigDestinationConfigOnSuccess? OnSuccess;
 

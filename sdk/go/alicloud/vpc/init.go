@@ -51,6 +51,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HAVipAttachment{}
 	case "alicloud:vpc/haVipv2:HaVipv2":
 		r = &HaVipv2{}
+	case "alicloud:vpc/ipamIpam:IpamIpam":
+		r = &IpamIpam{}
+	case "alicloud:vpc/ipamIpamPool:IpamIpamPool":
+		r = &IpamIpamPool{}
+	case "alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr":
+		r = &IpamIpamPoolCidr{}
+	case "alicloud:vpc/ipamIpamScope:IpamIpamScope":
+		r = &IpamIpamScope{}
 	case "alicloud:vpc/ipv4CidrBlock:Ipv4CidrBlock":
 		r = &Ipv4CidrBlock{}
 	case "alicloud:vpc/ipv4Gateway:Ipv4Gateway":
@@ -207,6 +215,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"vpc/haVipv2",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/ipamIpam",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/ipamIpamPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/ipamIpamPoolCidr",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"vpc/ipamIpamScope",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

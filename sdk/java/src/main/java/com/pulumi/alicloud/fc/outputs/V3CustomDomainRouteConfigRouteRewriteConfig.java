@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3CustomDomainRouteConfigRouteRewriteConfig {
     /**
-     * @return Exact Match Rule List. See `equal_rules` below.
+     * @return Exact Match Rule List See `equal_rules` below.
      * 
      */
     private @Nullable List<V3CustomDomainRouteConfigRouteRewriteConfigEqualRule> equalRules;
     /**
-     * @return Regular match rule list. See `regex_rules` below.
+     * @return Regular match rule list See `regex_rules` below.
      * 
      */
     private @Nullable List<V3CustomDomainRouteConfigRouteRewriteConfigRegexRule> regexRules;
     /**
-     * @return List of wildcard matching rules. See `wildcard_rules` below.
+     * @return List of wildcard matching rules See `wildcard_rules` below.
      * 
      */
     private @Nullable List<V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule> wildcardRules;
 
     private V3CustomDomainRouteConfigRouteRewriteConfig() {}
     /**
-     * @return Exact Match Rule List. See `equal_rules` below.
+     * @return Exact Match Rule List See `equal_rules` below.
      * 
      */
     public List<V3CustomDomainRouteConfigRouteRewriteConfigEqualRule> equalRules() {
         return this.equalRules == null ? List.of() : this.equalRules;
     }
     /**
-     * @return Regular match rule list. See `regex_rules` below.
+     * @return Regular match rule list See `regex_rules` below.
      * 
      */
     public List<V3CustomDomainRouteConfigRouteRewriteConfigRegexRule> regexRules() {
         return this.regexRules == null ? List.of() : this.regexRules;
     }
     /**
-     * @return List of wildcard matching rules. See `wildcard_rules` below.
+     * @return List of wildcard matching rules See `wildcard_rules` below.
      * 
      */
     public List<V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule> wildcardRules() {

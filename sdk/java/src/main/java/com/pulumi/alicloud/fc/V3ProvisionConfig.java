@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  *             .memorySize("512")
  *             .cpu(0.5)
  *             .handler("index.handler")
- *             .functionName(name)
+ *             .functionName(String.format("%s-%s", name,default_.result()))
  *             .runtime("python3.10")
  *             .diskSize("512")
  *             .code(V3FunctionCodeArgs.builder()
@@ -222,6 +222,48 @@ public class V3ProvisionConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> alwaysAllocateGpu() {
         return Codegen.optional(this.alwaysAllocateGpu);
+    }
+    /**
+     * (Available since v1.234.0) Number of actual resources
+     * 
+     */
+    @Export(name="current", refs={Integer.class}, tree="[0]")
+    private Output<Integer> current;
+
+    /**
+     * @return (Available since v1.234.0) Number of actual resources
+     * 
+     */
+    public Output<Integer> current() {
+        return this.current;
+    }
+    /**
+     * (Available since v1.234.0) Error message when a Reserved Instance creation fails
+     * 
+     */
+    @Export(name="currentError", refs={String.class}, tree="[0]")
+    private Output<String> currentError;
+
+    /**
+     * @return (Available since v1.234.0) Error message when a Reserved Instance creation fails
+     * 
+     */
+    public Output<String> currentError() {
+        return this.currentError;
+    }
+    /**
+     * (Available since v1.234.0) Resource Description of the function
+     * 
+     */
+    @Export(name="functionArn", refs={String.class}, tree="[0]")
+    private Output<String> functionArn;
+
+    /**
+     * @return (Available since v1.234.0) Resource Description of the function
+     * 
+     */
+    public Output<String> functionArn() {
+        return this.functionArn;
     }
     /**
      * The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.

@@ -112,10 +112,22 @@ namespace Pulumi.AliCloud.FC
         public Output<string> FunctionName { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) HTTP trigger information
+        /// </summary>
+        [Output("httpTrigger")]
+        public Output<Outputs.V3TriggerHttpTrigger> HttpTrigger { get; private set; } = null!;
+
+        /// <summary>
         /// The role required by the event source (such as OSS) to call the function.
         /// </summary>
         [Output("invocationRole")]
         public Output<string?> InvocationRole { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.234.0) The last modified time of the trigger
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
 
         /// <summary>
         /// The version or alias of the function
@@ -136,10 +148,22 @@ namespace Pulumi.AliCloud.FC
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) Resource identity of the function
+        /// </summary>
+        [Output("targetArn")]
+        public Output<string> TargetArn { get; private set; } = null!;
+
+        /// <summary>
         /// Trigger configuration. The configuration varies for different types of triggers.
         /// </summary>
         [Output("triggerConfig")]
         public Output<string?> TriggerConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.234.0) Trigger ID
+        /// </summary>
+        [Output("triggerId")]
+        public Output<string> TriggerId { get; private set; } = null!;
 
         /// <summary>
         /// Trigger Name
@@ -274,10 +298,22 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? FunctionName { get; set; }
 
         /// <summary>
+        /// (Available since v1.234.0) HTTP trigger information
+        /// </summary>
+        [Input("httpTrigger")]
+        public Input<Inputs.V3TriggerHttpTriggerGetArgs>? HttpTrigger { get; set; }
+
+        /// <summary>
         /// The role required by the event source (such as OSS) to call the function.
         /// </summary>
         [Input("invocationRole")]
         public Input<string>? InvocationRole { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) The last modified time of the trigger
+        /// </summary>
+        [Input("lastModifiedTime")]
+        public Input<string>? LastModifiedTime { get; set; }
 
         /// <summary>
         /// The version or alias of the function
@@ -298,10 +334,22 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Status { get; set; }
 
         /// <summary>
+        /// (Available since v1.234.0) Resource identity of the function
+        /// </summary>
+        [Input("targetArn")]
+        public Input<string>? TargetArn { get; set; }
+
+        /// <summary>
         /// Trigger configuration. The configuration varies for different types of triggers.
         /// </summary>
         [Input("triggerConfig")]
         public Input<string>? TriggerConfig { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) Trigger ID
+        /// </summary>
+        [Input("triggerId")]
+        public Input<string>? TriggerId { get; set; }
 
         /// <summary>
         /// Trigger Name

@@ -12,6 +12,7 @@ import com.pulumi.alicloud.fc.inputs.V3FunctionInstanceLifecycleConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionLogConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionNasConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionOssMountConfigArgs;
+import com.pulumi.alicloud.fc.inputs.V3FunctionTracingConfigArgs;
 import com.pulumi.alicloud.fc.inputs.V3FunctionVpcConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -43,6 +44,21 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<V3FunctionCodeArgs>> code() {
         return Optional.ofNullable(this.code);
+    }
+
+    /**
+     * The code package size of the function returned by the system, in byte Example : 1024
+     * 
+     */
+    @Import(name="codeSize")
+    private @Nullable Output<Integer> codeSize;
+
+    /**
+     * @return The code package size of the function returned by the system, in byte Example : 1024
+     * 
+     */
+    public Optional<Output<Integer>> codeSize() {
+        return Optional.ofNullable(this.codeSize);
     }
 
     /**
@@ -166,6 +182,36 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * ARN of function
+     * 
+     */
+    @Import(name="functionArn")
+    private @Nullable Output<String> functionArn;
+
+    /**
+     * @return ARN of function
+     * 
+     */
+    public Optional<Output<String>> functionArn() {
+        return Optional.ofNullable(this.functionArn);
+    }
+
+    /**
+     * The first ID of the resource
+     * 
+     */
+    @Import(name="functionId")
+    private @Nullable Output<String> functionId;
+
+    /**
+     * @return The first ID of the resource
+     * 
+     */
+    public Optional<Output<String>> functionId() {
+        return Optional.ofNullable(this.functionId);
+    }
+
+    /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      * 
      */
@@ -253,6 +299,66 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> internetAccess() {
         return Optional.ofNullable(this.internetAccess);
+    }
+
+    /**
+     * Last time the function was Updated
+     * 
+     */
+    @Import(name="lastModifiedTime")
+    private @Nullable Output<String> lastModifiedTime;
+
+    /**
+     * @return Last time the function was Updated
+     * 
+     */
+    public Optional<Output<String>> lastModifiedTime() {
+        return Optional.ofNullable(this.lastModifiedTime);
+    }
+
+    /**
+     * The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+     * 
+     */
+    @Import(name="lastUpdateStatus")
+    private @Nullable Output<String> lastUpdateStatus;
+
+    /**
+     * @return The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+     * 
+     */
+    public Optional<Output<String>> lastUpdateStatus() {
+        return Optional.ofNullable(this.lastUpdateStatus);
+    }
+
+    /**
+     * The reason that caused the last function to update the Operation State to the current value
+     * 
+     */
+    @Import(name="lastUpdateStatusReason")
+    private @Nullable Output<String> lastUpdateStatusReason;
+
+    /**
+     * @return The reason that caused the last function to update the Operation State to the current value
+     * 
+     */
+    public Optional<Output<String>> lastUpdateStatusReason() {
+        return Optional.ofNullable(this.lastUpdateStatusReason);
+    }
+
+    /**
+     * Status code of the reason that caused the last function update operation status to the current value
+     * 
+     */
+    @Import(name="lastUpdateStatusReasonCode")
+    private @Nullable Output<String> lastUpdateStatusReasonCode;
+
+    /**
+     * @return Status code of the reason that caused the last function update operation status to the current value
+     * 
+     */
+    public Optional<Output<String>> lastUpdateStatusReasonCode() {
+        return Optional.ofNullable(this.lastUpdateStatusReasonCode);
     }
 
     /**
@@ -361,6 +467,51 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Function Status
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return Function Status
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
+     * The reason why the function is in the current state
+     * 
+     */
+    @Import(name="stateReason")
+    private @Nullable Output<String> stateReason;
+
+    /**
+     * @return The reason why the function is in the current state
+     * 
+     */
+    public Optional<Output<String>> stateReason() {
+        return Optional.ofNullable(this.stateReason);
+    }
+
+    /**
+     * The status code of the reason the function is in the current state.
+     * 
+     */
+    @Import(name="stateReasonCode")
+    private @Nullable Output<String> stateReasonCode;
+
+    /**
+     * @return The status code of the reason the function is in the current state.
+     * 
+     */
+    public Optional<Output<String>> stateReasonCode() {
+        return Optional.ofNullable(this.stateReasonCode);
+    }
+
+    /**
      * The maximum running time of the function, in seconds.
      * 
      */
@@ -373,6 +524,21 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> timeout() {
         return Optional.ofNullable(this.timeout);
+    }
+
+    /**
+     * Tracing configuration
+     * 
+     */
+    @Import(name="tracingConfig")
+    private @Nullable Output<V3FunctionTracingConfigArgs> tracingConfig;
+
+    /**
+     * @return Tracing configuration
+     * 
+     */
+    public Optional<Output<V3FunctionTracingConfigArgs>> tracingConfig() {
+        return Optional.ofNullable(this.tracingConfig);
     }
 
     /**
@@ -394,6 +560,7 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
 
     private V3FunctionState(V3FunctionState $) {
         this.code = $.code;
+        this.codeSize = $.codeSize;
         this.cpu = $.cpu;
         this.createTime = $.createTime;
         this.customContainerConfig = $.customContainerConfig;
@@ -402,12 +569,18 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.diskSize = $.diskSize;
         this.environmentVariables = $.environmentVariables;
+        this.functionArn = $.functionArn;
+        this.functionId = $.functionId;
         this.functionName = $.functionName;
         this.gpuConfig = $.gpuConfig;
         this.handler = $.handler;
         this.instanceConcurrency = $.instanceConcurrency;
         this.instanceLifecycleConfig = $.instanceLifecycleConfig;
         this.internetAccess = $.internetAccess;
+        this.lastModifiedTime = $.lastModifiedTime;
+        this.lastUpdateStatus = $.lastUpdateStatus;
+        this.lastUpdateStatusReason = $.lastUpdateStatusReason;
+        this.lastUpdateStatusReasonCode = $.lastUpdateStatusReasonCode;
         this.layers = $.layers;
         this.logConfig = $.logConfig;
         this.memorySize = $.memorySize;
@@ -415,7 +588,11 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
         this.ossMountConfig = $.ossMountConfig;
         this.role = $.role;
         this.runtime = $.runtime;
+        this.state = $.state;
+        this.stateReason = $.stateReason;
+        this.stateReasonCode = $.stateReasonCode;
         this.timeout = $.timeout;
+        this.tracingConfig = $.tracingConfig;
         this.vpcConfig = $.vpcConfig;
     }
 
@@ -456,6 +633,27 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder code(V3FunctionCodeArgs code) {
             return code(Output.of(code));
+        }
+
+        /**
+         * @param codeSize The code package size of the function returned by the system, in byte Example : 1024
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeSize(@Nullable Output<Integer> codeSize) {
+            $.codeSize = codeSize;
+            return this;
+        }
+
+        /**
+         * @param codeSize The code package size of the function returned by the system, in byte Example : 1024
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeSize(Integer codeSize) {
+            return codeSize(Output.of(codeSize));
         }
 
         /**
@@ -627,6 +825,48 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param functionArn ARN of function
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(@Nullable Output<String> functionArn) {
+            $.functionArn = functionArn;
+            return this;
+        }
+
+        /**
+         * @param functionArn ARN of function
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(String functionArn) {
+            return functionArn(Output.of(functionArn));
+        }
+
+        /**
+         * @param functionId The first ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionId(@Nullable Output<String> functionId) {
+            $.functionId = functionId;
+            return this;
+        }
+
+        /**
+         * @param functionId The first ID of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionId(String functionId) {
+            return functionId(Output.of(functionId));
+        }
+
+        /**
          * @param functionName The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
          * 
          * @return builder
@@ -750,6 +990,90 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder internetAccess(Boolean internetAccess) {
             return internetAccess(Output.of(internetAccess));
+        }
+
+        /**
+         * @param lastModifiedTime Last time the function was Updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(@Nullable Output<String> lastModifiedTime) {
+            $.lastModifiedTime = lastModifiedTime;
+            return this;
+        }
+
+        /**
+         * @param lastModifiedTime Last time the function was Updated
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(String lastModifiedTime) {
+            return lastModifiedTime(Output.of(lastModifiedTime));
+        }
+
+        /**
+         * @param lastUpdateStatus The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdateStatus(@Nullable Output<String> lastUpdateStatus) {
+            $.lastUpdateStatus = lastUpdateStatus;
+            return this;
+        }
+
+        /**
+         * @param lastUpdateStatus The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdateStatus(String lastUpdateStatus) {
+            return lastUpdateStatus(Output.of(lastUpdateStatus));
+        }
+
+        /**
+         * @param lastUpdateStatusReason The reason that caused the last function to update the Operation State to the current value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdateStatusReason(@Nullable Output<String> lastUpdateStatusReason) {
+            $.lastUpdateStatusReason = lastUpdateStatusReason;
+            return this;
+        }
+
+        /**
+         * @param lastUpdateStatusReason The reason that caused the last function to update the Operation State to the current value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdateStatusReason(String lastUpdateStatusReason) {
+            return lastUpdateStatusReason(Output.of(lastUpdateStatusReason));
+        }
+
+        /**
+         * @param lastUpdateStatusReasonCode Status code of the reason that caused the last function update operation status to the current value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdateStatusReasonCode(@Nullable Output<String> lastUpdateStatusReasonCode) {
+            $.lastUpdateStatusReasonCode = lastUpdateStatusReasonCode;
+            return this;
+        }
+
+        /**
+         * @param lastUpdateStatusReasonCode Status code of the reason that caused the last function update operation status to the current value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdateStatusReasonCode(String lastUpdateStatusReasonCode) {
+            return lastUpdateStatusReasonCode(Output.of(lastUpdateStatusReasonCode));
         }
 
         /**
@@ -910,6 +1234,69 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param state Function Status
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state Function Status
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
+        }
+
+        /**
+         * @param stateReason The reason why the function is in the current state
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateReason(@Nullable Output<String> stateReason) {
+            $.stateReason = stateReason;
+            return this;
+        }
+
+        /**
+         * @param stateReason The reason why the function is in the current state
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateReason(String stateReason) {
+            return stateReason(Output.of(stateReason));
+        }
+
+        /**
+         * @param stateReasonCode The status code of the reason the function is in the current state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateReasonCode(@Nullable Output<String> stateReasonCode) {
+            $.stateReasonCode = stateReasonCode;
+            return this;
+        }
+
+        /**
+         * @param stateReasonCode The status code of the reason the function is in the current state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateReasonCode(String stateReasonCode) {
+            return stateReasonCode(Output.of(stateReasonCode));
+        }
+
+        /**
          * @param timeout The maximum running time of the function, in seconds.
          * 
          * @return builder
@@ -928,6 +1315,27 @@ public final class V3FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder timeout(Integer timeout) {
             return timeout(Output.of(timeout));
+        }
+
+        /**
+         * @param tracingConfig Tracing configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tracingConfig(@Nullable Output<V3FunctionTracingConfigArgs> tracingConfig) {
+            $.tracingConfig = tracingConfig;
+            return this;
+        }
+
+        /**
+         * @param tracingConfig Tracing configuration
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tracingConfig(V3FunctionTracingConfigArgs tracingConfig) {
+            return tracingConfig(Output.of(tracingConfig));
         }
 
         /**

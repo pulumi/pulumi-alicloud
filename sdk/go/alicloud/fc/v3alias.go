@@ -84,6 +84,8 @@ type V3Alias struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Function Name
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
+	// (Available since v1.234.0) Last modification time
+	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The version that the alias points
 	VersionId pulumi.StringPtrOutput `pulumi:"versionId"`
 }
@@ -131,6 +133,8 @@ type v3aliasState struct {
 	Description *string `pulumi:"description"`
 	// Function Name
 	FunctionName *string `pulumi:"functionName"`
+	// (Available since v1.234.0) Last modification time
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The version that the alias points
 	VersionId *string `pulumi:"versionId"`
 }
@@ -146,6 +150,8 @@ type V3AliasState struct {
 	Description pulumi.StringPtrInput
 	// Function Name
 	FunctionName pulumi.StringPtrInput
+	// (Available since v1.234.0) Last modification time
+	LastModifiedTime pulumi.StringPtrInput
 	// The version that the alias points
 	VersionId pulumi.StringPtrInput
 }
@@ -291,6 +297,11 @@ func (o V3AliasOutput) Description() pulumi.StringPtrOutput {
 // Function Name
 func (o V3AliasOutput) FunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3Alias) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// (Available since v1.234.0) Last modification time
+func (o V3AliasOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3Alias) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
 // The version that the alias points

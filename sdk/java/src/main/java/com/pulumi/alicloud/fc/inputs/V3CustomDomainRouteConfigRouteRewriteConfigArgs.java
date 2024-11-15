@@ -19,14 +19,14 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
     public static final V3CustomDomainRouteConfigRouteRewriteConfigArgs Empty = new V3CustomDomainRouteConfigRouteRewriteConfigArgs();
 
     /**
-     * Exact Match Rule List. See `equal_rules` below.
+     * Exact Match Rule List See `equal_rules` below.
      * 
      */
     @Import(name="equalRules")
     private @Nullable Output<List<V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs>> equalRules;
 
     /**
-     * @return Exact Match Rule List. See `equal_rules` below.
+     * @return Exact Match Rule List See `equal_rules` below.
      * 
      */
     public Optional<Output<List<V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs>>> equalRules() {
@@ -34,14 +34,14 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
     }
 
     /**
-     * Regular match rule list. See `regex_rules` below.
+     * Regular match rule list See `regex_rules` below.
      * 
      */
     @Import(name="regexRules")
     private @Nullable Output<List<V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs>> regexRules;
 
     /**
-     * @return Regular match rule list. See `regex_rules` below.
+     * @return Regular match rule list See `regex_rules` below.
      * 
      */
     public Optional<Output<List<V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs>>> regexRules() {
@@ -49,14 +49,14 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
     }
 
     /**
-     * List of wildcard matching rules. See `wildcard_rules` below.
+     * List of wildcard matching rules See `wildcard_rules` below.
      * 
      */
     @Import(name="wildcardRules")
     private @Nullable Output<List<V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs>> wildcardRules;
 
     /**
-     * @return List of wildcard matching rules. See `wildcard_rules` below.
+     * @return List of wildcard matching rules See `wildcard_rules` below.
      * 
      */
     public Optional<Output<List<V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs>>> wildcardRules() {
@@ -90,7 +90,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
         }
 
         /**
-         * @param equalRules Exact Match Rule List. See `equal_rules` below.
+         * @param equalRules Exact Match Rule List See `equal_rules` below.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
         }
 
         /**
-         * @param equalRules Exact Match Rule List. See `equal_rules` below.
+         * @param equalRules Exact Match Rule List See `equal_rules` below.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
         }
 
         /**
-         * @param equalRules Exact Match Rule List. See `equal_rules` below.
+         * @param equalRules Exact Match Rule List See `equal_rules` below.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
         }
 
         /**
-         * @param regexRules Regular match rule list. See `regex_rules` below.
+         * @param regexRules Regular match rule list See `regex_rules` below.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
         }
 
         /**
-         * @param regexRules Regular match rule list. See `regex_rules` below.
+         * @param regexRules Regular match rule list See `regex_rules` below.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
         }
 
         /**
-         * @param regexRules Regular match rule list. See `regex_rules` below.
+         * @param regexRules Regular match rule list See `regex_rules` below.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
         }
 
         /**
-         * @param wildcardRules List of wildcard matching rules. See `wildcard_rules` below.
+         * @param wildcardRules List of wildcard matching rules See `wildcard_rules` below.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
         }
 
         /**
-         * @param wildcardRules List of wildcard matching rules. See `wildcard_rules` below.
+         * @param wildcardRules List of wildcard matching rules See `wildcard_rules` below.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigArgs extends com.p
         }
 
         /**
-         * @param wildcardRules List of wildcard matching rules. See `wildcard_rules` below.
+         * @param wildcardRules List of wildcard matching rules See `wildcard_rules` below.
          * 
          * @return builder
          * 

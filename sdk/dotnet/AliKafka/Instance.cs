@@ -49,6 +49,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<int> DiskType { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+        /// </summary>
+        [Output("domainEndpoint")]
+        public Output<string> DomainEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         /// </summary>
         [Output("eipMax")]
@@ -135,6 +141,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+        /// </summary>
+        [Output("saslDomainEndpoint")]
+        public Output<string> SaslDomainEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Output("securityGroup")]
@@ -167,6 +179,18 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Output("specType")]
         public Output<string?> SpecType { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+        /// </summary>
+        [Output("sslDomainEndpoint")]
+        public Output<string> SslDomainEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+        /// </summary>
+        [Output("sslEndpoint")]
+        public Output<string> SslEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// The status of the instance.
@@ -463,6 +487,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<int>? DiskType { get; set; }
 
         /// <summary>
+        /// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+        /// </summary>
+        [Input("domainEndpoint")]
+        public Input<string>? DomainEndpoint { get; set; }
+
+        /// <summary>
         /// The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         /// </summary>
         [Input("eipMax")]
@@ -549,6 +579,12 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
+        /// (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+        /// </summary>
+        [Input("saslDomainEndpoint")]
+        public Input<string>? SaslDomainEndpoint { get; set; }
+
+        /// <summary>
         /// The ID of security group for this instance. If the security group is empty, system will create a default one.
         /// </summary>
         [Input("securityGroup")]
@@ -587,6 +623,18 @@ namespace Pulumi.AliCloud.AliKafka
         /// </summary>
         [Input("specType")]
         public Input<string>? SpecType { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+        /// </summary>
+        [Input("sslDomainEndpoint")]
+        public Input<string>? SslDomainEndpoint { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+        /// </summary>
+        [Input("sslEndpoint")]
+        public Input<string>? SslEndpoint { get; set; }
 
         /// <summary>
         /// The status of the instance.

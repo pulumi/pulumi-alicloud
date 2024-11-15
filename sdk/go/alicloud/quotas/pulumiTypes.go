@@ -220,9 +220,9 @@ func (o QuotaAlarmQuotaDimensionArrayOutput) Index(i pulumi.IntInput) QuotaAlarm
 }
 
 type QuotaApplicationDimension struct {
-	// Key.
+	// The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 	Key *string `pulumi:"key"`
-	// Value.
+	// The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 	Value *string `pulumi:"value"`
 }
 
@@ -238,9 +238,9 @@ type QuotaApplicationDimensionInput interface {
 }
 
 type QuotaApplicationDimensionArgs struct {
-	// Key.
+	// The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Value.
+	// The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -295,12 +295,12 @@ func (o QuotaApplicationDimensionOutput) ToQuotaApplicationDimensionOutputWithCo
 	return o
 }
 
-// Key.
+// The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 func (o QuotaApplicationDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QuotaApplicationDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Value.
+// The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
 func (o QuotaApplicationDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v QuotaApplicationDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

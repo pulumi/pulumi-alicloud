@@ -16,14 +16,14 @@ public final class V3CustomDomainCertConfigArgs extends com.pulumi.resources.Res
     public static final V3CustomDomainCertConfigArgs Empty = new V3CustomDomainCertConfigArgs();
 
     /**
-     * Certificate Name.
+     * Certificate Name
      * 
      */
     @Import(name="certName")
     private @Nullable Output<String> certName;
 
     /**
-     * @return Certificate Name.
+     * @return Certificate Name
      * 
      */
     public Optional<Output<String>> certName() {
@@ -31,14 +31,14 @@ public final class V3CustomDomainCertConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * PEM format certificate.
+     * PEM format certificate
      * 
      */
     @Import(name="certificate")
     private @Nullable Output<String> certificate;
 
     /**
-     * @return PEM format certificate.
+     * @return PEM format certificate
      * 
      */
     public Optional<Output<String>> certificate() {
@@ -46,14 +46,14 @@ public final class V3CustomDomainCertConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Private Key in PEM format.
+     * Private Key in PEM format
      * 
      */
     @Import(name="privateKey")
     private @Nullable Output<String> privateKey;
 
     /**
-     * @return Private Key in PEM format.
+     * @return Private Key in PEM format
      * 
      */
     public Optional<Output<String>> privateKey() {
@@ -87,7 +87,7 @@ public final class V3CustomDomainCertConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param certName Certificate Name.
+         * @param certName Certificate Name
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class V3CustomDomainCertConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param certName Certificate Name.
+         * @param certName Certificate Name
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class V3CustomDomainCertConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param certificate PEM format certificate.
+         * @param certificate PEM format certificate
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class V3CustomDomainCertConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param certificate PEM format certificate.
+         * @param certificate PEM format certificate
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class V3CustomDomainCertConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privateKey Private Key in PEM format.
+         * @param privateKey Private Key in PEM format
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class V3CustomDomainCertConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privateKey Private Key in PEM format.
+         * @param privateKey Private Key in PEM format
          * 
          * @return builder
          * 

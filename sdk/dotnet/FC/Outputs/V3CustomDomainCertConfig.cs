@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3CustomDomainCertConfig
     {
         /// <summary>
-        /// Certificate Name.
+        /// Certificate Name
         /// </summary>
         public readonly string? CertName;
         /// <summary>
-        /// PEM format certificate.
+        /// PEM format certificate
         /// </summary>
         public readonly string? Certificate;
         /// <summary>
-        /// Private Key in PEM format.
+        /// Private Key in PEM format
         /// </summary>
         public readonly string? PrivateKey;
 

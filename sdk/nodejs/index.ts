@@ -133,6 +133,7 @@ import * as elasticsearch from "./elasticsearch";
 import * as emr from "./emr";
 import * as emrv2 from "./emrv2";
 import * as ens from "./ens";
+import * as esa from "./esa";
 import * as ess from "./ess";
 import * as eventbridge from "./eventbridge";
 import * as expressconnect from "./expressconnect";
@@ -142,6 +143,7 @@ import * as ga from "./ga";
 import * as governance from "./governance";
 import * as gpdb from "./gpdb";
 import * as graphdatabase from "./graphdatabase";
+import * as gwlb from "./gwlb";
 import * as hbase from "./hbase";
 import * as hbr from "./hbr";
 import * as hologram from "./hologram";
@@ -268,6 +270,7 @@ export {
     emr,
     emrv2,
     ens,
+    esa,
     ess,
     eventbridge,
     expressconnect,
@@ -277,6 +280,7 @@ export {
     governance,
     gpdb,
     graphdatabase,
+    gwlb,
     hbase,
     hbr,
     hologram,

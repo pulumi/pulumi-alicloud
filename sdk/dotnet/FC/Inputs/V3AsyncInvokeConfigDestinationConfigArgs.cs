@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3AsyncInvokeConfigDestinationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Failed callback target structure. See `on_failure` below.
+        /// Failed callback target structure See `on_failure` below.
         /// </summary>
         [Input("onFailure")]
         public Input<Inputs.V3AsyncInvokeConfigDestinationConfigOnFailureArgs>? OnFailure { get; set; }
 
         /// <summary>
-        /// Successful callback target structure. See `on_success` below.
+        /// Successful callback target structure See `on_success` below.
         /// </summary>
         [Input("onSuccess")]
         public Input<Inputs.V3AsyncInvokeConfigDestinationConfigOnSuccessArgs>? OnSuccess { get; set; }

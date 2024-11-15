@@ -138,6 +138,12 @@ namespace Pulumi.AliCloud.FC
         public Output<Outputs.V3FunctionCode?> Code { get; private set; } = null!;
 
         /// <summary>
+        /// The code package size of the function returned by the system, in byte Example : 1024
+        /// </summary>
+        [Output("codeSize")]
+        public Output<int> CodeSize { get; private set; } = null!;
+
+        /// <summary>
         /// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         /// </summary>
         [Output("cpu")]
@@ -186,6 +192,18 @@ namespace Pulumi.AliCloud.FC
         public Output<ImmutableDictionary<string, string>?> EnvironmentVariables { get; private set; } = null!;
 
         /// <summary>
+        /// ARN of function
+        /// </summary>
+        [Output("functionArn")]
+        public Output<string> FunctionArn { get; private set; } = null!;
+
+        /// <summary>
+        /// The first ID of the resource
+        /// </summary>
+        [Output("functionId")]
+        public Output<string> FunctionId { get; private set; } = null!;
+
+        /// <summary>
         /// The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         /// </summary>
         [Output("functionName")]
@@ -220,6 +238,30 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Output("internetAccess")]
         public Output<bool> InternetAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// Last time the function was Updated
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+        /// </summary>
+        [Output("lastUpdateStatus")]
+        public Output<string> LastUpdateStatus { get; private set; } = null!;
+
+        /// <summary>
+        /// The reason that caused the last function to update the Operation State to the current value
+        /// </summary>
+        [Output("lastUpdateStatusReason")]
+        public Output<string> LastUpdateStatusReason { get; private set; } = null!;
+
+        /// <summary>
+        /// Status code of the reason that caused the last function update operation status to the current value
+        /// </summary>
+        [Output("lastUpdateStatusReasonCode")]
+        public Output<string> LastUpdateStatusReasonCode { get; private set; } = null!;
 
         /// <summary>
         /// The list of layers.
@@ -264,10 +306,34 @@ namespace Pulumi.AliCloud.FC
         public Output<string> Runtime { get; private set; } = null!;
 
         /// <summary>
+        /// Function Status
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The reason why the function is in the current state
+        /// </summary>
+        [Output("stateReason")]
+        public Output<string> StateReason { get; private set; } = null!;
+
+        /// <summary>
+        /// The status code of the reason the function is in the current state.
+        /// </summary>
+        [Output("stateReasonCode")]
+        public Output<string> StateReasonCode { get; private set; } = null!;
+
+        /// <summary>
         /// The maximum running time of the function, in seconds.
         /// </summary>
         [Output("timeout")]
         public Output<int> Timeout { get; private set; } = null!;
+
+        /// <summary>
+        /// Tracing configuration
+        /// </summary>
+        [Output("tracingConfig")]
+        public Output<Outputs.V3FunctionTracingConfig> TracingConfig { get; private set; } = null!;
 
         /// <summary>
         /// VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
@@ -494,6 +560,12 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3FunctionCodeGetArgs>? Code { get; set; }
 
         /// <summary>
+        /// The code package size of the function returned by the system, in byte Example : 1024
+        /// </summary>
+        [Input("codeSize")]
+        public Input<int>? CodeSize { get; set; }
+
+        /// <summary>
         /// The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         /// </summary>
         [Input("cpu")]
@@ -548,6 +620,18 @@ namespace Pulumi.AliCloud.FC
         }
 
         /// <summary>
+        /// ARN of function
+        /// </summary>
+        [Input("functionArn")]
+        public Input<string>? FunctionArn { get; set; }
+
+        /// <summary>
+        /// The first ID of the resource
+        /// </summary>
+        [Input("functionId")]
+        public Input<string>? FunctionId { get; set; }
+
+        /// <summary>
         /// The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         /// </summary>
         [Input("functionName")]
@@ -582,6 +666,30 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("internetAccess")]
         public Input<bool>? InternetAccess { get; set; }
+
+        /// <summary>
+        /// Last time the function was Updated
+        /// </summary>
+        [Input("lastModifiedTime")]
+        public Input<string>? LastModifiedTime { get; set; }
+
+        /// <summary>
+        /// The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+        /// </summary>
+        [Input("lastUpdateStatus")]
+        public Input<string>? LastUpdateStatus { get; set; }
+
+        /// <summary>
+        /// The reason that caused the last function to update the Operation State to the current value
+        /// </summary>
+        [Input("lastUpdateStatusReason")]
+        public Input<string>? LastUpdateStatusReason { get; set; }
+
+        /// <summary>
+        /// Status code of the reason that caused the last function update operation status to the current value
+        /// </summary>
+        [Input("lastUpdateStatusReasonCode")]
+        public Input<string>? LastUpdateStatusReasonCode { get; set; }
 
         [Input("layers")]
         private InputList<string>? _layers;
@@ -636,10 +744,34 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? Runtime { get; set; }
 
         /// <summary>
+        /// Function Status
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The reason why the function is in the current state
+        /// </summary>
+        [Input("stateReason")]
+        public Input<string>? StateReason { get; set; }
+
+        /// <summary>
+        /// The status code of the reason the function is in the current state.
+        /// </summary>
+        [Input("stateReasonCode")]
+        public Input<string>? StateReasonCode { get; set; }
+
+        /// <summary>
         /// The maximum running time of the function, in seconds.
         /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
+
+        /// <summary>
+        /// Tracing configuration
+        /// </summary>
+        [Input("tracingConfig")]
+        public Input<Inputs.V3FunctionTracingConfigGetArgs>? TracingConfig { get; set; }
 
         /// <summary>
         /// VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.

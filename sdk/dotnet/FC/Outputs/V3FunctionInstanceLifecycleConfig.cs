@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3FunctionInstanceLifecycleConfig
     {
         /// <summary>
-        /// Initializer handler method configuration. See `initializer` below.
+        /// Initializer handler method configuration See `initializer` below.
         /// </summary>
         public readonly Outputs.V3FunctionInstanceLifecycleConfigInitializer? Initializer;
         /// <summary>
-        /// PreStop handler method configuration. See `pre_stop` below.
+        /// PreStop handler method configuration See `pre_stop` below.
         /// </summary>
         public readonly Outputs.V3FunctionInstanceLifecycleConfigPreStop? PreStop;
 

@@ -18,14 +18,14 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
     public static final V3CustomDomainRouteConfigRouteArgs Empty = new V3CustomDomainRouteConfigRouteArgs();
 
     /**
-     * Function name.
+     * Function name
      * 
      */
     @Import(name="functionName")
     private @Nullable Output<String> functionName;
 
     /**
-     * @return Function name.
+     * @return Function name
      * 
      */
     public Optional<Output<String>> functionName() {
@@ -33,14 +33,14 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
     }
 
     /**
-     * List of supported HTTP methods.
+     * List of supported HTTP methods
      * 
      */
     @Import(name="methods")
     private @Nullable Output<List<String>> methods;
 
     /**
-     * @return List of supported HTTP methods.
+     * @return List of supported HTTP methods
      * 
      */
     public Optional<Output<List<String>>> methods() {
@@ -48,14 +48,14 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
     }
 
     /**
-     * Route matching rule.
+     * Route matching rule
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return Route matching rule.
+     * @return Route matching rule
      * 
      */
     public Optional<Output<String>> path() {
@@ -63,14 +63,14 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
     }
 
     /**
-     * Version or Alias.
+     * Version or Alias
      * 
      */
     @Import(name="qualifier")
     private @Nullable Output<String> qualifier;
 
     /**
-     * @return Version or Alias.
+     * @return Version or Alias
      * 
      */
     public Optional<Output<String>> qualifier() {
@@ -78,14 +78,14 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
     }
 
     /**
-     * Override Configuration. See `rewrite_config` below.
+     * Override Configuration See `rewrite_config` below.
      * 
      */
     @Import(name="rewriteConfig")
     private @Nullable Output<V3CustomDomainRouteConfigRouteRewriteConfigArgs> rewriteConfig;
 
     /**
-     * @return Override Configuration. See `rewrite_config` below.
+     * @return Override Configuration See `rewrite_config` below.
      * 
      */
     public Optional<Output<V3CustomDomainRouteConfigRouteRewriteConfigArgs>> rewriteConfig() {
@@ -121,7 +121,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param functionName Function name.
+         * @param functionName Function name
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param functionName Function name.
+         * @param functionName Function name
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param methods List of supported HTTP methods.
+         * @param methods List of supported HTTP methods
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param methods List of supported HTTP methods.
+         * @param methods List of supported HTTP methods
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param methods List of supported HTTP methods.
+         * @param methods List of supported HTTP methods
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param path Route matching rule.
+         * @param path Route matching rule
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param path Route matching rule.
+         * @param path Route matching rule
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param qualifier Version or Alias.
+         * @param qualifier Version or Alias
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param qualifier Version or Alias.
+         * @param qualifier Version or Alias
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param rewriteConfig Override Configuration. See `rewrite_config` below.
+         * @param rewriteConfig Override Configuration See `rewrite_config` below.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class V3CustomDomainRouteConfigRouteArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param rewriteConfig Override Configuration. See `rewrite_config` below.
+         * @param rewriteConfig Override Configuration See `rewrite_config` below.
          * 
          * @return builder
          * 

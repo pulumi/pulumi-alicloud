@@ -26,7 +26,8 @@ class V3LayerVersionArgs:
                  code: Optional[pulumi.Input['V3LayerVersionCodeArgs']] = None,
                  compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 license: Optional[pulumi.Input[str]] = None):
+                 license: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a V3LayerVersion resource.
         :param pulumi.Input[str] layer_name: Name of the layer
@@ -35,6 +36,7 @@ class V3LayerVersionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatible_runtimes: List of runtime environments supported by the layer
         :param pulumi.Input[str] description: Description of the version
         :param pulumi.Input[str] license: Layer License Agreement
+        :param pulumi.Input[str] public: Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
         """
         pulumi.set(__self__, "layer_name", layer_name)
         if acl is not None:
@@ -47,6 +49,8 @@ class V3LayerVersionArgs:
             pulumi.set(__self__, "description", description)
         if license is not None:
             pulumi.set(__self__, "license", license)
+        if public is not None:
+            pulumi.set(__self__, "public", public)
 
     @property
     @pulumi.getter(name="layerName")
@@ -120,33 +124,53 @@ class V3LayerVersionArgs:
     def license(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "license", value)
 
+    @property
+    @pulumi.getter
+    def public(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+        """
+        return pulumi.get(self, "public")
+
+    @public.setter
+    def public(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public", value)
+
 
 @pulumi.input_type
 class _V3LayerVersionState:
     def __init__(__self__, *,
                  acl: Optional[pulumi.Input[str]] = None,
                  code: Optional[pulumi.Input['V3LayerVersionCodeArgs']] = None,
+                 code_size: Optional[pulumi.Input[str]] = None,
                  compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  layer_name: Optional[pulumi.Input[str]] = None,
+                 layer_version_arn: Optional[pulumi.Input[str]] = None,
                  license: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering V3LayerVersion resources.
         :param pulumi.Input[str] acl: The access permission of the layer, 1: public, 0: private, default is private
         :param pulumi.Input['V3LayerVersionCodeArgs'] code: Layer code configuration See `code` below.
+        :param pulumi.Input[str] code_size: (Available since v1.234.0) The code package size of the layer, in bytes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatible_runtimes: List of runtime environments supported by the layer
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] description: Description of the version
         :param pulumi.Input[str] layer_name: Name of the layer
+        :param pulumi.Input[str] layer_version_arn: (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
         :param pulumi.Input[str] license: Layer License Agreement
+        :param pulumi.Input[str] public: Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
         :param pulumi.Input[str] version: The version of the layer
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if code_size is not None:
+            pulumi.set(__self__, "code_size", code_size)
         if compatible_runtimes is not None:
             pulumi.set(__self__, "compatible_runtimes", compatible_runtimes)
         if create_time is not None:
@@ -155,8 +179,12 @@ class _V3LayerVersionState:
             pulumi.set(__self__, "description", description)
         if layer_name is not None:
             pulumi.set(__self__, "layer_name", layer_name)
+        if layer_version_arn is not None:
+            pulumi.set(__self__, "layer_version_arn", layer_version_arn)
         if license is not None:
             pulumi.set(__self__, "license", license)
+        if public is not None:
+            pulumi.set(__self__, "public", public)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -183,6 +211,18 @@ class _V3LayerVersionState:
     @code.setter
     def code(self, value: Optional[pulumi.Input['V3LayerVersionCodeArgs']]):
         pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter(name="codeSize")
+    def code_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) The code package size of the layer, in bytes.
+        """
+        return pulumi.get(self, "code_size")
+
+    @code_size.setter
+    def code_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "code_size", value)
 
     @property
     @pulumi.getter(name="compatibleRuntimes")
@@ -233,6 +273,18 @@ class _V3LayerVersionState:
         pulumi.set(self, "layer_name", value)
 
     @property
+    @pulumi.getter(name="layerVersionArn")
+    def layer_version_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+        """
+        return pulumi.get(self, "layer_version_arn")
+
+    @layer_version_arn.setter
+    def layer_version_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "layer_version_arn", value)
+
+    @property
     @pulumi.getter
     def license(self) -> Optional[pulumi.Input[str]]:
         """
@@ -243,6 +295,18 @@ class _V3LayerVersionState:
     @license.setter
     def license(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "license", value)
+
+    @property
+    @pulumi.getter
+    def public(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+        """
+        return pulumi.get(self, "public")
+
+    @public.setter
+    def public(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public", value)
 
     @property
     @pulumi.getter
@@ -268,6 +332,7 @@ class V3LayerVersion(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  layer_name: Optional[pulumi.Input[str]] = None,
                  license: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a FCV3 Layer Version resource.
@@ -316,6 +381,7 @@ class V3LayerVersion(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the version
         :param pulumi.Input[str] layer_name: Name of the layer
         :param pulumi.Input[str] license: Layer License Agreement
+        :param pulumi.Input[str] public: Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
         """
         ...
     @overload
@@ -383,6 +449,7 @@ class V3LayerVersion(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  layer_name: Optional[pulumi.Input[str]] = None,
                  license: Optional[pulumi.Input[str]] = None,
+                 public: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,7 +467,10 @@ class V3LayerVersion(pulumi.CustomResource):
                 raise TypeError("Missing required property 'layer_name'")
             __props__.__dict__["layer_name"] = layer_name
             __props__.__dict__["license"] = license
+            __props__.__dict__["public"] = public
+            __props__.__dict__["code_size"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["layer_version_arn"] = None
             __props__.__dict__["version"] = None
         super(V3LayerVersion, __self__).__init__(
             'alicloud:fc/v3LayerVersion:V3LayerVersion',
@@ -414,11 +484,14 @@ class V3LayerVersion(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acl: Optional[pulumi.Input[str]] = None,
             code: Optional[pulumi.Input[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']]] = None,
+            code_size: Optional[pulumi.Input[str]] = None,
             compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             layer_name: Optional[pulumi.Input[str]] = None,
+            layer_version_arn: Optional[pulumi.Input[str]] = None,
             license: Optional[pulumi.Input[str]] = None,
+            public: Optional[pulumi.Input[str]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'V3LayerVersion':
         """
         Get an existing V3LayerVersion resource's state with the given name, id, and optional extra
@@ -429,11 +502,14 @@ class V3LayerVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] acl: The access permission of the layer, 1: public, 0: private, default is private
         :param pulumi.Input[Union['V3LayerVersionCodeArgs', 'V3LayerVersionCodeArgsDict']] code: Layer code configuration See `code` below.
+        :param pulumi.Input[str] code_size: (Available since v1.234.0) The code package size of the layer, in bytes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatible_runtimes: List of runtime environments supported by the layer
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] description: Description of the version
         :param pulumi.Input[str] layer_name: Name of the layer
+        :param pulumi.Input[str] layer_version_arn: (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
         :param pulumi.Input[str] license: Layer License Agreement
+        :param pulumi.Input[str] public: Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
         :param pulumi.Input[str] version: The version of the layer
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -442,11 +518,14 @@ class V3LayerVersion(pulumi.CustomResource):
 
         __props__.__dict__["acl"] = acl
         __props__.__dict__["code"] = code
+        __props__.__dict__["code_size"] = code_size
         __props__.__dict__["compatible_runtimes"] = compatible_runtimes
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["layer_name"] = layer_name
+        __props__.__dict__["layer_version_arn"] = layer_version_arn
         __props__.__dict__["license"] = license
+        __props__.__dict__["public"] = public
         __props__.__dict__["version"] = version
         return V3LayerVersion(resource_name, opts=opts, __props__=__props__)
 
@@ -465,6 +544,14 @@ class V3LayerVersion(pulumi.CustomResource):
         Layer code configuration See `code` below.
         """
         return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="codeSize")
+    def code_size(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) The code package size of the layer, in bytes.
+        """
+        return pulumi.get(self, "code_size")
 
     @property
     @pulumi.getter(name="compatibleRuntimes")
@@ -499,12 +586,28 @@ class V3LayerVersion(pulumi.CustomResource):
         return pulumi.get(self, "layer_name")
 
     @property
+    @pulumi.getter(name="layerVersionArn")
+    def layer_version_arn(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+        """
+        return pulumi.get(self, "layer_version_arn")
+
+    @property
     @pulumi.getter
     def license(self) -> pulumi.Output[Optional[str]]:
         """
         Layer License Agreement
         """
         return pulumi.get(self, "license")
+
+    @property
+    @pulumi.getter
+    def public(self) -> pulumi.Output[Optional[str]]:
+        """
+        Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+        """
+        return pulumi.get(self, "public")
 
     @property
     @pulumi.getter

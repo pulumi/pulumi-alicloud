@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.FC
     ///         MemorySize = 512,
     ///         Cpu = 0.5,
     ///         Handler = "index.handler",
-    ///         FunctionName = name,
+    ///         FunctionName = $"{name}-{@default.Result}",
     ///         Runtime = "python3.10",
     ///         DiskSize = 512,
     ///         Code = new AliCloud.FC.Inputs.V3FunctionCodeArgs
@@ -191,6 +191,24 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Output("alwaysAllocateGpu")]
         public Output<bool?> AlwaysAllocateGpu { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.234.0) Number of actual resources
+        /// </summary>
+        [Output("current")]
+        public Output<int> Current { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.234.0) Error message when a Reserved Instance creation fails
+        /// </summary>
+        [Output("currentError")]
+        public Output<string> CurrentError { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.234.0) Resource Description of the function
+        /// </summary>
+        [Output("functionArn")]
+        public Output<string> FunctionArn { get; private set; } = null!;
 
         /// <summary>
         /// The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
@@ -341,6 +359,24 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("alwaysAllocateGpu")]
         public Input<bool>? AlwaysAllocateGpu { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) Number of actual resources
+        /// </summary>
+        [Input("current")]
+        public Input<int>? Current { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) Error message when a Reserved Instance creation fails
+        /// </summary>
+        [Input("currentError")]
+        public Input<string>? CurrentError { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) Resource Description of the function
+        /// </summary>
+        [Input("functionArn")]
+        public Input<string>? FunctionArn { get; set; }
 
         /// <summary>
         /// The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.

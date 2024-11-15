@@ -14,11 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type AccessConfigurationPermissionPolicy struct {
-	// The Content of Policy.
+	// The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
 	PermissionPolicyDocument *string `pulumi:"permissionPolicyDocument"`
-	// The Policy Name of policy. The name of the resource.
+	// The name of the policy.
 	PermissionPolicyName string `pulumi:"permissionPolicyName"`
-	// The Policy Type of policy. Valid values: `System`, `Inline`.
+	// The type of the policy. Valid values: `System`, `Inline`.
 	PermissionPolicyType string `pulumi:"permissionPolicyType"`
 }
 
@@ -34,11 +34,11 @@ type AccessConfigurationPermissionPolicyInput interface {
 }
 
 type AccessConfigurationPermissionPolicyArgs struct {
-	// The Content of Policy.
+	// The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
 	PermissionPolicyDocument pulumi.StringPtrInput `pulumi:"permissionPolicyDocument"`
-	// The Policy Name of policy. The name of the resource.
+	// The name of the policy.
 	PermissionPolicyName pulumi.StringInput `pulumi:"permissionPolicyName"`
-	// The Policy Type of policy. Valid values: `System`, `Inline`.
+	// The type of the policy. Valid values: `System`, `Inline`.
 	PermissionPolicyType pulumi.StringInput `pulumi:"permissionPolicyType"`
 }
 
@@ -93,17 +93,17 @@ func (o AccessConfigurationPermissionPolicyOutput) ToAccessConfigurationPermissi
 	return o
 }
 
-// The Content of Policy.
+// The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
 func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyDocument() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) *string { return v.PermissionPolicyDocument }).(pulumi.StringPtrOutput)
 }
 
-// The Policy Name of policy. The name of the resource.
+// The name of the policy.
 func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) string { return v.PermissionPolicyName }).(pulumi.StringOutput)
 }
 
-// The Policy Type of policy. Valid values: `System`, `Inline`.
+// The type of the policy. Valid values: `System`, `Inline`.
 func (o AccessConfigurationPermissionPolicyOutput) PermissionPolicyType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigurationPermissionPolicy) string { return v.PermissionPolicyType }).(pulumi.StringOutput)
 }

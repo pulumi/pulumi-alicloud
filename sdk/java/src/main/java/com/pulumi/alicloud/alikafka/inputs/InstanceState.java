@@ -85,6 +85,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+     * 
+     */
+    @Import(name="domainEndpoint")
+    private @Nullable Output<String> domainEndpoint;
+
+    /**
+     * @return (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+     * 
+     */
+    public Optional<Output<String>> domainEndpoint() {
+        return Optional.ofNullable(this.domainEndpoint);
+    }
+
+    /**
      * The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
      * 
      */
@@ -299,6 +314,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+     * 
+     */
+    @Import(name="saslDomainEndpoint")
+    private @Nullable Output<String> saslDomainEndpoint;
+
+    /**
+     * @return (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+     * 
+     */
+    public Optional<Output<String>> saslDomainEndpoint() {
+        return Optional.ofNullable(this.saslDomainEndpoint);
+    }
+
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      * 
      */
@@ -376,6 +406,36 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> specType() {
         return Optional.ofNullable(this.specType);
+    }
+
+    /**
+     * (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+     * 
+     */
+    @Import(name="sslDomainEndpoint")
+    private @Nullable Output<String> sslDomainEndpoint;
+
+    /**
+     * @return (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+     * 
+     */
+    public Optional<Output<String>> sslDomainEndpoint() {
+        return Optional.ofNullable(this.sslDomainEndpoint);
+    }
+
+    /**
+     * (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+     * 
+     */
+    @Import(name="sslEndpoint")
+    private @Nullable Output<String> sslEndpoint;
+
+    /**
+     * @return (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+     * 
+     */
+    public Optional<Output<String>> sslEndpoint() {
+        return Optional.ofNullable(this.sslEndpoint);
     }
 
     /**
@@ -534,6 +594,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.deployType = $.deployType;
         this.diskSize = $.diskSize;
         this.diskType = $.diskType;
+        this.domainEndpoint = $.domainEndpoint;
         this.eipMax = $.eipMax;
         this.endPoint = $.endPoint;
         this.groupLeft = $.groupLeft;
@@ -548,10 +609,13 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.partitionNum = $.partitionNum;
         this.partitionUsed = $.partitionUsed;
         this.resourceGroupId = $.resourceGroupId;
+        this.saslDomainEndpoint = $.saslDomainEndpoint;
         this.securityGroup = $.securityGroup;
         this.selectedZones = $.selectedZones;
         this.serviceVersion = $.serviceVersion;
         this.specType = $.specType;
+        this.sslDomainEndpoint = $.sslDomainEndpoint;
+        this.sslEndpoint = $.sslEndpoint;
         this.status = $.status;
         this.tags = $.tags;
         this.topicLeft = $.topicLeft;
@@ -669,6 +733,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskType(Integer diskType) {
             return diskType(Output.of(diskType));
+        }
+
+        /**
+         * @param domainEndpoint (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainEndpoint(@Nullable Output<String> domainEndpoint) {
+            $.domainEndpoint = domainEndpoint;
+            return this;
+        }
+
+        /**
+         * @param domainEndpoint (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder domainEndpoint(String domainEndpoint) {
+            return domainEndpoint(Output.of(domainEndpoint));
         }
 
         /**
@@ -970,6 +1055,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param saslDomainEndpoint (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslDomainEndpoint(@Nullable Output<String> saslDomainEndpoint) {
+            $.saslDomainEndpoint = saslDomainEndpoint;
+            return this;
+        }
+
+        /**
+         * @param saslDomainEndpoint (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saslDomainEndpoint(String saslDomainEndpoint) {
+            return saslDomainEndpoint(Output.of(saslDomainEndpoint));
+        }
+
+        /**
          * @param securityGroup The ID of security group for this instance. If the security group is empty, system will create a default one.
          * 
          * @return builder
@@ -1091,6 +1197,48 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder specType(String specType) {
             return specType(Output.of(specType));
+        }
+
+        /**
+         * @param sslDomainEndpoint (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslDomainEndpoint(@Nullable Output<String> sslDomainEndpoint) {
+            $.sslDomainEndpoint = sslDomainEndpoint;
+            return this;
+        }
+
+        /**
+         * @param sslDomainEndpoint (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslDomainEndpoint(String sslDomainEndpoint) {
+            return sslDomainEndpoint(Output.of(sslDomainEndpoint));
+        }
+
+        /**
+         * @param sslEndpoint (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslEndpoint(@Nullable Output<String> sslEndpoint) {
+            $.sslEndpoint = sslEndpoint;
+            return this;
+        }
+
+        /**
+         * @param sslEndpoint (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslEndpoint(String sslEndpoint) {
+            return sslEndpoint(Output.of(sslEndpoint));
         }
 
         /**

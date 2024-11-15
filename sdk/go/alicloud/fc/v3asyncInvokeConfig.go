@@ -36,8 +36,12 @@ type V3AsyncInvokeConfig struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Target Configuration See `destinationConfig` below.
 	DestinationConfig V3AsyncInvokeConfigDestinationConfigPtrOutput `pulumi:"destinationConfig"`
+	// (Available since v1.234.0) Function resource identification
+	FunctionArn pulumi.StringOutput `pulumi:"functionArn"`
 	// Function Name
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
+	// (Available since v1.234.0) Last modification time
+	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// Event maximum survival time
 	MaxAsyncEventAgeInSeconds pulumi.IntPtrOutput `pulumi:"maxAsyncEventAgeInSeconds"`
 	// Number of Asynchronous call retries
@@ -85,8 +89,12 @@ type v3asyncInvokeConfigState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Target Configuration See `destinationConfig` below.
 	DestinationConfig *V3AsyncInvokeConfigDestinationConfig `pulumi:"destinationConfig"`
+	// (Available since v1.234.0) Function resource identification
+	FunctionArn *string `pulumi:"functionArn"`
 	// Function Name
 	FunctionName *string `pulumi:"functionName"`
+	// (Available since v1.234.0) Last modification time
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// Event maximum survival time
 	MaxAsyncEventAgeInSeconds *int `pulumi:"maxAsyncEventAgeInSeconds"`
 	// Number of Asynchronous call retries
@@ -102,8 +110,12 @@ type V3AsyncInvokeConfigState struct {
 	CreateTime pulumi.StringPtrInput
 	// Target Configuration See `destinationConfig` below.
 	DestinationConfig V3AsyncInvokeConfigDestinationConfigPtrInput
+	// (Available since v1.234.0) Function resource identification
+	FunctionArn pulumi.StringPtrInput
 	// Function Name
 	FunctionName pulumi.StringPtrInput
+	// (Available since v1.234.0) Last modification time
+	LastModifiedTime pulumi.StringPtrInput
 	// Event maximum survival time
 	MaxAsyncEventAgeInSeconds pulumi.IntPtrInput
 	// Number of Asynchronous call retries
@@ -249,9 +261,19 @@ func (o V3AsyncInvokeConfigOutput) DestinationConfig() V3AsyncInvokeConfigDestin
 	return o.ApplyT(func(v *V3AsyncInvokeConfig) V3AsyncInvokeConfigDestinationConfigPtrOutput { return v.DestinationConfig }).(V3AsyncInvokeConfigDestinationConfigPtrOutput)
 }
 
+// (Available since v1.234.0) Function resource identification
+func (o V3AsyncInvokeConfigOutput) FunctionArn() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3AsyncInvokeConfig) pulumi.StringOutput { return v.FunctionArn }).(pulumi.StringOutput)
+}
+
 // Function Name
 func (o V3AsyncInvokeConfigOutput) FunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3AsyncInvokeConfig) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// (Available since v1.234.0) Last modification time
+func (o V3AsyncInvokeConfigOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3AsyncInvokeConfig) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
 // Event maximum survival time

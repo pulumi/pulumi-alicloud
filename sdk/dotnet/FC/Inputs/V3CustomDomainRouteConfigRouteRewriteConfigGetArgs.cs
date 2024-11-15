@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleGetArgs>? _equalRules;
 
         /// <summary>
-        /// Exact Match Rule List. See `equal_rules` below.
+        /// Exact Match Rule List See `equal_rules` below.
         /// </summary>
         public InputList<Inputs.V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleGetArgs> EqualRules
         {
@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleGetArgs>? _regexRules;
 
         /// <summary>
-        /// Regular match rule list. See `regex_rules` below.
+        /// Regular match rule list See `regex_rules` below.
         /// </summary>
         public InputList<Inputs.V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleGetArgs> RegexRules
         {
@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleGetArgs>? _wildcardRules;
 
         /// <summary>
-        /// List of wildcard matching rules. See `wildcard_rules` below.
+        /// List of wildcard matching rules See `wildcard_rules` below.
         /// </summary>
         public InputList<Inputs.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleGetArgs> WildcardRules
         {

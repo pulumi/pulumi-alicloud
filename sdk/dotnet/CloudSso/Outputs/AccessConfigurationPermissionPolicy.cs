@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.CloudSso.Outputs
     public sealed class AccessConfigurationPermissionPolicy
     {
         /// <summary>
-        /// The Content of Policy.
+        /// The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
         /// </summary>
         public readonly string? PermissionPolicyDocument;
         /// <summary>
-        /// The Policy Name of policy. The name of the resource.
+        /// The name of the policy.
         /// </summary>
         public readonly string PermissionPolicyName;
         /// <summary>
-        /// The Policy Type of policy. Valid values: `System`, `Inline`.
+        /// The type of the policy. Valid values: `System`, `Inline`.
         /// </summary>
         public readonly string PermissionPolicyType;
 

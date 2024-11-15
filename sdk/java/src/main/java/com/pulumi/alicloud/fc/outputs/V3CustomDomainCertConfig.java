@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3CustomDomainCertConfig {
     /**
-     * @return Certificate Name.
+     * @return Certificate Name
      * 
      */
     private @Nullable String certName;
     /**
-     * @return PEM format certificate.
+     * @return PEM format certificate
      * 
      */
     private @Nullable String certificate;
     /**
-     * @return Private Key in PEM format.
+     * @return Private Key in PEM format
      * 
      */
     private @Nullable String privateKey;
 
     private V3CustomDomainCertConfig() {}
     /**
-     * @return Certificate Name.
+     * @return Certificate Name
      * 
      */
     public Optional<String> certName() {
         return Optional.ofNullable(this.certName);
     }
     /**
-     * @return PEM format certificate.
+     * @return PEM format certificate
      * 
      */
     public Optional<String> certificate() {
         return Optional.ofNullable(this.certificate);
     }
     /**
-     * @return Private Key in PEM format.
+     * @return Private Key in PEM format
      * 
      */
     public Optional<String> privateKey() {

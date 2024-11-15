@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
     /**
-     * @return Matching Rules.
+     * @return Matching Rules
      * 
      */
     private @Nullable String match;
     /**
-     * @return Replace Rules.
+     * @return Replace Rules
      * 
      */
     private @Nullable String replacement;
 
     private V3CustomDomainRouteConfigRouteRewriteConfigRegexRule() {}
     /**
-     * @return Matching Rules.
+     * @return Matching Rules
      * 
      */
     public Optional<String> match() {
         return Optional.ofNullable(this.match);
     }
     /**
-     * @return Replace Rules.
+     * @return Replace Rules
      * 
      */
     public Optional<String> replacement() {

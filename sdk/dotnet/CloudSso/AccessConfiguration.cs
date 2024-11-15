@@ -16,7 +16,51 @@ namespace Pulumi.AliCloud.CloudSso
     /// 
     /// &gt; **NOTE:** Available since v1.145.0.
     /// 
-    /// &gt; **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.CloudSso.GetDirectories.Invoke();
+    /// 
+    ///     var defaultAccessConfiguration = new AliCloud.CloudSso.AccessConfiguration("default", new()
+    ///     {
+    ///         DirectoryId = @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Directories[0]?.Id)),
+    ///         AccessConfigurationName = name,
+    ///         PermissionPolicies = new[]
+    ///         {
+    ///             new AliCloud.CloudSso.Inputs.AccessConfigurationPermissionPolicyArgs
+    ///             {
+    ///                 PermissionPolicyType = "Inline",
+    ///                 PermissionPolicyName = name,
+    ///                 PermissionPolicyDocument = @"    {
+    ///         ""Statement"":[
+    ///       {
+    ///         ""Action"":""ecs:Get*"",
+    ///         ""Effect"":""Allow"",
+    ///         ""Resource"":[
+    ///             ""*""
+    ///         ]
+    ///       }
+    ///       ],
+    ///         ""Version"": ""1""
+    ///     }
+    /// ",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -30,19 +74,19 @@ namespace Pulumi.AliCloud.CloudSso
     public partial class AccessConfiguration : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The AccessConfigurationId of the Access Configuration.
+        /// The ID of the Access Configuration.
         /// </summary>
         [Output("accessConfigurationId")]
         public Output<string> AccessConfigurationId { get; private set; } = null!;
 
         /// <summary>
-        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        /// The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         /// </summary>
         [Output("accessConfigurationName")]
         public Output<string> AccessConfigurationName { get; private set; } = null!;
 
         /// <summary>
-        /// The Description of the  Access Configuration. The description can be up to `1024` characters long.
+        /// The description of the access configuration. The description can be up to `1024` characters in length.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -54,7 +98,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string> DirectoryId { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        /// This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
         /// 
         /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         /// </summary>
@@ -74,7 +118,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Output<string?> RelayState { get; private set; } = null!;
 
         /// <summary>
-        /// The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        /// The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         /// </summary>
         [Output("sessionDuration")]
         public Output<int> SessionDuration { get; private set; } = null!;
@@ -126,13 +170,13 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class AccessConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        /// The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         /// </summary>
         [Input("accessConfigurationName", required: true)]
         public Input<string> AccessConfigurationName { get; set; } = null!;
 
         /// <summary>
-        /// The Description of the  Access Configuration. The description can be up to `1024` characters long.
+        /// The description of the access configuration. The description can be up to `1024` characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -144,7 +188,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string> DirectoryId { get; set; } = null!;
 
         /// <summary>
-        /// This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        /// This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
         /// 
         /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         /// </summary>
@@ -170,7 +214,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? RelayState { get; set; }
 
         /// <summary>
-        /// The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        /// The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }
@@ -184,19 +228,19 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class AccessConfigurationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The AccessConfigurationId of the Access Configuration.
+        /// The ID of the Access Configuration.
         /// </summary>
         [Input("accessConfigurationId")]
         public Input<string>? AccessConfigurationId { get; set; }
 
         /// <summary>
-        /// The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        /// The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         /// </summary>
         [Input("accessConfigurationName")]
         public Input<string>? AccessConfigurationName { get; set; }
 
         /// <summary>
-        /// The Description of the  Access Configuration. The description can be up to `1024` characters long.
+        /// The description of the access configuration. The description can be up to `1024` characters in length.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -208,7 +252,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? DirectoryId { get; set; }
 
         /// <summary>
-        /// This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        /// This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
         /// 
         /// * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         /// </summary>
@@ -234,7 +278,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? RelayState { get; set; }
 
         /// <summary>
-        /// The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        /// The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }

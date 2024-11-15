@@ -233,16 +233,8 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Node type, value:
-     * 
-     * MASTER_SLAVE: high availability (dual copy)
-     * 
-     * STAND_ALONE: single copy
-     * 
-     * double: double copy
-     * 
-     * single: single copy
-     * 
-     * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * - `MASTER_SLAVE`: high availability (dual copy)
+     * - `STAND_ALONE`: single copy
      * 
      */
     @Import(name="nodeType")
@@ -250,16 +242,8 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Node type, value:
-     * 
-     * MASTER_SLAVE: high availability (dual copy)
-     * 
-     * STAND_ALONE: single copy
-     * 
-     * double: double copy
-     * 
-     * single: single copy
-     * 
-     * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * - `MASTER_SLAVE`: high availability (dual copy)
+     * - `STAND_ALONE`: single copy
      * 
      */
     public Optional<Output<String>> nodeType() {
@@ -267,14 +251,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
      * 
      */
     @Import(name="paramNoLooseSentinelEnabled")
     private @Nullable Output<String> paramNoLooseSentinelEnabled;
 
     /**
-     * @return sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+     * @return sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
      * 
      */
     public Optional<Output<String>> paramNoLooseSentinelEnabled() {
@@ -1048,16 +1032,8 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param nodeType Node type, value:
-         * 
-         * MASTER_SLAVE: high availability (dual copy)
-         * 
-         * STAND_ALONE: single copy
-         * 
-         * double: double copy
-         * 
-         * single: single copy
-         * 
-         * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+         * - `MASTER_SLAVE`: high availability (dual copy)
+         * - `STAND_ALONE`: single copy
          * 
          * @return builder
          * 
@@ -1069,16 +1045,8 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param nodeType Node type, value:
-         * 
-         * MASTER_SLAVE: high availability (dual copy)
-         * 
-         * STAND_ALONE: single copy
-         * 
-         * double: double copy
-         * 
-         * single: single copy
-         * 
-         * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+         * - `MASTER_SLAVE`: high availability (dual copy)
+         * - `STAND_ALONE`: single copy
          * 
          * @return builder
          * 
@@ -1088,7 +1056,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
          * 
          * @return builder
          * 
@@ -1099,7 +1067,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
          * 
          * @return builder
          * 

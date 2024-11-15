@@ -18,14 +18,14 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
     public static final V3ProvisionConfigTargetTrackingPolicyArgs Empty = new V3ProvisionConfigTargetTrackingPolicyArgs();
 
     /**
-     * Policy expiration time.
+     * Policy expiration time
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
     /**
-     * @return Policy expiration time.
+     * @return Policy expiration time
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -33,14 +33,14 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
     }
 
     /**
-     * Maximum value of expansion.
+     * Maximum value of expansion
      * 
      */
     @Import(name="maxCapacity")
     private @Nullable Output<Integer> maxCapacity;
 
     /**
-     * @return Maximum value of expansion.
+     * @return Maximum value of expansion
      * 
      */
     public Optional<Output<Integer>> maxCapacity() {
@@ -48,14 +48,14 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
     }
 
     /**
-     * Tracking value of the indicator.
+     * Tracking value of the indicator
      * 
      */
     @Import(name="metricTarget")
     private @Nullable Output<Double> metricTarget;
 
     /**
-     * @return Tracking value of the indicator.
+     * @return Tracking value of the indicator
      * 
      */
     public Optional<Output<Double>> metricTarget() {
@@ -63,14 +63,14 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
     }
 
     /**
-     * Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+     * Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
      * 
      */
     @Import(name="metricType")
     private @Nullable Output<String> metricType;
 
     /**
-     * @return Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+     * @return Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
      * 
      */
     public Optional<Output<String>> metricType() {
@@ -78,14 +78,14 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
     }
 
     /**
-     * Minimum Shrinkage.
+     * Minimum Shrinkage
      * 
      */
     @Import(name="minCapacity")
     private @Nullable Output<Integer> minCapacity;
 
     /**
-     * @return Minimum Shrinkage.
+     * @return Minimum Shrinkage
      * 
      */
     public Optional<Output<Integer>> minCapacity() {
@@ -93,14 +93,14 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
     }
 
     /**
-     * Policy Name.
+     * Policy Name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Policy Name.
+     * @return Policy Name
      * 
      */
     public Optional<Output<String>> name() {
@@ -108,14 +108,14 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
     }
 
     /**
-     * Policy Effective Time.
+     * Policy Effective Time
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return Policy Effective Time.
+     * @return Policy Effective Time
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -169,7 +169,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param endTime Policy expiration time.
+         * @param endTime Policy expiration time
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param endTime Policy expiration time.
+         * @param endTime Policy expiration time
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param maxCapacity Maximum value of expansion.
+         * @param maxCapacity Maximum value of expansion
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param maxCapacity Maximum value of expansion.
+         * @param maxCapacity Maximum value of expansion
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param metricTarget Tracking value of the indicator.
+         * @param metricTarget Tracking value of the indicator
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param metricTarget Tracking value of the indicator.
+         * @param metricTarget Tracking value of the indicator
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param metricType Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+         * @param metricType Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param metricType Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+         * @param metricType Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param minCapacity Minimum Shrinkage.
+         * @param minCapacity Minimum Shrinkage
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param minCapacity Minimum Shrinkage.
+         * @param minCapacity Minimum Shrinkage
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param name Policy Name.
+         * @param name Policy Name
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param name Policy Name.
+         * @param name Policy Name
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param startTime Policy Effective Time.
+         * @param startTime Policy Effective Time
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class V3ProvisionConfigTargetTrackingPolicyArgs extends com.pulumi.
         }
 
         /**
-         * @param startTime Policy Effective Time.
+         * @param startTime Policy Effective Time
          * 
          * @return builder
          * 

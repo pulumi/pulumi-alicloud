@@ -9,6 +9,8 @@ from .account_public_access_block import *
 from .bucket import *
 from .bucket_access_monitor import *
 from .bucket_acl import *
+from .bucket_cname import *
+from .bucket_cname_token import *
 from .bucket_cors import *
 from .bucket_data_redundancy_transition import *
 from .bucket_https_config import *

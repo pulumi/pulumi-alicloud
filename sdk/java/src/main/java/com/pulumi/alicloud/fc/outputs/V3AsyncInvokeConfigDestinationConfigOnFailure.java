@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3AsyncInvokeConfigDestinationConfigOnFailure {
     /**
-     * @return Asynchronous call target Resource Descriptor.
+     * @return Asynchronous call target Resource Descriptor
      * 
      */
     private @Nullable String destination;
 
     private V3AsyncInvokeConfigDestinationConfigOnFailure() {}
     /**
-     * @return Asynchronous call target Resource Descriptor.
+     * @return Asynchronous call target Resource Descriptor
      * 
      */
     public Optional<String> destination() {

@@ -33,6 +33,8 @@ type Instance struct {
 	DiskSize pulumi.IntOutput `pulumi:"diskSize"`
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType pulumi.IntOutput `pulumi:"diskType"`
+	// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+	DomainEndpoint pulumi.StringOutput `pulumi:"domainEndpoint"`
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntOutput `pulumi:"eipMax"`
 	// The EndPoint to access the kafka instance.
@@ -63,6 +65,8 @@ type Instance struct {
 	PartitionUsed pulumi.IntOutput `pulumi:"partitionUsed"`
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+	SaslDomainEndpoint pulumi.StringOutput `pulumi:"saslDomainEndpoint"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringOutput `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
@@ -81,6 +85,10 @@ type Instance struct {
 	ServiceVersion pulumi.StringOutput `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrOutput `pulumi:"specType"`
+	// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+	SslDomainEndpoint pulumi.StringOutput `pulumi:"sslDomainEndpoint"`
+	// (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+	SslEndpoint pulumi.StringOutput `pulumi:"sslEndpoint"`
 	// The status of the instance.
 	Status pulumi.IntOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -159,6 +167,8 @@ type instanceState struct {
 	DiskSize *int `pulumi:"diskSize"`
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType *int `pulumi:"diskType"`
+	// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+	DomainEndpoint *string `pulumi:"domainEndpoint"`
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax *int `pulumi:"eipMax"`
 	// The EndPoint to access the kafka instance.
@@ -189,6 +199,8 @@ type instanceState struct {
 	PartitionUsed *int `pulumi:"partitionUsed"`
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+	SaslDomainEndpoint *string `pulumi:"saslDomainEndpoint"`
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup *string `pulumi:"securityGroup"`
 	// The zones among which you want to deploy the instance.
@@ -207,6 +219,10 @@ type instanceState struct {
 	ServiceVersion *string `pulumi:"serviceVersion"`
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType *string `pulumi:"specType"`
+	// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+	SslDomainEndpoint *string `pulumi:"sslDomainEndpoint"`
+	// (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+	SslEndpoint *string `pulumi:"sslEndpoint"`
 	// The status of the instance.
 	Status *int `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
@@ -244,6 +260,8 @@ type InstanceState struct {
 	DiskSize pulumi.IntPtrInput
 	// The disk type of the instance. 0: efficient cloud disk , 1: SSD.
 	DiskType pulumi.IntPtrInput
+	// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+	DomainEndpoint pulumi.StringPtrInput
 	// The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 	EipMax pulumi.IntPtrInput
 	// The EndPoint to access the kafka instance.
@@ -274,6 +292,8 @@ type InstanceState struct {
 	PartitionUsed pulumi.IntPtrInput
 	// The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
 	ResourceGroupId pulumi.StringPtrInput
+	// (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+	SaslDomainEndpoint pulumi.StringPtrInput
 	// The ID of security group for this instance. If the security group is empty, system will create a default one.
 	SecurityGroup pulumi.StringPtrInput
 	// The zones among which you want to deploy the instance.
@@ -292,6 +312,10 @@ type InstanceState struct {
 	ServiceVersion pulumi.StringPtrInput
 	// The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 	SpecType pulumi.StringPtrInput
+	// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+	SslDomainEndpoint pulumi.StringPtrInput
+	// (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+	SslEndpoint pulumi.StringPtrInput
 	// The status of the instance.
 	Status pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
@@ -562,6 +586,11 @@ func (o InstanceOutput) DiskType() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.DiskType }).(pulumi.IntOutput)
 }
 
+// (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+func (o InstanceOutput) DomainEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DomainEndpoint }).(pulumi.StringOutput)
+}
+
 // The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
 func (o InstanceOutput) EipMax() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.EipMax }).(pulumi.IntOutput)
@@ -634,6 +663,11 @@ func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+func (o InstanceOutput) SaslDomainEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SaslDomainEndpoint }).(pulumi.StringOutput)
+}
+
 // The ID of security group for this instance. If the security group is empty, system will create a default one.
 func (o InstanceOutput) SecurityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SecurityGroup }).(pulumi.StringOutput)
@@ -662,6 +696,16 @@ func (o InstanceOutput) ServiceVersion() pulumi.StringOutput {
 // The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
 func (o InstanceOutput) SpecType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SpecType }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+func (o InstanceOutput) SslDomainEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslDomainEndpoint }).(pulumi.StringOutput)
+}
+
+// (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+func (o InstanceOutput) SslEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SslEndpoint }).(pulumi.StringOutput)
 }
 
 // The status of the instance.

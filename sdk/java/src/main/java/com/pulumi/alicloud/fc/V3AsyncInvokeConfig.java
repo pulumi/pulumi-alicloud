@@ -80,6 +80,20 @@ public class V3AsyncInvokeConfig extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.destinationConfig);
     }
     /**
+     * (Available since v1.234.0) Function resource identification
+     * 
+     */
+    @Export(name="functionArn", refs={String.class}, tree="[0]")
+    private Output<String> functionArn;
+
+    /**
+     * @return (Available since v1.234.0) Function resource identification
+     * 
+     */
+    public Output<String> functionArn() {
+        return this.functionArn;
+    }
+    /**
      * Function Name
      * 
      */
@@ -92,6 +106,20 @@ public class V3AsyncInvokeConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> functionName() {
         return this.functionName;
+    }
+    /**
+     * (Available since v1.234.0) Last modification time
+     * 
+     */
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
+    private Output<String> lastModifiedTime;
+
+    /**
+     * @return (Available since v1.234.0) Last modification time
+     * 
+     */
+    public Output<String> lastModifiedTime() {
+        return this.lastModifiedTime;
     }
     /**
      * Event maximum survival time

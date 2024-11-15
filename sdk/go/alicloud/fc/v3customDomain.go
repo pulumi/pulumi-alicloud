@@ -40,7 +40,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"
+//			name := "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -123,7 +123,7 @@ import (
 //				privateKey = param
 //			}
 //			_, err := fc.NewV3CustomDomain(ctx, "default", &fc.V3CustomDomainArgs{
-//				CustomDomainName: pulumi.String("flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"),
+//				CustomDomainName: pulumi.String(name),
 //				RouteConfig: &fc.V3CustomDomainRouteConfigArgs{
 //					Routes: fc.V3CustomDomainRouteConfigRouteArray{
 //						&fc.V3CustomDomainRouteConfigRouteArgs{
@@ -242,20 +242,28 @@ import (
 type V3CustomDomain struct {
 	pulumi.CustomResourceState
 
+	// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// (Available since v1.234.0) API version of Function Compute
+	ApiVersion pulumi.StringOutput `pulumi:"apiVersion"`
 	// Permission authentication configuration See `authConfig` below.
 	AuthConfig V3CustomDomainAuthConfigPtrOutput `pulumi:"authConfig"`
 	// HTTPS certificate information See `certConfig` below.
-	CertConfig V3CustomDomainCertConfigPtrOutput `pulumi:"certConfig"`
+	CertConfig V3CustomDomainCertConfigOutput `pulumi:"certConfig"`
 	// The creation time of the resource
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The name of the resource
 	CustomDomainName pulumi.StringOutput `pulumi:"customDomainName"`
+	// (Available since v1.234.0) The last time the custom domain name was Updated
+	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
 	Protocol pulumi.StringPtrOutput `pulumi:"protocol"`
 	// Route matching rule configuration See `routeConfig` below.
 	RouteConfig V3CustomDomainRouteConfigPtrOutput `pulumi:"routeConfig"`
+	// (Available since v1.234.0) Number of subdomains
+	SubdomainCount pulumi.StringOutput `pulumi:"subdomainCount"`
 	// TLS configuration information See `tlsConfig` below.
-	TlsConfig V3CustomDomainTlsConfigPtrOutput `pulumi:"tlsConfig"`
+	TlsConfig V3CustomDomainTlsConfigOutput `pulumi:"tlsConfig"`
 	// Web application firewall configuration information See `wafConfig` below.
 	WafConfig V3CustomDomainWafConfigPtrOutput `pulumi:"wafConfig"`
 }
@@ -290,6 +298,10 @@ func GetV3CustomDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering V3CustomDomain resources.
 type v3customDomainState struct {
+	// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+	AccountId *string `pulumi:"accountId"`
+	// (Available since v1.234.0) API version of Function Compute
+	ApiVersion *string `pulumi:"apiVersion"`
 	// Permission authentication configuration See `authConfig` below.
 	AuthConfig *V3CustomDomainAuthConfig `pulumi:"authConfig"`
 	// HTTPS certificate information See `certConfig` below.
@@ -298,10 +310,14 @@ type v3customDomainState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The name of the resource
 	CustomDomainName *string `pulumi:"customDomainName"`
+	// (Available since v1.234.0) The last time the custom domain name was Updated
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
 	Protocol *string `pulumi:"protocol"`
 	// Route matching rule configuration See `routeConfig` below.
 	RouteConfig *V3CustomDomainRouteConfig `pulumi:"routeConfig"`
+	// (Available since v1.234.0) Number of subdomains
+	SubdomainCount *string `pulumi:"subdomainCount"`
 	// TLS configuration information See `tlsConfig` below.
 	TlsConfig *V3CustomDomainTlsConfig `pulumi:"tlsConfig"`
 	// Web application firewall configuration information See `wafConfig` below.
@@ -309,6 +325,10 @@ type v3customDomainState struct {
 }
 
 type V3CustomDomainState struct {
+	// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+	AccountId pulumi.StringPtrInput
+	// (Available since v1.234.0) API version of Function Compute
+	ApiVersion pulumi.StringPtrInput
 	// Permission authentication configuration See `authConfig` below.
 	AuthConfig V3CustomDomainAuthConfigPtrInput
 	// HTTPS certificate information See `certConfig` below.
@@ -317,10 +337,14 @@ type V3CustomDomainState struct {
 	CreateTime pulumi.StringPtrInput
 	// The name of the resource
 	CustomDomainName pulumi.StringPtrInput
+	// (Available since v1.234.0) The last time the custom domain name was Updated
+	LastModifiedTime pulumi.StringPtrInput
 	// The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
 	Protocol pulumi.StringPtrInput
 	// Route matching rule configuration See `routeConfig` below.
 	RouteConfig V3CustomDomainRouteConfigPtrInput
+	// (Available since v1.234.0) Number of subdomains
+	SubdomainCount pulumi.StringPtrInput
 	// TLS configuration information See `tlsConfig` below.
 	TlsConfig V3CustomDomainTlsConfigPtrInput
 	// Web application firewall configuration information See `wafConfig` below.
@@ -453,14 +477,24 @@ func (o V3CustomDomainOutput) ToV3CustomDomainOutputWithContext(ctx context.Cont
 	return o
 }
 
+// (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+func (o V3CustomDomainOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// (Available since v1.234.0) API version of Function Compute
+func (o V3CustomDomainOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
 // Permission authentication configuration See `authConfig` below.
 func (o V3CustomDomainOutput) AuthConfig() V3CustomDomainAuthConfigPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainAuthConfigPtrOutput { return v.AuthConfig }).(V3CustomDomainAuthConfigPtrOutput)
 }
 
 // HTTPS certificate information See `certConfig` below.
-func (o V3CustomDomainOutput) CertConfig() V3CustomDomainCertConfigPtrOutput {
-	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainCertConfigPtrOutput { return v.CertConfig }).(V3CustomDomainCertConfigPtrOutput)
+func (o V3CustomDomainOutput) CertConfig() V3CustomDomainCertConfigOutput {
+	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainCertConfigOutput { return v.CertConfig }).(V3CustomDomainCertConfigOutput)
 }
 
 // The creation time of the resource
@@ -473,6 +507,11 @@ func (o V3CustomDomainOutput) CustomDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.CustomDomainName }).(pulumi.StringOutput)
 }
 
+// (Available since v1.234.0) The last time the custom domain name was Updated
+func (o V3CustomDomainOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
+}
+
 // The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
 func (o V3CustomDomainOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringPtrOutput { return v.Protocol }).(pulumi.StringPtrOutput)
@@ -483,9 +522,14 @@ func (o V3CustomDomainOutput) RouteConfig() V3CustomDomainRouteConfigPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainRouteConfigPtrOutput { return v.RouteConfig }).(V3CustomDomainRouteConfigPtrOutput)
 }
 
+// (Available since v1.234.0) Number of subdomains
+func (o V3CustomDomainOutput) SubdomainCount() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3CustomDomain) pulumi.StringOutput { return v.SubdomainCount }).(pulumi.StringOutput)
+}
+
 // TLS configuration information See `tlsConfig` below.
-func (o V3CustomDomainOutput) TlsConfig() V3CustomDomainTlsConfigPtrOutput {
-	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainTlsConfigPtrOutput { return v.TlsConfig }).(V3CustomDomainTlsConfigPtrOutput)
+func (o V3CustomDomainOutput) TlsConfig() V3CustomDomainTlsConfigOutput {
+	return o.ApplyT(func(v *V3CustomDomain) V3CustomDomainTlsConfigOutput { return v.TlsConfig }).(V3CustomDomainTlsConfigOutput)
 }
 
 // Web application firewall configuration information See `wafConfig` below.

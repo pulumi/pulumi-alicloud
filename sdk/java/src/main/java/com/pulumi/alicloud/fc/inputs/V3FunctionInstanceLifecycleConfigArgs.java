@@ -17,14 +17,14 @@ public final class V3FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
     public static final V3FunctionInstanceLifecycleConfigArgs Empty = new V3FunctionInstanceLifecycleConfigArgs();
 
     /**
-     * Initializer handler method configuration. See `initializer` below.
+     * Initializer handler method configuration See `initializer` below.
      * 
      */
     @Import(name="initializer")
     private @Nullable Output<V3FunctionInstanceLifecycleConfigInitializerArgs> initializer;
 
     /**
-     * @return Initializer handler method configuration. See `initializer` below.
+     * @return Initializer handler method configuration See `initializer` below.
      * 
      */
     public Optional<Output<V3FunctionInstanceLifecycleConfigInitializerArgs>> initializer() {
@@ -32,14 +32,14 @@ public final class V3FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * PreStop handler method configuration. See `pre_stop` below.
+     * PreStop handler method configuration See `pre_stop` below.
      * 
      */
     @Import(name="preStop")
     private @Nullable Output<V3FunctionInstanceLifecycleConfigPreStopArgs> preStop;
 
     /**
-     * @return PreStop handler method configuration. See `pre_stop` below.
+     * @return PreStop handler method configuration See `pre_stop` below.
      * 
      */
     public Optional<Output<V3FunctionInstanceLifecycleConfigPreStopArgs>> preStop() {
@@ -72,7 +72,7 @@ public final class V3FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param initializer Initializer handler method configuration. See `initializer` below.
+         * @param initializer Initializer handler method configuration See `initializer` below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class V3FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param initializer Initializer handler method configuration. See `initializer` below.
+         * @param initializer Initializer handler method configuration See `initializer` below.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class V3FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param preStop PreStop handler method configuration. See `pre_stop` below.
+         * @param preStop PreStop handler method configuration See `pre_stop` below.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class V3FunctionInstanceLifecycleConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param preStop PreStop handler method configuration. See `pre_stop` below.
+         * @param preStop PreStop handler method configuration See `pre_stop` below.
          * 
          * @return builder
          * 

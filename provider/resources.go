@@ -98,6 +98,7 @@ const (
 	elasticsearchMod       = "ElasticSearch"
 	emrMod                 = "Emr"
 	ensMod                 = "Ens"
+	esaMod                 = "Esa"
 	essMod                 = "Ess"
 	eventBridgeMod         = "EventBridge"
 	expressConnectMod      = "ExpressConnect"
@@ -106,6 +107,7 @@ const (
 	gaMod                  = "Ga"
 	gpdbMod                = "Gpdb"
 	graphDatabaseMod       = "GraphDatabase"
+	gwlbMod                = "Gwlb"
 	hbaseMod               = "Hbase"
 	hbrMod                 = "Hbr"
 	hologramMod            = "Hologram"
@@ -231,6 +233,7 @@ var mappedMods = map[string]string{
 	"emr":                   emrMod,
 	"emrv2":                 "Emrv2",
 	"ens":                   ensMod,
+	"esa":                   esaMod,
 	"ess":                   essMod,
 	"event_bridge":          eventBridgeMod,
 	"express_connect":       expressConnectMod,
@@ -239,6 +242,7 @@ var mappedMods = map[string]string{
 	"ga":                    gaMod,
 	"governance":            "Governance",
 	"gpdb":                  gpdbMod,
+	"gwlb":                  gwlbMod,
 	"graph_database":        graphDatabaseMod,
 	"hbase":                 hbaseMod,
 	"hbr":                   hbrMod,

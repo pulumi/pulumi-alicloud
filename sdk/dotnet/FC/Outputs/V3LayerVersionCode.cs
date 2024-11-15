@@ -18,15 +18,15 @@ namespace Pulumi.AliCloud.FC.Outputs
         /// </summary>
         public readonly string? Checksum;
         /// <summary>
-        /// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+        /// Name of the OSS Bucket where the user stores the Layer Code ZIP package
         /// </summary>
         public readonly string? OssBucketName;
         /// <summary>
-        /// Name of the OSS Object where the user stores the Layer Code ZIP package.
+        /// Name of the OSS Object where the user stores the Layer Code ZIP package
         /// </summary>
         public readonly string? OssObjectName;
         /// <summary>
-        /// Base 64 encoding of Layer Code ZIP package.
+        /// Base 64 encoding of Layer Code ZIP package
         /// </summary>
         public readonly string? ZipFile;
 

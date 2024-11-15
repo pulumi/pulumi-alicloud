@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'BucketAccessMonitorArgs',
     'BucketAccessMonitorArgsDict',
+    'BucketCnameCertificateArgs',
+    'BucketCnameCertificateArgsDict',
     'BucketCorsCorsRuleArgs',
     'BucketCorsCorsRuleArgsDict',
     'BucketCorsRuleArgs',
@@ -97,6 +99,198 @@ class BucketAccessMonitorArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+
+if not MYPY:
+    class BucketCnameCertificateArgsDict(TypedDict):
+        cert_id: NotRequired[pulumi.Input[str]]
+        """
+        Certificate Identifier
+        """
+        certificate: NotRequired[pulumi.Input[str]]
+        """
+        The certificate public key.
+        """
+        creation_date: NotRequired[pulumi.Input[str]]
+        """
+        Certificate creation time
+        """
+        fingerprint: NotRequired[pulumi.Input[str]]
+        """
+        Certificate Fingerprint
+        """
+        private_key: NotRequired[pulumi.Input[str]]
+        """
+        The certificate private key.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Cname status
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        Certificate Type
+        """
+        valid_end_date: NotRequired[pulumi.Input[str]]
+        """
+        Certificate validity period end time
+        """
+        valid_start_date: NotRequired[pulumi.Input[str]]
+        """
+        Certificate validity period start time
+        """
+elif False:
+    BucketCnameCertificateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BucketCnameCertificateArgs:
+    def __init__(__self__, *,
+                 cert_id: Optional[pulumi.Input[str]] = None,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 creation_date: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 valid_end_date: Optional[pulumi.Input[str]] = None,
+                 valid_start_date: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cert_id: Certificate Identifier
+        :param pulumi.Input[str] certificate: The certificate public key.
+        :param pulumi.Input[str] creation_date: Certificate creation time
+        :param pulumi.Input[str] fingerprint: Certificate Fingerprint
+        :param pulumi.Input[str] private_key: The certificate private key.
+        :param pulumi.Input[str] status: Cname status
+        :param pulumi.Input[str] type: Certificate Type
+        :param pulumi.Input[str] valid_end_date: Certificate validity period end time
+        :param pulumi.Input[str] valid_start_date: Certificate validity period start time
+        """
+        if cert_id is not None:
+            pulumi.set(__self__, "cert_id", cert_id)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if creation_date is not None:
+            pulumi.set(__self__, "creation_date", creation_date)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if valid_end_date is not None:
+            pulumi.set(__self__, "valid_end_date", valid_end_date)
+        if valid_start_date is not None:
+            pulumi.set(__self__, "valid_start_date", valid_start_date)
+
+    @property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate Identifier
+        """
+        return pulumi.get(self, "cert_id")
+
+    @cert_id.setter
+    def cert_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cert_id", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate public key.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="creationDate")
+    def creation_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate creation time
+        """
+        return pulumi.get(self, "creation_date")
+
+    @creation_date.setter
+    def creation_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_date", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate Fingerprint
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate private key.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cname status
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate Type
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="validEndDate")
+    def valid_end_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate validity period end time
+        """
+        return pulumi.get(self, "valid_end_date")
+
+    @valid_end_date.setter
+    def valid_end_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "valid_end_date", value)
+
+    @property
+    @pulumi.getter(name="validStartDate")
+    def valid_start_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate validity period start time
+        """
+        return pulumi.get(self, "valid_start_date")
+
+    @valid_start_date.setter
+    def valid_start_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "valid_start_date", value)
 
 
 if not MYPY:

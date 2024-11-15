@@ -81,6 +81,10 @@ export class V3LayerVersion extends pulumi.CustomResource {
      */
     public readonly code!: pulumi.Output<outputs.fc.V3LayerVersionCode | undefined>;
     /**
+     * (Available since v1.234.0) The code package size of the layer, in bytes.
+     */
+    public /*out*/ readonly codeSize!: pulumi.Output<string>;
+    /**
      * List of runtime environments supported by the layer
      */
     public readonly compatibleRuntimes!: pulumi.Output<string[]>;
@@ -97,9 +101,17 @@ export class V3LayerVersion extends pulumi.CustomResource {
      */
     public readonly layerName!: pulumi.Output<string>;
     /**
+     * (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+     */
+    public /*out*/ readonly layerVersionArn!: pulumi.Output<string>;
+    /**
      * Layer License Agreement
      */
     public readonly license!: pulumi.Output<string | undefined>;
+    /**
+     * Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+     */
+    public readonly public!: pulumi.Output<string | undefined>;
     /**
      * The version of the layer
      */
@@ -120,11 +132,14 @@ export class V3LayerVersion extends pulumi.CustomResource {
             const state = argsOrState as V3LayerVersionState | undefined;
             resourceInputs["acl"] = state ? state.acl : undefined;
             resourceInputs["code"] = state ? state.code : undefined;
+            resourceInputs["codeSize"] = state ? state.codeSize : undefined;
             resourceInputs["compatibleRuntimes"] = state ? state.compatibleRuntimes : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["layerName"] = state ? state.layerName : undefined;
+            resourceInputs["layerVersionArn"] = state ? state.layerVersionArn : undefined;
             resourceInputs["license"] = state ? state.license : undefined;
+            resourceInputs["public"] = state ? state.public : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as V3LayerVersionArgs | undefined;
@@ -137,7 +152,10 @@ export class V3LayerVersion extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["layerName"] = args ? args.layerName : undefined;
             resourceInputs["license"] = args ? args.license : undefined;
+            resourceInputs["public"] = args ? args.public : undefined;
+            resourceInputs["codeSize"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["layerVersionArn"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -158,6 +176,10 @@ export interface V3LayerVersionState {
      */
     code?: pulumi.Input<inputs.fc.V3LayerVersionCode>;
     /**
+     * (Available since v1.234.0) The code package size of the layer, in bytes.
+     */
+    codeSize?: pulumi.Input<string>;
+    /**
      * List of runtime environments supported by the layer
      */
     compatibleRuntimes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -174,9 +196,17 @@ export interface V3LayerVersionState {
      */
     layerName?: pulumi.Input<string>;
     /**
+     * (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+     */
+    layerVersionArn?: pulumi.Input<string>;
+    /**
      * Layer License Agreement
      */
     license?: pulumi.Input<string>;
+    /**
+     * Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+     */
+    public?: pulumi.Input<string>;
     /**
      * The version of the layer
      */
@@ -211,4 +241,8 @@ export interface V3LayerVersionArgs {
      * Layer License Agreement
      */
     license?: pulumi.Input<string>;
+    /**
+     * Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+     */
+    public?: pulumi.Input<string>;
 }

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3CustomDomainWafConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable WAF protection.
+        /// Enable WAF protection
         /// </summary>
         [Input("enableWaf")]
         public Input<bool>? EnableWaf { get; set; }

@@ -48,10 +48,22 @@ namespace Pulumi.AliCloud.FC
         public Output<Outputs.V3AsyncInvokeConfigDestinationConfig?> DestinationConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) Function resource identification
+        /// </summary>
+        [Output("functionArn")]
+        public Output<string> FunctionArn { get; private set; } = null!;
+
+        /// <summary>
         /// Function Name
         /// </summary>
         [Output("functionName")]
         public Output<string> FunctionName { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.234.0) Last modification time
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
 
         /// <summary>
         /// Event maximum survival time
@@ -180,10 +192,22 @@ namespace Pulumi.AliCloud.FC
         public Input<Inputs.V3AsyncInvokeConfigDestinationConfigGetArgs>? DestinationConfig { get; set; }
 
         /// <summary>
+        /// (Available since v1.234.0) Function resource identification
+        /// </summary>
+        [Input("functionArn")]
+        public Input<string>? FunctionArn { get; set; }
+
+        /// <summary>
         /// Function Name
         /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) Last modification time
+        /// </summary>
+        [Input("lastModifiedTime")]
+        public Input<string>? LastModifiedTime { get; set; }
 
         /// <summary>
         /// Event maximum survival time

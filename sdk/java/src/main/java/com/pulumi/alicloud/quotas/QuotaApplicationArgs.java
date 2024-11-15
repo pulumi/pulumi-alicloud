@@ -21,20 +21,18 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
     public static final QuotaApplicationArgs Empty = new QuotaApplicationArgs();
 
     /**
-     * Quota audit mode. Value:
-     * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-     * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+     * This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+     * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+     * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
      * 
      */
     @Import(name="auditMode")
     private @Nullable Output<String> auditMode;
 
     /**
-     * @return Quota audit mode. Value:
-     * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-     * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+     * @return This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+     * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+     * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
      * 
      */
     public Optional<Output<String>> auditMode() {
@@ -236,10 +234,9 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param auditMode Quota audit mode. Value:
-         * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-         * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-         * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+         * @param auditMode This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+         * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+         * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
          * 
          * @return builder
          * 
@@ -250,10 +247,9 @@ public final class QuotaApplicationArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param auditMode Quota audit mode. Value:
-         * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-         * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-         * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+         * @param auditMode This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+         * - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+         * - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
          * 
          * @return builder
          * 

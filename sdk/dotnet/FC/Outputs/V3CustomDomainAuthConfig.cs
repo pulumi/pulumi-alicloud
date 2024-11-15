@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3CustomDomainAuthConfig
     {
         /// <summary>
-        /// Authentication Information.
+        /// Authentication Information
         /// </summary>
         public readonly string? AuthInfo;
         /// <summary>

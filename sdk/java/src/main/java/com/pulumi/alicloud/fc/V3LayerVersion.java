@@ -111,6 +111,20 @@ public class V3LayerVersion extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.code);
     }
     /**
+     * (Available since v1.234.0) The code package size of the layer, in bytes.
+     * 
+     */
+    @Export(name="codeSize", refs={String.class}, tree="[0]")
+    private Output<String> codeSize;
+
+    /**
+     * @return (Available since v1.234.0) The code package size of the layer, in bytes.
+     * 
+     */
+    public Output<String> codeSize() {
+        return this.codeSize;
+    }
+    /**
      * List of runtime environments supported by the layer
      * 
      */
@@ -167,6 +181,20 @@ public class V3LayerVersion extends com.pulumi.resources.CustomResource {
         return this.layerName;
     }
     /**
+     * (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+     * 
+     */
+    @Export(name="layerVersionArn", refs={String.class}, tree="[0]")
+    private Output<String> layerVersionArn;
+
+    /**
+     * @return (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+     * 
+     */
+    public Output<String> layerVersionArn() {
+        return this.layerVersionArn;
+    }
+    /**
      * Layer License Agreement
      * 
      */
@@ -179,6 +207,20 @@ public class V3LayerVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> license() {
         return Codegen.optional(this.license);
+    }
+    /**
+     * Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+     * 
+     */
+    @Export(name="public", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> public_;
+
+    /**
+     * @return Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+     * 
+     */
+    public Output<Optional<String>> public_() {
+        return Codegen.optional(this.public_);
     }
     /**
      * The version of the layer

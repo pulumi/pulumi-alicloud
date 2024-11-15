@@ -24,10 +24,9 @@ type QuotaApplication struct {
 
 	// The approve value of the quota application.
 	ApproveValue pulumi.StringOutput `pulumi:"approveValue"`
-	// Quota audit mode. Value:
-	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
 	AuditMode pulumi.StringOutput `pulumi:"auditMode"`
 	// The audit reason.
 	AuditReason pulumi.StringOutput `pulumi:"auditReason"`
@@ -116,10 +115,9 @@ func GetQuotaApplication(ctx *pulumi.Context,
 type quotaApplicationState struct {
 	// The approve value of the quota application.
 	ApproveValue *string `pulumi:"approveValue"`
-	// Quota audit mode. Value:
-	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
 	AuditMode *string `pulumi:"auditMode"`
 	// The audit reason.
 	AuditReason *string `pulumi:"auditReason"`
@@ -167,10 +165,9 @@ type quotaApplicationState struct {
 type QuotaApplicationState struct {
 	// The approve value of the quota application.
 	ApproveValue pulumi.StringPtrInput
-	// Quota audit mode. Value:
-	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
 	AuditMode pulumi.StringPtrInput
 	// The audit reason.
 	AuditReason pulumi.StringPtrInput
@@ -220,10 +217,9 @@ func (QuotaApplicationState) ElementType() reflect.Type {
 }
 
 type quotaApplicationArgs struct {
-	// Quota audit mode. Value:
-	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
 	AuditMode *string `pulumi:"auditMode"`
 	// The desire value of the quota application.
 	DesireValue float64 `pulumi:"desireValue"`
@@ -254,10 +250,9 @@ type quotaApplicationArgs struct {
 
 // The set of arguments for constructing a QuotaApplication resource.
 type QuotaApplicationArgs struct {
-	// Quota audit mode. Value:
-	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+	// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+	// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
 	AuditMode pulumi.StringPtrInput
 	// The desire value of the quota application.
 	DesireValue pulumi.Float64Input
@@ -378,10 +373,9 @@ func (o QuotaApplicationOutput) ApproveValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.ApproveValue }).(pulumi.StringOutput)
 }
 
-// Quota audit mode. Value:
-// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+// This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+// - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+// - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
 func (o QuotaApplicationOutput) AuditMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.AuditMode }).(pulumi.StringOutput)
 }

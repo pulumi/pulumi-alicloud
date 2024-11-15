@@ -108,6 +108,21 @@ public final class V3LayerVersionArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.license);
     }
 
+    /**
+     * Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+     * 
+     */
+    @Import(name="public")
+    private @Nullable Output<String> public_;
+
+    /**
+     * @return Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+     * 
+     */
+    public Optional<Output<String>> public_() {
+        return Optional.ofNullable(this.public_);
+    }
+
     private V3LayerVersionArgs() {}
 
     private V3LayerVersionArgs(V3LayerVersionArgs $) {
@@ -117,6 +132,7 @@ public final class V3LayerVersionArgs extends com.pulumi.resources.ResourceArgs 
         this.description = $.description;
         this.layerName = $.layerName;
         this.license = $.license;
+        this.public_ = $.public_;
     }
 
     public static Builder builder() {
@@ -271,6 +287,27 @@ public final class V3LayerVersionArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder license(String license) {
             return license(Output.of(license));
+        }
+
+        /**
+         * @param public_ Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder public_(@Nullable Output<String> public_) {
+            $.public_ = public_;
+            return this;
+        }
+
+        /**
+         * @param public_ Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder public_(String public_) {
+            return public_(Output.of(public_));
         }
 
         public V3LayerVersionArgs build() {

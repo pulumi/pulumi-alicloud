@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3CustomDomainTlsConfig
     {
         /// <summary>
-        /// List of TLS cipher suites.
+        /// List of TLS cipher suites
         /// </summary>
         public readonly ImmutableArray<string> CipherSuites;
         /// <summary>
-        /// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        /// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         /// </summary>
         public readonly string? MaxVersion;
         /// <summary>
-        /// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        /// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         /// </summary>
         public readonly string? MinVersion;
 

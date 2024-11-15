@@ -15,6 +15,7 @@ import com.pulumi.alicloud.fc.outputs.V3FunctionInstanceLifecycleConfig;
 import com.pulumi.alicloud.fc.outputs.V3FunctionLogConfig;
 import com.pulumi.alicloud.fc.outputs.V3FunctionNasConfig;
 import com.pulumi.alicloud.fc.outputs.V3FunctionOssMountConfig;
+import com.pulumi.alicloud.fc.outputs.V3FunctionTracingConfig;
 import com.pulumi.alicloud.fc.outputs.V3FunctionVpcConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -175,6 +176,20 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.code);
     }
     /**
+     * The code package size of the function returned by the system, in byte Example : 1024
+     * 
+     */
+    @Export(name="codeSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> codeSize;
+
+    /**
+     * @return The code package size of the function returned by the system, in byte Example : 1024
+     * 
+     */
+    public Output<Integer> codeSize() {
+        return this.codeSize;
+    }
+    /**
      * The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
      * 
      */
@@ -287,6 +302,34 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.environmentVariables);
     }
     /**
+     * ARN of function
+     * 
+     */
+    @Export(name="functionArn", refs={String.class}, tree="[0]")
+    private Output<String> functionArn;
+
+    /**
+     * @return ARN of function
+     * 
+     */
+    public Output<String> functionArn() {
+        return this.functionArn;
+    }
+    /**
+     * The first ID of the resource
+     * 
+     */
+    @Export(name="functionId", refs={String.class}, tree="[0]")
+    private Output<String> functionId;
+
+    /**
+     * @return The first ID of the resource
+     * 
+     */
+    public Output<String> functionId() {
+        return this.functionId;
+    }
+    /**
      * The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
      * 
      */
@@ -369,6 +412,62 @@ public class V3Function extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> internetAccess() {
         return this.internetAccess;
+    }
+    /**
+     * Last time the function was Updated
+     * 
+     */
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
+    private Output<String> lastModifiedTime;
+
+    /**
+     * @return Last time the function was Updated
+     * 
+     */
+    public Output<String> lastModifiedTime() {
+        return this.lastModifiedTime;
+    }
+    /**
+     * The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+     * 
+     */
+    @Export(name="lastUpdateStatus", refs={String.class}, tree="[0]")
+    private Output<String> lastUpdateStatus;
+
+    /**
+     * @return The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+     * 
+     */
+    public Output<String> lastUpdateStatus() {
+        return this.lastUpdateStatus;
+    }
+    /**
+     * The reason that caused the last function to update the Operation State to the current value
+     * 
+     */
+    @Export(name="lastUpdateStatusReason", refs={String.class}, tree="[0]")
+    private Output<String> lastUpdateStatusReason;
+
+    /**
+     * @return The reason that caused the last function to update the Operation State to the current value
+     * 
+     */
+    public Output<String> lastUpdateStatusReason() {
+        return this.lastUpdateStatusReason;
+    }
+    /**
+     * Status code of the reason that caused the last function update operation status to the current value
+     * 
+     */
+    @Export(name="lastUpdateStatusReasonCode", refs={String.class}, tree="[0]")
+    private Output<String> lastUpdateStatusReasonCode;
+
+    /**
+     * @return Status code of the reason that caused the last function update operation status to the current value
+     * 
+     */
+    public Output<String> lastUpdateStatusReasonCode() {
+        return this.lastUpdateStatusReasonCode;
     }
     /**
      * The list of layers.
@@ -469,6 +568,48 @@ public class V3Function extends com.pulumi.resources.CustomResource {
         return this.runtime;
     }
     /**
+     * Function Status
+     * 
+     */
+    @Export(name="state", refs={String.class}, tree="[0]")
+    private Output<String> state;
+
+    /**
+     * @return Function Status
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
+    }
+    /**
+     * The reason why the function is in the current state
+     * 
+     */
+    @Export(name="stateReason", refs={String.class}, tree="[0]")
+    private Output<String> stateReason;
+
+    /**
+     * @return The reason why the function is in the current state
+     * 
+     */
+    public Output<String> stateReason() {
+        return this.stateReason;
+    }
+    /**
+     * The status code of the reason the function is in the current state.
+     * 
+     */
+    @Export(name="stateReasonCode", refs={String.class}, tree="[0]")
+    private Output<String> stateReasonCode;
+
+    /**
+     * @return The status code of the reason the function is in the current state.
+     * 
+     */
+    public Output<String> stateReasonCode() {
+        return this.stateReasonCode;
+    }
+    /**
      * The maximum running time of the function, in seconds.
      * 
      */
@@ -481,6 +622,20 @@ public class V3Function extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> timeout() {
         return this.timeout;
+    }
+    /**
+     * Tracing configuration
+     * 
+     */
+    @Export(name="tracingConfig", refs={V3FunctionTracingConfig.class}, tree="[0]")
+    private Output<V3FunctionTracingConfig> tracingConfig;
+
+    /**
+     * @return Tracing configuration
+     * 
+     */
+    public Output<V3FunctionTracingConfig> tracingConfig() {
+        return this.tracingConfig;
     }
     /**
      * VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
