@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3CustomDomainRouteConfigRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Function name.
+        /// Function name
         /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<string>? _methods;
 
         /// <summary>
-        /// List of supported HTTP methods.
+        /// List of supported HTTP methods
         /// </summary>
         public InputList<string> Methods
         {
@@ -31,19 +31,19 @@ namespace Pulumi.AliCloud.FC.Inputs
         }
 
         /// <summary>
-        /// Route matching rule.
+        /// Route matching rule
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Version or Alias.
+        /// Version or Alias
         /// </summary>
         [Input("qualifier")]
         public Input<string>? Qualifier { get; set; }
 
         /// <summary>
-        /// Override Configuration. See `rewrite_config` below.
+        /// Override Configuration See `rewrite_config` below.
         /// </summary>
         [Input("rewriteConfig")]
         public Input<Inputs.V3CustomDomainRouteConfigRouteRewriteConfigArgs>? RewriteConfig { get; set; }

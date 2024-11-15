@@ -3001,15 +3001,15 @@ export namespace cloudmonitor {
 export namespace cloudsso {
     export interface AccessConfigurationPermissionPolicy {
         /**
-         * The Content of Policy.
+         * The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
          */
         permissionPolicyDocument?: pulumi.Input<string>;
         /**
-         * The Policy Name of policy. The name of the resource.
+         * The name of the policy.
          */
         permissionPolicyName: pulumi.Input<string>;
         /**
-         * The Policy Type of policy. Valid values: `System`, `Inline`.
+         * The type of the policy. Valid values: `System`, `Inline`.
          */
         permissionPolicyType: pulumi.Input<string>;
     }
@@ -9412,32 +9412,32 @@ export namespace fc {
 
     export interface V3AsyncInvokeConfigDestinationConfig {
         /**
-         * Failed callback target structure. See `onFailure` below.
+         * Failed callback target structure See `onFailure` below.
          */
         onFailure?: pulumi.Input<inputs.fc.V3AsyncInvokeConfigDestinationConfigOnFailure>;
         /**
-         * Successful callback target structure. See `onSuccess` below.
+         * Successful callback target structure See `onSuccess` below.
          */
         onSuccess?: pulumi.Input<inputs.fc.V3AsyncInvokeConfigDestinationConfigOnSuccess>;
     }
 
     export interface V3AsyncInvokeConfigDestinationConfigOnFailure {
         /**
-         * Asynchronous call target Resource Descriptor.
+         * Asynchronous call target Resource Descriptor
          */
         destination?: pulumi.Input<string>;
     }
 
     export interface V3AsyncInvokeConfigDestinationConfigOnSuccess {
         /**
-         * Asynchronous call target Resource Descriptor.
+         * Asynchronous call target Resource Descriptor
          */
         destination?: pulumi.Input<string>;
     }
 
     export interface V3CustomDomainAuthConfig {
         /**
-         * Authentication Information.
+         * Authentication Information
          */
         authInfo?: pulumi.Input<string>;
         /**
@@ -9448,115 +9448,115 @@ export namespace fc {
 
     export interface V3CustomDomainCertConfig {
         /**
-         * Certificate Name.
+         * Certificate Name
          */
         certName?: pulumi.Input<string>;
         /**
-         * PEM format certificate.
+         * PEM format certificate
          */
         certificate?: pulumi.Input<string>;
         /**
-         * Private Key in PEM format.
+         * Private Key in PEM format
          */
         privateKey?: pulumi.Input<string>;
     }
 
     export interface V3CustomDomainRouteConfig {
         /**
-         * Routing Configuration List. See `routes` below.
+         * Routing Configuration List See `routes` below.
          */
         routes?: pulumi.Input<pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRoute>[]>;
     }
 
     export interface V3CustomDomainRouteConfigRoute {
         /**
-         * Function name.
+         * Function name
          */
         functionName?: pulumi.Input<string>;
         /**
-         * List of supported HTTP methods.
+         * List of supported HTTP methods
          */
         methods?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Route matching rule.
+         * Route matching rule
          */
         path?: pulumi.Input<string>;
         /**
-         * Version or Alias.
+         * Version or Alias
          */
         qualifier?: pulumi.Input<string>;
         /**
-         * Override Configuration. See `rewriteConfig` below.
+         * Override Configuration See `rewriteConfig` below.
          */
         rewriteConfig?: pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRouteRewriteConfig>;
     }
 
     export interface V3CustomDomainRouteConfigRouteRewriteConfig {
         /**
-         * Exact Match Rule List. See `equalRules` below.
+         * Exact Match Rule List See `equalRules` below.
          */
         equalRules?: pulumi.Input<pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigEqualRule>[]>;
         /**
-         * Regular match rule list. See `regexRules` below.
+         * Regular match rule list See `regexRules` below.
          */
         regexRules?: pulumi.Input<pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigRegexRule>[]>;
         /**
-         * List of wildcard matching rules. See `wildcardRules` below.
+         * List of wildcard matching rules See `wildcardRules` below.
          */
         wildcardRules?: pulumi.Input<pulumi.Input<inputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule>[]>;
     }
 
     export interface V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
         /**
-         * Matching Rules.
+         * Matching Rules
          */
         match?: pulumi.Input<string>;
         /**
-         * Replace Rules.
+         * Replace Rules
          */
         replacement?: pulumi.Input<string>;
     }
 
     export interface V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
         /**
-         * Matching Rules.
+         * Matching Rules
          */
         match?: pulumi.Input<string>;
         /**
-         * Replace Rules.
+         * Replace Rules
          */
         replacement?: pulumi.Input<string>;
     }
 
     export interface V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
         /**
-         * Matching Rules.
+         * Matching Rules
          */
         match?: pulumi.Input<string>;
         /**
-         * Replace Rules.
+         * Replace Rules
          */
         replacement?: pulumi.Input<string>;
     }
 
     export interface V3CustomDomainTlsConfig {
         /**
-         * List of TLS cipher suites.
+         * List of TLS cipher suites
          */
         cipherSuites?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         * The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
          */
         maxVersion?: pulumi.Input<string>;
         /**
-         * TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         * TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
          */
         minVersion?: pulumi.Input<string>;
     }
 
     export interface V3CustomDomainWafConfig {
         /**
-         * Enable WAF protection.
+         * Enable WAF protection
          */
         enableWaf?: pulumi.Input<boolean>;
     }
@@ -9608,7 +9608,7 @@ export namespace fc {
          */
         entrypoints?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Function custom health check configuration. See `healthCheckConfig` below.
+         * Function custom health check configuration See `healthCheckConfig` below.
          */
         healthCheckConfig?: pulumi.Input<inputs.fc.V3FunctionCustomContainerConfigHealthCheckConfig>;
         /**
@@ -9713,11 +9713,11 @@ export namespace fc {
 
     export interface V3FunctionInstanceLifecycleConfig {
         /**
-         * Initializer handler method configuration. See `initializer` below.
+         * Initializer handler method configuration See `initializer` below.
          */
         initializer?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfigInitializer>;
         /**
-         * PreStop handler method configuration. See `preStop` below.
+         * PreStop handler method configuration See `preStop` below.
          */
         preStop?: pulumi.Input<inputs.fc.V3FunctionInstanceLifecycleConfigPreStop>;
     }
@@ -9821,6 +9821,17 @@ export namespace fc {
         readOnly?: pulumi.Input<boolean>;
     }
 
+    export interface V3FunctionTracingConfig {
+        /**
+         * Tracing parameters.
+         */
+        params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The tracing protocol type. Currently, only Jaeger is supported.
+         */
+        type?: pulumi.Input<string>;
+    }
+
     export interface V3FunctionVpcConfig {
         /**
          * Security group ID.
@@ -9842,38 +9853,38 @@ export namespace fc {
          */
         checksum?: pulumi.Input<string>;
         /**
-         * Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+         * Name of the OSS Bucket where the user stores the Layer Code ZIP package
          */
         ossBucketName?: pulumi.Input<string>;
         /**
-         * Name of the OSS Object where the user stores the Layer Code ZIP package.
+         * Name of the OSS Object where the user stores the Layer Code ZIP package
          */
         ossObjectName?: pulumi.Input<string>;
         /**
-         * Base 64 encoding of Layer Code ZIP package.
+         * Base 64 encoding of Layer Code ZIP package
          */
         zipFile?: pulumi.Input<string>;
     }
 
     export interface V3ProvisionConfigScheduledAction {
         /**
-         * Policy expiration time.
+         * Policy expiration time
          */
         endTime?: pulumi.Input<string>;
         /**
-         * Policy Name.
+         * Policy Name
          */
         name?: pulumi.Input<string>;
         /**
-         * Timing Configuration.
+         * Timing Configuration
          */
         scheduleExpression?: pulumi.Input<string>;
         /**
-         * Policy effective time.
+         * Policy effective time
          */
         startTime?: pulumi.Input<string>;
         /**
-         * Number of reserved target resources.
+         * Number of reserved target resources
          */
         target?: pulumi.Input<number>;
         /**
@@ -9884,37 +9895,48 @@ export namespace fc {
 
     export interface V3ProvisionConfigTargetTrackingPolicy {
         /**
-         * Policy expiration time.
+         * Policy expiration time
          */
         endTime?: pulumi.Input<string>;
         /**
-         * Maximum value of expansion.
+         * Maximum value of expansion
          */
         maxCapacity?: pulumi.Input<number>;
         /**
-         * Tracking value of the indicator.
+         * Tracking value of the indicator
          */
         metricTarget?: pulumi.Input<number>;
         /**
-         * Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+         * Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
          */
         metricType?: pulumi.Input<string>;
         /**
-         * Minimum Shrinkage.
+         * Minimum Shrinkage
          */
         minCapacity?: pulumi.Input<number>;
         /**
-         * Policy Name.
+         * Policy Name
          */
         name?: pulumi.Input<string>;
         /**
-         * Policy Effective Time.
+         * Policy Effective Time
          */
         startTime?: pulumi.Input<string>;
         /**
          * Time zone.
          */
         timeZone?: pulumi.Input<string>;
+    }
+
+    export interface V3TriggerHttpTrigger {
+        /**
+         * The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+         */
+        urlInternet?: pulumi.Input<string>;
+        /**
+         * The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+         */
+        urlIntranet?: pulumi.Input<string>;
     }
 }
 
@@ -10331,6 +10353,157 @@ export namespace graphdatabase {
         securityIps?: pulumi.Input<string>;
     }
 
+}
+
+export namespace gwlb {
+    export interface LoadBalancerZoneMapping {
+        /**
+         * The addresses of the Gateway Load Balancer instance.
+         */
+        loadBalancerAddresses?: pulumi.Input<pulumi.Input<inputs.gwlb.LoadBalancerZoneMappingLoadBalancerAddress>[]>;
+        /**
+         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         */
+        vswitchId: pulumi.Input<string>;
+        /**
+         * The ID of the zone to which the Gateway Load Balancer instance belongs.
+         */
+        zoneId: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerZoneMappingLoadBalancerAddress {
+        /**
+         * The ID of the ENI.
+         */
+        eniId?: pulumi.Input<string>;
+        /**
+         * IPv4 private network address.
+         */
+        privateIpv4Address?: pulumi.Input<string>;
+    }
+
+    export interface ServerGroupConnectionDrainConfig {
+        /**
+         * Whether to open the connection graceful interrupt. Value:
+         */
+        connectionDrainEnabled?: pulumi.Input<boolean>;
+        /**
+         * Connection Grace interrupt timeout.
+         *
+         * Unit: seconds.
+         *
+         * Value range: 1~3600.
+         */
+        connectionDrainTimeout?: pulumi.Input<number>;
+    }
+
+    export interface ServerGroupHealthCheckConfig {
+        /**
+         * The port of the backend server used for health check.
+         *
+         * Value range: **1 to 65535**.
+         *
+         * Default value: `80`.
+         */
+        healthCheckConnectPort?: pulumi.Input<number>;
+        /**
+         * The maximum timeout period for health check responses.
+         *
+         * Unit: seconds.
+         *
+         * Value range: **1 to 300**.
+         *
+         * Default value: `5`.
+         */
+        healthCheckConnectTimeout?: pulumi.Input<number>;
+        /**
+         * The domain name used for health checks. Value:
+         * - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+         */
+        healthCheckDomain?: pulumi.Input<string>;
+        /**
+         * Whether to enable health check. Value:
+         * - **true (default)**: enabled.
+         */
+        healthCheckEnabled?: pulumi.Input<boolean>;
+        /**
+         * Health status return code list.
+         */
+        healthCheckHttpCodes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The time interval of the health check.
+         *
+         * Unit: seconds.
+         *
+         * Value range: **1~50**.
+         *
+         * Default value: `10`.
+         */
+        healthCheckInterval?: pulumi.Input<number>;
+        /**
+         * Health check path.
+         *
+         * It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+         *
+         * Must start with a forward slash (/).
+         *
+         * > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+         */
+        healthCheckPath?: pulumi.Input<string>;
+        /**
+         * Health check protocol, value:
+         * - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
+         * - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
+         */
+        healthCheckProtocol?: pulumi.Input<string>;
+        /**
+         * After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+         *
+         * Value range: **2 to 10**.
+         *
+         * Default value: `2`.
+         */
+        healthyThreshold?: pulumi.Input<number>;
+        /**
+         * The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+         *
+         * Value range: **2 to 10**.
+         *
+         * Default value: `2`.
+         */
+        unhealthyThreshold?: pulumi.Input<number>;
+    }
+
+    export interface ServerGroupServer {
+        /**
+         * The port used by the backend server.
+         */
+        port?: pulumi.Input<number>;
+        /**
+         * The server group ID.
+         */
+        serverGroupId?: pulumi.Input<string>;
+        /**
+         * The ID of the backend server.
+         */
+        serverId: pulumi.Input<string>;
+        /**
+         * Server ip.
+         */
+        serverIp?: pulumi.Input<string>;
+        /**
+         * Backend server type. Valid values:
+         * - `Ecs`: ECS instance.
+         * - `Eni`: ENI instance.
+         * - `Eci`: ECI elastic container.
+         * - `Ip`: Ip address.
+         */
+        serverType: pulumi.Input<string>;
+        /**
+         * Server group status. Value:
+         */
+        status?: pulumi.Input<string>;
+    }
 }
 
 export namespace hbase {
@@ -11701,6 +11874,45 @@ export namespace oss {
         status?: pulumi.Input<string>;
     }
 
+    export interface BucketCnameCertificate {
+        /**
+         * Certificate Identifier
+         */
+        certId?: pulumi.Input<string>;
+        /**
+         * The certificate public key.
+         */
+        certificate?: pulumi.Input<string>;
+        /**
+         * Certificate creation time
+         */
+        creationDate?: pulumi.Input<string>;
+        /**
+         * Certificate Fingerprint
+         */
+        fingerprint?: pulumi.Input<string>;
+        /**
+         * The certificate private key.
+         */
+        privateKey?: pulumi.Input<string>;
+        /**
+         * Cname status
+         */
+        status?: pulumi.Input<string>;
+        /**
+         * Certificate Type
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Certificate validity period end time
+         */
+        validEndDate?: pulumi.Input<string>;
+        /**
+         * Certificate validity period start time
+         */
+        validStartDate?: pulumi.Input<string>;
+    }
+
     export interface BucketCorsCorsRule {
         /**
          * Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
@@ -12358,11 +12570,11 @@ export namespace quotas {
 
     export interface QuotaApplicationDimension {
         /**
-         * Key.
+         * The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
          */
         key?: pulumi.Input<string>;
         /**
-         * Value.
+         * The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
          */
         value?: pulumi.Input<string>;
     }

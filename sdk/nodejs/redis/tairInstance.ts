@@ -127,20 +127,12 @@ export class TairInstance extends pulumi.CustomResource {
     public /*out*/ readonly networkType!: pulumi.Output<string>;
     /**
      * Node type, value:
-     *
-     * MASTER_SLAVE: high availability (dual copy)
-     *
-     * STAND_ALONE: single copy
-     *
-     * double: double copy
-     *
-     * single: single copy
-     *
-     * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * - `MASTER_SLAVE`: high availability (dual copy)
+     * - `STAND_ALONE`: single copy
      */
     public readonly nodeType!: pulumi.Output<string>;
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
      */
     public readonly paramNoLooseSentinelEnabled!: pulumi.Output<string>;
     /**
@@ -492,20 +484,12 @@ export interface TairInstanceState {
     networkType?: pulumi.Input<string>;
     /**
      * Node type, value:
-     *
-     * MASTER_SLAVE: high availability (dual copy)
-     *
-     * STAND_ALONE: single copy
-     *
-     * double: double copy
-     *
-     * single: single copy
-     *
-     * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * - `MASTER_SLAVE`: high availability (dual copy)
+     * - `STAND_ALONE`: single copy
      */
     nodeType?: pulumi.Input<string>;
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
      */
     paramNoLooseSentinelEnabled?: pulumi.Input<string>;
     /**
@@ -706,20 +690,12 @@ export interface TairInstanceArgs {
     modifyMode?: pulumi.Input<string>;
     /**
      * Node type, value:
-     *
-     * MASTER_SLAVE: high availability (dual copy)
-     *
-     * STAND_ALONE: single copy
-     *
-     * double: double copy
-     *
-     * single: single copy
-     *
-     * Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+     * - `MASTER_SLAVE`: high availability (dual copy)
+     * - `STAND_ALONE`: single copy
      */
     nodeType?: pulumi.Input<string>;
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
      */
     paramNoLooseSentinelEnabled?: pulumi.Input<string>;
     /**

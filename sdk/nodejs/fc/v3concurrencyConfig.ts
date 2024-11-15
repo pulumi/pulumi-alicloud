@@ -80,6 +80,10 @@ export class V3ConcurrencyConfig extends pulumi.CustomResource {
     }
 
     /**
+     * (Available since v1.234.0) Resource identity of the function
+     */
+    public /*out*/ readonly functionArn!: pulumi.Output<string>;
+    /**
      * Function Name
      */
     public readonly functionName!: pulumi.Output<string>;
@@ -101,6 +105,7 @@ export class V3ConcurrencyConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as V3ConcurrencyConfigState | undefined;
+            resourceInputs["functionArn"] = state ? state.functionArn : undefined;
             resourceInputs["functionName"] = state ? state.functionName : undefined;
             resourceInputs["reservedConcurrency"] = state ? state.reservedConcurrency : undefined;
         } else {
@@ -110,6 +115,7 @@ export class V3ConcurrencyConfig extends pulumi.CustomResource {
             }
             resourceInputs["functionName"] = args ? args.functionName : undefined;
             resourceInputs["reservedConcurrency"] = args ? args.reservedConcurrency : undefined;
+            resourceInputs["functionArn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(V3ConcurrencyConfig.__pulumiType, name, resourceInputs, opts);
@@ -120,6 +126,10 @@ export class V3ConcurrencyConfig extends pulumi.CustomResource {
  * Input properties used for looking up and filtering V3ConcurrencyConfig resources.
  */
 export interface V3ConcurrencyConfigState {
+    /**
+     * (Available since v1.234.0) Resource identity of the function
+     */
+    functionArn?: pulumi.Input<string>;
     /**
      * Function Name
      */

@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get("name").orElse("flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net");
+ *         final var name = config.get("name").orElse("flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net");
  *         final var functionName1 = config.get("functionName1").orElse("terraform-custom-domain-t1");
  *         final var authConfig = config.get("authConfig").orElse("""
  * {
@@ -129,7 +129,7 @@ import javax.annotation.Nullable;
  * -----END RSA PRIVATE KEY-----
  *         """);
  *         var default_ = new V3CustomDomain("default", V3CustomDomainArgs.builder()
- *             .customDomainName("flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net")
+ *             .customDomainName(name)
  *             .routeConfig(V3CustomDomainRouteConfigArgs.builder()
  *                 .routes(                
  *                     V3CustomDomainRouteConfigRouteArgs.builder()
@@ -238,6 +238,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:fc/v3CustomDomain:V3CustomDomain")
 public class V3CustomDomain extends com.pulumi.resources.CustomResource {
     /**
+     * (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * 
+     */
+    @Export(name="accountId", refs={String.class}, tree="[0]")
+    private Output<String> accountId;
+
+    /**
+     * @return (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+     * 
+     */
+    public Output<String> accountId() {
+        return this.accountId;
+    }
+    /**
+     * (Available since v1.234.0) API version of Function Compute
+     * 
+     */
+    @Export(name="apiVersion", refs={String.class}, tree="[0]")
+    private Output<String> apiVersion;
+
+    /**
+     * @return (Available since v1.234.0) API version of Function Compute
+     * 
+     */
+    public Output<String> apiVersion() {
+        return this.apiVersion;
+    }
+    /**
      * Permission authentication configuration See `auth_config` below.
      * 
      */
@@ -256,14 +284,14 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="certConfig", refs={V3CustomDomainCertConfig.class}, tree="[0]")
-    private Output</* @Nullable */ V3CustomDomainCertConfig> certConfig;
+    private Output<V3CustomDomainCertConfig> certConfig;
 
     /**
      * @return HTTPS certificate information See `cert_config` below.
      * 
      */
-    public Output<Optional<V3CustomDomainCertConfig>> certConfig() {
-        return Codegen.optional(this.certConfig);
+    public Output<V3CustomDomainCertConfig> certConfig() {
+        return this.certConfig;
     }
     /**
      * The creation time of the resource
@@ -294,6 +322,20 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
         return this.customDomainName;
     }
     /**
+     * (Available since v1.234.0) The last time the custom domain name was Updated
+     * 
+     */
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
+    private Output<String> lastModifiedTime;
+
+    /**
+     * @return (Available since v1.234.0) The last time the custom domain name was Updated
+     * 
+     */
+    public Output<String> lastModifiedTime() {
+        return this.lastModifiedTime;
+    }
+    /**
      * The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
      * 
      */
@@ -322,18 +364,32 @@ public class V3CustomDomain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.routeConfig);
     }
     /**
+     * (Available since v1.234.0) Number of subdomains
+     * 
+     */
+    @Export(name="subdomainCount", refs={String.class}, tree="[0]")
+    private Output<String> subdomainCount;
+
+    /**
+     * @return (Available since v1.234.0) Number of subdomains
+     * 
+     */
+    public Output<String> subdomainCount() {
+        return this.subdomainCount;
+    }
+    /**
      * TLS configuration information See `tls_config` below.
      * 
      */
     @Export(name="tlsConfig", refs={V3CustomDomainTlsConfig.class}, tree="[0]")
-    private Output</* @Nullable */ V3CustomDomainTlsConfig> tlsConfig;
+    private Output<V3CustomDomainTlsConfig> tlsConfig;
 
     /**
      * @return TLS configuration information See `tls_config` below.
      * 
      */
-    public Output<Optional<V3CustomDomainTlsConfig>> tlsConfig() {
-        return Codegen.optional(this.tlsConfig);
+    public Output<V3CustomDomainTlsConfig> tlsConfig() {
+        return this.tlsConfig;
     }
     /**
      * Web application firewall configuration information See `waf_config` below.

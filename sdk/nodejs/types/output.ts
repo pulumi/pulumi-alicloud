@@ -9376,15 +9376,15 @@ export namespace cloudmonitor {
 export namespace cloudsso {
     export interface AccessConfigurationPermissionPolicy {
         /**
-         * The Content of Policy.
+         * The configurations of the inline policy. **NOTE:** If `permissionPolicyType` is set to `Inline`, `permissionPolicyDocument` is required.
          */
         permissionPolicyDocument?: string;
         /**
-         * The Policy Name of policy. The name of the resource.
+         * The name of the policy.
          */
         permissionPolicyName: string;
         /**
-         * The Policy Type of policy. Valid values: `System`, `Inline`.
+         * The type of the policy. Valid values: `System`, `Inline`.
          */
         permissionPolicyType: string;
     }
@@ -30173,32 +30173,32 @@ export namespace fc {
 
     export interface V3AsyncInvokeConfigDestinationConfig {
         /**
-         * Failed callback target structure. See `onFailure` below.
+         * Failed callback target structure See `onFailure` below.
          */
         onFailure?: outputs.fc.V3AsyncInvokeConfigDestinationConfigOnFailure;
         /**
-         * Successful callback target structure. See `onSuccess` below.
+         * Successful callback target structure See `onSuccess` below.
          */
         onSuccess?: outputs.fc.V3AsyncInvokeConfigDestinationConfigOnSuccess;
     }
 
     export interface V3AsyncInvokeConfigDestinationConfigOnFailure {
         /**
-         * Asynchronous call target Resource Descriptor.
+         * Asynchronous call target Resource Descriptor
          */
         destination?: string;
     }
 
     export interface V3AsyncInvokeConfigDestinationConfigOnSuccess {
         /**
-         * Asynchronous call target Resource Descriptor.
+         * Asynchronous call target Resource Descriptor
          */
         destination?: string;
     }
 
     export interface V3CustomDomainAuthConfig {
         /**
-         * Authentication Information.
+         * Authentication Information
          */
         authInfo?: string;
         /**
@@ -30209,115 +30209,115 @@ export namespace fc {
 
     export interface V3CustomDomainCertConfig {
         /**
-         * Certificate Name.
+         * Certificate Name
          */
         certName?: string;
         /**
-         * PEM format certificate.
+         * PEM format certificate
          */
         certificate?: string;
         /**
-         * Private Key in PEM format.
+         * Private Key in PEM format
          */
         privateKey?: string;
     }
 
     export interface V3CustomDomainRouteConfig {
         /**
-         * Routing Configuration List. See `routes` below.
+         * Routing Configuration List See `routes` below.
          */
         routes?: outputs.fc.V3CustomDomainRouteConfigRoute[];
     }
 
     export interface V3CustomDomainRouteConfigRoute {
         /**
-         * Function name.
+         * Function name
          */
         functionName?: string;
         /**
-         * List of supported HTTP methods.
+         * List of supported HTTP methods
          */
         methods?: string[];
         /**
-         * Route matching rule.
+         * Route matching rule
          */
         path?: string;
         /**
-         * Version or Alias.
+         * Version or Alias
          */
         qualifier?: string;
         /**
-         * Override Configuration. See `rewriteConfig` below.
+         * Override Configuration See `rewriteConfig` below.
          */
         rewriteConfig: outputs.fc.V3CustomDomainRouteConfigRouteRewriteConfig;
     }
 
     export interface V3CustomDomainRouteConfigRouteRewriteConfig {
         /**
-         * Exact Match Rule List. See `equalRules` below.
+         * Exact Match Rule List See `equalRules` below.
          */
         equalRules?: outputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigEqualRule[];
         /**
-         * Regular match rule list. See `regexRules` below.
+         * Regular match rule list See `regexRules` below.
          */
         regexRules?: outputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigRegexRule[];
         /**
-         * List of wildcard matching rules. See `wildcardRules` below.
+         * List of wildcard matching rules See `wildcardRules` below.
          */
         wildcardRules?: outputs.fc.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule[];
     }
 
     export interface V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
         /**
-         * Matching Rules.
+         * Matching Rules
          */
         match?: string;
         /**
-         * Replace Rules.
+         * Replace Rules
          */
         replacement?: string;
     }
 
     export interface V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
         /**
-         * Matching Rules.
+         * Matching Rules
          */
         match?: string;
         /**
-         * Replace Rules.
+         * Replace Rules
          */
         replacement?: string;
     }
 
     export interface V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
         /**
-         * Matching Rules.
+         * Matching Rules
          */
         match?: string;
         /**
-         * Replace Rules.
+         * Replace Rules
          */
         replacement?: string;
     }
 
     export interface V3CustomDomainTlsConfig {
         /**
-         * List of TLS cipher suites.
+         * List of TLS cipher suites
          */
         cipherSuites?: string[];
         /**
-         * The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         * The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
          */
         maxVersion?: string;
         /**
-         * TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         * TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
          */
         minVersion?: string;
     }
 
     export interface V3CustomDomainWafConfig {
         /**
-         * Enable WAF protection.
+         * Enable WAF protection
          */
         enableWaf?: boolean;
     }
@@ -30369,7 +30369,7 @@ export namespace fc {
          */
         entrypoints?: string[];
         /**
-         * Function custom health check configuration. See `healthCheckConfig` below.
+         * Function custom health check configuration See `healthCheckConfig` below.
          */
         healthCheckConfig?: outputs.fc.V3FunctionCustomContainerConfigHealthCheckConfig;
         /**
@@ -30474,11 +30474,11 @@ export namespace fc {
 
     export interface V3FunctionInstanceLifecycleConfig {
         /**
-         * Initializer handler method configuration. See `initializer` below.
+         * Initializer handler method configuration See `initializer` below.
          */
         initializer?: outputs.fc.V3FunctionInstanceLifecycleConfigInitializer;
         /**
-         * PreStop handler method configuration. See `preStop` below.
+         * PreStop handler method configuration See `preStop` below.
          */
         preStop?: outputs.fc.V3FunctionInstanceLifecycleConfigPreStop;
     }
@@ -30582,6 +30582,17 @@ export namespace fc {
         readOnly?: boolean;
     }
 
+    export interface V3FunctionTracingConfig {
+        /**
+         * Tracing parameters.
+         */
+        params: {[key: string]: string};
+        /**
+         * The tracing protocol type. Currently, only Jaeger is supported.
+         */
+        type: string;
+    }
+
     export interface V3FunctionVpcConfig {
         /**
          * Security group ID.
@@ -30603,38 +30614,38 @@ export namespace fc {
          */
         checksum?: string;
         /**
-         * Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+         * Name of the OSS Bucket where the user stores the Layer Code ZIP package
          */
         ossBucketName?: string;
         /**
-         * Name of the OSS Object where the user stores the Layer Code ZIP package.
+         * Name of the OSS Object where the user stores the Layer Code ZIP package
          */
         ossObjectName?: string;
         /**
-         * Base 64 encoding of Layer Code ZIP package.
+         * Base 64 encoding of Layer Code ZIP package
          */
         zipFile?: string;
     }
 
     export interface V3ProvisionConfigScheduledAction {
         /**
-         * Policy expiration time.
+         * Policy expiration time
          */
         endTime?: string;
         /**
-         * Policy Name.
+         * Policy Name
          */
         name?: string;
         /**
-         * Timing Configuration.
+         * Timing Configuration
          */
         scheduleExpression?: string;
         /**
-         * Policy effective time.
+         * Policy effective time
          */
         startTime?: string;
         /**
-         * Number of reserved target resources.
+         * Number of reserved target resources
          */
         target?: number;
         /**
@@ -30645,37 +30656,48 @@ export namespace fc {
 
     export interface V3ProvisionConfigTargetTrackingPolicy {
         /**
-         * Policy expiration time.
+         * Policy expiration time
          */
         endTime?: string;
         /**
-         * Maximum value of expansion.
+         * Maximum value of expansion
          */
         maxCapacity?: number;
         /**
-         * Tracking value of the indicator.
+         * Tracking value of the indicator
          */
         metricTarget?: number;
         /**
-         * Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+         * Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
          */
         metricType?: string;
         /**
-         * Minimum Shrinkage.
+         * Minimum Shrinkage
          */
         minCapacity?: number;
         /**
-         * Policy Name.
+         * Policy Name
          */
         name?: string;
         /**
-         * Policy Effective Time.
+         * Policy Effective Time
          */
         startTime?: string;
         /**
          * Time zone.
          */
         timeZone?: string;
+    }
+
+    export interface V3TriggerHttpTrigger {
+        /**
+         * The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+         */
+        urlInternet: string;
+        /**
+         * The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+         */
+        urlIntranet: string;
     }
 
 }
@@ -32682,6 +32704,158 @@ export namespace graphdatabase {
          * IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
          */
         securityIps?: string;
+    }
+
+}
+
+export namespace gwlb {
+    export interface LoadBalancerZoneMapping {
+        /**
+         * The addresses of the Gateway Load Balancer instance.
+         */
+        loadBalancerAddresses: outputs.gwlb.LoadBalancerZoneMappingLoadBalancerAddress[];
+        /**
+         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         */
+        vswitchId: string;
+        /**
+         * The ID of the zone to which the Gateway Load Balancer instance belongs.
+         */
+        zoneId: string;
+    }
+
+    export interface LoadBalancerZoneMappingLoadBalancerAddress {
+        /**
+         * The ID of the ENI.
+         */
+        eniId: string;
+        /**
+         * IPv4 private network address.
+         */
+        privateIpv4Address: string;
+    }
+
+    export interface ServerGroupConnectionDrainConfig {
+        /**
+         * Whether to open the connection graceful interrupt. Value:
+         */
+        connectionDrainEnabled: boolean;
+        /**
+         * Connection Grace interrupt timeout.
+         *
+         * Unit: seconds.
+         *
+         * Value range: 1~3600.
+         */
+        connectionDrainTimeout: number;
+    }
+
+    export interface ServerGroupHealthCheckConfig {
+        /**
+         * The port of the backend server used for health check.
+         *
+         * Value range: **1 to 65535**.
+         *
+         * Default value: `80`.
+         */
+        healthCheckConnectPort: number;
+        /**
+         * The maximum timeout period for health check responses.
+         *
+         * Unit: seconds.
+         *
+         * Value range: **1 to 300**.
+         *
+         * Default value: `5`.
+         */
+        healthCheckConnectTimeout: number;
+        /**
+         * The domain name used for health checks. Value:
+         * - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+         */
+        healthCheckDomain: string;
+        /**
+         * Whether to enable health check. Value:
+         * - **true (default)**: enabled.
+         */
+        healthCheckEnabled: boolean;
+        /**
+         * Health status return code list.
+         */
+        healthCheckHttpCodes?: string[];
+        /**
+         * The time interval of the health check.
+         *
+         * Unit: seconds.
+         *
+         * Value range: **1~50**.
+         *
+         * Default value: `10`.
+         */
+        healthCheckInterval: number;
+        /**
+         * Health check path.
+         *
+         * It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+         *
+         * Must start with a forward slash (/).
+         *
+         * > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+         */
+        healthCheckPath: string;
+        /**
+         * Health check protocol, value:
+         * - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
+         * - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
+         */
+        healthCheckProtocol: string;
+        /**
+         * After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+         *
+         * Value range: **2 to 10**.
+         *
+         * Default value: `2`.
+         */
+        healthyThreshold: number;
+        /**
+         * The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+         *
+         * Value range: **2 to 10**.
+         *
+         * Default value: `2`.
+         */
+        unhealthyThreshold: number;
+    }
+
+    export interface ServerGroupServer {
+        /**
+         * The port used by the backend server.
+         */
+        port: number;
+        /**
+         * The server group ID.
+         */
+        serverGroupId: string;
+        /**
+         * The ID of the backend server.
+         */
+        serverId: string;
+        /**
+         * Server ip.
+         */
+        serverIp: string;
+        /**
+         * Backend server type. Valid values:
+         * - `Ecs`: ECS instance.
+         * - `Eni`: ENI instance.
+         * - `Eci`: ECI elastic container.
+         * - `Ip`: Ip address.
+         */
+        serverType: string;
+        /**
+         * Server group status. Value:
+         */
+        status: string;
     }
 
 }
@@ -38903,6 +39077,45 @@ export namespace oss {
         status: string;
     }
 
+    export interface BucketCnameCertificate {
+        /**
+         * Certificate Identifier
+         */
+        certId: string;
+        /**
+         * The certificate public key.
+         */
+        certificate?: string;
+        /**
+         * Certificate creation time
+         */
+        creationDate: string;
+        /**
+         * Certificate Fingerprint
+         */
+        fingerprint: string;
+        /**
+         * The certificate private key.
+         */
+        privateKey?: string;
+        /**
+         * Cname status
+         */
+        status: string;
+        /**
+         * Certificate Type
+         */
+        type: string;
+        /**
+         * Certificate validity period end time
+         */
+        validEndDate: string;
+        /**
+         * Certificate validity period start time
+         */
+        validStartDate: string;
+    }
+
     export interface BucketCorsCorsRule {
         /**
          * Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
@@ -41372,11 +41585,11 @@ export namespace quotas {
 
     export interface QuotaApplicationDimension {
         /**
-         * Key.
+         * The key of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
          */
         key?: string;
         /**
-         * Value.
+         * The value of the dimension. You must configure `dimensions.N.key` and `dimensions.N.value` at the same time. The value range of N varies based on the number of dimensions that are supported by the related Alibaba Cloud service. You can call the [ListProductQuotaDimensions](https://next.api.aliyun.com/document/quotas/2020-05-10/ListProductQuotaDimensions) operation to query the dimensions that are supported by an Alibaba Cloud service. The number of elements in the returned array is N.
          */
         value?: string;
     }

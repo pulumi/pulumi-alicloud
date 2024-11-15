@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3CustomDomainWafConfig {
     /**
-     * @return Enable WAF protection.
+     * @return Enable WAF protection
      * 
      */
     private @Nullable Boolean enableWaf;
 
     private V3CustomDomainWafConfig() {}
     /**
-     * @return Enable WAF protection.
+     * @return Enable WAF protection
      * 
      */
     public Optional<Boolean> enableWaf() {

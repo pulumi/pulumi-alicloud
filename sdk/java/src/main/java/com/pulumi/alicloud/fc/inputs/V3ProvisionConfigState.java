@@ -51,6 +51,51 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * (Available since v1.234.0) Number of actual resources
+     * 
+     */
+    @Import(name="current")
+    private @Nullable Output<Integer> current;
+
+    /**
+     * @return (Available since v1.234.0) Number of actual resources
+     * 
+     */
+    public Optional<Output<Integer>> current() {
+        return Optional.ofNullable(this.current);
+    }
+
+    /**
+     * (Available since v1.234.0) Error message when a Reserved Instance creation fails
+     * 
+     */
+    @Import(name="currentError")
+    private @Nullable Output<String> currentError;
+
+    /**
+     * @return (Available since v1.234.0) Error message when a Reserved Instance creation fails
+     * 
+     */
+    public Optional<Output<String>> currentError() {
+        return Optional.ofNullable(this.currentError);
+    }
+
+    /**
+     * (Available since v1.234.0) Resource Description of the function
+     * 
+     */
+    @Import(name="functionArn")
+    private @Nullable Output<String> functionArn;
+
+    /**
+     * @return (Available since v1.234.0) Resource Description of the function
+     * 
+     */
+    public Optional<Output<String>> functionArn() {
+        return Optional.ofNullable(this.functionArn);
+    }
+
+    /**
      * The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
      * 
      */
@@ -130,6 +175,9 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
     private V3ProvisionConfigState(V3ProvisionConfigState $) {
         this.alwaysAllocateCpu = $.alwaysAllocateCpu;
         this.alwaysAllocateGpu = $.alwaysAllocateGpu;
+        this.current = $.current;
+        this.currentError = $.currentError;
+        this.functionArn = $.functionArn;
         this.functionName = $.functionName;
         this.qualifier = $.qualifier;
         this.scheduledActions = $.scheduledActions;
@@ -195,6 +243,69 @@ public final class V3ProvisionConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder alwaysAllocateGpu(Boolean alwaysAllocateGpu) {
             return alwaysAllocateGpu(Output.of(alwaysAllocateGpu));
+        }
+
+        /**
+         * @param current (Available since v1.234.0) Number of actual resources
+         * 
+         * @return builder
+         * 
+         */
+        public Builder current(@Nullable Output<Integer> current) {
+            $.current = current;
+            return this;
+        }
+
+        /**
+         * @param current (Available since v1.234.0) Number of actual resources
+         * 
+         * @return builder
+         * 
+         */
+        public Builder current(Integer current) {
+            return current(Output.of(current));
+        }
+
+        /**
+         * @param currentError (Available since v1.234.0) Error message when a Reserved Instance creation fails
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentError(@Nullable Output<String> currentError) {
+            $.currentError = currentError;
+            return this;
+        }
+
+        /**
+         * @param currentError (Available since v1.234.0) Error message when a Reserved Instance creation fails
+         * 
+         * @return builder
+         * 
+         */
+        public Builder currentError(String currentError) {
+            return currentError(Output.of(currentError));
+        }
+
+        /**
+         * @param functionArn (Available since v1.234.0) Resource Description of the function
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(@Nullable Output<String> functionArn) {
+            $.functionArn = functionArn;
+            return this;
+        }
+
+        /**
+         * @param functionArn (Available since v1.234.0) Resource Description of the function
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(String functionArn) {
+            return functionArn(Output.of(functionArn));
         }
 
         /**

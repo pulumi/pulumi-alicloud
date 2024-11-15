@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3CustomDomainTlsConfig {
     /**
-     * @return List of TLS cipher suites.
+     * @return List of TLS cipher suites
      * 
      */
     private @Nullable List<String> cipherSuites;
     /**
-     * @return The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+     * @return The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
      * 
      */
     private @Nullable String maxVersion;
     /**
-     * @return TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+     * @return TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
      * 
      */
     private @Nullable String minVersion;
 
     private V3CustomDomainTlsConfig() {}
     /**
-     * @return List of TLS cipher suites.
+     * @return List of TLS cipher suites
      * 
      */
     public List<String> cipherSuites() {
         return this.cipherSuites == null ? List.of() : this.cipherSuites;
     }
     /**
-     * @return The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+     * @return The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
      * 
      */
     public Optional<String> maxVersion() {
         return Optional.ofNullable(this.maxVersion);
     }
     /**
-     * @return TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+     * @return TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
      * 
      */
     public Optional<String> minVersion() {

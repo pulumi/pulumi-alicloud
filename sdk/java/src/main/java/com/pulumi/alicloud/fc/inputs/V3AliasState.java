@@ -93,6 +93,21 @@ public final class V3AliasState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.234.0) Last modification time
+     * 
+     */
+    @Import(name="lastModifiedTime")
+    private @Nullable Output<String> lastModifiedTime;
+
+    /**
+     * @return (Available since v1.234.0) Last modification time
+     * 
+     */
+    public Optional<Output<String>> lastModifiedTime() {
+        return Optional.ofNullable(this.lastModifiedTime);
+    }
+
+    /**
      * The version that the alias points
      * 
      */
@@ -115,6 +130,7 @@ public final class V3AliasState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.description = $.description;
         this.functionName = $.functionName;
+        this.lastModifiedTime = $.lastModifiedTime;
         this.versionId = $.versionId;
     }
 
@@ -239,6 +255,27 @@ public final class V3AliasState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder functionName(String functionName) {
             return functionName(Output.of(functionName));
+        }
+
+        /**
+         * @param lastModifiedTime (Available since v1.234.0) Last modification time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(@Nullable Output<String> lastModifiedTime) {
+            $.lastModifiedTime = lastModifiedTime;
+            return this;
+        }
+
+        /**
+         * @param lastModifiedTime (Available since v1.234.0) Last modification time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(String lastModifiedTime) {
+            return lastModifiedTime(Output.of(lastModifiedTime));
         }
 
         /**

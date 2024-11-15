@@ -48,6 +48,21 @@ public final class V3LayerVersionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * (Available since v1.234.0) The code package size of the layer, in bytes.
+     * 
+     */
+    @Import(name="codeSize")
+    private @Nullable Output<String> codeSize;
+
+    /**
+     * @return (Available since v1.234.0) The code package size of the layer, in bytes.
+     * 
+     */
+    public Optional<Output<String>> codeSize() {
+        return Optional.ofNullable(this.codeSize);
+    }
+
+    /**
      * List of runtime environments supported by the layer
      * 
      */
@@ -108,6 +123,21 @@ public final class V3LayerVersionState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+     * 
+     */
+    @Import(name="layerVersionArn")
+    private @Nullable Output<String> layerVersionArn;
+
+    /**
+     * @return (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+     * 
+     */
+    public Optional<Output<String>> layerVersionArn() {
+        return Optional.ofNullable(this.layerVersionArn);
+    }
+
+    /**
      * Layer License Agreement
      * 
      */
@@ -120,6 +150,21 @@ public final class V3LayerVersionState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> license() {
         return Optional.ofNullable(this.license);
+    }
+
+    /**
+     * Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+     * 
+     */
+    @Import(name="public")
+    private @Nullable Output<String> public_;
+
+    /**
+     * @return Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+     * 
+     */
+    public Optional<Output<String>> public_() {
+        return Optional.ofNullable(this.public_);
     }
 
     /**
@@ -142,11 +187,14 @@ public final class V3LayerVersionState extends com.pulumi.resources.ResourceArgs
     private V3LayerVersionState(V3LayerVersionState $) {
         this.acl = $.acl;
         this.code = $.code;
+        this.codeSize = $.codeSize;
         this.compatibleRuntimes = $.compatibleRuntimes;
         this.createTime = $.createTime;
         this.description = $.description;
         this.layerName = $.layerName;
+        this.layerVersionArn = $.layerVersionArn;
         this.license = $.license;
+        this.public_ = $.public_;
         this.version = $.version;
     }
 
@@ -208,6 +256,27 @@ public final class V3LayerVersionState extends com.pulumi.resources.ResourceArgs
          */
         public Builder code(V3LayerVersionCodeArgs code) {
             return code(Output.of(code));
+        }
+
+        /**
+         * @param codeSize (Available since v1.234.0) The code package size of the layer, in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeSize(@Nullable Output<String> codeSize) {
+            $.codeSize = codeSize;
+            return this;
+        }
+
+        /**
+         * @param codeSize (Available since v1.234.0) The code package size of the layer, in bytes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder codeSize(String codeSize) {
+            return codeSize(Output.of(codeSize));
         }
 
         /**
@@ -305,6 +374,27 @@ public final class V3LayerVersionState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
+         * @param layerVersionArn (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layerVersionArn(@Nullable Output<String> layerVersionArn) {
+            $.layerVersionArn = layerVersionArn;
+            return this;
+        }
+
+        /**
+         * @param layerVersionArn (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder layerVersionArn(String layerVersionArn) {
+            return layerVersionArn(Output.of(layerVersionArn));
+        }
+
+        /**
          * @param license Layer License Agreement
          * 
          * @return builder
@@ -323,6 +413,27 @@ public final class V3LayerVersionState extends com.pulumi.resources.ResourceArgs
          */
         public Builder license(String license) {
             return license(Output.of(license));
+        }
+
+        /**
+         * @param public_ Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder public_(@Nullable Output<String> public_) {
+            $.public_ = public_;
+            return this;
+        }
+
+        /**
+         * @param public_ Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder public_(String public_) {
+            return public_(Output.of(public_));
         }
 
         /**

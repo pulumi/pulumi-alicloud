@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3CustomDomainAuthConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Authentication Information.
+        /// Authentication Information
         /// </summary>
         [Input("authInfo")]
         public Input<string>? AuthInfo { get; set; }

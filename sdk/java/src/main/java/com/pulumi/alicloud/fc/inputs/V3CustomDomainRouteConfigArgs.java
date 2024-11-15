@@ -17,14 +17,14 @@ public final class V3CustomDomainRouteConfigArgs extends com.pulumi.resources.Re
     public static final V3CustomDomainRouteConfigArgs Empty = new V3CustomDomainRouteConfigArgs();
 
     /**
-     * Routing Configuration List. See `routes` below.
+     * Routing Configuration List See `routes` below.
      * 
      */
     @Import(name="routes")
     private @Nullable Output<List<V3CustomDomainRouteConfigRouteArgs>> routes;
 
     /**
-     * @return Routing Configuration List. See `routes` below.
+     * @return Routing Configuration List See `routes` below.
      * 
      */
     public Optional<Output<List<V3CustomDomainRouteConfigRouteArgs>>> routes() {
@@ -56,7 +56,7 @@ public final class V3CustomDomainRouteConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param routes Routing Configuration List. See `routes` below.
+         * @param routes Routing Configuration List See `routes` below.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class V3CustomDomainRouteConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param routes Routing Configuration List. See `routes` below.
+         * @param routes Routing Configuration List See `routes` below.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class V3CustomDomainRouteConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param routes Routing Configuration List. See `routes` below.
+         * @param routes Routing Configuration List See `routes` below.
          * 
          * @return builder
          * 

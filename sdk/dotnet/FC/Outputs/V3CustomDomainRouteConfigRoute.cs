@@ -14,23 +14,23 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3CustomDomainRouteConfigRoute
     {
         /// <summary>
-        /// Function name.
+        /// Function name
         /// </summary>
         public readonly string? FunctionName;
         /// <summary>
-        /// List of supported HTTP methods.
+        /// List of supported HTTP methods
         /// </summary>
         public readonly ImmutableArray<string> Methods;
         /// <summary>
-        /// Route matching rule.
+        /// Route matching rule
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// Version or Alias.
+        /// Version or Alias
         /// </summary>
         public readonly string? Qualifier;
         /// <summary>
-        /// Override Configuration. See `rewrite_config` below.
+        /// Override Configuration See `rewrite_config` below.
         /// </summary>
         public readonly Outputs.V3CustomDomainRouteConfigRouteRewriteConfig? RewriteConfig;
 

@@ -13,43 +13,43 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3ProvisionConfigTargetTrackingPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy expiration time.
+        /// Policy expiration time
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// Maximum value of expansion.
+        /// Maximum value of expansion
         /// </summary>
         [Input("maxCapacity")]
         public Input<int>? MaxCapacity { get; set; }
 
         /// <summary>
-        /// Tracking value of the indicator.
+        /// Tracking value of the indicator
         /// </summary>
         [Input("metricTarget")]
         public Input<double>? MetricTarget { get; set; }
 
         /// <summary>
-        /// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+        /// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
         /// </summary>
         [Input("metricType")]
         public Input<string>? MetricType { get; set; }
 
         /// <summary>
-        /// Minimum Shrinkage.
+        /// Minimum Shrinkage
         /// </summary>
         [Input("minCapacity")]
         public Input<int>? MinCapacity { get; set; }
 
         /// <summary>
-        /// Policy Name.
+        /// Policy Name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Policy Effective Time.
+        /// Policy Effective Time
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }

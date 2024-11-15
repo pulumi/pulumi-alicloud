@@ -58,17 +58,33 @@ class V3ConcurrencyConfigArgs:
 @pulumi.input_type
 class _V3ConcurrencyConfigState:
     def __init__(__self__, *,
+                 function_arn: Optional[pulumi.Input[str]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  reserved_concurrency: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering V3ConcurrencyConfig resources.
+        :param pulumi.Input[str] function_arn: (Available since v1.234.0) Resource identity of the function
         :param pulumi.Input[str] function_name: Function Name
         :param pulumi.Input[int] reserved_concurrency: Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
         """
+        if function_arn is not None:
+            pulumi.set(__self__, "function_arn", function_arn)
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
         if reserved_concurrency is not None:
             pulumi.set(__self__, "reserved_concurrency", reserved_concurrency)
+
+    @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) Resource identity of the function
+        """
+        return pulumi.get(self, "function_arn")
+
+    @function_arn.setter
+    def function_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_arn", value)
 
     @property
     @pulumi.getter(name="functionName")
@@ -238,6 +254,7 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'function_name'")
             __props__.__dict__["function_name"] = function_name
             __props__.__dict__["reserved_concurrency"] = reserved_concurrency
+            __props__.__dict__["function_arn"] = None
         super(V3ConcurrencyConfig, __self__).__init__(
             'alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig',
             resource_name,
@@ -248,6 +265,7 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            function_arn: Optional[pulumi.Input[str]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
             reserved_concurrency: Optional[pulumi.Input[int]] = None) -> 'V3ConcurrencyConfig':
         """
@@ -257,6 +275,7 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] function_arn: (Available since v1.234.0) Resource identity of the function
         :param pulumi.Input[str] function_name: Function Name
         :param pulumi.Input[int] reserved_concurrency: Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
         """
@@ -264,9 +283,18 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
 
         __props__ = _V3ConcurrencyConfigState.__new__(_V3ConcurrencyConfigState)
 
+        __props__.__dict__["function_arn"] = function_arn
         __props__.__dict__["function_name"] = function_name
         __props__.__dict__["reserved_concurrency"] = reserved_concurrency
         return V3ConcurrencyConfig(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) Resource identity of the function
+        """
+        return pulumi.get(self, "function_arn")
 
     @property
     @pulumi.getter(name="functionName")

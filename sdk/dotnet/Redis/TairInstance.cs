@@ -141,22 +141,14 @@ namespace Pulumi.AliCloud.Redis
 
         /// <summary>
         /// Node type, value:
-        /// 
-        /// MASTER_SLAVE: high availability (dual copy)
-        /// 
-        /// STAND_ALONE: single copy
-        /// 
-        /// double: double copy
-        /// 
-        /// single: single copy
-        /// 
-        /// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// - `MASTER_SLAVE`: high availability (dual copy)
+        /// - `STAND_ALONE`: single copy
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
 
         /// <summary>
-        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         /// </summary>
         [Output("paramNoLooseSentinelEnabled")]
         public Output<string> ParamNoLooseSentinelEnabled { get; private set; } = null!;
@@ -483,22 +475,14 @@ namespace Pulumi.AliCloud.Redis
 
         /// <summary>
         /// Node type, value:
-        /// 
-        /// MASTER_SLAVE: high availability (dual copy)
-        /// 
-        /// STAND_ALONE: single copy
-        /// 
-        /// double: double copy
-        /// 
-        /// single: single copy
-        /// 
-        /// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// - `MASTER_SLAVE`: high availability (dual copy)
+        /// - `STAND_ALONE`: single copy
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         /// </summary>
         [Input("paramNoLooseSentinelEnabled")]
         public Input<string>? ParamNoLooseSentinelEnabled { get; set; }
@@ -817,22 +801,14 @@ namespace Pulumi.AliCloud.Redis
 
         /// <summary>
         /// Node type, value:
-        /// 
-        /// MASTER_SLAVE: high availability (dual copy)
-        /// 
-        /// STAND_ALONE: single copy
-        /// 
-        /// double: double copy
-        /// 
-        /// single: single copy
-        /// 
-        /// Note For Cloud Native instances, select MASTER_SLAVE or STAND_ALONE. For Classic instances, select double or single.
+        /// - `MASTER_SLAVE`: high availability (dual copy)
+        /// - `STAND_ALONE`: single copy
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
         /// <summary>
-        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, 取值为. The default value is no.
+        /// sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
         /// </summary>
         [Input("paramNoLooseSentinelEnabled")]
         public Input<string>? ParamNoLooseSentinelEnabled { get; set; }

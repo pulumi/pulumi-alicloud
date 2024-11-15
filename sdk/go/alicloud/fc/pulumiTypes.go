@@ -3401,9 +3401,9 @@ func (o V2FunctionInstanceLifecycleConfigPreStopPtrOutput) Timeout() pulumi.IntP
 }
 
 type V3AsyncInvokeConfigDestinationConfig struct {
-	// Failed callback target structure. See `onFailure` below.
+	// Failed callback target structure See `onFailure` below.
 	OnFailure *V3AsyncInvokeConfigDestinationConfigOnFailure `pulumi:"onFailure"`
-	// Successful callback target structure. See `onSuccess` below.
+	// Successful callback target structure See `onSuccess` below.
 	OnSuccess *V3AsyncInvokeConfigDestinationConfigOnSuccess `pulumi:"onSuccess"`
 }
 
@@ -3419,9 +3419,9 @@ type V3AsyncInvokeConfigDestinationConfigInput interface {
 }
 
 type V3AsyncInvokeConfigDestinationConfigArgs struct {
-	// Failed callback target structure. See `onFailure` below.
+	// Failed callback target structure See `onFailure` below.
 	OnFailure V3AsyncInvokeConfigDestinationConfigOnFailurePtrInput `pulumi:"onFailure"`
-	// Successful callback target structure. See `onSuccess` below.
+	// Successful callback target structure See `onSuccess` below.
 	OnSuccess V3AsyncInvokeConfigDestinationConfigOnSuccessPtrInput `pulumi:"onSuccess"`
 }
 
@@ -3502,14 +3502,14 @@ func (o V3AsyncInvokeConfigDestinationConfigOutput) ToV3AsyncInvokeConfigDestina
 	}).(V3AsyncInvokeConfigDestinationConfigPtrOutput)
 }
 
-// Failed callback target structure. See `onFailure` below.
+// Failed callback target structure See `onFailure` below.
 func (o V3AsyncInvokeConfigDestinationConfigOutput) OnFailure() V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
 	return o.ApplyT(func(v V3AsyncInvokeConfigDestinationConfig) *V3AsyncInvokeConfigDestinationConfigOnFailure {
 		return v.OnFailure
 	}).(V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
 }
 
-// Successful callback target structure. See `onSuccess` below.
+// Successful callback target structure See `onSuccess` below.
 func (o V3AsyncInvokeConfigDestinationConfigOutput) OnSuccess() V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
 	return o.ApplyT(func(v V3AsyncInvokeConfigDestinationConfig) *V3AsyncInvokeConfigDestinationConfigOnSuccess {
 		return v.OnSuccess
@@ -3540,7 +3540,7 @@ func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) Elem() V3AsyncInvokeConfi
 	}).(V3AsyncInvokeConfigDestinationConfigOutput)
 }
 
-// Failed callback target structure. See `onFailure` below.
+// Failed callback target structure See `onFailure` below.
 func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) OnFailure() V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput {
 	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfig) *V3AsyncInvokeConfigDestinationConfigOnFailure {
 		if v == nil {
@@ -3550,7 +3550,7 @@ func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) OnFailure() V3AsyncInvoke
 	}).(V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
 }
 
-// Successful callback target structure. See `onSuccess` below.
+// Successful callback target structure See `onSuccess` below.
 func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) OnSuccess() V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput {
 	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfig) *V3AsyncInvokeConfigDestinationConfigOnSuccess {
 		if v == nil {
@@ -3561,7 +3561,7 @@ func (o V3AsyncInvokeConfigDestinationConfigPtrOutput) OnSuccess() V3AsyncInvoke
 }
 
 type V3AsyncInvokeConfigDestinationConfigOnFailure struct {
-	// Asynchronous call target Resource Descriptor.
+	// Asynchronous call target Resource Descriptor
 	Destination *string `pulumi:"destination"`
 }
 
@@ -3577,7 +3577,7 @@ type V3AsyncInvokeConfigDestinationConfigOnFailureInput interface {
 }
 
 type V3AsyncInvokeConfigDestinationConfigOnFailureArgs struct {
-	// Asynchronous call target Resource Descriptor.
+	// Asynchronous call target Resource Descriptor
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 }
 
@@ -3658,7 +3658,7 @@ func (o V3AsyncInvokeConfigDestinationConfigOnFailureOutput) ToV3AsyncInvokeConf
 	}).(V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
 }
 
-// Asynchronous call target Resource Descriptor.
+// Asynchronous call target Resource Descriptor
 func (o V3AsyncInvokeConfigDestinationConfigOnFailureOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3AsyncInvokeConfigDestinationConfigOnFailure) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -3687,7 +3687,7 @@ func (o V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Elem() V3AsyncIn
 	}).(V3AsyncInvokeConfigDestinationConfigOnFailureOutput)
 }
 
-// Asynchronous call target Resource Descriptor.
+// Asynchronous call target Resource Descriptor
 func (o V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfigOnFailure) *string {
 		if v == nil {
@@ -3698,7 +3698,7 @@ func (o V3AsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Destination() pu
 }
 
 type V3AsyncInvokeConfigDestinationConfigOnSuccess struct {
-	// Asynchronous call target Resource Descriptor.
+	// Asynchronous call target Resource Descriptor
 	Destination *string `pulumi:"destination"`
 }
 
@@ -3714,7 +3714,7 @@ type V3AsyncInvokeConfigDestinationConfigOnSuccessInput interface {
 }
 
 type V3AsyncInvokeConfigDestinationConfigOnSuccessArgs struct {
-	// Asynchronous call target Resource Descriptor.
+	// Asynchronous call target Resource Descriptor
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 }
 
@@ -3795,7 +3795,7 @@ func (o V3AsyncInvokeConfigDestinationConfigOnSuccessOutput) ToV3AsyncInvokeConf
 	}).(V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
 }
 
-// Asynchronous call target Resource Descriptor.
+// Asynchronous call target Resource Descriptor
 func (o V3AsyncInvokeConfigDestinationConfigOnSuccessOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3AsyncInvokeConfigDestinationConfigOnSuccess) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
@@ -3824,7 +3824,7 @@ func (o V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Elem() V3AsyncIn
 	}).(V3AsyncInvokeConfigDestinationConfigOnSuccessOutput)
 }
 
-// Asynchronous call target Resource Descriptor.
+// Asynchronous call target Resource Descriptor
 func (o V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3AsyncInvokeConfigDestinationConfigOnSuccess) *string {
 		if v == nil {
@@ -3835,7 +3835,7 @@ func (o V3AsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Destination() pu
 }
 
 type V3CustomDomainAuthConfig struct {
-	// Authentication Information.
+	// Authentication Information
 	AuthInfo *string `pulumi:"authInfo"`
 	// Authentication type. anonymous, function, or jwt.
 	AuthType *string `pulumi:"authType"`
@@ -3853,7 +3853,7 @@ type V3CustomDomainAuthConfigInput interface {
 }
 
 type V3CustomDomainAuthConfigArgs struct {
-	// Authentication Information.
+	// Authentication Information
 	AuthInfo pulumi.StringPtrInput `pulumi:"authInfo"`
 	// Authentication type. anonymous, function, or jwt.
 	AuthType pulumi.StringPtrInput `pulumi:"authType"`
@@ -3936,7 +3936,7 @@ func (o V3CustomDomainAuthConfigOutput) ToV3CustomDomainAuthConfigPtrOutputWithC
 	}).(V3CustomDomainAuthConfigPtrOutput)
 }
 
-// Authentication Information.
+// Authentication Information
 func (o V3CustomDomainAuthConfigOutput) AuthInfo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainAuthConfig) *string { return v.AuthInfo }).(pulumi.StringPtrOutput)
 }
@@ -3970,7 +3970,7 @@ func (o V3CustomDomainAuthConfigPtrOutput) Elem() V3CustomDomainAuthConfigOutput
 	}).(V3CustomDomainAuthConfigOutput)
 }
 
-// Authentication Information.
+// Authentication Information
 func (o V3CustomDomainAuthConfigPtrOutput) AuthInfo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomainAuthConfig) *string {
 		if v == nil {
@@ -3991,11 +3991,11 @@ func (o V3CustomDomainAuthConfigPtrOutput) AuthType() pulumi.StringPtrOutput {
 }
 
 type V3CustomDomainCertConfig struct {
-	// Certificate Name.
+	// Certificate Name
 	CertName *string `pulumi:"certName"`
-	// PEM format certificate.
+	// PEM format certificate
 	Certificate *string `pulumi:"certificate"`
-	// Private Key in PEM format.
+	// Private Key in PEM format
 	PrivateKey *string `pulumi:"privateKey"`
 }
 
@@ -4011,11 +4011,11 @@ type V3CustomDomainCertConfigInput interface {
 }
 
 type V3CustomDomainCertConfigArgs struct {
-	// Certificate Name.
+	// Certificate Name
 	CertName pulumi.StringPtrInput `pulumi:"certName"`
-	// PEM format certificate.
+	// PEM format certificate
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
-	// Private Key in PEM format.
+	// Private Key in PEM format
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 }
 
@@ -4096,17 +4096,17 @@ func (o V3CustomDomainCertConfigOutput) ToV3CustomDomainCertConfigPtrOutputWithC
 	}).(V3CustomDomainCertConfigPtrOutput)
 }
 
-// Certificate Name.
+// Certificate Name
 func (o V3CustomDomainCertConfigOutput) CertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainCertConfig) *string { return v.CertName }).(pulumi.StringPtrOutput)
 }
 
-// PEM format certificate.
+// PEM format certificate
 func (o V3CustomDomainCertConfigOutput) Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainCertConfig) *string { return v.Certificate }).(pulumi.StringPtrOutput)
 }
 
-// Private Key in PEM format.
+// Private Key in PEM format
 func (o V3CustomDomainCertConfigOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainCertConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
@@ -4135,7 +4135,7 @@ func (o V3CustomDomainCertConfigPtrOutput) Elem() V3CustomDomainCertConfigOutput
 	}).(V3CustomDomainCertConfigOutput)
 }
 
-// Certificate Name.
+// Certificate Name
 func (o V3CustomDomainCertConfigPtrOutput) CertName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomainCertConfig) *string {
 		if v == nil {
@@ -4145,7 +4145,7 @@ func (o V3CustomDomainCertConfigPtrOutput) CertName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// PEM format certificate.
+// PEM format certificate
 func (o V3CustomDomainCertConfigPtrOutput) Certificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomainCertConfig) *string {
 		if v == nil {
@@ -4155,7 +4155,7 @@ func (o V3CustomDomainCertConfigPtrOutput) Certificate() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Private Key in PEM format.
+// Private Key in PEM format
 func (o V3CustomDomainCertConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomainCertConfig) *string {
 		if v == nil {
@@ -4166,7 +4166,7 @@ func (o V3CustomDomainCertConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 }
 
 type V3CustomDomainRouteConfig struct {
-	// Routing Configuration List. See `routes` below.
+	// Routing Configuration List See `routes` below.
 	Routes []V3CustomDomainRouteConfigRoute `pulumi:"routes"`
 }
 
@@ -4182,7 +4182,7 @@ type V3CustomDomainRouteConfigInput interface {
 }
 
 type V3CustomDomainRouteConfigArgs struct {
-	// Routing Configuration List. See `routes` below.
+	// Routing Configuration List See `routes` below.
 	Routes V3CustomDomainRouteConfigRouteArrayInput `pulumi:"routes"`
 }
 
@@ -4263,7 +4263,7 @@ func (o V3CustomDomainRouteConfigOutput) ToV3CustomDomainRouteConfigPtrOutputWit
 	}).(V3CustomDomainRouteConfigPtrOutput)
 }
 
-// Routing Configuration List. See `routes` below.
+// Routing Configuration List See `routes` below.
 func (o V3CustomDomainRouteConfigOutput) Routes() V3CustomDomainRouteConfigRouteArrayOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfig) []V3CustomDomainRouteConfigRoute { return v.Routes }).(V3CustomDomainRouteConfigRouteArrayOutput)
 }
@@ -4292,7 +4292,7 @@ func (o V3CustomDomainRouteConfigPtrOutput) Elem() V3CustomDomainRouteConfigOutp
 	}).(V3CustomDomainRouteConfigOutput)
 }
 
-// Routing Configuration List. See `routes` below.
+// Routing Configuration List See `routes` below.
 func (o V3CustomDomainRouteConfigPtrOutput) Routes() V3CustomDomainRouteConfigRouteArrayOutput {
 	return o.ApplyT(func(v *V3CustomDomainRouteConfig) []V3CustomDomainRouteConfigRoute {
 		if v == nil {
@@ -4303,15 +4303,15 @@ func (o V3CustomDomainRouteConfigPtrOutput) Routes() V3CustomDomainRouteConfigRo
 }
 
 type V3CustomDomainRouteConfigRoute struct {
-	// Function name.
+	// Function name
 	FunctionName *string `pulumi:"functionName"`
-	// List of supported HTTP methods.
+	// List of supported HTTP methods
 	Methods []string `pulumi:"methods"`
-	// Route matching rule.
+	// Route matching rule
 	Path *string `pulumi:"path"`
-	// Version or Alias.
+	// Version or Alias
 	Qualifier *string `pulumi:"qualifier"`
-	// Override Configuration. See `rewriteConfig` below.
+	// Override Configuration See `rewriteConfig` below.
 	RewriteConfig *V3CustomDomainRouteConfigRouteRewriteConfig `pulumi:"rewriteConfig"`
 }
 
@@ -4327,15 +4327,15 @@ type V3CustomDomainRouteConfigRouteInput interface {
 }
 
 type V3CustomDomainRouteConfigRouteArgs struct {
-	// Function name.
+	// Function name
 	FunctionName pulumi.StringPtrInput `pulumi:"functionName"`
-	// List of supported HTTP methods.
+	// List of supported HTTP methods
 	Methods pulumi.StringArrayInput `pulumi:"methods"`
-	// Route matching rule.
+	// Route matching rule
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Version or Alias.
+	// Version or Alias
 	Qualifier pulumi.StringPtrInput `pulumi:"qualifier"`
-	// Override Configuration. See `rewriteConfig` below.
+	// Override Configuration See `rewriteConfig` below.
 	RewriteConfig V3CustomDomainRouteConfigRouteRewriteConfigPtrInput `pulumi:"rewriteConfig"`
 }
 
@@ -4390,27 +4390,27 @@ func (o V3CustomDomainRouteConfigRouteOutput) ToV3CustomDomainRouteConfigRouteOu
 	return o
 }
 
-// Function name.
+// Function name
 func (o V3CustomDomainRouteConfigRouteOutput) FunctionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) *string { return v.FunctionName }).(pulumi.StringPtrOutput)
 }
 
-// List of supported HTTP methods.
+// List of supported HTTP methods
 func (o V3CustomDomainRouteConfigRouteOutput) Methods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) []string { return v.Methods }).(pulumi.StringArrayOutput)
 }
 
-// Route matching rule.
+// Route matching rule
 func (o V3CustomDomainRouteConfigRouteOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Version or Alias.
+// Version or Alias
 func (o V3CustomDomainRouteConfigRouteOutput) Qualifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) *string { return v.Qualifier }).(pulumi.StringPtrOutput)
 }
 
-// Override Configuration. See `rewriteConfig` below.
+// Override Configuration See `rewriteConfig` below.
 func (o V3CustomDomainRouteConfigRouteOutput) RewriteConfig() V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRoute) *V3CustomDomainRouteConfigRouteRewriteConfig {
 		return v.RewriteConfig
@@ -4438,11 +4438,11 @@ func (o V3CustomDomainRouteConfigRouteArrayOutput) Index(i pulumi.IntInput) V3Cu
 }
 
 type V3CustomDomainRouteConfigRouteRewriteConfig struct {
-	// Exact Match Rule List. See `equalRules` below.
+	// Exact Match Rule List See `equalRules` below.
 	EqualRules []V3CustomDomainRouteConfigRouteRewriteConfigEqualRule `pulumi:"equalRules"`
-	// Regular match rule list. See `regexRules` below.
+	// Regular match rule list See `regexRules` below.
 	RegexRules []V3CustomDomainRouteConfigRouteRewriteConfigRegexRule `pulumi:"regexRules"`
-	// List of wildcard matching rules. See `wildcardRules` below.
+	// List of wildcard matching rules See `wildcardRules` below.
 	WildcardRules []V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule `pulumi:"wildcardRules"`
 }
 
@@ -4458,11 +4458,11 @@ type V3CustomDomainRouteConfigRouteRewriteConfigInput interface {
 }
 
 type V3CustomDomainRouteConfigRouteRewriteConfigArgs struct {
-	// Exact Match Rule List. See `equalRules` below.
+	// Exact Match Rule List See `equalRules` below.
 	EqualRules V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayInput `pulumi:"equalRules"`
-	// Regular match rule list. See `regexRules` below.
+	// Regular match rule list See `regexRules` below.
 	RegexRules V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayInput `pulumi:"regexRules"`
-	// List of wildcard matching rules. See `wildcardRules` below.
+	// List of wildcard matching rules See `wildcardRules` below.
 	WildcardRules V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayInput `pulumi:"wildcardRules"`
 }
 
@@ -4543,21 +4543,21 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) ToV3CustomDomainRoute
 	}).(V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput)
 }
 
-// Exact Match Rule List. See `equalRules` below.
+// Exact Match Rule List See `equalRules` below.
 func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) EqualRules() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
 		return v.EqualRules
 	}).(V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput)
 }
 
-// Regular match rule list. See `regexRules` below.
+// Regular match rule list See `regexRules` below.
 func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) RegexRules() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
 		return v.RegexRules
 	}).(V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput)
 }
 
-// List of wildcard matching rules. See `wildcardRules` below.
+// List of wildcard matching rules See `wildcardRules` below.
 func (o V3CustomDomainRouteConfigRouteRewriteConfigOutput) WildcardRules() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
 		return v.WildcardRules
@@ -4588,7 +4588,7 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) Elem() V3CustomDom
 	}).(V3CustomDomainRouteConfigRouteRewriteConfigOutput)
 }
 
-// Exact Match Rule List. See `equalRules` below.
+// Exact Match Rule List See `equalRules` below.
 func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) EqualRules() V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput {
 	return o.ApplyT(func(v *V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigEqualRule {
 		if v == nil {
@@ -4598,7 +4598,7 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) EqualRules() V3Cus
 	}).(V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput)
 }
 
-// Regular match rule list. See `regexRules` below.
+// Regular match rule list See `regexRules` below.
 func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) RegexRules() V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput {
 	return o.ApplyT(func(v *V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigRegexRule {
 		if v == nil {
@@ -4608,7 +4608,7 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) RegexRules() V3Cus
 	}).(V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput)
 }
 
-// List of wildcard matching rules. See `wildcardRules` below.
+// List of wildcard matching rules See `wildcardRules` below.
 func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) WildcardRules() V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput {
 	return o.ApplyT(func(v *V3CustomDomainRouteConfigRouteRewriteConfig) []V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
 		if v == nil {
@@ -4619,9 +4619,9 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigPtrOutput) WildcardRules() V3
 }
 
 type V3CustomDomainRouteConfigRouteRewriteConfigEqualRule struct {
-	// Matching Rules.
+	// Matching Rules
 	Match *string `pulumi:"match"`
-	// Replace Rules.
+	// Replace Rules
 	Replacement *string `pulumi:"replacement"`
 }
 
@@ -4637,9 +4637,9 @@ type V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleInput interface {
 }
 
 type V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs struct {
-	// Matching Rules.
+	// Matching Rules
 	Match pulumi.StringPtrInput `pulumi:"match"`
-	// Replace Rules.
+	// Replace Rules
 	Replacement pulumi.StringPtrInput `pulumi:"replacement"`
 }
 
@@ -4694,12 +4694,12 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput) ToV3CustomDo
 	return o
 }
 
-// Matching Rules.
+// Matching Rules
 func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigEqualRule) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
 
-// Replace Rules.
+// Replace Rules
 func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleOutput) Replacement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigEqualRule) *string { return v.Replacement }).(pulumi.StringPtrOutput)
 }
@@ -4725,9 +4725,9 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArrayOutput) Index(i
 }
 
 type V3CustomDomainRouteConfigRouteRewriteConfigRegexRule struct {
-	// Matching Rules.
+	// Matching Rules
 	Match *string `pulumi:"match"`
-	// Replace Rules.
+	// Replace Rules
 	Replacement *string `pulumi:"replacement"`
 }
 
@@ -4743,9 +4743,9 @@ type V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleInput interface {
 }
 
 type V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs struct {
-	// Matching Rules.
+	// Matching Rules
 	Match pulumi.StringPtrInput `pulumi:"match"`
-	// Replace Rules.
+	// Replace Rules
 	Replacement pulumi.StringPtrInput `pulumi:"replacement"`
 }
 
@@ -4800,12 +4800,12 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput) ToV3CustomDo
 	return o
 }
 
-// Matching Rules.
+// Matching Rules
 func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigRegexRule) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
 
-// Replace Rules.
+// Replace Rules
 func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleOutput) Replacement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigRegexRule) *string { return v.Replacement }).(pulumi.StringPtrOutput)
 }
@@ -4831,9 +4831,9 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArrayOutput) Index(i
 }
 
 type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule struct {
-	// Matching Rules.
+	// Matching Rules
 	Match *string `pulumi:"match"`
-	// Replace Rules.
+	// Replace Rules
 	Replacement *string `pulumi:"replacement"`
 }
 
@@ -4849,9 +4849,9 @@ type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleInput interface {
 }
 
 type V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs struct {
-	// Matching Rules.
+	// Matching Rules
 	Match pulumi.StringPtrInput `pulumi:"match"`
-	// Replace Rules.
+	// Replace Rules
 	Replacement pulumi.StringPtrInput `pulumi:"replacement"`
 }
 
@@ -4906,12 +4906,12 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput) ToV3Custo
 	return o
 }
 
-// Matching Rules.
+// Matching Rules
 func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput) Match() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule) *string { return v.Match }).(pulumi.StringPtrOutput)
 }
 
-// Replace Rules.
+// Replace Rules
 func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleOutput) Replacement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule) *string { return v.Replacement }).(pulumi.StringPtrOutput)
 }
@@ -4937,11 +4937,11 @@ func (o V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArrayOutput) Inde
 }
 
 type V3CustomDomainTlsConfig struct {
-	// List of TLS cipher suites.
+	// List of TLS cipher suites
 	CipherSuites []string `pulumi:"cipherSuites"`
-	// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+	// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
 	MaxVersion *string `pulumi:"maxVersion"`
-	// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+	// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
 	MinVersion *string `pulumi:"minVersion"`
 }
 
@@ -4957,11 +4957,11 @@ type V3CustomDomainTlsConfigInput interface {
 }
 
 type V3CustomDomainTlsConfigArgs struct {
-	// List of TLS cipher suites.
+	// List of TLS cipher suites
 	CipherSuites pulumi.StringArrayInput `pulumi:"cipherSuites"`
-	// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+	// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
 	MaxVersion pulumi.StringPtrInput `pulumi:"maxVersion"`
-	// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+	// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
 	MinVersion pulumi.StringPtrInput `pulumi:"minVersion"`
 }
 
@@ -5042,17 +5042,17 @@ func (o V3CustomDomainTlsConfigOutput) ToV3CustomDomainTlsConfigPtrOutputWithCon
 	}).(V3CustomDomainTlsConfigPtrOutput)
 }
 
-// List of TLS cipher suites.
+// List of TLS cipher suites
 func (o V3CustomDomainTlsConfigOutput) CipherSuites() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v V3CustomDomainTlsConfig) []string { return v.CipherSuites }).(pulumi.StringArrayOutput)
 }
 
-// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
 func (o V3CustomDomainTlsConfigOutput) MaxVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainTlsConfig) *string { return v.MaxVersion }).(pulumi.StringPtrOutput)
 }
 
-// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
 func (o V3CustomDomainTlsConfigOutput) MinVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainTlsConfig) *string { return v.MinVersion }).(pulumi.StringPtrOutput)
 }
@@ -5081,7 +5081,7 @@ func (o V3CustomDomainTlsConfigPtrOutput) Elem() V3CustomDomainTlsConfigOutput {
 	}).(V3CustomDomainTlsConfigOutput)
 }
 
-// List of TLS cipher suites.
+// List of TLS cipher suites
 func (o V3CustomDomainTlsConfigPtrOutput) CipherSuites() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *V3CustomDomainTlsConfig) []string {
 		if v == nil {
@@ -5091,7 +5091,7 @@ func (o V3CustomDomainTlsConfigPtrOutput) CipherSuites() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+// The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
 func (o V3CustomDomainTlsConfigPtrOutput) MaxVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomainTlsConfig) *string {
 		if v == nil {
@@ -5101,7 +5101,7 @@ func (o V3CustomDomainTlsConfigPtrOutput) MaxVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+// TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
 func (o V3CustomDomainTlsConfigPtrOutput) MinVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomainTlsConfig) *string {
 		if v == nil {
@@ -5112,7 +5112,7 @@ func (o V3CustomDomainTlsConfigPtrOutput) MinVersion() pulumi.StringPtrOutput {
 }
 
 type V3CustomDomainWafConfig struct {
-	// Enable WAF protection.
+	// Enable WAF protection
 	EnableWaf *bool `pulumi:"enableWaf"`
 }
 
@@ -5128,7 +5128,7 @@ type V3CustomDomainWafConfigInput interface {
 }
 
 type V3CustomDomainWafConfigArgs struct {
-	// Enable WAF protection.
+	// Enable WAF protection
 	EnableWaf pulumi.BoolPtrInput `pulumi:"enableWaf"`
 }
 
@@ -5209,7 +5209,7 @@ func (o V3CustomDomainWafConfigOutput) ToV3CustomDomainWafConfigPtrOutputWithCon
 	}).(V3CustomDomainWafConfigPtrOutput)
 }
 
-// Enable WAF protection.
+// Enable WAF protection
 func (o V3CustomDomainWafConfigOutput) EnableWaf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v V3CustomDomainWafConfig) *bool { return v.EnableWaf }).(pulumi.BoolPtrOutput)
 }
@@ -5238,7 +5238,7 @@ func (o V3CustomDomainWafConfigPtrOutput) Elem() V3CustomDomainWafConfigOutput {
 	}).(V3CustomDomainWafConfigOutput)
 }
 
-// Enable WAF protection.
+// Enable WAF protection
 func (o V3CustomDomainWafConfigPtrOutput) EnableWaf() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *V3CustomDomainWafConfig) *bool {
 		if v == nil {
@@ -5459,7 +5459,7 @@ type V3FunctionCustomContainerConfig struct {
 	Commands []string `pulumi:"commands"`
 	// Container start command.
 	Entrypoints []string `pulumi:"entrypoints"`
-	// Function custom health check configuration. See `healthCheckConfig` below.
+	// Function custom health check configuration See `healthCheckConfig` below.
 	HealthCheckConfig *V3FunctionCustomContainerConfigHealthCheckConfig `pulumi:"healthCheckConfig"`
 	// The container Image address.
 	Image *string `pulumi:"image"`
@@ -5497,7 +5497,7 @@ type V3FunctionCustomContainerConfigArgs struct {
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
 	// Container start command.
 	Entrypoints pulumi.StringArrayInput `pulumi:"entrypoints"`
-	// Function custom health check configuration. See `healthCheckConfig` below.
+	// Function custom health check configuration See `healthCheckConfig` below.
 	HealthCheckConfig V3FunctionCustomContainerConfigHealthCheckConfigPtrInput `pulumi:"healthCheckConfig"`
 	// The container Image address.
 	Image pulumi.StringPtrInput `pulumi:"image"`
@@ -5617,7 +5617,7 @@ func (o V3FunctionCustomContainerConfigOutput) Entrypoints() pulumi.StringArrayO
 	return o.ApplyT(func(v V3FunctionCustomContainerConfig) []string { return v.Entrypoints }).(pulumi.StringArrayOutput)
 }
 
-// Function custom health check configuration. See `healthCheckConfig` below.
+// Function custom health check configuration See `healthCheckConfig` below.
 func (o V3FunctionCustomContainerConfigOutput) HealthCheckConfig() V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
 	return o.ApplyT(func(v V3FunctionCustomContainerConfig) *V3FunctionCustomContainerConfigHealthCheckConfig {
 		return v.HealthCheckConfig
@@ -5719,7 +5719,7 @@ func (o V3FunctionCustomContainerConfigPtrOutput) Entrypoints() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Function custom health check configuration. See `healthCheckConfig` below.
+// Function custom health check configuration See `healthCheckConfig` below.
 func (o V3FunctionCustomContainerConfigPtrOutput) HealthCheckConfig() V3FunctionCustomContainerConfigHealthCheckConfigPtrOutput {
 	return o.ApplyT(func(v *V3FunctionCustomContainerConfig) *V3FunctionCustomContainerConfigHealthCheckConfig {
 		if v == nil {
@@ -6966,9 +6966,9 @@ func (o V3FunctionGpuConfigPtrOutput) GpuType() pulumi.StringPtrOutput {
 }
 
 type V3FunctionInstanceLifecycleConfig struct {
-	// Initializer handler method configuration. See `initializer` below.
+	// Initializer handler method configuration See `initializer` below.
 	Initializer *V3FunctionInstanceLifecycleConfigInitializer `pulumi:"initializer"`
-	// PreStop handler method configuration. See `preStop` below.
+	// PreStop handler method configuration See `preStop` below.
 	PreStop *V3FunctionInstanceLifecycleConfigPreStop `pulumi:"preStop"`
 }
 
@@ -6984,9 +6984,9 @@ type V3FunctionInstanceLifecycleConfigInput interface {
 }
 
 type V3FunctionInstanceLifecycleConfigArgs struct {
-	// Initializer handler method configuration. See `initializer` below.
+	// Initializer handler method configuration See `initializer` below.
 	Initializer V3FunctionInstanceLifecycleConfigInitializerPtrInput `pulumi:"initializer"`
-	// PreStop handler method configuration. See `preStop` below.
+	// PreStop handler method configuration See `preStop` below.
 	PreStop V3FunctionInstanceLifecycleConfigPreStopPtrInput `pulumi:"preStop"`
 }
 
@@ -7067,14 +7067,14 @@ func (o V3FunctionInstanceLifecycleConfigOutput) ToV3FunctionInstanceLifecycleCo
 	}).(V3FunctionInstanceLifecycleConfigPtrOutput)
 }
 
-// Initializer handler method configuration. See `initializer` below.
+// Initializer handler method configuration See `initializer` below.
 func (o V3FunctionInstanceLifecycleConfigOutput) Initializer() V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
 	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfig) *V3FunctionInstanceLifecycleConfigInitializer {
 		return v.Initializer
 	}).(V3FunctionInstanceLifecycleConfigInitializerPtrOutput)
 }
 
-// PreStop handler method configuration. See `preStop` below.
+// PreStop handler method configuration See `preStop` below.
 func (o V3FunctionInstanceLifecycleConfigOutput) PreStop() V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
 	return o.ApplyT(func(v V3FunctionInstanceLifecycleConfig) *V3FunctionInstanceLifecycleConfigPreStop { return v.PreStop }).(V3FunctionInstanceLifecycleConfigPreStopPtrOutput)
 }
@@ -7103,7 +7103,7 @@ func (o V3FunctionInstanceLifecycleConfigPtrOutput) Elem() V3FunctionInstanceLif
 	}).(V3FunctionInstanceLifecycleConfigOutput)
 }
 
-// Initializer handler method configuration. See `initializer` below.
+// Initializer handler method configuration See `initializer` below.
 func (o V3FunctionInstanceLifecycleConfigPtrOutput) Initializer() V3FunctionInstanceLifecycleConfigInitializerPtrOutput {
 	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfig) *V3FunctionInstanceLifecycleConfigInitializer {
 		if v == nil {
@@ -7113,7 +7113,7 @@ func (o V3FunctionInstanceLifecycleConfigPtrOutput) Initializer() V3FunctionInst
 	}).(V3FunctionInstanceLifecycleConfigInitializerPtrOutput)
 }
 
-// PreStop handler method configuration. See `preStop` below.
+// PreStop handler method configuration See `preStop` below.
 func (o V3FunctionInstanceLifecycleConfigPtrOutput) PreStop() V3FunctionInstanceLifecycleConfigPreStopPtrOutput {
 	return o.ApplyT(func(v *V3FunctionInstanceLifecycleConfig) *V3FunctionInstanceLifecycleConfigPreStop {
 		if v == nil {
@@ -8202,6 +8202,162 @@ func (o V3FunctionOssMountConfigMountPointArrayOutput) Index(i pulumi.IntInput) 
 	}).(V3FunctionOssMountConfigMountPointOutput)
 }
 
+type V3FunctionTracingConfig struct {
+	// Tracing parameters.
+	Params map[string]string `pulumi:"params"`
+	// The tracing protocol type. Currently, only Jaeger is supported.
+	Type *string `pulumi:"type"`
+}
+
+// V3FunctionTracingConfigInput is an input type that accepts V3FunctionTracingConfigArgs and V3FunctionTracingConfigOutput values.
+// You can construct a concrete instance of `V3FunctionTracingConfigInput` via:
+//
+//	V3FunctionTracingConfigArgs{...}
+type V3FunctionTracingConfigInput interface {
+	pulumi.Input
+
+	ToV3FunctionTracingConfigOutput() V3FunctionTracingConfigOutput
+	ToV3FunctionTracingConfigOutputWithContext(context.Context) V3FunctionTracingConfigOutput
+}
+
+type V3FunctionTracingConfigArgs struct {
+	// Tracing parameters.
+	Params pulumi.StringMapInput `pulumi:"params"`
+	// The tracing protocol type. Currently, only Jaeger is supported.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (V3FunctionTracingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionTracingConfig)(nil)).Elem()
+}
+
+func (i V3FunctionTracingConfigArgs) ToV3FunctionTracingConfigOutput() V3FunctionTracingConfigOutput {
+	return i.ToV3FunctionTracingConfigOutputWithContext(context.Background())
+}
+
+func (i V3FunctionTracingConfigArgs) ToV3FunctionTracingConfigOutputWithContext(ctx context.Context) V3FunctionTracingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionTracingConfigOutput)
+}
+
+func (i V3FunctionTracingConfigArgs) ToV3FunctionTracingConfigPtrOutput() V3FunctionTracingConfigPtrOutput {
+	return i.ToV3FunctionTracingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i V3FunctionTracingConfigArgs) ToV3FunctionTracingConfigPtrOutputWithContext(ctx context.Context) V3FunctionTracingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionTracingConfigOutput).ToV3FunctionTracingConfigPtrOutputWithContext(ctx)
+}
+
+// V3FunctionTracingConfigPtrInput is an input type that accepts V3FunctionTracingConfigArgs, V3FunctionTracingConfigPtr and V3FunctionTracingConfigPtrOutput values.
+// You can construct a concrete instance of `V3FunctionTracingConfigPtrInput` via:
+//
+//	        V3FunctionTracingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3FunctionTracingConfigPtrInput interface {
+	pulumi.Input
+
+	ToV3FunctionTracingConfigPtrOutput() V3FunctionTracingConfigPtrOutput
+	ToV3FunctionTracingConfigPtrOutputWithContext(context.Context) V3FunctionTracingConfigPtrOutput
+}
+
+type v3functionTracingConfigPtrType V3FunctionTracingConfigArgs
+
+func V3FunctionTracingConfigPtr(v *V3FunctionTracingConfigArgs) V3FunctionTracingConfigPtrInput {
+	return (*v3functionTracingConfigPtrType)(v)
+}
+
+func (*v3functionTracingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionTracingConfig)(nil)).Elem()
+}
+
+func (i *v3functionTracingConfigPtrType) ToV3FunctionTracingConfigPtrOutput() V3FunctionTracingConfigPtrOutput {
+	return i.ToV3FunctionTracingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *v3functionTracingConfigPtrType) ToV3FunctionTracingConfigPtrOutputWithContext(ctx context.Context) V3FunctionTracingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3FunctionTracingConfigPtrOutput)
+}
+
+type V3FunctionTracingConfigOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionTracingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3FunctionTracingConfig)(nil)).Elem()
+}
+
+func (o V3FunctionTracingConfigOutput) ToV3FunctionTracingConfigOutput() V3FunctionTracingConfigOutput {
+	return o
+}
+
+func (o V3FunctionTracingConfigOutput) ToV3FunctionTracingConfigOutputWithContext(ctx context.Context) V3FunctionTracingConfigOutput {
+	return o
+}
+
+func (o V3FunctionTracingConfigOutput) ToV3FunctionTracingConfigPtrOutput() V3FunctionTracingConfigPtrOutput {
+	return o.ToV3FunctionTracingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o V3FunctionTracingConfigOutput) ToV3FunctionTracingConfigPtrOutputWithContext(ctx context.Context) V3FunctionTracingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3FunctionTracingConfig) *V3FunctionTracingConfig {
+		return &v
+	}).(V3FunctionTracingConfigPtrOutput)
+}
+
+// Tracing parameters.
+func (o V3FunctionTracingConfigOutput) Params() pulumi.StringMapOutput {
+	return o.ApplyT(func(v V3FunctionTracingConfig) map[string]string { return v.Params }).(pulumi.StringMapOutput)
+}
+
+// The tracing protocol type. Currently, only Jaeger is supported.
+func (o V3FunctionTracingConfigOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3FunctionTracingConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type V3FunctionTracingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (V3FunctionTracingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3FunctionTracingConfig)(nil)).Elem()
+}
+
+func (o V3FunctionTracingConfigPtrOutput) ToV3FunctionTracingConfigPtrOutput() V3FunctionTracingConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionTracingConfigPtrOutput) ToV3FunctionTracingConfigPtrOutputWithContext(ctx context.Context) V3FunctionTracingConfigPtrOutput {
+	return o
+}
+
+func (o V3FunctionTracingConfigPtrOutput) Elem() V3FunctionTracingConfigOutput {
+	return o.ApplyT(func(v *V3FunctionTracingConfig) V3FunctionTracingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret V3FunctionTracingConfig
+		return ret
+	}).(V3FunctionTracingConfigOutput)
+}
+
+// Tracing parameters.
+func (o V3FunctionTracingConfigPtrOutput) Params() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *V3FunctionTracingConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Params
+	}).(pulumi.StringMapOutput)
+}
+
+// The tracing protocol type. Currently, only Jaeger is supported.
+func (o V3FunctionTracingConfigPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3FunctionTracingConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type V3FunctionVpcConfig struct {
 	// Security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
@@ -8380,11 +8536,11 @@ func (o V3FunctionVpcConfigPtrOutput) VswitchIds() pulumi.StringArrayOutput {
 type V3LayerVersionCode struct {
 	// The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
 	Checksum *string `pulumi:"checksum"`
-	// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+	// Name of the OSS Bucket where the user stores the Layer Code ZIP package
 	OssBucketName *string `pulumi:"ossBucketName"`
-	// Name of the OSS Object where the user stores the Layer Code ZIP package.
+	// Name of the OSS Object where the user stores the Layer Code ZIP package
 	OssObjectName *string `pulumi:"ossObjectName"`
-	// Base 64 encoding of Layer Code ZIP package.
+	// Base 64 encoding of Layer Code ZIP package
 	ZipFile *string `pulumi:"zipFile"`
 }
 
@@ -8402,11 +8558,11 @@ type V3LayerVersionCodeInput interface {
 type V3LayerVersionCodeArgs struct {
 	// The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
 	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
-	// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+	// Name of the OSS Bucket where the user stores the Layer Code ZIP package
 	OssBucketName pulumi.StringPtrInput `pulumi:"ossBucketName"`
-	// Name of the OSS Object where the user stores the Layer Code ZIP package.
+	// Name of the OSS Object where the user stores the Layer Code ZIP package
 	OssObjectName pulumi.StringPtrInput `pulumi:"ossObjectName"`
-	// Base 64 encoding of Layer Code ZIP package.
+	// Base 64 encoding of Layer Code ZIP package
 	ZipFile pulumi.StringPtrInput `pulumi:"zipFile"`
 }
 
@@ -8492,17 +8648,17 @@ func (o V3LayerVersionCodeOutput) Checksum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3LayerVersionCode) *string { return v.Checksum }).(pulumi.StringPtrOutput)
 }
 
-// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+// Name of the OSS Bucket where the user stores the Layer Code ZIP package
 func (o V3LayerVersionCodeOutput) OssBucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3LayerVersionCode) *string { return v.OssBucketName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the OSS Object where the user stores the Layer Code ZIP package.
+// Name of the OSS Object where the user stores the Layer Code ZIP package
 func (o V3LayerVersionCodeOutput) OssObjectName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3LayerVersionCode) *string { return v.OssObjectName }).(pulumi.StringPtrOutput)
 }
 
-// Base 64 encoding of Layer Code ZIP package.
+// Base 64 encoding of Layer Code ZIP package
 func (o V3LayerVersionCodeOutput) ZipFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3LayerVersionCode) *string { return v.ZipFile }).(pulumi.StringPtrOutput)
 }
@@ -8541,7 +8697,7 @@ func (o V3LayerVersionCodePtrOutput) Checksum() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+// Name of the OSS Bucket where the user stores the Layer Code ZIP package
 func (o V3LayerVersionCodePtrOutput) OssBucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3LayerVersionCode) *string {
 		if v == nil {
@@ -8551,7 +8707,7 @@ func (o V3LayerVersionCodePtrOutput) OssBucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the OSS Object where the user stores the Layer Code ZIP package.
+// Name of the OSS Object where the user stores the Layer Code ZIP package
 func (o V3LayerVersionCodePtrOutput) OssObjectName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3LayerVersionCode) *string {
 		if v == nil {
@@ -8561,7 +8717,7 @@ func (o V3LayerVersionCodePtrOutput) OssObjectName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Base 64 encoding of Layer Code ZIP package.
+// Base 64 encoding of Layer Code ZIP package
 func (o V3LayerVersionCodePtrOutput) ZipFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V3LayerVersionCode) *string {
 		if v == nil {
@@ -8572,15 +8728,15 @@ func (o V3LayerVersionCodePtrOutput) ZipFile() pulumi.StringPtrOutput {
 }
 
 type V3ProvisionConfigScheduledAction struct {
-	// Policy expiration time.
+	// Policy expiration time
 	EndTime *string `pulumi:"endTime"`
-	// Policy Name.
+	// Policy Name
 	Name *string `pulumi:"name"`
-	// Timing Configuration.
+	// Timing Configuration
 	ScheduleExpression *string `pulumi:"scheduleExpression"`
-	// Policy effective time.
+	// Policy effective time
 	StartTime *string `pulumi:"startTime"`
-	// Number of reserved target resources.
+	// Number of reserved target resources
 	Target *int `pulumi:"target"`
 	// Time zone.
 	TimeZone *string `pulumi:"timeZone"`
@@ -8598,15 +8754,15 @@ type V3ProvisionConfigScheduledActionInput interface {
 }
 
 type V3ProvisionConfigScheduledActionArgs struct {
-	// Policy expiration time.
+	// Policy expiration time
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Policy Name.
+	// Policy Name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Timing Configuration.
+	// Timing Configuration
 	ScheduleExpression pulumi.StringPtrInput `pulumi:"scheduleExpression"`
-	// Policy effective time.
+	// Policy effective time
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Number of reserved target resources.
+	// Number of reserved target resources
 	Target pulumi.IntPtrInput `pulumi:"target"`
 	// Time zone.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
@@ -8663,27 +8819,27 @@ func (o V3ProvisionConfigScheduledActionOutput) ToV3ProvisionConfigScheduledActi
 	return o
 }
 
-// Policy expiration time.
+// Policy expiration time
 func (o V3ProvisionConfigScheduledActionOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
-// Policy Name.
+// Policy Name
 func (o V3ProvisionConfigScheduledActionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Timing Configuration.
+// Timing Configuration
 func (o V3ProvisionConfigScheduledActionOutput) ScheduleExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *string { return v.ScheduleExpression }).(pulumi.StringPtrOutput)
 }
 
-// Policy effective time.
+// Policy effective time
 func (o V3ProvisionConfigScheduledActionOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// Number of reserved target resources.
+// Number of reserved target resources
 func (o V3ProvisionConfigScheduledActionOutput) Target() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigScheduledAction) *int { return v.Target }).(pulumi.IntPtrOutput)
 }
@@ -8714,19 +8870,19 @@ func (o V3ProvisionConfigScheduledActionArrayOutput) Index(i pulumi.IntInput) V3
 }
 
 type V3ProvisionConfigTargetTrackingPolicy struct {
-	// Policy expiration time.
+	// Policy expiration time
 	EndTime *string `pulumi:"endTime"`
-	// Maximum value of expansion.
+	// Maximum value of expansion
 	MaxCapacity *int `pulumi:"maxCapacity"`
-	// Tracking value of the indicator.
+	// Tracking value of the indicator
 	MetricTarget *float64 `pulumi:"metricTarget"`
-	// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+	// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
 	MetricType *string `pulumi:"metricType"`
-	// Minimum Shrinkage.
+	// Minimum Shrinkage
 	MinCapacity *int `pulumi:"minCapacity"`
-	// Policy Name.
+	// Policy Name
 	Name *string `pulumi:"name"`
-	// Policy Effective Time.
+	// Policy Effective Time
 	StartTime *string `pulumi:"startTime"`
 	// Time zone.
 	TimeZone *string `pulumi:"timeZone"`
@@ -8744,19 +8900,19 @@ type V3ProvisionConfigTargetTrackingPolicyInput interface {
 }
 
 type V3ProvisionConfigTargetTrackingPolicyArgs struct {
-	// Policy expiration time.
+	// Policy expiration time
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Maximum value of expansion.
+	// Maximum value of expansion
 	MaxCapacity pulumi.IntPtrInput `pulumi:"maxCapacity"`
-	// Tracking value of the indicator.
+	// Tracking value of the indicator
 	MetricTarget pulumi.Float64PtrInput `pulumi:"metricTarget"`
-	// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+	// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
 	MetricType pulumi.StringPtrInput `pulumi:"metricType"`
-	// Minimum Shrinkage.
+	// Minimum Shrinkage
 	MinCapacity pulumi.IntPtrInput `pulumi:"minCapacity"`
-	// Policy Name.
+	// Policy Name
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Policy Effective Time.
+	// Policy Effective Time
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 	// Time zone.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
@@ -8813,37 +8969,37 @@ func (o V3ProvisionConfigTargetTrackingPolicyOutput) ToV3ProvisionConfigTargetTr
 	return o
 }
 
-// Policy expiration time.
+// Policy expiration time
 func (o V3ProvisionConfigTargetTrackingPolicyOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
-// Maximum value of expansion.
+// Maximum value of expansion
 func (o V3ProvisionConfigTargetTrackingPolicyOutput) MaxCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *int { return v.MaxCapacity }).(pulumi.IntPtrOutput)
 }
 
-// Tracking value of the indicator.
+// Tracking value of the indicator
 func (o V3ProvisionConfigTargetTrackingPolicyOutput) MetricTarget() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *float64 { return v.MetricTarget }).(pulumi.Float64PtrOutput)
 }
 
-// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
 func (o V3ProvisionConfigTargetTrackingPolicyOutput) MetricType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *string { return v.MetricType }).(pulumi.StringPtrOutput)
 }
 
-// Minimum Shrinkage.
+// Minimum Shrinkage
 func (o V3ProvisionConfigTargetTrackingPolicyOutput) MinCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *int { return v.MinCapacity }).(pulumi.IntPtrOutput)
 }
 
-// Policy Name.
+// Policy Name
 func (o V3ProvisionConfigTargetTrackingPolicyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Policy Effective Time.
+// Policy Effective Time
 func (o V3ProvisionConfigTargetTrackingPolicyOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V3ProvisionConfigTargetTrackingPolicy) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -8871,6 +9027,162 @@ func (o V3ProvisionConfigTargetTrackingPolicyArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V3ProvisionConfigTargetTrackingPolicy {
 		return vs[0].([]V3ProvisionConfigTargetTrackingPolicy)[vs[1].(int)]
 	}).(V3ProvisionConfigTargetTrackingPolicyOutput)
+}
+
+type V3TriggerHttpTrigger struct {
+	// The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+	UrlInternet *string `pulumi:"urlInternet"`
+	// The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+	UrlIntranet *string `pulumi:"urlIntranet"`
+}
+
+// V3TriggerHttpTriggerInput is an input type that accepts V3TriggerHttpTriggerArgs and V3TriggerHttpTriggerOutput values.
+// You can construct a concrete instance of `V3TriggerHttpTriggerInput` via:
+//
+//	V3TriggerHttpTriggerArgs{...}
+type V3TriggerHttpTriggerInput interface {
+	pulumi.Input
+
+	ToV3TriggerHttpTriggerOutput() V3TriggerHttpTriggerOutput
+	ToV3TriggerHttpTriggerOutputWithContext(context.Context) V3TriggerHttpTriggerOutput
+}
+
+type V3TriggerHttpTriggerArgs struct {
+	// The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+	UrlInternet pulumi.StringPtrInput `pulumi:"urlInternet"`
+	// The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+	UrlIntranet pulumi.StringPtrInput `pulumi:"urlIntranet"`
+}
+
+func (V3TriggerHttpTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3TriggerHttpTrigger)(nil)).Elem()
+}
+
+func (i V3TriggerHttpTriggerArgs) ToV3TriggerHttpTriggerOutput() V3TriggerHttpTriggerOutput {
+	return i.ToV3TriggerHttpTriggerOutputWithContext(context.Background())
+}
+
+func (i V3TriggerHttpTriggerArgs) ToV3TriggerHttpTriggerOutputWithContext(ctx context.Context) V3TriggerHttpTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3TriggerHttpTriggerOutput)
+}
+
+func (i V3TriggerHttpTriggerArgs) ToV3TriggerHttpTriggerPtrOutput() V3TriggerHttpTriggerPtrOutput {
+	return i.ToV3TriggerHttpTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i V3TriggerHttpTriggerArgs) ToV3TriggerHttpTriggerPtrOutputWithContext(ctx context.Context) V3TriggerHttpTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3TriggerHttpTriggerOutput).ToV3TriggerHttpTriggerPtrOutputWithContext(ctx)
+}
+
+// V3TriggerHttpTriggerPtrInput is an input type that accepts V3TriggerHttpTriggerArgs, V3TriggerHttpTriggerPtr and V3TriggerHttpTriggerPtrOutput values.
+// You can construct a concrete instance of `V3TriggerHttpTriggerPtrInput` via:
+//
+//	        V3TriggerHttpTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type V3TriggerHttpTriggerPtrInput interface {
+	pulumi.Input
+
+	ToV3TriggerHttpTriggerPtrOutput() V3TriggerHttpTriggerPtrOutput
+	ToV3TriggerHttpTriggerPtrOutputWithContext(context.Context) V3TriggerHttpTriggerPtrOutput
+}
+
+type v3triggerHttpTriggerPtrType V3TriggerHttpTriggerArgs
+
+func V3TriggerHttpTriggerPtr(v *V3TriggerHttpTriggerArgs) V3TriggerHttpTriggerPtrInput {
+	return (*v3triggerHttpTriggerPtrType)(v)
+}
+
+func (*v3triggerHttpTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3TriggerHttpTrigger)(nil)).Elem()
+}
+
+func (i *v3triggerHttpTriggerPtrType) ToV3TriggerHttpTriggerPtrOutput() V3TriggerHttpTriggerPtrOutput {
+	return i.ToV3TriggerHttpTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *v3triggerHttpTriggerPtrType) ToV3TriggerHttpTriggerPtrOutputWithContext(ctx context.Context) V3TriggerHttpTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V3TriggerHttpTriggerPtrOutput)
+}
+
+type V3TriggerHttpTriggerOutput struct{ *pulumi.OutputState }
+
+func (V3TriggerHttpTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V3TriggerHttpTrigger)(nil)).Elem()
+}
+
+func (o V3TriggerHttpTriggerOutput) ToV3TriggerHttpTriggerOutput() V3TriggerHttpTriggerOutput {
+	return o
+}
+
+func (o V3TriggerHttpTriggerOutput) ToV3TriggerHttpTriggerOutputWithContext(ctx context.Context) V3TriggerHttpTriggerOutput {
+	return o
+}
+
+func (o V3TriggerHttpTriggerOutput) ToV3TriggerHttpTriggerPtrOutput() V3TriggerHttpTriggerPtrOutput {
+	return o.ToV3TriggerHttpTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o V3TriggerHttpTriggerOutput) ToV3TriggerHttpTriggerPtrOutputWithContext(ctx context.Context) V3TriggerHttpTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V3TriggerHttpTrigger) *V3TriggerHttpTrigger {
+		return &v
+	}).(V3TriggerHttpTriggerPtrOutput)
+}
+
+// The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+func (o V3TriggerHttpTriggerOutput) UrlInternet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3TriggerHttpTrigger) *string { return v.UrlInternet }).(pulumi.StringPtrOutput)
+}
+
+// The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+func (o V3TriggerHttpTriggerOutput) UrlIntranet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V3TriggerHttpTrigger) *string { return v.UrlIntranet }).(pulumi.StringPtrOutput)
+}
+
+type V3TriggerHttpTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (V3TriggerHttpTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V3TriggerHttpTrigger)(nil)).Elem()
+}
+
+func (o V3TriggerHttpTriggerPtrOutput) ToV3TriggerHttpTriggerPtrOutput() V3TriggerHttpTriggerPtrOutput {
+	return o
+}
+
+func (o V3TriggerHttpTriggerPtrOutput) ToV3TriggerHttpTriggerPtrOutputWithContext(ctx context.Context) V3TriggerHttpTriggerPtrOutput {
+	return o
+}
+
+func (o V3TriggerHttpTriggerPtrOutput) Elem() V3TriggerHttpTriggerOutput {
+	return o.ApplyT(func(v *V3TriggerHttpTrigger) V3TriggerHttpTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret V3TriggerHttpTrigger
+		return ret
+	}).(V3TriggerHttpTriggerOutput)
+}
+
+// The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+func (o V3TriggerHttpTriggerPtrOutput) UrlInternet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3TriggerHttpTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlInternet
+	}).(pulumi.StringPtrOutput)
+}
+
+// The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+func (o V3TriggerHttpTriggerPtrOutput) UrlIntranet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *V3TriggerHttpTrigger) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlIntranet
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetCustomDomainsDomain struct {
@@ -10508,6 +10820,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionOssMountConfigPtrInput)(nil)).Elem(), V3FunctionOssMountConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionOssMountConfigMountPointInput)(nil)).Elem(), V3FunctionOssMountConfigMountPointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionOssMountConfigMountPointArrayInput)(nil)).Elem(), V3FunctionOssMountConfigMountPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionTracingConfigInput)(nil)).Elem(), V3FunctionTracingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionTracingConfigPtrInput)(nil)).Elem(), V3FunctionTracingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionVpcConfigInput)(nil)).Elem(), V3FunctionVpcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3FunctionVpcConfigPtrInput)(nil)).Elem(), V3FunctionVpcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3LayerVersionCodeInput)(nil)).Elem(), V3LayerVersionCodeArgs{})
@@ -10516,6 +10830,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V3ProvisionConfigScheduledActionArrayInput)(nil)).Elem(), V3ProvisionConfigScheduledActionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3ProvisionConfigTargetTrackingPolicyInput)(nil)).Elem(), V3ProvisionConfigTargetTrackingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V3ProvisionConfigTargetTrackingPolicyArrayInput)(nil)).Elem(), V3ProvisionConfigTargetTrackingPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3TriggerHttpTriggerInput)(nil)).Elem(), V3TriggerHttpTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V3TriggerHttpTriggerPtrInput)(nil)).Elem(), V3TriggerHttpTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainInput)(nil)).Elem(), GetCustomDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainArrayInput)(nil)).Elem(), GetCustomDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCustomDomainsDomainCertConfigInput)(nil)).Elem(), GetCustomDomainsDomainCertConfigArgs{})
@@ -10638,6 +10954,8 @@ func init() {
 	pulumi.RegisterOutputType(V3FunctionOssMountConfigPtrOutput{})
 	pulumi.RegisterOutputType(V3FunctionOssMountConfigMountPointOutput{})
 	pulumi.RegisterOutputType(V3FunctionOssMountConfigMountPointArrayOutput{})
+	pulumi.RegisterOutputType(V3FunctionTracingConfigOutput{})
+	pulumi.RegisterOutputType(V3FunctionTracingConfigPtrOutput{})
 	pulumi.RegisterOutputType(V3FunctionVpcConfigOutput{})
 	pulumi.RegisterOutputType(V3FunctionVpcConfigPtrOutput{})
 	pulumi.RegisterOutputType(V3LayerVersionCodeOutput{})
@@ -10646,6 +10964,8 @@ func init() {
 	pulumi.RegisterOutputType(V3ProvisionConfigScheduledActionArrayOutput{})
 	pulumi.RegisterOutputType(V3ProvisionConfigTargetTrackingPolicyOutput{})
 	pulumi.RegisterOutputType(V3ProvisionConfigTargetTrackingPolicyArrayOutput{})
+	pulumi.RegisterOutputType(V3TriggerHttpTriggerOutput{})
+	pulumi.RegisterOutputType(V3TriggerHttpTriggerPtrOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetCustomDomainsDomainCertConfigOutput{})

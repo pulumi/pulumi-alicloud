@@ -141,25 +141,37 @@ class V3CustomDomainArgs:
 @pulumi.input_type
 class _V3CustomDomainState:
     def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 api_version: Optional[pulumi.Input[str]] = None,
                  auth_config: Optional[pulumi.Input['V3CustomDomainAuthConfigArgs']] = None,
                  cert_config: Optional[pulumi.Input['V3CustomDomainCertConfigArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  custom_domain_name: Optional[pulumi.Input[str]] = None,
+                 last_modified_time: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  route_config: Optional[pulumi.Input['V3CustomDomainRouteConfigArgs']] = None,
+                 subdomain_count: Optional[pulumi.Input[str]] = None,
                  tls_config: Optional[pulumi.Input['V3CustomDomainTlsConfigArgs']] = None,
                  waf_config: Optional[pulumi.Input['V3CustomDomainWafConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V3CustomDomain resources.
+        :param pulumi.Input[str] account_id: (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        :param pulumi.Input[str] api_version: (Available since v1.234.0) API version of Function Compute
         :param pulumi.Input['V3CustomDomainAuthConfigArgs'] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input['V3CustomDomainCertConfigArgs'] cert_config: HTTPS certificate information See `cert_config` below.
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] custom_domain_name: The name of the resource
+        :param pulumi.Input[str] last_modified_time: (Available since v1.234.0) The last time the custom domain name was Updated
         :param pulumi.Input[str] protocol: The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         :param pulumi.Input['V3CustomDomainRouteConfigArgs'] route_config: Route matching rule configuration See `route_config` below.
+        :param pulumi.Input[str] subdomain_count: (Available since v1.234.0) Number of subdomains
         :param pulumi.Input['V3CustomDomainTlsConfigArgs'] tls_config: TLS configuration information See `tls_config` below.
         :param pulumi.Input['V3CustomDomainWafConfigArgs'] waf_config: Web application firewall configuration information See `waf_config` below.
         """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
         if auth_config is not None:
             pulumi.set(__self__, "auth_config", auth_config)
         if cert_config is not None:
@@ -168,14 +180,42 @@ class _V3CustomDomainState:
             pulumi.set(__self__, "create_time", create_time)
         if custom_domain_name is not None:
             pulumi.set(__self__, "custom_domain_name", custom_domain_name)
+        if last_modified_time is not None:
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
         if route_config is not None:
             pulumi.set(__self__, "route_config", route_config)
+        if subdomain_count is not None:
+            pulumi.set(__self__, "subdomain_count", subdomain_count)
         if tls_config is not None:
             pulumi.set(__self__, "tls_config", tls_config)
         if waf_config is not None:
             pulumi.set(__self__, "waf_config", waf_config)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) API version of Function Compute
+        """
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_version", value)
 
     @property
     @pulumi.getter(name="authConfig")
@@ -226,6 +266,18 @@ class _V3CustomDomainState:
         pulumi.set(self, "custom_domain_name", value)
 
     @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) The last time the custom domain name was Updated
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @last_modified_time.setter
+    def last_modified_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_time", value)
+
+    @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
@@ -248,6 +300,18 @@ class _V3CustomDomainState:
     @route_config.setter
     def route_config(self, value: Optional[pulumi.Input['V3CustomDomainRouteConfigArgs']]):
         pulumi.set(self, "route_config", value)
+
+    @property
+    @pulumi.getter(name="subdomainCount")
+    def subdomain_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) Number of subdomains
+        """
+        return pulumi.get(self, "subdomain_count")
+
+    @subdomain_count.setter
+    def subdomain_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subdomain_count", value)
 
     @property
     @pulumi.getter(name="tlsConfig")
@@ -310,7 +374,7 @@ class V3CustomDomain(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"
+            name = "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"
         function_name1 = config.get("functionName1")
         if function_name1 is None:
             function_name1 = "terraform-custom-domain-t1"
@@ -380,7 +444,7 @@ class V3CustomDomain(pulumi.CustomResource):
         -----END RSA PRIVATE KEY-----
         \"\"\"
         default = alicloud.fc.V3CustomDomain("default",
-            custom_domain_name="flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net",
+            custom_domain_name=name,
             route_config={
                 "routes": [
                     {
@@ -524,7 +588,7 @@ class V3CustomDomain(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"
+            name = "flask-07ap.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net"
         function_name1 = config.get("functionName1")
         if function_name1 is None:
             function_name1 = "terraform-custom-domain-t1"
@@ -594,7 +658,7 @@ class V3CustomDomain(pulumi.CustomResource):
         -----END RSA PRIVATE KEY-----
         \"\"\"
         default = alicloud.fc.V3CustomDomain("default",
-            custom_domain_name="flask-6ew9.fcv3.1511928242963727.cn-shanghai.fc.devsapp.net",
+            custom_domain_name=name,
             route_config={
                 "routes": [
                     {
@@ -737,7 +801,11 @@ class V3CustomDomain(pulumi.CustomResource):
             __props__.__dict__["route_config"] = route_config
             __props__.__dict__["tls_config"] = tls_config
             __props__.__dict__["waf_config"] = waf_config
+            __props__.__dict__["account_id"] = None
+            __props__.__dict__["api_version"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["last_modified_time"] = None
+            __props__.__dict__["subdomain_count"] = None
         super(V3CustomDomain, __self__).__init__(
             'alicloud:fc/v3CustomDomain:V3CustomDomain',
             resource_name,
@@ -748,12 +816,16 @@ class V3CustomDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
+            api_version: Optional[pulumi.Input[str]] = None,
             auth_config: Optional[pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']]] = None,
             cert_config: Optional[pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             custom_domain_name: Optional[pulumi.Input[str]] = None,
+            last_modified_time: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             route_config: Optional[pulumi.Input[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']]] = None,
+            subdomain_count: Optional[pulumi.Input[str]] = None,
             tls_config: Optional[pulumi.Input[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict']]] = None,
             waf_config: Optional[pulumi.Input[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']]] = None) -> 'V3CustomDomain':
         """
@@ -763,12 +835,16 @@ class V3CustomDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        :param pulumi.Input[str] api_version: (Available since v1.234.0) API version of Function Compute
         :param pulumi.Input[Union['V3CustomDomainAuthConfigArgs', 'V3CustomDomainAuthConfigArgsDict']] auth_config: Permission authentication configuration See `auth_config` below.
         :param pulumi.Input[Union['V3CustomDomainCertConfigArgs', 'V3CustomDomainCertConfigArgsDict']] cert_config: HTTPS certificate information See `cert_config` below.
         :param pulumi.Input[str] create_time: The creation time of the resource
         :param pulumi.Input[str] custom_domain_name: The name of the resource
+        :param pulumi.Input[str] last_modified_time: (Available since v1.234.0) The last time the custom domain name was Updated
         :param pulumi.Input[str] protocol: The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
         :param pulumi.Input[Union['V3CustomDomainRouteConfigArgs', 'V3CustomDomainRouteConfigArgsDict']] route_config: Route matching rule configuration See `route_config` below.
+        :param pulumi.Input[str] subdomain_count: (Available since v1.234.0) Number of subdomains
         :param pulumi.Input[Union['V3CustomDomainTlsConfigArgs', 'V3CustomDomainTlsConfigArgsDict']] tls_config: TLS configuration information See `tls_config` below.
         :param pulumi.Input[Union['V3CustomDomainWafConfigArgs', 'V3CustomDomainWafConfigArgsDict']] waf_config: Web application firewall configuration information See `waf_config` below.
         """
@@ -776,15 +852,35 @@ class V3CustomDomain(pulumi.CustomResource):
 
         __props__ = _V3CustomDomainState.__new__(_V3CustomDomainState)
 
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["api_version"] = api_version
         __props__.__dict__["auth_config"] = auth_config
         __props__.__dict__["cert_config"] = cert_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_domain_name"] = custom_domain_name
+        __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["route_config"] = route_config
+        __props__.__dict__["subdomain_count"] = subdomain_count
         __props__.__dict__["tls_config"] = tls_config
         __props__.__dict__["waf_config"] = waf_config
         return V3CustomDomain(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) The ID of your Alibaba Cloud account (primary account).
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) API version of Function Compute
+        """
+        return pulumi.get(self, "api_version")
 
     @property
     @pulumi.getter(name="authConfig")
@@ -796,7 +892,7 @@ class V3CustomDomain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="certConfig")
-    def cert_config(self) -> pulumi.Output[Optional['outputs.V3CustomDomainCertConfig']]:
+    def cert_config(self) -> pulumi.Output['outputs.V3CustomDomainCertConfig']:
         """
         HTTPS certificate information See `cert_config` below.
         """
@@ -819,6 +915,14 @@ class V3CustomDomain(pulumi.CustomResource):
         return pulumi.get(self, "custom_domain_name")
 
     @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) The last time the custom domain name was Updated
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @property
     @pulumi.getter
     def protocol(self) -> pulumi.Output[Optional[str]]:
         """
@@ -835,8 +939,16 @@ class V3CustomDomain(pulumi.CustomResource):
         return pulumi.get(self, "route_config")
 
     @property
+    @pulumi.getter(name="subdomainCount")
+    def subdomain_count(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) Number of subdomains
+        """
+        return pulumi.get(self, "subdomain_count")
+
+    @property
     @pulumi.getter(name="tlsConfig")
-    def tls_config(self) -> pulumi.Output[Optional['outputs.V3CustomDomainTlsConfig']]:
+    def tls_config(self) -> pulumi.Output['outputs.V3CustomDomainTlsConfig']:
         """
         TLS configuration information See `tls_config` below.
         """

@@ -19,19 +19,19 @@ namespace Pulumi.AliCloud.FC.Inputs
         public Input<string>? Checksum { get; set; }
 
         /// <summary>
-        /// Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+        /// Name of the OSS Bucket where the user stores the Layer Code ZIP package
         /// </summary>
         [Input("ossBucketName")]
         public Input<string>? OssBucketName { get; set; }
 
         /// <summary>
-        /// Name of the OSS Object where the user stores the Layer Code ZIP package.
+        /// Name of the OSS Object where the user stores the Layer Code ZIP package
         /// </summary>
         [Input("ossObjectName")]
         public Input<string>? OssObjectName { get; set; }
 
         /// <summary>
-        /// Base 64 encoding of Layer Code ZIP package.
+        /// Base 64 encoding of Layer Code ZIP package
         /// </summary>
         [Input("zipFile")]
         public Input<string>? ZipFile { get; set; }

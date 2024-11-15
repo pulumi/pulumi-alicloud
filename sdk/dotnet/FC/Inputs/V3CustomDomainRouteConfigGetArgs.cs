@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.FC.Inputs
         private InputList<Inputs.V3CustomDomainRouteConfigRouteGetArgs>? _routes;
 
         /// <summary>
-        /// Routing Configuration List. See `routes` below.
+        /// Routing Configuration List See `routes` below.
         /// </summary>
         public InputList<Inputs.V3CustomDomainRouteConfigRouteGetArgs> Routes
         {

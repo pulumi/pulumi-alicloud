@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.fc.inputs;
 
+import com.pulumi.alicloud.fc.inputs.V3TriggerHttpTriggerArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -61,6 +62,21 @@ public final class V3TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.234.0) HTTP trigger information
+     * 
+     */
+    @Import(name="httpTrigger")
+    private @Nullable Output<V3TriggerHttpTriggerArgs> httpTrigger;
+
+    /**
+     * @return (Available since v1.234.0) HTTP trigger information
+     * 
+     */
+    public Optional<Output<V3TriggerHttpTriggerArgs>> httpTrigger() {
+        return Optional.ofNullable(this.httpTrigger);
+    }
+
+    /**
      * The role required by the event source (such as OSS) to call the function.
      * 
      */
@@ -73,6 +89,21 @@ public final class V3TriggerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> invocationRole() {
         return Optional.ofNullable(this.invocationRole);
+    }
+
+    /**
+     * (Available since v1.234.0) The last modified time of the trigger
+     * 
+     */
+    @Import(name="lastModifiedTime")
+    private @Nullable Output<String> lastModifiedTime;
+
+    /**
+     * @return (Available since v1.234.0) The last modified time of the trigger
+     * 
+     */
+    public Optional<Output<String>> lastModifiedTime() {
+        return Optional.ofNullable(this.lastModifiedTime);
     }
 
     /**
@@ -121,6 +152,21 @@ public final class V3TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Available since v1.234.0) Resource identity of the function
+     * 
+     */
+    @Import(name="targetArn")
+    private @Nullable Output<String> targetArn;
+
+    /**
+     * @return (Available since v1.234.0) Resource identity of the function
+     * 
+     */
+    public Optional<Output<String>> targetArn() {
+        return Optional.ofNullable(this.targetArn);
+    }
+
+    /**
      * Trigger configuration. The configuration varies for different types of triggers.
      * 
      */
@@ -133,6 +179,21 @@ public final class V3TriggerState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> triggerConfig() {
         return Optional.ofNullable(this.triggerConfig);
+    }
+
+    /**
+     * (Available since v1.234.0) Trigger ID
+     * 
+     */
+    @Import(name="triggerId")
+    private @Nullable Output<String> triggerId;
+
+    /**
+     * @return (Available since v1.234.0) Trigger ID
+     * 
+     */
+    public Optional<Output<String>> triggerId() {
+        return Optional.ofNullable(this.triggerId);
     }
 
     /**
@@ -171,11 +232,15 @@ public final class V3TriggerState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.description = $.description;
         this.functionName = $.functionName;
+        this.httpTrigger = $.httpTrigger;
         this.invocationRole = $.invocationRole;
+        this.lastModifiedTime = $.lastModifiedTime;
         this.qualifier = $.qualifier;
         this.sourceArn = $.sourceArn;
         this.status = $.status;
+        this.targetArn = $.targetArn;
         this.triggerConfig = $.triggerConfig;
+        this.triggerId = $.triggerId;
         this.triggerName = $.triggerName;
         this.triggerType = $.triggerType;
     }
@@ -262,6 +327,27 @@ public final class V3TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param httpTrigger (Available since v1.234.0) HTTP trigger information
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTrigger(@Nullable Output<V3TriggerHttpTriggerArgs> httpTrigger) {
+            $.httpTrigger = httpTrigger;
+            return this;
+        }
+
+        /**
+         * @param httpTrigger (Available since v1.234.0) HTTP trigger information
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpTrigger(V3TriggerHttpTriggerArgs httpTrigger) {
+            return httpTrigger(Output.of(httpTrigger));
+        }
+
+        /**
          * @param invocationRole The role required by the event source (such as OSS) to call the function.
          * 
          * @return builder
@@ -280,6 +366,27 @@ public final class V3TriggerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder invocationRole(String invocationRole) {
             return invocationRole(Output.of(invocationRole));
+        }
+
+        /**
+         * @param lastModifiedTime (Available since v1.234.0) The last modified time of the trigger
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(@Nullable Output<String> lastModifiedTime) {
+            $.lastModifiedTime = lastModifiedTime;
+            return this;
+        }
+
+        /**
+         * @param lastModifiedTime (Available since v1.234.0) The last modified time of the trigger
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(String lastModifiedTime) {
+            return lastModifiedTime(Output.of(lastModifiedTime));
         }
 
         /**
@@ -346,6 +453,27 @@ public final class V3TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param targetArn (Available since v1.234.0) Resource identity of the function
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetArn(@Nullable Output<String> targetArn) {
+            $.targetArn = targetArn;
+            return this;
+        }
+
+        /**
+         * @param targetArn (Available since v1.234.0) Resource identity of the function
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetArn(String targetArn) {
+            return targetArn(Output.of(targetArn));
+        }
+
+        /**
          * @param triggerConfig Trigger configuration. The configuration varies for different types of triggers.
          * 
          * @return builder
@@ -364,6 +492,27 @@ public final class V3TriggerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder triggerConfig(String triggerConfig) {
             return triggerConfig(Output.of(triggerConfig));
+        }
+
+        /**
+         * @param triggerId (Available since v1.234.0) Trigger ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder triggerId(@Nullable Output<String> triggerId) {
+            $.triggerId = triggerId;
+            return this;
+        }
+
+        /**
+         * @param triggerId (Available since v1.234.0) Trigger ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder triggerId(String triggerId) {
+            return triggerId(Output.of(triggerId));
         }
 
         /**

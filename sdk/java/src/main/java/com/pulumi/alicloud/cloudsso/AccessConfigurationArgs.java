@@ -21,14 +21,14 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
     public static final AccessConfigurationArgs Empty = new AccessConfigurationArgs();
 
     /**
-     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+     * The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      * 
      */
     @Import(name="accessConfigurationName", required=true)
     private Output<String> accessConfigurationName;
 
     /**
-     * @return The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+     * @return The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      * 
      */
     public Output<String> accessConfigurationName() {
@@ -36,14 +36,14 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The Description of the  Access Configuration. The description can be up to `1024` characters long.
+     * The description of the access configuration. The description can be up to `1024` characters in length.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The Description of the  Access Configuration. The description can be up to `1024` characters long.
+     * @return The description of the access configuration. The description can be up to `1024` characters in length.
      * 
      */
     public Optional<Output<String>> description() {
@@ -66,7 +66,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+     * This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
      * 
      * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
@@ -75,7 +75,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
     private @Nullable Output<Boolean> forceRemovePermissionPolicies;
 
     /**
-     * @return This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+     * @return This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
      * 
      * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      * 
@@ -115,14 +115,14 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+     * The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<Integer> sessionDuration;
 
     /**
-     * @return The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+     * @return The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      * 
      */
     public Optional<Output<Integer>> sessionDuration() {
@@ -160,7 +160,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessConfigurationName The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+         * @param accessConfigurationName The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accessConfigurationName The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+         * @param accessConfigurationName The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The Description of the  Access Configuration. The description can be up to `1024` characters long.
+         * @param description The description of the access configuration. The description can be up to `1024` characters in length.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description The Description of the  Access Configuration. The description can be up to `1024` characters long.
+         * @param description The description of the access configuration. The description can be up to `1024` characters in length.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
          * 
          * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
          * 
@@ -236,7 +236,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+         * @param forceRemovePermissionPolicies This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
          * 
          * * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
          * 
@@ -300,7 +300,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sessionDuration The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+         * @param sessionDuration The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class AccessConfigurationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sessionDuration The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+         * @param sessionDuration The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
          * 
          * @return builder
          * 

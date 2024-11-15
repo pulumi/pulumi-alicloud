@@ -13,31 +13,31 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3ProvisionConfigScheduledActionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy expiration time.
+        /// Policy expiration time
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// Policy Name.
+        /// Policy Name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Timing Configuration.
+        /// Timing Configuration
         /// </summary>
         [Input("scheduleExpression")]
         public Input<string>? ScheduleExpression { get; set; }
 
         /// <summary>
-        /// Policy effective time.
+        /// Policy effective time
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// Number of reserved target resources.
+        /// Number of reserved target resources
         /// </summary>
         [Input("target")]
         public Input<int>? Target { get; set; }

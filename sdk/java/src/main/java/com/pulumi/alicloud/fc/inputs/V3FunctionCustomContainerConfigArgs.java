@@ -119,14 +119,14 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
     }
 
     /**
-     * Function custom health check configuration. See `health_check_config` below.
+     * Function custom health check configuration See `health_check_config` below.
      * 
      */
     @Import(name="healthCheckConfig")
     private @Nullable Output<V3FunctionCustomContainerConfigHealthCheckConfigArgs> healthCheckConfig;
 
     /**
-     * @return Function custom health check configuration. See `health_check_config` below.
+     * @return Function custom health check configuration See `health_check_config` below.
      * 
      */
     public Optional<Output<V3FunctionCustomContainerConfigHealthCheckConfigArgs>> healthCheckConfig() {
@@ -360,7 +360,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param healthCheckConfig Function custom health check configuration. See `health_check_config` below.
+         * @param healthCheckConfig Function custom health check configuration See `health_check_config` below.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class V3FunctionCustomContainerConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param healthCheckConfig Function custom health check configuration. See `health_check_config` below.
+         * @param healthCheckConfig Function custom health check configuration See `health_check_config` below.
          * 
          * @return builder
          * 

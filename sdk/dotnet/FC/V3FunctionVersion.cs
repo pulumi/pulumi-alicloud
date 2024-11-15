@@ -91,6 +91,12 @@ namespace Pulumi.AliCloud.FC
         [Output("functionName")]
         public Output<string> FunctionName { get; private set; } = null!;
 
+        /// <summary>
+        /// (Available since v1.234.0) Update time
+        /// </summary>
+        [Output("lastModifiedTime")]
+        public Output<string> LastModifiedTime { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a V3FunctionVersion resource with the given unique name, arguments, and options.
@@ -174,6 +180,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) Update time
+        /// </summary>
+        [Input("lastModifiedTime")]
+        public Input<string>? LastModifiedTime { get; set; }
 
         public V3FunctionVersionState()
         {

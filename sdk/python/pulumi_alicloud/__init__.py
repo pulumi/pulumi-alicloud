@@ -145,6 +145,8 @@ if typing.TYPE_CHECKING:
     emrv2 = __emrv2
     import pulumi_alicloud.ens as __ens
     ens = __ens
+    import pulumi_alicloud.esa as __esa
+    esa = __esa
     import pulumi_alicloud.ess as __ess
     ess = __ess
     import pulumi_alicloud.eventbridge as __eventbridge
@@ -163,6 +165,8 @@ if typing.TYPE_CHECKING:
     gpdb = __gpdb
     import pulumi_alicloud.graphdatabase as __graphdatabase
     graphdatabase = __graphdatabase
+    import pulumi_alicloud.gwlb as __gwlb
+    gwlb = __gwlb
     import pulumi_alicloud.hbase as __hbase
     hbase = __hbase
     import pulumi_alicloud.hbr as __hbr
@@ -349,6 +353,7 @@ else:
     emr = _utilities.lazy_import('pulumi_alicloud.emr')
     emrv2 = _utilities.lazy_import('pulumi_alicloud.emrv2')
     ens = _utilities.lazy_import('pulumi_alicloud.ens')
+    esa = _utilities.lazy_import('pulumi_alicloud.esa')
     ess = _utilities.lazy_import('pulumi_alicloud.ess')
     eventbridge = _utilities.lazy_import('pulumi_alicloud.eventbridge')
     expressconnect = _utilities.lazy_import('pulumi_alicloud.expressconnect')
@@ -358,6 +363,7 @@ else:
     governance = _utilities.lazy_import('pulumi_alicloud.governance')
     gpdb = _utilities.lazy_import('pulumi_alicloud.gpdb')
     graphdatabase = _utilities.lazy_import('pulumi_alicloud.graphdatabase')
+    gwlb = _utilities.lazy_import('pulumi_alicloud.gwlb')
     hbase = _utilities.lazy_import('pulumi_alicloud.hbase')
     hbr = _utilities.lazy_import('pulumi_alicloud.hbr')
     hologram = _utilities.lazy_import('pulumi_alicloud.hologram')
@@ -3770,6 +3776,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "esa/ratePlanInstance",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/ratePlanInstance:RatePlanInstance": "RatePlanInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "esa/site",
+  "fqn": "pulumi_alicloud.esa",
+  "classes": {
+   "alicloud:esa/site:Site": "Site"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ess/alarm",
   "fqn": "pulumi_alicloud.ess",
   "classes": {
@@ -4566,6 +4588,30 @@ _utilities.register(
   "fqn": "pulumi_alicloud.graphdatabase",
   "classes": {
    "alicloud:graphdatabase/dbInstance:DbInstance": "DbInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "gwlb/listener",
+  "fqn": "pulumi_alicloud.gwlb",
+  "classes": {
+   "alicloud:gwlb/listener:Listener": "Listener"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "gwlb/loadBalancer",
+  "fqn": "pulumi_alicloud.gwlb",
+  "classes": {
+   "alicloud:gwlb/loadBalancer:LoadBalancer": "LoadBalancer"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "gwlb/serverGroup",
+  "fqn": "pulumi_alicloud.gwlb",
+  "classes": {
+   "alicloud:gwlb/serverGroup:ServerGroup": "ServerGroup"
   }
  },
  {
@@ -5470,6 +5516,22 @@ _utilities.register(
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucketAcl:BucketAcl": "BucketAcl"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketCname",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketCname:BucketCname": "BucketCname"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketCnameToken",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketCnameToken:BucketCnameToken": "BucketCnameToken"
   }
  },
  {
@@ -7230,6 +7292,38 @@ _utilities.register(
   "fqn": "pulumi_alicloud.vpc",
   "classes": {
    "alicloud:vpc/haVipv2:HaVipv2": "HaVipv2"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipamIpam",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipamIpam:IpamIpam": "IpamIpam"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipamIpamPool",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipamIpamPool:IpamIpamPool": "IpamIpamPool"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipamIpamPoolCidr",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipamIpamPoolCidr:IpamIpamPoolCidr": "IpamIpamPoolCidr"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "vpc/ipamIpamScope",
+  "fqn": "pulumi_alicloud.vpc",
+  "classes": {
+   "alicloud:vpc/ipamIpamScope:IpamIpamScope": "IpamIpamScope"
   }
  },
  {

@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3FunctionInstanceLifecycleConfig {
     /**
-     * @return Initializer handler method configuration. See `initializer` below.
+     * @return Initializer handler method configuration See `initializer` below.
      * 
      */
     private @Nullable V3FunctionInstanceLifecycleConfigInitializer initializer;
     /**
-     * @return PreStop handler method configuration. See `pre_stop` below.
+     * @return PreStop handler method configuration See `pre_stop` below.
      * 
      */
     private @Nullable V3FunctionInstanceLifecycleConfigPreStop preStop;
 
     private V3FunctionInstanceLifecycleConfig() {}
     /**
-     * @return Initializer handler method configuration. See `initializer` below.
+     * @return Initializer handler method configuration See `initializer` below.
      * 
      */
     public Optional<V3FunctionInstanceLifecycleConfigInitializer> initializer() {
         return Optional.ofNullable(this.initializer);
     }
     /**
-     * @return PreStop handler method configuration. See `pre_stop` below.
+     * @return PreStop handler method configuration See `pre_stop` below.
      * 
      */
     public Optional<V3FunctionInstanceLifecycleConfigPreStop> preStop() {

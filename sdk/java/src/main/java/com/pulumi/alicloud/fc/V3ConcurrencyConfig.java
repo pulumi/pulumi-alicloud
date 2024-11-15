@@ -95,6 +95,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:fc/v3ConcurrencyConfig:V3ConcurrencyConfig")
 public class V3ConcurrencyConfig extends com.pulumi.resources.CustomResource {
     /**
+     * (Available since v1.234.0) Resource identity of the function
+     * 
+     */
+    @Export(name="functionArn", refs={String.class}, tree="[0]")
+    private Output<String> functionArn;
+
+    /**
+     * @return (Available since v1.234.0) Resource identity of the function
+     * 
+     */
+    public Output<String> functionArn() {
+        return this.functionArn;
+    }
+    /**
      * Function Name
      * 
      */

@@ -61,6 +61,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly diskType!: pulumi.Output<number>;
     /**
+     * (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+     */
+    public /*out*/ readonly domainEndpoint!: pulumi.Output<string>;
+    /**
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
     public readonly eipMax!: pulumi.Output<number>;
@@ -119,6 +123,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
+     * (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+     */
+    public /*out*/ readonly saslDomainEndpoint!: pulumi.Output<string>;
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     public readonly securityGroup!: pulumi.Output<string>;
@@ -144,6 +152,14 @@ export class Instance extends pulumi.CustomResource {
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
     public readonly specType!: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+     */
+    public /*out*/ readonly sslDomainEndpoint!: pulumi.Output<string>;
+    /**
+     * (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+     */
+    public /*out*/ readonly sslEndpoint!: pulumi.Output<string>;
     /**
      * The status of the instance.
      */
@@ -203,6 +219,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["deployType"] = state ? state.deployType : undefined;
             resourceInputs["diskSize"] = state ? state.diskSize : undefined;
             resourceInputs["diskType"] = state ? state.diskType : undefined;
+            resourceInputs["domainEndpoint"] = state ? state.domainEndpoint : undefined;
             resourceInputs["eipMax"] = state ? state.eipMax : undefined;
             resourceInputs["endPoint"] = state ? state.endPoint : undefined;
             resourceInputs["groupLeft"] = state ? state.groupLeft : undefined;
@@ -217,10 +234,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["partitionNum"] = state ? state.partitionNum : undefined;
             resourceInputs["partitionUsed"] = state ? state.partitionUsed : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["saslDomainEndpoint"] = state ? state.saslDomainEndpoint : undefined;
             resourceInputs["securityGroup"] = state ? state.securityGroup : undefined;
             resourceInputs["selectedZones"] = state ? state.selectedZones : undefined;
             resourceInputs["serviceVersion"] = state ? state.serviceVersion : undefined;
             resourceInputs["specType"] = state ? state.specType : undefined;
+            resourceInputs["sslDomainEndpoint"] = state ? state.sslDomainEndpoint : undefined;
+            resourceInputs["sslEndpoint"] = state ? state.sslEndpoint : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["topicLeft"] = state ? state.topicLeft : undefined;
@@ -265,12 +285,16 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["domainEndpoint"] = undefined /*out*/;
             resourceInputs["endPoint"] = undefined /*out*/;
             resourceInputs["groupLeft"] = undefined /*out*/;
             resourceInputs["groupUsed"] = undefined /*out*/;
             resourceInputs["isPartitionBuy"] = undefined /*out*/;
             resourceInputs["partitionLeft"] = undefined /*out*/;
             resourceInputs["partitionUsed"] = undefined /*out*/;
+            resourceInputs["saslDomainEndpoint"] = undefined /*out*/;
+            resourceInputs["sslDomainEndpoint"] = undefined /*out*/;
+            resourceInputs["sslEndpoint"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["topicLeft"] = undefined /*out*/;
             resourceInputs["topicNumOfBuy"] = undefined /*out*/;
@@ -304,6 +328,10 @@ export interface InstanceState {
      * The disk type of the instance. 0: efficient cloud disk , 1: SSD.
      */
     diskType?: pulumi.Input<number>;
+    /**
+     * (Available since v1.234.0) The default endpoint of the instance in domain name mode.
+     */
+    domainEndpoint?: pulumi.Input<string>;
     /**
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
@@ -363,6 +391,10 @@ export interface InstanceState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
+     */
+    saslDomainEndpoint?: pulumi.Input<string>;
+    /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
     securityGroup?: pulumi.Input<string>;
@@ -388,6 +420,14 @@ export interface InstanceState {
      * The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
      */
     specType?: pulumi.Input<string>;
+    /**
+     * (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
+     */
+    sslDomainEndpoint?: pulumi.Input<string>;
+    /**
+     * (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
+     */
+    sslEndpoint?: pulumi.Input<string>;
     /**
      * The status of the instance.
      */

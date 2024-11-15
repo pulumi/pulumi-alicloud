@@ -396,6 +396,7 @@ class V3FunctionArgs:
 class _V3FunctionState:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input['V3FunctionCodeArgs']] = None,
+                 code_size: Optional[pulumi.Input[int]] = None,
                  cpu: Optional[pulumi.Input[float]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  custom_container_config: Optional[pulumi.Input['V3FunctionCustomContainerConfigArgs']] = None,
@@ -404,12 +405,18 @@ class _V3FunctionState:
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 function_arn: Optional[pulumi.Input[str]] = None,
+                 function_id: Optional[pulumi.Input[str]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
                  gpu_config: Optional[pulumi.Input['V3FunctionGpuConfigArgs']] = None,
                  handler: Optional[pulumi.Input[str]] = None,
                  instance_concurrency: Optional[pulumi.Input[int]] = None,
                  instance_lifecycle_config: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigArgs']] = None,
                  internet_access: Optional[pulumi.Input[bool]] = None,
+                 last_modified_time: Optional[pulumi.Input[str]] = None,
+                 last_update_status: Optional[pulumi.Input[str]] = None,
+                 last_update_status_reason: Optional[pulumi.Input[str]] = None,
+                 last_update_status_reason_code: Optional[pulumi.Input[str]] = None,
                  layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  log_config: Optional[pulumi.Input['V3FunctionLogConfigArgs']] = None,
                  memory_size: Optional[pulumi.Input[int]] = None,
@@ -417,11 +424,16 @@ class _V3FunctionState:
                  oss_mount_config: Optional[pulumi.Input['V3FunctionOssMountConfigArgs']] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  runtime: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 state_reason: Optional[pulumi.Input[str]] = None,
+                 state_reason_code: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
+                 tracing_config: Optional[pulumi.Input['V3FunctionTracingConfigArgs']] = None,
                  vpc_config: Optional[pulumi.Input['V3FunctionVpcConfigArgs']] = None):
         """
         Input properties used for looking up and filtering V3Function resources.
         :param pulumi.Input['V3FunctionCodeArgs'] code: Function code ZIP package. code and customContainerConfig. See `code` below.
+        :param pulumi.Input[int] code_size: The code package size of the function returned by the system, in byte Example : 1024
         :param pulumi.Input[float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[str] create_time: The creation time of the function.
         :param pulumi.Input['V3FunctionCustomContainerConfigArgs'] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
@@ -430,12 +442,18 @@ class _V3FunctionState:
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
+        :param pulumi.Input[str] function_arn: ARN of function
+        :param pulumi.Input[str] function_id: The first ID of the resource
         :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input['V3FunctionGpuConfigArgs'] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[int] instance_concurrency: Maximum instance concurrency.
         :param pulumi.Input['V3FunctionInstanceLifecycleConfigArgs'] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
         :param pulumi.Input[bool] internet_access: Allow function to access public network
+        :param pulumi.Input[str] last_modified_time: Last time the function was Updated
+        :param pulumi.Input[str] last_update_status: The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+        :param pulumi.Input[str] last_update_status_reason: The reason that caused the last function to update the Operation State to the current value
+        :param pulumi.Input[str] last_update_status_reason_code: Status code of the reason that caused the last function update operation status to the current value
         :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: The list of layers.
         :param pulumi.Input['V3FunctionLogConfigArgs'] log_config: The logs generated by the function are written to the configured Logstore. See `log_config` below.
         :param pulumi.Input[int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
@@ -443,11 +461,17 @@ class _V3FunctionState:
         :param pulumi.Input['V3FunctionOssMountConfigArgs'] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
         :param pulumi.Input[str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         :param pulumi.Input[str] runtime: Function runtime type
+        :param pulumi.Input[str] state: Function Status
+        :param pulumi.Input[str] state_reason: The reason why the function is in the current state
+        :param pulumi.Input[str] state_reason_code: The status code of the reason the function is in the current state.
         :param pulumi.Input[int] timeout: The maximum running time of the function, in seconds.
+        :param pulumi.Input['V3FunctionTracingConfigArgs'] tracing_config: Tracing configuration
         :param pulumi.Input['V3FunctionVpcConfigArgs'] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
+        if code_size is not None:
+            pulumi.set(__self__, "code_size", code_size)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if create_time is not None:
@@ -464,6 +488,10 @@ class _V3FunctionState:
             pulumi.set(__self__, "disk_size", disk_size)
         if environment_variables is not None:
             pulumi.set(__self__, "environment_variables", environment_variables)
+        if function_arn is not None:
+            pulumi.set(__self__, "function_arn", function_arn)
+        if function_id is not None:
+            pulumi.set(__self__, "function_id", function_id)
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
         if gpu_config is not None:
@@ -476,6 +504,14 @@ class _V3FunctionState:
             pulumi.set(__self__, "instance_lifecycle_config", instance_lifecycle_config)
         if internet_access is not None:
             pulumi.set(__self__, "internet_access", internet_access)
+        if last_modified_time is not None:
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
+        if last_update_status is not None:
+            pulumi.set(__self__, "last_update_status", last_update_status)
+        if last_update_status_reason is not None:
+            pulumi.set(__self__, "last_update_status_reason", last_update_status_reason)
+        if last_update_status_reason_code is not None:
+            pulumi.set(__self__, "last_update_status_reason_code", last_update_status_reason_code)
         if layers is not None:
             pulumi.set(__self__, "layers", layers)
         if log_config is not None:
@@ -490,8 +526,16 @@ class _V3FunctionState:
             pulumi.set(__self__, "role", role)
         if runtime is not None:
             pulumi.set(__self__, "runtime", runtime)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if state_reason is not None:
+            pulumi.set(__self__, "state_reason", state_reason)
+        if state_reason_code is not None:
+            pulumi.set(__self__, "state_reason_code", state_reason_code)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+        if tracing_config is not None:
+            pulumi.set(__self__, "tracing_config", tracing_config)
         if vpc_config is not None:
             pulumi.set(__self__, "vpc_config", vpc_config)
 
@@ -506,6 +550,18 @@ class _V3FunctionState:
     @code.setter
     def code(self, value: Optional[pulumi.Input['V3FunctionCodeArgs']]):
         pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter(name="codeSize")
+    def code_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The code package size of the function returned by the system, in byte Example : 1024
+        """
+        return pulumi.get(self, "code_size")
+
+    @code_size.setter
+    def code_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code_size", value)
 
     @property
     @pulumi.getter
@@ -604,6 +660,30 @@ class _V3FunctionState:
         pulumi.set(self, "environment_variables", value)
 
     @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        ARN of function
+        """
+        return pulumi.get(self, "function_arn")
+
+    @function_arn.setter
+    def function_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_arn", value)
+
+    @property
+    @pulumi.getter(name="functionId")
+    def function_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first ID of the resource
+        """
+        return pulumi.get(self, "function_id")
+
+    @function_id.setter
+    def function_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_id", value)
+
+    @property
     @pulumi.getter(name="functionName")
     def function_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -674,6 +754,54 @@ class _V3FunctionState:
     @internet_access.setter
     def internet_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "internet_access", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Last time the function was Updated
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @last_modified_time.setter
+    def last_modified_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_time", value)
+
+    @property
+    @pulumi.getter(name="lastUpdateStatus")
+    def last_update_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+        """
+        return pulumi.get(self, "last_update_status")
+
+    @last_update_status.setter
+    def last_update_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_update_status", value)
+
+    @property
+    @pulumi.getter(name="lastUpdateStatusReason")
+    def last_update_status_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason that caused the last function to update the Operation State to the current value
+        """
+        return pulumi.get(self, "last_update_status_reason")
+
+    @last_update_status_reason.setter
+    def last_update_status_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_update_status_reason", value)
+
+    @property
+    @pulumi.getter(name="lastUpdateStatusReasonCode")
+    def last_update_status_reason_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Status code of the reason that caused the last function update operation status to the current value
+        """
+        return pulumi.get(self, "last_update_status_reason_code")
+
+    @last_update_status_reason_code.setter
+    def last_update_status_reason_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_update_status_reason_code", value)
 
     @property
     @pulumi.getter
@@ -761,6 +889,42 @@ class _V3FunctionState:
 
     @property
     @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Function Status
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reason why the function is in the current state
+        """
+        return pulumi.get(self, "state_reason")
+
+    @state_reason.setter
+    def state_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state_reason", value)
+
+    @property
+    @pulumi.getter(name="stateReasonCode")
+    def state_reason_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status code of the reason the function is in the current state.
+        """
+        return pulumi.get(self, "state_reason_code")
+
+    @state_reason_code.setter
+    def state_reason_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state_reason_code", value)
+
+    @property
+    @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The maximum running time of the function, in seconds.
@@ -770,6 +934,18 @@ class _V3FunctionState:
     @timeout.setter
     def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter(name="tracingConfig")
+    def tracing_config(self) -> Optional[pulumi.Input['V3FunctionTracingConfigArgs']]:
+        """
+        Tracing configuration
+        """
+        return pulumi.get(self, "tracing_config")
+
+    @tracing_config.setter
+    def tracing_config(self, value: Optional[pulumi.Input['V3FunctionTracingConfigArgs']]):
+        pulumi.set(self, "tracing_config", value)
 
     @property
     @pulumi.getter(name="vpcConfig")
@@ -1103,7 +1279,18 @@ class V3Function(pulumi.CustomResource):
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["vpc_config"] = vpc_config
+            __props__.__dict__["code_size"] = None
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["function_arn"] = None
+            __props__.__dict__["function_id"] = None
+            __props__.__dict__["last_modified_time"] = None
+            __props__.__dict__["last_update_status"] = None
+            __props__.__dict__["last_update_status_reason"] = None
+            __props__.__dict__["last_update_status_reason_code"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["state_reason"] = None
+            __props__.__dict__["state_reason_code"] = None
+            __props__.__dict__["tracing_config"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["layers"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(V3Function, __self__).__init__(
@@ -1117,6 +1304,7 @@ class V3Function(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             code: Optional[pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']]] = None,
+            code_size: Optional[pulumi.Input[int]] = None,
             cpu: Optional[pulumi.Input[float]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             custom_container_config: Optional[pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']]] = None,
@@ -1125,12 +1313,18 @@ class V3Function(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disk_size: Optional[pulumi.Input[int]] = None,
             environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            function_arn: Optional[pulumi.Input[str]] = None,
+            function_id: Optional[pulumi.Input[str]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
             gpu_config: Optional[pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']]] = None,
             handler: Optional[pulumi.Input[str]] = None,
             instance_concurrency: Optional[pulumi.Input[int]] = None,
             instance_lifecycle_config: Optional[pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']]] = None,
             internet_access: Optional[pulumi.Input[bool]] = None,
+            last_modified_time: Optional[pulumi.Input[str]] = None,
+            last_update_status: Optional[pulumi.Input[str]] = None,
+            last_update_status_reason: Optional[pulumi.Input[str]] = None,
+            last_update_status_reason_code: Optional[pulumi.Input[str]] = None,
             layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             log_config: Optional[pulumi.Input[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']]] = None,
             memory_size: Optional[pulumi.Input[int]] = None,
@@ -1138,7 +1332,11 @@ class V3Function(pulumi.CustomResource):
             oss_mount_config: Optional[pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']]] = None,
             role: Optional[pulumi.Input[str]] = None,
             runtime: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            state_reason: Optional[pulumi.Input[str]] = None,
+            state_reason_code: Optional[pulumi.Input[str]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
+            tracing_config: Optional[pulumi.Input[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict']]] = None,
             vpc_config: Optional[pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']]] = None) -> 'V3Function':
         """
         Get an existing V3Function resource's state with the given name, id, and optional extra
@@ -1148,6 +1346,7 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['V3FunctionCodeArgs', 'V3FunctionCodeArgsDict']] code: Function code ZIP package. code and customContainerConfig. See `code` below.
+        :param pulumi.Input[int] code_size: The code package size of the function returned by the system, in byte Example : 1024
         :param pulumi.Input[float] cpu: The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         :param pulumi.Input[str] create_time: The creation time of the function.
         :param pulumi.Input[Union['V3FunctionCustomContainerConfigArgs', 'V3FunctionCustomContainerConfigArgsDict']] custom_container_config: The configuration of the custom container runtime. After the configuration is successful, the function can use the custom container image to execute the function. code and customContainerConfig. See `custom_container_config` below.
@@ -1156,12 +1355,18 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the function. The function compute system does not use this attribute value, but we recommend that you set a concise and clear description for the function.
         :param pulumi.Input[int] disk_size: The disk specification of the function, in MB. The optional value is 512 MB or 10240MB.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: The environment variable set for the function, you can get the value of the environment variable in the function.
+        :param pulumi.Input[str] function_arn: ARN of function
+        :param pulumi.Input[str] function_id: The first ID of the resource
         :param pulumi.Input[str] function_name: The function name. Consists of uppercase and lowercase letters, digits (0 to 9), underscores (_), and dashes (-). It must begin with an English letter (a ~ z), (A ~ Z), or an underscore (_). Case sensitive. The length is 1~128 characters.
         :param pulumi.Input[Union['V3FunctionGpuConfigArgs', 'V3FunctionGpuConfigArgsDict']] gpu_config: Function GPU configuration. See `gpu_config` below.
         :param pulumi.Input[str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[int] instance_concurrency: Maximum instance concurrency.
         :param pulumi.Input[Union['V3FunctionInstanceLifecycleConfigArgs', 'V3FunctionInstanceLifecycleConfigArgsDict']] instance_lifecycle_config: Instance lifecycle callback method configuration. See `instance_lifecycle_config` below.
         :param pulumi.Input[bool] internet_access: Allow function to access public network
+        :param pulumi.Input[str] last_modified_time: Last time the function was Updated
+        :param pulumi.Input[str] last_update_status: The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+        :param pulumi.Input[str] last_update_status_reason: The reason that caused the last function to update the Operation State to the current value
+        :param pulumi.Input[str] last_update_status_reason_code: Status code of the reason that caused the last function update operation status to the current value
         :param pulumi.Input[Sequence[pulumi.Input[str]]] layers: The list of layers.
         :param pulumi.Input[Union['V3FunctionLogConfigArgs', 'V3FunctionLogConfigArgsDict']] log_config: The logs generated by the function are written to the configured Logstore. See `log_config` below.
         :param pulumi.Input[int] memory_size: The memory specification of the function. The unit is MB. The memory size is a multiple of 64MB. The minimum value is 128MB and the maximum value is 32GB. At the same time, the ratio of cpu to memorySize (calculated by GB) should be between 1:1 and 1:4.
@@ -1169,7 +1374,11 @@ class V3Function(pulumi.CustomResource):
         :param pulumi.Input[Union['V3FunctionOssMountConfigArgs', 'V3FunctionOssMountConfigArgsDict']] oss_mount_config: OSS mount configuration See `oss_mount_config` below.
         :param pulumi.Input[str] role: The user is authorized to the RAM role of function compute. After the configuration, function compute will assume this role to generate temporary access credentials. In the function, you can use the temporary access credentials of the role to access the specified Alibaba cloud service, such as OSS and OTS
         :param pulumi.Input[str] runtime: Function runtime type
+        :param pulumi.Input[str] state: Function Status
+        :param pulumi.Input[str] state_reason: The reason why the function is in the current state
+        :param pulumi.Input[str] state_reason_code: The status code of the reason the function is in the current state.
         :param pulumi.Input[int] timeout: The maximum running time of the function, in seconds.
+        :param pulumi.Input[Union['V3FunctionTracingConfigArgs', 'V3FunctionTracingConfigArgsDict']] tracing_config: Tracing configuration
         :param pulumi.Input[Union['V3FunctionVpcConfigArgs', 'V3FunctionVpcConfigArgsDict']] vpc_config: VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1177,6 +1386,7 @@ class V3Function(pulumi.CustomResource):
         __props__ = _V3FunctionState.__new__(_V3FunctionState)
 
         __props__.__dict__["code"] = code
+        __props__.__dict__["code_size"] = code_size
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_container_config"] = custom_container_config
@@ -1185,12 +1395,18 @@ class V3Function(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_size"] = disk_size
         __props__.__dict__["environment_variables"] = environment_variables
+        __props__.__dict__["function_arn"] = function_arn
+        __props__.__dict__["function_id"] = function_id
         __props__.__dict__["function_name"] = function_name
         __props__.__dict__["gpu_config"] = gpu_config
         __props__.__dict__["handler"] = handler
         __props__.__dict__["instance_concurrency"] = instance_concurrency
         __props__.__dict__["instance_lifecycle_config"] = instance_lifecycle_config
         __props__.__dict__["internet_access"] = internet_access
+        __props__.__dict__["last_modified_time"] = last_modified_time
+        __props__.__dict__["last_update_status"] = last_update_status
+        __props__.__dict__["last_update_status_reason"] = last_update_status_reason
+        __props__.__dict__["last_update_status_reason_code"] = last_update_status_reason_code
         __props__.__dict__["layers"] = layers
         __props__.__dict__["log_config"] = log_config
         __props__.__dict__["memory_size"] = memory_size
@@ -1198,7 +1414,11 @@ class V3Function(pulumi.CustomResource):
         __props__.__dict__["oss_mount_config"] = oss_mount_config
         __props__.__dict__["role"] = role
         __props__.__dict__["runtime"] = runtime
+        __props__.__dict__["state"] = state
+        __props__.__dict__["state_reason"] = state_reason
+        __props__.__dict__["state_reason_code"] = state_reason_code
         __props__.__dict__["timeout"] = timeout
+        __props__.__dict__["tracing_config"] = tracing_config
         __props__.__dict__["vpc_config"] = vpc_config
         return V3Function(resource_name, opts=opts, __props__=__props__)
 
@@ -1209,6 +1429,14 @@ class V3Function(pulumi.CustomResource):
         Function code ZIP package. code and customContainerConfig. See `code` below.
         """
         return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="codeSize")
+    def code_size(self) -> pulumi.Output[int]:
+        """
+        The code package size of the function returned by the system, in byte Example : 1024
+        """
+        return pulumi.get(self, "code_size")
 
     @property
     @pulumi.getter
@@ -1275,6 +1503,22 @@ class V3Function(pulumi.CustomResource):
         return pulumi.get(self, "environment_variables")
 
     @property
+    @pulumi.getter(name="functionArn")
+    def function_arn(self) -> pulumi.Output[str]:
+        """
+        ARN of function
+        """
+        return pulumi.get(self, "function_arn")
+
+    @property
+    @pulumi.getter(name="functionId")
+    def function_id(self) -> pulumi.Output[str]:
+        """
+        The first ID of the resource
+        """
+        return pulumi.get(self, "function_id")
+
+    @property
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Output[str]:
         """
@@ -1321,6 +1565,38 @@ class V3Function(pulumi.CustomResource):
         Allow function to access public network
         """
         return pulumi.get(self, "internet_access")
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> pulumi.Output[str]:
+        """
+        Last time the function was Updated
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @property
+    @pulumi.getter(name="lastUpdateStatus")
+    def last_update_status(self) -> pulumi.Output[str]:
+        """
+        The status of the last function update operation. When the function is created successfully, the value is Successful. Optional values are Successful, Failed, and InProgress.
+        """
+        return pulumi.get(self, "last_update_status")
+
+    @property
+    @pulumi.getter(name="lastUpdateStatusReason")
+    def last_update_status_reason(self) -> pulumi.Output[str]:
+        """
+        The reason that caused the last function to update the Operation State to the current value
+        """
+        return pulumi.get(self, "last_update_status_reason")
+
+    @property
+    @pulumi.getter(name="lastUpdateStatusReasonCode")
+    def last_update_status_reason_code(self) -> pulumi.Output[str]:
+        """
+        Status code of the reason that caused the last function update operation status to the current value
+        """
+        return pulumi.get(self, "last_update_status_reason_code")
 
     @property
     @pulumi.getter
@@ -1380,11 +1656,43 @@ class V3Function(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        Function Status
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> pulumi.Output[str]:
+        """
+        The reason why the function is in the current state
+        """
+        return pulumi.get(self, "state_reason")
+
+    @property
+    @pulumi.getter(name="stateReasonCode")
+    def state_reason_code(self) -> pulumi.Output[str]:
+        """
+        The status code of the reason the function is in the current state.
+        """
+        return pulumi.get(self, "state_reason_code")
+
+    @property
+    @pulumi.getter
     def timeout(self) -> pulumi.Output[int]:
         """
         The maximum running time of the function, in seconds.
         """
         return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="tracingConfig")
+    def tracing_config(self) -> pulumi.Output['outputs.V3FunctionTracingConfig']:
+        """
+        Tracing configuration
+        """
+        return pulumi.get(self, "tracing_config")
 
     @property
     @pulumi.getter(name="vpcConfig")

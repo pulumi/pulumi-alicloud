@@ -14,62 +14,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3CustomDomainRouteConfigRoute {
     /**
-     * @return Function name.
+     * @return Function name
      * 
      */
     private @Nullable String functionName;
     /**
-     * @return List of supported HTTP methods.
+     * @return List of supported HTTP methods
      * 
      */
     private @Nullable List<String> methods;
     /**
-     * @return Route matching rule.
+     * @return Route matching rule
      * 
      */
     private @Nullable String path;
     /**
-     * @return Version or Alias.
+     * @return Version or Alias
      * 
      */
     private @Nullable String qualifier;
     /**
-     * @return Override Configuration. See `rewrite_config` below.
+     * @return Override Configuration See `rewrite_config` below.
      * 
      */
     private @Nullable V3CustomDomainRouteConfigRouteRewriteConfig rewriteConfig;
 
     private V3CustomDomainRouteConfigRoute() {}
     /**
-     * @return Function name.
+     * @return Function name
      * 
      */
     public Optional<String> functionName() {
         return Optional.ofNullable(this.functionName);
     }
     /**
-     * @return List of supported HTTP methods.
+     * @return List of supported HTTP methods
      * 
      */
     public List<String> methods() {
         return this.methods == null ? List.of() : this.methods;
     }
     /**
-     * @return Route matching rule.
+     * @return Route matching rule
      * 
      */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return Version or Alias.
+     * @return Version or Alias
      * 
      */
     public Optional<String> qualifier() {
         return Optional.ofNullable(this.qualifier);
     }
     /**
-     * @return Override Configuration. See `rewrite_config` below.
+     * @return Override Configuration See `rewrite_config` below.
      * 
      */
     public Optional<V3CustomDomainRouteConfigRouteRewriteConfig> rewriteConfig() {

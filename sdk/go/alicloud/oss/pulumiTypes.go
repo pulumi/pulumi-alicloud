@@ -150,6 +150,295 @@ func (o BucketAccessMonitorTypePtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type BucketCnameCertificate struct {
+	// Certificate Identifier
+	CertId *string `pulumi:"certId"`
+	// The certificate public key.
+	Certificate *string `pulumi:"certificate"`
+	// Certificate creation time
+	CreationDate *string `pulumi:"creationDate"`
+	// Certificate Fingerprint
+	Fingerprint *string `pulumi:"fingerprint"`
+	// The certificate private key.
+	PrivateKey *string `pulumi:"privateKey"`
+	// Cname status
+	Status *string `pulumi:"status"`
+	// Certificate Type
+	Type *string `pulumi:"type"`
+	// Certificate validity period end time
+	ValidEndDate *string `pulumi:"validEndDate"`
+	// Certificate validity period start time
+	ValidStartDate *string `pulumi:"validStartDate"`
+}
+
+// BucketCnameCertificateInput is an input type that accepts BucketCnameCertificateArgs and BucketCnameCertificateOutput values.
+// You can construct a concrete instance of `BucketCnameCertificateInput` via:
+//
+//	BucketCnameCertificateArgs{...}
+type BucketCnameCertificateInput interface {
+	pulumi.Input
+
+	ToBucketCnameCertificateOutput() BucketCnameCertificateOutput
+	ToBucketCnameCertificateOutputWithContext(context.Context) BucketCnameCertificateOutput
+}
+
+type BucketCnameCertificateArgs struct {
+	// Certificate Identifier
+	CertId pulumi.StringPtrInput `pulumi:"certId"`
+	// The certificate public key.
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
+	// Certificate creation time
+	CreationDate pulumi.StringPtrInput `pulumi:"creationDate"`
+	// Certificate Fingerprint
+	Fingerprint pulumi.StringPtrInput `pulumi:"fingerprint"`
+	// The certificate private key.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// Cname status
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Certificate Type
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Certificate validity period end time
+	ValidEndDate pulumi.StringPtrInput `pulumi:"validEndDate"`
+	// Certificate validity period start time
+	ValidStartDate pulumi.StringPtrInput `pulumi:"validStartDate"`
+}
+
+func (BucketCnameCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketCnameCertificate)(nil)).Elem()
+}
+
+func (i BucketCnameCertificateArgs) ToBucketCnameCertificateOutput() BucketCnameCertificateOutput {
+	return i.ToBucketCnameCertificateOutputWithContext(context.Background())
+}
+
+func (i BucketCnameCertificateArgs) ToBucketCnameCertificateOutputWithContext(ctx context.Context) BucketCnameCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketCnameCertificateOutput)
+}
+
+func (i BucketCnameCertificateArgs) ToBucketCnameCertificatePtrOutput() BucketCnameCertificatePtrOutput {
+	return i.ToBucketCnameCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i BucketCnameCertificateArgs) ToBucketCnameCertificatePtrOutputWithContext(ctx context.Context) BucketCnameCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketCnameCertificateOutput).ToBucketCnameCertificatePtrOutputWithContext(ctx)
+}
+
+// BucketCnameCertificatePtrInput is an input type that accepts BucketCnameCertificateArgs, BucketCnameCertificatePtr and BucketCnameCertificatePtrOutput values.
+// You can construct a concrete instance of `BucketCnameCertificatePtrInput` via:
+//
+//	        BucketCnameCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type BucketCnameCertificatePtrInput interface {
+	pulumi.Input
+
+	ToBucketCnameCertificatePtrOutput() BucketCnameCertificatePtrOutput
+	ToBucketCnameCertificatePtrOutputWithContext(context.Context) BucketCnameCertificatePtrOutput
+}
+
+type bucketCnameCertificatePtrType BucketCnameCertificateArgs
+
+func BucketCnameCertificatePtr(v *BucketCnameCertificateArgs) BucketCnameCertificatePtrInput {
+	return (*bucketCnameCertificatePtrType)(v)
+}
+
+func (*bucketCnameCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketCnameCertificate)(nil)).Elem()
+}
+
+func (i *bucketCnameCertificatePtrType) ToBucketCnameCertificatePtrOutput() BucketCnameCertificatePtrOutput {
+	return i.ToBucketCnameCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *bucketCnameCertificatePtrType) ToBucketCnameCertificatePtrOutputWithContext(ctx context.Context) BucketCnameCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketCnameCertificatePtrOutput)
+}
+
+type BucketCnameCertificateOutput struct{ *pulumi.OutputState }
+
+func (BucketCnameCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketCnameCertificate)(nil)).Elem()
+}
+
+func (o BucketCnameCertificateOutput) ToBucketCnameCertificateOutput() BucketCnameCertificateOutput {
+	return o
+}
+
+func (o BucketCnameCertificateOutput) ToBucketCnameCertificateOutputWithContext(ctx context.Context) BucketCnameCertificateOutput {
+	return o
+}
+
+func (o BucketCnameCertificateOutput) ToBucketCnameCertificatePtrOutput() BucketCnameCertificatePtrOutput {
+	return o.ToBucketCnameCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o BucketCnameCertificateOutput) ToBucketCnameCertificatePtrOutputWithContext(ctx context.Context) BucketCnameCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketCnameCertificate) *BucketCnameCertificate {
+		return &v
+	}).(BucketCnameCertificatePtrOutput)
+}
+
+// Certificate Identifier
+func (o BucketCnameCertificateOutput) CertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketCnameCertificate) *string { return v.CertId }).(pulumi.StringPtrOutput)
+}
+
+// The certificate public key.
+func (o BucketCnameCertificateOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketCnameCertificate) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+// Certificate creation time
+func (o BucketCnameCertificateOutput) CreationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketCnameCertificate) *string { return v.CreationDate }).(pulumi.StringPtrOutput)
+}
+
+// Certificate Fingerprint
+func (o BucketCnameCertificateOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketCnameCertificate) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
+}
+
+// The certificate private key.
+func (o BucketCnameCertificateOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketCnameCertificate) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Cname status
+func (o BucketCnameCertificateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketCnameCertificate) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Certificate Type
+func (o BucketCnameCertificateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketCnameCertificate) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Certificate validity period end time
+func (o BucketCnameCertificateOutput) ValidEndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketCnameCertificate) *string { return v.ValidEndDate }).(pulumi.StringPtrOutput)
+}
+
+// Certificate validity period start time
+func (o BucketCnameCertificateOutput) ValidStartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketCnameCertificate) *string { return v.ValidStartDate }).(pulumi.StringPtrOutput)
+}
+
+type BucketCnameCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (BucketCnameCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketCnameCertificate)(nil)).Elem()
+}
+
+func (o BucketCnameCertificatePtrOutput) ToBucketCnameCertificatePtrOutput() BucketCnameCertificatePtrOutput {
+	return o
+}
+
+func (o BucketCnameCertificatePtrOutput) ToBucketCnameCertificatePtrOutputWithContext(ctx context.Context) BucketCnameCertificatePtrOutput {
+	return o
+}
+
+func (o BucketCnameCertificatePtrOutput) Elem() BucketCnameCertificateOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) BucketCnameCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret BucketCnameCertificate
+		return ret
+	}).(BucketCnameCertificateOutput)
+}
+
+// Certificate Identifier
+func (o BucketCnameCertificatePtrOutput) CertId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The certificate public key.
+func (o BucketCnameCertificatePtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Certificate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate creation time
+func (o BucketCnameCertificatePtrOutput) CreationDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreationDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate Fingerprint
+func (o BucketCnameCertificatePtrOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fingerprint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The certificate private key.
+func (o BucketCnameCertificatePtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cname status
+func (o BucketCnameCertificatePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate Type
+func (o BucketCnameCertificatePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate validity period end time
+func (o BucketCnameCertificatePtrOutput) ValidEndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidEndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Certificate validity period start time
+func (o BucketCnameCertificatePtrOutput) ValidStartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketCnameCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidStartDate
+	}).(pulumi.StringPtrOutput)
+}
+
 type BucketCorsCorsRule struct {
 	// Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
@@ -5365,6 +5654,8 @@ func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesT
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorTypeInput)(nil)).Elem(), BucketAccessMonitorTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorTypePtrInput)(nil)).Elem(), BucketAccessMonitorTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketCnameCertificateInput)(nil)).Elem(), BucketCnameCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketCnameCertificatePtrInput)(nil)).Elem(), BucketCnameCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsCorsRuleInput)(nil)).Elem(), BucketCorsCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsCorsRuleArrayInput)(nil)).Elem(), BucketCorsCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleInput)(nil)).Elem(), BucketCorsRuleArgs{})
@@ -5437,6 +5728,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
 	pulumi.RegisterOutputType(BucketAccessMonitorTypeOutput{})
 	pulumi.RegisterOutputType(BucketAccessMonitorTypePtrOutput{})
+	pulumi.RegisterOutputType(BucketCnameCertificateOutput{})
+	pulumi.RegisterOutputType(BucketCnameCertificatePtrOutput{})
 	pulumi.RegisterOutputType(BucketCorsCorsRuleOutput{})
 	pulumi.RegisterOutputType(BucketCorsCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketCorsRuleOutput{})

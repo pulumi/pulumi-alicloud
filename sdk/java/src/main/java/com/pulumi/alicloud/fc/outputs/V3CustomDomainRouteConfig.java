@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class V3CustomDomainRouteConfig {
     /**
-     * @return Routing Configuration List. See `routes` below.
+     * @return Routing Configuration List See `routes` below.
      * 
      */
     private @Nullable List<V3CustomDomainRouteConfigRoute> routes;
 
     private V3CustomDomainRouteConfig() {}
     /**
-     * @return Routing Configuration List. See `routes` below.
+     * @return Routing Configuration List See `routes` below.
      * 
      */
     public List<V3CustomDomainRouteConfigRoute> routes() {

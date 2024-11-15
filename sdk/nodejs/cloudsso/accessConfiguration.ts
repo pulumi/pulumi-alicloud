@@ -13,7 +13,39 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.145.0.
  *
- * > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.cloudsso.getDirectories({});
+ * const defaultAccessConfiguration = new alicloud.cloudsso.AccessConfiguration("default", {
+ *     directoryId: _default.then(_default => _default.directories?.[0]?.id),
+ *     accessConfigurationName: name,
+ *     permissionPolicies: [{
+ *         permissionPolicyType: "Inline",
+ *         permissionPolicyName: name,
+ *         permissionPolicyDocument: `    {
+ *         "Statement":[
+ *       {
+ *         "Action":"ecs:Get*",
+ *         "Effect":"Allow",
+ *         "Resource":[
+ *             "*"
+ *         ]
+ *       }
+ *       ],
+ *         "Version": "1"
+ *     }
+ * `,
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -52,15 +84,15 @@ export class AccessConfiguration extends pulumi.CustomResource {
     }
 
     /**
-     * The AccessConfigurationId of the Access Configuration.
+     * The ID of the Access Configuration.
      */
     public /*out*/ readonly accessConfigurationId!: pulumi.Output<string>;
     /**
-     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+     * The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      */
     public readonly accessConfigurationName!: pulumi.Output<string>;
     /**
-     * The Description of the  Access Configuration. The description can be up to `1024` characters long.
+     * The description of the access configuration. The description can be up to `1024` characters in length.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -68,7 +100,7 @@ export class AccessConfiguration extends pulumi.CustomResource {
      */
     public readonly directoryId!: pulumi.Output<string>;
     /**
-     * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+     * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
      *
      * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      */
@@ -82,7 +114,7 @@ export class AccessConfiguration extends pulumi.CustomResource {
      */
     public readonly relayState!: pulumi.Output<string | undefined>;
     /**
-     * The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+     * The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      */
     public readonly sessionDuration!: pulumi.Output<number>;
 
@@ -134,15 +166,15 @@ export class AccessConfiguration extends pulumi.CustomResource {
  */
 export interface AccessConfigurationState {
     /**
-     * The AccessConfigurationId of the Access Configuration.
+     * The ID of the Access Configuration.
      */
     accessConfigurationId?: pulumi.Input<string>;
     /**
-     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+     * The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      */
     accessConfigurationName?: pulumi.Input<string>;
     /**
-     * The Description of the  Access Configuration. The description can be up to `1024` characters long.
+     * The description of the access configuration. The description can be up to `1024` characters in length.
      */
     description?: pulumi.Input<string>;
     /**
@@ -150,7 +182,7 @@ export interface AccessConfigurationState {
      */
     directoryId?: pulumi.Input<string>;
     /**
-     * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+     * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
      *
      * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      */
@@ -164,7 +196,7 @@ export interface AccessConfigurationState {
      */
     relayState?: pulumi.Input<string>;
     /**
-     * The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+     * The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      */
     sessionDuration?: pulumi.Input<number>;
 }
@@ -174,11 +206,11 @@ export interface AccessConfigurationState {
  */
 export interface AccessConfigurationArgs {
     /**
-     * The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+     * The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      */
     accessConfigurationName: pulumi.Input<string>;
     /**
-     * The Description of the  Access Configuration. The description can be up to `1024` characters long.
+     * The description of the access configuration. The description can be up to `1024` characters in length.
      */
     description?: pulumi.Input<string>;
     /**
@@ -186,7 +218,7 @@ export interface AccessConfigurationArgs {
      */
     directoryId: pulumi.Input<string>;
     /**
-     * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true` and `false`.
+     * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
      *
      * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      */
@@ -200,7 +232,7 @@ export interface AccessConfigurationArgs {
      */
     relayState?: pulumi.Input<string>;
     /**
-     * The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+     * The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      */
     sessionDuration?: pulumi.Input<number>;
 }

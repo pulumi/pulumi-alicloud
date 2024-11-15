@@ -64,6 +64,21 @@ public final class V3AsyncInvokeConfigState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * (Available since v1.234.0) Function resource identification
+     * 
+     */
+    @Import(name="functionArn")
+    private @Nullable Output<String> functionArn;
+
+    /**
+     * @return (Available since v1.234.0) Function resource identification
+     * 
+     */
+    public Optional<Output<String>> functionArn() {
+        return Optional.ofNullable(this.functionArn);
+    }
+
+    /**
      * Function Name
      * 
      */
@@ -76,6 +91,21 @@ public final class V3AsyncInvokeConfigState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> functionName() {
         return Optional.ofNullable(this.functionName);
+    }
+
+    /**
+     * (Available since v1.234.0) Last modification time
+     * 
+     */
+    @Import(name="lastModifiedTime")
+    private @Nullable Output<String> lastModifiedTime;
+
+    /**
+     * @return (Available since v1.234.0) Last modification time
+     * 
+     */
+    public Optional<Output<String>> lastModifiedTime() {
+        return Optional.ofNullable(this.lastModifiedTime);
     }
 
     /**
@@ -129,7 +159,9 @@ public final class V3AsyncInvokeConfigState extends com.pulumi.resources.Resourc
         this.asyncTask = $.asyncTask;
         this.createTime = $.createTime;
         this.destinationConfig = $.destinationConfig;
+        this.functionArn = $.functionArn;
         this.functionName = $.functionName;
+        this.lastModifiedTime = $.lastModifiedTime;
         this.maxAsyncEventAgeInSeconds = $.maxAsyncEventAgeInSeconds;
         this.maxAsyncRetryAttempts = $.maxAsyncRetryAttempts;
         this.qualifier = $.qualifier;
@@ -217,6 +249,27 @@ public final class V3AsyncInvokeConfigState extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param functionArn (Available since v1.234.0) Function resource identification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(@Nullable Output<String> functionArn) {
+            $.functionArn = functionArn;
+            return this;
+        }
+
+        /**
+         * @param functionArn (Available since v1.234.0) Function resource identification
+         * 
+         * @return builder
+         * 
+         */
+        public Builder functionArn(String functionArn) {
+            return functionArn(Output.of(functionArn));
+        }
+
+        /**
          * @param functionName Function Name
          * 
          * @return builder
@@ -235,6 +288,27 @@ public final class V3AsyncInvokeConfigState extends com.pulumi.resources.Resourc
          */
         public Builder functionName(String functionName) {
             return functionName(Output.of(functionName));
+        }
+
+        /**
+         * @param lastModifiedTime (Available since v1.234.0) Last modification time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(@Nullable Output<String> lastModifiedTime) {
+            $.lastModifiedTime = lastModifiedTime;
+            return this;
+        }
+
+        /**
+         * @param lastModifiedTime (Available since v1.234.0) Last modification time
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastModifiedTime(String lastModifiedTime) {
+            return lastModifiedTime(Output.of(lastModifiedTime));
         }
 
         /**

@@ -95,6 +95,8 @@ type V3FunctionVersion struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Function Name
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
+	// (Available since v1.234.0) Update time
+	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 }
 
 // NewV3FunctionVersion registers a new resource with the given unique name, arguments, and options.
@@ -136,6 +138,8 @@ type v3functionVersionState struct {
 	Description *string `pulumi:"description"`
 	// Function Name
 	FunctionName *string `pulumi:"functionName"`
+	// (Available since v1.234.0) Update time
+	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 }
 
 type V3FunctionVersionState struct {
@@ -145,6 +149,8 @@ type V3FunctionVersionState struct {
 	Description pulumi.StringPtrInput
 	// Function Name
 	FunctionName pulumi.StringPtrInput
+	// (Available since v1.234.0) Update time
+	LastModifiedTime pulumi.StringPtrInput
 }
 
 func (V3FunctionVersionState) ElementType() reflect.Type {
@@ -266,6 +272,11 @@ func (o V3FunctionVersionOutput) Description() pulumi.StringPtrOutput {
 // Function Name
 func (o V3FunctionVersionOutput) FunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *V3FunctionVersion) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
+}
+
+// (Available since v1.234.0) Update time
+func (o V3FunctionVersionOutput) LastModifiedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *V3FunctionVersion) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
 type V3FunctionVersionArrayOutput struct{ *pulumi.OutputState }

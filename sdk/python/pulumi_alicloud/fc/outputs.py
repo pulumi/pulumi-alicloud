@@ -67,10 +67,12 @@ __all__ = [
     'V3FunctionNasConfigMountPoint',
     'V3FunctionOssMountConfig',
     'V3FunctionOssMountConfigMountPoint',
+    'V3FunctionTracingConfig',
     'V3FunctionVpcConfig',
     'V3LayerVersionCode',
     'V3ProvisionConfigScheduledAction',
     'V3ProvisionConfigTargetTrackingPolicy',
+    'V3TriggerHttpTrigger',
     'GetCustomDomainsDomainResult',
     'GetCustomDomainsDomainCertConfigResult',
     'GetCustomDomainsDomainRouteConfigResult',
@@ -1180,8 +1182,8 @@ class V3AsyncInvokeConfigDestinationConfig(dict):
                  on_failure: Optional['outputs.V3AsyncInvokeConfigDestinationConfigOnFailure'] = None,
                  on_success: Optional['outputs.V3AsyncInvokeConfigDestinationConfigOnSuccess'] = None):
         """
-        :param 'V3AsyncInvokeConfigDestinationConfigOnFailureArgs' on_failure: Failed callback target structure. See `on_failure` below.
-        :param 'V3AsyncInvokeConfigDestinationConfigOnSuccessArgs' on_success: Successful callback target structure. See `on_success` below.
+        :param 'V3AsyncInvokeConfigDestinationConfigOnFailureArgs' on_failure: Failed callback target structure See `on_failure` below.
+        :param 'V3AsyncInvokeConfigDestinationConfigOnSuccessArgs' on_success: Successful callback target structure See `on_success` below.
         """
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
@@ -1192,7 +1194,7 @@ class V3AsyncInvokeConfigDestinationConfig(dict):
     @pulumi.getter(name="onFailure")
     def on_failure(self) -> Optional['outputs.V3AsyncInvokeConfigDestinationConfigOnFailure']:
         """
-        Failed callback target structure. See `on_failure` below.
+        Failed callback target structure See `on_failure` below.
         """
         return pulumi.get(self, "on_failure")
 
@@ -1200,7 +1202,7 @@ class V3AsyncInvokeConfigDestinationConfig(dict):
     @pulumi.getter(name="onSuccess")
     def on_success(self) -> Optional['outputs.V3AsyncInvokeConfigDestinationConfigOnSuccess']:
         """
-        Successful callback target structure. See `on_success` below.
+        Successful callback target structure See `on_success` below.
         """
         return pulumi.get(self, "on_success")
 
@@ -1210,7 +1212,7 @@ class V3AsyncInvokeConfigDestinationConfigOnFailure(dict):
     def __init__(__self__, *,
                  destination: Optional[str] = None):
         """
-        :param str destination: Asynchronous call target Resource Descriptor.
+        :param str destination: Asynchronous call target Resource Descriptor
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -1219,7 +1221,7 @@ class V3AsyncInvokeConfigDestinationConfigOnFailure(dict):
     @pulumi.getter
     def destination(self) -> Optional[str]:
         """
-        Asynchronous call target Resource Descriptor.
+        Asynchronous call target Resource Descriptor
         """
         return pulumi.get(self, "destination")
 
@@ -1229,7 +1231,7 @@ class V3AsyncInvokeConfigDestinationConfigOnSuccess(dict):
     def __init__(__self__, *,
                  destination: Optional[str] = None):
         """
-        :param str destination: Asynchronous call target Resource Descriptor.
+        :param str destination: Asynchronous call target Resource Descriptor
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -1238,7 +1240,7 @@ class V3AsyncInvokeConfigDestinationConfigOnSuccess(dict):
     @pulumi.getter
     def destination(self) -> Optional[str]:
         """
-        Asynchronous call target Resource Descriptor.
+        Asynchronous call target Resource Descriptor
         """
         return pulumi.get(self, "destination")
 
@@ -1268,7 +1270,7 @@ class V3CustomDomainAuthConfig(dict):
                  auth_info: Optional[str] = None,
                  auth_type: Optional[str] = None):
         """
-        :param str auth_info: Authentication Information.
+        :param str auth_info: Authentication Information
         :param str auth_type: Authentication type. anonymous, function, or jwt.
         """
         if auth_info is not None:
@@ -1280,7 +1282,7 @@ class V3CustomDomainAuthConfig(dict):
     @pulumi.getter(name="authInfo")
     def auth_info(self) -> Optional[str]:
         """
-        Authentication Information.
+        Authentication Information
         """
         return pulumi.get(self, "auth_info")
 
@@ -1319,9 +1321,9 @@ class V3CustomDomainCertConfig(dict):
                  certificate: Optional[str] = None,
                  private_key: Optional[str] = None):
         """
-        :param str cert_name: Certificate Name.
-        :param str certificate: PEM format certificate.
-        :param str private_key: Private Key in PEM format.
+        :param str cert_name: Certificate Name
+        :param str certificate: PEM format certificate
+        :param str private_key: Private Key in PEM format
         """
         if cert_name is not None:
             pulumi.set(__self__, "cert_name", cert_name)
@@ -1334,7 +1336,7 @@ class V3CustomDomainCertConfig(dict):
     @pulumi.getter(name="certName")
     def cert_name(self) -> Optional[str]:
         """
-        Certificate Name.
+        Certificate Name
         """
         return pulumi.get(self, "cert_name")
 
@@ -1342,7 +1344,7 @@ class V3CustomDomainCertConfig(dict):
     @pulumi.getter
     def certificate(self) -> Optional[str]:
         """
-        PEM format certificate.
+        PEM format certificate
         """
         return pulumi.get(self, "certificate")
 
@@ -1350,7 +1352,7 @@ class V3CustomDomainCertConfig(dict):
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[str]:
         """
-        Private Key in PEM format.
+        Private Key in PEM format
         """
         return pulumi.get(self, "private_key")
 
@@ -1360,7 +1362,7 @@ class V3CustomDomainRouteConfig(dict):
     def __init__(__self__, *,
                  routes: Optional[Sequence['outputs.V3CustomDomainRouteConfigRoute']] = None):
         """
-        :param Sequence['V3CustomDomainRouteConfigRouteArgs'] routes: Routing Configuration List. See `routes` below.
+        :param Sequence['V3CustomDomainRouteConfigRouteArgs'] routes: Routing Configuration List See `routes` below.
         """
         if routes is not None:
             pulumi.set(__self__, "routes", routes)
@@ -1369,7 +1371,7 @@ class V3CustomDomainRouteConfig(dict):
     @pulumi.getter
     def routes(self) -> Optional[Sequence['outputs.V3CustomDomainRouteConfigRoute']]:
         """
-        Routing Configuration List. See `routes` below.
+        Routing Configuration List See `routes` below.
         """
         return pulumi.get(self, "routes")
 
@@ -1402,11 +1404,11 @@ class V3CustomDomainRouteConfigRoute(dict):
                  qualifier: Optional[str] = None,
                  rewrite_config: Optional['outputs.V3CustomDomainRouteConfigRouteRewriteConfig'] = None):
         """
-        :param str function_name: Function name.
-        :param Sequence[str] methods: List of supported HTTP methods.
-        :param str path: Route matching rule.
-        :param str qualifier: Version or Alias.
-        :param 'V3CustomDomainRouteConfigRouteRewriteConfigArgs' rewrite_config: Override Configuration. See `rewrite_config` below.
+        :param str function_name: Function name
+        :param Sequence[str] methods: List of supported HTTP methods
+        :param str path: Route matching rule
+        :param str qualifier: Version or Alias
+        :param 'V3CustomDomainRouteConfigRouteRewriteConfigArgs' rewrite_config: Override Configuration See `rewrite_config` below.
         """
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
@@ -1423,7 +1425,7 @@ class V3CustomDomainRouteConfigRoute(dict):
     @pulumi.getter(name="functionName")
     def function_name(self) -> Optional[str]:
         """
-        Function name.
+        Function name
         """
         return pulumi.get(self, "function_name")
 
@@ -1431,7 +1433,7 @@ class V3CustomDomainRouteConfigRoute(dict):
     @pulumi.getter
     def methods(self) -> Optional[Sequence[str]]:
         """
-        List of supported HTTP methods.
+        List of supported HTTP methods
         """
         return pulumi.get(self, "methods")
 
@@ -1439,7 +1441,7 @@ class V3CustomDomainRouteConfigRoute(dict):
     @pulumi.getter
     def path(self) -> Optional[str]:
         """
-        Route matching rule.
+        Route matching rule
         """
         return pulumi.get(self, "path")
 
@@ -1447,7 +1449,7 @@ class V3CustomDomainRouteConfigRoute(dict):
     @pulumi.getter
     def qualifier(self) -> Optional[str]:
         """
-        Version or Alias.
+        Version or Alias
         """
         return pulumi.get(self, "qualifier")
 
@@ -1455,7 +1457,7 @@ class V3CustomDomainRouteConfigRoute(dict):
     @pulumi.getter(name="rewriteConfig")
     def rewrite_config(self) -> Optional['outputs.V3CustomDomainRouteConfigRouteRewriteConfig']:
         """
-        Override Configuration. See `rewrite_config` below.
+        Override Configuration See `rewrite_config` below.
         """
         return pulumi.get(self, "rewrite_config")
 
@@ -1488,9 +1490,9 @@ class V3CustomDomainRouteConfigRouteRewriteConfig(dict):
                  regex_rules: Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigRegexRule']] = None,
                  wildcard_rules: Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule']] = None):
         """
-        :param Sequence['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs'] equal_rules: Exact Match Rule List. See `equal_rules` below.
-        :param Sequence['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs'] regex_rules: Regular match rule list. See `regex_rules` below.
-        :param Sequence['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs'] wildcard_rules: List of wildcard matching rules. See `wildcard_rules` below.
+        :param Sequence['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs'] equal_rules: Exact Match Rule List See `equal_rules` below.
+        :param Sequence['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs'] regex_rules: Regular match rule list See `regex_rules` below.
+        :param Sequence['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs'] wildcard_rules: List of wildcard matching rules See `wildcard_rules` below.
         """
         if equal_rules is not None:
             pulumi.set(__self__, "equal_rules", equal_rules)
@@ -1503,7 +1505,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfig(dict):
     @pulumi.getter(name="equalRules")
     def equal_rules(self) -> Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigEqualRule']]:
         """
-        Exact Match Rule List. See `equal_rules` below.
+        Exact Match Rule List See `equal_rules` below.
         """
         return pulumi.get(self, "equal_rules")
 
@@ -1511,7 +1513,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfig(dict):
     @pulumi.getter(name="regexRules")
     def regex_rules(self) -> Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigRegexRule']]:
         """
-        Regular match rule list. See `regex_rules` below.
+        Regular match rule list See `regex_rules` below.
         """
         return pulumi.get(self, "regex_rules")
 
@@ -1519,7 +1521,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfig(dict):
     @pulumi.getter(name="wildcardRules")
     def wildcard_rules(self) -> Optional[Sequence['outputs.V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule']]:
         """
-        List of wildcard matching rules. See `wildcard_rules` below.
+        List of wildcard matching rules See `wildcard_rules` below.
         """
         return pulumi.get(self, "wildcard_rules")
 
@@ -1530,8 +1532,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRule(dict):
                  match: Optional[str] = None,
                  replacement: Optional[str] = None):
         """
-        :param str match: Matching Rules.
-        :param str replacement: Replace Rules.
+        :param str match: Matching Rules
+        :param str replacement: Replace Rules
         """
         if match is not None:
             pulumi.set(__self__, "match", match)
@@ -1542,7 +1544,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRule(dict):
     @pulumi.getter
     def match(self) -> Optional[str]:
         """
-        Matching Rules.
+        Matching Rules
         """
         return pulumi.get(self, "match")
 
@@ -1550,7 +1552,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRule(dict):
     @pulumi.getter
     def replacement(self) -> Optional[str]:
         """
-        Replace Rules.
+        Replace Rules
         """
         return pulumi.get(self, "replacement")
 
@@ -1561,8 +1563,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRule(dict):
                  match: Optional[str] = None,
                  replacement: Optional[str] = None):
         """
-        :param str match: Matching Rules.
-        :param str replacement: Replace Rules.
+        :param str match: Matching Rules
+        :param str replacement: Replace Rules
         """
         if match is not None:
             pulumi.set(__self__, "match", match)
@@ -1573,7 +1575,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRule(dict):
     @pulumi.getter
     def match(self) -> Optional[str]:
         """
-        Matching Rules.
+        Matching Rules
         """
         return pulumi.get(self, "match")
 
@@ -1581,7 +1583,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRule(dict):
     @pulumi.getter
     def replacement(self) -> Optional[str]:
         """
-        Replace Rules.
+        Replace Rules
         """
         return pulumi.get(self, "replacement")
 
@@ -1592,8 +1594,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule(dict):
                  match: Optional[str] = None,
                  replacement: Optional[str] = None):
         """
-        :param str match: Matching Rules.
-        :param str replacement: Replace Rules.
+        :param str match: Matching Rules
+        :param str replacement: Replace Rules
         """
         if match is not None:
             pulumi.set(__self__, "match", match)
@@ -1604,7 +1606,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule(dict):
     @pulumi.getter
     def match(self) -> Optional[str]:
         """
-        Matching Rules.
+        Matching Rules
         """
         return pulumi.get(self, "match")
 
@@ -1612,7 +1614,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule(dict):
     @pulumi.getter
     def replacement(self) -> Optional[str]:
         """
-        Replace Rules.
+        Replace Rules
         """
         return pulumi.get(self, "replacement")
 
@@ -1645,9 +1647,9 @@ class V3CustomDomainTlsConfig(dict):
                  max_version: Optional[str] = None,
                  min_version: Optional[str] = None):
         """
-        :param Sequence[str] cipher_suites: List of TLS cipher suites.
-        :param str max_version: The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
-        :param str min_version: TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        :param Sequence[str] cipher_suites: List of TLS cipher suites
+        :param str max_version: The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
+        :param str min_version: TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
         if cipher_suites is not None:
             pulumi.set(__self__, "cipher_suites", cipher_suites)
@@ -1660,7 +1662,7 @@ class V3CustomDomainTlsConfig(dict):
     @pulumi.getter(name="cipherSuites")
     def cipher_suites(self) -> Optional[Sequence[str]]:
         """
-        List of TLS cipher suites.
+        List of TLS cipher suites
         """
         return pulumi.get(self, "cipher_suites")
 
@@ -1668,7 +1670,7 @@ class V3CustomDomainTlsConfig(dict):
     @pulumi.getter(name="maxVersion")
     def max_version(self) -> Optional[str]:
         """
-        The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
         return pulumi.get(self, "max_version")
 
@@ -1676,7 +1678,7 @@ class V3CustomDomainTlsConfig(dict):
     @pulumi.getter(name="minVersion")
     def min_version(self) -> Optional[str]:
         """
-        TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
         return pulumi.get(self, "min_version")
 
@@ -1703,7 +1705,7 @@ class V3CustomDomainWafConfig(dict):
     def __init__(__self__, *,
                  enable_waf: Optional[bool] = None):
         """
-        :param bool enable_waf: Enable WAF protection.
+        :param bool enable_waf: Enable WAF protection
         """
         if enable_waf is not None:
             pulumi.set(__self__, "enable_waf", enable_waf)
@@ -1712,7 +1714,7 @@ class V3CustomDomainWafConfig(dict):
     @pulumi.getter(name="enableWaf")
     def enable_waf(self) -> Optional[bool]:
         """
-        Enable WAF protection.
+        Enable WAF protection
         """
         return pulumi.get(self, "enable_waf")
 
@@ -1836,7 +1838,7 @@ class V3FunctionCustomContainerConfig(dict):
         :param str acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
         :param Sequence[str] commands: Container startup parameters.
         :param Sequence[str] entrypoints: Container start command.
-        :param 'V3FunctionCustomContainerConfigHealthCheckConfigArgs' health_check_config: Function custom health check configuration. See `health_check_config` below.
+        :param 'V3FunctionCustomContainerConfigHealthCheckConfigArgs' health_check_config: Function custom health check configuration See `health_check_config` below.
         :param str image: The container Image address.
         :param int port: The listening port of the HTTP Server when the custom container runs.
         :param str resolved_image_uri: The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
@@ -1907,7 +1909,7 @@ class V3FunctionCustomContainerConfig(dict):
     @pulumi.getter(name="healthCheckConfig")
     def health_check_config(self) -> Optional['outputs.V3FunctionCustomContainerConfigHealthCheckConfig']:
         """
-        Function custom health check configuration. See `health_check_config` below.
+        Function custom health check configuration See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
@@ -2360,8 +2362,8 @@ class V3FunctionInstanceLifecycleConfig(dict):
                  initializer: Optional['outputs.V3FunctionInstanceLifecycleConfigInitializer'] = None,
                  pre_stop: Optional['outputs.V3FunctionInstanceLifecycleConfigPreStop'] = None):
         """
-        :param 'V3FunctionInstanceLifecycleConfigInitializerArgs' initializer: Initializer handler method configuration. See `initializer` below.
-        :param 'V3FunctionInstanceLifecycleConfigPreStopArgs' pre_stop: PreStop handler method configuration. See `pre_stop` below.
+        :param 'V3FunctionInstanceLifecycleConfigInitializerArgs' initializer: Initializer handler method configuration See `initializer` below.
+        :param 'V3FunctionInstanceLifecycleConfigPreStopArgs' pre_stop: PreStop handler method configuration See `pre_stop` below.
         """
         if initializer is not None:
             pulumi.set(__self__, "initializer", initializer)
@@ -2372,7 +2374,7 @@ class V3FunctionInstanceLifecycleConfig(dict):
     @pulumi.getter
     def initializer(self) -> Optional['outputs.V3FunctionInstanceLifecycleConfigInitializer']:
         """
-        Initializer handler method configuration. See `initializer` below.
+        Initializer handler method configuration See `initializer` below.
         """
         return pulumi.get(self, "initializer")
 
@@ -2380,7 +2382,7 @@ class V3FunctionInstanceLifecycleConfig(dict):
     @pulumi.getter(name="preStop")
     def pre_stop(self) -> Optional['outputs.V3FunctionInstanceLifecycleConfigPreStop']:
         """
-        PreStop handler method configuration. See `pre_stop` below.
+        PreStop handler method configuration See `pre_stop` below.
         """
         return pulumi.get(self, "pre_stop")
 
@@ -2782,6 +2784,37 @@ class V3FunctionOssMountConfigMountPoint(dict):
 
 
 @pulumi.output_type
+class V3FunctionTracingConfig(dict):
+    def __init__(__self__, *,
+                 params: Optional[Mapping[str, str]] = None,
+                 type: Optional[str] = None):
+        """
+        :param Mapping[str, str] params: Tracing parameters.
+        :param str type: The tracing protocol type. Currently, only Jaeger is supported.
+        """
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def params(self) -> Optional[Mapping[str, str]]:
+        """
+        Tracing parameters.
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The tracing protocol type. Currently, only Jaeger is supported.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class V3FunctionVpcConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2875,9 +2908,9 @@ class V3LayerVersionCode(dict):
                  zip_file: Optional[str] = None):
         """
         :param str checksum: The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
-        :param str oss_bucket_name: Name of the OSS Bucket where the user stores the Layer Code ZIP package.
-        :param str oss_object_name: Name of the OSS Object where the user stores the Layer Code ZIP package.
-        :param str zip_file: Base 64 encoding of Layer Code ZIP package.
+        :param str oss_bucket_name: Name of the OSS Bucket where the user stores the Layer Code ZIP package
+        :param str oss_object_name: Name of the OSS Object where the user stores the Layer Code ZIP package
+        :param str zip_file: Base 64 encoding of Layer Code ZIP package
         """
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
@@ -2900,7 +2933,7 @@ class V3LayerVersionCode(dict):
     @pulumi.getter(name="ossBucketName")
     def oss_bucket_name(self) -> Optional[str]:
         """
-        Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+        Name of the OSS Bucket where the user stores the Layer Code ZIP package
         """
         return pulumi.get(self, "oss_bucket_name")
 
@@ -2908,7 +2941,7 @@ class V3LayerVersionCode(dict):
     @pulumi.getter(name="ossObjectName")
     def oss_object_name(self) -> Optional[str]:
         """
-        Name of the OSS Object where the user stores the Layer Code ZIP package.
+        Name of the OSS Object where the user stores the Layer Code ZIP package
         """
         return pulumi.get(self, "oss_object_name")
 
@@ -2916,7 +2949,7 @@ class V3LayerVersionCode(dict):
     @pulumi.getter(name="zipFile")
     def zip_file(self) -> Optional[str]:
         """
-        Base 64 encoding of Layer Code ZIP package.
+        Base 64 encoding of Layer Code ZIP package
         """
         return pulumi.get(self, "zip_file")
 
@@ -2954,11 +2987,11 @@ class V3ProvisionConfigScheduledAction(dict):
                  target: Optional[int] = None,
                  time_zone: Optional[str] = None):
         """
-        :param str end_time: Policy expiration time.
-        :param str name: Policy Name.
-        :param str schedule_expression: Timing Configuration.
-        :param str start_time: Policy effective time.
-        :param int target: Number of reserved target resources.
+        :param str end_time: Policy expiration time
+        :param str name: Policy Name
+        :param str schedule_expression: Timing Configuration
+        :param str start_time: Policy effective time
+        :param int target: Number of reserved target resources
         :param str time_zone: Time zone.
         """
         if end_time is not None:
@@ -2978,7 +3011,7 @@ class V3ProvisionConfigScheduledAction(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[str]:
         """
-        Policy expiration time.
+        Policy expiration time
         """
         return pulumi.get(self, "end_time")
 
@@ -2986,7 +3019,7 @@ class V3ProvisionConfigScheduledAction(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Policy Name.
+        Policy Name
         """
         return pulumi.get(self, "name")
 
@@ -2994,7 +3027,7 @@ class V3ProvisionConfigScheduledAction(dict):
     @pulumi.getter(name="scheduleExpression")
     def schedule_expression(self) -> Optional[str]:
         """
-        Timing Configuration.
+        Timing Configuration
         """
         return pulumi.get(self, "schedule_expression")
 
@@ -3002,7 +3035,7 @@ class V3ProvisionConfigScheduledAction(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[str]:
         """
-        Policy effective time.
+        Policy effective time
         """
         return pulumi.get(self, "start_time")
 
@@ -3010,7 +3043,7 @@ class V3ProvisionConfigScheduledAction(dict):
     @pulumi.getter
     def target(self) -> Optional[int]:
         """
-        Number of reserved target resources.
+        Number of reserved target resources
         """
         return pulumi.get(self, "target")
 
@@ -3064,13 +3097,13 @@ class V3ProvisionConfigTargetTrackingPolicy(dict):
                  start_time: Optional[str] = None,
                  time_zone: Optional[str] = None):
         """
-        :param str end_time: Policy expiration time.
-        :param int max_capacity: Maximum value of expansion.
-        :param float metric_target: Tracking value of the indicator.
-        :param str metric_type: Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
-        :param int min_capacity: Minimum Shrinkage.
-        :param str name: Policy Name.
-        :param str start_time: Policy Effective Time.
+        :param str end_time: Policy expiration time
+        :param int max_capacity: Maximum value of expansion
+        :param float metric_target: Tracking value of the indicator
+        :param str metric_type: Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
+        :param int min_capacity: Minimum Shrinkage
+        :param str name: Policy Name
+        :param str start_time: Policy Effective Time
         :param str time_zone: Time zone.
         """
         if end_time is not None:
@@ -3094,7 +3127,7 @@ class V3ProvisionConfigTargetTrackingPolicy(dict):
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[str]:
         """
-        Policy expiration time.
+        Policy expiration time
         """
         return pulumi.get(self, "end_time")
 
@@ -3102,7 +3135,7 @@ class V3ProvisionConfigTargetTrackingPolicy(dict):
     @pulumi.getter(name="maxCapacity")
     def max_capacity(self) -> Optional[int]:
         """
-        Maximum value of expansion.
+        Maximum value of expansion
         """
         return pulumi.get(self, "max_capacity")
 
@@ -3110,7 +3143,7 @@ class V3ProvisionConfigTargetTrackingPolicy(dict):
     @pulumi.getter(name="metricTarget")
     def metric_target(self) -> Optional[float]:
         """
-        Tracking value of the indicator.
+        Tracking value of the indicator
         """
         return pulumi.get(self, "metric_target")
 
@@ -3118,7 +3151,7 @@ class V3ProvisionConfigTargetTrackingPolicy(dict):
     @pulumi.getter(name="metricType")
     def metric_type(self) -> Optional[str]:
         """
-        Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+        Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
         """
         return pulumi.get(self, "metric_type")
 
@@ -3126,7 +3159,7 @@ class V3ProvisionConfigTargetTrackingPolicy(dict):
     @pulumi.getter(name="minCapacity")
     def min_capacity(self) -> Optional[int]:
         """
-        Minimum Shrinkage.
+        Minimum Shrinkage
         """
         return pulumi.get(self, "min_capacity")
 
@@ -3134,7 +3167,7 @@ class V3ProvisionConfigTargetTrackingPolicy(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Policy Name.
+        Policy Name
         """
         return pulumi.get(self, "name")
 
@@ -3142,7 +3175,7 @@ class V3ProvisionConfigTargetTrackingPolicy(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[str]:
         """
-        Policy Effective Time.
+        Policy Effective Time
         """
         return pulumi.get(self, "start_time")
 
@@ -3153,6 +3186,56 @@ class V3ProvisionConfigTargetTrackingPolicy(dict):
         Time zone.
         """
         return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
+class V3TriggerHttpTrigger(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "urlInternet":
+            suggest = "url_internet"
+        elif key == "urlIntranet":
+            suggest = "url_intranet"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V3TriggerHttpTrigger. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V3TriggerHttpTrigger.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V3TriggerHttpTrigger.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 url_internet: Optional[str] = None,
+                 url_intranet: Optional[str] = None):
+        """
+        :param str url_internet: The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+        :param str url_intranet: The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+        """
+        if url_internet is not None:
+            pulumi.set(__self__, "url_internet", url_internet)
+        if url_intranet is not None:
+            pulumi.set(__self__, "url_intranet", url_intranet)
+
+    @property
+    @pulumi.getter(name="urlInternet")
+    def url_internet(self) -> Optional[str]:
+        """
+        The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+        """
+        return pulumi.get(self, "url_internet")
+
+    @property
+    @pulumi.getter(name="urlIntranet")
+    def url_intranet(self) -> Optional[str]:
+        """
+        The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+        """
+        return pulumi.get(self, "url_intranet")
 
 
 @pulumi.output_type

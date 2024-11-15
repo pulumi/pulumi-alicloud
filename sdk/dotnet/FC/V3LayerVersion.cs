@@ -71,6 +71,12 @@ namespace Pulumi.AliCloud.FC
         public Output<Outputs.V3LayerVersionCode?> Code { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) The code package size of the layer, in bytes.
+        /// </summary>
+        [Output("codeSize")]
+        public Output<string> CodeSize { get; private set; } = null!;
+
+        /// <summary>
         /// List of runtime environments supported by the layer
         /// </summary>
         [Output("compatibleRuntimes")]
@@ -95,10 +101,22 @@ namespace Pulumi.AliCloud.FC
         public Output<string> LayerName { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+        /// </summary>
+        [Output("layerVersionArn")]
+        public Output<string> LayerVersionArn { get; private set; } = null!;
+
+        /// <summary>
         /// Layer License Agreement
         /// </summary>
         [Output("license")]
         public Output<string?> License { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+        /// </summary>
+        [Output("public")]
+        public Output<string?> Public { get; private set; } = null!;
 
         /// <summary>
         /// The version of the layer
@@ -194,6 +212,12 @@ namespace Pulumi.AliCloud.FC
         [Input("license")]
         public Input<string>? License { get; set; }
 
+        /// <summary>
+        /// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+        /// </summary>
+        [Input("public")]
+        public Input<string>? Public { get; set; }
+
         public V3LayerVersionArgs()
         {
         }
@@ -213,6 +237,12 @@ namespace Pulumi.AliCloud.FC
         /// </summary>
         [Input("code")]
         public Input<Inputs.V3LayerVersionCodeGetArgs>? Code { get; set; }
+
+        /// <summary>
+        /// (Available since v1.234.0) The code package size of the layer, in bytes.
+        /// </summary>
+        [Input("codeSize")]
+        public Input<string>? CodeSize { get; set; }
 
         [Input("compatibleRuntimes")]
         private InputList<string>? _compatibleRuntimes;
@@ -245,10 +275,22 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? LayerName { get; set; }
 
         /// <summary>
+        /// (Available since v1.234.0) Layer version ARN. The format is acs:fc:{region }:{ accountID}:layers/{layerName}/versions/{layerVersion}.
+        /// </summary>
+        [Input("layerVersionArn")]
+        public Input<string>? LayerVersionArn { get; set; }
+
+        /// <summary>
         /// Layer License Agreement
         /// </summary>
         [Input("license")]
         public Input<string>? License { get; set; }
+
+        /// <summary>
+        /// Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
+        /// </summary>
+        [Input("public")]
+        public Input<string>? Public { get; set; }
 
         /// <summary>
         /// The version of the layer

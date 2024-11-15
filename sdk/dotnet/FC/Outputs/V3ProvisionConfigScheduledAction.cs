@@ -14,23 +14,23 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3ProvisionConfigScheduledAction
     {
         /// <summary>
-        /// Policy expiration time.
+        /// Policy expiration time
         /// </summary>
         public readonly string? EndTime;
         /// <summary>
-        /// Policy Name.
+        /// Policy Name
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Timing Configuration.
+        /// Timing Configuration
         /// </summary>
         public readonly string? ScheduleExpression;
         /// <summary>
-        /// Policy effective time.
+        /// Policy effective time
         /// </summary>
         public readonly string? StartTime;
         /// <summary>
-        /// Number of reserved target resources.
+        /// Number of reserved target resources
         /// </summary>
         public readonly int? Target;
         /// <summary>

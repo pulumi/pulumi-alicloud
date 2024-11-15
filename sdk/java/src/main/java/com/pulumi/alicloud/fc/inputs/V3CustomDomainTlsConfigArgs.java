@@ -17,14 +17,14 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
     public static final V3CustomDomainTlsConfigArgs Empty = new V3CustomDomainTlsConfigArgs();
 
     /**
-     * List of TLS cipher suites.
+     * List of TLS cipher suites
      * 
      */
     @Import(name="cipherSuites")
     private @Nullable Output<List<String>> cipherSuites;
 
     /**
-     * @return List of TLS cipher suites.
+     * @return List of TLS cipher suites
      * 
      */
     public Optional<Output<List<String>>> cipherSuites() {
@@ -32,14 +32,14 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+     * The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
      * 
      */
     @Import(name="maxVersion")
     private @Nullable Output<String> maxVersion;
 
     /**
-     * @return The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+     * @return The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
      * 
      */
     public Optional<Output<String>> maxVersion() {
@@ -47,14 +47,14 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+     * TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
      * 
      */
     @Import(name="minVersion")
     private @Nullable Output<String> minVersion;
 
     /**
-     * @return TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+     * @return TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
      * 
      */
     public Optional<Output<String>> minVersion() {
@@ -88,7 +88,7 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cipherSuites List of TLS cipher suites.
+         * @param cipherSuites List of TLS cipher suites
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cipherSuites List of TLS cipher suites.
+         * @param cipherSuites List of TLS cipher suites
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param cipherSuites List of TLS cipher suites.
+         * @param cipherSuites List of TLS cipher suites
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param maxVersion The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         * @param maxVersion The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param maxVersion The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         * @param maxVersion The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param minVersion TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         * @param minVersion TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class V3CustomDomainTlsConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param minVersion TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+         * @param minVersion TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
          * 
          * @return builder
          * 

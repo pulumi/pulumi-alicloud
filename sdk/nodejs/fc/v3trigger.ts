@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -108,9 +110,17 @@ export class V3Trigger extends pulumi.CustomResource {
      */
     public readonly functionName!: pulumi.Output<string>;
     /**
+     * (Available since v1.234.0) HTTP trigger information
+     */
+    public /*out*/ readonly httpTrigger!: pulumi.Output<outputs.fc.V3TriggerHttpTrigger>;
+    /**
      * The role required by the event source (such as OSS) to call the function.
      */
     public readonly invocationRole!: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.234.0) The last modified time of the trigger
+     */
+    public /*out*/ readonly lastModifiedTime!: pulumi.Output<string>;
     /**
      * The version or alias of the function
      */
@@ -124,9 +134,17 @@ export class V3Trigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * (Available since v1.234.0) Resource identity of the function
+     */
+    public /*out*/ readonly targetArn!: pulumi.Output<string>;
+    /**
      * Trigger configuration. The configuration varies for different types of triggers.
      */
     public readonly triggerConfig!: pulumi.Output<string | undefined>;
+    /**
+     * (Available since v1.234.0) Trigger ID
+     */
+    public /*out*/ readonly triggerId!: pulumi.Output<string>;
     /**
      * Trigger Name
      */
@@ -152,11 +170,15 @@ export class V3Trigger extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["functionName"] = state ? state.functionName : undefined;
+            resourceInputs["httpTrigger"] = state ? state.httpTrigger : undefined;
             resourceInputs["invocationRole"] = state ? state.invocationRole : undefined;
+            resourceInputs["lastModifiedTime"] = state ? state.lastModifiedTime : undefined;
             resourceInputs["qualifier"] = state ? state.qualifier : undefined;
             resourceInputs["sourceArn"] = state ? state.sourceArn : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["targetArn"] = state ? state.targetArn : undefined;
             resourceInputs["triggerConfig"] = state ? state.triggerConfig : undefined;
+            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
             resourceInputs["triggerName"] = state ? state.triggerName : undefined;
             resourceInputs["triggerType"] = state ? state.triggerType : undefined;
         } else {
@@ -179,7 +201,11 @@ export class V3Trigger extends pulumi.CustomResource {
             resourceInputs["triggerName"] = args ? args.triggerName : undefined;
             resourceInputs["triggerType"] = args ? args.triggerType : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["httpTrigger"] = undefined /*out*/;
+            resourceInputs["lastModifiedTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["targetArn"] = undefined /*out*/;
+            resourceInputs["triggerId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(V3Trigger.__pulumiType, name, resourceInputs, opts);
@@ -203,9 +229,17 @@ export interface V3TriggerState {
      */
     functionName?: pulumi.Input<string>;
     /**
+     * (Available since v1.234.0) HTTP trigger information
+     */
+    httpTrigger?: pulumi.Input<inputs.fc.V3TriggerHttpTrigger>;
+    /**
      * The role required by the event source (such as OSS) to call the function.
      */
     invocationRole?: pulumi.Input<string>;
+    /**
+     * (Available since v1.234.0) The last modified time of the trigger
+     */
+    lastModifiedTime?: pulumi.Input<string>;
     /**
      * The version or alias of the function
      */
@@ -219,9 +253,17 @@ export interface V3TriggerState {
      */
     status?: pulumi.Input<string>;
     /**
+     * (Available since v1.234.0) Resource identity of the function
+     */
+    targetArn?: pulumi.Input<string>;
+    /**
      * Trigger configuration. The configuration varies for different types of triggers.
      */
     triggerConfig?: pulumi.Input<string>;
+    /**
+     * (Available since v1.234.0) Trigger ID
+     */
+    triggerId?: pulumi.Input<string>;
     /**
      * Trigger Name
      */

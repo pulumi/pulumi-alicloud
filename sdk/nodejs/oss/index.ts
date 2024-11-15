@@ -25,6 +25,16 @@ export type BucketAcl = import("./bucketAcl").BucketAcl;
 export const BucketAcl: typeof import("./bucketAcl").BucketAcl = null as any;
 utilities.lazyLoad(exports, ["BucketAcl"], () => require("./bucketAcl"));
 
+export { BucketCnameArgs, BucketCnameState } from "./bucketCname";
+export type BucketCname = import("./bucketCname").BucketCname;
+export const BucketCname: typeof import("./bucketCname").BucketCname = null as any;
+utilities.lazyLoad(exports, ["BucketCname"], () => require("./bucketCname"));
+
+export { BucketCnameTokenArgs, BucketCnameTokenState } from "./bucketCnameToken";
+export type BucketCnameToken = import("./bucketCnameToken").BucketCnameToken;
+export const BucketCnameToken: typeof import("./bucketCnameToken").BucketCnameToken = null as any;
+utilities.lazyLoad(exports, ["BucketCnameToken"], () => require("./bucketCnameToken"));
+
 export { BucketCorsArgs, BucketCorsState } from "./bucketCors";
 export type BucketCors = import("./bucketCors").BucketCors;
 export const BucketCors: typeof import("./bucketCors").BucketCors = null as any;
@@ -143,6 +153,10 @@ const _module = {
                 return new BucketAccessMonitor(name, <any>undefined, { urn })
             case "alicloud:oss/bucketAcl:BucketAcl":
                 return new BucketAcl(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketCname:BucketCname":
+                return new BucketCname(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketCnameToken:BucketCnameToken":
+                return new BucketCnameToken(name, <any>undefined, { urn })
             case "alicloud:oss/bucketCors:BucketCors":
                 return new BucketCors(name, <any>undefined, { urn })
             case "alicloud:oss/bucketDataRedundancyTransition:BucketDataRedundancyTransition":
@@ -182,6 +196,8 @@ pulumi.runtime.registerResourceModule("alicloud", "oss/accountPublicAccessBlock"
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucket", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAccessMonitor", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAcl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCname", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCnameToken", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCors", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketDataRedundancyTransition", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketHttpsConfig", _module)

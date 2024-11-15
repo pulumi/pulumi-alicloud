@@ -38,10 +38,9 @@ class QuotaApplicationArgs:
         :param pulumi.Input[str] product_code: The product code.
         :param pulumi.Input[str] quota_action_code: The ID of quota action.
         :param pulumi.Input[str] reason: The reason of the quota application.
-        :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
-               - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-               - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+        :param pulumi.Input[str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+               - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+               - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
         :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
@@ -125,10 +124,9 @@ class QuotaApplicationArgs:
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Quota audit mode. Value:
-        - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-        - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-        > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+        This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+        - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+        - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
         """
         return pulumi.get(self, "audit_mode")
 
@@ -238,10 +236,9 @@ class _QuotaApplicationState:
         """
         Input properties used for looking up and filtering QuotaApplication resources.
         :param pulumi.Input[str] approve_value: The approve value of the quota application.
-        :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
-               - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-               - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+        :param pulumi.Input[str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+               - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+               - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
         :param pulumi.Input[str] audit_reason: The audit reason.
         :param pulumi.Input[str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
@@ -321,10 +318,9 @@ class _QuotaApplicationState:
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Quota audit mode. Value:
-        - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-        - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-        > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+        This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+        - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+        - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
         """
         return pulumi.get(self, "audit_mode")
 
@@ -562,10 +558,9 @@ class QuotaApplication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
-               - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-               - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+        :param pulumi.Input[str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+               - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+               - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
         :param pulumi.Input[Sequence[pulumi.Input[Union['QuotaApplicationDimensionArgs', 'QuotaApplicationDimensionArgsDict']]]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
@@ -694,10 +689,9 @@ class QuotaApplication(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] approve_value: The approve value of the quota application.
-        :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
-               - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-               - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+        :param pulumi.Input[str] audit_mode: This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+               - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+               - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
         :param pulumi.Input[str] audit_reason: The audit reason.
         :param pulumi.Input[str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
@@ -760,10 +754,9 @@ class QuotaApplication(pulumi.CustomResource):
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> pulumi.Output[str]:
         """
-        Quota audit mode. Value:
-        - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-        - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-        > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+        This parameter is discontinued and is not recommended. The mode in which you want the application to be reviewed. Valid values:
+        - Sync: The application is reviewed in a synchronous manner. Quota Center automatically reviews the application. The result is returned immediately after you submit the application. However, the chance of an approval for an application that is reviewed in Sync mode is lower than the chance of an approval for an application that is reviewed in Async mode. The validity period of the new quota value is 1 hour.
+        - Async: The application is reviewed in an asynchronous manner. An Alibaba Cloud support engineer reviews the application. The chance of an approval for an application that is reviewed in Async mode is higher than the chance of an approval for an application that is reviewed in Sync mode. The validity period of the new quota value is one month.
         """
         return pulumi.get(self, "audit_mode")
 

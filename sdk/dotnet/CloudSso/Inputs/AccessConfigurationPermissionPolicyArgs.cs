@@ -12,30 +12,20 @@ namespace Pulumi.AliCloud.CloudSso.Inputs
 
     public sealed class AccessConfigurationPermissionPolicyArgs : global::Pulumi.ResourceArgs
     {
-        [Input("permissionPolicyDocument")]
-        private Input<string>? _permissionPolicyDocument;
-
         /// <summary>
-        /// The Content of Policy.
+        /// The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
         /// </summary>
-        public Input<string>? PermissionPolicyDocument
-        {
-            get => _permissionPolicyDocument;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _permissionPolicyDocument = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
+        [Input("permissionPolicyDocument")]
+        public Input<string>? PermissionPolicyDocument { get; set; }
 
         /// <summary>
-        /// The Policy Name of policy. The name of the resource.
+        /// The name of the policy.
         /// </summary>
         [Input("permissionPolicyName", required: true)]
         public Input<string> PermissionPolicyName { get; set; } = null!;
 
         /// <summary>
-        /// The Policy Type of policy. Valid values: `System`, `Inline`.
+        /// The type of the policy. Valid values: `System`, `Inline`.
         /// </summary>
         [Input("permissionPolicyType", required: true)]
         public Input<string> PermissionPolicyType { get; set; } = null!;

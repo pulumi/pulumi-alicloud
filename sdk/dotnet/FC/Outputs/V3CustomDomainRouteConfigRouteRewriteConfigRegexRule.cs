@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3CustomDomainRouteConfigRouteRewriteConfigRegexRule
     {
         /// <summary>
-        /// Matching Rules.
+        /// Matching Rules
         /// </summary>
         public readonly string? Match;
         /// <summary>
-        /// Replace Rules.
+        /// Replace Rules
         /// </summary>
         public readonly string? Replacement;
 

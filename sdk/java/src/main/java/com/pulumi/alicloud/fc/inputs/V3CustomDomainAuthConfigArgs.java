@@ -16,14 +16,14 @@ public final class V3CustomDomainAuthConfigArgs extends com.pulumi.resources.Res
     public static final V3CustomDomainAuthConfigArgs Empty = new V3CustomDomainAuthConfigArgs();
 
     /**
-     * Authentication Information.
+     * Authentication Information
      * 
      */
     @Import(name="authInfo")
     private @Nullable Output<String> authInfo;
 
     /**
-     * @return Authentication Information.
+     * @return Authentication Information
      * 
      */
     public Optional<Output<String>> authInfo() {
@@ -71,7 +71,7 @@ public final class V3CustomDomainAuthConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authInfo Authentication Information.
+         * @param authInfo Authentication Information
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class V3CustomDomainAuthConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authInfo Authentication Information.
+         * @param authInfo Authentication Information
          * 
          * @return builder
          * 

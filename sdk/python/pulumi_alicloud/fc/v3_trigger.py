@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['V3TriggerArgs', 'V3Trigger']
 
@@ -155,11 +157,15 @@ class _V3TriggerState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  function_name: Optional[pulumi.Input[str]] = None,
+                 http_trigger: Optional[pulumi.Input['V3TriggerHttpTriggerArgs']] = None,
                  invocation_role: Optional[pulumi.Input[str]] = None,
+                 last_modified_time: Optional[pulumi.Input[str]] = None,
                  qualifier: Optional[pulumi.Input[str]] = None,
                  source_arn: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 target_arn: Optional[pulumi.Input[str]] = None,
                  trigger_config: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
                  trigger_name: Optional[pulumi.Input[str]] = None,
                  trigger_type: Optional[pulumi.Input[str]] = None):
         """
@@ -167,11 +173,15 @@ class _V3TriggerState:
         :param pulumi.Input[str] create_time: Creation time
         :param pulumi.Input[str] description: Description of the trigger
         :param pulumi.Input[str] function_name: Function Name
+        :param pulumi.Input['V3TriggerHttpTriggerArgs'] http_trigger: (Available since v1.234.0) HTTP trigger information
         :param pulumi.Input[str] invocation_role: The role required by the event source (such as OSS) to call the function.
+        :param pulumi.Input[str] last_modified_time: (Available since v1.234.0) The last modified time of the trigger
         :param pulumi.Input[str] qualifier: The version or alias of the function
         :param pulumi.Input[str] source_arn: Trigger Event source ARN
         :param pulumi.Input[str] status: The state of the trigger
+        :param pulumi.Input[str] target_arn: (Available since v1.234.0) Resource identity of the function
         :param pulumi.Input[str] trigger_config: Trigger configuration. The configuration varies for different types of triggers.
+        :param pulumi.Input[str] trigger_id: (Available since v1.234.0) Trigger ID
         :param pulumi.Input[str] trigger_name: Trigger Name
         :param pulumi.Input[str] trigger_type: The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
         """
@@ -181,16 +191,24 @@ class _V3TriggerState:
             pulumi.set(__self__, "description", description)
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
+        if http_trigger is not None:
+            pulumi.set(__self__, "http_trigger", http_trigger)
         if invocation_role is not None:
             pulumi.set(__self__, "invocation_role", invocation_role)
+        if last_modified_time is not None:
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
         if qualifier is not None:
             pulumi.set(__self__, "qualifier", qualifier)
         if source_arn is not None:
             pulumi.set(__self__, "source_arn", source_arn)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if target_arn is not None:
+            pulumi.set(__self__, "target_arn", target_arn)
         if trigger_config is not None:
             pulumi.set(__self__, "trigger_config", trigger_config)
+        if trigger_id is not None:
+            pulumi.set(__self__, "trigger_id", trigger_id)
         if trigger_name is not None:
             pulumi.set(__self__, "trigger_name", trigger_name)
         if trigger_type is not None:
@@ -233,6 +251,18 @@ class _V3TriggerState:
         pulumi.set(self, "function_name", value)
 
     @property
+    @pulumi.getter(name="httpTrigger")
+    def http_trigger(self) -> Optional[pulumi.Input['V3TriggerHttpTriggerArgs']]:
+        """
+        (Available since v1.234.0) HTTP trigger information
+        """
+        return pulumi.get(self, "http_trigger")
+
+    @http_trigger.setter
+    def http_trigger(self, value: Optional[pulumi.Input['V3TriggerHttpTriggerArgs']]):
+        pulumi.set(self, "http_trigger", value)
+
+    @property
     @pulumi.getter(name="invocationRole")
     def invocation_role(self) -> Optional[pulumi.Input[str]]:
         """
@@ -243,6 +273,18 @@ class _V3TriggerState:
     @invocation_role.setter
     def invocation_role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "invocation_role", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) The last modified time of the trigger
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @last_modified_time.setter
+    def last_modified_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_time", value)
 
     @property
     @pulumi.getter
@@ -281,6 +323,18 @@ class _V3TriggerState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="targetArn")
+    def target_arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) Resource identity of the function
+        """
+        return pulumi.get(self, "target_arn")
+
+    @target_arn.setter
+    def target_arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_arn", value)
+
+    @property
     @pulumi.getter(name="triggerConfig")
     def trigger_config(self) -> Optional[pulumi.Input[str]]:
         """
@@ -291,6 +345,18 @@ class _V3TriggerState:
     @trigger_config.setter
     def trigger_config(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "trigger_config", value)
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.234.0) Trigger ID
+        """
+        return pulumi.get(self, "trigger_id")
+
+    @trigger_id.setter
+    def trigger_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger_id", value)
 
     @property
     @pulumi.getter(name="triggerName")
@@ -531,7 +597,11 @@ class V3Trigger(pulumi.CustomResource):
                 raise TypeError("Missing required property 'trigger_type'")
             __props__.__dict__["trigger_type"] = trigger_type
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["http_trigger"] = None
+            __props__.__dict__["last_modified_time"] = None
             __props__.__dict__["status"] = None
+            __props__.__dict__["target_arn"] = None
+            __props__.__dict__["trigger_id"] = None
         super(V3Trigger, __self__).__init__(
             'alicloud:fc/v3Trigger:V3Trigger',
             resource_name,
@@ -545,11 +615,15 @@ class V3Trigger(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             function_name: Optional[pulumi.Input[str]] = None,
+            http_trigger: Optional[pulumi.Input[Union['V3TriggerHttpTriggerArgs', 'V3TriggerHttpTriggerArgsDict']]] = None,
             invocation_role: Optional[pulumi.Input[str]] = None,
+            last_modified_time: Optional[pulumi.Input[str]] = None,
             qualifier: Optional[pulumi.Input[str]] = None,
             source_arn: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            target_arn: Optional[pulumi.Input[str]] = None,
             trigger_config: Optional[pulumi.Input[str]] = None,
+            trigger_id: Optional[pulumi.Input[str]] = None,
             trigger_name: Optional[pulumi.Input[str]] = None,
             trigger_type: Optional[pulumi.Input[str]] = None) -> 'V3Trigger':
         """
@@ -562,11 +636,15 @@ class V3Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Creation time
         :param pulumi.Input[str] description: Description of the trigger
         :param pulumi.Input[str] function_name: Function Name
+        :param pulumi.Input[Union['V3TriggerHttpTriggerArgs', 'V3TriggerHttpTriggerArgsDict']] http_trigger: (Available since v1.234.0) HTTP trigger information
         :param pulumi.Input[str] invocation_role: The role required by the event source (such as OSS) to call the function.
+        :param pulumi.Input[str] last_modified_time: (Available since v1.234.0) The last modified time of the trigger
         :param pulumi.Input[str] qualifier: The version or alias of the function
         :param pulumi.Input[str] source_arn: Trigger Event source ARN
         :param pulumi.Input[str] status: The state of the trigger
+        :param pulumi.Input[str] target_arn: (Available since v1.234.0) Resource identity of the function
         :param pulumi.Input[str] trigger_config: Trigger configuration. The configuration varies for different types of triggers.
+        :param pulumi.Input[str] trigger_id: (Available since v1.234.0) Trigger ID
         :param pulumi.Input[str] trigger_name: Trigger Name
         :param pulumi.Input[str] trigger_type: The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
         """
@@ -577,11 +655,15 @@ class V3Trigger(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["function_name"] = function_name
+        __props__.__dict__["http_trigger"] = http_trigger
         __props__.__dict__["invocation_role"] = invocation_role
+        __props__.__dict__["last_modified_time"] = last_modified_time
         __props__.__dict__["qualifier"] = qualifier
         __props__.__dict__["source_arn"] = source_arn
         __props__.__dict__["status"] = status
+        __props__.__dict__["target_arn"] = target_arn
         __props__.__dict__["trigger_config"] = trigger_config
+        __props__.__dict__["trigger_id"] = trigger_id
         __props__.__dict__["trigger_name"] = trigger_name
         __props__.__dict__["trigger_type"] = trigger_type
         return V3Trigger(resource_name, opts=opts, __props__=__props__)
@@ -611,12 +693,28 @@ class V3Trigger(pulumi.CustomResource):
         return pulumi.get(self, "function_name")
 
     @property
+    @pulumi.getter(name="httpTrigger")
+    def http_trigger(self) -> pulumi.Output['outputs.V3TriggerHttpTrigger']:
+        """
+        (Available since v1.234.0) HTTP trigger information
+        """
+        return pulumi.get(self, "http_trigger")
+
+    @property
     @pulumi.getter(name="invocationRole")
     def invocation_role(self) -> pulumi.Output[Optional[str]]:
         """
         The role required by the event source (such as OSS) to call the function.
         """
         return pulumi.get(self, "invocation_role")
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) The last modified time of the trigger
+        """
+        return pulumi.get(self, "last_modified_time")
 
     @property
     @pulumi.getter
@@ -643,12 +741,28 @@ class V3Trigger(pulumi.CustomResource):
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="targetArn")
+    def target_arn(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) Resource identity of the function
+        """
+        return pulumi.get(self, "target_arn")
+
+    @property
     @pulumi.getter(name="triggerConfig")
     def trigger_config(self) -> pulumi.Output[Optional[str]]:
         """
         Trigger configuration. The configuration varies for different types of triggers.
         """
         return pulumi.get(self, "trigger_config")
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.234.0) Trigger ID
+        """
+        return pulumi.get(self, "trigger_id")
 
     @property
     @pulumi.getter(name="triggerName")

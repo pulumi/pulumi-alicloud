@@ -17,6 +17,7 @@ from . import outputs
 
 __all__ = [
     'BucketAccessMonitor',
+    'BucketCnameCertificate',
     'BucketCorsCorsRule',
     'BucketCorsRule',
     'BucketLifecycleRule',
@@ -74,6 +75,146 @@ class BucketAccessMonitor(dict):
         The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class BucketCnameCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certId":
+            suggest = "cert_id"
+        elif key == "creationDate":
+            suggest = "creation_date"
+        elif key == "privateKey":
+            suggest = "private_key"
+        elif key == "validEndDate":
+            suggest = "valid_end_date"
+        elif key == "validStartDate":
+            suggest = "valid_start_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketCnameCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketCnameCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketCnameCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cert_id: Optional[str] = None,
+                 certificate: Optional[str] = None,
+                 creation_date: Optional[str] = None,
+                 fingerprint: Optional[str] = None,
+                 private_key: Optional[str] = None,
+                 status: Optional[str] = None,
+                 type: Optional[str] = None,
+                 valid_end_date: Optional[str] = None,
+                 valid_start_date: Optional[str] = None):
+        """
+        :param str cert_id: Certificate Identifier
+        :param str certificate: The certificate public key.
+        :param str creation_date: Certificate creation time
+        :param str fingerprint: Certificate Fingerprint
+        :param str private_key: The certificate private key.
+        :param str status: Cname status
+        :param str type: Certificate Type
+        :param str valid_end_date: Certificate validity period end time
+        :param str valid_start_date: Certificate validity period start time
+        """
+        if cert_id is not None:
+            pulumi.set(__self__, "cert_id", cert_id)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if creation_date is not None:
+            pulumi.set(__self__, "creation_date", creation_date)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if valid_end_date is not None:
+            pulumi.set(__self__, "valid_end_date", valid_end_date)
+        if valid_start_date is not None:
+            pulumi.set(__self__, "valid_start_date", valid_start_date)
+
+    @property
+    @pulumi.getter(name="certId")
+    def cert_id(self) -> Optional[str]:
+        """
+        Certificate Identifier
+        """
+        return pulumi.get(self, "cert_id")
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[str]:
+        """
+        The certificate public key.
+        """
+        return pulumi.get(self, "certificate")
+
+    @property
+    @pulumi.getter(name="creationDate")
+    def creation_date(self) -> Optional[str]:
+        """
+        Certificate creation time
+        """
+        return pulumi.get(self, "creation_date")
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[str]:
+        """
+        Certificate Fingerprint
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[str]:
+        """
+        The certificate private key.
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Cname status
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Certificate Type
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="validEndDate")
+    def valid_end_date(self) -> Optional[str]:
+        """
+        Certificate validity period end time
+        """
+        return pulumi.get(self, "valid_end_date")
+
+    @property
+    @pulumi.getter(name="validStartDate")
+    def valid_start_date(self) -> Optional[str]:
+        """
+        Certificate validity period start time
+        """
+        return pulumi.get(self, "valid_start_date")
 
 
 @pulumi.output_type

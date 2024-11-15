@@ -30,15 +30,15 @@ class AccessConfigurationArgs:
                  session_duration: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AccessConfiguration resource.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] access_configuration_name: The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
-        :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        :param pulumi.Input[str] description: The description of the access configuration. The description can be up to `1024` characters in length.
+        :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
-        :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
         pulumi.set(__self__, "access_configuration_name", access_configuration_name)
         pulumi.set(__self__, "directory_id", directory_id)
@@ -57,7 +57,7 @@ class AccessConfigurationArgs:
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> pulumi.Input[str]:
         """
-        The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 
@@ -81,7 +81,7 @@ class AccessConfigurationArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of the  Access Configuration. The description can be up to `1024` characters long.
+        The description of the access configuration. The description can be up to `1024` characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -93,7 +93,7 @@ class AccessConfigurationArgs:
     @pulumi.getter(name="forceRemovePermissionPolicies")
     def force_remove_permission_policies(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
 
         * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         """
@@ -131,7 +131,7 @@ class AccessConfigurationArgs:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
         return pulumi.get(self, "session_duration")
 
@@ -153,16 +153,16 @@ class _AccessConfigurationState:
                  session_duration: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering AccessConfiguration resources.
-        :param pulumi.Input[str] access_configuration_id: The AccessConfigurationId of the Access Configuration.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
+        :param pulumi.Input[str] access_configuration_id: The ID of the Access Configuration.
+        :param pulumi.Input[str] access_configuration_name: The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] description: The description of the access configuration. The description can be up to `1024` characters in length.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
-        :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
         if access_configuration_id is not None:
             pulumi.set(__self__, "access_configuration_id", access_configuration_id)
@@ -185,7 +185,7 @@ class _AccessConfigurationState:
     @pulumi.getter(name="accessConfigurationId")
     def access_configuration_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The AccessConfigurationId of the Access Configuration.
+        The ID of the Access Configuration.
         """
         return pulumi.get(self, "access_configuration_id")
 
@@ -197,7 +197,7 @@ class _AccessConfigurationState:
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 
@@ -209,7 +209,7 @@ class _AccessConfigurationState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The Description of the  Access Configuration. The description can be up to `1024` characters long.
+        The description of the access configuration. The description can be up to `1024` characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -233,7 +233,7 @@ class _AccessConfigurationState:
     @pulumi.getter(name="forceRemovePermissionPolicies")
     def force_remove_permission_policies(self) -> Optional[pulumi.Input[bool]]:
         """
-        This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
 
         * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         """
@@ -271,7 +271,7 @@ class _AccessConfigurationState:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
         return pulumi.get(self, "session_duration")
 
@@ -300,7 +300,40 @@ class AccessConfiguration(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.145.0.
 
-        > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudsso.get_directories()
+        default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
+            directory_id=default.directories[0].id,
+            access_configuration_name=name,
+            permission_policies=[{
+                "permission_policy_type": "Inline",
+                "permission_policy_name": name,
+                "permission_policy_document": \"\"\"    {
+                "Statement":[
+              {
+                "Action":"ecs:Get*",
+                "Effect":"Allow",
+                "Resource":[
+                    "*"
+                ]
+              }
+              ],
+                "Version": "1"
+            }
+        \"\"\",
+            }])
+        ```
 
         ## Import
 
@@ -312,15 +345,15 @@ class AccessConfiguration(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
+        :param pulumi.Input[str] access_configuration_name: The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] description: The description of the access configuration. The description can be up to `1024` characters in length.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
-        :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
         ...
     @overload
@@ -335,7 +368,40 @@ class AccessConfiguration(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.145.0.
 
-        > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.cloudsso.get_directories()
+        default_access_configuration = alicloud.cloudsso.AccessConfiguration("default",
+            directory_id=default.directories[0].id,
+            access_configuration_name=name,
+            permission_policies=[{
+                "permission_policy_type": "Inline",
+                "permission_policy_name": name,
+                "permission_policy_document": \"\"\"    {
+                "Statement":[
+              {
+                "Action":"ecs:Get*",
+                "Effect":"Allow",
+                "Resource":[
+                    "*"
+                ]
+              }
+              ],
+                "Version": "1"
+            }
+        \"\"\",
+            }])
+        ```
 
         ## Import
 
@@ -413,16 +479,16 @@ class AccessConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_configuration_id: The AccessConfigurationId of the Access Configuration.
-        :param pulumi.Input[str] access_configuration_name: The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
-        :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
+        :param pulumi.Input[str] access_configuration_id: The ID of the Access Configuration.
+        :param pulumi.Input[str] access_configuration_name: The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        :param pulumi.Input[str] description: The description of the access configuration. The description can be up to `1024` characters in length.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
-        :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
-        :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        :param pulumi.Input[int] session_duration: The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -442,7 +508,7 @@ class AccessConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="accessConfigurationId")
     def access_configuration_id(self) -> pulumi.Output[str]:
         """
-        The AccessConfigurationId of the Access Configuration.
+        The ID of the Access Configuration.
         """
         return pulumi.get(self, "access_configuration_id")
 
@@ -450,7 +516,7 @@ class AccessConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> pulumi.Output[str]:
         """
-        The AccessConfigurationName of the Access Configuration. The name of the resource. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
+        The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 
@@ -458,7 +524,7 @@ class AccessConfiguration(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The Description of the  Access Configuration. The description can be up to `1024` characters long.
+        The description of the access configuration. The description can be up to `1024` characters in length.
         """
         return pulumi.get(self, "description")
 
@@ -474,7 +540,7 @@ class AccessConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="forceRemovePermissionPolicies")
     def force_remove_permission_policies(self) -> pulumi.Output[Optional[bool]]:
         """
-        This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+        This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
 
         * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         """
@@ -500,7 +566,7 @@ class AccessConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Output[int]:
         """
-        The SessionDuration of the Access Configuration. Valid Value: `900` to `43200`. Unit: Seconds.
+        The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
         return pulumi.get(self, "session_duration")
 

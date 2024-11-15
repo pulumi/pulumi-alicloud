@@ -16,14 +16,14 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs e
     public static final V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs Empty = new V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs();
 
     /**
-     * Matching Rules.
+     * Matching Rules
      * 
      */
     @Import(name="match")
     private @Nullable Output<String> match;
 
     /**
-     * @return Matching Rules.
+     * @return Matching Rules
      * 
      */
     public Optional<Output<String>> match() {
@@ -31,14 +31,14 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs e
     }
 
     /**
-     * Replace Rules.
+     * Replace Rules
      * 
      */
     @Import(name="replacement")
     private @Nullable Output<String> replacement;
 
     /**
-     * @return Replace Rules.
+     * @return Replace Rules
      * 
      */
     public Optional<Output<String>> replacement() {
@@ -71,7 +71,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs e
         }
 
         /**
-         * @param match Matching Rules.
+         * @param match Matching Rules
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs e
         }
 
         /**
-         * @param match Matching Rules.
+         * @param match Matching Rules
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs e
         }
 
         /**
-         * @param replacement Replace Rules.
+         * @param replacement Replace Rules
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs e
         }
 
         /**
-         * @param replacement Replace Rules.
+         * @param replacement Replace Rules
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
     public static final V3ProvisionConfigScheduledActionArgs Empty = new V3ProvisionConfigScheduledActionArgs();
 
     /**
-     * Policy expiration time.
+     * Policy expiration time
      * 
      */
     @Import(name="endTime")
     private @Nullable Output<String> endTime;
 
     /**
-     * @return Policy expiration time.
+     * @return Policy expiration time
      * 
      */
     public Optional<Output<String>> endTime() {
@@ -32,14 +32,14 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
     }
 
     /**
-     * Policy Name.
+     * Policy Name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Policy Name.
+     * @return Policy Name
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,14 +47,14 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
     }
 
     /**
-     * Timing Configuration.
+     * Timing Configuration
      * 
      */
     @Import(name="scheduleExpression")
     private @Nullable Output<String> scheduleExpression;
 
     /**
-     * @return Timing Configuration.
+     * @return Timing Configuration
      * 
      */
     public Optional<Output<String>> scheduleExpression() {
@@ -62,14 +62,14 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
     }
 
     /**
-     * Policy effective time.
+     * Policy effective time
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return Policy effective time.
+     * @return Policy effective time
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -77,14 +77,14 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
     }
 
     /**
-     * Number of reserved target resources.
+     * Number of reserved target resources
      * 
      */
     @Import(name="target")
     private @Nullable Output<Integer> target;
 
     /**
-     * @return Number of reserved target resources.
+     * @return Number of reserved target resources
      * 
      */
     public Optional<Output<Integer>> target() {
@@ -136,7 +136,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param endTime Policy expiration time.
+         * @param endTime Policy expiration time
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param endTime Policy expiration time.
+         * @param endTime Policy expiration time
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name Policy Name.
+         * @param name Policy Name
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name Policy Name.
+         * @param name Policy Name
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param scheduleExpression Timing Configuration.
+         * @param scheduleExpression Timing Configuration
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param scheduleExpression Timing Configuration.
+         * @param scheduleExpression Timing Configuration
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param startTime Policy effective time.
+         * @param startTime Policy effective time
          * 
          * @return builder
          * 
@@ -210,7 +210,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param startTime Policy effective time.
+         * @param startTime Policy effective time
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param target Number of reserved target resources.
+         * @param target Number of reserved target resources
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class V3ProvisionConfigScheduledActionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param target Number of reserved target resources.
+         * @param target Number of reserved target resources
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.FC.Inputs
     public sealed class V3AsyncInvokeConfigDestinationConfigOnSuccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Asynchronous call target Resource Descriptor.
+        /// Asynchronous call target Resource Descriptor
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }

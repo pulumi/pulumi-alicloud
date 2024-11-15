@@ -16,14 +16,14 @@ public final class V3AsyncInvokeConfigDestinationConfigOnFailureArgs extends com
     public static final V3AsyncInvokeConfigDestinationConfigOnFailureArgs Empty = new V3AsyncInvokeConfigDestinationConfigOnFailureArgs();
 
     /**
-     * Asynchronous call target Resource Descriptor.
+     * Asynchronous call target Resource Descriptor
      * 
      */
     @Import(name="destination")
     private @Nullable Output<String> destination;
 
     /**
-     * @return Asynchronous call target Resource Descriptor.
+     * @return Asynchronous call target Resource Descriptor
      * 
      */
     public Optional<Output<String>> destination() {
@@ -55,7 +55,7 @@ public final class V3AsyncInvokeConfigDestinationConfigOnFailureArgs extends com
         }
 
         /**
-         * @param destination Asynchronous call target Resource Descriptor.
+         * @param destination Asynchronous call target Resource Descriptor
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class V3AsyncInvokeConfigDestinationConfigOnFailureArgs extends com
         }
 
         /**
-         * @param destination Asynchronous call target Resource Descriptor.
+         * @param destination Asynchronous call target Resource Descriptor
          * 
          * @return builder
          * 

@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessConfigurationPermissionPolicy {
     /**
-     * @return The Content of Policy.
+     * @return The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
      * 
      */
     private @Nullable String permissionPolicyDocument;
     /**
-     * @return The Policy Name of policy. The name of the resource.
+     * @return The name of the policy.
      * 
      */
     private String permissionPolicyName;
     /**
-     * @return The Policy Type of policy. Valid values: `System`, `Inline`.
+     * @return The type of the policy. Valid values: `System`, `Inline`.
      * 
      */
     private String permissionPolicyType;
 
     private AccessConfigurationPermissionPolicy() {}
     /**
-     * @return The Content of Policy.
+     * @return The configurations of the inline policy. **NOTE:** If `permission_policy_type` is set to `Inline`, `permission_policy_document` is required.
      * 
      */
     public Optional<String> permissionPolicyDocument() {
         return Optional.ofNullable(this.permissionPolicyDocument);
     }
     /**
-     * @return The Policy Name of policy. The name of the resource.
+     * @return The name of the policy.
      * 
      */
     public String permissionPolicyName() {
         return this.permissionPolicyName;
     }
     /**
-     * @return The Policy Type of policy. Valid values: `System`, `Inline`.
+     * @return The type of the policy. Valid values: `System`, `Inline`.
      * 
      */
     public String permissionPolicyType() {

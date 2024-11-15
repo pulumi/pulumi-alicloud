@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3AsyncInvokeConfigDestinationConfigOnSuccess
     {
         /// <summary>
-        /// Asynchronous call target Resource Descriptor.
+        /// Asynchronous call target Resource Descriptor
         /// </summary>
         public readonly string? Destination;
 

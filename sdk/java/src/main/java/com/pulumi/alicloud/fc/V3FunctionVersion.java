@@ -138,6 +138,20 @@ public class V3FunctionVersion extends com.pulumi.resources.CustomResource {
     public Output<String> functionName() {
         return this.functionName;
     }
+    /**
+     * (Available since v1.234.0) Update time
+     * 
+     */
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
+    private Output<String> lastModifiedTime;
+
+    /**
+     * @return (Available since v1.234.0) Update time
+     * 
+     */
+    public Output<String> lastModifiedTime() {
+        return this.lastModifiedTime;
+    }
 
     /**
      *

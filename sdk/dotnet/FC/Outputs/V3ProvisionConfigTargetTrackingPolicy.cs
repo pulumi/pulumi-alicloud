@@ -14,31 +14,31 @@ namespace Pulumi.AliCloud.FC.Outputs
     public sealed class V3ProvisionConfigTargetTrackingPolicy
     {
         /// <summary>
-        /// Policy expiration time.
+        /// Policy expiration time
         /// </summary>
         public readonly string? EndTime;
         /// <summary>
-        /// Maximum value of expansion.
+        /// Maximum value of expansion
         /// </summary>
         public readonly int? MaxCapacity;
         /// <summary>
-        /// Tracking value of the indicator.
+        /// Tracking value of the indicator
         /// </summary>
         public readonly double? MetricTarget;
         /// <summary>
-        /// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+        /// Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
         /// </summary>
         public readonly string? MetricType;
         /// <summary>
-        /// Minimum Shrinkage.
+        /// Minimum Shrinkage
         /// </summary>
         public readonly int? MinCapacity;
         /// <summary>
-        /// Policy Name.
+        /// Policy Name
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Policy Effective Time.
+        /// Policy Effective Time
         /// </summary>
         public readonly string? StartTime;
         /// <summary>

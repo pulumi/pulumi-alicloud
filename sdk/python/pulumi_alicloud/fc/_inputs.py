@@ -117,6 +117,8 @@ __all__ = [
     'V3FunctionOssMountConfigArgsDict',
     'V3FunctionOssMountConfigMountPointArgs',
     'V3FunctionOssMountConfigMountPointArgsDict',
+    'V3FunctionTracingConfigArgs',
+    'V3FunctionTracingConfigArgsDict',
     'V3FunctionVpcConfigArgs',
     'V3FunctionVpcConfigArgsDict',
     'V3LayerVersionCodeArgs',
@@ -125,6 +127,8 @@ __all__ = [
     'V3ProvisionConfigScheduledActionArgsDict',
     'V3ProvisionConfigTargetTrackingPolicyArgs',
     'V3ProvisionConfigTargetTrackingPolicyArgsDict',
+    'V3TriggerHttpTriggerArgs',
+    'V3TriggerHttpTriggerArgsDict',
 ]
 
 MYPY = False
@@ -1505,11 +1509,11 @@ if not MYPY:
     class V3AsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
         on_failure: NotRequired[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict']]
         """
-        Failed callback target structure. See `on_failure` below.
+        Failed callback target structure See `on_failure` below.
         """
         on_success: NotRequired[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict']]
         """
-        Successful callback target structure. See `on_success` below.
+        Successful callback target structure See `on_success` below.
         """
 elif False:
     V3AsyncInvokeConfigDestinationConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -1520,8 +1524,8 @@ class V3AsyncInvokeConfigDestinationConfigArgs:
                  on_failure: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']] = None,
                  on_success: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']] = None):
         """
-        :param pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgs'] on_failure: Failed callback target structure. See `on_failure` below.
-        :param pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs'] on_success: Successful callback target structure. See `on_success` below.
+        :param pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgs'] on_failure: Failed callback target structure See `on_failure` below.
+        :param pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs'] on_success: Successful callback target structure See `on_success` below.
         """
         if on_failure is not None:
             pulumi.set(__self__, "on_failure", on_failure)
@@ -1532,7 +1536,7 @@ class V3AsyncInvokeConfigDestinationConfigArgs:
     @pulumi.getter(name="onFailure")
     def on_failure(self) -> Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']]:
         """
-        Failed callback target structure. See `on_failure` below.
+        Failed callback target structure See `on_failure` below.
         """
         return pulumi.get(self, "on_failure")
 
@@ -1544,7 +1548,7 @@ class V3AsyncInvokeConfigDestinationConfigArgs:
     @pulumi.getter(name="onSuccess")
     def on_success(self) -> Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']]:
         """
-        Successful callback target structure. See `on_success` below.
+        Successful callback target structure See `on_success` below.
         """
         return pulumi.get(self, "on_success")
 
@@ -1557,7 +1561,7 @@ if not MYPY:
     class V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict(TypedDict):
         destination: NotRequired[pulumi.Input[str]]
         """
-        Asynchronous call target Resource Descriptor.
+        Asynchronous call target Resource Descriptor
         """
 elif False:
     V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict: TypeAlias = Mapping[str, Any]
@@ -1567,7 +1571,7 @@ class V3AsyncInvokeConfigDestinationConfigOnFailureArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] destination: Asynchronous call target Resource Descriptor.
+        :param pulumi.Input[str] destination: Asynchronous call target Resource Descriptor
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -1576,7 +1580,7 @@ class V3AsyncInvokeConfigDestinationConfigOnFailureArgs:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
         """
-        Asynchronous call target Resource Descriptor.
+        Asynchronous call target Resource Descriptor
         """
         return pulumi.get(self, "destination")
 
@@ -1589,7 +1593,7 @@ if not MYPY:
     class V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict(TypedDict):
         destination: NotRequired[pulumi.Input[str]]
         """
-        Asynchronous call target Resource Descriptor.
+        Asynchronous call target Resource Descriptor
         """
 elif False:
     V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict: TypeAlias = Mapping[str, Any]
@@ -1599,7 +1603,7 @@ class V3AsyncInvokeConfigDestinationConfigOnSuccessArgs:
     def __init__(__self__, *,
                  destination: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] destination: Asynchronous call target Resource Descriptor.
+        :param pulumi.Input[str] destination: Asynchronous call target Resource Descriptor
         """
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -1608,7 +1612,7 @@ class V3AsyncInvokeConfigDestinationConfigOnSuccessArgs:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
         """
-        Asynchronous call target Resource Descriptor.
+        Asynchronous call target Resource Descriptor
         """
         return pulumi.get(self, "destination")
 
@@ -1621,7 +1625,7 @@ if not MYPY:
     class V3CustomDomainAuthConfigArgsDict(TypedDict):
         auth_info: NotRequired[pulumi.Input[str]]
         """
-        Authentication Information.
+        Authentication Information
         """
         auth_type: NotRequired[pulumi.Input[str]]
         """
@@ -1636,7 +1640,7 @@ class V3CustomDomainAuthConfigArgs:
                  auth_info: Optional[pulumi.Input[str]] = None,
                  auth_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] auth_info: Authentication Information.
+        :param pulumi.Input[str] auth_info: Authentication Information
         :param pulumi.Input[str] auth_type: Authentication type. anonymous, function, or jwt.
         """
         if auth_info is not None:
@@ -1648,7 +1652,7 @@ class V3CustomDomainAuthConfigArgs:
     @pulumi.getter(name="authInfo")
     def auth_info(self) -> Optional[pulumi.Input[str]]:
         """
-        Authentication Information.
+        Authentication Information
         """
         return pulumi.get(self, "auth_info")
 
@@ -1673,15 +1677,15 @@ if not MYPY:
     class V3CustomDomainCertConfigArgsDict(TypedDict):
         cert_name: NotRequired[pulumi.Input[str]]
         """
-        Certificate Name.
+        Certificate Name
         """
         certificate: NotRequired[pulumi.Input[str]]
         """
-        PEM format certificate.
+        PEM format certificate
         """
         private_key: NotRequired[pulumi.Input[str]]
         """
-        Private Key in PEM format.
+        Private Key in PEM format
         """
 elif False:
     V3CustomDomainCertConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -1693,9 +1697,9 @@ class V3CustomDomainCertConfigArgs:
                  certificate: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] cert_name: Certificate Name.
-        :param pulumi.Input[str] certificate: PEM format certificate.
-        :param pulumi.Input[str] private_key: Private Key in PEM format.
+        :param pulumi.Input[str] cert_name: Certificate Name
+        :param pulumi.Input[str] certificate: PEM format certificate
+        :param pulumi.Input[str] private_key: Private Key in PEM format
         """
         if cert_name is not None:
             pulumi.set(__self__, "cert_name", cert_name)
@@ -1708,7 +1712,7 @@ class V3CustomDomainCertConfigArgs:
     @pulumi.getter(name="certName")
     def cert_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Certificate Name.
+        Certificate Name
         """
         return pulumi.get(self, "cert_name")
 
@@ -1720,7 +1724,7 @@ class V3CustomDomainCertConfigArgs:
     @pulumi.getter
     def certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM format certificate.
+        PEM format certificate
         """
         return pulumi.get(self, "certificate")
 
@@ -1732,7 +1736,7 @@ class V3CustomDomainCertConfigArgs:
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
-        Private Key in PEM format.
+        Private Key in PEM format
         """
         return pulumi.get(self, "private_key")
 
@@ -1745,7 +1749,7 @@ if not MYPY:
     class V3CustomDomainRouteConfigArgsDict(TypedDict):
         routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgsDict']]]]
         """
-        Routing Configuration List. See `routes` below.
+        Routing Configuration List See `routes` below.
         """
 elif False:
     V3CustomDomainRouteConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -1755,7 +1759,7 @@ class V3CustomDomainRouteConfigArgs:
     def __init__(__self__, *,
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]] routes: Routing Configuration List. See `routes` below.
+        :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]] routes: Routing Configuration List See `routes` below.
         """
         if routes is not None:
             pulumi.set(__self__, "routes", routes)
@@ -1764,7 +1768,7 @@ class V3CustomDomainRouteConfigArgs:
     @pulumi.getter
     def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]]:
         """
-        Routing Configuration List. See `routes` below.
+        Routing Configuration List See `routes` below.
         """
         return pulumi.get(self, "routes")
 
@@ -1777,23 +1781,23 @@ if not MYPY:
     class V3CustomDomainRouteConfigRouteArgsDict(TypedDict):
         function_name: NotRequired[pulumi.Input[str]]
         """
-        Function name.
+        Function name
         """
         methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        List of supported HTTP methods.
+        List of supported HTTP methods
         """
         path: NotRequired[pulumi.Input[str]]
         """
-        Route matching rule.
+        Route matching rule
         """
         qualifier: NotRequired[pulumi.Input[str]]
         """
-        Version or Alias.
+        Version or Alias
         """
         rewrite_config: NotRequired[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgsDict']]
         """
-        Override Configuration. See `rewrite_config` below.
+        Override Configuration See `rewrite_config` below.
         """
 elif False:
     V3CustomDomainRouteConfigRouteArgsDict: TypeAlias = Mapping[str, Any]
@@ -1807,11 +1811,11 @@ class V3CustomDomainRouteConfigRouteArgs:
                  qualifier: Optional[pulumi.Input[str]] = None,
                  rewrite_config: Optional[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgs']] = None):
         """
-        :param pulumi.Input[str] function_name: Function name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: List of supported HTTP methods.
-        :param pulumi.Input[str] path: Route matching rule.
-        :param pulumi.Input[str] qualifier: Version or Alias.
-        :param pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgs'] rewrite_config: Override Configuration. See `rewrite_config` below.
+        :param pulumi.Input[str] function_name: Function name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: List of supported HTTP methods
+        :param pulumi.Input[str] path: Route matching rule
+        :param pulumi.Input[str] qualifier: Version or Alias
+        :param pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgs'] rewrite_config: Override Configuration See `rewrite_config` below.
         """
         if function_name is not None:
             pulumi.set(__self__, "function_name", function_name)
@@ -1828,7 +1832,7 @@ class V3CustomDomainRouteConfigRouteArgs:
     @pulumi.getter(name="functionName")
     def function_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Function name.
+        Function name
         """
         return pulumi.get(self, "function_name")
 
@@ -1840,7 +1844,7 @@ class V3CustomDomainRouteConfigRouteArgs:
     @pulumi.getter
     def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of supported HTTP methods.
+        List of supported HTTP methods
         """
         return pulumi.get(self, "methods")
 
@@ -1852,7 +1856,7 @@ class V3CustomDomainRouteConfigRouteArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        Route matching rule.
+        Route matching rule
         """
         return pulumi.get(self, "path")
 
@@ -1864,7 +1868,7 @@ class V3CustomDomainRouteConfigRouteArgs:
     @pulumi.getter
     def qualifier(self) -> Optional[pulumi.Input[str]]:
         """
-        Version or Alias.
+        Version or Alias
         """
         return pulumi.get(self, "qualifier")
 
@@ -1876,7 +1880,7 @@ class V3CustomDomainRouteConfigRouteArgs:
     @pulumi.getter(name="rewriteConfig")
     def rewrite_config(self) -> Optional[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgs']]:
         """
-        Override Configuration. See `rewrite_config` below.
+        Override Configuration See `rewrite_config` below.
         """
         return pulumi.get(self, "rewrite_config")
 
@@ -1889,15 +1893,15 @@ if not MYPY:
     class V3CustomDomainRouteConfigRouteRewriteConfigArgsDict(TypedDict):
         equal_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict']]]]
         """
-        Exact Match Rule List. See `equal_rules` below.
+        Exact Match Rule List See `equal_rules` below.
         """
         regex_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict']]]]
         """
-        Regular match rule list. See `regex_rules` below.
+        Regular match rule list See `regex_rules` below.
         """
         wildcard_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict']]]]
         """
-        List of wildcard matching rules. See `wildcard_rules` below.
+        List of wildcard matching rules See `wildcard_rules` below.
         """
 elif False:
     V3CustomDomainRouteConfigRouteRewriteConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -1909,9 +1913,9 @@ class V3CustomDomainRouteConfigRouteRewriteConfigArgs:
                  regex_rules: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]] = None,
                  wildcard_rules: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]] equal_rules: Exact Match Rule List. See `equal_rules` below.
-        :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]] regex_rules: Regular match rule list. See `regex_rules` below.
-        :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]] wildcard_rules: List of wildcard matching rules. See `wildcard_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]] equal_rules: Exact Match Rule List See `equal_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]] regex_rules: Regular match rule list See `regex_rules` below.
+        :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]] wildcard_rules: List of wildcard matching rules See `wildcard_rules` below.
         """
         if equal_rules is not None:
             pulumi.set(__self__, "equal_rules", equal_rules)
@@ -1924,7 +1928,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigArgs:
     @pulumi.getter(name="equalRules")
     def equal_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]]]:
         """
-        Exact Match Rule List. See `equal_rules` below.
+        Exact Match Rule List See `equal_rules` below.
         """
         return pulumi.get(self, "equal_rules")
 
@@ -1936,7 +1940,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigArgs:
     @pulumi.getter(name="regexRules")
     def regex_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]]:
         """
-        Regular match rule list. See `regex_rules` below.
+        Regular match rule list See `regex_rules` below.
         """
         return pulumi.get(self, "regex_rules")
 
@@ -1948,7 +1952,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigArgs:
     @pulumi.getter(name="wildcardRules")
     def wildcard_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]]:
         """
-        List of wildcard matching rules. See `wildcard_rules` below.
+        List of wildcard matching rules See `wildcard_rules` below.
         """
         return pulumi.get(self, "wildcard_rules")
 
@@ -1961,11 +1965,11 @@ if not MYPY:
     class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict(TypedDict):
         match: NotRequired[pulumi.Input[str]]
         """
-        Matching Rules.
+        Matching Rules
         """
         replacement: NotRequired[pulumi.Input[str]]
         """
-        Replace Rules.
+        Replace Rules
         """
 elif False:
     V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -1976,8 +1980,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs:
                  match: Optional[pulumi.Input[str]] = None,
                  replacement: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] match: Matching Rules.
-        :param pulumi.Input[str] replacement: Replace Rules.
+        :param pulumi.Input[str] match: Matching Rules
+        :param pulumi.Input[str] replacement: Replace Rules
         """
         if match is not None:
             pulumi.set(__self__, "match", match)
@@ -1988,7 +1992,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
         """
-        Matching Rules.
+        Matching Rules
         """
         return pulumi.get(self, "match")
 
@@ -2000,7 +2004,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs:
     @pulumi.getter
     def replacement(self) -> Optional[pulumi.Input[str]]:
         """
-        Replace Rules.
+        Replace Rules
         """
         return pulumi.get(self, "replacement")
 
@@ -2013,11 +2017,11 @@ if not MYPY:
     class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict(TypedDict):
         match: NotRequired[pulumi.Input[str]]
         """
-        Matching Rules.
+        Matching Rules
         """
         replacement: NotRequired[pulumi.Input[str]]
         """
-        Replace Rules.
+        Replace Rules
         """
 elif False:
     V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -2028,8 +2032,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs:
                  match: Optional[pulumi.Input[str]] = None,
                  replacement: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] match: Matching Rules.
-        :param pulumi.Input[str] replacement: Replace Rules.
+        :param pulumi.Input[str] match: Matching Rules
+        :param pulumi.Input[str] replacement: Replace Rules
         """
         if match is not None:
             pulumi.set(__self__, "match", match)
@@ -2040,7 +2044,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
         """
-        Matching Rules.
+        Matching Rules
         """
         return pulumi.get(self, "match")
 
@@ -2052,7 +2056,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs:
     @pulumi.getter
     def replacement(self) -> Optional[pulumi.Input[str]]:
         """
-        Replace Rules.
+        Replace Rules
         """
         return pulumi.get(self, "replacement")
 
@@ -2065,11 +2069,11 @@ if not MYPY:
     class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict(TypedDict):
         match: NotRequired[pulumi.Input[str]]
         """
-        Matching Rules.
+        Matching Rules
         """
         replacement: NotRequired[pulumi.Input[str]]
         """
-        Replace Rules.
+        Replace Rules
         """
 elif False:
     V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict: TypeAlias = Mapping[str, Any]
@@ -2080,8 +2084,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs:
                  match: Optional[pulumi.Input[str]] = None,
                  replacement: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] match: Matching Rules.
-        :param pulumi.Input[str] replacement: Replace Rules.
+        :param pulumi.Input[str] match: Matching Rules
+        :param pulumi.Input[str] replacement: Replace Rules
         """
         if match is not None:
             pulumi.set(__self__, "match", match)
@@ -2092,7 +2096,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input[str]]:
         """
-        Matching Rules.
+        Matching Rules
         """
         return pulumi.get(self, "match")
 
@@ -2104,7 +2108,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs:
     @pulumi.getter
     def replacement(self) -> Optional[pulumi.Input[str]]:
         """
-        Replace Rules.
+        Replace Rules
         """
         return pulumi.get(self, "replacement")
 
@@ -2117,15 +2121,15 @@ if not MYPY:
     class V3CustomDomainTlsConfigArgsDict(TypedDict):
         cipher_suites: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        List of TLS cipher suites.
+        List of TLS cipher suites
         """
         max_version: NotRequired[pulumi.Input[str]]
         """
-        The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
         min_version: NotRequired[pulumi.Input[str]]
         """
-        TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
 elif False:
     V3CustomDomainTlsConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2137,9 +2141,9 @@ class V3CustomDomainTlsConfigArgs:
                  max_version: Optional[pulumi.Input[str]] = None,
                  min_version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] cipher_suites: List of TLS cipher suites.
-        :param pulumi.Input[str] max_version: The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
-        :param pulumi.Input[str] min_version: TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cipher_suites: List of TLS cipher suites
+        :param pulumi.Input[str] max_version: The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
+        :param pulumi.Input[str] min_version: TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
         if cipher_suites is not None:
             pulumi.set(__self__, "cipher_suites", cipher_suites)
@@ -2152,7 +2156,7 @@ class V3CustomDomainTlsConfigArgs:
     @pulumi.getter(name="cipherSuites")
     def cipher_suites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of TLS cipher suites.
+        List of TLS cipher suites
         """
         return pulumi.get(self, "cipher_suites")
 
@@ -2164,7 +2168,7 @@ class V3CustomDomainTlsConfigArgs:
     @pulumi.getter(name="maxVersion")
     def max_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
         return pulumi.get(self, "max_version")
 
@@ -2176,7 +2180,7 @@ class V3CustomDomainTlsConfigArgs:
     @pulumi.getter(name="minVersion")
     def min_version(self) -> Optional[pulumi.Input[str]]:
         """
-        TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0.
+        TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
         return pulumi.get(self, "min_version")
 
@@ -2189,7 +2193,7 @@ if not MYPY:
     class V3CustomDomainWafConfigArgsDict(TypedDict):
         enable_waf: NotRequired[pulumi.Input[bool]]
         """
-        Enable WAF protection.
+        Enable WAF protection
         """
 elif False:
     V3CustomDomainWafConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -2199,7 +2203,7 @@ class V3CustomDomainWafConfigArgs:
     def __init__(__self__, *,
                  enable_waf: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[bool] enable_waf: Enable WAF protection.
+        :param pulumi.Input[bool] enable_waf: Enable WAF protection
         """
         if enable_waf is not None:
             pulumi.set(__self__, "enable_waf", enable_waf)
@@ -2208,7 +2212,7 @@ class V3CustomDomainWafConfigArgs:
     @pulumi.getter(name="enableWaf")
     def enable_waf(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable WAF protection.
+        Enable WAF protection
         """
         return pulumi.get(self, "enable_waf")
 
@@ -2333,7 +2337,7 @@ if not MYPY:
         """
         health_check_config: NotRequired[pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgsDict']]
         """
-        Function custom health check configuration. See `health_check_config` below.
+        Function custom health check configuration See `health_check_config` below.
         """
         image: NotRequired[pulumi.Input[str]]
         """
@@ -2368,7 +2372,7 @@ class V3FunctionCustomContainerConfigArgs:
         :param pulumi.Input[str] acr_instance_id: ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] commands: Container startup parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] entrypoints: Container start command.
-        :param pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgs'] health_check_config: Function custom health check configuration. See `health_check_config` below.
+        :param pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgs'] health_check_config: Function custom health check configuration See `health_check_config` below.
         :param pulumi.Input[str] image: The container Image address.
         :param pulumi.Input[int] port: The listening port of the HTTP Server when the custom container runs.
         :param pulumi.Input[str] resolved_image_uri: The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
@@ -2468,7 +2472,7 @@ class V3FunctionCustomContainerConfigArgs:
     @pulumi.getter(name="healthCheckConfig")
     def health_check_config(self) -> Optional[pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgs']]:
         """
-        Function custom health check configuration. See `health_check_config` below.
+        Function custom health check configuration See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
@@ -3006,11 +3010,11 @@ if not MYPY:
     class V3FunctionInstanceLifecycleConfigArgsDict(TypedDict):
         initializer: NotRequired[pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgsDict']]
         """
-        Initializer handler method configuration. See `initializer` below.
+        Initializer handler method configuration See `initializer` below.
         """
         pre_stop: NotRequired[pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgsDict']]
         """
-        PreStop handler method configuration. See `pre_stop` below.
+        PreStop handler method configuration See `pre_stop` below.
         """
 elif False:
     V3FunctionInstanceLifecycleConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -3021,8 +3025,8 @@ class V3FunctionInstanceLifecycleConfigArgs:
                  initializer: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgs']] = None,
                  pre_stop: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgs']] = None):
         """
-        :param pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgs'] initializer: Initializer handler method configuration. See `initializer` below.
-        :param pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgs'] pre_stop: PreStop handler method configuration. See `pre_stop` below.
+        :param pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgs'] initializer: Initializer handler method configuration See `initializer` below.
+        :param pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgs'] pre_stop: PreStop handler method configuration See `pre_stop` below.
         """
         if initializer is not None:
             pulumi.set(__self__, "initializer", initializer)
@@ -3033,7 +3037,7 @@ class V3FunctionInstanceLifecycleConfigArgs:
     @pulumi.getter
     def initializer(self) -> Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgs']]:
         """
-        Initializer handler method configuration. See `initializer` below.
+        Initializer handler method configuration See `initializer` below.
         """
         return pulumi.get(self, "initializer")
 
@@ -3045,7 +3049,7 @@ class V3FunctionInstanceLifecycleConfigArgs:
     @pulumi.getter(name="preStop")
     def pre_stop(self) -> Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgs']]:
         """
-        PreStop handler method configuration. See `pre_stop` below.
+        PreStop handler method configuration See `pre_stop` below.
         """
         return pulumi.get(self, "pre_stop")
 
@@ -3545,6 +3549,58 @@ class V3FunctionOssMountConfigMountPointArgs:
 
 
 if not MYPY:
+    class V3FunctionTracingConfigArgsDict(TypedDict):
+        params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        Tracing parameters.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        The tracing protocol type. Currently, only Jaeger is supported.
+        """
+elif False:
+    V3FunctionTracingConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V3FunctionTracingConfigArgs:
+    def __init__(__self__, *,
+                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Tracing parameters.
+        :param pulumi.Input[str] type: The tracing protocol type. Currently, only Jaeger is supported.
+        """
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Tracing parameters.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tracing protocol type. Currently, only Jaeger is supported.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
     class V3FunctionVpcConfigArgsDict(TypedDict):
         security_group_id: NotRequired[pulumi.Input[str]]
         """
@@ -3624,15 +3680,15 @@ if not MYPY:
         """
         oss_bucket_name: NotRequired[pulumi.Input[str]]
         """
-        Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+        Name of the OSS Bucket where the user stores the Layer Code ZIP package
         """
         oss_object_name: NotRequired[pulumi.Input[str]]
         """
-        Name of the OSS Object where the user stores the Layer Code ZIP package.
+        Name of the OSS Object where the user stores the Layer Code ZIP package
         """
         zip_file: NotRequired[pulumi.Input[str]]
         """
-        Base 64 encoding of Layer Code ZIP package.
+        Base 64 encoding of Layer Code ZIP package
         """
 elif False:
     V3LayerVersionCodeArgsDict: TypeAlias = Mapping[str, Any]
@@ -3646,9 +3702,9 @@ class V3LayerVersionCodeArgs:
                  zip_file: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] checksum: The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
-        :param pulumi.Input[str] oss_bucket_name: Name of the OSS Bucket where the user stores the Layer Code ZIP package.
-        :param pulumi.Input[str] oss_object_name: Name of the OSS Object where the user stores the Layer Code ZIP package.
-        :param pulumi.Input[str] zip_file: Base 64 encoding of Layer Code ZIP package.
+        :param pulumi.Input[str] oss_bucket_name: Name of the OSS Bucket where the user stores the Layer Code ZIP package
+        :param pulumi.Input[str] oss_object_name: Name of the OSS Object where the user stores the Layer Code ZIP package
+        :param pulumi.Input[str] zip_file: Base 64 encoding of Layer Code ZIP package
         """
         if checksum is not None:
             pulumi.set(__self__, "checksum", checksum)
@@ -3675,7 +3731,7 @@ class V3LayerVersionCodeArgs:
     @pulumi.getter(name="ossBucketName")
     def oss_bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the OSS Bucket where the user stores the Layer Code ZIP package.
+        Name of the OSS Bucket where the user stores the Layer Code ZIP package
         """
         return pulumi.get(self, "oss_bucket_name")
 
@@ -3687,7 +3743,7 @@ class V3LayerVersionCodeArgs:
     @pulumi.getter(name="ossObjectName")
     def oss_object_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the OSS Object where the user stores the Layer Code ZIP package.
+        Name of the OSS Object where the user stores the Layer Code ZIP package
         """
         return pulumi.get(self, "oss_object_name")
 
@@ -3699,7 +3755,7 @@ class V3LayerVersionCodeArgs:
     @pulumi.getter(name="zipFile")
     def zip_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Base 64 encoding of Layer Code ZIP package.
+        Base 64 encoding of Layer Code ZIP package
         """
         return pulumi.get(self, "zip_file")
 
@@ -3712,23 +3768,23 @@ if not MYPY:
     class V3ProvisionConfigScheduledActionArgsDict(TypedDict):
         end_time: NotRequired[pulumi.Input[str]]
         """
-        Policy expiration time.
+        Policy expiration time
         """
         name: NotRequired[pulumi.Input[str]]
         """
-        Policy Name.
+        Policy Name
         """
         schedule_expression: NotRequired[pulumi.Input[str]]
         """
-        Timing Configuration.
+        Timing Configuration
         """
         start_time: NotRequired[pulumi.Input[str]]
         """
-        Policy effective time.
+        Policy effective time
         """
         target: NotRequired[pulumi.Input[int]]
         """
-        Number of reserved target resources.
+        Number of reserved target resources
         """
         time_zone: NotRequired[pulumi.Input[str]]
         """
@@ -3747,11 +3803,11 @@ class V3ProvisionConfigScheduledActionArgs:
                  target: Optional[pulumi.Input[int]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] end_time: Policy expiration time.
-        :param pulumi.Input[str] name: Policy Name.
-        :param pulumi.Input[str] schedule_expression: Timing Configuration.
-        :param pulumi.Input[str] start_time: Policy effective time.
-        :param pulumi.Input[int] target: Number of reserved target resources.
+        :param pulumi.Input[str] end_time: Policy expiration time
+        :param pulumi.Input[str] name: Policy Name
+        :param pulumi.Input[str] schedule_expression: Timing Configuration
+        :param pulumi.Input[str] start_time: Policy effective time
+        :param pulumi.Input[int] target: Number of reserved target resources
         :param pulumi.Input[str] time_zone: Time zone.
         """
         if end_time is not None:
@@ -3771,7 +3827,7 @@ class V3ProvisionConfigScheduledActionArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy expiration time.
+        Policy expiration time
         """
         return pulumi.get(self, "end_time")
 
@@ -3783,7 +3839,7 @@ class V3ProvisionConfigScheduledActionArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy Name.
+        Policy Name
         """
         return pulumi.get(self, "name")
 
@@ -3795,7 +3851,7 @@ class V3ProvisionConfigScheduledActionArgs:
     @pulumi.getter(name="scheduleExpression")
     def schedule_expression(self) -> Optional[pulumi.Input[str]]:
         """
-        Timing Configuration.
+        Timing Configuration
         """
         return pulumi.get(self, "schedule_expression")
 
@@ -3807,7 +3863,7 @@ class V3ProvisionConfigScheduledActionArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy effective time.
+        Policy effective time
         """
         return pulumi.get(self, "start_time")
 
@@ -3819,7 +3875,7 @@ class V3ProvisionConfigScheduledActionArgs:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[int]]:
         """
-        Number of reserved target resources.
+        Number of reserved target resources
         """
         return pulumi.get(self, "target")
 
@@ -3844,31 +3900,31 @@ if not MYPY:
     class V3ProvisionConfigTargetTrackingPolicyArgsDict(TypedDict):
         end_time: NotRequired[pulumi.Input[str]]
         """
-        Policy expiration time.
+        Policy expiration time
         """
         max_capacity: NotRequired[pulumi.Input[int]]
         """
-        Maximum value of expansion.
+        Maximum value of expansion
         """
         metric_target: NotRequired[pulumi.Input[float]]
         """
-        Tracking value of the indicator.
+        Tracking value of the indicator
         """
         metric_type: NotRequired[pulumi.Input[str]]
         """
-        Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+        Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
         """
         min_capacity: NotRequired[pulumi.Input[int]]
         """
-        Minimum Shrinkage.
+        Minimum Shrinkage
         """
         name: NotRequired[pulumi.Input[str]]
         """
-        Policy Name.
+        Policy Name
         """
         start_time: NotRequired[pulumi.Input[str]]
         """
-        Policy Effective Time.
+        Policy Effective Time
         """
         time_zone: NotRequired[pulumi.Input[str]]
         """
@@ -3889,13 +3945,13 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
                  start_time: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] end_time: Policy expiration time.
-        :param pulumi.Input[int] max_capacity: Maximum value of expansion.
-        :param pulumi.Input[float] metric_target: Tracking value of the indicator.
-        :param pulumi.Input[str] metric_type: Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
-        :param pulumi.Input[int] min_capacity: Minimum Shrinkage.
-        :param pulumi.Input[str] name: Policy Name.
-        :param pulumi.Input[str] start_time: Policy Effective Time.
+        :param pulumi.Input[str] end_time: Policy expiration time
+        :param pulumi.Input[int] max_capacity: Maximum value of expansion
+        :param pulumi.Input[float] metric_target: Tracking value of the indicator
+        :param pulumi.Input[str] metric_type: Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
+        :param pulumi.Input[int] min_capacity: Minimum Shrinkage
+        :param pulumi.Input[str] name: Policy Name
+        :param pulumi.Input[str] start_time: Policy Effective Time
         :param pulumi.Input[str] time_zone: Time zone.
         """
         if end_time is not None:
@@ -3919,7 +3975,7 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy expiration time.
+        Policy expiration time
         """
         return pulumi.get(self, "end_time")
 
@@ -3931,7 +3987,7 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
     @pulumi.getter(name="maxCapacity")
     def max_capacity(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum value of expansion.
+        Maximum value of expansion
         """
         return pulumi.get(self, "max_capacity")
 
@@ -3943,7 +3999,7 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
     @pulumi.getter(name="metricTarget")
     def metric_target(self) -> Optional[pulumi.Input[float]]:
         """
-        Tracking value of the indicator.
+        Tracking value of the indicator
         """
         return pulumi.get(self, "metric_target")
 
@@ -3955,7 +4011,7 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
     @pulumi.getter(name="metricType")
     def metric_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization.
+        Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
         """
         return pulumi.get(self, "metric_type")
 
@@ -3967,7 +4023,7 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
     @pulumi.getter(name="minCapacity")
     def min_capacity(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum Shrinkage.
+        Minimum Shrinkage
         """
         return pulumi.get(self, "min_capacity")
 
@@ -3979,7 +4035,7 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy Name.
+        Policy Name
         """
         return pulumi.get(self, "name")
 
@@ -3991,7 +4047,7 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Policy Effective Time.
+        Policy Effective Time
         """
         return pulumi.get(self, "start_time")
 
@@ -4010,5 +4066,57 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
     @time_zone.setter
     def time_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_zone", value)
+
+
+if not MYPY:
+    class V3TriggerHttpTriggerArgsDict(TypedDict):
+        url_internet: NotRequired[pulumi.Input[str]]
+        """
+        The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+        """
+        url_intranet: NotRequired[pulumi.Input[str]]
+        """
+        The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+        """
+elif False:
+    V3TriggerHttpTriggerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V3TriggerHttpTriggerArgs:
+    def __init__(__self__, *,
+                 url_internet: Optional[pulumi.Input[str]] = None,
+                 url_intranet: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] url_internet: The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+        :param pulumi.Input[str] url_intranet: The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+        """
+        if url_internet is not None:
+            pulumi.set(__self__, "url_internet", url_internet)
+        if url_intranet is not None:
+            pulumi.set(__self__, "url_intranet", url_intranet)
+
+    @property
+    @pulumi.getter(name="urlInternet")
+    def url_internet(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
+        """
+        return pulumi.get(self, "url_internet")
+
+    @url_internet.setter
+    def url_internet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url_internet", value)
+
+    @property
+    @pulumi.getter(name="urlIntranet")
+    def url_intranet(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
+        """
+        return pulumi.get(self, "url_intranet")
+
+    @url_intranet.setter
+    def url_intranet(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url_intranet", value)
 
 
