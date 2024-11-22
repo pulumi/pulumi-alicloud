@@ -129,7 +129,7 @@ def get_accounts(account_name: Optional[str] = None,
                  status: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
     """
-    This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+    This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.102.0+.
 
@@ -149,7 +149,7 @@ def get_accounts(account_name: Optional[str] = None,
     :param str account_name: The name of the account.
     :param str instance_id: The Id of instance in which account belongs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of KVStore Account. Valid Values: `"Available` `Unavailable`
+    :param str status: The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
     """
     __args__ = dict()
     __args__['accountName'] = account_name
@@ -177,7 +177,7 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
     """
-    This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+    This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
 
     > **NOTE:** Available in v1.102.0+.
 
@@ -197,7 +197,7 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
     :param str account_name: The name of the account.
     :param str instance_id: The Id of instance in which account belongs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of KVStore Account. Valid Values: `"Available` `Unavailable`
+    :param str status: The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
     """
     __args__ = dict()
     __args__['accountName'] = account_name

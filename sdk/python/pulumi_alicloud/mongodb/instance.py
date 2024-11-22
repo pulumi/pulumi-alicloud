@@ -29,6 +29,7 @@ class InstanceArgs:
                  backup_interval: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
@@ -78,6 +79,7 @@ class InstanceArgs:
         :param pulumi.Input[str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[int] backup_retention_period: The retention period of full backups.
+        :param pulumi.Input[int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[str] effective_time: The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
@@ -138,6 +140,8 @@ class InstanceArgs:
             pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_retention_period is not None:
             pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+        if backup_retention_policy_on_cluster_deletion is not None:
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
         if cloud_disk_encryption_key is not None:
@@ -309,6 +313,18 @@ class InstanceArgs:
     @backup_retention_period.setter
     def backup_retention_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "backup_retention_period", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[int]]:
+        """
+        The backup retention policy configured for the instance. Valid values:
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
+
+    @backup_retention_policy_on_cluster_deletion.setter
+    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @property
     @pulumi.getter(name="backupTime")
@@ -761,6 +777,7 @@ class _InstanceState:
                  backup_interval: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
@@ -812,6 +829,7 @@ class _InstanceState:
         :param pulumi.Input[str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[int] backup_retention_period: The retention period of full backups.
+        :param pulumi.Input[int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
@@ -878,6 +896,8 @@ class _InstanceState:
             pulumi.set(__self__, "backup_periods", backup_periods)
         if backup_retention_period is not None:
             pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+        if backup_retention_policy_on_cluster_deletion is not None:
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
         if cloud_disk_encryption_key is not None:
@@ -1025,6 +1045,18 @@ class _InstanceState:
     @backup_retention_period.setter
     def backup_retention_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "backup_retention_period", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[int]]:
+        """
+        The backup retention policy configured for the instance. Valid values:
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
+
+    @backup_retention_policy_on_cluster_deletion.setter
+    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @property
     @pulumi.getter(name="backupTime")
@@ -1565,6 +1597,7 @@ class Instance(pulumi.CustomResource):
                  backup_interval: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
@@ -1677,6 +1710,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[int] backup_retention_period: The retention period of full backups.
+        :param pulumi.Input[int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
@@ -1819,6 +1853,7 @@ class Instance(pulumi.CustomResource):
                  backup_interval: Optional[pulumi.Input[str]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  backup_retention_period: Optional[pulumi.Input[int]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
                  db_instance_class: Optional[pulumi.Input[str]] = None,
@@ -1872,6 +1907,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["backup_interval"] = backup_interval
             __props__.__dict__["backup_periods"] = backup_periods
             __props__.__dict__["backup_retention_period"] = backup_retention_period
+            __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
             __props__.__dict__["backup_time"] = backup_time
             __props__.__dict__["cloud_disk_encryption_key"] = cloud_disk_encryption_key
             if db_instance_class is None and not opts.urn:
@@ -1938,6 +1974,7 @@ class Instance(pulumi.CustomResource):
             backup_interval: Optional[pulumi.Input[str]] = None,
             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             backup_retention_period: Optional[pulumi.Input[int]] = None,
+            backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
             backup_time: Optional[pulumi.Input[str]] = None,
             cloud_disk_encryption_key: Optional[pulumi.Input[str]] = None,
             db_instance_class: Optional[pulumi.Input[str]] = None,
@@ -1994,6 +2031,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] backup_interval: The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[int] backup_retention_period: The retention period of full backups.
+        :param pulumi.Input[int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[str] backup_time: MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[str] cloud_disk_encryption_key: The ID of the encryption key.
         :param pulumi.Input[str] db_instance_class: Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
@@ -2059,6 +2097,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["backup_interval"] = backup_interval
         __props__.__dict__["backup_periods"] = backup_periods
         __props__.__dict__["backup_retention_period"] = backup_retention_period
+        __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["backup_time"] = backup_time
         __props__.__dict__["cloud_disk_encryption_key"] = cloud_disk_encryption_key
         __props__.__dict__["db_instance_class"] = db_instance_class
@@ -2144,6 +2183,14 @@ class Instance(pulumi.CustomResource):
         The retention period of full backups.
         """
         return pulumi.get(self, "backup_retention_period")
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Output[Optional[int]]:
+        """
+        The backup retention policy configured for the instance. Valid values:
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @property
     @pulumi.getter(name="backupTime")

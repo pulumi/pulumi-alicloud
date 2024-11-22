@@ -285,6 +285,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
+        /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        /// </summary>
+        [Output("networkInterfaces")]
+        public Output<ImmutableArray<Outputs.ScalingConfigurationNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
+
+        /// <summary>
         /// Indicates whether to overwrite the existing data. Default to false.
         /// </summary>
         [Output("override")]
@@ -689,6 +695,18 @@ namespace Pulumi.AliCloud.Ess
             set => _kmsEncryptionContext = value;
         }
 
+        [Input("networkInterfaces")]
+        private InputList<Inputs.ScalingConfigurationNetworkInterfaceArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingConfigurationNetworkInterfaceArgs> NetworkInterfaces
+        {
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ScalingConfigurationNetworkInterfaceArgs>());
+            set => _networkInterfaces = value;
+        }
+
         /// <summary>
         /// Indicates whether to overwrite the existing data. Default to false.
         /// </summary>
@@ -1072,6 +1090,18 @@ namespace Pulumi.AliCloud.Ess
         {
             get => _kmsEncryptionContext ?? (_kmsEncryptionContext = new InputMap<string>());
             set => _kmsEncryptionContext = value;
+        }
+
+        [Input("networkInterfaces")]
+        private InputList<Inputs.ScalingConfigurationNetworkInterfaceGetArgs>? _networkInterfaces;
+
+        /// <summary>
+        /// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        /// </summary>
+        public InputList<Inputs.ScalingConfigurationNetworkInterfaceGetArgs> NetworkInterfaces
+        {
+            get => _networkInterfaces ?? (_networkInterfaces = new InputList<Inputs.ScalingConfigurationNetworkInterfaceGetArgs>());
+            set => _networkInterfaces = value;
         }
 
         /// <summary>

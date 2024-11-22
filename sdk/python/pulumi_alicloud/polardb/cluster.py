@@ -111,7 +111,7 @@ class ClusterArgs:
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
-        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         :param pulumi.Input[str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
                > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         :param pulumi.Input[int] deletion_lock: turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -500,7 +500,7 @@ class ClusterArgs:
     @pulumi.getter(name="dbNodeNum")
     def db_node_num(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         """
         return pulumi.get(self, "db_node_num")
 
@@ -1246,7 +1246,7 @@ class _ClusterState:
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
-        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]] db_revision_version_lists: (Available since v1.216.0) The db_revision_version_list supports the following:
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
@@ -1658,7 +1658,7 @@ class _ClusterState:
     @pulumi.getter(name="dbNodeNum")
     def db_node_num(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         """
         return pulumi.get(self, "db_node_num")
 
@@ -2482,7 +2482,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
-        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         :param pulumi.Input[str] default_time_zone: The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
@@ -2857,7 +2857,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[int] db_node_count: Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
                > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
         :param pulumi.Input[str] db_node_id: The ID of the node or node subscript. Node subscript values: 1 to 15.
-        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        :param pulumi.Input[int] db_node_num: The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbRevisionVersionListArgs', 'ClusterDbRevisionVersionListArgsDict']]]] db_revision_version_lists: (Available since v1.216.0) The db_revision_version_list supports the following:
         :param pulumi.Input[str] db_type: Database type. Value options: MySQL, Oracle, PostgreSQL.
         :param pulumi.Input[str] db_version: Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
@@ -3146,7 +3146,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="dbNodeNum")
     def db_node_num(self) -> pulumi.Output[Optional[int]]:
         """
-        The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         """
         return pulumi.get(self, "db_node_num")
 

@@ -19,14 +19,14 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     public static final RegistryEnterpriseInstanceArgs Empty = new RegistryEnterpriseInstanceArgs();
 
     /**
-     * Name of your customized oss bucket. Use this bucket as instance storage if set.
+     * Custom OSS Bucket name
      * 
      */
     @Import(name="customOssBucket")
     private @Nullable Output<String> customOssBucket;
 
     /**
-     * @return Name of your customized oss bucket. Use this bucket as instance storage if set.
+     * @return Custom OSS Bucket name
      * 
      */
     public Optional<Output<String>> customOssBucket() {
@@ -34,14 +34,44 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Name of Container Registry Enterprise Edition instance.
+     * Whether to use the default OSS Bucket
+     * 
+     */
+    @Import(name="defaultOssBucket")
+    private @Nullable Output<String> defaultOssBucket;
+
+    /**
+     * @return Whether to use the default OSS Bucket
+     * 
+     */
+    public Optional<Output<String>> defaultOssBucket() {
+        return Optional.ofNullable(this.defaultOssBucket);
+    }
+
+    /**
+     * Security scan engine
+     * 
+     */
+    @Import(name="imageScanner")
+    private @Nullable Output<String> imageScanner;
+
+    /**
+     * @return Security scan engine
+     * 
+     */
+    public Optional<Output<String>> imageScanner() {
+        return Optional.ofNullable(this.imageScanner);
+    }
+
+    /**
+     * InstanceName
      * 
      */
     @Import(name="instanceName", required=true)
     private Output<String> instanceName;
 
     /**
-     * @return Name of Container Registry Enterprise Edition instance.
+     * @return InstanceName
      * 
      */
     public Output<String> instanceName() {
@@ -49,14 +79,26 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn&#39;t supports `Standard`.
+     * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+     * 
+     * Basic: Basic instance
+     * 
+     * Standard: Standard instance
+     * 
+     * Advanced: Advanced Edition Instance
      * 
      */
     @Import(name="instanceType", required=true)
     private Output<String> instanceType;
 
     /**
-     * @return Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn&#39;t supports `Standard`.
+     * @return The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+     * 
+     * Basic: Basic instance
+     * 
+     * Standard: Standard instance
+     * 
+     * Advanced: Advanced Edition Instance
      * 
      */
     public Output<String> instanceType() {
@@ -94,14 +136,14 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     * Permanent access credentials of the instance
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     * @return Permanent access credentials of the instance
      * 
      */
     public Optional<Output<String>> password() {
@@ -109,29 +151,35 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+     * Payment type, value:
+     * - Subscription: Prepaid.
      * 
      */
-    @Import(name="paymentType")
-    private @Nullable Output<String> paymentType;
+    @Import(name="paymentType", required=true)
+    private Output<String> paymentType;
 
     /**
-     * @return Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+     * @return Payment type, value:
+     * - Subscription: Prepaid.
      * 
      */
-    public Optional<Output<String>> paymentType() {
-        return Optional.ofNullable(this.paymentType);
+    public Output<String> paymentType() {
+        return this.paymentType;
     }
 
     /**
-     * Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+     * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * 
+     * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+     * @return Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * 
+     * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -139,14 +187,18 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+     * Automatic renewal cycle, in months.
+     * 
+     * &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      * 
      */
     @Import(name="renewPeriod")
     private @Nullable Output<Integer> renewPeriod;
 
     /**
-     * @return Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+     * @return Automatic renewal cycle, in months.
+     * 
+     * &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      * 
      */
     public Optional<Output<Integer>> renewPeriod() {
@@ -154,24 +206,53 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+     * Automatic renewal status, value:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
+     * 
+     * Default ManualRenewal.
      * 
      */
     @Import(name="renewalStatus")
     private @Nullable Output<String> renewalStatus;
 
     /**
-     * @return Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+     * @return Automatic renewal status, value:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
+     * 
+     * Default ManualRenewal.
      * 
      */
     public Optional<Output<String>> renewalStatus() {
         return Optional.ofNullable(this.renewalStatus);
     }
 
+    /**
+     * The ID of the resource group
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
     private RegistryEnterpriseInstanceArgs() {}
 
     private RegistryEnterpriseInstanceArgs(RegistryEnterpriseInstanceArgs $) {
         this.customOssBucket = $.customOssBucket;
+        this.defaultOssBucket = $.defaultOssBucket;
+        this.imageScanner = $.imageScanner;
         this.instanceName = $.instanceName;
         this.instanceType = $.instanceType;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
@@ -181,6 +262,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         this.period = $.period;
         this.renewPeriod = $.renewPeriod;
         this.renewalStatus = $.renewalStatus;
+        this.resourceGroupId = $.resourceGroupId;
     }
 
     public static Builder builder() {
@@ -202,7 +284,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customOssBucket Name of your customized oss bucket. Use this bucket as instance storage if set.
+         * @param customOssBucket Custom OSS Bucket name
          * 
          * @return builder
          * 
@@ -213,7 +295,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param customOssBucket Name of your customized oss bucket. Use this bucket as instance storage if set.
+         * @param customOssBucket Custom OSS Bucket name
          * 
          * @return builder
          * 
@@ -223,7 +305,49 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceName Name of Container Registry Enterprise Edition instance.
+         * @param defaultOssBucket Whether to use the default OSS Bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultOssBucket(@Nullable Output<String> defaultOssBucket) {
+            $.defaultOssBucket = defaultOssBucket;
+            return this;
+        }
+
+        /**
+         * @param defaultOssBucket Whether to use the default OSS Bucket
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultOssBucket(String defaultOssBucket) {
+            return defaultOssBucket(Output.of(defaultOssBucket));
+        }
+
+        /**
+         * @param imageScanner Security scan engine
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageScanner(@Nullable Output<String> imageScanner) {
+            $.imageScanner = imageScanner;
+            return this;
+        }
+
+        /**
+         * @param imageScanner Security scan engine
+         * 
+         * @return builder
+         * 
+         */
+        public Builder imageScanner(String imageScanner) {
+            return imageScanner(Output.of(imageScanner));
+        }
+
+        /**
+         * @param instanceName InstanceName
          * 
          * @return builder
          * 
@@ -234,7 +358,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceName Name of Container Registry Enterprise Edition instance.
+         * @param instanceName InstanceName
          * 
          * @return builder
          * 
@@ -244,7 +368,13 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceType Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn&#39;t supports `Standard`.
+         * @param instanceType The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+         * 
+         * Basic: Basic instance
+         * 
+         * Standard: Standard instance
+         * 
+         * Advanced: Advanced Edition Instance
          * 
          * @return builder
          * 
@@ -255,7 +385,13 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param instanceType Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn&#39;t supports `Standard`.
+         * @param instanceType The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+         * 
+         * Basic: Basic instance
+         * 
+         * Standard: Standard instance
+         * 
+         * Advanced: Advanced Edition Instance
          * 
          * @return builder
          * 
@@ -307,7 +443,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param password The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+         * @param password Permanent access credentials of the instance
          * 
          * @return builder
          * 
@@ -318,7 +454,7 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param password The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+         * @param password Permanent access credentials of the instance
          * 
          * @return builder
          * 
@@ -328,18 +464,20 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param paymentType Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+         * @param paymentType Payment type, value:
+         * - Subscription: Prepaid.
          * 
          * @return builder
          * 
          */
-        public Builder paymentType(@Nullable Output<String> paymentType) {
+        public Builder paymentType(Output<String> paymentType) {
             $.paymentType = paymentType;
             return this;
         }
 
         /**
-         * @param paymentType Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+         * @param paymentType Payment type, value:
+         * - Subscription: Prepaid.
          * 
          * @return builder
          * 
@@ -349,7 +487,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param period Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+         * @param period Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+         * 
+         * &gt; **NOTE:**  must be set when creating a prepaid instance.
          * 
          * @return builder
          * 
@@ -360,7 +500,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param period Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+         * @param period Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+         * 
+         * &gt; **NOTE:**  must be set when creating a prepaid instance.
          * 
          * @return builder
          * 
@@ -370,7 +512,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param renewPeriod Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+         * @param renewPeriod Automatic renewal cycle, in months.
+         * 
+         * &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
          * 
          * @return builder
          * 
@@ -381,7 +525,9 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param renewPeriod Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+         * @param renewPeriod Automatic renewal cycle, in months.
+         * 
+         * &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
          * 
          * @return builder
          * 
@@ -391,7 +537,11 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param renewalStatus Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+         * @param renewalStatus Automatic renewal status, value:
+         * - AutoRenewal: automatic renewal.
+         * - ManualRenewal: manual renewal.
+         * 
+         * Default ManualRenewal.
          * 
          * @return builder
          * 
@@ -402,7 +552,11 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param renewalStatus Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+         * @param renewalStatus Automatic renewal status, value:
+         * - AutoRenewal: automatic renewal.
+         * - ManualRenewal: manual renewal.
+         * 
+         * Default ManualRenewal.
          * 
          * @return builder
          * 
@@ -411,12 +565,40 @@ public final class RegistryEnterpriseInstanceArgs extends com.pulumi.resources.R
             return renewalStatus(Output.of(renewalStatus));
         }
 
+        /**
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
         public RegistryEnterpriseInstanceArgs build() {
             if ($.instanceName == null) {
                 throw new MissingRequiredPropertyException("RegistryEnterpriseInstanceArgs", "instanceName");
             }
             if ($.instanceType == null) {
                 throw new MissingRequiredPropertyException("RegistryEnterpriseInstanceArgs", "instanceType");
+            }
+            if ($.paymentType == null) {
+                throw new MissingRequiredPropertyException("RegistryEnterpriseInstanceArgs", "paymentType");
             }
             return $;
         }

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/).
  *
- * > **NOTE:** Available since v1.226.0.
+ * > **NOTE:** Available since v1.235.0.
  *
  * ## Example Usage
  *
@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const asn = config.get("asn") || "4200000666";
+ * const asn = config.get("asn") || "4200000667";
  * const defaultO8Hcfx = new alicloud.expressconnect.RouterExpressConnectRouter("defaultO8Hcfx", {
  *     alibabaSideAsn: asn,
  *     ecrName: name,

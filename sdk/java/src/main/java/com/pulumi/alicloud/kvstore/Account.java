@@ -17,9 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a KVStore Account resource.
+ * Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Account resource.
  * 
- * For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
+ * For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
  * 
  * &gt; **NOTE:** Available since v1.66.0.
  * 
@@ -113,7 +113,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * KVStore account can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:kvstore/account:Account example &lt;instance_id&gt;:&lt;account_name&gt;
@@ -221,42 +221,42 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.instanceId;
     }
     /**
-     * An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
+     * An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
      * 
      */
     @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
-     * @return An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
+     * @return An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
      * 
      */
     public Output<Optional<String>> kmsEncryptedPassword() {
         return Codegen.optional(this.kmsEncryptedPassword);
     }
     /**
-     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
     @Export(name="kmsEncryptionContext", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> kmsEncryptionContext;
 
     /**
-     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The status of KVStore Account.
+     * The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of KVStore Account.
+     * @return The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
      * 
      */
     public Output<String> status() {

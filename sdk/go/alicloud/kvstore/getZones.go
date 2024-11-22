@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+// This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 //
 // > **NOTE:** Available since v1.73.0.
 //
@@ -58,7 +58,7 @@ type GetZonesArgs struct {
 	Engine *string `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
 	Multi *bool `pulumi:"multi"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  *string `pulumi:"outputFile"`
@@ -106,7 +106,7 @@ type GetZonesOutputArgs struct {
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
-	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
 	Multi pulumi.BoolPtrInput `pulumi:"multi"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`

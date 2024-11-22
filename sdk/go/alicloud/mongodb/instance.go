@@ -118,6 +118,8 @@ type Instance struct {
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
 	// The retention period of full backups.
 	BackupRetentionPeriod pulumi.IntOutput `pulumi:"backupRetentionPeriod"`
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrOutput `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// The ID of the encryption key.
@@ -275,6 +277,8 @@ type instanceState struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// The retention period of full backups.
 	BackupRetentionPeriod *int `pulumi:"backupRetentionPeriod"`
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion *int `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
 	// The ID of the encryption key.
@@ -387,6 +391,8 @@ type InstanceState struct {
 	BackupPeriods pulumi.StringArrayInput
 	// The retention period of full backups.
 	BackupRetentionPeriod pulumi.IntPtrInput
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrInput
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
 	// The ID of the encryption key.
@@ -503,6 +509,8 @@ type instanceArgs struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// The retention period of full backups.
 	BackupRetentionPeriod *int `pulumi:"backupRetentionPeriod"`
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion *int `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
 	// The ID of the encryption key.
@@ -608,6 +616,8 @@ type InstanceArgs struct {
 	BackupPeriods pulumi.StringArrayInput
 	// The retention period of full backups.
 	BackupRetentionPeriod pulumi.IntPtrInput
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrInput
 	// MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
 	// The ID of the encryption key.
@@ -811,6 +821,11 @@ func (o InstanceOutput) BackupPeriods() pulumi.StringArrayOutput {
 // The retention period of full backups.
 func (o InstanceOutput) BackupRetentionPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.BackupRetentionPeriod }).(pulumi.IntOutput)
+}
+
+// The backup retention policy configured for the instance. Valid values:
+func (o InstanceOutput) BackupRetentionPolicyOnClusterDeletion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.BackupRetentionPolicyOnClusterDeletion }).(pulumi.IntPtrOutput)
 }
 
 // MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".

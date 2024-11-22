@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'DhcpOptionsSetAssociateVpcArgs',
     'DhcpOptionsSetAssociateVpcArgsDict',
+    'NatGatewayAccessModeArgs',
+    'NatGatewayAccessModeArgsDict',
     'NetworkAclAttachmentResourceArgs',
     'NetworkAclAttachmentResourceArgsDict',
     'NetworkAclEgressAclEntryArgs',
@@ -92,6 +94,58 @@ class DhcpOptionsSetAssociateVpcArgs:
     @associate_status.setter
     def associate_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "associate_status", value)
+
+
+if not MYPY:
+    class NatGatewayAccessModeArgsDict(TypedDict):
+        mode_value: NotRequired[pulumi.Input[str]]
+        """
+        The mode of Access. Valid values:
+        """
+        tunnel_type: NotRequired[pulumi.Input[str]]
+        """
+        The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+        """
+elif False:
+    NatGatewayAccessModeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NatGatewayAccessModeArgs:
+    def __init__(__self__, *,
+                 mode_value: Optional[pulumi.Input[str]] = None,
+                 tunnel_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode_value: The mode of Access. Valid values:
+        :param pulumi.Input[str] tunnel_type: The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+        """
+        if mode_value is not None:
+            pulumi.set(__self__, "mode_value", mode_value)
+        if tunnel_type is not None:
+            pulumi.set(__self__, "tunnel_type", tunnel_type)
+
+    @property
+    @pulumi.getter(name="modeValue")
+    def mode_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of Access. Valid values:
+        """
+        return pulumi.get(self, "mode_value")
+
+    @mode_value.setter
+    def mode_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode_value", value)
+
+    @property
+    @pulumi.getter(name="tunnelType")
+    def tunnel_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+        """
+        return pulumi.get(self, "tunnel_type")
+
+    @tunnel_type.setter
+    def tunnel_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tunnel_type", value)
 
 
 if not MYPY:

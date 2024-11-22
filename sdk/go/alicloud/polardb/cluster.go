@@ -58,7 +58,7 @@ type Cluster struct {
 	DbNodeCount pulumi.IntOutput `pulumi:"dbNodeCount"`
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId pulumi.StringPtrOutput `pulumi:"dbNodeId"`
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
 	DbNodeNum pulumi.IntPtrOutput `pulumi:"dbNodeNum"`
 	// (Available since v1.216.0) The dbRevisionVersionList supports the following:
 	DbRevisionVersionLists ClusterDbRevisionVersionListArrayOutput `pulumi:"dbRevisionVersionLists"`
@@ -279,7 +279,7 @@ type clusterState struct {
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId *string `pulumi:"dbNodeId"`
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
 	DbNodeNum *int `pulumi:"dbNodeNum"`
 	// (Available since v1.216.0) The dbRevisionVersionList supports the following:
 	DbRevisionVersionLists []ClusterDbRevisionVersionList `pulumi:"dbRevisionVersionLists"`
@@ -462,7 +462,7 @@ type ClusterState struct {
 	DbNodeCount pulumi.IntPtrInput
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId pulumi.StringPtrInput
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
 	DbNodeNum pulumi.IntPtrInput
 	// (Available since v1.216.0) The dbRevisionVersionList supports the following:
 	DbRevisionVersionLists ClusterDbRevisionVersionListArrayInput
@@ -645,7 +645,7 @@ type clusterArgs struct {
 	DbNodeCount *int `pulumi:"dbNodeCount"`
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId *string `pulumi:"dbNodeId"`
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
 	DbNodeNum *int `pulumi:"dbNodeNum"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType string `pulumi:"dbType"`
@@ -815,7 +815,7 @@ type ClusterArgs struct {
 	DbNodeCount pulumi.IntPtrInput
 	// The ID of the node or node subscript. Node subscript values: 1 to 15.
 	DbNodeId pulumi.StringPtrInput
-	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
 	DbNodeNum pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringInput
@@ -1116,7 +1116,7 @@ func (o ClusterOutput) DbNodeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DbNodeId }).(pulumi.StringPtrOutput)
 }
 
-// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
 func (o ClusterOutput) DbNodeNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.DbNodeNum }).(pulumi.IntPtrOutput)
 }

@@ -38,8 +38,17 @@ namespace Pulumi.AliCloud.Vpn
     ///     var defaultTransitRouter = new AliCloud.Cen.TransitRouter("default", new()
     ///     {
     ///         CenId = defaultInstance.Id,
-    ///         TransitRouterDescription = "desd",
+    ///         TransitRouterDescription = name,
     ///         TransitRouterName = name,
+    ///     });
+    /// 
+    ///     var defaultTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("default", new()
+    ///     {
+    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
+    ///         Cidr = "192.168.0.0/16",
+    ///         TransitRouterCidrName = name,
+    ///         Description = name,
+    ///         PublishCidrRoute = true,
     ///     });
     /// 
     ///     var @default = AliCloud.Cen.GetTransitRouterAvailableResources.Invoke();
@@ -66,7 +75,7 @@ namespace Pulumi.AliCloud.Vpn
     ///             IkeVersion = "ikev2",
     ///             IkeMode = "main",
     ///             IkeLifetime = 86400,
-    ///             Psk = "tf-testvpn2",
+    ///             Psk = "tf-examplevpn2",
     ///             IkePfs = "group1",
     ///             RemoteId = "testbob2",
     ///             LocalId = "testalice2",
@@ -99,15 +108,6 @@ namespace Pulumi.AliCloud.Vpn
     ///         VpnAttachmentName = name,
     ///     });
     /// 
-    ///     var defaultTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("default", new()
-    ///     {
-    ///         TransitRouterId = defaultTransitRouter.TransitRouterId,
-    ///         Cidr = "192.168.0.0/16",
-    ///         TransitRouterCidrName = name,
-    ///         Description = name,
-    ///         PublishCidrRoute = true,
-    ///     });
-    /// 
     ///     var defaultTransitRouterVpnAttachment = new AliCloud.Cen.TransitRouterVpnAttachment("default", new()
     ///     {
     ///         AutoPublishRouteEnabled = false,
@@ -127,10 +127,10 @@ namespace Pulumi.AliCloud.Vpn
     /// 
     ///     var defaultGatewayVcoRoute = new AliCloud.Vpn.GatewayVcoRoute("default", new()
     ///     {
-    ///         RouteDest = "192.168.12.0/24",
     ///         NextHop = defaultTransitRouterVpnAttachment.VpnId,
     ///         VpnConnectionId = defaultTransitRouterVpnAttachment.VpnId,
     ///         Weight = 100,
+    ///         RouteDest = "192.168.10.0/24",
     ///     });
     /// 
     /// });
@@ -152,6 +152,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Output("nextHop")]
         public Output<string> NextHop { get; private set; } = null!;
+
+        /// <summary>
+        /// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+        /// </summary>
+        [Output("overlayMode")]
+        public Output<string?> OverlayMode { get; private set; } = null!;
 
         /// <summary>
         /// The destination network segment of the destination route.
@@ -230,6 +236,12 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string> NextHop { get; set; } = null!;
 
         /// <summary>
+        /// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+        /// </summary>
+        [Input("overlayMode")]
+        public Input<string>? OverlayMode { get; set; }
+
+        /// <summary>
         /// The destination network segment of the destination route.
         /// </summary>
         [Input("routeDest", required: true)]
@@ -260,6 +272,12 @@ namespace Pulumi.AliCloud.Vpn
         /// </summary>
         [Input("nextHop")]
         public Input<string>? NextHop { get; set; }
+
+        /// <summary>
+        /// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+        /// </summary>
+        [Input("overlayMode")]
+        public Input<string>? OverlayMode { get; set; }
 
         /// <summary>
         /// The destination network segment of the destination route.

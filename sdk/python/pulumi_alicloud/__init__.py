@@ -6128,6 +6128,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "rds/custom",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/custom:Custom": "Custom"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "rds/customDeploymentSet",
+  "fqn": "pulumi_alicloud.rds",
+  "classes": {
+   "alicloud:rds/customDeploymentSet:CustomDeploymentSet": "CustomDeploymentSet"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "rds/database",
   "fqn": "pulumi_alicloud.rds",
   "classes": {

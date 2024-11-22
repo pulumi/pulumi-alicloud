@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Redis And Memcache (KVStore) Audit Log Config resource.
+ * Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config resource.
  * 
  * &gt; **NOTE:** Available since v1.130.0.
  * 
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Redis And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example &lt;instance_id&gt;

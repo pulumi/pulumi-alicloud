@@ -108,6 +108,7 @@ class _VpcEndpointZoneState:
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
                  eni_ip: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -116,6 +117,7 @@ class _VpcEndpointZoneState:
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[str] endpoint_id: The endpoint ID.
         :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
+        :param pulumi.Input[str] region_id: (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
         :param pulumi.Input[str] status: The state of the zone.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone.
         :param pulumi.Input[str] zone_id: The zone ID.
@@ -126,6 +128,8 @@ class _VpcEndpointZoneState:
             pulumi.set(__self__, "endpoint_id", endpoint_id)
         if eni_ip is not None:
             pulumi.set(__self__, "eni_ip", eni_ip)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if vswitch_id is not None:
@@ -168,6 +172,18 @@ class _VpcEndpointZoneState:
     @eni_ip.setter
     def eni_ip(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "eni_ip", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter
@@ -395,6 +411,7 @@ class VpcEndpointZone(pulumi.CustomResource):
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(VpcEndpointZone, __self__).__init__(
             'alicloud:privatelink/vpcEndpointZone:VpcEndpointZone',
@@ -409,6 +426,7 @@ class VpcEndpointZone(pulumi.CustomResource):
             dry_run: Optional[pulumi.Input[bool]] = None,
             endpoint_id: Optional[pulumi.Input[str]] = None,
             eni_ip: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'VpcEndpointZone':
@@ -422,6 +440,7 @@ class VpcEndpointZone(pulumi.CustomResource):
         :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[str] endpoint_id: The endpoint ID.
         :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
+        :param pulumi.Input[str] region_id: (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
         :param pulumi.Input[str] status: The state of the zone.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone.
         :param pulumi.Input[str] zone_id: The zone ID.
@@ -433,6 +452,7 @@ class VpcEndpointZone(pulumi.CustomResource):
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["endpoint_id"] = endpoint_id
         __props__.__dict__["eni_ip"] = eni_ip
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["status"] = status
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
@@ -461,6 +481,14 @@ class VpcEndpointZone(pulumi.CustomResource):
         The IP address of the endpoint ENI.
         """
         return pulumi.get(self, "eni_ip")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter

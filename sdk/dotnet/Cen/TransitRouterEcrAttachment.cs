@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/).
     /// 
-    /// &gt; **NOTE:** Available since v1.226.0.
+    /// &gt; **NOTE:** Available since v1.235.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var asn = config.Get("asn") ?? "4200000666";
+    ///     var asn = config.Get("asn") ?? "4200000667";
     ///     var defaultO8Hcfx = new AliCloud.ExpressConnect.RouterExpressConnectRouter("defaultO8Hcfx", new()
     ///     {
     ///         AlibabaSideAsn = asn,

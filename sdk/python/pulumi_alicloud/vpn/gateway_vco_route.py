@@ -22,18 +22,22 @@ class GatewayVcoRouteArgs:
                  next_hop: pulumi.Input[str],
                  route_dest: pulumi.Input[str],
                  vpn_connection_id: pulumi.Input[str],
-                 weight: pulumi.Input[int]):
+                 weight: pulumi.Input[int],
+                 overlay_mode: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GatewayVcoRoute resource.
         :param pulumi.Input[str] next_hop: The next hop of the destination route.
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
         :param pulumi.Input[str] vpn_connection_id: The id of the vpn attachment.
         :param pulumi.Input[int] weight: The weight value of the destination route. Valid values: `0`, `100`.
+        :param pulumi.Input[str] overlay_mode: The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
         """
         pulumi.set(__self__, "next_hop", next_hop)
         pulumi.set(__self__, "route_dest", route_dest)
         pulumi.set(__self__, "vpn_connection_id", vpn_connection_id)
         pulumi.set(__self__, "weight", weight)
+        if overlay_mode is not None:
+            pulumi.set(__self__, "overlay_mode", overlay_mode)
 
     @property
     @pulumi.getter(name="nextHop")
@@ -83,11 +87,24 @@ class GatewayVcoRouteArgs:
     def weight(self, value: pulumi.Input[int]):
         pulumi.set(self, "weight", value)
 
+    @property
+    @pulumi.getter(name="overlayMode")
+    def overlay_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+        """
+        return pulumi.get(self, "overlay_mode")
+
+    @overlay_mode.setter
+    def overlay_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "overlay_mode", value)
+
 
 @pulumi.input_type
 class _GatewayVcoRouteState:
     def __init__(__self__, *,
                  next_hop: Optional[pulumi.Input[str]] = None,
+                 overlay_mode: Optional[pulumi.Input[str]] = None,
                  route_dest: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vpn_connection_id: Optional[pulumi.Input[str]] = None,
@@ -95,6 +112,7 @@ class _GatewayVcoRouteState:
         """
         Input properties used for looking up and filtering GatewayVcoRoute resources.
         :param pulumi.Input[str] next_hop: The next hop of the destination route.
+        :param pulumi.Input[str] overlay_mode: The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
         :param pulumi.Input[str] status: The status of the vpn route entry.
         :param pulumi.Input[str] vpn_connection_id: The id of the vpn attachment.
@@ -102,6 +120,8 @@ class _GatewayVcoRouteState:
         """
         if next_hop is not None:
             pulumi.set(__self__, "next_hop", next_hop)
+        if overlay_mode is not None:
+            pulumi.set(__self__, "overlay_mode", overlay_mode)
         if route_dest is not None:
             pulumi.set(__self__, "route_dest", route_dest)
         if status is not None:
@@ -122,6 +142,18 @@ class _GatewayVcoRouteState:
     @next_hop.setter
     def next_hop(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "next_hop", value)
+
+    @property
+    @pulumi.getter(name="overlayMode")
+    def overlay_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+        """
+        return pulumi.get(self, "overlay_mode")
+
+    @overlay_mode.setter
+    def overlay_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "overlay_mode", value)
 
     @property
     @pulumi.getter(name="routeDest")
@@ -178,6 +210,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  next_hop: Optional[pulumi.Input[str]] = None,
+                 overlay_mode: Optional[pulumi.Input[str]] = None,
                  route_dest: Optional[pulumi.Input[str]] = None,
                  vpn_connection_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
@@ -204,8 +237,14 @@ class GatewayVcoRoute(pulumi.CustomResource):
         default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
         default_transit_router = alicloud.cen.TransitRouter("default",
             cen_id=default_instance.id,
-            transit_router_description="desd",
+            transit_router_description=name,
             transit_router_name=name)
+        default_transit_router_cidr = alicloud.cen.TransitRouterCidr("default",
+            transit_router_id=default_transit_router.transit_router_id,
+            cidr="192.168.0.0/16",
+            transit_router_cidr_name=name,
+            description=name,
+            publish_cidr_route=True)
         default = alicloud.cen.get_transit_router_available_resources()
         default_customer_gateway = alicloud.vpn.CustomerGateway("default",
             customer_gateway_name=name,
@@ -224,7 +263,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
                 "ike_version": "ikev2",
                 "ike_mode": "main",
                 "ike_lifetime": 86400,
-                "psk": "tf-testvpn2",
+                "psk": "tf-examplevpn2",
                 "ike_pfs": "group1",
                 "remote_id": "testbob2",
                 "local_id": "testalice2",
@@ -252,12 +291,6 @@ class GatewayVcoRoute(pulumi.CustomResource):
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
-        default_transit_router_cidr = alicloud.cen.TransitRouterCidr("default",
-            transit_router_id=default_transit_router.transit_router_id,
-            cidr="192.168.0.0/16",
-            transit_router_cidr_name=name,
-            description=name,
-            publish_cidr_route=True)
         default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
             auto_publish_route_enabled=False,
             transit_router_attachment_description=name,
@@ -269,10 +302,10 @@ class GatewayVcoRoute(pulumi.CustomResource):
                 "zone_id": default.resources[0].master_zones[0],
             }])
         default_gateway_vco_route = alicloud.vpn.GatewayVcoRoute("default",
-            route_dest="192.168.12.0/24",
             next_hop=default_transit_router_vpn_attachment.vpn_id,
             vpn_connection_id=default_transit_router_vpn_attachment.vpn_id,
-            weight=100)
+            weight=100,
+            route_dest="192.168.10.0/24")
         ```
 
         ## Import
@@ -286,6 +319,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] next_hop: The next hop of the destination route.
+        :param pulumi.Input[str] overlay_mode: The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
         :param pulumi.Input[str] vpn_connection_id: The id of the vpn attachment.
         :param pulumi.Input[int] weight: The weight value of the destination route. Valid values: `0`, `100`.
@@ -318,8 +352,14 @@ class GatewayVcoRoute(pulumi.CustomResource):
         default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
         default_transit_router = alicloud.cen.TransitRouter("default",
             cen_id=default_instance.id,
-            transit_router_description="desd",
+            transit_router_description=name,
             transit_router_name=name)
+        default_transit_router_cidr = alicloud.cen.TransitRouterCidr("default",
+            transit_router_id=default_transit_router.transit_router_id,
+            cidr="192.168.0.0/16",
+            transit_router_cidr_name=name,
+            description=name,
+            publish_cidr_route=True)
         default = alicloud.cen.get_transit_router_available_resources()
         default_customer_gateway = alicloud.vpn.CustomerGateway("default",
             customer_gateway_name=name,
@@ -338,7 +378,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
                 "ike_version": "ikev2",
                 "ike_mode": "main",
                 "ike_lifetime": 86400,
-                "psk": "tf-testvpn2",
+                "psk": "tf-examplevpn2",
                 "ike_pfs": "group1",
                 "remote_id": "testbob2",
                 "local_id": "testalice2",
@@ -366,12 +406,6 @@ class GatewayVcoRoute(pulumi.CustomResource):
             enable_dpd=True,
             enable_nat_traversal=True,
             vpn_attachment_name=name)
-        default_transit_router_cidr = alicloud.cen.TransitRouterCidr("default",
-            transit_router_id=default_transit_router.transit_router_id,
-            cidr="192.168.0.0/16",
-            transit_router_cidr_name=name,
-            description=name,
-            publish_cidr_route=True)
         default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
             auto_publish_route_enabled=False,
             transit_router_attachment_description=name,
@@ -383,10 +417,10 @@ class GatewayVcoRoute(pulumi.CustomResource):
                 "zone_id": default.resources[0].master_zones[0],
             }])
         default_gateway_vco_route = alicloud.vpn.GatewayVcoRoute("default",
-            route_dest="192.168.12.0/24",
             next_hop=default_transit_router_vpn_attachment.vpn_id,
             vpn_connection_id=default_transit_router_vpn_attachment.vpn_id,
-            weight=100)
+            weight=100,
+            route_dest="192.168.10.0/24")
         ```
 
         ## Import
@@ -413,6 +447,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  next_hop: Optional[pulumi.Input[str]] = None,
+                 overlay_mode: Optional[pulumi.Input[str]] = None,
                  route_dest: Optional[pulumi.Input[str]] = None,
                  vpn_connection_id: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None,
@@ -428,6 +463,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
             if next_hop is None and not opts.urn:
                 raise TypeError("Missing required property 'next_hop'")
             __props__.__dict__["next_hop"] = next_hop
+            __props__.__dict__["overlay_mode"] = overlay_mode
             if route_dest is None and not opts.urn:
                 raise TypeError("Missing required property 'route_dest'")
             __props__.__dict__["route_dest"] = route_dest
@@ -449,6 +485,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             next_hop: Optional[pulumi.Input[str]] = None,
+            overlay_mode: Optional[pulumi.Input[str]] = None,
             route_dest: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vpn_connection_id: Optional[pulumi.Input[str]] = None,
@@ -461,6 +498,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] next_hop: The next hop of the destination route.
+        :param pulumi.Input[str] overlay_mode: The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
         :param pulumi.Input[str] route_dest: The destination network segment of the destination route.
         :param pulumi.Input[str] status: The status of the vpn route entry.
         :param pulumi.Input[str] vpn_connection_id: The id of the vpn attachment.
@@ -471,6 +509,7 @@ class GatewayVcoRoute(pulumi.CustomResource):
         __props__ = _GatewayVcoRouteState.__new__(_GatewayVcoRouteState)
 
         __props__.__dict__["next_hop"] = next_hop
+        __props__.__dict__["overlay_mode"] = overlay_mode
         __props__.__dict__["route_dest"] = route_dest
         __props__.__dict__["status"] = status
         __props__.__dict__["vpn_connection_id"] = vpn_connection_id
@@ -484,6 +523,14 @@ class GatewayVcoRoute(pulumi.CustomResource):
         The next hop of the destination route.
         """
         return pulumi.get(self, "next_hop")
+
+    @property
+    @pulumi.getter(name="overlayMode")
+    def overlay_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+        """
+        return pulumi.get(self, "overlay_mode")
 
     @property
     @pulumi.getter(name="routeDest")

@@ -6,7 +6,9 @@ package com.pulumi.alicloud.cen;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,14 +19,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     public static final FlowLogArgs Empty = new FlowLogArgs();
 
     /**
-     * The ID of the CEN Instance.
+     * cen id
      * 
      */
     @Import(name="cenId", required=true)
     private Output<String> cenId;
 
     /**
-     * @return The ID of the CEN Instance.
+     * @return cen id
      * 
      */
     public Output<String> cenId() {
@@ -32,14 +34,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of flowlog.
+     * The description of the flowlog.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of flowlog.
+     * @return The description of the flowlog.
      * 
      */
     public Optional<Output<String>> description() {
@@ -47,14 +49,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of flowlog.
+     * The name of the flowlog.
      * 
      */
     @Import(name="flowLogName")
     private @Nullable Output<String> flowLogName;
 
     /**
-     * @return The name of flowlog.
+     * @return The name of the flowlog.
      * 
      */
     public Optional<Output<String>> flowLogName() {
@@ -62,14 +64,44 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the log store which is in the  `project_name` SLS project.
+     * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+     * 
+     */
+    @Import(name="interval")
+    private @Nullable Output<Integer> interval;
+
+    /**
+     * @return The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+     * 
+     */
+    public Optional<Output<Integer>> interval() {
+        return Optional.ofNullable(this.interval);
+    }
+
+    /**
+     * Log Format
+     * 
+     */
+    @Import(name="logFormatString")
+    private @Nullable Output<String> logFormatString;
+
+    /**
+     * @return Log Format
+     * 
+     */
+    public Optional<Output<String>> logFormatString() {
+        return Optional.ofNullable(this.logFormatString);
+    }
+
+    /**
+     * The LogStore that stores the flowlog.
      * 
      */
     @Import(name="logStoreName", required=true)
     private Output<String> logStoreName;
 
     /**
-     * @return The name of the log store which is in the  `project_name` SLS project.
+     * @return The LogStore that stores the flowlog.
      * 
      */
     public Output<String> logStoreName() {
@@ -77,14 +109,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the SLS project.
+     * The Project that stores the flowlog.
      * 
      */
     @Import(name="projectName", required=true)
     private Output<String> projectName;
 
     /**
-     * @return The name of the SLS project.
+     * @return The Project that stores the flowlog.
      * 
      */
     public Output<String> projectName() {
@@ -92,18 +124,71 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+     * The status of the flow log. Valid values:
+     * - `Active`: started.
+     * - `InActive`: not started.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+     * @return The status of the flow log. Valid values:
+     * - `Active`: started.
+     * - `InActive`: not started.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Cross-region Connection ID or VBR connection ID.
+     * 
+     * &gt; **NOTE:**  This parameter is required.
+     * 
+     */
+    @Import(name="transitRouterAttachmentId")
+    private @Nullable Output<String> transitRouterAttachmentId;
+
+    /**
+     * @return Cross-region Connection ID or VBR connection ID.
+     * 
+     * &gt; **NOTE:**  This parameter is required.
+     * 
+     */
+    public Optional<Output<String>> transitRouterAttachmentId() {
+        return Optional.ofNullable(this.transitRouterAttachmentId);
+    }
+
+    /**
+     * Transit Router ID
+     * 
+     */
+    @Import(name="transitRouterId")
+    private @Nullable Output<String> transitRouterId;
+
+    /**
+     * @return Transit Router ID
+     * 
+     */
+    public Optional<Output<String>> transitRouterId() {
+        return Optional.ofNullable(this.transitRouterId);
     }
 
     private FlowLogArgs() {}
@@ -112,9 +197,14 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         this.cenId = $.cenId;
         this.description = $.description;
         this.flowLogName = $.flowLogName;
+        this.interval = $.interval;
+        this.logFormatString = $.logFormatString;
         this.logStoreName = $.logStoreName;
         this.projectName = $.projectName;
         this.status = $.status;
+        this.tags = $.tags;
+        this.transitRouterAttachmentId = $.transitRouterAttachmentId;
+        this.transitRouterId = $.transitRouterId;
     }
 
     public static Builder builder() {
@@ -136,7 +226,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cenId The ID of the CEN Instance.
+         * @param cenId cen id
          * 
          * @return builder
          * 
@@ -147,7 +237,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cenId The ID of the CEN Instance.
+         * @param cenId cen id
          * 
          * @return builder
          * 
@@ -157,7 +247,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of flowlog.
+         * @param description The description of the flowlog.
          * 
          * @return builder
          * 
@@ -168,7 +258,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The description of flowlog.
+         * @param description The description of the flowlog.
          * 
          * @return builder
          * 
@@ -178,7 +268,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flowLogName The name of flowlog.
+         * @param flowLogName The name of the flowlog.
          * 
          * @return builder
          * 
@@ -189,7 +279,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param flowLogName The name of flowlog.
+         * @param flowLogName The name of the flowlog.
          * 
          * @return builder
          * 
@@ -199,7 +289,49 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStoreName The name of the log store which is in the  `project_name` SLS project.
+         * @param interval The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interval(@Nullable Output<Integer> interval) {
+            $.interval = interval;
+            return this;
+        }
+
+        /**
+         * @param interval The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interval(Integer interval) {
+            return interval(Output.of(interval));
+        }
+
+        /**
+         * @param logFormatString Log Format
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logFormatString(@Nullable Output<String> logFormatString) {
+            $.logFormatString = logFormatString;
+            return this;
+        }
+
+        /**
+         * @param logFormatString Log Format
+         * 
+         * @return builder
+         * 
+         */
+        public Builder logFormatString(String logFormatString) {
+            return logFormatString(Output.of(logFormatString));
+        }
+
+        /**
+         * @param logStoreName The LogStore that stores the flowlog.
          * 
          * @return builder
          * 
@@ -210,7 +342,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logStoreName The name of the log store which is in the  `project_name` SLS project.
+         * @param logStoreName The LogStore that stores the flowlog.
          * 
          * @return builder
          * 
@@ -220,7 +352,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the SLS project.
+         * @param projectName The Project that stores the flowlog.
          * 
          * @return builder
          * 
@@ -231,7 +363,7 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the SLS project.
+         * @param projectName The Project that stores the flowlog.
          * 
          * @return builder
          * 
@@ -241,7 +373,9 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+         * @param status The status of the flow log. Valid values:
+         * - `Active`: started.
+         * - `InActive`: not started.
          * 
          * @return builder
          * 
@@ -252,13 +386,82 @@ public final class FlowLogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+         * @param status The status of the flow log. Valid values:
+         * - `Active`: started.
+         * - `InActive`: not started.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The tag of the resource
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param transitRouterAttachmentId Cross-region Connection ID or VBR connection ID.
+         * 
+         * &gt; **NOTE:**  This parameter is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentId(@Nullable Output<String> transitRouterAttachmentId) {
+            $.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterAttachmentId Cross-region Connection ID or VBR connection ID.
+         * 
+         * &gt; **NOTE:**  This parameter is required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
+            return transitRouterAttachmentId(Output.of(transitRouterAttachmentId));
+        }
+
+        /**
+         * @param transitRouterId Transit Router ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterId(@Nullable Output<String> transitRouterId) {
+            $.transitRouterId = transitRouterId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterId Transit Router ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterId(String transitRouterId) {
+            return transitRouterId(Output.of(transitRouterId));
         }
 
         public FlowLogArgs build() {

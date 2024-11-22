@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Redis And Memcache (KVStore) Audit Log Config resource.
+ * Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config resource.
  *
  * > **NOTE:** Available since v1.130.0.
  *
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Redis And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example <instance_id>

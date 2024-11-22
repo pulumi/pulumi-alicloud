@@ -12,41 +12,125 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a CR Instance resource.
+//
+// For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+//
+// > **NOTE:** Available since v1.124.0.
+//
+// ## Example Usage
+//
+// # Basic Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cr"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000000,
+//				Max: 99999999,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cr.NewRegistryEnterpriseInstance(ctx, "default", &cr.RegistryEnterpriseInstanceArgs{
+//				PaymentType:   pulumi.String("Subscription"),
+//				Period:        pulumi.Int(1),
+//				RenewPeriod:   pulumi.Int(0),
+//				RenewalStatus: pulumi.String("ManualRenewal"),
+//				InstanceType:  pulumi.String("Advanced"),
+//				InstanceName:  pulumi.Sprintf("%v-%v", name, _default.Result),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
+// CR Instance can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+// $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance example <id>
 // ```
 type RegistryEnterpriseInstance struct {
 	pulumi.CustomResourceState
 
-	// Time of Container Registry Enterprise Edition instance creation.
+	// The creation time of the resource
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
+	//
+	// Deprecated: Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
-	// Name of your customized oss bucket. Use this bucket as instance storage if set.
+	// Custom OSS Bucket name
 	CustomOssBucket pulumi.StringPtrOutput `pulumi:"customOssBucket"`
-	// Time of Container Registry Enterprise Edition instance expiration.
+	// Whether to use the default OSS Bucket
+	DefaultOssBucket pulumi.StringPtrOutput `pulumi:"defaultOssBucket"`
+	// Expiration Time
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// Name of Container Registry Enterprise Edition instance.
+	// Security scan engine
+	ImageScanner pulumi.StringPtrOutput `pulumi:"imageScanner"`
+	// InstanceName
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+	//
+	// Basic: Basic instance
+	//
+	// Standard: Standard instance
+	//
+	// Advanced: Advanced Edition Instance
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
-	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	// Permanent access credentials of the instance
 	Password pulumi.StringPtrOutput `pulumi:"password"`
-	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
-	PaymentType pulumi.StringPtrOutput `pulumi:"paymentType"`
-	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+	// Payment type, value:
+	// - Subscription: Prepaid.
+	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
+	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
+	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
-	// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+	// RegionId
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// Automatic renewal cycle, in months.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
-	// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
-	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
-	// Status of Container Registry Enterprise Edition instance.
+	// Automatic renewal status, value:
+	// - AutoRenewal: automatic renewal.
+	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
+	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
+	// The ID of the resource group
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// Instance Status
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -62,6 +146,9 @@ func NewRegistryEnterpriseInstance(ctx *pulumi.Context,
 	}
 	if args.InstanceType == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceType'")
+	}
+	if args.PaymentType == nil {
+		return nil, errors.New("invalid value for required argument 'PaymentType'")
 	}
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
@@ -93,60 +180,118 @@ func GetRegistryEnterpriseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegistryEnterpriseInstance resources.
 type registryEnterpriseInstanceState struct {
-	// Time of Container Registry Enterprise Edition instance creation.
+	// The creation time of the resource
+	CreateTime *string `pulumi:"createTime"`
+	// . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
+	//
+	// Deprecated: Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
 	CreatedTime *string `pulumi:"createdTime"`
-	// Name of your customized oss bucket. Use this bucket as instance storage if set.
+	// Custom OSS Bucket name
 	CustomOssBucket *string `pulumi:"customOssBucket"`
-	// Time of Container Registry Enterprise Edition instance expiration.
+	// Whether to use the default OSS Bucket
+	DefaultOssBucket *string `pulumi:"defaultOssBucket"`
+	// Expiration Time
 	EndTime *string `pulumi:"endTime"`
-	// Name of Container Registry Enterprise Edition instance.
+	// Security scan engine
+	ImageScanner *string `pulumi:"imageScanner"`
+	// InstanceName
 	InstanceName *string `pulumi:"instanceName"`
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+	//
+	// Basic: Basic instance
+	//
+	// Standard: Standard instance
+	//
+	// Advanced: Advanced Edition Instance
 	InstanceType *string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	// Permanent access credentials of the instance
 	Password *string `pulumi:"password"`
-	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+	// Payment type, value:
+	// - Subscription: Prepaid.
 	PaymentType *string `pulumi:"paymentType"`
-	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
+	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period *int `pulumi:"period"`
-	// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+	// RegionId
+	RegionId *string `pulumi:"regionId"`
+	// Automatic renewal cycle, in months.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod *int `pulumi:"renewPeriod"`
-	// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+	// Automatic renewal status, value:
+	// - AutoRenewal: automatic renewal.
+	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
 	RenewalStatus *string `pulumi:"renewalStatus"`
-	// Status of Container Registry Enterprise Edition instance.
+	// The ID of the resource group
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// Instance Status
 	Status *string `pulumi:"status"`
 }
 
 type RegistryEnterpriseInstanceState struct {
-	// Time of Container Registry Enterprise Edition instance creation.
+	// The creation time of the resource
+	CreateTime pulumi.StringPtrInput
+	// . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
+	//
+	// Deprecated: Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
 	CreatedTime pulumi.StringPtrInput
-	// Name of your customized oss bucket. Use this bucket as instance storage if set.
+	// Custom OSS Bucket name
 	CustomOssBucket pulumi.StringPtrInput
-	// Time of Container Registry Enterprise Edition instance expiration.
+	// Whether to use the default OSS Bucket
+	DefaultOssBucket pulumi.StringPtrInput
+	// Expiration Time
 	EndTime pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition instance.
+	// Security scan engine
+	ImageScanner pulumi.StringPtrInput
+	// InstanceName
 	InstanceName pulumi.StringPtrInput
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+	//
+	// Basic: Basic instance
+	//
+	// Standard: Standard instance
+	//
+	// Advanced: Advanced Edition Instance
 	InstanceType pulumi.StringPtrInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	// Permanent access credentials of the instance
 	Password pulumi.StringPtrInput
-	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+	// Payment type, value:
+	// - Subscription: Prepaid.
 	PaymentType pulumi.StringPtrInput
-	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
+	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period pulumi.IntPtrInput
-	// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+	// RegionId
+	RegionId pulumi.StringPtrInput
+	// Automatic renewal cycle, in months.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod pulumi.IntPtrInput
-	// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+	// Automatic renewal status, value:
+	// - AutoRenewal: automatic renewal.
+	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
 	RenewalStatus pulumi.StringPtrInput
-	// Status of Container Registry Enterprise Edition instance.
+	// The ID of the resource group
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	ResourceGroupId pulumi.StringPtrInput
+	// Instance Status
 	Status pulumi.StringPtrInput
 }
 
@@ -155,50 +300,96 @@ func (RegistryEnterpriseInstanceState) ElementType() reflect.Type {
 }
 
 type registryEnterpriseInstanceArgs struct {
-	// Name of your customized oss bucket. Use this bucket as instance storage if set.
+	// Custom OSS Bucket name
 	CustomOssBucket *string `pulumi:"customOssBucket"`
-	// Name of Container Registry Enterprise Edition instance.
+	// Whether to use the default OSS Bucket
+	DefaultOssBucket *string `pulumi:"defaultOssBucket"`
+	// Security scan engine
+	ImageScanner *string `pulumi:"imageScanner"`
+	// InstanceName
 	InstanceName string `pulumi:"instanceName"`
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+	//
+	// Basic: Basic instance
+	//
+	// Standard: Standard instance
+	//
+	// Advanced: Advanced Edition Instance
 	InstanceType string `pulumi:"instanceType"`
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	// Permanent access credentials of the instance
 	Password *string `pulumi:"password"`
-	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
-	PaymentType *string `pulumi:"paymentType"`
-	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+	// Payment type, value:
+	// - Subscription: Prepaid.
+	PaymentType string `pulumi:"paymentType"`
+	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
+	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period *int `pulumi:"period"`
-	// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+	// Automatic renewal cycle, in months.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod *int `pulumi:"renewPeriod"`
-	// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+	// Automatic renewal status, value:
+	// - AutoRenewal: automatic renewal.
+	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
 	RenewalStatus *string `pulumi:"renewalStatus"`
+	// The ID of the resource group
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
 
 // The set of arguments for constructing a RegistryEnterpriseInstance resource.
 type RegistryEnterpriseInstanceArgs struct {
-	// Name of your customized oss bucket. Use this bucket as instance storage if set.
+	// Custom OSS Bucket name
 	CustomOssBucket pulumi.StringPtrInput
-	// Name of Container Registry Enterprise Edition instance.
+	// Whether to use the default OSS Bucket
+	DefaultOssBucket pulumi.StringPtrInput
+	// Security scan engine
+	ImageScanner pulumi.StringPtrInput
+	// InstanceName
 	InstanceName pulumi.StringInput
-	// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+	// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+	//
+	// Basic: Basic instance
+	//
+	// Standard: Standard instance
+	//
+	// Advanced: Advanced Edition Instance
 	InstanceType pulumi.StringInput
 	// An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+	// Permanent access credentials of the instance
 	Password pulumi.StringPtrInput
-	// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
-	PaymentType pulumi.StringPtrInput
-	// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+	// Payment type, value:
+	// - Subscription: Prepaid.
+	PaymentType pulumi.StringInput
+	// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+	//
+	// > **NOTE:**  must be set when creating a prepaid instance.
 	Period pulumi.IntPtrInput
-	// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+	// Automatic renewal cycle, in months.
+	//
+	// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 	RenewPeriod pulumi.IntPtrInput
-	// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+	// Automatic renewal status, value:
+	// - AutoRenewal: automatic renewal.
+	// - ManualRenewal: manual renewal.
+	//
+	// Default ManualRenewal.
 	RenewalStatus pulumi.StringPtrInput
+	// The ID of the resource group
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
+	ResourceGroupId pulumi.StringPtrInput
 }
 
 func (RegistryEnterpriseInstanceArgs) ElementType() reflect.Type {
@@ -288,27 +479,50 @@ func (o RegistryEnterpriseInstanceOutput) ToRegistryEnterpriseInstanceOutputWith
 	return o
 }
 
-// Time of Container Registry Enterprise Edition instance creation.
+// The creation time of the resource
+func (o RegistryEnterpriseInstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
+//
+// Deprecated: Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
 func (o RegistryEnterpriseInstanceOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
-// Name of your customized oss bucket. Use this bucket as instance storage if set.
+// Custom OSS Bucket name
 func (o RegistryEnterpriseInstanceOutput) CustomOssBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.CustomOssBucket }).(pulumi.StringPtrOutput)
 }
 
-// Time of Container Registry Enterprise Edition instance expiration.
+// Whether to use the default OSS Bucket
+func (o RegistryEnterpriseInstanceOutput) DefaultOssBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.DefaultOssBucket }).(pulumi.StringPtrOutput)
+}
+
+// Expiration Time
 func (o RegistryEnterpriseInstanceOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Name of Container Registry Enterprise Edition instance.
+// Security scan engine
+func (o RegistryEnterpriseInstanceOutput) ImageScanner() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.ImageScanner }).(pulumi.StringPtrOutput)
+}
+
+// InstanceName
 func (o RegistryEnterpriseInstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+//
+// Basic: Basic instance
+//
+// Standard: Standard instance
+//
+// Advanced: Advanced Edition Instance
 func (o RegistryEnterpriseInstanceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -323,32 +537,53 @@ func (o RegistryEnterpriseInstanceOutput) KmsEncryptionContext() pulumi.StringMa
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
-// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+// Permanent access credentials of the instance
 func (o RegistryEnterpriseInstanceOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
-func (o RegistryEnterpriseInstanceOutput) PaymentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.PaymentType }).(pulumi.StringPtrOutput)
+// Payment type, value:
+// - Subscription: Prepaid.
+func (o RegistryEnterpriseInstanceOutput) PaymentType() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+//
+// > **NOTE:**  must be set when creating a prepaid instance.
 func (o RegistryEnterpriseInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+// RegionId
+func (o RegistryEnterpriseInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// Automatic renewal cycle, in months.
+//
+// > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
 func (o RegistryEnterpriseInstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
 }
 
-// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
-func (o RegistryEnterpriseInstanceOutput) RenewalStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringPtrOutput { return v.RenewalStatus }).(pulumi.StringPtrOutput)
+// Automatic renewal status, value:
+// - AutoRenewal: automatic renewal.
+// - ManualRenewal: manual renewal.
+//
+// Default ManualRenewal.
+func (o RegistryEnterpriseInstanceOutput) RenewalStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.RenewalStatus }).(pulumi.StringOutput)
 }
 
-// Status of Container Registry Enterprise Edition instance.
+// The ID of the resource group
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
+func (o RegistryEnterpriseInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
+}
+
+// Instance Status
 func (o RegistryEnterpriseInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnterpriseInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

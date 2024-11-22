@@ -31,14 +31,18 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the subinstance of the leased line gateway.
+     * The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+     * 
+     * &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      * 
      */
     @Import(name="childInstanceOwnerId")
     private @Nullable Output<String> childInstanceOwnerId;
 
     /**
-     * @return The ID of the subinstance of the leased line gateway.
+     * @return The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+     * 
+     * &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      * 
      */
     public Optional<Output<String>> childInstanceOwnerId() {
@@ -46,14 +50,14 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Region of the leased line gateway sub-instance.
+     * Region of the leased line gateway sub-instance
      * 
      */
     @Import(name="childInstanceRegionId")
     private @Nullable Output<String> childInstanceRegionId;
 
     /**
-     * @return Region of the leased line gateway sub-instance.
+     * @return Region of the leased line gateway sub-instance
      * 
      */
     public Optional<Output<String>> childInstanceRegionId() {
@@ -61,14 +65,14 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The type of leased line gateway sub-instance, Valid values: `VBR`.
+     * The type of the network instance. Value: `VBR`: VBR instance.
      * 
      */
     @Import(name="childInstanceType")
     private @Nullable Output<String> childInstanceType;
 
     /**
-     * @return The type of leased line gateway sub-instance, Valid values: `VBR`.
+     * @return The type of the network instance. Value: `VBR`: VBR instance.
      * 
      */
     public Optional<Output<String>> childInstanceType() {
@@ -88,6 +92,21 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Resource attribute fields that represent descriptive information
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Resource attribute fields that represent descriptive information
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -128,6 +147,7 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
         this.childInstanceRegionId = $.childInstanceRegionId;
         this.childInstanceType = $.childInstanceType;
         this.createTime = $.createTime;
+        this.description = $.description;
         this.ecrId = $.ecrId;
         this.status = $.status;
     }
@@ -172,7 +192,9 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param childInstanceOwnerId The ID of the subinstance of the leased line gateway.
+         * @param childInstanceOwnerId The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+         * 
+         * &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
          * 
          * @return builder
          * 
@@ -183,7 +205,9 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param childInstanceOwnerId The ID of the subinstance of the leased line gateway.
+         * @param childInstanceOwnerId The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+         * 
+         * &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
          * 
          * @return builder
          * 
@@ -193,7 +217,7 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param childInstanceRegionId Region of the leased line gateway sub-instance.
+         * @param childInstanceRegionId Region of the leased line gateway sub-instance
          * 
          * @return builder
          * 
@@ -204,7 +228,7 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param childInstanceRegionId Region of the leased line gateway sub-instance.
+         * @param childInstanceRegionId Region of the leased line gateway sub-instance
          * 
          * @return builder
          * 
@@ -214,7 +238,7 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param childInstanceType The type of leased line gateway sub-instance, Valid values: `VBR`.
+         * @param childInstanceType The type of the network instance. Value: `VBR`: VBR instance.
          * 
          * @return builder
          * 
@@ -225,7 +249,7 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param childInstanceType The type of leased line gateway sub-instance, Valid values: `VBR`.
+         * @param childInstanceType The type of the network instance. Value: `VBR`: VBR instance.
          * 
          * @return builder
          * 
@@ -253,6 +277,27 @@ public final class RouterVbrChildInstanceState extends com.pulumi.resources.Reso
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description Resource attribute fields that represent descriptive information
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Resource attribute fields that represent descriptive information
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

@@ -99,6 +99,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The backup retention policy configured for the instance. Valid values:
+     * 
+     */
+    @Import(name="backupRetentionPolicyOnClusterDeletion")
+    private @Nullable Output<Integer> backupRetentionPolicyOnClusterDeletion;
+
+    /**
+     * @return The backup retention policy configured for the instance. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> backupRetentionPolicyOnClusterDeletion() {
+        return Optional.ofNullable(this.backupRetentionPolicyOnClusterDeletion);
+    }
+
+    /**
      * MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
@@ -715,6 +730,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.backupInterval = $.backupInterval;
         this.backupPeriods = $.backupPeriods;
         this.backupRetentionPeriod = $.backupRetentionPeriod;
+        this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
         this.backupTime = $.backupTime;
         this.cloudDiskEncryptionKey = $.cloudDiskEncryptionKey;
         this.dbInstanceClass = $.dbInstanceClass;
@@ -889,6 +905,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder backupRetentionPeriod(Integer backupRetentionPeriod) {
             return backupRetentionPeriod(Output.of(backupRetentionPeriod));
+        }
+
+        /**
+         * @param backupRetentionPolicyOnClusterDeletion The backup retention policy configured for the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPolicyOnClusterDeletion(@Nullable Output<Integer> backupRetentionPolicyOnClusterDeletion) {
+            $.backupRetentionPolicyOnClusterDeletion = backupRetentionPolicyOnClusterDeletion;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionPolicyOnClusterDeletion The backup retention policy configured for the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPolicyOnClusterDeletion(Integer backupRetentionPolicyOnClusterDeletion) {
+            return backupRetentionPolicyOnClusterDeletion(Output.of(backupRetentionPolicyOnClusterDeletion));
         }
 
         /**

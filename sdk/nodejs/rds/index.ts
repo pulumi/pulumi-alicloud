@@ -25,6 +25,16 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { CustomArgs, CustomState } from "./custom";
+export type Custom = import("./custom").Custom;
+export const Custom: typeof import("./custom").Custom = null as any;
+utilities.lazyLoad(exports, ["Custom"], () => require("./custom"));
+
+export { CustomDeploymentSetArgs, CustomDeploymentSetState } from "./customDeploymentSet";
+export type CustomDeploymentSet = import("./customDeploymentSet").CustomDeploymentSet;
+export const CustomDeploymentSet: typeof import("./customDeploymentSet").CustomDeploymentSet = null as any;
+utilities.lazyLoad(exports, ["CustomDeploymentSet"], () => require("./customDeploymentSet"));
+
 export { DatabaseArgs, DatabaseState } from "./database";
 export type Database = import("./database").Database;
 export const Database: typeof import("./database").Database = null as any;
@@ -193,6 +203,10 @@ const _module = {
                 return new BackupPolicy(name, <any>undefined, { urn })
             case "alicloud:rds/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "alicloud:rds/custom:Custom":
+                return new Custom(name, <any>undefined, { urn })
+            case "alicloud:rds/customDeploymentSet:CustomDeploymentSet":
+                return new CustomDeploymentSet(name, <any>undefined, { urn })
             case "alicloud:rds/database:Database":
                 return new Database(name, <any>undefined, { urn })
             case "alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint":
@@ -234,6 +248,8 @@ pulumi.runtime.registerResourceModule("alicloud", "rds/account", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/accountPrivilege", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/connection", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/custom", _module)
+pulumi.runtime.registerResourceModule("alicloud", "rds/customDeploymentSet", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/database", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpoint", _module)
 pulumi.runtime.registerResourceModule("alicloud", "rds/dbInstanceEndpointAddress", _module)

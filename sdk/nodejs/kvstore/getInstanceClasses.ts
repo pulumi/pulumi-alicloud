@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+ * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available since v1.49.0+
  *
@@ -56,11 +56,11 @@ export function getInstanceClasses(args: GetInstanceClassesArgs, opts?: pulumi.I
  */
 export interface GetInstanceClassesArgs {
     /**
-     * The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
      */
     architecture?: string;
     /**
-     * The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
      */
     editionType?: string;
     /**
@@ -76,7 +76,7 @@ export interface GetInstanceClassesArgs {
      */
     instanceChargeType?: string;
     /**
-     * The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
      */
     nodeType?: string;
     /**
@@ -97,7 +97,7 @@ export interface GetInstanceClassesArgs {
     performanceType?: string;
     productType?: string;
     /**
-     * The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
      */
     seriesType?: string;
     /**
@@ -115,7 +115,7 @@ export interface GetInstanceClassesArgs {
      */
     storageType?: string;
     /**
-     * The Zone to launch the KVStore instance.
+     * The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */
     zoneId: string;
 }
@@ -162,7 +162,7 @@ export interface GetInstanceClassesResult {
     readonly zoneId: string;
 }
 /**
- * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+ * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available since v1.49.0+
  *
@@ -211,11 +211,11 @@ export function getInstanceClassesOutput(args: GetInstanceClassesOutputArgs, opt
  */
 export interface GetInstanceClassesOutputArgs {
     /**
-     * The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
      */
     architecture?: pulumi.Input<string>;
     /**
-     * The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
      */
     editionType?: pulumi.Input<string>;
     /**
@@ -231,7 +231,7 @@ export interface GetInstanceClassesOutputArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
      */
     nodeType?: pulumi.Input<string>;
     /**
@@ -252,7 +252,7 @@ export interface GetInstanceClassesOutputArgs {
     performanceType?: pulumi.Input<string>;
     productType?: pulumi.Input<string>;
     /**
-     * The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
      */
     seriesType?: pulumi.Input<string>;
     /**
@@ -270,7 +270,7 @@ export interface GetInstanceClassesOutputArgs {
      */
     storageType?: pulumi.Input<string>;
     /**
-     * The Zone to launch the KVStore instance.
+     * The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Express Connect Router Express Connect Router Vbr Child Instance resource. Leased Line Gateway VBR sub-instance.
+ * Provides a Express Connect Router Express Connect Router Vbr Child Instance resource.
  *
  * For information about Express Connect Router Express Connect Router Vbr Child Instance and how to use it, see [What is Express Connect Router Vbr Child Instance](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/AttachExpressConnectRouterChildInstance).
  *
@@ -83,21 +83,27 @@ export class RouterVbrChildInstance extends pulumi.CustomResource {
      */
     public readonly childInstanceId!: pulumi.Output<string>;
     /**
-     * The ID of the subinstance of the leased line gateway.
+     * The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+     *
+     * > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      */
-    public readonly childInstanceOwnerId!: pulumi.Output<string | undefined>;
+    public readonly childInstanceOwnerId!: pulumi.Output<string>;
     /**
-     * Region of the leased line gateway sub-instance.
+     * Region of the leased line gateway sub-instance
      */
     public readonly childInstanceRegionId!: pulumi.Output<string>;
     /**
-     * The type of leased line gateway sub-instance, Valid values: `VBR`.
+     * The type of the network instance. Value: `VBR`: VBR instance.
      */
     public readonly childInstanceType!: pulumi.Output<string>;
     /**
      * The creation time of the resource.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Resource attribute fields that represent descriptive information
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * ID of the representative leased line gateway instance.
      */
@@ -125,6 +131,7 @@ export class RouterVbrChildInstance extends pulumi.CustomResource {
             resourceInputs["childInstanceRegionId"] = state ? state.childInstanceRegionId : undefined;
             resourceInputs["childInstanceType"] = state ? state.childInstanceType : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["ecrId"] = state ? state.ecrId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
@@ -145,6 +152,7 @@ export class RouterVbrChildInstance extends pulumi.CustomResource {
             resourceInputs["childInstanceOwnerId"] = args ? args.childInstanceOwnerId : undefined;
             resourceInputs["childInstanceRegionId"] = args ? args.childInstanceRegionId : undefined;
             resourceInputs["childInstanceType"] = args ? args.childInstanceType : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ecrId"] = args ? args.ecrId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -163,21 +171,27 @@ export interface RouterVbrChildInstanceState {
      */
     childInstanceId?: pulumi.Input<string>;
     /**
-     * The ID of the subinstance of the leased line gateway.
+     * The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+     *
+     * > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      */
     childInstanceOwnerId?: pulumi.Input<string>;
     /**
-     * Region of the leased line gateway sub-instance.
+     * Region of the leased line gateway sub-instance
      */
     childInstanceRegionId?: pulumi.Input<string>;
     /**
-     * The type of leased line gateway sub-instance, Valid values: `VBR`.
+     * The type of the network instance. Value: `VBR`: VBR instance.
      */
     childInstanceType?: pulumi.Input<string>;
     /**
      * The creation time of the resource.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Resource attribute fields that represent descriptive information
+     */
+    description?: pulumi.Input<string>;
     /**
      * ID of the representative leased line gateway instance.
      */
@@ -197,17 +211,23 @@ export interface RouterVbrChildInstanceArgs {
      */
     childInstanceId: pulumi.Input<string>;
     /**
-     * The ID of the subinstance of the leased line gateway.
+     * The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+     *
+     * > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      */
     childInstanceOwnerId?: pulumi.Input<string>;
     /**
-     * Region of the leased line gateway sub-instance.
+     * Region of the leased line gateway sub-instance
      */
     childInstanceRegionId: pulumi.Input<string>;
     /**
-     * The type of leased line gateway sub-instance, Valid values: `VBR`.
+     * The type of the network instance. Value: `VBR`: VBR instance.
      */
     childInstanceType: pulumi.Input<string>;
+    /**
+     * Resource attribute fields that represent descriptive information
+     */
+    description?: pulumi.Input<string>;
     /**
      * ID of the representative leased line gateway instance.
      */

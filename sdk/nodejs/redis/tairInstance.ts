@@ -68,6 +68,10 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
     /**
+     * The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+     */
+    public readonly connectionStringPrefix!: pulumi.Output<string | undefined>;
+    /**
      * The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -148,7 +152,7 @@ export class TairInstance extends pulumi.CustomResource {
     /**
      * sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
      */
-    public readonly paramSentinelCompatEnable!: pulumi.Output<string | undefined>;
+    public readonly paramSentinelCompatEnable!: pulumi.Output<string>;
     /**
      * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
      */
@@ -177,6 +181,10 @@ export class TairInstance extends pulumi.CustomResource {
      * Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
      */
     public readonly recoverConfigMode!: pulumi.Output<string | undefined>;
+    /**
+     * Region Id
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
@@ -281,6 +289,7 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["backupId"] = state ? state.backupId : undefined;
             resourceInputs["clusterBackupId"] = state ? state.clusterBackupId : undefined;
             resourceInputs["connectionDomain"] = state ? state.connectionDomain : undefined;
+            resourceInputs["connectionStringPrefix"] = state ? state.connectionStringPrefix : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["effectiveTime"] = state ? state.effectiveTime : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
@@ -303,6 +312,7 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["readOnlyCount"] = state ? state.readOnlyCount : undefined;
             resourceInputs["recoverConfigMode"] = state ? state.recoverConfigMode : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
             resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
@@ -343,6 +353,7 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["autoRenewPeriod"] = args ? args.autoRenewPeriod : undefined;
             resourceInputs["backupId"] = args ? args.backupId : undefined;
             resourceInputs["clusterBackupId"] = args ? args.clusterBackupId : undefined;
+            resourceInputs["connectionStringPrefix"] = args ? args.connectionStringPrefix : undefined;
             resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["forceUpgrade"] = args ? args.forceUpgrade : undefined;
@@ -384,6 +395,7 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["maxConnections"] = undefined /*out*/;
             resourceInputs["networkType"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["tairInstanceId"] = undefined /*out*/;
         }
@@ -424,6 +436,10 @@ export interface TairInstanceState {
      * The internal endpoint of the instance.
      */
     connectionDomain?: pulumi.Input<string>;
+    /**
+     * The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+     */
+    connectionStringPrefix?: pulumi.Input<string>;
     /**
      * The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
@@ -535,6 +551,10 @@ export interface TairInstanceState {
      */
     recoverConfigMode?: pulumi.Input<string>;
     /**
+     * Region Id
+     */
+    regionId?: pulumi.Input<string>;
+    /**
      * The ID of the resource group to which the instance belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
@@ -642,6 +662,10 @@ export interface TairInstanceArgs {
      * This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
      */
     clusterBackupId?: pulumi.Input<string>;
+    /**
+     * The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+     */
+    connectionStringPrefix?: pulumi.Input<string>;
     /**
      * The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
      */

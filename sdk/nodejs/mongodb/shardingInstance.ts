@@ -122,6 +122,10 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly backupPeriods!: pulumi.Output<string[]>;
     /**
+     * The backup retention policy configured for the instance. Valid values:
+     */
+    public readonly backupRetentionPolicyOnClusterDeletion!: pulumi.Output<number | undefined>;
+    /**
      * Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
     public readonly backupTime!: pulumi.Output<string>;
@@ -242,6 +246,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["accountPassword"] = state ? state.accountPassword : undefined;
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["backupTime"] = state ? state.backupTime : undefined;
             resourceInputs["configServerLists"] = state ? state.configServerLists : undefined;
             resourceInputs["engineVersion"] = state ? state.engineVersion : undefined;
@@ -281,6 +286,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["accountPassword"] = args?.accountPassword ? pulumi.secret(args.accountPassword) : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
             resourceInputs["configServerLists"] = args ? args.configServerLists : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
@@ -330,6 +336,10 @@ export interface ShardingInstanceState {
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The backup retention policy configured for the instance. Valid values:
+     */
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number>;
     /**
      * Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
@@ -452,6 +462,10 @@ export interface ShardingInstanceArgs {
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
      */
     backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The backup retention policy configured for the instance. Valid values:
+     */
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number>;
     /**
      * Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.KVStore
     public static class GetConnections
     {
         /// <summary>
-        /// This data source can query the public IP of the specified KVStore DBInstance.
+        /// This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
         ///  
         /// &gt; **NOTE:** Available in v1.101.0+.
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.KVStore
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:kvstore/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source can query the public IP of the specified KVStore DBInstance.
+        /// This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
         ///  
         /// &gt; **NOTE:** Available in v1.101.0+.
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetConnectionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A list of KVStore DBInstance ids, only support one item.
+        /// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
         /// </summary>
         [Input("ids", required: true)]
         public string Ids { get; set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetConnectionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A list of KVStore DBInstance ids, only support one item.
+        /// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
         /// </summary>
         [Input("ids", required: true)]
         public Input<string> Ids { get; set; } = null!;
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of KVStore DBInstance ids.
+        /// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids.
         /// </summary>
         public readonly string Ids;
         public readonly string? OutputFile;

@@ -32,6 +32,21 @@ public final class GatewayVcoRouteState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+     * 
+     */
+    @Import(name="overlayMode")
+    private @Nullable Output<String> overlayMode;
+
+    /**
+     * @return The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+     * 
+     */
+    public Optional<Output<String>> overlayMode() {
+        return Optional.ofNullable(this.overlayMode);
+    }
+
+    /**
      * The destination network segment of the destination route.
      * 
      */
@@ -95,6 +110,7 @@ public final class GatewayVcoRouteState extends com.pulumi.resources.ResourceArg
 
     private GatewayVcoRouteState(GatewayVcoRouteState $) {
         this.nextHop = $.nextHop;
+        this.overlayMode = $.overlayMode;
         this.routeDest = $.routeDest;
         this.status = $.status;
         this.vpnConnectionId = $.vpnConnectionId;
@@ -138,6 +154,27 @@ public final class GatewayVcoRouteState extends com.pulumi.resources.ResourceArg
          */
         public Builder nextHop(String nextHop) {
             return nextHop(Output.of(nextHop));
+        }
+
+        /**
+         * @param overlayMode The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overlayMode(@Nullable Output<String> overlayMode) {
+            $.overlayMode = overlayMode;
+            return this;
+        }
+
+        /**
+         * @param overlayMode The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overlayMode(String overlayMode) {
+            return overlayMode(Output.of(overlayMode));
         }
 
         /**

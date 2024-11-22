@@ -145,8 +145,12 @@ type EciScalingConfiguration struct {
 	AutoCreateEip pulumi.BoolPtrOutput `pulumi:"autoCreateEip"`
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache pulumi.BoolPtrOutput `pulumi:"autoMatchImageCache"`
-	// The name of the container group. which must contain 2-128 characters (
-	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+	// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+	// name_prefix: the prefix of the hostname.
+	// (AUTO_INCREMENT): the sort method. This is a static field.
+	// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+	// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
+	// name_suffix: the suffix of the hostname. This field is optional.
 	ContainerGroupName pulumi.StringPtrOutput `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayOutput `pulumi:"containers"`
@@ -280,8 +284,12 @@ type eciScalingConfigurationState struct {
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
-	// The name of the container group. which must contain 2-128 characters (
-	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+	// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+	// name_prefix: the prefix of the hostname.
+	// (AUTO_INCREMENT): the sort method. This is a static field.
+	// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+	// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
+	// name_suffix: the suffix of the hostname. This field is optional.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
@@ -383,8 +391,12 @@ type EciScalingConfigurationState struct {
 	AutoCreateEip pulumi.BoolPtrInput
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache pulumi.BoolPtrInput
-	// The name of the container group. which must contain 2-128 characters (
-	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+	// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+	// name_prefix: the prefix of the hostname.
+	// (AUTO_INCREMENT): the sort method. This is a static field.
+	// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+	// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
+	// name_suffix: the suffix of the hostname. This field is optional.
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayInput
@@ -490,8 +502,12 @@ type eciScalingConfigurationArgs struct {
 	AutoCreateEip *bool `pulumi:"autoCreateEip"`
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache *bool `pulumi:"autoMatchImageCache"`
-	// The name of the container group. which must contain 2-128 characters (
-	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+	// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+	// name_prefix: the prefix of the hostname.
+	// (AUTO_INCREMENT): the sort method. This is a static field.
+	// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+	// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
+	// name_suffix: the suffix of the hostname. This field is optional.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
 	// The list of containers. See `containers` below for details.
 	Containers []EciScalingConfigurationContainer `pulumi:"containers"`
@@ -594,8 +610,12 @@ type EciScalingConfigurationArgs struct {
 	AutoCreateEip pulumi.BoolPtrInput
 	// Whether to automatically match the image cache.
 	AutoMatchImageCache pulumi.BoolPtrInput
-	// The name of the container group. which must contain 2-128 characters (
-	// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+	// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+	// name_prefix: the prefix of the hostname.
+	// (AUTO_INCREMENT): the sort method. This is a static field.
+	// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+	// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
+	// name_suffix: the suffix of the hostname. This field is optional.
 	ContainerGroupName pulumi.StringPtrInput
 	// The list of containers. See `containers` below for details.
 	Containers EciScalingConfigurationContainerArrayInput
@@ -800,8 +820,12 @@ func (o EciScalingConfigurationOutput) AutoMatchImageCache() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.BoolPtrOutput { return v.AutoMatchImageCache }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the container group. which must contain 2-128 characters (
-// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+// name_prefix: the prefix of the hostname.
+// (AUTO_INCREMENT): the sort method. This is a static field.
+// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
+// name_suffix: the suffix of the hostname. This field is optional.
 func (o EciScalingConfigurationOutput) ContainerGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringPtrOutput { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
 }

@@ -5,12 +5,43 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides a CR Instance resource.
+ *
+ * For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+ *
+ * > **NOTE:** Available since v1.124.0.
+ *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000000,
+ *     max: 99999999,
+ * });
+ * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("default", {
+ *     paymentType: "Subscription",
+ *     period: 1,
+ *     renewPeriod: 0,
+ *     renewalStatus: "ManualRenewal",
+ *     instanceType: "Advanced",
+ *     instanceName: `${name}-${_default.result}`,
+ * });
+ * ```
+ *
  * ## Import
  *
- * Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
+ * CR Instance can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+ * $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance example <id>
  * ```
  */
 export class RegistryEnterpriseInstance extends pulumi.CustomResource {
@@ -42,23 +73,43 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
     }
 
     /**
-     * Time of Container Registry Enterprise Edition instance creation.
+     * The creation time of the resource
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
+     *
+     * @deprecated Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
      */
     public /*out*/ readonly createdTime!: pulumi.Output<string>;
     /**
-     * Name of your customized oss bucket. Use this bucket as instance storage if set.
+     * Custom OSS Bucket name
      */
     public readonly customOssBucket!: pulumi.Output<string | undefined>;
     /**
-     * Time of Container Registry Enterprise Edition instance expiration.
+     * Whether to use the default OSS Bucket
+     */
+    public readonly defaultOssBucket!: pulumi.Output<string | undefined>;
+    /**
+     * Expiration Time
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
-     * Name of Container Registry Enterprise Edition instance.
+     * Security scan engine
+     */
+    public readonly imageScanner!: pulumi.Output<string | undefined>;
+    /**
+     * InstanceName
      */
     public readonly instanceName!: pulumi.Output<string>;
     /**
-     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+     * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+     *
+     * Basic: Basic instance
+     *
+     * Standard: Standard instance
+     *
+     * Advanced: Advanced Edition Instance
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -70,27 +121,46 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     * Permanent access credentials of the instance
      */
     public readonly password!: pulumi.Output<string | undefined>;
     /**
-     * Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+     * Payment type, value:
+     * - Subscription: Prepaid.
      */
-    public readonly paymentType!: pulumi.Output<string | undefined>;
+    public readonly paymentType!: pulumi.Output<string>;
     /**
-     * Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+     * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     *
+     * > **NOTE:**  must be set when creating a prepaid instance.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
-     * Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+     * RegionId
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
+     * Automatic renewal cycle, in months.
+     *
+     * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
     public readonly renewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+     * Automatic renewal status, value:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
+     *
+     * Default ManualRenewal.
      */
-    public readonly renewalStatus!: pulumi.Output<string | undefined>;
+    public readonly renewalStatus!: pulumi.Output<string>;
     /**
-     * Status of Container Registry Enterprise Edition instance.
+     * The ID of the resource group
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * Instance Status
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
 
@@ -107,9 +177,12 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegistryEnterpriseInstanceState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["createdTime"] = state ? state.createdTime : undefined;
             resourceInputs["customOssBucket"] = state ? state.customOssBucket : undefined;
+            resourceInputs["defaultOssBucket"] = state ? state.defaultOssBucket : undefined;
             resourceInputs["endTime"] = state ? state.endTime : undefined;
+            resourceInputs["imageScanner"] = state ? state.imageScanner : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
             resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
@@ -117,8 +190,10 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["renewPeriod"] = state ? state.renewPeriod : undefined;
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as RegistryEnterpriseInstanceArgs | undefined;
@@ -128,7 +203,12 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             if ((!args || args.instanceType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceType'");
             }
+            if ((!args || args.paymentType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'paymentType'");
+            }
             resourceInputs["customOssBucket"] = args ? args.customOssBucket : undefined;
+            resourceInputs["defaultOssBucket"] = args ? args.defaultOssBucket : undefined;
+            resourceInputs["imageScanner"] = args ? args.imageScanner : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
             resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
@@ -138,8 +218,11 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
             resourceInputs["period"] = args ? args.period : undefined;
             resourceInputs["renewPeriod"] = args ? args.renewPeriod : undefined;
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdTime"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -154,23 +237,43 @@ export class RegistryEnterpriseInstance extends pulumi.CustomResource {
  */
 export interface RegistryEnterpriseInstanceState {
     /**
-     * Time of Container Registry Enterprise Edition instance creation.
+     * The creation time of the resource
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
+     *
+     * @deprecated Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.
      */
     createdTime?: pulumi.Input<string>;
     /**
-     * Name of your customized oss bucket. Use this bucket as instance storage if set.
+     * Custom OSS Bucket name
      */
     customOssBucket?: pulumi.Input<string>;
     /**
-     * Time of Container Registry Enterprise Edition instance expiration.
+     * Whether to use the default OSS Bucket
+     */
+    defaultOssBucket?: pulumi.Input<string>;
+    /**
+     * Expiration Time
      */
     endTime?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition instance.
+     * Security scan engine
+     */
+    imageScanner?: pulumi.Input<string>;
+    /**
+     * InstanceName
      */
     instanceName?: pulumi.Input<string>;
     /**
-     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+     * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+     *
+     * Basic: Basic instance
+     *
+     * Standard: Standard instance
+     *
+     * Advanced: Advanced Edition Instance
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -182,27 +285,46 @@ export interface RegistryEnterpriseInstanceState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     * Permanent access credentials of the instance
      */
     password?: pulumi.Input<string>;
     /**
-     * Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+     * Payment type, value:
+     * - Subscription: Prepaid.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+     * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     *
+     * > **NOTE:**  must be set when creating a prepaid instance.
      */
     period?: pulumi.Input<number>;
     /**
-     * Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+     * RegionId
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * Automatic renewal cycle, in months.
+     *
+     * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+     * Automatic renewal status, value:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
+     *
+     * Default ManualRenewal.
      */
     renewalStatus?: pulumi.Input<string>;
     /**
-     * Status of Container Registry Enterprise Edition instance.
+     * The ID of the resource group
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Instance Status
      */
     status?: pulumi.Input<string>;
 }
@@ -212,15 +334,29 @@ export interface RegistryEnterpriseInstanceState {
  */
 export interface RegistryEnterpriseInstanceArgs {
     /**
-     * Name of your customized oss bucket. Use this bucket as instance storage if set.
+     * Custom OSS Bucket name
      */
     customOssBucket?: pulumi.Input<string>;
     /**
-     * Name of Container Registry Enterprise Edition instance.
+     * Whether to use the default OSS Bucket
+     */
+    defaultOssBucket?: pulumi.Input<string>;
+    /**
+     * Security scan engine
+     */
+    imageScanner?: pulumi.Input<string>;
+    /**
+     * InstanceName
      */
     instanceName: pulumi.Input<string>;
     /**
-     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+     * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+     *
+     * Basic: Basic instance
+     *
+     * Standard: Standard instance
+     *
+     * Advanced: Advanced Edition Instance
      */
     instanceType: pulumi.Input<string>;
     /**
@@ -232,23 +368,38 @@ export interface RegistryEnterpriseInstanceArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     * Permanent access credentials of the instance
      */
     password?: pulumi.Input<string>;
     /**
-     * Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+     * Payment type, value:
+     * - Subscription: Prepaid.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType: pulumi.Input<string>;
     /**
-     * Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+     * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     *
+     * > **NOTE:**  must be set when creating a prepaid instance.
      */
     period?: pulumi.Input<number>;
     /**
-     * Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+     * Automatic renewal cycle, in months.
+     *
+     * > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+     * Automatic renewal status, value:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
+     *
+     * Default ManualRenewal.
      */
     renewalStatus?: pulumi.Input<string>;
+    /**
+     * The ID of the resource group
+     *
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     */
+    resourceGroupId?: pulumi.Input<string>;
 }

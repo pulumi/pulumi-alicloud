@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source can query the public IP of the specified KVStore DBInstance.
+ * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
  *
  * > **NOTE:** Available in v1.101.0+.
  *
@@ -37,7 +37,7 @@ export function getConnections(args: GetConnectionsArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetConnectionsArgs {
     /**
-     * A list of KVStore DBInstance ids, only support one item.
+     * A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
      */
     ids: string;
     /**
@@ -59,13 +59,13 @@ export interface GetConnectionsResult {
      */
     readonly id: string;
     /**
-     * A list of KVStore DBInstance ids.
+     * A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids.
      */
     readonly ids: string;
     readonly outputFile?: string;
 }
 /**
- * This data source can query the public IP of the specified KVStore DBInstance.
+ * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
  *
  * > **NOTE:** Available in v1.101.0+.
  *
@@ -95,7 +95,7 @@ export function getConnectionsOutput(args: GetConnectionsOutputArgs, opts?: pulu
  */
 export interface GetConnectionsOutputArgs {
     /**
-     * A list of KVStore DBInstance ids, only support one item.
+     * A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
      */
     ids: pulumi.Input<string>;
     /**

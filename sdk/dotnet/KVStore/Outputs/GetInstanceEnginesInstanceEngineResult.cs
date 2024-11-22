@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string EngineVersion;
         /// <summary>
-        /// The Zone to launch the KVStore instance.
+        /// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         public readonly string ZoneId;
 

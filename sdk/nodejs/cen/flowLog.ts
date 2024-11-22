@@ -5,11 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * This resource used to create a flow log function in Cloud Enterprise Network (CEN).
- * By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN.
- * You can also use the data aggregated in flow logs to analyze cross-region traffic flows, minimize traffic costs, and troubleshoot network faults.
+ * Provides a CEN Flow Log resource.
  *
- * For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
+ * For information about CEN Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
  *
  * > **NOTE:** Available since v1.73.0.
  *
@@ -46,10 +44,10 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CEN flowlog can be imported using the id, e.g.
+ * CEN Flow Log can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
+ * $ pulumi import alicloud:cen/flowLog:FlowLog example <id>
  * ```
  */
 export class FlowLog extends pulumi.CustomResource {
@@ -81,29 +79,61 @@ export class FlowLog extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the CEN Instance.
+     * cen id
      */
     public readonly cenId!: pulumi.Output<string>;
     /**
-     * The description of flowlog.
+     * CreateTime
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The description of the flowlog.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of flowlog.
+     * The name of the flowlog.
      */
     public readonly flowLogName!: pulumi.Output<string | undefined>;
     /**
-     * The name of the log store which is in the  `projectName` SLS project.
+     * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+     */
+    public readonly interval!: pulumi.Output<number | undefined>;
+    /**
+     * Log Format
+     */
+    public readonly logFormatString!: pulumi.Output<string | undefined>;
+    /**
+     * The LogStore that stores the flowlog.
      */
     public readonly logStoreName!: pulumi.Output<string>;
     /**
-     * The name of the SLS project.
+     * The Project that stores the flowlog.
      */
     public readonly projectName!: pulumi.Output<string>;
     /**
-     * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+     * region id
      */
-    public readonly status!: pulumi.Output<string | undefined>;
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
+     * The status of the flow log. Valid values:
+     * - `Active`: started.
+     * - `InActive`: not started.
+     */
+    public readonly status!: pulumi.Output<string>;
+    /**
+     * The tag of the resource
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Cross-region Connection ID or VBR connection ID.
+     *
+     * > **NOTE:**  This parameter is required.
+     */
+    public readonly transitRouterAttachmentId!: pulumi.Output<string | undefined>;
+    /**
+     * Transit Router ID
+     */
+    public readonly transitRouterId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a FlowLog resource with the given unique name, arguments, and options.
@@ -119,11 +149,18 @@ export class FlowLog extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FlowLogState | undefined;
             resourceInputs["cenId"] = state ? state.cenId : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["flowLogName"] = state ? state.flowLogName : undefined;
+            resourceInputs["interval"] = state ? state.interval : undefined;
+            resourceInputs["logFormatString"] = state ? state.logFormatString : undefined;
             resourceInputs["logStoreName"] = state ? state.logStoreName : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["transitRouterAttachmentId"] = state ? state.transitRouterAttachmentId : undefined;
+            resourceInputs["transitRouterId"] = state ? state.transitRouterId : undefined;
         } else {
             const args = argsOrState as FlowLogArgs | undefined;
             if ((!args || args.cenId === undefined) && !opts.urn) {
@@ -138,9 +175,16 @@ export class FlowLog extends pulumi.CustomResource {
             resourceInputs["cenId"] = args ? args.cenId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["flowLogName"] = args ? args.flowLogName : undefined;
+            resourceInputs["interval"] = args ? args.interval : undefined;
+            resourceInputs["logFormatString"] = args ? args.logFormatString : undefined;
             resourceInputs["logStoreName"] = args ? args.logStoreName : undefined;
             resourceInputs["projectName"] = args ? args.projectName : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["transitRouterAttachmentId"] = args ? args.transitRouterAttachmentId : undefined;
+            resourceInputs["transitRouterId"] = args ? args.transitRouterId : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(FlowLog.__pulumiType, name, resourceInputs, opts);
@@ -152,29 +196,61 @@ export class FlowLog extends pulumi.CustomResource {
  */
 export interface FlowLogState {
     /**
-     * The ID of the CEN Instance.
+     * cen id
      */
     cenId?: pulumi.Input<string>;
     /**
-     * The description of flowlog.
+     * CreateTime
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * The description of the flowlog.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of flowlog.
+     * The name of the flowlog.
      */
     flowLogName?: pulumi.Input<string>;
     /**
-     * The name of the log store which is in the  `projectName` SLS project.
+     * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+     */
+    interval?: pulumi.Input<number>;
+    /**
+     * Log Format
+     */
+    logFormatString?: pulumi.Input<string>;
+    /**
+     * The LogStore that stores the flowlog.
      */
     logStoreName?: pulumi.Input<string>;
     /**
-     * The name of the SLS project.
+     * The Project that stores the flowlog.
      */
     projectName?: pulumi.Input<string>;
     /**
-     * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+     * region id
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The status of the flow log. Valid values:
+     * - `Active`: started.
+     * - `InActive`: not started.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Cross-region Connection ID or VBR connection ID.
+     *
+     * > **NOTE:**  This parameter is required.
+     */
+    transitRouterAttachmentId?: pulumi.Input<string>;
+    /**
+     * Transit Router ID
+     */
+    transitRouterId?: pulumi.Input<string>;
 }
 
 /**
@@ -182,27 +258,51 @@ export interface FlowLogState {
  */
 export interface FlowLogArgs {
     /**
-     * The ID of the CEN Instance.
+     * cen id
      */
     cenId: pulumi.Input<string>;
     /**
-     * The description of flowlog.
+     * The description of the flowlog.
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of flowlog.
+     * The name of the flowlog.
      */
     flowLogName?: pulumi.Input<string>;
     /**
-     * The name of the log store which is in the  `projectName` SLS project.
+     * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+     */
+    interval?: pulumi.Input<number>;
+    /**
+     * Log Format
+     */
+    logFormatString?: pulumi.Input<string>;
+    /**
+     * The LogStore that stores the flowlog.
      */
     logStoreName: pulumi.Input<string>;
     /**
-     * The name of the SLS project.
+     * The Project that stores the flowlog.
      */
     projectName: pulumi.Input<string>;
     /**
-     * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+     * The status of the flow log. Valid values:
+     * - `Active`: started.
+     * - `InActive`: not started.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Cross-region Connection ID or VBR connection ID.
+     *
+     * > **NOTE:**  This parameter is required.
+     */
+    transitRouterAttachmentId?: pulumi.Input<string>;
+    /**
+     * Transit Router ID
+     */
+    transitRouterId?: pulumi.Input<string>;
 }

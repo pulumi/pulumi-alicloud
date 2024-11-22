@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.ExpressConnect
 {
     /// <summary>
-    /// Provides a Express Connect Router Express Connect Router Vbr Child Instance resource. Leased Line Gateway VBR sub-instance.
+    /// Provides a Express Connect Router Express Connect Router Vbr Child Instance resource.
     /// 
     /// For information about Express Connect Router Express Connect Router Vbr Child Instance and how to use it, see [What is Express Connect Router Vbr Child Instance](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/AttachExpressConnectRouterChildInstance).
     /// 
@@ -81,19 +81,21 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Output<string> ChildInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the subinstance of the leased line gateway.
+        /// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+        /// 
+        /// &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
         /// </summary>
         [Output("childInstanceOwnerId")]
-        public Output<string?> ChildInstanceOwnerId { get; private set; } = null!;
+        public Output<string> ChildInstanceOwnerId { get; private set; } = null!;
 
         /// <summary>
-        /// Region of the leased line gateway sub-instance.
+        /// Region of the leased line gateway sub-instance
         /// </summary>
         [Output("childInstanceRegionId")]
         public Output<string> ChildInstanceRegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of leased line gateway sub-instance, Valid values: `VBR`.
+        /// The type of the network instance. Value: `VBR`: VBR instance.
         /// </summary>
         [Output("childInstanceType")]
         public Output<string> ChildInstanceType { get; private set; } = null!;
@@ -103,6 +105,12 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Resource attribute fields that represent descriptive information
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// ID of the representative leased line gateway instance.
@@ -169,22 +177,30 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string> ChildInstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the subinstance of the leased line gateway.
+        /// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+        /// 
+        /// &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
         /// </summary>
         [Input("childInstanceOwnerId")]
         public Input<string>? ChildInstanceOwnerId { get; set; }
 
         /// <summary>
-        /// Region of the leased line gateway sub-instance.
+        /// Region of the leased line gateway sub-instance
         /// </summary>
         [Input("childInstanceRegionId", required: true)]
         public Input<string> ChildInstanceRegionId { get; set; } = null!;
 
         /// <summary>
-        /// The type of leased line gateway sub-instance, Valid values: `VBR`.
+        /// The type of the network instance. Value: `VBR`: VBR instance.
         /// </summary>
         [Input("childInstanceType", required: true)]
         public Input<string> ChildInstanceType { get; set; } = null!;
+
+        /// <summary>
+        /// Resource attribute fields that represent descriptive information
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// ID of the representative leased line gateway instance.
@@ -207,19 +223,21 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? ChildInstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the subinstance of the leased line gateway.
+        /// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+        /// 
+        /// &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
         /// </summary>
         [Input("childInstanceOwnerId")]
         public Input<string>? ChildInstanceOwnerId { get; set; }
 
         /// <summary>
-        /// Region of the leased line gateway sub-instance.
+        /// Region of the leased line gateway sub-instance
         /// </summary>
         [Input("childInstanceRegionId")]
         public Input<string>? ChildInstanceRegionId { get; set; }
 
         /// <summary>
-        /// The type of leased line gateway sub-instance, Valid values: `VBR`.
+        /// The type of the network instance. Value: `VBR`: VBR instance.
         /// </summary>
         [Input("childInstanceType")]
         public Input<string>? ChildInstanceType { get; set; }
@@ -229,6 +247,12 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Resource attribute fields that represent descriptive information
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// ID of the representative leased line gateway instance.

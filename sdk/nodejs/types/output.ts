@@ -28480,6 +28480,25 @@ export namespace ess {
         weightedCapacity?: number;
     }
 
+    export interface ScalingConfigurationNetworkInterface {
+        /**
+         * The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+         */
+        instanceType: string;
+        /**
+         * The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+         */
+        ipv6AddressCount?: number;
+        /**
+         * The communication mode of the ENI. Valid values: Standard, HighPerformance.
+         */
+        networkInterfaceTrafficMode: string;
+        /**
+         * The ID of security group N to which ENI N belongs.
+         */
+        securityGroupIds?: string[];
+    }
+
     export interface ScalingConfigurationSpotPriceLimit {
         /**
          * Resource type of an ECS instance.
@@ -34919,7 +34938,7 @@ export namespace kvstore {
          */
         engineVersion: string;
         /**
-         * The Zone to launch the KVStore instance.
+         * The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
          */
         zoneId: string;
     }
@@ -41930,6 +41949,38 @@ export namespace rdc {
 }
 
 export namespace rds {
+    export interface CustomDataDisk {
+        /**
+         * Instance storage type
+         *
+         * local_ssd: local SSD disk
+         *
+         * cloud_essd:ESSD PL1 cloud disk
+         */
+        category?: string;
+        /**
+         * Cloud Disk Performance
+         *
+         * Currently only supports PL1
+         */
+        performanceLevel?: string;
+        /**
+         * Instance storage space. Unit: GB.
+         */
+        size?: number;
+    }
+
+    export interface CustomSystemDisk {
+        /**
+         * The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+         */
+        category?: string;
+        /**
+         * System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+         */
+        size?: string;
+    }
+
     export interface DbInstanceEndpointNodeItem {
         /**
          * The ID of the node.
@@ -52053,6 +52104,17 @@ export namespace vpc {
          * The traffic type.
          */
         trafficType: string;
+    }
+
+    export interface NatGatewayAccessMode {
+        /**
+         * The mode of Access. Valid values:
+         */
+        modeValue: string;
+        /**
+         * The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
+         */
+        tunnelType: string;
     }
 
     export interface NetworkAclAttachmentResource {

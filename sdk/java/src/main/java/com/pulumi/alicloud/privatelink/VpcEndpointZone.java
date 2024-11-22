@@ -180,6 +180,20 @@ public class VpcEndpointZone extends com.pulumi.resources.CustomResource {
         return this.eniIp;
     }
     /**
+     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
      * The state of the zone.
      * 
      */

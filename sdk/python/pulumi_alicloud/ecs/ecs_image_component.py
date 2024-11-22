@@ -21,6 +21,7 @@ class EcsImageComponentArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[str],
                  component_type: Optional[pulumi.Input[str]] = None,
+                 component_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  image_component_name: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
@@ -28,17 +29,38 @@ class EcsImageComponentArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a EcsImageComponent resource.
-        :param pulumi.Input[str] content: Component content.
-        :param pulumi.Input[str] component_type: The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
-        :param pulumi.Input[str] description: Describe the information.
-        :param pulumi.Input[str] image_component_name: The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] system_type: The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        :param pulumi.Input[str] content: Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
+        :param pulumi.Input[str] component_type: The component type. Supports mirrored build components and test components.
+               
+               Value range:
+               - Build
+               - Test
+               
+               Default value: Build.
+               
+               > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
+        :param pulumi.Input[str] component_version: The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+               
+               Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        :param pulumi.Input[str] description: Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[str] image_component_name: The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+               
+               > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
+        :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the created image component belongs.
+        :param pulumi.Input[str] system_type: The operating system supported by the component.
+               
+               Value range:
+               - Linux
+               - Windows
+               
+               Default value: Linux.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of label key-value pairs.
         """
         pulumi.set(__self__, "content", content)
         if component_type is not None:
             pulumi.set(__self__, "component_type", component_type)
+        if component_version is not None:
+            pulumi.set(__self__, "component_version", component_version)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if image_component_name is not None:
@@ -54,7 +76,7 @@ class EcsImageComponentArgs:
     @pulumi.getter
     def content(self) -> pulumi.Input[str]:
         """
-        Component content.
+        Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
         """
         return pulumi.get(self, "content")
 
@@ -66,7 +88,15 @@ class EcsImageComponentArgs:
     @pulumi.getter(name="componentType")
     def component_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
+        The component type. Supports mirrored build components and test components.
+
+        Value range:
+        - Build
+        - Test
+
+        Default value: Build.
+
+        > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
         """
         return pulumi.get(self, "component_type")
 
@@ -75,10 +105,24 @@ class EcsImageComponentArgs:
         pulumi.set(self, "component_type", value)
 
     @property
+    @pulumi.getter(name="componentVersion")
+    def component_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+
+        Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        """
+        return pulumi.get(self, "component_version")
+
+    @component_version.setter
+    def component_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "component_version", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Describe the information.
+        Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -90,7 +134,9 @@ class EcsImageComponentArgs:
     @pulumi.getter(name="imageComponentName")
     def image_component_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
+        The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+
+        > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
         """
         return pulumi.get(self, "image_component_name")
 
@@ -102,7 +148,7 @@ class EcsImageComponentArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the enterprise resource group to which the created image component belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -114,7 +160,13 @@ class EcsImageComponentArgs:
     @pulumi.getter(name="systemType")
     def system_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        The operating system supported by the component.
+
+        Value range:
+        - Linux
+        - Windows
+
+        Default value: Linux.
         """
         return pulumi.get(self, "system_type")
 
@@ -139,6 +191,7 @@ class EcsImageComponentArgs:
 class _EcsImageComponentState:
     def __init__(__self__, *,
                  component_type: Optional[pulumi.Input[str]] = None,
+                 component_version: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -148,17 +201,38 @@ class _EcsImageComponentState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering EcsImageComponent resources.
-        :param pulumi.Input[str] component_type: The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
-        :param pulumi.Input[str] content: Component content.
+        :param pulumi.Input[str] component_type: The component type. Supports mirrored build components and test components.
+               
+               Value range:
+               - Build
+               - Test
+               
+               Default value: Build.
+               
+               > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
+        :param pulumi.Input[str] component_version: The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+               
+               Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        :param pulumi.Input[str] content: Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
         :param pulumi.Input[str] create_time: Component creation time.
-        :param pulumi.Input[str] description: Describe the information.
-        :param pulumi.Input[str] image_component_name: The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] system_type: The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        :param pulumi.Input[str] description: Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[str] image_component_name: The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+               
+               > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
+        :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the created image component belongs.
+        :param pulumi.Input[str] system_type: The operating system supported by the component.
+               
+               Value range:
+               - Linux
+               - Windows
+               
+               Default value: Linux.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of label key-value pairs.
         """
         if component_type is not None:
             pulumi.set(__self__, "component_type", component_type)
+        if component_version is not None:
+            pulumi.set(__self__, "component_version", component_version)
         if content is not None:
             pulumi.set(__self__, "content", content)
         if create_time is not None:
@@ -178,7 +252,15 @@ class _EcsImageComponentState:
     @pulumi.getter(name="componentType")
     def component_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
+        The component type. Supports mirrored build components and test components.
+
+        Value range:
+        - Build
+        - Test
+
+        Default value: Build.
+
+        > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
         """
         return pulumi.get(self, "component_type")
 
@@ -187,10 +269,24 @@ class _EcsImageComponentState:
         pulumi.set(self, "component_type", value)
 
     @property
+    @pulumi.getter(name="componentVersion")
+    def component_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+
+        Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        """
+        return pulumi.get(self, "component_version")
+
+    @component_version.setter
+    def component_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "component_version", value)
+
+    @property
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        Component content.
+        Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
         """
         return pulumi.get(self, "content")
 
@@ -214,7 +310,7 @@ class _EcsImageComponentState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Describe the information.
+        Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -226,7 +322,9 @@ class _EcsImageComponentState:
     @pulumi.getter(name="imageComponentName")
     def image_component_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
+        The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+
+        > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
         """
         return pulumi.get(self, "image_component_name")
 
@@ -238,7 +336,7 @@ class _EcsImageComponentState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        The ID of the enterprise resource group to which the created image component belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -250,7 +348,13 @@ class _EcsImageComponentState:
     @pulumi.getter(name="systemType")
     def system_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        The operating system supported by the component.
+
+        Value range:
+        - Linux
+        - Windows
+
+        Default value: Linux.
         """
         return pulumi.get(self, "system_type")
 
@@ -277,6 +381,7 @@ class EcsImageComponent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  component_type: Optional[pulumi.Input[str]] = None,
+                 component_version: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  image_component_name: Optional[pulumi.Input[str]] = None,
@@ -285,9 +390,9 @@ class EcsImageComponent(pulumi.CustomResource):
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a Ecs Image Component resource.
+        Provides a ECS Image Component resource.
 
-        For information about Ecs Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
+        For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
 
         > **NOTE:** Available since v1.159.0.
 
@@ -314,7 +419,7 @@ class EcsImageComponent(pulumi.CustomResource):
 
         ## Import
 
-        Ecs Image Component can be imported using the id, e.g.
+        ECS Image Component can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
@@ -322,12 +427,31 @@ class EcsImageComponent(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] component_type: The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
-        :param pulumi.Input[str] content: Component content.
-        :param pulumi.Input[str] description: Describe the information.
-        :param pulumi.Input[str] image_component_name: The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] system_type: The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        :param pulumi.Input[str] component_type: The component type. Supports mirrored build components and test components.
+               
+               Value range:
+               - Build
+               - Test
+               
+               Default value: Build.
+               
+               > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
+        :param pulumi.Input[str] component_version: The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+               
+               Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        :param pulumi.Input[str] content: Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
+        :param pulumi.Input[str] description: Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[str] image_component_name: The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+               
+               > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
+        :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the created image component belongs.
+        :param pulumi.Input[str] system_type: The operating system supported by the component.
+               
+               Value range:
+               - Linux
+               - Windows
+               
+               Default value: Linux.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of label key-value pairs.
         """
         ...
@@ -337,9 +461,9 @@ class EcsImageComponent(pulumi.CustomResource):
                  args: EcsImageComponentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Ecs Image Component resource.
+        Provides a ECS Image Component resource.
 
-        For information about Ecs Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
+        For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
 
         > **NOTE:** Available since v1.159.0.
 
@@ -366,7 +490,7 @@ class EcsImageComponent(pulumi.CustomResource):
 
         ## Import
 
-        Ecs Image Component can be imported using the id, e.g.
+        ECS Image Component can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
@@ -388,6 +512,7 @@ class EcsImageComponent(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  component_type: Optional[pulumi.Input[str]] = None,
+                 component_version: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  image_component_name: Optional[pulumi.Input[str]] = None,
@@ -404,6 +529,7 @@ class EcsImageComponent(pulumi.CustomResource):
             __props__ = EcsImageComponentArgs.__new__(EcsImageComponentArgs)
 
             __props__.__dict__["component_type"] = component_type
+            __props__.__dict__["component_version"] = component_version
             if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
@@ -424,6 +550,7 @@ class EcsImageComponent(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             component_type: Optional[pulumi.Input[str]] = None,
+            component_version: Optional[pulumi.Input[str]] = None,
             content: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
@@ -438,13 +565,32 @@ class EcsImageComponent(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] component_type: The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
-        :param pulumi.Input[str] content: Component content.
+        :param pulumi.Input[str] component_type: The component type. Supports mirrored build components and test components.
+               
+               Value range:
+               - Build
+               - Test
+               
+               Default value: Build.
+               
+               > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
+        :param pulumi.Input[str] component_version: The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+               
+               Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        :param pulumi.Input[str] content: Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
         :param pulumi.Input[str] create_time: Component creation time.
-        :param pulumi.Input[str] description: Describe the information.
-        :param pulumi.Input[str] image_component_name: The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] system_type: The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        :param pulumi.Input[str] description: Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
+        :param pulumi.Input[str] image_component_name: The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+               
+               > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
+        :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the created image component belongs.
+        :param pulumi.Input[str] system_type: The operating system supported by the component.
+               
+               Value range:
+               - Linux
+               - Windows
+               
+               Default value: Linux.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of label key-value pairs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -452,6 +598,7 @@ class EcsImageComponent(pulumi.CustomResource):
         __props__ = _EcsImageComponentState.__new__(_EcsImageComponentState)
 
         __props__.__dict__["component_type"] = component_type
+        __props__.__dict__["component_version"] = component_version
         __props__.__dict__["content"] = content
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
@@ -465,15 +612,33 @@ class EcsImageComponent(pulumi.CustomResource):
     @pulumi.getter(name="componentType")
     def component_type(self) -> pulumi.Output[str]:
         """
-        The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
+        The component type. Supports mirrored build components and test components.
+
+        Value range:
+        - Build
+        - Test
+
+        Default value: Build.
+
+        > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
         """
         return pulumi.get(self, "component_type")
+
+    @property
+    @pulumi.getter(name="componentVersion")
+    def component_version(self) -> pulumi.Output[str]:
+        """
+        The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+
+        Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        """
+        return pulumi.get(self, "component_version")
 
     @property
     @pulumi.getter
     def content(self) -> pulumi.Output[str]:
         """
-        Component content.
+        Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
         """
         return pulumi.get(self, "content")
 
@@ -489,7 +654,7 @@ class EcsImageComponent(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Describe the information.
+        Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
@@ -497,7 +662,9 @@ class EcsImageComponent(pulumi.CustomResource):
     @pulumi.getter(name="imageComponentName")
     def image_component_name(self) -> pulumi.Output[str]:
         """
-        The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
+        The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+
+        > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
         """
         return pulumi.get(self, "image_component_name")
 
@@ -505,7 +672,7 @@ class EcsImageComponent(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the resource group.
+        The ID of the enterprise resource group to which the created image component belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -513,7 +680,13 @@ class EcsImageComponent(pulumi.CustomResource):
     @pulumi.getter(name="systemType")
     def system_type(self) -> pulumi.Output[str]:
         """
-        The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        The operating system supported by the component.
+
+        Value range:
+        - Linux
+        - Windows
+
+        Default value: Linux.
         """
         return pulumi.get(self, "system_type")
 

@@ -571,7 +571,7 @@ type GetInstanceEnginesInstanceEngine struct {
 	Engine string `pulumi:"engine"`
 	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
 	EngineVersion string `pulumi:"engineVersion"`
-	// The Zone to launch the KVStore instance.
+	// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -591,7 +591,7 @@ type GetInstanceEnginesInstanceEngineArgs struct {
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
 	EngineVersion pulumi.StringInput `pulumi:"engineVersion"`
-	// The Zone to launch the KVStore instance.
+	// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -656,7 +656,7 @@ func (o GetInstanceEnginesInstanceEngineOutput) EngineVersion() pulumi.StringOut
 	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.EngineVersion }).(pulumi.StringOutput)
 }
 
-// The Zone to launch the KVStore instance.
+// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 func (o GetInstanceEnginesInstanceEngineOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEnginesInstanceEngine) string { return v.ZoneId }).(pulumi.StringOutput)
 }

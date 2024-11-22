@@ -10,11 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cen
 {
     /// <summary>
-    /// This resource used to create a flow log function in Cloud Enterprise Network (CEN).
-    /// By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN.
-    /// You can also use the data aggregated in flow logs to analyze cross-region traffic flows, minimize traffic costs, and troubleshoot network faults.
+    /// Provides a CEN Flow Log resource.
     /// 
-    /// For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
+    /// For information about CEN Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
     /// 
     /// &gt; **NOTE:** Available since v1.73.0.
     /// 
@@ -66,50 +64,96 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// ## Import
     /// 
-    /// CEN flowlog can be imported using the id, e.g.
+    /// CEN Flow Log can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
+    /// $ pulumi import alicloud:cen/flowLog:FlowLog example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cen/flowLog:FlowLog")]
     public partial class FlowLog : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the CEN Instance.
+        /// cen id
         /// </summary>
         [Output("cenId")]
         public Output<string> CenId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of flowlog.
+        /// CreateTime
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the flowlog.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The name of flowlog.
+        /// The name of the flowlog.
         /// </summary>
         [Output("flowLogName")]
         public Output<string?> FlowLogName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the log store which is in the  `project_name` SLS project.
+        /// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+        /// </summary>
+        [Output("interval")]
+        public Output<int?> Interval { get; private set; } = null!;
+
+        /// <summary>
+        /// Log Format
+        /// </summary>
+        [Output("logFormatString")]
+        public Output<string?> LogFormatString { get; private set; } = null!;
+
+        /// <summary>
+        /// The LogStore that stores the flowlog.
         /// </summary>
         [Output("logStoreName")]
         public Output<string> LogStoreName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the SLS project.
+        /// The Project that stores the flowlog.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        /// region id
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The status of the flow log. Valid values:
+        /// - `Active`: started.
+        /// - `InActive`: not started.
         /// </summary>
         [Output("status")]
-        public Output<string?> Status { get; private set; } = null!;
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Cross-region Connection ID or VBR connection ID.
+        /// 
+        /// &gt; **NOTE:**  This parameter is required.
+        /// </summary>
+        [Output("transitRouterAttachmentId")]
+        public Output<string?> TransitRouterAttachmentId { get; private set; } = null!;
+
+        /// <summary>
+        /// Transit Router ID
+        /// </summary>
+        [Output("transitRouterId")]
+        public Output<string?> TransitRouterId { get; private set; } = null!;
 
 
         /// <summary>
@@ -158,40 +202,80 @@ namespace Pulumi.AliCloud.Cen
     public sealed class FlowLogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the CEN Instance.
+        /// cen id
         /// </summary>
         [Input("cenId", required: true)]
         public Input<string> CenId { get; set; } = null!;
 
         /// <summary>
-        /// The description of flowlog.
+        /// The description of the flowlog.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of flowlog.
+        /// The name of the flowlog.
         /// </summary>
         [Input("flowLogName")]
         public Input<string>? FlowLogName { get; set; }
 
         /// <summary>
-        /// The name of the log store which is in the  `project_name` SLS project.
+        /// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+        /// </summary>
+        [Input("interval")]
+        public Input<int>? Interval { get; set; }
+
+        /// <summary>
+        /// Log Format
+        /// </summary>
+        [Input("logFormatString")]
+        public Input<string>? LogFormatString { get; set; }
+
+        /// <summary>
+        /// The LogStore that stores the flowlog.
         /// </summary>
         [Input("logStoreName", required: true)]
         public Input<string> LogStoreName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the SLS project.
+        /// The Project that stores the flowlog.
         /// </summary>
         [Input("projectName", required: true)]
         public Input<string> ProjectName { get; set; } = null!;
 
         /// <summary>
-        /// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        /// The status of the flow log. Valid values:
+        /// - `Active`: started.
+        /// - `InActive`: not started.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Cross-region Connection ID or VBR connection ID.
+        /// 
+        /// &gt; **NOTE:**  This parameter is required.
+        /// </summary>
+        [Input("transitRouterAttachmentId")]
+        public Input<string>? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// Transit Router ID
+        /// </summary>
+        [Input("transitRouterId")]
+        public Input<string>? TransitRouterId { get; set; }
 
         public FlowLogArgs()
         {
@@ -202,40 +286,92 @@ namespace Pulumi.AliCloud.Cen
     public sealed class FlowLogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the CEN Instance.
+        /// cen id
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The description of flowlog.
+        /// CreateTime
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the flowlog.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of flowlog.
+        /// The name of the flowlog.
         /// </summary>
         [Input("flowLogName")]
         public Input<string>? FlowLogName { get; set; }
 
         /// <summary>
-        /// The name of the log store which is in the  `project_name` SLS project.
+        /// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+        /// </summary>
+        [Input("interval")]
+        public Input<int>? Interval { get; set; }
+
+        /// <summary>
+        /// Log Format
+        /// </summary>
+        [Input("logFormatString")]
+        public Input<string>? LogFormatString { get; set; }
+
+        /// <summary>
+        /// The LogStore that stores the flowlog.
         /// </summary>
         [Input("logStoreName")]
         public Input<string>? LogStoreName { get; set; }
 
         /// <summary>
-        /// The name of the SLS project.
+        /// The Project that stores the flowlog.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        /// region id
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The status of the flow log. Valid values:
+        /// - `Active`: started.
+        /// - `InActive`: not started.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// The tag of the resource
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
+
+        /// <summary>
+        /// Cross-region Connection ID or VBR connection ID.
+        /// 
+        /// &gt; **NOTE:**  This parameter is required.
+        /// </summary>
+        [Input("transitRouterAttachmentId")]
+        public Input<string>? TransitRouterAttachmentId { get; set; }
+
+        /// <summary>
+        /// Transit Router ID
+        /// </summary>
+        [Input("transitRouterId")]
+        public Input<string>? TransitRouterId { get; set; }
 
         public FlowLogState()
         {

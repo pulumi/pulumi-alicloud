@@ -16,14 +16,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     public static final ConnectionState Empty = new ConnectionState();
 
     /**
-     * The public connection string of KVStore DBInstance.
+     * The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     @Import(name="connectionString")
     private @Nullable Output<String> connectionString;
 
     /**
-     * @return The public connection string of KVStore DBInstance.
+     * @return The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     public Optional<Output<String>> connectionString() {
@@ -103,7 +103,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString The public connection string of KVStore DBInstance.
+         * @param connectionString The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionString The public connection string of KVStore DBInstance.
+         * @param connectionString The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
          * 
          * @return builder
          * 

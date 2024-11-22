@@ -19,8 +19,6 @@ public final class VpcEndpointServiceResourceArgs extends com.pulumi.resources.R
 
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
@@ -28,8 +26,6 @@ public final class VpcEndpointServiceResourceArgs extends com.pulumi.resources.R
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -53,9 +49,6 @@ public final class VpcEndpointServiceResourceArgs extends com.pulumi.resources.R
 
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     @Import(name="resourceType", required=true)
@@ -63,9 +56,6 @@ public final class VpcEndpointServiceResourceArgs extends com.pulumi.resources.R
 
     /**
      * @return Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     public Output<String> resourceType() {
@@ -132,8 +122,6 @@ public final class VpcEndpointServiceResourceArgs extends com.pulumi.resources.R
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -145,8 +133,6 @@ public final class VpcEndpointServiceResourceArgs extends com.pulumi.resources.R
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -178,9 +164,6 @@ public final class VpcEndpointServiceResourceArgs extends com.pulumi.resources.R
 
         /**
          * @param resourceType Service resource type, value:
-         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -192,9 +175,6 @@ public final class VpcEndpointServiceResourceArgs extends com.pulumi.resources.R
 
         /**
          * @param resourceType Service resource type, value:
-         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
          * 
          * @return builder
          * 

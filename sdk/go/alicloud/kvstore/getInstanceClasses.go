@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
 //
 // > **NOTE:** Available since v1.49.0+
 //
@@ -64,9 +64,9 @@ func GetInstanceClasses(ctx *pulumi.Context, args *GetInstanceClassesArgs, opts 
 
 // A collection of arguments for invoking getInstanceClasses.
 type GetInstanceClassesArgs struct {
-	// The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
 	Architecture *string `pulumi:"architecture"`
-	// The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
 	EditionType *string `pulumi:"editionType"`
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
 	Engine *string `pulumi:"engine"`
@@ -74,7 +74,7 @@ type GetInstanceClassesArgs struct {
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
 	NodeType *string `pulumi:"nodeType"`
 	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -87,7 +87,7 @@ type GetInstanceClassesArgs struct {
 	// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
 	PerformanceType *string `pulumi:"performanceType"`
 	ProductType     *string `pulumi:"productType"`
-	// The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
+	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType *string `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
 	// * productType - (Optional, Available since 1.130.0) The type of the service. Valid values:
@@ -99,7 +99,7 @@ type GetInstanceClassesArgs struct {
 	//
 	// Deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.
 	StorageType *string `pulumi:"storageType"`
-	// The Zone to launch the KVStore instance.
+	// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -152,9 +152,9 @@ func GetInstanceClassesOutput(ctx *pulumi.Context, args GetInstanceClassesOutput
 
 // A collection of arguments for invoking getInstanceClasses.
 type GetInstanceClassesOutputArgs struct {
-	// The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
-	// The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
 	EditionType pulumi.StringPtrInput `pulumi:"editionType"`
 	// Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
 	Engine pulumi.StringPtrInput `pulumi:"engine"`
@@ -162,7 +162,7 @@ type GetInstanceClassesOutputArgs struct {
 	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
-	// The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
 	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
 	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -175,7 +175,7 @@ type GetInstanceClassesOutputArgs struct {
 	// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
 	PerformanceType pulumi.StringPtrInput `pulumi:"performanceType"`
 	ProductType     pulumi.StringPtrInput `pulumi:"productType"`
-	// The KVStore instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
+	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType pulumi.StringPtrInput `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
 	// * productType - (Optional, Available since 1.130.0) The type of the service. Valid values:
@@ -187,7 +187,7 @@ type GetInstanceClassesOutputArgs struct {
 	//
 	// Deprecated: The parameter 'storage_type' has been deprecated from 1.68.0.
 	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
-	// The Zone to launch the KVStore instance.
+	// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 

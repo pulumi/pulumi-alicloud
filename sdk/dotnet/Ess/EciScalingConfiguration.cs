@@ -147,8 +147,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<bool?> AutoMatchImageCache { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the container group. which must contain 2-128 characters (
-        /// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        /// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+        /// name_prefix: the prefix of the hostname.
+        /// (AUTO_INCREMENT): the sort method. This is a static field.
+        /// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+        /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+        /// name_suffix: the suffix of the hostname. This field is optional.
         /// </summary>
         [Output("containerGroupName")]
         public Output<string?> ContainerGroupName { get; private set; } = null!;
@@ -467,8 +471,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? AutoMatchImageCache { get; set; }
 
         /// <summary>
-        /// The name of the container group. which must contain 2-128 characters (
-        /// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        /// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+        /// name_prefix: the prefix of the hostname.
+        /// (AUTO_INCREMENT): the sort method. This is a static field.
+        /// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+        /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+        /// name_suffix: the suffix of the hostname. This field is optional.
         /// </summary>
         [Input("containerGroupName")]
         public Input<string>? ContainerGroupName { get; set; }
@@ -803,8 +811,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<bool>? AutoMatchImageCache { get; set; }
 
         /// <summary>
-        /// The name of the container group. which must contain 2-128 characters (
-        /// English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        /// The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+        /// name_prefix: the prefix of the hostname.
+        /// (AUTO_INCREMENT): the sort method. This is a static field.
+        /// begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+        /// bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+        /// name_suffix: the suffix of the hostname. This field is optional.
         /// </summary>
         [Input("containerGroupName")]
         public Input<string>? ContainerGroupName { get; set; }

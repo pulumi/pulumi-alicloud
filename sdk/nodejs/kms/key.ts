@@ -95,7 +95,7 @@ export class Key extends pulumi.CustomResource {
     /**
      * The ID of the KMS instance.
      */
-    public readonly dkmsInstanceId!: pulumi.Output<string | undefined>;
+    public readonly dkmsInstanceId!: pulumi.Output<string>;
     /**
      * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *

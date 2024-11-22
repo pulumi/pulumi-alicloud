@@ -78,7 +78,7 @@ class _ConnectionState:
                  port: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
-        :param pulumi.Input[str] connection_string: The public connection string of KVStore DBInstance.
+        :param pulumi.Input[str] connection_string: The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         :param pulumi.Input[str] connection_string_prefix: The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port: The service port number of the instance.
@@ -96,7 +96,7 @@ class _ConnectionState:
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> Optional[pulumi.Input[str]]:
         """
-        The public connection string of KVStore DBInstance.
+        The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         return pulumi.get(self, "connection_string")
 
@@ -151,7 +151,7 @@ class Connection(pulumi.CustomResource):
                  port: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
+        Operate the public network ip of the specified resource. How to use it, see [What is Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
 
         > **NOTE:** Available since v1.101.0.
 
@@ -202,7 +202,7 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        KVStore connection can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) connection can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
@@ -221,7 +221,7 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
+        Operate the public network ip of the specified resource. How to use it, see [What is Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
 
         > **NOTE:** Available since v1.101.0.
 
@@ -272,7 +272,7 @@ class Connection(pulumi.CustomResource):
 
         ## Import
 
-        KVStore connection can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) connection can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
@@ -336,7 +336,7 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] connection_string: The public connection string of KVStore DBInstance.
+        :param pulumi.Input[str] connection_string: The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         :param pulumi.Input[str] connection_string_prefix: The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port: The service port number of the instance.
@@ -355,7 +355,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> pulumi.Output[str]:
         """
-        The public connection string of KVStore DBInstance.
+        The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         return pulumi.get(self, "connection_string")
 

@@ -16,7 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Private Link Vpc Endpoint Service Resource resource. Endpoint service resource.
+ * Provides a Private Link Vpc Endpoint Service Resource resource.
+ * 
+ * Endpoint service resource.
  * 
  * For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-attachresourcetovpcendpointservice).
  * 
@@ -131,8 +133,6 @@ import javax.annotation.Nullable;
 public class VpcEndpointServiceResource extends com.pulumi.resources.CustomResource {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
@@ -140,12 +140,24 @@ public class VpcEndpointServiceResource extends com.pulumi.resources.CustomResou
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
+    }
+    /**
+     * (Available since v1.235.0) The ID of the region where the service resource is deployed.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.235.0) The ID of the region where the service resource is deployed.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The service resource ID.
@@ -163,9 +175,6 @@ public class VpcEndpointServiceResource extends com.pulumi.resources.CustomResou
     }
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     @Export(name="resourceType", refs={String.class}, tree="[0]")
@@ -173,9 +182,6 @@ public class VpcEndpointServiceResource extends com.pulumi.resources.CustomResou
 
     /**
      * @return Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     public Output<String> resourceType() {

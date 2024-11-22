@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Ecs
 {
     /// <summary>
-    /// Provides a Ecs Image Component resource.
+    /// Provides a ECS Image Component resource.
     /// 
-    /// For information about Ecs Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
+    /// For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.159.0.
     /// 
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Import
     /// 
-    /// Ecs Image Component can be imported using the id, e.g.
+    /// ECS Image Component can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example &lt;id&gt;
@@ -62,13 +62,29 @@ namespace Pulumi.AliCloud.Ecs
     public partial class EcsImageComponent : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
+        /// The component type. Supports mirrored build components and test components.
+        /// 
+        /// Value range:
+        /// - Build
+        /// - Test
+        /// 
+        /// Default value: Build.
+        /// 
+        /// &gt; **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
         /// </summary>
         [Output("componentType")]
         public Output<string> ComponentType { get; private set; } = null!;
 
         /// <summary>
-        /// Component content.
+        /// The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+        /// 
+        /// Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        /// </summary>
+        [Output("componentVersion")]
+        public Output<string> ComponentVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
@@ -80,25 +96,33 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Describe the information.
+        /// Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
+        /// The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+        /// 
+        /// &gt; **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
         /// </summary>
         [Output("imageComponentName")]
         public Output<string> ImageComponentName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the enterprise resource group to which the created image component belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        /// The operating system supported by the component.
+        /// 
+        /// Value range:
+        /// - Linux
+        /// - Windows
+        /// 
+        /// Default value: Linux.
         /// </summary>
         [Output("systemType")]
         public Output<string> SystemType { get; private set; } = null!;
@@ -156,37 +180,61 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsImageComponentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
+        /// The component type. Supports mirrored build components and test components.
+        /// 
+        /// Value range:
+        /// - Build
+        /// - Test
+        /// 
+        /// Default value: Build.
+        /// 
+        /// &gt; **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
         /// </summary>
         [Input("componentType")]
         public Input<string>? ComponentType { get; set; }
 
         /// <summary>
-        /// Component content.
+        /// The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+        /// 
+        /// Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        /// </summary>
+        [Input("componentVersion")]
+        public Input<string>? ComponentVersion { get; set; }
+
+        /// <summary>
+        /// Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
-        /// Describe the information.
+        /// Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
+        /// The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+        /// 
+        /// &gt; **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
         /// </summary>
         [Input("imageComponentName")]
         public Input<string>? ImageComponentName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the enterprise resource group to which the created image component belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        /// The operating system supported by the component.
+        /// 
+        /// Value range:
+        /// - Linux
+        /// - Windows
+        /// 
+        /// Default value: Linux.
         /// </summary>
         [Input("systemType")]
         public Input<string>? SystemType { get; set; }
@@ -212,13 +260,29 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class EcsImageComponentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
+        /// The component type. Supports mirrored build components and test components.
+        /// 
+        /// Value range:
+        /// - Build
+        /// - Test
+        /// 
+        /// Default value: Build.
+        /// 
+        /// &gt; **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
         /// </summary>
         [Input("componentType")]
         public Input<string>? ComponentType { get; set; }
 
         /// <summary>
-        /// Component content.
+        /// The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+        /// 
+        /// Default value:(x +1).0.0, where x is the maximum major version of the current component.
+        /// </summary>
+        [Input("componentVersion")]
+        public Input<string>? ComponentVersion { get; set; }
+
+        /// <summary>
+        /// Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
@@ -230,25 +294,33 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Describe the information.
+        /// Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
+        /// The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+        /// 
+        /// &gt; **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
         /// </summary>
         [Input("imageComponentName")]
         public Input<string>? ImageComponentName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// The ID of the enterprise resource group to which the created image component belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+        /// The operating system supported by the component.
+        /// 
+        /// Value range:
+        /// - Linux
+        /// - Windows
+        /// 
+        /// Default value: Linux.
         /// </summary>
         [Input("systemType")]
         public Input<string>? SystemType { get; set; }

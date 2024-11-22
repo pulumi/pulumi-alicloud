@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a KVStore Account resource.
+// Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Account resource.
 //
-// For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
+// For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
 //
 // > **NOTE:** Available since v1.66.0.
 //
@@ -107,7 +107,7 @@ import (
 //
 // ## Import
 //
-// KVStore account can be imported using the id, e.g.
+// Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
@@ -134,11 +134,11 @@ type Account struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
-	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
-	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
-	// The status of KVStore Account.
+	// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -204,11 +204,11 @@ type accountState struct {
 	Description *string `pulumi:"description"`
 	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId *string `pulumi:"instanceId"`
-	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
-	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
-	// The status of KVStore Account.
+	// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
 	Status *string `pulumi:"status"`
 }
 
@@ -232,11 +232,11 @@ type AccountState struct {
 	Description pulumi.StringPtrInput
 	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId pulumi.StringPtrInput
-	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
-	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
-	// The status of KVStore Account.
+	// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
 	Status pulumi.StringPtrInput
 }
 
@@ -264,9 +264,9 @@ type accountArgs struct {
 	Description *string `pulumi:"description"`
 	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId string `pulumi:"instanceId"`
-	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
-	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
 }
 
@@ -291,9 +291,9 @@ type AccountArgs struct {
 	Description pulumi.StringPtrInput
 	// The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
 	InstanceId pulumi.StringInput
-	// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
+	// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
 	KmsEncryptedPassword pulumi.StringPtrInput
-	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
 }
 
@@ -421,17 +421,17 @@ func (o AccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// An KMS encrypts password used to a KVStore account. If the `accountPassword` is filled in, this field will be ignored.
+// An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `accountPassword` is filled in, this field will be ignored.
 func (o AccountOutput) KmsEncryptedPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringPtrOutput { return v.KmsEncryptedPassword }).(pulumi.StringPtrOutput)
 }
 
-// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a KVStore account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
+// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 func (o AccountOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
 }
 
-// The status of KVStore Account.
+// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
 func (o AccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -84,6 +84,21 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+     * 
+     */
+    @Import(name="connectionStringPrefix")
+    private @Nullable Output<String> connectionStringPrefix;
+
+    /**
+     * @return The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+     * 
+     */
+    public Optional<Output<String>> connectionStringPrefix() {
+        return Optional.ofNullable(this.connectionStringPrefix);
+    }
+
+    /**
      * The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
      * 
      */
@@ -690,6 +705,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.autoRenewPeriod = $.autoRenewPeriod;
         this.backupId = $.backupId;
         this.clusterBackupId = $.clusterBackupId;
+        this.connectionStringPrefix = $.connectionStringPrefix;
         this.effectiveTime = $.effectiveTime;
         this.engineVersion = $.engineVersion;
         this.forceUpgrade = $.forceUpgrade;
@@ -832,6 +848,27 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterBackupId(String clusterBackupId) {
             return clusterBackupId(Output.of(clusterBackupId));
+        }
+
+        /**
+         * @param connectionStringPrefix The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionStringPrefix(@Nullable Output<String> connectionStringPrefix) {
+            $.connectionStringPrefix = connectionStringPrefix;
+            return this;
+        }
+
+        /**
+         * @param connectionStringPrefix The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionStringPrefix(String connectionStringPrefix) {
+            return connectionStringPrefix(Output.of(connectionStringPrefix));
         }
 
         /**

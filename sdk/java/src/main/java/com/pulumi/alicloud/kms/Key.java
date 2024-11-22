@@ -181,14 +181,14 @@ public class Key extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="dkmsInstanceId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> dkmsInstanceId;
+    private Output<String> dkmsInstanceId;
 
     /**
      * @return The ID of the KMS instance.
      * 
      */
-    public Output<Optional<String>> dkmsInstanceId() {
-        return Codegen.optional(this.dkmsInstanceId);
+    public Output<String> dkmsInstanceId() {
+        return this.dkmsInstanceId;
     }
     /**
      * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.

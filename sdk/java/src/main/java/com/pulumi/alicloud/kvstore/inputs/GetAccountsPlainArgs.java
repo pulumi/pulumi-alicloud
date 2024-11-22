@@ -68,14 +68,14 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The status of KVStore Account. Valid Values: `&#34;Available` `Unavailable`
+     * The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `&#34;Available` `Unavailable`
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of KVStore Account. Valid Values: `&#34;Available` `Unavailable`
+     * @return The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `&#34;Available` `Unavailable`
      * 
      */
     public Optional<String> status() {
@@ -149,7 +149,7 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of KVStore Account. Valid Values: `&#34;Available` `Unavailable`
+         * @param status The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `&#34;Available` `Unavailable`
          * 
          * @return builder
          * 

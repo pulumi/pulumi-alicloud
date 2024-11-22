@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.KVStore
     public static class GetInstanceClasses
     {
         /// <summary>
-        /// This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.49.0+
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.KVStore
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.49.0+
         /// 
@@ -94,13 +94,13 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetInstanceClassesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
         /// </summary>
         [Input("architecture")]
         public string? Architecture { get; set; }
 
         /// <summary>
-        /// The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
         /// </summary>
         [Input("editionType")]
         public string? EditionType { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
         /// </summary>
         [Input("nodeType")]
         public string? NodeType { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? ProductType { get; set; }
 
         /// <summary>
-        /// The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
         /// </summary>
         [Input("seriesType")]
         public string? SeriesType { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? StorageType { get; set; }
 
         /// <summary>
-        /// The Zone to launch the KVStore instance.
+        /// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -189,13 +189,13 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class GetInstanceClassesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
 
         /// <summary>
-        /// The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
         /// </summary>
         [Input("editionType")]
         public Input<string>? EditionType { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? ProductType { get; set; }
 
         /// <summary>
-        /// The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+        /// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
         /// </summary>
         [Input("seriesType")]
         public Input<string>? SeriesType { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? StorageType { get; set; }
 
         /// <summary>
-        /// The Zone to launch the KVStore instance.
+        /// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;

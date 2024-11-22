@@ -20,8 +20,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-     * - **true**
-     * - **false**.
      * 
      */
     @Import(name="autoAcceptConnection")
@@ -29,8 +27,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-     * - **true**
-     * - **false**.
      * 
      */
     public Optional<Output<Boolean>> autoAcceptConnection() {
@@ -54,8 +50,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Specifies whether to perform only a dry run, without performing the actual request.
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
@@ -63,8 +57,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request.
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -73,8 +65,8 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * The payer of the endpoint service. Valid values:
-     * - **Endpoint**: the service consumer.
-     * - **EndpointService**: the service provider.
+     * - `Endpoint`: the service consumer.
+     * - `EndpointService`: the service provider.
      * 
      */
     @Import(name="payer")
@@ -82,8 +74,8 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return The payer of the endpoint service. Valid values:
-     * - **Endpoint**: the service consumer.
-     * - **EndpointService**: the service provider.
+     * - `Endpoint`: the service consumer.
+     * - `EndpointService`: the service provider.
      * 
      */
     public Optional<Output<String>> payer() {
@@ -122,9 +114,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     @Import(name="serviceResourceType")
@@ -132,9 +121,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     public Optional<Output<String>> serviceResourceType() {
@@ -143,8 +129,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     @Import(name="serviceSupportIpv6")
@@ -152,8 +136,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Specifies whether to enable IPv6 for the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     public Optional<Output<Boolean>> serviceSupportIpv6() {
@@ -177,8 +159,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     @Import(name="zoneAffinityEnabled")
@@ -186,8 +166,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
     /**
      * @return Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     public Optional<Output<Boolean>> zoneAffinityEnabled() {
@@ -229,8 +207,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param autoAcceptConnection Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-         * - **true**
-         * - **false**.
          * 
          * @return builder
          * 
@@ -242,8 +218,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param autoAcceptConnection Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-         * - **true**
-         * - **false**.
          * 
          * @return builder
          * 
@@ -275,8 +249,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -288,8 +260,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -300,8 +270,8 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param payer The payer of the endpoint service. Valid values:
-         * - **Endpoint**: the service consumer.
-         * - **EndpointService**: the service provider.
+         * - `Endpoint`: the service consumer.
+         * - `EndpointService`: the service provider.
          * 
          * @return builder
          * 
@@ -313,8 +283,8 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param payer The payer of the endpoint service. Valid values:
-         * - **Endpoint**: the service consumer.
-         * - **EndpointService**: the service provider.
+         * - `Endpoint`: the service consumer.
+         * - `EndpointService`: the service provider.
          * 
          * @return builder
          * 
@@ -367,9 +337,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param serviceResourceType Service resource type, value:
-         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -381,9 +348,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param serviceResourceType Service resource type, value:
-         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -394,8 +358,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param serviceSupportIpv6 Specifies whether to enable IPv6 for the endpoint service. Valid values:
-         * - **true**
-         * - **false (default)**.
          * 
          * @return builder
          * 
@@ -407,8 +369,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param serviceSupportIpv6 Specifies whether to enable IPv6 for the endpoint service. Valid values:
-         * - **true**
-         * - **false (default)**.
          * 
          * @return builder
          * 
@@ -440,8 +400,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param zoneAffinityEnabled Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-         * - **true**
-         * - **false (default)**.
          * 
          * @return builder
          * 
@@ -453,8 +411,6 @@ public final class VpcEndpointServiceArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param zoneAffinityEnabled Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-         * - **true**
-         * - **false (default)**.
          * 
          * @return builder
          * 

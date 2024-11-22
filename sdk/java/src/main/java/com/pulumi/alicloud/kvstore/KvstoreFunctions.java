@@ -33,7 +33,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class KvstoreFunctions {
     /**
-     * This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.102.0+.
      * 
@@ -80,7 +80,7 @@ public final class KvstoreFunctions {
         return getAccounts(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.102.0+.
      * 
@@ -127,7 +127,7 @@ public final class KvstoreFunctions {
         return getAccountsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.102.0+.
      * 
@@ -174,7 +174,7 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invoke("alicloud:kvstore/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
      * 
      * &gt; **NOTE:** Available in v1.102.0+.
      * 
@@ -221,7 +221,7 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:kvstore/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can query the public IP of the specified KVStore DBInstance.
+     * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
      * &gt; **NOTE:** Available in v1.101.0+.
      * 
@@ -267,7 +267,7 @@ public final class KvstoreFunctions {
         return getConnections(args, InvokeOptions.Empty);
     }
     /**
-     * This data source can query the public IP of the specified KVStore DBInstance.
+     * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
      * &gt; **NOTE:** Available in v1.101.0+.
      * 
@@ -313,7 +313,7 @@ public final class KvstoreFunctions {
         return getConnectionsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source can query the public IP of the specified KVStore DBInstance.
+     * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
      * &gt; **NOTE:** Available in v1.101.0+.
      * 
@@ -359,7 +359,7 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invoke("alicloud:kvstore/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source can query the public IP of the specified KVStore DBInstance.
+     * This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
      * &gt; **NOTE:** Available in v1.101.0+.
      * 
@@ -405,7 +405,7 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:kvstore/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.49.0+
      * 
@@ -460,7 +460,7 @@ public final class KvstoreFunctions {
         return getInstanceClasses(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.49.0+
      * 
@@ -515,7 +515,7 @@ public final class KvstoreFunctions {
         return getInstanceClassesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.49.0+
      * 
@@ -570,7 +570,7 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invoke("alicloud:kvstore/getInstanceClasses:getInstanceClasses", TypeShape.of(GetInstanceClassesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the KVStore instance classes resource available info of Alibaba Cloud.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.49.0+
      * 
@@ -625,7 +625,7 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:kvstore/getInstanceClasses:getInstanceClasses", TypeShape.of(GetInstanceClassesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.51.0
      * 
@@ -680,7 +680,7 @@ public final class KvstoreFunctions {
         return getInstanceEngines(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.51.0
      * 
@@ -735,7 +735,7 @@ public final class KvstoreFunctions {
         return getInstanceEnginesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.51.0
      * 
@@ -790,7 +790,7 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invoke("alicloud:kvstore/getInstanceEngines:getInstanceEngines", TypeShape.of(GetInstanceEnginesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
      * 
      * &gt; **NOTE:** Available since v1.51.0
      * 
@@ -1109,11 +1109,11 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:kvstore/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Assigns a RAM role to ApsaraDB for Redis.
+     * Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
-     * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
-     * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+     * The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+     * To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
+     * For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
      * &gt; **NOTE:** Available since v1.128.0
      * 
@@ -1157,11 +1157,11 @@ public final class KvstoreFunctions {
         return getPermission(GetPermissionArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Assigns a RAM role to ApsaraDB for Redis.
+     * Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
-     * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
-     * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+     * The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+     * To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
+     * For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
      * &gt; **NOTE:** Available since v1.128.0
      * 
@@ -1205,11 +1205,11 @@ public final class KvstoreFunctions {
         return getPermissionPlain(GetPermissionPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Assigns a RAM role to ApsaraDB for Redis.
+     * Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
-     * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
-     * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+     * The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+     * To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
+     * For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
      * &gt; **NOTE:** Available since v1.128.0
      * 
@@ -1253,11 +1253,11 @@ public final class KvstoreFunctions {
         return getPermission(args, InvokeOptions.Empty);
     }
     /**
-     * Assigns a RAM role to ApsaraDB for Redis.
+     * Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
-     * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
-     * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+     * The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+     * To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
+     * For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
      * &gt; **NOTE:** Available since v1.128.0
      * 
@@ -1301,11 +1301,11 @@ public final class KvstoreFunctions {
         return getPermissionPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Assigns a RAM role to ApsaraDB for Redis.
+     * Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
-     * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
-     * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+     * The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+     * To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
+     * For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
      * &gt; **NOTE:** Available since v1.128.0
      * 
@@ -1349,11 +1349,11 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invoke("alicloud:kvstore/getPermission:getPermission", TypeShape.of(GetPermissionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Assigns a RAM role to ApsaraDB for Redis.
+     * Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
      * 
-     * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
-     * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
-     * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+     * The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+     * To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
+     * For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
      * 
      * &gt; **NOTE:** Available since v1.128.0
      * 
@@ -1397,7 +1397,7 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:kvstore/getPermission:getPermission", TypeShape.of(GetPermissionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.73.0.
      * 
@@ -1442,7 +1442,7 @@ public final class KvstoreFunctions {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.73.0.
      * 
@@ -1487,7 +1487,7 @@ public final class KvstoreFunctions {
         return getZonesPlain(GetZonesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.73.0.
      * 
@@ -1532,7 +1532,7 @@ public final class KvstoreFunctions {
         return getZones(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.73.0.
      * 
@@ -1577,7 +1577,7 @@ public final class KvstoreFunctions {
         return getZonesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.73.0.
      * 
@@ -1622,7 +1622,7 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invoke("alicloud:kvstore/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+     * This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
      * 
      * &gt; **NOTE:** Available since v1.73.0.
      * 

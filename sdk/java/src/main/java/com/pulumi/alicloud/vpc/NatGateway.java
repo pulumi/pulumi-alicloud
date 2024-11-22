@@ -6,6 +6,7 @@ package com.pulumi.alicloud.vpc;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.vpc.NatGatewayArgs;
 import com.pulumi.alicloud.vpc.inputs.NatGatewayState;
+import com.pulumi.alicloud.vpc.outputs.NatGatewayAccessMode;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -29,6 +30,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:vpc/natGateway:NatGateway")
 public class NatGateway extends com.pulumi.resources.CustomResource {
+    /**
+     * The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+     * 
+     */
+    @Export(name="accessMode", refs={NatGatewayAccessMode.class}, tree="[0]")
+    private Output<NatGatewayAccessMode> accessMode;
+
+    /**
+     * @return The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+     * 
+     */
+    public Output<NatGatewayAccessMode> accessMode() {
+        return this.accessMode;
+    }
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -122,9 +137,27 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
         return this.forwardTableIds;
     }
     /**
+     * Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+     * 
+     */
+    @Export(name="icmpReplyEnabled", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> icmpReplyEnabled;
+
+    /**
+     * @return Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+     * 
+     */
+    public Output<Boolean> icmpReplyEnabled() {
+        return this.icmpReplyEnabled;
+    }
+    /**
+     * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+     * 
+     * @deprecated
      * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
      * 
      */
+    @Deprecated /* Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead. */
     @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
@@ -136,14 +169,14 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
         return this.instanceChargeType;
     }
     /**
-     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+     * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
      * 
      */
     @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
-     * @return The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+     * @return The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
      * 
      */
     public Output<String> internetChargeType() {
@@ -152,7 +185,11 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
      * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+     * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -178,14 +215,14 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
         return this.natGatewayName;
     }
     /**
-     * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
      * 
      */
     @Export(name="natType", refs={String.class}, tree="[0]")
     private Output<String> natType;
 
     /**
-     * @return The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+     * @return The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
      * 
      */
     public Output<String> natType() {
@@ -234,6 +271,20 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
+    }
+    /**
+     * Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+     * 
+     */
+    @Export(name="privateLinkEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> privateLinkEnabled;
+
+    /**
+     * @return Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+     * 
+     */
+    public Output<Optional<Boolean>> privateLinkEnabled() {
+        return Codegen.optional(this.privateLinkEnabled);
     }
     /**
      * The nat gateway will auto create a snat item.

@@ -123,6 +123,8 @@ type ShardingInstance struct {
 	AutoRenew pulumi.BoolPtrOutput `pulumi:"autoRenew"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrOutput `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringOutput `pulumi:"backupTime"`
 	// The ConfigServer nodes of the instance. See `configServerList` below.
@@ -231,6 +233,8 @@ type shardingInstanceState struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods []string `pulumi:"backupPeriods"`
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion *int `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
 	// The ConfigServer nodes of the instance. See `configServerList` below.
@@ -294,6 +298,8 @@ type ShardingInstanceState struct {
 	AutoRenew pulumi.BoolPtrInput
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods pulumi.StringArrayInput
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrInput
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
 	// The ConfigServer nodes of the instance. See `configServerList` below.
@@ -361,6 +367,8 @@ type shardingInstanceArgs struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods []string `pulumi:"backupPeriods"`
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion *int `pulumi:"backupRetentionPolicyOnClusterDeletion"`
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime *string `pulumi:"backupTime"`
 	// The ConfigServer nodes of the instance. See `configServerList` below.
@@ -423,6 +431,8 @@ type ShardingInstanceArgs struct {
 	AutoRenew pulumi.BoolPtrInput
 	// MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 	BackupPeriods pulumi.StringArrayInput
+	// The backup retention policy configured for the instance. Valid values:
+	BackupRetentionPolicyOnClusterDeletion pulumi.IntPtrInput
 	// Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
 	BackupTime pulumi.StringPtrInput
 	// The ConfigServer nodes of the instance. See `configServerList` below.
@@ -577,6 +587,11 @@ func (o ShardingInstanceOutput) AutoRenew() pulumi.BoolPtrOutput {
 // MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
 func (o ShardingInstanceOutput) BackupPeriods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ShardingInstance) pulumi.StringArrayOutput { return v.BackupPeriods }).(pulumi.StringArrayOutput)
+}
+
+// The backup retention policy configured for the instance. Valid values:
+func (o ShardingInstanceOutput) BackupRetentionPolicyOnClusterDeletion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ShardingInstance) pulumi.IntPtrOutput { return v.BackupRetentionPolicyOnClusterDeletion }).(pulumi.IntPtrOutput)
 }
 
 // Sharding Instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".

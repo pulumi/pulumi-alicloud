@@ -21,7 +21,7 @@ public final class GetInstanceEnginesInstanceEngine {
      */
     private String engineVersion;
     /**
-     * @return The Zone to launch the KVStore instance.
+     * @return The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     private String zoneId;
@@ -42,7 +42,7 @@ public final class GetInstanceEnginesInstanceEngine {
         return this.engineVersion;
     }
     /**
-     * @return The Zone to launch the KVStore instance.
+     * @return The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     public String zoneId() {

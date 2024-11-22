@@ -17,6 +17,7 @@ from . import outputs
 
 __all__ = [
     'DhcpOptionsSetAssociateVpc',
+    'NatGatewayAccessMode',
     'NetworkAclAttachmentResource',
     'NetworkAclEgressAclEntry',
     'NetworkAclEntriesEgress',
@@ -120,6 +121,56 @@ class DhcpOptionsSetAssociateVpc(dict):
         The status of the VPC associated with the DHCP option set.
         """
         return pulumi.get(self, "associate_status")
+
+
+@pulumi.output_type
+class NatGatewayAccessMode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modeValue":
+            suggest = "mode_value"
+        elif key == "tunnelType":
+            suggest = "tunnel_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NatGatewayAccessMode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NatGatewayAccessMode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NatGatewayAccessMode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mode_value: Optional[str] = None,
+                 tunnel_type: Optional[str] = None):
+        """
+        :param str mode_value: The mode of Access. Valid values:
+        :param str tunnel_type: The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+        """
+        if mode_value is not None:
+            pulumi.set(__self__, "mode_value", mode_value)
+        if tunnel_type is not None:
+            pulumi.set(__self__, "tunnel_type", tunnel_type)
+
+    @property
+    @pulumi.getter(name="modeValue")
+    def mode_value(self) -> Optional[str]:
+        """
+        The mode of Access. Valid values:
+        """
+        return pulumi.get(self, "mode_value")
+
+    @property
+    @pulumi.getter(name="tunnelType")
+    def tunnel_type(self) -> Optional[str]:
+        """
+        The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnel_type` takes effect only if `mode_value` is set to `tunnel`.
+        """
+        return pulumi.get(self, "tunnel_type")
 
 
 @pulumi.output_type

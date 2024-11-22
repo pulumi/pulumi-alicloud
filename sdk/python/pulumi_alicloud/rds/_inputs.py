@@ -15,6 +15,10 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'CustomDataDiskArgs',
+    'CustomDataDiskArgsDict',
+    'CustomSystemDiskArgs',
+    'CustomSystemDiskArgsDict',
     'DbInstanceEndpointNodeItemArgs',
     'DbInstanceEndpointNodeItemArgsDict',
     'DdrInstanceParameterArgs',
@@ -52,6 +56,148 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class CustomDataDiskArgsDict(TypedDict):
+        category: NotRequired[pulumi.Input[str]]
+        """
+        Instance storage type
+
+        local_ssd: local SSD disk
+
+        cloud_essd:ESSD PL1 cloud disk
+        """
+        performance_level: NotRequired[pulumi.Input[str]]
+        """
+        Cloud Disk Performance
+
+        Currently only supports PL1
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        Instance storage space. Unit: GB.
+        """
+elif False:
+    CustomDataDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CustomDataDiskArgs:
+    def __init__(__self__, *,
+                 category: Optional[pulumi.Input[str]] = None,
+                 performance_level: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] category: Instance storage type
+               
+               local_ssd: local SSD disk
+               
+               cloud_essd:ESSD PL1 cloud disk
+        :param pulumi.Input[str] performance_level: Cloud Disk Performance
+               
+               Currently only supports PL1
+        :param pulumi.Input[int] size: Instance storage space. Unit: GB.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        Instance storage type
+
+        local_ssd: local SSD disk
+
+        cloud_essd:ESSD PL1 cloud disk
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cloud Disk Performance
+
+        Currently only supports PL1
+        """
+        return pulumi.get(self, "performance_level")
+
+    @performance_level.setter
+    def performance_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_level", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        Instance storage space. Unit: GB.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+
+if not MYPY:
+    class CustomSystemDiskArgsDict(TypedDict):
+        category: NotRequired[pulumi.Input[str]]
+        """
+        The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+        """
+        size: NotRequired[pulumi.Input[str]]
+        """
+        System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+        """
+elif False:
+    CustomSystemDiskArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CustomSystemDiskArgs:
+    def __init__(__self__, *,
+                 category: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] category: The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+        :param pulumi.Input[str] size: System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[str]]:
+        """
+        System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "size", value)
+
 
 if not MYPY:
     class DbInstanceEndpointNodeItemArgsDict(TypedDict):

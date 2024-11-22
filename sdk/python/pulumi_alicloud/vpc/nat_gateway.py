@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['NatGatewayArgs', 'NatGateway']
 
@@ -20,11 +22,13 @@ __all__ = ['NatGatewayArgs', 'NatGateway']
 class NatGatewayArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[str],
+                 access_mode: Optional[pulumi.Input['NatGatewayAccessModeArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  eip_bind_mode: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 icmp_reply_enabled: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -33,12 +37,14 @@ class NatGatewayArgs:
                  network_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 private_link_enabled: Optional[pulumi.Input[bool]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NatGateway resource.
         :param pulumi.Input[str] vpc_id: The VPC ID.
+        :param pulumi.Input['NatGatewayAccessModeArgs'] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -48,20 +54,24 @@ class NatGatewayArgs:
                - `MULTI_BINDED`: Multi EIP network card visible mode.
                - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
+        :param pulumi.Input[bool] icmp_reply_enabled: Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
-        :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+        :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+        :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of NAT gateway.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -72,10 +82,18 @@ class NatGatewayArgs:
             pulumi.set(__self__, "eip_bind_mode", eip_bind_mode)
         if force is not None:
             pulumi.set(__self__, "force", force)
+        if icmp_reply_enabled is not None:
+            pulumi.set(__self__, "icmp_reply_enabled", icmp_reply_enabled)
+        if instance_charge_type is not None:
+            warnings.warn("""Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat_gateway_name is not None:
@@ -88,6 +106,8 @@ class NatGatewayArgs:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if private_link_enabled is not None:
+            pulumi.set(__self__, "private_link_enabled", private_link_enabled)
         if specification is not None:
             pulumi.set(__self__, "specification", specification)
         if tags is not None:
@@ -106,6 +126,18 @@ class NatGatewayArgs:
     @vpc_id.setter
     def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[pulumi.Input['NatGatewayAccessModeArgs']]:
+        """
+        The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        """
+        return pulumi.get(self, "access_mode")
+
+    @access_mode.setter
+    def access_mode(self, value: Optional[pulumi.Input['NatGatewayAccessModeArgs']]):
+        pulumi.set(self, "access_mode", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -172,7 +204,20 @@ class NatGatewayArgs:
         pulumi.set(self, "force", value)
 
     @property
+    @pulumi.getter(name="icmpReplyEnabled")
+    def icmp_reply_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+        """
+        return pulumi.get(self, "icmp_reply_enabled")
+
+    @icmp_reply_enabled.setter
+    def icmp_reply_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "icmp_reply_enabled", value)
+
+    @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
@@ -187,7 +232,7 @@ class NatGatewayArgs:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+        The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -197,6 +242,7 @@ class NatGatewayArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
@@ -223,7 +269,7 @@ class NatGatewayArgs:
     @pulumi.getter(name="natType")
     def nat_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+        The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         """
         return pulumi.get(self, "nat_type")
 
@@ -269,6 +315,18 @@ class NatGatewayArgs:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="privateLinkEnabled")
+    def private_link_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "private_link_enabled")
+
+    @private_link_enabled.setter
+    def private_link_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private_link_enabled", value)
+
+    @property
     @pulumi.getter
     def specification(self) -> Optional[pulumi.Input[str]]:
         """
@@ -308,12 +366,14 @@ class NatGatewayArgs:
 @pulumi.input_type
 class _NatGatewayState:
     def __init__(__self__, *,
+                 access_mode: Optional[pulumi.Input['NatGatewayAccessModeArgs']] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  eip_bind_mode: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  forward_table_ids: Optional[pulumi.Input[str]] = None,
+                 icmp_reply_enabled: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -322,6 +382,7 @@ class _NatGatewayState:
                  network_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 private_link_enabled: Optional[pulumi.Input[bool]] = None,
                  snat_table_ids: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -330,6 +391,7 @@ class _NatGatewayState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering NatGateway resources.
+        :param pulumi.Input['NatGatewayAccessModeArgs'] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -340,15 +402,17 @@ class _NatGatewayState:
                - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] forward_table_ids: The nat gateway will auto create a forward item.
+        :param pulumi.Input[bool] icmp_reply_enabled: Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
-        :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+        :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+        :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
         :param pulumi.Input[str] snat_table_ids: The nat gateway will auto create a snat item.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         :param pulumi.Input[str] status: (Available since v1.121.0) The status of NAT gateway.
@@ -356,6 +420,8 @@ class _NatGatewayState:
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vswitch_id: The id of VSwitch.
         """
+        if access_mode is not None:
+            pulumi.set(__self__, "access_mode", access_mode)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -368,10 +434,18 @@ class _NatGatewayState:
             pulumi.set(__self__, "force", force)
         if forward_table_ids is not None:
             pulumi.set(__self__, "forward_table_ids", forward_table_ids)
+        if icmp_reply_enabled is not None:
+            pulumi.set(__self__, "icmp_reply_enabled", icmp_reply_enabled)
+        if instance_charge_type is not None:
+            warnings.warn("""Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.""", DeprecationWarning)
+            pulumi.log.warn("""instance_charge_type is deprecated: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.""")
         if instance_charge_type is not None:
             pulumi.set(__self__, "instance_charge_type", instance_charge_type)
         if internet_charge_type is not None:
             pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+        if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if nat_gateway_name is not None:
@@ -384,6 +458,8 @@ class _NatGatewayState:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if private_link_enabled is not None:
+            pulumi.set(__self__, "private_link_enabled", private_link_enabled)
         if snat_table_ids is not None:
             pulumi.set(__self__, "snat_table_ids", snat_table_ids)
         if specification is not None:
@@ -396,6 +472,18 @@ class _NatGatewayState:
             pulumi.set(__self__, "vpc_id", vpc_id)
         if vswitch_id is not None:
             pulumi.set(__self__, "vswitch_id", vswitch_id)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> Optional[pulumi.Input['NatGatewayAccessModeArgs']]:
+        """
+        The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        """
+        return pulumi.get(self, "access_mode")
+
+    @access_mode.setter
+    def access_mode(self, value: Optional[pulumi.Input['NatGatewayAccessModeArgs']]):
+        pulumi.set(self, "access_mode", value)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -474,7 +562,20 @@ class _NatGatewayState:
         pulumi.set(self, "forward_table_ids", value)
 
     @property
+    @pulumi.getter(name="icmpReplyEnabled")
+    def icmp_reply_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+        """
+        return pulumi.get(self, "icmp_reply_enabled")
+
+    @icmp_reply_enabled.setter
+    def icmp_reply_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "icmp_reply_enabled", value)
+
+    @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.""")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
@@ -489,7 +590,7 @@ class _NatGatewayState:
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+        The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         """
         return pulumi.get(self, "internet_charge_type")
 
@@ -499,6 +600,7 @@ class _NatGatewayState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
@@ -525,7 +627,7 @@ class _NatGatewayState:
     @pulumi.getter(name="natType")
     def nat_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+        The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         """
         return pulumi.get(self, "nat_type")
 
@@ -569,6 +671,18 @@ class _NatGatewayState:
     @period.setter
     def period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter(name="privateLinkEnabled")
+    def private_link_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "private_link_enabled")
+
+    @private_link_enabled.setter
+    def private_link_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "private_link_enabled", value)
 
     @property
     @pulumi.getter(name="snatTableIds")
@@ -648,11 +762,13 @@ class NatGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_mode: Optional[pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  eip_bind_mode: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 icmp_reply_enabled: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -661,6 +777,7 @@ class NatGateway(pulumi.CustomResource):
                  network_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 private_link_enabled: Optional[pulumi.Input[bool]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -677,6 +794,7 @@ class NatGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -686,15 +804,17 @@ class NatGateway(pulumi.CustomResource):
                - `MULTI_BINDED`: Multi EIP network card visible mode.
                - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
+        :param pulumi.Input[bool] icmp_reply_enabled: Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
-        :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+        :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+        :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags of NAT gateway.
         :param pulumi.Input[str] vpc_id: The VPC ID.
@@ -730,11 +850,13 @@ class NatGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_mode: Optional[pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  eip_bind_mode: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
+                 icmp_reply_enabled: Optional[pulumi.Input[bool]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
                  internet_charge_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -743,6 +865,7 @@ class NatGateway(pulumi.CustomResource):
                  network_type: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 private_link_enabled: Optional[pulumi.Input[bool]] = None,
                  specification: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -756,11 +879,13 @@ class NatGateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NatGatewayArgs.__new__(NatGatewayArgs)
 
+            __props__.__dict__["access_mode"] = access_mode
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["eip_bind_mode"] = eip_bind_mode
             __props__.__dict__["force"] = force
+            __props__.__dict__["icmp_reply_enabled"] = icmp_reply_enabled
             __props__.__dict__["instance_charge_type"] = instance_charge_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
             __props__.__dict__["name"] = name
@@ -769,6 +894,7 @@ class NatGateway(pulumi.CustomResource):
             __props__.__dict__["network_type"] = network_type
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
+            __props__.__dict__["private_link_enabled"] = private_link_enabled
             __props__.__dict__["specification"] = specification
             __props__.__dict__["tags"] = tags
             if vpc_id is None and not opts.urn:
@@ -788,12 +914,14 @@ class NatGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_mode: Optional[pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             eip_bind_mode: Optional[pulumi.Input[str]] = None,
             force: Optional[pulumi.Input[bool]] = None,
             forward_table_ids: Optional[pulumi.Input[str]] = None,
+            icmp_reply_enabled: Optional[pulumi.Input[bool]] = None,
             instance_charge_type: Optional[pulumi.Input[str]] = None,
             internet_charge_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -802,6 +930,7 @@ class NatGateway(pulumi.CustomResource):
             network_type: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            private_link_enabled: Optional[pulumi.Input[bool]] = None,
             snat_table_ids: Optional[pulumi.Input[str]] = None,
             specification: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
@@ -815,6 +944,7 @@ class NatGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NatGatewayAccessModeArgs', 'NatGatewayAccessModeArgsDict']] access_mode: The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
         :param pulumi.Input[bool] deletion_protection: Whether enable the deletion protection or not. Default value: `false`.
                - true: Enable deletion protection.
                - false: Disable deletion protection.
@@ -825,15 +955,17 @@ class NatGateway(pulumi.CustomResource):
                - `NAT`: EIP normal mode, compatible with IPv4 gateway.
         :param pulumi.Input[bool] force: Specifies whether to forcefully delete the NAT gateway.
         :param pulumi.Input[str] forward_table_ids: The nat gateway will auto create a forward item.
+        :param pulumi.Input[bool] icmp_reply_enabled: Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
         :param pulumi.Input[str] instance_charge_type: Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
-        :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+        :param pulumi.Input[str] internet_charge_type: The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
         :param pulumi.Input[str] nat_gateway_name: Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
-        :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+        :param pulumi.Input[str] nat_type: The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         :param pulumi.Input[str] network_type: Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
         :param pulumi.Input[str] payment_type: The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `payment_type` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        :param pulumi.Input[bool] private_link_enabled: Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
         :param pulumi.Input[str] snat_table_ids: The nat gateway will auto create a snat item.
         :param pulumi.Input[str] specification: The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
         :param pulumi.Input[str] status: (Available since v1.121.0) The status of NAT gateway.
@@ -845,12 +977,14 @@ class NatGateway(pulumi.CustomResource):
 
         __props__ = _NatGatewayState.__new__(_NatGatewayState)
 
+        __props__.__dict__["access_mode"] = access_mode
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["eip_bind_mode"] = eip_bind_mode
         __props__.__dict__["force"] = force
         __props__.__dict__["forward_table_ids"] = forward_table_ids
+        __props__.__dict__["icmp_reply_enabled"] = icmp_reply_enabled
         __props__.__dict__["instance_charge_type"] = instance_charge_type
         __props__.__dict__["internet_charge_type"] = internet_charge_type
         __props__.__dict__["name"] = name
@@ -859,6 +993,7 @@ class NatGateway(pulumi.CustomResource):
         __props__.__dict__["network_type"] = network_type
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["private_link_enabled"] = private_link_enabled
         __props__.__dict__["snat_table_ids"] = snat_table_ids
         __props__.__dict__["specification"] = specification
         __props__.__dict__["status"] = status
@@ -866,6 +1001,14 @@ class NatGateway(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         __props__.__dict__["vswitch_id"] = vswitch_id
         return NatGateway(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> pulumi.Output['outputs.NatGatewayAccessMode']:
+        """
+        The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+        """
+        return pulumi.get(self, "access_mode")
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -920,7 +1063,16 @@ class NatGateway(pulumi.CustomResource):
         return pulumi.get(self, "forward_table_ids")
 
     @property
+    @pulumi.getter(name="icmpReplyEnabled")
+    def icmp_reply_enabled(self) -> pulumi.Output[bool]:
+        """
+        Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+        """
+        return pulumi.get(self, "icmp_reply_enabled")
+
+    @property
     @pulumi.getter(name="instanceChargeType")
+    @_utilities.deprecated("""Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.""")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
         Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
@@ -931,12 +1083,13 @@ class NatGateway(pulumi.CustomResource):
     @pulumi.getter(name="internetChargeType")
     def internet_charge_type(self) -> pulumi.Output[str]:
         """
-        The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+        The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
@@ -955,7 +1108,7 @@ class NatGateway(pulumi.CustomResource):
     @pulumi.getter(name="natType")
     def nat_type(self) -> pulumi.Output[str]:
         """
-        The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+        The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
         """
         return pulumi.get(self, "nat_type")
 
@@ -983,6 +1136,14 @@ class NatGateway(pulumi.CustomResource):
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="privateLinkEnabled")
+    def private_link_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "private_link_enabled")
 
     @property
     @pulumi.getter(name="snatTableIds")

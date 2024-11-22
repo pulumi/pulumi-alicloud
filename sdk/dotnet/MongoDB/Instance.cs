@@ -125,6 +125,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<int> BackupRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
+        /// The backup retention policy configured for the instance. Valid values:
+        /// </summary>
+        [Output("backupRetentionPolicyOnClusterDeletion")]
+        public Output<int?> BackupRetentionPolicyOnClusterDeletion { get; private set; } = null!;
+
+        /// <summary>
         /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Output("backupTime")]
@@ -492,6 +498,12 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<int>? BackupRetentionPeriod { get; set; }
 
         /// <summary>
+        /// The backup retention policy configured for the instance. Valid values:
+        /// </summary>
+        [Input("backupRetentionPolicyOnClusterDeletion")]
+        public Input<int>? BackupRetentionPolicyOnClusterDeletion { get; set; }
+
+        /// <summary>
         /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         /// </summary>
         [Input("backupTime")]
@@ -815,6 +827,12 @@ namespace Pulumi.AliCloud.MongoDB
         /// </summary>
         [Input("backupRetentionPeriod")]
         public Input<int>? BackupRetentionPeriod { get; set; }
+
+        /// <summary>
+        /// The backup retention policy configured for the instance. Valid values:
+        /// </summary>
+        [Input("backupRetentionPolicyOnClusterDeletion")]
+        public Input<int>? BackupRetentionPolicyOnClusterDeletion { get; set; }
 
         /// <summary>
         /// MongoDB instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".

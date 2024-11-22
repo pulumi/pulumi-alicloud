@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.KVStore
     public static class GetInstanceEngines
     {
         /// <summary>
-        /// This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.51.0
         /// 
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.KVStore
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceEnginesResult>("alicloud:kvstore/getInstanceEngines:getInstanceEngines", args ?? new GetInstanceEnginesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
         /// 
         /// &gt; **NOTE:** Available since v1.51.0
         /// 
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Zone to launch the KVStore instance.
+        /// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The Zone to launch the KVStore instance.
+        /// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public readonly string? Engine;
         /// <summary>
-        /// KVStore Instance version.
+        /// Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance version.
         /// </summary>
         public readonly string? EngineVersion;
         /// <summary>
@@ -185,12 +185,12 @@ namespace Pulumi.AliCloud.KVStore
         public readonly string Id;
         public readonly string? InstanceChargeType;
         /// <summary>
-        /// A list of KVStore available instance engines. Each element contains the following attributes:
+        /// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) available instance engines. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceEnginesInstanceEngineResult> InstanceEngines;
         public readonly string? OutputFile;
         /// <summary>
-        /// The Zone to launch the KVStore instance.
+        /// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         public readonly string ZoneId;
 

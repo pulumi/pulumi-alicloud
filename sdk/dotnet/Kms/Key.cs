@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Kms
         /// The ID of the KMS instance.
         /// </summary>
         [Output("dkmsInstanceId")]
-        public Output<string?> DkmsInstanceId { get; private set; } = null!;
+        public Output<string> DkmsInstanceId { get; private set; } = null!;
 
         /// <summary>
         /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.

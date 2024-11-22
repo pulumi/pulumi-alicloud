@@ -18,82 +18,197 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a CR Instance resource.
+ * 
+ * For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+ * 
+ * &gt; **NOTE:** Available since v1.124.0.
+ * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstance;
+ * import com.pulumi.alicloud.cr.RegistryEnterpriseInstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         var default_ = new Integer("default", IntegerArgs.builder()
+ *             .min(10000000)
+ *             .max(99999999)
+ *             .build());
+ * 
+ *         var defaultRegistryEnterpriseInstance = new RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", RegistryEnterpriseInstanceArgs.builder()
+ *             .paymentType("Subscription")
+ *             .period(1)
+ *             .renewPeriod(0)
+ *             .renewalStatus("ManualRenewal")
+ *             .instanceType("Advanced")
+ *             .instanceName(String.format("%s-%s", name,default_.result()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
- * Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
+ * CR Instance can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+ * $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance")
 public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResource {
     /**
-     * Time of Container Registry Enterprise Edition instance creation.
+     * The creation time of the resource
      * 
      */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * . Field &#39;created_time&#39; has been deprecated from provider version 1.235.0. New field &#39;create_time&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;created_time&#39; has been deprecated since provider version 1.235.0. New field &#39;create_time&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead. */
     @Export(name="createdTime", refs={String.class}, tree="[0]")
     private Output<String> createdTime;
 
     /**
-     * @return Time of Container Registry Enterprise Edition instance creation.
+     * @return . Field &#39;created_time&#39; has been deprecated from provider version 1.235.0. New field &#39;create_time&#39; instead.
      * 
      */
     public Output<String> createdTime() {
         return this.createdTime;
     }
     /**
-     * Name of your customized oss bucket. Use this bucket as instance storage if set.
+     * Custom OSS Bucket name
      * 
      */
     @Export(name="customOssBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customOssBucket;
 
     /**
-     * @return Name of your customized oss bucket. Use this bucket as instance storage if set.
+     * @return Custom OSS Bucket name
      * 
      */
     public Output<Optional<String>> customOssBucket() {
         return Codegen.optional(this.customOssBucket);
     }
     /**
-     * Time of Container Registry Enterprise Edition instance expiration.
+     * Whether to use the default OSS Bucket
+     * 
+     */
+    @Export(name="defaultOssBucket", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> defaultOssBucket;
+
+    /**
+     * @return Whether to use the default OSS Bucket
+     * 
+     */
+    public Output<Optional<String>> defaultOssBucket() {
+        return Codegen.optional(this.defaultOssBucket);
+    }
+    /**
+     * Expiration Time
      * 
      */
     @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
-     * @return Time of Container Registry Enterprise Edition instance expiration.
+     * @return Expiration Time
      * 
      */
     public Output<String> endTime() {
         return this.endTime;
     }
     /**
-     * Name of Container Registry Enterprise Edition instance.
+     * Security scan engine
+     * 
+     */
+    @Export(name="imageScanner", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> imageScanner;
+
+    /**
+     * @return Security scan engine
+     * 
+     */
+    public Output<Optional<String>> imageScanner() {
+        return Codegen.optional(this.imageScanner);
+    }
+    /**
+     * InstanceName
      * 
      */
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
-     * @return Name of Container Registry Enterprise Edition instance.
+     * @return InstanceName
      * 
      */
     public Output<String> instanceName() {
         return this.instanceName;
     }
     /**
-     * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn&#39;t supports `Standard`.
+     * The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+     * 
+     * Basic: Basic instance
+     * 
+     * Standard: Standard instance
+     * 
+     * Advanced: Advanced Edition Instance
      * 
      */
     @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
-     * @return Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn&#39;t supports `Standard`.
+     * @return The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+     * 
+     * Basic: Basic instance
+     * 
+     * Standard: Standard instance
+     * 
+     * Advanced: Advanced Edition Instance
      * 
      */
     public Output<String> instanceType() {
@@ -128,84 +243,134 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     * Permanent access credentials of the instance
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
-     * @return The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+     * @return Permanent access credentials of the instance
      * 
      */
     public Output<Optional<String>> password() {
         return Codegen.optional(this.password);
     }
     /**
-     * Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+     * Payment type, value:
+     * - Subscription: Prepaid.
      * 
      */
     @Export(name="paymentType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> paymentType;
+    private Output<String> paymentType;
 
     /**
-     * @return Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+     * @return Payment type, value:
+     * - Subscription: Prepaid.
      * 
      */
-    public Output<Optional<String>> paymentType() {
-        return Codegen.optional(this.paymentType);
+    public Output<String> paymentType() {
+        return this.paymentType;
     }
     /**
-     * Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+     * Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * 
+     * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
     @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+     * @return Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+     * 
+     * &gt; **NOTE:**  must be set when creating a prepaid instance.
      * 
      */
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
     /**
-     * Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+     * RegionId
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return RegionId
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * Automatic renewal cycle, in months.
+     * 
+     * &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      * 
      */
     @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
-     * @return Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+     * @return Automatic renewal cycle, in months.
+     * 
+     * &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
      * 
      */
     public Output<Optional<Integer>> renewPeriod() {
         return Codegen.optional(this.renewPeriod);
     }
     /**
-     * Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+     * Automatic renewal status, value:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
+     * 
+     * Default ManualRenewal.
      * 
      */
     @Export(name="renewalStatus", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> renewalStatus;
+    private Output<String> renewalStatus;
 
     /**
-     * @return Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+     * @return Automatic renewal status, value:
+     * - AutoRenewal: automatic renewal.
+     * - ManualRenewal: manual renewal.
+     * 
+     * Default ManualRenewal.
      * 
      */
-    public Output<Optional<String>> renewalStatus() {
-        return Codegen.optional(this.renewalStatus);
+    public Output<String> renewalStatus() {
+        return this.renewalStatus;
     }
     /**
-     * Status of Container Registry Enterprise Edition instance.
+     * The ID of the resource group
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * Instance Status
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status of Container Registry Enterprise Edition instance.
+     * @return Instance Status
      * 
      */
     public Output<String> status() {

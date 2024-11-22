@@ -231,6 +231,10 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
+     */
+    public readonly networkInterfaces!: pulumi.Output<outputs.ess.ScalingConfigurationNetworkInterface[] | undefined>;
+    /**
      * Indicates whether to overwrite the existing data. Default to false.
      */
     public readonly override!: pulumi.Output<boolean | undefined>;
@@ -389,6 +393,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["keyName"] = state ? state.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = state ? state.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = state ? state.kmsEncryptionContext : undefined;
+            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["override"] = state ? state.override : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
             resourceInputs["passwordInherit"] = state ? state.passwordInherit : undefined;
@@ -445,6 +450,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["keyName"] = args ? args.keyName : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
             resourceInputs["kmsEncryptionContext"] = args ? args.kmsEncryptionContext : undefined;
+            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["override"] = args ? args.override : undefined;
             resourceInputs["password"] = args ? args.password : undefined;
             resourceInputs["passwordInherit"] = args ? args.passwordInherit : undefined;
@@ -585,6 +591,10 @@ export interface ScalingConfigurationState {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
+     */
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationNetworkInterface>[]>;
     /**
      * Indicates whether to overwrite the existing data. Default to false.
      */
@@ -815,6 +825,10 @@ export interface ScalingConfigurationArgs {
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
+     */
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationNetworkInterface>[]>;
     /**
      * Indicates whether to overwrite the existing data. Default to false.
      */

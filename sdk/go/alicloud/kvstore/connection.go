@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
+// Operate the public network ip of the specified resource. How to use it, see [What is Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
 //
 // > **NOTE:** Available since v1.101.0.
 //
@@ -105,7 +105,7 @@ import (
 //
 // ## Import
 //
-// KVStore connection can be imported using the id, e.g.
+// Tair (Redis OSS-Compatible) And Memcache (KVStore) connection can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
@@ -113,7 +113,7 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
-	// The public connection string of KVStore DBInstance.
+	// The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
 	ConnectionStringPrefix pulumi.StringOutput `pulumi:"connectionStringPrefix"`
@@ -162,7 +162,7 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
-	// The public connection string of KVStore DBInstance.
+	// The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ConnectionString *string `pulumi:"connectionString"`
 	// The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
@@ -173,7 +173,7 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
-	// The public connection string of KVStore DBInstance.
+	// The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ConnectionString pulumi.StringPtrInput
 	// The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
 	ConnectionStringPrefix pulumi.StringPtrInput
@@ -293,7 +293,7 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
-// The public connection string of KVStore DBInstance.
+// The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 func (o ConnectionOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }

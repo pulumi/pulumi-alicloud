@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> DbNodeId { get; private set; } = null!;
 
         /// <summary>
-        /// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        /// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         /// </summary>
         [Output("dbNodeNum")]
         public Output<int?> DbNodeNum { get; private set; } = null!;
@@ -622,7 +622,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbNodeId { get; set; }
 
         /// <summary>
-        /// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        /// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         /// </summary>
         [Input("dbNodeNum")]
         public Input<int>? DbNodeNum { get; set; }
@@ -1102,7 +1102,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? DbNodeId { get; set; }
 
         /// <summary>
-        /// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+        /// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         /// </summary>
         [Input("dbNodeNum")]
         public Input<int>? DbNodeNum { get; set; }

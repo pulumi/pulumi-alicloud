@@ -121,6 +121,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly backupRetentionPeriod!: pulumi.Output<number>;
     /**
+     * The backup retention policy configured for the instance. Valid values:
+     */
+    public readonly backupRetentionPolicyOnClusterDeletion!: pulumi.Output<number | undefined>;
+    /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
     public readonly backupTime!: pulumi.Output<string>;
@@ -323,6 +327,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupInterval"] = state ? state.backupInterval : undefined;
             resourceInputs["backupPeriods"] = state ? state.backupPeriods : undefined;
             resourceInputs["backupRetentionPeriod"] = state ? state.backupRetentionPeriod : undefined;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = state ? state.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["backupTime"] = state ? state.backupTime : undefined;
             resourceInputs["cloudDiskEncryptionKey"] = state ? state.cloudDiskEncryptionKey : undefined;
             resourceInputs["dbInstanceClass"] = state ? state.dbInstanceClass : undefined;
@@ -382,6 +387,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["backupInterval"] = args ? args.backupInterval : undefined;
             resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             resourceInputs["backupRetentionPeriod"] = args ? args.backupRetentionPeriod : undefined;
+            resourceInputs["backupRetentionPolicyOnClusterDeletion"] = args ? args.backupRetentionPolicyOnClusterDeletion : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
             resourceInputs["cloudDiskEncryptionKey"] = args ? args.cloudDiskEncryptionKey : undefined;
             resourceInputs["dbInstanceClass"] = args ? args.dbInstanceClass : undefined;
@@ -458,6 +464,10 @@ export interface InstanceState {
      * The retention period of full backups.
      */
     backupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * The backup retention policy configured for the instance. Valid values:
+     */
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
@@ -669,6 +679,10 @@ export interface InstanceArgs {
      * The retention period of full backups.
      */
     backupRetentionPeriod?: pulumi.Input<number>;
+    /**
+     * The backup retention policy configured for the instance. Valid values:
+     */
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */

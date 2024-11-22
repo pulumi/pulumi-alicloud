@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
+ * Operate the public network ip of the specified resource. How to use it, see [What is Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
  *
  * > **NOTE:** Available since v1.101.0.
  *
@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * KVStore connection can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) connection can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
@@ -95,7 +95,7 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
-     * The public connection string of KVStore DBInstance.
+     * The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
@@ -154,7 +154,7 @@ export class Connection extends pulumi.CustomResource {
  */
 export interface ConnectionState {
     /**
-     * The public connection string of KVStore DBInstance.
+     * The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */
     connectionString?: pulumi.Input<string>;
     /**

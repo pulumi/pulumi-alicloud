@@ -5,11 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Assigns a RAM role to ApsaraDB for Redis.
+ * Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
  *
- * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
- * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
- * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+ * The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+ * To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
+ * For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
  *
  * > **NOTE:** Available since v1.128.0
  *
@@ -37,7 +37,7 @@ export function getPermission(args?: GetPermissionArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetPermissionArgs {
     /**
-     * Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+     * Setting the value to `On` to assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore). If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
      */
     enable?: string;
 }
@@ -57,11 +57,11 @@ export interface GetPermissionResult {
     readonly status: string;
 }
 /**
- * Assigns a RAM role to ApsaraDB for Redis.
+ * Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
  *
- * The log management feature of ApsaraDB for Redis requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
- * To use the log management feature of ApsaraDB for Redis, you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the ApsaraDB for Redis instance.
- * For more information, see [Associated RAM roles of ApsaraDB for Redis](https://www.alibabacloud.com/help/doc-detail/184337.htm)
+ * The log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore) requires the resources of [Log Service](https://www.alibabacloud.com/help/doc-detail/48869.htm).
+ * To use the log management feature of Tair (Redis OSS-Compatible) And Memcache (KVStore), you can call this operation to associate the RAM role named AliyunServiceRoleForKvstore with the Tair (Redis OSS-Compatible) And Memcache (KVStore) instance.
+ * For more information, see [Associated RAM roles of Tair (Redis OSS-Compatible) And Memcache (KVStore)](https://www.alibabacloud.com/help/doc-detail/184337.htm)
  *
  * > **NOTE:** Available since v1.128.0
  *
@@ -89,7 +89,7 @@ export function getPermissionOutput(args?: GetPermissionOutputArgs, opts?: pulum
  */
 export interface GetPermissionOutputArgs {
     /**
-     * Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
+     * Setting the value to `On` to assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore). If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
      */
     enable?: pulumi.Input<string>;
 }

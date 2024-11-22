@@ -53,8 +53,6 @@ namespace Pulumi.AliCloud.PrivateLink
     {
         /// <summary>
         /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-        /// - **true**
-        /// - **false**.
         /// </summary>
         [Output("autoAcceptConnection")]
         public Output<bool?> AutoAcceptConnection { get; private set; } = null!;
@@ -73,19 +71,23 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Specifies whether to perform only a dry run, without performing the actual request.
-        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
         /// The payer of the endpoint service. Valid values:
-        /// - **Endpoint**: the service consumer.
-        /// - **EndpointService**: the service provider.
+        /// - `Endpoint`: the service consumer.
+        /// - `EndpointService`: the service provider.
         /// </summary>
         [Output("payer")]
         public Output<string> Payer { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The resource group ID.
@@ -113,17 +115,12 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Service resource type, value:
-        /// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-        /// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-        /// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
         /// </summary>
         [Output("serviceResourceType")]
         public Output<string> ServiceResourceType { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable IPv6 for the endpoint service. Valid values:
-        /// - **true**
-        /// - **false (default)**.
         /// </summary>
         [Output("serviceSupportIpv6")]
         public Output<bool> ServiceSupportIpv6 { get; private set; } = null!;
@@ -148,8 +145,6 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-        /// - **true**
-        /// - **false (default)**.
         /// </summary>
         [Output("zoneAffinityEnabled")]
         public Output<bool> ZoneAffinityEnabled { get; private set; } = null!;
@@ -202,8 +197,6 @@ namespace Pulumi.AliCloud.PrivateLink
     {
         /// <summary>
         /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-        /// - **true**
-        /// - **false**.
         /// </summary>
         [Input("autoAcceptConnection")]
         public Input<bool>? AutoAcceptConnection { get; set; }
@@ -216,16 +209,14 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Specifies whether to perform only a dry run, without performing the actual request.
-        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
         /// The payer of the endpoint service. Valid values:
-        /// - **Endpoint**: the service consumer.
-        /// - **EndpointService**: the service provider.
+        /// - `Endpoint`: the service consumer.
+        /// - `EndpointService`: the service provider.
         /// </summary>
         [Input("payer")]
         public Input<string>? Payer { get; set; }
@@ -244,17 +235,12 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Service resource type, value:
-        /// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-        /// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-        /// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
         /// </summary>
         [Input("serviceResourceType")]
         public Input<string>? ServiceResourceType { get; set; }
 
         /// <summary>
         /// Specifies whether to enable IPv6 for the endpoint service. Valid values:
-        /// - **true**
-        /// - **false (default)**.
         /// </summary>
         [Input("serviceSupportIpv6")]
         public Input<bool>? ServiceSupportIpv6 { get; set; }
@@ -273,8 +259,6 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-        /// - **true**
-        /// - **false (default)**.
         /// </summary>
         [Input("zoneAffinityEnabled")]
         public Input<bool>? ZoneAffinityEnabled { get; set; }
@@ -289,8 +273,6 @@ namespace Pulumi.AliCloud.PrivateLink
     {
         /// <summary>
         /// Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-        /// - **true**
-        /// - **false**.
         /// </summary>
         [Input("autoAcceptConnection")]
         public Input<bool>? AutoAcceptConnection { get; set; }
@@ -309,19 +291,23 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Specifies whether to perform only a dry run, without performing the actual request.
-        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
         /// The payer of the endpoint service. Valid values:
-        /// - **Endpoint**: the service consumer.
-        /// - **EndpointService**: the service provider.
+        /// - `Endpoint`: the service consumer.
+        /// - `EndpointService`: the service provider.
         /// </summary>
         [Input("payer")]
         public Input<string>? Payer { get; set; }
+
+        /// <summary>
+        /// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The resource group ID.
@@ -349,17 +335,12 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Service resource type, value:
-        /// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-        /// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-        /// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
         /// </summary>
         [Input("serviceResourceType")]
         public Input<string>? ServiceResourceType { get; set; }
 
         /// <summary>
         /// Specifies whether to enable IPv6 for the endpoint service. Valid values:
-        /// - **true**
-        /// - **false (default)**.
         /// </summary>
         [Input("serviceSupportIpv6")]
         public Input<bool>? ServiceSupportIpv6 { get; set; }
@@ -390,8 +371,6 @@ namespace Pulumi.AliCloud.PrivateLink
 
         /// <summary>
         /// Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-        /// - **true**
-        /// - **false (default)**.
         /// </summary>
         [Input("zoneAffinityEnabled")]
         public Input<bool>? ZoneAffinityEnabled { get; set; }

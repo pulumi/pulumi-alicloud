@@ -49,8 +49,18 @@ import (
 //			}
 //			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
 //				CenId:                    defaultInstance.ID(),
-//				TransitRouterDescription: pulumi.String("desd"),
+//				TransitRouterDescription: pulumi.String(name),
 //				TransitRouterName:        pulumi.String(name),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultTransitRouterCidr, err := cen.NewTransitRouterCidr(ctx, "default", &cen.TransitRouterCidrArgs{
+//				TransitRouterId:       defaultTransitRouter.TransitRouterId,
+//				Cidr:                  pulumi.String("192.168.0.0/16"),
+//				TransitRouterCidrName: pulumi.String(name),
+//				Description:           pulumi.String(name),
+//				PublishCidrRoute:      pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -80,7 +90,7 @@ import (
 //					IkeVersion:  pulumi.String("ikev2"),
 //					IkeMode:     pulumi.String("main"),
 //					IkeLifetime: pulumi.Int(86400),
-//					Psk:         pulumi.String("tf-testvpn2"),
+//					Psk:         pulumi.String("tf-examplevpn2"),
 //					IkePfs:      pulumi.String("group1"),
 //					RemoteId:    pulumi.String("testbob2"),
 //					LocalId:     pulumi.String("testalice2"),
@@ -112,16 +122,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultTransitRouterCidr, err := cen.NewTransitRouterCidr(ctx, "default", &cen.TransitRouterCidrArgs{
-//				TransitRouterId:       defaultTransitRouter.TransitRouterId,
-//				Cidr:                  pulumi.String("192.168.0.0/16"),
-//				TransitRouterCidrName: pulumi.String(name),
-//				Description:           pulumi.String(name),
-//				PublishCidrRoute:      pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			defaultTransitRouterVpnAttachment, err := cen.NewTransitRouterVpnAttachment(ctx, "default", &cen.TransitRouterVpnAttachmentArgs{
 //				AutoPublishRouteEnabled:            pulumi.Bool(false),
 //				TransitRouterAttachmentDescription: pulumi.String(name),
@@ -139,10 +139,10 @@ import (
 //				return err
 //			}
 //			_, err = vpn.NewGatewayVcoRoute(ctx, "default", &vpn.GatewayVcoRouteArgs{
-//				RouteDest:       pulumi.String("192.168.12.0/24"),
 //				NextHop:         defaultTransitRouterVpnAttachment.VpnId,
 //				VpnConnectionId: defaultTransitRouterVpnAttachment.VpnId,
 //				Weight:          pulumi.Int(100),
+//				RouteDest:       pulumi.String("192.168.10.0/24"),
 //			})
 //			if err != nil {
 //				return err
@@ -165,6 +165,8 @@ type GatewayVcoRoute struct {
 
 	// The next hop of the destination route.
 	NextHop pulumi.StringOutput `pulumi:"nextHop"`
+	// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+	OverlayMode pulumi.StringPtrOutput `pulumi:"overlayMode"`
 	// The destination network segment of the destination route.
 	RouteDest pulumi.StringOutput `pulumi:"routeDest"`
 	// The status of the vpn route entry.
@@ -219,6 +221,8 @@ func GetGatewayVcoRoute(ctx *pulumi.Context,
 type gatewayVcoRouteState struct {
 	// The next hop of the destination route.
 	NextHop *string `pulumi:"nextHop"`
+	// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+	OverlayMode *string `pulumi:"overlayMode"`
 	// The destination network segment of the destination route.
 	RouteDest *string `pulumi:"routeDest"`
 	// The status of the vpn route entry.
@@ -232,6 +236,8 @@ type gatewayVcoRouteState struct {
 type GatewayVcoRouteState struct {
 	// The next hop of the destination route.
 	NextHop pulumi.StringPtrInput
+	// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+	OverlayMode pulumi.StringPtrInput
 	// The destination network segment of the destination route.
 	RouteDest pulumi.StringPtrInput
 	// The status of the vpn route entry.
@@ -249,6 +255,8 @@ func (GatewayVcoRouteState) ElementType() reflect.Type {
 type gatewayVcoRouteArgs struct {
 	// The next hop of the destination route.
 	NextHop string `pulumi:"nextHop"`
+	// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+	OverlayMode *string `pulumi:"overlayMode"`
 	// The destination network segment of the destination route.
 	RouteDest string `pulumi:"routeDest"`
 	// The id of the vpn attachment.
@@ -261,6 +269,8 @@ type gatewayVcoRouteArgs struct {
 type GatewayVcoRouteArgs struct {
 	// The next hop of the destination route.
 	NextHop pulumi.StringInput
+	// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+	OverlayMode pulumi.StringPtrInput
 	// The destination network segment of the destination route.
 	RouteDest pulumi.StringInput
 	// The id of the vpn attachment.
@@ -359,6 +369,11 @@ func (o GatewayVcoRouteOutput) ToGatewayVcoRouteOutputWithContext(ctx context.Co
 // The next hop of the destination route.
 func (o GatewayVcoRouteOutput) NextHop() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewayVcoRoute) pulumi.StringOutput { return v.NextHop }).(pulumi.StringOutput)
+}
+
+// The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+func (o GatewayVcoRouteOutput) OverlayMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayVcoRoute) pulumi.StringPtrOutput { return v.OverlayMode }).(pulumi.StringPtrOutput)
 }
 
 // The destination network segment of the destination route.

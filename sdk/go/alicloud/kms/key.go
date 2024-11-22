@@ -74,7 +74,7 @@ type Key struct {
 	// The description of the key.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the KMS instance.
-	DkmsInstanceId pulumi.StringPtrOutput `pulumi:"dkmsInstanceId"`
+	DkmsInstanceId pulumi.StringOutput `pulumi:"dkmsInstanceId"`
 	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// > **NOTE:** If you set the origin parameter to EXTERNAL or the keySpec parameter to an asymmetric CMK type, automatic key rotation is unavailable.
@@ -508,8 +508,8 @@ func (o KeyOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The ID of the KMS instance.
-func (o KeyOutput) DkmsInstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.DkmsInstanceId }).(pulumi.StringPtrOutput)
+func (o KeyOutput) DkmsInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DkmsInstanceId }).(pulumi.StringOutput)
 }
 
 // Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
