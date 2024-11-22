@@ -17,14 +17,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     public static final GetInstanceClassesPlainArgs Empty = new GetInstanceClassesPlainArgs();
 
     /**
-     * The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
      * 
      */
     @Import(name="architecture")
     private @Nullable String architecture;
 
     /**
-     * @return The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+     * @return The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
      * 
      */
     public Optional<String> architecture() {
@@ -32,14 +32,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
      * 
      */
     @Import(name="editionType")
     private @Nullable String editionType;
 
     /**
-     * @return The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+     * @return The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
      * 
      */
     public Optional<String> editionType() {
@@ -92,14 +92,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
      * 
      */
     @Import(name="nodeType")
     private @Nullable String nodeType;
 
     /**
-     * @return The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+     * @return The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
      * 
      */
     public Optional<String> nodeType() {
@@ -175,14 +175,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+     * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
      * 
      */
     @Import(name="seriesType")
     private @Nullable String seriesType;
 
     /**
-     * @return The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+     * @return The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
      * 
      */
     public Optional<String> seriesType() {
@@ -241,14 +241,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The Zone to launch the KVStore instance.
+     * The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     @Import(name="zoneId", required=true)
     private String zoneId;
 
     /**
-     * @return The Zone to launch the KVStore instance.
+     * @return The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     public String zoneId() {
@@ -294,7 +294,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param architecture The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
+         * @param architecture The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param editionType The KVStore instance edition type required by the user. Valid values: `Community` and `Enterprise`.
+         * @param editionType The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param nodeType The KVStore instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
+         * @param nodeType The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param seriesType The KVStore instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
+         * @param seriesType The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
          * 
          * @return builder
          * 
@@ -451,7 +451,7 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param zoneId The Zone to launch the KVStore instance.
+         * @param zoneId The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
          * 
          * @return builder
          * 

@@ -108,7 +108,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dbNodeId!: pulumi.Output<string | undefined>;
     /**
-     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
      */
     public readonly dbNodeNum!: pulumi.Output<number | undefined>;
     /**
@@ -611,7 +611,7 @@ export interface ClusterState {
      */
     dbNodeId?: pulumi.Input<string>;
     /**
-     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
      */
     dbNodeNum?: pulumi.Input<number>;
     /**
@@ -933,7 +933,7 @@ export interface ClusterArgs {
      */
     dbNodeId?: pulumi.Input<string>;
     /**
-     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
      */
     dbNodeNum?: pulumi.Input<number>;
     /**

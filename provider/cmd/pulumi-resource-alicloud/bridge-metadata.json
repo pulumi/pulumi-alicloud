@@ -4169,6 +4169,16 @@
                     "instance_types": {
                         "maxItemsOne": false
                     },
+                    "network_interfaces": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "security_group_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "security_group_ids": {
                         "maxItemsOne": false
                     },
@@ -5907,6 +5917,9 @@
             "alicloud_nat_gateway": {
                 "current": "alicloud:vpc/natGateway:NatGateway",
                 "fields": {
+                    "access_mode": {
+                        "maxItemsOne": true
+                    },
                     "bandwidth_packages": {
                         "maxItemsOne": false
                     }
@@ -6754,6 +6767,23 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_rds_custom": {
+                "current": "alicloud:rds/custom:Custom",
+                "fields": {
+                    "data_disk": {
+                        "maxItemsOne": false
+                    },
+                    "security_group_ids": {
+                        "maxItemsOne": false
+                    },
+                    "system_disk": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "alicloud_rds_custom_deployment_set": {
+                "current": "alicloud:rds/customDeploymentSet:CustomDeploymentSet"
             },
             "alicloud_rds_db_instance_endpoint": {
                 "current": "alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint",

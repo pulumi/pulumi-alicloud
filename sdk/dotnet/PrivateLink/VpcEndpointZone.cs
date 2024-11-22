@@ -128,6 +128,12 @@ namespace Pulumi.AliCloud.PrivateLink
         public Output<string> EniIp { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
         /// The state of the zone.
         /// </summary>
         [Output("status")]
@@ -246,6 +252,12 @@ namespace Pulumi.AliCloud.PrivateLink
         /// </summary>
         [Input("eniIp")]
         public Input<string>? EniIp { get; set; }
+
+        /// <summary>
+        /// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The state of the zone.

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Express Connect Router Express Connect Router Vbr Child Instance resource. Leased Line Gateway VBR sub-instance.
+// Provides a Express Connect Router Express Connect Router Vbr Child Instance resource.
 //
 // For information about Express Connect Router Express Connect Router Vbr Child Instance and how to use it, see [What is Express Connect Router Vbr Child Instance](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/AttachExpressConnectRouterChildInstance).
 //
@@ -95,14 +95,18 @@ type RouterVbrChildInstance struct {
 
 	// The ID of the leased line gateway subinstance.
 	ChildInstanceId pulumi.StringOutput `pulumi:"childInstanceId"`
-	// The ID of the subinstance of the leased line gateway.
-	ChildInstanceOwnerId pulumi.StringPtrOutput `pulumi:"childInstanceOwnerId"`
-	// Region of the leased line gateway sub-instance.
+	// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+	//
+	// > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
+	ChildInstanceOwnerId pulumi.StringOutput `pulumi:"childInstanceOwnerId"`
+	// Region of the leased line gateway sub-instance
 	ChildInstanceRegionId pulumi.StringOutput `pulumi:"childInstanceRegionId"`
-	// The type of leased line gateway sub-instance, Valid values: `VBR`.
+	// The type of the network instance. Value: `VBR`: VBR instance.
 	ChildInstanceType pulumi.StringOutput `pulumi:"childInstanceType"`
 	// The creation time of the resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Resource attribute fields that represent descriptive information
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// ID of the representative leased line gateway instance.
 	EcrId pulumi.StringOutput `pulumi:"ecrId"`
 	// Binding relationship status of leased line gateway subinstances.
@@ -153,14 +157,18 @@ func GetRouterVbrChildInstance(ctx *pulumi.Context,
 type routerVbrChildInstanceState struct {
 	// The ID of the leased line gateway subinstance.
 	ChildInstanceId *string `pulumi:"childInstanceId"`
-	// The ID of the subinstance of the leased line gateway.
+	// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+	//
+	// > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
 	ChildInstanceOwnerId *string `pulumi:"childInstanceOwnerId"`
-	// Region of the leased line gateway sub-instance.
+	// Region of the leased line gateway sub-instance
 	ChildInstanceRegionId *string `pulumi:"childInstanceRegionId"`
-	// The type of leased line gateway sub-instance, Valid values: `VBR`.
+	// The type of the network instance. Value: `VBR`: VBR instance.
 	ChildInstanceType *string `pulumi:"childInstanceType"`
 	// The creation time of the resource.
 	CreateTime *string `pulumi:"createTime"`
+	// Resource attribute fields that represent descriptive information
+	Description *string `pulumi:"description"`
 	// ID of the representative leased line gateway instance.
 	EcrId *string `pulumi:"ecrId"`
 	// Binding relationship status of leased line gateway subinstances.
@@ -170,14 +178,18 @@ type routerVbrChildInstanceState struct {
 type RouterVbrChildInstanceState struct {
 	// The ID of the leased line gateway subinstance.
 	ChildInstanceId pulumi.StringPtrInput
-	// The ID of the subinstance of the leased line gateway.
+	// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+	//
+	// > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
 	ChildInstanceOwnerId pulumi.StringPtrInput
-	// Region of the leased line gateway sub-instance.
+	// Region of the leased line gateway sub-instance
 	ChildInstanceRegionId pulumi.StringPtrInput
-	// The type of leased line gateway sub-instance, Valid values: `VBR`.
+	// The type of the network instance. Value: `VBR`: VBR instance.
 	ChildInstanceType pulumi.StringPtrInput
 	// The creation time of the resource.
 	CreateTime pulumi.StringPtrInput
+	// Resource attribute fields that represent descriptive information
+	Description pulumi.StringPtrInput
 	// ID of the representative leased line gateway instance.
 	EcrId pulumi.StringPtrInput
 	// Binding relationship status of leased line gateway subinstances.
@@ -191,12 +203,16 @@ func (RouterVbrChildInstanceState) ElementType() reflect.Type {
 type routerVbrChildInstanceArgs struct {
 	// The ID of the leased line gateway subinstance.
 	ChildInstanceId string `pulumi:"childInstanceId"`
-	// The ID of the subinstance of the leased line gateway.
+	// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+	//
+	// > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
 	ChildInstanceOwnerId *string `pulumi:"childInstanceOwnerId"`
-	// Region of the leased line gateway sub-instance.
+	// Region of the leased line gateway sub-instance
 	ChildInstanceRegionId string `pulumi:"childInstanceRegionId"`
-	// The type of leased line gateway sub-instance, Valid values: `VBR`.
+	// The type of the network instance. Value: `VBR`: VBR instance.
 	ChildInstanceType string `pulumi:"childInstanceType"`
+	// Resource attribute fields that represent descriptive information
+	Description *string `pulumi:"description"`
 	// ID of the representative leased line gateway instance.
 	EcrId string `pulumi:"ecrId"`
 }
@@ -205,12 +221,16 @@ type routerVbrChildInstanceArgs struct {
 type RouterVbrChildInstanceArgs struct {
 	// The ID of the leased line gateway subinstance.
 	ChildInstanceId pulumi.StringInput
-	// The ID of the subinstance of the leased line gateway.
+	// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+	//
+	// > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
 	ChildInstanceOwnerId pulumi.StringPtrInput
-	// Region of the leased line gateway sub-instance.
+	// Region of the leased line gateway sub-instance
 	ChildInstanceRegionId pulumi.StringInput
-	// The type of leased line gateway sub-instance, Valid values: `VBR`.
+	// The type of the network instance. Value: `VBR`: VBR instance.
 	ChildInstanceType pulumi.StringInput
+	// Resource attribute fields that represent descriptive information
+	Description pulumi.StringPtrInput
 	// ID of the representative leased line gateway instance.
 	EcrId pulumi.StringInput
 }
@@ -307,17 +327,19 @@ func (o RouterVbrChildInstanceOutput) ChildInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVbrChildInstance) pulumi.StringOutput { return v.ChildInstanceId }).(pulumi.StringOutput)
 }
 
-// The ID of the subinstance of the leased line gateway.
-func (o RouterVbrChildInstanceOutput) ChildInstanceOwnerId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RouterVbrChildInstance) pulumi.StringPtrOutput { return v.ChildInstanceOwnerId }).(pulumi.StringPtrOutput)
+// The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+//
+// > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
+func (o RouterVbrChildInstanceOutput) ChildInstanceOwnerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterVbrChildInstance) pulumi.StringOutput { return v.ChildInstanceOwnerId }).(pulumi.StringOutput)
 }
 
-// Region of the leased line gateway sub-instance.
+// Region of the leased line gateway sub-instance
 func (o RouterVbrChildInstanceOutput) ChildInstanceRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVbrChildInstance) pulumi.StringOutput { return v.ChildInstanceRegionId }).(pulumi.StringOutput)
 }
 
-// The type of leased line gateway sub-instance, Valid values: `VBR`.
+// The type of the network instance. Value: `VBR`: VBR instance.
 func (o RouterVbrChildInstanceOutput) ChildInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVbrChildInstance) pulumi.StringOutput { return v.ChildInstanceType }).(pulumi.StringOutput)
 }
@@ -325,6 +347,11 @@ func (o RouterVbrChildInstanceOutput) ChildInstanceType() pulumi.StringOutput {
 // The creation time of the resource.
 func (o RouterVbrChildInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterVbrChildInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Resource attribute fields that represent descriptive information
+func (o RouterVbrChildInstanceOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouterVbrChildInstance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // ID of the representative leased line gateway instance.

@@ -61,7 +61,7 @@ class GetConnectionsResult:
     @pulumi.getter
     def ids(self) -> str:
         """
-        A list of KVStore DBInstance ids.
+        A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids.
         """
         return pulumi.get(self, "ids")
 
@@ -87,7 +87,7 @@ def get_connections(ids: Optional[str] = None,
                     output_file: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionsResult:
     """
-    This data source can query the public IP of the specified KVStore DBInstance.
+    This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
 
     > **NOTE:** Available in v1.101.0+.
 
@@ -103,7 +103,7 @@ def get_connections(ids: Optional[str] = None,
     ```
 
 
-    :param str ids: A list of KVStore DBInstance ids, only support one item.
+    :param str ids: A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -121,7 +121,7 @@ def get_connections_output(ids: Optional[pulumi.Input[str]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionsResult]:
     """
-    This data source can query the public IP of the specified KVStore DBInstance.
+    This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
 
     > **NOTE:** Available in v1.101.0+.
 
@@ -137,7 +137,7 @@ def get_connections_output(ids: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str ids: A list of KVStore DBInstance ids, only support one item.
+    :param str ids: A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()

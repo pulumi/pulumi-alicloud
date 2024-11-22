@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.KVStore
     public static class GetAccounts
     {
         /// <summary>
-        /// This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.102.0+.
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.KVStore
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("alicloud:kvstore/getAccounts:getAccounts", args ?? new GetAccountsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
         /// 
         /// &gt; **NOTE:** Available in v1.102.0+.
         /// 
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of KVStore Account. Valid Values: `"Available` `Unavailable`
+        /// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of KVStore Account. Valid Values: `"Available` `Unavailable`
+        /// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

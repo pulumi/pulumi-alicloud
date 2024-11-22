@@ -10,43 +10,107 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.CR
 {
     /// <summary>
+    /// Provides a CR Instance resource.
+    /// 
+    /// For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+    /// 
+    /// &gt; **NOTE:** Available since v1.124.0.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000000,
+    ///         Max = 99999999,
+    ///     });
+    /// 
+    ///     var defaultRegistryEnterpriseInstance = new AliCloud.CR.RegistryEnterpriseInstance("default", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         Period = 1,
+    ///         RenewPeriod = 0,
+    ///         RenewalStatus = "ManualRenewal",
+    ///         InstanceType = "Advanced",
+    ///         InstanceName = $"{name}-{@default.Result}",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
-    /// Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
+    /// CR Instance can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+    /// $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance")]
     public partial class RegistryEnterpriseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time of Container Registry Enterprise Edition instance creation.
+        /// The creation time of the resource
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         /// </summary>
         [Output("createdTime")]
         public Output<string> CreatedTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of your customized oss bucket. Use this bucket as instance storage if set.
+        /// Custom OSS Bucket name
         /// </summary>
         [Output("customOssBucket")]
         public Output<string?> CustomOssBucket { get; private set; } = null!;
 
         /// <summary>
-        /// Time of Container Registry Enterprise Edition instance expiration.
+        /// Whether to use the default OSS Bucket
+        /// </summary>
+        [Output("defaultOssBucket")]
+        public Output<string?> DefaultOssBucket { get; private set; } = null!;
+
+        /// <summary>
+        /// Expiration Time
         /// </summary>
         [Output("endTime")]
         public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition instance.
+        /// Security scan engine
+        /// </summary>
+        [Output("imageScanner")]
+        public Output<string?> ImageScanner { get; private set; } = null!;
+
+        /// <summary>
+        /// InstanceName
         /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+        /// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+        /// 
+        /// Basic: Basic instance
+        /// 
+        /// Standard: Standard instance
+        /// 
+        /// Advanced: Advanced Edition Instance
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -64,37 +128,60 @@ namespace Pulumi.AliCloud.CR
         public Output<ImmutableDictionary<string, string>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        /// Permanent access credentials of the instance
         /// </summary>
         [Output("password")]
         public Output<string?> Password { get; private set; } = null!;
 
         /// <summary>
-        /// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+        /// Payment type, value:
+        /// - Subscription: Prepaid.
         /// </summary>
         [Output("paymentType")]
-        public Output<string?> PaymentType { get; private set; } = null!;
+        public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+        /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+        /// 
+        /// &gt; **NOTE:**  must be set when creating a prepaid instance.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
 
         /// <summary>
-        /// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+        /// RegionId
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Automatic renewal cycle, in months.
+        /// 
+        /// &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
         /// </summary>
         [Output("renewPeriod")]
         public Output<int?> RenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+        /// Automatic renewal status, value:
+        /// - AutoRenewal: automatic renewal.
+        /// - ManualRenewal: manual renewal.
+        /// 
+        /// Default ManualRenewal.
         /// </summary>
         [Output("renewalStatus")]
-        public Output<string?> RenewalStatus { get; private set; } = null!;
+        public Output<string> RenewalStatus { get; private set; } = null!;
 
         /// <summary>
-        /// Status of Container Registry Enterprise Edition instance.
+        /// The ID of the resource group
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance Status
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -150,19 +237,37 @@ namespace Pulumi.AliCloud.CR
     public sealed class RegistryEnterpriseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of your customized oss bucket. Use this bucket as instance storage if set.
+        /// Custom OSS Bucket name
         /// </summary>
         [Input("customOssBucket")]
         public Input<string>? CustomOssBucket { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition instance.
+        /// Whether to use the default OSS Bucket
+        /// </summary>
+        [Input("defaultOssBucket")]
+        public Input<string>? DefaultOssBucket { get; set; }
+
+        /// <summary>
+        /// Security scan engine
+        /// </summary>
+        [Input("imageScanner")]
+        public Input<string>? ImageScanner { get; set; }
+
+        /// <summary>
+        /// InstanceName
         /// </summary>
         [Input("instanceName", required: true)]
         public Input<string> InstanceName { get; set; } = null!;
 
         /// <summary>
-        /// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+        /// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+        /// 
+        /// Basic: Basic instance
+        /// 
+        /// Standard: Standard instance
+        /// 
+        /// Advanced: Advanced Edition Instance
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -189,7 +294,7 @@ namespace Pulumi.AliCloud.CR
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        /// Permanent access credentials of the instance
         /// </summary>
         public Input<string>? Password
         {
@@ -202,28 +307,45 @@ namespace Pulumi.AliCloud.CR
         }
 
         /// <summary>
-        /// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+        /// Payment type, value:
+        /// - Subscription: Prepaid.
         /// </summary>
-        [Input("paymentType")]
-        public Input<string>? PaymentType { get; set; }
+        [Input("paymentType", required: true)]
+        public Input<string> PaymentType { get; set; } = null!;
 
         /// <summary>
-        /// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+        /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+        /// 
+        /// &gt; **NOTE:**  must be set when creating a prepaid instance.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+        /// Automatic renewal cycle, in months.
+        /// 
+        /// &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+        /// Automatic renewal status, value:
+        /// - AutoRenewal: automatic renewal.
+        /// - ManualRenewal: manual renewal.
+        /// 
+        /// Default ManualRenewal.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         public RegistryEnterpriseInstanceArgs()
         {
@@ -234,31 +356,55 @@ namespace Pulumi.AliCloud.CR
     public sealed class RegistryEnterpriseInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time of Container Registry Enterprise Edition instance creation.
+        /// The creation time of the resource
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         /// </summary>
         [Input("createdTime")]
         public Input<string>? CreatedTime { get; set; }
 
         /// <summary>
-        /// Name of your customized oss bucket. Use this bucket as instance storage if set.
+        /// Custom OSS Bucket name
         /// </summary>
         [Input("customOssBucket")]
         public Input<string>? CustomOssBucket { get; set; }
 
         /// <summary>
-        /// Time of Container Registry Enterprise Edition instance expiration.
+        /// Whether to use the default OSS Bucket
+        /// </summary>
+        [Input("defaultOssBucket")]
+        public Input<string>? DefaultOssBucket { get; set; }
+
+        /// <summary>
+        /// Expiration Time
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// Name of Container Registry Enterprise Edition instance.
+        /// Security scan engine
+        /// </summary>
+        [Input("imageScanner")]
+        public Input<string>? ImageScanner { get; set; }
+
+        /// <summary>
+        /// InstanceName
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
         /// <summary>
-        /// Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+        /// The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+        /// 
+        /// Basic: Basic instance
+        /// 
+        /// Standard: Standard instance
+        /// 
+        /// Advanced: Advanced Edition Instance
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -285,7 +431,7 @@ namespace Pulumi.AliCloud.CR
         private Input<string>? _password;
 
         /// <summary>
-        /// The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        /// Permanent access credentials of the instance
         /// </summary>
         public Input<string>? Password
         {
@@ -298,31 +444,54 @@ namespace Pulumi.AliCloud.CR
         }
 
         /// <summary>
-        /// Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+        /// Payment type, value:
+        /// - Subscription: Prepaid.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+        /// Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+        /// 
+        /// &gt; **NOTE:**  must be set when creating a prepaid instance.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+        /// RegionId
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// Automatic renewal cycle, in months.
+        /// 
+        /// &gt; **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
 
         /// <summary>
-        /// Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+        /// Automatic renewal status, value:
+        /// - AutoRenewal: automatic renewal.
+        /// - ManualRenewal: manual renewal.
+        /// 
+        /// Default ManualRenewal.
         /// </summary>
         [Input("renewalStatus")]
         public Input<string>? RenewalStatus { get; set; }
 
         /// <summary>
-        /// Status of Container Registry Enterprise Edition instance.
+        /// The ID of the resource group
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// Instance Status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

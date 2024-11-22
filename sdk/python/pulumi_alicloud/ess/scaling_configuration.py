@@ -47,6 +47,7 @@ class ScalingConfigurationArgs:
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]] = None,
                  override: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
@@ -100,6 +101,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]] network_interfaces: Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
         :param pulumi.Input[bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
@@ -199,6 +201,8 @@ class ScalingConfigurationArgs:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if override is not None:
             pulumi.set(__self__, "override", override)
         if password is not None:
@@ -565,6 +569,18 @@ class ScalingConfigurationArgs:
         pulumi.set(self, "kms_encryption_context", value)
 
     @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]:
+        """
+        Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
+
+    @property
     @pulumi.getter
     def override(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -909,6 +925,7 @@ class _ScalingConfigurationState:
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]] = None,
                  override: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
@@ -962,6 +979,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]] network_interfaces: Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
         :param pulumi.Input[bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
@@ -1061,6 +1079,8 @@ class _ScalingConfigurationState:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+        if network_interfaces is not None:
+            pulumi.set(__self__, "network_interfaces", network_interfaces)
         if override is not None:
             pulumi.set(__self__, "override", override)
         if password is not None:
@@ -1415,6 +1435,18 @@ class _ScalingConfigurationState:
     @kms_encryption_context.setter
     def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]:
+        """
+        Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        """
+        return pulumi.get(self, "network_interfaces")
+
+    @network_interfaces.setter
+    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]):
+        pulumi.set(self, "network_interfaces", value)
 
     @property
     @pulumi.getter
@@ -1775,6 +1807,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
                  override: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
@@ -1910,6 +1943,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]] network_interfaces: Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
         :param pulumi.Input[bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
@@ -2080,6 +2114,7 @@ class ScalingConfiguration(pulumi.CustomResource):
                  key_name: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
                  override: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  password_inherit: Optional[pulumi.Input[bool]] = None,
@@ -2140,6 +2175,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["override"] = override
             __props__.__dict__["password"] = password
             __props__.__dict__["password_inherit"] = password_inherit
@@ -2203,6 +2239,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             key_name: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
             kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
             override: Optional[pulumi.Input[bool]] = None,
             password: Optional[pulumi.Input[str]] = None,
             password_inherit: Optional[pulumi.Input[bool]] = None,
@@ -2261,6 +2298,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]] network_interfaces: Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
         :param pulumi.Input[bool] override: Indicates whether to overwrite the existing data. Default to false.
         :param pulumi.Input[str] password: The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         :param pulumi.Input[bool] password_inherit: Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
@@ -2333,6 +2371,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["key_name"] = key_name
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
         __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+        __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["override"] = override
         __props__.__dict__["password"] = password
         __props__.__dict__["password_inherit"] = password_inherit
@@ -2562,6 +2601,14 @@ class ScalingConfiguration(pulumi.CustomResource):
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
+
+    @property
+    @pulumi.getter(name="networkInterfaces")
+    def network_interfaces(self) -> pulumi.Output[Optional[Sequence['outputs.ScalingConfigurationNetworkInterface']]]:
+        """
+        Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+        """
+        return pulumi.get(self, "network_interfaces")
 
     @property
     @pulumi.getter

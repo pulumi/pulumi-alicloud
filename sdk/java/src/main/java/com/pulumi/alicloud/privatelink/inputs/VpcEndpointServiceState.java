@@ -20,8 +20,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-     * - **true**
-     * - **false**.
      * 
      */
     @Import(name="autoAcceptConnection")
@@ -29,8 +27,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * @return Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-     * - **true**
-     * - **false**.
      * 
      */
     public Optional<Output<Boolean>> autoAcceptConnection() {
@@ -69,8 +65,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * Specifies whether to perform only a dry run, without performing the actual request.
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
@@ -78,8 +72,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request.
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -88,8 +80,8 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * The payer of the endpoint service. Valid values:
-     * - **Endpoint**: the service consumer.
-     * - **EndpointService**: the service provider.
+     * - `Endpoint`: the service consumer.
+     * - `EndpointService`: the service provider.
      * 
      */
     @Import(name="payer")
@@ -97,12 +89,27 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * @return The payer of the endpoint service. Valid values:
-     * - **Endpoint**: the service consumer.
-     * - **EndpointService**: the service provider.
+     * - `Endpoint`: the service consumer.
+     * - `EndpointService`: the service provider.
      * 
      */
     public Optional<Output<String>> payer() {
         return Optional.ofNullable(this.payer);
+    }
+
+    /**
+     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -167,9 +174,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     @Import(name="serviceResourceType")
@@ -177,9 +181,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * @return Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     public Optional<Output<String>> serviceResourceType() {
@@ -188,8 +189,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     @Import(name="serviceSupportIpv6")
@@ -197,8 +196,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * @return Specifies whether to enable IPv6 for the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     public Optional<Output<Boolean>> serviceSupportIpv6() {
@@ -252,8 +249,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     @Import(name="zoneAffinityEnabled")
@@ -261,8 +256,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
     /**
      * @return Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     public Optional<Output<Boolean>> zoneAffinityEnabled() {
@@ -277,6 +270,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         this.createTime = $.createTime;
         this.dryRun = $.dryRun;
         this.payer = $.payer;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.serviceBusinessStatus = $.serviceBusinessStatus;
         this.serviceDescription = $.serviceDescription;
@@ -309,8 +303,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param autoAcceptConnection Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-         * - **true**
-         * - **false**.
          * 
          * @return builder
          * 
@@ -322,8 +314,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param autoAcceptConnection Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-         * - **true**
-         * - **false**.
          * 
          * @return builder
          * 
@@ -376,8 +366,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -389,8 +377,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
-         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -401,8 +387,8 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param payer The payer of the endpoint service. Valid values:
-         * - **Endpoint**: the service consumer.
-         * - **EndpointService**: the service provider.
+         * - `Endpoint`: the service consumer.
+         * - `EndpointService`: the service provider.
          * 
          * @return builder
          * 
@@ -414,14 +400,35 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param payer The payer of the endpoint service. Valid values:
-         * - **Endpoint**: the service consumer.
-         * - **EndpointService**: the service provider.
+         * - `Endpoint`: the service consumer.
+         * - `EndpointService`: the service provider.
          * 
          * @return builder
          * 
          */
         public Builder payer(String payer) {
             return payer(Output.of(payer));
+        }
+
+        /**
+         * @param regionId (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**
@@ -510,9 +517,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param serviceResourceType Service resource type, value:
-         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -524,9 +528,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param serviceResourceType Service resource type, value:
-         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
          * 
          * @return builder
          * 
@@ -537,8 +538,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param serviceSupportIpv6 Specifies whether to enable IPv6 for the endpoint service. Valid values:
-         * - **true**
-         * - **false (default)**.
          * 
          * @return builder
          * 
@@ -550,8 +549,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param serviceSupportIpv6 Specifies whether to enable IPv6 for the endpoint service. Valid values:
-         * - **true**
-         * - **false (default)**.
          * 
          * @return builder
          * 
@@ -625,8 +622,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param zoneAffinityEnabled Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-         * - **true**
-         * - **false (default)**.
          * 
          * @return builder
          * 
@@ -638,8 +633,6 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
 
         /**
          * @param zoneAffinityEnabled Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-         * - **true**
-         * - **false (default)**.
          * 
          * @return builder
          * 

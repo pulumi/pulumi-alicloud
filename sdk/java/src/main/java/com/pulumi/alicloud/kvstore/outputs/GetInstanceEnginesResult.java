@@ -20,7 +20,7 @@ public final class GetInstanceEnginesResult {
      */
     private @Nullable String engine;
     /**
-     * @return KVStore Instance version.
+     * @return Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance version.
      * 
      */
     private @Nullable String engineVersion;
@@ -31,13 +31,13 @@ public final class GetInstanceEnginesResult {
     private String id;
     private @Nullable String instanceChargeType;
     /**
-     * @return A list of KVStore available instance engines. Each element contains the following attributes:
+     * @return A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) available instance engines. Each element contains the following attributes:
      * 
      */
     private List<GetInstanceEnginesInstanceEngine> instanceEngines;
     private @Nullable String outputFile;
     /**
-     * @return The Zone to launch the KVStore instance.
+     * @return The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     private String zoneId;
@@ -51,7 +51,7 @@ public final class GetInstanceEnginesResult {
         return Optional.ofNullable(this.engine);
     }
     /**
-     * @return KVStore Instance version.
+     * @return Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance version.
      * 
      */
     public Optional<String> engineVersion() {
@@ -68,7 +68,7 @@ public final class GetInstanceEnginesResult {
         return Optional.ofNullable(this.instanceChargeType);
     }
     /**
-     * @return A list of KVStore available instance engines. Each element contains the following attributes:
+     * @return A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) available instance engines. Each element contains the following attributes:
      * 
      */
     public List<GetInstanceEnginesInstanceEngine> instanceEngines() {
@@ -78,7 +78,7 @@ public final class GetInstanceEnginesResult {
         return Optional.ofNullable(this.outputFile);
     }
     /**
-     * @return The Zone to launch the KVStore instance.
+     * @return The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     public String zoneId() {

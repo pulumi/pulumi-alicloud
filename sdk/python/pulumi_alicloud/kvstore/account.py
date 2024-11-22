@@ -42,8 +42,8 @@ class AccountArgs:
                - Normal: Common privilege.
                Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -143,7 +143,7 @@ class AccountArgs:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
         """
-        An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -155,7 +155,7 @@ class AccountArgs:
     @pulumi.getter(name="kmsEncryptionContext")
     def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
@@ -191,9 +191,9 @@ class _AccountState:
                Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] status: The status of KVStore Account.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] status: The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
         """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
@@ -297,7 +297,7 @@ class _AccountState:
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> Optional[pulumi.Input[str]]:
         """
-        An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -309,7 +309,7 @@ class _AccountState:
     @pulumi.getter(name="kmsEncryptionContext")
     def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
@@ -321,7 +321,7 @@ class _AccountState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of KVStore Account.
+        The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
         """
         return pulumi.get(self, "status")
 
@@ -345,9 +345,9 @@ class Account(pulumi.CustomResource):
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Provides a KVStore Account resource.
+        Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Account resource.
 
-        For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
+        For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
 
         > **NOTE:** Available since v1.66.0.
 
@@ -398,7 +398,7 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        KVStore account can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
@@ -419,8 +419,8 @@ class Account(pulumi.CustomResource):
                Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         ...
     @overload
@@ -429,9 +429,9 @@ class Account(pulumi.CustomResource):
                  args: AccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a KVStore Account resource.
+        Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Account resource.
 
-        For information about KVStore Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
+        For information about Tair (Redis OSS-Compatible) And Memcache (KVStore) Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/doc-detail/95973.htm).
 
         > **NOTE:** Available since v1.66.0.
 
@@ -482,7 +482,7 @@ class Account(pulumi.CustomResource):
 
         ## Import
 
-        KVStore account can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) account can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/account:Account example <instance_id>:<account_name>
@@ -574,9 +574,9 @@ class Account(pulumi.CustomResource):
                Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
-        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] status: The status of KVStore Account.
+        :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        :param pulumi.Input[str] status: The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -652,7 +652,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="kmsEncryptedPassword")
     def kms_encrypted_password(self) -> pulumi.Output[Optional[str]]:
         """
-        An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
+        An KMS encrypts password used to a Tair (Redis OSS-Compatible) And Memcache (KVStore) account. If the `account_password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
@@ -660,7 +660,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter(name="kmsEncryptionContext")
     def kms_encryption_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+        An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a Tair (Redis OSS-Compatible) And Memcache (KVStore) account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
@@ -668,7 +668,7 @@ class Account(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of KVStore Account.
+        The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account.
         """
         return pulumi.get(self, "status")
 

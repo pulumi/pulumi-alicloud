@@ -119,6 +119,20 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
         return this.connectionDomain;
     }
     /**
+     * The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+     * 
+     */
+    @Export(name="connectionStringPrefix", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> connectionStringPrefix;
+
+    /**
+     * @return The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+     * 
+     */
+    public Output<Optional<String>> connectionStringPrefix() {
+        return Codegen.optional(this.connectionStringPrefix);
+    }
+    /**
      * The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
@@ -369,14 +383,14 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="paramSentinelCompatEnable", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> paramSentinelCompatEnable;
+    private Output<String> paramSentinelCompatEnable;
 
     /**
      * @return sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
      * 
      */
-    public Output<Optional<String>> paramSentinelCompatEnable() {
-        return Codegen.optional(this.paramSentinelCompatEnable);
+    public Output<String> paramSentinelCompatEnable() {
+        return this.paramSentinelCompatEnable;
     }
     /**
      * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! {@literal @} # $ % ^ &amp; * ( ) _ + - =
@@ -469,6 +483,20 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> recoverConfigMode() {
         return Codegen.optional(this.recoverConfigMode);
+    }
+    /**
+     * Region Id
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return Region Id
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The ID of the resource group to which the instance belongs.

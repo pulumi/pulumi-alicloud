@@ -25,7 +25,7 @@ public final class GetConnectionsResult {
      */
     private String id;
     /**
-     * @return A list of KVStore DBInstance ids.
+     * @return A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids.
      * 
      */
     private String ids;
@@ -47,7 +47,7 @@ public final class GetConnectionsResult {
         return this.id;
     }
     /**
-     * @return A list of KVStore DBInstance ids.
+     * @return A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids.
      * 
      */
     public String ids() {

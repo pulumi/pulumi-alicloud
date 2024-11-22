@@ -177,6 +177,20 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.backupPeriods;
     }
     /**
+     * The backup retention policy configured for the instance. Valid values:
+     * 
+     */
+    @Export(name="backupRetentionPolicyOnClusterDeletion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> backupRetentionPolicyOnClusterDeletion;
+
+    /**
+     * @return The backup retention policy configured for the instance. Valid values:
+     * 
+     */
+    public Output<Optional<Integer>> backupRetentionPolicyOnClusterDeletion() {
+        return Codegen.optional(this.backupRetentionPolicyOnClusterDeletion);
+    }
+    /**
      * Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */

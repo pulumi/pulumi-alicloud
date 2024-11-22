@@ -305,7 +305,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
 
         For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/).
 
-        > **NOTE:** Available since v1.226.0.
+        > **NOTE:** Available since v1.235.0.
 
         ## Example Usage
 
@@ -321,7 +321,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
             name = "terraform-example"
         asn = config.get("asn")
         if asn is None:
-            asn = "4200000666"
+            asn = "4200000667"
         default_o8_hcfx = alicloud.expressconnect.RouterExpressConnectRouter("defaultO8Hcfx",
             alibaba_side_asn=asn,
             ecr_name=name)
@@ -374,7 +374,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
 
         For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/).
 
-        > **NOTE:** Available since v1.226.0.
+        > **NOTE:** Available since v1.235.0.
 
         ## Example Usage
 
@@ -390,7 +390,7 @@ class TransitRouterEcrAttachment(pulumi.CustomResource):
             name = "terraform-example"
         asn = config.get("asn")
         if asn is None:
-            asn = "4200000666"
+            asn = "4200000667"
         default_o8_hcfx = alicloud.expressconnect.RouterExpressConnectRouter("defaultO8Hcfx",
             alibaba_side_asn=asn,
             ecr_name=name)

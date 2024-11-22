@@ -68,6 +68,21 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The backup retention policy configured for the instance. Valid values:
+     * 
+     */
+    @Import(name="backupRetentionPolicyOnClusterDeletion")
+    private @Nullable Output<Integer> backupRetentionPolicyOnClusterDeletion;
+
+    /**
+     * @return The backup retention policy configured for the instance. Valid values:
+     * 
+     */
+    public Optional<Output<Integer>> backupRetentionPolicyOnClusterDeletion() {
+        return Optional.ofNullable(this.backupRetentionPolicyOnClusterDeletion);
+    }
+
+    /**
      * Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like &#34;23:00Z-24:00Z&#34;.
      * 
      */
@@ -456,6 +471,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         this.accountPassword = $.accountPassword;
         this.autoRenew = $.autoRenew;
         this.backupPeriods = $.backupPeriods;
+        this.backupRetentionPolicyOnClusterDeletion = $.backupRetentionPolicyOnClusterDeletion;
         this.backupTime = $.backupTime;
         this.configServerLists = $.configServerLists;
         this.engineVersion = $.engineVersion;
@@ -572,6 +588,27 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
          */
         public Builder backupPeriods(String... backupPeriods) {
             return backupPeriods(List.of(backupPeriods));
+        }
+
+        /**
+         * @param backupRetentionPolicyOnClusterDeletion The backup retention policy configured for the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPolicyOnClusterDeletion(@Nullable Output<Integer> backupRetentionPolicyOnClusterDeletion) {
+            $.backupRetentionPolicyOnClusterDeletion = backupRetentionPolicyOnClusterDeletion;
+            return this;
+        }
+
+        /**
+         * @param backupRetentionPolicyOnClusterDeletion The backup retention policy configured for the instance. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupRetentionPolicyOnClusterDeletion(Integer backupRetentionPolicyOnClusterDeletion) {
+            return backupRetentionPolicyOnClusterDeletion(Output.of(backupRetentionPolicyOnClusterDeletion));
         }
 
         /**

@@ -245,14 +245,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dbNodeId);
     }
     /**
-     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
      * 
      */
     @Export(name="dbNodeNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> dbNodeNum;
 
     /**
-     * @return The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+     * @return The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
      * 
      */
     public Output<Optional<Integer>> dbNodeNum() {

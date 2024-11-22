@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.KVStore
 {
     /// <summary>
-    /// Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
+    /// Operate the public network ip of the specified resource. How to use it, see [What is Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
     /// 
     /// &gt; **NOTE:** Available since v1.101.0.
     /// 
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// ## Import
     /// 
-    /// KVStore connection can be imported using the id, e.g.
+    /// Tair (Redis OSS-Compatible) And Memcache (KVStore) connection can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.KVStore
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The public connection string of KVStore DBInstance.
+        /// The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The public connection string of KVStore DBInstance.
+        /// The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }

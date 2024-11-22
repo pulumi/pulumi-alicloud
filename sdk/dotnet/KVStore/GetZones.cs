@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.KVStore
     public static class GetZones
     {
         /// <summary>
-        /// This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available since v1.73.0.
         /// 
@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.KVStore
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:kvstore/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+        /// This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
         /// 
         /// &gt; **NOTE:** Available since v1.73.0.
         /// 
@@ -83,7 +83,7 @@ namespace Pulumi.AliCloud.KVStore
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
         /// </summary>
         [Input("multi")]
         public bool? Multi { get; set; }
@@ -119,7 +119,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+        /// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
         /// </summary>
         [Input("multi")]
         public Input<bool>? Multi { get; set; }

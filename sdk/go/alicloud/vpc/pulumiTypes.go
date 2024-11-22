@@ -119,6 +119,162 @@ func (o DhcpOptionsSetAssociateVpcArrayOutput) Index(i pulumi.IntInput) DhcpOpti
 	}).(DhcpOptionsSetAssociateVpcOutput)
 }
 
+type NatGatewayAccessMode struct {
+	// The mode of Access. Valid values:
+	ModeValue *string `pulumi:"modeValue"`
+	// The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
+	TunnelType *string `pulumi:"tunnelType"`
+}
+
+// NatGatewayAccessModeInput is an input type that accepts NatGatewayAccessModeArgs and NatGatewayAccessModeOutput values.
+// You can construct a concrete instance of `NatGatewayAccessModeInput` via:
+//
+//	NatGatewayAccessModeArgs{...}
+type NatGatewayAccessModeInput interface {
+	pulumi.Input
+
+	ToNatGatewayAccessModeOutput() NatGatewayAccessModeOutput
+	ToNatGatewayAccessModeOutputWithContext(context.Context) NatGatewayAccessModeOutput
+}
+
+type NatGatewayAccessModeArgs struct {
+	// The mode of Access. Valid values:
+	ModeValue pulumi.StringPtrInput `pulumi:"modeValue"`
+	// The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
+	TunnelType pulumi.StringPtrInput `pulumi:"tunnelType"`
+}
+
+func (NatGatewayAccessModeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGatewayAccessMode)(nil)).Elem()
+}
+
+func (i NatGatewayAccessModeArgs) ToNatGatewayAccessModeOutput() NatGatewayAccessModeOutput {
+	return i.ToNatGatewayAccessModeOutputWithContext(context.Background())
+}
+
+func (i NatGatewayAccessModeArgs) ToNatGatewayAccessModeOutputWithContext(ctx context.Context) NatGatewayAccessModeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayAccessModeOutput)
+}
+
+func (i NatGatewayAccessModeArgs) ToNatGatewayAccessModePtrOutput() NatGatewayAccessModePtrOutput {
+	return i.ToNatGatewayAccessModePtrOutputWithContext(context.Background())
+}
+
+func (i NatGatewayAccessModeArgs) ToNatGatewayAccessModePtrOutputWithContext(ctx context.Context) NatGatewayAccessModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayAccessModeOutput).ToNatGatewayAccessModePtrOutputWithContext(ctx)
+}
+
+// NatGatewayAccessModePtrInput is an input type that accepts NatGatewayAccessModeArgs, NatGatewayAccessModePtr and NatGatewayAccessModePtrOutput values.
+// You can construct a concrete instance of `NatGatewayAccessModePtrInput` via:
+//
+//	        NatGatewayAccessModeArgs{...}
+//
+//	or:
+//
+//	        nil
+type NatGatewayAccessModePtrInput interface {
+	pulumi.Input
+
+	ToNatGatewayAccessModePtrOutput() NatGatewayAccessModePtrOutput
+	ToNatGatewayAccessModePtrOutputWithContext(context.Context) NatGatewayAccessModePtrOutput
+}
+
+type natGatewayAccessModePtrType NatGatewayAccessModeArgs
+
+func NatGatewayAccessModePtr(v *NatGatewayAccessModeArgs) NatGatewayAccessModePtrInput {
+	return (*natGatewayAccessModePtrType)(v)
+}
+
+func (*natGatewayAccessModePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NatGatewayAccessMode)(nil)).Elem()
+}
+
+func (i *natGatewayAccessModePtrType) ToNatGatewayAccessModePtrOutput() NatGatewayAccessModePtrOutput {
+	return i.ToNatGatewayAccessModePtrOutputWithContext(context.Background())
+}
+
+func (i *natGatewayAccessModePtrType) ToNatGatewayAccessModePtrOutputWithContext(ctx context.Context) NatGatewayAccessModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NatGatewayAccessModePtrOutput)
+}
+
+type NatGatewayAccessModeOutput struct{ *pulumi.OutputState }
+
+func (NatGatewayAccessModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NatGatewayAccessMode)(nil)).Elem()
+}
+
+func (o NatGatewayAccessModeOutput) ToNatGatewayAccessModeOutput() NatGatewayAccessModeOutput {
+	return o
+}
+
+func (o NatGatewayAccessModeOutput) ToNatGatewayAccessModeOutputWithContext(ctx context.Context) NatGatewayAccessModeOutput {
+	return o
+}
+
+func (o NatGatewayAccessModeOutput) ToNatGatewayAccessModePtrOutput() NatGatewayAccessModePtrOutput {
+	return o.ToNatGatewayAccessModePtrOutputWithContext(context.Background())
+}
+
+func (o NatGatewayAccessModeOutput) ToNatGatewayAccessModePtrOutputWithContext(ctx context.Context) NatGatewayAccessModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NatGatewayAccessMode) *NatGatewayAccessMode {
+		return &v
+	}).(NatGatewayAccessModePtrOutput)
+}
+
+// The mode of Access. Valid values:
+func (o NatGatewayAccessModeOutput) ModeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NatGatewayAccessMode) *string { return v.ModeValue }).(pulumi.StringPtrOutput)
+}
+
+// The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
+func (o NatGatewayAccessModeOutput) TunnelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NatGatewayAccessMode) *string { return v.TunnelType }).(pulumi.StringPtrOutput)
+}
+
+type NatGatewayAccessModePtrOutput struct{ *pulumi.OutputState }
+
+func (NatGatewayAccessModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NatGatewayAccessMode)(nil)).Elem()
+}
+
+func (o NatGatewayAccessModePtrOutput) ToNatGatewayAccessModePtrOutput() NatGatewayAccessModePtrOutput {
+	return o
+}
+
+func (o NatGatewayAccessModePtrOutput) ToNatGatewayAccessModePtrOutputWithContext(ctx context.Context) NatGatewayAccessModePtrOutput {
+	return o
+}
+
+func (o NatGatewayAccessModePtrOutput) Elem() NatGatewayAccessModeOutput {
+	return o.ApplyT(func(v *NatGatewayAccessMode) NatGatewayAccessMode {
+		if v != nil {
+			return *v
+		}
+		var ret NatGatewayAccessMode
+		return ret
+	}).(NatGatewayAccessModeOutput)
+}
+
+// The mode of Access. Valid values:
+func (o NatGatewayAccessModePtrOutput) ModeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatGatewayAccessMode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ModeValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
+func (o NatGatewayAccessModePtrOutput) TunnelType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NatGatewayAccessMode) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TunnelType
+	}).(pulumi.StringPtrOutput)
+}
+
 type NetworkAclAttachmentResource struct {
 	// The resource id that the network acl will associate with.
 	ResourceId string `pulumi:"resourceId"`
@@ -9315,6 +9471,8 @@ func (o GetVpcFlowLogsLogArrayOutput) Index(i pulumi.IntInput) GetVpcFlowLogsLog
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionsSetAssociateVpcInput)(nil)).Elem(), DhcpOptionsSetAssociateVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DhcpOptionsSetAssociateVpcArrayInput)(nil)).Elem(), DhcpOptionsSetAssociateVpcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NatGatewayAccessModeInput)(nil)).Elem(), NatGatewayAccessModeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NatGatewayAccessModePtrInput)(nil)).Elem(), NatGatewayAccessModeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclAttachmentResourceInput)(nil)).Elem(), NetworkAclAttachmentResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclAttachmentResourceArrayInput)(nil)).Elem(), NetworkAclAttachmentResourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAclEgressAclEntryInput)(nil)).Elem(), NetworkAclEgressAclEntryArgs{})
@@ -9425,6 +9583,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcFlowLogsLogArrayInput)(nil)).Elem(), GetVpcFlowLogsLogArray{})
 	pulumi.RegisterOutputType(DhcpOptionsSetAssociateVpcOutput{})
 	pulumi.RegisterOutputType(DhcpOptionsSetAssociateVpcArrayOutput{})
+	pulumi.RegisterOutputType(NatGatewayAccessModeOutput{})
+	pulumi.RegisterOutputType(NatGatewayAccessModePtrOutput{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentResourceOutput{})
 	pulumi.RegisterOutputType(NetworkAclAttachmentResourceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAclEgressAclEntryOutput{})

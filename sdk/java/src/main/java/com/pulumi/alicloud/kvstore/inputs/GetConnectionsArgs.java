@@ -17,14 +17,14 @@ public final class GetConnectionsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetConnectionsArgs Empty = new GetConnectionsArgs();
 
     /**
-     * A list of KVStore DBInstance ids, only support one item.
+     * A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
      * 
      */
     @Import(name="ids", required=true)
     private Output<String> ids;
 
     /**
-     * @return A list of KVStore DBInstance ids, only support one item.
+     * @return A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
      * 
      */
     public Output<String> ids() {
@@ -72,7 +72,7 @@ public final class GetConnectionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of KVStore DBInstance ids, only support one item.
+         * @param ids A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class GetConnectionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of KVStore DBInstance ids, only support one item.
+         * @param ids A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
          * 
          * @return builder
          * 

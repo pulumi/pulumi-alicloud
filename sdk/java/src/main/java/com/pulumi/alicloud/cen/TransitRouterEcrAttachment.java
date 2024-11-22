@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  * 
  * For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/).
  * 
- * &gt; **NOTE:** Available since v1.226.0.
+ * &gt; **NOTE:** Available since v1.235.0.
  * 
  * ## Example Usage
  * 
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("terraform-example");
- *         final var asn = config.get("asn").orElse("4200000666");
+ *         final var asn = config.get("asn").orElse("4200000667");
  *         var defaultO8Hcfx = new RouterExpressConnectRouter("defaultO8Hcfx", RouterExpressConnectRouterArgs.builder()
  *             .alibabaSideAsn(asn)
  *             .ecrName(name)

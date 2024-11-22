@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ess.inputs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationDataDiskArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationInstancePatternInfoArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationInstanceTypeOverrideArgs;
+import com.pulumi.alicloud.ess.inputs.ScalingConfigurationNetworkInterfaceArgs;
 import com.pulumi.alicloud.ess.inputs.ScalingConfigurationSpotPriceLimitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -412,6 +413,21 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
      */
     public Optional<Output<Map<String,String>>> kmsEncryptionContext() {
         return Optional.ofNullable(this.kmsEncryptionContext);
+    }
+
+    /**
+     * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+     * 
+     */
+    @Import(name="networkInterfaces")
+    private @Nullable Output<List<ScalingConfigurationNetworkInterfaceArgs>> networkInterfaces;
+
+    /**
+     * @return Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+     * 
+     */
+    public Optional<Output<List<ScalingConfigurationNetworkInterfaceArgs>>> networkInterfaces() {
+        return Optional.ofNullable(this.networkInterfaces);
     }
 
     /**
@@ -864,6 +880,7 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
         this.keyName = $.keyName;
         this.kmsEncryptedPassword = $.kmsEncryptedPassword;
         this.kmsEncryptionContext = $.kmsEncryptionContext;
+        this.networkInterfaces = $.networkInterfaces;
         this.override = $.override;
         this.password = $.password;
         this.passwordInherit = $.passwordInherit;
@@ -1503,6 +1520,37 @@ public final class ScalingConfigurationState extends com.pulumi.resources.Resour
          */
         public Builder kmsEncryptionContext(Map<String,String> kmsEncryptionContext) {
             return kmsEncryptionContext(Output.of(kmsEncryptionContext));
+        }
+
+        /**
+         * @param networkInterfaces Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(@Nullable Output<List<ScalingConfigurationNetworkInterfaceArgs>> networkInterfaces) {
+            $.networkInterfaces = networkInterfaces;
+            return this;
+        }
+
+        /**
+         * @param networkInterfaces Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(List<ScalingConfigurationNetworkInterfaceArgs> networkInterfaces) {
+            return networkInterfaces(Output.of(networkInterfaces));
+        }
+
+        /**
+         * @param networkInterfaces Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaces(ScalingConfigurationNetworkInterfaceArgs... networkInterfaces) {
+            return networkInterfaces(List.of(networkInterfaces));
         }
 
         /**

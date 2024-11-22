@@ -9,6 +9,7 @@ import com.pulumi.alicloud.ess.inputs.ScalingConfigurationState;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationDataDisk;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationInstancePatternInfo;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationInstanceTypeOverride;
+import com.pulumi.alicloud.ess.outputs.ScalingConfigurationNetworkInterface;
 import com.pulumi.alicloud.ess.outputs.ScalingConfigurationSpotPriceLimit;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -523,6 +524,20 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Map<String,String>>> kmsEncryptionContext() {
         return Codegen.optional(this.kmsEncryptionContext);
+    }
+    /**
+     * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+     * 
+     */
+    @Export(name="networkInterfaces", refs={List.class,ScalingConfigurationNetworkInterface.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<ScalingConfigurationNetworkInterface>> networkInterfaces;
+
+    /**
+     * @return Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
+     * 
+     */
+    public Output<Optional<List<ScalingConfigurationNetworkInterface>>> networkInterfaces() {
+        return Codegen.optional(this.networkInterfaces);
     }
     /**
      * Indicates whether to overwrite the existing data. Default to false.

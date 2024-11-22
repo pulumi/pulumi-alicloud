@@ -15,7 +15,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Express Connect Router Express Connect Router Vbr Child Instance resource. Leased Line Gateway VBR sub-instance.
+ * Provides a Express Connect Router Express Connect Router Vbr Child Instance resource.
  * 
  * For information about Express Connect Router Express Connect Router Vbr Child Instance and how to use it, see [What is Express Connect Router Vbr Child Instance](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/AttachExpressConnectRouterChildInstance).
  * 
@@ -115,42 +115,46 @@ public class RouterVbrChildInstance extends com.pulumi.resources.CustomResource 
         return this.childInstanceId;
     }
     /**
-     * The ID of the subinstance of the leased line gateway.
+     * The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+     * 
+     * &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      * 
      */
     @Export(name="childInstanceOwnerId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> childInstanceOwnerId;
+    private Output<String> childInstanceOwnerId;
 
     /**
-     * @return The ID of the subinstance of the leased line gateway.
+     * @return The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+     * 
+     * &gt; **NOTE:**  This parameter is required if you want to load a cross-account network instance.
      * 
      */
-    public Output<Optional<String>> childInstanceOwnerId() {
-        return Codegen.optional(this.childInstanceOwnerId);
+    public Output<String> childInstanceOwnerId() {
+        return this.childInstanceOwnerId;
     }
     /**
-     * Region of the leased line gateway sub-instance.
+     * Region of the leased line gateway sub-instance
      * 
      */
     @Export(name="childInstanceRegionId", refs={String.class}, tree="[0]")
     private Output<String> childInstanceRegionId;
 
     /**
-     * @return Region of the leased line gateway sub-instance.
+     * @return Region of the leased line gateway sub-instance
      * 
      */
     public Output<String> childInstanceRegionId() {
         return this.childInstanceRegionId;
     }
     /**
-     * The type of leased line gateway sub-instance, Valid values: `VBR`.
+     * The type of the network instance. Value: `VBR`: VBR instance.
      * 
      */
     @Export(name="childInstanceType", refs={String.class}, tree="[0]")
     private Output<String> childInstanceType;
 
     /**
-     * @return The type of leased line gateway sub-instance, Valid values: `VBR`.
+     * @return The type of the network instance. Value: `VBR`: VBR instance.
      * 
      */
     public Output<String> childInstanceType() {
@@ -169,6 +173,20 @@ public class RouterVbrChildInstance extends com.pulumi.resources.CustomResource 
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Resource attribute fields that represent descriptive information
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return Resource attribute fields that represent descriptive information
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * ID of the representative leased line gateway instance.

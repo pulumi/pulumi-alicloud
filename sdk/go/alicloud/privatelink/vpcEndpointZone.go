@@ -139,6 +139,8 @@ type VpcEndpointZone struct {
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
 	// The IP address of the endpoint ENI.
 	EniIp pulumi.StringOutput `pulumi:"eniIp"`
+	// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The state of the zone.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The ID of the vSwitch in the zone.
@@ -189,6 +191,8 @@ type vpcEndpointZoneState struct {
 	EndpointId *string `pulumi:"endpointId"`
 	// The IP address of the endpoint ENI.
 	EniIp *string `pulumi:"eniIp"`
+	// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+	RegionId *string `pulumi:"regionId"`
 	// The state of the zone.
 	Status *string `pulumi:"status"`
 	// The ID of the vSwitch in the zone.
@@ -204,6 +208,8 @@ type VpcEndpointZoneState struct {
 	EndpointId pulumi.StringPtrInput
 	// The IP address of the endpoint ENI.
 	EniIp pulumi.StringPtrInput
+	// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+	RegionId pulumi.StringPtrInput
 	// The state of the zone.
 	Status pulumi.StringPtrInput
 	// The ID of the vSwitch in the zone.
@@ -343,6 +349,11 @@ func (o VpcEndpointZoneOutput) EndpointId() pulumi.StringOutput {
 // The IP address of the endpoint ENI.
 func (o VpcEndpointZoneOutput) EniIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.EniIp }).(pulumi.StringOutput)
+}
+
+// (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+func (o VpcEndpointZoneOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointZone) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The state of the zone.

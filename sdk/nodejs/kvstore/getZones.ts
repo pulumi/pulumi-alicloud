@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+ * This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available since v1.73.0.
  *
@@ -49,7 +49,7 @@ export interface GetZonesArgs {
      */
     instanceChargeType?: string;
     /**
-     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
      */
     multi?: boolean;
     /**
@@ -82,7 +82,7 @@ export interface GetZonesResult {
     readonly zones: outputs.kvstore.GetZonesZone[];
 }
 /**
- * This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+ * This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
  *
  * > **NOTE:** Available since v1.73.0.
  *
@@ -124,7 +124,7 @@ export interface GetZonesOutputArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
      */
     multi?: pulumi.Input<boolean>;
     /**

@@ -8737,6 +8737,25 @@ export namespace ess {
         weightedCapacity?: pulumi.Input<number>;
     }
 
+    export interface ScalingConfigurationNetworkInterface {
+        /**
+         * The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+         */
+        instanceType?: pulumi.Input<string>;
+        /**
+         * The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+         */
+        ipv6AddressCount?: pulumi.Input<number>;
+        /**
+         * The communication mode of the ENI. Valid values: Standard, HighPerformance.
+         */
+        networkInterfaceTrafficMode?: pulumi.Input<string>;
+        /**
+         * The ID of security group N to which ENI N belongs.
+         */
+        securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface ScalingConfigurationSpotPriceLimit {
         /**
          * Resource type of an ECS instance.
@@ -12800,6 +12819,38 @@ export namespace rdc {
 }
 
 export namespace rds {
+    export interface CustomDataDisk {
+        /**
+         * Instance storage type
+         *
+         * local_ssd: local SSD disk
+         *
+         * cloud_essd:ESSD PL1 cloud disk
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * Cloud Disk Performance
+         *
+         * Currently only supports PL1
+         */
+        performanceLevel?: pulumi.Input<string>;
+        /**
+         * Instance storage space. Unit: GB.
+         */
+        size?: pulumi.Input<number>;
+    }
+
+    export interface CustomSystemDisk {
+        /**
+         * The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+         */
+        category?: pulumi.Input<string>;
+        /**
+         * System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+         */
+        size?: pulumi.Input<string>;
+    }
+
     export interface DbInstanceEndpointNodeItem {
         /**
          * The ID of the node.
@@ -15347,6 +15398,17 @@ export namespace vpc {
          * The ID of the VPC network that is associated with the DHCP options set.
          */
         vpcId: pulumi.Input<string>;
+    }
+
+    export interface NatGatewayAccessMode {
+        /**
+         * The mode of Access. Valid values:
+         */
+        modeValue?: pulumi.Input<string>;
+        /**
+         * The type of Tunnel. Valid values: `geneve`. **NOTE:** `tunnelType` takes effect only if `modeValue` is set to `tunnel`.
+         */
+        tunnelType?: pulumi.Input<string>;
     }
 
     export interface NetworkAclAttachmentResource {

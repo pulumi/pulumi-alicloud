@@ -27,6 +27,7 @@ class ShardingInstanceArgs:
                  account_password: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
                  instance_charge_type: Optional[pulumi.Input[str]] = None,
@@ -56,6 +57,7 @@ class ShardingInstanceArgs:
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        :param pulumi.Input[int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version v1.141.0.
@@ -91,6 +93,8 @@ class ShardingInstanceArgs:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if backup_periods is not None:
             pulumi.set(__self__, "backup_periods", backup_periods)
+        if backup_retention_policy_on_cluster_deletion is not None:
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
         if config_server_lists is not None:
@@ -205,6 +209,18 @@ class ShardingInstanceArgs:
     @backup_periods.setter
     def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "backup_periods", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[int]]:
+        """
+        The backup retention policy configured for the instance. Valid values:
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
+
+    @backup_retention_policy_on_cluster_deletion.setter
+    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @property
     @pulumi.getter(name="backupTime")
@@ -469,6 +485,7 @@ class _ShardingInstanceState:
                  account_password: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -499,6 +516,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        :param pulumi.Input[int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceConfigServerListArgs']]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -535,6 +553,8 @@ class _ShardingInstanceState:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if backup_periods is not None:
             pulumi.set(__self__, "backup_periods", backup_periods)
+        if backup_retention_policy_on_cluster_deletion is not None:
+            pulumi.set(__self__, "backup_retention_policy_on_cluster_deletion", backup_retention_policy_on_cluster_deletion)
         if backup_time is not None:
             pulumi.set(__self__, "backup_time", backup_time)
         if config_server_lists is not None:
@@ -621,6 +641,18 @@ class _ShardingInstanceState:
     @backup_periods.setter
     def backup_periods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "backup_periods", value)
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[int]]:
+        """
+        The backup retention policy configured for the instance. Valid values:
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
+
+    @backup_retention_policy_on_cluster_deletion.setter
+    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @property
     @pulumi.getter(name="backupTime")
@@ -935,6 +967,7 @@ class ShardingInstance(pulumi.CustomResource):
                  account_password: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -1039,6 +1072,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        :param pulumi.Input[int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -1166,6 +1200,7 @@ class ShardingInstance(pulumi.CustomResource):
                  account_password: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
                  backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
                  backup_time: Optional[pulumi.Input[str]] = None,
                  config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -1202,6 +1237,7 @@ class ShardingInstance(pulumi.CustomResource):
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["auto_renew"] = auto_renew
             __props__.__dict__["backup_periods"] = backup_periods
+            __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
             __props__.__dict__["backup_time"] = backup_time
             __props__.__dict__["config_server_lists"] = config_server_lists
             if engine_version is None and not opts.urn:
@@ -1248,6 +1284,7 @@ class ShardingInstance(pulumi.CustomResource):
             account_password: Optional[pulumi.Input[str]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[int]] = None,
             backup_time: Optional[pulumi.Input[str]] = None,
             config_server_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
@@ -1283,6 +1320,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] account_password: Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
         :param pulumi.Input[bool] auto_renew: Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+        :param pulumi.Input[int] backup_retention_policy_on_cluster_deletion: The backup retention policy configured for the instance. Valid values:
         :param pulumi.Input[str] backup_time: Sharding Instance backup time. It is required when `backup_period` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
         :param pulumi.Input[Sequence[pulumi.Input[Union['ShardingInstanceConfigServerListArgs', 'ShardingInstanceConfigServerListArgsDict']]]] config_server_lists: The ConfigServer nodes of the instance. See `config_server_list` below.
         :param pulumi.Input[str] engine_version: Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`. **NOTE:** From version 1.225.1, `engine_version` can be modified.
@@ -1320,6 +1358,7 @@ class ShardingInstance(pulumi.CustomResource):
         __props__.__dict__["account_password"] = account_password
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["backup_periods"] = backup_periods
+        __props__.__dict__["backup_retention_policy_on_cluster_deletion"] = backup_retention_policy_on_cluster_deletion
         __props__.__dict__["backup_time"] = backup_time
         __props__.__dict__["config_server_lists"] = config_server_lists
         __props__.__dict__["engine_version"] = engine_version
@@ -1370,6 +1409,14 @@ class ShardingInstance(pulumi.CustomResource):
         MongoDB Instance backup period. It is required when `backup_time` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
         """
         return pulumi.get(self, "backup_periods")
+
+    @property
+    @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Output[Optional[int]]:
+        """
+        The backup retention policy configured for the instance. Valid values:
+        """
+        return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @property
     @pulumi.getter(name="backupTime")

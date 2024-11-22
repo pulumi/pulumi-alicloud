@@ -248,14 +248,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
      * 
      */
     @Import(name="dbNodeNum")
     private @Nullable Output<Integer> dbNodeNum;
 
     /**
-     * @return The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+     * @return The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
      * 
      */
     public Optional<Output<Integer>> dbNodeNum() {
@@ -1589,7 +1589,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeNum The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+         * @param dbNodeNum The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
          * 
          * @return builder
          * 
@@ -1600,7 +1600,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeNum The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
+         * @param dbNodeNum The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
          * 
          * @return builder
          * 

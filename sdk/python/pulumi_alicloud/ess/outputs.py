@@ -35,6 +35,7 @@ __all__ = [
     'ScalingConfigurationDataDisk',
     'ScalingConfigurationInstancePatternInfo',
     'ScalingConfigurationInstanceTypeOverride',
+    'ScalingConfigurationNetworkInterface',
     'ScalingConfigurationSpotPriceLimit',
     'ScalingGroupAlbServerGroup',
     'ScalingGroupLaunchTemplateOverride',
@@ -2049,6 +2050,84 @@ class ScalingConfigurationInstanceTypeOverride(dict):
         The weight of instance type in instanceTypeOverride.
         """
         return pulumi.get(self, "weighted_capacity")
+
+
+@pulumi.output_type
+class ScalingConfigurationNetworkInterface(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceType":
+            suggest = "instance_type"
+        elif key == "ipv6AddressCount":
+            suggest = "ipv6_address_count"
+        elif key == "networkInterfaceTrafficMode":
+            suggest = "network_interface_traffic_mode"
+        elif key == "securityGroupIds":
+            suggest = "security_group_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingConfigurationNetworkInterface. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingConfigurationNetworkInterface.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingConfigurationNetworkInterface.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_type: Optional[str] = None,
+                 ipv6_address_count: Optional[int] = None,
+                 network_interface_traffic_mode: Optional[str] = None,
+                 security_group_ids: Optional[Sequence[str]] = None):
+        """
+        :param str instance_type: The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+        :param int ipv6_address_count: The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+        :param str network_interface_traffic_mode: The communication mode of the ENI. Valid values: Standard, HighPerformance.
+        :param Sequence[str] security_group_ids: The ID of security group N to which ENI N belongs.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if ipv6_address_count is not None:
+            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+        if network_interface_traffic_mode is not None:
+            pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        """
+        The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> Optional[int]:
+        """
+        The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+        """
+        return pulumi.get(self, "ipv6_address_count")
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> Optional[str]:
+        """
+        The communication mode of the ENI. Valid values: Standard, HighPerformance.
+        """
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[Sequence[str]]:
+        """
+        The ID of security group N to which ENI N belongs.
+        """
+        return pulumi.get(self, "security_group_ids")
 
 
 @pulumi.output_type

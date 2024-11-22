@@ -13,6 +13,295 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CustomDataDisk struct {
+	// Instance storage type
+	//
+	// local_ssd: local SSD disk
+	//
+	// cloud_essd:ESSD PL1 cloud disk
+	Category *string `pulumi:"category"`
+	// Cloud Disk Performance
+	//
+	// Currently only supports PL1
+	PerformanceLevel *string `pulumi:"performanceLevel"`
+	// Instance storage space. Unit: GB.
+	Size *int `pulumi:"size"`
+}
+
+// CustomDataDiskInput is an input type that accepts CustomDataDiskArgs and CustomDataDiskOutput values.
+// You can construct a concrete instance of `CustomDataDiskInput` via:
+//
+//	CustomDataDiskArgs{...}
+type CustomDataDiskInput interface {
+	pulumi.Input
+
+	ToCustomDataDiskOutput() CustomDataDiskOutput
+	ToCustomDataDiskOutputWithContext(context.Context) CustomDataDiskOutput
+}
+
+type CustomDataDiskArgs struct {
+	// Instance storage type
+	//
+	// local_ssd: local SSD disk
+	//
+	// cloud_essd:ESSD PL1 cloud disk
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Cloud Disk Performance
+	//
+	// Currently only supports PL1
+	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
+	// Instance storage space. Unit: GB.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (CustomDataDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDataDisk)(nil)).Elem()
+}
+
+func (i CustomDataDiskArgs) ToCustomDataDiskOutput() CustomDataDiskOutput {
+	return i.ToCustomDataDiskOutputWithContext(context.Background())
+}
+
+func (i CustomDataDiskArgs) ToCustomDataDiskOutputWithContext(ctx context.Context) CustomDataDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDataDiskOutput)
+}
+
+// CustomDataDiskArrayInput is an input type that accepts CustomDataDiskArray and CustomDataDiskArrayOutput values.
+// You can construct a concrete instance of `CustomDataDiskArrayInput` via:
+//
+//	CustomDataDiskArray{ CustomDataDiskArgs{...} }
+type CustomDataDiskArrayInput interface {
+	pulumi.Input
+
+	ToCustomDataDiskArrayOutput() CustomDataDiskArrayOutput
+	ToCustomDataDiskArrayOutputWithContext(context.Context) CustomDataDiskArrayOutput
+}
+
+type CustomDataDiskArray []CustomDataDiskInput
+
+func (CustomDataDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDataDisk)(nil)).Elem()
+}
+
+func (i CustomDataDiskArray) ToCustomDataDiskArrayOutput() CustomDataDiskArrayOutput {
+	return i.ToCustomDataDiskArrayOutputWithContext(context.Background())
+}
+
+func (i CustomDataDiskArray) ToCustomDataDiskArrayOutputWithContext(ctx context.Context) CustomDataDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDataDiskArrayOutput)
+}
+
+type CustomDataDiskOutput struct{ *pulumi.OutputState }
+
+func (CustomDataDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDataDisk)(nil)).Elem()
+}
+
+func (o CustomDataDiskOutput) ToCustomDataDiskOutput() CustomDataDiskOutput {
+	return o
+}
+
+func (o CustomDataDiskOutput) ToCustomDataDiskOutputWithContext(ctx context.Context) CustomDataDiskOutput {
+	return o
+}
+
+// Instance storage type
+//
+// local_ssd: local SSD disk
+//
+// cloud_essd:ESSD PL1 cloud disk
+func (o CustomDataDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Cloud Disk Performance
+//
+// Currently only supports PL1
+func (o CustomDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
+}
+
+// Instance storage space. Unit: GB.
+func (o CustomDataDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type CustomDataDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomDataDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDataDisk)(nil)).Elem()
+}
+
+func (o CustomDataDiskArrayOutput) ToCustomDataDiskArrayOutput() CustomDataDiskArrayOutput {
+	return o
+}
+
+func (o CustomDataDiskArrayOutput) ToCustomDataDiskArrayOutputWithContext(ctx context.Context) CustomDataDiskArrayOutput {
+	return o
+}
+
+func (o CustomDataDiskArrayOutput) Index(i pulumi.IntInput) CustomDataDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomDataDisk {
+		return vs[0].([]CustomDataDisk)[vs[1].(int)]
+	}).(CustomDataDiskOutput)
+}
+
+type CustomSystemDisk struct {
+	// The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+	Category *string `pulumi:"category"`
+	// System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+	Size *string `pulumi:"size"`
+}
+
+// CustomSystemDiskInput is an input type that accepts CustomSystemDiskArgs and CustomSystemDiskOutput values.
+// You can construct a concrete instance of `CustomSystemDiskInput` via:
+//
+//	CustomSystemDiskArgs{...}
+type CustomSystemDiskInput interface {
+	pulumi.Input
+
+	ToCustomSystemDiskOutput() CustomSystemDiskOutput
+	ToCustomSystemDiskOutputWithContext(context.Context) CustomSystemDiskOutput
+}
+
+type CustomSystemDiskArgs struct {
+	// The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+	Size pulumi.StringPtrInput `pulumi:"size"`
+}
+
+func (CustomSystemDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSystemDisk)(nil)).Elem()
+}
+
+func (i CustomSystemDiskArgs) ToCustomSystemDiskOutput() CustomSystemDiskOutput {
+	return i.ToCustomSystemDiskOutputWithContext(context.Background())
+}
+
+func (i CustomSystemDiskArgs) ToCustomSystemDiskOutputWithContext(ctx context.Context) CustomSystemDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSystemDiskOutput)
+}
+
+func (i CustomSystemDiskArgs) ToCustomSystemDiskPtrOutput() CustomSystemDiskPtrOutput {
+	return i.ToCustomSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i CustomSystemDiskArgs) ToCustomSystemDiskPtrOutputWithContext(ctx context.Context) CustomSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSystemDiskOutput).ToCustomSystemDiskPtrOutputWithContext(ctx)
+}
+
+// CustomSystemDiskPtrInput is an input type that accepts CustomSystemDiskArgs, CustomSystemDiskPtr and CustomSystemDiskPtrOutput values.
+// You can construct a concrete instance of `CustomSystemDiskPtrInput` via:
+//
+//	        CustomSystemDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomSystemDiskPtrInput interface {
+	pulumi.Input
+
+	ToCustomSystemDiskPtrOutput() CustomSystemDiskPtrOutput
+	ToCustomSystemDiskPtrOutputWithContext(context.Context) CustomSystemDiskPtrOutput
+}
+
+type customSystemDiskPtrType CustomSystemDiskArgs
+
+func CustomSystemDiskPtr(v *CustomSystemDiskArgs) CustomSystemDiskPtrInput {
+	return (*customSystemDiskPtrType)(v)
+}
+
+func (*customSystemDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomSystemDisk)(nil)).Elem()
+}
+
+func (i *customSystemDiskPtrType) ToCustomSystemDiskPtrOutput() CustomSystemDiskPtrOutput {
+	return i.ToCustomSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *customSystemDiskPtrType) ToCustomSystemDiskPtrOutputWithContext(ctx context.Context) CustomSystemDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSystemDiskPtrOutput)
+}
+
+type CustomSystemDiskOutput struct{ *pulumi.OutputState }
+
+func (CustomSystemDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSystemDisk)(nil)).Elem()
+}
+
+func (o CustomSystemDiskOutput) ToCustomSystemDiskOutput() CustomSystemDiskOutput {
+	return o
+}
+
+func (o CustomSystemDiskOutput) ToCustomSystemDiskOutputWithContext(ctx context.Context) CustomSystemDiskOutput {
+	return o
+}
+
+func (o CustomSystemDiskOutput) ToCustomSystemDiskPtrOutput() CustomSystemDiskPtrOutput {
+	return o.ToCustomSystemDiskPtrOutputWithContext(context.Background())
+}
+
+func (o CustomSystemDiskOutput) ToCustomSystemDiskPtrOutputWithContext(ctx context.Context) CustomSystemDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomSystemDisk) *CustomSystemDisk {
+		return &v
+	}).(CustomSystemDiskPtrOutput)
+}
+
+// The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+func (o CustomSystemDiskOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+func (o CustomSystemDiskOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomSystemDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+type CustomSystemDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomSystemDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomSystemDisk)(nil)).Elem()
+}
+
+func (o CustomSystemDiskPtrOutput) ToCustomSystemDiskPtrOutput() CustomSystemDiskPtrOutput {
+	return o
+}
+
+func (o CustomSystemDiskPtrOutput) ToCustomSystemDiskPtrOutputWithContext(ctx context.Context) CustomSystemDiskPtrOutput {
+	return o
+}
+
+func (o CustomSystemDiskPtrOutput) Elem() CustomSystemDiskOutput {
+	return o.ApplyT(func(v *CustomSystemDisk) CustomSystemDisk {
+		if v != nil {
+			return *v
+		}
+		var ret CustomSystemDisk
+		return ret
+	}).(CustomSystemDiskOutput)
+}
+
+// The cloud disk type of the system disk. Currently, only `cloudEssd`(ESSD cloud disk) is supported.
+func (o CustomSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Category
+	}).(pulumi.StringPtrOutput)
+}
+
+// System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+func (o CustomSystemDiskPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomSystemDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
 type DbInstanceEndpointNodeItem struct {
 	// The ID of the node.
 	NodeId string `pulumi:"nodeId"`
@@ -5448,6 +5737,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDataDiskInput)(nil)).Elem(), CustomDataDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDataDiskArrayInput)(nil)).Elem(), CustomDataDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomSystemDiskInput)(nil)).Elem(), CustomSystemDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomSystemDiskPtrInput)(nil)).Elem(), CustomSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstanceEndpointNodeItemInput)(nil)).Elem(), DbInstanceEndpointNodeItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DbInstanceEndpointNodeItemArrayInput)(nil)).Elem(), DbInstanceEndpointNodeItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DdrInstanceParameterInput)(nil)).Elem(), DdrInstanceParameterArgs{})
@@ -5517,6 +5810,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSlotsSlotArrayInput)(nil)).Elem(), GetSlotsSlotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
+	pulumi.RegisterOutputType(CustomDataDiskOutput{})
+	pulumi.RegisterOutputType(CustomDataDiskArrayOutput{})
+	pulumi.RegisterOutputType(CustomSystemDiskOutput{})
+	pulumi.RegisterOutputType(CustomSystemDiskPtrOutput{})
 	pulumi.RegisterOutputType(DbInstanceEndpointNodeItemOutput{})
 	pulumi.RegisterOutputType(DbInstanceEndpointNodeItemArrayOutput{})
 	pulumi.RegisterOutputType(DdrInstanceParameterOutput{})

@@ -62,6 +62,21 @@ public final class VpcEndpointZoneState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
      * The state of the zone.
      * 
      */
@@ -112,6 +127,7 @@ public final class VpcEndpointZoneState extends com.pulumi.resources.ResourceArg
         this.dryRun = $.dryRun;
         this.endpointId = $.endpointId;
         this.eniIp = $.eniIp;
+        this.regionId = $.regionId;
         this.status = $.status;
         this.vswitchId = $.vswitchId;
         this.zoneId = $.zoneId;
@@ -196,6 +212,27 @@ public final class VpcEndpointZoneState extends com.pulumi.resources.ResourceArg
          */
         public Builder eniIp(String eniIp) {
             return eniIp(Output.of(eniIp));
+        }
+
+        /**
+         * @param regionId (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

@@ -5,9 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Ecs Image Component resource.
+ * Provides a ECS Image Component resource.
  *
- * For information about Ecs Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
+ * For information about ECS Image Component and how to use it, see [What is Image Component](https://www.alibabacloud.com/help/en/doc-detail/200424.htm).
  *
  * > **NOTE:** Available since v1.159.0.
  *
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Ecs Image Component can be imported using the id, e.g.
+ * ECS Image Component can be imported using the id, e.g.
  *
  * ```sh
  * $ pulumi import alicloud:ecs/ecsImageComponent:EcsImageComponent example <id>
@@ -72,11 +72,25 @@ export class EcsImageComponent extends pulumi.CustomResource {
     }
 
     /**
-     * The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
+     * The component type. Supports mirrored build components and test components.
+     *
+     * Value range:
+     * - Build
+     * - Test
+     *
+     * Default value: Build.
+     *
+     * > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
      */
     public readonly componentType!: pulumi.Output<string>;
     /**
-     * Component content.
+     * The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+     *
+     * Default value:(x +1).0.0, where x is the maximum major version of the current component.
+     */
+    public readonly componentVersion!: pulumi.Output<string>;
+    /**
+     * Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
      */
     public readonly content!: pulumi.Output<string>;
     /**
@@ -84,19 +98,27 @@ export class EcsImageComponent extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Describe the information.
+     * Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
+     * The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+     *
+     * > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
      */
     public readonly imageComponentName!: pulumi.Output<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the enterprise resource group to which the created image component belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+     * The operating system supported by the component.
+     *
+     * Value range:
+     * - Linux
+     * - Windows
+     *
+     * Default value: Linux.
      */
     public readonly systemType!: pulumi.Output<string>;
     /**
@@ -118,6 +140,7 @@ export class EcsImageComponent extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EcsImageComponentState | undefined;
             resourceInputs["componentType"] = state ? state.componentType : undefined;
+            resourceInputs["componentVersion"] = state ? state.componentVersion : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
@@ -131,6 +154,7 @@ export class EcsImageComponent extends pulumi.CustomResource {
                 throw new Error("Missing required property 'content'");
             }
             resourceInputs["componentType"] = args ? args.componentType : undefined;
+            resourceInputs["componentVersion"] = args ? args.componentVersion : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["imageComponentName"] = args ? args.imageComponentName : undefined;
@@ -149,11 +173,25 @@ export class EcsImageComponent extends pulumi.CustomResource {
  */
 export interface EcsImageComponentState {
     /**
-     * The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
+     * The component type. Supports mirrored build components and test components.
+     *
+     * Value range:
+     * - Build
+     * - Test
+     *
+     * Default value: Build.
+     *
+     * > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
      */
     componentType?: pulumi.Input<string>;
     /**
-     * Component content.
+     * The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+     *
+     * Default value:(x +1).0.0, where x is the maximum major version of the current component.
+     */
+    componentVersion?: pulumi.Input<string>;
+    /**
+     * Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
      */
     content?: pulumi.Input<string>;
     /**
@@ -161,19 +199,27 @@ export interface EcsImageComponentState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Describe the information.
+     * Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
     description?: pulumi.Input<string>;
     /**
-     * The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
+     * The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+     *
+     * > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
      */
     imageComponentName?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the enterprise resource group to which the created image component belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+     * The operating system supported by the component.
+     *
+     * Value range:
+     * - Linux
+     * - Windows
+     *
+     * Default value: Linux.
      */
     systemType?: pulumi.Input<string>;
     /**
@@ -187,27 +233,49 @@ export interface EcsImageComponentState {
  */
 export interface EcsImageComponentArgs {
     /**
-     * The component type. Currently, only mirror build components are supported. Value: Build.  Default value: Build.
+     * The component type. Supports mirrored build components and test components.
+     *
+     * Value range:
+     * - Build
+     * - Test
+     *
+     * Default value: Build.
+     *
+     * > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
      */
     componentType?: pulumi.Input<string>;
     /**
-     * Component content.
+     * The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
+     *
+     * Default value:(x +1).0.0, where x is the maximum major version of the current component.
+     */
+    componentVersion?: pulumi.Input<string>;
+    /**
+     * Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
      */
     content: pulumi.Input<string>;
     /**
-     * Describe the information.
+     * Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
     description?: pulumi.Input<string>;
     /**
-     * The component name. The name must be 2 to 128 characters in length and must start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).  Note: If Name is not set, the return value of ImageComponentId is used by default.
+     * The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
+     *
+     * > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
      */
     imageComponentName?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * The ID of the enterprise resource group to which the created image component belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The operating system supported by the component. Currently, only Linux systems are supported. Value: Linux.  Default value: Linux.
+     * The operating system supported by the component.
+     *
+     * Value range:
+     * - Linux
+     * - Windows
+     *
+     * Default value: Linux.
      */
     systemType?: pulumi.Input<string>;
     /**

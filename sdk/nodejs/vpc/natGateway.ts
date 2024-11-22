@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -42,6 +44,10 @@ export class NatGateway extends pulumi.CustomResource {
     }
 
     /**
+     * The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
+     */
+    public readonly accessMode!: pulumi.Output<outputs.vpc.NatGatewayAccessMode>;
+    /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -70,15 +76,23 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public /*out*/ readonly forwardTableIds!: pulumi.Output<string>;
     /**
+     * Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+     */
+    public readonly icmpReplyEnabled!: pulumi.Output<boolean>;
+    /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+     *
+     * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
-     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+     * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
      */
     public readonly internetChargeType!: pulumi.Output<string>;
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -86,7 +100,7 @@ export class NatGateway extends pulumi.CustomResource {
      */
     public readonly natGatewayName!: pulumi.Output<string>;
     /**
-     * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
      */
     public readonly natType!: pulumi.Output<string>;
     /**
@@ -102,6 +116,10 @@ export class NatGateway extends pulumi.CustomResource {
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     public readonly period!: pulumi.Output<number | undefined>;
+    /**
+     * Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+     */
+    public readonly privateLinkEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * The nat gateway will auto create a snat item.
      */
@@ -140,12 +158,14 @@ export class NatGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NatGatewayState | undefined;
+            resourceInputs["accessMode"] = state ? state.accessMode : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["eipBindMode"] = state ? state.eipBindMode : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["forwardTableIds"] = state ? state.forwardTableIds : undefined;
+            resourceInputs["icmpReplyEnabled"] = state ? state.icmpReplyEnabled : undefined;
             resourceInputs["instanceChargeType"] = state ? state.instanceChargeType : undefined;
             resourceInputs["internetChargeType"] = state ? state.internetChargeType : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -154,6 +174,7 @@ export class NatGateway extends pulumi.CustomResource {
             resourceInputs["networkType"] = state ? state.networkType : undefined;
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["privateLinkEnabled"] = state ? state.privateLinkEnabled : undefined;
             resourceInputs["snatTableIds"] = state ? state.snatTableIds : undefined;
             resourceInputs["specification"] = state ? state.specification : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -165,11 +186,13 @@ export class NatGateway extends pulumi.CustomResource {
             if ((!args || args.vpcId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'vpcId'");
             }
+            resourceInputs["accessMode"] = args ? args.accessMode : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["eipBindMode"] = args ? args.eipBindMode : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
+            resourceInputs["icmpReplyEnabled"] = args ? args.icmpReplyEnabled : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["internetChargeType"] = args ? args.internetChargeType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -178,6 +201,7 @@ export class NatGateway extends pulumi.CustomResource {
             resourceInputs["networkType"] = args ? args.networkType : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
             resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["privateLinkEnabled"] = args ? args.privateLinkEnabled : undefined;
             resourceInputs["specification"] = args ? args.specification : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
@@ -195,6 +219,10 @@ export class NatGateway extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NatGateway resources.
  */
 export interface NatGatewayState {
+    /**
+     * The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
+     */
+    accessMode?: pulumi.Input<inputs.vpc.NatGatewayAccessMode>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
@@ -224,15 +252,23 @@ export interface NatGatewayState {
      */
     forwardTableIds?: pulumi.Input<string>;
     /**
+     * Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+     */
+    icmpReplyEnabled?: pulumi.Input<boolean>;
+    /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+     *
+     * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+     * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -240,7 +276,7 @@ export interface NatGatewayState {
      */
     natGatewayName?: pulumi.Input<string>;
     /**
-     * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
      */
     natType?: pulumi.Input<string>;
     /**
@@ -256,6 +292,10 @@ export interface NatGatewayState {
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number>;
+    /**
+     * Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+     */
+    privateLinkEnabled?: pulumi.Input<boolean>;
     /**
      * The nat gateway will auto create a snat item.
      */
@@ -287,6 +327,10 @@ export interface NatGatewayState {
  */
 export interface NatGatewayArgs {
     /**
+     * The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
+     */
+    accessMode?: pulumi.Input<inputs.vpc.NatGatewayAccessMode>;
+    /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
@@ -311,15 +355,23 @@ export interface NatGatewayArgs {
      */
     force?: pulumi.Input<boolean>;
     /**
+     * Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+     */
+    icmpReplyEnabled?: pulumi.Input<boolean>;
+    /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
+     *
+     * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+     * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
      */
     internetChargeType?: pulumi.Input<string>;
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -327,7 +379,7 @@ export interface NatGatewayArgs {
      */
     natGatewayName?: pulumi.Input<string>;
     /**
-     * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
      */
     natType?: pulumi.Input<string>;
     /**
@@ -343,6 +395,10 @@ export interface NatGatewayArgs {
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
     period?: pulumi.Input<number>;
+    /**
+     * Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+     */
+    privateLinkEnabled?: pulumi.Input<boolean>;
     /**
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      */

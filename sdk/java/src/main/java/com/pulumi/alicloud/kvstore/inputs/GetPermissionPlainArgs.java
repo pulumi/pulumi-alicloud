@@ -15,14 +15,14 @@ public final class GetPermissionPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetPermissionPlainArgs Empty = new GetPermissionPlainArgs();
 
     /**
-     * Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
+     * Setting the value to `On` to assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore). If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
      * 
      */
     @Import(name="enable")
     private @Nullable String enable;
 
     /**
-     * @return Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
+     * @return Setting the value to `On` to assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore). If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
      * 
      */
     public Optional<String> enable() {
@@ -54,7 +54,7 @@ public final class GetPermissionPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param enable Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
+         * @param enable Setting the value to `On` to assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore). If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
          * 
          * @return builder
          * 

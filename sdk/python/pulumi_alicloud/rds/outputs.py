@@ -16,6 +16,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'CustomDataDisk',
+    'CustomSystemDisk',
     'DbInstanceEndpointNodeItem',
     'DdrInstanceParameter',
     'DdrInstancePgHbaConf',
@@ -52,6 +54,109 @@ __all__ = [
     'GetSlotsSlotResult',
     'GetZonesZoneResult',
 ]
+
+@pulumi.output_type
+class CustomDataDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "performanceLevel":
+            suggest = "performance_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomDataDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomDataDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomDataDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 category: Optional[str] = None,
+                 performance_level: Optional[str] = None,
+                 size: Optional[int] = None):
+        """
+        :param str category: Instance storage type
+               
+               local_ssd: local SSD disk
+               
+               cloud_essd:ESSD PL1 cloud disk
+        :param str performance_level: Cloud Disk Performance
+               
+               Currently only supports PL1
+        :param int size: Instance storage space. Unit: GB.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if performance_level is not None:
+            pulumi.set(__self__, "performance_level", performance_level)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        """
+        Instance storage type
+
+        local_ssd: local SSD disk
+
+        cloud_essd:ESSD PL1 cloud disk
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter(name="performanceLevel")
+    def performance_level(self) -> Optional[str]:
+        """
+        Cloud Disk Performance
+
+        Currently only supports PL1
+        """
+        return pulumi.get(self, "performance_level")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[int]:
+        """
+        Instance storage space. Unit: GB.
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class CustomSystemDisk(dict):
+    def __init__(__self__, *,
+                 category: Optional[str] = None,
+                 size: Optional[str] = None):
+        """
+        :param str category: The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+        :param str size: System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        """
+        The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[str]:
+        """
+        System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
+        """
+        return pulumi.get(self, "size")
+
 
 @pulumi.output_type
 class DbInstanceEndpointNodeItem(dict):

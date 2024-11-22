@@ -12,6 +12,7 @@ import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -37,6 +38,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.TransitRouter;
  * import com.pulumi.alicloud.cen.TransitRouterArgs;
+ * import com.pulumi.alicloud.cen.TransitRouterCidr;
+ * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
  * import com.pulumi.alicloud.cen.CenFunctions;
  * import com.pulumi.alicloud.cen.inputs.GetTransitRouterAvailableResourcesArgs;
  * import com.pulumi.alicloud.vpn.CustomerGateway;
@@ -47,8 +50,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentIpsecConfigArgs;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentBgpConfigArgs;
  * import com.pulumi.alicloud.vpn.inputs.GatewayVpnAttachmentHealthCheckConfigArgs;
- * import com.pulumi.alicloud.cen.TransitRouterCidr;
- * import com.pulumi.alicloud.cen.TransitRouterCidrArgs;
  * import com.pulumi.alicloud.cen.TransitRouterVpnAttachment;
  * import com.pulumi.alicloud.cen.TransitRouterVpnAttachmentArgs;
  * import com.pulumi.alicloud.cen.inputs.TransitRouterVpnAttachmentZoneArgs;
@@ -75,8 +76,16 @@ import javax.annotation.Nullable;
  * 
  *         var defaultTransitRouter = new TransitRouter("defaultTransitRouter", TransitRouterArgs.builder()
  *             .cenId(defaultInstance.id())
- *             .transitRouterDescription("desd")
+ *             .transitRouterDescription(name)
  *             .transitRouterName(name)
+ *             .build());
+ * 
+ *         var defaultTransitRouterCidr = new TransitRouterCidr("defaultTransitRouterCidr", TransitRouterCidrArgs.builder()
+ *             .transitRouterId(defaultTransitRouter.transitRouterId())
+ *             .cidr("192.168.0.0/16")
+ *             .transitRouterCidrName(name)
+ *             .description(name)
+ *             .publishCidrRoute(true)
  *             .build());
  * 
  *         final var default = CenFunctions.getTransitRouterAvailableResources();
@@ -100,7 +109,7 @@ import javax.annotation.Nullable;
  *                 .ikeVersion("ikev2")
  *                 .ikeMode("main")
  *                 .ikeLifetime(86400)
- *                 .psk("tf-testvpn2")
+ *                 .psk("tf-examplevpn2")
  *                 .ikePfs("group1")
  *                 .remoteId("testbob2")
  *                 .localId("testalice2")
@@ -130,14 +139,6 @@ import javax.annotation.Nullable;
  *             .vpnAttachmentName(name)
  *             .build());
  * 
- *         var defaultTransitRouterCidr = new TransitRouterCidr("defaultTransitRouterCidr", TransitRouterCidrArgs.builder()
- *             .transitRouterId(defaultTransitRouter.transitRouterId())
- *             .cidr("192.168.0.0/16")
- *             .transitRouterCidrName(name)
- *             .description(name)
- *             .publishCidrRoute(true)
- *             .build());
- * 
  *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment", TransitRouterVpnAttachmentArgs.builder()
  *             .autoPublishRouteEnabled(false)
  *             .transitRouterAttachmentDescription(name)
@@ -151,10 +152,10 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultGatewayVcoRoute = new GatewayVcoRoute("defaultGatewayVcoRoute", GatewayVcoRouteArgs.builder()
- *             .routeDest("192.168.12.0/24")
  *             .nextHop(defaultTransitRouterVpnAttachment.vpnId())
  *             .vpnConnectionId(defaultTransitRouterVpnAttachment.vpnId())
- *             .weight(100)
+ *             .weight("100")
+ *             .routeDest("192.168.10.0/24")
  *             .build());
  * 
  *     }
@@ -187,6 +188,20 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      */
     public Output<String> nextHop() {
         return this.nextHop;
+    }
+    /**
+     * The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+     * 
+     */
+    @Export(name="overlayMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> overlayMode;
+
+    /**
+     * @return The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+     * 
+     */
+    public Output<Optional<String>> overlayMode() {
+        return Codegen.optional(this.overlayMode);
     }
     /**
      * The destination network segment of the destination route.

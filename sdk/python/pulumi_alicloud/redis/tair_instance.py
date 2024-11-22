@@ -28,6 +28,7 @@ class TairInstanceArgs:
                  auto_renew_period: Optional[pulumi.Input[str]] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
                  cluster_backup_id: Optional[pulumi.Input[str]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -72,6 +73,7 @@ class TairInstanceArgs:
                
                If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
         :param pulumi.Input[str] cluster_backup_id: This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
+        :param pulumi.Input[str] connection_string_prefix: The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         :param pulumi.Input[str] engine_version: Database version. Default value: 1.0.
                
@@ -147,6 +149,8 @@ class TairInstanceArgs:
             pulumi.set(__self__, "backup_id", backup_id)
         if cluster_backup_id is not None:
             pulumi.set(__self__, "cluster_backup_id", cluster_backup_id)
+        if connection_string_prefix is not None:
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if effective_time is not None:
             pulumi.set(__self__, "effective_time", effective_time)
         if engine_version is not None:
@@ -319,6 +323,18 @@ class TairInstanceArgs:
     @cluster_backup_id.setter
     def cluster_backup_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_backup_id", value)
+
+    @property
+    @pulumi.getter(name="connectionStringPrefix")
+    def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+        """
+        return pulumi.get(self, "connection_string_prefix")
+
+    @connection_string_prefix.setter
+    def connection_string_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string_prefix", value)
 
     @property
     @pulumi.getter(name="effectiveTime")
@@ -732,6 +748,7 @@ class _TairInstanceState:
                  backup_id: Optional[pulumi.Input[str]] = None,
                  cluster_backup_id: Optional[pulumi.Input[str]] = None,
                  connection_domain: Optional[pulumi.Input[str]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
@@ -754,6 +771,7 @@ class _TairInstanceState:
                  port: Optional[pulumi.Input[int]] = None,
                  read_only_count: Optional[pulumi.Input[int]] = None,
                  recover_config_mode: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  resource_group_id: Optional[pulumi.Input[str]] = None,
                  secondary_zone_id: Optional[pulumi.Input[str]] = None,
                  security_group_id: Optional[pulumi.Input[str]] = None,
@@ -783,6 +801,7 @@ class _TairInstanceState:
                If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
         :param pulumi.Input[str] cluster_backup_id: This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
         :param pulumi.Input[str] connection_domain: The internal endpoint of the instance.
+        :param pulumi.Input[str] connection_string_prefix: The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
         :param pulumi.Input[str] create_time: The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         :param pulumi.Input[str] engine_version: Database version. Default value: 1.0.
@@ -827,6 +846,7 @@ class _TairInstanceState:
                
                If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         :param pulumi.Input[str] recover_config_mode: Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+        :param pulumi.Input[str] region_id: Region Id
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
         :param pulumi.Input[str] security_group_id: Security group id
@@ -867,6 +887,8 @@ class _TairInstanceState:
             pulumi.set(__self__, "cluster_backup_id", cluster_backup_id)
         if connection_domain is not None:
             pulumi.set(__self__, "connection_domain", connection_domain)
+        if connection_string_prefix is not None:
+            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if effective_time is not None:
@@ -911,6 +933,8 @@ class _TairInstanceState:
             pulumi.set(__self__, "read_only_count", read_only_count)
         if recover_config_mode is not None:
             pulumi.set(__self__, "recover_config_mode", recover_config_mode)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if resource_group_id is not None:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if secondary_zone_id is not None:
@@ -1023,6 +1047,18 @@ class _TairInstanceState:
     @connection_domain.setter
     def connection_domain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "connection_domain", value)
+
+    @property
+    @pulumi.getter(name="connectionStringPrefix")
+    def connection_string_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+        """
+        return pulumi.get(self, "connection_string_prefix")
+
+    @connection_string_prefix.setter
+    def connection_string_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_string_prefix", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1311,6 +1347,18 @@ class _TairInstanceState:
         pulumi.set(self, "recover_config_mode", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Region Id
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1556,6 +1604,7 @@ class TairInstance(pulumi.CustomResource):
                  auto_renew_period: Optional[pulumi.Input[str]] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
                  cluster_backup_id: Optional[pulumi.Input[str]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -1610,6 +1659,7 @@ class TairInstance(pulumi.CustomResource):
                
                If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
         :param pulumi.Input[str] cluster_backup_id: This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
+        :param pulumi.Input[str] connection_string_prefix: The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         :param pulumi.Input[str] engine_version: Database version. Default value: 1.0.
                
@@ -1711,6 +1761,7 @@ class TairInstance(pulumi.CustomResource):
                  auto_renew_period: Optional[pulumi.Input[str]] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
                  cluster_backup_id: Optional[pulumi.Input[str]] = None,
+                 connection_string_prefix: Optional[pulumi.Input[str]] = None,
                  effective_time: Optional[pulumi.Input[str]] = None,
                  engine_version: Optional[pulumi.Input[str]] = None,
                  force_upgrade: Optional[pulumi.Input[bool]] = None,
@@ -1760,6 +1811,7 @@ class TairInstance(pulumi.CustomResource):
             __props__.__dict__["auto_renew_period"] = auto_renew_period
             __props__.__dict__["backup_id"] = backup_id
             __props__.__dict__["cluster_backup_id"] = cluster_backup_id
+            __props__.__dict__["connection_string_prefix"] = connection_string_prefix
             __props__.__dict__["effective_time"] = effective_time
             __props__.__dict__["engine_version"] = engine_version
             __props__.__dict__["force_upgrade"] = force_upgrade
@@ -1811,6 +1863,7 @@ class TairInstance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["max_connections"] = None
             __props__.__dict__["network_type"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
             __props__.__dict__["tair_instance_id"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
@@ -1831,6 +1884,7 @@ class TairInstance(pulumi.CustomResource):
             backup_id: Optional[pulumi.Input[str]] = None,
             cluster_backup_id: Optional[pulumi.Input[str]] = None,
             connection_domain: Optional[pulumi.Input[str]] = None,
+            connection_string_prefix: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_time: Optional[pulumi.Input[str]] = None,
             engine_version: Optional[pulumi.Input[str]] = None,
@@ -1853,6 +1907,7 @@ class TairInstance(pulumi.CustomResource):
             port: Optional[pulumi.Input[int]] = None,
             read_only_count: Optional[pulumi.Input[int]] = None,
             recover_config_mode: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             resource_group_id: Optional[pulumi.Input[str]] = None,
             secondary_zone_id: Optional[pulumi.Input[str]] = None,
             security_group_id: Optional[pulumi.Input[str]] = None,
@@ -1887,6 +1942,7 @@ class TairInstance(pulumi.CustomResource):
                If your instance is a cloud-native cluster instance, we recommend that you use DescribeClusterBackupList to query the backup set ID of the cluster instance. Then, set the ClusterBackupId request parameter to the backup set ID to clone the cluster instance. This eliminates the need to specify the backup set ID of each shard.
         :param pulumi.Input[str] cluster_backup_id: This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
         :param pulumi.Input[str] connection_domain: The internal endpoint of the instance.
+        :param pulumi.Input[str] connection_string_prefix: The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
         :param pulumi.Input[str] create_time: The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param pulumi.Input[str] effective_time: The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
         :param pulumi.Input[str] engine_version: Database version. Default value: 1.0.
@@ -1931,6 +1987,7 @@ class TairInstance(pulumi.CustomResource):
                
                If the instance is a cloud disk version read/write splitting architecture instance, you can use this parameter to customize the number of read-only nodes, or set this parameter to 0 to disable the read/write splitting architecture and switch the instance to the standard architecture.
         :param pulumi.Input[str] recover_config_mode: Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
+        :param pulumi.Input[str] region_id: Region Id
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
         :param pulumi.Input[str] security_group_id: Security group id
@@ -1969,6 +2026,7 @@ class TairInstance(pulumi.CustomResource):
         __props__.__dict__["backup_id"] = backup_id
         __props__.__dict__["cluster_backup_id"] = cluster_backup_id
         __props__.__dict__["connection_domain"] = connection_domain
+        __props__.__dict__["connection_string_prefix"] = connection_string_prefix
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_time"] = effective_time
         __props__.__dict__["engine_version"] = engine_version
@@ -1991,6 +2049,7 @@ class TairInstance(pulumi.CustomResource):
         __props__.__dict__["port"] = port
         __props__.__dict__["read_only_count"] = read_only_count
         __props__.__dict__["recover_config_mode"] = recover_config_mode
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["secondary_zone_id"] = secondary_zone_id
         __props__.__dict__["security_group_id"] = security_group_id
@@ -2061,6 +2120,14 @@ class TairInstance(pulumi.CustomResource):
         The internal endpoint of the instance.
         """
         return pulumi.get(self, "connection_domain")
+
+    @property
+    @pulumi.getter(name="connectionStringPrefix")
+    def connection_string_prefix(self) -> pulumi.Output[Optional[str]]:
+        """
+        The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+        """
+        return pulumi.get(self, "connection_string_prefix")
 
     @property
     @pulumi.getter(name="createTime")
@@ -2202,7 +2269,7 @@ class TairInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="paramSentinelCompatEnable")
-    def param_sentinel_compat_enable(self) -> pulumi.Output[Optional[str]]:
+    def param_sentinel_compat_enable(self) -> pulumi.Output[str]:
         """
         sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
         """
@@ -2259,6 +2326,14 @@ class TairInstance(pulumi.CustomResource):
         Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
         """
         return pulumi.get(self, "recover_config_mode")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        Region Id
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="resourceGroupId")

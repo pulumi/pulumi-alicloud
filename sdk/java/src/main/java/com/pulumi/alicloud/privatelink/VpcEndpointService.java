@@ -78,8 +78,6 @@ import javax.annotation.Nullable;
 public class VpcEndpointService extends com.pulumi.resources.CustomResource {
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-     * - **true**
-     * - **false**.
      * 
      */
     @Export(name="autoAcceptConnection", refs={Boolean.class}, tree="[0]")
@@ -87,8 +85,6 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-     * - **true**
-     * - **false**.
      * 
      */
     public Output<Optional<Boolean>> autoAcceptConnection() {
@@ -124,8 +120,6 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to perform only a dry run, without performing the actual request.
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
@@ -133,8 +127,6 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to perform only a dry run, without performing the actual request.
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -142,8 +134,8 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
     }
     /**
      * The payer of the endpoint service. Valid values:
-     * - **Endpoint**: the service consumer.
-     * - **EndpointService**: the service provider.
+     * - `Endpoint`: the service consumer.
+     * - `EndpointService`: the service provider.
      * 
      */
     @Export(name="payer", refs={String.class}, tree="[0]")
@@ -151,12 +143,26 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The payer of the endpoint service. Valid values:
-     * - **Endpoint**: the service consumer.
-     * - **EndpointService**: the service provider.
+     * - `Endpoint`: the service consumer.
+     * - `EndpointService`: the service provider.
      * 
      */
     public Output<String> payer() {
         return this.payer;
+    }
+    /**
+     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The resource group ID.
@@ -216,9 +222,6 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
     }
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     @Export(name="serviceResourceType", refs={String.class}, tree="[0]")
@@ -226,9 +229,6 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     public Output<String> serviceResourceType() {
@@ -236,8 +236,6 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     @Export(name="serviceSupportIpv6", refs={Boolean.class}, tree="[0]")
@@ -245,8 +243,6 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to enable IPv6 for the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     public Output<Boolean> serviceSupportIpv6() {
@@ -296,8 +292,6 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     @Export(name="zoneAffinityEnabled", refs={Boolean.class}, tree="[0]")
@@ -305,8 +299,6 @@ public class VpcEndpointService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      * 
      */
     public Output<Boolean> zoneAffinityEnabled() {

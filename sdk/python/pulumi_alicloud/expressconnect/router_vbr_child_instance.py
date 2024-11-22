@@ -23,14 +23,18 @@ class RouterVbrChildInstanceArgs:
                  child_instance_region_id: pulumi.Input[str],
                  child_instance_type: pulumi.Input[str],
                  ecr_id: pulumi.Input[str],
-                 child_instance_owner_id: Optional[pulumi.Input[str]] = None):
+                 child_instance_owner_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RouterVbrChildInstance resource.
         :param pulumi.Input[str] child_instance_id: The ID of the leased line gateway subinstance.
-        :param pulumi.Input[str] child_instance_region_id: Region of the leased line gateway sub-instance.
-        :param pulumi.Input[str] child_instance_type: The type of leased line gateway sub-instance, Valid values: `VBR`.
+        :param pulumi.Input[str] child_instance_region_id: Region of the leased line gateway sub-instance
+        :param pulumi.Input[str] child_instance_type: The type of the network instance. Value: `VBR`: VBR instance.
         :param pulumi.Input[str] ecr_id: ID of the representative leased line gateway instance.
-        :param pulumi.Input[str] child_instance_owner_id: The ID of the subinstance of the leased line gateway.
+        :param pulumi.Input[str] child_instance_owner_id: The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+               
+               > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
+        :param pulumi.Input[str] description: Resource attribute fields that represent descriptive information
         """
         pulumi.set(__self__, "child_instance_id", child_instance_id)
         pulumi.set(__self__, "child_instance_region_id", child_instance_region_id)
@@ -38,6 +42,8 @@ class RouterVbrChildInstanceArgs:
         pulumi.set(__self__, "ecr_id", ecr_id)
         if child_instance_owner_id is not None:
             pulumi.set(__self__, "child_instance_owner_id", child_instance_owner_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="childInstanceId")
@@ -55,7 +61,7 @@ class RouterVbrChildInstanceArgs:
     @pulumi.getter(name="childInstanceRegionId")
     def child_instance_region_id(self) -> pulumi.Input[str]:
         """
-        Region of the leased line gateway sub-instance.
+        Region of the leased line gateway sub-instance
         """
         return pulumi.get(self, "child_instance_region_id")
 
@@ -67,7 +73,7 @@ class RouterVbrChildInstanceArgs:
     @pulumi.getter(name="childInstanceType")
     def child_instance_type(self) -> pulumi.Input[str]:
         """
-        The type of leased line gateway sub-instance, Valid values: `VBR`.
+        The type of the network instance. Value: `VBR`: VBR instance.
         """
         return pulumi.get(self, "child_instance_type")
 
@@ -91,13 +97,27 @@ class RouterVbrChildInstanceArgs:
     @pulumi.getter(name="childInstanceOwnerId")
     def child_instance_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the subinstance of the leased line gateway.
+        The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+
+        > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
         """
         return pulumi.get(self, "child_instance_owner_id")
 
     @child_instance_owner_id.setter
     def child_instance_owner_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "child_instance_owner_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource attribute fields that represent descriptive information
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
@@ -108,15 +128,19 @@ class _RouterVbrChildInstanceState:
                  child_instance_region_id: Optional[pulumi.Input[str]] = None,
                  child_instance_type: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  ecr_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouterVbrChildInstance resources.
         :param pulumi.Input[str] child_instance_id: The ID of the leased line gateway subinstance.
-        :param pulumi.Input[str] child_instance_owner_id: The ID of the subinstance of the leased line gateway.
-        :param pulumi.Input[str] child_instance_region_id: Region of the leased line gateway sub-instance.
-        :param pulumi.Input[str] child_instance_type: The type of leased line gateway sub-instance, Valid values: `VBR`.
+        :param pulumi.Input[str] child_instance_owner_id: The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+               
+               > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
+        :param pulumi.Input[str] child_instance_region_id: Region of the leased line gateway sub-instance
+        :param pulumi.Input[str] child_instance_type: The type of the network instance. Value: `VBR`: VBR instance.
         :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] description: Resource attribute fields that represent descriptive information
         :param pulumi.Input[str] ecr_id: ID of the representative leased line gateway instance.
         :param pulumi.Input[str] status: Binding relationship status of leased line gateway subinstances.
         """
@@ -130,6 +154,8 @@ class _RouterVbrChildInstanceState:
             pulumi.set(__self__, "child_instance_type", child_instance_type)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if ecr_id is not None:
             pulumi.set(__self__, "ecr_id", ecr_id)
         if status is not None:
@@ -151,7 +177,9 @@ class _RouterVbrChildInstanceState:
     @pulumi.getter(name="childInstanceOwnerId")
     def child_instance_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the subinstance of the leased line gateway.
+        The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+
+        > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
         """
         return pulumi.get(self, "child_instance_owner_id")
 
@@ -163,7 +191,7 @@ class _RouterVbrChildInstanceState:
     @pulumi.getter(name="childInstanceRegionId")
     def child_instance_region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Region of the leased line gateway sub-instance.
+        Region of the leased line gateway sub-instance
         """
         return pulumi.get(self, "child_instance_region_id")
 
@@ -175,7 +203,7 @@ class _RouterVbrChildInstanceState:
     @pulumi.getter(name="childInstanceType")
     def child_instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of leased line gateway sub-instance, Valid values: `VBR`.
+        The type of the network instance. Value: `VBR`: VBR instance.
         """
         return pulumi.get(self, "child_instance_type")
 
@@ -194,6 +222,18 @@ class _RouterVbrChildInstanceState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource attribute fields that represent descriptive information
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="ecrId")
@@ -229,10 +269,11 @@ class RouterVbrChildInstance(pulumi.CustomResource):
                  child_instance_owner_id: Optional[pulumi.Input[str]] = None,
                  child_instance_region_id: Optional[pulumi.Input[str]] = None,
                  child_instance_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  ecr_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Express Connect Router Express Connect Router Vbr Child Instance resource. Leased Line Gateway VBR sub-instance.
+        Provides a Express Connect Router Express Connect Router Vbr Child Instance resource.
 
         For information about Express Connect Router Express Connect Router Vbr Child Instance and how to use it, see [What is Express Connect Router Vbr Child Instance](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/AttachExpressConnectRouterChildInstance).
 
@@ -278,9 +319,12 @@ class RouterVbrChildInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] child_instance_id: The ID of the leased line gateway subinstance.
-        :param pulumi.Input[str] child_instance_owner_id: The ID of the subinstance of the leased line gateway.
-        :param pulumi.Input[str] child_instance_region_id: Region of the leased line gateway sub-instance.
-        :param pulumi.Input[str] child_instance_type: The type of leased line gateway sub-instance, Valid values: `VBR`.
+        :param pulumi.Input[str] child_instance_owner_id: The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+               
+               > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
+        :param pulumi.Input[str] child_instance_region_id: Region of the leased line gateway sub-instance
+        :param pulumi.Input[str] child_instance_type: The type of the network instance. Value: `VBR`: VBR instance.
+        :param pulumi.Input[str] description: Resource attribute fields that represent descriptive information
         :param pulumi.Input[str] ecr_id: ID of the representative leased line gateway instance.
         """
         ...
@@ -290,7 +334,7 @@ class RouterVbrChildInstance(pulumi.CustomResource):
                  args: RouterVbrChildInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Express Connect Router Express Connect Router Vbr Child Instance resource. Leased Line Gateway VBR sub-instance.
+        Provides a Express Connect Router Express Connect Router Vbr Child Instance resource.
 
         For information about Express Connect Router Express Connect Router Vbr Child Instance and how to use it, see [What is Express Connect Router Vbr Child Instance](https://next.api.alibabacloud.com/api/ExpressConnectRouter/2023-09-01/AttachExpressConnectRouterChildInstance).
 
@@ -352,6 +396,7 @@ class RouterVbrChildInstance(pulumi.CustomResource):
                  child_instance_owner_id: Optional[pulumi.Input[str]] = None,
                  child_instance_region_id: Optional[pulumi.Input[str]] = None,
                  child_instance_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  ecr_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -372,6 +417,7 @@ class RouterVbrChildInstance(pulumi.CustomResource):
             if child_instance_type is None and not opts.urn:
                 raise TypeError("Missing required property 'child_instance_type'")
             __props__.__dict__["child_instance_type"] = child_instance_type
+            __props__.__dict__["description"] = description
             if ecr_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ecr_id'")
             __props__.__dict__["ecr_id"] = ecr_id
@@ -392,6 +438,7 @@ class RouterVbrChildInstance(pulumi.CustomResource):
             child_instance_region_id: Optional[pulumi.Input[str]] = None,
             child_instance_type: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             ecr_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'RouterVbrChildInstance':
         """
@@ -402,10 +449,13 @@ class RouterVbrChildInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] child_instance_id: The ID of the leased line gateway subinstance.
-        :param pulumi.Input[str] child_instance_owner_id: The ID of the subinstance of the leased line gateway.
-        :param pulumi.Input[str] child_instance_region_id: Region of the leased line gateway sub-instance.
-        :param pulumi.Input[str] child_instance_type: The type of leased line gateway sub-instance, Valid values: `VBR`.
+        :param pulumi.Input[str] child_instance_owner_id: The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+               
+               > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
+        :param pulumi.Input[str] child_instance_region_id: Region of the leased line gateway sub-instance
+        :param pulumi.Input[str] child_instance_type: The type of the network instance. Value: `VBR`: VBR instance.
         :param pulumi.Input[str] create_time: The creation time of the resource.
+        :param pulumi.Input[str] description: Resource attribute fields that represent descriptive information
         :param pulumi.Input[str] ecr_id: ID of the representative leased line gateway instance.
         :param pulumi.Input[str] status: Binding relationship status of leased line gateway subinstances.
         """
@@ -418,6 +468,7 @@ class RouterVbrChildInstance(pulumi.CustomResource):
         __props__.__dict__["child_instance_region_id"] = child_instance_region_id
         __props__.__dict__["child_instance_type"] = child_instance_type
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
         __props__.__dict__["ecr_id"] = ecr_id
         __props__.__dict__["status"] = status
         return RouterVbrChildInstance(resource_name, opts=opts, __props__=__props__)
@@ -432,9 +483,11 @@ class RouterVbrChildInstance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="childInstanceOwnerId")
-    def child_instance_owner_id(self) -> pulumi.Output[Optional[str]]:
+    def child_instance_owner_id(self) -> pulumi.Output[str]:
         """
-        The ID of the subinstance of the leased line gateway.
+        The ID of the Alibaba Cloud account (primary account) to which the VBR instance belongs.
+
+        > **NOTE:**  This parameter is required if you want to load a cross-account network instance.
         """
         return pulumi.get(self, "child_instance_owner_id")
 
@@ -442,7 +495,7 @@ class RouterVbrChildInstance(pulumi.CustomResource):
     @pulumi.getter(name="childInstanceRegionId")
     def child_instance_region_id(self) -> pulumi.Output[str]:
         """
-        Region of the leased line gateway sub-instance.
+        Region of the leased line gateway sub-instance
         """
         return pulumi.get(self, "child_instance_region_id")
 
@@ -450,7 +503,7 @@ class RouterVbrChildInstance(pulumi.CustomResource):
     @pulumi.getter(name="childInstanceType")
     def child_instance_type(self) -> pulumi.Output[str]:
         """
-        The type of leased line gateway sub-instance, Valid values: `VBR`.
+        The type of the network instance. Value: `VBR`: VBR instance.
         """
         return pulumi.get(self, "child_instance_type")
 
@@ -461,6 +514,14 @@ class RouterVbrChildInstance(pulumi.CustomResource):
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Resource attribute fields that represent descriptive information
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="ecrId")

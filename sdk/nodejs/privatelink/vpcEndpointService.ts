@@ -66,8 +66,6 @@ export class VpcEndpointService extends pulumi.CustomResource {
 
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-     * - **true**
-     * - **false**.
      */
     public readonly autoAcceptConnection!: pulumi.Output<boolean | undefined>;
     /**
@@ -80,16 +78,18 @@ export class VpcEndpointService extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request.
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
      * The payer of the endpoint service. Valid values:
-     * - **Endpoint**: the service consumer.
-     * - **EndpointService**: the service provider.
+     * - `Endpoint`: the service consumer.
+     * - `EndpointService`: the service provider.
      */
     public readonly payer!: pulumi.Output<string>;
+    /**
+     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The resource group ID.
      */
@@ -108,15 +108,10 @@ export class VpcEndpointService extends pulumi.CustomResource {
     public /*out*/ readonly serviceDomain!: pulumi.Output<string>;
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      */
     public readonly serviceResourceType!: pulumi.Output<string>;
     /**
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      */
     public readonly serviceSupportIpv6!: pulumi.Output<boolean>;
     /**
@@ -133,8 +128,6 @@ export class VpcEndpointService extends pulumi.CustomResource {
     public /*out*/ readonly vpcEndpointServiceName!: pulumi.Output<string>;
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      */
     public readonly zoneAffinityEnabled!: pulumi.Output<boolean>;
 
@@ -156,6 +149,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["payer"] = state ? state.payer : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["serviceBusinessStatus"] = state ? state.serviceBusinessStatus : undefined;
             resourceInputs["serviceDescription"] = state ? state.serviceDescription : undefined;
@@ -179,6 +173,7 @@ export class VpcEndpointService extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["zoneAffinityEnabled"] = args ? args.zoneAffinityEnabled : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["serviceBusinessStatus"] = undefined /*out*/;
             resourceInputs["serviceDomain"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -195,8 +190,6 @@ export class VpcEndpointService extends pulumi.CustomResource {
 export interface VpcEndpointServiceState {
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-     * - **true**
-     * - **false**.
      */
     autoAcceptConnection?: pulumi.Input<boolean>;
     /**
@@ -209,16 +202,18 @@ export interface VpcEndpointServiceState {
     createTime?: pulumi.Input<string>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request.
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
      * The payer of the endpoint service. Valid values:
-     * - **Endpoint**: the service consumer.
-     * - **EndpointService**: the service provider.
+     * - `Endpoint`: the service consumer.
+     * - `EndpointService`: the service provider.
      */
     payer?: pulumi.Input<string>;
+    /**
+     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The resource group ID.
      */
@@ -237,15 +232,10 @@ export interface VpcEndpointServiceState {
     serviceDomain?: pulumi.Input<string>;
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      */
     serviceResourceType?: pulumi.Input<string>;
     /**
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      */
     serviceSupportIpv6?: pulumi.Input<boolean>;
     /**
@@ -262,8 +252,6 @@ export interface VpcEndpointServiceState {
     vpcEndpointServiceName?: pulumi.Input<string>;
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      */
     zoneAffinityEnabled?: pulumi.Input<boolean>;
 }
@@ -274,8 +262,6 @@ export interface VpcEndpointServiceState {
 export interface VpcEndpointServiceArgs {
     /**
      * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
-     * - **true**
-     * - **false**.
      */
     autoAcceptConnection?: pulumi.Input<boolean>;
     /**
@@ -284,14 +270,12 @@ export interface VpcEndpointServiceArgs {
     connectBandwidth?: pulumi.Input<number>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request.
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
      * The payer of the endpoint service. Valid values:
-     * - **Endpoint**: the service consumer.
-     * - **EndpointService**: the service provider.
+     * - `Endpoint`: the service consumer.
+     * - `EndpointService`: the service provider.
      */
     payer?: pulumi.Input<string>;
     /**
@@ -304,15 +288,10 @@ export interface VpcEndpointServiceArgs {
     serviceDescription?: pulumi.Input<string>;
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      */
     serviceResourceType?: pulumi.Input<string>;
     /**
      * Specifies whether to enable IPv6 for the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      */
     serviceSupportIpv6?: pulumi.Input<boolean>;
     /**
@@ -321,8 +300,6 @@ export interface VpcEndpointServiceArgs {
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
-     * - **true**
-     * - **false (default)**.
      */
     zoneAffinityEnabled?: pulumi.Input<boolean>;
 }

@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Operate the public network ip of the specified resource. How to use it, see [What is Resource Alicloud KVStore Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
+ * Operate the public network ip of the specified resource. How to use it, see [What is Connection](https://www.alibabacloud.com/help/doc-detail/125795.htm).
  * 
  * &gt; **NOTE:** Available since v1.101.0.
  * 
@@ -108,7 +108,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * KVStore connection can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) connection can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:kvstore/connection:Connection example r-abc12345678
@@ -118,14 +118,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:kvstore/connection:Connection")
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
-     * The public connection string of KVStore DBInstance.
+     * The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
-     * @return The public connection string of KVStore DBInstance.
+     * @return The public connection string of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     public Output<String> connectionString() {

@@ -116,6 +116,10 @@ export class VpcEndpointZone extends pulumi.CustomResource {
      */
     public readonly eniIp!: pulumi.Output<string>;
     /**
+     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
+    /**
      * The state of the zone.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
@@ -144,6 +148,7 @@ export class VpcEndpointZone extends pulumi.CustomResource {
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["endpointId"] = state ? state.endpointId : undefined;
             resourceInputs["eniIp"] = state ? state.eniIp : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -160,6 +165,7 @@ export class VpcEndpointZone extends pulumi.CustomResource {
             resourceInputs["eniIp"] = args ? args.eniIp : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -183,6 +189,10 @@ export interface VpcEndpointZoneState {
      * The IP address of the endpoint ENI.
      */
     eniIp?: pulumi.Input<string>;
+    /**
+     * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The state of the zone.
      */

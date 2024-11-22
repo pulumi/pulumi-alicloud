@@ -77,14 +77,14 @@ public final class GetInstanceEnginesArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The Zone to launch the KVStore instance.
+     * The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the KVStore instance.
+     * @return The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     public Output<String> zoneId() {
@@ -204,7 +204,7 @@ public final class GetInstanceEnginesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param zoneId The Zone to launch the KVStore instance.
+         * @param zoneId The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetInstanceEnginesArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param zoneId The Zone to launch the KVStore instance.
+         * @param zoneId The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
          * 
          * @return builder
          * 

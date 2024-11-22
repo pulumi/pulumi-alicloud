@@ -1041,7 +1041,7 @@ class Key(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="dkmsInstanceId")
-    def dkms_instance_id(self) -> pulumi.Output[Optional[str]]:
+    def dkms_instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the KMS instance.
         """

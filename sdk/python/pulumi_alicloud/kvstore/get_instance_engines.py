@@ -62,7 +62,7 @@ class GetInstanceEnginesResult:
     @pulumi.getter(name="engineVersion")
     def engine_version(self) -> Optional[str]:
         """
-        KVStore Instance version.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance version.
         """
         return pulumi.get(self, "engine_version")
 
@@ -83,7 +83,7 @@ class GetInstanceEnginesResult:
     @pulumi.getter(name="instanceEngines")
     def instance_engines(self) -> Sequence['outputs.GetInstanceEnginesInstanceEngineResult']:
         """
-        A list of KVStore available instance engines. Each element contains the following attributes:
+        A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) available instance engines. Each element contains the following attributes:
         """
         return pulumi.get(self, "instance_engines")
 
@@ -96,7 +96,7 @@ class GetInstanceEnginesResult:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The Zone to launch the KVStore instance.
+        The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         return pulumi.get(self, "zone_id")
 
@@ -123,7 +123,7 @@ def get_instance_engines(engine: Optional[str] = None,
                          zone_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceEnginesResult:
     """
-    This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+    This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
 
     > **NOTE:** Available since v1.51.0
 
@@ -147,7 +147,7 @@ def get_instance_engines(engine: Optional[str] = None,
     :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
     :param str output_file: File name where to save data source results (after running `pulumi up`).
-    :param str zone_id: The Zone to launch the KVStore instance.
+    :param str zone_id: The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
     """
     __args__ = dict()
     __args__['engine'] = engine
@@ -173,7 +173,7 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
                                 zone_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceEnginesResult]:
     """
-    This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+    This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
 
     > **NOTE:** Available since v1.51.0
 
@@ -197,7 +197,7 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
     :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
     :param str output_file: File name where to save data source results (after running `pulumi up`).
-    :param str zone_id: The Zone to launch the KVStore instance.
+    :param str zone_id: The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
     """
     __args__ = dict()
     __args__['engine'] = engine

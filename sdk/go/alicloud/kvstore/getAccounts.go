@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
 //
 // > **NOTE:** Available in v1.102.0+.
 //
@@ -62,7 +62,7 @@ type GetAccountsArgs struct {
 	NameRegex  *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of KVStore Account. Valid Values: `"Available` `Unavailable`
+	// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
 	Status *string `pulumi:"status"`
 }
 
@@ -108,7 +108,7 @@ type GetAccountsOutputArgs struct {
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of KVStore Account. Valid Values: `"Available` `Unavailable`
+	// The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

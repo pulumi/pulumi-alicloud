@@ -2888,6 +2888,130 @@ func (o ScalingConfigurationInstanceTypeOverrideArrayOutput) Index(i pulumi.IntI
 	}).(ScalingConfigurationInstanceTypeOverrideOutput)
 }
 
+type ScalingConfigurationNetworkInterface struct {
+	// The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+	InstanceType *string `pulumi:"instanceType"`
+	// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
+	// The communication mode of the ENI. Valid values: Standard, HighPerformance.
+	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
+	// The ID of security group N to which ENI N belongs.
+	SecurityGroupIds []string `pulumi:"securityGroupIds"`
+}
+
+// ScalingConfigurationNetworkInterfaceInput is an input type that accepts ScalingConfigurationNetworkInterfaceArgs and ScalingConfigurationNetworkInterfaceOutput values.
+// You can construct a concrete instance of `ScalingConfigurationNetworkInterfaceInput` via:
+//
+//	ScalingConfigurationNetworkInterfaceArgs{...}
+type ScalingConfigurationNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationNetworkInterfaceOutput() ScalingConfigurationNetworkInterfaceOutput
+	ToScalingConfigurationNetworkInterfaceOutputWithContext(context.Context) ScalingConfigurationNetworkInterfaceOutput
+}
+
+type ScalingConfigurationNetworkInterfaceArgs struct {
+	// The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
+	// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+	Ipv6AddressCount pulumi.IntPtrInput `pulumi:"ipv6AddressCount"`
+	// The communication mode of the ENI. Valid values: Standard, HighPerformance.
+	NetworkInterfaceTrafficMode pulumi.StringPtrInput `pulumi:"networkInterfaceTrafficMode"`
+	// The ID of security group N to which ENI N belongs.
+	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
+}
+
+func (ScalingConfigurationNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationNetworkInterface)(nil)).Elem()
+}
+
+func (i ScalingConfigurationNetworkInterfaceArgs) ToScalingConfigurationNetworkInterfaceOutput() ScalingConfigurationNetworkInterfaceOutput {
+	return i.ToScalingConfigurationNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationNetworkInterfaceArgs) ToScalingConfigurationNetworkInterfaceOutputWithContext(ctx context.Context) ScalingConfigurationNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationNetworkInterfaceOutput)
+}
+
+// ScalingConfigurationNetworkInterfaceArrayInput is an input type that accepts ScalingConfigurationNetworkInterfaceArray and ScalingConfigurationNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `ScalingConfigurationNetworkInterfaceArrayInput` via:
+//
+//	ScalingConfigurationNetworkInterfaceArray{ ScalingConfigurationNetworkInterfaceArgs{...} }
+type ScalingConfigurationNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToScalingConfigurationNetworkInterfaceArrayOutput() ScalingConfigurationNetworkInterfaceArrayOutput
+	ToScalingConfigurationNetworkInterfaceArrayOutputWithContext(context.Context) ScalingConfigurationNetworkInterfaceArrayOutput
+}
+
+type ScalingConfigurationNetworkInterfaceArray []ScalingConfigurationNetworkInterfaceInput
+
+func (ScalingConfigurationNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationNetworkInterface)(nil)).Elem()
+}
+
+func (i ScalingConfigurationNetworkInterfaceArray) ToScalingConfigurationNetworkInterfaceArrayOutput() ScalingConfigurationNetworkInterfaceArrayOutput {
+	return i.ToScalingConfigurationNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigurationNetworkInterfaceArray) ToScalingConfigurationNetworkInterfaceArrayOutputWithContext(ctx context.Context) ScalingConfigurationNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigurationNetworkInterfaceArrayOutput)
+}
+
+type ScalingConfigurationNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigurationNetworkInterface)(nil)).Elem()
+}
+
+func (o ScalingConfigurationNetworkInterfaceOutput) ToScalingConfigurationNetworkInterfaceOutput() ScalingConfigurationNetworkInterfaceOutput {
+	return o
+}
+
+func (o ScalingConfigurationNetworkInterfaceOutput) ToScalingConfigurationNetworkInterfaceOutputWithContext(ctx context.Context) ScalingConfigurationNetworkInterfaceOutput {
+	return o
+}
+
+// The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+func (o ScalingConfigurationNetworkInterfaceOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationNetworkInterface) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+func (o ScalingConfigurationNetworkInterfaceOutput) Ipv6AddressCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationNetworkInterface) *int { return v.Ipv6AddressCount }).(pulumi.IntPtrOutput)
+}
+
+// The communication mode of the ENI. Valid values: Standard, HighPerformance.
+func (o ScalingConfigurationNetworkInterfaceOutput) NetworkInterfaceTrafficMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScalingConfigurationNetworkInterface) *string { return v.NetworkInterfaceTrafficMode }).(pulumi.StringPtrOutput)
+}
+
+// The ID of security group N to which ENI N belongs.
+func (o ScalingConfigurationNetworkInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ScalingConfigurationNetworkInterface) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
+}
+
+type ScalingConfigurationNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigurationNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ScalingConfigurationNetworkInterface)(nil)).Elem()
+}
+
+func (o ScalingConfigurationNetworkInterfaceArrayOutput) ToScalingConfigurationNetworkInterfaceArrayOutput() ScalingConfigurationNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationNetworkInterfaceArrayOutput) ToScalingConfigurationNetworkInterfaceArrayOutputWithContext(ctx context.Context) ScalingConfigurationNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o ScalingConfigurationNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ScalingConfigurationNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ScalingConfigurationNetworkInterface {
+		return vs[0].([]ScalingConfigurationNetworkInterface)[vs[1].(int)]
+	}).(ScalingConfigurationNetworkInterfaceOutput)
+}
+
 type ScalingConfigurationSpotPriceLimit struct {
 	// Resource type of an ECS instance.
 	InstanceType *string `pulumi:"instanceType"`
@@ -5498,6 +5622,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstancePatternInfoArrayInput)(nil)).Elem(), ScalingConfigurationInstancePatternInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstanceTypeOverrideInput)(nil)).Elem(), ScalingConfigurationInstanceTypeOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationInstanceTypeOverrideArrayInput)(nil)).Elem(), ScalingConfigurationInstanceTypeOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationNetworkInterfaceInput)(nil)).Elem(), ScalingConfigurationNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationNetworkInterfaceArrayInput)(nil)).Elem(), ScalingConfigurationNetworkInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigurationSpotPriceLimitArrayInput)(nil)).Elem(), ScalingConfigurationSpotPriceLimitArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScalingGroupAlbServerGroupInput)(nil)).Elem(), ScalingGroupAlbServerGroupArgs{})
@@ -5568,6 +5694,8 @@ func init() {
 	pulumi.RegisterOutputType(ScalingConfigurationInstancePatternInfoArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationInstanceTypeOverrideOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationInstanceTypeOverrideArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(ScalingConfigurationNetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitOutput{})
 	pulumi.RegisterOutputType(ScalingConfigurationSpotPriceLimitArrayOutput{})
 	pulumi.RegisterOutputType(ScalingGroupAlbServerGroupOutput{})

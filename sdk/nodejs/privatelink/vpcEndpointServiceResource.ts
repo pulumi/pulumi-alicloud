@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Private Link Vpc Endpoint Service Resource resource. Endpoint service resource.
+ * Provides a Private Link Vpc Endpoint Service Resource resource.
+ *
+ * Endpoint service resource.
  *
  * For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-attachresourcetovpcendpointservice).
  *
@@ -100,19 +102,18 @@ export class VpcEndpointServiceResource extends pulumi.CustomResource {
 
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
+    /**
+     * (Available since v1.235.0) The ID of the region where the service resource is deployed.
+     */
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The service resource ID.
      */
     public readonly resourceId!: pulumi.Output<string>;
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      */
     public readonly resourceType!: pulumi.Output<string>;
     /**
@@ -138,6 +139,7 @@ export class VpcEndpointServiceResource extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as VpcEndpointServiceResourceState | undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["resourceId"] = state ? state.resourceId : undefined;
             resourceInputs["resourceType"] = state ? state.resourceType : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
@@ -158,6 +160,7 @@ export class VpcEndpointServiceResource extends pulumi.CustomResource {
             resourceInputs["resourceType"] = args ? args.resourceType : undefined;
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["regionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VpcEndpointServiceResource.__pulumiType, name, resourceInputs, opts);
@@ -170,19 +173,18 @@ export class VpcEndpointServiceResource extends pulumi.CustomResource {
 export interface VpcEndpointServiceResourceState {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
+    /**
+     * (Available since v1.235.0) The ID of the region where the service resource is deployed.
+     */
+    regionId?: pulumi.Input<string>;
     /**
      * The service resource ID.
      */
     resourceId?: pulumi.Input<string>;
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      */
     resourceType?: pulumi.Input<string>;
     /**
@@ -201,8 +203,6 @@ export interface VpcEndpointServiceResourceState {
 export interface VpcEndpointServiceResourceArgs {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -211,9 +211,6 @@ export interface VpcEndpointServiceResourceArgs {
     resourceId: pulumi.Input<string>;
     /**
      * Service resource type, value:
-     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
-     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
-     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      */
     resourceType: pulumi.Input<string>;
     /**

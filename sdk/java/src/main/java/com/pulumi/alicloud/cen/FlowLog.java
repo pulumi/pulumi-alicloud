@@ -10,16 +10,16 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * This resource used to create a flow log function in Cloud Enterprise Network (CEN).
- * By using the flow log function, you can capture the traffic data of the network instances in different regions of a CEN.
- * You can also use the data aggregated in flow logs to analyze cross-region traffic flows, minimize traffic costs, and troubleshoot network faults.
+ * Provides a CEN Flow Log resource.
  * 
- * For information about CEN flow log and how to use it, see [Manage CEN flowlog](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
+ * For information about CEN Flow Log and how to use it, see [What is Flow Log](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createflowlog).
  * 
  * &gt; **NOTE:** Available since v1.73.0.
  * 
@@ -91,98 +91,204 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CEN flowlog can be imported using the id, e.g.
+ * CEN Flow Log can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cen/flowLog:FlowLog default flowlog-tig1xxxxxx
+ * $ pulumi import alicloud:cen/flowLog:FlowLog example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cen/flowLog:FlowLog")
 public class FlowLog extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the CEN Instance.
+     * cen id
      * 
      */
     @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
-     * @return The ID of the CEN Instance.
+     * @return cen id
      * 
      */
     public Output<String> cenId() {
         return this.cenId;
     }
     /**
-     * The description of flowlog.
+     * CreateTime
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return CreateTime
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the flowlog.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The description of flowlog.
+     * @return The description of the flowlog.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of flowlog.
+     * The name of the flowlog.
      * 
      */
     @Export(name="flowLogName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> flowLogName;
 
     /**
-     * @return The name of flowlog.
+     * @return The name of the flowlog.
      * 
      */
     public Output<Optional<String>> flowLogName() {
         return Codegen.optional(this.flowLogName);
     }
     /**
-     * The name of the log store which is in the  `project_name` SLS project.
+     * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+     * 
+     */
+    @Export(name="interval", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> interval;
+
+    /**
+     * @return The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: `60` or **600 * *. Default value: **600 * *.
+     * 
+     */
+    public Output<Optional<Integer>> interval() {
+        return Codegen.optional(this.interval);
+    }
+    /**
+     * Log Format
+     * 
+     */
+    @Export(name="logFormatString", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> logFormatString;
+
+    /**
+     * @return Log Format
+     * 
+     */
+    public Output<Optional<String>> logFormatString() {
+        return Codegen.optional(this.logFormatString);
+    }
+    /**
+     * The LogStore that stores the flowlog.
      * 
      */
     @Export(name="logStoreName", refs={String.class}, tree="[0]")
     private Output<String> logStoreName;
 
     /**
-     * @return The name of the log store which is in the  `project_name` SLS project.
+     * @return The LogStore that stores the flowlog.
      * 
      */
     public Output<String> logStoreName() {
         return this.logStoreName;
     }
     /**
-     * The name of the SLS project.
+     * The Project that stores the flowlog.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return The name of the SLS project.
+     * @return The Project that stores the flowlog.
      * 
      */
     public Output<String> projectName() {
         return this.projectName;
     }
     /**
-     * The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+     * region id
+     * 
+     */
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    /**
+     * @return region id
+     * 
+     */
+    public Output<String> regionId() {
+        return this.regionId;
+    }
+    /**
+     * The status of the flow log. Valid values:
+     * - `Active`: started.
+     * - `InActive`: not started.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> status;
+    private Output<String> status;
 
     /**
-     * @return The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+     * @return The status of the flow log. Valid values:
+     * - `Active`: started.
+     * - `InActive`: not started.
      * 
      */
-    public Output<Optional<String>> status() {
-        return Codegen.optional(this.status);
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The tag of the resource
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return The tag of the resource
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
+     * Cross-region Connection ID or VBR connection ID.
+     * 
+     * &gt; **NOTE:**  This parameter is required.
+     * 
+     */
+    @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> transitRouterAttachmentId;
+
+    /**
+     * @return Cross-region Connection ID or VBR connection ID.
+     * 
+     * &gt; **NOTE:**  This parameter is required.
+     * 
+     */
+    public Output<Optional<String>> transitRouterAttachmentId() {
+        return Codegen.optional(this.transitRouterAttachmentId);
+    }
+    /**
+     * Transit Router ID
+     * 
+     */
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> transitRouterId;
+
+    /**
+     * @return Transit Router ID
+     * 
+     */
+    public Output<Optional<String>> transitRouterId() {
+        return Codegen.optional(this.transitRouterId);
     }
 
     /**

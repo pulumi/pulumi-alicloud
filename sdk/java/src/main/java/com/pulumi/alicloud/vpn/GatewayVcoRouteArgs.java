@@ -9,6 +9,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GatewayVcoRouteArgs extends com.pulumi.resources.ResourceArgs {
@@ -28,6 +30,21 @@ public final class GatewayVcoRouteArgs extends com.pulumi.resources.ResourceArgs
      */
     public Output<String> nextHop() {
         return this.nextHop;
+    }
+
+    /**
+     * The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+     * 
+     */
+    @Import(name="overlayMode")
+    private @Nullable Output<String> overlayMode;
+
+    /**
+     * @return The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+     * 
+     */
+    public Optional<Output<String>> overlayMode() {
+        return Optional.ofNullable(this.overlayMode);
     }
 
     /**
@@ -79,6 +96,7 @@ public final class GatewayVcoRouteArgs extends com.pulumi.resources.ResourceArgs
 
     private GatewayVcoRouteArgs(GatewayVcoRouteArgs $) {
         this.nextHop = $.nextHop;
+        this.overlayMode = $.overlayMode;
         this.routeDest = $.routeDest;
         this.vpnConnectionId = $.vpnConnectionId;
         this.weight = $.weight;
@@ -121,6 +139,27 @@ public final class GatewayVcoRouteArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder nextHop(String nextHop) {
             return nextHop(Output.of(nextHop));
+        }
+
+        /**
+         * @param overlayMode The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overlayMode(@Nullable Output<String> overlayMode) {
+            $.overlayMode = overlayMode;
+            return this;
+        }
+
+        /**
+         * @param overlayMode The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder overlayMode(String overlayMode) {
+            return overlayMode(Output.of(overlayMode));
         }
 
         /**

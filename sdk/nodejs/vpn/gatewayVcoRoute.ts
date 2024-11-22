@@ -24,8 +24,15 @@ import * as utilities from "../utilities";
  * const defaultInstance = new alicloud.cen.Instance("default", {cenInstanceName: name});
  * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {
  *     cenId: defaultInstance.id,
- *     transitRouterDescription: "desd",
+ *     transitRouterDescription: name,
  *     transitRouterName: name,
+ * });
+ * const defaultTransitRouterCidr = new alicloud.cen.TransitRouterCidr("default", {
+ *     transitRouterId: defaultTransitRouter.transitRouterId,
+ *     cidr: "192.168.0.0/16",
+ *     transitRouterCidrName: name,
+ *     description: name,
+ *     publishCidrRoute: true,
  * });
  * const default = alicloud.cen.getTransitRouterAvailableResources({});
  * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
@@ -46,7 +53,7 @@ import * as utilities from "../utilities";
  *         ikeVersion: "ikev2",
  *         ikeMode: "main",
  *         ikeLifetime: 86400,
- *         psk: "tf-testvpn2",
+ *         psk: "tf-examplevpn2",
  *         ikePfs: "group1",
  *         remoteId: "testbob2",
  *         localId: "testalice2",
@@ -75,13 +82,6 @@ import * as utilities from "../utilities";
  *     enableNatTraversal: true,
  *     vpnAttachmentName: name,
  * });
- * const defaultTransitRouterCidr = new alicloud.cen.TransitRouterCidr("default", {
- *     transitRouterId: defaultTransitRouter.transitRouterId,
- *     cidr: "192.168.0.0/16",
- *     transitRouterCidrName: name,
- *     description: name,
- *     publishCidrRoute: true,
- * });
  * const defaultTransitRouterVpnAttachment = new alicloud.cen.TransitRouterVpnAttachment("default", {
  *     autoPublishRouteEnabled: false,
  *     transitRouterAttachmentDescription: name,
@@ -94,10 +94,10 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const defaultGatewayVcoRoute = new alicloud.vpn.GatewayVcoRoute("default", {
- *     routeDest: "192.168.12.0/24",
  *     nextHop: defaultTransitRouterVpnAttachment.vpnId,
  *     vpnConnectionId: defaultTransitRouterVpnAttachment.vpnId,
  *     weight: 100,
+ *     routeDest: "192.168.10.0/24",
  * });
  * ```
  *
@@ -142,6 +142,10 @@ export class GatewayVcoRoute extends pulumi.CustomResource {
      */
     public readonly nextHop!: pulumi.Output<string>;
     /**
+     * The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+     */
+    public readonly overlayMode!: pulumi.Output<string | undefined>;
+    /**
      * The destination network segment of the destination route.
      */
     public readonly routeDest!: pulumi.Output<string>;
@@ -172,6 +176,7 @@ export class GatewayVcoRoute extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GatewayVcoRouteState | undefined;
             resourceInputs["nextHop"] = state ? state.nextHop : undefined;
+            resourceInputs["overlayMode"] = state ? state.overlayMode : undefined;
             resourceInputs["routeDest"] = state ? state.routeDest : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vpnConnectionId"] = state ? state.vpnConnectionId : undefined;
@@ -191,6 +196,7 @@ export class GatewayVcoRoute extends pulumi.CustomResource {
                 throw new Error("Missing required property 'weight'");
             }
             resourceInputs["nextHop"] = args ? args.nextHop : undefined;
+            resourceInputs["overlayMode"] = args ? args.overlayMode : undefined;
             resourceInputs["routeDest"] = args ? args.routeDest : undefined;
             resourceInputs["vpnConnectionId"] = args ? args.vpnConnectionId : undefined;
             resourceInputs["weight"] = args ? args.weight : undefined;
@@ -209,6 +215,10 @@ export interface GatewayVcoRouteState {
      * The next hop of the destination route.
      */
     nextHop?: pulumi.Input<string>;
+    /**
+     * The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+     */
+    overlayMode?: pulumi.Input<string>;
     /**
      * The destination network segment of the destination route.
      */
@@ -235,6 +245,10 @@ export interface GatewayVcoRouteArgs {
      * The next hop of the destination route.
      */
     nextHop: pulumi.Input<string>;
+    /**
+     * The tunneling protocol. Set the value to Ipsec, which specifies the IPsec tunneling protocol.
+     */
+    overlayMode?: pulumi.Input<string>;
     /**
      * The destination network segment of the destination route.
      */

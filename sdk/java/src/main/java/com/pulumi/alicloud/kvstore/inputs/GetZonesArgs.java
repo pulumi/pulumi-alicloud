@@ -49,14 +49,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+     * Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
      * 
      */
     @Import(name="multi")
     private @Nullable Output<Boolean> multi;
 
     /**
-     * @return Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+     * @return Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
      * 
      */
     public Optional<Output<Boolean>> multi() {
@@ -158,7 +158,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param multi Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+         * @param multi Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param multi Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+         * @param multi Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
          * 
          * @return builder
          * 

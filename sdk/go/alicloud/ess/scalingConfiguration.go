@@ -212,6 +212,8 @@ type ScalingConfiguration struct {
 	KmsEncryptedPassword pulumi.StringPtrOutput `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapOutput `pulumi:"kmsEncryptionContext"`
+	// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
+	NetworkInterfaces ScalingConfigurationNetworkInterfaceArrayOutput `pulumi:"networkInterfaces"`
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override pulumi.BoolPtrOutput `pulumi:"override"`
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -369,6 +371,8 @@ type scalingConfigurationState struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
+	NetworkInterfaces []ScalingConfigurationNetworkInterface `pulumi:"networkInterfaces"`
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override *bool `pulumi:"override"`
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -494,6 +498,8 @@ type ScalingConfigurationState struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
+	NetworkInterfaces ScalingConfigurationNetworkInterfaceArrayInput
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override pulumi.BoolPtrInput
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -623,6 +629,8 @@ type scalingConfigurationArgs struct {
 	KmsEncryptedPassword *string `pulumi:"kmsEncryptedPassword"`
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext map[string]string `pulumi:"kmsEncryptionContext"`
+	// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
+	NetworkInterfaces []ScalingConfigurationNetworkInterface `pulumi:"networkInterfaces"`
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override *bool `pulumi:"override"`
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -749,6 +757,8 @@ type ScalingConfigurationArgs struct {
 	KmsEncryptedPassword pulumi.StringPtrInput
 	// An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 	KmsEncryptionContext pulumi.StringMapInput
+	// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
+	NetworkInterfaces ScalingConfigurationNetworkInterfaceArrayInput
 	// Indicates whether to overwrite the existing data. Default to false.
 	Override pulumi.BoolPtrInput
 	// The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
@@ -1037,6 +1047,13 @@ func (o ScalingConfigurationOutput) KmsEncryptedPassword() pulumi.StringPtrOutpu
 // An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
 func (o ScalingConfigurationOutput) KmsEncryptionContext() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringMapOutput { return v.KmsEncryptionContext }).(pulumi.StringMapOutput)
+}
+
+// Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
+func (o ScalingConfigurationOutput) NetworkInterfaces() ScalingConfigurationNetworkInterfaceArrayOutput {
+	return o.ApplyT(func(v *ScalingConfiguration) ScalingConfigurationNetworkInterfaceArrayOutput {
+		return v.NetworkInterfaces
+	}).(ScalingConfigurationNetworkInterfaceArrayOutput)
 }
 
 // Indicates whether to overwrite the existing data. Default to false.

@@ -113,6 +113,21 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+     * 
+     */
+    @Import(name="connectionStringPrefix")
+    private @Nullable Output<String> connectionStringPrefix;
+
+    /**
+     * @return The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+     * 
+     */
+    public Optional<Output<String>> connectionStringPrefix() {
+        return Optional.ofNullable(this.connectionStringPrefix);
+    }
+
+    /**
      * The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
@@ -487,6 +502,21 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Region Id
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return Region Id
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
      * The ID of the resource group to which the instance belongs.
      * 
      */
@@ -796,6 +826,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         this.backupId = $.backupId;
         this.clusterBackupId = $.clusterBackupId;
         this.connectionDomain = $.connectionDomain;
+        this.connectionStringPrefix = $.connectionStringPrefix;
         this.createTime = $.createTime;
         this.effectiveTime = $.effectiveTime;
         this.engineVersion = $.engineVersion;
@@ -818,6 +849,7 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
         this.port = $.port;
         this.readOnlyCount = $.readOnlyCount;
         this.recoverConfigMode = $.recoverConfigMode;
+        this.regionId = $.regionId;
         this.resourceGroupId = $.resourceGroupId;
         this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
@@ -985,6 +1017,27 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder connectionDomain(String connectionDomain) {
             return connectionDomain(Output.of(connectionDomain));
+        }
+
+        /**
+         * @param connectionStringPrefix The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionStringPrefix(@Nullable Output<String> connectionStringPrefix) {
+            $.connectionStringPrefix = connectionStringPrefix;
+            return this;
+        }
+
+        /**
+         * @param connectionStringPrefix The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectionStringPrefix(String connectionStringPrefix) {
+            return connectionStringPrefix(Output.of(connectionStringPrefix));
         }
 
         /**
@@ -1491,6 +1544,27 @@ public final class TairInstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder recoverConfigMode(String recoverConfigMode) {
             return recoverConfigMode(Output.of(recoverConfigMode));
+        }
+
+        /**
+         * @param regionId Region Id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId Region Id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**

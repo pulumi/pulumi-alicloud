@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.vpc.inputs;
 
+import com.pulumi.alicloud.vpc.inputs.NatGatewayAccessModeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
 
     public static final NatGatewayState Empty = new NatGatewayState();
+
+    /**
+     * The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+     * 
+     */
+    @Import(name="accessMode")
+    private @Nullable Output<NatGatewayAccessModeArgs> accessMode;
+
+    /**
+     * @return The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+     * 
+     */
+    public Optional<Output<NatGatewayAccessModeArgs>> accessMode() {
+        return Optional.ofNullable(this.accessMode);
+    }
 
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
@@ -117,29 +133,52 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+     * 
+     */
+    @Import(name="icmpReplyEnabled")
+    private @Nullable Output<Boolean> icmpReplyEnabled;
+
+    /**
+     * @return Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> icmpReplyEnabled() {
+        return Optional.ofNullable(this.icmpReplyEnabled);
+    }
+
+    /**
+     * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+     * 
+     * @deprecated
      * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
      * 
      */
+    @Deprecated /* Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead. */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
      * @return Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
      * 
+     * @deprecated
+     * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+     * 
      */
+    @Deprecated /* Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead. */
     public Optional<Output<String>> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
 
     /**
-     * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+     * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
      * 
      */
     @Import(name="internetChargeType")
     private @Nullable Output<String> internetChargeType;
 
     /**
-     * @return The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+     * @return The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
      * 
      */
     public Optional<Output<String>> internetChargeType() {
@@ -149,14 +188,22 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
      * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+     * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
      * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+     * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -177,14 +224,14 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+     * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
      * 
      */
     @Import(name="natType")
     private @Nullable Output<String> natType;
 
     /**
-     * @return The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+     * @return The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
      * 
      */
     public Optional<Output<String>> natType() {
@@ -236,6 +283,21 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> period() {
         return Optional.ofNullable(this.period);
+    }
+
+    /**
+     * Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+     * 
+     */
+    @Import(name="privateLinkEnabled")
+    private @Nullable Output<Boolean> privateLinkEnabled;
+
+    /**
+     * @return Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+     * 
+     */
+    public Optional<Output<Boolean>> privateLinkEnabled() {
+        return Optional.ofNullable(this.privateLinkEnabled);
     }
 
     /**
@@ -331,12 +393,14 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
     private NatGatewayState() {}
 
     private NatGatewayState(NatGatewayState $) {
+        this.accessMode = $.accessMode;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.dryRun = $.dryRun;
         this.eipBindMode = $.eipBindMode;
         this.force = $.force;
         this.forwardTableIds = $.forwardTableIds;
+        this.icmpReplyEnabled = $.icmpReplyEnabled;
         this.instanceChargeType = $.instanceChargeType;
         this.internetChargeType = $.internetChargeType;
         this.name = $.name;
@@ -345,6 +409,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         this.networkType = $.networkType;
         this.paymentType = $.paymentType;
         this.period = $.period;
+        this.privateLinkEnabled = $.privateLinkEnabled;
         this.snatTableIds = $.snatTableIds;
         this.specification = $.specification;
         this.status = $.status;
@@ -369,6 +434,27 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(NatGatewayState defaults) {
             $ = new NatGatewayState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessMode The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMode(@Nullable Output<NatGatewayAccessModeArgs> accessMode) {
+            $.accessMode = accessMode;
+            return this;
+        }
+
+        /**
+         * @param accessMode The access mode for reverse access to the VPC NAT gateway. See `access_mode` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessMode(NatGatewayAccessModeArgs accessMode) {
+            return accessMode(Output.of(accessMode));
         }
 
         /**
@@ -506,11 +592,36 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+         * @param icmpReplyEnabled Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
          * 
          * @return builder
          * 
          */
+        public Builder icmpReplyEnabled(@Nullable Output<Boolean> icmpReplyEnabled) {
+            $.icmpReplyEnabled = icmpReplyEnabled;
+            return this;
+        }
+
+        /**
+         * @param icmpReplyEnabled Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder icmpReplyEnabled(Boolean icmpReplyEnabled) {
+            return icmpReplyEnabled(Output.of(icmpReplyEnabled));
+        }
+
+        /**
+         * @param instanceChargeType Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+         * 
+         */
+        @Deprecated /* Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead. */
         public Builder instanceChargeType(@Nullable Output<String> instanceChargeType) {
             $.instanceChargeType = instanceChargeType;
             return this;
@@ -521,13 +632,17 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
+         * 
          */
+        @Deprecated /* Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead. */
         public Builder instanceChargeType(String instanceChargeType) {
             return instanceChargeType(Output.of(instanceChargeType));
         }
 
         /**
-         * @param internetChargeType The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+         * @param internetChargeType The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
          * 
          * @return builder
          * 
@@ -538,7 +653,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param internetChargeType The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
+         * @param internetChargeType The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internet_charge_type` cannot be set to `PayBySpec`.
          * 
          * @return builder
          * 
@@ -552,7 +667,11 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -563,7 +682,11 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -590,7 +713,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natType The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
          * 
          * @return builder
          * 
@@ -601,7 +724,7 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param natType The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
+         * @param natType The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `nat_type` cannot be set to `Normal`.
          * 
          * @return builder
          * 
@@ -673,6 +796,27 @@ public final class NatGatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder period(Integer period) {
             return period(Output.of(period));
+        }
+
+        /**
+         * @param privateLinkEnabled Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateLinkEnabled(@Nullable Output<Boolean> privateLinkEnabled) {
+            $.privateLinkEnabled = privateLinkEnabled;
+            return this;
+        }
+
+        /**
+         * @param privateLinkEnabled Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateLinkEnabled(Boolean privateLinkEnabled) {
+            return privateLinkEnabled(Output.of(privateLinkEnabled));
         }
 
         /**

@@ -1374,6 +1374,8 @@
         "rds/accountPrivilege.ts",
         "rds/backupPolicy.ts",
         "rds/connection.ts",
+        "rds/custom.ts",
+        "rds/customDeploymentSet.ts",
         "rds/database.ts",
         "rds/dbInstanceEndpoint.ts",
         "rds/dbInstanceEndpointAddress.ts",

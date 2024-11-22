@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
 //
 // > **NOTE:** Available since v1.51.0
 //
@@ -72,7 +72,7 @@ type GetInstanceEnginesArgs struct {
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// File name where to save data source results (after running `pulumi up`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The Zone to launch the KVStore instance.
+	// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -80,15 +80,15 @@ type GetInstanceEnginesArgs struct {
 type GetInstanceEnginesResult struct {
 	// Database type.
 	Engine *string `pulumi:"engine"`
-	// KVStore Instance version.
+	// Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance version.
 	EngineVersion *string `pulumi:"engineVersion"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                 string  `pulumi:"id"`
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// A list of KVStore available instance engines. Each element contains the following attributes:
+	// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) available instance engines. Each element contains the following attributes:
 	InstanceEngines []GetInstanceEnginesInstanceEngine `pulumi:"instanceEngines"`
 	OutputFile      *string                            `pulumi:"outputFile"`
-	// The Zone to launch the KVStore instance.
+	// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -121,7 +121,7 @@ type GetInstanceEnginesOutputArgs struct {
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
 	// File name where to save data source results (after running `pulumi up`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The Zone to launch the KVStore instance.
+	// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -149,7 +149,7 @@ func (o GetInstanceEnginesResultOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstanceEnginesResult) *string { return v.Engine }).(pulumi.StringPtrOutput)
 }
 
-// KVStore Instance version.
+// Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance version.
 func (o GetInstanceEnginesResultOutput) EngineVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstanceEnginesResult) *string { return v.EngineVersion }).(pulumi.StringPtrOutput)
 }
@@ -163,7 +163,7 @@ func (o GetInstanceEnginesResultOutput) InstanceChargeType() pulumi.StringPtrOut
 	return o.ApplyT(func(v GetInstanceEnginesResult) *string { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
 }
 
-// A list of KVStore available instance engines. Each element contains the following attributes:
+// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) available instance engines. Each element contains the following attributes:
 func (o GetInstanceEnginesResultOutput) InstanceEngines() GetInstanceEnginesInstanceEngineArrayOutput {
 	return o.ApplyT(func(v GetInstanceEnginesResult) []GetInstanceEnginesInstanceEngine { return v.InstanceEngines }).(GetInstanceEnginesInstanceEngineArrayOutput)
 }
@@ -172,7 +172,7 @@ func (o GetInstanceEnginesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstanceEnginesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// The Zone to launch the KVStore instance.
+// The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 func (o GetInstanceEnginesResultOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceEnginesResult) string { return v.ZoneId }).(pulumi.StringOutput)
 }

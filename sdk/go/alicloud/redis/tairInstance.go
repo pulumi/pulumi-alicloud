@@ -36,6 +36,8 @@ type TairInstance struct {
 	ClusterBackupId pulumi.StringPtrOutput `pulumi:"clusterBackupId"`
 	// The internal endpoint of the instance.
 	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
+	// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+	ConnectionStringPrefix pulumi.StringPtrOutput `pulumi:"connectionStringPrefix"`
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
@@ -85,7 +87,7 @@ type TairInstance struct {
 	// The degradation threshold time of the semi-synchronous replication mode. This parameter value is required only when semi-synchronous replication is enabled. The unit is milliseconds, and the range is 10ms to 60000ms. The default value is 500ms. Please refer to: https://www.alibabacloud.com/help/en/redis/user-guide/modify-the-synchronization-mode-of-a-persistent-memory-optimized-instance。
 	ParamSemisyncReplTimeout pulumi.StringOutput `pulumi:"paramSemisyncReplTimeout"`
 	// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
-	ParamSentinelCompatEnable pulumi.StringPtrOutput `pulumi:"paramSentinelCompatEnable"`
+	ParamSentinelCompatEnable pulumi.StringOutput `pulumi:"paramSentinelCompatEnable"`
 	// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default Subscription.
@@ -102,6 +104,8 @@ type TairInstance struct {
 	ReadOnlyCount pulumi.IntPtrOutput `pulumi:"readOnlyCount"`
 	// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
 	RecoverConfigMode pulumi.StringPtrOutput `pulumi:"recoverConfigMode"`
+	// Region Id
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
@@ -216,6 +220,8 @@ type tairInstanceState struct {
 	ClusterBackupId *string `pulumi:"clusterBackupId"`
 	// The internal endpoint of the instance.
 	ConnectionDomain *string `pulumi:"connectionDomain"`
+	// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime *string `pulumi:"createTime"`
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
@@ -282,6 +288,8 @@ type tairInstanceState struct {
 	ReadOnlyCount *int `pulumi:"readOnlyCount"`
 	// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
 	RecoverConfigMode *string `pulumi:"recoverConfigMode"`
+	// Region Id
+	RegionId *string `pulumi:"regionId"`
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
@@ -345,6 +353,8 @@ type TairInstanceState struct {
 	ClusterBackupId pulumi.StringPtrInput
 	// The internal endpoint of the instance.
 	ConnectionDomain pulumi.StringPtrInput
+	// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+	ConnectionStringPrefix pulumi.StringPtrInput
 	// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	CreateTime pulumi.StringPtrInput
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
@@ -411,6 +421,8 @@ type TairInstanceState struct {
 	ReadOnlyCount pulumi.IntPtrInput
 	// Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
 	RecoverConfigMode pulumi.StringPtrInput
+	// Region Id
+	RegionId pulumi.StringPtrInput
 	// The ID of the resource group to which the instance belongs.
 	ResourceGroupId pulumi.StringPtrInput
 	// The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
@@ -474,6 +486,8 @@ type tairInstanceArgs struct {
 	BackupId *string `pulumi:"backupId"`
 	// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
 	ClusterBackupId *string `pulumi:"clusterBackupId"`
+	// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Database version. Default value: 1.0.
@@ -590,6 +604,8 @@ type TairInstanceArgs struct {
 	BackupId pulumi.StringPtrInput
 	// This parameter is supported for specific new cluster instances. You can query the backup set ID by calling the DescribeClusterBackupList operation. If this parameter is supported, you can specify the backup set ID. In this case, you do not need to specify the BackupId parameter. If this parameter is not supported, set the BackupId parameter to the IDs of backup sets in all shards of the source instance, separated by commas (,).
 	ClusterBackupId pulumi.StringPtrInput
+	// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+	ConnectionStringPrefix pulumi.StringPtrInput
 	// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
 	EffectiveTime pulumi.StringPtrInput
 	// Database version. Default value: 1.0.
@@ -813,6 +829,11 @@ func (o TairInstanceOutput) ConnectionDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ConnectionDomain }).(pulumi.StringOutput)
 }
 
+// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+func (o TairInstanceOutput) ConnectionStringPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.ConnectionStringPrefix }).(pulumi.StringPtrOutput)
+}
+
 // The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 func (o TairInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -907,8 +928,8 @@ func (o TairInstanceOutput) ParamSemisyncReplTimeout() pulumi.StringOutput {
 }
 
 // sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
-func (o TairInstanceOutput) ParamSentinelCompatEnable() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.ParamSentinelCompatEnable }).(pulumi.StringPtrOutput)
+func (o TairInstanceOutput) ParamSentinelCompatEnable() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.ParamSentinelCompatEnable }).(pulumi.StringOutput)
 }
 
 // The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ & * ( ) _ + - =
@@ -943,6 +964,11 @@ func (o TairInstanceOutput) ReadOnlyCount() pulumi.IntPtrOutput {
 // Whether to restore the account, kernel parameters, and whitelist (config) information from the original backup set when creating an instance using a specified backup set. The default value is empty, indicating that the account, kernel parameters, and whitelist information are not restored from the original backup set. This parameter is only applicable to Cloud Native instances, and the account, kernel parameters, and whitelist information must have been saved in the original backup set.
 func (o TairInstanceOutput) RecoverConfigMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TairInstance) pulumi.StringPtrOutput { return v.RecoverConfigMode }).(pulumi.StringPtrOutput)
+}
+
+// Region Id
+func (o TairInstanceOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TairInstance) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The ID of the resource group to which the instance belongs.

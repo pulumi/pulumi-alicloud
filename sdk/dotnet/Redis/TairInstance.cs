@@ -60,6 +60,12 @@ namespace Pulumi.AliCloud.Redis
         public Output<string> ConnectionDomain { get; private set; } = null!;
 
         /// <summary>
+        /// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+        /// </summary>
+        [Output("connectionStringPrefix")]
+        public Output<string?> ConnectionStringPrefix { get; private set; } = null!;
+
+        /// <summary>
         /// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Output("createTime")]
@@ -171,7 +177,7 @@ namespace Pulumi.AliCloud.Redis
         /// sentinel compatibility mode, applicable to instances in the cluster architecture proxy connection mode or read/write splitting architecture. For more information about the parameters, see https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance. The value is 0 or 1. The default value is 0.
         /// </summary>
         [Output("paramSentinelCompatEnable")]
-        public Output<string?> ParamSentinelCompatEnable { get; private set; } = null!;
+        public Output<string> ParamSentinelCompatEnable { get; private set; } = null!;
 
         /// <summary>
         /// The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =
@@ -212,6 +218,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Output("recoverConfigMode")]
         public Output<string?> RecoverConfigMode { get; private set; } = null!;
+
+        /// <summary>
+        /// Region Id
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the resource group to which the instance belongs.
@@ -410,6 +422,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("clusterBackupId")]
         public Input<string>? ClusterBackupId { get; set; }
+
+        /// <summary>
+        /// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+        /// </summary>
+        [Input("connectionStringPrefix")]
+        public Input<string>? ConnectionStringPrefix { get; set; }
 
         /// <summary>
         /// The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
@@ -720,6 +738,12 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? ConnectionDomain { get; set; }
 
         /// <summary>
+        /// The prefix of the endpoint the instance, which must consist of lowercase letters and numbers and start with a lowercase letter.
+        /// </summary>
+        [Input("connectionStringPrefix")]
+        public Input<string>? ConnectionStringPrefix { get; set; }
+
+        /// <summary>
         /// The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         /// </summary>
         [Input("createTime")]
@@ -882,6 +906,12 @@ namespace Pulumi.AliCloud.Redis
         /// </summary>
         [Input("recoverConfigMode")]
         public Input<string>? RecoverConfigMode { get; set; }
+
+        /// <summary>
+        /// Region Id
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         /// <summary>
         /// The ID of the resource group to which the instance belongs.

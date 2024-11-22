@@ -53,6 +53,8 @@ __all__ = [
     'ScalingConfigurationInstancePatternInfoArgsDict',
     'ScalingConfigurationInstanceTypeOverrideArgs',
     'ScalingConfigurationInstanceTypeOverrideArgsDict',
+    'ScalingConfigurationNetworkInterfaceArgs',
+    'ScalingConfigurationNetworkInterfaceArgsDict',
     'ScalingConfigurationSpotPriceLimitArgs',
     'ScalingConfigurationSpotPriceLimitArgsDict',
     'ScalingGroupAlbServerGroupArgs',
@@ -2846,6 +2848,98 @@ class ScalingConfigurationInstanceTypeOverrideArgs:
     @weighted_capacity.setter
     def weighted_capacity(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weighted_capacity", value)
+
+
+if not MYPY:
+    class ScalingConfigurationNetworkInterfaceArgsDict(TypedDict):
+        instance_type: NotRequired[pulumi.Input[str]]
+        """
+        The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+        """
+        ipv6_address_count: NotRequired[pulumi.Input[int]]
+        """
+        The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+        """
+        network_interface_traffic_mode: NotRequired[pulumi.Input[str]]
+        """
+        The communication mode of the ENI. Valid values: Standard, HighPerformance.
+        """
+        security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The ID of security group N to which ENI N belongs.
+        """
+elif False:
+    ScalingConfigurationNetworkInterfaceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ScalingConfigurationNetworkInterfaceArgs:
+    def __init__(__self__, *,
+                 instance_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_address_count: Optional[pulumi.Input[int]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
+                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] instance_type: The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+        :param pulumi.Input[int] ipv6_address_count: The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+        :param pulumi.Input[str] network_interface_traffic_mode: The communication mode of the ENI. Valid values: Standard, HighPerformance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of security group N to which ENI N belongs.
+        """
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
+        if ipv6_address_count is not None:
+            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+        if network_interface_traffic_mode is not None:
+            pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
+        if security_group_ids is not None:
+            pulumi.set(__self__, "security_group_ids", security_group_ids)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ENI type. If you specify NetworkInterfaces.N, specify at least one primary ENI. You cannot specify SecurityGroupId or SecurityGroupIds.N. Valid values: Primary, Secondary.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="ipv6AddressCount")
+    def ipv6_address_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
+        """
+        return pulumi.get(self, "ipv6_address_count")
+
+    @ipv6_address_count.setter
+    def ipv6_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ipv6_address_count", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The communication mode of the ENI. Valid values: Standard, HighPerformance.
+        """
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @network_interface_traffic_mode.setter
+    def network_interface_traffic_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_traffic_mode", value)
+
+    @property
+    @pulumi.getter(name="securityGroupIds")
+    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The ID of security group N to which ENI N belongs.
+        """
+        return pulumi.get(self, "security_group_ids")
+
+    @security_group_ids.setter
+    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "security_group_ids", value)
 
 
 if not MYPY:

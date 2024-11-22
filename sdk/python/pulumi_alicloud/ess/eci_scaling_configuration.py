@@ -72,8 +72,12 @@ class EciScalingConfigurationArgs:
         :param pulumi.Input[int] active_deadline_seconds: The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[bool] auto_match_image_cache: Whether to automatically match the image cache.
-        :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
-               English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        :param pulumi.Input[str] container_group_name: The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+               name_prefix: the prefix of the hostname.
+               (AUTO_INCREMENT): the sort method. This is a static field.
+               begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+               bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+               name_suffix: the suffix of the hostname. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[bool] cost_optimization: Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
@@ -285,8 +289,12 @@ class EciScalingConfigurationArgs:
     @pulumi.getter(name="containerGroupName")
     def container_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the container group. which must contain 2-128 characters (
-        English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+        name_prefix: the prefix of the hostname.
+        (AUTO_INCREMENT): the sort method. This is a static field.
+        begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+        bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+        name_suffix: the suffix of the hostname. This field is optional.
         """
         return pulumi.get(self, "container_group_name")
 
@@ -782,8 +790,12 @@ class _EciScalingConfigurationState:
         :param pulumi.Input[int] active_deadline_seconds: The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[bool] auto_match_image_cache: Whether to automatically match the image cache.
-        :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
-               English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        :param pulumi.Input[str] container_group_name: The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+               name_prefix: the prefix of the hostname.
+               (AUTO_INCREMENT): the sort method. This is a static field.
+               begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+               bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+               name_suffix: the suffix of the hostname. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerArgs']]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[bool] cost_optimization: Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
@@ -985,8 +997,12 @@ class _EciScalingConfigurationState:
     @pulumi.getter(name="containerGroupName")
     def container_group_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the container group. which must contain 2-128 characters (
-        English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+        name_prefix: the prefix of the hostname.
+        (AUTO_INCREMENT): the sort method. This is a static field.
+        begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+        bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+        name_suffix: the suffix of the hostname. This field is optional.
         """
         return pulumi.get(self, "container_group_name")
 
@@ -1566,8 +1582,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[int] active_deadline_seconds: The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[bool] auto_match_image_cache: Whether to automatically match the image cache.
-        :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
-               English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        :param pulumi.Input[str] container_group_name: The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+               name_prefix: the prefix of the hostname.
+               (AUTO_INCREMENT): the sort method. This is a static field.
+               begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+               bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+               name_suffix: the suffix of the hostname. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[bool] cost_optimization: Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
@@ -1869,8 +1889,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[int] active_deadline_seconds: The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
         :param pulumi.Input[bool] auto_create_eip: Whether create eip automatically.
         :param pulumi.Input[bool] auto_match_image_cache: Whether to automatically match the image cache.
-        :param pulumi.Input[str] container_group_name: The name of the container group. which must contain 2-128 characters (
-               English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        :param pulumi.Input[str] container_group_name: The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+               name_prefix: the prefix of the hostname.
+               (AUTO_INCREMENT): the sort method. This is a static field.
+               begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+               bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+               name_suffix: the suffix of the hostname. This field is optional.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EciScalingConfigurationContainerArgs', 'EciScalingConfigurationContainerArgsDict']]]] containers: The list of containers. See `containers` below for details.
         :param pulumi.Input[bool] cost_optimization: Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
         :param pulumi.Input[float] cpu: The amount of CPU resources allocated to the container group.
@@ -2015,8 +2039,12 @@ class EciScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="containerGroupName")
     def container_group_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the container group. which must contain 2-128 characters (
-        English), starting with numbers, English lowercase letters , and can contain number, and hypens `-`.
+        The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
+        name_prefix: the prefix of the hostname.
+        (AUTO_INCREMENT): the sort method. This is a static field.
+        begin_number: the start value of the sequential values. Valid values: 0 to 999999.
+        bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified begin_number value is greater than the value of the bits field, the bits field is automatically set to 6.
+        name_suffix: the suffix of the hostname. This field is optional.
         """
         return pulumi.get(self, "container_group_name")
 

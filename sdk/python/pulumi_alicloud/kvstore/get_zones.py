@@ -126,7 +126,7 @@ def get_zones(engine: Optional[str] = None,
               product_type: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
-    This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+    This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available since v1.73.0.
 
@@ -144,7 +144,7 @@ def get_zones(engine: Optional[str] = None,
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
            * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
-    :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+    :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -172,7 +172,7 @@ def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
                      product_type: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
-    This data source provides availability zones for KVStore that can be accessed by an Alibaba Cloud account within the region configured in the provider.
+    This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
     > **NOTE:** Available since v1.73.0.
 
@@ -190,7 +190,7 @@ def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
     :param str engine: Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
            * product_type - (Optional, Available since v1.130.0+) The type of the service. Valid values: `Local`, `Tair_rdb`, `Tair_scm`, `Tair_essd`, `OnECS`.
     :param str instance_charge_type: Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
-    :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch KVStore instances.
+    :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Tair (Redis OSS-Compatible) And Memcache (KVStore) instances.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()

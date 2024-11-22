@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+ * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available since v1.51.0
  *
@@ -62,7 +62,7 @@ export interface GetInstanceEnginesArgs {
      */
     outputFile?: string;
     /**
-     * The Zone to launch the KVStore instance.
+     * The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */
     zoneId: string;
 }
@@ -76,7 +76,7 @@ export interface GetInstanceEnginesResult {
      */
     readonly engine?: string;
     /**
-     * KVStore Instance version.
+     * Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance version.
      */
     readonly engineVersion?: string;
     /**
@@ -85,17 +85,17 @@ export interface GetInstanceEnginesResult {
     readonly id: string;
     readonly instanceChargeType?: string;
     /**
-     * A list of KVStore available instance engines. Each element contains the following attributes:
+     * A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) available instance engines. Each element contains the following attributes:
      */
     readonly instanceEngines: outputs.kvstore.GetInstanceEnginesInstanceEngine[];
     readonly outputFile?: string;
     /**
-     * The Zone to launch the KVStore instance.
+     * The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */
     readonly zoneId: string;
 }
 /**
- * This data source provides the KVStore instance engines resource available info of Alibaba Cloud.
+ * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
  *
  * > **NOTE:** Available since v1.51.0
  *
@@ -150,7 +150,7 @@ export interface GetInstanceEnginesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The Zone to launch the KVStore instance.
+     * The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */
     zoneId: pulumi.Input<string>;
 }

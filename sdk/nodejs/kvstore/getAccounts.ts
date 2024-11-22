@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+ * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.102.0+.
  *
@@ -54,7 +54,7 @@ export interface GetAccountsArgs {
      */
     outputFile?: string;
     /**
-     * The status of KVStore Account. Valid Values: `"Available` `Unavailable`
+     * The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
      */
     status?: string;
 }
@@ -77,7 +77,7 @@ export interface GetAccountsResult {
     readonly status?: string;
 }
 /**
- * This data source provides the KVStore Accounts of the current Alibaba Cloud user.
+ * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Accounts of the current Alibaba Cloud user.
  *
  * > **NOTE:** Available in v1.102.0+.
  *
@@ -124,7 +124,7 @@ export interface GetAccountsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of KVStore Account. Valid Values: `"Available` `Unavailable`
+     * The status of Tair (Redis OSS-Compatible) And Memcache (KVStore) Account. Valid Values: `"Available` `Unavailable`
      */
     status?: pulumi.Input<string>;
 }

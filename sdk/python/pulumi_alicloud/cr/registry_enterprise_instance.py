@@ -21,51 +21,79 @@ class RegistryEnterpriseInstanceArgs:
     def __init__(__self__, *,
                  instance_name: pulumi.Input[str],
                  instance_type: pulumi.Input[str],
+                 payment_type: pulumi.Input[str],
                  custom_oss_bucket: Optional[pulumi.Input[str]] = None,
+                 default_oss_bucket: Optional[pulumi.Input[str]] = None,
+                 image_scanner: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
                  kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  password: Optional[pulumi.Input[str]] = None,
-                 payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
-                 renewal_status: Optional[pulumi.Input[str]] = None):
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseInstance resource.
-        :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
-        :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
+        :param pulumi.Input[str] instance_name: InstanceName
+        :param pulumi.Input[str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+               
+               Basic: Basic instance
+               
+               Standard: Standard instance
+               
+               Advanced: Advanced Edition Instance
+        :param pulumi.Input[str] payment_type: Payment type, value:
+               - Subscription: Prepaid.
+        :param pulumi.Input[str] custom_oss_bucket: Custom OSS Bucket name
+        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket
+        :param pulumi.Input[str] image_scanner: Security scan engine
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
-        :param pulumi.Input[str] payment_type: Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
-        :param pulumi.Input[int] renew_period: Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
-        :param pulumi.Input[str] renewal_status: Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+        :param pulumi.Input[str] password: Permanent access credentials of the instance
+        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+               
+               > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
+               
+               > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status, value:
+               - AutoRenewal: automatic renewal.
+               - ManualRenewal: manual renewal.
+               
+               Default ManualRenewal.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "instance_type", instance_type)
+        pulumi.set(__self__, "payment_type", payment_type)
         if custom_oss_bucket is not None:
             pulumi.set(__self__, "custom_oss_bucket", custom_oss_bucket)
+        if default_oss_bucket is not None:
+            pulumi.set(__self__, "default_oss_bucket", default_oss_bucket)
+        if image_scanner is not None:
+            pulumi.set(__self__, "image_scanner", image_scanner)
         if kms_encrypted_password is not None:
             pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
             pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Input[str]:
         """
-        Name of Container Registry Enterprise Edition instance.
+        InstanceName
         """
         return pulumi.get(self, "instance_name")
 
@@ -77,7 +105,13 @@ class RegistryEnterpriseInstanceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
         """
-        Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+        The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+
+        Basic: Basic instance
+
+        Standard: Standard instance
+
+        Advanced: Advanced Edition Instance
         """
         return pulumi.get(self, "instance_type")
 
@@ -86,16 +120,53 @@ class RegistryEnterpriseInstanceArgs:
         pulumi.set(self, "instance_type", value)
 
     @property
+    @pulumi.getter(name="paymentType")
+    def payment_type(self) -> pulumi.Input[str]:
+        """
+        Payment type, value:
+        - Subscription: Prepaid.
+        """
+        return pulumi.get(self, "payment_type")
+
+    @payment_type.setter
+    def payment_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "payment_type", value)
+
+    @property
     @pulumi.getter(name="customOssBucket")
     def custom_oss_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of your customized oss bucket. Use this bucket as instance storage if set.
+        Custom OSS Bucket name
         """
         return pulumi.get(self, "custom_oss_bucket")
 
     @custom_oss_bucket.setter
     def custom_oss_bucket(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_oss_bucket", value)
+
+    @property
+    @pulumi.getter(name="defaultOssBucket")
+    def default_oss_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use the default OSS Bucket
+        """
+        return pulumi.get(self, "default_oss_bucket")
+
+    @default_oss_bucket.setter
+    def default_oss_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_oss_bucket", value)
+
+    @property
+    @pulumi.getter(name="imageScanner")
+    def image_scanner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Security scan engine
+        """
+        return pulumi.get(self, "image_scanner")
+
+    @image_scanner.setter
+    def image_scanner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_scanner", value)
 
     @property
     @pulumi.getter(name="kmsEncryptedPassword")
@@ -125,7 +196,7 @@ class RegistryEnterpriseInstanceArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        Permanent access credentials of the instance
         """
         return pulumi.get(self, "password")
 
@@ -134,22 +205,12 @@ class RegistryEnterpriseInstanceArgs:
         pulumi.set(self, "password", value)
 
     @property
-    @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
-        """
-        return pulumi.get(self, "payment_type")
-
-    @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "payment_type", value)
-
-    @property
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+        Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+
+        > **NOTE:**  must be set when creating a prepaid instance.
         """
         return pulumi.get(self, "period")
 
@@ -161,7 +222,9 @@ class RegistryEnterpriseInstanceArgs:
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+        Automatic renewal cycle, in months.
+
+        > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
         """
         return pulumi.get(self, "renew_period")
 
@@ -173,7 +236,11 @@ class RegistryEnterpriseInstanceArgs:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+        Automatic renewal status, value:
+        - AutoRenewal: automatic renewal.
+        - ManualRenewal: manual renewal.
+
+        Default ManualRenewal.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -181,13 +248,30 @@ class RegistryEnterpriseInstanceArgs:
     def renewal_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "renewal_status", value)
 
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
 
 @pulumi.input_type
 class _RegistryEnterpriseInstanceState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  created_time: Optional[pulumi.Input[str]] = None,
                  custom_oss_bucket: Optional[pulumi.Input[str]] = None,
+                 default_oss_bucket: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
+                 image_scanner: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -195,31 +279,64 @@ class _RegistryEnterpriseInstanceState:
                  password: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseInstance resources.
-        :param pulumi.Input[str] created_time: Time of Container Registry Enterprise Edition instance creation.
-        :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
-        :param pulumi.Input[str] end_time: Time of Container Registry Enterprise Edition instance expiration.
-        :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[str] created_time: . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
+        :param pulumi.Input[str] custom_oss_bucket: Custom OSS Bucket name
+        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket
+        :param pulumi.Input[str] end_time: Expiration Time
+        :param pulumi.Input[str] image_scanner: Security scan engine
+        :param pulumi.Input[str] instance_name: InstanceName
+        :param pulumi.Input[str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+               
+               Basic: Basic instance
+               
+               Standard: Standard instance
+               
+               Advanced: Advanced Edition Instance
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
-        :param pulumi.Input[str] payment_type: Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
-        :param pulumi.Input[int] renew_period: Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
-        :param pulumi.Input[str] renewal_status: Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
-        :param pulumi.Input[str] status: Status of Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] password: Permanent access credentials of the instance
+        :param pulumi.Input[str] payment_type: Payment type, value:
+               - Subscription: Prepaid.
+        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+               
+               > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[str] region_id: RegionId
+        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
+               
+               > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status, value:
+               - AutoRenewal: automatic renewal.
+               - ManualRenewal: manual renewal.
+               
+               Default ManualRenewal.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] status: Instance Status
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if created_time is not None:
+            warnings.warn("""Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.""", DeprecationWarning)
+            pulumi.log.warn("""created_time is deprecated: Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.""")
         if created_time is not None:
             pulumi.set(__self__, "created_time", created_time)
         if custom_oss_bucket is not None:
             pulumi.set(__self__, "custom_oss_bucket", custom_oss_bucket)
+        if default_oss_bucket is not None:
+            pulumi.set(__self__, "default_oss_bucket", default_oss_bucket)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
+        if image_scanner is not None:
+            pulumi.set(__self__, "image_scanner", image_scanner)
         if instance_name is not None:
             pulumi.set(__self__, "instance_name", instance_name)
         if instance_type is not None:
@@ -234,18 +351,35 @@ class _RegistryEnterpriseInstanceState:
             pulumi.set(__self__, "payment_type", payment_type)
         if period is not None:
             pulumi.set(__self__, "period", period)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if renew_period is not None:
             pulumi.set(__self__, "renew_period", renew_period)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="createdTime")
+    @_utilities.deprecated("""Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.""")
     def created_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time of Container Registry Enterprise Edition instance creation.
+        . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         """
         return pulumi.get(self, "created_time")
 
@@ -257,7 +391,7 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter(name="customOssBucket")
     def custom_oss_bucket(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of your customized oss bucket. Use this bucket as instance storage if set.
+        Custom OSS Bucket name
         """
         return pulumi.get(self, "custom_oss_bucket")
 
@@ -266,10 +400,22 @@ class _RegistryEnterpriseInstanceState:
         pulumi.set(self, "custom_oss_bucket", value)
 
     @property
+    @pulumi.getter(name="defaultOssBucket")
+    def default_oss_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether to use the default OSS Bucket
+        """
+        return pulumi.get(self, "default_oss_bucket")
+
+    @default_oss_bucket.setter
+    def default_oss_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_oss_bucket", value)
+
+    @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time of Container Registry Enterprise Edition instance expiration.
+        Expiration Time
         """
         return pulumi.get(self, "end_time")
 
@@ -278,10 +424,22 @@ class _RegistryEnterpriseInstanceState:
         pulumi.set(self, "end_time", value)
 
     @property
+    @pulumi.getter(name="imageScanner")
+    def image_scanner(self) -> Optional[pulumi.Input[str]]:
+        """
+        Security scan engine
+        """
+        return pulumi.get(self, "image_scanner")
+
+    @image_scanner.setter
+    def image_scanner(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_scanner", value)
+
+    @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of Container Registry Enterprise Edition instance.
+        InstanceName
         """
         return pulumi.get(self, "instance_name")
 
@@ -293,7 +451,13 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+        The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+
+        Basic: Basic instance
+
+        Standard: Standard instance
+
+        Advanced: Advanced Edition Instance
         """
         return pulumi.get(self, "instance_type")
 
@@ -329,7 +493,7 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        Permanent access credentials of the instance
         """
         return pulumi.get(self, "password")
 
@@ -341,7 +505,8 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter(name="paymentType")
     def payment_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+        Payment type, value:
+        - Subscription: Prepaid.
         """
         return pulumi.get(self, "payment_type")
 
@@ -353,7 +518,9 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[int]]:
         """
-        Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+        Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+
+        > **NOTE:**  must be set when creating a prepaid instance.
         """
         return pulumi.get(self, "period")
 
@@ -362,10 +529,24 @@ class _RegistryEnterpriseInstanceState:
         pulumi.set(self, "period", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        RegionId
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+        Automatic renewal cycle, in months.
+
+        > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
         """
         return pulumi.get(self, "renew_period")
 
@@ -377,7 +558,11 @@ class _RegistryEnterpriseInstanceState:
     @pulumi.getter(name="renewalStatus")
     def renewal_status(self) -> Optional[pulumi.Input[str]]:
         """
-        Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+        Automatic renewal status, value:
+        - AutoRenewal: automatic renewal.
+        - ManualRenewal: manual renewal.
+
+        Default ManualRenewal.
         """
         return pulumi.get(self, "renewal_status")
 
@@ -386,10 +571,24 @@ class _RegistryEnterpriseInstanceState:
         pulumi.set(self, "renewal_status", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status of Container Registry Enterprise Edition instance.
+        Instance Status
         """
         return pulumi.get(self, "status")
 
@@ -404,6 +603,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_oss_bucket: Optional[pulumi.Input[str]] = None,
+                 default_oss_bucket: Optional[pulumi.Input[str]] = None,
+                 image_scanner: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -413,28 +614,80 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides a CR Instance resource.
+
+        For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+
+        > **NOTE:** Available since v1.124.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000000,
+            max=99999999)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=f"{name}-{default['result']}")
+        ```
+
         ## Import
 
-        Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
+        CR Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+        $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
-        :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+        :param pulumi.Input[str] custom_oss_bucket: Custom OSS Bucket name
+        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket
+        :param pulumi.Input[str] image_scanner: Security scan engine
+        :param pulumi.Input[str] instance_name: InstanceName
+        :param pulumi.Input[str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+               
+               Basic: Basic instance
+               
+               Standard: Standard instance
+               
+               Advanced: Advanced Edition Instance
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
-        :param pulumi.Input[str] payment_type: Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
-        :param pulumi.Input[int] renew_period: Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
-        :param pulumi.Input[str] renewal_status: Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+        :param pulumi.Input[str] password: Permanent access credentials of the instance
+        :param pulumi.Input[str] payment_type: Payment type, value:
+               - Subscription: Prepaid.
+        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+               
+               > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
+               
+               > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status, value:
+               - AutoRenewal: automatic renewal.
+               - ManualRenewal: manual renewal.
+               
+               Default ManualRenewal.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -443,12 +696,43 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  args: RegistryEnterpriseInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a CR Instance resource.
+
+        For information about Container Registry Enterprise Edition instances and how to use it, see [Create a Instance](https://www.alibabacloud.com/help/en/doc-detail/208144.htm)
+
+        > **NOTE:** Available since v1.124.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = random.index.Integer("default",
+            min=10000000,
+            max=99999999)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
+            payment_type="Subscription",
+            period=1,
+            renew_period=0,
+            renewal_status="ManualRenewal",
+            instance_type="Advanced",
+            instance_name=f"{name}-{default['result']}")
+        ```
+
         ## Import
 
-        Container Registry Enterprise Edition instance can be imported using the `id`, e.g.
+        CR Instance can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance default cri-test
+        $ pulumi import alicloud:cr/registryEnterpriseInstance:RegistryEnterpriseInstance example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -467,6 +751,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_oss_bucket: Optional[pulumi.Input[str]] = None,
+                 default_oss_bucket: Optional[pulumi.Input[str]] = None,
+                 image_scanner: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -476,6 +762,7 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_status: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -486,6 +773,8 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             __props__ = RegistryEnterpriseInstanceArgs.__new__(RegistryEnterpriseInstanceArgs)
 
             __props__.__dict__["custom_oss_bucket"] = custom_oss_bucket
+            __props__.__dict__["default_oss_bucket"] = default_oss_bucket
+            __props__.__dict__["image_scanner"] = image_scanner
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__.__dict__["instance_name"] = instance_name
@@ -495,12 +784,17 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
+            if payment_type is None and not opts.urn:
+                raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period
             __props__.__dict__["renew_period"] = renew_period
             __props__.__dict__["renewal_status"] = renewal_status
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["created_time"] = None
             __props__.__dict__["end_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -514,9 +808,12 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             created_time: Optional[pulumi.Input[str]] = None,
             custom_oss_bucket: Optional[pulumi.Input[str]] = None,
+            default_oss_bucket: Optional[pulumi.Input[str]] = None,
             end_time: Optional[pulumi.Input[str]] = None,
+            image_scanner: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
@@ -524,8 +821,10 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
             password: Optional[pulumi.Input[str]] = None,
             payment_type: Optional[pulumi.Input[str]] = None,
             period: Optional[pulumi.Input[int]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             renew_period: Optional[pulumi.Input[int]] = None,
             renewal_status: Optional[pulumi.Input[str]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'RegistryEnterpriseInstance':
         """
         Get an existing RegistryEnterpriseInstance resource's state with the given name, id, and optional extra
@@ -534,27 +833,52 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] created_time: Time of Container Registry Enterprise Edition instance creation.
-        :param pulumi.Input[str] custom_oss_bucket: Name of your customized oss bucket. Use this bucket as instance storage if set.
-        :param pulumi.Input[str] end_time: Time of Container Registry Enterprise Edition instance expiration.
-        :param pulumi.Input[str] instance_name: Name of Container Registry Enterprise Edition instance.
-        :param pulumi.Input[str] instance_type: Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+        :param pulumi.Input[str] create_time: The creation time of the resource
+        :param pulumi.Input[str] created_time: . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
+        :param pulumi.Input[str] custom_oss_bucket: Custom OSS Bucket name
+        :param pulumi.Input[str] default_oss_bucket: Whether to use the default OSS Bucket
+        :param pulumi.Input[str] end_time: Expiration Time
+        :param pulumi.Input[str] image_scanner: Security scan engine
+        :param pulumi.Input[str] instance_name: InstanceName
+        :param pulumi.Input[str] instance_type: The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+               
+               Basic: Basic instance
+               
+               Standard: Standard instance
+               
+               Advanced: Advanced Edition Instance
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-        :param pulumi.Input[str] password: The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
-        :param pulumi.Input[str] payment_type: Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
-        :param pulumi.Input[int] period: Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
-        :param pulumi.Input[int] renew_period: Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
-        :param pulumi.Input[str] renewal_status: Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
-        :param pulumi.Input[str] status: Status of Container Registry Enterprise Edition instance.
+        :param pulumi.Input[str] password: Permanent access credentials of the instance
+        :param pulumi.Input[str] payment_type: Payment type, value:
+               - Subscription: Prepaid.
+        :param pulumi.Input[int] period: Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+               
+               > **NOTE:**  must be set when creating a prepaid instance.
+        :param pulumi.Input[str] region_id: RegionId
+        :param pulumi.Input[int] renew_period: Automatic renewal cycle, in months.
+               
+               > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
+        :param pulumi.Input[str] renewal_status: Automatic renewal status, value:
+               - AutoRenewal: automatic renewal.
+               - ManualRenewal: manual renewal.
+               
+               Default ManualRenewal.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] status: Instance Status
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _RegistryEnterpriseInstanceState.__new__(_RegistryEnterpriseInstanceState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["created_time"] = created_time
         __props__.__dict__["custom_oss_bucket"] = custom_oss_bucket
+        __props__.__dict__["default_oss_bucket"] = default_oss_bucket
         __props__.__dict__["end_time"] = end_time
+        __props__.__dict__["image_scanner"] = image_scanner
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
@@ -562,16 +886,27 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
         __props__.__dict__["password"] = password
         __props__.__dict__["payment_type"] = payment_type
         __props__.__dict__["period"] = period
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["renew_period"] = renew_period
         __props__.__dict__["renewal_status"] = renewal_status
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["status"] = status
         return RegistryEnterpriseInstance(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The creation time of the resource
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="createdTime")
+    @_utilities.deprecated("""Field 'created_time' has been deprecated since provider version 1.235.0. New field 'create_time' instead.""")
     def created_time(self) -> pulumi.Output[str]:
         """
-        Time of Container Registry Enterprise Edition instance creation.
+        . Field 'created_time' has been deprecated from provider version 1.235.0. New field 'create_time' instead.
         """
         return pulumi.get(self, "created_time")
 
@@ -579,23 +914,39 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter(name="customOssBucket")
     def custom_oss_bucket(self) -> pulumi.Output[Optional[str]]:
         """
-        Name of your customized oss bucket. Use this bucket as instance storage if set.
+        Custom OSS Bucket name
         """
         return pulumi.get(self, "custom_oss_bucket")
+
+    @property
+    @pulumi.getter(name="defaultOssBucket")
+    def default_oss_bucket(self) -> pulumi.Output[Optional[str]]:
+        """
+        Whether to use the default OSS Bucket
+        """
+        return pulumi.get(self, "default_oss_bucket")
 
     @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[str]:
         """
-        Time of Container Registry Enterprise Edition instance expiration.
+        Expiration Time
         """
         return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="imageScanner")
+    def image_scanner(self) -> pulumi.Output[Optional[str]]:
+        """
+        Security scan engine
+        """
+        return pulumi.get(self, "image_scanner")
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[str]:
         """
-        Name of Container Registry Enterprise Edition instance.
+        InstanceName
         """
         return pulumi.get(self, "instance_name")
 
@@ -603,7 +954,13 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn't supports `Standard`.
+        The Value configuration of the Group 1 attribute of Container Mirror Service Enterprise Edition. Valid values:
+
+        Basic: Basic instance
+
+        Standard: Standard instance
+
+        Advanced: Advanced Edition Instance
         """
         return pulumi.get(self, "instance_type")
 
@@ -627,15 +984,16 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[Optional[str]]:
         """
-        The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
+        Permanent access credentials of the instance
         """
         return pulumi.get(self, "password")
 
     @property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> pulumi.Output[Optional[str]]:
+    def payment_type(self) -> pulumi.Output[str]:
         """
-        Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
+        Payment type, value:
+        - Subscription: Prepaid.
         """
         return pulumi.get(self, "payment_type")
 
@@ -643,31 +1001,57 @@ class RegistryEnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter
     def period(self) -> pulumi.Output[Optional[int]]:
         """
-        Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
+        Prepaid cycle. The unit is Monthly, please enter an integer multiple of 12 for annual paid products.
+
+        > **NOTE:**  must be set when creating a prepaid instance.
         """
         return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        RegionId
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> pulumi.Output[Optional[int]]:
         """
-        Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
+        Automatic renewal cycle, in months.
+
+        > **NOTE:**  When `RenewalStatus` is set to `AutoRenewal`, it must be set.
         """
         return pulumi.get(self, "renew_period")
 
     @property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> pulumi.Output[Optional[str]]:
+    def renewal_status(self) -> pulumi.Output[str]:
         """
-        Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
+        Automatic renewal status, value:
+        - AutoRenewal: automatic renewal.
+        - ManualRenewal: manual renewal.
+
+        Default ManualRenewal.
         """
         return pulumi.get(self, "renewal_status")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status of Container Registry Enterprise Edition instance.
+        Instance Status
         """
         return pulumi.get(self, "status")
 

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// This data source can query the public IP of the specified KVStore DBInstance.
+// This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
 //
 // > **NOTE:** Available in v1.101.0+.
 //
@@ -54,7 +54,7 @@ func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulum
 
 // A collection of arguments for invoking getConnections.
 type GetConnectionsArgs struct {
-	// A list of KVStore DBInstance ids, only support one item.
+	// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
 	Ids string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -66,7 +66,7 @@ type GetConnectionsResult struct {
 	Connections []GetConnectionsConnection `pulumi:"connections"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of KVStore DBInstance ids.
+	// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids.
 	Ids        string  `pulumi:"ids"`
 	OutputFile *string `pulumi:"outputFile"`
 }
@@ -92,7 +92,7 @@ func GetConnectionsOutput(ctx *pulumi.Context, args GetConnectionsOutputArgs, op
 
 // A collection of arguments for invoking getConnections.
 type GetConnectionsOutputArgs struct {
-	// A list of KVStore DBInstance ids, only support one item.
+	// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
 	Ids pulumi.StringInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
@@ -127,7 +127,7 @@ func (o GetConnectionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of KVStore DBInstance ids.
+// A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids.
 func (o GetConnectionsResultOutput) Ids() pulumi.StringOutput {
 	return o.ApplyT(func(v GetConnectionsResult) string { return v.Ids }).(pulumi.StringOutput)
 }

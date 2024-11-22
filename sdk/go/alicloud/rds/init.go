@@ -29,6 +29,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPolicy{}
 	case "alicloud:rds/connection:Connection":
 		r = &Connection{}
+	case "alicloud:rds/custom:Custom":
+		r = &Custom{}
+	case "alicloud:rds/customDeploymentSet:CustomDeploymentSet":
+		r = &CustomDeploymentSet{}
 	case "alicloud:rds/database:Database":
 		r = &Database{}
 	case "alicloud:rds/dbInstanceEndpoint:DbInstanceEndpoint":
@@ -92,6 +96,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"rds/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rds/custom",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"rds/customDeploymentSet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

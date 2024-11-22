@@ -16,7 +16,7 @@ import (
 //
 // For information about CEN Transit Router Ecr Attachment and how to use it, see [What is Transit Router Ecr Attachment](https://www.alibabacloud.com/help/en/).
 //
-// > **NOTE:** Available since v1.226.0.
+// > **NOTE:** Available since v1.235.0.
 //
 // ## Example Usage
 //
@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			asn := "4200000666"
+//			asn := "4200000667"
 //			if param := cfg.Get("asn"); param != "" {
 //				asn = param
 //			}

@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Private Link Vpc Endpoint Connection resource. vpc endpoint connection.
+ * Provides a Private Link Vpc Endpoint Connection resource.
+ *
+ * vpc endpoint connection.
  *
  * For information about Private Link Vpc Endpoint Connection and how to use it, see [What is Vpc Endpoint Connection](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-enablevpcendpointzoneconnection).
  *
@@ -104,13 +106,13 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
     }
 
     /**
-     * The bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * The bandwidth of the endpoint connection. Valid values: 1024 to 10240. Unit: Mbit/s.
+     *
+     * Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      */
     public readonly bandwidth!: pulumi.Output<number>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -168,13 +170,13 @@ export class VpcEndpointServiceConnection extends pulumi.CustomResource {
  */
 export interface VpcEndpointServiceConnectionState {
     /**
-     * The bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * The bandwidth of the endpoint connection. Valid values: 1024 to 10240. Unit: Mbit/s.
+     *
+     * Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      */
     bandwidth?: pulumi.Input<number>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -196,13 +198,13 @@ export interface VpcEndpointServiceConnectionState {
  */
 export interface VpcEndpointServiceConnectionArgs {
     /**
-     * The bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+     * The bandwidth of the endpoint connection. Valid values: 1024 to 10240. Unit: Mbit/s.
+     *
+     * Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      */
     bandwidth?: pulumi.Input<number>;
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
-     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**

@@ -193,7 +193,7 @@ class AuditLogConfig(pulumi.CustomResource):
                  retention: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Provides a Redis And Memcache (KVStore) Audit Log Config resource.
+        Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config resource.
 
         > **NOTE:** Available since v1.130.0.
 
@@ -244,7 +244,7 @@ class AuditLogConfig(pulumi.CustomResource):
 
         ## Import
 
-        Redis And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example <instance_id>
@@ -269,7 +269,7 @@ class AuditLogConfig(pulumi.CustomResource):
                  args: AuditLogConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Redis And Memcache (KVStore) Audit Log Config resource.
+        Provides a Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config resource.
 
         > **NOTE:** Available since v1.130.0.
 
@@ -320,7 +320,7 @@ class AuditLogConfig(pulumi.CustomResource):
 
         ## Import
 
-        Redis And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) Audit Log Config can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/auditLogConfig:AuditLogConfig example <instance_id>
