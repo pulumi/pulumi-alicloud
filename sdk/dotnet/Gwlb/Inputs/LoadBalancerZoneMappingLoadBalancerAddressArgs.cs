@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
     public sealed class LoadBalancerZoneMappingLoadBalancerAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the ENI.
+        /// The ID of the elastic network interface (ENI) used by the GWLB instance.
         /// </summary>
         [Input("eniId")]
         public Input<string>? EniId { get; set; }
 
         /// <summary>
-        /// IPv4 private network address.
+        /// The private IPv4 address.
         /// </summary>
         [Input("privateIpv4Address")]
         public Input<string>? PrivateIpv4Address { get; set; }

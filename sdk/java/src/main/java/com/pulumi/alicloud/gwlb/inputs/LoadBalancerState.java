@@ -20,16 +20,18 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     public static final LoadBalancerState Empty = new LoadBalancerState();
 
     /**
-     * The protocol version. Value:
-     * - Ipv4: Ipv4 type
+     * The IP version. Valid values:
+     * 
+     * - `Ipv4`: IPv4 (default)
      * 
      */
     @Import(name="addressIpVersion")
     private @Nullable Output<String> addressIpVersion;
 
     /**
-     * @return The protocol version. Value:
-     * - Ipv4: Ipv4 type
+     * @return The IP version. Valid values:
+     * 
+     * - `Ipv4`: IPv4 (default)
      * 
      */
     public Optional<Output<String>> addressIpVersion() {
@@ -37,14 +39,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+     * The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+     * @return The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -52,14 +54,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform only a dry run, without performing the actual request.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -67,18 +69,18 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Gateway Load Balancer instance.
+     * The GWLB instance name.
      * 
-     * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="loadBalancerName")
     private @Nullable Output<String> loadBalancerName;
 
     /**
-     * @return The name of the Gateway Load Balancer instance.
+     * @return The GWLB instance name.
      * 
-     * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Optional<Output<String>> loadBalancerName() {
@@ -86,14 +88,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group
+     * The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group
+     * @return The ID of the resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -101,14 +103,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+     * The GWLB instance status.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+     * @return The GWLB instance status.
      * 
      */
     public Optional<Output<String>> status() {
@@ -116,14 +118,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of tags.
+     * The tag keys. You can specify at most 20 tags in each call.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The list of tags.
+     * @return The tag keys. You can specify at most 20 tags in each call.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -131,14 +133,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC which the Gateway Load Balancer instance belongs.
+     * The virtual private cloud (VPC) ID.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC which the Gateway Load Balancer instance belongs.
+     * @return The virtual private cloud (VPC) ID.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -146,14 +148,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+     * The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
      * 
      */
     @Import(name="zoneMappings")
     private @Nullable Output<List<LoadBalancerZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+     * @return The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
      * 
      */
     public Optional<Output<List<LoadBalancerZoneMappingArgs>>> zoneMappings() {
@@ -193,8 +195,9 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Value:
-         * - Ipv4: Ipv4 type
+         * @param addressIpVersion The IP version. Valid values:
+         * 
+         * - `Ipv4`: IPv4 (default)
          * 
          * @return builder
          * 
@@ -205,8 +208,9 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Value:
-         * - Ipv4: Ipv4 type
+         * @param addressIpVersion The IP version. Valid values:
+         * 
+         * - `Ipv4`: IPv4 (default)
          * 
          * @return builder
          * 
@@ -216,7 +220,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+         * @param createTime The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -227,7 +231,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+         * @param createTime The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -237,7 +241,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -248,7 +252,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -258,9 +262,9 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName The name of the Gateway Load Balancer instance.
+         * @param loadBalancerName The GWLB instance name.
          * 
-         * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -271,9 +275,9 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName The name of the Gateway Load Balancer instance.
+         * @param loadBalancerName The GWLB instance name.
          * 
-         * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -283,7 +287,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -294,7 +298,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -304,7 +308,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+         * @param status The GWLB instance status.
          * 
          * @return builder
          * 
@@ -315,7 +319,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+         * @param status The GWLB instance status.
          * 
          * @return builder
          * 
@@ -325,7 +329,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The list of tags.
+         * @param tags The tag keys. You can specify at most 20 tags in each call.
          * 
          * @return builder
          * 
@@ -336,7 +340,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The list of tags.
+         * @param tags The tag keys. You can specify at most 20 tags in each call.
          * 
          * @return builder
          * 
@@ -346,7 +350,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC which the Gateway Load Balancer instance belongs.
+         * @param vpcId The virtual private cloud (VPC) ID.
          * 
          * @return builder
          * 
@@ -357,7 +361,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC which the Gateway Load Balancer instance belongs.
+         * @param vpcId The virtual private cloud (VPC) ID.
          * 
          * @return builder
          * 
@@ -367,7 +371,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+         * @param zoneMappings The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -378,7 +382,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+         * @param zoneMappings The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -388,7 +392,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+         * @param zoneMappings The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
          * 
          * @return builder
          * 

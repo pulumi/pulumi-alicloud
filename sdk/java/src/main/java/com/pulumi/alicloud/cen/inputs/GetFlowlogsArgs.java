@@ -5,6 +5,7 @@ package com.pulumi.alicloud.cen.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -17,14 +18,14 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetFlowlogsArgs Empty = new GetFlowlogsArgs();
 
     /**
-     * The ID of the CEN Instance.
+     * The ID of Cen instance.
      * 
      */
     @Import(name="cenId")
     private @Nullable Output<String> cenId;
 
     /**
-     * @return The ID of the CEN Instance.
+     * @return The ID of Cen instance.
      * 
      */
     public Optional<Output<String>> cenId() {
@@ -32,14 +33,14 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The description of flowlog.
+     * The description of the flowlog.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of flowlog.
+     * @return The description of the flowlog.
      * 
      */
     public Optional<Output<String>> description() {
@@ -47,14 +48,59 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A list of CEN flow log IDs.
+     * The ID of FlowLog.
+     * 
+     */
+    @Import(name="flowLogId")
+    private @Nullable Output<String> flowLogId;
+
+    /**
+     * @return The ID of FlowLog.
+     * 
+     */
+    public Optional<Output<String>> flowLogId() {
+        return Optional.ofNullable(this.flowLogId);
+    }
+
+    /**
+     * The name of the flowlog.
+     * 
+     */
+    @Import(name="flowLogName")
+    private @Nullable Output<String> flowLogName;
+
+    /**
+     * @return The name of the flowlog.
+     * 
+     */
+    public Optional<Output<String>> flowLogName() {
+        return Optional.ofNullable(this.flowLogName);
+    }
+
+    /**
+     * Flowlog Version.
+     * 
+     */
+    @Import(name="flowLogVersion")
+    private @Nullable Output<String> flowLogVersion;
+
+    /**
+     * @return Flowlog Version.
+     * 
+     */
+    public Optional<Output<String>> flowLogVersion() {
+        return Optional.ofNullable(this.flowLogVersion);
+    }
+
+    /**
+     * A list of Flow Log IDs.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return A list of CEN flow log IDs.
+     * @return A list of Flow Log IDs.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -62,14 +108,29 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the log store which is in the  `project_name` SLS project.
+     * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+     * 
+     */
+    @Import(name="interval")
+    private @Nullable Output<Integer> interval;
+
+    /**
+     * @return The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+     * 
+     */
+    public Optional<Output<Integer>> interval() {
+        return Optional.ofNullable(this.interval);
+    }
+
+    /**
+     * The LogStore that stores the flowlog.
      * 
      */
     @Import(name="logStoreName")
     private @Nullable Output<String> logStoreName;
 
     /**
-     * @return The name of the log store which is in the  `project_name` SLS project.
+     * @return The LogStore that stores the flowlog.
      * 
      */
     public Optional<Output<String>> logStoreName() {
@@ -77,14 +138,14 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A regex string to filter CEN flow logs by name.
+     * A regex string to filter results by Group Metric Rule name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable Output<String> nameRegex;
 
     /**
-     * @return A regex string to filter CEN flow logs by name.
+     * @return A regex string to filter results by Group Metric Rule name.
      * 
      */
     public Optional<Output<String>> nameRegex() {
@@ -107,14 +168,44 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the SLS project.
+     * Current page number.
+     * 
+     */
+    @Import(name="pageNumber")
+    private @Nullable Output<Integer> pageNumber;
+
+    /**
+     * @return Current page number.
+     * 
+     */
+    public Optional<Output<Integer>> pageNumber() {
+        return Optional.ofNullable(this.pageNumber);
+    }
+
+    /**
+     * Number of records per page.
+     * 
+     */
+    @Import(name="pageSize")
+    private @Nullable Output<Integer> pageSize;
+
+    /**
+     * @return Number of records per page.
+     * 
+     */
+    public Optional<Output<Integer>> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
+
+    /**
+     * The Project that stores the flowlog.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return The name of the SLS project.
+     * @return The Project that stores the flowlog.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -122,18 +213,48 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+     * Region id
+     * 
+     */
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    /**
+     * @return Region id
+     * 
+     */
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+
+    /**
+     * The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+     * @return The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * Transit Router ID
+     * 
+     */
+    @Import(name="transitRouterId")
+    private @Nullable Output<String> transitRouterId;
+
+    /**
+     * @return Transit Router ID
+     * 
+     */
+    public Optional<Output<String>> transitRouterId() {
+        return Optional.ofNullable(this.transitRouterId);
     }
 
     private GetFlowlogsArgs() {}
@@ -141,12 +262,20 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
     private GetFlowlogsArgs(GetFlowlogsArgs $) {
         this.cenId = $.cenId;
         this.description = $.description;
+        this.flowLogId = $.flowLogId;
+        this.flowLogName = $.flowLogName;
+        this.flowLogVersion = $.flowLogVersion;
         this.ids = $.ids;
+        this.interval = $.interval;
         this.logStoreName = $.logStoreName;
         this.nameRegex = $.nameRegex;
         this.outputFile = $.outputFile;
+        this.pageNumber = $.pageNumber;
+        this.pageSize = $.pageSize;
         this.projectName = $.projectName;
+        this.regionId = $.regionId;
         this.status = $.status;
+        this.transitRouterId = $.transitRouterId;
     }
 
     public static Builder builder() {
@@ -168,7 +297,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cenId The ID of the CEN Instance.
+         * @param cenId The ID of Cen instance.
          * 
          * @return builder
          * 
@@ -179,7 +308,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cenId The ID of the CEN Instance.
+         * @param cenId The ID of Cen instance.
          * 
          * @return builder
          * 
@@ -189,7 +318,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param description The description of flowlog.
+         * @param description The description of the flowlog.
          * 
          * @return builder
          * 
@@ -200,7 +329,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param description The description of flowlog.
+         * @param description The description of the flowlog.
          * 
          * @return builder
          * 
@@ -210,7 +339,70 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of CEN flow log IDs.
+         * @param flowLogId The ID of FlowLog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowLogId(@Nullable Output<String> flowLogId) {
+            $.flowLogId = flowLogId;
+            return this;
+        }
+
+        /**
+         * @param flowLogId The ID of FlowLog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowLogId(String flowLogId) {
+            return flowLogId(Output.of(flowLogId));
+        }
+
+        /**
+         * @param flowLogName The name of the flowlog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowLogName(@Nullable Output<String> flowLogName) {
+            $.flowLogName = flowLogName;
+            return this;
+        }
+
+        /**
+         * @param flowLogName The name of the flowlog.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowLogName(String flowLogName) {
+            return flowLogName(Output.of(flowLogName));
+        }
+
+        /**
+         * @param flowLogVersion Flowlog Version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowLogVersion(@Nullable Output<String> flowLogVersion) {
+            $.flowLogVersion = flowLogVersion;
+            return this;
+        }
+
+        /**
+         * @param flowLogVersion Flowlog Version.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder flowLogVersion(String flowLogVersion) {
+            return flowLogVersion(Output.of(flowLogVersion));
+        }
+
+        /**
+         * @param ids A list of Flow Log IDs.
          * 
          * @return builder
          * 
@@ -221,7 +413,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of CEN flow log IDs.
+         * @param ids A list of Flow Log IDs.
          * 
          * @return builder
          * 
@@ -231,7 +423,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ids A list of CEN flow log IDs.
+         * @param ids A list of Flow Log IDs.
          * 
          * @return builder
          * 
@@ -241,7 +433,28 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param logStoreName The name of the log store which is in the  `project_name` SLS project.
+         * @param interval The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interval(@Nullable Output<Integer> interval) {
+            $.interval = interval;
+            return this;
+        }
+
+        /**
+         * @param interval The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder interval(Integer interval) {
+            return interval(Output.of(interval));
+        }
+
+        /**
+         * @param logStoreName The LogStore that stores the flowlog.
          * 
          * @return builder
          * 
@@ -252,7 +465,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param logStoreName The name of the log store which is in the  `project_name` SLS project.
+         * @param logStoreName The LogStore that stores the flowlog.
          * 
          * @return builder
          * 
@@ -262,7 +475,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regex string to filter CEN flow logs by name.
+         * @param nameRegex A regex string to filter results by Group Metric Rule name.
          * 
          * @return builder
          * 
@@ -273,7 +486,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nameRegex A regex string to filter CEN flow logs by name.
+         * @param nameRegex A regex string to filter results by Group Metric Rule name.
          * 
          * @return builder
          * 
@@ -304,7 +517,49 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectName The name of the SLS project.
+         * @param pageNumber Current page number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageNumber(@Nullable Output<Integer> pageNumber) {
+            $.pageNumber = pageNumber;
+            return this;
+        }
+
+        /**
+         * @param pageNumber Current page number.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageNumber(Integer pageNumber) {
+            return pageNumber(Output.of(pageNumber));
+        }
+
+        /**
+         * @param pageSize Number of records per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageSize(@Nullable Output<Integer> pageSize) {
+            $.pageSize = pageSize;
+            return this;
+        }
+
+        /**
+         * @param pageSize Number of records per page.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pageSize(Integer pageSize) {
+            return pageSize(Output.of(pageSize));
+        }
+
+        /**
+         * @param projectName The Project that stores the flowlog.
          * 
          * @return builder
          * 
@@ -315,7 +570,7 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param projectName The name of the SLS project.
+         * @param projectName The Project that stores the flowlog.
          * 
          * @return builder
          * 
@@ -325,7 +580,28 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+         * @param regionId Region id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        /**
+         * @param regionId Region id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
+        }
+
+        /**
+         * @param status The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
          * 
          * @return builder
          * 
@@ -336,13 +612,34 @@ public final class GetFlowlogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+         * @param status The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param transitRouterId Transit Router ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterId(@Nullable Output<String> transitRouterId) {
+            $.transitRouterId = transitRouterId;
+            return this;
+        }
+
+        /**
+         * @param transitRouterId Transit Router ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transitRouterId(String transitRouterId) {
+            return transitRouterId(Output.of(transitRouterId));
         }
 
         public GetFlowlogsArgs build() {

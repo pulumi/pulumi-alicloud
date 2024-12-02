@@ -36,14 +36,14 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Certificate configuration. See `certificate_config` below.
+     * Certificate configuration See `certificate_config` below.
      * 
      */
     @Import(name="certificateConfig")
     private @Nullable Output<DomainNewCertificateConfigArgs> certificateConfig;
 
     /**
-     * @return Certificate configuration. See `certificate_config` below.
+     * @return Certificate configuration See `certificate_config` below.
      * 
      */
     public Optional<Output<DomainNewCertificateConfigArgs>> certificateConfig() {
@@ -81,6 +81,21 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+     * 
+     */
+    @Import(name="env")
+    private @Nullable Output<String> env;
+
+    /**
+     * @return Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+     * 
+     */
+    public Optional<Output<String>> env() {
+        return Optional.ofNullable(this.env);
+    }
+
+    /**
      * The ID of the resource group.
      * 
      */
@@ -97,10 +112,6 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
-     * - **domestic**: Mainland China only.
-     * - **overseas**: Global (excluding Mainland China).
-     * - **global**: global.
-     *   The default value is **domestic**.
      * 
      */
     @Import(name="scope")
@@ -108,10 +119,6 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
-     * - **domestic**: Mainland China only.
-     * - **overseas**: Global (excluding Mainland China).
-     * - **global**: global.
-     *   The default value is **domestic**.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -134,14 +141,29 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The tag of the resource.
+     * The status of the resource, valid values: `online`, `offline`.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the resource, valid values: `online`, `offline`.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The tag of the resource
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -155,9 +177,11 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         this.certificateConfig = $.certificateConfig;
         this.checkUrl = $.checkUrl;
         this.domainName = $.domainName;
+        this.env = $.env;
         this.resourceGroupId = $.resourceGroupId;
         this.scope = $.scope;
         this.sources = $.sources;
+        this.status = $.status;
         this.tags = $.tags;
     }
 
@@ -201,7 +225,7 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateConfig Certificate configuration. See `certificate_config` below.
+         * @param certificateConfig Certificate configuration See `certificate_config` below.
          * 
          * @return builder
          * 
@@ -212,7 +236,7 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateConfig Certificate configuration. See `certificate_config` below.
+         * @param certificateConfig Certificate configuration See `certificate_config` below.
          * 
          * @return builder
          * 
@@ -264,6 +288,27 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param env Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(@Nullable Output<String> env) {
+            $.env = env;
+            return this;
+        }
+
+        /**
+         * @param env Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder env(String env) {
+            return env(Output.of(env));
+        }
+
+        /**
          * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
@@ -286,10 +331,6 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scope Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
-         * - **domestic**: Mainland China only.
-         * - **overseas**: Global (excluding Mainland China).
-         * - **global**: global.
-         *   The default value is **domestic**.
          * 
          * @return builder
          * 
@@ -301,10 +342,6 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param scope Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
-         * - **domestic**: Mainland China only.
-         * - **overseas**: Global (excluding Mainland China).
-         * - **global**: global.
-         *   The default value is **domestic**.
          * 
          * @return builder
          * 
@@ -345,7 +382,28 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param status The status of the resource, valid values: `online`, `offline`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the resource, valid values: `online`, `offline`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 
@@ -356,7 +414,7 @@ public final class DomainNewArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags The tag of the resource
          * 
          * @return builder
          * 

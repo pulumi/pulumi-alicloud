@@ -19,14 +19,14 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     public static final ListenerArgs Empty = new ListenerArgs();
 
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform only a dry run, without performing the actual request.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -34,18 +34,18 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom listener description.
+     * The description of the listener.
      * 
-     * The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     @Import(name="listenerDescription")
     private @Nullable Output<String> listenerDescription;
 
     /**
-     * @return The custom listener description.
+     * @return The description of the listener.
      * 
-     * The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> listenerDescription() {
@@ -53,14 +53,14 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the gateway load balancer instance.
+     * The GWLB instance ID.
      * 
      */
     @Import(name="loadBalancerId", required=true)
     private Output<String> loadBalancerId;
 
     /**
-     * @return The ID of the gateway load balancer instance.
+     * @return The GWLB instance ID.
      * 
      */
     public Output<String> loadBalancerId() {
@@ -68,14 +68,14 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the server group.
+     * The server group ID.
      * 
      */
     @Import(name="serverGroupId", required=true)
     private Output<String> serverGroupId;
 
     /**
-     * @return The ID of the server group.
+     * @return The server group ID.
      * 
      */
     public Output<String> serverGroupId() {
@@ -83,14 +83,14 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of tags.
+     * The tags. You can specify at most 20 tags in each call.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The list of tags.
+     * @return The tags. You can specify at most 20 tags in each call.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -126,7 +126,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -147,9 +147,9 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerDescription The custom listener description.
+         * @param listenerDescription The description of the listener.
          * 
-         * The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -160,9 +160,9 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param listenerDescription The custom listener description.
+         * @param listenerDescription The description of the listener.
          * 
-         * The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+         * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerId The ID of the gateway load balancer instance.
+         * @param loadBalancerId The GWLB instance ID.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerId The ID of the gateway load balancer instance.
+         * @param loadBalancerId The GWLB instance ID.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupId The ID of the server group.
+         * @param serverGroupId The server group ID.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupId The ID of the server group.
+         * @param serverGroupId The server group ID.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The list of tags.
+         * @param tags The tags. You can specify at most 20 tags in each call.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The list of tags.
+         * @param tags The tags. You can specify at most 20 tags in each call.
          * 
          * @return builder
          * 

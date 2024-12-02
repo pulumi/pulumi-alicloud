@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN flow logs available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.78.0+
+        /// &gt; **NOTE:** Available since v1.78.0.
         /// 
         /// ## Example Usage
         /// 
@@ -25,21 +25,68 @@ namespace Pulumi.AliCloud.Cen
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var defaultc5kxyC = new AliCloud.Cen.Instance("defaultc5kxyC", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///     });
+        /// 
+        ///     var defaultVw2U9u = new AliCloud.Cen.TransitRouter("defaultVw2U9u", new()
+        ///     {
+        ///         CenId = defaultc5kxyC.Id,
+        ///     });
+        /// 
+        ///     var defaultProject = new AliCloud.Log.Project("default", new()
+        ///     {
+        ///         ProjectName = $"{name}-{defaultInteger.Result}",
+        ///         Description = "terraform-example",
+        ///     });
+        /// 
+        ///     var defaultStore = new AliCloud.Log.Store("default", new()
+        ///     {
+        ///         ProjectName = defaultProject.ProjectName,
+        ///         LogstoreName = $"{name}-{defaultInteger.Result}",
+        ///         ShardCount = 3,
+        ///         AutoSplit = true,
+        ///         MaxSplitShardCount = 60,
+        ///         AppendMeta = true,
+        ///     });
+        /// 
+        ///     var defaultFlowLog = new AliCloud.Cen.FlowLog("default", new()
+        ///     {
+        ///         ProjectName = defaultStore.ProjectName,
+        ///         FlowLogName = $"{name}-{defaultInteger.Result}",
+        ///         LogFormatString = "${srcaddr}${dstaddr}${bytes}",
+        ///         CenId = defaultc5kxyC.Id,
+        ///         LogStoreName = defaultStore.LogstoreName,
+        ///         Interval = 600,
+        ///         Status = "Active",
+        ///         TransitRouterId = defaultVw2U9u.TransitRouterId,
+        ///         Description = "flowlog-resource-example-1",
+        ///     });
+        /// 
         ///     var @default = AliCloud.Cen.GetFlowlogs.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "flowlog-tig1xxxxx",
+        ///             defaultFlowLog.Id,
         ///         },
-        ///         NameRegex = "^foo",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstCenFlowlogId"] = defaultAlicloudCenInstances.Flowlogs[0].Id,
+        ///         ["firstCenFlowlogId"] = @default.Apply(@default =&gt; @default.Apply(getFlowlogsResult =&gt; getFlowlogsResult.Flowlogs[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -50,7 +97,7 @@ namespace Pulumi.AliCloud.Cen
         /// <summary>
         /// This data source provides CEN flow logs available to the user.
         /// 
-        /// &gt; **NOTE:** Available in 1.78.0+
+        /// &gt; **NOTE:** Available since v1.78.0.
         /// 
         /// ## Example Usage
         /// 
@@ -61,21 +108,68 @@ namespace Pulumi.AliCloud.Cen
         /// using System.Linq;
         /// using Pulumi;
         /// using AliCloud = Pulumi.AliCloud;
+        /// using Random = Pulumi.Random;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     {
+        ///         Min = 10000,
+        ///         Max = 99999,
+        ///     });
+        /// 
+        ///     var defaultc5kxyC = new AliCloud.Cen.Instance("defaultc5kxyC", new()
+        ///     {
+        ///         CenInstanceName = name,
+        ///     });
+        /// 
+        ///     var defaultVw2U9u = new AliCloud.Cen.TransitRouter("defaultVw2U9u", new()
+        ///     {
+        ///         CenId = defaultc5kxyC.Id,
+        ///     });
+        /// 
+        ///     var defaultProject = new AliCloud.Log.Project("default", new()
+        ///     {
+        ///         ProjectName = $"{name}-{defaultInteger.Result}",
+        ///         Description = "terraform-example",
+        ///     });
+        /// 
+        ///     var defaultStore = new AliCloud.Log.Store("default", new()
+        ///     {
+        ///         ProjectName = defaultProject.ProjectName,
+        ///         LogstoreName = $"{name}-{defaultInteger.Result}",
+        ///         ShardCount = 3,
+        ///         AutoSplit = true,
+        ///         MaxSplitShardCount = 60,
+        ///         AppendMeta = true,
+        ///     });
+        /// 
+        ///     var defaultFlowLog = new AliCloud.Cen.FlowLog("default", new()
+        ///     {
+        ///         ProjectName = defaultStore.ProjectName,
+        ///         FlowLogName = $"{name}-{defaultInteger.Result}",
+        ///         LogFormatString = "${srcaddr}${dstaddr}${bytes}",
+        ///         CenId = defaultc5kxyC.Id,
+        ///         LogStoreName = defaultStore.LogstoreName,
+        ///         Interval = 600,
+        ///         Status = "Active",
+        ///         TransitRouterId = defaultVw2U9u.TransitRouterId,
+        ///         Description = "flowlog-resource-example-1",
+        ///     });
+        /// 
         ///     var @default = AliCloud.Cen.GetFlowlogs.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             "flowlog-tig1xxxxx",
+        ///             defaultFlowLog.Id,
         ///         },
-        ///         NameRegex = "^foo",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstCenFlowlogId"] = defaultAlicloudCenInstances.Flowlogs[0].Id,
+        ///         ["firstCenFlowlogId"] = @default.Apply(@default =&gt; @default.Apply(getFlowlogsResult =&gt; getFlowlogsResult.Flowlogs[0]?.Id)),
         ///     };
         /// });
         /// ```
@@ -88,22 +182,40 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetFlowlogsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the CEN Instance.
+        /// The ID of Cen instance.
         /// </summary>
         [Input("cenId")]
         public string? CenId { get; set; }
 
         /// <summary>
-        /// The description of flowlog.
+        /// The description of the flowlog.
         /// </summary>
         [Input("description")]
         public string? Description { get; set; }
+
+        /// <summary>
+        /// The ID of FlowLog.
+        /// </summary>
+        [Input("flowLogId")]
+        public string? FlowLogId { get; set; }
+
+        /// <summary>
+        /// The name of the flowlog.
+        /// </summary>
+        [Input("flowLogName")]
+        public string? FlowLogName { get; set; }
+
+        /// <summary>
+        /// Flowlog Version.
+        /// </summary>
+        [Input("flowLogVersion")]
+        public string? FlowLogVersion { get; set; }
 
         [Input("ids")]
         private List<string>? _ids;
 
         /// <summary>
-        /// A list of CEN flow log IDs.
+        /// A list of Flow Log IDs.
         /// </summary>
         public List<string> Ids
         {
@@ -112,13 +224,19 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The name of the log store which is in the  `project_name` SLS project.
+        /// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+        /// </summary>
+        [Input("interval")]
+        public int? Interval { get; set; }
+
+        /// <summary>
+        /// The LogStore that stores the flowlog.
         /// </summary>
         [Input("logStoreName")]
         public string? LogStoreName { get; set; }
 
         /// <summary>
-        /// A regex string to filter CEN flow logs by name.
+        /// A regex string to filter results by Group Metric Rule name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -130,16 +248,40 @@ namespace Pulumi.AliCloud.Cen
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The name of the SLS project.
+        /// Current page number.
+        /// </summary>
+        [Input("pageNumber")]
+        public int? PageNumber { get; set; }
+
+        /// <summary>
+        /// Number of records per page.
+        /// </summary>
+        [Input("pageSize")]
+        public int? PageSize { get; set; }
+
+        /// <summary>
+        /// The Project that stores the flowlog.
         /// </summary>
         [Input("projectName")]
         public string? ProjectName { get; set; }
 
         /// <summary>
-        /// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        /// Region id
+        /// </summary>
+        [Input("regionId")]
+        public string? RegionId { get; set; }
+
+        /// <summary>
+        /// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
+
+        /// <summary>
+        /// Transit Router ID
+        /// </summary>
+        [Input("transitRouterId")]
+        public string? TransitRouterId { get; set; }
 
         public GetFlowlogsArgs()
         {
@@ -150,22 +292,40 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetFlowlogsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the CEN Instance.
+        /// The ID of Cen instance.
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
 
         /// <summary>
-        /// The description of flowlog.
+        /// The description of the flowlog.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The ID of FlowLog.
+        /// </summary>
+        [Input("flowLogId")]
+        public Input<string>? FlowLogId { get; set; }
+
+        /// <summary>
+        /// The name of the flowlog.
+        /// </summary>
+        [Input("flowLogName")]
+        public Input<string>? FlowLogName { get; set; }
+
+        /// <summary>
+        /// Flowlog Version.
+        /// </summary>
+        [Input("flowLogVersion")]
+        public Input<string>? FlowLogVersion { get; set; }
 
         [Input("ids")]
         private InputList<string>? _ids;
 
         /// <summary>
-        /// A list of CEN flow log IDs.
+        /// A list of Flow Log IDs.
         /// </summary>
         public InputList<string> Ids
         {
@@ -174,13 +334,19 @@ namespace Pulumi.AliCloud.Cen
         }
 
         /// <summary>
-        /// The name of the log store which is in the  `project_name` SLS project.
+        /// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+        /// </summary>
+        [Input("interval")]
+        public Input<int>? Interval { get; set; }
+
+        /// <summary>
+        /// The LogStore that stores the flowlog.
         /// </summary>
         [Input("logStoreName")]
         public Input<string>? LogStoreName { get; set; }
 
         /// <summary>
-        /// A regex string to filter CEN flow logs by name.
+        /// A regex string to filter results by Group Metric Rule name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -192,16 +358,40 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The name of the SLS project.
+        /// Current page number.
+        /// </summary>
+        [Input("pageNumber")]
+        public Input<int>? PageNumber { get; set; }
+
+        /// <summary>
+        /// Number of records per page.
+        /// </summary>
+        [Input("pageSize")]
+        public Input<int>? PageSize { get; set; }
+
+        /// <summary>
+        /// The Project that stores the flowlog.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
 
         /// <summary>
-        /// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        /// Region id
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// Transit Router ID
+        /// </summary>
+        [Input("transitRouterId")]
+        public Input<string>? TransitRouterId { get; set; }
 
         public GetFlowlogsInvokeArgs()
         {
@@ -214,40 +404,69 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetFlowlogsResult
     {
         /// <summary>
-        /// The ID of the CEN Instance.
+        /// The ID of Cen instance.
         /// </summary>
         public readonly string? CenId;
         /// <summary>
-        /// The description of flowlog.
+        /// The description of the flowlog.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The ID of FlowLog.
+        /// </summary>
+        public readonly string? FlowLogId;
+        /// <summary>
+        /// The name of the flowlog.
+        /// </summary>
+        public readonly string? FlowLogName;
+        /// <summary>
+        /// (Available since v1.236.0) Flowlog Version.
+        /// </summary>
+        public readonly string? FlowLogVersion;
+        /// <summary>
+        /// A list of Flow Log Entries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetFlowlogsFlowlogResult> Flowlogs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of CEN flow log IDs.
+        /// A list of Flow Log IDs.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// The name of the log store which is in the  `project_name` SLS project.
+        /// (Available since v1.236.0) The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+        /// </summary>
+        public readonly int? Interval;
+        /// <summary>
+        /// The LogStore that stores the flowlog.
         /// </summary>
         public readonly string? LogStoreName;
         public readonly string? NameRegex;
         /// <summary>
-        /// A list of CEN flow log names.
+        /// A list of name of Flow Logs.
         /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
+        public readonly int? PageNumber;
+        public readonly int? PageSize;
         /// <summary>
-        /// The name of the SLS project.
+        /// The Project that stores the flowlog.
         /// </summary>
         public readonly string? ProjectName;
         /// <summary>
-        /// The status of flowlog.
+        /// (Available since v1.236.0) Region Id.
+        /// </summary>
+        public readonly string? RegionId;
+        /// <summary>
+        /// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
         /// </summary>
         public readonly string? Status;
+        /// <summary>
+        /// (Available since v1.236.0) Transit Router ID.
+        /// </summary>
+        public readonly string? TransitRouterId;
 
         [OutputConstructor]
         private GetFlowlogsResult(
@@ -255,11 +474,19 @@ namespace Pulumi.AliCloud.Cen
 
             string? description,
 
+            string? flowLogId,
+
+            string? flowLogName,
+
+            string? flowLogVersion,
+
             ImmutableArray<Outputs.GetFlowlogsFlowlogResult> flowlogs,
 
             string id,
 
             ImmutableArray<string> ids,
+
+            int? interval,
 
             string? logStoreName,
 
@@ -269,21 +496,37 @@ namespace Pulumi.AliCloud.Cen
 
             string? outputFile,
 
+            int? pageNumber,
+
+            int? pageSize,
+
             string? projectName,
 
-            string? status)
+            string? regionId,
+
+            string? status,
+
+            string? transitRouterId)
         {
             CenId = cenId;
             Description = description;
+            FlowLogId = flowLogId;
+            FlowLogName = flowLogName;
+            FlowLogVersion = flowLogVersion;
             Flowlogs = flowlogs;
             Id = id;
             Ids = ids;
+            Interval = interval;
             LogStoreName = logStoreName;
             NameRegex = nameRegex;
             Names = names;
             OutputFile = outputFile;
+            PageNumber = pageNumber;
+            PageSize = pageSize;
             ProjectName = projectName;
+            RegionId = regionId;
             Status = status;
+            TransitRouterId = transitRouterId;
         }
     }
 }

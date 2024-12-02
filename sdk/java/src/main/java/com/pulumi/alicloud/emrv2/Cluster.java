@@ -15,6 +15,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -298,6 +299,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> clusterType() {
         return this.clusterType;
+    }
+    /**
+     * The deletion protection of EMR cluster.
+     * 
+     */
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    /**
+     * @return The deletion protection of EMR cluster.
+     * 
+     */
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.

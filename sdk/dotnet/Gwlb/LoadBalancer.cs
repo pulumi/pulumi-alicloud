@@ -28,58 +28,59 @@ namespace Pulumi.AliCloud.Gwlb
     public partial class LoadBalancer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The protocol version. Value:
-        /// - Ipv4: Ipv4 type
+        /// The IP version. Valid values:
+        /// 
+        /// - `Ipv4`: IPv4 (default)
         /// </summary>
         [Output("addressIpVersion")]
         public Output<string> AddressIpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+        /// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Gateway Load Balancer instance.
+        /// The GWLB instance name.
         /// 
-        /// It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("loadBalancerName")]
         public Output<string?> LoadBalancerName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+        /// The GWLB instance status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The list of tags.
+        /// The tag keys. You can specify at most 20 tags in each call.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC which the Gateway Load Balancer instance belongs.
+        /// The virtual private cloud (VPC) ID.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+        /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         /// </summary>
         [Output("zoneMappings")]
         public Output<ImmutableArray<Outputs.LoadBalancerZoneMapping>> ZoneMappings { get; private set; } = null!;
@@ -131,28 +132,29 @@ namespace Pulumi.AliCloud.Gwlb
     public sealed class LoadBalancerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The protocol version. Value:
-        /// - Ipv4: Ipv4 type
+        /// The IP version. Valid values:
+        /// 
+        /// - `Ipv4`: IPv4 (default)
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The name of the Gateway Load Balancer instance.
+        /// The GWLB instance name.
         /// 
-        /// It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -161,7 +163,7 @@ namespace Pulumi.AliCloud.Gwlb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The list of tags.
+        /// The tag keys. You can specify at most 20 tags in each call.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -170,7 +172,7 @@ namespace Pulumi.AliCloud.Gwlb
         }
 
         /// <summary>
-        /// The ID of the VPC which the Gateway Load Balancer instance belongs.
+        /// The virtual private cloud (VPC) ID.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -179,7 +181,7 @@ namespace Pulumi.AliCloud.Gwlb
         private InputList<Inputs.LoadBalancerZoneMappingArgs>? _zoneMappings;
 
         /// <summary>
-        /// The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+        /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingArgs> ZoneMappings
         {
@@ -196,40 +198,41 @@ namespace Pulumi.AliCloud.Gwlb
     public sealed class LoadBalancerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The protocol version. Value:
-        /// - Ipv4: Ipv4 type
+        /// The IP version. Valid values:
+        /// 
+        /// - `Ipv4`: IPv4 (default)
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
 
         /// <summary>
-        /// The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+        /// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The name of the Gateway Load Balancer instance.
+        /// The GWLB instance name.
         /// 
-        /// It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        /// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("loadBalancerName")]
         public Input<string>? LoadBalancerName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group
+        /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+        /// The GWLB instance status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -238,7 +241,7 @@ namespace Pulumi.AliCloud.Gwlb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The list of tags.
+        /// The tag keys. You can specify at most 20 tags in each call.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -247,7 +250,7 @@ namespace Pulumi.AliCloud.Gwlb
         }
 
         /// <summary>
-        /// The ID of the VPC which the Gateway Load Balancer instance belongs.
+        /// The virtual private cloud (VPC) ID.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -256,7 +259,7 @@ namespace Pulumi.AliCloud.Gwlb
         private InputList<Inputs.LoadBalancerZoneMappingGetArgs>? _zoneMappings;
 
         /// <summary>
-        /// The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+        /// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingGetArgs> ZoneMappings
         {

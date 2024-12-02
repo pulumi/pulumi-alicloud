@@ -48,33 +48,33 @@ export class Listener extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The custom listener description.
+     * The description of the listener.
      *
-     * The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
     public readonly listenerDescription!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the gateway load balancer instance.
+     * The GWLB instance ID.
      */
     public readonly loadBalancerId!: pulumi.Output<string>;
     /**
-     * The ID of the region.
+     * The region ID.
      */
     public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
-     * The ID of the server group.
+     * The server group ID.
      */
     public readonly serverGroupId!: pulumi.Output<string>;
     /**
-     * The current status of the listener. Value:
+     * The status of the listener.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The list of tags.
+     * The tags. You can specify at most 20 tags in each call.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -124,33 +124,33 @@ export class Listener extends pulumi.CustomResource {
  */
 export interface ListenerState {
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The custom listener description.
+     * The description of the listener.
      *
-     * The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
     listenerDescription?: pulumi.Input<string>;
     /**
-     * The ID of the gateway load balancer instance.
+     * The GWLB instance ID.
      */
     loadBalancerId?: pulumi.Input<string>;
     /**
-     * The ID of the region.
+     * The region ID.
      */
     regionId?: pulumi.Input<string>;
     /**
-     * The ID of the server group.
+     * The server group ID.
      */
     serverGroupId?: pulumi.Input<string>;
     /**
-     * The current status of the listener. Value:
+     * The status of the listener.
      */
     status?: pulumi.Input<string>;
     /**
-     * The list of tags.
+     * The tags. You can specify at most 20 tags in each call.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -160,25 +160,25 @@ export interface ListenerState {
  */
 export interface ListenerArgs {
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The custom listener description.
+     * The description of the listener.
      *
-     * The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
      */
     listenerDescription?: pulumi.Input<string>;
     /**
-     * The ID of the gateway load balancer instance.
+     * The GWLB instance ID.
      */
     loadBalancerId: pulumi.Input<string>;
     /**
-     * The ID of the server group.
+     * The server group ID.
      */
     serverGroupId: pulumi.Input<string>;
     /**
-     * The list of tags.
+     * The tags. You can specify at most 20 tags in each call.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

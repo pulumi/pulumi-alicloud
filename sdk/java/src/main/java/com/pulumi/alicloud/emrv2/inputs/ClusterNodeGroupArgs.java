@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.emrv2.inputs;
 
+import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupAckConfigArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupAutoScalingPolicyArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupCostOptimizedConfigArgs;
 import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupDataDiskArgs;
@@ -26,14 +27,29 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterNodeGroupArgs Empty = new ClusterNodeGroupArgs();
 
     /**
-     * Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+     * The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+     * 
+     */
+    @Import(name="ackConfig")
+    private @Nullable Output<ClusterNodeGroupAckConfigArgs> ackConfig;
+
+    /**
+     * @return The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+     * 
+     */
+    public Optional<Output<ClusterNodeGroupAckConfigArgs>> ackConfig() {
+        return Optional.ofNullable(this.ackConfig);
+    }
+
+    /**
+     * Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
      * 
      */
     @Import(name="additionalSecurityGroupIds")
     private @Nullable Output<List<String>> additionalSecurityGroupIds;
 
     /**
-     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
      * 
      */
     public Optional<Output<List<String>>> additionalSecurityGroupIds() {
@@ -56,14 +72,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
+     * The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
      * 
      */
     @Import(name="costOptimizedConfig")
     private @Nullable Output<ClusterNodeGroupCostOptimizedConfigArgs> costOptimizedConfig;
 
     /**
-     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
+     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
      * 
      */
     public Optional<Output<ClusterNodeGroupCostOptimizedConfigArgs>> costOptimizedConfig() {
@@ -86,14 +102,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
+     * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
      * 
      */
     @Import(name="deploymentSetStrategy")
     private @Nullable Output<String> deploymentSetStrategy;
 
     /**
-     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
      * 
      */
     public Optional<Output<String>> deploymentSetStrategy() {
@@ -116,14 +132,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+     * Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
      * 
      */
     @Import(name="instanceTypes", required=true)
     private Output<List<String>> instanceTypes;
 
     /**
-     * @return Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+     * @return Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
      * 
      */
     public Output<List<String>> instanceTypes() {
@@ -236,6 +252,21 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+     * 
+     */
+    @Import(name="spotStrategy")
+    private @Nullable Output<String> spotStrategy;
+
+    /**
+     * @return The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+     * 
+     */
+    public Optional<Output<String>> spotStrategy() {
+        return Optional.ofNullable(this.spotStrategy);
+    }
+
+    /**
      * The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
@@ -266,14 +297,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+     * Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
      * 
      */
     @Import(name="vswitchIds")
     private @Nullable Output<List<String>> vswitchIds;
 
     /**
-     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
      * 
      */
     public Optional<Output<List<String>>> vswitchIds() {
@@ -281,14 +312,14 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
+     * Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
      * 
      */
     @Import(name="withPublicIp")
     private @Nullable Output<Boolean> withPublicIp;
 
     /**
-     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
+     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
      * 
      */
     public Optional<Output<Boolean>> withPublicIp() {
@@ -298,6 +329,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
     private ClusterNodeGroupArgs() {}
 
     private ClusterNodeGroupArgs(ClusterNodeGroupArgs $) {
+        this.ackConfig = $.ackConfig;
         this.additionalSecurityGroupIds = $.additionalSecurityGroupIds;
         this.autoScalingPolicy = $.autoScalingPolicy;
         this.costOptimizedConfig = $.costOptimizedConfig;
@@ -312,6 +344,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         this.paymentType = $.paymentType;
         this.spotBidPrices = $.spotBidPrices;
         this.spotInstanceRemedy = $.spotInstanceRemedy;
+        this.spotStrategy = $.spotStrategy;
         this.subscriptionConfig = $.subscriptionConfig;
         this.systemDisk = $.systemDisk;
         this.vswitchIds = $.vswitchIds;
@@ -337,7 +370,28 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+         * @param ackConfig The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ackConfig(@Nullable Output<ClusterNodeGroupAckConfigArgs> ackConfig) {
+            $.ackConfig = ackConfig;
+            return this;
+        }
+
+        /**
+         * @param ackConfig The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ackConfig(ClusterNodeGroupAckConfigArgs ackConfig) {
+            return ackConfig(Output.of(ackConfig));
+        }
+
+        /**
+         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
          * 
          * @return builder
          * 
@@ -348,7 +402,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
          * 
          * @return builder
          * 
@@ -358,7 +412,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+         * @param additionalSecurityGroupIds Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
          * 
          * @return builder
          * 
@@ -389,7 +443,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
+         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
          * 
          * @return builder
          * 
@@ -400,7 +454,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
+         * @param costOptimizedConfig The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
          * 
          * @return builder
          * 
@@ -441,7 +495,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
+         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
          * 
          * @return builder
          * 
@@ -452,7 +506,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
+         * @param deploymentSetStrategy Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
          * 
          * @return builder
          * 
@@ -483,7 +537,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
          * 
          * @return builder
          * 
@@ -494,7 +548,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
          * 
          * @return builder
          * 
@@ -504,7 +558,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+         * @param instanceTypes Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
          * 
          * @return builder
          * 
@@ -671,6 +725,27 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param spotStrategy The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotStrategy(@Nullable Output<String> spotStrategy) {
+            $.spotStrategy = spotStrategy;
+            return this;
+        }
+
+        /**
+         * @param spotStrategy The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spotStrategy(String spotStrategy) {
+            return spotStrategy(Output.of(spotStrategy));
+        }
+
+        /**
          * @param subscriptionConfig The detail configuration of subscription payment type. See `subscription_config` below.
          * 
          * @return builder
@@ -713,7 +788,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
          * 
          * @return builder
          * 
@@ -724,7 +799,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
          * 
          * @return builder
          * 
@@ -734,7 +809,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+         * @param vswitchIds Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
          * 
          * @return builder
          * 
@@ -744,7 +819,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param withPublicIp Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
+         * @param withPublicIp Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
          * 
          * @return builder
          * 
@@ -755,7 +830,7 @@ public final class ClusterNodeGroupArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param withPublicIp Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
+         * @param withPublicIp Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
          * 
          * @return builder
          * 

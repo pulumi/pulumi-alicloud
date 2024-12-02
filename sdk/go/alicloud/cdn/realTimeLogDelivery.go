@@ -14,6 +14,8 @@ import (
 
 // Provides a CDN Real Time Log Delivery resource.
 //
+// Accelerate domain name real-time log push.
+//
 // For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
 //
 // > **NOTE:** Available since v1.134.0.
@@ -107,22 +109,26 @@ import (
 // CDN Real Time Log Delivery can be imported using the id, e.g.
 //
 // ```sh
-// $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
+// $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <id>
 // ```
 type RealTimeLogDelivery struct {
 	pulumi.CustomResourceState
 
-	// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+	// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-	Logstore pulumi.StringOutput `pulumi:"logstore"`
-	// The name of the Log Service project that is used for real-time log delivery.
-	Project pulumi.StringOutput `pulumi:"project"`
-	// The region where the Log Service project is deployed.
+	// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
 	//
-	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+	// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+	Logstore pulumi.StringOutput `pulumi:"logstore"`
+	// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
 	SlsRegion pulumi.StringOutput `pulumi:"slsRegion"`
-	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	// Resource attribute fields that represent the status of the resource.
+	//
+	// Value:
+	// - offline
+	// - online
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -168,32 +174,40 @@ func GetRealTimeLogDelivery(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RealTimeLogDelivery resources.
 type realTimeLogDeliveryState struct {
-	// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+	// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
 	Domain *string `pulumi:"domain"`
-	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-	Logstore *string `pulumi:"logstore"`
-	// The name of the Log Service project that is used for real-time log delivery.
-	Project *string `pulumi:"project"`
-	// The region where the Log Service project is deployed.
+	// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
 	//
-	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+	// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+	Logstore *string `pulumi:"logstore"`
+	// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+	Project *string `pulumi:"project"`
+	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
 	SlsRegion *string `pulumi:"slsRegion"`
-	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	// Resource attribute fields that represent the status of the resource.
+	//
+	// Value:
+	// - offline
+	// - online
 	Status *string `pulumi:"status"`
 }
 
 type RealTimeLogDeliveryState struct {
-	// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+	// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
 	Domain pulumi.StringPtrInput
-	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-	Logstore pulumi.StringPtrInput
-	// The name of the Log Service project that is used for real-time log delivery.
-	Project pulumi.StringPtrInput
-	// The region where the Log Service project is deployed.
+	// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
 	//
-	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+	// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+	Logstore pulumi.StringPtrInput
+	// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+	Project pulumi.StringPtrInput
+	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
 	SlsRegion pulumi.StringPtrInput
-	// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+	// Resource attribute fields that represent the status of the resource.
+	//
+	// Value:
+	// - offline
+	// - online
 	Status pulumi.StringPtrInput
 }
 
@@ -202,30 +216,42 @@ func (RealTimeLogDeliveryState) ElementType() reflect.Type {
 }
 
 type realTimeLogDeliveryArgs struct {
-	// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+	// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
 	Domain string `pulumi:"domain"`
-	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-	Logstore string `pulumi:"logstore"`
-	// The name of the Log Service project that is used for real-time log delivery.
-	Project string `pulumi:"project"`
-	// The region where the Log Service project is deployed.
+	// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
 	//
-	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+	// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+	Logstore string `pulumi:"logstore"`
+	// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+	Project string `pulumi:"project"`
+	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
 	SlsRegion string `pulumi:"slsRegion"`
+	// Resource attribute fields that represent the status of the resource.
+	//
+	// Value:
+	// - offline
+	// - online
+	Status *string `pulumi:"status"`
 }
 
 // The set of arguments for constructing a RealTimeLogDelivery resource.
 type RealTimeLogDeliveryArgs struct {
-	// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+	// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
 	Domain pulumi.StringInput
-	// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-	Logstore pulumi.StringInput
-	// The name of the Log Service project that is used for real-time log delivery.
-	Project pulumi.StringInput
-	// The region where the Log Service project is deployed.
+	// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
 	//
-	// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+	// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+	Logstore pulumi.StringInput
+	// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+	Project pulumi.StringInput
+	// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
 	SlsRegion pulumi.StringInput
+	// Resource attribute fields that represent the status of the resource.
+	//
+	// Value:
+	// - offline
+	// - online
+	Status pulumi.StringPtrInput
 }
 
 func (RealTimeLogDeliveryArgs) ElementType() reflect.Type {
@@ -315,29 +341,33 @@ func (o RealTimeLogDeliveryOutput) ToRealTimeLogDeliveryOutputWithContext(ctx co
 	return o
 }
 
-// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
 func (o RealTimeLogDeliveryOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+//
+// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
 func (o RealTimeLogDeliveryOutput) Logstore() pulumi.StringOutput {
 	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.Logstore }).(pulumi.StringOutput)
 }
 
-// The name of the Log Service project that is used for real-time log delivery.
+// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
 func (o RealTimeLogDeliveryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The region where the Log Service project is deployed.
-//
-// > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
 func (o RealTimeLogDeliveryOutput) SlsRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.SlsRegion }).(pulumi.StringOutput)
 }
 
-// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+// Resource attribute fields that represent the status of the resource.
+//
+// Value:
+// - offline
+// - online
 func (o RealTimeLogDeliveryOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *RealTimeLogDelivery) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

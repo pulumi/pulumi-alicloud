@@ -10,9 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Cdn
 {
     /// <summary>
-    /// Provides a CDN Domain resource. CDN domain name.
+    /// Provides a CDN Domain resource.
     /// 
-    /// For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
+    /// CDN domain name.
+    /// 
+    /// For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
     /// 
     /// &gt; **NOTE:** Available since v1.34.0.
     /// 
@@ -74,7 +76,7 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> CdnType { get; private set; } = null!;
 
         /// <summary>
-        /// Certificate configuration. See `certificate_config` below.
+        /// Certificate configuration See `certificate_config` below.
         /// </summary>
         [Output("certificateConfig")]
         public Output<Outputs.DomainNewCertificateConfig> CertificateConfig { get; private set; } = null!;
@@ -98,6 +100,12 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> DomainName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+        /// </summary>
+        [Output("env")]
+        public Output<string?> Env { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
@@ -105,10 +113,6 @@ namespace Pulumi.AliCloud.Cdn
 
         /// <summary>
         /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
-        /// - **domestic**: Mainland China only.
-        /// - **overseas**: Global (excluding Mainland China).
-        /// - **global**: global.
-        /// The default value is **domestic**.
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
@@ -120,13 +124,13 @@ namespace Pulumi.AliCloud.Cdn
         public Output<ImmutableArray<Outputs.DomainNewSource>> Sources { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource, valid values: `online`, `offline`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -184,7 +188,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string> CdnType { get; set; } = null!;
 
         /// <summary>
-        /// Certificate configuration. See `certificate_config` below.
+        /// Certificate configuration See `certificate_config` below.
         /// </summary>
         [Input("certificateConfig")]
         public Input<Inputs.DomainNewCertificateConfigArgs>? CertificateConfig { get; set; }
@@ -202,6 +206,12 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
+        /// Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+        /// </summary>
+        [Input("env")]
+        public Input<string>? Env { get; set; }
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -209,10 +219,6 @@ namespace Pulumi.AliCloud.Cdn
 
         /// <summary>
         /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
-        /// - **domestic**: Mainland China only.
-        /// - **overseas**: Global (excluding Mainland China).
-        /// - **global**: global.
-        /// The default value is **domestic**.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -229,11 +235,17 @@ namespace Pulumi.AliCloud.Cdn
             set => _sources = value;
         }
 
+        /// <summary>
+        /// The status of the resource, valid values: `online`, `offline`.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
         [Input("tags")]
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {
@@ -256,7 +268,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? CdnType { get; set; }
 
         /// <summary>
-        /// Certificate configuration. See `certificate_config` below.
+        /// Certificate configuration See `certificate_config` below.
         /// </summary>
         [Input("certificateConfig")]
         public Input<Inputs.DomainNewCertificateConfigGetArgs>? CertificateConfig { get; set; }
@@ -280,6 +292,12 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? DomainName { get; set; }
 
         /// <summary>
+        /// Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+        /// </summary>
+        [Input("env")]
+        public Input<string>? Env { get; set; }
+
+        /// <summary>
         /// The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
@@ -287,10 +305,6 @@ namespace Pulumi.AliCloud.Cdn
 
         /// <summary>
         /// Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
-        /// - **domestic**: Mainland China only.
-        /// - **overseas**: Global (excluding Mainland China).
-        /// - **global**: global.
-        /// The default value is **domestic**.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -308,7 +322,7 @@ namespace Pulumi.AliCloud.Cdn
         }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource, valid values: `online`, `offline`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -317,7 +331,7 @@ namespace Pulumi.AliCloud.Cdn
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// The tag of the resource
         /// </summary>
         public InputMap<string> Tags
         {

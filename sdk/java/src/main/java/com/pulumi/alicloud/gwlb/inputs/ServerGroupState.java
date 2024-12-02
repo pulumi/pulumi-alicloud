@@ -37,14 +37,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The creation time of the server group.
+     * The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return The creation time of the server group.
+     * @return The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -52,14 +52,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform only a dry run, without performing the actual request.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -82,18 +82,18 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Backend Protocol. Value:
+     * The backend protocol. Valid values:
      * 
-     * - *GENEVE (default)**.
+     * - `GENEVE`(default)
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return Backend Protocol. Value:
+     * @return The backend protocol. Valid values:
      * 
-     * - *GENEVE (default)**.
+     * - `GENEVE`(default)
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -116,20 +116,22 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Scheduling algorithm. Value:
-     * - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-     * - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-     * - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+     * The scheduling algorithm. Valid values:
+     * 
+     * - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
      * 
      */
     @Import(name="scheduler")
     private @Nullable Output<String> scheduler;
 
     /**
-     * @return Scheduling algorithm. Value:
-     * - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-     * - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-     * - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+     * @return The scheduling algorithm. Valid values:
+     * 
+     * - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
      * 
      */
     public Optional<Output<String>> scheduler() {
@@ -139,7 +141,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * The server group name.
      * 
-     * It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
     @Import(name="serverGroupName")
@@ -148,7 +150,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The server group name.
      * 
-     * It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
     public Optional<Output<String>> serverGroupName() {
@@ -156,18 +158,20 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The server group type. Value:
-     * - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-     * - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+     * The type of server group. Valid values:
+     * 
+     * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - `Ip`: allows you to add servers of by specifying IP addresses.
      * 
      */
     @Import(name="serverGroupType")
     private @Nullable Output<String> serverGroupType;
 
     /**
-     * @return The server group type. Value:
-     * - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-     * - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+     * @return The type of server group. Valid values:
+     * 
+     * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - `Ip`: allows you to add servers of by specifying IP addresses.
      * 
      */
     public Optional<Output<String>> serverGroupType() {
@@ -175,14 +179,20 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of servers. See `servers` below.
+     * The backend servers that you want to remove.
+     * 
+     * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+     * See `servers` below.
      * 
      */
     @Import(name="servers")
     private @Nullable Output<List<ServerGroupServerArgs>> servers;
 
     /**
-     * @return List of servers. See `servers` below.
+     * @return The backend servers that you want to remove.
+     * 
+     * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+     * See `servers` below.
      * 
      */
     public Optional<Output<List<ServerGroupServerArgs>>> servers() {
@@ -190,14 +200,14 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Server group status. Value:
+     * Indicates the status of the backend server.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Server group status. Value:
+     * @return Indicates the status of the backend server.
      * 
      */
     public Optional<Output<String>> status() {
@@ -205,14 +215,18 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of resource tags.
+     * The tag keys.
+     * 
+     * You can specify at most 20 tags in each call.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return List of resource tags.
+     * @return The tag keys.
+     * 
+     * You can specify at most 20 tags in each call.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -220,18 +234,18 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VPC instance ID.
+     * The VPC ID.
      * 
-     * &gt; **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The VPC instance ID.
+     * @return The VPC ID.
      * 
-     * &gt; **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -296,7 +310,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the server group.
+         * @param createTime The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -307,7 +321,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime The creation time of the server group.
+         * @param createTime The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
          * 
          * @return builder
          * 
@@ -317,7 +331,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -328,7 +342,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -359,9 +373,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol Backend Protocol. Value:
+         * @param protocol The backend protocol. Valid values:
          * 
-         * - *GENEVE (default)**.
+         * - `GENEVE`(default)
          * 
          * @return builder
          * 
@@ -372,9 +386,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocol Backend Protocol. Value:
+         * @param protocol The backend protocol. Valid values:
          * 
-         * - *GENEVE (default)**.
+         * - `GENEVE`(default)
          * 
          * @return builder
          * 
@@ -405,10 +419,11 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler Scheduling algorithm. Value:
-         * - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-         * - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-         * - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+         * @param scheduler The scheduling algorithm. Valid values:
+         * 
+         * - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+         * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+         * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
          * 
          * @return builder
          * 
@@ -419,10 +434,11 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scheduler Scheduling algorithm. Value:
-         * - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-         * - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-         * - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+         * @param scheduler The scheduling algorithm. Valid values:
+         * 
+         * - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+         * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+         * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
          * 
          * @return builder
          * 
@@ -434,7 +450,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serverGroupName The server group name.
          * 
-         * It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+         * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -447,7 +463,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serverGroupName The server group name.
          * 
-         * It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+         * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
          * 
          * @return builder
          * 
@@ -457,9 +473,10 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The server group type. Value:
-         * - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-         * - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+         * @param serverGroupType The type of server group. Valid values:
+         * 
+         * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+         * - `Ip`: allows you to add servers of by specifying IP addresses.
          * 
          * @return builder
          * 
@@ -470,9 +487,10 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverGroupType The server group type. Value:
-         * - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-         * - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+         * @param serverGroupType The type of server group. Valid values:
+         * 
+         * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+         * - `Ip`: allows you to add servers of by specifying IP addresses.
          * 
          * @return builder
          * 
@@ -482,7 +500,10 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers List of servers. See `servers` below.
+         * @param servers The backend servers that you want to remove.
+         * 
+         * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+         * See `servers` below.
          * 
          * @return builder
          * 
@@ -493,7 +514,10 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers List of servers. See `servers` below.
+         * @param servers The backend servers that you want to remove.
+         * 
+         * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+         * See `servers` below.
          * 
          * @return builder
          * 
@@ -503,7 +527,10 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param servers List of servers. See `servers` below.
+         * @param servers The backend servers that you want to remove.
+         * 
+         * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+         * See `servers` below.
          * 
          * @return builder
          * 
@@ -513,7 +540,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Server group status. Value:
+         * @param status Indicates the status of the backend server.
          * 
          * @return builder
          * 
@@ -524,7 +551,7 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Server group status. Value:
+         * @param status Indicates the status of the backend server.
          * 
          * @return builder
          * 
@@ -534,7 +561,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags List of resource tags.
+         * @param tags The tag keys.
+         * 
+         * You can specify at most 20 tags in each call.
          * 
          * @return builder
          * 
@@ -545,7 +574,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags List of resource tags.
+         * @param tags The tag keys.
+         * 
+         * You can specify at most 20 tags in each call.
          * 
          * @return builder
          * 
@@ -555,9 +586,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPC instance ID.
+         * @param vpcId The VPC ID.
          * 
-         * &gt; **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+         * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
          * 
          * @return builder
          * 
@@ -568,9 +599,9 @@ public final class ServerGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The VPC instance ID.
+         * @param vpcId The VPC ID.
          * 
-         * &gt; **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+         * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
          * 
          * @return builder
          * 

@@ -34,13 +34,13 @@ namespace Pulumi.AliCloud.Gwlb
         public Output<Outputs.ServerGroupConnectionDrainConfig> ConnectionDrainConfig { get; private set; } = null!;
 
         /// <summary>
-        /// The creation time of the server group.
+        /// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
@@ -52,9 +52,9 @@ namespace Pulumi.AliCloud.Gwlb
         public Output<Outputs.ServerGroupHealthCheckConfig> HealthCheckConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Backend Protocol. Value:
+        /// The backend protocol. Valid values:
         /// 
-        /// - *GENEVE (default)**.
+        /// - `GENEVE`(default)
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
@@ -66,10 +66,11 @@ namespace Pulumi.AliCloud.Gwlb
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Scheduling algorithm. Value:
-        /// - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-        /// - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-        /// - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        /// The scheduling algorithm. Valid values:
+        /// 
+        /// - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        /// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        /// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         /// </summary>
         [Output("scheduler")]
         public Output<string> Scheduler { get; private set; } = null!;
@@ -77,41 +78,47 @@ namespace Pulumi.AliCloud.Gwlb
         /// <summary>
         /// The server group name.
         /// 
-        /// It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        /// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Output("serverGroupName")]
         public Output<string?> ServerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The server group type. Value:
-        /// - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-        /// - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+        /// The type of server group. Valid values:
+        /// 
+        /// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+        /// - `Ip`: allows you to add servers of by specifying IP addresses.
         /// </summary>
         [Output("serverGroupType")]
         public Output<string> ServerGroupType { get; private set; } = null!;
 
         /// <summary>
-        /// List of servers. See `servers` below.
+        /// The backend servers that you want to remove.
+        /// 
+        /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+        /// See `servers` below.
         /// </summary>
         [Output("servers")]
         public Output<ImmutableArray<Outputs.ServerGroupServer>> Servers { get; private set; } = null!;
 
         /// <summary>
-        /// Server group status. Value:
+        /// Indicates the status of the backend server.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// List of resource tags.
+        /// The tag keys.
+        /// 
+        /// You can specify at most 20 tags in each call.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC instance ID.
+        /// The VPC ID.
         /// 
-        /// &gt; **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+        /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -169,7 +176,7 @@ namespace Pulumi.AliCloud.Gwlb
         public Input<Inputs.ServerGroupConnectionDrainConfigArgs>? ConnectionDrainConfig { get; set; }
 
         /// <summary>
-        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -181,9 +188,9 @@ namespace Pulumi.AliCloud.Gwlb
         public Input<Inputs.ServerGroupHealthCheckConfigArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// Backend Protocol. Value:
+        /// The backend protocol. Valid values:
         /// 
-        /// - *GENEVE (default)**.
+        /// - `GENEVE`(default)
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -195,10 +202,11 @@ namespace Pulumi.AliCloud.Gwlb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm. Value:
-        /// - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-        /// - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-        /// - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        /// The scheduling algorithm. Valid values:
+        /// 
+        /// - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        /// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        /// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
@@ -206,15 +214,16 @@ namespace Pulumi.AliCloud.Gwlb
         /// <summary>
         /// The server group name.
         /// 
-        /// It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        /// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("serverGroupName")]
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The server group type. Value:
-        /// - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-        /// - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+        /// The type of server group. Valid values:
+        /// 
+        /// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+        /// - `Ip`: allows you to add servers of by specifying IP addresses.
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
@@ -223,7 +232,10 @@ namespace Pulumi.AliCloud.Gwlb
         private InputList<Inputs.ServerGroupServerArgs>? _servers;
 
         /// <summary>
-        /// List of servers. See `servers` below.
+        /// The backend servers that you want to remove.
+        /// 
+        /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+        /// See `servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerArgs> Servers
         {
@@ -235,7 +247,9 @@ namespace Pulumi.AliCloud.Gwlb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// List of resource tags.
+        /// The tag keys.
+        /// 
+        /// You can specify at most 20 tags in each call.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -244,9 +258,9 @@ namespace Pulumi.AliCloud.Gwlb
         }
 
         /// <summary>
-        /// The VPC instance ID.
+        /// The VPC ID.
         /// 
-        /// &gt; **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+        /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -266,13 +280,13 @@ namespace Pulumi.AliCloud.Gwlb
         public Input<Inputs.ServerGroupConnectionDrainConfigGetArgs>? ConnectionDrainConfig { get; set; }
 
         /// <summary>
-        /// The creation time of the server group.
+        /// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
@@ -284,9 +298,9 @@ namespace Pulumi.AliCloud.Gwlb
         public Input<Inputs.ServerGroupHealthCheckConfigGetArgs>? HealthCheckConfig { get; set; }
 
         /// <summary>
-        /// Backend Protocol. Value:
+        /// The backend protocol. Valid values:
         /// 
-        /// - *GENEVE (default)**.
+        /// - `GENEVE`(default)
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
@@ -298,10 +312,11 @@ namespace Pulumi.AliCloud.Gwlb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm. Value:
-        /// - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-        /// - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-        /// - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        /// The scheduling algorithm. Valid values:
+        /// 
+        /// - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        /// - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        /// - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
@@ -309,15 +324,16 @@ namespace Pulumi.AliCloud.Gwlb
         /// <summary>
         /// The server group name.
         /// 
-        /// It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        /// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("serverGroupName")]
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// The server group type. Value:
-        /// - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-        /// - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+        /// The type of server group. Valid values:
+        /// 
+        /// - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+        /// - `Ip`: allows you to add servers of by specifying IP addresses.
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
@@ -326,7 +342,10 @@ namespace Pulumi.AliCloud.Gwlb
         private InputList<Inputs.ServerGroupServerGetArgs>? _servers;
 
         /// <summary>
-        /// List of servers. See `servers` below.
+        /// The backend servers that you want to remove.
+        /// 
+        /// &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+        /// See `servers` below.
         /// </summary>
         public InputList<Inputs.ServerGroupServerGetArgs> Servers
         {
@@ -335,7 +354,7 @@ namespace Pulumi.AliCloud.Gwlb
         }
 
         /// <summary>
-        /// Server group status. Value:
+        /// Indicates the status of the backend server.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -344,7 +363,9 @@ namespace Pulumi.AliCloud.Gwlb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// List of resource tags.
+        /// The tag keys.
+        /// 
+        /// You can specify at most 20 tags in each call.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -353,9 +374,9 @@ namespace Pulumi.AliCloud.Gwlb
         }
 
         /// <summary>
-        /// The VPC instance ID.
+        /// The VPC ID.
         /// 
-        /// &gt; **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+        /// &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

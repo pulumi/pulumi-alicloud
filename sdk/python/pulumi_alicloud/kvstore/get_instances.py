@@ -151,7 +151,7 @@ class GetInstancesResult:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[str]:
         """
-        (Optional) Type of the applied ApsaraDB for instance.
+        (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
         """
         return pulumi.get(self, "instance_class")
@@ -307,8 +307,9 @@ def get_instances(architecture_type: Optional[str] = None,
                   zone_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstancesResult:
     """
-    The `kvstore_get_instances` data source provides a collection of kvstore instances available in Alicloud account.
-    Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+    This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.15.0.
 
     ## Example Usage
 
@@ -328,7 +329,7 @@ def get_instances(architecture_type: Optional[str] = None,
     :param str expired: The expiration status of the instance.
     :param bool global_instance: Whether to create a distributed cache.
     :param Sequence[str] ids: A list of KVStore DBInstance IDs.
-    :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+    :param str instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
     :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
     :param str name_regex: A regex string to apply to the instance name.
     :param str network_type: The type of the network. Valid values: `CLASSIC`, `VPC`.
@@ -412,8 +413,9 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
                          zone_id: Optional[pulumi.Input[Optional[str]]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
     """
-    The `kvstore_get_instances` data source provides a collection of kvstore instances available in Alicloud account.
-    Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+    This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+
+    > **NOTE:** Available since v1.15.0.
 
     ## Example Usage
 
@@ -433,7 +435,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
     :param str expired: The expiration status of the instance.
     :param bool global_instance: Whether to create a distributed cache.
     :param Sequence[str] ids: A list of KVStore DBInstance IDs.
-    :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+    :param str instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
     :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
     :param str name_regex: A regex string to apply to the instance name.
     :param str network_type: The type of the network. Valid values: `CLASSIC`, `VPC`.

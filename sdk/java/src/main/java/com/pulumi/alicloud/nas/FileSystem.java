@@ -6,6 +6,8 @@ package com.pulumi.alicloud.nas;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.nas.FileSystemArgs;
 import com.pulumi.alicloud.nas.inputs.FileSystemState;
+import com.pulumi.alicloud.nas.outputs.FileSystemNfsAcl;
+import com.pulumi.alicloud.nas.outputs.FileSystemRecycleBin;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -17,13 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Nas File System resource.
+ * Provides a File Storage (NAS) File System resource.
  * 
- * After activating NAS, you can create a file system and purchase a storage package for it in the NAS console. The NAS console also enables you to view the file system details and remove unnecessary file systems.
+ * For information about File Storage (NAS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createfilesystem).
  * 
- * For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
- * 
- * &gt; **NOTE:** Available in v1.33.0+.
+ * &gt; **NOTE:** Available since v1.33.0.
  * 
  * ## Example Usage
  * 
@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.nas.FileSystem;
  * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.inputs.FileSystemRecycleBinArgs;
+ * import com.pulumi.alicloud.nas.inputs.FileSystemNfsAclArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,16 +56,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
  *             .fileSystemType("standard")
  *             .build());
  * 
- *         var foo = new FileSystem("foo", FileSystemArgs.builder()
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
  *             .protocolType("NFS")
- *             .storageType("Performance")
- *             .description("terraform-example")
- *             .encryptType("1")
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()))
+ *             .storageType("Capacity")
+ *             .description(name)
+ *             .encryptType(1)
+ *             .fileSystemType("standard")
+ *             .recycleBin(FileSystemRecycleBinArgs.builder()
+ *                 .status("Enable")
+ *                 .reservedDays("10")
+ *                 .build())
+ *             .nfsAcl(FileSystemNfsAclArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .zoneId(default_.zones()[0].zoneId())
  *             .build());
  * 
  *     }
@@ -97,16 +109,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
  *             .fileSystemType("extreme")
  *             .build());
  * 
- *         var foo = new FileSystem("foo", FileSystemArgs.builder()
- *             .fileSystemType("extreme")
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
  *             .protocolType("NFS")
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[0].zoneId()))
  *             .storageType("standard")
- *             .capacity("100")
+ *             .capacity(100)
+ *             .description(name)
+ *             .encryptType(1)
+ *             .fileSystemType("extreme")
+ *             .zoneId(default_.zones()[0].zoneId())
  *             .build());
  * 
  *     }
@@ -144,30 +160,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
+ *         final var config = ctx.config();
+ *         final var name = config.get("name").orElse("terraform-example");
+ *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
  *             .fileSystemType("cpfs")
  *             .build());
  * 
- *         var exampleNetwork = new Network("exampleNetwork", NetworkArgs.builder()
- *             .vpcName("terraform-example")
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .vpcName(name)
  *             .cidrBlock("172.17.3.0/24")
  *             .build());
  * 
- *         var exampleSwitch = new Switch("exampleSwitch", SwitchArgs.builder()
- *             .vswitchName("terraform-example")
+ *         var defaultSwitch = new Switch("defaultSwitch", SwitchArgs.builder()
+ *             .vswitchName(name)
  *             .cidrBlock("172.17.3.0/24")
- *             .vpcId(exampleNetwork.id())
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[1].zoneId()))
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.zones()[1].zoneId())
  *             .build());
  * 
- *         var exampleFileSystem = new FileSystem("exampleFileSystem", FileSystemArgs.builder()
+ *         var defaultFileSystem = new FileSystem("defaultFileSystem", FileSystemArgs.builder()
  *             .protocolType("cpfs")
- *             .storageType("advance_200")
+ *             .storageType("advance_100")
+ *             .capacity(5000)
+ *             .description(name)
  *             .fileSystemType("cpfs")
- *             .capacity(3600)
- *             .zoneId(example.applyValue(getZonesResult -> getZonesResult.zones()[1].zoneId()))
- *             .vpcId(exampleNetwork.id())
- *             .vswitchId(exampleSwitch.id())
+ *             .vswitchId(defaultSwitch.id())
+ *             .vpcId(defaultNetwork.id())
+ *             .zoneId(default_.zones()[1].zoneId())
  *             .build());
  * 
  *     }
@@ -178,134 +197,210 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Nas File System can be imported using the id, e.g.
+ * File Storage (NAS) File System can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
+ * $ pulumi import alicloud:nas/fileSystem:FileSystem example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:nas/fileSystem:FileSystem")
 public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
-     * The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-     * Unit: gib; **Note**: The minimum value is 100.
+     * The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
      * 
      */
     @Export(name="capacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacity;
 
     /**
-     * @return The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-     * Unit: gib; **Note**: The minimum value is 100.
+     * @return The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
      * 
      */
     public Output<Integer> capacity() {
         return this.capacity;
     }
     /**
-     * The File System description.
+     * (Available since v1.236.0) The time when the file system was created.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return (Available since v1.236.0) The time when the file system was created.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * The description of the file system.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The File System description.
+     * @return The description of the file system.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-     * * Valid values:
+     * Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
      * 
      */
     @Export(name="encryptType", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> encryptType;
 
     /**
-     * @return Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-     * * Valid values:
+     * @return Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
      * 
      */
     public Output<Optional<Integer>> encryptType() {
         return Codegen.optional(this.encryptType);
     }
     /**
-     * the type of the file system.
-     * Valid values:
-     * `standard` (Default),
-     * `extreme`,
-     * `cpfs`.
+     * The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
      * 
      */
     @Export(name="fileSystemType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> fileSystemType;
+    private Output<String> fileSystemType;
 
     /**
-     * @return the type of the file system.
-     * Valid values:
-     * `standard` (Default),
-     * `extreme`,
-     * `cpfs`.
+     * @return The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
      * 
      */
-    public Output<Optional<String>> fileSystemType() {
-        return Codegen.optional(this.fileSystemType);
+    public Output<String> fileSystemType() {
+        return this.fileSystemType;
     }
     /**
-     * The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+     * The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
      * 
      */
     @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output<String> kmsKeyId;
 
     /**
-     * @return The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+     * @return The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
      * 
      */
     public Output<String> kmsKeyId() {
         return this.kmsKeyId;
     }
     /**
-     * The protocol type of the file system.
-     * Valid values:
-     * `NFS`,
-     * `SMB` (Available when the `file_system_type` is `standard`),
-     * `cpfs` (Available when the `file_system_type` is `cpfs`).
+     * The NFS ACL feature of the file system. See `nfs_acl` below.
+     * &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+     * 
+     */
+    @Export(name="nfsAcl", refs={FileSystemNfsAcl.class}, tree="[0]")
+    private Output<FileSystemNfsAcl> nfsAcl;
+
+    /**
+     * @return The NFS ACL feature of the file system. See `nfs_acl` below.
+     * &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+     * 
+     */
+    public Output<FileSystemNfsAcl> nfsAcl() {
+        return this.nfsAcl;
+    }
+    /**
+     * The protocol type of the file system. Valid values:
+     * - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+     * - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+     * - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
      * 
      */
     @Export(name="protocolType", refs={String.class}, tree="[0]")
     private Output<String> protocolType;
 
     /**
-     * @return The protocol type of the file system.
-     * Valid values:
-     * `NFS`,
-     * `SMB` (Available when the `file_system_type` is `standard`),
-     * `cpfs` (Available when the `file_system_type` is `cpfs`).
+     * @return The protocol type of the file system. Valid values:
+     * - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+     * - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+     * - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
      * 
      */
     public Output<String> protocolType() {
         return this.protocolType;
     }
     /**
-     * The storage type of the file System.
-     * * Valid values:
-     * * `Performance` (Available when the `file_system_type` is `standard`)
-     * * `Capacity` (Available when the `file_system_type` is `standard`)
+     * The recycle bin feature of the file system. See `recycle_bin` below.
+     * &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+     * 
+     */
+    @Export(name="recycleBin", refs={FileSystemRecycleBin.class}, tree="[0]")
+    private Output<FileSystemRecycleBin> recycleBin;
+
+    /**
+     * @return The recycle bin feature of the file system. See `recycle_bin` below.
+     * &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+     * 
+     */
+    public Output<FileSystemRecycleBin> recycleBin() {
+        return this.recycleBin;
+    }
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+     * 
+     */
+    @Export(name="snapshotId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> snapshotId;
+
+    /**
+     * @return The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+     * 
+     */
+    public Output<Optional<String>> snapshotId() {
+        return Codegen.optional(this.snapshotId);
+    }
+    /**
+     * (Available since v1.236.0) The status of the File System.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return (Available since v1.236.0) The status of the File System.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * The storage type of the file system. Valid values:
+     * - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+     * - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+     * - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+     * &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
      * 
      */
     @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
-     * @return The storage type of the file System.
-     * * Valid values:
-     * * `Performance` (Available when the `file_system_type` is `standard`)
-     * * `Capacity` (Available when the `file_system_type` is `standard`)
+     * @return The storage type of the file system. Valid values:
+     * - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+     * - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+     * - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+     * &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
      * 
      */
     public Output<String> storageType() {
@@ -326,42 +421,42 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+     * The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+     * @return The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
      * 
      */
     public Output<Optional<String>> vpcId() {
         return Codegen.optional(this.vpcId);
     }
     /**
-     * The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+     * The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
      * 
      */
     @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+     * @return The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
      * 
      */
     public Output<Optional<String>> vswitchId() {
         return Codegen.optional(this.vswitchId);
     }
     /**
-     * The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+     * The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+     * @return The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
      * 
      */
     public Output<String> zoneId() {

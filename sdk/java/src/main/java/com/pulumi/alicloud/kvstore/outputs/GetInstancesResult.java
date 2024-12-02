@@ -37,7 +37,7 @@ public final class GetInstancesResult {
      */
     private List<String> ids;
     /**
-     * @return (Optional) Type of the applied ApsaraDB for instance.
+     * @return (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
      * 
      */
@@ -131,7 +131,7 @@ public final class GetInstancesResult {
         return this.ids;
     }
     /**
-     * @return (Optional) Type of the applied ApsaraDB for instance.
+     * @return (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
      * 
      */

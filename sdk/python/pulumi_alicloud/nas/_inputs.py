@@ -19,6 +19,10 @@ __all__ = [
     'AccessPointPosixUserArgsDict',
     'AccessPointRootPathPermissionArgs',
     'AccessPointRootPathPermissionArgsDict',
+    'FileSystemNfsAclArgs',
+    'FileSystemNfsAclArgsDict',
+    'FileSystemRecycleBinArgs',
+    'FileSystemRecycleBinArgsDict',
 ]
 
 MYPY = False
@@ -165,5 +169,149 @@ class AccessPointRootPathPermissionArgs:
     @permission.setter
     def permission(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "permission", value)
+
+
+if not MYPY:
+    class FileSystemNfsAclArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+        """
+elif False:
+    FileSystemNfsAclArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FileSystemNfsAclArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class FileSystemRecycleBinArgsDict(TypedDict):
+        enable_time: NotRequired[pulumi.Input[str]]
+        """
+        The time at which the recycle bin was enabled.
+        """
+        reserved_days: NotRequired[pulumi.Input[int]]
+        """
+        The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+        """
+        secondary_size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+        """
+        size: NotRequired[pulumi.Input[int]]
+        """
+        The size of the files that are dumped to the recycle bin.
+        """
+        status: NotRequired[pulumi.Input[str]]
+        """
+        Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+        """
+elif False:
+    FileSystemRecycleBinArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class FileSystemRecycleBinArgs:
+    def __init__(__self__, *,
+                 enable_time: Optional[pulumi.Input[str]] = None,
+                 reserved_days: Optional[pulumi.Input[int]] = None,
+                 secondary_size: Optional[pulumi.Input[int]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] enable_time: The time at which the recycle bin was enabled.
+        :param pulumi.Input[int] reserved_days: The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+        :param pulumi.Input[int] secondary_size: The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+        :param pulumi.Input[int] size: The size of the files that are dumped to the recycle bin.
+        :param pulumi.Input[str] status: Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+        """
+        if enable_time is not None:
+            pulumi.set(__self__, "enable_time", enable_time)
+        if reserved_days is not None:
+            pulumi.set(__self__, "reserved_days", reserved_days)
+        if secondary_size is not None:
+            pulumi.set(__self__, "secondary_size", secondary_size)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="enableTime")
+    def enable_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which the recycle bin was enabled.
+        """
+        return pulumi.get(self, "enable_time")
+
+    @enable_time.setter
+    def enable_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enable_time", value)
+
+    @property
+    @pulumi.getter(name="reservedDays")
+    def reserved_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reserved_days` takes effect only if `status` is set to `Enable`.
+        """
+        return pulumi.get(self, "reserved_days")
+
+    @reserved_days.setter
+    def reserved_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "reserved_days", value)
+
+    @property
+    @pulumi.getter(name="secondarySize")
+    def secondary_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+        """
+        return pulumi.get(self, "secondary_size")
+
+    @secondary_size.setter
+    def secondary_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "secondary_size", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The size of the files that are dumped to the recycle bin.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 

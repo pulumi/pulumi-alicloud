@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterBootstrapScript {
     /**
-     * @return The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+     * @return The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
      * 
      */
     private String executionFailStrategy;
@@ -56,7 +56,7 @@ public final class ClusterBootstrapScript {
 
     private ClusterBootstrapScript() {}
     /**
-     * @return The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+     * @return The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
      * 
      */
     public String executionFailStrategy() {

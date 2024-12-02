@@ -34,10 +34,6 @@ namespace Pulumi.AliCloud.Cdn.Outputs
         /// </summary>
         public readonly string? CertType;
         /// <summary>
-        /// The force set of the security certificate.
-        /// </summary>
-        public readonly string? ForceSet;
-        /// <summary>
         /// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
         /// </summary>
         public readonly string? PrivateKey;
@@ -62,8 +58,6 @@ namespace Pulumi.AliCloud.Cdn.Outputs
 
             string? certType,
 
-            string? forceSet,
-
             string? privateKey,
 
             string? serverCertificate,
@@ -74,7 +68,6 @@ namespace Pulumi.AliCloud.Cdn.Outputs
             CertName = certName;
             CertRegion = certRegion;
             CertType = certType;
-            ForceSet = forceSet;
             PrivateKey = privateKey;
             ServerCertificate = serverCertificate;
             ServerCertificateStatus = serverCertificateStatus;

@@ -36,11 +36,6 @@ public final class DomainNewCertificateConfig {
      */
     private @Nullable String certType;
     /**
-     * @return The force set of the security certificate.
-     * 
-     */
-    private @Nullable String forceSet;
-    /**
      * @return The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
      * 
      */
@@ -92,13 +87,6 @@ public final class DomainNewCertificateConfig {
         return Optional.ofNullable(this.certType);
     }
     /**
-     * @return The force set of the security certificate.
-     * 
-     */
-    public Optional<String> forceSet() {
-        return Optional.ofNullable(this.forceSet);
-    }
-    /**
      * @return The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
      * 
      */
@@ -135,7 +123,6 @@ public final class DomainNewCertificateConfig {
         private @Nullable String certName;
         private @Nullable String certRegion;
         private @Nullable String certType;
-        private @Nullable String forceSet;
         private @Nullable String privateKey;
         private @Nullable String serverCertificate;
         private @Nullable String serverCertificateStatus;
@@ -146,7 +133,6 @@ public final class DomainNewCertificateConfig {
     	      this.certName = defaults.certName;
     	      this.certRegion = defaults.certRegion;
     	      this.certType = defaults.certType;
-    	      this.forceSet = defaults.forceSet;
     	      this.privateKey = defaults.privateKey;
     	      this.serverCertificate = defaults.serverCertificate;
     	      this.serverCertificateStatus = defaults.serverCertificateStatus;
@@ -177,12 +163,6 @@ public final class DomainNewCertificateConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder forceSet(@Nullable String forceSet) {
-
-            this.forceSet = forceSet;
-            return this;
-        }
-        @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
 
             this.privateKey = privateKey;
@@ -206,7 +186,6 @@ public final class DomainNewCertificateConfig {
             _resultValue.certName = certName;
             _resultValue.certRegion = certRegion;
             _resultValue.certType = certType;
-            _resultValue.forceSet = forceSet;
             _resultValue.privateKey = privateKey;
             _resultValue.serverCertificate = serverCertificate;
             _resultValue.serverCertificateStatus = serverCertificateStatus;

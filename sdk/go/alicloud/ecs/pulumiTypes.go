@@ -146,6 +146,162 @@ func (o AutoProvisioningGroupLaunchTemplateConfigArrayOutput) Index(i pulumi.Int
 	}).(AutoProvisioningGroupLaunchTemplateConfigOutput)
 }
 
+type AutoSnapshotPolicyCopyEncryptionConfiguration struct {
+	// Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+	Encrypted *bool `pulumi:"encrypted"`
+	// The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+	KmsKeyId *string `pulumi:"kmsKeyId"`
+}
+
+// AutoSnapshotPolicyCopyEncryptionConfigurationInput is an input type that accepts AutoSnapshotPolicyCopyEncryptionConfigurationArgs and AutoSnapshotPolicyCopyEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `AutoSnapshotPolicyCopyEncryptionConfigurationInput` via:
+//
+//	AutoSnapshotPolicyCopyEncryptionConfigurationArgs{...}
+type AutoSnapshotPolicyCopyEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToAutoSnapshotPolicyCopyEncryptionConfigurationOutput() AutoSnapshotPolicyCopyEncryptionConfigurationOutput
+	ToAutoSnapshotPolicyCopyEncryptionConfigurationOutputWithContext(context.Context) AutoSnapshotPolicyCopyEncryptionConfigurationOutput
+}
+
+type AutoSnapshotPolicyCopyEncryptionConfigurationArgs struct {
+	// Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
+	// The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+}
+
+func (AutoSnapshotPolicyCopyEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoSnapshotPolicyCopyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i AutoSnapshotPolicyCopyEncryptionConfigurationArgs) ToAutoSnapshotPolicyCopyEncryptionConfigurationOutput() AutoSnapshotPolicyCopyEncryptionConfigurationOutput {
+	return i.ToAutoSnapshotPolicyCopyEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i AutoSnapshotPolicyCopyEncryptionConfigurationArgs) ToAutoSnapshotPolicyCopyEncryptionConfigurationOutputWithContext(ctx context.Context) AutoSnapshotPolicyCopyEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoSnapshotPolicyCopyEncryptionConfigurationOutput)
+}
+
+func (i AutoSnapshotPolicyCopyEncryptionConfigurationArgs) ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput() AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return i.ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i AutoSnapshotPolicyCopyEncryptionConfigurationArgs) ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoSnapshotPolicyCopyEncryptionConfigurationOutput).ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// AutoSnapshotPolicyCopyEncryptionConfigurationPtrInput is an input type that accepts AutoSnapshotPolicyCopyEncryptionConfigurationArgs, AutoSnapshotPolicyCopyEncryptionConfigurationPtr and AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `AutoSnapshotPolicyCopyEncryptionConfigurationPtrInput` via:
+//
+//	        AutoSnapshotPolicyCopyEncryptionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutoSnapshotPolicyCopyEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput() AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput
+	ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(context.Context) AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput
+}
+
+type autoSnapshotPolicyCopyEncryptionConfigurationPtrType AutoSnapshotPolicyCopyEncryptionConfigurationArgs
+
+func AutoSnapshotPolicyCopyEncryptionConfigurationPtr(v *AutoSnapshotPolicyCopyEncryptionConfigurationArgs) AutoSnapshotPolicyCopyEncryptionConfigurationPtrInput {
+	return (*autoSnapshotPolicyCopyEncryptionConfigurationPtrType)(v)
+}
+
+func (*autoSnapshotPolicyCopyEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoSnapshotPolicyCopyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *autoSnapshotPolicyCopyEncryptionConfigurationPtrType) ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput() AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return i.ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *autoSnapshotPolicyCopyEncryptionConfigurationPtrType) ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput)
+}
+
+type AutoSnapshotPolicyCopyEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (AutoSnapshotPolicyCopyEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoSnapshotPolicyCopyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationOutput) ToAutoSnapshotPolicyCopyEncryptionConfigurationOutput() AutoSnapshotPolicyCopyEncryptionConfigurationOutput {
+	return o
+}
+
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationOutput) ToAutoSnapshotPolicyCopyEncryptionConfigurationOutputWithContext(ctx context.Context) AutoSnapshotPolicyCopyEncryptionConfigurationOutput {
+	return o
+}
+
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationOutput) ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput() AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o.ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationOutput) ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoSnapshotPolicyCopyEncryptionConfiguration) *AutoSnapshotPolicyCopyEncryptionConfiguration {
+		return &v
+	}).(AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput)
+}
+
+// Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutoSnapshotPolicyCopyEncryptionConfiguration) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoSnapshotPolicyCopyEncryptionConfiguration) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+type AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoSnapshotPolicyCopyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput) ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput() AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput) ToAutoSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput) Elem() AutoSnapshotPolicyCopyEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicyCopyEncryptionConfiguration) AutoSnapshotPolicyCopyEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AutoSnapshotPolicyCopyEncryptionConfiguration
+		return ret
+	}).(AutoSnapshotPolicyCopyEncryptionConfigurationOutput)
+}
+
+// Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicyCopyEncryptionConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Encrypted
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+func (o AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicyCopyEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
 type DedicatedHostNetworkAttribute struct {
 	// The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
 	SlbUdpTimeout *int `pulumi:"slbUdpTimeout"`
@@ -3427,6 +3583,154 @@ func (o ReservedInstanceOperationLockArrayOutput) Index(i pulumi.IntInput) Reser
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReservedInstanceOperationLock {
 		return vs[0].([]ReservedInstanceOperationLock)[vs[1].(int)]
 	}).(ReservedInstanceOperationLockOutput)
+}
+
+type SnapshotPolicyCopyEncryptionConfiguration struct {
+	Encrypted *bool   `pulumi:"encrypted"`
+	KmsKeyId  *string `pulumi:"kmsKeyId"`
+}
+
+// SnapshotPolicyCopyEncryptionConfigurationInput is an input type that accepts SnapshotPolicyCopyEncryptionConfigurationArgs and SnapshotPolicyCopyEncryptionConfigurationOutput values.
+// You can construct a concrete instance of `SnapshotPolicyCopyEncryptionConfigurationInput` via:
+//
+//	SnapshotPolicyCopyEncryptionConfigurationArgs{...}
+type SnapshotPolicyCopyEncryptionConfigurationInput interface {
+	pulumi.Input
+
+	ToSnapshotPolicyCopyEncryptionConfigurationOutput() SnapshotPolicyCopyEncryptionConfigurationOutput
+	ToSnapshotPolicyCopyEncryptionConfigurationOutputWithContext(context.Context) SnapshotPolicyCopyEncryptionConfigurationOutput
+}
+
+type SnapshotPolicyCopyEncryptionConfigurationArgs struct {
+	Encrypted pulumi.BoolPtrInput   `pulumi:"encrypted"`
+	KmsKeyId  pulumi.StringPtrInput `pulumi:"kmsKeyId"`
+}
+
+func (SnapshotPolicyCopyEncryptionConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotPolicyCopyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i SnapshotPolicyCopyEncryptionConfigurationArgs) ToSnapshotPolicyCopyEncryptionConfigurationOutput() SnapshotPolicyCopyEncryptionConfigurationOutput {
+	return i.ToSnapshotPolicyCopyEncryptionConfigurationOutputWithContext(context.Background())
+}
+
+func (i SnapshotPolicyCopyEncryptionConfigurationArgs) ToSnapshotPolicyCopyEncryptionConfigurationOutputWithContext(ctx context.Context) SnapshotPolicyCopyEncryptionConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPolicyCopyEncryptionConfigurationOutput)
+}
+
+func (i SnapshotPolicyCopyEncryptionConfigurationArgs) ToSnapshotPolicyCopyEncryptionConfigurationPtrOutput() SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return i.ToSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotPolicyCopyEncryptionConfigurationArgs) ToSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPolicyCopyEncryptionConfigurationOutput).ToSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx)
+}
+
+// SnapshotPolicyCopyEncryptionConfigurationPtrInput is an input type that accepts SnapshotPolicyCopyEncryptionConfigurationArgs, SnapshotPolicyCopyEncryptionConfigurationPtr and SnapshotPolicyCopyEncryptionConfigurationPtrOutput values.
+// You can construct a concrete instance of `SnapshotPolicyCopyEncryptionConfigurationPtrInput` via:
+//
+//	        SnapshotPolicyCopyEncryptionConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotPolicyCopyEncryptionConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotPolicyCopyEncryptionConfigurationPtrOutput() SnapshotPolicyCopyEncryptionConfigurationPtrOutput
+	ToSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(context.Context) SnapshotPolicyCopyEncryptionConfigurationPtrOutput
+}
+
+type snapshotPolicyCopyEncryptionConfigurationPtrType SnapshotPolicyCopyEncryptionConfigurationArgs
+
+func SnapshotPolicyCopyEncryptionConfigurationPtr(v *SnapshotPolicyCopyEncryptionConfigurationArgs) SnapshotPolicyCopyEncryptionConfigurationPtrInput {
+	return (*snapshotPolicyCopyEncryptionConfigurationPtrType)(v)
+}
+
+func (*snapshotPolicyCopyEncryptionConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotPolicyCopyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (i *snapshotPolicyCopyEncryptionConfigurationPtrType) ToSnapshotPolicyCopyEncryptionConfigurationPtrOutput() SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return i.ToSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotPolicyCopyEncryptionConfigurationPtrType) ToSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotPolicyCopyEncryptionConfigurationPtrOutput)
+}
+
+type SnapshotPolicyCopyEncryptionConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SnapshotPolicyCopyEncryptionConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotPolicyCopyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationOutput) ToSnapshotPolicyCopyEncryptionConfigurationOutput() SnapshotPolicyCopyEncryptionConfigurationOutput {
+	return o
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationOutput) ToSnapshotPolicyCopyEncryptionConfigurationOutputWithContext(ctx context.Context) SnapshotPolicyCopyEncryptionConfigurationOutput {
+	return o
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationOutput) ToSnapshotPolicyCopyEncryptionConfigurationPtrOutput() SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o.ToSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationOutput) ToSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapshotPolicyCopyEncryptionConfiguration) *SnapshotPolicyCopyEncryptionConfiguration {
+		return &v
+	}).(SnapshotPolicyCopyEncryptionConfigurationPtrOutput)
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SnapshotPolicyCopyEncryptionConfiguration) *bool { return v.Encrypted }).(pulumi.BoolPtrOutput)
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapshotPolicyCopyEncryptionConfiguration) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+type SnapshotPolicyCopyEncryptionConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotPolicyCopyEncryptionConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotPolicyCopyEncryptionConfiguration)(nil)).Elem()
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) ToSnapshotPolicyCopyEncryptionConfigurationPtrOutput() SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) ToSnapshotPolicyCopyEncryptionConfigurationPtrOutputWithContext(ctx context.Context) SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) Elem() SnapshotPolicyCopyEncryptionConfigurationOutput {
+	return o.ApplyT(func(v *SnapshotPolicyCopyEncryptionConfiguration) SnapshotPolicyCopyEncryptionConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotPolicyCopyEncryptionConfiguration
+		return ret
+	}).(SnapshotPolicyCopyEncryptionConfigurationOutput)
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) Encrypted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SnapshotPolicyCopyEncryptionConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Encrypted
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o SnapshotPolicyCopyEncryptionConfigurationPtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotPolicyCopyEncryptionConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetActivationsActivation struct {
@@ -15865,6 +16169,8 @@ func (o GetSnapshotsSnapshotArrayOutput) Index(i pulumi.IntInput) GetSnapshotsSn
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupLaunchTemplateConfigInput)(nil)).Elem(), AutoProvisioningGroupLaunchTemplateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoProvisioningGroupLaunchTemplateConfigArrayInput)(nil)).Elem(), AutoProvisioningGroupLaunchTemplateConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoSnapshotPolicyCopyEncryptionConfigurationInput)(nil)).Elem(), AutoSnapshotPolicyCopyEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutoSnapshotPolicyCopyEncryptionConfigurationPtrInput)(nil)).Elem(), AutoSnapshotPolicyCopyEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostNetworkAttributeInput)(nil)).Elem(), DedicatedHostNetworkAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DedicatedHostNetworkAttributeArrayInput)(nil)).Elem(), DedicatedHostNetworkAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EcsInstanceSetDataDiskInput)(nil)).Elem(), EcsInstanceSetDataDiskArgs{})
@@ -15901,6 +16207,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateSystemDiskPtrInput)(nil)).Elem(), LaunchTemplateSystemDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceOperationLockInput)(nil)).Elem(), ReservedInstanceOperationLockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservedInstanceOperationLockArrayInput)(nil)).Elem(), ReservedInstanceOperationLockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyCopyEncryptionConfigurationInput)(nil)).Elem(), SnapshotPolicyCopyEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SnapshotPolicyCopyEncryptionConfigurationPtrInput)(nil)).Elem(), SnapshotPolicyCopyEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActivationsActivationInput)(nil)).Elem(), GetActivationsActivationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetActivationsActivationArrayInput)(nil)).Elem(), GetActivationsActivationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAutoSnapshotPoliciesPolicyInput)(nil)).Elem(), GetAutoSnapshotPoliciesPolicyArgs{})
@@ -16032,6 +16340,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotsSnapshotArrayInput)(nil)).Elem(), GetSnapshotsSnapshotArray{})
 	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigOutput{})
 	pulumi.RegisterOutputType(AutoProvisioningGroupLaunchTemplateConfigArrayOutput{})
+	pulumi.RegisterOutputType(AutoSnapshotPolicyCopyEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeOutput{})
 	pulumi.RegisterOutputType(DedicatedHostNetworkAttributeArrayOutput{})
 	pulumi.RegisterOutputType(EcsInstanceSetDataDiskOutput{})
@@ -16068,6 +16378,8 @@ func init() {
 	pulumi.RegisterOutputType(LaunchTemplateSystemDiskPtrOutput{})
 	pulumi.RegisterOutputType(ReservedInstanceOperationLockOutput{})
 	pulumi.RegisterOutputType(ReservedInstanceOperationLockArrayOutput{})
+	pulumi.RegisterOutputType(SnapshotPolicyCopyEncryptionConfigurationOutput{})
+	pulumi.RegisterOutputType(SnapshotPolicyCopyEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(GetActivationsActivationOutput{})
 	pulumi.RegisterOutputType(GetActivationsActivationArrayOutput{})
 	pulumi.RegisterOutputType(GetAutoSnapshotPoliciesPolicyOutput{})

@@ -26,13 +26,13 @@ class ListenerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Listener resource.
-        :param pulumi.Input[str] load_balancer_id: The ID of the gateway load balancer instance.
-        :param pulumi.Input[str] server_group_id: The ID of the server group.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
-        :param pulumi.Input[str] listener_description: The custom listener description.
+        :param pulumi.Input[str] load_balancer_id: The GWLB instance ID.
+        :param pulumi.Input[str] server_group_id: The server group ID.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] listener_description: The description of the listener.
                
-               The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
+               The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags. You can specify at most 20 tags in each call.
         """
         pulumi.set(__self__, "load_balancer_id", load_balancer_id)
         pulumi.set(__self__, "server_group_id", server_group_id)
@@ -47,7 +47,7 @@ class ListenerArgs:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Input[str]:
         """
-        The ID of the gateway load balancer instance.
+        The GWLB instance ID.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -59,7 +59,7 @@ class ListenerArgs:
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> pulumi.Input[str]:
         """
-        The ID of the server group.
+        The server group ID.
         """
         return pulumi.get(self, "server_group_id")
 
@@ -71,7 +71,7 @@ class ListenerArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to perform only a dry run, without performing the actual request.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -83,9 +83,9 @@ class ListenerArgs:
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The custom listener description.
+        The description of the listener.
 
-        The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "listener_description")
 
@@ -97,7 +97,7 @@ class ListenerArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The list of tags.
+        The tags. You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
@@ -118,15 +118,15 @@ class _ListenerState:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
-        :param pulumi.Input[str] listener_description: The custom listener description.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] listener_description: The description of the listener.
                
-               The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
-        :param pulumi.Input[str] load_balancer_id: The ID of the gateway load balancer instance.
-        :param pulumi.Input[str] region_id: The ID of the region.
-        :param pulumi.Input[str] server_group_id: The ID of the server group.
-        :param pulumi.Input[str] status: The current status of the listener. Value:
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
+               The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[str] load_balancer_id: The GWLB instance ID.
+        :param pulumi.Input[str] region_id: The region ID.
+        :param pulumi.Input[str] server_group_id: The server group ID.
+        :param pulumi.Input[str] status: The status of the listener.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags. You can specify at most 20 tags in each call.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -147,7 +147,7 @@ class _ListenerState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to perform only a dry run, without performing the actual request.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -159,9 +159,9 @@ class _ListenerState:
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The custom listener description.
+        The description of the listener.
 
-        The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "listener_description")
 
@@ -173,7 +173,7 @@ class _ListenerState:
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the gateway load balancer instance.
+        The GWLB instance ID.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -185,7 +185,7 @@ class _ListenerState:
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the region.
+        The region ID.
         """
         return pulumi.get(self, "region_id")
 
@@ -197,7 +197,7 @@ class _ListenerState:
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the server group.
+        The server group ID.
         """
         return pulumi.get(self, "server_group_id")
 
@@ -209,7 +209,7 @@ class _ListenerState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The current status of the listener. Value:
+        The status of the listener.
         """
         return pulumi.get(self, "status")
 
@@ -221,7 +221,7 @@ class _ListenerState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The list of tags.
+        The tags. You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
@@ -258,13 +258,13 @@ class Listener(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
-        :param pulumi.Input[str] listener_description: The custom listener description.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] listener_description: The description of the listener.
                
-               The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
-        :param pulumi.Input[str] load_balancer_id: The ID of the gateway load balancer instance.
-        :param pulumi.Input[str] server_group_id: The ID of the server group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
+               The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[str] load_balancer_id: The GWLB instance ID.
+        :param pulumi.Input[str] server_group_id: The server group ID.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags. You can specify at most 20 tags in each call.
         """
         ...
     @overload
@@ -351,15 +351,15 @@ class Listener(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
-        :param pulumi.Input[str] listener_description: The custom listener description.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] listener_description: The description of the listener.
                
-               The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
-        :param pulumi.Input[str] load_balancer_id: The ID of the gateway load balancer instance.
-        :param pulumi.Input[str] region_id: The ID of the region.
-        :param pulumi.Input[str] server_group_id: The ID of the server group.
-        :param pulumi.Input[str] status: The current status of the listener. Value:
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
+               The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
+        :param pulumi.Input[str] load_balancer_id: The GWLB instance ID.
+        :param pulumi.Input[str] region_id: The region ID.
+        :param pulumi.Input[str] server_group_id: The server group ID.
+        :param pulumi.Input[str] status: The status of the listener.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tags. You can specify at most 20 tags in each call.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -378,7 +378,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to perform only a dry run, without performing the actual request.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -386,9 +386,9 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="listenerDescription")
     def listener_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The custom listener description.
+        The description of the listener.
 
-        The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
         """
         return pulumi.get(self, "listener_description")
 
@@ -396,7 +396,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerId")
     def load_balancer_id(self) -> pulumi.Output[str]:
         """
-        The ID of the gateway load balancer instance.
+        The GWLB instance ID.
         """
         return pulumi.get(self, "load_balancer_id")
 
@@ -404,7 +404,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="regionId")
     def region_id(self) -> pulumi.Output[str]:
         """
-        The ID of the region.
+        The region ID.
         """
         return pulumi.get(self, "region_id")
 
@@ -412,7 +412,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="serverGroupId")
     def server_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the server group.
+        The server group ID.
         """
         return pulumi.get(self, "server_group_id")
 
@@ -420,7 +420,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The current status of the listener. Value:
+        The status of the listener.
         """
         return pulumi.get(self, "status")
 
@@ -428,7 +428,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The list of tags.
+        The tags. You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 

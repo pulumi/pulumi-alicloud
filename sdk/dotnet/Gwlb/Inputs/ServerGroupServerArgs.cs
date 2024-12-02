@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
     public sealed class ServerGroupServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The port used by the backend server.
+        /// (Optional, Computed, Int) The port that is used by the backend server.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -25,29 +25,33 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// The ID of the backend server.
+        /// The backend server ID.
+        /// 
+        /// - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+        /// - If the server group is of the `Ip` type, set ServerId to IP addresses.
         /// </summary>
         [Input("serverId", required: true)]
         public Input<string> ServerId { get; set; } = null!;
 
         /// <summary>
-        /// Server ip.
+        /// The IP address of the backend server.
         /// </summary>
         [Input("serverIp")]
         public Input<string>? ServerIp { get; set; }
 
         /// <summary>
-        /// Backend server type. Valid values:
-        /// - `Ecs`: ECS instance.
-        /// - `Eni`: ENI instance.
-        /// - `Eci`: ECI elastic container.
-        /// - `Ip`: Ip address.
+        /// The type of the backend server. Valid values:
+        /// 
+        /// - `Ecs`: Elastic Compute Service (ECS) instance
+        /// - `Eni`: elastic network interface (ENI)
+        /// - `Eci`: elastic container instance
+        /// - `Ip`: IP address
         /// </summary>
         [Input("serverType", required: true)]
         public Input<string> ServerType { get; set; } = null!;
 
         /// <summary>
-        /// Server group status. Value:
+        /// Indicates the status of the backend server.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

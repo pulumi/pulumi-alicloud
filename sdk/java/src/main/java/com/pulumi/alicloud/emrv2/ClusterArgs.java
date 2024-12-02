@@ -11,6 +11,7 @@ import com.pulumi.alicloud.emrv2.inputs.ClusterSubscriptionConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -96,6 +97,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> clusterType() {
         return this.clusterType;
+    }
+
+    /**
+     * The deletion protection of EMR cluster.
+     * 
+     */
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    /**
+     * @return The deletion protection of EMR cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -256,6 +272,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.bootstrapScripts = $.bootstrapScripts;
         this.clusterName = $.clusterName;
         this.clusterType = $.clusterType;
+        this.deletionProtection = $.deletionProtection;
         this.deployMode = $.deployMode;
         this.logCollectStrategy = $.logCollectStrategy;
         this.nodeAttributes = $.nodeAttributes;
@@ -419,6 +436,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clusterType(String clusterType) {
             return clusterType(Output.of(clusterType));
+        }
+
+        /**
+         * @param deletionProtection The deletion protection of EMR cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        /**
+         * @param deletionProtection The deletion protection of EMR cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

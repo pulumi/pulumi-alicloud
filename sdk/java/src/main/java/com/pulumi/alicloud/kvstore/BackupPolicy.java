@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * KVStore backup policy can be imported using the id, e.g.
+ * Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
  * 
  * ```sh
  * $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
@@ -143,14 +143,14 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backupTime);
     }
     /**
-     * The id of ApsaraDB for Redis or Memcache intance.
+     * The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
-     * @return The id of ApsaraDB for Redis or Memcache intance.
+     * @return The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     public Output<String> instanceId() {

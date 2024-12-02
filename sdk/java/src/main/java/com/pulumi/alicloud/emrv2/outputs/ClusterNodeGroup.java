@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.emrv2.outputs;
 
+import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupAckConfig;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupAutoScalingPolicy;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupCostOptimizedConfig;
 import com.pulumi.alicloud.emrv2.outputs.ClusterNodeGroupDataDisk;
@@ -22,7 +23,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodeGroup {
     /**
-     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+     * @return The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+     * 
+     */
+    private @Nullable ClusterNodeGroupAckConfig ackConfig;
+    /**
+     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
      * 
      */
     private @Nullable List<String> additionalSecurityGroupIds;
@@ -32,7 +38,7 @@ public final class ClusterNodeGroup {
      */
     private @Nullable ClusterNodeGroupAutoScalingPolicy autoScalingPolicy;
     /**
-     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
+     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
      * 
      */
     private @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
@@ -42,7 +48,7 @@ public final class ClusterNodeGroup {
      */
     private List<ClusterNodeGroupDataDisk> dataDisks;
     /**
-     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
      * 
      */
     private @Nullable String deploymentSetStrategy;
@@ -52,7 +58,7 @@ public final class ClusterNodeGroup {
      */
     private @Nullable Boolean gracefulShutdown;
     /**
-     * @return Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+     * @return Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
      * 
      */
     private List<String> instanceTypes;
@@ -92,6 +98,11 @@ public final class ClusterNodeGroup {
      */
     private @Nullable Boolean spotInstanceRemedy;
     /**
+     * @return The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+     * 
+     */
+    private @Nullable String spotStrategy;
+    /**
      * @return The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
@@ -102,19 +113,26 @@ public final class ClusterNodeGroup {
      */
     private ClusterNodeGroupSystemDisk systemDisk;
     /**
-     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
      * 
      */
     private @Nullable List<String> vswitchIds;
     /**
-     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
+     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
      * 
      */
     private @Nullable Boolean withPublicIp;
 
     private ClusterNodeGroup() {}
     /**
-     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+     * @return The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+     * 
+     */
+    public Optional<ClusterNodeGroupAckConfig> ackConfig() {
+        return Optional.ofNullable(this.ackConfig);
+    }
+    /**
+     * @return Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
      * 
      */
     public List<String> additionalSecurityGroupIds() {
@@ -128,7 +146,7 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.autoScalingPolicy);
     }
     /**
-     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
+     * @return The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
      * 
      */
     public Optional<ClusterNodeGroupCostOptimizedConfig> costOptimizedConfig() {
@@ -142,7 +160,7 @@ public final class ClusterNodeGroup {
         return this.dataDisks;
     }
     /**
-     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
+     * @return Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
      * 
      */
     public Optional<String> deploymentSetStrategy() {
@@ -156,7 +174,7 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.gracefulShutdown);
     }
     /**
-     * @return Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+     * @return Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
      * 
      */
     public List<String> instanceTypes() {
@@ -212,6 +230,13 @@ public final class ClusterNodeGroup {
         return Optional.ofNullable(this.spotInstanceRemedy);
     }
     /**
+     * @return The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+     * 
+     */
+    public Optional<String> spotStrategy() {
+        return Optional.ofNullable(this.spotStrategy);
+    }
+    /**
      * @return The detail configuration of subscription payment type. See `subscription_config` below.
      * 
      */
@@ -226,14 +251,14 @@ public final class ClusterNodeGroup {
         return this.systemDisk;
     }
     /**
-     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+     * @return Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
      * 
      */
     public List<String> vswitchIds() {
         return this.vswitchIds == null ? List.of() : this.vswitchIds;
     }
     /**
-     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
+     * @return Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
      * 
      */
     public Optional<Boolean> withPublicIp() {
@@ -249,6 +274,7 @@ public final class ClusterNodeGroup {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterNodeGroupAckConfig ackConfig;
         private @Nullable List<String> additionalSecurityGroupIds;
         private @Nullable ClusterNodeGroupAutoScalingPolicy autoScalingPolicy;
         private @Nullable ClusterNodeGroupCostOptimizedConfig costOptimizedConfig;
@@ -263,6 +289,7 @@ public final class ClusterNodeGroup {
         private @Nullable String paymentType;
         private @Nullable List<ClusterNodeGroupSpotBidPrice> spotBidPrices;
         private @Nullable Boolean spotInstanceRemedy;
+        private @Nullable String spotStrategy;
         private @Nullable ClusterNodeGroupSubscriptionConfig subscriptionConfig;
         private ClusterNodeGroupSystemDisk systemDisk;
         private @Nullable List<String> vswitchIds;
@@ -270,6 +297,7 @@ public final class ClusterNodeGroup {
         public Builder() {}
         public Builder(ClusterNodeGroup defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.ackConfig = defaults.ackConfig;
     	      this.additionalSecurityGroupIds = defaults.additionalSecurityGroupIds;
     	      this.autoScalingPolicy = defaults.autoScalingPolicy;
     	      this.costOptimizedConfig = defaults.costOptimizedConfig;
@@ -284,12 +312,19 @@ public final class ClusterNodeGroup {
     	      this.paymentType = defaults.paymentType;
     	      this.spotBidPrices = defaults.spotBidPrices;
     	      this.spotInstanceRemedy = defaults.spotInstanceRemedy;
+    	      this.spotStrategy = defaults.spotStrategy;
     	      this.subscriptionConfig = defaults.subscriptionConfig;
     	      this.systemDisk = defaults.systemDisk;
     	      this.vswitchIds = defaults.vswitchIds;
     	      this.withPublicIp = defaults.withPublicIp;
         }
 
+        @CustomType.Setter
+        public Builder ackConfig(@Nullable ClusterNodeGroupAckConfig ackConfig) {
+
+            this.ackConfig = ackConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder additionalSecurityGroupIds(@Nullable List<String> additionalSecurityGroupIds) {
 
@@ -397,6 +432,12 @@ public final class ClusterNodeGroup {
             return this;
         }
         @CustomType.Setter
+        public Builder spotStrategy(@Nullable String spotStrategy) {
+
+            this.spotStrategy = spotStrategy;
+            return this;
+        }
+        @CustomType.Setter
         public Builder subscriptionConfig(@Nullable ClusterNodeGroupSubscriptionConfig subscriptionConfig) {
 
             this.subscriptionConfig = subscriptionConfig;
@@ -427,6 +468,7 @@ public final class ClusterNodeGroup {
         }
         public ClusterNodeGroup build() {
             final var _resultValue = new ClusterNodeGroup();
+            _resultValue.ackConfig = ackConfig;
             _resultValue.additionalSecurityGroupIds = additionalSecurityGroupIds;
             _resultValue.autoScalingPolicy = autoScalingPolicy;
             _resultValue.costOptimizedConfig = costOptimizedConfig;
@@ -441,6 +483,7 @@ public final class ClusterNodeGroup {
             _resultValue.paymentType = paymentType;
             _resultValue.spotBidPrices = spotBidPrices;
             _resultValue.spotInstanceRemedy = spotInstanceRemedy;
+            _resultValue.spotStrategy = spotStrategy;
             _resultValue.subscriptionConfig = subscriptionConfig;
             _resultValue.systemDisk = systemDisk;
             _resultValue.vswitchIds = vswitchIds;

@@ -67,14 +67,21 @@ import (
 type SnapshotPolicy struct {
 	pulumi.CustomResourceState
 
-	CopiedSnapshotsRetentionDays pulumi.IntPtrOutput  `pulumi:"copiedSnapshotsRetentionDays"`
-	EnableCrossRegionCopy        pulumi.BoolPtrOutput `pulumi:"enableCrossRegionCopy"`
+	AutoSnapshotPolicyName       pulumi.StringOutput                                `pulumi:"autoSnapshotPolicyName"`
+	CopiedSnapshotsRetentionDays pulumi.IntOutput                                   `pulumi:"copiedSnapshotsRetentionDays"`
+	CopyEncryptionConfiguration  SnapshotPolicyCopyEncryptionConfigurationPtrOutput `pulumi:"copyEncryptionConfiguration"`
+	CreateTime                   pulumi.StringOutput                                `pulumi:"createTime"`
+	EnableCrossRegionCopy        pulumi.BoolPtrOutput                               `pulumi:"enableCrossRegionCopy"`
 	// The snapshot policy name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+	Name     pulumi.StringOutput `pulumi:"name"`
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
 	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
 	// - A maximum of seven time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-	RepeatWeekdays pulumi.StringArrayOutput `pulumi:"repeatWeekdays"`
+	RepeatWeekdays  pulumi.StringArrayOutput `pulumi:"repeatWeekdays"`
+	ResourceGroupId pulumi.StringPtrOutput   `pulumi:"resourceGroupId"`
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
@@ -129,14 +136,21 @@ func GetSnapshotPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SnapshotPolicy resources.
 type snapshotPolicyState struct {
-	CopiedSnapshotsRetentionDays *int  `pulumi:"copiedSnapshotsRetentionDays"`
-	EnableCrossRegionCopy        *bool `pulumi:"enableCrossRegionCopy"`
+	AutoSnapshotPolicyName       *string                                    `pulumi:"autoSnapshotPolicyName"`
+	CopiedSnapshotsRetentionDays *int                                       `pulumi:"copiedSnapshotsRetentionDays"`
+	CopyEncryptionConfiguration  *SnapshotPolicyCopyEncryptionConfiguration `pulumi:"copyEncryptionConfiguration"`
+	CreateTime                   *string                                    `pulumi:"createTime"`
+	EnableCrossRegionCopy        *bool                                      `pulumi:"enableCrossRegionCopy"`
 	// The snapshot policy name.
-	Name *string `pulumi:"name"`
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+	Name     *string `pulumi:"name"`
+	RegionId *string `pulumi:"regionId"`
 	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
 	// - A maximum of seven time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-	RepeatWeekdays []string `pulumi:"repeatWeekdays"`
+	RepeatWeekdays  []string `pulumi:"repeatWeekdays"`
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
@@ -153,14 +167,21 @@ type snapshotPolicyState struct {
 }
 
 type SnapshotPolicyState struct {
+	AutoSnapshotPolicyName       pulumi.StringPtrInput
 	CopiedSnapshotsRetentionDays pulumi.IntPtrInput
+	CopyEncryptionConfiguration  SnapshotPolicyCopyEncryptionConfigurationPtrInput
+	CreateTime                   pulumi.StringPtrInput
 	EnableCrossRegionCopy        pulumi.BoolPtrInput
 	// The snapshot policy name.
-	Name pulumi.StringPtrInput
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+	Name     pulumi.StringPtrInput
+	RegionId pulumi.StringPtrInput
 	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
 	// - A maximum of seven time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-	RepeatWeekdays pulumi.StringArrayInput
+	RepeatWeekdays  pulumi.StringArrayInput
+	ResourceGroupId pulumi.StringPtrInput
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
@@ -181,14 +202,19 @@ func (SnapshotPolicyState) ElementType() reflect.Type {
 }
 
 type snapshotPolicyArgs struct {
-	CopiedSnapshotsRetentionDays *int  `pulumi:"copiedSnapshotsRetentionDays"`
-	EnableCrossRegionCopy        *bool `pulumi:"enableCrossRegionCopy"`
+	AutoSnapshotPolicyName       *string                                    `pulumi:"autoSnapshotPolicyName"`
+	CopiedSnapshotsRetentionDays *int                                       `pulumi:"copiedSnapshotsRetentionDays"`
+	CopyEncryptionConfiguration  *SnapshotPolicyCopyEncryptionConfiguration `pulumi:"copyEncryptionConfiguration"`
+	EnableCrossRegionCopy        *bool                                      `pulumi:"enableCrossRegionCopy"`
 	// The snapshot policy name.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
 	Name *string `pulumi:"name"`
 	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
 	// - A maximum of seven time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-	RepeatWeekdays []string `pulumi:"repeatWeekdays"`
+	RepeatWeekdays  []string `pulumi:"repeatWeekdays"`
+	ResourceGroupId *string  `pulumi:"resourceGroupId"`
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
@@ -205,14 +231,19 @@ type snapshotPolicyArgs struct {
 
 // The set of arguments for constructing a SnapshotPolicy resource.
 type SnapshotPolicyArgs struct {
+	AutoSnapshotPolicyName       pulumi.StringPtrInput
 	CopiedSnapshotsRetentionDays pulumi.IntPtrInput
+	CopyEncryptionConfiguration  SnapshotPolicyCopyEncryptionConfigurationPtrInput
 	EnableCrossRegionCopy        pulumi.BoolPtrInput
 	// The snapshot policy name.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
 	Name pulumi.StringPtrInput
 	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
 	// - A maximum of seven time points can be selected.
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-	RepeatWeekdays pulumi.StringArrayInput
+	RepeatWeekdays  pulumi.StringArrayInput
+	ResourceGroupId pulumi.StringPtrInput
 	// The snapshot retention time, and the unit of measurement is day. Optional values:
 	// - -1: The automatic snapshots are retained permanently.
 	// - [1, 65536]: The number of days retained.
@@ -314,8 +345,22 @@ func (o SnapshotPolicyOutput) ToSnapshotPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o SnapshotPolicyOutput) CopiedSnapshotsRetentionDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SnapshotPolicy) pulumi.IntPtrOutput { return v.CopiedSnapshotsRetentionDays }).(pulumi.IntPtrOutput)
+func (o SnapshotPolicyOutput) AutoSnapshotPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.AutoSnapshotPolicyName }).(pulumi.StringOutput)
+}
+
+func (o SnapshotPolicyOutput) CopiedSnapshotsRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.IntOutput { return v.CopiedSnapshotsRetentionDays }).(pulumi.IntOutput)
+}
+
+func (o SnapshotPolicyOutput) CopyEncryptionConfiguration() SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) SnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+		return v.CopyEncryptionConfiguration
+	}).(SnapshotPolicyCopyEncryptionConfigurationPtrOutput)
+}
+
+func (o SnapshotPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 func (o SnapshotPolicyOutput) EnableCrossRegionCopy() pulumi.BoolPtrOutput {
@@ -323,8 +368,14 @@ func (o SnapshotPolicyOutput) EnableCrossRegionCopy() pulumi.BoolPtrOutput {
 }
 
 // The snapshot policy name.
+//
+// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
 func (o SnapshotPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o SnapshotPolicyOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
 // The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
@@ -332,6 +383,10 @@ func (o SnapshotPolicyOutput) Name() pulumi.StringOutput {
 // - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
 func (o SnapshotPolicyOutput) RepeatWeekdays() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringArrayOutput { return v.RepeatWeekdays }).(pulumi.StringArrayOutput)
+}
+
+func (o SnapshotPolicyOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
 // The snapshot retention time, and the unit of measurement is day. Optional values:

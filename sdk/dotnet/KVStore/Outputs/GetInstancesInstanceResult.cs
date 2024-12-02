@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>
-        /// Capacity of the applied ApsaraDB for the instance. Unit: MB.
+        /// Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
         /// </summary>
         public readonly int Capacity;
         /// <summary>
@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+        /// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         /// </summary>
         public readonly string InstanceClass;
         public readonly bool InstanceReleaseProtection;
@@ -155,7 +155,7 @@ namespace Pulumi.AliCloud.KVStore.Outputs
         /// </summary>
         public readonly string SearchKey;
         /// <summary>
-        /// (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        /// (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         /// </summary>
         public readonly string SecondaryZoneId;
         public readonly string SecurityGroupId;

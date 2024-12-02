@@ -14,15 +14,17 @@ namespace Pulumi.AliCloud.Gwlb.Outputs
     public sealed class ServerGroupConnectionDrainConfig
     {
         /// <summary>
-        /// Whether to open the connection graceful interrupt. Value:
+        /// Indicates whether connection draining is enabled. Valid values:
         /// </summary>
         public readonly bool? ConnectionDrainEnabled;
         /// <summary>
-        /// Connection Grace interrupt timeout.
+        /// The timeout period of connection draining.
         /// 
-        /// Unit: seconds.
+        /// Unit: seconds
         /// 
-        /// Value range: 1~3600.
+        /// Valid values: `1` to `3600`.
+        /// 
+        /// Default value: `300`.
         /// </summary>
         public readonly int? ConnectionDrainTimeout;
 

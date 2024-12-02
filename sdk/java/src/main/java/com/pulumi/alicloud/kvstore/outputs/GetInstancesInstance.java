@@ -32,7 +32,7 @@ public final class GetInstancesInstance {
      */
     private Integer bandwidth;
     /**
-     * @return Capacity of the applied ApsaraDB for the instance. Unit: MB.
+     * @return Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
      * 
      */
     private Integer capacity;
@@ -107,7 +107,7 @@ public final class GetInstancesInstance {
      */
     private String id;
     /**
-     * @return Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+     * @return Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      * 
      */
     private String instanceClass;
@@ -190,7 +190,7 @@ public final class GetInstancesInstance {
      */
     private String searchKey;
     /**
-     * @return (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     * @return (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * 
      */
     private String secondaryZoneId;
@@ -265,7 +265,7 @@ public final class GetInstancesInstance {
         return this.bandwidth;
     }
     /**
-     * @return Capacity of the applied ApsaraDB for the instance. Unit: MB.
+     * @return Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
      * 
      */
     public Integer capacity() {
@@ -370,7 +370,7 @@ public final class GetInstancesInstance {
         return this.id;
     }
     /**
-     * @return Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+     * @return Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      * 
      */
     public String instanceClass() {
@@ -491,7 +491,7 @@ public final class GetInstancesInstance {
         return this.searchKey;
     }
     /**
-     * @return (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     * @return (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * 
      */
     public String secondaryZoneId() {

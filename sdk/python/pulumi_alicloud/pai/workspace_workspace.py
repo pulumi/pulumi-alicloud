@@ -220,9 +220,9 @@ class WorkspaceWorkspace(pulumi.CustomResource):
                  workspace_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a P A I Workspace Workspace resource.
+        Provides a PAI Workspace Workspace resource.
 
-        For information about P A I Workspace Workspace and how to use it, see [What is Workspace](https://www.alibabacloud.com/help/en/).
+        For information about PAI Workspace Workspace and how to use it, see [What is Workspace](https://www.alibabacloud.com/help/en/).
 
         > **NOTE:** Available since v1.233.0.
 
@@ -247,7 +247,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
 
         ## Import
 
-        P A I Workspace Workspace can be imported using the id, e.g.
+        PAI Workspace Workspace can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:pai/workspaceWorkspace:WorkspaceWorkspace example <id>
@@ -272,9 +272,9 @@ class WorkspaceWorkspace(pulumi.CustomResource):
                  args: WorkspaceWorkspaceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a P A I Workspace Workspace resource.
+        Provides a PAI Workspace Workspace resource.
 
-        For information about P A I Workspace Workspace and how to use it, see [What is Workspace](https://www.alibabacloud.com/help/en/).
+        For information about PAI Workspace Workspace and how to use it, see [What is Workspace](https://www.alibabacloud.com/help/en/).
 
         > **NOTE:** Available since v1.233.0.
 
@@ -299,7 +299,7 @@ class WorkspaceWorkspace(pulumi.CustomResource):
 
         ## Import
 
-        P A I Workspace Workspace can be imported using the id, e.g.
+        PAI Workspace Workspace can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:pai/workspaceWorkspace:WorkspaceWorkspace example <id>

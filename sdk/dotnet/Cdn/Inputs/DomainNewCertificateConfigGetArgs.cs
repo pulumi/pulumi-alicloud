@@ -40,12 +40,6 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         [Input("certType")]
         public Input<string>? CertType { get; set; }
 
-        /// <summary>
-        /// The force set of the security certificate.
-        /// </summary>
-        [Input("forceSet")]
-        public Input<string>? ForceSet { get; set; }
-
         [Input("privateKey")]
         private Input<string>? _privateKey;
 
@@ -62,11 +56,21 @@ namespace Pulumi.AliCloud.Cdn.Inputs
             }
         }
 
+        [Input("serverCertificate")]
+        private Input<string>? _serverCertificate;
+
         /// <summary>
         /// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
         /// </summary>
-        [Input("serverCertificate")]
-        public Input<string>? ServerCertificate { get; set; }
+        public Input<string>? ServerCertificate
+        {
+            get => _serverCertificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serverCertificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Whether the HTTPS certificate is enabled. Value:

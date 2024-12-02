@@ -11,8 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The `kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+//
+// > **NOTE:** Available since v1.15.0.
 //
 // ## Example Usage
 //
@@ -66,7 +67,7 @@ type GetInstancesArgs struct {
 	GlobalInstance *bool `pulumi:"globalInstance"`
 	// A list of KVStore DBInstance IDs.
 	Ids []string `pulumi:"ids"`
-	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType *string `pulumi:"instanceType"`
@@ -107,7 +108,7 @@ type GetInstancesResult struct {
 	Id string `pulumi:"id"`
 	// A list of KVStore Instance IDs.
 	Ids []string `pulumi:"ids"`
-	// (Optional) Type of the applied ApsaraDB for instance.
+	// (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 	// For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
 	InstanceClass *string `pulumi:"instanceClass"`
 	// (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
@@ -170,7 +171,7 @@ type GetInstancesOutputArgs struct {
 	GlobalInstance pulumi.BoolPtrInput `pulumi:"globalInstance"`
 	// A list of KVStore DBInstance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 	InstanceClass pulumi.StringPtrInput `pulumi:"instanceClass"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
@@ -252,7 +253,7 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetInstancesResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// (Optional) Type of the applied ApsaraDB for instance.
+// (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 // For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
 func (o GetInstancesResultOutput) InstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceClass }).(pulumi.StringPtrOutput)

@@ -6,6 +6,7 @@ package com.pulumi.alicloud.ecs;
 import com.pulumi.alicloud.Utilities;
 import com.pulumi.alicloud.ecs.SnapshotPolicyArgs;
 import com.pulumi.alicloud.ecs.inputs.SnapshotPolicyState;
+import com.pulumi.alicloud.ecs.outputs.SnapshotPolicyCopyEncryptionConfiguration;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -82,11 +83,29 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/snapshotPolicy:SnapshotPolicy")
 public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="copiedSnapshotsRetentionDays", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> copiedSnapshotsRetentionDays;
+    @Export(name="autoSnapshotPolicyName", refs={String.class}, tree="[0]")
+    private Output<String> autoSnapshotPolicyName;
 
-    public Output<Optional<Integer>> copiedSnapshotsRetentionDays() {
-        return Codegen.optional(this.copiedSnapshotsRetentionDays);
+    public Output<String> autoSnapshotPolicyName() {
+        return this.autoSnapshotPolicyName;
+    }
+    @Export(name="copiedSnapshotsRetentionDays", refs={Integer.class}, tree="[0]")
+    private Output<Integer> copiedSnapshotsRetentionDays;
+
+    public Output<Integer> copiedSnapshotsRetentionDays() {
+        return this.copiedSnapshotsRetentionDays;
+    }
+    @Export(name="copyEncryptionConfiguration", refs={SnapshotPolicyCopyEncryptionConfiguration.class}, tree="[0]")
+    private Output</* @Nullable */ SnapshotPolicyCopyEncryptionConfiguration> copyEncryptionConfiguration;
+
+    public Output<Optional<SnapshotPolicyCopyEncryptionConfiguration>> copyEncryptionConfiguration() {
+        return Codegen.optional(this.copyEncryptionConfiguration);
+    }
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    public Output<String> createTime() {
+        return this.createTime;
     }
     @Export(name="enableCrossRegionCopy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableCrossRegionCopy;
@@ -97,7 +116,11 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The snapshot policy name.
      * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
@@ -107,6 +130,12 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    @Export(name="regionId", refs={String.class}, tree="[0]")
+    private Output<String> regionId;
+
+    public Output<String> regionId() {
+        return this.regionId;
     }
     /**
      * The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
@@ -125,6 +154,12 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> repeatWeekdays() {
         return this.repeatWeekdays;
+    }
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> resourceGroupId;
+
+    public Output<Optional<String>> resourceGroupId() {
+        return Codegen.optional(this.resourceGroupId);
     }
     /**
      * The snapshot retention time, and the unit of measurement is day. Optional values:

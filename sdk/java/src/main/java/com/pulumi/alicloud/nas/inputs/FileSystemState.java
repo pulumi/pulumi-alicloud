@@ -3,6 +3,8 @@
 
 package com.pulumi.alicloud.nas.inputs;
 
+import com.pulumi.alicloud.nas.inputs.FileSystemNfsAclArgs;
+import com.pulumi.alicloud.nas.inputs.FileSystemRecycleBinArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
@@ -18,16 +20,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     public static final FileSystemState Empty = new FileSystemState();
 
     /**
-     * The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-     * Unit: gib; **Note**: The minimum value is 100.
+     * The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
      * 
      */
     @Import(name="capacity")
     private @Nullable Output<Integer> capacity;
 
     /**
-     * @return The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-     * Unit: gib; **Note**: The minimum value is 100.
+     * @return The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
      * 
      */
     public Optional<Output<Integer>> capacity() {
@@ -35,14 +35,29 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The File System description.
+     * (Available since v1.236.0) The time when the file system was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return (Available since v1.236.0) The time when the file system was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The description of the file system.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The File System description.
+     * @return The description of the file system.
      * 
      */
     public Optional<Output<String>> description() {
@@ -50,16 +65,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-     * * Valid values:
+     * Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
      * 
      */
     @Import(name="encryptType")
     private @Nullable Output<Integer> encryptType;
 
     /**
-     * @return Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-     * * Valid values:
+     * @return Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
      * 
      */
     public Optional<Output<Integer>> encryptType() {
@@ -67,22 +80,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * the type of the file system.
-     * Valid values:
-     * `standard` (Default),
-     * `extreme`,
-     * `cpfs`.
+     * The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
      * 
      */
     @Import(name="fileSystemType")
     private @Nullable Output<String> fileSystemType;
 
     /**
-     * @return the type of the file system.
-     * Valid values:
-     * `standard` (Default),
-     * `extreme`,
-     * `cpfs`.
+     * @return The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
      * 
      */
     public Optional<Output<String>> fileSystemType() {
@@ -90,14 +95,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+     * The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
      * 
      */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
     /**
-     * @return The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+     * @return The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
      * 
      */
     public Optional<Output<String>> kmsKeyId() {
@@ -105,22 +110,37 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The protocol type of the file system.
-     * Valid values:
-     * `NFS`,
-     * `SMB` (Available when the `file_system_type` is `standard`),
-     * `cpfs` (Available when the `file_system_type` is `cpfs`).
+     * The NFS ACL feature of the file system. See `nfs_acl` below.
+     * &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+     * 
+     */
+    @Import(name="nfsAcl")
+    private @Nullable Output<FileSystemNfsAclArgs> nfsAcl;
+
+    /**
+     * @return The NFS ACL feature of the file system. See `nfs_acl` below.
+     * &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+     * 
+     */
+    public Optional<Output<FileSystemNfsAclArgs>> nfsAcl() {
+        return Optional.ofNullable(this.nfsAcl);
+    }
+
+    /**
+     * The protocol type of the file system. Valid values:
+     * - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+     * - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+     * - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
      * 
      */
     @Import(name="protocolType")
     private @Nullable Output<String> protocolType;
 
     /**
-     * @return The protocol type of the file system.
-     * Valid values:
-     * `NFS`,
-     * `SMB` (Available when the `file_system_type` is `standard`),
-     * `cpfs` (Available when the `file_system_type` is `cpfs`).
+     * @return The protocol type of the file system. Valid values:
+     * - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+     * - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+     * - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
      * 
      */
     public Optional<Output<String>> protocolType() {
@@ -128,20 +148,84 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The storage type of the file System.
-     * * Valid values:
-     * * `Performance` (Available when the `file_system_type` is `standard`)
-     * * `Capacity` (Available when the `file_system_type` is `standard`)
+     * The recycle bin feature of the file system. See `recycle_bin` below.
+     * &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+     * 
+     */
+    @Import(name="recycleBin")
+    private @Nullable Output<FileSystemRecycleBinArgs> recycleBin;
+
+    /**
+     * @return The recycle bin feature of the file system. See `recycle_bin` below.
+     * &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+     * 
+     */
+    public Optional<Output<FileSystemRecycleBinArgs>> recycleBin() {
+        return Optional.ofNullable(this.recycleBin);
+    }
+
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+     * 
+     */
+    @Import(name="snapshotId")
+    private @Nullable Output<String> snapshotId;
+
+    /**
+     * @return The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+     * 
+     */
+    public Optional<Output<String>> snapshotId() {
+        return Optional.ofNullable(this.snapshotId);
+    }
+
+    /**
+     * (Available since v1.236.0) The status of the File System.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return (Available since v1.236.0) The status of the File System.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The storage type of the file system. Valid values:
+     * - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+     * - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+     * - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+     * &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
      * 
      */
     @Import(name="storageType")
     private @Nullable Output<String> storageType;
 
     /**
-     * @return The storage type of the file System.
-     * * Valid values:
-     * * `Performance` (Available when the `file_system_type` is `standard`)
-     * * `Capacity` (Available when the `file_system_type` is `standard`)
+     * @return The storage type of the file system. Valid values:
+     * - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+     * - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+     * - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+     * &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
      * 
      */
     public Optional<Output<String>> storageType() {
@@ -164,14 +248,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+     * The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+     * @return The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -179,14 +263,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+     * The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+     * @return The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -194,14 +278,14 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+     * The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+     * @return The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -212,11 +296,17 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
 
     private FileSystemState(FileSystemState $) {
         this.capacity = $.capacity;
+        this.createTime = $.createTime;
         this.description = $.description;
         this.encryptType = $.encryptType;
         this.fileSystemType = $.fileSystemType;
         this.kmsKeyId = $.kmsKeyId;
+        this.nfsAcl = $.nfsAcl;
         this.protocolType = $.protocolType;
+        this.recycleBin = $.recycleBin;
+        this.resourceGroupId = $.resourceGroupId;
+        this.snapshotId = $.snapshotId;
+        this.status = $.status;
         this.storageType = $.storageType;
         this.tags = $.tags;
         this.vpcId = $.vpcId;
@@ -243,8 +333,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param capacity The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-         * Unit: gib; **Note**: The minimum value is 100.
+         * @param capacity The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
          * 
          * @return builder
          * 
@@ -255,8 +344,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param capacity The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-         * Unit: gib; **Note**: The minimum value is 100.
+         * @param capacity The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
          * 
          * @return builder
          * 
@@ -266,7 +354,28 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The File System description.
+         * @param createTime (Available since v1.236.0) The time when the file system was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime (Available since v1.236.0) The time when the file system was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param description The description of the file system.
          * 
          * @return builder
          * 
@@ -277,7 +386,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description The File System description.
+         * @param description The description of the file system.
          * 
          * @return builder
          * 
@@ -287,8 +396,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptType Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-         * * Valid values:
+         * @param encryptType Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
          * 
          * @return builder
          * 
@@ -299,8 +407,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptType Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
-         * * Valid values:
+         * @param encryptType Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
          * 
          * @return builder
          * 
@@ -310,11 +417,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemType the type of the file system.
-         * Valid values:
-         * `standard` (Default),
-         * `extreme`,
-         * `cpfs`.
+         * @param fileSystemType The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
          * 
          * @return builder
          * 
@@ -325,11 +428,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileSystemType the type of the file system.
-         * Valid values:
-         * `standard` (Default),
-         * `extreme`,
-         * `cpfs`.
+         * @param fileSystemType The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
          * 
          * @return builder
          * 
@@ -339,7 +438,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKeyId The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+         * @param kmsKeyId The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
          * 
          * @return builder
          * 
@@ -350,7 +449,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKeyId The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+         * @param kmsKeyId The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
          * 
          * @return builder
          * 
@@ -360,11 +459,33 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocolType The protocol type of the file system.
-         * Valid values:
-         * `NFS`,
-         * `SMB` (Available when the `file_system_type` is `standard`),
-         * `cpfs` (Available when the `file_system_type` is `cpfs`).
+         * @param nfsAcl The NFS ACL feature of the file system. See `nfs_acl` below.
+         * &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfsAcl(@Nullable Output<FileSystemNfsAclArgs> nfsAcl) {
+            $.nfsAcl = nfsAcl;
+            return this;
+        }
+
+        /**
+         * @param nfsAcl The NFS ACL feature of the file system. See `nfs_acl` below.
+         * &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfsAcl(FileSystemNfsAclArgs nfsAcl) {
+            return nfsAcl(Output.of(nfsAcl));
+        }
+
+        /**
+         * @param protocolType The protocol type of the file system. Valid values:
+         * - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+         * - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+         * - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
          * 
          * @return builder
          * 
@@ -375,11 +496,10 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protocolType The protocol type of the file system.
-         * Valid values:
-         * `NFS`,
-         * `SMB` (Available when the `file_system_type` is `standard`),
-         * `cpfs` (Available when the `file_system_type` is `cpfs`).
+         * @param protocolType The protocol type of the file system. Valid values:
+         * - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+         * - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+         * - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
          * 
          * @return builder
          * 
@@ -389,10 +509,97 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageType The storage type of the file System.
-         * * Valid values:
-         * * `Performance` (Available when the `file_system_type` is `standard`)
-         * * `Capacity` (Available when the `file_system_type` is `standard`)
+         * @param recycleBin The recycle bin feature of the file system. See `recycle_bin` below.
+         * &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recycleBin(@Nullable Output<FileSystemRecycleBinArgs> recycleBin) {
+            $.recycleBin = recycleBin;
+            return this;
+        }
+
+        /**
+         * @param recycleBin The recycle bin feature of the file system. See `recycle_bin` below.
+         * &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder recycleBin(FileSystemRecycleBinArgs recycleBin) {
+            return recycleBin(Output.of(recycleBin));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param snapshotId The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotId(@Nullable Output<String> snapshotId) {
+            $.snapshotId = snapshotId;
+            return this;
+        }
+
+        /**
+         * @param snapshotId The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotId(String snapshotId) {
+            return snapshotId(Output.of(snapshotId));
+        }
+
+        /**
+         * @param status (Available since v1.236.0) The status of the File System.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status (Available since v1.236.0) The status of the File System.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param storageType The storage type of the file system. Valid values:
+         * - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+         * - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+         * - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+         * &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
          * 
          * @return builder
          * 
@@ -403,10 +610,11 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageType The storage type of the file System.
-         * * Valid values:
-         * * `Performance` (Available when the `file_system_type` is `standard`)
-         * * `Capacity` (Available when the `file_system_type` is `standard`)
+         * @param storageType The storage type of the file system. Valid values:
+         * - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+         * - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+         * - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+         * &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
          * 
          * @return builder
          * 
@@ -437,7 +645,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+         * @param vpcId The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
          * 
          * @return builder
          * 
@@ -448,7 +656,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+         * @param vpcId The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
          * 
          * @return builder
          * 
@@ -458,7 +666,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+         * @param vswitchId The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
          * 
          * @return builder
          * 
@@ -469,7 +677,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+         * @param vswitchId The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
          * 
          * @return builder
          * 
@@ -479,7 +687,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+         * @param zoneId The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
          * 
          * @return builder
          * 
@@ -490,7 +698,7 @@ public final class FileSystemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+         * @param zoneId The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
          * 
          * @return builder
          * 

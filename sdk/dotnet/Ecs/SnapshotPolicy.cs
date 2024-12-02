@@ -60,8 +60,17 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/snapshotPolicy:SnapshotPolicy")]
     public partial class SnapshotPolicy : global::Pulumi.CustomResource
     {
+        [Output("autoSnapshotPolicyName")]
+        public Output<string> AutoSnapshotPolicyName { get; private set; } = null!;
+
         [Output("copiedSnapshotsRetentionDays")]
-        public Output<int?> CopiedSnapshotsRetentionDays { get; private set; } = null!;
+        public Output<int> CopiedSnapshotsRetentionDays { get; private set; } = null!;
+
+        [Output("copyEncryptionConfiguration")]
+        public Output<Outputs.SnapshotPolicyCopyEncryptionConfiguration?> CopyEncryptionConfiguration { get; private set; } = null!;
+
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
 
         [Output("enableCrossRegionCopy")]
         public Output<bool?> EnableCrossRegionCopy { get; private set; } = null!;
@@ -72,6 +81,9 @@ namespace Pulumi.AliCloud.Ecs
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
         /// <summary>
         /// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
         /// - A maximum of seven time points can be selected.
@@ -79,6 +91,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("repeatWeekdays")]
         public Output<ImmutableArray<string>> RepeatWeekdays { get; private set; } = null!;
+
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// The snapshot retention time, and the unit of measurement is day. Optional values:
@@ -153,8 +168,14 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotPolicyArgs : global::Pulumi.ResourceArgs
     {
+        [Input("autoSnapshotPolicyName")]
+        public Input<string>? AutoSnapshotPolicyName { get; set; }
+
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
+
+        [Input("copyEncryptionConfiguration")]
+        public Input<Inputs.SnapshotPolicyCopyEncryptionConfigurationArgs>? CopyEncryptionConfiguration { get; set; }
 
         [Input("enableCrossRegionCopy")]
         public Input<bool>? EnableCrossRegionCopy { get; set; }
@@ -178,6 +199,9 @@ namespace Pulumi.AliCloud.Ecs
             get => _repeatWeekdays ?? (_repeatWeekdays = new InputList<string>());
             set => _repeatWeekdays = value;
         }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The snapshot retention time, and the unit of measurement is day. Optional values:
@@ -227,8 +251,17 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class SnapshotPolicyState : global::Pulumi.ResourceArgs
     {
+        [Input("autoSnapshotPolicyName")]
+        public Input<string>? AutoSnapshotPolicyName { get; set; }
+
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
+
+        [Input("copyEncryptionConfiguration")]
+        public Input<Inputs.SnapshotPolicyCopyEncryptionConfigurationGetArgs>? CopyEncryptionConfiguration { get; set; }
+
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
 
         [Input("enableCrossRegionCopy")]
         public Input<bool>? EnableCrossRegionCopy { get; set; }
@@ -238,6 +271,9 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         [Input("repeatWeekdays")]
         private InputList<string>? _repeatWeekdays;
@@ -252,6 +288,9 @@ namespace Pulumi.AliCloud.Ecs
             get => _repeatWeekdays ?? (_repeatWeekdays = new InputList<string>());
             set => _repeatWeekdays = value;
         }
+
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
         /// The snapshot retention time, and the unit of measurement is day. Optional values:

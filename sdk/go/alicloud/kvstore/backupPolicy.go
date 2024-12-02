@@ -100,7 +100,7 @@ import (
 //
 // ## Import
 //
-// KVStore backup policy can be imported using the id, e.g.
+// Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
@@ -112,7 +112,7 @@ type BackupPolicy struct {
 	BackupPeriods pulumi.StringArrayOutput `pulumi:"backupPeriods"`
 	// Backup time, in the format of HH:mmZ- HH:mm Z
 	BackupTime pulumi.StringPtrOutput `pulumi:"backupTime"`
-	// The id of ApsaraDB for Redis or Memcache intance.
+	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 }
 
@@ -153,7 +153,7 @@ type backupPolicyState struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// Backup time, in the format of HH:mmZ- HH:mm Z
 	BackupTime *string `pulumi:"backupTime"`
-	// The id of ApsaraDB for Redis or Memcache intance.
+	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId *string `pulumi:"instanceId"`
 }
 
@@ -162,7 +162,7 @@ type BackupPolicyState struct {
 	BackupPeriods pulumi.StringArrayInput
 	// Backup time, in the format of HH:mmZ- HH:mm Z
 	BackupTime pulumi.StringPtrInput
-	// The id of ApsaraDB for Redis or Memcache intance.
+	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId pulumi.StringPtrInput
 }
 
@@ -175,7 +175,7 @@ type backupPolicyArgs struct {
 	BackupPeriods []string `pulumi:"backupPeriods"`
 	// Backup time, in the format of HH:mmZ- HH:mm Z
 	BackupTime *string `pulumi:"backupTime"`
-	// The id of ApsaraDB for Redis or Memcache intance.
+	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId string `pulumi:"instanceId"`
 }
 
@@ -185,7 +185,7 @@ type BackupPolicyArgs struct {
 	BackupPeriods pulumi.StringArrayInput
 	// Backup time, in the format of HH:mmZ- HH:mm Z
 	BackupTime pulumi.StringPtrInput
-	// The id of ApsaraDB for Redis or Memcache intance.
+	// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 	InstanceId pulumi.StringInput
 }
 
@@ -286,7 +286,7 @@ func (o BackupPolicyOutput) BackupTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringPtrOutput { return v.BackupTime }).(pulumi.StringPtrOutput)
 }
 
-// The id of ApsaraDB for Redis or Memcache intance.
+// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
 func (o BackupPolicyOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }

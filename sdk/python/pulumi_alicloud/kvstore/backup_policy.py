@@ -24,7 +24,7 @@ class BackupPolicyArgs:
                  backup_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
-        :param pulumi.Input[str] instance_id: The id of ApsaraDB for Redis or Memcache intance.
+        :param pulumi.Input[str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
         :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
         """
@@ -38,7 +38,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Input[str]:
         """
-        The id of ApsaraDB for Redis or Memcache intance.
+        The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -81,7 +81,7 @@ class _BackupPolicyState:
         Input properties used for looking up and filtering BackupPolicy resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
         :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
-        :param pulumi.Input[str] instance_id: The id of ApsaraDB for Redis or Memcache intance.
+        :param pulumi.Input[str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         if backup_periods is not None:
             pulumi.set(__self__, "backup_periods", backup_periods)
@@ -118,7 +118,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of ApsaraDB for Redis or Memcache intance.
+        The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -189,7 +189,7 @@ class BackupPolicy(pulumi.CustomResource):
 
         ## Import
 
-        KVStore backup policy can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
@@ -199,7 +199,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
         :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
-        :param pulumi.Input[str] instance_id: The id of ApsaraDB for Redis or Memcache intance.
+        :param pulumi.Input[str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         ...
     @overload
@@ -260,7 +260,7 @@ class BackupPolicy(pulumi.CustomResource):
 
         ## Import
 
-        KVStore backup policy can be imported using the id, e.g.
+        Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
 
         ```sh
         $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
@@ -320,7 +320,7 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
         :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
-        :param pulumi.Input[str] instance_id: The id of ApsaraDB for Redis or Memcache intance.
+        :param pulumi.Input[str] instance_id: The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -351,7 +351,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
-        The id of ApsaraDB for Redis or Memcache intance.
+        The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         """
         return pulumi.get(self, "instance_id")
 

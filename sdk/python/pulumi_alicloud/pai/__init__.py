@@ -5,4 +5,11 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .workspace_code_source import *
+from .workspace_dataset import *
+from .workspace_datasetversion import *
+from .workspace_experiment import *
+from .workspace_run import *
 from .workspace_workspace import *
+from ._inputs import *
+from . import outputs

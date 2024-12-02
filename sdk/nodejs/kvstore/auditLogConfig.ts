@@ -113,7 +113,7 @@ export class AuditLogConfig extends pulumi.CustomResource {
     /**
      * Audit Log Retention Period Value: 1~365. 
      *
-     * > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+     * > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
      */
     public readonly retention!: pulumi.Output<number | undefined>;
     /**
@@ -178,7 +178,7 @@ export interface AuditLogConfigState {
     /**
      * Audit Log Retention Period Value: 1~365. 
      *
-     * > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+     * > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
      */
     retention?: pulumi.Input<number>;
     /**
@@ -206,7 +206,7 @@ export interface AuditLogConfigArgs {
     /**
      * Audit Log Retention Period Value: 1~365. 
      *
-     * > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+     * > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
      */
     retention?: pulumi.Input<number>;
 }

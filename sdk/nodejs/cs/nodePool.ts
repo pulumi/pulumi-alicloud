@@ -107,6 +107,7 @@ export class NodePool extends pulumi.CustomResource {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
+     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
      */
     public readonly imageType!: pulumi.Output<string>;
     /**
@@ -618,6 +619,7 @@ export interface NodePoolState {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
+     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
      */
     imageType?: pulumi.Input<string>;
     /**
@@ -950,6 +952,7 @@ export interface NodePoolArgs {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
+     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
      */
     imageType?: pulumi.Input<string>;
     /**

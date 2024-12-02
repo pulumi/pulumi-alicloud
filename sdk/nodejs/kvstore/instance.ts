@@ -114,7 +114,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbInstanceName!: pulumi.Output<string>;
     /**
-     * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+     * The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
      */
     public readonly dedicatedHostGroupId!: pulumi.Output<string | undefined>;
     /**
@@ -173,7 +173,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceChargeType!: pulumi.Output<string>;
     /**
-     * Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      */
     public readonly instanceClass!: pulumi.Output<string | undefined>;
@@ -276,7 +276,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly roleArn!: pulumi.Output<string>;
     /**
-     * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
@@ -575,7 +575,7 @@ export interface InstanceState {
      */
     dbInstanceName?: pulumi.Input<string>;
     /**
-     * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+     * The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
      */
     dedicatedHostGroupId?: pulumi.Input<string>;
     /**
@@ -634,7 +634,7 @@ export interface InstanceState {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      */
     instanceClass?: pulumi.Input<string>;
@@ -737,7 +737,7 @@ export interface InstanceState {
      */
     roleArn?: pulumi.Input<string>;
     /**
-     * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string>;
@@ -868,7 +868,7 @@ export interface InstanceArgs {
      */
     dbInstanceName?: pulumi.Input<string>;
     /**
-     * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+     * The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
      */
     dedicatedHostGroupId?: pulumi.Input<string>;
     /**
@@ -923,7 +923,7 @@ export interface InstanceArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      */
     instanceClass?: pulumi.Input<string>;
@@ -1022,7 +1022,7 @@ export interface InstanceArgs {
      */
     roleArn?: pulumi.Input<string>;
     /**
-     * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
     secondaryZoneId?: pulumi.Input<string>;

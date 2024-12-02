@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a P A I Workspace Workspace resource.
+// Provides a PAI Workspace Workspace resource.
 //
-// For information about P A I Workspace Workspace and how to use it, see [What is Workspace](https://www.alibabacloud.com/help/en/).
+// For information about PAI Workspace Workspace and how to use it, see [What is Workspace](https://www.alibabacloud.com/help/en/).
 //
 // > **NOTE:** Available since v1.233.0.
 //
@@ -59,7 +59,7 @@ import (
 //
 // ## Import
 //
-// P A I Workspace Workspace can be imported using the id, e.g.
+// PAI Workspace Workspace can be imported using the id, e.g.
 //
 // ```sh
 // $ pulumi import alicloud:pai/workspaceWorkspace:WorkspaceWorkspace example <id>

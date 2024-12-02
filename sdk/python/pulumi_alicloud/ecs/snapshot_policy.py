@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SnapshotPolicyArgs', 'SnapshotPolicy']
 
@@ -22,9 +24,12 @@ class SnapshotPolicyArgs:
                  repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[str]]],
                  retention_days: pulumi.Input[int],
                  time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
                  copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+                 copy_encryption_configuration: Optional[pulumi.Input['SnapshotPolicyCopyEncryptionConfigurationArgs']] = None,
                  enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -45,12 +50,21 @@ class SnapshotPolicyArgs:
         pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
         pulumi.set(__self__, "retention_days", retention_days)
         pulumi.set(__self__, "time_points", time_points)
+        if auto_snapshot_policy_name is not None:
+            pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
         if copied_snapshots_retention_days is not None:
             pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
+        if copy_encryption_configuration is not None:
+            pulumi.set(__self__, "copy_encryption_configuration", copy_encryption_configuration)
         if enable_cross_region_copy is not None:
             pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
         if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if target_copy_regions is not None:
@@ -101,6 +115,15 @@ class SnapshotPolicyArgs:
         pulumi.set(self, "time_points", value)
 
     @property
+    @pulumi.getter(name="autoSnapshotPolicyName")
+    def auto_snapshot_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auto_snapshot_policy_name")
+
+    @auto_snapshot_policy_name.setter
+    def auto_snapshot_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_snapshot_policy_name", value)
+
+    @property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
     def copied_snapshots_retention_days(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "copied_snapshots_retention_days")
@@ -108,6 +131,15 @@ class SnapshotPolicyArgs:
     @copied_snapshots_retention_days.setter
     def copied_snapshots_retention_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "copied_snapshots_retention_days", value)
+
+    @property
+    @pulumi.getter(name="copyEncryptionConfiguration")
+    def copy_encryption_configuration(self) -> Optional[pulumi.Input['SnapshotPolicyCopyEncryptionConfigurationArgs']]:
+        return pulumi.get(self, "copy_encryption_configuration")
+
+    @copy_encryption_configuration.setter
+    def copy_encryption_configuration(self, value: Optional[pulumi.Input['SnapshotPolicyCopyEncryptionConfigurationArgs']]):
+        pulumi.set(self, "copy_encryption_configuration", value)
 
     @property
     @pulumi.getter(name="enableCrossRegionCopy")
@@ -120,6 +152,7 @@ class SnapshotPolicyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The snapshot policy name.
@@ -129,6 +162,15 @@ class SnapshotPolicyArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter
@@ -152,10 +194,15 @@ class SnapshotPolicyArgs:
 @pulumi.input_type
 class _SnapshotPolicyState:
     def __init__(__self__, *,
+                 auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
                  copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+                 copy_encryption_configuration: Optional[pulumi.Input['SnapshotPolicyCopyEncryptionConfigurationArgs']] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -176,14 +223,27 @@ class _SnapshotPolicyState:
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
         """
+        if auto_snapshot_policy_name is not None:
+            pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
         if copied_snapshots_retention_days is not None:
             pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
+        if copy_encryption_configuration is not None:
+            pulumi.set(__self__, "copy_encryption_configuration", copy_encryption_configuration)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if enable_cross_region_copy is not None:
             pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
         if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if repeat_weekdays is not None:
             pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
         if status is not None:
@@ -196,6 +256,15 @@ class _SnapshotPolicyState:
             pulumi.set(__self__, "time_points", time_points)
 
     @property
+    @pulumi.getter(name="autoSnapshotPolicyName")
+    def auto_snapshot_policy_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auto_snapshot_policy_name")
+
+    @auto_snapshot_policy_name.setter
+    def auto_snapshot_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_snapshot_policy_name", value)
+
+    @property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
     def copied_snapshots_retention_days(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "copied_snapshots_retention_days")
@@ -203,6 +272,24 @@ class _SnapshotPolicyState:
     @copied_snapshots_retention_days.setter
     def copied_snapshots_retention_days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "copied_snapshots_retention_days", value)
+
+    @property
+    @pulumi.getter(name="copyEncryptionConfiguration")
+    def copy_encryption_configuration(self) -> Optional[pulumi.Input['SnapshotPolicyCopyEncryptionConfigurationArgs']]:
+        return pulumi.get(self, "copy_encryption_configuration")
+
+    @copy_encryption_configuration.setter
+    def copy_encryption_configuration(self, value: Optional[pulumi.Input['SnapshotPolicyCopyEncryptionConfigurationArgs']]):
+        pulumi.set(self, "copy_encryption_configuration", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="enableCrossRegionCopy")
@@ -215,6 +302,7 @@ class _SnapshotPolicyState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The snapshot policy name.
@@ -224,6 +312,15 @@ class _SnapshotPolicyState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
 
     @property
     @pulumi.getter(name="repeatWeekdays")
@@ -238,6 +335,15 @@ class _SnapshotPolicyState:
     @repeat_weekdays.setter
     def repeat_weekdays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "repeat_weekdays", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter(name="retentionDays")
@@ -302,10 +408,13 @@ class SnapshotPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
                  copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+                 copy_encryption_configuration: Optional[pulumi.Input[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
                  enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -423,10 +532,13 @@ class SnapshotPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
                  copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+                 copy_encryption_configuration: Optional[pulumi.Input[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
                  enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -440,12 +552,15 @@ class SnapshotPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SnapshotPolicyArgs.__new__(SnapshotPolicyArgs)
 
+            __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
             __props__.__dict__["copied_snapshots_retention_days"] = copied_snapshots_retention_days
+            __props__.__dict__["copy_encryption_configuration"] = copy_encryption_configuration
             __props__.__dict__["enable_cross_region_copy"] = enable_cross_region_copy
             __props__.__dict__["name"] = name
             if repeat_weekdays is None and not opts.urn:
                 raise TypeError("Missing required property 'repeat_weekdays'")
             __props__.__dict__["repeat_weekdays"] = repeat_weekdays
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if retention_days is None and not opts.urn:
                 raise TypeError("Missing required property 'retention_days'")
             __props__.__dict__["retention_days"] = retention_days
@@ -454,6 +569,8 @@ class SnapshotPolicy(pulumi.CustomResource):
             if time_points is None and not opts.urn:
                 raise TypeError("Missing required property 'time_points'")
             __props__.__dict__["time_points"] = time_points
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(SnapshotPolicy, __self__).__init__(
             'alicloud:ecs/snapshotPolicy:SnapshotPolicy',
@@ -465,10 +582,15 @@ class SnapshotPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
             copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+            copy_encryption_configuration: Optional[pulumi.Input[Union['SnapshotPolicyCopyEncryptionConfigurationArgs', 'SnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             retention_days: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -498,10 +620,15 @@ class SnapshotPolicy(pulumi.CustomResource):
 
         __props__ = _SnapshotPolicyState.__new__(_SnapshotPolicyState)
 
+        __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
         __props__.__dict__["copied_snapshots_retention_days"] = copied_snapshots_retention_days
+        __props__.__dict__["copy_encryption_configuration"] = copy_encryption_configuration
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["enable_cross_region_copy"] = enable_cross_region_copy
         __props__.__dict__["name"] = name
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["repeat_weekdays"] = repeat_weekdays
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retention_days"] = retention_days
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -510,9 +637,24 @@ class SnapshotPolicy(pulumi.CustomResource):
         return SnapshotPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="autoSnapshotPolicyName")
+    def auto_snapshot_policy_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "auto_snapshot_policy_name")
+
+    @property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
-    def copied_snapshots_retention_days(self) -> pulumi.Output[Optional[int]]:
+    def copied_snapshots_retention_days(self) -> pulumi.Output[int]:
         return pulumi.get(self, "copied_snapshots_retention_days")
+
+    @property
+    @pulumi.getter(name="copyEncryptionConfiguration")
+    def copy_encryption_configuration(self) -> pulumi.Output[Optional['outputs.SnapshotPolicyCopyEncryptionConfiguration']]:
+        return pulumi.get(self, "copy_encryption_configuration")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="enableCrossRegionCopy")
@@ -521,11 +663,17 @@ class SnapshotPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
         The snapshot policy name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="repeatWeekdays")
@@ -536,6 +684,11 @@ class SnapshotPolicy(pulumi.CustomResource):
         - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
         """
         return pulumi.get(self, "repeat_weekdays")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="retentionDays")

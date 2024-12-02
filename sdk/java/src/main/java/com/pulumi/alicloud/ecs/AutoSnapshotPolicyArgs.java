@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ecs;
 
+import com.pulumi.alicloud.ecs.inputs.AutoSnapshotPolicyCopyEncryptionConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -21,20 +22,31 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     public static final AutoSnapshotPolicyArgs Empty = new AutoSnapshotPolicyArgs();
 
     /**
-     * The retention period of the snapshot copied across regions.
-     * - -1: The snapshot is permanently retained.
-     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-     *   Default value: -1.
+     * The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * 
+     */
+    @Import(name="autoSnapshotPolicyName")
+    private @Nullable Output<String> autoSnapshotPolicyName;
+
+    /**
+     * @return The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+     * 
+     */
+    public Optional<Output<String>> autoSnapshotPolicyName() {
+        return Optional.ofNullable(this.autoSnapshotPolicyName);
+    }
+
+    /**
+     * The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+     * - `-1`: The snapshot copy is retained until it is deleted.
      * 
      */
     @Import(name="copiedSnapshotsRetentionDays")
     private @Nullable Output<Integer> copiedSnapshotsRetentionDays;
 
     /**
-     * @return The retention period of the snapshot copied across regions.
-     * - -1: The snapshot is permanently retained.
-     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-     *   Default value: -1.
+     * @return The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+     * - `-1`: The snapshot copy is retained until it is deleted.
      * 
      */
     public Optional<Output<Integer>> copiedSnapshotsRetentionDays() {
@@ -42,14 +54,29 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Specifies whether to enable the system to automatically copy snapshots across regions.
+     * The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+     * 
+     */
+    @Import(name="copyEncryptionConfiguration")
+    private @Nullable Output<AutoSnapshotPolicyCopyEncryptionConfigurationArgs> copyEncryptionConfiguration;
+
+    /**
+     * @return The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+     * 
+     */
+    public Optional<Output<AutoSnapshotPolicyCopyEncryptionConfigurationArgs>> copyEncryptionConfiguration() {
+        return Optional.ofNullable(this.copyEncryptionConfiguration);
+    }
+
+    /**
+     * Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
      * 
      */
     @Import(name="enableCrossRegionCopy")
     private @Nullable Output<Boolean> enableCrossRegionCopy;
 
     /**
-     * @return Specifies whether to enable the system to automatically copy snapshots across regions.
+     * @return Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
      * 
      */
     public Optional<Output<Boolean>> enableCrossRegionCopy() {
@@ -57,33 +84,37 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The snapshot policy name.
+     * . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The snapshot policy name.
+     * @return . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
      * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-     * - A maximum of seven time points can be selected.
-     * - The format is  an JSON array of [&#34;1&#34;, &#34;2&#34;, … &#34;7&#34;]  and the time points are separated by commas (,).
+     * The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
      * 
      */
     @Import(name="repeatWeekdays", required=true)
     private Output<List<String>> repeatWeekdays;
 
     /**
-     * @return The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-     * - A maximum of seven time points can be selected.
-     * - The format is  an JSON array of [&#34;1&#34;, &#34;2&#34;, … &#34;7&#34;]  and the time points are separated by commas (,).
+     * @return The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
      * 
      */
     public Output<List<String>> repeatWeekdays() {
@@ -91,20 +122,31 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The snapshot retention time, and the unit of measurement is day. Optional values:
-     * - -1: The automatic snapshots are retained permanently.
-     * - [1, 65536]: The number of days retained.
-     *   Default value: -1.
+     * The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The retention period of the automatic snapshots. Unit: days. Valid values:
+     * - `-1`: Automatic snapshots are retained until they are deleted.
      * 
      */
     @Import(name="retentionDays", required=true)
     private Output<Integer> retentionDays;
 
     /**
-     * @return The snapshot retention time, and the unit of measurement is day. Optional values:
-     * - -1: The automatic snapshots are retained permanently.
-     * - [1, 65536]: The number of days retained.
-     *   Default value: -1.
+     * @return The retention period of the automatic snapshots. Unit: days. Valid values:
+     * - `-1`: Automatic snapshots are retained until they are deleted.
      * 
      */
     public Output<Integer> retentionDays() {
@@ -127,14 +169,14 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The destination region to which the snapshot is copied. You can set a destination region.
+     * The destination region to which to copy the snapshot. You can specify only a single destination region.
      * 
      */
     @Import(name="targetCopyRegions")
     private @Nullable Output<List<String>> targetCopyRegions;
 
     /**
-     * @return The destination region to which the snapshot is copied. You can set a destination region.
+     * @return The destination region to which to copy the snapshot. You can specify only a single destination region.
      * 
      */
     public Optional<Output<List<String>>> targetCopyRegions() {
@@ -142,18 +184,26 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-     * - A maximum of 24 time points can be selected.
-     * - The format is  an JSON array of [&#34;0&#34;, &#34;1&#34;, … &#34;23&#34;] and the time points are separated by commas (,).
+     * The points in time of the day at which to create automatic snapshots.
+     * 
+     * The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+     * 
+     * The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: [&#34;0&#34;, &#34;1&#34;, ... &#34;23&#34;].
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="timePoints", required=true)
     private Output<List<String>> timePoints;
 
     /**
-     * @return The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-     * - A maximum of 24 time points can be selected.
-     * - The format is  an JSON array of [&#34;0&#34;, &#34;1&#34;, … &#34;23&#34;] and the time points are separated by commas (,).
+     * @return The points in time of the day at which to create automatic snapshots.
+     * 
+     * The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+     * 
+     * The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: [&#34;0&#34;, &#34;1&#34;, ... &#34;23&#34;].
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<List<String>> timePoints() {
@@ -163,10 +213,13 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
     private AutoSnapshotPolicyArgs() {}
 
     private AutoSnapshotPolicyArgs(AutoSnapshotPolicyArgs $) {
+        this.autoSnapshotPolicyName = $.autoSnapshotPolicyName;
         this.copiedSnapshotsRetentionDays = $.copiedSnapshotsRetentionDays;
+        this.copyEncryptionConfiguration = $.copyEncryptionConfiguration;
         this.enableCrossRegionCopy = $.enableCrossRegionCopy;
         this.name = $.name;
         this.repeatWeekdays = $.repeatWeekdays;
+        this.resourceGroupId = $.resourceGroupId;
         this.retentionDays = $.retentionDays;
         this.tags = $.tags;
         this.targetCopyRegions = $.targetCopyRegions;
@@ -192,10 +245,29 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param copiedSnapshotsRetentionDays The retention period of the snapshot copied across regions.
-         * - -1: The snapshot is permanently retained.
-         * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-         *   Default value: -1.
+         * @param autoSnapshotPolicyName The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoSnapshotPolicyName(@Nullable Output<String> autoSnapshotPolicyName) {
+            $.autoSnapshotPolicyName = autoSnapshotPolicyName;
+            return this;
+        }
+
+        /**
+         * @param autoSnapshotPolicyName The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoSnapshotPolicyName(String autoSnapshotPolicyName) {
+            return autoSnapshotPolicyName(Output.of(autoSnapshotPolicyName));
+        }
+
+        /**
+         * @param copiedSnapshotsRetentionDays The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+         * - `-1`: The snapshot copy is retained until it is deleted.
          * 
          * @return builder
          * 
@@ -206,10 +278,8 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param copiedSnapshotsRetentionDays The retention period of the snapshot copied across regions.
-         * - -1: The snapshot is permanently retained.
-         * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-         *   Default value: -1.
+         * @param copiedSnapshotsRetentionDays The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+         * - `-1`: The snapshot copy is retained until it is deleted.
          * 
          * @return builder
          * 
@@ -219,7 +289,28 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableCrossRegionCopy Specifies whether to enable the system to automatically copy snapshots across regions.
+         * @param copyEncryptionConfiguration The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder copyEncryptionConfiguration(@Nullable Output<AutoSnapshotPolicyCopyEncryptionConfigurationArgs> copyEncryptionConfiguration) {
+            $.copyEncryptionConfiguration = copyEncryptionConfiguration;
+            return this;
+        }
+
+        /**
+         * @param copyEncryptionConfiguration The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder copyEncryptionConfiguration(AutoSnapshotPolicyCopyEncryptionConfigurationArgs copyEncryptionConfiguration) {
+            return copyEncryptionConfiguration(Output.of(copyEncryptionConfiguration));
+        }
+
+        /**
+         * @param enableCrossRegionCopy Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -230,7 +321,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enableCrossRegionCopy Specifies whether to enable the system to automatically copy snapshots across regions.
+         * @param enableCrossRegionCopy Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
          * 
          * @return builder
          * 
@@ -240,30 +331,36 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The snapshot policy name.
+         * @param name . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The snapshot policy name.
+         * @param name . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
-         * @param repeatWeekdays The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-         * - A maximum of seven time points can be selected.
-         * - The format is  an JSON array of [&#34;1&#34;, &#34;2&#34;, … &#34;7&#34;]  and the time points are separated by commas (,).
+         * @param repeatWeekdays The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
          * 
          * @return builder
          * 
@@ -274,9 +371,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param repeatWeekdays The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-         * - A maximum of seven time points can be selected.
-         * - The format is  an JSON array of [&#34;1&#34;, &#34;2&#34;, … &#34;7&#34;]  and the time points are separated by commas (,).
+         * @param repeatWeekdays The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
          * 
          * @return builder
          * 
@@ -286,9 +381,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param repeatWeekdays The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-         * - A maximum of seven time points can be selected.
-         * - The format is  an JSON array of [&#34;1&#34;, &#34;2&#34;, … &#34;7&#34;]  and the time points are separated by commas (,).
+         * @param repeatWeekdays The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
          * 
          * @return builder
          * 
@@ -298,10 +391,29 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param retentionDays The snapshot retention time, and the unit of measurement is day. Optional values:
-         * - -1: The automatic snapshots are retained permanently.
-         * - [1, 65536]: The number of days retained.
-         *   Default value: -1.
+         * @param resourceGroupId The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param retentionDays The retention period of the automatic snapshots. Unit: days. Valid values:
+         * - `-1`: Automatic snapshots are retained until they are deleted.
          * 
          * @return builder
          * 
@@ -312,10 +424,8 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param retentionDays The snapshot retention time, and the unit of measurement is day. Optional values:
-         * - -1: The automatic snapshots are retained permanently.
-         * - [1, 65536]: The number of days retained.
-         *   Default value: -1.
+         * @param retentionDays The retention period of the automatic snapshots. Unit: days. Valid values:
+         * - `-1`: Automatic snapshots are retained until they are deleted.
          * 
          * @return builder
          * 
@@ -346,7 +456,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetCopyRegions The destination region to which the snapshot is copied. You can set a destination region.
+         * @param targetCopyRegions The destination region to which to copy the snapshot. You can specify only a single destination region.
          * 
          * @return builder
          * 
@@ -357,7 +467,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetCopyRegions The destination region to which the snapshot is copied. You can set a destination region.
+         * @param targetCopyRegions The destination region to which to copy the snapshot. You can specify only a single destination region.
          * 
          * @return builder
          * 
@@ -367,7 +477,7 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param targetCopyRegions The destination region to which the snapshot is copied. You can set a destination region.
+         * @param targetCopyRegions The destination region to which to copy the snapshot. You can specify only a single destination region.
          * 
          * @return builder
          * 
@@ -377,9 +487,13 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param timePoints The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-         * - A maximum of 24 time points can be selected.
-         * - The format is  an JSON array of [&#34;0&#34;, &#34;1&#34;, … &#34;23&#34;] and the time points are separated by commas (,).
+         * @param timePoints The points in time of the day at which to create automatic snapshots.
+         * 
+         * The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+         * 
+         * The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: [&#34;0&#34;, &#34;1&#34;, ... &#34;23&#34;].
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -390,9 +504,13 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param timePoints The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-         * - A maximum of 24 time points can be selected.
-         * - The format is  an JSON array of [&#34;0&#34;, &#34;1&#34;, … &#34;23&#34;] and the time points are separated by commas (,).
+         * @param timePoints The points in time of the day at which to create automatic snapshots.
+         * 
+         * The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+         * 
+         * The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: [&#34;0&#34;, &#34;1&#34;, ... &#34;23&#34;].
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -402,9 +520,13 @@ public final class AutoSnapshotPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param timePoints The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-         * - A maximum of 24 time points can be selected.
-         * - The format is  an JSON array of [&#34;0&#34;, &#34;1&#34;, … &#34;23&#34;] and the time points are separated by commas (,).
+         * @param timePoints The points in time of the day at which to create automatic snapshots.
+         * 
+         * The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+         * 
+         * The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: [&#34;0&#34;, &#34;1&#34;, ... &#34;23&#34;].
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

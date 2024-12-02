@@ -697,45 +697,80 @@ class GetChildInstanceRouteEntryToAttachmentsAttachmentResult(dict):
 class GetFlowlogsFlowlogResult(dict):
     def __init__(__self__, *,
                  cen_id: str,
+                 create_time: str,
                  description: str,
                  flow_log_id: str,
                  flow_log_name: str,
+                 flow_log_version: str,
                  id: str,
+                 interval: int,
+                 log_format_string: str,
                  log_store_name: str,
                  project_name: str,
-                 status: str):
+                 record_total: str,
+                 region_id: str,
+                 status: str,
+                 tags: Mapping[str, str],
+                 transit_router_attachment_id: str,
+                 transit_router_id: str):
         """
-        :param str cen_id: The ID of the CEN Instance.
-        :param str description: The description of flowlog.
-        :param str flow_log_id: ID of the CEN flow log.
-        :param str flow_log_name: The name of flowlog.
-        :param str id: ID of the CEN flow log.
-        :param str log_store_name: The name of the log store which is in the  `project_name` SLS project.
-        :param str project_name: The name of the SLS project.
-        :param str status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        :param str cen_id: The ID of Cen instance.
+        :param str create_time: The createTime of flowlog.
+        :param str description: The description of the flowlog.
+        :param str flow_log_id: The ID of FlowLog.
+        :param str flow_log_name: The name of the flowlog.
+        :param str flow_log_version: Flowlog Version.
+        :param str id: The ID of FlowLog.
+        :param int interval: The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+        :param str log_format_string: (Available since v1.236.0) Log Format.
+        :param str log_store_name: The LogStore that stores the flowlog.
+        :param str project_name: The Project that stores the flowlog.
+        :param str record_total: (Available since v1.236.0) Total number of records.
+        :param str region_id: Region id
+        :param str status: The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
+        :param Mapping[str, str] tags: The tag of the resource.
+        :param str transit_router_attachment_id: (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.> This parameter is required.
+        :param str transit_router_id: Transit Router ID
         """
         pulumi.set(__self__, "cen_id", cen_id)
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "flow_log_id", flow_log_id)
         pulumi.set(__self__, "flow_log_name", flow_log_name)
+        pulumi.set(__self__, "flow_log_version", flow_log_version)
         pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "log_format_string", log_format_string)
         pulumi.set(__self__, "log_store_name", log_store_name)
         pulumi.set(__self__, "project_name", project_name)
+        pulumi.set(__self__, "record_total", record_total)
+        pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tags", tags)
+        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        pulumi.set(__self__, "transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter(name="cenId")
     def cen_id(self) -> str:
         """
-        The ID of the CEN Instance.
+        The ID of Cen instance.
         """
         return pulumi.get(self, "cen_id")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The createTime of flowlog.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
         """
-        The description of flowlog.
+        The description of the flowlog.
         """
         return pulumi.get(self, "description")
 
@@ -743,7 +778,7 @@ class GetFlowlogsFlowlogResult(dict):
     @pulumi.getter(name="flowLogId")
     def flow_log_id(self) -> str:
         """
-        ID of the CEN flow log.
+        The ID of FlowLog.
         """
         return pulumi.get(self, "flow_log_id")
 
@@ -751,23 +786,47 @@ class GetFlowlogsFlowlogResult(dict):
     @pulumi.getter(name="flowLogName")
     def flow_log_name(self) -> str:
         """
-        The name of flowlog.
+        The name of the flowlog.
         """
         return pulumi.get(self, "flow_log_name")
+
+    @property
+    @pulumi.getter(name="flowLogVersion")
+    def flow_log_version(self) -> str:
+        """
+        Flowlog Version.
+        """
+        return pulumi.get(self, "flow_log_version")
 
     @property
     @pulumi.getter
     def id(self) -> str:
         """
-        ID of the CEN flow log.
+        The ID of FlowLog.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def interval(self) -> int:
+        """
+        The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+        """
+        return pulumi.get(self, "interval")
+
+    @property
+    @pulumi.getter(name="logFormatString")
+    def log_format_string(self) -> str:
+        """
+        (Available since v1.236.0) Log Format.
+        """
+        return pulumi.get(self, "log_format_string")
 
     @property
     @pulumi.getter(name="logStoreName")
     def log_store_name(self) -> str:
         """
-        The name of the log store which is in the  `project_name` SLS project.
+        The LogStore that stores the flowlog.
         """
         return pulumi.get(self, "log_store_name")
 
@@ -775,17 +834,57 @@ class GetFlowlogsFlowlogResult(dict):
     @pulumi.getter(name="projectName")
     def project_name(self) -> str:
         """
-        The name of the SLS project.
+        The Project that stores the flowlog.
         """
         return pulumi.get(self, "project_name")
+
+    @property
+    @pulumi.getter(name="recordTotal")
+    def record_total(self) -> str:
+        """
+        (Available since v1.236.0) Total number of records.
+        """
+        return pulumi.get(self, "record_total")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> str:
+        """
+        Region id
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        """
+        The tag of the resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="transitRouterAttachmentId")
+    def transit_router_attachment_id(self) -> str:
+        """
+        (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.> This parameter is required.
+        """
+        return pulumi.get(self, "transit_router_attachment_id")
+
+    @property
+    @pulumi.getter(name="transitRouterId")
+    def transit_router_id(self) -> str:
+        """
+        Transit Router ID
+        """
+        return pulumi.get(self, "transit_router_id")
 
 
 @pulumi.output_type

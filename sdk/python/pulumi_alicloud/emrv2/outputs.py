@@ -21,6 +21,14 @@ __all__ = [
     'ClusterBootstrapScriptNodeSelector',
     'ClusterNodeAttribute',
     'ClusterNodeGroup',
+    'ClusterNodeGroupAckConfig',
+    'ClusterNodeGroupAckConfigCustomAnnotation',
+    'ClusterNodeGroupAckConfigCustomLabel',
+    'ClusterNodeGroupAckConfigNodeSelector',
+    'ClusterNodeGroupAckConfigPvc',
+    'ClusterNodeGroupAckConfigToleration',
+    'ClusterNodeGroupAckConfigVolume',
+    'ClusterNodeGroupAckConfigVolumeMount',
     'ClusterNodeGroupAutoScalingPolicy',
     'ClusterNodeGroupAutoScalingPolicyConstraints',
     'ClusterNodeGroupAutoScalingPolicyScalingRule',
@@ -207,7 +215,7 @@ class ClusterBootstrapScript(dict):
                  script_path: str,
                  priority: Optional[int] = None):
         """
-        :param str execution_fail_strategy: The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+        :param str execution_fail_strategy: The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
         :param str execution_moment: The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
         :param 'ClusterBootstrapScriptNodeSelectorArgs' node_selector: The bootstrap scripts execution target. See `node_selector` below.
         :param str script_args: The bootstrap script args, e.g. "--a=b".
@@ -228,7 +236,7 @@ class ClusterBootstrapScript(dict):
     @pulumi.getter(name="executionFailStrategy")
     def execution_fail_strategy(self) -> str:
         """
-        The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+        The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
         """
         return pulumi.get(self, "execution_fail_strategy")
 
@@ -527,6 +535,8 @@ class ClusterNodeGroup(dict):
             suggest = "node_group_type"
         elif key == "systemDisk":
             suggest = "system_disk"
+        elif key == "ackConfig":
+            suggest = "ack_config"
         elif key == "additionalSecurityGroupIds":
             suggest = "additional_security_group_ids"
         elif key == "autoScalingPolicy":
@@ -545,6 +555,8 @@ class ClusterNodeGroup(dict):
             suggest = "spot_bid_prices"
         elif key == "spotInstanceRemedy":
             suggest = "spot_instance_remedy"
+        elif key == "spotStrategy":
+            suggest = "spot_strategy"
         elif key == "subscriptionConfig":
             suggest = "subscription_config"
         elif key == "vswitchIds":
@@ -570,6 +582,7 @@ class ClusterNodeGroup(dict):
                  node_group_name: str,
                  node_group_type: str,
                  system_disk: 'outputs.ClusterNodeGroupSystemDisk',
+                 ack_config: Optional['outputs.ClusterNodeGroupAckConfig'] = None,
                  additional_security_group_ids: Optional[Sequence[str]] = None,
                  auto_scaling_policy: Optional['outputs.ClusterNodeGroupAutoScalingPolicy'] = None,
                  cost_optimized_config: Optional['outputs.ClusterNodeGroupCostOptimizedConfig'] = None,
@@ -579,28 +592,31 @@ class ClusterNodeGroup(dict):
                  payment_type: Optional[str] = None,
                  spot_bid_prices: Optional[Sequence['outputs.ClusterNodeGroupSpotBidPrice']] = None,
                  spot_instance_remedy: Optional[bool] = None,
+                 spot_strategy: Optional[str] = None,
                  subscription_config: Optional['outputs.ClusterNodeGroupSubscriptionConfig'] = None,
                  vswitch_ids: Optional[Sequence[str]] = None,
                  with_public_ip: Optional[bool] = None):
         """
         :param Sequence['ClusterNodeGroupDataDiskArgs'] data_disks: Host Ecs data disks information in this node group. See `data_disks` below.
-        :param Sequence[str] instance_types: Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+        :param Sequence[str] instance_types: Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
         :param int node_count: Host Ecs number in this node group.
         :param str node_group_name: The node group name of emr cluster.
         :param str node_group_type: The node group type of emr cluster, supported value: MASTER, CORE or TASK. Node group type of GATEWAY is available since v1.219.0.
         :param 'ClusterNodeGroupSystemDiskArgs' system_disk: Host Ecs system disk information in this node group. See `system_disk` below.
-        :param Sequence[str] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+        :param 'ClusterNodeGroupAckConfigArgs' ack_config: The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+        :param Sequence[str] additional_security_group_ids: Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
         :param 'ClusterNodeGroupAutoScalingPolicyArgs' auto_scaling_policy: The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
-        :param 'ClusterNodeGroupCostOptimizedConfigArgs' cost_optimized_config: The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
-        :param str deployment_set_strategy: Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
+        :param 'ClusterNodeGroupCostOptimizedConfigArgs' cost_optimized_config: The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
+        :param str deployment_set_strategy: Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
         :param bool graceful_shutdown: Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         :param str node_resize_strategy: Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
         :param str payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         :param Sequence['ClusterNodeGroupSpotBidPriceArgs'] spot_bid_prices: The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         :param bool spot_instance_remedy: Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
+        :param str spot_strategy: The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
         :param 'ClusterNodeGroupSubscriptionConfigArgs' subscription_config: The detail configuration of subscription payment type. See `subscription_config` below.
-        :param Sequence[str] vswitch_ids: Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
-        :param bool with_public_ip: Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
+        :param Sequence[str] vswitch_ids: Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
+        :param bool with_public_ip: Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
         """
         pulumi.set(__self__, "data_disks", data_disks)
         pulumi.set(__self__, "instance_types", instance_types)
@@ -608,6 +624,8 @@ class ClusterNodeGroup(dict):
         pulumi.set(__self__, "node_group_name", node_group_name)
         pulumi.set(__self__, "node_group_type", node_group_type)
         pulumi.set(__self__, "system_disk", system_disk)
+        if ack_config is not None:
+            pulumi.set(__self__, "ack_config", ack_config)
         if additional_security_group_ids is not None:
             pulumi.set(__self__, "additional_security_group_ids", additional_security_group_ids)
         if auto_scaling_policy is not None:
@@ -626,6 +644,8 @@ class ClusterNodeGroup(dict):
             pulumi.set(__self__, "spot_bid_prices", spot_bid_prices)
         if spot_instance_remedy is not None:
             pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+        if spot_strategy is not None:
+            pulumi.set(__self__, "spot_strategy", spot_strategy)
         if subscription_config is not None:
             pulumi.set(__self__, "subscription_config", subscription_config)
         if vswitch_ids is not None:
@@ -645,7 +665,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="instanceTypes")
     def instance_types(self) -> Sequence[str]:
         """
-        Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+        Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
         """
         return pulumi.get(self, "instance_types")
 
@@ -682,10 +702,18 @@ class ClusterNodeGroup(dict):
         return pulumi.get(self, "system_disk")
 
     @property
+    @pulumi.getter(name="ackConfig")
+    def ack_config(self) -> Optional['outputs.ClusterNodeGroupAckConfig']:
+        """
+        The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+        """
+        return pulumi.get(self, "ack_config")
+
+    @property
     @pulumi.getter(name="additionalSecurityGroupIds")
     def additional_security_group_ids(self) -> Optional[Sequence[str]]:
         """
-        Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+        Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
         """
         return pulumi.get(self, "additional_security_group_ids")
 
@@ -701,7 +729,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="costOptimizedConfig")
     def cost_optimized_config(self) -> Optional['outputs.ClusterNodeGroupCostOptimizedConfig']:
         """
-        The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
+        The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
         """
         return pulumi.get(self, "cost_optimized_config")
 
@@ -709,7 +737,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="deploymentSetStrategy")
     def deployment_set_strategy(self) -> Optional[str]:
         """
-        Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
+        Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
         """
         return pulumi.get(self, "deployment_set_strategy")
 
@@ -754,6 +782,14 @@ class ClusterNodeGroup(dict):
         return pulumi.get(self, "spot_instance_remedy")
 
     @property
+    @pulumi.getter(name="spotStrategy")
+    def spot_strategy(self) -> Optional[str]:
+        """
+        The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+        """
+        return pulumi.get(self, "spot_strategy")
+
+    @property
     @pulumi.getter(name="subscriptionConfig")
     def subscription_config(self) -> Optional['outputs.ClusterNodeGroupSubscriptionConfig']:
         """
@@ -765,7 +801,7 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="vswitchIds")
     def vswitch_ids(self) -> Optional[Sequence[str]]:
         """
-        Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+        Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
         """
         return pulumi.get(self, "vswitch_ids")
 
@@ -773,9 +809,539 @@ class ClusterNodeGroup(dict):
     @pulumi.getter(name="withPublicIp")
     def with_public_ip(self) -> Optional[bool]:
         """
-        Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
+        Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
         """
         return pulumi.get(self, "with_public_ip")
+
+
+@pulumi.output_type
+class ClusterNodeGroupAckConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ackInstanceId":
+            suggest = "ack_instance_id"
+        elif key == "limitCpu":
+            suggest = "limit_cpu"
+        elif key == "limitMemory":
+            suggest = "limit_memory"
+        elif key == "requestCpu":
+            suggest = "request_cpu"
+        elif key == "requestMemory":
+            suggest = "request_memory"
+        elif key == "customAnnotations":
+            suggest = "custom_annotations"
+        elif key == "customLabels":
+            suggest = "custom_labels"
+        elif key == "nodeAffinity":
+            suggest = "node_affinity"
+        elif key == "nodeSelectors":
+            suggest = "node_selectors"
+        elif key == "podAffinity":
+            suggest = "pod_affinity"
+        elif key == "podAntiAffinity":
+            suggest = "pod_anti_affinity"
+        elif key == "preStartCommands":
+            suggest = "pre_start_commands"
+        elif key == "volumeMounts":
+            suggest = "volume_mounts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeGroupAckConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeGroupAckConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeGroupAckConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ack_instance_id: str,
+                 limit_cpu: float,
+                 limit_memory: float,
+                 namespace: str,
+                 request_cpu: float,
+                 request_memory: float,
+                 custom_annotations: Optional[Sequence['outputs.ClusterNodeGroupAckConfigCustomAnnotation']] = None,
+                 custom_labels: Optional[Sequence['outputs.ClusterNodeGroupAckConfigCustomLabel']] = None,
+                 node_affinity: Optional[str] = None,
+                 node_selectors: Optional[Sequence['outputs.ClusterNodeGroupAckConfigNodeSelector']] = None,
+                 pod_affinity: Optional[str] = None,
+                 pod_anti_affinity: Optional[str] = None,
+                 pre_start_commands: Optional[Sequence[str]] = None,
+                 pvcs: Optional[Sequence['outputs.ClusterNodeGroupAckConfigPvc']] = None,
+                 tolerations: Optional[Sequence['outputs.ClusterNodeGroupAckConfigToleration']] = None,
+                 volume_mounts: Optional[Sequence['outputs.ClusterNodeGroupAckConfigVolumeMount']] = None,
+                 volumes: Optional[Sequence['outputs.ClusterNodeGroupAckConfigVolume']] = None):
+        """
+        :param str ack_instance_id: The ack cluster instance id.
+        :param float limit_cpu: The job pod resource of limit cpu.
+        :param float limit_memory: The job pod resource of limit memory.
+        :param str namespace: The ack cluster namespace.
+        :param float request_cpu: The job pod resource of request cpu.
+        :param float request_memory: The job pod resource of request memory.
+        :param Sequence['ClusterNodeGroupAckConfigCustomAnnotationArgs'] custom_annotations: The ack cluster custom annotations. See `custom_annotations` below.
+        :param Sequence['ClusterNodeGroupAckConfigCustomLabelArgs'] custom_labels: The ack cluster custom labels. See `custom_labels` below.
+        :param str node_affinity: The ack cluster node affinity.
+        :param Sequence['ClusterNodeGroupAckConfigNodeSelectorArgs'] node_selectors: The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+        :param str pod_affinity: The job pod affinity.
+        :param str pod_anti_affinity: The job pod anti-affinity.
+        :param Sequence[str] pre_start_commands: The job pod pre start command.
+        :param Sequence['ClusterNodeGroupAckConfigPvcArgs'] pvcs: The ack cluster persistent volume claim. See `pvcs` below.
+        :param Sequence['ClusterNodeGroupAckConfigTolerationArgs'] tolerations: The ack cluster tolerations. See `tolerations` below.
+        :param Sequence['ClusterNodeGroupAckConfigVolumeMountArgs'] volume_mounts: The ack cluster volume mounts. See `volume_mounts` below.
+        :param Sequence['ClusterNodeGroupAckConfigVolumeArgs'] volumes: The ack cluster volumes. See `volumes` below.
+        """
+        pulumi.set(__self__, "ack_instance_id", ack_instance_id)
+        pulumi.set(__self__, "limit_cpu", limit_cpu)
+        pulumi.set(__self__, "limit_memory", limit_memory)
+        pulumi.set(__self__, "namespace", namespace)
+        pulumi.set(__self__, "request_cpu", request_cpu)
+        pulumi.set(__self__, "request_memory", request_memory)
+        if custom_annotations is not None:
+            pulumi.set(__self__, "custom_annotations", custom_annotations)
+        if custom_labels is not None:
+            pulumi.set(__self__, "custom_labels", custom_labels)
+        if node_affinity is not None:
+            pulumi.set(__self__, "node_affinity", node_affinity)
+        if node_selectors is not None:
+            pulumi.set(__self__, "node_selectors", node_selectors)
+        if pod_affinity is not None:
+            pulumi.set(__self__, "pod_affinity", pod_affinity)
+        if pod_anti_affinity is not None:
+            pulumi.set(__self__, "pod_anti_affinity", pod_anti_affinity)
+        if pre_start_commands is not None:
+            pulumi.set(__self__, "pre_start_commands", pre_start_commands)
+        if pvcs is not None:
+            pulumi.set(__self__, "pvcs", pvcs)
+        if tolerations is not None:
+            pulumi.set(__self__, "tolerations", tolerations)
+        if volume_mounts is not None:
+            pulumi.set(__self__, "volume_mounts", volume_mounts)
+        if volumes is not None:
+            pulumi.set(__self__, "volumes", volumes)
+
+    @property
+    @pulumi.getter(name="ackInstanceId")
+    def ack_instance_id(self) -> str:
+        """
+        The ack cluster instance id.
+        """
+        return pulumi.get(self, "ack_instance_id")
+
+    @property
+    @pulumi.getter(name="limitCpu")
+    def limit_cpu(self) -> float:
+        """
+        The job pod resource of limit cpu.
+        """
+        return pulumi.get(self, "limit_cpu")
+
+    @property
+    @pulumi.getter(name="limitMemory")
+    def limit_memory(self) -> float:
+        """
+        The job pod resource of limit memory.
+        """
+        return pulumi.get(self, "limit_memory")
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> str:
+        """
+        The ack cluster namespace.
+        """
+        return pulumi.get(self, "namespace")
+
+    @property
+    @pulumi.getter(name="requestCpu")
+    def request_cpu(self) -> float:
+        """
+        The job pod resource of request cpu.
+        """
+        return pulumi.get(self, "request_cpu")
+
+    @property
+    @pulumi.getter(name="requestMemory")
+    def request_memory(self) -> float:
+        """
+        The job pod resource of request memory.
+        """
+        return pulumi.get(self, "request_memory")
+
+    @property
+    @pulumi.getter(name="customAnnotations")
+    def custom_annotations(self) -> Optional[Sequence['outputs.ClusterNodeGroupAckConfigCustomAnnotation']]:
+        """
+        The ack cluster custom annotations. See `custom_annotations` below.
+        """
+        return pulumi.get(self, "custom_annotations")
+
+    @property
+    @pulumi.getter(name="customLabels")
+    def custom_labels(self) -> Optional[Sequence['outputs.ClusterNodeGroupAckConfigCustomLabel']]:
+        """
+        The ack cluster custom labels. See `custom_labels` below.
+        """
+        return pulumi.get(self, "custom_labels")
+
+    @property
+    @pulumi.getter(name="nodeAffinity")
+    def node_affinity(self) -> Optional[str]:
+        """
+        The ack cluster node affinity.
+        """
+        return pulumi.get(self, "node_affinity")
+
+    @property
+    @pulumi.getter(name="nodeSelectors")
+    def node_selectors(self) -> Optional[Sequence['outputs.ClusterNodeGroupAckConfigNodeSelector']]:
+        """
+        The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
+        """
+        return pulumi.get(self, "node_selectors")
+
+    @property
+    @pulumi.getter(name="podAffinity")
+    def pod_affinity(self) -> Optional[str]:
+        """
+        The job pod affinity.
+        """
+        return pulumi.get(self, "pod_affinity")
+
+    @property
+    @pulumi.getter(name="podAntiAffinity")
+    def pod_anti_affinity(self) -> Optional[str]:
+        """
+        The job pod anti-affinity.
+        """
+        return pulumi.get(self, "pod_anti_affinity")
+
+    @property
+    @pulumi.getter(name="preStartCommands")
+    def pre_start_commands(self) -> Optional[Sequence[str]]:
+        """
+        The job pod pre start command.
+        """
+        return pulumi.get(self, "pre_start_commands")
+
+    @property
+    @pulumi.getter
+    def pvcs(self) -> Optional[Sequence['outputs.ClusterNodeGroupAckConfigPvc']]:
+        """
+        The ack cluster persistent volume claim. See `pvcs` below.
+        """
+        return pulumi.get(self, "pvcs")
+
+    @property
+    @pulumi.getter
+    def tolerations(self) -> Optional[Sequence['outputs.ClusterNodeGroupAckConfigToleration']]:
+        """
+        The ack cluster tolerations. See `tolerations` below.
+        """
+        return pulumi.get(self, "tolerations")
+
+    @property
+    @pulumi.getter(name="volumeMounts")
+    def volume_mounts(self) -> Optional[Sequence['outputs.ClusterNodeGroupAckConfigVolumeMount']]:
+        """
+        The ack cluster volume mounts. See `volume_mounts` below.
+        """
+        return pulumi.get(self, "volume_mounts")
+
+    @property
+    @pulumi.getter
+    def volumes(self) -> Optional[Sequence['outputs.ClusterNodeGroupAckConfigVolume']]:
+        """
+        The ack cluster volumes. See `volumes` below.
+        """
+        return pulumi.get(self, "volumes")
+
+
+@pulumi.output_type
+class ClusterNodeGroupAckConfigCustomAnnotation(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None):
+        """
+        :param str key: The tag key for this scaling rule specific metrics trigger.
+        :param str value: The tag value for this scaling rule specific metrics trigger.
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The tag key for this scaling rule specific metrics trigger.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The tag value for this scaling rule specific metrics trigger.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterNodeGroupAckConfigCustomLabel(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None):
+        """
+        :param str key: The tag key for this scaling rule specific metrics trigger.
+        :param str value: The tag value for this scaling rule specific metrics trigger.
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The tag key for this scaling rule specific metrics trigger.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The tag value for this scaling rule specific metrics trigger.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterNodeGroupAckConfigNodeSelector(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: Optional[str] = None):
+        """
+        :param str key: The tag key for this scaling rule specific metrics trigger.
+        :param str value: The tag value for this scaling rule specific metrics trigger.
+        """
+        pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The tag key for this scaling rule specific metrics trigger.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The tag value for this scaling rule specific metrics trigger.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterNodeGroupAckConfigPvc(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataDiskSize":
+            suggest = "data_disk_size"
+        elif key == "dataDiskStorageClass":
+            suggest = "data_disk_storage_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeGroupAckConfigPvc. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeGroupAckConfigPvc.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeGroupAckConfigPvc.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_disk_size: int,
+                 data_disk_storage_class: str,
+                 name: str,
+                 path: str):
+        """
+        :param int data_disk_size: The ack cluster job pod data disk size of persistent volume claim.
+        :param str data_disk_storage_class: The ack cluster job pod data disk storage class of persistent volume claim.
+        :param str name: The name of ack cluster job pod volume mounts.
+        :param str path: The path of ack cluster job pod volume mounts.
+        """
+        pulumi.set(__self__, "data_disk_size", data_disk_size)
+        pulumi.set(__self__, "data_disk_storage_class", data_disk_storage_class)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="dataDiskSize")
+    def data_disk_size(self) -> int:
+        """
+        The ack cluster job pod data disk size of persistent volume claim.
+        """
+        return pulumi.get(self, "data_disk_size")
+
+    @property
+    @pulumi.getter(name="dataDiskStorageClass")
+    def data_disk_storage_class(self) -> str:
+        """
+        The ack cluster job pod data disk storage class of persistent volume claim.
+        """
+        return pulumi.get(self, "data_disk_storage_class")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of ack cluster job pod volume mounts.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path of ack cluster job pod volume mounts.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class ClusterNodeGroupAckConfigToleration(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str effect: The effect of ack cluster tolerations.
+        :param str key: The tag key for this scaling rule specific metrics trigger.
+        :param str operator: The operator of ack cluster tolerations.
+        :param str value: The tag value for this scaling rule specific metrics trigger.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        The effect of ack cluster tolerations.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        The tag key for this scaling rule specific metrics trigger.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        The operator of ack cluster tolerations.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The tag value for this scaling rule specific metrics trigger.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ClusterNodeGroupAckConfigVolume(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 path: str,
+                 type: str):
+        """
+        :param str name: The name of ack cluster job pod volume mounts.
+        :param str path: The path of ack cluster job pod volume mounts.
+        :param str type: The ack cluster job pod volumes type.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of ack cluster job pod volume mounts.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path of ack cluster job pod volume mounts.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The ack cluster job pod volumes type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ClusterNodeGroupAckConfigVolumeMount(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 path: str):
+        """
+        :param str name: The name of ack cluster job pod volume mounts.
+        :param str path: The path of ack cluster job pod volume mounts.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of ack cluster job pod volume mounts.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The path of ack cluster job pod volume mounts.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

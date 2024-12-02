@@ -690,7 +690,7 @@ type GetInstancesInstance struct {
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// Instance bandwidth limit. Unit: Mbit/s.
 	Bandwidth int `pulumi:"bandwidth"`
-	// Capacity of the applied ApsaraDB for the instance. Unit: MB.
+	// Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
 	Capacity int `pulumi:"capacity"`
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	ChargeType string `pulumi:"chargeType"`
@@ -720,7 +720,7 @@ type GetInstancesInstance struct {
 	HasRenewChangeOrder bool `pulumi:"hasRenewChangeOrder"`
 	// The ID of the instance.
 	Id string `pulumi:"id"`
-	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 	InstanceClass             string `pulumi:"instanceClass"`
 	InstanceReleaseProtection bool   `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -755,7 +755,7 @@ type GetInstancesInstance struct {
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// The name of the instance.
 	SearchKey string `pulumi:"searchKey"`
-	// (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	// (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 	SecondaryZoneId          string   `pulumi:"secondaryZoneId"`
 	SecurityGroupId          string   `pulumi:"securityGroupId"`
 	SecurityIpGroupAttribute string   `pulumi:"securityIpGroupAttribute"`
@@ -799,7 +799,7 @@ type GetInstancesInstanceArgs struct {
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 	// Instance bandwidth limit. Unit: Mbit/s.
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// Capacity of the applied ApsaraDB for the instance. Unit: MB.
+	// Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
 	Capacity pulumi.IntInput `pulumi:"capacity"`
 	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
@@ -829,7 +829,7 @@ type GetInstancesInstanceArgs struct {
 	HasRenewChangeOrder pulumi.BoolInput `pulumi:"hasRenewChangeOrder"`
 	// The ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 	InstanceClass             pulumi.StringInput `pulumi:"instanceClass"`
 	InstanceReleaseProtection pulumi.BoolInput   `pulumi:"instanceReleaseProtection"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
@@ -864,7 +864,7 @@ type GetInstancesInstanceArgs struct {
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// The name of the instance.
 	SearchKey pulumi.StringInput `pulumi:"searchKey"`
-	// (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	// (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 	SecondaryZoneId          pulumi.StringInput      `pulumi:"secondaryZoneId"`
 	SecurityGroupId          pulumi.StringInput      `pulumi:"securityGroupId"`
 	SecurityIpGroupAttribute pulumi.StringInput      `pulumi:"securityIpGroupAttribute"`
@@ -962,7 +962,7 @@ func (o GetInstancesInstanceOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// Capacity of the applied ApsaraDB for the instance. Unit: MB.
+// Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
 func (o GetInstancesInstanceOutput) Capacity() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.Capacity }).(pulumi.IntOutput)
 }
@@ -1037,7 +1037,7 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 func (o GetInstancesInstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceClass }).(pulumi.StringOutput)
 }
@@ -1129,7 +1129,7 @@ func (o GetInstancesInstanceOutput) SearchKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SearchKey }).(pulumi.StringOutput)
 }
 
-// (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+// (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 func (o GetInstancesInstanceOutput) SecondaryZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.SecondaryZoneId }).(pulumi.StringOutput)
 }

@@ -5986,10 +5986,6 @@ export namespace cdn {
          */
         certType: string;
         /**
-         * The force set of the security certificate.
-         */
-        forceSet?: string;
-        /**
          * The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
          */
         privateKey?: string;
@@ -6023,7 +6019,7 @@ export namespace cdn {
          */
         type?: string;
         /**
-         * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+         * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
          */
         weight?: number;
     }
@@ -6234,37 +6230,73 @@ export namespace cen {
 
     export interface GetFlowlogsFlowlog {
         /**
-         * The ID of the CEN Instance.
+         * The ID of Cen instance.
          */
         cenId: string;
         /**
-         * The description of flowlog.
+         * The createTime of flowlog.
+         */
+        createTime: string;
+        /**
+         * The description of the flowlog.
          */
         description: string;
         /**
-         * ID of the CEN flow log.
+         * The ID of FlowLog.
          */
         flowLogId: string;
         /**
-         * The name of flowlog.
+         * The name of the flowlog.
          */
         flowLogName: string;
         /**
-         * ID of the CEN flow log.
+         * Flowlog Version.
+         */
+        flowLogVersion: string;
+        /**
+         * The ID of FlowLog.
          */
         id: string;
         /**
-         * The name of the log store which is in the  `projectName` SLS project.
+         * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+         */
+        interval: number;
+        /**
+         * (Available since v1.236.0) Log Format.
+         */
+        logFormatString: string;
+        /**
+         * The LogStore that stores the flowlog.
          */
         logStoreName: string;
         /**
-         * The name of the SLS project.
+         * The Project that stores the flowlog.
          */
         projectName: string;
         /**
-         * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+         * (Available since v1.236.0) Total number of records.
+         */
+        recordTotal: string;
+        /**
+         * Region id
+         */
+        regionId: string;
+        /**
+         * The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
          */
         status: string;
+        /**
+         * The tag of the resource.
+         */
+        tags: {[key: string]: string};
+        /**
+         * (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.> This parameter is required.
+         */
+        transitRouterAttachmentId: string;
+        /**
+         * Transit Router ID
+         */
+        transitRouterId: string;
     }
 
     export interface GetInstanceAttachmentsAttachment {
@@ -20827,6 +20859,17 @@ export namespace ecs {
         weightedCapacity: string;
     }
 
+    export interface AutoSnapshotPolicyCopyEncryptionConfiguration {
+        /**
+         * Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+         */
+        encrypted?: boolean;
+        /**
+         * The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+         */
+        kmsKeyId?: string;
+    }
+
     export interface DedicatedHostNetworkAttribute {
         /**
          * The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
@@ -24248,6 +24291,11 @@ export namespace ecs {
         lockReason: string;
     }
 
+    export interface SnapshotPolicyCopyEncryptionConfiguration {
+        encrypted?: boolean;
+        kmsKeyId?: string;
+    }
+
 }
 
 export namespace edas {
@@ -26900,7 +26948,7 @@ export namespace emrv2 {
 
     export interface ClusterBootstrapScript {
         /**
-         * The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+         * The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
          */
         executionFailStrategy: string;
         /**
@@ -26995,7 +27043,11 @@ export namespace emrv2 {
 
     export interface ClusterNodeGroup {
         /**
-         * Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additionalSecurityGroupIds` can not be modified.
+         * The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
+         */
+        ackConfig?: outputs.emrv2.ClusterNodeGroupAckConfig;
+        /**
+         * Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
          */
         additionalSecurityGroupIds?: string[];
         /**
@@ -27003,7 +27055,7 @@ export namespace emrv2 {
          */
         autoScalingPolicy?: outputs.emrv2.ClusterNodeGroupAutoScalingPolicy;
         /**
-         * The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.230.1, `costOptimizedConfig` can not be modified.
+         * The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
          */
         costOptimizedConfig?: outputs.emrv2.ClusterNodeGroupCostOptimizedConfig;
         /**
@@ -27011,7 +27063,7 @@ export namespace emrv2 {
          */
         dataDisks: outputs.emrv2.ClusterNodeGroupDataDisk[];
         /**
-         * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deploymentSetStrategy` can not be modified.
+         * Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
          */
         deploymentSetStrategy: string;
         /**
@@ -27019,7 +27071,7 @@ export namespace emrv2 {
          */
         gracefulShutdown: boolean;
         /**
-         * Host Ecs instance types. **NOTE:** From version 1.230.1, `instanceTypes` can not be modified.
+         * Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
          */
         instanceTypes: string[];
         /**
@@ -27051,6 +27103,10 @@ export namespace emrv2 {
          */
         spotInstanceRemedy: boolean;
         /**
+         * The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+         */
+        spotStrategy?: string;
+        /**
          * The detail configuration of subscription payment type. See `subscriptionConfig` below.
          */
         subscriptionConfig?: outputs.emrv2.ClusterNodeGroupSubscriptionConfig;
@@ -27059,13 +27115,181 @@ export namespace emrv2 {
          */
         systemDisk: outputs.emrv2.ClusterNodeGroupSystemDisk;
         /**
-         * Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitchIds` can not be modified.
+         * Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
          */
         vswitchIds?: string[];
         /**
-         * Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `withPublicIp` can not be modified.
+         * Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
          */
         withPublicIp: boolean;
+    }
+
+    export interface ClusterNodeGroupAckConfig {
+        /**
+         * The ack cluster instance id.
+         */
+        ackInstanceId: string;
+        /**
+         * The ack cluster custom annotations. See `customAnnotations` below.
+         */
+        customAnnotations?: outputs.emrv2.ClusterNodeGroupAckConfigCustomAnnotation[];
+        /**
+         * The ack cluster custom labels. See `customLabels` below.
+         */
+        customLabels?: outputs.emrv2.ClusterNodeGroupAckConfigCustomLabel[];
+        /**
+         * The job pod resource of limit cpu.
+         */
+        limitCpu: number;
+        /**
+         * The job pod resource of limit memory.
+         */
+        limitMemory: number;
+        /**
+         * The ack cluster namespace.
+         */
+        namespace: string;
+        /**
+         * The ack cluster node affinity.
+         */
+        nodeAffinity?: string;
+        /**
+         * The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
+         */
+        nodeSelectors?: outputs.emrv2.ClusterNodeGroupAckConfigNodeSelector[];
+        /**
+         * The job pod affinity.
+         */
+        podAffinity?: string;
+        /**
+         * The job pod anti-affinity.
+         */
+        podAntiAffinity?: string;
+        /**
+         * The job pod pre start command.
+         */
+        preStartCommands?: string[];
+        /**
+         * The ack cluster persistent volume claim. See `pvcs` below.
+         */
+        pvcs?: outputs.emrv2.ClusterNodeGroupAckConfigPvc[];
+        /**
+         * The job pod resource of request cpu.
+         */
+        requestCpu: number;
+        /**
+         * The job pod resource of request memory.
+         */
+        requestMemory: number;
+        /**
+         * The ack cluster tolerations. See `tolerations` below.
+         */
+        tolerations?: outputs.emrv2.ClusterNodeGroupAckConfigToleration[];
+        /**
+         * The ack cluster volume mounts. See `volumeMounts` below.
+         */
+        volumeMounts?: outputs.emrv2.ClusterNodeGroupAckConfigVolumeMount[];
+        /**
+         * The ack cluster volumes. See `volumes` below.
+         */
+        volumes?: outputs.emrv2.ClusterNodeGroupAckConfigVolume[];
+    }
+
+    export interface ClusterNodeGroupAckConfigCustomAnnotation {
+        /**
+         * The tag key for this scaling rule specific metrics trigger.
+         */
+        key: string;
+        /**
+         * The tag value for this scaling rule specific metrics trigger.
+         */
+        value?: string;
+    }
+
+    export interface ClusterNodeGroupAckConfigCustomLabel {
+        /**
+         * The tag key for this scaling rule specific metrics trigger.
+         */
+        key: string;
+        /**
+         * The tag value for this scaling rule specific metrics trigger.
+         */
+        value?: string;
+    }
+
+    export interface ClusterNodeGroupAckConfigNodeSelector {
+        /**
+         * The tag key for this scaling rule specific metrics trigger.
+         */
+        key: string;
+        /**
+         * The tag value for this scaling rule specific metrics trigger.
+         */
+        value?: string;
+    }
+
+    export interface ClusterNodeGroupAckConfigPvc {
+        /**
+         * The ack cluster job pod data disk size of persistent volume claim.
+         */
+        dataDiskSize: number;
+        /**
+         * The ack cluster job pod data disk storage class of persistent volume claim.
+         */
+        dataDiskStorageClass: string;
+        /**
+         * The name of ack cluster job pod volume mounts.
+         */
+        name: string;
+        /**
+         * The path of ack cluster job pod volume mounts.
+         */
+        path: string;
+    }
+
+    export interface ClusterNodeGroupAckConfigToleration {
+        /**
+         * The effect of ack cluster tolerations.
+         */
+        effect?: string;
+        /**
+         * The tag key for this scaling rule specific metrics trigger.
+         */
+        key?: string;
+        /**
+         * The operator of ack cluster tolerations.
+         */
+        operator?: string;
+        /**
+         * The tag value for this scaling rule specific metrics trigger.
+         */
+        value?: string;
+    }
+
+    export interface ClusterNodeGroupAckConfigVolume {
+        /**
+         * The name of ack cluster job pod volume mounts.
+         */
+        name: string;
+        /**
+         * The path of ack cluster job pod volume mounts.
+         */
+        path: string;
+        /**
+         * The ack cluster job pod volumes type.
+         */
+        type: string;
+    }
+
+    export interface ClusterNodeGroupAckConfigVolumeMount {
+        /**
+         * The name of ack cluster job pod volume mounts.
+         */
+        name: string;
+        /**
+         * The path of ack cluster job pod volume mounts.
+         */
+        path: string;
     }
 
     export interface ClusterNodeGroupAutoScalingPolicy {
@@ -32728,118 +32952,136 @@ export namespace graphdatabase {
 }
 
 export namespace gwlb {
+    export interface GetZonesZone {
+        /**
+         * The zone ID.
+         */
+        id: string;
+        /**
+         * The zone name.
+         */
+        localName: string;
+        /**
+         * The zone ID.
+         */
+        zoneId: string;
+    }
+
     export interface LoadBalancerZoneMapping {
         /**
-         * The addresses of the Gateway Load Balancer instance.
+         * The information about the IP addresses used by the GWLB instance.
          */
         loadBalancerAddresses: outputs.gwlb.LoadBalancerZoneMappingLoadBalancerAddress[];
         /**
-         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         * The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
          */
         vswitchId: string;
         /**
-         * The ID of the zone to which the Gateway Load Balancer instance belongs.
+         * The zone ID. You can call the DescribeZones operation to query the most recent zone list.
          */
         zoneId: string;
     }
 
     export interface LoadBalancerZoneMappingLoadBalancerAddress {
         /**
-         * The ID of the ENI.
+         * The ID of the elastic network interface (ENI) used by the GWLB instance.
          */
         eniId: string;
         /**
-         * IPv4 private network address.
+         * The private IPv4 address.
          */
         privateIpv4Address: string;
     }
 
     export interface ServerGroupConnectionDrainConfig {
         /**
-         * Whether to open the connection graceful interrupt. Value:
+         * Indicates whether connection draining is enabled. Valid values:
          */
         connectionDrainEnabled: boolean;
         /**
-         * Connection Grace interrupt timeout.
+         * The timeout period of connection draining.
          *
-         * Unit: seconds.
+         * Unit: seconds
          *
-         * Value range: 1~3600.
+         * Valid values: `1` to `3600`.
+         *
+         * Default value: `300`.
          */
         connectionDrainTimeout: number;
     }
 
     export interface ServerGroupHealthCheckConfig {
         /**
-         * The port of the backend server used for health check.
+         * The backend server port that is used for health checks.
          *
-         * Value range: **1 to 65535**.
+         * Valid values: `1` to `65535`.
          *
          * Default value: `80`.
          */
         healthCheckConnectPort: number;
         /**
-         * The maximum timeout period for health check responses.
+         * The maximum timeout period of a health check response.
          *
-         * Unit: seconds.
+         * Unit: seconds
          *
-         * Value range: **1 to 300**.
+         * Valid values: `1` to `300`.
          *
          * Default value: `5`.
          */
         healthCheckConnectTimeout: number;
         /**
-         * The domain name used for health checks. Value:
-         * - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+         * The domain name that you want to use for health checks. Valid values:
+         *
+         * *   **$SERVER_IP** (default): the private IP address of a backend server.
          */
         healthCheckDomain: string;
         /**
-         * Whether to enable health check. Value:
-         * - **true (default)**: enabled.
+         * Specifies whether to enable the health check feature. Valid values:
          */
         healthCheckEnabled: boolean;
         /**
-         * Health status return code list.
+         * The HTTP status codes that the system returns for health checks.
          */
         healthCheckHttpCodes?: string[];
         /**
-         * The time interval of the health check.
+         * The interval at which health checks are performed.
          *
-         * Unit: seconds.
+         * Unit: seconds
          *
-         * Value range: **1~50**.
+         * Valid values: `1` to `50`.
          *
          * Default value: `10`.
          */
         healthCheckInterval: number;
         /**
-         * Health check path.
+         * The URL that is used for health checks.
          *
-         * It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+         * The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] @ $ ^ : ' , + =
          *
-         * Must start with a forward slash (/).
+         * The URL must start with a forward slash (/).
          *
-         * > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+         * > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
          */
         healthCheckPath: string;
         /**
-         * Health check protocol, value:
-         * - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
-         * - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
+         * The protocol that is used for health checks. Valid values:
+         *
+         * - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+         * - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
          */
         healthCheckProtocol: string;
         /**
-         * After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+         * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
          *
-         * Value range: **2 to 10**.
+         * Valid values: `2` to `10`.
          *
          * Default value: `2`.
          */
         healthyThreshold: number;
         /**
-         * The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+         * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
          *
-         * Value range: **2 to 10**.
+         * Valid values: `2` to `10`.
          *
          * Default value: `2`.
          */
@@ -32848,7 +33090,7 @@ export namespace gwlb {
 
     export interface ServerGroupServer {
         /**
-         * The port used by the backend server.
+         * (Optional, Computed, Int) The port that is used by the backend server.
          */
         port: number;
         /**
@@ -32856,23 +33098,27 @@ export namespace gwlb {
          */
         serverGroupId: string;
         /**
-         * The ID of the backend server.
+         * The backend server ID.
+         *
+         * - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+         * - If the server group is of the `Ip` type, set ServerId to IP addresses.
          */
         serverId: string;
         /**
-         * Server ip.
+         * The IP address of the backend server.
          */
         serverIp: string;
         /**
-         * Backend server type. Valid values:
-         * - `Ecs`: ECS instance.
-         * - `Eni`: ENI instance.
-         * - `Eci`: ECI elastic container.
-         * - `Ip`: Ip address.
+         * The type of the backend server. Valid values:
+         *
+         * - `Ecs`: Elastic Compute Service (ECS) instance
+         * - `Eni`: elastic network interface (ENI)
+         * - `Eci`: elastic container instance
+         * - `Ip`: IP address
          */
         serverType: string;
         /**
-         * Server group status. Value:
+         * Indicates the status of the backend server.
          */
         status: string;
     }
@@ -34959,7 +35205,7 @@ export namespace kvstore {
          */
         bandwidth: number;
         /**
-         * Capacity of the applied ApsaraDB for the instance. Unit: MB.
+         * Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
          */
         capacity: number;
         /**
@@ -35019,7 +35265,7 @@ export namespace kvstore {
          */
         id: string;
         /**
-         * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+         * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
          */
         instanceClass: string;
         instanceReleaseProtection: boolean;
@@ -35086,7 +35332,7 @@ export namespace kvstore {
          */
         searchKey: string;
         /**
-         * (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+         * (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
          */
         secondaryZoneId: string;
         securityGroupId: string;
@@ -37432,6 +37678,36 @@ export namespace nas {
          * POSIX permission.
          */
         permission?: string;
+    }
+
+    export interface FileSystemNfsAcl {
+        /**
+         * Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+         */
+        enabled?: boolean;
+    }
+
+    export interface FileSystemRecycleBin {
+        /**
+         * The time at which the recycle bin was enabled.
+         */
+        enableTime: string;
+        /**
+         * The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+         */
+        reservedDays: number;
+        /**
+         * The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+         */
+        secondarySize: number;
+        /**
+         * The size of the files that are dumped to the recycle bin.
+         */
+        size: number;
+        /**
+         * Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+         */
+        status: string;
     }
 
     export interface GetAccessGroupsGroup {
@@ -40272,6 +40548,31 @@ export namespace ots {
          * The client id of the channel.
          */
         clientId: string;
+    }
+
+}
+
+export namespace pai {
+    export interface WorkspaceDatasetLabel {
+        /**
+         * The key of the tag. The length is limited to 128 bytes. "=" and "," are not supported.
+         */
+        key?: string;
+        /**
+         * The value of the tag. The length is limited to 128 bytes. "=" and "," are not supported.
+         */
+        value?: string;
+    }
+
+    export interface WorkspaceDatasetversionLabel {
+        /**
+         * The key of the tags
+         */
+        key?: string;
+        /**
+         * The value of the tags
+         */
+        value?: string;
     }
 
 }

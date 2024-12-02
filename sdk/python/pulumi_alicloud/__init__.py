@@ -5704,6 +5704,46 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "pai/workspaceCodeSource",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceCodeSource:WorkspaceCodeSource": "WorkspaceCodeSource"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/workspaceDataset",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceDataset:WorkspaceDataset": "WorkspaceDataset"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/workspaceDatasetversion",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion": "WorkspaceDatasetversion"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/workspaceExperiment",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceExperiment:WorkspaceExperiment": "WorkspaceExperiment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "pai/workspaceRun",
+  "fqn": "pulumi_alicloud.pai",
+  "classes": {
+   "alicloud:pai/workspaceRun:WorkspaceRun": "WorkspaceRun"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "pai/workspaceWorkspace",
   "fqn": "pulumi_alicloud.pai",
   "classes": {

@@ -16,6 +16,8 @@ import javax.annotation.Nullable;
 /**
  * Provides a CDN Real Time Log Delivery resource.
  * 
+ * Accelerate domain name real-time log push.
+ * 
  * For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
  * 
  * &gt; **NOTE:** Available since v1.134.0.
@@ -112,81 +114,89 @@ import javax.annotation.Nullable;
  * CDN Real Time Log Delivery can be imported using the id, e.g.
  * 
  * ```sh
- * $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example &lt;domain&gt;
+ * $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery")
 public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
     /**
-     * The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+     * The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+     * @return The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      * 
      */
     public Output<String> domain() {
         return this.domain;
     }
     /**
-     * The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+     * The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+     * 
+     * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      * 
      */
     @Export(name="logstore", refs={String.class}, tree="[0]")
     private Output<String> logstore;
 
     /**
-     * @return The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+     * @return The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+     * 
+     * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      * 
      */
     public Output<String> logstore() {
         return this.logstore;
     }
     /**
-     * The name of the Log Service project that is used for real-time log delivery.
+     * The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the Log Service project that is used for real-time log delivery.
+     * @return The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The region where the Log Service project is deployed.
-     * 
-     * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+     * The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      * 
      */
     @Export(name="slsRegion", refs={String.class}, tree="[0]")
     private Output<String> slsRegion;
 
     /**
-     * @return The region where the Log Service project is deployed.
-     * 
-     * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+     * @return The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      * 
      */
     public Output<String> slsRegion() {
         return this.slsRegion;
     }
     /**
-     * The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * Resource attribute fields that represent the status of the resource.
+     * 
+     * Value:
+     * - offline
+     * - online
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * @return Resource attribute fields that represent the status of the resource.
+     * 
+     * Value:
+     * - offline
+     * - online
      * 
      */
     public Output<String> status() {

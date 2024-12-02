@@ -19,14 +19,14 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
     public static final ClusterBootstrapScriptArgs Empty = new ClusterBootstrapScriptArgs();
 
     /**
-     * The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+     * The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
      * 
      */
     @Import(name="executionFailStrategy", required=true)
     private Output<String> executionFailStrategy;
 
     /**
-     * @return The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+     * @return The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
      * 
      */
     public Output<String> executionFailStrategy() {
@@ -162,7 +162,7 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param executionFailStrategy The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+         * @param executionFailStrategy The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ClusterBootstrapScriptArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param executionFailStrategy The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+         * @param executionFailStrategy The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
          * 
          * @return builder
          * 

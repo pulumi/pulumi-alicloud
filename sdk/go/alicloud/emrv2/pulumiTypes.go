@@ -174,7 +174,7 @@ func (o ClusterApplicationConfigArrayOutput) Index(i pulumi.IntInput) ClusterApp
 }
 
 type ClusterBootstrapScript struct {
-	// The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+	// The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
 	ExecutionFailStrategy string `pulumi:"executionFailStrategy"`
 	// The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
 	ExecutionMoment string `pulumi:"executionMoment"`
@@ -204,7 +204,7 @@ type ClusterBootstrapScriptInput interface {
 }
 
 type ClusterBootstrapScriptArgs struct {
-	// The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+	// The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
 	ExecutionFailStrategy pulumi.StringInput `pulumi:"executionFailStrategy"`
 	// The bootstrap scripts execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ .
 	ExecutionMoment pulumi.StringInput `pulumi:"executionMoment"`
@@ -273,7 +273,7 @@ func (o ClusterBootstrapScriptOutput) ToClusterBootstrapScriptOutputWithContext(
 	return o
 }
 
-// The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+// The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
 func (o ClusterBootstrapScriptOutput) ExecutionFailStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterBootstrapScript) string { return v.ExecutionFailStrategy }).(pulumi.StringOutput)
 }
@@ -588,19 +588,21 @@ func (o ClusterNodeAttributeArrayOutput) Index(i pulumi.IntInput) ClusterNodeAtt
 }
 
 type ClusterNodeGroup struct {
-	// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additionalSecurityGroupIds` can not be modified.
+	// The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
+	AckConfig *ClusterNodeGroupAckConfig `pulumi:"ackConfig"`
+	// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
 	AdditionalSecurityGroupIds []string `pulumi:"additionalSecurityGroupIds"`
 	// The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
 	AutoScalingPolicy *ClusterNodeGroupAutoScalingPolicy `pulumi:"autoScalingPolicy"`
-	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.230.1, `costOptimizedConfig` can not be modified.
+	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
 	CostOptimizedConfig *ClusterNodeGroupCostOptimizedConfig `pulumi:"costOptimizedConfig"`
 	// Host Ecs data disks information in this node group. See `dataDisks` below.
 	DataDisks []ClusterNodeGroupDataDisk `pulumi:"dataDisks"`
-	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deploymentSetStrategy` can not be modified.
+	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
 	DeploymentSetStrategy *string `pulumi:"deploymentSetStrategy"`
 	// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
-	// Host Ecs instance types. **NOTE:** From version 1.230.1, `instanceTypes` can not be modified.
+	// Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
 	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Host Ecs number in this node group.
 	NodeCount int `pulumi:"nodeCount"`
@@ -616,13 +618,15 @@ type ClusterNodeGroup struct {
 	SpotBidPrices []ClusterNodeGroupSpotBidPrice `pulumi:"spotBidPrices"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy *bool `pulumi:"spotInstanceRemedy"`
+	// The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig *ClusterNodeGroupSubscriptionConfig `pulumi:"subscriptionConfig"`
 	// Host Ecs system disk information in this node group. See `systemDisk` below.
 	SystemDisk ClusterNodeGroupSystemDisk `pulumi:"systemDisk"`
-	// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitchIds` can not be modified.
+	// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
 	VswitchIds []string `pulumi:"vswitchIds"`
-	// Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `withPublicIp` can not be modified.
+	// Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
 	WithPublicIp *bool `pulumi:"withPublicIp"`
 }
 
@@ -638,19 +642,21 @@ type ClusterNodeGroupInput interface {
 }
 
 type ClusterNodeGroupArgs struct {
-	// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additionalSecurityGroupIds` can not be modified.
+	// The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
+	AckConfig ClusterNodeGroupAckConfigPtrInput `pulumi:"ackConfig"`
+	// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
 	AdditionalSecurityGroupIds pulumi.StringArrayInput `pulumi:"additionalSecurityGroupIds"`
 	// The node group auto scaling policy for emr cluster. See `autoScalingPolicy` below.
 	AutoScalingPolicy ClusterNodeGroupAutoScalingPolicyPtrInput `pulumi:"autoScalingPolicy"`
-	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.230.1, `costOptimizedConfig` can not be modified.
+	// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
 	CostOptimizedConfig ClusterNodeGroupCostOptimizedConfigPtrInput `pulumi:"costOptimizedConfig"`
 	// Host Ecs data disks information in this node group. See `dataDisks` below.
 	DataDisks ClusterNodeGroupDataDiskArrayInput `pulumi:"dataDisks"`
-	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deploymentSetStrategy` can not be modified.
+	// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
 	DeploymentSetStrategy pulumi.StringPtrInput `pulumi:"deploymentSetStrategy"`
 	// Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
 	GracefulShutdown pulumi.BoolPtrInput `pulumi:"gracefulShutdown"`
-	// Host Ecs instance types. **NOTE:** From version 1.230.1, `instanceTypes` can not be modified.
+	// Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
 	InstanceTypes pulumi.StringArrayInput `pulumi:"instanceTypes"`
 	// Host Ecs number in this node group.
 	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
@@ -666,13 +672,15 @@ type ClusterNodeGroupArgs struct {
 	SpotBidPrices ClusterNodeGroupSpotBidPriceArrayInput `pulumi:"spotBidPrices"`
 	// Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
 	SpotInstanceRemedy pulumi.BoolPtrInput `pulumi:"spotInstanceRemedy"`
+	// The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
 	// The detail configuration of subscription payment type. See `subscriptionConfig` below.
 	SubscriptionConfig ClusterNodeGroupSubscriptionConfigPtrInput `pulumi:"subscriptionConfig"`
 	// Host Ecs system disk information in this node group. See `systemDisk` below.
 	SystemDisk ClusterNodeGroupSystemDiskInput `pulumi:"systemDisk"`
-	// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitchIds` can not be modified.
+	// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
 	VswitchIds pulumi.StringArrayInput `pulumi:"vswitchIds"`
-	// Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `withPublicIp` can not be modified.
+	// Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
 	WithPublicIp pulumi.BoolPtrInput `pulumi:"withPublicIp"`
 }
 
@@ -727,7 +735,12 @@ func (o ClusterNodeGroupOutput) ToClusterNodeGroupOutputWithContext(ctx context.
 	return o
 }
 
-// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additionalSecurityGroupIds` can not be modified.
+// The node group of ack configuration for emr cluster to deploying on kubernetes. See `ackConfig` below.
+func (o ClusterNodeGroupOutput) AckConfig() ClusterNodeGroupAckConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupAckConfig { return v.AckConfig }).(ClusterNodeGroupAckConfigPtrOutput)
+}
+
+// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additionalSecurityGroupIds` can be modified.
 func (o ClusterNodeGroupOutput) AdditionalSecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) []string { return v.AdditionalSecurityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -737,7 +750,7 @@ func (o ClusterNodeGroupOutput) AutoScalingPolicy() ClusterNodeGroupAutoScalingP
 	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupAutoScalingPolicy { return v.AutoScalingPolicy }).(ClusterNodeGroupAutoScalingPolicyPtrOutput)
 }
 
-// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.230.1, `costOptimizedConfig` can not be modified.
+// The detail cost optimized configuration of emr cluster. See `costOptimizedConfig` below. **NOTE:** From version 1.236.0, `costOptimizedConfig` can be modified.
 func (o ClusterNodeGroupOutput) CostOptimizedConfig() ClusterNodeGroupCostOptimizedConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupCostOptimizedConfig { return v.CostOptimizedConfig }).(ClusterNodeGroupCostOptimizedConfigPtrOutput)
 }
@@ -747,7 +760,7 @@ func (o ClusterNodeGroupOutput) DataDisks() ClusterNodeGroupDataDiskArrayOutput 
 	return o.ApplyT(func(v ClusterNodeGroup) []ClusterNodeGroupDataDisk { return v.DataDisks }).(ClusterNodeGroupDataDiskArrayOutput)
 }
 
-// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deploymentSetStrategy` can not be modified.
+// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deploymentSetStrategy` can be modified.
 func (o ClusterNodeGroupOutput) DeploymentSetStrategy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.DeploymentSetStrategy }).(pulumi.StringPtrOutput)
 }
@@ -757,7 +770,7 @@ func (o ClusterNodeGroupOutput) GracefulShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *bool { return v.GracefulShutdown }).(pulumi.BoolPtrOutput)
 }
 
-// Host Ecs instance types. **NOTE:** From version 1.230.1, `instanceTypes` can not be modified.
+// Host Ecs instance types. **NOTE:** From version 1.236.0, `instanceTypes` can be modified.
 func (o ClusterNodeGroupOutput) InstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) []string { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
@@ -797,6 +810,11 @@ func (o ClusterNodeGroupOutput) SpotInstanceRemedy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *bool { return v.SpotInstanceRemedy }).(pulumi.BoolPtrOutput)
 }
 
+// The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+func (o ClusterNodeGroupOutput) SpotStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroup) *string { return v.SpotStrategy }).(pulumi.StringPtrOutput)
+}
+
 // The detail configuration of subscription payment type. See `subscriptionConfig` below.
 func (o ClusterNodeGroupOutput) SubscriptionConfig() ClusterNodeGroupSubscriptionConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *ClusterNodeGroupSubscriptionConfig { return v.SubscriptionConfig }).(ClusterNodeGroupSubscriptionConfigPtrOutput)
@@ -807,12 +825,12 @@ func (o ClusterNodeGroupOutput) SystemDisk() ClusterNodeGroupSystemDiskOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) ClusterNodeGroupSystemDisk { return v.SystemDisk }).(ClusterNodeGroupSystemDiskOutput)
 }
 
-// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitchIds` can not be modified.
+// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitchIds` can be modified.
 func (o ClusterNodeGroupOutput) VswitchIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) []string { return v.VswitchIds }).(pulumi.StringArrayOutput)
 }
 
-// Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `withPublicIp` can not be modified.
+// Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `withPublicIp` can be modified.
 func (o ClusterNodeGroupOutput) WithPublicIp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroup) *bool { return v.WithPublicIp }).(pulumi.BoolPtrOutput)
 }
@@ -835,6 +853,1236 @@ func (o ClusterNodeGroupArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroup {
 		return vs[0].([]ClusterNodeGroup)[vs[1].(int)]
 	}).(ClusterNodeGroupOutput)
+}
+
+type ClusterNodeGroupAckConfig struct {
+	// The ack cluster instance id.
+	AckInstanceId string `pulumi:"ackInstanceId"`
+	// The ack cluster custom annotations. See `customAnnotations` below.
+	CustomAnnotations []ClusterNodeGroupAckConfigCustomAnnotation `pulumi:"customAnnotations"`
+	// The ack cluster custom labels. See `customLabels` below.
+	CustomLabels []ClusterNodeGroupAckConfigCustomLabel `pulumi:"customLabels"`
+	// The job pod resource of limit cpu.
+	LimitCpu float64 `pulumi:"limitCpu"`
+	// The job pod resource of limit memory.
+	LimitMemory float64 `pulumi:"limitMemory"`
+	// The ack cluster namespace.
+	Namespace string `pulumi:"namespace"`
+	// The ack cluster node affinity.
+	NodeAffinity *string `pulumi:"nodeAffinity"`
+	// The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
+	NodeSelectors []ClusterNodeGroupAckConfigNodeSelector `pulumi:"nodeSelectors"`
+	// The job pod affinity.
+	PodAffinity *string `pulumi:"podAffinity"`
+	// The job pod anti-affinity.
+	PodAntiAffinity *string `pulumi:"podAntiAffinity"`
+	// The job pod pre start command.
+	PreStartCommands []string `pulumi:"preStartCommands"`
+	// The ack cluster persistent volume claim. See `pvcs` below.
+	Pvcs []ClusterNodeGroupAckConfigPvc `pulumi:"pvcs"`
+	// The job pod resource of request cpu.
+	RequestCpu float64 `pulumi:"requestCpu"`
+	// The job pod resource of request memory.
+	RequestMemory float64 `pulumi:"requestMemory"`
+	// The ack cluster tolerations. See `tolerations` below.
+	Tolerations []ClusterNodeGroupAckConfigToleration `pulumi:"tolerations"`
+	// The ack cluster volume mounts. See `volumeMounts` below.
+	VolumeMounts []ClusterNodeGroupAckConfigVolumeMount `pulumi:"volumeMounts"`
+	// The ack cluster volumes. See `volumes` below.
+	Volumes []ClusterNodeGroupAckConfigVolume `pulumi:"volumes"`
+}
+
+// ClusterNodeGroupAckConfigInput is an input type that accepts ClusterNodeGroupAckConfigArgs and ClusterNodeGroupAckConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigInput` via:
+//
+//	ClusterNodeGroupAckConfigArgs{...}
+type ClusterNodeGroupAckConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigOutput() ClusterNodeGroupAckConfigOutput
+	ToClusterNodeGroupAckConfigOutputWithContext(context.Context) ClusterNodeGroupAckConfigOutput
+}
+
+type ClusterNodeGroupAckConfigArgs struct {
+	// The ack cluster instance id.
+	AckInstanceId pulumi.StringInput `pulumi:"ackInstanceId"`
+	// The ack cluster custom annotations. See `customAnnotations` below.
+	CustomAnnotations ClusterNodeGroupAckConfigCustomAnnotationArrayInput `pulumi:"customAnnotations"`
+	// The ack cluster custom labels. See `customLabels` below.
+	CustomLabels ClusterNodeGroupAckConfigCustomLabelArrayInput `pulumi:"customLabels"`
+	// The job pod resource of limit cpu.
+	LimitCpu pulumi.Float64Input `pulumi:"limitCpu"`
+	// The job pod resource of limit memory.
+	LimitMemory pulumi.Float64Input `pulumi:"limitMemory"`
+	// The ack cluster namespace.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The ack cluster node affinity.
+	NodeAffinity pulumi.StringPtrInput `pulumi:"nodeAffinity"`
+	// The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
+	NodeSelectors ClusterNodeGroupAckConfigNodeSelectorArrayInput `pulumi:"nodeSelectors"`
+	// The job pod affinity.
+	PodAffinity pulumi.StringPtrInput `pulumi:"podAffinity"`
+	// The job pod anti-affinity.
+	PodAntiAffinity pulumi.StringPtrInput `pulumi:"podAntiAffinity"`
+	// The job pod pre start command.
+	PreStartCommands pulumi.StringArrayInput `pulumi:"preStartCommands"`
+	// The ack cluster persistent volume claim. See `pvcs` below.
+	Pvcs ClusterNodeGroupAckConfigPvcArrayInput `pulumi:"pvcs"`
+	// The job pod resource of request cpu.
+	RequestCpu pulumi.Float64Input `pulumi:"requestCpu"`
+	// The job pod resource of request memory.
+	RequestMemory pulumi.Float64Input `pulumi:"requestMemory"`
+	// The ack cluster tolerations. See `tolerations` below.
+	Tolerations ClusterNodeGroupAckConfigTolerationArrayInput `pulumi:"tolerations"`
+	// The ack cluster volume mounts. See `volumeMounts` below.
+	VolumeMounts ClusterNodeGroupAckConfigVolumeMountArrayInput `pulumi:"volumeMounts"`
+	// The ack cluster volumes. See `volumes` below.
+	Volumes ClusterNodeGroupAckConfigVolumeArrayInput `pulumi:"volumes"`
+}
+
+func (ClusterNodeGroupAckConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigArgs) ToClusterNodeGroupAckConfigOutput() ClusterNodeGroupAckConfigOutput {
+	return i.ToClusterNodeGroupAckConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigArgs) ToClusterNodeGroupAckConfigOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigOutput)
+}
+
+func (i ClusterNodeGroupAckConfigArgs) ToClusterNodeGroupAckConfigPtrOutput() ClusterNodeGroupAckConfigPtrOutput {
+	return i.ToClusterNodeGroupAckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigArgs) ToClusterNodeGroupAckConfigPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigOutput).ToClusterNodeGroupAckConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeGroupAckConfigPtrInput is an input type that accepts ClusterNodeGroupAckConfigArgs, ClusterNodeGroupAckConfigPtr and ClusterNodeGroupAckConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigPtrInput` via:
+//
+//	        ClusterNodeGroupAckConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeGroupAckConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigPtrOutput() ClusterNodeGroupAckConfigPtrOutput
+	ToClusterNodeGroupAckConfigPtrOutputWithContext(context.Context) ClusterNodeGroupAckConfigPtrOutput
+}
+
+type clusterNodeGroupAckConfigPtrType ClusterNodeGroupAckConfigArgs
+
+func ClusterNodeGroupAckConfigPtr(v *ClusterNodeGroupAckConfigArgs) ClusterNodeGroupAckConfigPtrInput {
+	return (*clusterNodeGroupAckConfigPtrType)(v)
+}
+
+func (*clusterNodeGroupAckConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAckConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeGroupAckConfigPtrType) ToClusterNodeGroupAckConfigPtrOutput() ClusterNodeGroupAckConfigPtrOutput {
+	return i.ToClusterNodeGroupAckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeGroupAckConfigPtrType) ToClusterNodeGroupAckConfigPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigPtrOutput)
+}
+
+type ClusterNodeGroupAckConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigOutput) ToClusterNodeGroupAckConfigOutput() ClusterNodeGroupAckConfigOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigOutput) ToClusterNodeGroupAckConfigOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigOutput) ToClusterNodeGroupAckConfigPtrOutput() ClusterNodeGroupAckConfigPtrOutput {
+	return o.ToClusterNodeGroupAckConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeGroupAckConfigOutput) ToClusterNodeGroupAckConfigPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeGroupAckConfig) *ClusterNodeGroupAckConfig {
+		return &v
+	}).(ClusterNodeGroupAckConfigPtrOutput)
+}
+
+// The ack cluster instance id.
+func (o ClusterNodeGroupAckConfigOutput) AckInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) string { return v.AckInstanceId }).(pulumi.StringOutput)
+}
+
+// The ack cluster custom annotations. See `customAnnotations` below.
+func (o ClusterNodeGroupAckConfigOutput) CustomAnnotations() ClusterNodeGroupAckConfigCustomAnnotationArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigCustomAnnotation {
+		return v.CustomAnnotations
+	}).(ClusterNodeGroupAckConfigCustomAnnotationArrayOutput)
+}
+
+// The ack cluster custom labels. See `customLabels` below.
+func (o ClusterNodeGroupAckConfigOutput) CustomLabels() ClusterNodeGroupAckConfigCustomLabelArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigCustomLabel { return v.CustomLabels }).(ClusterNodeGroupAckConfigCustomLabelArrayOutput)
+}
+
+// The job pod resource of limit cpu.
+func (o ClusterNodeGroupAckConfigOutput) LimitCpu() pulumi.Float64Output {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) float64 { return v.LimitCpu }).(pulumi.Float64Output)
+}
+
+// The job pod resource of limit memory.
+func (o ClusterNodeGroupAckConfigOutput) LimitMemory() pulumi.Float64Output {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) float64 { return v.LimitMemory }).(pulumi.Float64Output)
+}
+
+// The ack cluster namespace.
+func (o ClusterNodeGroupAckConfigOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The ack cluster node affinity.
+func (o ClusterNodeGroupAckConfigOutput) NodeAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) *string { return v.NodeAffinity }).(pulumi.StringPtrOutput)
+}
+
+// The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
+func (o ClusterNodeGroupAckConfigOutput) NodeSelectors() ClusterNodeGroupAckConfigNodeSelectorArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigNodeSelector { return v.NodeSelectors }).(ClusterNodeGroupAckConfigNodeSelectorArrayOutput)
+}
+
+// The job pod affinity.
+func (o ClusterNodeGroupAckConfigOutput) PodAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) *string { return v.PodAffinity }).(pulumi.StringPtrOutput)
+}
+
+// The job pod anti-affinity.
+func (o ClusterNodeGroupAckConfigOutput) PodAntiAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) *string { return v.PodAntiAffinity }).(pulumi.StringPtrOutput)
+}
+
+// The job pod pre start command.
+func (o ClusterNodeGroupAckConfigOutput) PreStartCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) []string { return v.PreStartCommands }).(pulumi.StringArrayOutput)
+}
+
+// The ack cluster persistent volume claim. See `pvcs` below.
+func (o ClusterNodeGroupAckConfigOutput) Pvcs() ClusterNodeGroupAckConfigPvcArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigPvc { return v.Pvcs }).(ClusterNodeGroupAckConfigPvcArrayOutput)
+}
+
+// The job pod resource of request cpu.
+func (o ClusterNodeGroupAckConfigOutput) RequestCpu() pulumi.Float64Output {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) float64 { return v.RequestCpu }).(pulumi.Float64Output)
+}
+
+// The job pod resource of request memory.
+func (o ClusterNodeGroupAckConfigOutput) RequestMemory() pulumi.Float64Output {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) float64 { return v.RequestMemory }).(pulumi.Float64Output)
+}
+
+// The ack cluster tolerations. See `tolerations` below.
+func (o ClusterNodeGroupAckConfigOutput) Tolerations() ClusterNodeGroupAckConfigTolerationArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigToleration { return v.Tolerations }).(ClusterNodeGroupAckConfigTolerationArrayOutput)
+}
+
+// The ack cluster volume mounts. See `volumeMounts` below.
+func (o ClusterNodeGroupAckConfigOutput) VolumeMounts() ClusterNodeGroupAckConfigVolumeMountArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigVolumeMount { return v.VolumeMounts }).(ClusterNodeGroupAckConfigVolumeMountArrayOutput)
+}
+
+// The ack cluster volumes. See `volumes` below.
+func (o ClusterNodeGroupAckConfigOutput) Volumes() ClusterNodeGroupAckConfigVolumeArrayOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigVolume { return v.Volumes }).(ClusterNodeGroupAckConfigVolumeArrayOutput)
+}
+
+type ClusterNodeGroupAckConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeGroupAckConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigPtrOutput) ToClusterNodeGroupAckConfigPtrOutput() ClusterNodeGroupAckConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigPtrOutput) ToClusterNodeGroupAckConfigPtrOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigPtrOutput) Elem() ClusterNodeGroupAckConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) ClusterNodeGroupAckConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeGroupAckConfig
+		return ret
+	}).(ClusterNodeGroupAckConfigOutput)
+}
+
+// The ack cluster instance id.
+func (o ClusterNodeGroupAckConfigPtrOutput) AckInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AckInstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ack cluster custom annotations. See `customAnnotations` below.
+func (o ClusterNodeGroupAckConfigPtrOutput) CustomAnnotations() ClusterNodeGroupAckConfigCustomAnnotationArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigCustomAnnotation {
+		if v == nil {
+			return nil
+		}
+		return v.CustomAnnotations
+	}).(ClusterNodeGroupAckConfigCustomAnnotationArrayOutput)
+}
+
+// The ack cluster custom labels. See `customLabels` below.
+func (o ClusterNodeGroupAckConfigPtrOutput) CustomLabels() ClusterNodeGroupAckConfigCustomLabelArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigCustomLabel {
+		if v == nil {
+			return nil
+		}
+		return v.CustomLabels
+	}).(ClusterNodeGroupAckConfigCustomLabelArrayOutput)
+}
+
+// The job pod resource of limit cpu.
+func (o ClusterNodeGroupAckConfigPtrOutput) LimitCpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.LimitCpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The job pod resource of limit memory.
+func (o ClusterNodeGroupAckConfigPtrOutput) LimitMemory() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.LimitMemory
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ack cluster namespace.
+func (o ClusterNodeGroupAckConfigPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ack cluster node affinity.
+func (o ClusterNodeGroupAckConfigPtrOutput) NodeAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeAffinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ack cluster node selectors for job pods scheduling. See `nodeSelectors` below.
+func (o ClusterNodeGroupAckConfigPtrOutput) NodeSelectors() ClusterNodeGroupAckConfigNodeSelectorArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigNodeSelector {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSelectors
+	}).(ClusterNodeGroupAckConfigNodeSelectorArrayOutput)
+}
+
+// The job pod affinity.
+func (o ClusterNodeGroupAckConfigPtrOutput) PodAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodAffinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The job pod anti-affinity.
+func (o ClusterNodeGroupAckConfigPtrOutput) PodAntiAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PodAntiAffinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The job pod pre start command.
+func (o ClusterNodeGroupAckConfigPtrOutput) PreStartCommands() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PreStartCommands
+	}).(pulumi.StringArrayOutput)
+}
+
+// The ack cluster persistent volume claim. See `pvcs` below.
+func (o ClusterNodeGroupAckConfigPtrOutput) Pvcs() ClusterNodeGroupAckConfigPvcArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigPvc {
+		if v == nil {
+			return nil
+		}
+		return v.Pvcs
+	}).(ClusterNodeGroupAckConfigPvcArrayOutput)
+}
+
+// The job pod resource of request cpu.
+func (o ClusterNodeGroupAckConfigPtrOutput) RequestCpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.RequestCpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The job pod resource of request memory.
+func (o ClusterNodeGroupAckConfigPtrOutput) RequestMemory() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.RequestMemory
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ack cluster tolerations. See `tolerations` below.
+func (o ClusterNodeGroupAckConfigPtrOutput) Tolerations() ClusterNodeGroupAckConfigTolerationArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigToleration {
+		if v == nil {
+			return nil
+		}
+		return v.Tolerations
+	}).(ClusterNodeGroupAckConfigTolerationArrayOutput)
+}
+
+// The ack cluster volume mounts. See `volumeMounts` below.
+func (o ClusterNodeGroupAckConfigPtrOutput) VolumeMounts() ClusterNodeGroupAckConfigVolumeMountArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigVolumeMount {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeMounts
+	}).(ClusterNodeGroupAckConfigVolumeMountArrayOutput)
+}
+
+// The ack cluster volumes. See `volumes` below.
+func (o ClusterNodeGroupAckConfigPtrOutput) Volumes() ClusterNodeGroupAckConfigVolumeArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeGroupAckConfig) []ClusterNodeGroupAckConfigVolume {
+		if v == nil {
+			return nil
+		}
+		return v.Volumes
+	}).(ClusterNodeGroupAckConfigVolumeArrayOutput)
+}
+
+type ClusterNodeGroupAckConfigCustomAnnotation struct {
+	// The tag key for this scaling rule specific metrics trigger.
+	Key string `pulumi:"key"`
+	// The tag value for this scaling rule specific metrics trigger.
+	Value *string `pulumi:"value"`
+}
+
+// ClusterNodeGroupAckConfigCustomAnnotationInput is an input type that accepts ClusterNodeGroupAckConfigCustomAnnotationArgs and ClusterNodeGroupAckConfigCustomAnnotationOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigCustomAnnotationInput` via:
+//
+//	ClusterNodeGroupAckConfigCustomAnnotationArgs{...}
+type ClusterNodeGroupAckConfigCustomAnnotationInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigCustomAnnotationOutput() ClusterNodeGroupAckConfigCustomAnnotationOutput
+	ToClusterNodeGroupAckConfigCustomAnnotationOutputWithContext(context.Context) ClusterNodeGroupAckConfigCustomAnnotationOutput
+}
+
+type ClusterNodeGroupAckConfigCustomAnnotationArgs struct {
+	// The tag key for this scaling rule specific metrics trigger.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The tag value for this scaling rule specific metrics trigger.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ClusterNodeGroupAckConfigCustomAnnotationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigCustomAnnotation)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigCustomAnnotationArgs) ToClusterNodeGroupAckConfigCustomAnnotationOutput() ClusterNodeGroupAckConfigCustomAnnotationOutput {
+	return i.ToClusterNodeGroupAckConfigCustomAnnotationOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigCustomAnnotationArgs) ToClusterNodeGroupAckConfigCustomAnnotationOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigCustomAnnotationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigCustomAnnotationOutput)
+}
+
+// ClusterNodeGroupAckConfigCustomAnnotationArrayInput is an input type that accepts ClusterNodeGroupAckConfigCustomAnnotationArray and ClusterNodeGroupAckConfigCustomAnnotationArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigCustomAnnotationArrayInput` via:
+//
+//	ClusterNodeGroupAckConfigCustomAnnotationArray{ ClusterNodeGroupAckConfigCustomAnnotationArgs{...} }
+type ClusterNodeGroupAckConfigCustomAnnotationArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigCustomAnnotationArrayOutput() ClusterNodeGroupAckConfigCustomAnnotationArrayOutput
+	ToClusterNodeGroupAckConfigCustomAnnotationArrayOutputWithContext(context.Context) ClusterNodeGroupAckConfigCustomAnnotationArrayOutput
+}
+
+type ClusterNodeGroupAckConfigCustomAnnotationArray []ClusterNodeGroupAckConfigCustomAnnotationInput
+
+func (ClusterNodeGroupAckConfigCustomAnnotationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigCustomAnnotation)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigCustomAnnotationArray) ToClusterNodeGroupAckConfigCustomAnnotationArrayOutput() ClusterNodeGroupAckConfigCustomAnnotationArrayOutput {
+	return i.ToClusterNodeGroupAckConfigCustomAnnotationArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigCustomAnnotationArray) ToClusterNodeGroupAckConfigCustomAnnotationArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigCustomAnnotationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigCustomAnnotationArrayOutput)
+}
+
+type ClusterNodeGroupAckConfigCustomAnnotationOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigCustomAnnotationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigCustomAnnotation)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigCustomAnnotationOutput) ToClusterNodeGroupAckConfigCustomAnnotationOutput() ClusterNodeGroupAckConfigCustomAnnotationOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigCustomAnnotationOutput) ToClusterNodeGroupAckConfigCustomAnnotationOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigCustomAnnotationOutput {
+	return o
+}
+
+// The tag key for this scaling rule specific metrics trigger.
+func (o ClusterNodeGroupAckConfigCustomAnnotationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigCustomAnnotation) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The tag value for this scaling rule specific metrics trigger.
+func (o ClusterNodeGroupAckConfigCustomAnnotationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigCustomAnnotation) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeGroupAckConfigCustomAnnotationArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigCustomAnnotationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigCustomAnnotation)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigCustomAnnotationArrayOutput) ToClusterNodeGroupAckConfigCustomAnnotationArrayOutput() ClusterNodeGroupAckConfigCustomAnnotationArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigCustomAnnotationArrayOutput) ToClusterNodeGroupAckConfigCustomAnnotationArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigCustomAnnotationArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigCustomAnnotationArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAckConfigCustomAnnotationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAckConfigCustomAnnotation {
+		return vs[0].([]ClusterNodeGroupAckConfigCustomAnnotation)[vs[1].(int)]
+	}).(ClusterNodeGroupAckConfigCustomAnnotationOutput)
+}
+
+type ClusterNodeGroupAckConfigCustomLabel struct {
+	// The tag key for this scaling rule specific metrics trigger.
+	Key string `pulumi:"key"`
+	// The tag value for this scaling rule specific metrics trigger.
+	Value *string `pulumi:"value"`
+}
+
+// ClusterNodeGroupAckConfigCustomLabelInput is an input type that accepts ClusterNodeGroupAckConfigCustomLabelArgs and ClusterNodeGroupAckConfigCustomLabelOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigCustomLabelInput` via:
+//
+//	ClusterNodeGroupAckConfigCustomLabelArgs{...}
+type ClusterNodeGroupAckConfigCustomLabelInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigCustomLabelOutput() ClusterNodeGroupAckConfigCustomLabelOutput
+	ToClusterNodeGroupAckConfigCustomLabelOutputWithContext(context.Context) ClusterNodeGroupAckConfigCustomLabelOutput
+}
+
+type ClusterNodeGroupAckConfigCustomLabelArgs struct {
+	// The tag key for this scaling rule specific metrics trigger.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The tag value for this scaling rule specific metrics trigger.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ClusterNodeGroupAckConfigCustomLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigCustomLabel)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigCustomLabelArgs) ToClusterNodeGroupAckConfigCustomLabelOutput() ClusterNodeGroupAckConfigCustomLabelOutput {
+	return i.ToClusterNodeGroupAckConfigCustomLabelOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigCustomLabelArgs) ToClusterNodeGroupAckConfigCustomLabelOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigCustomLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigCustomLabelOutput)
+}
+
+// ClusterNodeGroupAckConfigCustomLabelArrayInput is an input type that accepts ClusterNodeGroupAckConfigCustomLabelArray and ClusterNodeGroupAckConfigCustomLabelArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigCustomLabelArrayInput` via:
+//
+//	ClusterNodeGroupAckConfigCustomLabelArray{ ClusterNodeGroupAckConfigCustomLabelArgs{...} }
+type ClusterNodeGroupAckConfigCustomLabelArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigCustomLabelArrayOutput() ClusterNodeGroupAckConfigCustomLabelArrayOutput
+	ToClusterNodeGroupAckConfigCustomLabelArrayOutputWithContext(context.Context) ClusterNodeGroupAckConfigCustomLabelArrayOutput
+}
+
+type ClusterNodeGroupAckConfigCustomLabelArray []ClusterNodeGroupAckConfigCustomLabelInput
+
+func (ClusterNodeGroupAckConfigCustomLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigCustomLabel)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigCustomLabelArray) ToClusterNodeGroupAckConfigCustomLabelArrayOutput() ClusterNodeGroupAckConfigCustomLabelArrayOutput {
+	return i.ToClusterNodeGroupAckConfigCustomLabelArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigCustomLabelArray) ToClusterNodeGroupAckConfigCustomLabelArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigCustomLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigCustomLabelArrayOutput)
+}
+
+type ClusterNodeGroupAckConfigCustomLabelOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigCustomLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigCustomLabel)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigCustomLabelOutput) ToClusterNodeGroupAckConfigCustomLabelOutput() ClusterNodeGroupAckConfigCustomLabelOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigCustomLabelOutput) ToClusterNodeGroupAckConfigCustomLabelOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigCustomLabelOutput {
+	return o
+}
+
+// The tag key for this scaling rule specific metrics trigger.
+func (o ClusterNodeGroupAckConfigCustomLabelOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigCustomLabel) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The tag value for this scaling rule specific metrics trigger.
+func (o ClusterNodeGroupAckConfigCustomLabelOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigCustomLabel) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeGroupAckConfigCustomLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigCustomLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigCustomLabel)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigCustomLabelArrayOutput) ToClusterNodeGroupAckConfigCustomLabelArrayOutput() ClusterNodeGroupAckConfigCustomLabelArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigCustomLabelArrayOutput) ToClusterNodeGroupAckConfigCustomLabelArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigCustomLabelArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigCustomLabelArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAckConfigCustomLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAckConfigCustomLabel {
+		return vs[0].([]ClusterNodeGroupAckConfigCustomLabel)[vs[1].(int)]
+	}).(ClusterNodeGroupAckConfigCustomLabelOutput)
+}
+
+type ClusterNodeGroupAckConfigNodeSelector struct {
+	// The tag key for this scaling rule specific metrics trigger.
+	Key string `pulumi:"key"`
+	// The tag value for this scaling rule specific metrics trigger.
+	Value *string `pulumi:"value"`
+}
+
+// ClusterNodeGroupAckConfigNodeSelectorInput is an input type that accepts ClusterNodeGroupAckConfigNodeSelectorArgs and ClusterNodeGroupAckConfigNodeSelectorOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigNodeSelectorInput` via:
+//
+//	ClusterNodeGroupAckConfigNodeSelectorArgs{...}
+type ClusterNodeGroupAckConfigNodeSelectorInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigNodeSelectorOutput() ClusterNodeGroupAckConfigNodeSelectorOutput
+	ToClusterNodeGroupAckConfigNodeSelectorOutputWithContext(context.Context) ClusterNodeGroupAckConfigNodeSelectorOutput
+}
+
+type ClusterNodeGroupAckConfigNodeSelectorArgs struct {
+	// The tag key for this scaling rule specific metrics trigger.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The tag value for this scaling rule specific metrics trigger.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ClusterNodeGroupAckConfigNodeSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigNodeSelector)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigNodeSelectorArgs) ToClusterNodeGroupAckConfigNodeSelectorOutput() ClusterNodeGroupAckConfigNodeSelectorOutput {
+	return i.ToClusterNodeGroupAckConfigNodeSelectorOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigNodeSelectorArgs) ToClusterNodeGroupAckConfigNodeSelectorOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigNodeSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigNodeSelectorOutput)
+}
+
+// ClusterNodeGroupAckConfigNodeSelectorArrayInput is an input type that accepts ClusterNodeGroupAckConfigNodeSelectorArray and ClusterNodeGroupAckConfigNodeSelectorArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigNodeSelectorArrayInput` via:
+//
+//	ClusterNodeGroupAckConfigNodeSelectorArray{ ClusterNodeGroupAckConfigNodeSelectorArgs{...} }
+type ClusterNodeGroupAckConfigNodeSelectorArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigNodeSelectorArrayOutput() ClusterNodeGroupAckConfigNodeSelectorArrayOutput
+	ToClusterNodeGroupAckConfigNodeSelectorArrayOutputWithContext(context.Context) ClusterNodeGroupAckConfigNodeSelectorArrayOutput
+}
+
+type ClusterNodeGroupAckConfigNodeSelectorArray []ClusterNodeGroupAckConfigNodeSelectorInput
+
+func (ClusterNodeGroupAckConfigNodeSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigNodeSelector)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigNodeSelectorArray) ToClusterNodeGroupAckConfigNodeSelectorArrayOutput() ClusterNodeGroupAckConfigNodeSelectorArrayOutput {
+	return i.ToClusterNodeGroupAckConfigNodeSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigNodeSelectorArray) ToClusterNodeGroupAckConfigNodeSelectorArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigNodeSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigNodeSelectorArrayOutput)
+}
+
+type ClusterNodeGroupAckConfigNodeSelectorOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigNodeSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigNodeSelector)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigNodeSelectorOutput) ToClusterNodeGroupAckConfigNodeSelectorOutput() ClusterNodeGroupAckConfigNodeSelectorOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigNodeSelectorOutput) ToClusterNodeGroupAckConfigNodeSelectorOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigNodeSelectorOutput {
+	return o
+}
+
+// The tag key for this scaling rule specific metrics trigger.
+func (o ClusterNodeGroupAckConfigNodeSelectorOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigNodeSelector) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The tag value for this scaling rule specific metrics trigger.
+func (o ClusterNodeGroupAckConfigNodeSelectorOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigNodeSelector) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeGroupAckConfigNodeSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigNodeSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigNodeSelector)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigNodeSelectorArrayOutput) ToClusterNodeGroupAckConfigNodeSelectorArrayOutput() ClusterNodeGroupAckConfigNodeSelectorArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigNodeSelectorArrayOutput) ToClusterNodeGroupAckConfigNodeSelectorArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigNodeSelectorArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigNodeSelectorArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAckConfigNodeSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAckConfigNodeSelector {
+		return vs[0].([]ClusterNodeGroupAckConfigNodeSelector)[vs[1].(int)]
+	}).(ClusterNodeGroupAckConfigNodeSelectorOutput)
+}
+
+type ClusterNodeGroupAckConfigPvc struct {
+	// The ack cluster job pod data disk size of persistent volume claim.
+	DataDiskSize int `pulumi:"dataDiskSize"`
+	// The ack cluster job pod data disk storage class of persistent volume claim.
+	DataDiskStorageClass string `pulumi:"dataDiskStorageClass"`
+	// The name of ack cluster job pod volume mounts.
+	Name string `pulumi:"name"`
+	// The path of ack cluster job pod volume mounts.
+	Path string `pulumi:"path"`
+}
+
+// ClusterNodeGroupAckConfigPvcInput is an input type that accepts ClusterNodeGroupAckConfigPvcArgs and ClusterNodeGroupAckConfigPvcOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigPvcInput` via:
+//
+//	ClusterNodeGroupAckConfigPvcArgs{...}
+type ClusterNodeGroupAckConfigPvcInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigPvcOutput() ClusterNodeGroupAckConfigPvcOutput
+	ToClusterNodeGroupAckConfigPvcOutputWithContext(context.Context) ClusterNodeGroupAckConfigPvcOutput
+}
+
+type ClusterNodeGroupAckConfigPvcArgs struct {
+	// The ack cluster job pod data disk size of persistent volume claim.
+	DataDiskSize pulumi.IntInput `pulumi:"dataDiskSize"`
+	// The ack cluster job pod data disk storage class of persistent volume claim.
+	DataDiskStorageClass pulumi.StringInput `pulumi:"dataDiskStorageClass"`
+	// The name of ack cluster job pod volume mounts.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The path of ack cluster job pod volume mounts.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (ClusterNodeGroupAckConfigPvcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigPvc)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigPvcArgs) ToClusterNodeGroupAckConfigPvcOutput() ClusterNodeGroupAckConfigPvcOutput {
+	return i.ToClusterNodeGroupAckConfigPvcOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigPvcArgs) ToClusterNodeGroupAckConfigPvcOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigPvcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigPvcOutput)
+}
+
+// ClusterNodeGroupAckConfigPvcArrayInput is an input type that accepts ClusterNodeGroupAckConfigPvcArray and ClusterNodeGroupAckConfigPvcArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigPvcArrayInput` via:
+//
+//	ClusterNodeGroupAckConfigPvcArray{ ClusterNodeGroupAckConfigPvcArgs{...} }
+type ClusterNodeGroupAckConfigPvcArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigPvcArrayOutput() ClusterNodeGroupAckConfigPvcArrayOutput
+	ToClusterNodeGroupAckConfigPvcArrayOutputWithContext(context.Context) ClusterNodeGroupAckConfigPvcArrayOutput
+}
+
+type ClusterNodeGroupAckConfigPvcArray []ClusterNodeGroupAckConfigPvcInput
+
+func (ClusterNodeGroupAckConfigPvcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigPvc)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigPvcArray) ToClusterNodeGroupAckConfigPvcArrayOutput() ClusterNodeGroupAckConfigPvcArrayOutput {
+	return i.ToClusterNodeGroupAckConfigPvcArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigPvcArray) ToClusterNodeGroupAckConfigPvcArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigPvcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigPvcArrayOutput)
+}
+
+type ClusterNodeGroupAckConfigPvcOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigPvcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigPvc)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigPvcOutput) ToClusterNodeGroupAckConfigPvcOutput() ClusterNodeGroupAckConfigPvcOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigPvcOutput) ToClusterNodeGroupAckConfigPvcOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigPvcOutput {
+	return o
+}
+
+// The ack cluster job pod data disk size of persistent volume claim.
+func (o ClusterNodeGroupAckConfigPvcOutput) DataDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigPvc) int { return v.DataDiskSize }).(pulumi.IntOutput)
+}
+
+// The ack cluster job pod data disk storage class of persistent volume claim.
+func (o ClusterNodeGroupAckConfigPvcOutput) DataDiskStorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigPvc) string { return v.DataDiskStorageClass }).(pulumi.StringOutput)
+}
+
+// The name of ack cluster job pod volume mounts.
+func (o ClusterNodeGroupAckConfigPvcOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigPvc) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The path of ack cluster job pod volume mounts.
+func (o ClusterNodeGroupAckConfigPvcOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigPvc) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type ClusterNodeGroupAckConfigPvcArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigPvcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigPvc)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigPvcArrayOutput) ToClusterNodeGroupAckConfigPvcArrayOutput() ClusterNodeGroupAckConfigPvcArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigPvcArrayOutput) ToClusterNodeGroupAckConfigPvcArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigPvcArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigPvcArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAckConfigPvcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAckConfigPvc {
+		return vs[0].([]ClusterNodeGroupAckConfigPvc)[vs[1].(int)]
+	}).(ClusterNodeGroupAckConfigPvcOutput)
+}
+
+type ClusterNodeGroupAckConfigToleration struct {
+	// The effect of ack cluster tolerations.
+	Effect *string `pulumi:"effect"`
+	// The tag key for this scaling rule specific metrics trigger.
+	Key *string `pulumi:"key"`
+	// The operator of ack cluster tolerations.
+	Operator *string `pulumi:"operator"`
+	// The tag value for this scaling rule specific metrics trigger.
+	Value *string `pulumi:"value"`
+}
+
+// ClusterNodeGroupAckConfigTolerationInput is an input type that accepts ClusterNodeGroupAckConfigTolerationArgs and ClusterNodeGroupAckConfigTolerationOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigTolerationInput` via:
+//
+//	ClusterNodeGroupAckConfigTolerationArgs{...}
+type ClusterNodeGroupAckConfigTolerationInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigTolerationOutput() ClusterNodeGroupAckConfigTolerationOutput
+	ToClusterNodeGroupAckConfigTolerationOutputWithContext(context.Context) ClusterNodeGroupAckConfigTolerationOutput
+}
+
+type ClusterNodeGroupAckConfigTolerationArgs struct {
+	// The effect of ack cluster tolerations.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// The tag key for this scaling rule specific metrics trigger.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The operator of ack cluster tolerations.
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
+	// The tag value for this scaling rule specific metrics trigger.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ClusterNodeGroupAckConfigTolerationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigToleration)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigTolerationArgs) ToClusterNodeGroupAckConfigTolerationOutput() ClusterNodeGroupAckConfigTolerationOutput {
+	return i.ToClusterNodeGroupAckConfigTolerationOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigTolerationArgs) ToClusterNodeGroupAckConfigTolerationOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigTolerationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigTolerationOutput)
+}
+
+// ClusterNodeGroupAckConfigTolerationArrayInput is an input type that accepts ClusterNodeGroupAckConfigTolerationArray and ClusterNodeGroupAckConfigTolerationArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigTolerationArrayInput` via:
+//
+//	ClusterNodeGroupAckConfigTolerationArray{ ClusterNodeGroupAckConfigTolerationArgs{...} }
+type ClusterNodeGroupAckConfigTolerationArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigTolerationArrayOutput() ClusterNodeGroupAckConfigTolerationArrayOutput
+	ToClusterNodeGroupAckConfigTolerationArrayOutputWithContext(context.Context) ClusterNodeGroupAckConfigTolerationArrayOutput
+}
+
+type ClusterNodeGroupAckConfigTolerationArray []ClusterNodeGroupAckConfigTolerationInput
+
+func (ClusterNodeGroupAckConfigTolerationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigToleration)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigTolerationArray) ToClusterNodeGroupAckConfigTolerationArrayOutput() ClusterNodeGroupAckConfigTolerationArrayOutput {
+	return i.ToClusterNodeGroupAckConfigTolerationArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigTolerationArray) ToClusterNodeGroupAckConfigTolerationArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigTolerationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigTolerationArrayOutput)
+}
+
+type ClusterNodeGroupAckConfigTolerationOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigTolerationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigToleration)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigTolerationOutput) ToClusterNodeGroupAckConfigTolerationOutput() ClusterNodeGroupAckConfigTolerationOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigTolerationOutput) ToClusterNodeGroupAckConfigTolerationOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigTolerationOutput {
+	return o
+}
+
+// The effect of ack cluster tolerations.
+func (o ClusterNodeGroupAckConfigTolerationOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigToleration) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// The tag key for this scaling rule specific metrics trigger.
+func (o ClusterNodeGroupAckConfigTolerationOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigToleration) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The operator of ack cluster tolerations.
+func (o ClusterNodeGroupAckConfigTolerationOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigToleration) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// The tag value for this scaling rule specific metrics trigger.
+func (o ClusterNodeGroupAckConfigTolerationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigToleration) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodeGroupAckConfigTolerationArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigTolerationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigToleration)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigTolerationArrayOutput) ToClusterNodeGroupAckConfigTolerationArrayOutput() ClusterNodeGroupAckConfigTolerationArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigTolerationArrayOutput) ToClusterNodeGroupAckConfigTolerationArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigTolerationArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigTolerationArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAckConfigTolerationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAckConfigToleration {
+		return vs[0].([]ClusterNodeGroupAckConfigToleration)[vs[1].(int)]
+	}).(ClusterNodeGroupAckConfigTolerationOutput)
+}
+
+type ClusterNodeGroupAckConfigVolume struct {
+	// The name of ack cluster job pod volume mounts.
+	Name string `pulumi:"name"`
+	// The path of ack cluster job pod volume mounts.
+	Path string `pulumi:"path"`
+	// The ack cluster job pod volumes type.
+	Type string `pulumi:"type"`
+}
+
+// ClusterNodeGroupAckConfigVolumeInput is an input type that accepts ClusterNodeGroupAckConfigVolumeArgs and ClusterNodeGroupAckConfigVolumeOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigVolumeInput` via:
+//
+//	ClusterNodeGroupAckConfigVolumeArgs{...}
+type ClusterNodeGroupAckConfigVolumeInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigVolumeOutput() ClusterNodeGroupAckConfigVolumeOutput
+	ToClusterNodeGroupAckConfigVolumeOutputWithContext(context.Context) ClusterNodeGroupAckConfigVolumeOutput
+}
+
+type ClusterNodeGroupAckConfigVolumeArgs struct {
+	// The name of ack cluster job pod volume mounts.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The path of ack cluster job pod volume mounts.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The ack cluster job pod volumes type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ClusterNodeGroupAckConfigVolumeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigVolume)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigVolumeArgs) ToClusterNodeGroupAckConfigVolumeOutput() ClusterNodeGroupAckConfigVolumeOutput {
+	return i.ToClusterNodeGroupAckConfigVolumeOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigVolumeArgs) ToClusterNodeGroupAckConfigVolumeOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigVolumeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigVolumeOutput)
+}
+
+// ClusterNodeGroupAckConfigVolumeArrayInput is an input type that accepts ClusterNodeGroupAckConfigVolumeArray and ClusterNodeGroupAckConfigVolumeArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigVolumeArrayInput` via:
+//
+//	ClusterNodeGroupAckConfigVolumeArray{ ClusterNodeGroupAckConfigVolumeArgs{...} }
+type ClusterNodeGroupAckConfigVolumeArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigVolumeArrayOutput() ClusterNodeGroupAckConfigVolumeArrayOutput
+	ToClusterNodeGroupAckConfigVolumeArrayOutputWithContext(context.Context) ClusterNodeGroupAckConfigVolumeArrayOutput
+}
+
+type ClusterNodeGroupAckConfigVolumeArray []ClusterNodeGroupAckConfigVolumeInput
+
+func (ClusterNodeGroupAckConfigVolumeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigVolume)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigVolumeArray) ToClusterNodeGroupAckConfigVolumeArrayOutput() ClusterNodeGroupAckConfigVolumeArrayOutput {
+	return i.ToClusterNodeGroupAckConfigVolumeArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigVolumeArray) ToClusterNodeGroupAckConfigVolumeArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigVolumeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigVolumeArrayOutput)
+}
+
+type ClusterNodeGroupAckConfigVolumeOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigVolumeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigVolume)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigVolumeOutput) ToClusterNodeGroupAckConfigVolumeOutput() ClusterNodeGroupAckConfigVolumeOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigVolumeOutput) ToClusterNodeGroupAckConfigVolumeOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigVolumeOutput {
+	return o
+}
+
+// The name of ack cluster job pod volume mounts.
+func (o ClusterNodeGroupAckConfigVolumeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The path of ack cluster job pod volume mounts.
+func (o ClusterNodeGroupAckConfigVolumeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigVolume) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The ack cluster job pod volumes type.
+func (o ClusterNodeGroupAckConfigVolumeOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigVolume) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ClusterNodeGroupAckConfigVolumeArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigVolumeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigVolume)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigVolumeArrayOutput) ToClusterNodeGroupAckConfigVolumeArrayOutput() ClusterNodeGroupAckConfigVolumeArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigVolumeArrayOutput) ToClusterNodeGroupAckConfigVolumeArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigVolumeArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigVolumeArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAckConfigVolumeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAckConfigVolume {
+		return vs[0].([]ClusterNodeGroupAckConfigVolume)[vs[1].(int)]
+	}).(ClusterNodeGroupAckConfigVolumeOutput)
+}
+
+type ClusterNodeGroupAckConfigVolumeMount struct {
+	// The name of ack cluster job pod volume mounts.
+	Name string `pulumi:"name"`
+	// The path of ack cluster job pod volume mounts.
+	Path string `pulumi:"path"`
+}
+
+// ClusterNodeGroupAckConfigVolumeMountInput is an input type that accepts ClusterNodeGroupAckConfigVolumeMountArgs and ClusterNodeGroupAckConfigVolumeMountOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigVolumeMountInput` via:
+//
+//	ClusterNodeGroupAckConfigVolumeMountArgs{...}
+type ClusterNodeGroupAckConfigVolumeMountInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigVolumeMountOutput() ClusterNodeGroupAckConfigVolumeMountOutput
+	ToClusterNodeGroupAckConfigVolumeMountOutputWithContext(context.Context) ClusterNodeGroupAckConfigVolumeMountOutput
+}
+
+type ClusterNodeGroupAckConfigVolumeMountArgs struct {
+	// The name of ack cluster job pod volume mounts.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The path of ack cluster job pod volume mounts.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (ClusterNodeGroupAckConfigVolumeMountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigVolumeMount)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigVolumeMountArgs) ToClusterNodeGroupAckConfigVolumeMountOutput() ClusterNodeGroupAckConfigVolumeMountOutput {
+	return i.ToClusterNodeGroupAckConfigVolumeMountOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigVolumeMountArgs) ToClusterNodeGroupAckConfigVolumeMountOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigVolumeMountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigVolumeMountOutput)
+}
+
+// ClusterNodeGroupAckConfigVolumeMountArrayInput is an input type that accepts ClusterNodeGroupAckConfigVolumeMountArray and ClusterNodeGroupAckConfigVolumeMountArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeGroupAckConfigVolumeMountArrayInput` via:
+//
+//	ClusterNodeGroupAckConfigVolumeMountArray{ ClusterNodeGroupAckConfigVolumeMountArgs{...} }
+type ClusterNodeGroupAckConfigVolumeMountArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeGroupAckConfigVolumeMountArrayOutput() ClusterNodeGroupAckConfigVolumeMountArrayOutput
+	ToClusterNodeGroupAckConfigVolumeMountArrayOutputWithContext(context.Context) ClusterNodeGroupAckConfigVolumeMountArrayOutput
+}
+
+type ClusterNodeGroupAckConfigVolumeMountArray []ClusterNodeGroupAckConfigVolumeMountInput
+
+func (ClusterNodeGroupAckConfigVolumeMountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigVolumeMount)(nil)).Elem()
+}
+
+func (i ClusterNodeGroupAckConfigVolumeMountArray) ToClusterNodeGroupAckConfigVolumeMountArrayOutput() ClusterNodeGroupAckConfigVolumeMountArrayOutput {
+	return i.ToClusterNodeGroupAckConfigVolumeMountArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeGroupAckConfigVolumeMountArray) ToClusterNodeGroupAckConfigVolumeMountArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigVolumeMountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeGroupAckConfigVolumeMountArrayOutput)
+}
+
+type ClusterNodeGroupAckConfigVolumeMountOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigVolumeMountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeGroupAckConfigVolumeMount)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigVolumeMountOutput) ToClusterNodeGroupAckConfigVolumeMountOutput() ClusterNodeGroupAckConfigVolumeMountOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigVolumeMountOutput) ToClusterNodeGroupAckConfigVolumeMountOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigVolumeMountOutput {
+	return o
+}
+
+// The name of ack cluster job pod volume mounts.
+func (o ClusterNodeGroupAckConfigVolumeMountOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigVolumeMount) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The path of ack cluster job pod volume mounts.
+func (o ClusterNodeGroupAckConfigVolumeMountOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeGroupAckConfigVolumeMount) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type ClusterNodeGroupAckConfigVolumeMountArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeGroupAckConfigVolumeMountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeGroupAckConfigVolumeMount)(nil)).Elem()
+}
+
+func (o ClusterNodeGroupAckConfigVolumeMountArrayOutput) ToClusterNodeGroupAckConfigVolumeMountArrayOutput() ClusterNodeGroupAckConfigVolumeMountArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigVolumeMountArrayOutput) ToClusterNodeGroupAckConfigVolumeMountArrayOutputWithContext(ctx context.Context) ClusterNodeGroupAckConfigVolumeMountArrayOutput {
+	return o
+}
+
+func (o ClusterNodeGroupAckConfigVolumeMountArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupAckConfigVolumeMountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeGroupAckConfigVolumeMount {
+		return vs[0].([]ClusterNodeGroupAckConfigVolumeMount)[vs[1].(int)]
+	}).(ClusterNodeGroupAckConfigVolumeMountOutput)
 }
 
 type ClusterNodeGroupAutoScalingPolicy struct {
@@ -3418,6 +4666,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeAttributeArrayInput)(nil)).Elem(), ClusterNodeAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupInput)(nil)).Elem(), ClusterNodeGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupArrayInput)(nil)).Elem(), ClusterNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigInput)(nil)).Elem(), ClusterNodeGroupAckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigPtrInput)(nil)).Elem(), ClusterNodeGroupAckConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigCustomAnnotationInput)(nil)).Elem(), ClusterNodeGroupAckConfigCustomAnnotationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigCustomAnnotationArrayInput)(nil)).Elem(), ClusterNodeGroupAckConfigCustomAnnotationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigCustomLabelInput)(nil)).Elem(), ClusterNodeGroupAckConfigCustomLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigCustomLabelArrayInput)(nil)).Elem(), ClusterNodeGroupAckConfigCustomLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigNodeSelectorInput)(nil)).Elem(), ClusterNodeGroupAckConfigNodeSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigNodeSelectorArrayInput)(nil)).Elem(), ClusterNodeGroupAckConfigNodeSelectorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigPvcInput)(nil)).Elem(), ClusterNodeGroupAckConfigPvcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigPvcArrayInput)(nil)).Elem(), ClusterNodeGroupAckConfigPvcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigTolerationInput)(nil)).Elem(), ClusterNodeGroupAckConfigTolerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigTolerationArrayInput)(nil)).Elem(), ClusterNodeGroupAckConfigTolerationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigVolumeInput)(nil)).Elem(), ClusterNodeGroupAckConfigVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigVolumeArrayInput)(nil)).Elem(), ClusterNodeGroupAckConfigVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigVolumeMountInput)(nil)).Elem(), ClusterNodeGroupAckConfigVolumeMountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAckConfigVolumeMountArrayInput)(nil)).Elem(), ClusterNodeGroupAckConfigVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyPtrInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeGroupAutoScalingPolicyConstraintsInput)(nil)).Elem(), ClusterNodeGroupAutoScalingPolicyConstraintsArgs{})
@@ -3458,6 +4722,22 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigCustomAnnotationOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigCustomAnnotationArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigCustomLabelOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigCustomLabelArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigNodeSelectorOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigNodeSelectorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigPvcOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigPvcArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigTolerationOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigTolerationArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigVolumeOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigVolumeArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigVolumeMountOutput{})
+	pulumi.RegisterOutputType(ClusterNodeGroupAckConfigVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeGroupAutoScalingPolicyConstraintsOutput{})

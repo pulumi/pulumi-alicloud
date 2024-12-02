@@ -28,45 +28,45 @@ namespace Pulumi.AliCloud.Gwlb
     public partial class Listener : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The custom listener description.
+        /// The description of the listener.
         /// 
-        /// The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         /// </summary>
         [Output("listenerDescription")]
         public Output<string?> ListenerDescription { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the gateway load balancer instance.
+        /// The GWLB instance ID.
         /// </summary>
         [Output("loadBalancerId")]
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the region.
+        /// The region ID.
         /// </summary>
         [Output("regionId")]
         public Output<string> RegionId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the server group.
+        /// The server group ID.
         /// </summary>
         [Output("serverGroupId")]
         public Output<string> ServerGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of the listener. Value:
+        /// The status of the listener.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The list of tags.
+        /// The tags. You can specify at most 20 tags in each call.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
@@ -118,27 +118,27 @@ namespace Pulumi.AliCloud.Gwlb
     public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The custom listener description.
+        /// The description of the listener.
         /// 
-        /// The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("listenerDescription")]
         public Input<string>? ListenerDescription { get; set; }
 
         /// <summary>
-        /// The ID of the gateway load balancer instance.
+        /// The GWLB instance ID.
         /// </summary>
         [Input("loadBalancerId", required: true)]
         public Input<string> LoadBalancerId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the server group.
+        /// The server group ID.
         /// </summary>
         [Input("serverGroupId", required: true)]
         public Input<string> ServerGroupId { get; set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.Gwlb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The list of tags.
+        /// The tags. You can specify at most 20 tags in each call.
         /// </summary>
         public InputMap<string> Tags
         {
@@ -164,39 +164,39 @@ namespace Pulumi.AliCloud.Gwlb
     public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to perform only a dry run, without performing the actual request.
+        /// Specifies whether to perform a dry run, without performing the actual request. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The custom listener description.
+        /// The description of the listener.
         /// 
-        /// The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+        /// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
         /// </summary>
         [Input("listenerDescription")]
         public Input<string>? ListenerDescription { get; set; }
 
         /// <summary>
-        /// The ID of the gateway load balancer instance.
+        /// The GWLB instance ID.
         /// </summary>
         [Input("loadBalancerId")]
         public Input<string>? LoadBalancerId { get; set; }
 
         /// <summary>
-        /// The ID of the region.
+        /// The region ID.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 
         /// <summary>
-        /// The ID of the server group.
+        /// The server group ID.
         /// </summary>
         [Input("serverGroupId")]
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// The current status of the listener. Value:
+        /// The status of the listener.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Gwlb
         private InputMap<string>? _tags;
 
         /// <summary>
-        /// The list of tags.
+        /// The tags. You can specify at most 20 tags in each call.
         /// </summary>
         public InputMap<string> Tags
         {

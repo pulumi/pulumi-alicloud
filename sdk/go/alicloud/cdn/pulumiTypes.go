@@ -697,8 +697,6 @@ type DomainNewCertificateConfig struct {
 	// - **free**: free certificate.
 	// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 	CertType *string `pulumi:"certType"`
-	// The force set of the security certificate.
-	ForceSet *string `pulumi:"forceSet"`
 	// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 	PrivateKey *string `pulumi:"privateKey"`
 	// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
@@ -733,8 +731,6 @@ type DomainNewCertificateConfigArgs struct {
 	// - **free**: free certificate.
 	// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 	CertType pulumi.StringPtrInput `pulumi:"certType"`
-	// The force set of the security certificate.
-	ForceSet pulumi.StringPtrInput `pulumi:"forceSet"`
 	// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
@@ -846,11 +842,6 @@ func (o DomainNewCertificateConfigOutput) CertType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertType }).(pulumi.StringPtrOutput)
 }
 
-// The force set of the security certificate.
-func (o DomainNewCertificateConfigOutput) ForceSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ForceSet }).(pulumi.StringPtrOutput)
-}
-
 // The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 func (o DomainNewCertificateConfigOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
@@ -936,16 +927,6 @@ func (o DomainNewCertificateConfigPtrOutput) CertType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The force set of the security certificate.
-func (o DomainNewCertificateConfigPtrOutput) ForceSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ForceSet
-	}).(pulumi.StringPtrOutput)
-}
-
 // The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 func (o DomainNewCertificateConfigPtrOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
@@ -987,7 +968,7 @@ type DomainNewSource struct {
 	Priority *int `pulumi:"priority"`
 	// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
 	Type *string `pulumi:"type"`
-	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
 	Weight *int `pulumi:"weight"`
 }
 
@@ -1011,7 +992,7 @@ type DomainNewSourceArgs struct {
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+	// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -1086,7 +1067,7 @@ func (o DomainNewSourceOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewSource) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+// Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
 func (o DomainNewSourceOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DomainNewSource) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }

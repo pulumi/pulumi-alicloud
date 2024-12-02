@@ -125,7 +125,7 @@ type AuditLogConfig struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Audit Log Retention Period Value: 1~365.
 	//
-	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+	// > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
 	Retention pulumi.IntPtrOutput `pulumi:"retention"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -176,7 +176,7 @@ type auditLogConfigState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// Audit Log Retention Period Value: 1~365.
 	//
-	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+	// > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
 	Retention *int `pulumi:"retention"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
@@ -195,7 +195,7 @@ type AuditLogConfigState struct {
 	InstanceId pulumi.StringPtrInput
 	// Audit Log Retention Period Value: 1~365.
 	//
-	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+	// > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
 	Retention pulumi.IntPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
@@ -216,7 +216,7 @@ type auditLogConfigArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// Audit Log Retention Period Value: 1~365.
 	//
-	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+	// > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
 	Retention *int `pulumi:"retention"`
 }
 
@@ -232,7 +232,7 @@ type AuditLogConfigArgs struct {
 	InstanceId pulumi.StringInput
 	// Audit Log Retention Period Value: 1~365.
 	//
-	// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+	// > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
 	Retention pulumi.IntPtrInput
 }
 
@@ -344,7 +344,7 @@ func (o AuditLogConfigOutput) InstanceId() pulumi.StringOutput {
 
 // Audit Log Retention Period Value: 1~365.
 //
-// > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+// > **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
 func (o AuditLogConfigOutput) Retention() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AuditLogConfig) pulumi.IntPtrOutput { return v.Retention }).(pulumi.IntPtrOutput)
 }

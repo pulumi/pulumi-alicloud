@@ -386,7 +386,7 @@ class GetInstancesInstanceResult(dict):
         :param str architecture_type: The type of the architecture. Valid values: `cluster`, `standard` and `SplitRW`.
         :param str availability_zone: It has been deprecated from provider version 1.101.0 and `zone_id` instead.
         :param int bandwidth: Instance bandwidth limit. Unit: Mbit/s.
-        :param int capacity: Capacity of the applied ApsaraDB for the instance. Unit: MB.
+        :param int capacity: Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
         :param str charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
         :param Mapping[str, str] config: The parameter configuration of the instance.
         :param str connection_domain: Instance connection domain (only Intranet access supported).
@@ -401,7 +401,7 @@ class GetInstancesInstanceResult(dict):
         :param str expire_time: It has been deprecated from provider version 1.101.0 and `end_time` instead.
         :param bool has_renew_change_order: Indicates whether there was an order of renewal with configuration change that had not taken effect.
         :param str id: The ID of the instance.
-        :param str instance_class: Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+        :param str instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         :param str instance_type: The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
         :param bool is_rds: Indicates whether the instance is managed by Relational Database Service (RDS).
         :param int max_connections: Instance connection quantity limit. Unit: count.
@@ -417,7 +417,7 @@ class GetInstancesInstanceResult(dict):
         :param str replacate_id: The logical ID of the replica instance.
         :param str resource_group_id: The ID of the resource group.
         :param str search_key: The name of the instance.
-        :param str secondary_zone_id: (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        :param str secondary_zone_id: (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         :param str status: The status of the KVStore DBInstance. Valid values: `Changing`, `CleaningUpExpiredData`, `Creating`, `Flushing`, `HASwitching`, `Inactive`, `MajorVersionUpgrading`, `Migrating`, `NetworkModifying`, `Normal`, `Rebooting`, `SSLModifying`, `Transforming`, `ZoneMigrating`.
         :param Mapping[str, str] tags: Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         :param str user_name: The username of the instance.
@@ -518,7 +518,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter
     def capacity(self) -> int:
         """
-        Capacity of the applied ApsaraDB for the instance. Unit: MB.
+        Capacity of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. Unit: MB.
         """
         return pulumi.get(self, "capacity")
 
@@ -638,7 +638,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> str:
         """
-        Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         """
         return pulumi.get(self, "instance_class")
 
@@ -781,7 +781,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> str:
         """
-        (Optional, Available in 1.128.0+) The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        (Optional, Available since v1.128.0) The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         """
         return pulumi.get(self, "secondary_zone_id")
 

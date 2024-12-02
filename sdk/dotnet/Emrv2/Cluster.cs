@@ -252,6 +252,12 @@ namespace Pulumi.AliCloud.Emrv2
         public Output<string> ClusterType { get; private set; } = null!;
 
         /// <summary>
+        /// The deletion protection of EMR cluster.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
         /// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         /// </summary>
         [Output("deployMode")]
@@ -406,6 +412,12 @@ namespace Pulumi.AliCloud.Emrv2
         public Input<string> ClusterType { get; set; } = null!;
 
         /// <summary>
+        /// The deletion protection of EMR cluster.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         /// </summary>
         [Input("deployMode")]
@@ -538,6 +550,12 @@ namespace Pulumi.AliCloud.Emrv2
         /// </summary>
         [Input("clusterType")]
         public Input<string>? ClusterType { get; set; }
+
+        /// <summary>
+        /// The deletion protection of EMR cluster.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The deploy mode of EMR cluster. Supported value: NORMAL or HA.

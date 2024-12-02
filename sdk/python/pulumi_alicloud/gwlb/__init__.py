@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_zones import *
 from .listener import *
 from .load_balancer import *
 from .server_group import *

@@ -5,6 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { WorkspaceCodeSourceArgs, WorkspaceCodeSourceState } from "./workspaceCodeSource";
+export type WorkspaceCodeSource = import("./workspaceCodeSource").WorkspaceCodeSource;
+export const WorkspaceCodeSource: typeof import("./workspaceCodeSource").WorkspaceCodeSource = null as any;
+utilities.lazyLoad(exports, ["WorkspaceCodeSource"], () => require("./workspaceCodeSource"));
+
+export { WorkspaceDatasetArgs, WorkspaceDatasetState } from "./workspaceDataset";
+export type WorkspaceDataset = import("./workspaceDataset").WorkspaceDataset;
+export const WorkspaceDataset: typeof import("./workspaceDataset").WorkspaceDataset = null as any;
+utilities.lazyLoad(exports, ["WorkspaceDataset"], () => require("./workspaceDataset"));
+
+export { WorkspaceDatasetversionArgs, WorkspaceDatasetversionState } from "./workspaceDatasetversion";
+export type WorkspaceDatasetversion = import("./workspaceDatasetversion").WorkspaceDatasetversion;
+export const WorkspaceDatasetversion: typeof import("./workspaceDatasetversion").WorkspaceDatasetversion = null as any;
+utilities.lazyLoad(exports, ["WorkspaceDatasetversion"], () => require("./workspaceDatasetversion"));
+
+export { WorkspaceExperimentArgs, WorkspaceExperimentState } from "./workspaceExperiment";
+export type WorkspaceExperiment = import("./workspaceExperiment").WorkspaceExperiment;
+export const WorkspaceExperiment: typeof import("./workspaceExperiment").WorkspaceExperiment = null as any;
+utilities.lazyLoad(exports, ["WorkspaceExperiment"], () => require("./workspaceExperiment"));
+
+export { WorkspaceRunArgs, WorkspaceRunState } from "./workspaceRun";
+export type WorkspaceRun = import("./workspaceRun").WorkspaceRun;
+export const WorkspaceRun: typeof import("./workspaceRun").WorkspaceRun = null as any;
+utilities.lazyLoad(exports, ["WorkspaceRun"], () => require("./workspaceRun"));
+
 export { WorkspaceWorkspaceArgs, WorkspaceWorkspaceState } from "./workspaceWorkspace";
 export type WorkspaceWorkspace = import("./workspaceWorkspace").WorkspaceWorkspace;
 export const WorkspaceWorkspace: typeof import("./workspaceWorkspace").WorkspaceWorkspace = null as any;
@@ -15,6 +40,16 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:pai/workspaceCodeSource:WorkspaceCodeSource":
+                return new WorkspaceCodeSource(name, <any>undefined, { urn })
+            case "alicloud:pai/workspaceDataset:WorkspaceDataset":
+                return new WorkspaceDataset(name, <any>undefined, { urn })
+            case "alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion":
+                return new WorkspaceDatasetversion(name, <any>undefined, { urn })
+            case "alicloud:pai/workspaceExperiment:WorkspaceExperiment":
+                return new WorkspaceExperiment(name, <any>undefined, { urn })
+            case "alicloud:pai/workspaceRun:WorkspaceRun":
+                return new WorkspaceRun(name, <any>undefined, { urn })
             case "alicloud:pai/workspaceWorkspace:WorkspaceWorkspace":
                 return new WorkspaceWorkspace(name, <any>undefined, { urn })
             default:
@@ -22,4 +57,9 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceCodeSource", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceDataset", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceDatasetversion", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceExperiment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceRun", _module)
 pulumi.runtime.registerResourceModule("alicloud", "pai/workspaceWorkspace", _module)

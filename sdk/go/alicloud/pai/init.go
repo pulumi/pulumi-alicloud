@@ -21,6 +21,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:pai/workspaceCodeSource:WorkspaceCodeSource":
+		r = &WorkspaceCodeSource{}
+	case "alicloud:pai/workspaceDataset:WorkspaceDataset":
+		r = &WorkspaceDataset{}
+	case "alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion":
+		r = &WorkspaceDatasetversion{}
+	case "alicloud:pai/workspaceExperiment:WorkspaceExperiment":
+		r = &WorkspaceExperiment{}
+	case "alicloud:pai/workspaceRun:WorkspaceRun":
+		r = &WorkspaceRun{}
 	case "alicloud:pai/workspaceWorkspace:WorkspaceWorkspace":
 		r = &WorkspaceWorkspace{}
 	default:
@@ -36,6 +46,31 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pai/workspaceCodeSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pai/workspaceDataset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pai/workspaceDatasetversion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pai/workspaceExperiment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"pai/workspaceRun",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"pai/workspaceWorkspace",

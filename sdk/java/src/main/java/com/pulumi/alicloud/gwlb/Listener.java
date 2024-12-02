@@ -35,102 +35,102 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:gwlb/listener:Listener")
 public class Listener extends com.pulumi.resources.CustomResource {
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform only a dry run, without performing the actual request.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The custom listener description.
+     * The description of the listener.
      * 
-     * The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     @Export(name="listenerDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> listenerDescription;
 
     /**
-     * @return The custom listener description.
+     * @return The description of the listener.
      * 
-     * The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at({@literal @}), underscores (_), and dashes (-).
+     * The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs ({@literal @}), underscores (\_), and hyphens (-).
      * 
      */
     public Output<Optional<String>> listenerDescription() {
         return Codegen.optional(this.listenerDescription);
     }
     /**
-     * The ID of the gateway load balancer instance.
+     * The GWLB instance ID.
      * 
      */
     @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
-     * @return The ID of the gateway load balancer instance.
+     * @return The GWLB instance ID.
      * 
      */
     public Output<String> loadBalancerId() {
         return this.loadBalancerId;
     }
     /**
-     * The ID of the region.
+     * The region ID.
      * 
      */
     @Export(name="regionId", refs={String.class}, tree="[0]")
     private Output<String> regionId;
 
     /**
-     * @return The ID of the region.
+     * @return The region ID.
      * 
      */
     public Output<String> regionId() {
         return this.regionId;
     }
     /**
-     * The ID of the server group.
+     * The server group ID.
      * 
      */
     @Export(name="serverGroupId", refs={String.class}, tree="[0]")
     private Output<String> serverGroupId;
 
     /**
-     * @return The ID of the server group.
+     * @return The server group ID.
      * 
      */
     public Output<String> serverGroupId() {
         return this.serverGroupId;
     }
     /**
-     * The current status of the listener. Value:
+     * The status of the listener.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The current status of the listener. Value:
+     * @return The status of the listener.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The list of tags.
+     * The tags. You can specify at most 20 tags in each call.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The list of tags.
+     * @return The tags. You can specify at most 20 tags in each call.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

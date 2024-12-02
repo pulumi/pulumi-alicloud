@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides CEN flow logs available to the user.
  *
- * > **NOTE:** Available in 1.78.0+
+ * > **NOTE:** Available since v1.78.0.
  *
  * ## Example Usage
  *
@@ -18,12 +18,43 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const default = alicloud.cen.getFlowlogs({
- *     ids: ["flowlog-tig1xxxxx"],
- *     nameRegex: "^foo",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
- * export const firstCenFlowlogId = defaultAlicloudCenInstances.flowlogs[0].id;
+ * const defaultc5kxyC = new alicloud.cen.Instance("defaultc5kxyC", {cenInstanceName: name});
+ * const defaultVw2U9u = new alicloud.cen.TransitRouter("defaultVw2U9u", {cenId: defaultc5kxyC.id});
+ * const defaultProject = new alicloud.log.Project("default", {
+ *     projectName: `${name}-${defaultInteger.result}`,
+ *     description: "terraform-example",
+ * });
+ * const defaultStore = new alicloud.log.Store("default", {
+ *     projectName: defaultProject.projectName,
+ *     logstoreName: `${name}-${defaultInteger.result}`,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const defaultFlowLog = new alicloud.cen.FlowLog("default", {
+ *     projectName: defaultStore.projectName,
+ *     flowLogName: `${name}-${defaultInteger.result}`,
+ *     logFormatString: "${srcaddr}${dstaddr}${bytes}",
+ *     cenId: defaultc5kxyC.id,
+ *     logStoreName: defaultStore.logstoreName,
+ *     interval: 600,
+ *     status: "Active",
+ *     transitRouterId: defaultVw2U9u.transitRouterId,
+ *     description: "flowlog-resource-example-1",
+ * });
+ * const default = alicloud.cen.getFlowlogsOutput({
+ *     ids: [defaultFlowLog.id],
+ * });
+ * export const firstCenFlowlogId = _default.apply(_default => _default.flowlogs?.[0]?.id);
  * ```
  */
 export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowlogsResult> {
@@ -32,12 +63,20 @@ export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions)
     return pulumi.runtime.invoke("alicloud:cen/getFlowlogs:getFlowlogs", {
         "cenId": args.cenId,
         "description": args.description,
+        "flowLogId": args.flowLogId,
+        "flowLogName": args.flowLogName,
+        "flowLogVersion": args.flowLogVersion,
         "ids": args.ids,
+        "interval": args.interval,
         "logStoreName": args.logStoreName,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "projectName": args.projectName,
+        "regionId": args.regionId,
         "status": args.status,
+        "transitRouterId": args.transitRouterId,
     }, opts);
 }
 
@@ -46,23 +85,39 @@ export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetFlowlogsArgs {
     /**
-     * The ID of the CEN Instance.
+     * The ID of Cen instance.
      */
     cenId?: string;
     /**
-     * The description of flowlog.
+     * The description of the flowlog.
      */
     description?: string;
     /**
-     * A list of CEN flow log IDs.
+     * The ID of FlowLog.
+     */
+    flowLogId?: string;
+    /**
+     * The name of the flowlog.
+     */
+    flowLogName?: string;
+    /**
+     * Flowlog Version.
+     */
+    flowLogVersion?: string;
+    /**
+     * A list of Flow Log IDs.
      */
     ids?: string[];
     /**
-     * The name of the log store which is in the  `projectName` SLS project.
+     * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+     */
+    interval?: number;
+    /**
+     * The LogStore that stores the flowlog.
      */
     logStoreName?: string;
     /**
-     * A regex string to filter CEN flow logs by name.
+     * A regex string to filter results by Group Metric Rule name.
      */
     nameRegex?: string;
     /**
@@ -70,13 +125,29 @@ export interface GetFlowlogsArgs {
      */
     outputFile?: string;
     /**
-     * The name of the SLS project.
+     * Current page number.
+     */
+    pageNumber?: number;
+    /**
+     * Number of records per page.
+     */
+    pageSize?: number;
+    /**
+     * The Project that stores the flowlog.
      */
     projectName?: string;
     /**
-     * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+     * Region id
+     */
+    regionId?: string;
+    /**
+     * The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      */
     status?: string;
+    /**
+     * Transit Router ID
+     */
+    transitRouterId?: string;
 }
 
 /**
@@ -84,45 +155,74 @@ export interface GetFlowlogsArgs {
  */
 export interface GetFlowlogsResult {
     /**
-     * The ID of the CEN Instance.
+     * The ID of Cen instance.
      */
     readonly cenId?: string;
     /**
-     * The description of flowlog.
+     * The description of the flowlog.
      */
     readonly description?: string;
+    /**
+     * The ID of FlowLog.
+     */
+    readonly flowLogId?: string;
+    /**
+     * The name of the flowlog.
+     */
+    readonly flowLogName?: string;
+    /**
+     * (Available since v1.236.0) Flowlog Version.
+     */
+    readonly flowLogVersion?: string;
+    /**
+     * A list of Flow Log Entries. Each element contains the following attributes:
+     */
     readonly flowlogs: outputs.cen.GetFlowlogsFlowlog[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * A list of CEN flow log IDs.
+     * A list of Flow Log IDs.
      */
     readonly ids: string[];
     /**
-     * The name of the log store which is in the  `projectName` SLS project.
+     * (Available since v1.236.0) The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+     */
+    readonly interval?: number;
+    /**
+     * The LogStore that stores the flowlog.
      */
     readonly logStoreName?: string;
     readonly nameRegex?: string;
     /**
-     * A list of CEN flow log names.
+     * A list of name of Flow Logs.
      */
     readonly names: string[];
     readonly outputFile?: string;
+    readonly pageNumber?: number;
+    readonly pageSize?: number;
     /**
-     * The name of the SLS project.
+     * The Project that stores the flowlog.
      */
     readonly projectName?: string;
     /**
-     * The status of flowlog.
+     * (Available since v1.236.0) Region Id.
+     */
+    readonly regionId?: string;
+    /**
+     * The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      */
     readonly status?: string;
+    /**
+     * (Available since v1.236.0) Transit Router ID.
+     */
+    readonly transitRouterId?: string;
 }
 /**
  * This data source provides CEN flow logs available to the user.
  *
- * > **NOTE:** Available in 1.78.0+
+ * > **NOTE:** Available since v1.78.0.
  *
  * ## Example Usage
  *
@@ -131,12 +231,43 @@ export interface GetFlowlogsResult {
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
  *
- * const default = alicloud.cen.getFlowlogs({
- *     ids: ["flowlog-tig1xxxxx"],
- *     nameRegex: "^foo",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
  * });
- * export const firstCenFlowlogId = defaultAlicloudCenInstances.flowlogs[0].id;
+ * const defaultc5kxyC = new alicloud.cen.Instance("defaultc5kxyC", {cenInstanceName: name});
+ * const defaultVw2U9u = new alicloud.cen.TransitRouter("defaultVw2U9u", {cenId: defaultc5kxyC.id});
+ * const defaultProject = new alicloud.log.Project("default", {
+ *     projectName: `${name}-${defaultInteger.result}`,
+ *     description: "terraform-example",
+ * });
+ * const defaultStore = new alicloud.log.Store("default", {
+ *     projectName: defaultProject.projectName,
+ *     logstoreName: `${name}-${defaultInteger.result}`,
+ *     shardCount: 3,
+ *     autoSplit: true,
+ *     maxSplitShardCount: 60,
+ *     appendMeta: true,
+ * });
+ * const defaultFlowLog = new alicloud.cen.FlowLog("default", {
+ *     projectName: defaultStore.projectName,
+ *     flowLogName: `${name}-${defaultInteger.result}`,
+ *     logFormatString: "${srcaddr}${dstaddr}${bytes}",
+ *     cenId: defaultc5kxyC.id,
+ *     logStoreName: defaultStore.logstoreName,
+ *     interval: 600,
+ *     status: "Active",
+ *     transitRouterId: defaultVw2U9u.transitRouterId,
+ *     description: "flowlog-resource-example-1",
+ * });
+ * const default = alicloud.cen.getFlowlogsOutput({
+ *     ids: [defaultFlowLog.id],
+ * });
+ * export const firstCenFlowlogId = _default.apply(_default => _default.flowlogs?.[0]?.id);
  * ```
  */
 export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowlogsResult> {
@@ -145,12 +276,20 @@ export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.In
     return pulumi.runtime.invokeOutput("alicloud:cen/getFlowlogs:getFlowlogs", {
         "cenId": args.cenId,
         "description": args.description,
+        "flowLogId": args.flowLogId,
+        "flowLogName": args.flowLogName,
+        "flowLogVersion": args.flowLogVersion,
         "ids": args.ids,
+        "interval": args.interval,
         "logStoreName": args.logStoreName,
         "nameRegex": args.nameRegex,
         "outputFile": args.outputFile,
+        "pageNumber": args.pageNumber,
+        "pageSize": args.pageSize,
         "projectName": args.projectName,
+        "regionId": args.regionId,
         "status": args.status,
+        "transitRouterId": args.transitRouterId,
     }, opts);
 }
 
@@ -159,23 +298,39 @@ export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.In
  */
 export interface GetFlowlogsOutputArgs {
     /**
-     * The ID of the CEN Instance.
+     * The ID of Cen instance.
      */
     cenId?: pulumi.Input<string>;
     /**
-     * The description of flowlog.
+     * The description of the flowlog.
      */
     description?: pulumi.Input<string>;
     /**
-     * A list of CEN flow log IDs.
+     * The ID of FlowLog.
+     */
+    flowLogId?: pulumi.Input<string>;
+    /**
+     * The name of the flowlog.
+     */
+    flowLogName?: pulumi.Input<string>;
+    /**
+     * Flowlog Version.
+     */
+    flowLogVersion?: pulumi.Input<string>;
+    /**
+     * A list of Flow Log IDs.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The name of the log store which is in the  `projectName` SLS project.
+     * The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+     */
+    interval?: pulumi.Input<number>;
+    /**
+     * The LogStore that stores the flowlog.
      */
     logStoreName?: pulumi.Input<string>;
     /**
-     * A regex string to filter CEN flow logs by name.
+     * A regex string to filter results by Group Metric Rule name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
@@ -183,11 +338,27 @@ export interface GetFlowlogsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The name of the SLS project.
+     * Current page number.
+     */
+    pageNumber?: pulumi.Input<number>;
+    /**
+     * Number of records per page.
+     */
+    pageSize?: pulumi.Input<number>;
+    /**
+     * The Project that stores the flowlog.
      */
     projectName?: pulumi.Input<string>;
     /**
-     * The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+     * Region id
+     */
+    regionId?: pulumi.Input<string>;
+    /**
+     * The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      */
     status?: pulumi.Input<string>;
+    /**
+     * Transit Router ID
+     */
+    transitRouterId?: pulumi.Input<string>;
 }
