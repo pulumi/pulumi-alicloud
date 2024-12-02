@@ -19,9 +19,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a CDN Domain resource. CDN domain name.
+ * Provides a CDN Domain resource.
  * 
- * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
+ * CDN domain name.
+ * 
+ * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
  * 
  * &gt; **NOTE:** Available since v1.34.0.
  * 
@@ -105,14 +107,14 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
         return this.cdnType;
     }
     /**
-     * Certificate configuration. See `certificate_config` below.
+     * Certificate configuration See `certificate_config` below.
      * 
      */
     @Export(name="certificateConfig", refs={DomainNewCertificateConfig.class}, tree="[0]")
     private Output<DomainNewCertificateConfig> certificateConfig;
 
     /**
-     * @return Certificate configuration. See `certificate_config` below.
+     * @return Certificate configuration See `certificate_config` below.
      * 
      */
     public Output<DomainNewCertificateConfig> certificateConfig() {
@@ -161,6 +163,20 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
         return this.domainName;
     }
     /**
+     * Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+     * 
+     */
+    @Export(name="env", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> env;
+
+    /**
+     * @return Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+     * 
+     */
+    public Output<Optional<String>> env() {
+        return Codegen.optional(this.env);
+    }
+    /**
      * The ID of the resource group.
      * 
      */
@@ -176,10 +192,6 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
     }
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
-     * - **domestic**: Mainland China only.
-     * - **overseas**: Global (excluding Mainland China).
-     * - **global**: global.
-     *   The default value is **domestic**.
      * 
      */
     @Export(name="scope", refs={String.class}, tree="[0]")
@@ -187,10 +199,6 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter&#39;s setting is valid Only for the international users and domestic L3 and above users. Value:
-     * - **domestic**: Mainland China only.
-     * - **overseas**: Global (excluding Mainland China).
-     * - **global**: global.
-     *   The default value is **domestic**.
      * 
      */
     public Output<String> scope() {
@@ -211,28 +219,28 @@ public class DomainNew extends com.pulumi.resources.CustomResource {
         return this.sources;
     }
     /**
-     * The status of the resource.
+     * The status of the resource, valid values: `online`, `offline`.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource, valid values: `online`, `offline`.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The tag of the resource.
+     * The tag of the resource
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return The tag of the resource
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {

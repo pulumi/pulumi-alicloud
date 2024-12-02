@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupServer {
     /**
-     * @return The port used by the backend server.
+     * @return (Optional, Computed, Int) The port that is used by the backend server.
      * 
      */
     private @Nullable Integer port;
@@ -24,33 +24,37 @@ public final class ServerGroupServer {
      */
     private @Nullable String serverGroupId;
     /**
-     * @return The ID of the backend server.
+     * @return The backend server ID.
+     * 
+     * - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - If the server group is of the `Ip` type, set ServerId to IP addresses.
      * 
      */
     private String serverId;
     /**
-     * @return Server ip.
+     * @return The IP address of the backend server.
      * 
      */
     private @Nullable String serverIp;
     /**
-     * @return Backend server type. Valid values:
-     * - `Ecs`: ECS instance.
-     * - `Eni`: ENI instance.
-     * - `Eci`: ECI elastic container.
-     * - `Ip`: Ip address.
+     * @return The type of the backend server. Valid values:
+     * 
+     * - `Ecs`: Elastic Compute Service (ECS) instance
+     * - `Eni`: elastic network interface (ENI)
+     * - `Eci`: elastic container instance
+     * - `Ip`: IP address
      * 
      */
     private String serverType;
     /**
-     * @return Server group status. Value:
+     * @return Indicates the status of the backend server.
      * 
      */
     private @Nullable String status;
 
     private ServerGroupServer() {}
     /**
-     * @return The port used by the backend server.
+     * @return (Optional, Computed, Int) The port that is used by the backend server.
      * 
      */
     public Optional<Integer> port() {
@@ -64,32 +68,36 @@ public final class ServerGroupServer {
         return Optional.ofNullable(this.serverGroupId);
     }
     /**
-     * @return The ID of the backend server.
+     * @return The backend server ID.
+     * 
+     * - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - If the server group is of the `Ip` type, set ServerId to IP addresses.
      * 
      */
     public String serverId() {
         return this.serverId;
     }
     /**
-     * @return Server ip.
+     * @return The IP address of the backend server.
      * 
      */
     public Optional<String> serverIp() {
         return Optional.ofNullable(this.serverIp);
     }
     /**
-     * @return Backend server type. Valid values:
-     * - `Ecs`: ECS instance.
-     * - `Eni`: ENI instance.
-     * - `Eci`: ECI elastic container.
-     * - `Ip`: Ip address.
+     * @return The type of the backend server. Valid values:
+     * 
+     * - `Ecs`: Elastic Compute Service (ECS) instance
+     * - `Eni`: elastic network interface (ENI)
+     * - `Eci`: elastic container instance
+     * - `Ip`: IP address
      * 
      */
     public String serverType() {
         return this.serverType;
     }
     /**
-     * @return Server group status. Value:
+     * @return Indicates the status of the backend server.
      * 
      */
     public Optional<String> status() {

@@ -206,6 +206,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterType!: pulumi.Output<string>;
     /**
+     * The deletion protection of EMR cluster.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.
      */
     public readonly deployMode!: pulumi.Output<string>;
@@ -264,6 +268,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["bootstrapScripts"] = state ? state.bootstrapScripts : undefined;
             resourceInputs["clusterName"] = state ? state.clusterName : undefined;
             resourceInputs["clusterType"] = state ? state.clusterType : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["deployMode"] = state ? state.deployMode : undefined;
             resourceInputs["logCollectStrategy"] = state ? state.logCollectStrategy : undefined;
             resourceInputs["nodeAttributes"] = state ? state.nodeAttributes : undefined;
@@ -299,6 +304,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["bootstrapScripts"] = args ? args.bootstrapScripts : undefined;
             resourceInputs["clusterName"] = args ? args.clusterName : undefined;
             resourceInputs["clusterType"] = args ? args.clusterType : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["deployMode"] = args ? args.deployMode : undefined;
             resourceInputs["logCollectStrategy"] = args ? args.logCollectStrategy : undefined;
             resourceInputs["nodeAttributes"] = args ? args.nodeAttributes : undefined;
@@ -339,6 +345,10 @@ export interface ClusterState {
      * EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
      */
     clusterType?: pulumi.Input<string>;
+    /**
+     * The deletion protection of EMR cluster.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.
      */
@@ -405,6 +415,10 @@ export interface ClusterArgs {
      * EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
      */
     clusterType: pulumi.Input<string>;
+    /**
+     * The deletion protection of EMR cluster.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The deploy mode of EMR cluster. Supported value: NORMAL or HA.
      */

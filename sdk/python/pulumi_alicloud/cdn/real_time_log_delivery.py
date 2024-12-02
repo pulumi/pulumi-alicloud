@@ -22,26 +22,34 @@ class RealTimeLogDeliveryArgs:
                  domain: pulumi.Input[str],
                  logstore: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 sls_region: pulumi.Input[str]):
+                 sls_region: pulumi.Input[str],
+                 status: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RealTimeLogDelivery resource.
-        :param pulumi.Input[str] domain: The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
-        :param pulumi.Input[str] logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-        :param pulumi.Input[str] project: The name of the Log Service project that is used for real-time log delivery.
-        :param pulumi.Input[str] sls_region: The region where the Log Service project is deployed.
+        :param pulumi.Input[str] domain: The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        :param pulumi.Input[str] logstore: The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
                
-               > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+               For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+        :param pulumi.Input[str] project: The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+        :param pulumi.Input[str] sls_region: The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+        :param pulumi.Input[str] status: Resource attribute fields that represent the status of the resource.
+               
+               Value:
+               - offline
+               - online
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "logstore", logstore)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "sls_region", sls_region)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
         """
         return pulumi.get(self, "domain")
 
@@ -53,7 +61,9 @@ class RealTimeLogDeliveryArgs:
     @pulumi.getter
     def logstore(self) -> pulumi.Input[str]:
         """
-        The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+        The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+
+        For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         """
         return pulumi.get(self, "logstore")
 
@@ -65,7 +75,7 @@ class RealTimeLogDeliveryArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        The name of the Log Service project that is used for real-time log delivery.
+        The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
         """
         return pulumi.get(self, "project")
 
@@ -77,15 +87,29 @@ class RealTimeLogDeliveryArgs:
     @pulumi.getter(name="slsRegion")
     def sls_region(self) -> pulumi.Input[str]:
         """
-        The region where the Log Service project is deployed.
-
-        > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+        The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         """
         return pulumi.get(self, "sls_region")
 
     @sls_region.setter
     def sls_region(self, value: pulumi.Input[str]):
         pulumi.set(self, "sls_region", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource attribute fields that represent the status of the resource.
+
+        Value:
+        - offline
+        - online
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
@@ -98,13 +122,17 @@ class _RealTimeLogDeliveryState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RealTimeLogDelivery resources.
-        :param pulumi.Input[str] domain: The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
-        :param pulumi.Input[str] logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-        :param pulumi.Input[str] project: The name of the Log Service project that is used for real-time log delivery.
-        :param pulumi.Input[str] sls_region: The region where the Log Service project is deployed.
+        :param pulumi.Input[str] domain: The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        :param pulumi.Input[str] logstore: The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
                
-               > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
-        :param pulumi.Input[str] status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+               For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+        :param pulumi.Input[str] project: The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+        :param pulumi.Input[str] sls_region: The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+        :param pulumi.Input[str] status: Resource attribute fields that represent the status of the resource.
+               
+               Value:
+               - offline
+               - online
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -121,7 +149,7 @@ class _RealTimeLogDeliveryState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
         """
         return pulumi.get(self, "domain")
 
@@ -133,7 +161,9 @@ class _RealTimeLogDeliveryState:
     @pulumi.getter
     def logstore(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+        The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+
+        For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         """
         return pulumi.get(self, "logstore")
 
@@ -145,7 +175,7 @@ class _RealTimeLogDeliveryState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Log Service project that is used for real-time log delivery.
+        The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
         """
         return pulumi.get(self, "project")
 
@@ -157,9 +187,7 @@ class _RealTimeLogDeliveryState:
     @pulumi.getter(name="slsRegion")
     def sls_region(self) -> Optional[pulumi.Input[str]]:
         """
-        The region where the Log Service project is deployed.
-
-        > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+        The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         """
         return pulumi.get(self, "sls_region")
 
@@ -171,7 +199,11 @@ class _RealTimeLogDeliveryState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        Resource attribute fields that represent the status of the resource.
+
+        Value:
+        - offline
+        - online
         """
         return pulumi.get(self, "status")
 
@@ -189,9 +221,12 @@ class RealTimeLogDelivery(pulumi.CustomResource):
                  logstore: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sls_region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a CDN Real Time Log Delivery resource.
+
+        Accelerate domain name real-time log push.
 
         For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
 
@@ -243,17 +278,22 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         CDN Real Time Log Delivery can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
+        $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
-        :param pulumi.Input[str] logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-        :param pulumi.Input[str] project: The name of the Log Service project that is used for real-time log delivery.
-        :param pulumi.Input[str] sls_region: The region where the Log Service project is deployed.
+        :param pulumi.Input[str] domain: The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        :param pulumi.Input[str] logstore: The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
                
-               > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+               For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+        :param pulumi.Input[str] project: The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+        :param pulumi.Input[str] sls_region: The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+        :param pulumi.Input[str] status: Resource attribute fields that represent the status of the resource.
+               
+               Value:
+               - offline
+               - online
         """
         ...
     @overload
@@ -264,6 +304,8 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         """
         Provides a CDN Real Time Log Delivery resource.
 
+        Accelerate domain name real-time log push.
+
         For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
 
         > **NOTE:** Available since v1.134.0.
@@ -314,7 +356,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         CDN Real Time Log Delivery can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
+        $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -336,6 +378,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
                  logstore: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sls_region: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -357,7 +400,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
             if sls_region is None and not opts.urn:
                 raise TypeError("Missing required property 'sls_region'")
             __props__.__dict__["sls_region"] = sls_region
-            __props__.__dict__["status"] = None
+            __props__.__dict__["status"] = status
         super(RealTimeLogDelivery, __self__).__init__(
             'alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery',
             resource_name,
@@ -380,13 +423,17 @@ class RealTimeLogDelivery(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain: The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
-        :param pulumi.Input[str] logstore: The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
-        :param pulumi.Input[str] project: The name of the Log Service project that is used for real-time log delivery.
-        :param pulumi.Input[str] sls_region: The region where the Log Service project is deployed.
+        :param pulumi.Input[str] domain: The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        :param pulumi.Input[str] logstore: The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
                
-               > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
-        :param pulumi.Input[str] status: The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+               For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+        :param pulumi.Input[str] project: The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
+        :param pulumi.Input[str] sls_region: The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
+        :param pulumi.Input[str] status: Resource attribute fields that represent the status of the resource.
+               
+               Value:
+               - offline
+               - online
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -403,7 +450,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
         """
         return pulumi.get(self, "domain")
 
@@ -411,7 +458,9 @@ class RealTimeLogDelivery(pulumi.CustomResource):
     @pulumi.getter
     def logstore(self) -> pulumi.Output[str]:
         """
-        The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+        The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+
+        For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         """
         return pulumi.get(self, "logstore")
 
@@ -419,7 +468,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The name of the Log Service project that is used for real-time log delivery.
+        The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
         """
         return pulumi.get(self, "project")
 
@@ -427,9 +476,7 @@ class RealTimeLogDelivery(pulumi.CustomResource):
     @pulumi.getter(name="slsRegion")
     def sls_region(self) -> pulumi.Output[str]:
         """
-        The region where the Log Service project is deployed.
-
-        > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+        The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         """
         return pulumi.get(self, "sls_region")
 
@@ -437,7 +484,11 @@ class RealTimeLogDelivery(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        Resource attribute fields that represent the status of the resource.
+
+        Value:
+        - offline
+        - online
         """
         return pulumi.get(self, "status")
 

@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Provides a CDN Real Time Log Delivery resource.
  *
+ * Accelerate domain name real-time log push.
+ *
  * For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
  *
  * > **NOTE:** Available since v1.134.0.
@@ -64,7 +66,7 @@ import * as utilities from "../utilities";
  * CDN Real Time Log Delivery can be imported using the id, e.g.
  *
  * ```sh
- * $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <domain>
+ * $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example <id>
  * ```
  */
 export class RealTimeLogDelivery extends pulumi.CustomResource {
@@ -96,27 +98,31 @@ export class RealTimeLogDelivery extends pulumi.CustomResource {
     }
 
     /**
-     * The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+     * The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+     * The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+     *
+     * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
     public readonly logstore!: pulumi.Output<string>;
     /**
-     * The name of the Log Service project that is used for real-time log delivery.
+     * The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The region where the Log Service project is deployed.
-     *
-     * > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+     * The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
     public readonly slsRegion!: pulumi.Output<string>;
     /**
-     * The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * Resource attribute fields that represent the status of the resource.
+     *
+     * Value:
+     * - offline
+     * - online
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
 
     /**
      * Create a RealTimeLogDelivery resource with the given unique name, arguments, and options.
@@ -154,7 +160,7 @@ export class RealTimeLogDelivery extends pulumi.CustomResource {
             resourceInputs["logstore"] = args ? args.logstore : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["slsRegion"] = args ? args.slsRegion : undefined;
-            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["status"] = args ? args.status : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RealTimeLogDelivery.__pulumiType, name, resourceInputs, opts);
@@ -166,25 +172,29 @@ export class RealTimeLogDelivery extends pulumi.CustomResource {
  */
 export interface RealTimeLogDeliveryState {
     /**
-     * The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+     * The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      */
     domain?: pulumi.Input<string>;
     /**
-     * The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+     * The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+     *
+     * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
     logstore?: pulumi.Input<string>;
     /**
-     * The name of the Log Service project that is used for real-time log delivery.
+     * The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
      */
     project?: pulumi.Input<string>;
     /**
-     * The region where the Log Service project is deployed.
-     *
-     * > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+     * The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
     slsRegion?: pulumi.Input<string>;
     /**
-     * The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * Resource attribute fields that represent the status of the resource.
+     *
+     * Value:
+     * - offline
+     * - online
      */
     status?: pulumi.Input<string>;
 }
@@ -194,21 +204,29 @@ export interface RealTimeLogDeliveryState {
  */
 export interface RealTimeLogDeliveryArgs {
     /**
-     * The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+     * The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      */
     domain: pulumi.Input<string>;
     /**
-     * The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+     * The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+     *
+     * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
     logstore: pulumi.Input<string>;
     /**
-     * The name of the Log Service project that is used for real-time log delivery.
+     * The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
      */
     project: pulumi.Input<string>;
     /**
-     * The region where the Log Service project is deployed.
-     *
-     * > **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+     * The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
     slsRegion: pulumi.Input<string>;
+    /**
+     * Resource attribute fields that represent the status of the resource.
+     *
+     * Value:
+     * - offline
+     * - online
+     */
+    status?: pulumi.Input<string>;
 }

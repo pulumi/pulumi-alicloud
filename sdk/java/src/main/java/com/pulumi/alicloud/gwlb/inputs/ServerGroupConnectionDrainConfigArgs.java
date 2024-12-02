@@ -17,14 +17,14 @@ public final class ServerGroupConnectionDrainConfigArgs extends com.pulumi.resou
     public static final ServerGroupConnectionDrainConfigArgs Empty = new ServerGroupConnectionDrainConfigArgs();
 
     /**
-     * Whether to open the connection graceful interrupt. Value:
+     * Indicates whether connection draining is enabled. Valid values:
      * 
      */
     @Import(name="connectionDrainEnabled")
     private @Nullable Output<Boolean> connectionDrainEnabled;
 
     /**
-     * @return Whether to open the connection graceful interrupt. Value:
+     * @return Indicates whether connection draining is enabled. Valid values:
      * 
      */
     public Optional<Output<Boolean>> connectionDrainEnabled() {
@@ -32,22 +32,26 @@ public final class ServerGroupConnectionDrainConfigArgs extends com.pulumi.resou
     }
 
     /**
-     * Connection Grace interrupt timeout.
+     * The timeout period of connection draining.
      * 
-     * Unit: seconds.
+     * Unit: seconds
      * 
-     * Value range: 1~3600.
+     * Valid values: `1` to `3600`.
+     * 
+     * Default value: `300`.
      * 
      */
     @Import(name="connectionDrainTimeout")
     private @Nullable Output<Integer> connectionDrainTimeout;
 
     /**
-     * @return Connection Grace interrupt timeout.
+     * @return The timeout period of connection draining.
      * 
-     * Unit: seconds.
+     * Unit: seconds
      * 
-     * Value range: 1~3600.
+     * Valid values: `1` to `3600`.
+     * 
+     * Default value: `300`.
      * 
      */
     public Optional<Output<Integer>> connectionDrainTimeout() {
@@ -80,7 +84,7 @@ public final class ServerGroupConnectionDrainConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param connectionDrainEnabled Whether to open the connection graceful interrupt. Value:
+         * @param connectionDrainEnabled Indicates whether connection draining is enabled. Valid values:
          * 
          * @return builder
          * 
@@ -91,7 +95,7 @@ public final class ServerGroupConnectionDrainConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param connectionDrainEnabled Whether to open the connection graceful interrupt. Value:
+         * @param connectionDrainEnabled Indicates whether connection draining is enabled. Valid values:
          * 
          * @return builder
          * 
@@ -101,11 +105,13 @@ public final class ServerGroupConnectionDrainConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param connectionDrainTimeout Connection Grace interrupt timeout.
+         * @param connectionDrainTimeout The timeout period of connection draining.
          * 
-         * Unit: seconds.
+         * Unit: seconds
          * 
-         * Value range: 1~3600.
+         * Valid values: `1` to `3600`.
+         * 
+         * Default value: `300`.
          * 
          * @return builder
          * 
@@ -116,11 +122,13 @@ public final class ServerGroupConnectionDrainConfigArgs extends com.pulumi.resou
         }
 
         /**
-         * @param connectionDrainTimeout Connection Grace interrupt timeout.
+         * @param connectionDrainTimeout The timeout period of connection draining.
          * 
-         * Unit: seconds.
+         * Unit: seconds
          * 
-         * Value range: 1~3600.
+         * Valid values: `1` to `3600`.
+         * 
+         * Default value: `300`.
          * 
          * @return builder
          * 

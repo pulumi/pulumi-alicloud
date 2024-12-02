@@ -12,6 +12,8 @@ namespace Pulumi.AliCloud.Cdn
     /// <summary>
     /// Provides a CDN Real Time Log Delivery resource.
     /// 
+    /// Accelerate domain name real-time log push.
+    /// 
     /// For information about CDN Real Time Log Delivery and how to use it, see [What is Real Time Log Delivery](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-createrealtimelogdelivery).
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
@@ -90,40 +92,44 @@ namespace Pulumi.AliCloud.Cdn
     /// CDN Real Time Log Delivery can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example &lt;domain&gt;
+    /// $ pulumi import alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:cdn/realTimeLogDelivery:RealTimeLogDelivery")]
     public partial class RealTimeLogDelivery : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        /// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+        /// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+        /// 
+        /// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         /// </summary>
         [Output("logstore")]
         public Output<string> Logstore { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Log Service project that is used for real-time log delivery.
+        /// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The region where the Log Service project is deployed.
-        /// 
-        /// &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+        /// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         /// </summary>
         [Output("slsRegion")]
         public Output<string> SlsRegion { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        /// Resource attribute fields that represent the status of the resource.
+        /// 
+        /// Value:
+        /// - offline
+        /// - online
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -175,30 +181,40 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class RealTimeLogDeliveryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        /// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+        /// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+        /// 
+        /// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         /// </summary>
         [Input("logstore", required: true)]
         public Input<string> Logstore { get; set; } = null!;
 
         /// <summary>
-        /// The name of the Log Service project that is used for real-time log delivery.
+        /// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The region where the Log Service project is deployed.
-        /// 
-        /// &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+        /// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         /// </summary>
         [Input("slsRegion", required: true)]
         public Input<string> SlsRegion { get; set; } = null!;
+
+        /// <summary>
+        /// Resource attribute fields that represent the status of the resource.
+        /// 
+        /// Value:
+        /// - offline
+        /// - online
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public RealTimeLogDeliveryArgs()
         {
@@ -209,33 +225,37 @@ namespace Pulumi.AliCloud.Cdn
     public sealed class RealTimeLogDeliveryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+        /// The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+        /// The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+        /// 
+        /// For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         /// </summary>
         [Input("logstore")]
         public Input<string>? Logstore { get; set; }
 
         /// <summary>
-        /// The name of the Log Service project that is used for real-time log delivery.
+        /// The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The region where the Log Service project is deployed.
-        /// 
-        /// &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+        /// The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
         /// </summary>
         [Input("slsRegion")]
         public Input<string>? SlsRegion { get; set; }
 
         /// <summary>
-        /// The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+        /// Resource attribute fields that represent the status of the resource.
+        /// 
+        /// Value:
+        /// - offline
+        /// - online
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

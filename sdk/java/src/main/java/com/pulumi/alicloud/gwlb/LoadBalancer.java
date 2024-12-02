@@ -37,132 +37,134 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:gwlb/loadBalancer:LoadBalancer")
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
-     * The protocol version. Value:
-     * - Ipv4: Ipv4 type
+     * The IP version. Valid values:
+     * 
+     * - `Ipv4`: IPv4 (default)
      * 
      */
     @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
     private Output<String> addressIpVersion;
 
     /**
-     * @return The protocol version. Value:
-     * - Ipv4: Ipv4 type
+     * @return The IP version. Valid values:
+     * 
+     * - `Ipv4`: IPv4 (default)
      * 
      */
     public Output<String> addressIpVersion() {
         return this.addressIpVersion;
     }
     /**
-     * The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+     * The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+     * @return The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform only a dry run, without performing the actual request.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The name of the Gateway Load Balancer instance.
+     * The GWLB instance name.
      * 
-     * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Export(name="loadBalancerName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loadBalancerName;
 
     /**
-     * @return The name of the Gateway Load Balancer instance.
+     * @return The GWLB instance name.
      * 
-     * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Output<Optional<String>> loadBalancerName() {
         return Codegen.optional(this.loadBalancerName);
     }
     /**
-     * The ID of the resource group
+     * The ID of the resource group.
      * 
      */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group
+     * @return The ID of the resource group.
      * 
      */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+     * The GWLB instance status.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+     * @return The GWLB instance status.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The list of tags.
+     * The tag keys. You can specify at most 20 tags in each call.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return The list of tags.
+     * @return The tag keys. You can specify at most 20 tags in each call.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The ID of the VPC which the Gateway Load Balancer instance belongs.
+     * The virtual private cloud (VPC) ID.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC which the Gateway Load Balancer instance belongs.
+     * @return The virtual private cloud (VPC) ID.
      * 
      */
     public Output<String> vpcId() {
         return this.vpcId;
     }
     /**
-     * The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+     * The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
      * 
      */
     @Export(name="zoneMappings", refs={List.class,LoadBalancerZoneMapping.class}, tree="[0,1]")
     private Output<List<LoadBalancerZoneMapping>> zoneMappings;
 
     /**
-     * @return The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+     * @return The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
      * 
      */
     public Output<List<LoadBalancerZoneMapping>> zoneMappings() {

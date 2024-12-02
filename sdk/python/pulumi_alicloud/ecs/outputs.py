@@ -17,6 +17,7 @@ from . import outputs
 
 __all__ = [
     'AutoProvisioningGroupLaunchTemplateConfig',
+    'AutoSnapshotPolicyCopyEncryptionConfiguration',
     'DedicatedHostNetworkAttribute',
     'EcsInstanceSetDataDisk',
     'EcsInstanceSetExcludeInstanceFilter',
@@ -35,6 +36,7 @@ __all__ = [
     'LaunchTemplateNetworkInterfaces',
     'LaunchTemplateSystemDisk',
     'ReservedInstanceOperationLock',
+    'SnapshotPolicyCopyEncryptionConfiguration',
     'GetActivationsActivationResult',
     'GetAutoSnapshotPoliciesPolicyResult',
     'GetCapacityReservationsReservationResult',
@@ -188,6 +190,54 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
         The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
         """
         return pulumi.get(self, "priority")
+
+
+@pulumi.output_type
+class AutoSnapshotPolicyCopyEncryptionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyId":
+            suggest = "kms_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoSnapshotPolicyCopyEncryptionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoSnapshotPolicyCopyEncryptionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoSnapshotPolicyCopyEncryptionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encrypted: Optional[bool] = None,
+                 kms_key_id: Optional[str] = None):
+        """
+        :param bool encrypted: Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+        :param str kms_key_id: The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+        """
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[bool]:
+        """
+        Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        """
+        The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+        """
+        return pulumi.get(self, "kms_key_id")
 
 
 @pulumi.output_type
@@ -1955,6 +2005,44 @@ class ReservedInstanceOperationLock(dict):
         The reason why the reserved instance was locked.
         """
         return pulumi.get(self, "lock_reason")
+
+
+@pulumi.output_type
+class SnapshotPolicyCopyEncryptionConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyId":
+            suggest = "kms_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SnapshotPolicyCopyEncryptionConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SnapshotPolicyCopyEncryptionConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SnapshotPolicyCopyEncryptionConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encrypted: Optional[bool] = None,
+                 kms_key_id: Optional[str] = None):
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[bool]:
+        return pulumi.get(self, "encrypted")
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[str]:
+        return pulumi.get(self, "kms_key_id")
 
 
 @pulumi.output_type

@@ -77,14 +77,14 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+     * Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
      * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
-     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -204,7 +204,7 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param weight Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+         * @param weight Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class DomainNewSourceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param weight Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+         * @param weight Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
          * 
          * @return builder
          * 

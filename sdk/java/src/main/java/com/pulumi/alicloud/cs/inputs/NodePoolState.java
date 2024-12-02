@@ -227,6 +227,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
+     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
      * 
      */
     @Import(name="imageType")
@@ -242,6 +243,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
+     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -1596,6 +1598,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * - `Windows` : Windows image.
          * - `WindowsCore` : WindowsCore image.
          * - `ContainerOS` : container-optimized image.
+         * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
          * 
          * @return builder
          * 
@@ -1615,6 +1618,7 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * - `Windows` : Windows image.
          * - `WindowsCore` : WindowsCore image.
          * - `ContainerOS` : container-optimized image.
+         * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
          * 
          * @return builder
          * 

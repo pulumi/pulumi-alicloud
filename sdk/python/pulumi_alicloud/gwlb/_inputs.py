@@ -33,15 +33,15 @@ if not MYPY:
     class LoadBalancerZoneMappingArgsDict(TypedDict):
         vswitch_id: pulumi.Input[str]
         """
-        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
         """
         zone_id: pulumi.Input[str]
         """
-        The ID of the zone to which the Gateway Load Balancer instance belongs.
+        The zone ID. You can call the DescribeZones operation to query the most recent zone list.
         """
         load_balancer_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgsDict']]]]
         """
-        The addresses of the Gateway Load Balancer instance.
+        The information about the IP addresses used by the GWLB instance.
         """
 elif False:
     LoadBalancerZoneMappingArgsDict: TypeAlias = Mapping[str, Any]
@@ -53,9 +53,9 @@ class LoadBalancerZoneMappingArgs:
                  zone_id: pulumi.Input[str],
                  load_balancer_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]] = None):
         """
-        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-        :param pulumi.Input[str] zone_id: The ID of the zone to which the Gateway Load Balancer instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]] load_balancer_addresses: The addresses of the Gateway Load Balancer instance.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
+        :param pulumi.Input[str] zone_id: The zone ID. You can call the DescribeZones operation to query the most recent zone list.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]] load_balancer_addresses: The information about the IP addresses used by the GWLB instance.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "zone_id", zone_id)
@@ -66,7 +66,7 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -78,7 +78,7 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The ID of the zone to which the Gateway Load Balancer instance belongs.
+        The zone ID. You can call the DescribeZones operation to query the most recent zone list.
         """
         return pulumi.get(self, "zone_id")
 
@@ -90,7 +90,7 @@ class LoadBalancerZoneMappingArgs:
     @pulumi.getter(name="loadBalancerAddresses")
     def load_balancer_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingLoadBalancerAddressArgs']]]]:
         """
-        The addresses of the Gateway Load Balancer instance.
+        The information about the IP addresses used by the GWLB instance.
         """
         return pulumi.get(self, "load_balancer_addresses")
 
@@ -103,11 +103,11 @@ if not MYPY:
     class LoadBalancerZoneMappingLoadBalancerAddressArgsDict(TypedDict):
         eni_id: NotRequired[pulumi.Input[str]]
         """
-        The ID of the ENI.
+        The ID of the elastic network interface (ENI) used by the GWLB instance.
         """
         private_ipv4_address: NotRequired[pulumi.Input[str]]
         """
-        IPv4 private network address.
+        The private IPv4 address.
         """
 elif False:
     LoadBalancerZoneMappingLoadBalancerAddressArgsDict: TypeAlias = Mapping[str, Any]
@@ -118,8 +118,8 @@ class LoadBalancerZoneMappingLoadBalancerAddressArgs:
                  eni_id: Optional[pulumi.Input[str]] = None,
                  private_ipv4_address: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] eni_id: The ID of the ENI.
-        :param pulumi.Input[str] private_ipv4_address: IPv4 private network address.
+        :param pulumi.Input[str] eni_id: The ID of the elastic network interface (ENI) used by the GWLB instance.
+        :param pulumi.Input[str] private_ipv4_address: The private IPv4 address.
         """
         if eni_id is not None:
             pulumi.set(__self__, "eni_id", eni_id)
@@ -130,7 +130,7 @@ class LoadBalancerZoneMappingLoadBalancerAddressArgs:
     @pulumi.getter(name="eniId")
     def eni_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the ENI.
+        The ID of the elastic network interface (ENI) used by the GWLB instance.
         """
         return pulumi.get(self, "eni_id")
 
@@ -142,7 +142,7 @@ class LoadBalancerZoneMappingLoadBalancerAddressArgs:
     @pulumi.getter(name="privateIpv4Address")
     def private_ipv4_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IPv4 private network address.
+        The private IPv4 address.
         """
         return pulumi.get(self, "private_ipv4_address")
 
@@ -155,15 +155,17 @@ if not MYPY:
     class ServerGroupConnectionDrainConfigArgsDict(TypedDict):
         connection_drain_enabled: NotRequired[pulumi.Input[bool]]
         """
-        Whether to open the connection graceful interrupt. Value:
+        Indicates whether connection draining is enabled. Valid values:
         """
         connection_drain_timeout: NotRequired[pulumi.Input[int]]
         """
-        Connection Grace interrupt timeout.
+        The timeout period of connection draining.
 
-        Unit: seconds.
+        Unit: seconds
 
-        Value range: 1~3600.
+        Valid values: `1` to `3600`.
+
+        Default value: `300`.
         """
 elif False:
     ServerGroupConnectionDrainConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -174,12 +176,14 @@ class ServerGroupConnectionDrainConfigArgs:
                  connection_drain_enabled: Optional[pulumi.Input[bool]] = None,
                  connection_drain_timeout: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[bool] connection_drain_enabled: Whether to open the connection graceful interrupt. Value:
-        :param pulumi.Input[int] connection_drain_timeout: Connection Grace interrupt timeout.
+        :param pulumi.Input[bool] connection_drain_enabled: Indicates whether connection draining is enabled. Valid values:
+        :param pulumi.Input[int] connection_drain_timeout: The timeout period of connection draining.
                
-               Unit: seconds.
+               Unit: seconds
                
-               Value range: 1~3600.
+               Valid values: `1` to `3600`.
+               
+               Default value: `300`.
         """
         if connection_drain_enabled is not None:
             pulumi.set(__self__, "connection_drain_enabled", connection_drain_enabled)
@@ -190,7 +194,7 @@ class ServerGroupConnectionDrainConfigArgs:
     @pulumi.getter(name="connectionDrainEnabled")
     def connection_drain_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to open the connection graceful interrupt. Value:
+        Indicates whether connection draining is enabled. Valid values:
         """
         return pulumi.get(self, "connection_drain_enabled")
 
@@ -202,11 +206,13 @@ class ServerGroupConnectionDrainConfigArgs:
     @pulumi.getter(name="connectionDrainTimeout")
     def connection_drain_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        Connection Grace interrupt timeout.
+        The timeout period of connection draining.
 
-        Unit: seconds.
+        Unit: seconds
 
-        Value range: 1~3600.
+        Valid values: `1` to `3600`.
+
+        Default value: `300`.
         """
         return pulumi.get(self, "connection_drain_timeout")
 
@@ -219,75 +225,76 @@ if not MYPY:
     class ServerGroupHealthCheckConfigArgsDict(TypedDict):
         health_check_connect_port: NotRequired[pulumi.Input[int]]
         """
-        The port of the backend server used for health check.
+        The backend server port that is used for health checks.
 
-        Value range: **1 to 65535**.
+        Valid values: `1` to `65535`.
 
         Default value: `80`.
         """
         health_check_connect_timeout: NotRequired[pulumi.Input[int]]
         """
-        The maximum timeout period for health check responses.
+        The maximum timeout period of a health check response.
 
-        Unit: seconds.
+        Unit: seconds
 
-        Value range: **1 to 300**.
+        Valid values: `1` to `300`.
 
         Default value: `5`.
         """
         health_check_domain: NotRequired[pulumi.Input[str]]
         """
-        The domain name used for health checks. Value:
-        - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+        The domain name that you want to use for health checks. Valid values:
+
+        *   **$SERVER_IP** (default): the private IP address of a backend server.
         """
         health_check_enabled: NotRequired[pulumi.Input[bool]]
         """
-        Whether to enable health check. Value:
-        - **true (default)**: enabled.
+        Specifies whether to enable the health check feature. Valid values:
         """
         health_check_http_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        Health status return code list.
+        The HTTP status codes that the system returns for health checks.
         """
         health_check_interval: NotRequired[pulumi.Input[int]]
         """
-        The time interval of the health check.
+        The interval at which health checks are performed.
 
-        Unit: seconds.
+        Unit: seconds
 
-        Value range: **1~50**.
+        Valid values: `1` to `50`.
 
         Default value: `10`.
         """
         health_check_path: NotRequired[pulumi.Input[str]]
         """
-        Health check path.
+        The URL that is used for health checks.
 
-        It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+        The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \\_ ; ~ ! ( ) \\* \\[ ] @ $ ^ : ' , + =
 
-        Must start with a forward slash (/).
+        The URL must start with a forward slash (/).
 
-        > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+        > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
         """
         health_check_protocol: NotRequired[pulumi.Input[str]]
         """
-        Health check protocol, value:
-        - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
-        - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
+        The protocol that is used for health checks. Valid values:
+
+        - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+        - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
         """
         healthy_threshold: NotRequired[pulumi.Input[int]]
         """
-        After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
 
-        Value range: **2 to 10**.
+        Valid values: `2` to `10`.
 
         Default value: `2`.
         """
         unhealthy_threshold: NotRequired[pulumi.Input[int]]
         """
-        The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
 
-        Value range: **2 to 10**.
+        Valid values: `2` to `10`.
 
         Default value: `2`.
         """
@@ -308,48 +315,49 @@ class ServerGroupHealthCheckConfigArgs:
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  unhealthy_threshold: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] health_check_connect_port: The port of the backend server used for health check.
+        :param pulumi.Input[int] health_check_connect_port: The backend server port that is used for health checks.
                
-               Value range: **1 to 65535**.
+               Valid values: `1` to `65535`.
                
                Default value: `80`.
-        :param pulumi.Input[int] health_check_connect_timeout: The maximum timeout period for health check responses.
+        :param pulumi.Input[int] health_check_connect_timeout: The maximum timeout period of a health check response.
                
-               Unit: seconds.
+               Unit: seconds
                
-               Value range: **1 to 300**.
+               Valid values: `1` to `300`.
                
                Default value: `5`.
-        :param pulumi.Input[str] health_check_domain: The domain name used for health checks. Value:
-               - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
-        :param pulumi.Input[bool] health_check_enabled: Whether to enable health check. Value:
-               - **true (default)**: enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_http_codes: Health status return code list.
-        :param pulumi.Input[int] health_check_interval: The time interval of the health check.
+        :param pulumi.Input[str] health_check_domain: The domain name that you want to use for health checks. Valid values:
                
-               Unit: seconds.
+               *   **$SERVER_IP** (default): the private IP address of a backend server.
+        :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_http_codes: The HTTP status codes that the system returns for health checks.
+        :param pulumi.Input[int] health_check_interval: The interval at which health checks are performed.
                
-               Value range: **1~50**.
+               Unit: seconds
+               
+               Valid values: `1` to `50`.
                
                Default value: `10`.
-        :param pulumi.Input[str] health_check_path: Health check path.
+        :param pulumi.Input[str] health_check_path: The URL that is used for health checks.
                
-               It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+               The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \\_ ; ~ ! ( ) \\* \\[ ] @ $ ^ : ' , + =
                
-               Must start with a forward slash (/).
+               The URL must start with a forward slash (/).
                
-               > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
-        :param pulumi.Input[str] health_check_protocol: Health check protocol, value:
-               - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
-               - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
-        :param pulumi.Input[int] healthy_threshold: After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+               > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used for health checks. Valid values:
                
-               Value range: **2 to 10**.
+               - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+               - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
+        :param pulumi.Input[int] healthy_threshold: The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+               
+               Valid values: `2` to `10`.
                
                Default value: `2`.
-        :param pulumi.Input[int] unhealthy_threshold: The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+        :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
                
-               Value range: **2 to 10**.
+               Valid values: `2` to `10`.
                
                Default value: `2`.
         """
@@ -378,9 +386,9 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckConnectPort")
     def health_check_connect_port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port of the backend server used for health check.
+        The backend server port that is used for health checks.
 
-        Value range: **1 to 65535**.
+        Valid values: `1` to `65535`.
 
         Default value: `80`.
         """
@@ -394,11 +402,11 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckConnectTimeout")
     def health_check_connect_timeout(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum timeout period for health check responses.
+        The maximum timeout period of a health check response.
 
-        Unit: seconds.
+        Unit: seconds
 
-        Value range: **1 to 300**.
+        Valid values: `1` to `300`.
 
         Default value: `5`.
         """
@@ -412,8 +420,9 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckDomain")
     def health_check_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain name used for health checks. Value:
-        - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+        The domain name that you want to use for health checks. Valid values:
+
+        *   **$SERVER_IP** (default): the private IP address of a backend server.
         """
         return pulumi.get(self, "health_check_domain")
 
@@ -425,8 +434,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckEnabled")
     def health_check_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable health check. Value:
-        - **true (default)**: enabled.
+        Specifies whether to enable the health check feature. Valid values:
         """
         return pulumi.get(self, "health_check_enabled")
 
@@ -438,7 +446,7 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckHttpCodes")
     def health_check_http_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Health status return code list.
+        The HTTP status codes that the system returns for health checks.
         """
         return pulumi.get(self, "health_check_http_codes")
 
@@ -450,11 +458,11 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckInterval")
     def health_check_interval(self) -> Optional[pulumi.Input[int]]:
         """
-        The time interval of the health check.
+        The interval at which health checks are performed.
 
-        Unit: seconds.
+        Unit: seconds
 
-        Value range: **1~50**.
+        Valid values: `1` to `50`.
 
         Default value: `10`.
         """
@@ -468,13 +476,13 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckPath")
     def health_check_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Health check path.
+        The URL that is used for health checks.
 
-        It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+        The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \\_ ; ~ ! ( ) \\* \\[ ] @ $ ^ : ' , + =
 
-        Must start with a forward slash (/).
+        The URL must start with a forward slash (/).
 
-        > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+        > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
         """
         return pulumi.get(self, "health_check_path")
 
@@ -486,9 +494,10 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Health check protocol, value:
-        - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
-        - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
+        The protocol that is used for health checks. Valid values:
+
+        - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+        - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -500,9 +509,9 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="healthyThreshold")
     def healthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+        The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
 
-        Value range: **2 to 10**.
+        Valid values: `2` to `10`.
 
         Default value: `2`.
         """
@@ -516,9 +525,9 @@ class ServerGroupHealthCheckConfigArgs:
     @pulumi.getter(name="unhealthyThreshold")
     def unhealthy_threshold(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+        The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
 
-        Value range: **2 to 10**.
+        Valid values: `2` to `10`.
 
         Default value: `2`.
         """
@@ -533,19 +542,23 @@ if not MYPY:
     class ServerGroupServerArgsDict(TypedDict):
         server_id: pulumi.Input[str]
         """
-        The ID of the backend server.
+        The backend server ID.
+
+        - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+        - If the server group is of the `Ip` type, set ServerId to IP addresses.
         """
         server_type: pulumi.Input[str]
         """
-        Backend server type. Valid values:
-        - `Ecs`: ECS instance.
-        - `Eni`: ENI instance.
-        - `Eci`: ECI elastic container.
-        - `Ip`: Ip address.
+        The type of the backend server. Valid values:
+
+        - `Ecs`: Elastic Compute Service (ECS) instance
+        - `Eni`: elastic network interface (ENI)
+        - `Eci`: elastic container instance
+        - `Ip`: IP address
         """
         port: NotRequired[pulumi.Input[int]]
         """
-        The port used by the backend server.
+        (Optional, Computed, Int) The port that is used by the backend server.
         """
         server_group_id: NotRequired[pulumi.Input[str]]
         """
@@ -553,11 +566,11 @@ if not MYPY:
         """
         server_ip: NotRequired[pulumi.Input[str]]
         """
-        Server ip.
+        The IP address of the backend server.
         """
         status: NotRequired[pulumi.Input[str]]
         """
-        Server group status. Value:
+        Indicates the status of the backend server.
         """
 elif False:
     ServerGroupServerArgsDict: TypeAlias = Mapping[str, Any]
@@ -572,16 +585,20 @@ class ServerGroupServerArgs:
                  server_ip: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] server_id: The ID of the backend server.
-        :param pulumi.Input[str] server_type: Backend server type. Valid values:
-               - `Ecs`: ECS instance.
-               - `Eni`: ENI instance.
-               - `Eci`: ECI elastic container.
-               - `Ip`: Ip address.
-        :param pulumi.Input[int] port: The port used by the backend server.
+        :param pulumi.Input[str] server_id: The backend server ID.
+               
+               - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+               - If the server group is of the `Ip` type, set ServerId to IP addresses.
+        :param pulumi.Input[str] server_type: The type of the backend server. Valid values:
+               
+               - `Ecs`: Elastic Compute Service (ECS) instance
+               - `Eni`: elastic network interface (ENI)
+               - `Eci`: elastic container instance
+               - `Ip`: IP address
+        :param pulumi.Input[int] port: (Optional, Computed, Int) The port that is used by the backend server.
         :param pulumi.Input[str] server_group_id: The server group ID.
-        :param pulumi.Input[str] server_ip: Server ip.
-        :param pulumi.Input[str] status: Server group status. Value:
+        :param pulumi.Input[str] server_ip: The IP address of the backend server.
+        :param pulumi.Input[str] status: Indicates the status of the backend server.
         """
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "server_type", server_type)
@@ -598,7 +615,10 @@ class ServerGroupServerArgs:
     @pulumi.getter(name="serverId")
     def server_id(self) -> pulumi.Input[str]:
         """
-        The ID of the backend server.
+        The backend server ID.
+
+        - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+        - If the server group is of the `Ip` type, set ServerId to IP addresses.
         """
         return pulumi.get(self, "server_id")
 
@@ -610,11 +630,12 @@ class ServerGroupServerArgs:
     @pulumi.getter(name="serverType")
     def server_type(self) -> pulumi.Input[str]:
         """
-        Backend server type. Valid values:
-        - `Ecs`: ECS instance.
-        - `Eni`: ENI instance.
-        - `Eci`: ECI elastic container.
-        - `Ip`: Ip address.
+        The type of the backend server. Valid values:
+
+        - `Ecs`: Elastic Compute Service (ECS) instance
+        - `Eni`: elastic network interface (ENI)
+        - `Eci`: elastic container instance
+        - `Ip`: IP address
         """
         return pulumi.get(self, "server_type")
 
@@ -626,7 +647,7 @@ class ServerGroupServerArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
         """
-        The port used by the backend server.
+        (Optional, Computed, Int) The port that is used by the backend server.
         """
         return pulumi.get(self, "port")
 
@@ -650,7 +671,7 @@ class ServerGroupServerArgs:
     @pulumi.getter(name="serverIp")
     def server_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        Server ip.
+        The IP address of the backend server.
         """
         return pulumi.get(self, "server_ip")
 
@@ -662,7 +683,7 @@ class ServerGroupServerArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Server group status. Value:
+        Indicates the status of the backend server.
         """
         return pulumi.get(self, "status")
 

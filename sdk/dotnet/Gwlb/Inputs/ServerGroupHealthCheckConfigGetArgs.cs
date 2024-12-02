@@ -13,9 +13,9 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
     public sealed class ServerGroupHealthCheckConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The port of the backend server used for health check.
+        /// The backend server port that is used for health checks.
         /// 
-        /// Value range: **1 to 65535**.
+        /// Valid values: `1` to `65535`.
         /// 
         /// Default value: `80`.
         /// </summary>
@@ -23,11 +23,11 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         public Input<int>? HealthCheckConnectPort { get; set; }
 
         /// <summary>
-        /// The maximum timeout period for health check responses.
+        /// The maximum timeout period of a health check response.
         /// 
-        /// Unit: seconds.
+        /// Unit: seconds
         /// 
-        /// Value range: **1 to 300**.
+        /// Valid values: `1` to `300`.
         /// 
         /// Default value: `5`.
         /// </summary>
@@ -35,15 +35,15 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         public Input<int>? HealthCheckConnectTimeout { get; set; }
 
         /// <summary>
-        /// The domain name used for health checks. Value:
-        /// - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+        /// The domain name that you want to use for health checks. Valid values:
+        /// 
+        /// *   **$SERVER_IP** (default): the private IP address of a backend server.
         /// </summary>
         [Input("healthCheckDomain")]
         public Input<string>? HealthCheckDomain { get; set; }
 
         /// <summary>
-        /// Whether to enable health check. Value:
-        /// - **true (default)**: enabled.
+        /// Specifies whether to enable the health check feature. Valid values:
         /// </summary>
         [Input("healthCheckEnabled")]
         public Input<bool>? HealthCheckEnabled { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         private InputList<string>? _healthCheckHttpCodes;
 
         /// <summary>
-        /// Health status return code list.
+        /// The HTTP status codes that the system returns for health checks.
         /// </summary>
         public InputList<string> HealthCheckHttpCodes
         {
@@ -61,11 +61,11 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         }
 
         /// <summary>
-        /// The time interval of the health check.
+        /// The interval at which health checks are performed.
         /// 
-        /// Unit: seconds.
+        /// Unit: seconds
         /// 
-        /// Value range: **1~50**.
+        /// Valid values: `1` to `50`.
         /// 
         /// Default value: `10`.
         /// </summary>
@@ -73,29 +73,30 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         public Input<int>? HealthCheckInterval { get; set; }
 
         /// <summary>
-        /// Health check path.
+        /// The URL that is used for health checks.
         /// 
-        /// It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&amp;) and extended character set_;~! ()*[]@$^: ',+ =
+        /// The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] @ $ ^ : ' , + =
         /// 
-        /// Must start with a forward slash (/).
+        /// The URL must start with a forward slash (/).
         /// 
-        /// &gt; **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+        /// &gt; **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
         /// </summary>
         [Input("healthCheckPath")]
         public Input<string>? HealthCheckPath { get; set; }
 
         /// <summary>
-        /// Health check protocol, value:
-        /// - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
-        /// - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
+        /// The protocol that is used for health checks. Valid values:
+        /// 
+        /// - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+        /// - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
         /// </summary>
         [Input("healthCheckProtocol")]
         public Input<string>? HealthCheckProtocol { get; set; }
 
         /// <summary>
-        /// After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
         /// 
-        /// Value range: **2 to 10**.
+        /// Valid values: `2` to `10`.
         /// 
         /// Default value: `2`.
         /// </summary>
@@ -103,9 +104,9 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         public Input<int>? HealthyThreshold { get; set; }
 
         /// <summary>
-        /// The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
         /// 
-        /// Value range: **2 to 10**.
+        /// Valid values: `2` to `10`.
         /// 
         /// Default value: `2`.
         /// </summary>

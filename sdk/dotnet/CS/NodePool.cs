@@ -107,6 +107,7 @@ namespace Pulumi.AliCloud.CS
         /// - `Windows` : Windows image.
         /// - `WindowsCore` : WindowsCore image.
         /// - `ContainerOS` : container-optimized image.
+        /// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
         /// </summary>
         [Output("imageType")]
         public Output<string> ImageType { get; private set; } = null!;
@@ -628,6 +629,7 @@ namespace Pulumi.AliCloud.CS
         /// - `Windows` : Windows image.
         /// - `WindowsCore` : WindowsCore image.
         /// - `ContainerOS` : container-optimized image.
+        /// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -1180,6 +1182,7 @@ namespace Pulumi.AliCloud.CS
         /// - `Windows` : Windows image.
         /// - `WindowsCore` : WindowsCore image.
         /// - `ContainerOS` : container-optimized image.
+        /// - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }

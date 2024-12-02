@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     public sealed class ClusterBootstrapScript
     {
         /// <summary>
-        /// The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+        /// The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
         /// </summary>
         public readonly string ExecutionFailStrategy;
         /// <summary>

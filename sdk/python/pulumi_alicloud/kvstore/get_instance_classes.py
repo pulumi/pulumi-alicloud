@@ -231,7 +231,7 @@ def get_instance_classes(architecture: Optional[str] = None,
     """
     This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
 
-    > **NOTE:** Available since v1.49.0+
+    > **NOTE:** Available since v1.49.0.
 
     ## Example Usage
 
@@ -258,11 +258,11 @@ def get_instance_classes(architecture: Optional[str] = None,
     :param str output_file: File name where to save data source results (after running `pulumi up`).
     :param str package_type: It has been deprecated from 1.68.0.
     :param str performance_type: It has been deprecated from 1.68.0.
+    :param str product_type: The type of the service. Valid values:
+           * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
+           * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
     :param str series_type: The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
     :param int shard_number: The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-           * product_type - (Optional, Available since 1.130.0) The type of the service. Valid values:
-           * Local: an ApsaraDB for Redis instance with a local disk.
-           * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
     :param str storage_type: It has been deprecated from 1.68.0.
     :param str zone_id: The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
     """
@@ -323,7 +323,7 @@ def get_instance_classes_output(architecture: Optional[pulumi.Input[Optional[str
     """
     This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
 
-    > **NOTE:** Available since v1.49.0+
+    > **NOTE:** Available since v1.49.0.
 
     ## Example Usage
 
@@ -350,11 +350,11 @@ def get_instance_classes_output(architecture: Optional[pulumi.Input[Optional[str
     :param str output_file: File name where to save data source results (after running `pulumi up`).
     :param str package_type: It has been deprecated from 1.68.0.
     :param str performance_type: It has been deprecated from 1.68.0.
+    :param str product_type: The type of the service. Valid values:
+           * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
+           * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
     :param str series_type: The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhanced_performance_type` and `hybrid_storage`.
     :param int shard_number: The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-           * product_type - (Optional, Available since 1.130.0) The type of the service. Valid values:
-           * Local: an ApsaraDB for Redis instance with a local disk.
-           * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
     :param str storage_type: It has been deprecated from 1.68.0.
     :param str zone_id: The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
     """

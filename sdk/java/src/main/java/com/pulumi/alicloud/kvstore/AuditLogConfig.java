@@ -173,7 +173,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
     /**
      * Audit Log Retention Period Value: 1~365.
      * 
-     * &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+     * &gt; **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
      * 
      */
     @Export(name="retention", refs={Integer.class}, tree="[0]")
@@ -182,7 +182,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return Audit Log Retention Period Value: 1~365.
      * 
-     * &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+     * &gt; **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
      * 
      */
     public Output<Optional<Integer>> retention() {

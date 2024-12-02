@@ -13,7 +13,7 @@ import (
 
 // This data source provides CEN flow logs available to the user.
 //
-// > **NOTE:** Available in 1.78.0+
+// > **NOTE:** Available since v1.78.0.
 //
 // ## Example Usage
 //
@@ -24,27 +24,84 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cen.GetFlowlogs(ctx, &cen.GetFlowlogsArgs{
-//				Ids: []string{
-//					"flowlog-tig1xxxxx",
-//				},
-//				NameRegex: pulumi.StringRef("^foo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstCenFlowlogId", defaultAlicloudCenInstances.Flowlogs[0].Id)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+// Min: 10000,
+// Max: 99999,
+// })
+// if err != nil {
+// return err
+// }
+// defaultc5kxyC, err := cen.NewInstance(ctx, "defaultc5kxyC", &cen.InstanceArgs{
+// CenInstanceName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// defaultVw2U9u, err := cen.NewTransitRouter(ctx, "defaultVw2U9u", &cen.TransitRouterArgs{
+// CenId: defaultc5kxyC.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+// ProjectName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// Description: pulumi.String("terraform-example"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
+// ProjectName: defaultProject.ProjectName,
+// LogstoreName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// ShardCount: pulumi.Int(3),
+// AutoSplit: pulumi.Bool(true),
+// MaxSplitShardCount: pulumi.Int(60),
+// AppendMeta: pulumi.Bool(true),
+// })
+// if err != nil {
+// return err
+// }
+// defaultFlowLog, err := cen.NewFlowLog(ctx, "default", &cen.FlowLogArgs{
+// ProjectName: defaultStore.ProjectName,
+// FlowLogName: pulumi.Sprintf("%v-%v", name, defaultInteger.Result),
+// LogFormatString: pulumi.String("${srcaddr}${dstaddr}${bytes}"),
+// CenId: defaultc5kxyC.ID(),
+// LogStoreName: defaultStore.LogstoreName,
+// Interval: pulumi.Int(600),
+// Status: pulumi.String("Active"),
+// TransitRouterId: defaultVw2U9u.TransitRouterId,
+// Description: pulumi.String("flowlog-resource-example-1"),
+// })
+// if err != nil {
+// return err
+// }
+// _default := cen.GetFlowlogsOutput(ctx, cen.GetFlowlogsOutputArgs{
+// Ids: pulumi.StringArray{
+// defaultFlowLog.ID(),
+// },
+// }, nil);
+// ctx.Export("firstCenFlowlogId", _default.ApplyT(func(_default cen.GetFlowlogsResult) (*string, error) {
+// return &default.Flowlogs[0].Id, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
 // ```
 func GetFlowlogs(ctx *pulumi.Context, args *GetFlowlogsArgs, opts ...pulumi.InvokeOption) (*GetFlowlogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -58,45 +115,76 @@ func GetFlowlogs(ctx *pulumi.Context, args *GetFlowlogsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getFlowlogs.
 type GetFlowlogsArgs struct {
-	// The ID of the CEN Instance.
+	// The ID of Cen instance.
 	CenId *string `pulumi:"cenId"`
-	// The description of flowlog.
+	// The description of the flowlog.
 	Description *string `pulumi:"description"`
-	// A list of CEN flow log IDs.
+	// The ID of FlowLog.
+	FlowLogId *string `pulumi:"flowLogId"`
+	// The name of the flowlog.
+	FlowLogName *string `pulumi:"flowLogName"`
+	// Flowlog Version.
+	FlowLogVersion *string `pulumi:"flowLogVersion"`
+	// A list of Flow Log IDs.
 	Ids []string `pulumi:"ids"`
-	// The name of the log store which is in the  `projectName` SLS project.
+	// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+	Interval *int `pulumi:"interval"`
+	// The LogStore that stores the flowlog.
 	LogStoreName *string `pulumi:"logStoreName"`
-	// A regex string to filter CEN flow logs by name.
+	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The name of the SLS project.
+	// Current page number.
+	PageNumber *int `pulumi:"pageNumber"`
+	// Number of records per page.
+	PageSize *int `pulumi:"pageSize"`
+	// The Project that stores the flowlog.
 	ProjectName *string `pulumi:"projectName"`
-	// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+	// Region id
+	RegionId *string `pulumi:"regionId"`
+	// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
 	Status *string `pulumi:"status"`
+	// Transit Router ID
+	TransitRouterId *string `pulumi:"transitRouterId"`
 }
 
 // A collection of values returned by getFlowlogs.
 type GetFlowlogsResult struct {
-	// The ID of the CEN Instance.
+	// The ID of Cen instance.
 	CenId *string `pulumi:"cenId"`
-	// The description of flowlog.
-	Description *string              `pulumi:"description"`
-	Flowlogs    []GetFlowlogsFlowlog `pulumi:"flowlogs"`
+	// The description of the flowlog.
+	Description *string `pulumi:"description"`
+	// The ID of FlowLog.
+	FlowLogId *string `pulumi:"flowLogId"`
+	// The name of the flowlog.
+	FlowLogName *string `pulumi:"flowLogName"`
+	// (Available since v1.236.0) Flowlog Version.
+	FlowLogVersion *string `pulumi:"flowLogVersion"`
+	// A list of Flow Log Entries. Each element contains the following attributes:
+	Flowlogs []GetFlowlogsFlowlog `pulumi:"flowlogs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A list of CEN flow log IDs.
+	// A list of Flow Log IDs.
 	Ids []string `pulumi:"ids"`
-	// The name of the log store which is in the  `projectName` SLS project.
+	// (Available since v1.236.0) The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+	Interval *int `pulumi:"interval"`
+	// The LogStore that stores the flowlog.
 	LogStoreName *string `pulumi:"logStoreName"`
 	NameRegex    *string `pulumi:"nameRegex"`
-	// A list of CEN flow log names.
+	// A list of name of Flow Logs.
 	Names      []string `pulumi:"names"`
 	OutputFile *string  `pulumi:"outputFile"`
-	// The name of the SLS project.
+	PageNumber *int     `pulumi:"pageNumber"`
+	PageSize   *int     `pulumi:"pageSize"`
+	// The Project that stores the flowlog.
 	ProjectName *string `pulumi:"projectName"`
-	// The status of flowlog.
+	// (Available since v1.236.0) Region Id.
+	RegionId *string `pulumi:"regionId"`
+	// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
 	Status *string `pulumi:"status"`
+	// (Available since v1.236.0) Transit Router ID.
+	TransitRouterId *string `pulumi:"transitRouterId"`
 }
 
 func GetFlowlogsOutput(ctx *pulumi.Context, args GetFlowlogsOutputArgs, opts ...pulumi.InvokeOption) GetFlowlogsResultOutput {
@@ -120,22 +208,38 @@ func GetFlowlogsOutput(ctx *pulumi.Context, args GetFlowlogsOutputArgs, opts ...
 
 // A collection of arguments for invoking getFlowlogs.
 type GetFlowlogsOutputArgs struct {
-	// The ID of the CEN Instance.
+	// The ID of Cen instance.
 	CenId pulumi.StringPtrInput `pulumi:"cenId"`
-	// The description of flowlog.
+	// The description of the flowlog.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// A list of CEN flow log IDs.
+	// The ID of FlowLog.
+	FlowLogId pulumi.StringPtrInput `pulumi:"flowLogId"`
+	// The name of the flowlog.
+	FlowLogName pulumi.StringPtrInput `pulumi:"flowLogName"`
+	// Flowlog Version.
+	FlowLogVersion pulumi.StringPtrInput `pulumi:"flowLogVersion"`
+	// A list of Flow Log IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The name of the log store which is in the  `projectName` SLS project.
+	// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+	Interval pulumi.IntPtrInput `pulumi:"interval"`
+	// The LogStore that stores the flowlog.
 	LogStoreName pulumi.StringPtrInput `pulumi:"logStoreName"`
-	// A regex string to filter CEN flow logs by name.
+	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The name of the SLS project.
+	// Current page number.
+	PageNumber pulumi.IntPtrInput `pulumi:"pageNumber"`
+	// Number of records per page.
+	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
+	// The Project that stores the flowlog.
 	ProjectName pulumi.StringPtrInput `pulumi:"projectName"`
-	// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+	// Region id
+	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
+	// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
 	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Transit Router ID
+	TransitRouterId pulumi.StringPtrInput `pulumi:"transitRouterId"`
 }
 
 func (GetFlowlogsOutputArgs) ElementType() reflect.Type {
@@ -157,16 +261,32 @@ func (o GetFlowlogsResultOutput) ToGetFlowlogsResultOutputWithContext(ctx contex
 	return o
 }
 
-// The ID of the CEN Instance.
+// The ID of Cen instance.
 func (o GetFlowlogsResultOutput) CenId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.CenId }).(pulumi.StringPtrOutput)
 }
 
-// The description of flowlog.
+// The description of the flowlog.
 func (o GetFlowlogsResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The ID of FlowLog.
+func (o GetFlowlogsResultOutput) FlowLogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.FlowLogId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the flowlog.
+func (o GetFlowlogsResultOutput) FlowLogName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.FlowLogName }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.236.0) Flowlog Version.
+func (o GetFlowlogsResultOutput) FlowLogVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.FlowLogVersion }).(pulumi.StringPtrOutput)
+}
+
+// A list of Flow Log Entries. Each element contains the following attributes:
 func (o GetFlowlogsResultOutput) Flowlogs() GetFlowlogsFlowlogArrayOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) []GetFlowlogsFlowlog { return v.Flowlogs }).(GetFlowlogsFlowlogArrayOutput)
 }
@@ -176,12 +296,17 @@ func (o GetFlowlogsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A list of CEN flow log IDs.
+// A list of Flow Log IDs.
 func (o GetFlowlogsResultOutput) Ids() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
-// The name of the log store which is in the  `projectName` SLS project.
+// (Available since v1.236.0) The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+func (o GetFlowlogsResultOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *int { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The LogStore that stores the flowlog.
 func (o GetFlowlogsResultOutput) LogStoreName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.LogStoreName }).(pulumi.StringPtrOutput)
 }
@@ -190,7 +315,7 @@ func (o GetFlowlogsResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
-// A list of CEN flow log names.
+// A list of name of Flow Logs.
 func (o GetFlowlogsResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -199,14 +324,32 @@ func (o GetFlowlogsResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
-// The name of the SLS project.
+func (o GetFlowlogsResultOutput) PageNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *int { return v.PageNumber }).(pulumi.IntPtrOutput)
+}
+
+func (o GetFlowlogsResultOutput) PageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
+}
+
+// The Project that stores the flowlog.
 func (o GetFlowlogsResultOutput) ProjectName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.ProjectName }).(pulumi.StringPtrOutput)
 }
 
-// The status of flowlog.
+// (Available since v1.236.0) Region Id.
+func (o GetFlowlogsResultOutput) RegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.RegionId }).(pulumi.StringPtrOutput)
+}
+
+// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
 func (o GetFlowlogsResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.236.0) Transit Router ID.
+func (o GetFlowlogsResultOutput) TransitRouterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFlowlogsResult) *string { return v.TransitRouterId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -10,13 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Nas
 {
     /// <summary>
-    /// Provides a Nas File System resource.
+    /// Provides a File Storage (NAS) File System resource.
     /// 
-    /// After activating NAS, you can create a file system and purchase a storage package for it in the NAS console. The NAS console also enables you to view the file system details and remove unnecessary file systems.
+    /// For information about File Storage (NAS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createfilesystem).
     /// 
-    /// For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
-    /// 
-    /// &gt; **NOTE:** Available in v1.33.0+.
+    /// &gt; **NOTE:** Available since v1.33.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,18 +28,30 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AliCloud.Nas.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
     ///         FileSystemType = "standard",
     ///     });
     /// 
-    ///     var foo = new AliCloud.Nas.FileSystem("foo", new()
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("default", new()
     ///     {
     ///         ProtocolType = "NFS",
-    ///         StorageType = "Performance",
-    ///         Description = "terraform-example",
+    ///         StorageType = "Capacity",
+    ///         Description = name,
     ///         EncryptType = 1,
-    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         FileSystemType = "standard",
+    ///         RecycleBin = new AliCloud.Nas.Inputs.FileSystemRecycleBinArgs
+    ///         {
+    ///             Status = "Enable",
+    ///             ReservedDays = 10,
+    ///         },
+    ///         NfsAcl = new AliCloud.Nas.Inputs.FileSystemNfsAclArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///     });
     /// 
     /// });
@@ -55,18 +65,22 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AliCloud.Nas.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
     ///         FileSystemType = "extreme",
     ///     });
     /// 
-    ///     var foo = new AliCloud.Nas.FileSystem("foo", new()
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("default", new()
     ///     {
-    ///         FileSystemType = "extreme",
     ///         ProtocolType = "NFS",
-    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
     ///         StorageType = "standard",
     ///         Capacity = 100,
+    ///         Description = name,
+    ///         EncryptType = 1,
+    ///         FileSystemType = "extreme",
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///     });
     /// 
     /// });
@@ -80,34 +94,37 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = AliCloud.Nas.GetZones.Invoke(new()
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "terraform-example";
+    ///     var @default = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
     ///         FileSystemType = "cpfs",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
-    ///         VpcName = "terraform-example",
+    ///         VpcName = name,
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
-    ///         VswitchName = "terraform-example",
+    ///         VswitchName = name,
     ///         CidrBlock = "172.17.3.0/24",
-    ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId)),
     ///     });
     /// 
-    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("example", new()
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("default", new()
     ///     {
     ///         ProtocolType = "cpfs",
-    ///         StorageType = "advance_200",
+    ///         StorageType = "advance_100",
+    ///         Capacity = 5000,
+    ///         Description = name,
     ///         FileSystemType = "cpfs",
-    ///         Capacity = 3600,
-    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId),
-    ///         VpcId = exampleNetwork.Id,
-    ///         VswitchId = exampleSwitch.Id,
+    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetwork.Id,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.ZoneId)),
     ///     });
     /// 
     /// });
@@ -115,66 +132,98 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// ## Import
     /// 
-    /// Nas File System can be imported using the id, e.g.
+    /// File Storage (NAS) File System can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
+    /// $ pulumi import alicloud:nas/fileSystem:FileSystem example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:nas/fileSystem:FileSystem")]
     public partial class FileSystem : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-        /// Unit: gib; **Note**: The minimum value is 100.
+        /// The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
         /// </summary>
         [Output("capacity")]
         public Output<int> Capacity { get; private set; } = null!;
 
         /// <summary>
-        /// The File System description.
+        /// (Available since v1.236.0) The time when the file system was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The description of the file system.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-        /// * Valid values:
+        /// Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
         /// </summary>
         [Output("encryptType")]
         public Output<int?> EncryptType { get; private set; } = null!;
 
         /// <summary>
-        /// the type of the file system. 
-        /// Valid values:
-        /// `standard` (Default),
-        /// `extreme`,
-        /// `cpfs`.
+        /// The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
         /// </summary>
         [Output("fileSystemType")]
-        public Output<string?> FileSystemType { get; private set; } = null!;
+        public Output<string> FileSystemType { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        /// The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol type of the file system.
-        /// Valid values:
-        /// `NFS`,
-        /// `SMB` (Available when the `file_system_type` is `standard`),
-        /// `cpfs` (Available when the `file_system_type` is `cpfs`).
+        /// The NFS ACL feature of the file system. See `nfs_acl` below.
+        /// &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        /// </summary>
+        [Output("nfsAcl")]
+        public Output<Outputs.FileSystemNfsAcl> NfsAcl { get; private set; } = null!;
+
+        /// <summary>
+        /// The protocol type of the file system. Valid values:
+        /// - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+        /// - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+        /// - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
         /// </summary>
         [Output("protocolType")]
         public Output<string> ProtocolType { get; private set; } = null!;
 
         /// <summary>
-        /// The storage type of the file System. 
-        /// * Valid values:
-        /// * `Performance` (Available when the `file_system_type` is `standard`)
-        /// * `Capacity` (Available when the `file_system_type` is `standard`)
+        /// The recycle bin feature of the file system. See `recycle_bin` below.
+        /// &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        /// </summary>
+        [Output("recycleBin")]
+        public Output<Outputs.FileSystemRecycleBin> RecycleBin { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+        /// </summary>
+        [Output("snapshotId")]
+        public Output<string?> SnapshotId { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.236.0) The status of the File System.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage type of the file system. Valid values:
+        /// - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+        /// - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+        /// - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+        /// &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
         /// </summary>
         [Output("storageType")]
         public Output<string> StorageType { get; private set; } = null!;
@@ -186,19 +235,19 @@ namespace Pulumi.AliCloud.Nas
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+        /// The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+        /// The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        /// The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -250,56 +299,76 @@ namespace Pulumi.AliCloud.Nas
     public sealed class FileSystemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-        /// Unit: gib; **Note**: The minimum value is 100.
+        /// The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
         /// </summary>
         [Input("capacity")]
         public Input<int>? Capacity { get; set; }
 
         /// <summary>
-        /// The File System description.
+        /// The description of the file system.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-        /// * Valid values:
+        /// Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
         /// </summary>
         [Input("encryptType")]
         public Input<int>? EncryptType { get; set; }
 
         /// <summary>
-        /// the type of the file system. 
-        /// Valid values:
-        /// `standard` (Default),
-        /// `extreme`,
-        /// `cpfs`.
+        /// The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
 
         /// <summary>
-        /// The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        /// The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The protocol type of the file system.
-        /// Valid values:
-        /// `NFS`,
-        /// `SMB` (Available when the `file_system_type` is `standard`),
-        /// `cpfs` (Available when the `file_system_type` is `cpfs`).
+        /// The NFS ACL feature of the file system. See `nfs_acl` below.
+        /// &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        /// </summary>
+        [Input("nfsAcl")]
+        public Input<Inputs.FileSystemNfsAclArgs>? NfsAcl { get; set; }
+
+        /// <summary>
+        /// The protocol type of the file system. Valid values:
+        /// - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+        /// - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+        /// - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
         /// </summary>
         [Input("protocolType", required: true)]
         public Input<string> ProtocolType { get; set; } = null!;
 
         /// <summary>
-        /// The storage type of the file System. 
-        /// * Valid values:
-        /// * `Performance` (Available when the `file_system_type` is `standard`)
-        /// * `Capacity` (Available when the `file_system_type` is `standard`)
+        /// The recycle bin feature of the file system. See `recycle_bin` below.
+        /// &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        /// </summary>
+        [Input("recycleBin")]
+        public Input<Inputs.FileSystemRecycleBinArgs>? RecycleBin { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+        /// </summary>
+        [Input("snapshotId")]
+        public Input<string>? SnapshotId { get; set; }
+
+        /// <summary>
+        /// The storage type of the file system. Valid values:
+        /// - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+        /// - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+        /// - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+        /// &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
         /// </summary>
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;
@@ -317,19 +386,19 @@ namespace Pulumi.AliCloud.Nas
         }
 
         /// <summary>
-        /// The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+        /// The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+        /// The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        /// The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -343,56 +412,88 @@ namespace Pulumi.AliCloud.Nas
     public sealed class FileSystemState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-        /// Unit: gib; **Note**: The minimum value is 100.
+        /// The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
         /// </summary>
         [Input("capacity")]
         public Input<int>? Capacity { get; set; }
 
         /// <summary>
-        /// The File System description.
+        /// (Available since v1.236.0) The time when the file system was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The description of the file system.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-        /// * Valid values:
+        /// Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
         /// </summary>
         [Input("encryptType")]
         public Input<int>? EncryptType { get; set; }
 
         /// <summary>
-        /// the type of the file system. 
-        /// Valid values:
-        /// `standard` (Default),
-        /// `extreme`,
-        /// `cpfs`.
+        /// The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
         /// </summary>
         [Input("fileSystemType")]
         public Input<string>? FileSystemType { get; set; }
 
         /// <summary>
-        /// The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        /// The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
-        /// The protocol type of the file system.
-        /// Valid values:
-        /// `NFS`,
-        /// `SMB` (Available when the `file_system_type` is `standard`),
-        /// `cpfs` (Available when the `file_system_type` is `cpfs`).
+        /// The NFS ACL feature of the file system. See `nfs_acl` below.
+        /// &gt; **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        /// </summary>
+        [Input("nfsAcl")]
+        public Input<Inputs.FileSystemNfsAclGetArgs>? NfsAcl { get; set; }
+
+        /// <summary>
+        /// The protocol type of the file system. Valid values:
+        /// - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+        /// - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+        /// - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
         /// </summary>
         [Input("protocolType")]
         public Input<string>? ProtocolType { get; set; }
 
         /// <summary>
-        /// The storage type of the file System. 
-        /// * Valid values:
-        /// * `Performance` (Available when the `file_system_type` is `standard`)
-        /// * `Capacity` (Available when the `file_system_type` is `standard`)
+        /// The recycle bin feature of the file system. See `recycle_bin` below.
+        /// &gt; **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        /// </summary>
+        [Input("recycleBin")]
+        public Input<Inputs.FileSystemRecycleBinGetArgs>? RecycleBin { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+        /// </summary>
+        [Input("snapshotId")]
+        public Input<string>? SnapshotId { get; set; }
+
+        /// <summary>
+        /// (Available since v1.236.0) The status of the File System.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The storage type of the file system. Valid values:
+        /// - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+        /// - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+        /// - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+        /// &gt; **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }
@@ -410,19 +511,19 @@ namespace Pulumi.AliCloud.Nas
         }
 
         /// <summary>
-        /// The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+        /// The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+        /// The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        /// The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

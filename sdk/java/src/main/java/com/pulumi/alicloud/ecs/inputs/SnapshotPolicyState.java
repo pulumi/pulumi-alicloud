@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.ecs.inputs;
 
+import com.pulumi.alicloud.ecs.inputs.SnapshotPolicyCopyEncryptionConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -19,11 +20,32 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
 
     public static final SnapshotPolicyState Empty = new SnapshotPolicyState();
 
+    @Import(name="autoSnapshotPolicyName")
+    private @Nullable Output<String> autoSnapshotPolicyName;
+
+    public Optional<Output<String>> autoSnapshotPolicyName() {
+        return Optional.ofNullable(this.autoSnapshotPolicyName);
+    }
+
     @Import(name="copiedSnapshotsRetentionDays")
     private @Nullable Output<Integer> copiedSnapshotsRetentionDays;
 
     public Optional<Output<Integer>> copiedSnapshotsRetentionDays() {
         return Optional.ofNullable(this.copiedSnapshotsRetentionDays);
+    }
+
+    @Import(name="copyEncryptionConfiguration")
+    private @Nullable Output<SnapshotPolicyCopyEncryptionConfigurationArgs> copyEncryptionConfiguration;
+
+    public Optional<Output<SnapshotPolicyCopyEncryptionConfigurationArgs>> copyEncryptionConfiguration() {
+        return Optional.ofNullable(this.copyEncryptionConfiguration);
+    }
+
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
     }
 
     @Import(name="enableCrossRegionCopy")
@@ -36,16 +58,31 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
     /**
      * The snapshot policy name.
      * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The snapshot policy name.
      * 
+     * @deprecated
+     * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+     * 
      */
+    @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="regionId")
+    private @Nullable Output<String> regionId;
+
+    public Optional<Output<String>> regionId() {
+        return Optional.ofNullable(this.regionId);
     }
 
     /**
@@ -65,6 +102,13 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<List<String>>> repeatWeekdays() {
         return Optional.ofNullable(this.repeatWeekdays);
+    }
+
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
     }
 
     /**
@@ -133,10 +177,15 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
     private SnapshotPolicyState() {}
 
     private SnapshotPolicyState(SnapshotPolicyState $) {
+        this.autoSnapshotPolicyName = $.autoSnapshotPolicyName;
         this.copiedSnapshotsRetentionDays = $.copiedSnapshotsRetentionDays;
+        this.copyEncryptionConfiguration = $.copyEncryptionConfiguration;
+        this.createTime = $.createTime;
         this.enableCrossRegionCopy = $.enableCrossRegionCopy;
         this.name = $.name;
+        this.regionId = $.regionId;
         this.repeatWeekdays = $.repeatWeekdays;
+        this.resourceGroupId = $.resourceGroupId;
         this.retentionDays = $.retentionDays;
         this.status = $.status;
         this.tags = $.tags;
@@ -162,6 +211,15 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
             $ = new SnapshotPolicyState(Objects.requireNonNull(defaults));
         }
 
+        public Builder autoSnapshotPolicyName(@Nullable Output<String> autoSnapshotPolicyName) {
+            $.autoSnapshotPolicyName = autoSnapshotPolicyName;
+            return this;
+        }
+
+        public Builder autoSnapshotPolicyName(String autoSnapshotPolicyName) {
+            return autoSnapshotPolicyName(Output.of(autoSnapshotPolicyName));
+        }
+
         public Builder copiedSnapshotsRetentionDays(@Nullable Output<Integer> copiedSnapshotsRetentionDays) {
             $.copiedSnapshotsRetentionDays = copiedSnapshotsRetentionDays;
             return this;
@@ -169,6 +227,24 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
 
         public Builder copiedSnapshotsRetentionDays(Integer copiedSnapshotsRetentionDays) {
             return copiedSnapshotsRetentionDays(Output.of(copiedSnapshotsRetentionDays));
+        }
+
+        public Builder copyEncryptionConfiguration(@Nullable Output<SnapshotPolicyCopyEncryptionConfigurationArgs> copyEncryptionConfiguration) {
+            $.copyEncryptionConfiguration = copyEncryptionConfiguration;
+            return this;
+        }
+
+        public Builder copyEncryptionConfiguration(SnapshotPolicyCopyEncryptionConfigurationArgs copyEncryptionConfiguration) {
+            return copyEncryptionConfiguration(Output.of(copyEncryptionConfiguration));
+        }
+
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         public Builder enableCrossRegionCopy(@Nullable Output<Boolean> enableCrossRegionCopy) {
@@ -185,7 +261,11 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
@@ -196,9 +276,22 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+         * 
          */
+        @Deprecated /* Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead. */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder regionId(@Nullable Output<String> regionId) {
+            $.regionId = regionId;
+            return this;
+        }
+
+        public Builder regionId(String regionId) {
+            return regionId(Output.of(regionId));
         }
 
         /**
@@ -236,6 +329,15 @@ public final class SnapshotPolicyState extends com.pulumi.resources.ResourceArgs
          */
         public Builder repeatWeekdays(String... repeatWeekdays) {
             return repeatWeekdays(List.of(repeatWeekdays));
+        }
+
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
         }
 
         /**

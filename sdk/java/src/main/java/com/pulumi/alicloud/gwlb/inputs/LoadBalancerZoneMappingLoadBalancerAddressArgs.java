@@ -16,14 +16,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     public static final LoadBalancerZoneMappingLoadBalancerAddressArgs Empty = new LoadBalancerZoneMappingLoadBalancerAddressArgs();
 
     /**
-     * The ID of the ENI.
+     * The ID of the elastic network interface (ENI) used by the GWLB instance.
      * 
      */
     @Import(name="eniId")
     private @Nullable Output<String> eniId;
 
     /**
-     * @return The ID of the ENI.
+     * @return The ID of the elastic network interface (ENI) used by the GWLB instance.
      * 
      */
     public Optional<Output<String>> eniId() {
@@ -31,14 +31,14 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
     }
 
     /**
-     * IPv4 private network address.
+     * The private IPv4 address.
      * 
      */
     @Import(name="privateIpv4Address")
     private @Nullable Output<String> privateIpv4Address;
 
     /**
-     * @return IPv4 private network address.
+     * @return The private IPv4 address.
      * 
      */
     public Optional<Output<String>> privateIpv4Address() {
@@ -71,7 +71,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param eniId The ID of the ENI.
+         * @param eniId The ID of the elastic network interface (ENI) used by the GWLB instance.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param eniId The ID of the ENI.
+         * @param eniId The ID of the elastic network interface (ENI) used by the GWLB instance.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param privateIpv4Address IPv4 private network address.
+         * @param privateIpv4Address The private IPv4 address.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class LoadBalancerZoneMappingLoadBalancerAddressArgs extends com.pu
         }
 
         /**
-         * @param privateIpv4Address IPv4 private network address.
+         * @param privateIpv4Address The private IPv4 address.
          * 
          * @return builder
          * 

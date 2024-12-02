@@ -18,14 +18,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     public static final ServerGroupServerArgs Empty = new ServerGroupServerArgs();
 
     /**
-     * The port used by the backend server.
+     * (Optional, Computed, Int) The port that is used by the backend server.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port used by the backend server.
+     * @return (Optional, Computed, Int) The port that is used by the backend server.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -48,14 +48,20 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the backend server.
+     * The backend server ID.
+     * 
+     * - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - If the server group is of the `Ip` type, set ServerId to IP addresses.
      * 
      */
     @Import(name="serverId", required=true)
     private Output<String> serverId;
 
     /**
-     * @return The ID of the backend server.
+     * @return The backend server ID.
+     * 
+     * - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - If the server group is of the `Ip` type, set ServerId to IP addresses.
      * 
      */
     public Output<String> serverId() {
@@ -63,14 +69,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Server ip.
+     * The IP address of the backend server.
      * 
      */
     @Import(name="serverIp")
     private @Nullable Output<String> serverIp;
 
     /**
-     * @return Server ip.
+     * @return The IP address of the backend server.
      * 
      */
     public Optional<Output<String>> serverIp() {
@@ -78,22 +84,24 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Backend server type. Valid values:
-     * - `Ecs`: ECS instance.
-     * - `Eni`: ENI instance.
-     * - `Eci`: ECI elastic container.
-     * - `Ip`: Ip address.
+     * The type of the backend server. Valid values:
+     * 
+     * - `Ecs`: Elastic Compute Service (ECS) instance
+     * - `Eni`: elastic network interface (ENI)
+     * - `Eci`: elastic container instance
+     * - `Ip`: IP address
      * 
      */
     @Import(name="serverType", required=true)
     private Output<String> serverType;
 
     /**
-     * @return Backend server type. Valid values:
-     * - `Ecs`: ECS instance.
-     * - `Eni`: ENI instance.
-     * - `Eci`: ECI elastic container.
-     * - `Ip`: Ip address.
+     * @return The type of the backend server. Valid values:
+     * 
+     * - `Ecs`: Elastic Compute Service (ECS) instance
+     * - `Eni`: elastic network interface (ENI)
+     * - `Eci`: elastic container instance
+     * - `Ip`: IP address
      * 
      */
     public Output<String> serverType() {
@@ -101,14 +109,14 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Server group status. Value:
+     * Indicates the status of the backend server.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Server group status. Value:
+     * @return Indicates the status of the backend server.
      * 
      */
     public Optional<Output<String>> status() {
@@ -145,7 +153,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port The port used by the backend server.
+         * @param port (Optional, Computed, Int) The port that is used by the backend server.
          * 
          * @return builder
          * 
@@ -156,7 +164,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param port The port used by the backend server.
+         * @param port (Optional, Computed, Int) The port that is used by the backend server.
          * 
          * @return builder
          * 
@@ -187,7 +195,10 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverId The ID of the backend server.
+         * @param serverId The backend server ID.
+         * 
+         * - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+         * - If the server group is of the `Ip` type, set ServerId to IP addresses.
          * 
          * @return builder
          * 
@@ -198,7 +209,10 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverId The ID of the backend server.
+         * @param serverId The backend server ID.
+         * 
+         * - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+         * - If the server group is of the `Ip` type, set ServerId to IP addresses.
          * 
          * @return builder
          * 
@@ -208,7 +222,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverIp Server ip.
+         * @param serverIp The IP address of the backend server.
          * 
          * @return builder
          * 
@@ -219,7 +233,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverIp Server ip.
+         * @param serverIp The IP address of the backend server.
          * 
          * @return builder
          * 
@@ -229,11 +243,12 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverType Backend server type. Valid values:
-         * - `Ecs`: ECS instance.
-         * - `Eni`: ENI instance.
-         * - `Eci`: ECI elastic container.
-         * - `Ip`: Ip address.
+         * @param serverType The type of the backend server. Valid values:
+         * 
+         * - `Ecs`: Elastic Compute Service (ECS) instance
+         * - `Eni`: elastic network interface (ENI)
+         * - `Eci`: elastic container instance
+         * - `Ip`: IP address
          * 
          * @return builder
          * 
@@ -244,11 +259,12 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serverType Backend server type. Valid values:
-         * - `Ecs`: ECS instance.
-         * - `Eni`: ENI instance.
-         * - `Eci`: ECI elastic container.
-         * - `Ip`: Ip address.
+         * @param serverType The type of the backend server. Valid values:
+         * 
+         * - `Ecs`: Elastic Compute Service (ECS) instance
+         * - `Eni`: elastic network interface (ENI)
+         * - `Eci`: elastic container instance
+         * - `Ip`: IP address
          * 
          * @return builder
          * 
@@ -258,7 +274,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status Server group status. Value:
+         * @param status Indicates the status of the backend server.
          * 
          * @return builder
          * 
@@ -269,7 +285,7 @@ public final class ServerGroupServerArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param status Server group status. Value:
+         * @param status Indicates the status of the backend server.
          * 
          * @return builder
          * 

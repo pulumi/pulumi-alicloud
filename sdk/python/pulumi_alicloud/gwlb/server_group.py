@@ -34,28 +34,35 @@ class ServerGroupArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
-        :param pulumi.Input[str] vpc_id: The VPC instance ID.
+        :param pulumi.Input[str] vpc_id: The VPC ID.
                
-               > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+               > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         :param pulumi.Input['ServerGroupConnectionDrainConfigArgs'] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input['ServerGroupHealthCheckConfigArgs'] health_check_config: Health check configurations. See `health_check_config` below.
-        :param pulumi.Input[str] protocol: Backend Protocol. Value:
+        :param pulumi.Input[str] protocol: The backend protocol. Valid values:
                
-               - *GENEVE (default)**.
+               - `GENEVE`(default)
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm. Value:
-               - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-               - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-               - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values:
+               
+               - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+               - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+               - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The server group name.
                
-               It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
-        :param pulumi.Input[str] server_group_type: The server group type. Value:
-               - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-               - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: List of servers. See `servers` below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of resource tags.
+               The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] server_group_type: The type of server group. Valid values:
+               
+               - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+               - `Ip`: allows you to add servers of by specifying IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The backend servers that you want to remove.
+               
+               > **NOTE:**  You can remove at most 200 backend servers in each call.
+               See `servers` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag keys.
+               
+               You can specify at most 20 tags in each call.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         if connection_drain_config is not None:
@@ -83,9 +90,9 @@ class ServerGroupArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
         """
-        The VPC instance ID.
+        The VPC ID.
 
-        > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+        > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -109,7 +116,7 @@ class ServerGroupArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to perform only a dry run, without performing the actual request.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -133,9 +140,9 @@ class ServerGroupArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Backend Protocol. Value:
+        The backend protocol. Valid values:
 
-        - *GENEVE (default)**.
+        - `GENEVE`(default)
         """
         return pulumi.get(self, "protocol")
 
@@ -159,10 +166,11 @@ class ServerGroupArgs:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        Scheduling algorithm. Value:
-        - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-        - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-        - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        The scheduling algorithm. Valid values:
+
+        - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         """
         return pulumi.get(self, "scheduler")
 
@@ -176,7 +184,7 @@ class ServerGroupArgs:
         """
         The server group name.
 
-        It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "server_group_name")
 
@@ -188,9 +196,10 @@ class ServerGroupArgs:
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The server group type. Value:
-        - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-        - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+        The type of server group. Valid values:
+
+        - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+        - `Ip`: allows you to add servers of by specifying IP addresses.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -202,7 +211,10 @@ class ServerGroupArgs:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
-        List of servers. See `servers` below.
+        The backend servers that you want to remove.
+
+        > **NOTE:**  You can remove at most 200 backend servers in each call.
+        See `servers` below.
         """
         return pulumi.get(self, "servers")
 
@@ -214,7 +226,9 @@ class ServerGroupArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        List of resource tags.
+        The tag keys.
+
+        You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
@@ -242,29 +256,36 @@ class _ServerGroupState:
         """
         Input properties used for looking up and filtering ServerGroup resources.
         :param pulumi.Input['ServerGroupConnectionDrainConfigArgs'] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
-        :param pulumi.Input[str] create_time: The creation time of the server group.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
+        :param pulumi.Input[str] create_time: The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input['ServerGroupHealthCheckConfigArgs'] health_check_config: Health check configurations. See `health_check_config` below.
-        :param pulumi.Input[str] protocol: Backend Protocol. Value:
+        :param pulumi.Input[str] protocol: The backend protocol. Valid values:
                
-               - *GENEVE (default)**.
+               - `GENEVE`(default)
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm. Value:
-               - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-               - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-               - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values:
+               
+               - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+               - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+               - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The server group name.
                
-               It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
-        :param pulumi.Input[str] server_group_type: The server group type. Value:
-               - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-               - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
-        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: List of servers. See `servers` below.
-        :param pulumi.Input[str] status: Server group status. Value:
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of resource tags.
-        :param pulumi.Input[str] vpc_id: The VPC instance ID.
+               The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] server_group_type: The type of server group. Valid values:
                
-               > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+               - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+               - `Ip`: allows you to add servers of by specifying IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: The backend servers that you want to remove.
+               
+               > **NOTE:**  You can remove at most 200 backend servers in each call.
+               See `servers` below.
+        :param pulumi.Input[str] status: Indicates the status of the backend server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag keys.
+               
+               You can specify at most 20 tags in each call.
+        :param pulumi.Input[str] vpc_id: The VPC ID.
+               
+               > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         """
         if connection_drain_config is not None:
             pulumi.set(__self__, "connection_drain_config", connection_drain_config)
@@ -309,7 +330,7 @@ class _ServerGroupState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The creation time of the server group.
+        The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -321,7 +342,7 @@ class _ServerGroupState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to perform only a dry run, without performing the actual request.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -345,9 +366,9 @@ class _ServerGroupState:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Backend Protocol. Value:
+        The backend protocol. Valid values:
 
-        - *GENEVE (default)**.
+        - `GENEVE`(default)
         """
         return pulumi.get(self, "protocol")
 
@@ -371,10 +392,11 @@ class _ServerGroupState:
     @pulumi.getter
     def scheduler(self) -> Optional[pulumi.Input[str]]:
         """
-        Scheduling algorithm. Value:
-        - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-        - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-        - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        The scheduling algorithm. Valid values:
+
+        - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         """
         return pulumi.get(self, "scheduler")
 
@@ -388,7 +410,7 @@ class _ServerGroupState:
         """
         The server group name.
 
-        It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "server_group_name")
 
@@ -400,9 +422,10 @@ class _ServerGroupState:
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The server group type. Value:
-        - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-        - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+        The type of server group. Valid values:
+
+        - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+        - `Ip`: allows you to add servers of by specifying IP addresses.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -414,7 +437,10 @@ class _ServerGroupState:
     @pulumi.getter
     def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]]:
         """
-        List of servers. See `servers` below.
+        The backend servers that you want to remove.
+
+        > **NOTE:**  You can remove at most 200 backend servers in each call.
+        See `servers` below.
         """
         return pulumi.get(self, "servers")
 
@@ -426,7 +452,7 @@ class _ServerGroupState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Server group status. Value:
+        Indicates the status of the backend server.
         """
         return pulumi.get(self, "status")
 
@@ -438,7 +464,9 @@ class _ServerGroupState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        List of resource tags.
+        The tag keys.
+
+        You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
@@ -450,9 +478,9 @@ class _ServerGroupState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VPC instance ID.
+        The VPC ID.
 
-        > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+        > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -496,27 +524,34 @@ class ServerGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']] health_check_config: Health check configurations. See `health_check_config` below.
-        :param pulumi.Input[str] protocol: Backend Protocol. Value:
+        :param pulumi.Input[str] protocol: The backend protocol. Valid values:
                
-               - *GENEVE (default)**.
+               - `GENEVE`(default)
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm. Value:
-               - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-               - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-               - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values:
+               
+               - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+               - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+               - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The server group name.
                
-               It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
-        :param pulumi.Input[str] server_group_type: The server group type. Value:
-               - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-               - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: List of servers. See `servers` below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of resource tags.
-        :param pulumi.Input[str] vpc_id: The VPC instance ID.
+               The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] server_group_type: The type of server group. Valid values:
                
-               > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+               - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+               - `Ip`: allows you to add servers of by specifying IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: The backend servers that you want to remove.
+               
+               > **NOTE:**  You can remove at most 200 backend servers in each call.
+               See `servers` below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag keys.
+               
+               You can specify at most 20 tags in each call.
+        :param pulumi.Input[str] vpc_id: The VPC ID.
+               
+               > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         """
         ...
     @overload
@@ -620,29 +655,36 @@ class ServerGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServerGroupConnectionDrainConfigArgs', 'ServerGroupConnectionDrainConfigArgsDict']] connection_drain_config: Connected graceful interrupt configuration. See `connection_drain_config` below.
-        :param pulumi.Input[str] create_time: The creation time of the server group.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
+        :param pulumi.Input[str] create_time: The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         :param pulumi.Input[Union['ServerGroupHealthCheckConfigArgs', 'ServerGroupHealthCheckConfigArgsDict']] health_check_config: Health check configurations. See `health_check_config` below.
-        :param pulumi.Input[str] protocol: Backend Protocol. Value:
+        :param pulumi.Input[str] protocol: The backend protocol. Valid values:
                
-               - *GENEVE (default)**.
+               - `GENEVE`(default)
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] scheduler: Scheduling algorithm. Value:
-               - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-               - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-               - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        :param pulumi.Input[str] scheduler: The scheduling algorithm. Valid values:
+               
+               - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+               - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+               - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         :param pulumi.Input[str] server_group_name: The server group name.
                
-               It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
-        :param pulumi.Input[str] server_group_type: The server group type. Value:
-               - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-               - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: List of servers. See `servers` below.
-        :param pulumi.Input[str] status: Server group status. Value:
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: List of resource tags.
-        :param pulumi.Input[str] vpc_id: The VPC instance ID.
+               The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
+        :param pulumi.Input[str] server_group_type: The type of server group. Valid values:
                
-               > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+               - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+               - `Ip`: allows you to add servers of by specifying IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServerGroupServerArgs', 'ServerGroupServerArgsDict']]]] servers: The backend servers that you want to remove.
+               
+               > **NOTE:**  You can remove at most 200 backend servers in each call.
+               See `servers` below.
+        :param pulumi.Input[str] status: Indicates the status of the backend server.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag keys.
+               
+               You can specify at most 20 tags in each call.
+        :param pulumi.Input[str] vpc_id: The VPC ID.
+               
+               > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -675,7 +717,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The creation time of the server group.
+        The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -683,7 +725,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to perform only a dry run, without performing the actual request.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -699,9 +741,9 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
         """
-        Backend Protocol. Value:
+        The backend protocol. Valid values:
 
-        - *GENEVE (default)**.
+        - `GENEVE`(default)
         """
         return pulumi.get(self, "protocol")
 
@@ -717,10 +759,11 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def scheduler(self) -> pulumi.Output[str]:
         """
-        Scheduling algorithm. Value:
-        - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-        - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-        - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+        The scheduling algorithm. Valid values:
+
+        - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+        - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
         """
         return pulumi.get(self, "scheduler")
 
@@ -730,7 +773,7 @@ class ServerGroup(pulumi.CustomResource):
         """
         The server group name.
 
-        It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\\_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "server_group_name")
 
@@ -738,9 +781,10 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="serverGroupType")
     def server_group_type(self) -> pulumi.Output[str]:
         """
-        The server group type. Value:
-        - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-        - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+        The type of server group. Valid values:
+
+        - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+        - `Ip`: allows you to add servers of by specifying IP addresses.
         """
         return pulumi.get(self, "server_group_type")
 
@@ -748,7 +792,10 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def servers(self) -> pulumi.Output[Optional[Sequence['outputs.ServerGroupServer']]]:
         """
-        List of servers. See `servers` below.
+        The backend servers that you want to remove.
+
+        > **NOTE:**  You can remove at most 200 backend servers in each call.
+        See `servers` below.
         """
         return pulumi.get(self, "servers")
 
@@ -756,7 +803,7 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Server group status. Value:
+        Indicates the status of the backend server.
         """
         return pulumi.get(self, "status")
 
@@ -764,7 +811,9 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        List of resource tags.
+        The tag keys.
+
+        You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
@@ -772,9 +821,9 @@ class ServerGroup(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The VPC instance ID.
+        The VPC ID.
 
-        > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+        > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
         """
         return pulumi.get(self, "vpc_id")
 

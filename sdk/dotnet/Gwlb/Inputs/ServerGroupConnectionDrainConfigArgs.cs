@@ -13,17 +13,19 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
     public sealed class ServerGroupConnectionDrainConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to open the connection graceful interrupt. Value:
+        /// Indicates whether connection draining is enabled. Valid values:
         /// </summary>
         [Input("connectionDrainEnabled")]
         public Input<bool>? ConnectionDrainEnabled { get; set; }
 
         /// <summary>
-        /// Connection Grace interrupt timeout.
+        /// The timeout period of connection draining.
         /// 
-        /// Unit: seconds.
+        /// Unit: seconds
         /// 
-        /// Value range: 1~3600.
+        /// Valid values: `1` to `3600`.
+        /// 
+        /// Default value: `300`.
         /// </summary>
         [Input("connectionDrainTimeout")]
         public Input<int>? ConnectionDrainTimeout { get; set; }

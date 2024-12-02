@@ -19,14 +19,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     public static final LoadBalancerZoneMappingArgs Empty = new LoadBalancerZoneMappingArgs();
 
     /**
-     * The addresses of the Gateway Load Balancer instance.
+     * The information about the IP addresses used by the GWLB instance.
      * 
      */
     @Import(name="loadBalancerAddresses")
     private @Nullable Output<List<LoadBalancerZoneMappingLoadBalancerAddressArgs>> loadBalancerAddresses;
 
     /**
-     * @return The addresses of the Gateway Load Balancer instance.
+     * @return The information about the IP addresses used by the GWLB instance.
      * 
      */
     public Optional<Output<List<LoadBalancerZoneMappingLoadBalancerAddressArgs>>> loadBalancerAddresses() {
@@ -34,14 +34,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+     * The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
      * 
      */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
     /**
-     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+     * @return The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
      * 
      */
     public Output<String> vswitchId() {
@@ -49,14 +49,14 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the zone to which the Gateway Load Balancer instance belongs.
+     * The zone ID. You can call the DescribeZones operation to query the most recent zone list.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The ID of the zone to which the Gateway Load Balancer instance belongs.
+     * @return The zone ID. You can call the DescribeZones operation to query the most recent zone list.
      * 
      */
     public Output<String> zoneId() {
@@ -90,7 +90,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param loadBalancerAddresses The addresses of the Gateway Load Balancer instance.
+         * @param loadBalancerAddresses The information about the IP addresses used by the GWLB instance.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param loadBalancerAddresses The addresses of the Gateway Load Balancer instance.
+         * @param loadBalancerAddresses The information about the IP addresses used by the GWLB instance.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param loadBalancerAddresses The addresses of the Gateway Load Balancer instance.
+         * @param loadBalancerAddresses The information about the IP addresses used by the GWLB instance.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         * @param vswitchId The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vswitchId The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+         * @param vswitchId The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The ID of the zone to which the Gateway Load Balancer instance belongs.
+         * @param zoneId The zone ID. You can call the DescribeZones operation to query the most recent zone list.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class LoadBalancerZoneMappingArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param zoneId The ID of the zone to which the Gateway Load Balancer instance belongs.
+         * @param zoneId The zone ID. You can call the DescribeZones operation to query the most recent zone list.
          * 
          * @return builder
          * 

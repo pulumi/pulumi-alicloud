@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['FileSystemArgs', 'FileSystem']
 
@@ -26,36 +28,40 @@ class FileSystemArgs:
                  encrypt_type: Optional[pulumi.Input[int]] = None,
                  file_system_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 nfs_acl: Optional[pulumi.Input['FileSystemNfsAclArgs']] = None,
+                 recycle_bin: Optional[pulumi.Input['FileSystemRecycleBinArgs']] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FileSystem resource.
-        :param pulumi.Input[str] protocol_type: The protocol type of the file system.
-               Valid values:
-               `NFS`,
-               `SMB` (Available when the `file_system_type` is `standard`),
-               `cpfs` (Available when the `file_system_type` is `cpfs`).
-        :param pulumi.Input[str] storage_type: The storage type of the file System. 
-               * Valid values:
-               * `Performance` (Available when the `file_system_type` is `standard`)
-               * `Capacity` (Available when the `file_system_type` is `standard`)
-        :param pulumi.Input[int] capacity: The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-               Unit: gib; **Note**: The minimum value is 100.
-        :param pulumi.Input[str] description: The File System description.
-        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-               * Valid values:
-        :param pulumi.Input[str] file_system_type: the type of the file system. 
-               Valid values:
-               `standard` (Default),
-               `extreme`,
-               `cpfs`.
-        :param pulumi.Input[str] kms_key_id: The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        :param pulumi.Input[str] protocol_type: The protocol type of the file system. Valid values:
+               - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+               - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+               - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
+        :param pulumi.Input[str] storage_type: The storage type of the file system. Valid values:
+               - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+               - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+               - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+               > **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
+        :param pulumi.Input[int] capacity: The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
+        :param pulumi.Input[str] description: The description of the file system.
+        :param pulumi.Input[int] encrypt_type: Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
+        :param pulumi.Input[str] file_system_type: The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
+        :param pulumi.Input['FileSystemNfsAclArgs'] nfs_acl: The NFS ACL feature of the file system. See `nfs_acl` below.
+               > **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        :param pulumi.Input['FileSystemRecycleBinArgs'] recycle_bin: The recycle bin feature of the file system. See `recycle_bin` below.
+               > **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
-        :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
-        :param pulumi.Input[str] zone_id: The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
+        :param pulumi.Input[str] zone_id: The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         """
         pulumi.set(__self__, "protocol_type", protocol_type)
         pulumi.set(__self__, "storage_type", storage_type)
@@ -69,6 +75,14 @@ class FileSystemArgs:
             pulumi.set(__self__, "file_system_type", file_system_type)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if nfs_acl is not None:
+            pulumi.set(__self__, "nfs_acl", nfs_acl)
+        if recycle_bin is not None:
+            pulumi.set(__self__, "recycle_bin", recycle_bin)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if vpc_id is not None:
@@ -82,11 +96,10 @@ class FileSystemArgs:
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> pulumi.Input[str]:
         """
-        The protocol type of the file system.
-        Valid values:
-        `NFS`,
-        `SMB` (Available when the `file_system_type` is `standard`),
-        `cpfs` (Available when the `file_system_type` is `cpfs`).
+        The protocol type of the file system. Valid values:
+        - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+        - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+        - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -98,10 +111,11 @@ class FileSystemArgs:
     @pulumi.getter(name="storageType")
     def storage_type(self) -> pulumi.Input[str]:
         """
-        The storage type of the file System. 
-        * Valid values:
-        * `Performance` (Available when the `file_system_type` is `standard`)
-        * `Capacity` (Available when the `file_system_type` is `standard`)
+        The storage type of the file system. Valid values:
+        - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+        - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+        - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+        > **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
         """
         return pulumi.get(self, "storage_type")
 
@@ -113,8 +127,7 @@ class FileSystemArgs:
     @pulumi.getter
     def capacity(self) -> Optional[pulumi.Input[int]]:
         """
-        The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-        Unit: gib; **Note**: The minimum value is 100.
+        The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
         """
         return pulumi.get(self, "capacity")
 
@@ -126,7 +139,7 @@ class FileSystemArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The File System description.
+        The description of the file system.
         """
         return pulumi.get(self, "description")
 
@@ -138,8 +151,7 @@ class FileSystemArgs:
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> Optional[pulumi.Input[int]]:
         """
-        Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-        * Valid values:
+        Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -151,11 +163,7 @@ class FileSystemArgs:
     @pulumi.getter(name="fileSystemType")
     def file_system_type(self) -> Optional[pulumi.Input[str]]:
         """
-        the type of the file system. 
-        Valid values:
-        `standard` (Default),
-        `extreme`,
-        `cpfs`.
+        The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
         """
         return pulumi.get(self, "file_system_type")
 
@@ -167,13 +175,63 @@ class FileSystemArgs:
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
     def kms_key_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_id", value)
+
+    @property
+    @pulumi.getter(name="nfsAcl")
+    def nfs_acl(self) -> Optional[pulumi.Input['FileSystemNfsAclArgs']]:
+        """
+        The NFS ACL feature of the file system. See `nfs_acl` below.
+        > **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        """
+        return pulumi.get(self, "nfs_acl")
+
+    @nfs_acl.setter
+    def nfs_acl(self, value: Optional[pulumi.Input['FileSystemNfsAclArgs']]):
+        pulumi.set(self, "nfs_acl", value)
+
+    @property
+    @pulumi.getter(name="recycleBin")
+    def recycle_bin(self) -> Optional[pulumi.Input['FileSystemRecycleBinArgs']]:
+        """
+        The recycle bin feature of the file system. See `recycle_bin` below.
+        > **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        """
+        return pulumi.get(self, "recycle_bin")
+
+    @recycle_bin.setter
+    def recycle_bin(self, value: Optional[pulumi.Input['FileSystemRecycleBinArgs']]):
+        pulumi.set(self, "recycle_bin", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
 
     @property
     @pulumi.getter
@@ -191,7 +249,7 @@ class FileSystemArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+        The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -203,7 +261,7 @@ class FileSystemArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+        The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -215,7 +273,7 @@ class FileSystemArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         """
         return pulumi.get(self, "zone_id")
 
@@ -228,11 +286,17 @@ class FileSystemArgs:
 class _FileSystemState:
     def __init__(__self__, *,
                  capacity: Optional[pulumi.Input[int]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encrypt_type: Optional[pulumi.Input[int]] = None,
                  file_system_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 nfs_acl: Optional[pulumi.Input['FileSystemNfsAclArgs']] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
+                 recycle_bin: Optional[pulumi.Input['FileSystemRecycleBinArgs']] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -240,33 +304,37 @@ class _FileSystemState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FileSystem resources.
-        :param pulumi.Input[int] capacity: The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-               Unit: gib; **Note**: The minimum value is 100.
-        :param pulumi.Input[str] description: The File System description.
-        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-               * Valid values:
-        :param pulumi.Input[str] file_system_type: the type of the file system. 
-               Valid values:
-               `standard` (Default),
-               `extreme`,
-               `cpfs`.
-        :param pulumi.Input[str] kms_key_id: The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
-        :param pulumi.Input[str] protocol_type: The protocol type of the file system.
-               Valid values:
-               `NFS`,
-               `SMB` (Available when the `file_system_type` is `standard`),
-               `cpfs` (Available when the `file_system_type` is `cpfs`).
-        :param pulumi.Input[str] storage_type: The storage type of the file System. 
-               * Valid values:
-               * `Performance` (Available when the `file_system_type` is `standard`)
-               * `Capacity` (Available when the `file_system_type` is `standard`)
+        :param pulumi.Input[int] capacity: The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
+        :param pulumi.Input[str] create_time: (Available since v1.236.0) The time when the file system was created.
+        :param pulumi.Input[str] description: The description of the file system.
+        :param pulumi.Input[int] encrypt_type: Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
+        :param pulumi.Input[str] file_system_type: The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
+        :param pulumi.Input['FileSystemNfsAclArgs'] nfs_acl: The NFS ACL feature of the file system. See `nfs_acl` below.
+               > **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        :param pulumi.Input[str] protocol_type: The protocol type of the file system. Valid values:
+               - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+               - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+               - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
+        :param pulumi.Input['FileSystemRecycleBinArgs'] recycle_bin: The recycle bin feature of the file system. See `recycle_bin` below.
+               > **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+        :param pulumi.Input[str] status: (Available since v1.236.0) The status of the File System.
+        :param pulumi.Input[str] storage_type: The storage type of the file system. Valid values:
+               - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+               - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+               - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+               > **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
-        :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
-        :param pulumi.Input[str] zone_id: The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
+        :param pulumi.Input[str] zone_id: The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         """
         if capacity is not None:
             pulumi.set(__self__, "capacity", capacity)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encrypt_type is not None:
@@ -275,8 +343,18 @@ class _FileSystemState:
             pulumi.set(__self__, "file_system_type", file_system_type)
         if kms_key_id is not None:
             pulumi.set(__self__, "kms_key_id", kms_key_id)
+        if nfs_acl is not None:
+            pulumi.set(__self__, "nfs_acl", nfs_acl)
         if protocol_type is not None:
             pulumi.set(__self__, "protocol_type", protocol_type)
+        if recycle_bin is not None:
+            pulumi.set(__self__, "recycle_bin", recycle_bin)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
+        if snapshot_id is not None:
+            pulumi.set(__self__, "snapshot_id", snapshot_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
         if tags is not None:
@@ -292,8 +370,7 @@ class _FileSystemState:
     @pulumi.getter
     def capacity(self) -> Optional[pulumi.Input[int]]:
         """
-        The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-        Unit: gib; **Note**: The minimum value is 100.
+        The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
         """
         return pulumi.get(self, "capacity")
 
@@ -302,10 +379,22 @@ class _FileSystemState:
         pulumi.set(self, "capacity", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.236.0) The time when the file system was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The File System description.
+        The description of the file system.
         """
         return pulumi.get(self, "description")
 
@@ -317,8 +406,7 @@ class _FileSystemState:
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> Optional[pulumi.Input[int]]:
         """
-        Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-        * Valid values:
+        Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -330,11 +418,7 @@ class _FileSystemState:
     @pulumi.getter(name="fileSystemType")
     def file_system_type(self) -> Optional[pulumi.Input[str]]:
         """
-        the type of the file system. 
-        Valid values:
-        `standard` (Default),
-        `extreme`,
-        `cpfs`.
+        The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
         """
         return pulumi.get(self, "file_system_type")
 
@@ -346,7 +430,7 @@ class _FileSystemState:
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
         """
         return pulumi.get(self, "kms_key_id")
 
@@ -355,14 +439,26 @@ class _FileSystemState:
         pulumi.set(self, "kms_key_id", value)
 
     @property
+    @pulumi.getter(name="nfsAcl")
+    def nfs_acl(self) -> Optional[pulumi.Input['FileSystemNfsAclArgs']]:
+        """
+        The NFS ACL feature of the file system. See `nfs_acl` below.
+        > **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        """
+        return pulumi.get(self, "nfs_acl")
+
+    @nfs_acl.setter
+    def nfs_acl(self, value: Optional[pulumi.Input['FileSystemNfsAclArgs']]):
+        pulumi.set(self, "nfs_acl", value)
+
+    @property
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol type of the file system.
-        Valid values:
-        `NFS`,
-        `SMB` (Available when the `file_system_type` is `standard`),
-        `cpfs` (Available when the `file_system_type` is `cpfs`).
+        The protocol type of the file system. Valid values:
+        - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+        - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+        - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
         """
         return pulumi.get(self, "protocol_type")
 
@@ -371,13 +467,63 @@ class _FileSystemState:
         pulumi.set(self, "protocol_type", value)
 
     @property
+    @pulumi.getter(name="recycleBin")
+    def recycle_bin(self) -> Optional[pulumi.Input['FileSystemRecycleBinArgs']]:
+        """
+        The recycle bin feature of the file system. See `recycle_bin` below.
+        > **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        """
+        return pulumi.get(self, "recycle_bin")
+
+    @recycle_bin.setter
+    def recycle_bin(self, value: Optional[pulumi.Input['FileSystemRecycleBinArgs']]):
+        pulumi.set(self, "recycle_bin", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @snapshot_id.setter
+    def snapshot_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.236.0) The status of the File System.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage type of the file System. 
-        * Valid values:
-        * `Performance` (Available when the `file_system_type` is `standard`)
-        * `Capacity` (Available when the `file_system_type` is `standard`)
+        The storage type of the file system. Valid values:
+        - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+        - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+        - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+        > **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
         """
         return pulumi.get(self, "storage_type")
 
@@ -401,7 +547,7 @@ class _FileSystemState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+        The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -413,7 +559,7 @@ class _FileSystemState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+        The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -425,7 +571,7 @@ class _FileSystemState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         """
         return pulumi.get(self, "zone_id")
 
@@ -444,7 +590,11 @@ class FileSystem(pulumi.CustomResource):
                  encrypt_type: Optional[pulumi.Input[int]] = None,
                  file_system_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 nfs_acl: Optional[pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
+                 recycle_bin: Optional[pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -452,13 +602,11 @@ class FileSystem(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Nas File System resource.
+        Provides a File Storage (NAS) File System resource.
 
-        After activating NAS, you can create a file system and purchase a storage package for it in the NAS console. The NAS console also enables you to view the file system details and remove unnecessary file systems.
+        For information about File Storage (NAS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createfilesystem).
 
-        For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
-
-        > **NOTE:** Available in v1.33.0+.
+        > **NOTE:** Available since v1.33.0.
 
         ## Example Usage
 
@@ -468,85 +616,108 @@ class FileSystem(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nas.get_zones(file_system_type="standard")
-        foo = alicloud.nas.FileSystem("foo",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.nas.get_zones(file_system_type="standard")
+        default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
+            storage_type="Capacity",
+            description=name,
             encrypt_type=1,
-            zone_id=example.zones[0].zone_id)
+            file_system_type="standard",
+            recycle_bin={
+                "status": "Enable",
+                "reserved_days": 10,
+            },
+            nfs_acl={
+                "enabled": True,
+            },
+            zone_id=default.zones[0].zone_id)
         ```
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nas.get_zones(file_system_type="extreme")
-        foo = alicloud.nas.FileSystem("foo",
-            file_system_type="extreme",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.nas.get_zones(file_system_type="extreme")
+        default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="NFS",
-            zone_id=example.zones[0].zone_id,
             storage_type="standard",
-            capacity=100)
+            capacity=100,
+            description=name,
+            encrypt_type=1,
+            file_system_type="extreme",
+            zone_id=default.zones[0].zone_id)
         ```
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nas.get_zones(file_system_type="cpfs")
-        example_network = alicloud.vpc.Network("example",
-            vpc_name="terraform-example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.nas.get_zones(file_system_type="cpfs")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("example",
-            vswitch_name="terraform-example",
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
             cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example.zones[1].zone_id)
-        example_file_system = alicloud.nas.FileSystem("example",
+            vpc_id=default_network.id,
+            zone_id=default.zones[1].zone_id)
+        default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="cpfs",
-            storage_type="advance_200",
+            storage_type="advance_100",
+            capacity=5000,
+            description=name,
             file_system_type="cpfs",
-            capacity=3600,
-            zone_id=example.zones[1].zone_id,
-            vpc_id=example_network.id,
-            vswitch_id=example_switch.id)
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            zone_id=default.zones[1].zone_id)
         ```
 
         ## Import
 
-        Nas File System can be imported using the id, e.g.
+        File Storage (NAS) File System can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
+        $ pulumi import alicloud:nas/fileSystem:FileSystem example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] capacity: The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-               Unit: gib; **Note**: The minimum value is 100.
-        :param pulumi.Input[str] description: The File System description.
-        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-               * Valid values:
-        :param pulumi.Input[str] file_system_type: the type of the file system. 
-               Valid values:
-               `standard` (Default),
-               `extreme`,
-               `cpfs`.
-        :param pulumi.Input[str] kms_key_id: The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
-        :param pulumi.Input[str] protocol_type: The protocol type of the file system.
-               Valid values:
-               `NFS`,
-               `SMB` (Available when the `file_system_type` is `standard`),
-               `cpfs` (Available when the `file_system_type` is `cpfs`).
-        :param pulumi.Input[str] storage_type: The storage type of the file System. 
-               * Valid values:
-               * `Performance` (Available when the `file_system_type` is `standard`)
-               * `Capacity` (Available when the `file_system_type` is `standard`)
+        :param pulumi.Input[int] capacity: The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
+        :param pulumi.Input[str] description: The description of the file system.
+        :param pulumi.Input[int] encrypt_type: Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
+        :param pulumi.Input[str] file_system_type: The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
+        :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: The NFS ACL feature of the file system. See `nfs_acl` below.
+               > **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        :param pulumi.Input[str] protocol_type: The protocol type of the file system. Valid values:
+               - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+               - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+               - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
+        :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']] recycle_bin: The recycle bin feature of the file system. See `recycle_bin` below.
+               > **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+        :param pulumi.Input[str] storage_type: The storage type of the file system. Valid values:
+               - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+               - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+               - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+               > **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
-        :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
-        :param pulumi.Input[str] zone_id: The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
+        :param pulumi.Input[str] zone_id: The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         """
         ...
     @overload
@@ -555,13 +726,11 @@ class FileSystem(pulumi.CustomResource):
                  args: FileSystemArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Nas File System resource.
+        Provides a File Storage (NAS) File System resource.
 
-        After activating NAS, you can create a file system and purchase a storage package for it in the NAS console. The NAS console also enables you to view the file system details and remove unnecessary file systems.
+        For information about File Storage (NAS) File System and how to use it, see [What is File System](https://www.alibabacloud.com/help/en/nas/developer-reference/api-nas-2017-06-26-createfilesystem).
 
-        For information about NAS file system and how to use it, see [Manage file systems](https://www.alibabacloud.com/help/doc-detail/27530.htm)
-
-        > **NOTE:** Available in v1.33.0+.
+        > **NOTE:** Available since v1.33.0.
 
         ## Example Usage
 
@@ -571,57 +740,80 @@ class FileSystem(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nas.get_zones(file_system_type="standard")
-        foo = alicloud.nas.FileSystem("foo",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.nas.get_zones(file_system_type="standard")
+        default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="NFS",
-            storage_type="Performance",
-            description="terraform-example",
+            storage_type="Capacity",
+            description=name,
             encrypt_type=1,
-            zone_id=example.zones[0].zone_id)
+            file_system_type="standard",
+            recycle_bin={
+                "status": "Enable",
+                "reserved_days": 10,
+            },
+            nfs_acl={
+                "enabled": True,
+            },
+            zone_id=default.zones[0].zone_id)
         ```
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nas.get_zones(file_system_type="extreme")
-        foo = alicloud.nas.FileSystem("foo",
-            file_system_type="extreme",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.nas.get_zones(file_system_type="extreme")
+        default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="NFS",
-            zone_id=example.zones[0].zone_id,
             storage_type="standard",
-            capacity=100)
+            capacity=100,
+            description=name,
+            encrypt_type=1,
+            file_system_type="extreme",
+            zone_id=default.zones[0].zone_id)
         ```
 
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.nas.get_zones(file_system_type="cpfs")
-        example_network = alicloud.vpc.Network("example",
-            vpc_name="terraform-example",
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "terraform-example"
+        default = alicloud.nas.get_zones(file_system_type="cpfs")
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=name,
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("example",
-            vswitch_name="terraform-example",
+        default_switch = alicloud.vpc.Switch("default",
+            vswitch_name=name,
             cidr_block="172.17.3.0/24",
-            vpc_id=example_network.id,
-            zone_id=example.zones[1].zone_id)
-        example_file_system = alicloud.nas.FileSystem("example",
+            vpc_id=default_network.id,
+            zone_id=default.zones[1].zone_id)
+        default_file_system = alicloud.nas.FileSystem("default",
             protocol_type="cpfs",
-            storage_type="advance_200",
+            storage_type="advance_100",
+            capacity=5000,
+            description=name,
             file_system_type="cpfs",
-            capacity=3600,
-            zone_id=example.zones[1].zone_id,
-            vpc_id=example_network.id,
-            vswitch_id=example_switch.id)
+            vswitch_id=default_switch.id,
+            vpc_id=default_network.id,
+            zone_id=default.zones[1].zone_id)
         ```
 
         ## Import
 
-        Nas File System can be imported using the id, e.g.
+        File Storage (NAS) File System can be imported using the id, e.g.
 
         ```sh
-        $ pulumi import alicloud:nas/fileSystem:FileSystem foo 1337849c59
+        $ pulumi import alicloud:nas/fileSystem:FileSystem example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -644,7 +836,11 @@ class FileSystem(pulumi.CustomResource):
                  encrypt_type: Optional[pulumi.Input[int]] = None,
                  file_system_type: Optional[pulumi.Input[str]] = None,
                  kms_key_id: Optional[pulumi.Input[str]] = None,
+                 nfs_acl: Optional[pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']]] = None,
                  protocol_type: Optional[pulumi.Input[str]] = None,
+                 recycle_bin: Optional[pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
+                 snapshot_id: Optional[pulumi.Input[str]] = None,
                  storage_type: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
@@ -664,9 +860,13 @@ class FileSystem(pulumi.CustomResource):
             __props__.__dict__["encrypt_type"] = encrypt_type
             __props__.__dict__["file_system_type"] = file_system_type
             __props__.__dict__["kms_key_id"] = kms_key_id
+            __props__.__dict__["nfs_acl"] = nfs_acl
             if protocol_type is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol_type'")
             __props__.__dict__["protocol_type"] = protocol_type
+            __props__.__dict__["recycle_bin"] = recycle_bin
+            __props__.__dict__["resource_group_id"] = resource_group_id
+            __props__.__dict__["snapshot_id"] = snapshot_id
             if storage_type is None and not opts.urn:
                 raise TypeError("Missing required property 'storage_type'")
             __props__.__dict__["storage_type"] = storage_type
@@ -674,6 +874,8 @@ class FileSystem(pulumi.CustomResource):
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["status"] = None
         super(FileSystem, __self__).__init__(
             'alicloud:nas/fileSystem:FileSystem',
             resource_name,
@@ -685,11 +887,17 @@ class FileSystem(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             capacity: Optional[pulumi.Input[int]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encrypt_type: Optional[pulumi.Input[int]] = None,
             file_system_type: Optional[pulumi.Input[str]] = None,
             kms_key_id: Optional[pulumi.Input[str]] = None,
+            nfs_acl: Optional[pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']]] = None,
             protocol_type: Optional[pulumi.Input[str]] = None,
+            recycle_bin: Optional[pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
+            snapshot_id: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             storage_type: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             vpc_id: Optional[pulumi.Input[str]] = None,
@@ -702,41 +910,49 @@ class FileSystem(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] capacity: The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-               Unit: gib; **Note**: The minimum value is 100.
-        :param pulumi.Input[str] description: The File System description.
-        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-               * Valid values:
-        :param pulumi.Input[str] file_system_type: the type of the file system. 
-               Valid values:
-               `standard` (Default),
-               `extreme`,
-               `cpfs`.
-        :param pulumi.Input[str] kms_key_id: The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
-        :param pulumi.Input[str] protocol_type: The protocol type of the file system.
-               Valid values:
-               `NFS`,
-               `SMB` (Available when the `file_system_type` is `standard`),
-               `cpfs` (Available when the `file_system_type` is `cpfs`).
-        :param pulumi.Input[str] storage_type: The storage type of the file System. 
-               * Valid values:
-               * `Performance` (Available when the `file_system_type` is `standard`)
-               * `Capacity` (Available when the `file_system_type` is `standard`)
+        :param pulumi.Input[int] capacity: The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
+        :param pulumi.Input[str] create_time: (Available since v1.236.0) The time when the file system was created.
+        :param pulumi.Input[str] description: The description of the file system.
+        :param pulumi.Input[int] encrypt_type: Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
+        :param pulumi.Input[str] file_system_type: The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
+        :param pulumi.Input[str] kms_key_id: The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
+        :param pulumi.Input[Union['FileSystemNfsAclArgs', 'FileSystemNfsAclArgsDict']] nfs_acl: The NFS ACL feature of the file system. See `nfs_acl` below.
+               > **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        :param pulumi.Input[str] protocol_type: The protocol type of the file system. Valid values:
+               - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+               - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+               - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
+        :param pulumi.Input[Union['FileSystemRecycleBinArgs', 'FileSystemRecycleBinArgsDict']] recycle_bin: The recycle bin feature of the file system. See `recycle_bin` below.
+               > **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] snapshot_id: The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+        :param pulumi.Input[str] status: (Available since v1.236.0) The status of the File System.
+        :param pulumi.Input[str] storage_type: The storage type of the file system. Valid values:
+               - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+               - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+               - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+               > **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
-        :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
-        :param pulumi.Input[str] zone_id: The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
+        :param pulumi.Input[str] zone_id: The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _FileSystemState.__new__(_FileSystemState)
 
         __props__.__dict__["capacity"] = capacity
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["encrypt_type"] = encrypt_type
         __props__.__dict__["file_system_type"] = file_system_type
         __props__.__dict__["kms_key_id"] = kms_key_id
+        __props__.__dict__["nfs_acl"] = nfs_acl
         __props__.__dict__["protocol_type"] = protocol_type
+        __props__.__dict__["recycle_bin"] = recycle_bin
+        __props__.__dict__["resource_group_id"] = resource_group_id
+        __props__.__dict__["snapshot_id"] = snapshot_id
+        __props__.__dict__["status"] = status
         __props__.__dict__["storage_type"] = storage_type
         __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_id"] = vpc_id
@@ -748,16 +964,23 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter
     def capacity(self) -> pulumi.Output[int]:
         """
-        The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
-        Unit: gib; **Note**: The minimum value is 100.
+        The capacity of the file system. Unit: GiB. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `capacity` must be set.
         """
         return pulumi.get(self, "capacity")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.236.0) The time when the file system was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The File System description.
+        The description of the file system.
         """
         return pulumi.get(self, "description")
 
@@ -765,20 +988,15 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> pulumi.Output[Optional[int]]:
         """
-        Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
-        * Valid values:
+        Specifies whether to encrypt data in the file system. Default value: `0`. Valid values:
         """
         return pulumi.get(self, "encrypt_type")
 
     @property
     @pulumi.getter(name="fileSystemType")
-    def file_system_type(self) -> pulumi.Output[Optional[str]]:
+    def file_system_type(self) -> pulumi.Output[str]:
         """
-        the type of the file system. 
-        Valid values:
-        `standard` (Default),
-        `extreme`,
-        `cpfs`.
+        The type of the file system. Default value: `standard`. Valid values: `standard`, `extreme`, `cpfs`.
         """
         return pulumi.get(self, "file_system_type")
 
@@ -786,30 +1004,72 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="kmsKeyId")
     def kms_key_id(self) -> pulumi.Output[str]:
         """
-        The id of the KMS key. The `kms_key_id` is required when the `encrypt_type` is `2`.
+        The ID of the KMS-managed key. **Note:** If `encrypt_type` is set to `2`, `kms_key_id` must be set.
         """
         return pulumi.get(self, "kms_key_id")
+
+    @property
+    @pulumi.getter(name="nfsAcl")
+    def nfs_acl(self) -> pulumi.Output['outputs.FileSystemNfsAcl']:
+        """
+        The NFS ACL feature of the file system. See `nfs_acl` below.
+        > **NOTE:** `nfs_acl` takes effect only if `file_system_type` is set to `standard`.
+        """
+        return pulumi.get(self, "nfs_acl")
 
     @property
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> pulumi.Output[str]:
         """
-        The protocol type of the file system.
-        Valid values:
-        `NFS`,
-        `SMB` (Available when the `file_system_type` is `standard`),
-        `cpfs` (Available when the `file_system_type` is `cpfs`).
+        The protocol type of the file system. Valid values:
+        - If `file_system_type` is set to `standard`. Valid values: `NFS`, `SMB`.
+        - If `file_system_type` is set to `extreme`. Valid values: `NFS`.
+        - If `file_system_type` is set to `cpfs`. Valid values: `cpfs`.
         """
         return pulumi.get(self, "protocol_type")
+
+    @property
+    @pulumi.getter(name="recycleBin")
+    def recycle_bin(self) -> pulumi.Output['outputs.FileSystemRecycleBin']:
+        """
+        The recycle bin feature of the file system. See `recycle_bin` below.
+        > **NOTE:** `recycle_bin` takes effect only if `file_system_type` is set to `standard`.
+        """
+        return pulumi.get(self, "recycle_bin")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @property
+    @pulumi.getter(name="snapshotId")
+    def snapshot_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the snapshot. **NOTE:** `snapshot_id` takes effect only if `file_system_type` is set to `extreme`.
+        """
+        return pulumi.get(self, "snapshot_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.236.0) The status of the File System.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> pulumi.Output[str]:
         """
-        The storage type of the file System. 
-        * Valid values:
-        * `Performance` (Available when the `file_system_type` is `standard`)
-        * `Capacity` (Available when the `file_system_type` is `standard`)
+        The storage type of the file system. Valid values:
+        - If `file_system_type` is set to `standard`. Valid values: `Performance`, `Capacity`, `Premium`.
+        - If `file_system_type` is set to `extreme`. Valid values: `standard`, `advance`.
+        - If `file_system_type` is set to `cpfs`. Valid values: `advance_100`, `advance_200`.
+        > **NOTE:** From version 1.140.0, `storage_type` can be set to `standard`, `advance`. From version 1.153.0, `storage_type` can be set to `advance_100`, `advance_200`. From version 1.236.0, `storage_type` can be set to `Premium`.
         """
         return pulumi.get(self, "storage_type")
 
@@ -825,7 +1085,7 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
+        The ID of the VPC. **NOTE:** `vpc_id` takes effect only if `file_system_type` is set to `cpfs`.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -833,7 +1093,7 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
+        The ID of the vSwitch. **NOTE:** `vswitch_id` takes effect only if `file_system_type` is set to `cpfs`.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -841,7 +1101,7 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The available zones information that supports nas.When FileSystemType=standard, this parameter is not required. **Note:** By default, a qualified availability zone is randomly selected according to the `protocol_type` and `storage_type` configuration.
+        The ID of the zone. **Note:** If `file_system_type` is set to `extreme` or `cpfs`, `zone_id` must be set.
         """
         return pulumi.get(self, "zone_id")
 

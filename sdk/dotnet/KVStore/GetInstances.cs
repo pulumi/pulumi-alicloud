@@ -12,8 +12,9 @@ namespace Pulumi.AliCloud.KVStore
     public static class GetInstances
     {
         /// <summary>
-        /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-        /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.15.0.
         /// 
         /// ## Example Usage
         /// 
@@ -41,8 +42,9 @@ namespace Pulumi.AliCloud.KVStore
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:kvstore/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-        /// Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+        /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+        /// 
+        /// &gt; **NOTE:** Available since v1.15.0.
         /// 
         /// ## Example Usage
         /// 
@@ -122,7 +124,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+        /// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         /// </summary>
         [Input("instanceClass")]
         public string? InstanceClass { get; set; }
@@ -262,7 +264,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+        /// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -373,7 +375,7 @@ namespace Pulumi.AliCloud.KVStore
         /// </summary>
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// (Optional) Type of the applied ApsaraDB for instance.
+        /// (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         /// For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
         /// </summary>
         public readonly string? InstanceClass;

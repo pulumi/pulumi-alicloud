@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Audit Log Retention Period Value: 1~365. 
         /// 
-        /// &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+        /// &gt; **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
         /// </summary>
         [Output("retention")]
         public Output<int?> Retention { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Audit Log Retention Period Value: 1~365. 
         /// 
-        /// &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+        /// &gt; **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
         /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Audit Log Retention Period Value: 1~365. 
         /// 
-        /// &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
+        /// &gt; **NOTE:** When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance for a Data Entry into Force.
         /// </summary>
         [Input("retention")]
         public Input<int>? Retention { get; set; }

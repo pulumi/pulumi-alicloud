@@ -407,7 +407,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since v1.49.0+
+     * &gt; **NOTE:** Available since v1.49.0.
      * 
      * ## Example Usage
      * 
@@ -462,7 +462,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since v1.49.0+
+     * &gt; **NOTE:** Available since v1.49.0.
      * 
      * ## Example Usage
      * 
@@ -517,7 +517,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since v1.49.0+
+     * &gt; **NOTE:** Available since v1.49.0.
      * 
      * ## Example Usage
      * 
@@ -572,7 +572,7 @@ public final class KvstoreFunctions {
     /**
      * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
      * 
-     * &gt; **NOTE:** Available since v1.49.0+
+     * &gt; **NOTE:** Available since v1.49.0.
      * 
      * ## Example Usage
      * 
@@ -845,8 +845,9 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:kvstore/getInstanceEngines:getInstanceEngines", TypeShape.of(GetInstanceEnginesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-     * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -889,8 +890,9 @@ public final class KvstoreFunctions {
         return getInstances(GetInstancesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-     * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -933,8 +935,9 @@ public final class KvstoreFunctions {
         return getInstancesPlain(GetInstancesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-     * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -977,8 +980,9 @@ public final class KvstoreFunctions {
         return getInstances(args, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-     * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -1021,8 +1025,9 @@ public final class KvstoreFunctions {
         return getInstancesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-     * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 
@@ -1065,8 +1070,9 @@ public final class KvstoreFunctions {
         return Deployment.getInstance().invoke("alicloud:kvstore/getInstances:getInstances", TypeShape.of(GetInstancesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
-     * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+     * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.15.0.
      * 
      * ## Example Usage
      * 

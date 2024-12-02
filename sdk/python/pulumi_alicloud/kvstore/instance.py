@@ -100,7 +100,7 @@ class InstanceArgs:
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
-        :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
         :param pulumi.Input[str] effective_time: The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
                - `Immediately` (Default): The configurations are immediately changed.
@@ -115,7 +115,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
         :param pulumi.Input[str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-        :param pulumi.Input[str] instance_class: Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
@@ -139,7 +139,7 @@ class InstanceArgs:
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
         :param pulumi.Input[str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -481,7 +481,7 @@ class InstanceArgs:
     @pulumi.getter(name="dedicatedHostGroupId")
     def dedicated_host_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
         """
         return pulumi.get(self, "dedicated_host_group_id")
 
@@ -630,7 +630,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
         or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         """
         return pulumi.get(self, "instance_class")
@@ -910,7 +910,7 @@ class InstanceArgs:
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         """
         return pulumi.get(self, "secondary_zone_id")
@@ -1169,7 +1169,7 @@ class _InstanceState:
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
-        :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
         :param pulumi.Input[str] effective_time: The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
                - `Immediately` (Default): The configurations are immediately changed.
@@ -1185,7 +1185,7 @@ class _InstanceState:
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
         :param pulumi.Input[str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-        :param pulumi.Input[str] instance_class: Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
@@ -1210,7 +1210,7 @@ class _InstanceState:
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
         :param pulumi.Input[str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -1591,7 +1591,7 @@ class _InstanceState:
     @pulumi.getter(name="dedicatedHostGroupId")
     def dedicated_host_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
         """
         return pulumi.get(self, "dedicated_host_group_id")
 
@@ -1752,7 +1752,7 @@ class _InstanceState:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
         or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         """
         return pulumi.get(self, "instance_class")
@@ -2044,7 +2044,7 @@ class _InstanceState:
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         """
         return pulumi.get(self, "secondary_zone_id")
@@ -2320,7 +2320,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
-        :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
         :param pulumi.Input[str] effective_time: The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
                - `Immediately` (Default): The configurations are immediately changed.
@@ -2335,7 +2335,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
         :param pulumi.Input[str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-        :param pulumi.Input[str] instance_class: Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
@@ -2359,7 +2359,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
         :param pulumi.Input[str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -2652,7 +2652,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
         :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
-        :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
         :param pulumi.Input[str] effective_time: The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
                - `Immediately` (Default): The configurations are immediately changed.
@@ -2668,7 +2668,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] global_instance: Whether to create a distributed cache. Default value: `false`.
         :param pulumi.Input[str] global_instance_id: The ID of distributed cache.
         :param pulumi.Input[str] instance_charge_type: It has been deprecated from provider version 1.101.0 and `payment_type` instead.
-        :param pulumi.Input[str] instance_class: Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        :param pulumi.Input[str] instance_class: Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
                or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         :param pulumi.Input[str] instance_name: It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
         :param pulumi.Input[bool] instance_release_protection: Whether to open the release protection.
@@ -2693,7 +2693,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the resource belongs.
         :param pulumi.Input[str] restore_time: The point in time of a backup file.
         :param pulumi.Input[str] role_arn: The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
-        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        :param pulumi.Input[str] secondary_zone_id: The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
                > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         :param pulumi.Input[str] security_group_id: The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
         :param pulumi.Input[str] security_ip_group_attribute: The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
@@ -2923,7 +2923,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dedicatedHostGroupId")
     def dedicated_host_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+        The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
         """
         return pulumi.get(self, "dedicated_host_group_id")
 
@@ -3032,7 +3032,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Output[Optional[str]]:
         """
-        Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore_get_instance_classes`
+        Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore_get_instance_classes`
         or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
         """
         return pulumi.get(self, "instance_class")
@@ -3228,7 +3228,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="secondaryZoneId")
     def secondary_zone_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+        The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
         > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
         """
         return pulumi.get(self, "secondary_zone_id")

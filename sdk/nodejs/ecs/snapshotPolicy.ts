@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -71,18 +73,25 @@ export class SnapshotPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === SnapshotPolicy.__pulumiType;
     }
 
-    public readonly copiedSnapshotsRetentionDays!: pulumi.Output<number | undefined>;
+    public readonly autoSnapshotPolicyName!: pulumi.Output<string>;
+    public readonly copiedSnapshotsRetentionDays!: pulumi.Output<number>;
+    public readonly copyEncryptionConfiguration!: pulumi.Output<outputs.ecs.SnapshotPolicyCopyEncryptionConfiguration | undefined>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     public readonly enableCrossRegionCopy!: pulumi.Output<boolean | undefined>;
     /**
      * The snapshot policy name.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      */
     public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly regionId!: pulumi.Output<string>;
     /**
      * The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
      * - A maximum of seven time points can be selected.
      * - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
      */
     public readonly repeatWeekdays!: pulumi.Output<string[]>;
+    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
      * The snapshot retention time, and the unit of measurement is day. Optional values:
      * - -1: The automatic snapshots are retained permanently.
@@ -114,10 +123,15 @@ export class SnapshotPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SnapshotPolicyState | undefined;
+            resourceInputs["autoSnapshotPolicyName"] = state ? state.autoSnapshotPolicyName : undefined;
             resourceInputs["copiedSnapshotsRetentionDays"] = state ? state.copiedSnapshotsRetentionDays : undefined;
+            resourceInputs["copyEncryptionConfiguration"] = state ? state.copyEncryptionConfiguration : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["enableCrossRegionCopy"] = state ? state.enableCrossRegionCopy : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["regionId"] = state ? state.regionId : undefined;
             resourceInputs["repeatWeekdays"] = state ? state.repeatWeekdays : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
@@ -134,14 +148,19 @@ export class SnapshotPolicy extends pulumi.CustomResource {
             if ((!args || args.timePoints === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timePoints'");
             }
+            resourceInputs["autoSnapshotPolicyName"] = args ? args.autoSnapshotPolicyName : undefined;
             resourceInputs["copiedSnapshotsRetentionDays"] = args ? args.copiedSnapshotsRetentionDays : undefined;
+            resourceInputs["copyEncryptionConfiguration"] = args ? args.copyEncryptionConfiguration : undefined;
             resourceInputs["enableCrossRegionCopy"] = args ? args.enableCrossRegionCopy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["repeatWeekdays"] = args ? args.repeatWeekdays : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["targetCopyRegions"] = args ? args.targetCopyRegions : undefined;
             resourceInputs["timePoints"] = args ? args.timePoints : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["regionId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -153,18 +172,25 @@ export class SnapshotPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SnapshotPolicy resources.
  */
 export interface SnapshotPolicyState {
+    autoSnapshotPolicyName?: pulumi.Input<string>;
     copiedSnapshotsRetentionDays?: pulumi.Input<number>;
+    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.SnapshotPolicyCopyEncryptionConfiguration>;
+    createTime?: pulumi.Input<string>;
     enableCrossRegionCopy?: pulumi.Input<boolean>;
     /**
      * The snapshot policy name.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      */
     name?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string>;
     /**
      * The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
      * - A maximum of seven time points can be selected.
      * - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
      */
     repeatWeekdays?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The snapshot retention time, and the unit of measurement is day. Optional values:
      * - -1: The automatic snapshots are retained permanently.
@@ -188,10 +214,14 @@ export interface SnapshotPolicyState {
  * The set of arguments for constructing a SnapshotPolicy resource.
  */
 export interface SnapshotPolicyArgs {
+    autoSnapshotPolicyName?: pulumi.Input<string>;
     copiedSnapshotsRetentionDays?: pulumi.Input<number>;
+    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.SnapshotPolicyCopyEncryptionConfiguration>;
     enableCrossRegionCopy?: pulumi.Input<boolean>;
     /**
      * The snapshot policy name.
+     *
+     * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -200,6 +230,7 @@ export interface SnapshotPolicyArgs {
      * - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
      */
     repeatWeekdays: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroupId?: pulumi.Input<string>;
     /**
      * The snapshot retention time, and the unit of measurement is day. Optional values:
      * - -1: The automatic snapshots are retained permanently.

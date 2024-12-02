@@ -33,7 +33,7 @@ public final class DomainNewSource {
      */
     private @Nullable String type;
     /**
-     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
      * 
      */
     private @Nullable Integer weight;
@@ -68,7 +68,7 @@ public final class DomainNewSource {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+     * @return Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
      * 
      */
     public Optional<Integer> weight() {

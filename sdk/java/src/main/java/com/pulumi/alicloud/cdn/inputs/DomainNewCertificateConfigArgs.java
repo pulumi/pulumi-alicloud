@@ -84,21 +84,6 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The force set of the security certificate.
-     * 
-     */
-    @Import(name="forceSet")
-    private @Nullable Output<String> forceSet;
-
-    /**
-     * @return The force set of the security certificate.
-     * 
-     */
-    public Optional<Output<String>> forceSet() {
-        return Optional.ofNullable(this.forceSet);
-    }
-
-    /**
      * The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
      * 
      */
@@ -154,7 +139,6 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         this.certName = $.certName;
         this.certRegion = $.certRegion;
         this.certType = $.certType;
-        this.forceSet = $.forceSet;
         this.privateKey = $.privateKey;
         this.serverCertificate = $.serverCertificate;
         this.serverCertificateStatus = $.serverCertificateStatus;
@@ -268,27 +252,6 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
          */
         public Builder certType(String certType) {
             return certType(Output.of(certType));
-        }
-
-        /**
-         * @param forceSet The force set of the security certificate.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder forceSet(@Nullable Output<String> forceSet) {
-            $.forceSet = forceSet;
-            return this;
-        }
-
-        /**
-         * @param forceSet The force set of the security certificate.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder forceSet(String forceSet) {
-            return forceSet(Output.of(forceSet));
         }
 
         /**

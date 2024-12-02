@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available since v1.49.0+
+        /// &gt; **NOTE:** Available since v1.49.0.
         /// 
         /// ## Example Usage
         /// 
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
         /// 
-        /// &gt; **NOTE:** Available since v1.49.0+
+        /// &gt; **NOTE:** Available since v1.49.0.
         /// 
         /// ## Example Usage
         /// 
@@ -147,6 +147,11 @@ namespace Pulumi.AliCloud.KVStore
         [Input("performanceType")]
         public string? PerformanceType { get; set; }
 
+        /// <summary>
+        /// The type of the service. Valid values:
+        /// * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
+        /// * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+        /// </summary>
         [Input("productType")]
         public string? ProductType { get; set; }
 
@@ -158,9 +163,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-        /// * product_type - (Optional, Available since 1.130.0) The type of the service. Valid values:
-        /// * Local: an ApsaraDB for Redis instance with a local disk.
-        /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
         /// </summary>
         [Input("shardNumber")]
         public int? ShardNumber { get; set; }
@@ -242,6 +244,11 @@ namespace Pulumi.AliCloud.KVStore
         [Input("performanceType")]
         public Input<string>? PerformanceType { get; set; }
 
+        /// <summary>
+        /// The type of the service. Valid values:
+        /// * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
+        /// * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+        /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
 
@@ -253,9 +260,6 @@ namespace Pulumi.AliCloud.KVStore
 
         /// <summary>
         /// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-        /// * product_type - (Optional, Available since 1.130.0) The type of the service. Valid values:
-        /// * Local: an ApsaraDB for Redis instance with a local disk.
-        /// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
         /// </summary>
         [Input("shardNumber")]
         public Input<int>? ShardNumber { get; set; }

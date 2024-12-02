@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance classes resource available info of Alibaba Cloud.
 //
-// > **NOTE:** Available since v1.49.0+
+// > **NOTE:** Available since v1.49.0.
 //
 // ## Example Usage
 //
@@ -86,13 +86,13 @@ type GetInstanceClassesArgs struct {
 	//
 	// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
 	PerformanceType *string `pulumi:"performanceType"`
-	ProductType     *string `pulumi:"productType"`
+	// The type of the service. Valid values:
+	// * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
+	// * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+	ProductType *string `pulumi:"productType"`
 	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType *string `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-	// * productType - (Optional, Available since 1.130.0) The type of the service. Valid values:
-	// * Local: an ApsaraDB for Redis instance with a local disk.
-	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
 	ShardNumber *int    `pulumi:"shardNumber"`
 	SortedBy    *string `pulumi:"sortedBy"`
 	// It has been deprecated from 1.68.0.
@@ -174,13 +174,13 @@ type GetInstanceClassesOutputArgs struct {
 	//
 	// Deprecated: The parameter 'performance_type' has been deprecated from 1.68.0.
 	PerformanceType pulumi.StringPtrInput `pulumi:"performanceType"`
-	ProductType     pulumi.StringPtrInput `pulumi:"productType"`
+	// The type of the service. Valid values:
+	// * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
+	// * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+	ProductType pulumi.StringPtrInput `pulumi:"productType"`
 	// The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
 	SeriesType pulumi.StringPtrInput `pulumi:"seriesType"`
 	// The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-	// * productType - (Optional, Available since 1.130.0) The type of the service. Valid values:
-	// * Local: an ApsaraDB for Redis instance with a local disk.
-	// * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
 	ShardNumber pulumi.IntPtrInput    `pulumi:"shardNumber"`
 	SortedBy    pulumi.StringPtrInput `pulumi:"sortedBy"`
 	// It has been deprecated from 1.68.0.

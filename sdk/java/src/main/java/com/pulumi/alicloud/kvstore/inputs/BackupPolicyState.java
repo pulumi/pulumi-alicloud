@@ -47,14 +47,14 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of ApsaraDB for Redis or Memcache intance.
+     * The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The id of ApsaraDB for Redis or Memcache intance.
+     * @return The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -140,7 +140,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The id of ApsaraDB for Redis or Memcache intance.
+         * @param instanceId The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceId The id of ApsaraDB for Redis or Memcache intance.
+         * @param instanceId The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
     public static final RealTimeLogDeliveryState Empty = new RealTimeLogDeliveryState();
 
     /**
-     * The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+     * The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+     * @return The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      * 
      */
     public Optional<Output<String>> domain() {
@@ -31,14 +31,18 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+     * The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+     * 
+     * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      * 
      */
     @Import(name="logstore")
     private @Nullable Output<String> logstore;
 
     /**
-     * @return The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+     * @return The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+     * 
+     * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      * 
      */
     public Optional<Output<String>> logstore() {
@@ -46,14 +50,14 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The name of the Log Service project that is used for real-time log delivery.
+     * The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The name of the Log Service project that is used for real-time log delivery.
+     * @return The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
      * 
      */
     public Optional<Output<String>> project() {
@@ -61,18 +65,14 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The region where the Log Service project is deployed.
-     * 
-     * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+     * The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      * 
      */
     @Import(name="slsRegion")
     private @Nullable Output<String> slsRegion;
 
     /**
-     * @return The region where the Log Service project is deployed.
-     * 
-     * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+     * @return The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      * 
      */
     public Optional<Output<String>> slsRegion() {
@@ -80,14 +80,22 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * Resource attribute fields that represent the status of the resource.
+     * 
+     * Value:
+     * - offline
+     * - online
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+     * @return Resource attribute fields that represent the status of the resource.
+     * 
+     * Value:
+     * - offline
+     * - online
      * 
      */
     public Optional<Output<String>> status() {
@@ -123,7 +131,7 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param domain The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+         * @param domain The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
          * 
          * @return builder
          * 
@@ -134,7 +142,7 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param domain The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
+         * @param domain The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
          * 
          * @return builder
          * 
@@ -144,7 +152,9 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param logstore The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+         * @param logstore The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+         * 
+         * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
          * 
          * @return builder
          * 
@@ -155,7 +165,9 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param logstore The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
+         * @param logstore The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
+         * 
+         * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
          * 
          * @return builder
          * 
@@ -165,7 +177,7 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The name of the Log Service project that is used for real-time log delivery.
+         * @param project The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
          * 
          * @return builder
          * 
@@ -176,7 +188,7 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param project The name of the Log Service project that is used for real-time log delivery.
+         * @param project The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
          * 
          * @return builder
          * 
@@ -186,9 +198,7 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param slsRegion The region where the Log Service project is deployed.
-         * 
-         * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+         * @param slsRegion The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
          * 
          * @return builder
          * 
@@ -199,9 +209,7 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param slsRegion The region where the Log Service project is deployed.
-         * 
-         * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
+         * @param slsRegion The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
          * 
          * @return builder
          * 
@@ -211,7 +219,11 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+         * @param status Resource attribute fields that represent the status of the resource.
+         * 
+         * Value:
+         * - offline
+         * - online
          * 
          * @return builder
          * 
@@ -222,7 +234,11 @@ public final class RealTimeLogDeliveryState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param status The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
+         * @param status Resource attribute fields that represent the status of the resource.
+         * 
+         * Value:
+         * - offline
+         * - online
          * 
          * @return builder
          * 

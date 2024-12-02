@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
     public sealed class ClusterBootstrapScriptGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The bootstrap scripts execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ .
+        /// The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
         /// </summary>
         [Input("executionFailStrategy", required: true)]
         public Input<string> ExecutionFailStrategy { get; set; } = null!;

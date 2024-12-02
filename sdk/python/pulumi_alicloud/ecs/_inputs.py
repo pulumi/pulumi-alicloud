@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'AutoProvisioningGroupLaunchTemplateConfigArgs',
     'AutoProvisioningGroupLaunchTemplateConfigArgsDict',
+    'AutoSnapshotPolicyCopyEncryptionConfigurationArgs',
+    'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict',
     'DedicatedHostNetworkAttributeArgs',
     'DedicatedHostNetworkAttributeArgsDict',
     'EcsInstanceSetDataDiskArgs',
@@ -53,6 +55,8 @@ __all__ = [
     'LaunchTemplateSystemDiskArgsDict',
     'ReservedInstanceOperationLockArgs',
     'ReservedInstanceOperationLockArgsDict',
+    'SnapshotPolicyCopyEncryptionConfigurationArgs',
+    'SnapshotPolicyCopyEncryptionConfigurationArgsDict',
     'GetDedicatedHostsOperationLockArgs',
     'GetDedicatedHostsOperationLockArgsDict',
     'GetDisksOperationLockArgs',
@@ -170,6 +174,58 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "priority", value)
+
+
+if not MYPY:
+    class AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict(TypedDict):
+        encrypted: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+        """
+        kms_key_id: NotRequired[pulumi.Input[str]]
+        """
+        The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+        """
+elif False:
+    AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AutoSnapshotPolicyCopyEncryptionConfigurationArgs:
+    def __init__(__self__, *,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] encrypted: Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+        :param pulumi.Input[str] kms_key_id: The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+        """
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
+        """
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
 
 
 if not MYPY:
@@ -2525,6 +2581,42 @@ class ReservedInstanceOperationLockArgs:
     @lock_reason.setter
     def lock_reason(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "lock_reason", value)
+
+
+if not MYPY:
+    class SnapshotPolicyCopyEncryptionConfigurationArgsDict(TypedDict):
+        encrypted: NotRequired[pulumi.Input[bool]]
+        kms_key_id: NotRequired[pulumi.Input[str]]
+elif False:
+    SnapshotPolicyCopyEncryptionConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SnapshotPolicyCopyEncryptionConfigurationArgs:
+    def __init__(__self__, *,
+                 encrypted: Optional[pulumi.Input[bool]] = None,
+                 kms_key_id: Optional[pulumi.Input[str]] = None):
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if kms_key_id is not None:
+            pulumi.set(__self__, "kms_key_id", kms_key_id)
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyId")
+    def kms_key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kms_key_id")
+
+    @kms_key_id.setter
+    def kms_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_id", value)
 
 
 if not MYPY:

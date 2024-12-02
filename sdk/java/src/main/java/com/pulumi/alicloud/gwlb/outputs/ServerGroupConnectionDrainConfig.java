@@ -13,34 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServerGroupConnectionDrainConfig {
     /**
-     * @return Whether to open the connection graceful interrupt. Value:
+     * @return Indicates whether connection draining is enabled. Valid values:
      * 
      */
     private @Nullable Boolean connectionDrainEnabled;
     /**
-     * @return Connection Grace interrupt timeout.
+     * @return The timeout period of connection draining.
      * 
-     * Unit: seconds.
+     * Unit: seconds
      * 
-     * Value range: 1~3600.
+     * Valid values: `1` to `3600`.
+     * 
+     * Default value: `300`.
      * 
      */
     private @Nullable Integer connectionDrainTimeout;
 
     private ServerGroupConnectionDrainConfig() {}
     /**
-     * @return Whether to open the connection graceful interrupt. Value:
+     * @return Indicates whether connection draining is enabled. Valid values:
      * 
      */
     public Optional<Boolean> connectionDrainEnabled() {
         return Optional.ofNullable(this.connectionDrainEnabled);
     }
     /**
-     * @return Connection Grace interrupt timeout.
+     * @return The timeout period of connection draining.
      * 
-     * Unit: seconds.
+     * Unit: seconds
      * 
-     * Value range: 1~3600.
+     * Valid values: `1` to `3600`.
+     * 
+     * Default value: `300`.
      * 
      */
     public Optional<Integer> connectionDrainTimeout() {

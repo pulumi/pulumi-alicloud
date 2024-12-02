@@ -21,16 +21,18 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     public static final LoadBalancerArgs Empty = new LoadBalancerArgs();
 
     /**
-     * The protocol version. Value:
-     * - Ipv4: Ipv4 type
+     * The IP version. Valid values:
+     * 
+     * - `Ipv4`: IPv4 (default)
      * 
      */
     @Import(name="addressIpVersion")
     private @Nullable Output<String> addressIpVersion;
 
     /**
-     * @return The protocol version. Value:
-     * - Ipv4: Ipv4 type
+     * @return The IP version. Valid values:
+     * 
+     * - `Ipv4`: IPv4 (default)
      * 
      */
     public Optional<Output<String>> addressIpVersion() {
@@ -38,14 +40,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform only a dry run, without performing the actual request.
+     * @return Specifies whether to perform a dry run, without performing the actual request. Valid values:
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -53,18 +55,18 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Gateway Load Balancer instance.
+     * The GWLB instance name.
      * 
-     * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     @Import(name="loadBalancerName")
     private @Nullable Output<String> loadBalancerName;
 
     /**
-     * @return The name of the Gateway Load Balancer instance.
+     * @return The GWLB instance name.
      * 
-     * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      * 
      */
     public Optional<Output<String>> loadBalancerName() {
@@ -72,14 +74,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the resource group
+     * The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group
+     * @return The ID of the resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -87,14 +89,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The list of tags.
+     * The tag keys. You can specify at most 20 tags in each call.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,String>> tags;
 
     /**
-     * @return The list of tags.
+     * @return The tag keys. You can specify at most 20 tags in each call.
      * 
      */
     public Optional<Output<Map<String,String>>> tags() {
@@ -102,14 +104,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC which the Gateway Load Balancer instance belongs.
+     * The virtual private cloud (VPC) ID.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC which the Gateway Load Balancer instance belongs.
+     * @return The virtual private cloud (VPC) ID.
      * 
      */
     public Output<String> vpcId() {
@@ -117,14 +119,14 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+     * The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
      * 
      */
     @Import(name="zoneMappings", required=true)
     private Output<List<LoadBalancerZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+     * @return The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
      * 
      */
     public Output<List<LoadBalancerZoneMappingArgs>> zoneMappings() {
@@ -162,8 +164,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Value:
-         * - Ipv4: Ipv4 type
+         * @param addressIpVersion The IP version. Valid values:
+         * 
+         * - `Ipv4`: IPv4 (default)
          * 
          * @return builder
          * 
@@ -174,8 +177,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressIpVersion The protocol version. Value:
-         * - Ipv4: Ipv4 type
+         * @param addressIpVersion The IP version. Valid values:
+         * 
+         * - `Ipv4`: IPv4 (default)
          * 
          * @return builder
          * 
@@ -185,7 +189,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -196,7 +200,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * @param dryRun Specifies whether to perform a dry run, without performing the actual request. Valid values:
          * 
          * @return builder
          * 
@@ -206,9 +210,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName The name of the Gateway Load Balancer instance.
+         * @param loadBalancerName The GWLB instance name.
          * 
-         * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -219,9 +223,9 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loadBalancerName The name of the Gateway Load Balancer instance.
+         * @param loadBalancerName The GWLB instance name.
          * 
-         * It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+         * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
          * 
          * @return builder
          * 
@@ -231,7 +235,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -242,7 +246,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group
+         * @param resourceGroupId The ID of the resource group.
          * 
          * @return builder
          * 
@@ -252,7 +256,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The list of tags.
+         * @param tags The tag keys. You can specify at most 20 tags in each call.
          * 
          * @return builder
          * 
@@ -263,7 +267,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags The list of tags.
+         * @param tags The tag keys. You can specify at most 20 tags in each call.
          * 
          * @return builder
          * 
@@ -273,7 +277,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC which the Gateway Load Balancer instance belongs.
+         * @param vpcId The virtual private cloud (VPC) ID.
          * 
          * @return builder
          * 
@@ -284,7 +288,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC which the Gateway Load Balancer instance belongs.
+         * @param vpcId The virtual private cloud (VPC) ID.
          * 
          * @return builder
          * 
@@ -294,7 +298,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+         * @param zoneMappings The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -305,7 +309,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+         * @param zoneMappings The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
          * 
          * @return builder
          * 
@@ -315,7 +319,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneMappings The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+         * @param zoneMappings The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
          * 
          * @return builder
          * 

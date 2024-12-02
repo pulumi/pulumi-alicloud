@@ -28,21 +28,21 @@ import (
 type Listener struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to perform only a dry run, without performing the actual request.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The custom listener description.
+	// The description of the listener.
 	//
-	// The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription pulumi.StringPtrOutput `pulumi:"listenerDescription"`
-	// The ID of the gateway load balancer instance.
+	// The GWLB instance ID.
 	LoadBalancerId pulumi.StringOutput `pulumi:"loadBalancerId"`
-	// The ID of the region.
+	// The region ID.
 	RegionId pulumi.StringOutput `pulumi:"regionId"`
-	// The ID of the server group.
+	// The server group ID.
 	ServerGroupId pulumi.StringOutput `pulumi:"serverGroupId"`
-	// The current status of the listener. Value:
+	// The status of the listener.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The list of tags.
+	// The tags. You can specify at most 20 tags in each call.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
@@ -82,40 +82,40 @@ func GetListener(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Listener resources.
 type listenerState struct {
-	// Specifies whether to perform only a dry run, without performing the actual request.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The custom listener description.
+	// The description of the listener.
 	//
-	// The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription *string `pulumi:"listenerDescription"`
-	// The ID of the gateway load balancer instance.
+	// The GWLB instance ID.
 	LoadBalancerId *string `pulumi:"loadBalancerId"`
-	// The ID of the region.
+	// The region ID.
 	RegionId *string `pulumi:"regionId"`
-	// The ID of the server group.
+	// The server group ID.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// The current status of the listener. Value:
+	// The status of the listener.
 	Status *string `pulumi:"status"`
-	// The list of tags.
+	// The tags. You can specify at most 20 tags in each call.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 type ListenerState struct {
-	// Specifies whether to perform only a dry run, without performing the actual request.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The custom listener description.
+	// The description of the listener.
 	//
-	// The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription pulumi.StringPtrInput
-	// The ID of the gateway load balancer instance.
+	// The GWLB instance ID.
 	LoadBalancerId pulumi.StringPtrInput
-	// The ID of the region.
+	// The region ID.
 	RegionId pulumi.StringPtrInput
-	// The ID of the server group.
+	// The server group ID.
 	ServerGroupId pulumi.StringPtrInput
-	// The current status of the listener. Value:
+	// The status of the listener.
 	Status pulumi.StringPtrInput
-	// The list of tags.
+	// The tags. You can specify at most 20 tags in each call.
 	Tags pulumi.StringMapInput
 }
 
@@ -124,33 +124,33 @@ func (ListenerState) ElementType() reflect.Type {
 }
 
 type listenerArgs struct {
-	// Specifies whether to perform only a dry run, without performing the actual request.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The custom listener description.
+	// The description of the listener.
 	//
-	// The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription *string `pulumi:"listenerDescription"`
-	// The ID of the gateway load balancer instance.
+	// The GWLB instance ID.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	// The ID of the server group.
+	// The server group ID.
 	ServerGroupId string `pulumi:"serverGroupId"`
-	// The list of tags.
+	// The tags. You can specify at most 20 tags in each call.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Listener resource.
 type ListenerArgs struct {
-	// Specifies whether to perform only a dry run, without performing the actual request.
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The custom listener description.
+	// The description of the listener.
 	//
-	// The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 	ListenerDescription pulumi.StringPtrInput
-	// The ID of the gateway load balancer instance.
+	// The GWLB instance ID.
 	LoadBalancerId pulumi.StringInput
-	// The ID of the server group.
+	// The server group ID.
 	ServerGroupId pulumi.StringInput
-	// The list of tags.
+	// The tags. You can specify at most 20 tags in each call.
 	Tags pulumi.StringMapInput
 }
 
@@ -241,39 +241,39 @@ func (o ListenerOutput) ToListenerOutputWithContext(ctx context.Context) Listene
 	return o
 }
 
-// Specifies whether to perform only a dry run, without performing the actual request.
+// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 func (o ListenerOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The custom listener description.
+// The description of the listener.
 //
-// The length is limited to 2 to 256 characters. It supports Chinese and English letters and can contain numbers, half-width commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
+// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\_), and hyphens (-).
 func (o ListenerOutput) ListenerDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ListenerDescription }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the gateway load balancer instance.
+// The GWLB instance ID.
 func (o ListenerOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
-// The ID of the region.
+// The region ID.
 func (o ListenerOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
 }
 
-// The ID of the server group.
+// The server group ID.
 func (o ListenerOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.ServerGroupId }).(pulumi.StringOutput)
 }
 
-// The current status of the listener. Value:
+// The status of the listener.
 func (o ListenerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The list of tags.
+// The tags. You can specify at most 20 tags in each call.
 func (o ListenerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

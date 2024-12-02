@@ -6,6 +6,7 @@ package com.pulumi.alicloud.cen.outputs;
 import com.pulumi.alicloud.cen.outputs.GetFlowlogsFlowlog;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,15 +16,34 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFlowlogsResult {
     /**
-     * @return The ID of the CEN Instance.
+     * @return The ID of Cen instance.
      * 
      */
     private @Nullable String cenId;
     /**
-     * @return The description of flowlog.
+     * @return The description of the flowlog.
      * 
      */
     private @Nullable String description;
+    /**
+     * @return The ID of FlowLog.
+     * 
+     */
+    private @Nullable String flowLogId;
+    /**
+     * @return The name of the flowlog.
+     * 
+     */
+    private @Nullable String flowLogName;
+    /**
+     * @return (Available since v1.236.0) Flowlog Version.
+     * 
+     */
+    private @Nullable String flowLogVersion;
+    /**
+     * @return A list of Flow Log Entries. Each element contains the following attributes:
+     * 
+     */
     private List<GetFlowlogsFlowlog> flowlogs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -31,48 +51,90 @@ public final class GetFlowlogsResult {
      */
     private String id;
     /**
-     * @return A list of CEN flow log IDs.
+     * @return A list of Flow Log IDs.
      * 
      */
     private List<String> ids;
     /**
-     * @return The name of the log store which is in the  `project_name` SLS project.
+     * @return (Available since v1.236.0) The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+     * 
+     */
+    private @Nullable Integer interval;
+    /**
+     * @return The LogStore that stores the flowlog.
      * 
      */
     private @Nullable String logStoreName;
     private @Nullable String nameRegex;
     /**
-     * @return A list of CEN flow log names.
+     * @return A list of name of Flow Logs.
      * 
      */
     private List<String> names;
     private @Nullable String outputFile;
+    private @Nullable Integer pageNumber;
+    private @Nullable Integer pageSize;
     /**
-     * @return The name of the SLS project.
+     * @return The Project that stores the flowlog.
      * 
      */
     private @Nullable String projectName;
     /**
-     * @return The status of flowlog.
+     * @return (Available since v1.236.0) Region Id.
+     * 
+     */
+    private @Nullable String regionId;
+    /**
+     * @return The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      * 
      */
     private @Nullable String status;
+    /**
+     * @return (Available since v1.236.0) Transit Router ID.
+     * 
+     */
+    private @Nullable String transitRouterId;
 
     private GetFlowlogsResult() {}
     /**
-     * @return The ID of the CEN Instance.
+     * @return The ID of Cen instance.
      * 
      */
     public Optional<String> cenId() {
         return Optional.ofNullable(this.cenId);
     }
     /**
-     * @return The description of flowlog.
+     * @return The description of the flowlog.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return The ID of FlowLog.
+     * 
+     */
+    public Optional<String> flowLogId() {
+        return Optional.ofNullable(this.flowLogId);
+    }
+    /**
+     * @return The name of the flowlog.
+     * 
+     */
+    public Optional<String> flowLogName() {
+        return Optional.ofNullable(this.flowLogName);
+    }
+    /**
+     * @return (Available since v1.236.0) Flowlog Version.
+     * 
+     */
+    public Optional<String> flowLogVersion() {
+        return Optional.ofNullable(this.flowLogVersion);
+    }
+    /**
+     * @return A list of Flow Log Entries. Each element contains the following attributes:
+     * 
+     */
     public List<GetFlowlogsFlowlog> flowlogs() {
         return this.flowlogs;
     }
@@ -84,14 +146,21 @@ public final class GetFlowlogsResult {
         return this.id;
     }
     /**
-     * @return A list of CEN flow log IDs.
+     * @return A list of Flow Log IDs.
      * 
      */
     public List<String> ids() {
         return this.ids;
     }
     /**
-     * @return The name of the log store which is in the  `project_name` SLS project.
+     * @return (Available since v1.236.0) The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+     * 
+     */
+    public Optional<Integer> interval() {
+        return Optional.ofNullable(this.interval);
+    }
+    /**
+     * @return The LogStore that stores the flowlog.
      * 
      */
     public Optional<String> logStoreName() {
@@ -101,7 +170,7 @@ public final class GetFlowlogsResult {
         return Optional.ofNullable(this.nameRegex);
     }
     /**
-     * @return A list of CEN flow log names.
+     * @return A list of name of Flow Logs.
      * 
      */
     public List<String> names() {
@@ -110,19 +179,39 @@ public final class GetFlowlogsResult {
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    public Optional<Integer> pageNumber() {
+        return Optional.ofNullable(this.pageNumber);
+    }
+    public Optional<Integer> pageSize() {
+        return Optional.ofNullable(this.pageSize);
+    }
     /**
-     * @return The name of the SLS project.
+     * @return The Project that stores the flowlog.
      * 
      */
     public Optional<String> projectName() {
         return Optional.ofNullable(this.projectName);
     }
     /**
-     * @return The status of flowlog.
+     * @return (Available since v1.236.0) Region Id.
+     * 
+     */
+    public Optional<String> regionId() {
+        return Optional.ofNullable(this.regionId);
+    }
+    /**
+     * @return The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      * 
      */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
+    }
+    /**
+     * @return (Available since v1.236.0) Transit Router ID.
+     * 
+     */
+    public Optional<String> transitRouterId() {
+        return Optional.ofNullable(this.transitRouterId);
     }
 
     public static Builder builder() {
@@ -136,29 +225,45 @@ public final class GetFlowlogsResult {
     public static final class Builder {
         private @Nullable String cenId;
         private @Nullable String description;
+        private @Nullable String flowLogId;
+        private @Nullable String flowLogName;
+        private @Nullable String flowLogVersion;
         private List<GetFlowlogsFlowlog> flowlogs;
         private String id;
         private List<String> ids;
+        private @Nullable Integer interval;
         private @Nullable String logStoreName;
         private @Nullable String nameRegex;
         private List<String> names;
         private @Nullable String outputFile;
+        private @Nullable Integer pageNumber;
+        private @Nullable Integer pageSize;
         private @Nullable String projectName;
+        private @Nullable String regionId;
         private @Nullable String status;
+        private @Nullable String transitRouterId;
         public Builder() {}
         public Builder(GetFlowlogsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
     	      this.description = defaults.description;
+    	      this.flowLogId = defaults.flowLogId;
+    	      this.flowLogName = defaults.flowLogName;
+    	      this.flowLogVersion = defaults.flowLogVersion;
     	      this.flowlogs = defaults.flowlogs;
     	      this.id = defaults.id;
     	      this.ids = defaults.ids;
+    	      this.interval = defaults.interval;
     	      this.logStoreName = defaults.logStoreName;
     	      this.nameRegex = defaults.nameRegex;
     	      this.names = defaults.names;
     	      this.outputFile = defaults.outputFile;
+    	      this.pageNumber = defaults.pageNumber;
+    	      this.pageSize = defaults.pageSize;
     	      this.projectName = defaults.projectName;
+    	      this.regionId = defaults.regionId;
     	      this.status = defaults.status;
+    	      this.transitRouterId = defaults.transitRouterId;
         }
 
         @CustomType.Setter
@@ -171,6 +276,24 @@ public final class GetFlowlogsResult {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder flowLogId(@Nullable String flowLogId) {
+
+            this.flowLogId = flowLogId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder flowLogName(@Nullable String flowLogName) {
+
+            this.flowLogName = flowLogName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder flowLogVersion(@Nullable String flowLogVersion) {
+
+            this.flowLogVersion = flowLogVersion;
             return this;
         }
         @CustomType.Setter
@@ -204,6 +327,12 @@ public final class GetFlowlogsResult {
             return ids(List.of(ids));
         }
         @CustomType.Setter
+        public Builder interval(@Nullable Integer interval) {
+
+            this.interval = interval;
+            return this;
+        }
+        @CustomType.Setter
         public Builder logStoreName(@Nullable String logStoreName) {
 
             this.logStoreName = logStoreName;
@@ -233,9 +362,27 @@ public final class GetFlowlogsResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pageNumber(@Nullable Integer pageNumber) {
+
+            this.pageNumber = pageNumber;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pageSize(@Nullable Integer pageSize) {
+
+            this.pageSize = pageSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder projectName(@Nullable String projectName) {
 
             this.projectName = projectName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder regionId(@Nullable String regionId) {
+
+            this.regionId = regionId;
             return this;
         }
         @CustomType.Setter
@@ -244,19 +391,33 @@ public final class GetFlowlogsResult {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder transitRouterId(@Nullable String transitRouterId) {
+
+            this.transitRouterId = transitRouterId;
+            return this;
+        }
         public GetFlowlogsResult build() {
             final var _resultValue = new GetFlowlogsResult();
             _resultValue.cenId = cenId;
             _resultValue.description = description;
+            _resultValue.flowLogId = flowLogId;
+            _resultValue.flowLogName = flowLogName;
+            _resultValue.flowLogVersion = flowLogVersion;
             _resultValue.flowlogs = flowlogs;
             _resultValue.id = id;
             _resultValue.ids = ids;
+            _resultValue.interval = interval;
             _resultValue.logStoreName = logStoreName;
             _resultValue.nameRegex = nameRegex;
             _resultValue.names = names;
             _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
             _resultValue.projectName = projectName;
+            _resultValue.regionId = regionId;
             _resultValue.status = status;
+            _resultValue.transitRouterId = transitRouterId;
             return _resultValue;
         }
     }

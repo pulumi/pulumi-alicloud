@@ -822,7 +822,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN flow logs available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.78.0+
+     * &gt; **NOTE:** Available since v1.78.0.
      * 
      * ## Example Usage
      * 
@@ -836,6 +836,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.cen.FlowLog;
+     * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
      * import java.util.List;
@@ -851,12 +863,52 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids("flowlog-tig1xxxxx")
-     *             .nameRegex("^foo")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         var defaultc5kxyC = new Instance("defaultc5kxyC", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultVw2U9u = new TransitRouter("defaultVw2U9u", TransitRouterArgs.builder()
+     *             .cenId(defaultc5kxyC.id())
+     *             .build());
+     * 
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description("terraform-example")
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .shardCount(3)
+     *             .autoSplit(true)
+     *             .maxSplitShardCount(60)
+     *             .appendMeta(true)
+     *             .build());
+     * 
+     *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
+     *             .projectName(defaultStore.projectName())
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
+     *             .cenId(defaultc5kxyC.id())
+     *             .logStoreName(defaultStore.logstoreName())
+     *             .interval("600")
+     *             .status("Active")
+     *             .transitRouterId(defaultVw2U9u.transitRouterId())
+     *             .description("flowlog-resource-example-1")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(defaultFlowLog.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -870,7 +922,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN flow logs available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.78.0+
+     * &gt; **NOTE:** Available since v1.78.0.
      * 
      * ## Example Usage
      * 
@@ -884,6 +936,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.cen.FlowLog;
+     * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
      * import java.util.List;
@@ -899,12 +963,52 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids("flowlog-tig1xxxxx")
-     *             .nameRegex("^foo")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         var defaultc5kxyC = new Instance("defaultc5kxyC", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultVw2U9u = new TransitRouter("defaultVw2U9u", TransitRouterArgs.builder()
+     *             .cenId(defaultc5kxyC.id())
+     *             .build());
+     * 
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description("terraform-example")
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .shardCount(3)
+     *             .autoSplit(true)
+     *             .maxSplitShardCount(60)
+     *             .appendMeta(true)
+     *             .build());
+     * 
+     *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
+     *             .projectName(defaultStore.projectName())
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
+     *             .cenId(defaultc5kxyC.id())
+     *             .logStoreName(defaultStore.logstoreName())
+     *             .interval("600")
+     *             .status("Active")
+     *             .transitRouterId(defaultVw2U9u.transitRouterId())
+     *             .description("flowlog-resource-example-1")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(defaultFlowLog.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -918,7 +1022,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN flow logs available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.78.0+
+     * &gt; **NOTE:** Available since v1.78.0.
      * 
      * ## Example Usage
      * 
@@ -932,6 +1036,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.cen.FlowLog;
+     * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
      * import java.util.List;
@@ -947,12 +1063,52 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids("flowlog-tig1xxxxx")
-     *             .nameRegex("^foo")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         var defaultc5kxyC = new Instance("defaultc5kxyC", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultVw2U9u = new TransitRouter("defaultVw2U9u", TransitRouterArgs.builder()
+     *             .cenId(defaultc5kxyC.id())
+     *             .build());
+     * 
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description("terraform-example")
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .shardCount(3)
+     *             .autoSplit(true)
+     *             .maxSplitShardCount(60)
+     *             .appendMeta(true)
+     *             .build());
+     * 
+     *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
+     *             .projectName(defaultStore.projectName())
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
+     *             .cenId(defaultc5kxyC.id())
+     *             .logStoreName(defaultStore.logstoreName())
+     *             .interval("600")
+     *             .status("Active")
+     *             .transitRouterId(defaultVw2U9u.transitRouterId())
+     *             .description("flowlog-resource-example-1")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(defaultFlowLog.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -966,7 +1122,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN flow logs available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.78.0+
+     * &gt; **NOTE:** Available since v1.78.0.
      * 
      * ## Example Usage
      * 
@@ -980,6 +1136,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.cen.FlowLog;
+     * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
      * import java.util.List;
@@ -995,12 +1163,52 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids("flowlog-tig1xxxxx")
-     *             .nameRegex("^foo")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         var defaultc5kxyC = new Instance("defaultc5kxyC", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultVw2U9u = new TransitRouter("defaultVw2U9u", TransitRouterArgs.builder()
+     *             .cenId(defaultc5kxyC.id())
+     *             .build());
+     * 
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description("terraform-example")
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .shardCount(3)
+     *             .autoSplit(true)
+     *             .maxSplitShardCount(60)
+     *             .appendMeta(true)
+     *             .build());
+     * 
+     *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
+     *             .projectName(defaultStore.projectName())
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
+     *             .cenId(defaultc5kxyC.id())
+     *             .logStoreName(defaultStore.logstoreName())
+     *             .interval("600")
+     *             .status("Active")
+     *             .transitRouterId(defaultVw2U9u.transitRouterId())
+     *             .description("flowlog-resource-example-1")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(defaultFlowLog.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -1014,7 +1222,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN flow logs available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.78.0+
+     * &gt; **NOTE:** Available since v1.78.0.
      * 
      * ## Example Usage
      * 
@@ -1028,6 +1236,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.cen.FlowLog;
+     * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
      * import java.util.List;
@@ -1043,12 +1263,52 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids("flowlog-tig1xxxxx")
-     *             .nameRegex("^foo")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         var defaultc5kxyC = new Instance("defaultc5kxyC", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultVw2U9u = new TransitRouter("defaultVw2U9u", TransitRouterArgs.builder()
+     *             .cenId(defaultc5kxyC.id())
+     *             .build());
+     * 
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description("terraform-example")
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .shardCount(3)
+     *             .autoSplit(true)
+     *             .maxSplitShardCount(60)
+     *             .appendMeta(true)
+     *             .build());
+     * 
+     *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
+     *             .projectName(defaultStore.projectName())
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
+     *             .cenId(defaultc5kxyC.id())
+     *             .logStoreName(defaultStore.logstoreName())
+     *             .interval("600")
+     *             .status("Active")
+     *             .transitRouterId(defaultVw2U9u.transitRouterId())
+     *             .description("flowlog-resource-example-1")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(defaultFlowLog.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
      *     }
      * }
      * }
@@ -1062,7 +1322,7 @@ public final class CenFunctions {
     /**
      * This data source provides CEN flow logs available to the user.
      * 
-     * &gt; **NOTE:** Available in 1.78.0+
+     * &gt; **NOTE:** Available since v1.78.0.
      * 
      * ## Example Usage
      * 
@@ -1076,6 +1336,18 @@ public final class CenFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.random.integer;
+     * import com.pulumi.random.IntegerArgs;
+     * import com.pulumi.alicloud.cen.Instance;
+     * import com.pulumi.alicloud.cen.InstanceArgs;
+     * import com.pulumi.alicloud.cen.TransitRouter;
+     * import com.pulumi.alicloud.cen.TransitRouterArgs;
+     * import com.pulumi.alicloud.log.Project;
+     * import com.pulumi.alicloud.log.ProjectArgs;
+     * import com.pulumi.alicloud.log.Store;
+     * import com.pulumi.alicloud.log.StoreArgs;
+     * import com.pulumi.alicloud.cen.FlowLog;
+     * import com.pulumi.alicloud.cen.FlowLogArgs;
      * import com.pulumi.alicloud.cen.CenFunctions;
      * import com.pulumi.alicloud.cen.inputs.GetFlowlogsArgs;
      * import java.util.List;
@@ -1091,12 +1363,52 @@ public final class CenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
-     *             .ids("flowlog-tig1xxxxx")
-     *             .nameRegex("^foo")
+     *         final var config = ctx.config();
+     *         final var name = config.get("name").orElse("tf-example");
+     *         var defaultInteger = new Integer("defaultInteger", IntegerArgs.builder()
+     *             .min(10000)
+     *             .max(99999)
      *             .build());
      * 
-     *         ctx.export("firstCenFlowlogId", defaultAlicloudCenInstances.flowlogs()[0].id());
+     *         var defaultc5kxyC = new Instance("defaultc5kxyC", InstanceArgs.builder()
+     *             .cenInstanceName(name)
+     *             .build());
+     * 
+     *         var defaultVw2U9u = new TransitRouter("defaultVw2U9u", TransitRouterArgs.builder()
+     *             .cenId(defaultc5kxyC.id())
+     *             .build());
+     * 
+     *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
+     *             .projectName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .description("terraform-example")
+     *             .build());
+     * 
+     *         var defaultStore = new Store("defaultStore", StoreArgs.builder()
+     *             .projectName(defaultProject.projectName())
+     *             .logstoreName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .shardCount(3)
+     *             .autoSplit(true)
+     *             .maxSplitShardCount(60)
+     *             .appendMeta(true)
+     *             .build());
+     * 
+     *         var defaultFlowLog = new FlowLog("defaultFlowLog", FlowLogArgs.builder()
+     *             .projectName(defaultStore.projectName())
+     *             .flowLogName(String.format("%s-%s", name,defaultInteger.result()))
+     *             .logFormatString("${srcaddr}${dstaddr}${bytes}")
+     *             .cenId(defaultc5kxyC.id())
+     *             .logStoreName(defaultStore.logstoreName())
+     *             .interval("600")
+     *             .status("Active")
+     *             .transitRouterId(defaultVw2U9u.transitRouterId())
+     *             .description("flowlog-resource-example-1")
+     *             .build());
+     * 
+     *         final var default = CenFunctions.getFlowlogs(GetFlowlogsArgs.builder()
+     *             .ids(defaultFlowLog.id())
+     *             .build());
+     * 
+     *         ctx.export("firstCenFlowlogId", default_.applyValue(default_ -> default_.flowlogs()[0].id()));
      *     }
      * }
      * }

@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/25527.htm).
 //
-// > **NOTE:** Available in v1.117.0+.
+// > **NOTE:** Available since v1.117.0.
 //
 // ## Example Usage
 //
@@ -35,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewAutoSnapshotPolicy(ctx, "example", &ecs.AutoSnapshotPolicyArgs{
-//				Name: pulumi.String("tf-testAcc"),
+//				Name: pulumi.String("terraform-example"),
 //				RepeatWeekdays: pulumi.StringArray{
 //					pulumi.String("1"),
 //					pulumi.String("2"),
@@ -67,33 +67,43 @@ import (
 type AutoSnapshotPolicy struct {
 	pulumi.CustomResourceState
 
-	// The retention period of the snapshot copied across regions.
-	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-	//   Default value: -1.
-	CopiedSnapshotsRetentionDays pulumi.IntPtrOutput `pulumi:"copiedSnapshotsRetentionDays"`
-	// Specifies whether to enable the system to automatically copy snapshots across regions.
+	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	AutoSnapshotPolicyName pulumi.StringOutput `pulumi:"autoSnapshotPolicyName"`
+	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+	// - `-1`: The snapshot copy is retained until it is deleted.
+	CopiedSnapshotsRetentionDays pulumi.IntOutput `pulumi:"copiedSnapshotsRetentionDays"`
+	// The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
+	CopyEncryptionConfiguration AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput `pulumi:"copyEncryptionConfiguration"`
+	// (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
 	EnableCrossRegionCopy pulumi.BoolPtrOutput `pulumi:"enableCrossRegionCopy"`
-	// The snapshot policy name.
+	// . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-	// - A maximum of seven time points can be selected.
-	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+	// (Available since v1.236.0) The region ID of the automatic snapshot policy.
+	RegionId pulumi.StringOutput `pulumi:"regionId"`
+	// The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
 	RepeatWeekdays pulumi.StringArrayOutput `pulumi:"repeatWeekdays"`
-	// The snapshot retention time, and the unit of measurement is day. Optional values:
-	// - -1: The automatic snapshots are retained permanently.
-	// - [1, 65536]: The number of days retained.
-	//   Default value: -1.
+	// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	// The retention period of the automatic snapshots. Unit: days. Valid values:
+	// - `-1`: Automatic snapshots are retained until they are deleted.
 	RetentionDays pulumi.IntOutput `pulumi:"retentionDays"`
-	// The status of Auto Snapshot Policy.
+	// The status of the automatic snapshot policy.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The destination region to which the snapshot is copied. You can set a destination region.
+	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions pulumi.StringArrayOutput `pulumi:"targetCopyRegions"`
-	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-	// - A maximum of 24 time points can be selected.
-	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+	// The points in time of the day at which to create automatic snapshots.
+	//
+	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+	//
+	// The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TimePoints pulumi.StringArrayOutput `pulumi:"timePoints"`
 }
 
@@ -136,64 +146,84 @@ func GetAutoSnapshotPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AutoSnapshotPolicy resources.
 type autoSnapshotPolicyState struct {
-	// The retention period of the snapshot copied across regions.
-	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-	//   Default value: -1.
+	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	AutoSnapshotPolicyName *string `pulumi:"autoSnapshotPolicyName"`
+	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+	// - `-1`: The snapshot copy is retained until it is deleted.
 	CopiedSnapshotsRetentionDays *int `pulumi:"copiedSnapshotsRetentionDays"`
-	// Specifies whether to enable the system to automatically copy snapshots across regions.
+	// The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
+	CopyEncryptionConfiguration *AutoSnapshotPolicyCopyEncryptionConfiguration `pulumi:"copyEncryptionConfiguration"`
+	// (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	CreateTime *string `pulumi:"createTime"`
+	// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
 	EnableCrossRegionCopy *bool `pulumi:"enableCrossRegionCopy"`
-	// The snapshot policy name.
+	// . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
 	Name *string `pulumi:"name"`
-	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-	// - A maximum of seven time points can be selected.
-	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+	// (Available since v1.236.0) The region ID of the automatic snapshot policy.
+	RegionId *string `pulumi:"regionId"`
+	// The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
 	RepeatWeekdays []string `pulumi:"repeatWeekdays"`
-	// The snapshot retention time, and the unit of measurement is day. Optional values:
-	// - -1: The automatic snapshots are retained permanently.
-	// - [1, 65536]: The number of days retained.
-	//   Default value: -1.
+	// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The retention period of the automatic snapshots. Unit: days. Valid values:
+	// - `-1`: Automatic snapshots are retained until they are deleted.
 	RetentionDays *int `pulumi:"retentionDays"`
-	// The status of Auto Snapshot Policy.
+	// The status of the automatic snapshot policy.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The destination region to which the snapshot is copied. You can set a destination region.
+	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions []string `pulumi:"targetCopyRegions"`
-	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-	// - A maximum of 24 time points can be selected.
-	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+	// The points in time of the day at which to create automatic snapshots.
+	//
+	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+	//
+	// The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TimePoints []string `pulumi:"timePoints"`
 }
 
 type AutoSnapshotPolicyState struct {
-	// The retention period of the snapshot copied across regions.
-	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-	//   Default value: -1.
+	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	AutoSnapshotPolicyName pulumi.StringPtrInput
+	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+	// - `-1`: The snapshot copy is retained until it is deleted.
 	CopiedSnapshotsRetentionDays pulumi.IntPtrInput
-	// Specifies whether to enable the system to automatically copy snapshots across regions.
+	// The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
+	CopyEncryptionConfiguration AutoSnapshotPolicyCopyEncryptionConfigurationPtrInput
+	// (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+	CreateTime pulumi.StringPtrInput
+	// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
 	EnableCrossRegionCopy pulumi.BoolPtrInput
-	// The snapshot policy name.
+	// . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
 	Name pulumi.StringPtrInput
-	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-	// - A maximum of seven time points can be selected.
-	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+	// (Available since v1.236.0) The region ID of the automatic snapshot policy.
+	RegionId pulumi.StringPtrInput
+	// The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
 	RepeatWeekdays pulumi.StringArrayInput
-	// The snapshot retention time, and the unit of measurement is day. Optional values:
-	// - -1: The automatic snapshots are retained permanently.
-	// - [1, 65536]: The number of days retained.
-	//   Default value: -1.
+	// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	ResourceGroupId pulumi.StringPtrInput
+	// The retention period of the automatic snapshots. Unit: days. Valid values:
+	// - `-1`: Automatic snapshots are retained until they are deleted.
 	RetentionDays pulumi.IntPtrInput
-	// The status of Auto Snapshot Policy.
+	// The status of the automatic snapshot policy.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The destination region to which the snapshot is copied. You can set a destination region.
+	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions pulumi.StringArrayInput
-	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-	// - A maximum of 24 time points can be selected.
-	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+	// The points in time of the day at which to create automatic snapshots.
+	//
+	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+	//
+	// The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TimePoints pulumi.StringArrayInput
 }
 
@@ -202,61 +232,73 @@ func (AutoSnapshotPolicyState) ElementType() reflect.Type {
 }
 
 type autoSnapshotPolicyArgs struct {
-	// The retention period of the snapshot copied across regions.
-	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-	//   Default value: -1.
+	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	AutoSnapshotPolicyName *string `pulumi:"autoSnapshotPolicyName"`
+	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+	// - `-1`: The snapshot copy is retained until it is deleted.
 	CopiedSnapshotsRetentionDays *int `pulumi:"copiedSnapshotsRetentionDays"`
-	// Specifies whether to enable the system to automatically copy snapshots across regions.
+	// The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
+	CopyEncryptionConfiguration *AutoSnapshotPolicyCopyEncryptionConfiguration `pulumi:"copyEncryptionConfiguration"`
+	// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
 	EnableCrossRegionCopy *bool `pulumi:"enableCrossRegionCopy"`
-	// The snapshot policy name.
+	// . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
 	Name *string `pulumi:"name"`
-	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-	// - A maximum of seven time points can be selected.
-	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+	// The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
 	RepeatWeekdays []string `pulumi:"repeatWeekdays"`
-	// The snapshot retention time, and the unit of measurement is day. Optional values:
-	// - -1: The automatic snapshots are retained permanently.
-	// - [1, 65536]: The number of days retained.
-	//   Default value: -1.
+	// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The retention period of the automatic snapshots. Unit: days. Valid values:
+	// - `-1`: Automatic snapshots are retained until they are deleted.
 	RetentionDays int `pulumi:"retentionDays"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The destination region to which the snapshot is copied. You can set a destination region.
+	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions []string `pulumi:"targetCopyRegions"`
-	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-	// - A maximum of 24 time points can be selected.
-	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+	// The points in time of the day at which to create automatic snapshots.
+	//
+	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+	//
+	// The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TimePoints []string `pulumi:"timePoints"`
 }
 
 // The set of arguments for constructing a AutoSnapshotPolicy resource.
 type AutoSnapshotPolicyArgs struct {
-	// The retention period of the snapshot copied across regions.
-	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-	//   Default value: -1.
+	// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	AutoSnapshotPolicyName pulumi.StringPtrInput
+	// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+	// - `-1`: The snapshot copy is retained until it is deleted.
 	CopiedSnapshotsRetentionDays pulumi.IntPtrInput
-	// Specifies whether to enable the system to automatically copy snapshots across regions.
+	// The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
+	CopyEncryptionConfiguration AutoSnapshotPolicyCopyEncryptionConfigurationPtrInput
+	// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
 	EnableCrossRegionCopy pulumi.BoolPtrInput
-	// The snapshot policy name.
+	// . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+	//
+	// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
 	Name pulumi.StringPtrInput
-	// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-	// - A maximum of seven time points can be selected.
-	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+	// The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
 	RepeatWeekdays pulumi.StringArrayInput
-	// The snapshot retention time, and the unit of measurement is day. Optional values:
-	// - -1: The automatic snapshots are retained permanently.
-	// - [1, 65536]: The number of days retained.
-	//   Default value: -1.
+	// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+	ResourceGroupId pulumi.StringPtrInput
+	// The retention period of the automatic snapshots. Unit: days. Valid values:
+	// - `-1`: Automatic snapshots are retained until they are deleted.
 	RetentionDays pulumi.IntInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.StringMapInput
-	// The destination region to which the snapshot is copied. You can set a destination region.
+	// The destination region to which to copy the snapshot. You can specify only a single destination region.
 	TargetCopyRegions pulumi.StringArrayInput
-	// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-	// - A maximum of 24 time points can be selected.
-	// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+	// The points in time of the day at which to create automatic snapshots.
+	//
+	// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+	//
+	// The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+	//
+	// The following arguments will be discarded. Please use new fields as soon as possible:
 	TimePoints pulumi.StringArrayInput
 }
 
@@ -347,40 +389,63 @@ func (o AutoSnapshotPolicyOutput) ToAutoSnapshotPolicyOutputWithContext(ctx cont
 	return o
 }
 
-// The retention period of the snapshot copied across regions.
-//   - -1: The snapshot is permanently retained.
-//   - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-//     Default value: -1.
-func (o AutoSnapshotPolicyOutput) CopiedSnapshotsRetentionDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntPtrOutput { return v.CopiedSnapshotsRetentionDays }).(pulumi.IntPtrOutput)
+// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+func (o AutoSnapshotPolicyOutput) AutoSnapshotPolicyName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.AutoSnapshotPolicyName }).(pulumi.StringOutput)
 }
 
-// Specifies whether to enable the system to automatically copy snapshots across regions.
+// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+// - `-1`: The snapshot copy is retained until it is deleted.
+func (o AutoSnapshotPolicyOutput) CopiedSnapshotsRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntOutput { return v.CopiedSnapshotsRetentionDays }).(pulumi.IntOutput)
+}
+
+// The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
+func (o AutoSnapshotPolicyOutput) CopyEncryptionConfiguration() AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput {
+		return v.CopyEncryptionConfiguration
+	}).(AutoSnapshotPolicyCopyEncryptionConfigurationPtrOutput)
+}
+
+// (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+func (o AutoSnapshotPolicyOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
 func (o AutoSnapshotPolicyOutput) EnableCrossRegionCopy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.BoolPtrOutput { return v.EnableCrossRegionCopy }).(pulumi.BoolPtrOutput)
 }
 
-// The snapshot policy name.
+// . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
+//
+// Deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
 func (o AutoSnapshotPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-// - A maximum of seven time points can be selected.
-// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+// (Available since v1.236.0) The region ID of the automatic snapshot policy.
+func (o AutoSnapshotPolicyOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
 func (o AutoSnapshotPolicyOutput) RepeatWeekdays() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringArrayOutput { return v.RepeatWeekdays }).(pulumi.StringArrayOutput)
 }
 
-// The snapshot retention time, and the unit of measurement is day. Optional values:
-//   - -1: The automatic snapshots are retained permanently.
-//   - [1, 65536]: The number of days retained.
-//     Default value: -1.
+// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+func (o AutoSnapshotPolicyOutput) ResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+}
+
+// The retention period of the automatic snapshots. Unit: days. Valid values:
+// - `-1`: Automatic snapshots are retained until they are deleted.
 func (o AutoSnapshotPolicyOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
-// The status of Auto Snapshot Policy.
+// The status of the automatic snapshot policy.
 func (o AutoSnapshotPolicyOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -390,14 +455,18 @@ func (o AutoSnapshotPolicyOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The destination region to which the snapshot is copied. You can set a destination region.
+// The destination region to which to copy the snapshot. You can specify only a single destination region.
 func (o AutoSnapshotPolicyOutput) TargetCopyRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringArrayOutput { return v.TargetCopyRegions }).(pulumi.StringArrayOutput)
 }
 
-// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-// - A maximum of 24 time points can be selected.
-// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+// The points in time of the day at which to create automatic snapshots.
+//
+// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+//
+// The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+//
+// The following arguments will be discarded. Please use new fields as soon as possible:
 func (o AutoSnapshotPolicyOutput) TimePoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.StringArrayOutput { return v.TimePoints }).(pulumi.StringArrayOutput)
 }

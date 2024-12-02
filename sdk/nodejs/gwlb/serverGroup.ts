@@ -54,11 +54,11 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly connectionDrainConfig!: pulumi.Output<outputs.gwlb.ServerGroupConnectionDrainConfig>;
     /**
-     * The creation time of the server group.
+     * The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -66,9 +66,9 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly healthCheckConfig!: pulumi.Output<outputs.gwlb.ServerGroupHealthCheckConfig>;
     /**
-     * Backend Protocol. Value:
+     * The backend protocol. Valid values:
      *
-     * - *GENEVE (default)**.
+     * - `GENEVE`(default)
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
@@ -76,40 +76,47 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Scheduling algorithm. Value:
-     * - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-     * - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-     * - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+     * The scheduling algorithm. Valid values:
+     *
+     * - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
      */
     public readonly scheduler!: pulumi.Output<string>;
     /**
      * The server group name.
      *
-     * It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
      */
     public readonly serverGroupName!: pulumi.Output<string | undefined>;
     /**
-     * The server group type. Value:
-     * - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-     * - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+     * The type of server group. Valid values:
+     *
+     * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - `Ip`: allows you to add servers of by specifying IP addresses.
      */
     public readonly serverGroupType!: pulumi.Output<string>;
     /**
-     * List of servers. See `servers` below.
+     * The backend servers that you want to remove.
+     *
+     * > **NOTE:**  You can remove at most 200 backend servers in each call.
+     * See `servers` below.
      */
     public readonly servers!: pulumi.Output<outputs.gwlb.ServerGroupServer[] | undefined>;
     /**
-     * Server group status. Value:
+     * Indicates the status of the backend server.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * List of resource tags.
+     * The tag keys.
+     *
+     * You can specify at most 20 tags in each call.
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The VPC instance ID.
+     * The VPC ID.
      *
-     * > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+     * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      */
     public readonly vpcId!: pulumi.Output<string>;
 
@@ -172,11 +179,11 @@ export interface ServerGroupState {
      */
     connectionDrainConfig?: pulumi.Input<inputs.gwlb.ServerGroupConnectionDrainConfig>;
     /**
-     * The creation time of the server group.
+     * The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -184,9 +191,9 @@ export interface ServerGroupState {
      */
     healthCheckConfig?: pulumi.Input<inputs.gwlb.ServerGroupHealthCheckConfig>;
     /**
-     * Backend Protocol. Value:
+     * The backend protocol. Valid values:
      *
-     * - *GENEVE (default)**.
+     * - `GENEVE`(default)
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -194,40 +201,47 @@ export interface ServerGroupState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Scheduling algorithm. Value:
-     * - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-     * - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-     * - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+     * The scheduling algorithm. Valid values:
+     *
+     * - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
      */
     scheduler?: pulumi.Input<string>;
     /**
      * The server group name.
      *
-     * It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
      */
     serverGroupName?: pulumi.Input<string>;
     /**
-     * The server group type. Value:
-     * - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-     * - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+     * The type of server group. Valid values:
+     *
+     * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - `Ip`: allows you to add servers of by specifying IP addresses.
      */
     serverGroupType?: pulumi.Input<string>;
     /**
-     * List of servers. See `servers` below.
+     * The backend servers that you want to remove.
+     *
+     * > **NOTE:**  You can remove at most 200 backend servers in each call.
+     * See `servers` below.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.gwlb.ServerGroupServer>[]>;
     /**
-     * Server group status. Value:
+     * Indicates the status of the backend server.
      */
     status?: pulumi.Input<string>;
     /**
-     * List of resource tags.
+     * The tag keys.
+     *
+     * You can specify at most 20 tags in each call.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The VPC instance ID.
+     * The VPC ID.
      *
-     * > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+     * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -241,7 +255,7 @@ export interface ServerGroupArgs {
      */
     connectionDrainConfig?: pulumi.Input<inputs.gwlb.ServerGroupConnectionDrainConfig>;
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -249,9 +263,9 @@ export interface ServerGroupArgs {
      */
     healthCheckConfig?: pulumi.Input<inputs.gwlb.ServerGroupHealthCheckConfig>;
     /**
-     * Backend Protocol. Value:
+     * The backend protocol. Valid values:
      *
-     * - *GENEVE (default)**.
+     * - `GENEVE`(default)
      */
     protocol?: pulumi.Input<string>;
     /**
@@ -259,36 +273,43 @@ export interface ServerGroupArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Scheduling algorithm. Value:
-     * - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-     * - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-     * - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+     * The scheduling algorithm. Valid values:
+     *
+     * - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
      */
     scheduler?: pulumi.Input<string>;
     /**
      * The server group name.
      *
-     * It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
      */
     serverGroupName?: pulumi.Input<string>;
     /**
-     * The server group type. Value:
-     * - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-     * - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+     * The type of server group. Valid values:
+     *
+     * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - `Ip`: allows you to add servers of by specifying IP addresses.
      */
     serverGroupType?: pulumi.Input<string>;
     /**
-     * List of servers. See `servers` below.
+     * The backend servers that you want to remove.
+     *
+     * > **NOTE:**  You can remove at most 200 backend servers in each call.
+     * See `servers` below.
      */
     servers?: pulumi.Input<pulumi.Input<inputs.gwlb.ServerGroupServer>[]>;
     /**
-     * List of resource tags.
+     * The tag keys.
+     *
+     * You can specify at most 20 tags in each call.
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The VPC instance ID.
+     * The VPC ID.
      *
-     * > **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+     * > **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      */
     vpcId: pulumi.Input<string>;
 }

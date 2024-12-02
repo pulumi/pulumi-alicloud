@@ -977,22 +977,40 @@ func (o GetChildInstanceRouteEntryToAttachmentsAttachmentArrayOutput) Index(i pu
 }
 
 type GetFlowlogsFlowlog struct {
-	// The ID of the CEN Instance.
+	// The ID of Cen instance.
 	CenId string `pulumi:"cenId"`
-	// The description of flowlog.
+	// The createTime of flowlog.
+	CreateTime string `pulumi:"createTime"`
+	// The description of the flowlog.
 	Description string `pulumi:"description"`
-	// ID of the CEN flow log.
+	// The ID of FlowLog.
 	FlowLogId string `pulumi:"flowLogId"`
-	// The name of flowlog.
+	// The name of the flowlog.
 	FlowLogName string `pulumi:"flowLogName"`
-	// ID of the CEN flow log.
+	// Flowlog Version.
+	FlowLogVersion string `pulumi:"flowLogVersion"`
+	// The ID of FlowLog.
 	Id string `pulumi:"id"`
-	// The name of the log store which is in the  `projectName` SLS project.
+	// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+	Interval int `pulumi:"interval"`
+	// (Available since v1.236.0) Log Format.
+	LogFormatString string `pulumi:"logFormatString"`
+	// The LogStore that stores the flowlog.
 	LogStoreName string `pulumi:"logStoreName"`
-	// The name of the SLS project.
+	// The Project that stores the flowlog.
 	ProjectName string `pulumi:"projectName"`
-	// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+	// (Available since v1.236.0) Total number of records.
+	RecordTotal string `pulumi:"recordTotal"`
+	// Region id
+	RegionId string `pulumi:"regionId"`
+	// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
 	Status string `pulumi:"status"`
+	// The tag of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.> This parameter is required.
+	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
+	// Transit Router ID
+	TransitRouterId string `pulumi:"transitRouterId"`
 }
 
 // GetFlowlogsFlowlogInput is an input type that accepts GetFlowlogsFlowlogArgs and GetFlowlogsFlowlogOutput values.
@@ -1007,22 +1025,40 @@ type GetFlowlogsFlowlogInput interface {
 }
 
 type GetFlowlogsFlowlogArgs struct {
-	// The ID of the CEN Instance.
+	// The ID of Cen instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
-	// The description of flowlog.
+	// The createTime of flowlog.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// The description of the flowlog.
 	Description pulumi.StringInput `pulumi:"description"`
-	// ID of the CEN flow log.
+	// The ID of FlowLog.
 	FlowLogId pulumi.StringInput `pulumi:"flowLogId"`
-	// The name of flowlog.
+	// The name of the flowlog.
 	FlowLogName pulumi.StringInput `pulumi:"flowLogName"`
-	// ID of the CEN flow log.
+	// Flowlog Version.
+	FlowLogVersion pulumi.StringInput `pulumi:"flowLogVersion"`
+	// The ID of FlowLog.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the log store which is in the  `projectName` SLS project.
+	// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+	Interval pulumi.IntInput `pulumi:"interval"`
+	// (Available since v1.236.0) Log Format.
+	LogFormatString pulumi.StringInput `pulumi:"logFormatString"`
+	// The LogStore that stores the flowlog.
 	LogStoreName pulumi.StringInput `pulumi:"logStoreName"`
-	// The name of the SLS project.
+	// The Project that stores the flowlog.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
-	// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+	// (Available since v1.236.0) Total number of records.
+	RecordTotal pulumi.StringInput `pulumi:"recordTotal"`
+	// Region id
+	RegionId pulumi.StringInput `pulumi:"regionId"`
+	// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
 	Status pulumi.StringInput `pulumi:"status"`
+	// The tag of the resource.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.> This parameter is required.
+	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`
+	// Transit Router ID
+	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`
 }
 
 func (GetFlowlogsFlowlogArgs) ElementType() reflect.Type {
@@ -1076,44 +1112,89 @@ func (o GetFlowlogsFlowlogOutput) ToGetFlowlogsFlowlogOutputWithContext(ctx cont
 	return o
 }
 
-// The ID of the CEN Instance.
+// The ID of Cen instance.
 func (o GetFlowlogsFlowlogOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.CenId }).(pulumi.StringOutput)
 }
 
-// The description of flowlog.
+// The createTime of flowlog.
+func (o GetFlowlogsFlowlogOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The description of the flowlog.
 func (o GetFlowlogsFlowlogOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// ID of the CEN flow log.
+// The ID of FlowLog.
 func (o GetFlowlogsFlowlogOutput) FlowLogId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.FlowLogId }).(pulumi.StringOutput)
 }
 
-// The name of flowlog.
+// The name of the flowlog.
 func (o GetFlowlogsFlowlogOutput) FlowLogName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.FlowLogName }).(pulumi.StringOutput)
 }
 
-// ID of the CEN flow log.
+// Flowlog Version.
+func (o GetFlowlogsFlowlogOutput) FlowLogVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.FlowLogVersion }).(pulumi.StringOutput)
+}
+
+// The ID of FlowLog.
 func (o GetFlowlogsFlowlogOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the log store which is in the  `projectName` SLS project.
+// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+func (o GetFlowlogsFlowlogOutput) Interval() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) int { return v.Interval }).(pulumi.IntOutput)
+}
+
+// (Available since v1.236.0) Log Format.
+func (o GetFlowlogsFlowlogOutput) LogFormatString() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.LogFormatString }).(pulumi.StringOutput)
+}
+
+// The LogStore that stores the flowlog.
 func (o GetFlowlogsFlowlogOutput) LogStoreName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.LogStoreName }).(pulumi.StringOutput)
 }
 
-// The name of the SLS project.
+// The Project that stores the flowlog.
 func (o GetFlowlogsFlowlogOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.ProjectName }).(pulumi.StringOutput)
 }
 
-// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+// (Available since v1.236.0) Total number of records.
+func (o GetFlowlogsFlowlogOutput) RecordTotal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.RecordTotal }).(pulumi.StringOutput)
+}
+
+// Region id
+func (o GetFlowlogsFlowlogOutput) RegionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.RegionId }).(pulumi.StringOutput)
+}
+
+// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
 func (o GetFlowlogsFlowlogOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The tag of the resource.
+func (o GetFlowlogsFlowlogOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.> This parameter is required.
+func (o GetFlowlogsFlowlogOutput) TransitRouterAttachmentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.TransitRouterAttachmentId }).(pulumi.StringOutput)
+}
+
+// Transit Router ID
+func (o GetFlowlogsFlowlogOutput) TransitRouterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFlowlogsFlowlog) string { return v.TransitRouterId }).(pulumi.StringOutput)
 }
 
 type GetFlowlogsFlowlogArrayOutput struct{ *pulumi.OutputState }

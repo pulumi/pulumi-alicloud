@@ -30,16 +30,17 @@ class LoadBalancerArgs:
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC which the Gateway Load Balancer instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
-        :param pulumi.Input[str] address_ip_version: The protocol version. Value:
-               - Ipv4: Ipv4 type
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
-        :param pulumi.Input[str] load_balancer_name: The name of the Gateway Load Balancer instance.
+        :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
+        :param pulumi.Input[str] address_ip_version: The IP version. Valid values:
                
-               It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
+               - `Ipv4`: IPv4 (default)
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] load_balancer_name: The GWLB instance name.
+               
+               The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag keys. You can specify at most 20 tags in each call.
         """
         pulumi.set(__self__, "vpc_id", vpc_id)
         pulumi.set(__self__, "zone_mappings", zone_mappings)
@@ -58,7 +59,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
         """
-        The ID of the VPC which the Gateway Load Balancer instance belongs.
+        The virtual private cloud (VPC) ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -70,7 +71,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]:
         """
-        The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+        The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -82,8 +83,9 @@ class LoadBalancerArgs:
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol version. Value:
-        - Ipv4: Ipv4 type
+        The IP version. Valid values:
+
+        - `Ipv4`: IPv4 (default)
         """
         return pulumi.get(self, "address_ip_version")
 
@@ -95,7 +97,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to perform only a dry run, without performing the actual request.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -107,9 +109,9 @@ class LoadBalancerArgs:
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Gateway Load Balancer instance.
+        The GWLB instance name.
 
-        It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "load_balancer_name")
 
@@ -121,7 +123,7 @@ class LoadBalancerArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -133,7 +135,7 @@ class LoadBalancerArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The list of tags.
+        The tag keys. You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
@@ -156,18 +158,19 @@ class _LoadBalancerState:
                  zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
-        :param pulumi.Input[str] address_ip_version: The protocol version. Value:
-               - Ipv4: Ipv4 type
-        :param pulumi.Input[str] create_time: The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
-        :param pulumi.Input[str] load_balancer_name: The name of the Gateway Load Balancer instance.
+        :param pulumi.Input[str] address_ip_version: The IP version. Valid values:
                
-               It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[str] status: The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC which the Gateway Load Balancer instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+               - `Ipv4`: IPv4 (default)
+        :param pulumi.Input[str] create_time: The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] load_balancer_name: The GWLB instance name.
+               
+               The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] status: The GWLB instance status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag keys. You can specify at most 20 tags in each call.
+        :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         """
         if address_ip_version is not None:
             pulumi.set(__self__, "address_ip_version", address_ip_version)
@@ -192,8 +195,9 @@ class _LoadBalancerState:
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol version. Value:
-        - Ipv4: Ipv4 type
+        The IP version. Valid values:
+
+        - `Ipv4`: IPv4 (default)
         """
         return pulumi.get(self, "address_ip_version")
 
@@ -205,7 +209,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+        The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -217,7 +221,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to perform only a dry run, without performing the actual request.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -229,9 +233,9 @@ class _LoadBalancerState:
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the Gateway Load Balancer instance.
+        The GWLB instance name.
 
-        It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "load_balancer_name")
 
@@ -243,7 +247,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -255,7 +259,7 @@ class _LoadBalancerState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+        The GWLB instance status.
         """
         return pulumi.get(self, "status")
 
@@ -267,7 +271,7 @@ class _LoadBalancerState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The list of tags.
+        The tag keys. You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
@@ -279,7 +283,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC which the Gateway Load Balancer instance belongs.
+        The virtual private cloud (VPC) ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -291,7 +295,7 @@ class _LoadBalancerState:
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]]:
         """
-        The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+        The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         """
         return pulumi.get(self, "zone_mappings")
 
@@ -330,16 +334,17 @@ class LoadBalancer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address_ip_version: The protocol version. Value:
-               - Ipv4: Ipv4 type
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
-        :param pulumi.Input[str] load_balancer_name: The name of the Gateway Load Balancer instance.
+        :param pulumi.Input[str] address_ip_version: The IP version. Valid values:
                
-               It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC which the Gateway Load Balancer instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]] zone_mappings: The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+               - `Ipv4`: IPv4 (default)
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] load_balancer_name: The GWLB instance name.
+               
+               The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag keys. You can specify at most 20 tags in each call.
+        :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]] zone_mappings: The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         """
         ...
     @overload
@@ -432,18 +437,19 @@ class LoadBalancer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] address_ip_version: The protocol version. Value:
-               - Ipv4: Ipv4 type
-        :param pulumi.Input[str] create_time: The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
-        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request.
-        :param pulumi.Input[str] load_balancer_name: The name of the Gateway Load Balancer instance.
+        :param pulumi.Input[str] address_ip_version: The IP version. Valid values:
                
-               It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group
-        :param pulumi.Input[str] status: The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The list of tags.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC which the Gateway Load Balancer instance belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]] zone_mappings: The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+               - `Ipv4`: IPv4 (default)
+        :param pulumi.Input[str] create_time: The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run, without performing the actual request. Valid values:
+        :param pulumi.Input[str] load_balancer_name: The GWLB instance name.
+               
+               The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
+        :param pulumi.Input[str] status: The GWLB instance status.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: The tag keys. You can specify at most 20 tags in each call.
+        :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerZoneMappingArgs', 'LoadBalancerZoneMappingArgsDict']]]] zone_mappings: The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -464,8 +470,9 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="addressIpVersion")
     def address_ip_version(self) -> pulumi.Output[str]:
         """
-        The protocol version. Value:
-        - Ipv4: Ipv4 type
+        The IP version. Valid values:
+
+        - `Ipv4`: IPv4 (default)
         """
         return pulumi.get(self, "address_ip_version")
 
@@ -473,7 +480,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+        The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
         """
         return pulumi.get(self, "create_time")
 
@@ -481,7 +488,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to perform only a dry run, without performing the actual request.
+        Specifies whether to perform a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
@@ -489,9 +496,9 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancerName")
     def load_balancer_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the Gateway Load Balancer instance.
+        The GWLB instance name.
 
-        It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+        The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "load_balancer_name")
 
@@ -499,7 +506,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The ID of the resource group
+        The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -507,7 +514,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+        The GWLB instance status.
         """
         return pulumi.get(self, "status")
 
@@ -515,7 +522,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        The list of tags.
+        The tag keys. You can specify at most 20 tags in each call.
         """
         return pulumi.get(self, "tags")
 
@@ -523,7 +530,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The ID of the VPC which the Gateway Load Balancer instance belongs.
+        The virtual private cloud (VPC) ID.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -531,7 +538,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter(name="zoneMappings")
     def zone_mappings(self) -> pulumi.Output[Sequence['outputs.LoadBalancerZoneMapping']]:
         """
-        The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zone_mappings` below.
+        The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
         """
         return pulumi.get(self, "zone_mappings")
 

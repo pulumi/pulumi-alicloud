@@ -7,8 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
- * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+ * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.15.0.
  *
  * ## Example Usage
  *
@@ -82,7 +83,7 @@ export interface GetInstancesArgs {
      */
     ids?: string[];
     /**
-     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      */
     instanceClass?: string;
     /**
@@ -157,7 +158,7 @@ export interface GetInstancesResult {
      */
     readonly ids: string[];
     /**
-     * (Optional) Type of the applied ApsaraDB for instance.
+     * (Optional) Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
      */
     readonly instanceClass?: string;
@@ -204,8 +205,9 @@ export interface GetInstancesResult {
     readonly zoneId?: string;
 }
 /**
- * The `alicloud.kvstore.getInstances` data source provides a collection of kvstore instances available in Alicloud account.
- * Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
+ * This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
+ *
+ * > **NOTE:** Available since v1.15.0.
  *
  * ## Example Usage
  *
@@ -279,7 +281,7 @@ export interface GetInstancesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      */
     instanceClass?: pulumi.Input<string>;
     /**

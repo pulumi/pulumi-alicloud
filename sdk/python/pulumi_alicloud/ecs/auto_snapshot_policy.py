@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AutoSnapshotPolicyArgs', 'AutoSnapshotPolicy']
 
@@ -22,41 +24,54 @@ class AutoSnapshotPolicyArgs:
                  repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[str]]],
                  retention_days: pulumi.Input[int],
                  time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
                  copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+                 copy_encryption_configuration: Optional[pulumi.Input['AutoSnapshotPolicyCopyEncryptionConfigurationArgs']] = None,
                  enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AutoSnapshotPolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-               - A maximum of seven time points can be selected.
-               - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-        :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
-               - -1: The automatic snapshots are retained permanently.
-               - [1, 65536]: The number of days retained.
-               Default value: -1.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-               - A maximum of 24 time points can be selected.
-               - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
-        :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
-               - -1: The snapshot is permanently retained.
-               - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-               Default value: -1.
-        :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
-        :param pulumi.Input[str] name: The snapshot policy name.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
+        :param pulumi.Input[int] retention_days: The retention period of the automatic snapshots. Unit: days. Valid values:
+               - `-1`: Automatic snapshots are retained until they are deleted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The points in time of the day at which to create automatic snapshots.
+               
+               The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+               
+               The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
+        :param pulumi.Input[str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+               - `-1`: The snapshot copy is retained until it is deleted.
+        :param pulumi.Input['AutoSnapshotPolicyCopyEncryptionConfigurationArgs'] copy_encryption_configuration: The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
+        :param pulumi.Input[str] name: . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which the snapshot is copied. You can set a destination region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
         """
         pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
         pulumi.set(__self__, "retention_days", retention_days)
         pulumi.set(__self__, "time_points", time_points)
+        if auto_snapshot_policy_name is not None:
+            pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
         if copied_snapshots_retention_days is not None:
             pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
+        if copy_encryption_configuration is not None:
+            pulumi.set(__self__, "copy_encryption_configuration", copy_encryption_configuration)
         if enable_cross_region_copy is not None:
             pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
         if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if target_copy_regions is not None:
@@ -66,9 +81,7 @@ class AutoSnapshotPolicyArgs:
     @pulumi.getter(name="repeatWeekdays")
     def repeat_weekdays(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-        - A maximum of seven time points can be selected.
-        - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+        The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
         """
         return pulumi.get(self, "repeat_weekdays")
 
@@ -80,10 +93,8 @@ class AutoSnapshotPolicyArgs:
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Input[int]:
         """
-        The snapshot retention time, and the unit of measurement is day. Optional values:
-        - -1: The automatic snapshots are retained permanently.
-        - [1, 65536]: The number of days retained.
-        Default value: -1.
+        The retention period of the automatic snapshots. Unit: days. Valid values:
+        - `-1`: Automatic snapshots are retained until they are deleted.
         """
         return pulumi.get(self, "retention_days")
 
@@ -95,9 +106,13 @@ class AutoSnapshotPolicyArgs:
     @pulumi.getter(name="timePoints")
     def time_points(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-        - A maximum of 24 time points can be selected.
-        - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+        The points in time of the day at which to create automatic snapshots.
+
+        The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+
+        The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "time_points")
 
@@ -106,13 +121,23 @@ class AutoSnapshotPolicyArgs:
         pulumi.set(self, "time_points", value)
 
     @property
+    @pulumi.getter(name="autoSnapshotPolicyName")
+    def auto_snapshot_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        """
+        return pulumi.get(self, "auto_snapshot_policy_name")
+
+    @auto_snapshot_policy_name.setter
+    def auto_snapshot_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_snapshot_policy_name", value)
+
+    @property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
     def copied_snapshots_retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The retention period of the snapshot copied across regions.
-        - -1: The snapshot is permanently retained.
-        - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        Default value: -1.
+        The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+        - `-1`: The snapshot copy is retained until it is deleted.
         """
         return pulumi.get(self, "copied_snapshots_retention_days")
 
@@ -121,10 +146,22 @@ class AutoSnapshotPolicyArgs:
         pulumi.set(self, "copied_snapshots_retention_days", value)
 
     @property
+    @pulumi.getter(name="copyEncryptionConfiguration")
+    def copy_encryption_configuration(self) -> Optional[pulumi.Input['AutoSnapshotPolicyCopyEncryptionConfigurationArgs']]:
+        """
+        The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        """
+        return pulumi.get(self, "copy_encryption_configuration")
+
+    @copy_encryption_configuration.setter
+    def copy_encryption_configuration(self, value: Optional[pulumi.Input['AutoSnapshotPolicyCopyEncryptionConfigurationArgs']]):
+        pulumi.set(self, "copy_encryption_configuration", value)
+
+    @property
     @pulumi.getter(name="enableCrossRegionCopy")
     def enable_cross_region_copy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the system to automatically copy snapshots across regions.
+        Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_cross_region_copy")
 
@@ -134,15 +171,28 @@ class AutoSnapshotPolicyArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The snapshot policy name.
+        . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter
@@ -160,7 +210,7 @@ class AutoSnapshotPolicyArgs:
     @pulumi.getter(name="targetCopyRegions")
     def target_copy_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The destination region to which the snapshot is copied. You can set a destination region.
+        The destination region to which to copy the snapshot. You can specify only a single destination region.
         """
         return pulumi.get(self, "target_copy_regions")
 
@@ -172,10 +222,15 @@ class AutoSnapshotPolicyArgs:
 @pulumi.input_type
 class _AutoSnapshotPolicyState:
     def __init__(__self__, *,
+                 auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
                  copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+                 copy_encryption_configuration: Optional[pulumi.Input['AutoSnapshotPolicyCopyEncryptionConfigurationArgs']] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region_id: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -183,34 +238,50 @@ class _AutoSnapshotPolicyState:
                  time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering AutoSnapshotPolicy resources.
-        :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
-               - -1: The snapshot is permanently retained.
-               - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-               Default value: -1.
-        :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
-        :param pulumi.Input[str] name: The snapshot policy name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-               - A maximum of seven time points can be selected.
-               - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-        :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
-               - -1: The automatic snapshots are retained permanently.
-               - [1, 65536]: The number of days retained.
-               Default value: -1.
-        :param pulumi.Input[str] status: The status of Auto Snapshot Policy.
+        :param pulumi.Input[str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+               - `-1`: The snapshot copy is retained until it is deleted.
+        :param pulumi.Input['AutoSnapshotPolicyCopyEncryptionConfigurationArgs'] copy_encryption_configuration: The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        :param pulumi.Input[str] create_time: (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
+        :param pulumi.Input[str] name: . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+        :param pulumi.Input[str] region_id: (Available since v1.236.0) The region ID of the automatic snapshot policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        :param pulumi.Input[int] retention_days: The retention period of the automatic snapshots. Unit: days. Valid values:
+               - `-1`: Automatic snapshots are retained until they are deleted.
+        :param pulumi.Input[str] status: The status of the automatic snapshot policy.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which the snapshot is copied. You can set a destination region.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-               - A maximum of 24 time points can be selected.
-               - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The points in time of the day at which to create automatic snapshots.
+               
+               The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+               
+               The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        if auto_snapshot_policy_name is not None:
+            pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
         if copied_snapshots_retention_days is not None:
             pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
+        if copy_encryption_configuration is not None:
+            pulumi.set(__self__, "copy_encryption_configuration", copy_encryption_configuration)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if enable_cross_region_copy is not None:
             pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
         if name is not None:
+            warnings.warn("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
+        if name is not None:
             pulumi.set(__self__, "name", name)
+        if region_id is not None:
+            pulumi.set(__self__, "region_id", region_id)
         if repeat_weekdays is not None:
             pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
         if status is not None:
@@ -223,13 +294,23 @@ class _AutoSnapshotPolicyState:
             pulumi.set(__self__, "time_points", time_points)
 
     @property
+    @pulumi.getter(name="autoSnapshotPolicyName")
+    def auto_snapshot_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        """
+        return pulumi.get(self, "auto_snapshot_policy_name")
+
+    @auto_snapshot_policy_name.setter
+    def auto_snapshot_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auto_snapshot_policy_name", value)
+
+    @property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
     def copied_snapshots_retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The retention period of the snapshot copied across regions.
-        - -1: The snapshot is permanently retained.
-        - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        Default value: -1.
+        The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+        - `-1`: The snapshot copy is retained until it is deleted.
         """
         return pulumi.get(self, "copied_snapshots_retention_days")
 
@@ -238,10 +319,34 @@ class _AutoSnapshotPolicyState:
         pulumi.set(self, "copied_snapshots_retention_days", value)
 
     @property
+    @pulumi.getter(name="copyEncryptionConfiguration")
+    def copy_encryption_configuration(self) -> Optional[pulumi.Input['AutoSnapshotPolicyCopyEncryptionConfigurationArgs']]:
+        """
+        The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        """
+        return pulumi.get(self, "copy_encryption_configuration")
+
+    @copy_encryption_configuration.setter
+    def copy_encryption_configuration(self, value: Optional[pulumi.Input['AutoSnapshotPolicyCopyEncryptionConfigurationArgs']]):
+        pulumi.set(self, "copy_encryption_configuration", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="enableCrossRegionCopy")
     def enable_cross_region_copy(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to enable the system to automatically copy snapshots across regions.
+        Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_cross_region_copy")
 
@@ -251,9 +356,10 @@ class _AutoSnapshotPolicyState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The snapshot policy name.
+        . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
         """
         return pulumi.get(self, "name")
 
@@ -262,12 +368,22 @@ class _AutoSnapshotPolicyState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.236.0) The region ID of the automatic snapshot policy.
+        """
+        return pulumi.get(self, "region_id")
+
+    @region_id.setter
+    def region_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region_id", value)
+
+    @property
     @pulumi.getter(name="repeatWeekdays")
     def repeat_weekdays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-        - A maximum of seven time points can be selected.
-        - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+        The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
         """
         return pulumi.get(self, "repeat_weekdays")
 
@@ -276,13 +392,23 @@ class _AutoSnapshotPolicyState:
         pulumi.set(self, "repeat_weekdays", value)
 
     @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
-        The snapshot retention time, and the unit of measurement is day. Optional values:
-        - -1: The automatic snapshots are retained permanently.
-        - [1, 65536]: The number of days retained.
-        Default value: -1.
+        The retention period of the automatic snapshots. Unit: days. Valid values:
+        - `-1`: Automatic snapshots are retained until they are deleted.
         """
         return pulumi.get(self, "retention_days")
 
@@ -294,7 +420,7 @@ class _AutoSnapshotPolicyState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Auto Snapshot Policy.
+        The status of the automatic snapshot policy.
         """
         return pulumi.get(self, "status")
 
@@ -318,7 +444,7 @@ class _AutoSnapshotPolicyState:
     @pulumi.getter(name="targetCopyRegions")
     def target_copy_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The destination region to which the snapshot is copied. You can set a destination region.
+        The destination region to which to copy the snapshot. You can specify only a single destination region.
         """
         return pulumi.get(self, "target_copy_regions")
 
@@ -330,9 +456,13 @@ class _AutoSnapshotPolicyState:
     @pulumi.getter(name="timePoints")
     def time_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-        - A maximum of 24 time points can be selected.
-        - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+        The points in time of the day at which to create automatic snapshots.
+
+        The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+
+        The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "time_points")
 
@@ -346,10 +476,13 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
                  copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+                 copy_encryption_configuration: Optional[pulumi.Input[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
                  enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -360,7 +493,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
         For information about ECS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/25527.htm).
 
-        > **NOTE:** Available in v1.117.0+.
+        > **NOTE:** Available since v1.117.0.
 
         ## Example Usage
 
@@ -371,7 +504,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.AutoSnapshotPolicy("example",
-            name="tf-testAcc",
+            name="terraform-example",
             repeat_weekdays=[
                 "1",
                 "2",
@@ -395,24 +528,25 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
-               - -1: The snapshot is permanently retained.
-               - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-               Default value: -1.
-        :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
-        :param pulumi.Input[str] name: The snapshot policy name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-               - A maximum of seven time points can be selected.
-               - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-        :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
-               - -1: The automatic snapshots are retained permanently.
-               - [1, 65536]: The number of days retained.
-               Default value: -1.
+        :param pulumi.Input[str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+               - `-1`: The snapshot copy is retained until it is deleted.
+        :param pulumi.Input[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']] copy_encryption_configuration: The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
+        :param pulumi.Input[str] name: . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        :param pulumi.Input[int] retention_days: The retention period of the automatic snapshots. Unit: days. Valid values:
+               - `-1`: Automatic snapshots are retained until they are deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which the snapshot is copied. You can set a destination region.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-               - A maximum of 24 time points can be selected.
-               - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The points in time of the day at which to create automatic snapshots.
+               
+               The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+               
+               The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         ...
     @overload
@@ -425,7 +559,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
 
         For information about ECS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/25527.htm).
 
-        > **NOTE:** Available in v1.117.0+.
+        > **NOTE:** Available since v1.117.0.
 
         ## Example Usage
 
@@ -436,7 +570,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ecs.AutoSnapshotPolicy("example",
-            name="tf-testAcc",
+            name="terraform-example",
             repeat_weekdays=[
                 "1",
                 "2",
@@ -473,10 +607,13 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
                  copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+                 copy_encryption_configuration: Optional[pulumi.Input[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
                  enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -490,12 +627,15 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AutoSnapshotPolicyArgs.__new__(AutoSnapshotPolicyArgs)
 
+            __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
             __props__.__dict__["copied_snapshots_retention_days"] = copied_snapshots_retention_days
+            __props__.__dict__["copy_encryption_configuration"] = copy_encryption_configuration
             __props__.__dict__["enable_cross_region_copy"] = enable_cross_region_copy
             __props__.__dict__["name"] = name
             if repeat_weekdays is None and not opts.urn:
                 raise TypeError("Missing required property 'repeat_weekdays'")
             __props__.__dict__["repeat_weekdays"] = repeat_weekdays
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if retention_days is None and not opts.urn:
                 raise TypeError("Missing required property 'retention_days'")
             __props__.__dict__["retention_days"] = retention_days
@@ -504,6 +644,8 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
             if time_points is None and not opts.urn:
                 raise TypeError("Missing required property 'time_points'")
             __props__.__dict__["time_points"] = time_points
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["region_id"] = None
             __props__.__dict__["status"] = None
         super(AutoSnapshotPolicy, __self__).__init__(
             'alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy',
@@ -515,10 +657,15 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            auto_snapshot_policy_name: Optional[pulumi.Input[str]] = None,
             copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+            copy_encryption_configuration: Optional[pulumi.Input[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            region_id: Optional[pulumi.Input[str]] = None,
             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             retention_days: Optional[pulumi.Input[int]] = None,
             status: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -531,34 +678,42 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copied across regions.
-               - -1: The snapshot is permanently retained.
-               - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-               Default value: -1.
-        :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable the system to automatically copy snapshots across regions.
-        :param pulumi.Input[str] name: The snapshot policy name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-               - A maximum of seven time points can be selected.
-               - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
-        :param pulumi.Input[int] retention_days: The snapshot retention time, and the unit of measurement is day. Optional values:
-               - -1: The automatic snapshots are retained permanently.
-               - [1, 65536]: The number of days retained.
-               Default value: -1.
-        :param pulumi.Input[str] status: The status of Auto Snapshot Policy.
+        :param pulumi.Input[str] auto_snapshot_policy_name: The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        :param pulumi.Input[int] copied_snapshots_retention_days: The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+               - `-1`: The snapshot copy is retained until it is deleted.
+        :param pulumi.Input[Union['AutoSnapshotPolicyCopyEncryptionConfigurationArgs', 'AutoSnapshotPolicyCopyEncryptionConfigurationArgsDict']] copy_encryption_configuration: The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        :param pulumi.Input[str] create_time: (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        :param pulumi.Input[bool] enable_cross_region_copy: Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
+        :param pulumi.Input[str] name: . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
+        :param pulumi.Input[str] region_id: (Available since v1.236.0) The region ID of the automatic snapshot policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] repeat_weekdays: The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
+        :param pulumi.Input[str] resource_group_id: The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        :param pulumi.Input[int] retention_days: The retention period of the automatic snapshots. Unit: days. Valid values:
+               - `-1`: Automatic snapshots are retained until they are deleted.
+        :param pulumi.Input[str] status: The status of the automatic snapshot policy.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which the snapshot is copied. You can set a destination region.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-               - A maximum of 24 time points can be selected.
-               - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_copy_regions: The destination region to which to copy the snapshot. You can specify only a single destination region.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The points in time of the day at which to create automatic snapshots.
+               
+               The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+               
+               The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+               
+               The following arguments will be discarded. Please use new fields as soon as possible:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AutoSnapshotPolicyState.__new__(_AutoSnapshotPolicyState)
 
+        __props__.__dict__["auto_snapshot_policy_name"] = auto_snapshot_policy_name
         __props__.__dict__["copied_snapshots_retention_days"] = copied_snapshots_retention_days
+        __props__.__dict__["copy_encryption_configuration"] = copy_encryption_configuration
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["enable_cross_region_copy"] = enable_cross_region_copy
         __props__.__dict__["name"] = name
+        __props__.__dict__["region_id"] = region_id
         __props__.__dict__["repeat_weekdays"] = repeat_weekdays
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["retention_days"] = retention_days
         __props__.__dict__["status"] = status
         __props__.__dict__["tags"] = tags
@@ -567,50 +722,85 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
         return AutoSnapshotPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
-    @pulumi.getter(name="copiedSnapshotsRetentionDays")
-    def copied_snapshots_retention_days(self) -> pulumi.Output[Optional[int]]:
+    @pulumi.getter(name="autoSnapshotPolicyName")
+    def auto_snapshot_policy_name(self) -> pulumi.Output[str]:
         """
-        The retention period of the snapshot copied across regions.
-        - -1: The snapshot is permanently retained.
-        - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        Default value: -1.
+        The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        """
+        return pulumi.get(self, "auto_snapshot_policy_name")
+
+    @property
+    @pulumi.getter(name="copiedSnapshotsRetentionDays")
+    def copied_snapshots_retention_days(self) -> pulumi.Output[int]:
+        """
+        The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+        - `-1`: The snapshot copy is retained until it is deleted.
         """
         return pulumi.get(self, "copied_snapshots_retention_days")
+
+    @property
+    @pulumi.getter(name="copyEncryptionConfiguration")
+    def copy_encryption_configuration(self) -> pulumi.Output[Optional['outputs.AutoSnapshotPolicyCopyEncryptionConfiguration']]:
+        """
+        The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        """
+        return pulumi.get(self, "copy_encryption_configuration")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="enableCrossRegionCopy")
     def enable_cross_region_copy(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to enable the system to automatically copy snapshots across regions.
+        Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_cross_region_copy")
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.""")
     def name(self) -> pulumi.Output[str]:
         """
-        The snapshot policy name.
+        . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="regionId")
+    def region_id(self) -> pulumi.Output[str]:
+        """
+        (Available since v1.236.0) The region ID of the automatic snapshot policy.
+        """
+        return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="repeatWeekdays")
     def repeat_weekdays(self) -> pulumi.Output[Sequence[str]]:
         """
-        The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-        - A maximum of seven time points can be selected.
-        - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+        The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
         """
         return pulumi.get(self, "repeat_weekdays")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> pulumi.Output[int]:
         """
-        The snapshot retention time, and the unit of measurement is day. Optional values:
-        - -1: The automatic snapshots are retained permanently.
-        - [1, 65536]: The number of days retained.
-        Default value: -1.
+        The retention period of the automatic snapshots. Unit: days. Valid values:
+        - `-1`: Automatic snapshots are retained until they are deleted.
         """
         return pulumi.get(self, "retention_days")
 
@@ -618,7 +808,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of Auto Snapshot Policy.
+        The status of the automatic snapshot policy.
         """
         return pulumi.get(self, "status")
 
@@ -634,7 +824,7 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     @pulumi.getter(name="targetCopyRegions")
     def target_copy_regions(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The destination region to which the snapshot is copied. You can set a destination region.
+        The destination region to which to copy the snapshot. You can specify only a single destination region.
         """
         return pulumi.get(self, "target_copy_regions")
 
@@ -642,9 +832,13 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     @pulumi.getter(name="timePoints")
     def time_points(self) -> pulumi.Output[Sequence[str]]:
         """
-        The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-        - A maximum of 24 time points can be selected.
-        - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+        The points in time of the day at which to create automatic snapshots.
+
+        The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+
+        The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+
+        The following arguments will be discarded. Please use new fields as soon as possible:
         """
         return pulumi.get(self, "time_points")
 

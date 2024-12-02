@@ -14,41 +14,79 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetFlowlogsFlowlogResult
     {
         /// <summary>
-        /// The ID of the CEN Instance.
+        /// The ID of Cen instance.
         /// </summary>
         public readonly string CenId;
         /// <summary>
-        /// The description of flowlog.
+        /// The createTime of flowlog.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
+        /// The description of the flowlog.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// ID of the CEN flow log.
+        /// The ID of FlowLog.
         /// </summary>
         public readonly string FlowLogId;
         /// <summary>
-        /// The name of flowlog.
+        /// The name of the flowlog.
         /// </summary>
         public readonly string FlowLogName;
         /// <summary>
-        /// ID of the CEN flow log.
+        /// Flowlog Version.
+        /// </summary>
+        public readonly string FlowLogVersion;
+        /// <summary>
+        /// The ID of FlowLog.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the log store which is in the  `project_name` SLS project.
+        /// The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+        /// </summary>
+        public readonly int Interval;
+        /// <summary>
+        /// (Available since v1.236.0) Log Format.
+        /// </summary>
+        public readonly string LogFormatString;
+        /// <summary>
+        /// The LogStore that stores the flowlog.
         /// </summary>
         public readonly string LogStoreName;
         /// <summary>
-        /// The name of the SLS project.
+        /// The Project that stores the flowlog.
         /// </summary>
         public readonly string ProjectName;
         /// <summary>
-        /// The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
+        /// (Available since v1.236.0) Total number of records.
+        /// </summary>
+        public readonly string RecordTotal;
+        /// <summary>
+        /// Region id
+        /// </summary>
+        public readonly string RegionId;
+        /// <summary>
+        /// The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
         /// </summary>
         public readonly string Status;
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Tags;
+        /// <summary>
+        /// (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.&gt; This parameter is required.
+        /// </summary>
+        public readonly string TransitRouterAttachmentId;
+        /// <summary>
+        /// Transit Router ID
+        /// </summary>
+        public readonly string TransitRouterId;
 
         [OutputConstructor]
         private GetFlowlogsFlowlogResult(
             string cenId,
+
+            string createTime,
 
             string description,
 
@@ -56,22 +94,47 @@ namespace Pulumi.AliCloud.Cen.Outputs
 
             string flowLogName,
 
+            string flowLogVersion,
+
             string id,
+
+            int interval,
+
+            string logFormatString,
 
             string logStoreName,
 
             string projectName,
 
-            string status)
+            string recordTotal,
+
+            string regionId,
+
+            string status,
+
+            ImmutableDictionary<string, string> tags,
+
+            string transitRouterAttachmentId,
+
+            string transitRouterId)
         {
             CenId = cenId;
+            CreateTime = createTime;
             Description = description;
             FlowLogId = flowLogId;
             FlowLogName = flowLogName;
+            FlowLogVersion = flowLogVersion;
             Id = id;
+            Interval = interval;
+            LogFormatString = logFormatString;
             LogStoreName = logStoreName;
             ProjectName = projectName;
+            RecordTotal = recordTotal;
+            RegionId = regionId;
             Status = status;
+            Tags = tags;
+            TransitRouterAttachmentId = transitRouterAttachmentId;
+            TransitRouterId = transitRouterId;
         }
     }
 }

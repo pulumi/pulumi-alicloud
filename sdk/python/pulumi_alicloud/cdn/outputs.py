@@ -309,8 +309,6 @@ class DomainNewCertificateConfig(dict):
             suggest = "cert_region"
         elif key == "certType":
             suggest = "cert_type"
-        elif key == "forceSet":
-            suggest = "force_set"
         elif key == "privateKey":
             suggest = "private_key"
         elif key == "serverCertificate":
@@ -334,7 +332,6 @@ class DomainNewCertificateConfig(dict):
                  cert_name: Optional[str] = None,
                  cert_region: Optional[str] = None,
                  cert_type: Optional[str] = None,
-                 force_set: Optional[str] = None,
                  private_key: Optional[str] = None,
                  server_certificate: Optional[str] = None,
                  server_certificate_status: Optional[str] = None):
@@ -347,7 +344,6 @@ class DomainNewCertificateConfig(dict):
                - **cas**: Cloud Shield certificate.
                - **free**: free certificate.
                > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
-        :param str force_set: The force set of the security certificate.
         :param str private_key: The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
         :param str server_certificate: The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
         :param str server_certificate_status: Whether the HTTPS certificate is enabled. Value:
@@ -362,8 +358,6 @@ class DomainNewCertificateConfig(dict):
             pulumi.set(__self__, "cert_region", cert_region)
         if cert_type is not None:
             pulumi.set(__self__, "cert_type", cert_type)
-        if force_set is not None:
-            pulumi.set(__self__, "force_set", force_set)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if server_certificate is not None:
@@ -408,14 +402,6 @@ class DomainNewCertificateConfig(dict):
         return pulumi.get(self, "cert_type")
 
     @property
-    @pulumi.getter(name="forceSet")
-    def force_set(self) -> Optional[str]:
-        """
-        The force set of the security certificate.
-        """
-        return pulumi.get(self, "force_set")
-
-    @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[str]:
         """
@@ -455,7 +441,7 @@ class DomainNewSource(dict):
         :param int port: The port of source. Valid values are `443` and `80`. Default value is `80`.
         :param int priority: Priority of the source. Valid values are `0` and `100`. Default value is `20`.
         :param str type: The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
-        :param int weight: Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+        :param int weight: Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -504,7 +490,7 @@ class DomainNewSource(dict):
     @pulumi.getter
     def weight(self) -> Optional[int]:
         """
-        Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+        Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
         """
         return pulumi.get(self, "weight")
 

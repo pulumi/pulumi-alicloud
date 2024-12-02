@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Gwlb.Outputs
     public sealed class LoadBalancerZoneMappingLoadBalancerAddress
     {
         /// <summary>
-        /// The ID of the ENI.
+        /// The ID of the elastic network interface (ENI) used by the GWLB instance.
         /// </summary>
         public readonly string? EniId;
         /// <summary>
-        /// IPv4 private network address.
+        /// The private IPv4 address.
         /// </summary>
         public readonly string? PrivateIpv4Address;
 

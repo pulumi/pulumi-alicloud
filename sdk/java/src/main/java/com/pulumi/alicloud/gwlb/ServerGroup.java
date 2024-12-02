@@ -53,28 +53,28 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.connectionDrainConfig;
     }
     /**
-     * The creation time of the server group.
+     * The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return The creation time of the server group.
+     * @return The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Specifies whether to perform only a dry run, without performing the actual request.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Specifies whether to perform only a dry run, without performing the actual request.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -95,18 +95,18 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.healthCheckConfig;
     }
     /**
-     * Backend Protocol. Value:
+     * The backend protocol. Valid values:
      * 
-     * - *GENEVE (default)**.
+     * - `GENEVE`(default)
      * 
      */
     @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
-     * @return Backend Protocol. Value:
+     * @return The backend protocol. Valid values:
      * 
-     * - *GENEVE (default)**.
+     * - `GENEVE`(default)
      * 
      */
     public Output<String> protocol() {
@@ -127,20 +127,22 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Scheduling algorithm. Value:
-     * - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-     * - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-     * - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+     * The scheduling algorithm. Valid values:
+     * 
+     * - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
      * 
      */
     @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output<String> scheduler;
 
     /**
-     * @return Scheduling algorithm. Value:
-     * - **5TCH (default)**: quintuple hash, which is based on the consistent hash of the quintuple (source IP, Destination IP, source port, destination port, and protocol). The same flow is scheduled to the same backend server.
-     * - `3TCH`: a three-tuple hash, which is based on the consistent hash of three tuples (source IP address, destination IP address, and protocol). The same flow is dispatched to the same backend server.
-     * - `2TCH`: Binary Group hash, which is based on the consistent hash of the binary group (source IP and destination IP). The same flow is scheduled to the same backend server.
+     * @return The scheduling algorithm. Valid values:
+     * 
+     * - `5TCH` (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `3TCH`: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+     * - `2TCH`: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
      * 
      */
     public Output<String> scheduler() {
@@ -149,7 +151,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
      * The server group name.
      * 
-     * It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
     @Export(name="serverGroupName", refs={String.class}, tree="[0]")
@@ -158,85 +160,97 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The server group name.
      * 
-     * It must be 2 to 128 characters in length, start with an uppercase letter or a Chinese character, and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+     * The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
      * 
      */
     public Output<Optional<String>> serverGroupName() {
         return Codegen.optional(this.serverGroupName);
     }
     /**
-     * The server group type. Value:
-     * - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-     * - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+     * The type of server group. Valid values:
+     * 
+     * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - `Ip`: allows you to add servers of by specifying IP addresses.
      * 
      */
     @Export(name="serverGroupType", refs={String.class}, tree="[0]")
     private Output<String> serverGroupType;
 
     /**
-     * @return The server group type. Value:
-     * - **Instance (default)**: The instance type. You can add Ecs, Eni, and Eci instances to the server group.
-     * - `Ip`: The Ip address type. You can directly add backend servers of the Ip address type to the server group.
+     * @return The type of server group. Valid values:
+     * 
+     * - `Instance` (default): allows you to specify servers of the `Ecs`, `Eni`, or `Eci` type.
+     * - `Ip`: allows you to add servers of by specifying IP addresses.
      * 
      */
     public Output<String> serverGroupType() {
         return this.serverGroupType;
     }
     /**
-     * List of servers. See `servers` below.
+     * The backend servers that you want to remove.
+     * 
+     * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+     * See `servers` below.
      * 
      */
     @Export(name="servers", refs={List.class,ServerGroupServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServerGroupServer>> servers;
 
     /**
-     * @return List of servers. See `servers` below.
+     * @return The backend servers that you want to remove.
+     * 
+     * &gt; **NOTE:**  You can remove at most 200 backend servers in each call.
+     * See `servers` below.
      * 
      */
     public Output<Optional<List<ServerGroupServer>>> servers() {
         return Codegen.optional(this.servers);
     }
     /**
-     * Server group status. Value:
+     * Indicates the status of the backend server.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Server group status. Value:
+     * @return Indicates the status of the backend server.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * List of resource tags.
+     * The tag keys.
+     * 
+     * You can specify at most 20 tags in each call.
      * 
      */
     @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
-     * @return List of resource tags.
+     * @return The tag keys.
+     * 
+     * You can specify at most 20 tags in each call.
      * 
      */
     public Output<Optional<Map<String,String>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * The VPC instance ID.
+     * The VPC ID.
      * 
-     * &gt; **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPC instance ID.
+     * @return The VPC ID.
      * 
-     * &gt; **NOTE:**  If the value of ServerGroupType is Instance, only servers in the VPC can be added to the server group.
+     * &gt; **NOTE:**  If `ServerGroupType` is set to `Instance`, only servers in the specified VPC can be added to the server group.
      * 
      */
     public Output<String> vpcId() {

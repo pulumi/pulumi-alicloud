@@ -14,38 +14,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerZoneMapping {
     /**
-     * @return The addresses of the Gateway Load Balancer instance.
+     * @return The information about the IP addresses used by the GWLB instance.
      * 
      */
     private @Nullable List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
     /**
-     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+     * @return The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
      * 
      */
     private String vswitchId;
     /**
-     * @return The ID of the zone to which the Gateway Load Balancer instance belongs.
+     * @return The zone ID. You can call the DescribeZones operation to query the most recent zone list.
      * 
      */
     private String zoneId;
 
     private LoadBalancerZoneMapping() {}
     /**
-     * @return The addresses of the Gateway Load Balancer instance.
+     * @return The information about the IP addresses used by the GWLB instance.
      * 
      */
     public List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses() {
         return this.loadBalancerAddresses == null ? List.of() : this.loadBalancerAddresses;
     }
     /**
-     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+     * @return The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
      * 
      */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The ID of the zone to which the Gateway Load Balancer instance belongs.
+     * @return The zone ID. You can call the DescribeZones operation to query the most recent zone list.
      * 
      */
     public String zoneId() {

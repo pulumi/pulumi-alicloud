@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         private InputList<Inputs.LoadBalancerZoneMappingLoadBalancerAddressArgs>? _loadBalancerAddresses;
 
         /// <summary>
-        /// The addresses of the Gateway Load Balancer instance.
+        /// The information about the IP addresses used by the GWLB instance.
         /// </summary>
         public InputList<Inputs.LoadBalancerZoneMappingLoadBalancerAddressArgs> LoadBalancerAddresses
         {
@@ -25,13 +25,13 @@ namespace Pulumi.AliCloud.Gwlb.Inputs
         }
 
         /// <summary>
-        /// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+        /// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
         /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the zone to which the Gateway Load Balancer instance belongs.
+        /// The zone ID. You can call the DescribeZones operation to query the most recent zone list.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;

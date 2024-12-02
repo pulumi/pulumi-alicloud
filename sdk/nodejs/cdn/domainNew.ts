@@ -7,9 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides a CDN Domain resource. CDN domain name.
+ * Provides a CDN Domain resource.
  *
- * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addcdndomain).
+ * CDN domain name.
+ *
+ * For information about CDN Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/alibaba-cloud-cdn/latest/api-doc-cdn-2018-05-10-api-doc-addcdndomain).
  *
  * > **NOTE:** Available since v1.34.0.
  *
@@ -81,7 +83,7 @@ export class DomainNew extends pulumi.CustomResource {
      */
     public readonly cdnType!: pulumi.Output<string>;
     /**
-     * Certificate configuration. See `certificateConfig` below.
+     * Certificate configuration See `certificateConfig` below.
      */
     public readonly certificateConfig!: pulumi.Output<outputs.cdn.DomainNewCertificateConfig>;
     /**
@@ -97,15 +99,15 @@ export class DomainNew extends pulumi.CustomResource {
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
+     * Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+     */
+    public readonly env!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
-     * - **domestic**: Mainland China only.
-     * - **overseas**: Global (excluding Mainland China).
-     * - **global**: global.
-     * The default value is **domestic**.
      */
     public readonly scope!: pulumi.Output<string>;
     /**
@@ -113,11 +115,11 @@ export class DomainNew extends pulumi.CustomResource {
      */
     public readonly sources!: pulumi.Output<outputs.cdn.DomainNewSource[]>;
     /**
-     * The status of the resource.
+     * The status of the resource, valid values: `online`, `offline`.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    public readonly status!: pulumi.Output<string>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -139,6 +141,7 @@ export class DomainNew extends pulumi.CustomResource {
             resourceInputs["checkUrl"] = state ? state.checkUrl : undefined;
             resourceInputs["cname"] = state ? state.cname : undefined;
             resourceInputs["domainName"] = state ? state.domainName : undefined;
+            resourceInputs["env"] = state ? state.env : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["sources"] = state ? state.sources : undefined;
@@ -159,12 +162,13 @@ export class DomainNew extends pulumi.CustomResource {
             resourceInputs["certificateConfig"] = args ? args.certificateConfig : undefined;
             resourceInputs["checkUrl"] = args ? args.checkUrl : undefined;
             resourceInputs["domainName"] = args ? args.domainName : undefined;
+            resourceInputs["env"] = args ? args.env : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["sources"] = args ? args.sources : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["cname"] = undefined /*out*/;
-            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DomainNew.__pulumiType, name, resourceInputs, opts);
@@ -180,7 +184,7 @@ export interface DomainNewState {
      */
     cdnType?: pulumi.Input<string>;
     /**
-     * Certificate configuration. See `certificateConfig` below.
+     * Certificate configuration See `certificateConfig` below.
      */
     certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
     /**
@@ -196,15 +200,15 @@ export interface DomainNewState {
      */
     domainName?: pulumi.Input<string>;
     /**
+     * Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+     */
+    env?: pulumi.Input<string>;
+    /**
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
-     * - **domestic**: Mainland China only.
-     * - **overseas**: Global (excluding Mainland China).
-     * - **global**: global.
-     * The default value is **domestic**.
      */
     scope?: pulumi.Input<string>;
     /**
@@ -212,11 +216,11 @@ export interface DomainNewState {
      */
     sources?: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**
-     * The status of the resource.
+     * The status of the resource, valid values: `online`, `offline`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -230,7 +234,7 @@ export interface DomainNewArgs {
      */
     cdnType: pulumi.Input<string>;
     /**
-     * Certificate configuration. See `certificateConfig` below.
+     * Certificate configuration See `certificateConfig` below.
      */
     certificateConfig?: pulumi.Input<inputs.cdn.DomainNewCertificateConfig>;
     /**
@@ -242,15 +246,15 @@ export interface DomainNewArgs {
      */
     domainName: pulumi.Input<string>;
     /**
+     * Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
+     */
+    env?: pulumi.Input<string>;
+    /**
      * The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
      * Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
-     * - **domestic**: Mainland China only.
-     * - **overseas**: Global (excluding Mainland China).
-     * - **global**: global.
-     * The default value is **domestic**.
      */
     scope?: pulumi.Input<string>;
     /**
@@ -258,7 +262,11 @@ export interface DomainNewArgs {
      */
     sources: pulumi.Input<pulumi.Input<inputs.cdn.DomainNewSource>[]>;
     /**
-     * The tag of the resource.
+     * The status of the resource, valid values: `online`, `offline`.
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * The tag of the resource
      */
     tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

@@ -28,26 +28,27 @@ import (
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
-	// The protocol version. Value:
-	// - Ipv4: Ipv4 type
-	AddressIpVersion pulumi.StringOutput `pulumi:"addressIpVersion"`
-	// The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Specifies whether to perform only a dry run, without performing the actual request.
-	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The name of the Gateway Load Balancer instance.
+	// The IP version. Valid values:
 	//
-	// It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+	// - `Ipv4`: IPv4 (default)
+	AddressIpVersion pulumi.StringOutput `pulumi:"addressIpVersion"`
+	// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
+	// The GWLB instance name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	LoadBalancerName pulumi.StringPtrOutput `pulumi:"loadBalancerName"`
-	// The ID of the resource group
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+	// The GWLB instance status.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// The list of tags.
+	// The tag keys. You can specify at most 20 tags in each call.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The ID of the VPC which the Gateway Load Balancer instance belongs.
+	// The virtual private cloud (VPC) ID.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zoneMappings` below.
+	// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zoneMappings` below.
 	ZoneMappings LoadBalancerZoneMappingArrayOutput `pulumi:"zoneMappings"`
 }
 
@@ -87,50 +88,52 @@ func GetLoadBalancer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LoadBalancer resources.
 type loadBalancerState struct {
-	// The protocol version. Value:
-	// - Ipv4: Ipv4 type
-	AddressIpVersion *string `pulumi:"addressIpVersion"`
-	// The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
-	CreateTime *string `pulumi:"createTime"`
-	// Specifies whether to perform only a dry run, without performing the actual request.
-	DryRun *bool `pulumi:"dryRun"`
-	// The name of the Gateway Load Balancer instance.
+	// The IP version. Valid values:
 	//
-	// It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+	// - `Ipv4`: IPv4 (default)
+	AddressIpVersion *string `pulumi:"addressIpVersion"`
+	// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+	CreateTime *string `pulumi:"createTime"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	DryRun *bool `pulumi:"dryRun"`
+	// The GWLB instance name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
-	// The ID of the resource group
+	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+	// The GWLB instance status.
 	Status *string `pulumi:"status"`
-	// The list of tags.
+	// The tag keys. You can specify at most 20 tags in each call.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the VPC which the Gateway Load Balancer instance belongs.
+	// The virtual private cloud (VPC) ID.
 	VpcId *string `pulumi:"vpcId"`
-	// The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zoneMappings` below.
+	// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zoneMappings` below.
 	ZoneMappings []LoadBalancerZoneMapping `pulumi:"zoneMappings"`
 }
 
 type LoadBalancerState struct {
-	// The protocol version. Value:
-	// - Ipv4: Ipv4 type
-	AddressIpVersion pulumi.StringPtrInput
-	// The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
-	CreateTime pulumi.StringPtrInput
-	// Specifies whether to perform only a dry run, without performing the actual request.
-	DryRun pulumi.BoolPtrInput
-	// The name of the Gateway Load Balancer instance.
+	// The IP version. Valid values:
 	//
-	// It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+	// - `Ipv4`: IPv4 (default)
+	AddressIpVersion pulumi.StringPtrInput
+	// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
+	CreateTime pulumi.StringPtrInput
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	DryRun pulumi.BoolPtrInput
+	// The GWLB instance name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	LoadBalancerName pulumi.StringPtrInput
-	// The ID of the resource group
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+	// The GWLB instance status.
 	Status pulumi.StringPtrInput
-	// The list of tags.
+	// The tag keys. You can specify at most 20 tags in each call.
 	Tags pulumi.StringMapInput
-	// The ID of the VPC which the Gateway Load Balancer instance belongs.
+	// The virtual private cloud (VPC) ID.
 	VpcId pulumi.StringPtrInput
-	// The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zoneMappings` below.
+	// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zoneMappings` below.
 	ZoneMappings LoadBalancerZoneMappingArrayInput
 }
 
@@ -139,43 +142,45 @@ func (LoadBalancerState) ElementType() reflect.Type {
 }
 
 type loadBalancerArgs struct {
-	// The protocol version. Value:
-	// - Ipv4: Ipv4 type
-	AddressIpVersion *string `pulumi:"addressIpVersion"`
-	// Specifies whether to perform only a dry run, without performing the actual request.
-	DryRun *bool `pulumi:"dryRun"`
-	// The name of the Gateway Load Balancer instance.
+	// The IP version. Valid values:
 	//
-	// It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+	// - `Ipv4`: IPv4 (default)
+	AddressIpVersion *string `pulumi:"addressIpVersion"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	DryRun *bool `pulumi:"dryRun"`
+	// The GWLB instance name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	LoadBalancerName *string `pulumi:"loadBalancerName"`
-	// The ID of the resource group
+	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The list of tags.
+	// The tag keys. You can specify at most 20 tags in each call.
 	Tags map[string]string `pulumi:"tags"`
-	// The ID of the VPC which the Gateway Load Balancer instance belongs.
+	// The virtual private cloud (VPC) ID.
 	VpcId string `pulumi:"vpcId"`
-	// The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zoneMappings` below.
+	// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zoneMappings` below.
 	ZoneMappings []LoadBalancerZoneMapping `pulumi:"zoneMappings"`
 }
 
 // The set of arguments for constructing a LoadBalancer resource.
 type LoadBalancerArgs struct {
-	// The protocol version. Value:
-	// - Ipv4: Ipv4 type
-	AddressIpVersion pulumi.StringPtrInput
-	// Specifies whether to perform only a dry run, without performing the actual request.
-	DryRun pulumi.BoolPtrInput
-	// The name of the Gateway Load Balancer instance.
+	// The IP version. Valid values:
 	//
-	// It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+	// - `Ipv4`: IPv4 (default)
+	AddressIpVersion pulumi.StringPtrInput
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	DryRun pulumi.BoolPtrInput
+	// The GWLB instance name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 	LoadBalancerName pulumi.StringPtrInput
-	// The ID of the resource group
+	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The list of tags.
+	// The tag keys. You can specify at most 20 tags in each call.
 	Tags pulumi.StringMapInput
-	// The ID of the VPC which the Gateway Load Balancer instance belongs.
+	// The virtual private cloud (VPC) ID.
 	VpcId pulumi.StringInput
-	// The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zoneMappings` below.
+	// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zoneMappings` below.
 	ZoneMappings LoadBalancerZoneMappingArrayInput
 }
 
@@ -266,50 +271,51 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The protocol version. Value:
-// - Ipv4: Ipv4 type
+// The IP version. Valid values:
+//
+// - `Ipv4`: IPv4 (default)
 func (o LoadBalancerOutput) AddressIpVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AddressIpVersion }).(pulumi.StringOutput)
 }
 
-// The resource creation time, in Greenwich Mean Time, in the format of **yyyy-MM-ddTHH:mm:ssZ**.
+// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ** format. The time is displayed in UTC.
 func (o LoadBalancerOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Specifies whether to perform only a dry run, without performing the actual request.
+// Specifies whether to perform a dry run, without performing the actual request. Valid values:
 func (o LoadBalancerOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the Gateway Load Balancer instance.
+// The GWLB instance name.
 //
-// It must be 2 to 128 English or Chinese characters in length. It must start with a letter or a Chinese character and can contain digits, half-width periods (.), underscores (_), and dashes (-).
+// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
 func (o LoadBalancerOutput) LoadBalancerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.LoadBalancerName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the resource group
+// The ID of the resource group.
 func (o LoadBalancerOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the Gateway load Balancer instance. Value:, indicating that the instance listener will no longer forward traffic.
+// The GWLB instance status.
 func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// The list of tags.
+// The tag keys. You can specify at most 20 tags in each call.
 func (o LoadBalancerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The ID of the VPC which the Gateway Load Balancer instance belongs.
+// The virtual private cloud (VPC) ID.
 func (o LoadBalancerOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The List of zones and vSwitches mapped. You must add at least one zone and a maximum of 20 zones. If the current region supports two or more zones, we recommend that you add two or more zones. See `zoneMappings` below.
+// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zoneMappings` below.
 func (o LoadBalancerOutput) ZoneMappings() LoadBalancerZoneMappingArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) LoadBalancerZoneMappingArrayOutput { return v.ZoneMappings }).(LoadBalancerZoneMappingArrayOutput)
 }

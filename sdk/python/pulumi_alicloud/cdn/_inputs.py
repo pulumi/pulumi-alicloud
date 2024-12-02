@@ -341,10 +341,6 @@ if not MYPY:
         - **free**: free certificate.
         > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
         """
-        force_set: NotRequired[pulumi.Input[str]]
-        """
-        The force set of the security certificate.
-        """
         private_key: NotRequired[pulumi.Input[str]]
         """
         The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
@@ -369,7 +365,6 @@ class DomainNewCertificateConfigArgs:
                  cert_name: Optional[pulumi.Input[str]] = None,
                  cert_region: Optional[pulumi.Input[str]] = None,
                  cert_type: Optional[pulumi.Input[str]] = None,
-                 force_set: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
                  server_certificate: Optional[pulumi.Input[str]] = None,
                  server_certificate_status: Optional[pulumi.Input[str]] = None):
@@ -382,7 +377,6 @@ class DomainNewCertificateConfigArgs:
                - **cas**: Cloud Shield certificate.
                - **free**: free certificate.
                > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
-        :param pulumi.Input[str] force_set: The force set of the security certificate.
         :param pulumi.Input[str] private_key: The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
         :param pulumi.Input[str] server_certificate: The content of the security certificate. If the certificate is not enabled, you do not need to enter the content of the security certificate. Please enter the content of the certificate to configure the certificate.
         :param pulumi.Input[str] server_certificate_status: Whether the HTTPS certificate is enabled. Value:
@@ -397,8 +391,6 @@ class DomainNewCertificateConfigArgs:
             pulumi.set(__self__, "cert_region", cert_region)
         if cert_type is not None:
             pulumi.set(__self__, "cert_type", cert_type)
-        if force_set is not None:
-            pulumi.set(__self__, "force_set", force_set)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
         if server_certificate is not None:
@@ -459,18 +451,6 @@ class DomainNewCertificateConfigArgs:
         pulumi.set(self, "cert_type", value)
 
     @property
-    @pulumi.getter(name="forceSet")
-    def force_set(self) -> Optional[pulumi.Input[str]]:
-        """
-        The force set of the security certificate.
-        """
-        return pulumi.get(self, "force_set")
-
-    @force_set.setter
-    def force_set(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "force_set", value)
-
-    @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -529,7 +509,7 @@ if not MYPY:
         """
         weight: NotRequired[pulumi.Input[int]]
         """
-        Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+        Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
         """
 elif False:
     DomainNewSourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -547,7 +527,7 @@ class DomainNewSourceArgs:
         :param pulumi.Input[int] port: The port of source. Valid values are `443` and `80`. Default value is `80`.
         :param pulumi.Input[int] priority: Priority of the source. Valid values are `0` and `100`. Default value is `20`.
         :param pulumi.Input[str] type: The type of the source. Valid values are `ipaddr`, `domain` and `oss`.
-        :param pulumi.Input[int] weight: Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+        :param pulumi.Input[int] weight: Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -612,7 +592,7 @@ class DomainNewSourceArgs:
     @pulumi.getter
     def weight(self) -> Optional[pulumi.Input[int]]:
         """
-        Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`. .
+        Weight of the source. Valid values are from `0` to `100`. Default value is `10`, but if type is `ipaddr`, the value can only be `10`.
         """
         return pulumi.get(self, "weight")
 

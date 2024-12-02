@@ -363,6 +363,356 @@ func (o AccessPointRootPathPermissionPtrOutput) Permission() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+type FileSystemNfsAcl struct {
+	// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// FileSystemNfsAclInput is an input type that accepts FileSystemNfsAclArgs and FileSystemNfsAclOutput values.
+// You can construct a concrete instance of `FileSystemNfsAclInput` via:
+//
+//	FileSystemNfsAclArgs{...}
+type FileSystemNfsAclInput interface {
+	pulumi.Input
+
+	ToFileSystemNfsAclOutput() FileSystemNfsAclOutput
+	ToFileSystemNfsAclOutputWithContext(context.Context) FileSystemNfsAclOutput
+}
+
+type FileSystemNfsAclArgs struct {
+	// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (FileSystemNfsAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemNfsAcl)(nil)).Elem()
+}
+
+func (i FileSystemNfsAclArgs) ToFileSystemNfsAclOutput() FileSystemNfsAclOutput {
+	return i.ToFileSystemNfsAclOutputWithContext(context.Background())
+}
+
+func (i FileSystemNfsAclArgs) ToFileSystemNfsAclOutputWithContext(ctx context.Context) FileSystemNfsAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemNfsAclOutput)
+}
+
+func (i FileSystemNfsAclArgs) ToFileSystemNfsAclPtrOutput() FileSystemNfsAclPtrOutput {
+	return i.ToFileSystemNfsAclPtrOutputWithContext(context.Background())
+}
+
+func (i FileSystemNfsAclArgs) ToFileSystemNfsAclPtrOutputWithContext(ctx context.Context) FileSystemNfsAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemNfsAclOutput).ToFileSystemNfsAclPtrOutputWithContext(ctx)
+}
+
+// FileSystemNfsAclPtrInput is an input type that accepts FileSystemNfsAclArgs, FileSystemNfsAclPtr and FileSystemNfsAclPtrOutput values.
+// You can construct a concrete instance of `FileSystemNfsAclPtrInput` via:
+//
+//	        FileSystemNfsAclArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileSystemNfsAclPtrInput interface {
+	pulumi.Input
+
+	ToFileSystemNfsAclPtrOutput() FileSystemNfsAclPtrOutput
+	ToFileSystemNfsAclPtrOutputWithContext(context.Context) FileSystemNfsAclPtrOutput
+}
+
+type fileSystemNfsAclPtrType FileSystemNfsAclArgs
+
+func FileSystemNfsAclPtr(v *FileSystemNfsAclArgs) FileSystemNfsAclPtrInput {
+	return (*fileSystemNfsAclPtrType)(v)
+}
+
+func (*fileSystemNfsAclPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemNfsAcl)(nil)).Elem()
+}
+
+func (i *fileSystemNfsAclPtrType) ToFileSystemNfsAclPtrOutput() FileSystemNfsAclPtrOutput {
+	return i.ToFileSystemNfsAclPtrOutputWithContext(context.Background())
+}
+
+func (i *fileSystemNfsAclPtrType) ToFileSystemNfsAclPtrOutputWithContext(ctx context.Context) FileSystemNfsAclPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemNfsAclPtrOutput)
+}
+
+type FileSystemNfsAclOutput struct{ *pulumi.OutputState }
+
+func (FileSystemNfsAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemNfsAcl)(nil)).Elem()
+}
+
+func (o FileSystemNfsAclOutput) ToFileSystemNfsAclOutput() FileSystemNfsAclOutput {
+	return o
+}
+
+func (o FileSystemNfsAclOutput) ToFileSystemNfsAclOutputWithContext(ctx context.Context) FileSystemNfsAclOutput {
+	return o
+}
+
+func (o FileSystemNfsAclOutput) ToFileSystemNfsAclPtrOutput() FileSystemNfsAclPtrOutput {
+	return o.ToFileSystemNfsAclPtrOutputWithContext(context.Background())
+}
+
+func (o FileSystemNfsAclOutput) ToFileSystemNfsAclPtrOutputWithContext(ctx context.Context) FileSystemNfsAclPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSystemNfsAcl) *FileSystemNfsAcl {
+		return &v
+	}).(FileSystemNfsAclPtrOutput)
+}
+
+// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+func (o FileSystemNfsAclOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileSystemNfsAcl) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type FileSystemNfsAclPtrOutput struct{ *pulumi.OutputState }
+
+func (FileSystemNfsAclPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemNfsAcl)(nil)).Elem()
+}
+
+func (o FileSystemNfsAclPtrOutput) ToFileSystemNfsAclPtrOutput() FileSystemNfsAclPtrOutput {
+	return o
+}
+
+func (o FileSystemNfsAclPtrOutput) ToFileSystemNfsAclPtrOutputWithContext(ctx context.Context) FileSystemNfsAclPtrOutput {
+	return o
+}
+
+func (o FileSystemNfsAclPtrOutput) Elem() FileSystemNfsAclOutput {
+	return o.ApplyT(func(v *FileSystemNfsAcl) FileSystemNfsAcl {
+		if v != nil {
+			return *v
+		}
+		var ret FileSystemNfsAcl
+		return ret
+	}).(FileSystemNfsAclOutput)
+}
+
+// Specifies whether to enable the NFS ACL feature. Default value: `false`. Valid values:
+func (o FileSystemNfsAclPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileSystemNfsAcl) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FileSystemRecycleBin struct {
+	// The time at which the recycle bin was enabled.
+	EnableTime *string `pulumi:"enableTime"`
+	// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+	ReservedDays *int `pulumi:"reservedDays"`
+	// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+	SecondarySize *int `pulumi:"secondarySize"`
+	// The size of the files that are dumped to the recycle bin.
+	Size *int `pulumi:"size"`
+	// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+	Status *string `pulumi:"status"`
+}
+
+// FileSystemRecycleBinInput is an input type that accepts FileSystemRecycleBinArgs and FileSystemRecycleBinOutput values.
+// You can construct a concrete instance of `FileSystemRecycleBinInput` via:
+//
+//	FileSystemRecycleBinArgs{...}
+type FileSystemRecycleBinInput interface {
+	pulumi.Input
+
+	ToFileSystemRecycleBinOutput() FileSystemRecycleBinOutput
+	ToFileSystemRecycleBinOutputWithContext(context.Context) FileSystemRecycleBinOutput
+}
+
+type FileSystemRecycleBinArgs struct {
+	// The time at which the recycle bin was enabled.
+	EnableTime pulumi.StringPtrInput `pulumi:"enableTime"`
+	// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+	ReservedDays pulumi.IntPtrInput `pulumi:"reservedDays"`
+	// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+	SecondarySize pulumi.IntPtrInput `pulumi:"secondarySize"`
+	// The size of the files that are dumped to the recycle bin.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (FileSystemRecycleBinArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemRecycleBin)(nil)).Elem()
+}
+
+func (i FileSystemRecycleBinArgs) ToFileSystemRecycleBinOutput() FileSystemRecycleBinOutput {
+	return i.ToFileSystemRecycleBinOutputWithContext(context.Background())
+}
+
+func (i FileSystemRecycleBinArgs) ToFileSystemRecycleBinOutputWithContext(ctx context.Context) FileSystemRecycleBinOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemRecycleBinOutput)
+}
+
+func (i FileSystemRecycleBinArgs) ToFileSystemRecycleBinPtrOutput() FileSystemRecycleBinPtrOutput {
+	return i.ToFileSystemRecycleBinPtrOutputWithContext(context.Background())
+}
+
+func (i FileSystemRecycleBinArgs) ToFileSystemRecycleBinPtrOutputWithContext(ctx context.Context) FileSystemRecycleBinPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemRecycleBinOutput).ToFileSystemRecycleBinPtrOutputWithContext(ctx)
+}
+
+// FileSystemRecycleBinPtrInput is an input type that accepts FileSystemRecycleBinArgs, FileSystemRecycleBinPtr and FileSystemRecycleBinPtrOutput values.
+// You can construct a concrete instance of `FileSystemRecycleBinPtrInput` via:
+//
+//	        FileSystemRecycleBinArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileSystemRecycleBinPtrInput interface {
+	pulumi.Input
+
+	ToFileSystemRecycleBinPtrOutput() FileSystemRecycleBinPtrOutput
+	ToFileSystemRecycleBinPtrOutputWithContext(context.Context) FileSystemRecycleBinPtrOutput
+}
+
+type fileSystemRecycleBinPtrType FileSystemRecycleBinArgs
+
+func FileSystemRecycleBinPtr(v *FileSystemRecycleBinArgs) FileSystemRecycleBinPtrInput {
+	return (*fileSystemRecycleBinPtrType)(v)
+}
+
+func (*fileSystemRecycleBinPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemRecycleBin)(nil)).Elem()
+}
+
+func (i *fileSystemRecycleBinPtrType) ToFileSystemRecycleBinPtrOutput() FileSystemRecycleBinPtrOutput {
+	return i.ToFileSystemRecycleBinPtrOutputWithContext(context.Background())
+}
+
+func (i *fileSystemRecycleBinPtrType) ToFileSystemRecycleBinPtrOutputWithContext(ctx context.Context) FileSystemRecycleBinPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileSystemRecycleBinPtrOutput)
+}
+
+type FileSystemRecycleBinOutput struct{ *pulumi.OutputState }
+
+func (FileSystemRecycleBinOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileSystemRecycleBin)(nil)).Elem()
+}
+
+func (o FileSystemRecycleBinOutput) ToFileSystemRecycleBinOutput() FileSystemRecycleBinOutput {
+	return o
+}
+
+func (o FileSystemRecycleBinOutput) ToFileSystemRecycleBinOutputWithContext(ctx context.Context) FileSystemRecycleBinOutput {
+	return o
+}
+
+func (o FileSystemRecycleBinOutput) ToFileSystemRecycleBinPtrOutput() FileSystemRecycleBinPtrOutput {
+	return o.ToFileSystemRecycleBinPtrOutputWithContext(context.Background())
+}
+
+func (o FileSystemRecycleBinOutput) ToFileSystemRecycleBinPtrOutputWithContext(ctx context.Context) FileSystemRecycleBinPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSystemRecycleBin) *FileSystemRecycleBin {
+		return &v
+	}).(FileSystemRecycleBinPtrOutput)
+}
+
+// The time at which the recycle bin was enabled.
+func (o FileSystemRecycleBinOutput) EnableTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileSystemRecycleBin) *string { return v.EnableTime }).(pulumi.StringPtrOutput)
+}
+
+// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+func (o FileSystemRecycleBinOutput) ReservedDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSystemRecycleBin) *int { return v.ReservedDays }).(pulumi.IntPtrOutput)
+}
+
+// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+func (o FileSystemRecycleBinOutput) SecondarySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSystemRecycleBin) *int { return v.SecondarySize }).(pulumi.IntPtrOutput)
+}
+
+// The size of the files that are dumped to the recycle bin.
+func (o FileSystemRecycleBinOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileSystemRecycleBin) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+func (o FileSystemRecycleBinOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileSystemRecycleBin) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type FileSystemRecycleBinPtrOutput struct{ *pulumi.OutputState }
+
+func (FileSystemRecycleBinPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileSystemRecycleBin)(nil)).Elem()
+}
+
+func (o FileSystemRecycleBinPtrOutput) ToFileSystemRecycleBinPtrOutput() FileSystemRecycleBinPtrOutput {
+	return o
+}
+
+func (o FileSystemRecycleBinPtrOutput) ToFileSystemRecycleBinPtrOutputWithContext(ctx context.Context) FileSystemRecycleBinPtrOutput {
+	return o
+}
+
+func (o FileSystemRecycleBinPtrOutput) Elem() FileSystemRecycleBinOutput {
+	return o.ApplyT(func(v *FileSystemRecycleBin) FileSystemRecycleBin {
+		if v != nil {
+			return *v
+		}
+		var ret FileSystemRecycleBin
+		return ret
+	}).(FileSystemRecycleBinOutput)
+}
+
+// The time at which the recycle bin was enabled.
+func (o FileSystemRecycleBinPtrOutput) EnableTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystemRecycleBin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The retention period of the files in the recycle bin. Unit: days. Default value: `3`. Valid values: `1` to `180`. **NOTE:** `reservedDays` takes effect only if `status` is set to `Enable`.
+func (o FileSystemRecycleBinPtrOutput) ReservedDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSystemRecycleBin) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReservedDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// The size of the Infrequent Access (IA) data that is dumped to the recycle bin.
+func (o FileSystemRecycleBinPtrOutput) SecondarySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSystemRecycleBin) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SecondarySize
+	}).(pulumi.IntPtrOutput)
+}
+
+// The size of the files that are dumped to the recycle bin.
+func (o FileSystemRecycleBinPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileSystemRecycleBin) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies whether to enable the recycle bin feature. Default value: `Disable`. Valid values: `Enable`, `Disable`.
+func (o FileSystemRecycleBinPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileSystemRecycleBin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAccessGroupsGroup struct {
 	// The name of access group.
 	AccessGroupName string `pulumi:"accessGroupName"`
@@ -2140,6 +2490,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointPosixUserPtrInput)(nil)).Elem(), AccessPointPosixUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointRootPathPermissionInput)(nil)).Elem(), AccessPointRootPathPermissionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPointRootPathPermissionPtrInput)(nil)).Elem(), AccessPointRootPathPermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemNfsAclInput)(nil)).Elem(), FileSystemNfsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemNfsAclPtrInput)(nil)).Elem(), FileSystemNfsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemRecycleBinInput)(nil)).Elem(), FileSystemRecycleBinArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileSystemRecycleBinPtrInput)(nil)).Elem(), FileSystemRecycleBinArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupInput)(nil)).Elem(), GetAccessGroupsGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessGroupsGroupArrayInput)(nil)).Elem(), GetAccessGroupsGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccessRulesRuleInput)(nil)).Elem(), GetAccessRulesRuleArgs{})
@@ -2166,6 +2520,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessPointPosixUserPtrOutput{})
 	pulumi.RegisterOutputType(AccessPointRootPathPermissionOutput{})
 	pulumi.RegisterOutputType(AccessPointRootPathPermissionPtrOutput{})
+	pulumi.RegisterOutputType(FileSystemNfsAclOutput{})
+	pulumi.RegisterOutputType(FileSystemNfsAclPtrOutput{})
+	pulumi.RegisterOutputType(FileSystemRecycleBinOutput{})
+	pulumi.RegisterOutputType(FileSystemRecycleBinPtrOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetAccessGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetAccessRulesRuleOutput{})

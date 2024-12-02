@@ -14,7 +14,11 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     public sealed class ClusterNodeGroup
     {
         /// <summary>
-        /// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.230.1, `additional_security_group_ids` can not be modified.
+        /// The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
+        /// </summary>
+        public readonly Outputs.ClusterNodeGroupAckConfig? AckConfig;
+        /// <summary>
+        /// Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
         /// </summary>
         public readonly ImmutableArray<string> AdditionalSecurityGroupIds;
         /// <summary>
@@ -22,7 +26,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeGroupAutoScalingPolicy? AutoScalingPolicy;
         /// <summary>
-        /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.230.1, `cost_optimized_config` can not be modified.
+        /// The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
         /// </summary>
         public readonly Outputs.ClusterNodeGroupCostOptimizedConfig? CostOptimizedConfig;
         /// <summary>
@@ -30,7 +34,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterNodeGroupDataDisk> DataDisks;
         /// <summary>
-        /// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.230.1, `deployment_set_strategy` can not be modified.
+        /// Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
         /// </summary>
         public readonly string? DeploymentSetStrategy;
         /// <summary>
@@ -38,7 +42,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly bool? GracefulShutdown;
         /// <summary>
-        /// Host Ecs instance types. **NOTE:** From version 1.230.1, `instance_types` can not be modified.
+        /// Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
         /// </summary>
         public readonly ImmutableArray<string> InstanceTypes;
         /// <summary>
@@ -70,6 +74,10 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly bool? SpotInstanceRemedy;
         /// <summary>
+        /// The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
+        /// </summary>
+        public readonly string? SpotStrategy;
+        /// <summary>
         /// The detail configuration of subscription payment type. See `subscription_config` below.
         /// </summary>
         public readonly Outputs.ClusterNodeGroupSubscriptionConfig? SubscriptionConfig;
@@ -78,16 +86,18 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeGroupSystemDisk SystemDisk;
         /// <summary>
-        /// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.230.1, `vswitch_ids` can not be modified.
+        /// Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
         /// </summary>
         public readonly ImmutableArray<string> VswitchIds;
         /// <summary>
-        /// Whether the node has a public IP address enabled. **NOTE:** From version 1.230.1, `with_public_ip` can not be modified.
+        /// Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
         /// </summary>
         public readonly bool? WithPublicIp;
 
         [OutputConstructor]
         private ClusterNodeGroup(
+            Outputs.ClusterNodeGroupAckConfig? ackConfig,
+
             ImmutableArray<string> additionalSecurityGroupIds,
 
             Outputs.ClusterNodeGroupAutoScalingPolicy? autoScalingPolicy,
@@ -116,6 +126,8 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
             bool? spotInstanceRemedy,
 
+            string? spotStrategy,
+
             Outputs.ClusterNodeGroupSubscriptionConfig? subscriptionConfig,
 
             Outputs.ClusterNodeGroupSystemDisk systemDisk,
@@ -124,6 +136,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
 
             bool? withPublicIp)
         {
+            AckConfig = ackConfig;
             AdditionalSecurityGroupIds = additionalSecurityGroupIds;
             AutoScalingPolicy = autoScalingPolicy;
             CostOptimizedConfig = costOptimizedConfig;
@@ -138,6 +151,7 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
             PaymentType = paymentType;
             SpotBidPrices = spotBidPrices;
             SpotInstanceRemedy = spotInstanceRemedy;
+            SpotStrategy = spotStrategy;
             SubscriptionConfig = subscriptionConfig;
             SystemDisk = systemDisk;
             VswitchIds = vswitchIds;

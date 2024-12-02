@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerZoneMappingLoadBalancerAddress {
     /**
-     * @return The ID of the ENI.
+     * @return The ID of the elastic network interface (ENI) used by the GWLB instance.
      * 
      */
     private @Nullable String eniId;
     /**
-     * @return IPv4 private network address.
+     * @return The private IPv4 address.
      * 
      */
     private @Nullable String privateIpv4Address;
 
     private LoadBalancerZoneMappingLoadBalancerAddress() {}
     /**
-     * @return The ID of the ENI.
+     * @return The ID of the elastic network interface (ENI) used by the GWLB instance.
      * 
      */
     public Optional<String> eniId() {
         return Optional.ofNullable(this.eniId);
     }
     /**
-     * @return IPv4 private network address.
+     * @return The private IPv4 address.
      * 
      */
     public Optional<String> privateIpv4Address() {

@@ -268,14 +268,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dbInstanceName;
     }
     /**
-     * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+     * The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
      * 
      */
     @Export(name="dedicatedHostGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostGroupId;
 
     /**
-     * @return The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+     * @return The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
      * 
      */
     public Output<Optional<String>> dedicatedHostGroupId() {
@@ -464,7 +464,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.instanceChargeType;
     }
     /**
-     * Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      * 
      */
@@ -472,7 +472,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> instanceClass;
 
     /**
-     * @return Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
+     * @return Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `alicloud.kvstore.getInstanceClasses`
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      * 
      */
@@ -814,7 +814,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.roleArn;
     }
     /**
-     * The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
@@ -822,7 +822,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> secondaryZoneId;
 
     /**
-     * @return The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+     * @return The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */

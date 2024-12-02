@@ -5,108 +5,218 @@ package com.pulumi.alicloud.cen.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 
 @CustomType
 public final class GetFlowlogsFlowlog {
     /**
-     * @return The ID of the CEN Instance.
+     * @return The ID of Cen instance.
      * 
      */
     private String cenId;
     /**
-     * @return The description of flowlog.
+     * @return The createTime of flowlog.
+     * 
+     */
+    private String createTime;
+    /**
+     * @return The description of the flowlog.
      * 
      */
     private String description;
     /**
-     * @return ID of the CEN flow log.
+     * @return The ID of FlowLog.
      * 
      */
     private String flowLogId;
     /**
-     * @return The name of flowlog.
+     * @return The name of the flowlog.
      * 
      */
     private String flowLogName;
     /**
-     * @return ID of the CEN flow log.
+     * @return Flowlog Version.
+     * 
+     */
+    private String flowLogVersion;
+    /**
+     * @return The ID of FlowLog.
      * 
      */
     private String id;
     /**
-     * @return The name of the log store which is in the  `project_name` SLS project.
+     * @return The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+     * 
+     */
+    private Integer interval;
+    /**
+     * @return (Available since v1.236.0) Log Format.
+     * 
+     */
+    private String logFormatString;
+    /**
+     * @return The LogStore that stores the flowlog.
      * 
      */
     private String logStoreName;
     /**
-     * @return The name of the SLS project.
+     * @return The Project that stores the flowlog.
      * 
      */
     private String projectName;
     /**
-     * @return The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+     * @return (Available since v1.236.0) Total number of records.
+     * 
+     */
+    private String recordTotal;
+    /**
+     * @return Region id
+     * 
+     */
+    private String regionId;
+    /**
+     * @return The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      * 
      */
     private String status;
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    private Map<String,String> tags;
+    /**
+     * @return (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.&gt; This parameter is required.
+     * 
+     */
+    private String transitRouterAttachmentId;
+    /**
+     * @return Transit Router ID
+     * 
+     */
+    private String transitRouterId;
 
     private GetFlowlogsFlowlog() {}
     /**
-     * @return The ID of the CEN Instance.
+     * @return The ID of Cen instance.
      * 
      */
     public String cenId() {
         return this.cenId;
     }
     /**
-     * @return The description of flowlog.
+     * @return The createTime of flowlog.
+     * 
+     */
+    public String createTime() {
+        return this.createTime;
+    }
+    /**
+     * @return The description of the flowlog.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return ID of the CEN flow log.
+     * @return The ID of FlowLog.
      * 
      */
     public String flowLogId() {
         return this.flowLogId;
     }
     /**
-     * @return The name of flowlog.
+     * @return The name of the flowlog.
      * 
      */
     public String flowLogName() {
         return this.flowLogName;
     }
     /**
-     * @return ID of the CEN flow log.
+     * @return Flowlog Version.
+     * 
+     */
+    public String flowLogVersion() {
+        return this.flowLogVersion;
+    }
+    /**
+     * @return The ID of FlowLog.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return The name of the log store which is in the  `project_name` SLS project.
+     * @return The duration of the capture window for the flow log to capture traffic. Unit: seconds. Valid values: **60** or **600 * *. Default value: **600 * *.
+     * 
+     */
+    public Integer interval() {
+        return this.interval;
+    }
+    /**
+     * @return (Available since v1.236.0) Log Format.
+     * 
+     */
+    public String logFormatString() {
+        return this.logFormatString;
+    }
+    /**
+     * @return The LogStore that stores the flowlog.
      * 
      */
     public String logStoreName() {
         return this.logStoreName;
     }
     /**
-     * @return The name of the SLS project.
+     * @return The Project that stores the flowlog.
      * 
      */
     public String projectName() {
         return this.projectName;
     }
     /**
-     * @return The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
+     * @return (Available since v1.236.0) Total number of records.
+     * 
+     */
+    public String recordTotal() {
+        return this.recordTotal;
+    }
+    /**
+     * @return Region id
+     * 
+     */
+    public String regionId() {
+        return this.regionId;
+    }
+    /**
+     * @return The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
      * 
      */
     public String status() {
         return this.status;
+    }
+    /**
+     * @return The tag of the resource.
+     * 
+     */
+    public Map<String,String> tags() {
+        return this.tags;
+    }
+    /**
+     * @return (Available since v1.236.0) Cross-region Connection ID or VBR connection ID.&gt; This parameter is required.
+     * 
+     */
+    public String transitRouterAttachmentId() {
+        return this.transitRouterAttachmentId;
+    }
+    /**
+     * @return Transit Router ID
+     * 
+     */
+    public String transitRouterId() {
+        return this.transitRouterId;
     }
 
     public static Builder builder() {
@@ -119,24 +229,42 @@ public final class GetFlowlogsFlowlog {
     @CustomType.Builder
     public static final class Builder {
         private String cenId;
+        private String createTime;
         private String description;
         private String flowLogId;
         private String flowLogName;
+        private String flowLogVersion;
         private String id;
+        private Integer interval;
+        private String logFormatString;
         private String logStoreName;
         private String projectName;
+        private String recordTotal;
+        private String regionId;
         private String status;
+        private Map<String,String> tags;
+        private String transitRouterAttachmentId;
+        private String transitRouterId;
         public Builder() {}
         public Builder(GetFlowlogsFlowlog defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cenId = defaults.cenId;
+    	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
     	      this.flowLogId = defaults.flowLogId;
     	      this.flowLogName = defaults.flowLogName;
+    	      this.flowLogVersion = defaults.flowLogVersion;
     	      this.id = defaults.id;
+    	      this.interval = defaults.interval;
+    	      this.logFormatString = defaults.logFormatString;
     	      this.logStoreName = defaults.logStoreName;
     	      this.projectName = defaults.projectName;
+    	      this.recordTotal = defaults.recordTotal;
+    	      this.regionId = defaults.regionId;
     	      this.status = defaults.status;
+    	      this.tags = defaults.tags;
+    	      this.transitRouterAttachmentId = defaults.transitRouterAttachmentId;
+    	      this.transitRouterId = defaults.transitRouterId;
         }
 
         @CustomType.Setter
@@ -145,6 +273,14 @@ public final class GetFlowlogsFlowlog {
               throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "cenId");
             }
             this.cenId = cenId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder createTime(String createTime) {
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
@@ -172,11 +308,35 @@ public final class GetFlowlogsFlowlog {
             return this;
         }
         @CustomType.Setter
+        public Builder flowLogVersion(String flowLogVersion) {
+            if (flowLogVersion == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "flowLogVersion");
+            }
+            this.flowLogVersion = flowLogVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
               throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder interval(Integer interval) {
+            if (interval == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "interval");
+            }
+            this.interval = interval;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder logFormatString(String logFormatString) {
+            if (logFormatString == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "logFormatString");
+            }
+            this.logFormatString = logFormatString;
             return this;
         }
         @CustomType.Setter
@@ -196,6 +356,22 @@ public final class GetFlowlogsFlowlog {
             return this;
         }
         @CustomType.Setter
+        public Builder recordTotal(String recordTotal) {
+            if (recordTotal == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "recordTotal");
+            }
+            this.recordTotal = recordTotal;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder regionId(String regionId) {
+            if (regionId == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "regionId");
+            }
+            this.regionId = regionId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "status");
@@ -203,16 +379,49 @@ public final class GetFlowlogsFlowlog {
             this.status = status;
             return this;
         }
+        @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transitRouterAttachmentId(String transitRouterAttachmentId) {
+            if (transitRouterAttachmentId == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "transitRouterAttachmentId");
+            }
+            this.transitRouterAttachmentId = transitRouterAttachmentId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder transitRouterId(String transitRouterId) {
+            if (transitRouterId == null) {
+              throw new MissingRequiredPropertyException("GetFlowlogsFlowlog", "transitRouterId");
+            }
+            this.transitRouterId = transitRouterId;
+            return this;
+        }
         public GetFlowlogsFlowlog build() {
             final var _resultValue = new GetFlowlogsFlowlog();
             _resultValue.cenId = cenId;
+            _resultValue.createTime = createTime;
             _resultValue.description = description;
             _resultValue.flowLogId = flowLogId;
             _resultValue.flowLogName = flowLogName;
+            _resultValue.flowLogVersion = flowLogVersion;
             _resultValue.id = id;
+            _resultValue.interval = interval;
+            _resultValue.logFormatString = logFormatString;
             _resultValue.logStoreName = logStoreName;
             _resultValue.projectName = projectName;
+            _resultValue.recordTotal = recordTotal;
+            _resultValue.regionId = regionId;
             _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterId = transitRouterId;
             return _resultValue;
         }
     }

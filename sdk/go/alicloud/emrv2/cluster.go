@@ -246,6 +246,8 @@ type Cluster struct {
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
+	// The deletion protection of EMR cluster.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode pulumi.StringOutput `pulumi:"deployMode"`
 	// The log collect strategy of EMR cluster.
@@ -326,6 +328,8 @@ type clusterState struct {
 	ClusterName *string `pulumi:"clusterName"`
 	// EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
 	ClusterType *string `pulumi:"clusterType"`
+	// The deletion protection of EMR cluster.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode *string `pulumi:"deployMode"`
 	// The log collect strategy of EMR cluster.
@@ -359,6 +363,8 @@ type ClusterState struct {
 	ClusterName pulumi.StringPtrInput
 	// EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
 	ClusterType pulumi.StringPtrInput
+	// The deletion protection of EMR cluster.
+	DeletionProtection pulumi.BoolPtrInput
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode pulumi.StringPtrInput
 	// The log collect strategy of EMR cluster.
@@ -396,6 +402,8 @@ type clusterArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
 	ClusterType string `pulumi:"clusterType"`
+	// The deletion protection of EMR cluster.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode *string `pulumi:"deployMode"`
 	// The log collect strategy of EMR cluster.
@@ -430,6 +438,8 @@ type ClusterArgs struct {
 	ClusterName pulumi.StringInput
 	// EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
 	ClusterType pulumi.StringInput
+	// The deletion protection of EMR cluster.
+	DeletionProtection pulumi.BoolPtrInput
 	// The deploy mode of EMR cluster. Supported value: NORMAL or HA.
 	DeployMode pulumi.StringPtrInput
 	// The log collect strategy of EMR cluster.
@@ -562,6 +572,11 @@ func (o ClusterOutput) ClusterName() pulumi.StringOutput {
 // EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
 func (o ClusterOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
+}
+
+// The deletion protection of EMR cluster.
+func (o ClusterOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // The deploy mode of EMR cluster. Supported value: NORMAL or HA.

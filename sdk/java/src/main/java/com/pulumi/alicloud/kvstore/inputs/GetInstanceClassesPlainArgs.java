@@ -167,9 +167,21 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
         return Optional.ofNullable(this.performanceType);
     }
 
+    /**
+     * The type of the service. Valid values:
+     * * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
+     * * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+     * 
+     */
     @Import(name="productType")
     private @Nullable String productType;
 
+    /**
+     * @return The type of the service. Valid values:
+     * * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
+     * * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+     * 
+     */
     public Optional<String> productType() {
         return Optional.ofNullable(this.productType);
     }
@@ -191,9 +203,6 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
 
     /**
      * The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-     * * product_type - (Optional, Available since 1.130.0) The type of the service. Valid values:
-     * * Local: an ApsaraDB for Redis instance with a local disk.
-     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
      * 
      */
     @Import(name="shardNumber")
@@ -201,9 +210,6 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
 
     /**
      * @return The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-     * * product_type - (Optional, Available since 1.130.0) The type of the service. Valid values:
-     * * Local: an ApsaraDB for Redis instance with a local disk.
-     * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
      * 
      */
     public Optional<Integer> shardNumber() {
@@ -400,6 +406,14 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
             return this;
         }
 
+        /**
+         * @param productType The type of the service. Valid values:
+         * * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
+         * * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
+         * 
+         * @return builder
+         * 
+         */
         public Builder productType(@Nullable String productType) {
             $.productType = productType;
             return this;
@@ -418,9 +432,6 @@ public final class GetInstanceClassesPlainArgs extends com.pulumi.resources.Invo
 
         /**
          * @param shardNumber The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
-         * * product_type - (Optional, Available since 1.130.0) The type of the service. Valid values:
-         * * Local: an ApsaraDB for Redis instance with a local disk.
-         * * OnECS: an ApsaraDB for Redis instance with a standard disk. This type is available only on the Alibaba Cloud China site.
          * 
          * @return builder
          * 

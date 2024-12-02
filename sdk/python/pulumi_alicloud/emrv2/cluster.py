@@ -29,6 +29,7 @@ class ClusterArgs:
                  release_version: pulumi.Input[str],
                  application_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]]] = None,
                  bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
                  log_collect_strategy: Optional[pulumi.Input[str]] = None,
                  payment_type: Optional[pulumi.Input[str]] = None,
@@ -46,6 +47,7 @@ class ClusterArgs:
         :param pulumi.Input[str] release_version: EMR Version, e.g. EMR-5.10.0. You can find the all valid EMR Version in emr web console.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterApplicationConfigArgs']]] application_configs: The application configurations of EMR cluster. See `application_configs` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
+        :param pulumi.Input[bool] deletion_protection: The deletion protection of EMR cluster.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[str] payment_type: Payment Type for this cluster. Supported value: PayAsYouGo or Subscription. **NOTE:** From version 1.227.0, `payment_type` can be modified.
@@ -64,6 +66,8 @@ class ClusterArgs:
             pulumi.set(__self__, "application_configs", application_configs)
         if bootstrap_scripts is not None:
             pulumi.set(__self__, "bootstrap_scripts", bootstrap_scripts)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if deploy_mode is not None:
             pulumi.set(__self__, "deploy_mode", deploy_mode)
         if log_collect_strategy is not None:
@@ -176,6 +180,18 @@ class ClusterArgs:
         pulumi.set(self, "bootstrap_scripts", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The deletion protection of EMR cluster.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter(name="deployMode")
     def deploy_mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -268,6 +284,7 @@ class _ClusterState:
                  bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
                  log_collect_strategy: Optional[pulumi.Input[str]] = None,
                  node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]]] = None,
@@ -285,6 +302,7 @@ class _ClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapScriptArgs']]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
+        :param pulumi.Input[bool] deletion_protection: The deletion protection of EMR cluster.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeAttributeArgs']]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
@@ -306,6 +324,8 @@ class _ClusterState:
             pulumi.set(__self__, "cluster_name", cluster_name)
         if cluster_type is not None:
             pulumi.set(__self__, "cluster_type", cluster_type)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if deploy_mode is not None:
             pulumi.set(__self__, "deploy_mode", deploy_mode)
         if log_collect_strategy is not None:
@@ -386,6 +406,18 @@ class _ClusterState:
     @cluster_type.setter
     def cluster_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cluster_type", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The deletion protection of EMR cluster.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="deployMode")
@@ -518,6 +550,7 @@ class Cluster(pulumi.CustomResource):
                  bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
                  log_collect_strategy: Optional[pulumi.Input[str]] = None,
                  node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
@@ -677,6 +710,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
+        :param pulumi.Input[bool] deletion_protection: The deletion protection of EMR cluster.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
@@ -855,6 +889,7 @@ class Cluster(pulumi.CustomResource):
                  bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  deploy_mode: Optional[pulumi.Input[str]] = None,
                  log_collect_strategy: Optional[pulumi.Input[str]] = None,
                  node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
@@ -885,6 +920,7 @@ class Cluster(pulumi.CustomResource):
             if cluster_type is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_type'")
             __props__.__dict__["cluster_type"] = cluster_type
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["deploy_mode"] = deploy_mode
             __props__.__dict__["log_collect_strategy"] = log_collect_strategy
             if node_attributes is None and not opts.urn:
@@ -916,6 +952,7 @@ class Cluster(pulumi.CustomResource):
             bootstrap_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]]] = None,
             cluster_name: Optional[pulumi.Input[str]] = None,
             cluster_type: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             deploy_mode: Optional[pulumi.Input[str]] = None,
             log_collect_strategy: Optional[pulumi.Input[str]] = None,
             node_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]]] = None,
@@ -938,6 +975,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapScriptArgs', 'ClusterBootstrapScriptArgsDict']]]] bootstrap_scripts: The bootstrap scripts to be effected when creating emr-cluster or resize emr-cluster, if priority is not specified, the scripts will execute in the declared order. See `bootstrap_scripts` below.
         :param pulumi.Input[str] cluster_name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] cluster_type: EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
+        :param pulumi.Input[bool] deletion_protection: The deletion protection of EMR cluster.
         :param pulumi.Input[str] deploy_mode: The deploy mode of EMR cluster. Supported value: NORMAL or HA.
         :param pulumi.Input[str] log_collect_strategy: The log collect strategy of EMR cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeAttributeArgs', 'ClusterNodeAttributeArgsDict']]]] node_attributes: The node attributes of ecs instances which the emr-cluster belongs. See `node_attributes` below.
@@ -958,6 +996,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["bootstrap_scripts"] = bootstrap_scripts
         __props__.__dict__["cluster_name"] = cluster_name
         __props__.__dict__["cluster_type"] = cluster_type
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["deploy_mode"] = deploy_mode
         __props__.__dict__["log_collect_strategy"] = log_collect_strategy
         __props__.__dict__["node_attributes"] = node_attributes
@@ -1009,6 +1048,14 @@ class Cluster(pulumi.CustomResource):
         EMR Cluster Type, e.g. DATALAKE, OLAP, DATAFLOW, DATASERVING, CUSTOM etc. You can find all valid EMR cluster type in emr web console.
         """
         return pulumi.get(self, "cluster_type")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        The deletion protection of EMR cluster.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="deployMode")

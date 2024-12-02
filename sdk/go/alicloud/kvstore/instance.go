@@ -59,7 +59,7 @@ type Instance struct {
 	CouponNo pulumi.StringPtrOutput `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringOutput `pulumi:"dbInstanceName"`
-	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+	// The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrOutput `pulumi:"dedicatedHostGroupId"`
 	// Specifies whether to precheck the request. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
@@ -92,7 +92,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
-	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -147,7 +147,7 @@ type Instance struct {
 	RestoreTime pulumi.StringPtrOutput `pulumi:"restoreTime"`
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
-	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrOutput `pulumi:"secondaryZoneId"`
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -259,7 +259,7 @@ type instanceState struct {
 	CouponNo *string `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName *string `pulumi:"dbInstanceName"`
-	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+	// The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
 	// Specifies whether to precheck the request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
@@ -292,7 +292,7 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -347,7 +347,7 @@ type instanceState struct {
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn *string `pulumi:"roleArn"`
-	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -423,7 +423,7 @@ type InstanceState struct {
 	CouponNo pulumi.StringPtrInput
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringPtrInput
-	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+	// The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
 	// Specifies whether to precheck the request. Valid values:
 	DryRun pulumi.BoolPtrInput
@@ -456,7 +456,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -511,7 +511,7 @@ type InstanceState struct {
 	RestoreTime pulumi.StringPtrInput
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn pulumi.StringPtrInput
-	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -585,7 +585,7 @@ type instanceArgs struct {
 	CouponNo *string `pulumi:"couponNo"`
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName *string `pulumi:"dbInstanceName"`
-	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+	// The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
 	DedicatedHostGroupId *string `pulumi:"dedicatedHostGroupId"`
 	// Specifies whether to precheck the request. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
@@ -616,7 +616,7 @@ type instanceArgs struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass *string `pulumi:"instanceClass"`
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -669,7 +669,7 @@ type instanceArgs struct {
 	RestoreTime *string `pulumi:"restoreTime"`
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn *string `pulumi:"roleArn"`
-	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId *string `pulumi:"secondaryZoneId"`
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -738,7 +738,7 @@ type InstanceArgs struct {
 	CouponNo pulumi.StringPtrInput
 	// The name of KVStore DBInstance. It is a string of 2 to 256 characters.
 	DbInstanceName pulumi.StringPtrInput
-	// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+	// The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
 	DedicatedHostGroupId pulumi.StringPtrInput
 	// Specifies whether to precheck the request. Valid values:
 	DryRun pulumi.BoolPtrInput
@@ -769,7 +769,7 @@ type InstanceArgs struct {
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
-	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+	// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass pulumi.StringPtrInput
 	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
@@ -822,7 +822,7 @@ type InstanceArgs struct {
 	RestoreTime pulumi.StringPtrInput
 	// The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
 	RoleArn pulumi.StringPtrInput
-	// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+	// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 	// > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 	SecondaryZoneId pulumi.StringPtrInput
 	// The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
@@ -1030,7 +1030,7 @@ func (o InstanceOutput) DbInstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DbInstanceName }).(pulumi.StringOutput)
 }
 
-// The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
+// The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
 func (o InstanceOutput) DedicatedHostGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DedicatedHostGroupId }).(pulumi.StringPtrOutput)
 }
@@ -1102,7 +1102,7 @@ func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
-// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
+// Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 // or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 func (o InstanceOutput) InstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceClass }).(pulumi.StringPtrOutput)
@@ -1229,7 +1229,7 @@ func (o InstanceOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RoleArn }).(pulumi.StringOutput)
 }
 
-// The ID of the secondary zone to which you want to migrate the ApsaraDB for Redis instance.
+// The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
 // > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
 func (o InstanceOutput) SecondaryZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SecondaryZoneId }).(pulumi.StringPtrOutput)

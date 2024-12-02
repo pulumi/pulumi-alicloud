@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// For information about ECS Auto Snapshot Policy and how to use it, see [What is Auto Snapshot Policy](https://www.alibabacloud.com/help/en/doc-detail/25527.htm).
     /// 
-    /// &gt; **NOTE:** Available in v1.117.0+.
+    /// &gt; **NOTE:** Available since v1.117.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var example = new AliCloud.Ecs.AutoSnapshotPolicy("example", new()
     ///     {
-    ///         Name = "tf-testAcc",
+    ///         Name = "terraform-example",
     ///         RepeatWeekdays = new[]
     ///         {
     ///             "1",
@@ -61,45 +61,69 @@ namespace Pulumi.AliCloud.Ecs
     public partial class AutoSnapshotPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The retention period of the snapshot copied across regions.
-        /// - -1: The snapshot is permanently retained.
-        /// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        /// Default value: -1.
+        /// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         /// </summary>
-        [Output("copiedSnapshotsRetentionDays")]
-        public Output<int?> CopiedSnapshotsRetentionDays { get; private set; } = null!;
+        [Output("autoSnapshotPolicyName")]
+        public Output<string> AutoSnapshotPolicyName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to enable the system to automatically copy snapshots across regions.
+        /// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+        /// - `-1`: The snapshot copy is retained until it is deleted.
+        /// </summary>
+        [Output("copiedSnapshotsRetentionDays")]
+        public Output<int> CopiedSnapshotsRetentionDays { get; private set; } = null!;
+
+        /// <summary>
+        /// The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        /// </summary>
+        [Output("copyEncryptionConfiguration")]
+        public Output<Outputs.AutoSnapshotPolicyCopyEncryptionConfiguration?> CopyEncryptionConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
         /// </summary>
         [Output("enableCrossRegionCopy")]
         public Output<bool?> EnableCrossRegionCopy { get; private set; } = null!;
 
         /// <summary>
-        /// The snapshot policy name.
+        /// . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-        /// - A maximum of seven time points can be selected.
-        /// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+        /// (Available since v1.236.0) The region ID of the automatic snapshot policy.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
         /// </summary>
         [Output("repeatWeekdays")]
         public Output<ImmutableArray<string>> RepeatWeekdays { get; private set; } = null!;
 
         /// <summary>
-        /// The snapshot retention time, and the unit of measurement is day. Optional values:
-        /// - -1: The automatic snapshots are retained permanently.
-        /// - [1, 65536]: The number of days retained.
-        /// Default value: -1.
+        /// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string?> ResourceGroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The retention period of the automatic snapshots. Unit: days. Valid values:
+        /// - `-1`: Automatic snapshots are retained until they are deleted.
         /// </summary>
         [Output("retentionDays")]
         public Output<int> RetentionDays { get; private set; } = null!;
 
         /// <summary>
-        /// The status of Auto Snapshot Policy.
+        /// The status of the automatic snapshot policy.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -111,15 +135,19 @@ namespace Pulumi.AliCloud.Ecs
         public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The destination region to which the snapshot is copied. You can set a destination region.
+        /// The destination region to which to copy the snapshot. You can specify only a single destination region.
         /// </summary>
         [Output("targetCopyRegions")]
         public Output<ImmutableArray<string>> TargetCopyRegions { get; private set; } = null!;
 
         /// <summary>
-        /// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-        /// - A maximum of 24 time points can be selected.
-        /// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+        /// The points in time of the day at which to create automatic snapshots.
+        /// 
+        /// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+        /// 
+        /// The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Output("timePoints")]
         public Output<ImmutableArray<string>> TimePoints { get; private set; } = null!;
@@ -171,22 +199,32 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class AutoSnapshotPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The retention period of the snapshot copied across regions.
-        /// - -1: The snapshot is permanently retained.
-        /// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        /// Default value: -1.
+        /// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// </summary>
+        [Input("autoSnapshotPolicyName")]
+        public Input<string>? AutoSnapshotPolicyName { get; set; }
+
+        /// <summary>
+        /// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+        /// - `-1`: The snapshot copy is retained until it is deleted.
         /// </summary>
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the system to automatically copy snapshots across regions.
+        /// The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        /// </summary>
+        [Input("copyEncryptionConfiguration")]
+        public Input<Inputs.AutoSnapshotPolicyCopyEncryptionConfigurationArgs>? CopyEncryptionConfiguration { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
         /// </summary>
         [Input("enableCrossRegionCopy")]
         public Input<bool>? EnableCrossRegionCopy { get; set; }
 
         /// <summary>
-        /// The snapshot policy name.
+        /// . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -195,9 +233,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _repeatWeekdays;
 
         /// <summary>
-        /// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-        /// - A maximum of seven time points can be selected.
-        /// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+        /// The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
         /// </summary>
         public InputList<string> RepeatWeekdays
         {
@@ -206,10 +242,14 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The snapshot retention time, and the unit of measurement is day. Optional values:
-        /// - -1: The automatic snapshots are retained permanently.
-        /// - [1, 65536]: The number of days retained.
-        /// Default value: -1.
+        /// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The retention period of the automatic snapshots. Unit: days. Valid values:
+        /// - `-1`: Automatic snapshots are retained until they are deleted.
         /// </summary>
         [Input("retentionDays", required: true)]
         public Input<int> RetentionDays { get; set; } = null!;
@@ -230,7 +270,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _targetCopyRegions;
 
         /// <summary>
-        /// The destination region to which the snapshot is copied. You can set a destination region.
+        /// The destination region to which to copy the snapshot. You can specify only a single destination region.
         /// </summary>
         public InputList<string> TargetCopyRegions
         {
@@ -242,9 +282,13 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _timePoints;
 
         /// <summary>
-        /// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-        /// - A maximum of 24 time points can be selected.
-        /// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+        /// The points in time of the day at which to create automatic snapshots.
+        /// 
+        /// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+        /// 
+        /// The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<string> TimePoints
         {
@@ -261,33 +305,53 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class AutoSnapshotPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The retention period of the snapshot copied across regions.
-        /// - -1: The snapshot is permanently retained.
-        /// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
-        /// Default value: -1.
+        /// The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+        /// </summary>
+        [Input("autoSnapshotPolicyName")]
+        public Input<string>? AutoSnapshotPolicyName { get; set; }
+
+        /// <summary>
+        /// The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
+        /// - `-1`: The snapshot copy is retained until it is deleted.
         /// </summary>
         [Input("copiedSnapshotsRetentionDays")]
         public Input<int>? CopiedSnapshotsRetentionDays { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the system to automatically copy snapshots across regions.
+        /// The encryption parameters for cross-region snapshot replication. See `copy_encryption_configuration` below.
+        /// </summary>
+        [Input("copyEncryptionConfiguration")]
+        public Input<Inputs.AutoSnapshotPolicyCopyEncryptionConfigurationGetArgs>? CopyEncryptionConfiguration { get; set; }
+
+        /// <summary>
+        /// (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
         /// </summary>
         [Input("enableCrossRegionCopy")]
         public Input<bool>? EnableCrossRegionCopy { get; set; }
 
         /// <summary>
-        /// The snapshot policy name.
+        /// . Field `name` has been deprecated from provider version 1.236.0. New field `auto_snapshot_policy_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Available since v1.236.0) The region ID of the automatic snapshot policy.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
 
         [Input("repeatWeekdays")]
         private InputList<string>? _repeatWeekdays;
 
         /// <summary>
-        /// The automatic snapshot repetition dates. The unit of measurement is day and the repeating cycle is a week. Value range: [1, 7], which represents days starting from Monday to Sunday, for example 1  indicates Monday. When you want to schedule multiple automatic snapshot tasks for a disk in a week, you can set the RepeatWeekdays to an array.
-        /// - A maximum of seven time points can be selected.
-        /// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
+        /// The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
         /// </summary>
         public InputList<string> RepeatWeekdays
         {
@@ -296,16 +360,20 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The snapshot retention time, and the unit of measurement is day. Optional values:
-        /// - -1: The automatic snapshots are retained permanently.
-        /// - [1, 65536]: The number of days retained.
-        /// Default value: -1.
+        /// The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
+        /// <summary>
+        /// The retention period of the automatic snapshots. Unit: days. Valid values:
+        /// - `-1`: Automatic snapshots are retained until they are deleted.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
 
         /// <summary>
-        /// The status of Auto Snapshot Policy.
+        /// The status of the automatic snapshot policy.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -326,7 +394,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _targetCopyRegions;
 
         /// <summary>
-        /// The destination region to which the snapshot is copied. You can set a destination region.
+        /// The destination region to which to copy the snapshot. You can specify only a single destination region.
         /// </summary>
         public InputList<string> TargetCopyRegions
         {
@@ -338,9 +406,13 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _timePoints;
 
         /// <summary>
-        /// The automatic snapshot creation schedule, and the unit of measurement is hour. Value range: [0, 23], which represents from 00:00 to 24:00,  for example 1 indicates 01:00. When you want to schedule multiple automatic snapshot tasks for a disk in a day, you can set the TimePoints to an array.
-        /// - A maximum of 24 time points can be selected.
-        /// - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
+        /// The points in time of the day at which to create automatic snapshots.
+        /// 
+        /// The time is displayed in UTC+8. Unit: hours. Valid values: `0` to `23`, which correspond to the 24 points in time on the hour from 00:00:00 to 23:00:00. For example, 1 indicates 01:00:00. Multiple points in time can be specified.
+        /// 
+        /// The parameter value is a JSON array that contains up to 24 points in time separated by commas (,). Example: ["0", "1", ... "23"].
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         public InputList<string> TimePoints
         {

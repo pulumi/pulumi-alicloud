@@ -226,6 +226,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
+     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
      * 
      */
     @Export(name="imageType", refs={String.class}, tree="[0]")
@@ -241,6 +242,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * - `Windows` : Windows image.
      * - `WindowsCore` : WindowsCore image.
      * - `ContainerOS` : container-optimized image.
+     * - `Ubuntu`: (Available since v1.236.0) Ubuntu image.
      * 
      */
     public Output<String> imageType() {

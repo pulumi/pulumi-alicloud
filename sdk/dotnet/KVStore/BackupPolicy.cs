@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.KVStore
     /// 
     /// ## Import
     /// 
-    /// KVStore backup policy can be imported using the id, e.g.
+    /// Tair (Redis OSS-Compatible) And Memcache (KVStore) backup policy can be imported using the id, e.g.
     /// 
     /// ```sh
     /// $ pulumi import alicloud:kvstore/backupPolicy:BackupPolicy example r-abc12345678
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string?> BackupTime { get; private set; } = null!;
 
         /// <summary>
-        /// The id of ApsaraDB for Redis or Memcache intance.
+        /// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// The id of ApsaraDB for Redis or Memcache intance.
+        /// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? BackupTime { get; set; }
 
         /// <summary>
-        /// The id of ApsaraDB for Redis or Memcache intance.
+        /// The id of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

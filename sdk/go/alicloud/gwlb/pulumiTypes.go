@@ -14,11 +14,11 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type LoadBalancerZoneMapping struct {
-	// The addresses of the Gateway Load Balancer instance.
+	// The information about the IP addresses used by the GWLB instance.
 	LoadBalancerAddresses []LoadBalancerZoneMappingLoadBalancerAddress `pulumi:"loadBalancerAddresses"`
-	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+	// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
 	VswitchId string `pulumi:"vswitchId"`
-	// The ID of the zone to which the Gateway Load Balancer instance belongs.
+	// The zone ID. You can call the DescribeZones operation to query the most recent zone list.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -34,11 +34,11 @@ type LoadBalancerZoneMappingInput interface {
 }
 
 type LoadBalancerZoneMappingArgs struct {
-	// The addresses of the Gateway Load Balancer instance.
+	// The information about the IP addresses used by the GWLB instance.
 	LoadBalancerAddresses LoadBalancerZoneMappingLoadBalancerAddressArrayInput `pulumi:"loadBalancerAddresses"`
-	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+	// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The ID of the zone to which the Gateway Load Balancer instance belongs.
+	// The zone ID. You can call the DescribeZones operation to query the most recent zone list.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -93,19 +93,19 @@ func (o LoadBalancerZoneMappingOutput) ToLoadBalancerZoneMappingOutputWithContex
 	return o
 }
 
-// The addresses of the Gateway Load Balancer instance.
+// The information about the IP addresses used by the GWLB instance.
 func (o LoadBalancerZoneMappingOutput) LoadBalancerAddresses() LoadBalancerZoneMappingLoadBalancerAddressArrayOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) []LoadBalancerZoneMappingLoadBalancerAddress {
 		return v.LoadBalancerAddresses
 	}).(LoadBalancerZoneMappingLoadBalancerAddressArrayOutput)
 }
 
-// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
+// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
 func (o LoadBalancerZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The ID of the zone to which the Gateway Load Balancer instance belongs.
+// The zone ID. You can call the DescribeZones operation to query the most recent zone list.
 func (o LoadBalancerZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -131,9 +131,9 @@ func (o LoadBalancerZoneMappingArrayOutput) Index(i pulumi.IntInput) LoadBalance
 }
 
 type LoadBalancerZoneMappingLoadBalancerAddress struct {
-	// The ID of the ENI.
+	// The ID of the elastic network interface (ENI) used by the GWLB instance.
 	EniId *string `pulumi:"eniId"`
-	// IPv4 private network address.
+	// The private IPv4 address.
 	PrivateIpv4Address *string `pulumi:"privateIpv4Address"`
 }
 
@@ -149,9 +149,9 @@ type LoadBalancerZoneMappingLoadBalancerAddressInput interface {
 }
 
 type LoadBalancerZoneMappingLoadBalancerAddressArgs struct {
-	// The ID of the ENI.
+	// The ID of the elastic network interface (ENI) used by the GWLB instance.
 	EniId pulumi.StringPtrInput `pulumi:"eniId"`
-	// IPv4 private network address.
+	// The private IPv4 address.
 	PrivateIpv4Address pulumi.StringPtrInput `pulumi:"privateIpv4Address"`
 }
 
@@ -206,12 +206,12 @@ func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) ToLoadBalancerZoneMapp
 	return o
 }
 
-// The ID of the ENI.
+// The ID of the elastic network interface (ENI) used by the GWLB instance.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) EniId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.EniId }).(pulumi.StringPtrOutput)
 }
 
-// IPv4 private network address.
+// The private IPv4 address.
 func (o LoadBalancerZoneMappingLoadBalancerAddressOutput) PrivateIpv4Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerZoneMappingLoadBalancerAddress) *string { return v.PrivateIpv4Address }).(pulumi.StringPtrOutput)
 }
@@ -237,13 +237,15 @@ func (o LoadBalancerZoneMappingLoadBalancerAddressArrayOutput) Index(i pulumi.In
 }
 
 type ServerGroupConnectionDrainConfig struct {
-	// Whether to open the connection graceful interrupt. Value:
+	// Indicates whether connection draining is enabled. Valid values:
 	ConnectionDrainEnabled *bool `pulumi:"connectionDrainEnabled"`
-	// Connection Grace interrupt timeout.
+	// The timeout period of connection draining.
 	//
-	// Unit: seconds.
+	// Unit: seconds
 	//
-	// Value range: 1~3600.
+	// Valid values: `1` to `3600`.
+	//
+	// Default value: `300`.
 	ConnectionDrainTimeout *int `pulumi:"connectionDrainTimeout"`
 }
 
@@ -259,13 +261,15 @@ type ServerGroupConnectionDrainConfigInput interface {
 }
 
 type ServerGroupConnectionDrainConfigArgs struct {
-	// Whether to open the connection graceful interrupt. Value:
+	// Indicates whether connection draining is enabled. Valid values:
 	ConnectionDrainEnabled pulumi.BoolPtrInput `pulumi:"connectionDrainEnabled"`
-	// Connection Grace interrupt timeout.
+	// The timeout period of connection draining.
 	//
-	// Unit: seconds.
+	// Unit: seconds
 	//
-	// Value range: 1~3600.
+	// Valid values: `1` to `3600`.
+	//
+	// Default value: `300`.
 	ConnectionDrainTimeout pulumi.IntPtrInput `pulumi:"connectionDrainTimeout"`
 }
 
@@ -346,16 +350,18 @@ func (o ServerGroupConnectionDrainConfigOutput) ToServerGroupConnectionDrainConf
 	}).(ServerGroupConnectionDrainConfigPtrOutput)
 }
 
-// Whether to open the connection graceful interrupt. Value:
+// Indicates whether connection draining is enabled. Valid values:
 func (o ServerGroupConnectionDrainConfigOutput) ConnectionDrainEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupConnectionDrainConfig) *bool { return v.ConnectionDrainEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Connection Grace interrupt timeout.
+// The timeout period of connection draining.
 //
-// Unit: seconds.
+// Unit: seconds
 //
-// Value range: 1~3600.
+// Valid values: `1` to `3600`.
+//
+// Default value: `300`.
 func (o ServerGroupConnectionDrainConfigOutput) ConnectionDrainTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupConnectionDrainConfig) *int { return v.ConnectionDrainTimeout }).(pulumi.IntPtrOutput)
 }
@@ -384,7 +390,7 @@ func (o ServerGroupConnectionDrainConfigPtrOutput) Elem() ServerGroupConnectionD
 	}).(ServerGroupConnectionDrainConfigOutput)
 }
 
-// Whether to open the connection graceful interrupt. Value:
+// Indicates whether connection draining is enabled. Valid values:
 func (o ServerGroupConnectionDrainConfigPtrOutput) ConnectionDrainEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupConnectionDrainConfig) *bool {
 		if v == nil {
@@ -394,11 +400,13 @@ func (o ServerGroupConnectionDrainConfigPtrOutput) ConnectionDrainEnabled() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Connection Grace interrupt timeout.
+// The timeout period of connection draining.
 //
-// Unit: seconds.
+// Unit: seconds
 //
-// Value range: 1~3600.
+// Valid values: `1` to `3600`.
+//
+// Default value: `300`.
 func (o ServerGroupConnectionDrainConfigPtrOutput) ConnectionDrainTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupConnectionDrainConfig) *int {
 		if v == nil {
@@ -409,57 +417,58 @@ func (o ServerGroupConnectionDrainConfigPtrOutput) ConnectionDrainTimeout() pulu
 }
 
 type ServerGroupHealthCheckConfig struct {
-	// The port of the backend server used for health check.
+	// The backend server port that is used for health checks.
 	//
-	// Value range: **1 to 65535**.
+	// Valid values: `1` to `65535`.
 	//
 	// Default value: `80`.
 	HealthCheckConnectPort *int `pulumi:"healthCheckConnectPort"`
-	// The maximum timeout period for health check responses.
+	// The maximum timeout period of a health check response.
 	//
-	// Unit: seconds.
+	// Unit: seconds
 	//
-	// Value range: **1 to 300**.
+	// Valid values: `1` to `300`.
 	//
 	// Default value: `5`.
 	HealthCheckConnectTimeout *int `pulumi:"healthCheckConnectTimeout"`
-	// The domain name used for health checks. Value:
-	// - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+	// The domain name that you want to use for health checks. Valid values:
+	//
+	// *   **$SERVER_IP** (default): the private IP address of a backend server.
 	HealthCheckDomain *string `pulumi:"healthCheckDomain"`
-	// Whether to enable health check. Value:
-	// - **true (default)**: enabled.
+	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
-	// Health status return code list.
+	// The HTTP status codes that the system returns for health checks.
 	HealthCheckHttpCodes []string `pulumi:"healthCheckHttpCodes"`
-	// The time interval of the health check.
+	// The interval at which health checks are performed.
 	//
-	// Unit: seconds.
+	// Unit: seconds
 	//
-	// Value range: **1~50**.
+	// Valid values: `1` to `50`.
 	//
 	// Default value: `10`.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
-	// Health check path.
+	// The URL that is used for health checks.
 	//
-	// It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] @ $ ^ : ' , + =
 	//
-	// Must start with a forward slash (/).
+	// The URL must start with a forward slash (/).
 	//
-	// > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+	// > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
-	// Health check protocol, value:
-	// - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
-	// - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
-	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
-	// After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+	// The protocol that is used for health checks. Valid values:
 	//
-	// Value range: **2 to 10**.
+	// - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+	// - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
+	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+	//
+	// Valid values: `2` to `10`.
 	//
 	// Default value: `2`.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
 	//
-	// Value range: **2 to 10**.
+	// Valid values: `2` to `10`.
 	//
 	// Default value: `2`.
 	UnhealthyThreshold *int `pulumi:"unhealthyThreshold"`
@@ -477,57 +486,58 @@ type ServerGroupHealthCheckConfigInput interface {
 }
 
 type ServerGroupHealthCheckConfigArgs struct {
-	// The port of the backend server used for health check.
+	// The backend server port that is used for health checks.
 	//
-	// Value range: **1 to 65535**.
+	// Valid values: `1` to `65535`.
 	//
 	// Default value: `80`.
 	HealthCheckConnectPort pulumi.IntPtrInput `pulumi:"healthCheckConnectPort"`
-	// The maximum timeout period for health check responses.
+	// The maximum timeout period of a health check response.
 	//
-	// Unit: seconds.
+	// Unit: seconds
 	//
-	// Value range: **1 to 300**.
+	// Valid values: `1` to `300`.
 	//
 	// Default value: `5`.
 	HealthCheckConnectTimeout pulumi.IntPtrInput `pulumi:"healthCheckConnectTimeout"`
-	// The domain name used for health checks. Value:
-	// - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+	// The domain name that you want to use for health checks. Valid values:
+	//
+	// *   **$SERVER_IP** (default): the private IP address of a backend server.
 	HealthCheckDomain pulumi.StringPtrInput `pulumi:"healthCheckDomain"`
-	// Whether to enable health check. Value:
-	// - **true (default)**: enabled.
+	// Specifies whether to enable the health check feature. Valid values:
 	HealthCheckEnabled pulumi.BoolPtrInput `pulumi:"healthCheckEnabled"`
-	// Health status return code list.
+	// The HTTP status codes that the system returns for health checks.
 	HealthCheckHttpCodes pulumi.StringArrayInput `pulumi:"healthCheckHttpCodes"`
-	// The time interval of the health check.
+	// The interval at which health checks are performed.
 	//
-	// Unit: seconds.
+	// Unit: seconds
 	//
-	// Value range: **1~50**.
+	// Valid values: `1` to `50`.
 	//
 	// Default value: `10`.
 	HealthCheckInterval pulumi.IntPtrInput `pulumi:"healthCheckInterval"`
-	// Health check path.
+	// The URL that is used for health checks.
 	//
-	// It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] @ $ ^ : ' , + =
 	//
-	// Must start with a forward slash (/).
+	// The URL must start with a forward slash (/).
 	//
-	// > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+	// > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
 	HealthCheckPath pulumi.StringPtrInput `pulumi:"healthCheckPath"`
-	// Health check protocol, value:
-	// - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
-	// - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
-	HealthCheckProtocol pulumi.StringPtrInput `pulumi:"healthCheckProtocol"`
-	// After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+	// The protocol that is used for health checks. Valid values:
 	//
-	// Value range: **2 to 10**.
+	// - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+	// - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
+	HealthCheckProtocol pulumi.StringPtrInput `pulumi:"healthCheckProtocol"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
+	//
+	// Valid values: `2` to `10`.
 	//
 	// Default value: `2`.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
-	// The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
 	//
-	// Value range: **2 to 10**.
+	// Valid values: `2` to `10`.
 	//
 	// Default value: `2`.
 	UnhealthyThreshold pulumi.IntPtrInput `pulumi:"unhealthyThreshold"`
@@ -610,84 +620,85 @@ func (o ServerGroupHealthCheckConfigOutput) ToServerGroupHealthCheckConfigPtrOut
 	}).(ServerGroupHealthCheckConfigPtrOutput)
 }
 
-// The port of the backend server used for health check.
+// The backend server port that is used for health checks.
 //
-// Value range: **1 to 65535**.
+// Valid values: `1` to `65535`.
 //
 // Default value: `80`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckConnectPort }).(pulumi.IntPtrOutput)
 }
 
-// The maximum timeout period for health check responses.
+// The maximum timeout period of a health check response.
 //
-// Unit: seconds.
+// Unit: seconds
 //
-// Value range: **1 to 300**.
+// Valid values: `1` to `300`.
 //
 // Default value: `5`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckConnectTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckConnectTimeout }).(pulumi.IntPtrOutput)
 }
 
-// The domain name used for health checks. Value:
-// - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+// The domain name that you want to use for health checks. Valid values:
+//
+// *   **$SERVER_IP** (default): the private IP address of a backend server.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckDomain }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable health check. Value:
-// - **true (default)**: enabled.
+// Specifies whether to enable the health check feature. Valid values:
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *bool { return v.HealthCheckEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Health status return code list.
+// The HTTP status codes that the system returns for health checks.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckHttpCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) []string { return v.HealthCheckHttpCodes }).(pulumi.StringArrayOutput)
 }
 
-// The time interval of the health check.
+// The interval at which health checks are performed.
 //
-// Unit: seconds.
+// Unit: seconds
 //
-// Value range: **1~50**.
+// Valid values: `1` to `50`.
 //
 // Default value: `10`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
 }
 
-// Health check path.
+// The URL that is used for health checks.
 //
-// It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+// The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] @ $ ^ : ' , + =
 //
-// Must start with a forward slash (/).
+// The URL must start with a forward slash (/).
 //
-// > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+// > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckPath }).(pulumi.StringPtrOutput)
 }
 
-// Health check protocol, value:
-// - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
-// - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
+// The protocol that is used for health checks. Valid values:
+//
+// - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+// - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
 func (o ServerGroupHealthCheckConfigOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *string { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
 }
 
-// After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
 //
-// Value range: **2 to 10**.
+// Valid values: `2` to `10`.
 //
 // Default value: `2`.
 func (o ServerGroupHealthCheckConfigOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheckConfig) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
 //
-// Value range: **2 to 10**.
+// Valid values: `2` to `10`.
 //
 // Default value: `2`.
 func (o ServerGroupHealthCheckConfigOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
@@ -718,9 +729,9 @@ func (o ServerGroupHealthCheckConfigPtrOutput) Elem() ServerGroupHealthCheckConf
 	}).(ServerGroupHealthCheckConfigOutput)
 }
 
-// The port of the backend server used for health check.
+// The backend server port that is used for health checks.
 //
-// Value range: **1 to 65535**.
+// Valid values: `1` to `65535`.
 //
 // Default value: `80`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.IntPtrOutput {
@@ -732,11 +743,11 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectPort() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum timeout period for health check responses.
+// The maximum timeout period of a health check response.
 //
-// Unit: seconds.
+// Unit: seconds
 //
-// Value range: **1 to 300**.
+// Valid values: `1` to `300`.
 //
 // Default value: `5`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectTimeout() pulumi.IntPtrOutput {
@@ -748,8 +759,9 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckConnectTimeout() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
-// The domain name used for health checks. Value:
-// - **$SERVER_IP (default)**: Use the internal IP address of the backend server.
+// The domain name that you want to use for health checks. Valid values:
+//
+// *   **$SERVER_IP** (default): the private IP address of a backend server.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -759,8 +771,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckDomain() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable health check. Value:
-// - **true (default)**: enabled.
+// Specifies whether to enable the health check feature. Valid values:
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *bool {
 		if v == nil {
@@ -770,7 +781,7 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckEnabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Health status return code list.
+// The HTTP status codes that the system returns for health checks.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpCodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) []string {
 		if v == nil {
@@ -780,11 +791,11 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckHttpCodes() pulumi.Str
 	}).(pulumi.StringArrayOutput)
 }
 
-// The time interval of the health check.
+// The interval at which health checks are performed.
 //
-// Unit: seconds.
+// Unit: seconds
 //
-// Value range: **1~50**.
+// Valid values: `1` to `50`.
 //
 // Default value: `10`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntPtrOutput {
@@ -796,13 +807,13 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckInterval() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Health check path.
+// The URL that is used for health checks.
 //
-// It can be 1 to 80 characters in length and can only use upper and lower case letters, digits, dashes (-), forward slashes (/), half-width periods (.), percent signs (%), and half-width question marks (?), Pound sign (#) and and(&) and extended character set_;~! ()*[]@$^: ',+ =
+// The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: \_ ; ~ ! ( ) \* \[ ] @ $ ^ : ' , + =
 //
-// Must start with a forward slash (/).
+// The URL must start with a forward slash (/).
 //
-// > **NOTE:**  This parameter takes effect only when the HealthCheckProtocol is HTTP.
+// > **NOTE:**  This parameter takes effect only if you set `HealthCheckProtocol` to `HTTP`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -812,9 +823,10 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckPath() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Health check protocol, value:
-// - `TCP` (default): Sends a SYN handshake packet to check whether the server port is alive.
-// - `HTTP`: Sends a GET request to simulate the access behavior of the browser to check whether the server application is healthy.
+// The protocol that is used for health checks. Valid values:
+//
+// - `TCP`: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+// - `HTTP`: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheckConfig) *string {
 		if v == nil {
@@ -824,9 +836,9 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthCheckProtocol() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// After the number of consecutive successful health checks, the health check status of the backend server is determined as successful from failed.
+// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
 //
-// Value range: **2 to 10**.
+// Valid values: `2` to `10`.
 //
 // Default value: `2`.
 func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
@@ -838,9 +850,9 @@ func (o ServerGroupHealthCheckConfigPtrOutput) HealthyThreshold() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The number of consecutive failed health checks that determine the health check status of the backend server from success to failure.
+// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
 //
-// Value range: **2 to 10**.
+// Valid values: `2` to `10`.
 //
 // Default value: `2`.
 func (o ServerGroupHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
@@ -853,21 +865,25 @@ func (o ServerGroupHealthCheckConfigPtrOutput) UnhealthyThreshold() pulumi.IntPt
 }
 
 type ServerGroupServer struct {
-	// The port used by the backend server.
+	// (Optional, Computed, Int) The port that is used by the backend server.
 	Port *int `pulumi:"port"`
 	// The server group ID.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// The ID of the backend server.
+	// The backend server ID.
+	//
+	// - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+	// - If the server group is of the `Ip` type, set ServerId to IP addresses.
 	ServerId string `pulumi:"serverId"`
-	// Server ip.
+	// The IP address of the backend server.
 	ServerIp *string `pulumi:"serverIp"`
-	// Backend server type. Valid values:
-	// - `Ecs`: ECS instance.
-	// - `Eni`: ENI instance.
-	// - `Eci`: ECI elastic container.
-	// - `Ip`: Ip address.
+	// The type of the backend server. Valid values:
+	//
+	// - `Ecs`: Elastic Compute Service (ECS) instance
+	// - `Eni`: elastic network interface (ENI)
+	// - `Eci`: elastic container instance
+	// - `Ip`: IP address
 	ServerType string `pulumi:"serverType"`
-	// Server group status. Value:
+	// Indicates the status of the backend server.
 	Status *string `pulumi:"status"`
 }
 
@@ -883,21 +899,25 @@ type ServerGroupServerInput interface {
 }
 
 type ServerGroupServerArgs struct {
-	// The port used by the backend server.
+	// (Optional, Computed, Int) The port that is used by the backend server.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The server group ID.
 	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
-	// The ID of the backend server.
+	// The backend server ID.
+	//
+	// - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+	// - If the server group is of the `Ip` type, set ServerId to IP addresses.
 	ServerId pulumi.StringInput `pulumi:"serverId"`
-	// Server ip.
+	// The IP address of the backend server.
 	ServerIp pulumi.StringPtrInput `pulumi:"serverIp"`
-	// Backend server type. Valid values:
-	// - `Ecs`: ECS instance.
-	// - `Eni`: ENI instance.
-	// - `Eci`: ECI elastic container.
-	// - `Ip`: Ip address.
+	// The type of the backend server. Valid values:
+	//
+	// - `Ecs`: Elastic Compute Service (ECS) instance
+	// - `Eni`: elastic network interface (ENI)
+	// - `Eci`: elastic container instance
+	// - `Ip`: IP address
 	ServerType pulumi.StringInput `pulumi:"serverType"`
-	// Server group status. Value:
+	// Indicates the status of the backend server.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -952,7 +972,7 @@ func (o ServerGroupServerOutput) ToServerGroupServerOutputWithContext(ctx contex
 	return o
 }
 
-// The port used by the backend server.
+// (Optional, Computed, Int) The port that is used by the backend server.
 func (o ServerGroupServerOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -962,26 +982,30 @@ func (o ServerGroupServerOutput) ServerGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the backend server.
+// The backend server ID.
+//
+// - If the server group is of the `Instance` type, set this parameter to the IDs of servers of the `Ecs`, `Eni`, or `Eci` type.
+// - If the server group is of the `Ip` type, set ServerId to IP addresses.
 func (o ServerGroupServerOutput) ServerId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerGroupServer) string { return v.ServerId }).(pulumi.StringOutput)
 }
 
-// Server ip.
+// The IP address of the backend server.
 func (o ServerGroupServerOutput) ServerIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.ServerIp }).(pulumi.StringPtrOutput)
 }
 
-// Backend server type. Valid values:
-// - `Ecs`: ECS instance.
-// - `Eni`: ENI instance.
-// - `Eci`: ECI elastic container.
-// - `Ip`: Ip address.
+// The type of the backend server. Valid values:
+//
+// - `Ecs`: Elastic Compute Service (ECS) instance
+// - `Eni`: elastic network interface (ENI)
+// - `Eci`: elastic container instance
+// - `Ip`: IP address
 func (o ServerGroupServerOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerGroupServer) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
-// Server group status. Value:
+// Indicates the status of the backend server.
 func (o ServerGroupServerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupServer) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -1006,6 +1030,121 @@ func (o ServerGroupServerArrayOutput) Index(i pulumi.IntInput) ServerGroupServer
 	}).(ServerGroupServerOutput)
 }
 
+type GetZonesZone struct {
+	// The zone ID.
+	Id string `pulumi:"id"`
+	// The zone name.
+	LocalName string `pulumi:"localName"`
+	// The zone ID.
+	ZoneId string `pulumi:"zoneId"`
+}
+
+// GetZonesZoneInput is an input type that accepts GetZonesZoneArgs and GetZonesZoneOutput values.
+// You can construct a concrete instance of `GetZonesZoneInput` via:
+//
+//	GetZonesZoneArgs{...}
+type GetZonesZoneInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneOutput() GetZonesZoneOutput
+	ToGetZonesZoneOutputWithContext(context.Context) GetZonesZoneOutput
+}
+
+type GetZonesZoneArgs struct {
+	// The zone ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The zone name.
+	LocalName pulumi.StringInput `pulumi:"localName"`
+	// The zone ID.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetZonesZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return i.ToGetZonesZoneOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArgs) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneOutput)
+}
+
+// GetZonesZoneArrayInput is an input type that accepts GetZonesZoneArray and GetZonesZoneArrayOutput values.
+// You can construct a concrete instance of `GetZonesZoneArrayInput` via:
+//
+//	GetZonesZoneArray{ GetZonesZoneArgs{...} }
+type GetZonesZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput
+	ToGetZonesZoneArrayOutputWithContext(context.Context) GetZonesZoneArrayOutput
+}
+
+type GetZonesZoneArray []GetZonesZoneInput
+
+func (GetZonesZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return i.ToGetZonesZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesZoneArray) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesZoneArrayOutput)
+}
+
+type GetZonesZoneOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutput() GetZonesZoneOutput {
+	return o
+}
+
+func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context) GetZonesZoneOutput {
+	return o
+}
+
+// The zone ID.
+func (o GetZonesZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The zone name.
+func (o GetZonesZoneOutput) LocalName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.LocalName }).(pulumi.StringOutput)
+}
+
+// The zone ID.
+func (o GetZonesZoneOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesZone) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+type GetZonesZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesZone)(nil)).Elem()
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutput() GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) ToGetZonesZoneArrayOutputWithContext(ctx context.Context) GetZonesZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesZone {
+		return vs[0].([]GetZonesZone)[vs[1].(int)]
+	}).(GetZonesZoneOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerZoneMappingInput)(nil)).Elem(), LoadBalancerZoneMappingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerZoneMappingArrayInput)(nil)).Elem(), LoadBalancerZoneMappingArray{})
@@ -1017,6 +1156,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupHealthCheckConfigPtrInput)(nil)).Elem(), ServerGroupHealthCheckConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerInput)(nil)).Elem(), ServerGroupServerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerGroupServerArrayInput)(nil)).Elem(), ServerGroupServerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(LoadBalancerZoneMappingOutput{})
 	pulumi.RegisterOutputType(LoadBalancerZoneMappingArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerZoneMappingLoadBalancerAddressOutput{})
@@ -1027,4 +1168,6 @@ func init() {
 	pulumi.RegisterOutputType(ServerGroupHealthCheckConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerOutput{})
 	pulumi.RegisterOutputType(ServerGroupServerArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneOutput{})
+	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }
