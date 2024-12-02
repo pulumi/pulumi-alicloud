@@ -3446,6 +3446,9 @@
             "alicloud_ecs_auto_snapshot_policy": {
                 "current": "alicloud:ecs/autoSnapshotPolicy:AutoSnapshotPolicy",
                 "fields": {
+                    "copy_encryption_configuration": {
+                        "maxItemsOne": true
+                    },
                     "repeat_weekdays": {
                         "maxItemsOne": false
                     },
@@ -3866,6 +3869,37 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "ack_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "custom_annotations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "custom_labels": {
+                                                "maxItemsOne": false
+                                            },
+                                            "node_selectors": {
+                                                "maxItemsOne": false
+                                            },
+                                            "pre_start_command": {
+                                                "maxItemsOne": false
+                                            },
+                                            "pvcs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "tolerations": {
+                                                "maxItemsOne": false
+                                            },
+                                            "volume_mounts": {
+                                                "maxItemsOne": false
+                                            },
+                                            "volumes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "additional_security_group_ids": {
                                     "maxItemsOne": false
                                 },
@@ -5889,7 +5923,15 @@
                 "current": "alicloud:nas/dataFlow:DataFlow"
             },
             "alicloud_nas_file_system": {
-                "current": "alicloud:nas/fileSystem:FileSystem"
+                "current": "alicloud:nas/fileSystem:FileSystem",
+                "fields": {
+                    "nfs_acl": {
+                        "maxItemsOne": true
+                    },
+                    "recycle_bin": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "alicloud_nas_fileset": {
                 "current": "alicloud:nas/fileset:Fileset"
@@ -6426,6 +6468,31 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "alicloud_pai_workspace_code_source": {
+                "current": "alicloud:pai/workspaceCodeSource:WorkspaceCodeSource"
+            },
+            "alicloud_pai_workspace_dataset": {
+                "current": "alicloud:pai/workspaceDataset:WorkspaceDataset",
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_pai_workspace_datasetversion": {
+                "current": "alicloud:pai/workspaceDatasetversion:WorkspaceDatasetversion",
+                "fields": {
+                    "labels": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "alicloud_pai_workspace_experiment": {
+                "current": "alicloud:pai/workspaceExperiment:WorkspaceExperiment"
+            },
+            "alicloud_pai_workspace_run": {
+                "current": "alicloud:pai/workspaceRun:WorkspaceRun"
             },
             "alicloud_pai_workspace_workspace": {
                 "current": "alicloud:pai/workspaceWorkspace:WorkspaceWorkspace",
@@ -7767,6 +7834,9 @@
             "alicloud_snapshot_policy": {
                 "current": "alicloud:ecs/snapshotPolicy:SnapshotPolicy",
                 "fields": {
+                    "copy_encryption_configuration": {
+                        "maxItemsOne": true
+                    },
                     "repeat_weekdays": {
                         "maxItemsOne": false
                     },
@@ -15298,6 +15368,17 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "alicloud_gwlb_zones": {
+                "current": "alicloud:gwlb/getZones:getZones",
+                "fields": {
+                    "ids": {
+                        "maxItemsOne": false
+                    },
+                    "zones": {
+                        "maxItemsOne": false
                     }
                 }
             },
