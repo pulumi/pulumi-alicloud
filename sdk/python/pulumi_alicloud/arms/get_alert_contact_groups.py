@@ -180,7 +180,7 @@ def get_alert_contact_groups_output(alert_contact_group_name: Optional[pulumi.In
                                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlertContactGroupsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertContactGroupsResult]:
     """
     This data source provides the Arms Alert Contact Groups of the current Alibaba Cloud user.
 
@@ -213,7 +213,7 @@ def get_alert_contact_groups_output(alert_contact_group_name: Optional[pulumi.In
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:arms/getAlertContactGroups:getAlertContactGroups', __args__, opts=opts, typ=GetAlertContactGroupsResult)
     return __ret__.apply(lambda __response__: GetAlertContactGroupsResult(
         alert_contact_group_name=pulumi.get(__response__, 'alert_contact_group_name'),

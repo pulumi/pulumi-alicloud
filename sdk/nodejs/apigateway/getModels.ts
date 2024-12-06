@@ -125,7 +125,7 @@ export interface GetModelsResult {
  * export const apiGatewayModelId2 = groupId.then(groupId => groupId.models?.[0]?.id);
  * ```
  */
-export function getModelsOutput(args: GetModelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelsResult> {
+export function getModelsOutput(args: GetModelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetModelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:apigateway/getModels:getModels", {
         "groupId": args.groupId,

@@ -94,7 +94,7 @@ export interface GetMscSubWebhooksResult {
  * export const mscSubWebhookId2 = nameRegex.then(nameRegex => nameRegex.webhooks?.[0]?.id);
  * ```
  */
-export function getMscSubWebhooksOutput(args?: GetMscSubWebhooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubWebhooksResult> {
+export function getMscSubWebhooksOutput(args?: GetMscSubWebhooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMscSubWebhooksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", {

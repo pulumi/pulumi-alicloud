@@ -132,7 +132,7 @@ def get_open_api_products(ids: Optional[Sequence[str]] = None,
 def get_open_api_products_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenApiProductsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenApiProductsResult]:
     """
     This data source provides Bss Open Api Product available to the user.[What is Product](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-queryproductlist)
 
@@ -147,7 +147,7 @@ def get_open_api_products_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:bss/getOpenApiProducts:getOpenApiProducts', __args__, opts=opts, typ=GetOpenApiProductsResult)
     return __ret__.apply(lambda __response__: GetOpenApiProductsResult(
         id=pulumi.get(__response__, 'id'),

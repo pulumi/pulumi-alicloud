@@ -126,7 +126,7 @@ export interface GetAddressBooksResult {
  * export const cloudFirewallAddressBookId1 = ids.apply(ids => ids.books?.[0]?.id);
  * ```
  */
-export function getAddressBooksOutput(args?: GetAddressBooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressBooksResult> {
+export function getAddressBooksOutput(args?: GetAddressBooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressBooksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", {

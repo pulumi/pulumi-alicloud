@@ -79,7 +79,7 @@ export interface GetMetaTagsResult {
  * export const tagMetaTagDefault1 = _default.then(_default => _default.tags?.valueName);
  * ```
  */
-export function getMetaTagsOutput(args?: GetMetaTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetaTagsResult> {
+export function getMetaTagsOutput(args?: GetMetaTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetaTagsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:tag/getMetaTags:getMetaTags", {

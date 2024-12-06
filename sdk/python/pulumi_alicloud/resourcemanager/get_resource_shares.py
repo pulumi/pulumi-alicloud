@@ -182,7 +182,7 @@ def get_resource_shares_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
                                resource_share_name: Optional[pulumi.Input[Optional[str]]] = None,
                                resource_share_owner: Optional[pulumi.Input[str]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceSharesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceSharesResult]:
     """
     This data source provides the Resource Manager Resource Shares of the current Alibaba Cloud user.
 
@@ -217,7 +217,7 @@ def get_resource_shares_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     __args__['resourceShareName'] = resource_share_name
     __args__['resourceShareOwner'] = resource_share_owner
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getResourceShares:getResourceShares', __args__, opts=opts, typ=GetResourceSharesResult)
     return __ret__.apply(lambda __response__: GetResourceSharesResult(
         id=pulumi.get(__response__, 'id'),

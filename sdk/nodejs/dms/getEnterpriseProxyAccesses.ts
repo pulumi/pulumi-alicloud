@@ -106,7 +106,7 @@ export interface GetEnterpriseProxyAccessesResult {
  * export const alicloudDmsProxyAccesesExampleId = _default.apply(_default => _default.accesses?.[0]?.id);
  * ```
  */
-export function getEnterpriseProxyAccessesOutput(args: GetEnterpriseProxyAccessesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseProxyAccessesResult> {
+export function getEnterpriseProxyAccessesOutput(args: GetEnterpriseProxyAccessesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseProxyAccessesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", {
         "enableDetails": args.enableDetails,

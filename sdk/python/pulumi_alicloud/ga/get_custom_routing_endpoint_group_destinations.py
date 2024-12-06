@@ -246,7 +246,7 @@ def get_custom_routing_endpoint_group_destinations_output(accelerator_id: Option
                                                           page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                                           protocols: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                           to_port: Optional[pulumi.Input[Optional[int]]] = None,
-                                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomRoutingEndpointGroupDestinationsResult]:
+                                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomRoutingEndpointGroupDestinationsResult]:
     """
     This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.
 
@@ -286,7 +286,7 @@ def get_custom_routing_endpoint_group_destinations_output(accelerator_id: Option
     __args__['pageSize'] = page_size
     __args__['protocols'] = protocols
     __args__['toPort'] = to_port
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations', __args__, opts=opts, typ=GetCustomRoutingEndpointGroupDestinationsResult)
     return __ret__.apply(lambda __response__: GetCustomRoutingEndpointGroupDestinationsResult(
         accelerator_id=pulumi.get(__response__, 'accelerator_id'),

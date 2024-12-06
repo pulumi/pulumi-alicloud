@@ -167,7 +167,7 @@ def get_auto_snapshot_policies_output(ids: Optional[pulumi.Input[Optional[Sequen
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       status: Optional[pulumi.Input[Optional[str]]] = None,
                                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutoSnapshotPoliciesResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutoSnapshotPoliciesResult]:
     """
     This data source provides the Ecs Auto Snapshot Policies of the current Alibaba Cloud user.
 
@@ -199,7 +199,7 @@ def get_auto_snapshot_policies_output(ids: Optional[pulumi.Input[Optional[Sequen
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies', __args__, opts=opts, typ=GetAutoSnapshotPoliciesResult)
     return __ret__.apply(lambda __response__: GetAutoSnapshotPoliciesResult(
         id=pulumi.get(__response__, 'id'),

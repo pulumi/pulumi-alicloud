@@ -176,7 +176,7 @@ def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                      policy_name: Optional[pulumi.Input[Optional[str]]] = None,
                      policy_type: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRolesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRolesResult]:
     """
     This data source provides a list of RAM Roles in an Alibaba Cloud account according to the specified filters.
 
@@ -208,7 +208,7 @@ def get_roles_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     __args__['outputFile'] = output_file
     __args__['policyName'] = policy_name
     __args__['policyType'] = policy_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getRoles:getRoles', __args__, opts=opts, typ=GetRolesResult)
     return __ret__.apply(lambda __response__: GetRolesResult(
         id=pulumi.get(__response__, 'id'),

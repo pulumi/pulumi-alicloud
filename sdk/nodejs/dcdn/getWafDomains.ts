@@ -87,7 +87,7 @@ export interface GetWafDomainsResult {
  * export const dcdnWafDomainId1 = ids.then(ids => ids.domains?.[0]?.id);
  * ```
  */
-export function getWafDomainsOutput(args?: GetWafDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafDomainsResult> {
+export function getWafDomainsOutput(args?: GetWafDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWafDomainsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dcdn/getWafDomains:getWafDomains", {

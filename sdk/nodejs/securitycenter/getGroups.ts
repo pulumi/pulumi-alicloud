@@ -86,7 +86,7 @@ export interface GetGroupsResult {
  * export const securityCenterGroups = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
-export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:securitycenter/getGroups:getGroups", {

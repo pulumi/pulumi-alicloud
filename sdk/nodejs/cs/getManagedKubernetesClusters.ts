@@ -110,7 +110,7 @@ export interface GetManagedKubernetesClustersResult {
  * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
  */
-export function getManagedKubernetesClustersOutput(args?: GetManagedKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedKubernetesClustersResult> {
+export function getManagedKubernetesClustersOutput(args?: GetManagedKubernetesClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagedKubernetesClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", {

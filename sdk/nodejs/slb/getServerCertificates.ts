@@ -101,7 +101,7 @@ export interface GetServerCertificatesResult {
  * export const firstSlbServerCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
  * ```
  */
-export function getServerCertificatesOutput(args?: GetServerCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCertificatesResult> {
+export function getServerCertificatesOutput(args?: GetServerCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerCertificatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getServerCertificates:getServerCertificates", {

@@ -282,7 +282,7 @@ def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
                          source_type: Optional[pulumi.Input[str]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
                          vault_id: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
     This data source provides the Hbr Snapshots of the current Alibaba Cloud user.
 
@@ -343,7 +343,7 @@ def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['sourceType'] = source_type
     __args__['status'] = status
     __args__['vaultId'] = vault_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult)
     return __ret__.apply(lambda __response__: GetSnapshotsResult(
         bucket=pulumi.get(__response__, 'bucket'),

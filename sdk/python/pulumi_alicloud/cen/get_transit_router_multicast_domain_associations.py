@@ -220,7 +220,7 @@ def get_transit_router_multicast_domain_associations_output(ids: Optional[pulumi
                                                             transit_router_attachment_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                             transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
                                                             vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterMulticastDomainAssociationsResult]:
+                                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterMulticastDomainAssociationsResult]:
     """
     This data source provides the Cen Transit Router Multicast Domain Associations of the current Alibaba Cloud user.
 
@@ -258,7 +258,7 @@ def get_transit_router_multicast_domain_associations_output(ids: Optional[pulumi
     __args__['transitRouterAttachmentId'] = transit_router_attachment_id
     __args__['transitRouterMulticastDomainId'] = transit_router_multicast_domain_id
     __args__['vswitchId'] = vswitch_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations', __args__, opts=opts, typ=GetTransitRouterMulticastDomainAssociationsResult)
     return __ret__.apply(lambda __response__: GetTransitRouterMulticastDomainAssociationsResult(
         associations=pulumi.get(__response__, 'associations'),

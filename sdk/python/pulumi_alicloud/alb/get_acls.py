@@ -210,7 +210,7 @@ def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                     status: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclsResult]:
     """
     This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.
 
@@ -249,7 +249,7 @@ def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:alb/getAcls:getAcls', __args__, opts=opts, typ=GetAclsResult)
     return __ret__.apply(lambda __response__: GetAclsResult(
         acl_ids=pulumi.get(__response__, 'acl_ids'),

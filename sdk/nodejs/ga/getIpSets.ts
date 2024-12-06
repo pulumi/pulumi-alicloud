@@ -92,7 +92,7 @@ export interface GetIpSetsResult {
  * export const firstGaIpSetId = example.then(example => example.sets?.[0]?.id);
  * ```
  */
-export function getIpSetsOutput(args: GetIpSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpSetsResult> {
+export function getIpSetsOutput(args: GetIpSetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpSetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getIpSets:getIpSets", {
         "acceleratorId": args.acceleratorId,

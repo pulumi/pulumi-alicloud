@@ -168,7 +168,7 @@ def get_hybrid_monitor_sls_tasks_output(ids: Optional[pulumi.Input[Optional[Sequ
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                         page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                         page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHybridMonitorSlsTasksResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHybridMonitorSlsTasksResult]:
     """
     This data source provides the Cms Hybrid Monitor Sls Tasks of the current Alibaba Cloud user.
 
@@ -199,7 +199,7 @@ def get_hybrid_monitor_sls_tasks_output(ids: Optional[pulumi.Input[Optional[Sequ
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks', __args__, opts=opts, typ=GetHybridMonitorSlsTasksResult)
     return __ret__.apply(lambda __response__: GetHybridMonitorSlsTasksResult(
         id=pulumi.get(__response__, 'id'),

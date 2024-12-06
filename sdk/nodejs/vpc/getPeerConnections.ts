@@ -108,7 +108,7 @@ export interface GetPeerConnectionsResult {
  * export const vpcPeerConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
  * ```
  */
-export function getPeerConnectionsOutput(args?: GetPeerConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeerConnectionsResult> {
+export function getPeerConnectionsOutput(args?: GetPeerConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeerConnectionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getPeerConnections:getPeerConnections", {

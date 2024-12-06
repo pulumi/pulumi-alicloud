@@ -142,7 +142,7 @@ export interface GetAccessGroupsResult {
  * export const alicloudNasAccessGroupsId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
-export function getAccessGroupsOutput(args?: GetAccessGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessGroupsResult> {
+export function getAccessGroupsOutput(args?: GetAccessGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nas/getAccessGroups:getAccessGroups", {

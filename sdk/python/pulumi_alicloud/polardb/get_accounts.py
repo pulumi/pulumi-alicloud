@@ -161,7 +161,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         names=pulumi.get(__ret__, 'names'))
 def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     The `polardb_get_accounts` data source provides a collection of PolarDB cluster database account available in Alibaba Cloud account.
     Filters support regular expression for the account name, searches by clusterId.
@@ -217,7 +217,7 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['dbClusterId'] = db_cluster_id
     __args__['nameRegex'] = name_regex
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:polardb/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
     return __ret__.apply(lambda __response__: GetAccountsResult(
         accounts=pulumi.get(__response__, 'accounts'),

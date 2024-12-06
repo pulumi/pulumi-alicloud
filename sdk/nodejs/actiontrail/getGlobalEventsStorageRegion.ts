@@ -54,7 +54,7 @@ export interface GetGlobalEventsStorageRegionResult {
  * export const alicloudActiontrailGlobalEventsStorageRegion1 = _default.then(_default => _default.storageRegion);
  * ```
  */
-export function getGlobalEventsStorageRegionOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalEventsStorageRegionResult> {
+export function getGlobalEventsStorageRegionOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGlobalEventsStorageRegionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", {
     }, opts);

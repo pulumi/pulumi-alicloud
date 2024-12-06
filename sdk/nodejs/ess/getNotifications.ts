@@ -89,7 +89,7 @@ export interface GetNotificationsResult {
  * export const firstNotification = ds.then(ds => ds.notifications?.[0]?.id);
  * ```
  */
-export function getNotificationsOutput(args: GetNotificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationsResult> {
+export function getNotificationsOutput(args: GetNotificationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ess/getNotifications:getNotifications", {
         "ids": args.ids,

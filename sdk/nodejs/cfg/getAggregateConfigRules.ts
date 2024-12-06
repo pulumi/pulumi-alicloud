@@ -137,7 +137,7 @@ export interface GetAggregateConfigRulesResult {
  * export const firstConfigAggregateConfigRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
  */
-export function getAggregateConfigRulesOutput(args: GetAggregateConfigRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateConfigRulesResult> {
+export function getAggregateConfigRulesOutput(args: GetAggregateConfigRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAggregateConfigRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", {
         "aggregateConfigRuleName": args.aggregateConfigRuleName,

@@ -207,7 +207,7 @@ export interface GetDedicatedHostsResult {
  * export const cddcDedicatedHostId5 = hostType.then(hostType => hostType.hosts?.[0]?.id);
  * ```
  */
-export function getDedicatedHostsOutput(args: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostsResult> {
+export function getDedicatedHostsOutput(args: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDedicatedHostsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", {
         "allocationStatus": args.allocationStatus,

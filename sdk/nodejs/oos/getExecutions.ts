@@ -177,7 +177,7 @@ export interface GetExecutionsResult {
  * export const firstExecutionId = example.then(example => example.executions?.[0]?.id);
  * ```
  */
-export function getExecutionsOutput(args?: GetExecutionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionsResult> {
+export function getExecutionsOutput(args?: GetExecutionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExecutionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oos/getExecutions:getExecutions", {

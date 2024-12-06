@@ -259,7 +259,7 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
                                status: Optional[pulumi.Input[Optional[str]]] = None,
                                tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedHostsResult]:
     """
     This data source provides the Cddc Dedicated Hosts of the current Alibaba Cloud user.
 
@@ -333,7 +333,7 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cddc/getDedicatedHosts:getDedicatedHosts', __args__, opts=opts, typ=GetDedicatedHostsResult)
     return __ret__.apply(lambda __response__: GetDedicatedHostsResult(
         allocation_status=pulumi.get(__response__, 'allocation_status'),

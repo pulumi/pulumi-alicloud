@@ -88,7 +88,7 @@ export interface GetActivationsResult {
  * export const ecsActivationId1 = ids.then(ids => ids.activations?.[0]?.id);
  * ```
  */
-export function getActivationsOutput(args?: GetActivationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActivationsResult> {
+export function getActivationsOutput(args?: GetActivationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetActivationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getActivations:getActivations", {

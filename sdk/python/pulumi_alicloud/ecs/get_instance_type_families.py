@@ -171,7 +171,7 @@ def get_instance_type_families_output(generation: Optional[pulumi.Input[Optional
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       spot_strategy: Optional[pulumi.Input[Optional[str]]] = None,
                                       zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypeFamiliesResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypeFamiliesResult]:
     """
     This data source provides the ECS instance type families of Alibaba Cloud.
 
@@ -201,7 +201,7 @@ def get_instance_type_families_output(generation: Optional[pulumi.Input[Optional
     __args__['outputFile'] = output_file
     __args__['spotStrategy'] = spot_strategy
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies', __args__, opts=opts, typ=GetInstanceTypeFamiliesResult)
     return __ret__.apply(lambda __response__: GetInstanceTypeFamiliesResult(
         families=pulumi.get(__response__, 'families'),

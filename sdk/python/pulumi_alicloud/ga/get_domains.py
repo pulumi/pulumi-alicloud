@@ -201,7 +201,7 @@ def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = N
                        page_number: Optional[pulumi.Input[Optional[int]]] = None,
                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
 
@@ -241,7 +241,7 @@ def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = N
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult)
     return __ret__.apply(lambda __response__: GetDomainsResult(
         accelerator_id=pulumi.get(__response__, 'accelerator_id'),

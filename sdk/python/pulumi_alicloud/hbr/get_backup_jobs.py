@@ -211,7 +211,7 @@ def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
                            sort_direction: Optional[pulumi.Input[Optional[str]]] = None,
                            source_type: Optional[pulumi.Input[str]] = None,
                            status: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupJobsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupJobsResult]:
     """
     This data source provides the Hbr Backup Jobs of the current Alibaba Cloud user.
 
@@ -284,7 +284,7 @@ def get_backup_jobs_output(filters: Optional[pulumi.Input[Optional[Sequence[Unio
     __args__['sortDirection'] = sort_direction
     __args__['sourceType'] = source_type
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getBackupJobs:getBackupJobs', __args__, opts=opts, typ=GetBackupJobsResult)
     return __ret__.apply(lambda __response__: GetBackupJobsResult(
         filters=pulumi.get(__response__, 'filters'),

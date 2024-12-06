@@ -195,7 +195,7 @@ def get_log_backups_output(db_instance_id: Optional[pulumi.Input[str]] = None,
                            page_number: Optional[pulumi.Input[Optional[int]]] = None,
                            page_size: Optional[pulumi.Input[Optional[int]]] = None,
                            start_time: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogBackupsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogBackupsResult]:
     """
     This data source provides Gpdb Logbackup available to the user.[What is Log Backup](https://www.alibabacloud.com/help/en/)
 
@@ -232,7 +232,7 @@ def get_log_backups_output(db_instance_id: Optional[pulumi.Input[str]] = None,
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['startTime'] = start_time
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:gpdb/getLogBackups:getLogBackups', __args__, opts=opts, typ=GetLogBackupsResult)
     return __ret__.apply(lambda __response__: GetLogBackupsResult(
         db_instance_id=pulumi.get(__response__, 'db_instance_id'),

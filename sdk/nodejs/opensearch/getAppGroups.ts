@@ -137,7 +137,7 @@ export interface GetAppGroupsResult {
  * export const appGroups = _default.apply(_default => _default.groups);
  * ```
  */
-export function getAppGroupsOutput(args?: GetAppGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppGroupsResult> {
+export function getAppGroupsOutput(args?: GetAppGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:opensearch/getAppGroups:getAppGroups", {

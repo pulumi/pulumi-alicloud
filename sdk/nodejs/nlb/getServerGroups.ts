@@ -117,7 +117,7 @@ export interface GetServerGroupsResult {
  * export const nlbServerGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
-export function getServerGroupsOutput(args?: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupsResult> {
+export function getServerGroupsOutput(args?: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nlb/getServerGroups:getServerGroups", {

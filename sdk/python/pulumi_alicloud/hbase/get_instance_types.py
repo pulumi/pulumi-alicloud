@@ -237,7 +237,7 @@ def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[str]]]
                               region_id: Optional[pulumi.Input[Optional[str]]] = None,
                               version: Optional[pulumi.Input[Optional[str]]] = None,
                               zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     This data source provides availability instance_types for HBase that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
@@ -262,7 +262,7 @@ def get_instance_types_output(charge_type: Optional[pulumi.Input[Optional[str]]]
     __args__['regionId'] = region_id
     __args__['version'] = version
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbase/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult)
     return __ret__.apply(lambda __response__: GetInstanceTypesResult(
         charge_type=pulumi.get(__response__, 'charge_type'),

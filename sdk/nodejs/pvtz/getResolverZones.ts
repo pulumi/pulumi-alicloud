@@ -79,7 +79,7 @@ export interface GetResolverZonesResult {
  * export const firstZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
  * ```
  */
-export function getResolverZonesOutput(args?: GetResolverZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolverZonesResult> {
+export function getResolverZonesOutput(args?: GetResolverZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResolverZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:pvtz/getResolverZones:getResolverZones", {

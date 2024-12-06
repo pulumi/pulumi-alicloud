@@ -162,7 +162,7 @@ def get_db_instances_output(db_instance_description: Optional[pulumi.Input[Optio
                             ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbInstancesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbInstancesResult]:
     """
     This data source provides the Graph Database Db Instances of the current Alibaba Cloud user.
 
@@ -199,7 +199,7 @@ def get_db_instances_output(db_instance_description: Optional[pulumi.Input[Optio
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:graphdatabase/getDbInstances:getDbInstances', __args__, opts=opts, typ=GetDbInstancesResult)
     return __ret__.apply(lambda __response__: GetDbInstancesResult(
         db_instance_description=pulumi.get(__response__, 'db_instance_description'),

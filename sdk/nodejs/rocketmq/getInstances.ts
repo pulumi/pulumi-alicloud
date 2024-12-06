@@ -131,7 +131,7 @@ export interface GetInstancesResult {
  * export const firstInstanceId = instancesDs.apply(instancesDs => instancesDs.instances?.[0]?.instanceId);
  * ```
  */
-export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rocketmq/getInstances:getInstances", {

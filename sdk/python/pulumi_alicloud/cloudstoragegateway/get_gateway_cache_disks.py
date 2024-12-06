@@ -153,7 +153,7 @@ def get_gateway_cache_disks_output(gateway_id: Optional[pulumi.Input[str]] = Non
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    status: Optional[pulumi.Input[Optional[int]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayCacheDisksResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayCacheDisksResult]:
     """
     This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.
 
@@ -193,7 +193,7 @@ def get_gateway_cache_disks_output(gateway_id: Optional[pulumi.Input[str]] = Non
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks', __args__, opts=opts, typ=GetGatewayCacheDisksResult)
     return __ret__.apply(lambda __response__: GetGatewayCacheDisksResult(
         disks=pulumi.get(__response__, 'disks'),

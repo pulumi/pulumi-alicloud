@@ -143,7 +143,7 @@ export interface GetVpdsResult {
  * export const alicloudEfloVpdExampleId = _default.then(_default => _default.vpds?.[0]?.id);
  * ```
  */
-export function getVpdsOutput(args?: GetVpdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpdsResult> {
+export function getVpdsOutput(args?: GetVpdsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpdsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eflo/getVpds:getVpds", {

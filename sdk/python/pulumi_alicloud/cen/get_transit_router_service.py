@@ -103,7 +103,7 @@ def get_transit_router_service(enable: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
 def get_transit_router_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterServiceResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterServiceResult]:
     """
     Using this data source can open CEN Transit Router Service automatically. If the service has been opened, it will return opened.
 
@@ -127,7 +127,7 @@ def get_transit_router_service_output(enable: Optional[pulumi.Input[Optional[str
     """
     __args__ = dict()
     __args__['enable'] = enable
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterService:getTransitRouterService', __args__, opts=opts, typ=GetTransitRouterServiceResult)
     return __ret__.apply(lambda __response__: GetTransitRouterServiceResult(
         enable=pulumi.get(__response__, 'enable'),

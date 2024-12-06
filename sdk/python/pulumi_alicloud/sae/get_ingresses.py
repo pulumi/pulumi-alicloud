@@ -130,7 +130,7 @@ def get_ingresses_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          namespace_id: Optional[pulumi.Input[str]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIngressesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIngressesResult]:
     """
     This data source provides the Sae Ingresses of the current Alibaba Cloud user.
 
@@ -147,7 +147,7 @@ def get_ingresses_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     __args__['ids'] = ids
     __args__['namespaceId'] = namespace_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:sae/getIngresses:getIngresses', __args__, opts=opts, typ=GetIngressesResult)
     return __ret__.apply(lambda __response__: GetIngressesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

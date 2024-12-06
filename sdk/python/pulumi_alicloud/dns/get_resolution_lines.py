@@ -191,7 +191,7 @@ def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[str]
                                 line_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 user_client_ip: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResolutionLinesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResolutionLinesResult]:
     """
     This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.
 
@@ -224,7 +224,7 @@ def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[str]
     __args__['lineNames'] = line_names
     __args__['outputFile'] = output_file
     __args__['userClientIp'] = user_client_ip
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getResolutionLines:getResolutionLines', __args__, opts=opts, typ=GetResolutionLinesResult)
     return __ret__.apply(lambda __response__: GetResolutionLinesResult(
         domain_name=pulumi.get(__response__, 'domain_name'),

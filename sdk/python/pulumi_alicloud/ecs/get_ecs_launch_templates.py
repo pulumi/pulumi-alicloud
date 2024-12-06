@@ -283,7 +283,7 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     template_resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     template_tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsLaunchTemplatesResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsLaunchTemplatesResult]:
     """
     This data source provides the Ecs Launch Templates of the current Alibaba Cloud user.
 
@@ -395,7 +395,7 @@ def get_ecs_launch_templates_output(enable_details: Optional[pulumi.Input[Option
     __args__['outputFile'] = output_file
     __args__['templateResourceGroupId'] = template_resource_group_id
     __args__['templateTags'] = template_tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates', __args__, opts=opts, typ=GetEcsLaunchTemplatesResult)
     return __ret__.apply(lambda __response__: GetEcsLaunchTemplatesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

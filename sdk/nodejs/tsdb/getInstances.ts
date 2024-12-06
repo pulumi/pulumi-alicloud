@@ -115,7 +115,7 @@ export interface GetInstancesResult {
  * export const firstTsdbInstanceId = example.then(example => example.instances?.[0]?.id);
  * ```
  */
-export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
+export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:tsdb/getInstances:getInstances", {

@@ -227,7 +227,7 @@ export interface GetForwardEntriesResult {
  * });
  * ```
  */
-export function getForwardEntriesOutput(args: GetForwardEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardEntriesResult> {
+export function getForwardEntriesOutput(args: GetForwardEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetForwardEntriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getForwardEntries:getForwardEntries", {
         "externalIp": args.externalIp,

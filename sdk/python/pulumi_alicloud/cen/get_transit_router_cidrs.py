@@ -170,7 +170,7 @@ def get_transit_router_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     transit_router_cidr_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     transit_router_id: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterCidrsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterCidrsResult]:
     """
     This data source provides the Cen Transit Router Cidrs of the current Alibaba Cloud user.
 
@@ -205,7 +205,7 @@ def get_transit_router_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence
     __args__['outputFile'] = output_file
     __args__['transitRouterCidrId'] = transit_router_cidr_id
     __args__['transitRouterId'] = transit_router_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs', __args__, opts=opts, typ=GetTransitRouterCidrsResult)
     return __ret__.apply(lambda __response__: GetTransitRouterCidrsResult(
         cidrs=pulumi.get(__response__, 'cidrs'),

@@ -157,7 +157,7 @@ export interface GetRulesResult {
  * export const sddpRuleId = _default.apply(_default => _default.id);
  * ```
  */
-export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
+export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRulesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sddp/getRules:getRules", {

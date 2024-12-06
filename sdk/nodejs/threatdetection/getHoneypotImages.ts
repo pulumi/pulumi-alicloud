@@ -96,7 +96,7 @@ export interface GetHoneypotImagesResult {
  * export const alicloudThreatDetectionHoneypotImageExampleId = _default.then(_default => _default.images?.[0]?.id);
  * ```
  */
-export function getHoneypotImagesOutput(args?: GetHoneypotImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotImagesResult> {
+export function getHoneypotImagesOutput(args?: GetHoneypotImagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHoneypotImagesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", {

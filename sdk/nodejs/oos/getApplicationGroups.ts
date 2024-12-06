@@ -115,7 +115,7 @@ export interface GetApplicationGroupsResult {
  * export const oosApplicationGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
-export function getApplicationGroupsOutput(args: GetApplicationGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationGroupsResult> {
+export function getApplicationGroupsOutput(args: GetApplicationGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oos/getApplicationGroups:getApplicationGroups", {
         "applicationName": args.applicationName,

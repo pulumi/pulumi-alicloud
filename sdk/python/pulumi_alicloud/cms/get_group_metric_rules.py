@@ -237,7 +237,7 @@ def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str
                                   namespace: Optional[pulumi.Input[Optional[str]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   status: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupMetricRulesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupMetricRulesResult]:
     """
     This data source provides the Cms Group Metric Rules of the current Alibaba Cloud user.
 
@@ -279,7 +279,7 @@ def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str
     __args__['namespace'] = namespace
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getGroupMetricRules:getGroupMetricRules', __args__, opts=opts, typ=GetGroupMetricRulesResult)
     return __ret__.apply(lambda __response__: GetGroupMetricRulesResult(
         dimensions=pulumi.get(__response__, 'dimensions'),

@@ -173,7 +173,7 @@ def get_gateway_block_volumes_output(gateway_id: Optional[pulumi.Input[str]] = N
                                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                      status: Optional[pulumi.Input[Optional[int]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayBlockVolumesResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayBlockVolumesResult]:
     """
     This data source provides the Cloud Storage Gateway Gateway Block Volumes of the current Alibaba Cloud user.
 
@@ -211,7 +211,7 @@ def get_gateway_block_volumes_output(gateway_id: Optional[pulumi.Input[str]] = N
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes', __args__, opts=opts, typ=GetGatewayBlockVolumesResult)
     return __ret__.apply(lambda __response__: GetGatewayBlockVolumesResult(
         gateway_id=pulumi.get(__response__, 'gateway_id'),

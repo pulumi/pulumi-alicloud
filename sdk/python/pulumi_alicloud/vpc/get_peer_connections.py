@@ -182,7 +182,7 @@ def get_peer_connections_output(ids: Optional[pulumi.Input[Optional[Sequence[str
                                 peer_connection_name: Optional[pulumi.Input[Optional[str]]] = None,
                                 status: Optional[pulumi.Input[Optional[str]]] = None,
                                 vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeerConnectionsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeerConnectionsResult]:
     """
     This data source provides the Vpc Peer Connections of the current Alibaba Cloud user.
 
@@ -217,7 +217,7 @@ def get_peer_connections_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     __args__['peerConnectionName'] = peer_connection_name
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getPeerConnections:getPeerConnections', __args__, opts=opts, typ=GetPeerConnectionsResult)
     return __ret__.apply(lambda __response__: GetPeerConnectionsResult(
         connections=pulumi.get(__response__, 'connections'),

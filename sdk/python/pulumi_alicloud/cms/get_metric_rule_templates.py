@@ -200,7 +200,7 @@ def get_metric_rule_templates_output(enable_details: Optional[pulumi.Input[Optio
                                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                      template_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetricRuleTemplatesResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetricRuleTemplatesResult]:
     """
     This data source provides the Cms Metric Rule Templates of the current Alibaba Cloud user.
 
@@ -241,7 +241,7 @@ def get_metric_rule_templates_output(enable_details: Optional[pulumi.Input[Optio
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['templateId'] = template_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates', __args__, opts=opts, typ=GetMetricRuleTemplatesResult)
     return __ret__.apply(lambda __response__: GetMetricRuleTemplatesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

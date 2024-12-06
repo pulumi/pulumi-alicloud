@@ -88,7 +88,7 @@ export interface GetSearchIndexesResult {
  *
  * > **NOTE:** Available in v1.187.0+.
  */
-export function getSearchIndexesOutput(args: GetSearchIndexesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSearchIndexesResult> {
+export function getSearchIndexesOutput(args: GetSearchIndexesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSearchIndexesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ots/getSearchIndexes:getSearchIndexes", {
         "ids": args.ids,

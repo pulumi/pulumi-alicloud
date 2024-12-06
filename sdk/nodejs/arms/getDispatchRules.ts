@@ -102,7 +102,7 @@ export interface GetDispatchRulesResult {
  * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
  */
-export function getDispatchRulesOutput(args?: GetDispatchRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDispatchRulesResult> {
+export function getDispatchRulesOutput(args?: GetDispatchRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDispatchRulesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:arms/getDispatchRules:getDispatchRules", {

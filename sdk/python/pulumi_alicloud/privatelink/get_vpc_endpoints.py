@@ -223,7 +223,7 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
                              status: Optional[pulumi.Input[Optional[str]]] = None,
                              vpc_endpoint_name: Optional[pulumi.Input[Optional[str]]] = None,
                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcEndpointsResult]:
     """
     This data source provides the Privatelink Vpc Endpoints of the current Alibaba Cloud user.
 
@@ -263,7 +263,7 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
     __args__['status'] = status
     __args__['vpcEndpointName'] = vpc_endpoint_name
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:privatelink/getVpcEndpoints:getVpcEndpoints', __args__, opts=opts, typ=GetVpcEndpointsResult)
     return __ret__.apply(lambda __response__: GetVpcEndpointsResult(
         connection_status=pulumi.get(__response__, 'connection_status'),

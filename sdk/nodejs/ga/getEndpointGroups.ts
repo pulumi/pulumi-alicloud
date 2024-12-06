@@ -239,7 +239,7 @@ export interface GetEndpointGroupsResult {
  * export const firstGaEndpointGroupId = defaultGetEndpointGroups.apply(defaultGetEndpointGroups => defaultGetEndpointGroups.groups?.[0]?.id);
  * ```
  */
-export function getEndpointGroupsOutput(args: GetEndpointGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointGroupsResult> {
+export function getEndpointGroupsOutput(args: GetEndpointGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEndpointGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getEndpointGroups:getEndpointGroups", {
         "acceleratorId": args.acceleratorId,

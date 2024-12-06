@@ -55,7 +55,7 @@ export interface GetApplicationInfosResult {
     readonly quotaCategory?: string;
     readonly status?: string;
 }
-export function getApplicationInfosOutput(args: GetApplicationInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationInfosResult> {
+export function getApplicationInfosOutput(args: GetApplicationInfosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:quotas/getApplicationInfos:getApplicationInfos", {
         "dimensions": args.dimensions,

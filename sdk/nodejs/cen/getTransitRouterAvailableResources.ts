@@ -83,7 +83,7 @@ export interface GetTransitRouterAvailableResourcesResult {
  * export const slaveId = ids.then(ids => ids.resources?.[0]?.slaveZones?.[0]);
  * ```
  */
-export function getTransitRouterAvailableResourcesOutput(args?: GetTransitRouterAvailableResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterAvailableResourcesResult> {
+export function getTransitRouterAvailableResourcesOutput(args?: GetTransitRouterAvailableResourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterAvailableResourcesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources", {

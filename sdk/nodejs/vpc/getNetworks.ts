@@ -179,7 +179,7 @@ export interface GetNetworksResult {
  * export const firstVpcId = vpcsDs.then(vpcsDs => vpcsDs.vpcs?.[0]?.id);
  * ```
  */
-export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworksResult> {
+export function getNetworksOutput(args?: GetNetworksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getNetworks:getNetworks", {

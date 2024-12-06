@@ -119,7 +119,7 @@ def get_alert_resource(lang: Optional[str] = None,
 def get_alert_resource_output(lang: Optional[pulumi.Input[Optional[str]]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               type: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlertResourceResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlertResourceResult]:
     """
     Using this data source can init SLS Alert resources automatically.
 
@@ -148,7 +148,7 @@ def get_alert_resource_output(lang: Optional[pulumi.Input[Optional[str]]] = None
     __args__['lang'] = lang
     __args__['project'] = project
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:log/getAlertResource:getAlertResource', __args__, opts=opts, typ=GetAlertResourceResult)
     return __ret__.apply(lambda __response__: GetAlertResourceResult(
         id=pulumi.get(__response__, 'id'),

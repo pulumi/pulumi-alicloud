@@ -115,7 +115,7 @@ export interface GetAddressPoolsResult {
  * export const alidnsAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
  * ```
  */
-export function getAddressPoolsOutput(args: GetAddressPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressPoolsResult> {
+export function getAddressPoolsOutput(args: GetAddressPoolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressPoolsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getAddressPools:getAddressPools", {
         "enableDetails": args.enableDetails,

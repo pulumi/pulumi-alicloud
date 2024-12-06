@@ -195,7 +195,7 @@ def get_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
                          share_type: Optional[pulumi.Input[Optional[str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          template_name: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplatesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTemplatesResult]:
     """
     This data source provides the Ros Templates of the current Alibaba Cloud user.
 
@@ -231,7 +231,7 @@ def get_templates_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     __args__['shareType'] = share_type
     __args__['tags'] = tags
     __args__['templateName'] = template_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getTemplates:getTemplates', __args__, opts=opts, typ=GetTemplatesResult)
     return __ret__.apply(lambda __response__: GetTemplatesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

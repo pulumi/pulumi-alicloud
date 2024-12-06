@@ -214,7 +214,7 @@ def get_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
                       page_number: Optional[pulumi.Input[Optional[int]]] = None,
                       page_size: Optional[pulumi.Input[Optional[int]]] = None,
                       topic: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTopicsResult]:
     """
     This data source provides a list of ALIKAFKA Topics in an Alibaba Cloud account according to the specified filters.
 
@@ -247,7 +247,7 @@ def get_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['topic'] = topic
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getTopics:getTopics', __args__, opts=opts, typ=GetTopicsResult)
     return __ret__.apply(lambda __response__: GetTopicsResult(
         id=pulumi.get(__response__, 'id'),

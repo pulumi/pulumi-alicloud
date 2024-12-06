@@ -182,7 +182,7 @@ def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Op
                                         page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDBClusterLakeVersionsResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDBClusterLakeVersionsResult]:
     """
     This data source provides the Adb DBCluster Lake Versions of the current Alibaba Cloud user.
 
@@ -215,7 +215,7 @@ def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Op
     __args__['pageSize'] = page_size
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions', __args__, opts=opts, typ=GetDBClusterLakeVersionsResult)
     return __ret__.apply(lambda __response__: GetDBClusterLakeVersionsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

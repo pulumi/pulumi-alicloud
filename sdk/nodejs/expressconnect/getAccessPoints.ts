@@ -100,7 +100,7 @@ export interface GetAccessPointsResult {
  * export const expressConnectAccessPointId2 = nameRegex.then(nameRegex => nameRegex.points?.[0]?.id);
  * ```
  */
-export function getAccessPointsOutput(args?: GetAccessPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPointsResult> {
+export function getAccessPointsOutput(args?: GetAccessPointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessPointsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:expressconnect/getAccessPoints:getAccessPoints", {

@@ -115,7 +115,7 @@ export interface GetDiskTypesResult {
  * export const dataDiskType = _default.then(_default => _default.types?.[0]?.value);
  * ```
  */
-export function getDiskTypesOutput(args: GetDiskTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskTypesResult> {
+export function getDiskTypesOutput(args: GetDiskTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiskTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:emr/getDiskTypes:getDiskTypes", {
         "clusterType": args.clusterType,

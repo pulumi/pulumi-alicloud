@@ -124,7 +124,7 @@ export interface GetSharedTargetsResult {
  * export const secondResourceManagerSharedTargetId = resourceShareId.apply(resourceShareId => resourceShareId.targets?.[0]?.id);
  * ```
  */
-export function getSharedTargetsOutput(args?: GetSharedTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedTargetsResult> {
+export function getSharedTargetsOutput(args?: GetSharedTargetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSharedTargetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getSharedTargets:getSharedTargets", {

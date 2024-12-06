@@ -254,7 +254,7 @@ def get_mount_targets_output(access_group_name: Optional[pulumi.Input[Optional[s
                              type: Optional[pulumi.Input[Optional[str]]] = None,
                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                              vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMountTargetsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMountTargetsResult]:
     """
     This data source provides MountTargets available to the user.
 
@@ -294,7 +294,7 @@ def get_mount_targets_output(access_group_name: Optional[pulumi.Input[Optional[s
     __args__['type'] = type
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getMountTargets:getMountTargets', __args__, opts=opts, typ=GetMountTargetsResult)
     return __ret__.apply(lambda __response__: GetMountTargetsResult(
         access_group_name=pulumi.get(__response__, 'access_group_name'),

@@ -191,7 +191,7 @@ def get_apps_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
                     os_type: Optional[pulumi.Input[Optional[str]]] = None,
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                     product_id: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
     """
     This data source provides the Mhub Apps of the current Alibaba Cloud user.
 
@@ -235,7 +235,7 @@ def get_apps_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
     __args__['osType'] = os_type
     __args__['outputFile'] = output_file
     __args__['productId'] = product_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mhub/getApps:getApps', __args__, opts=opts, typ=GetAppsResult)
     return __ret__.apply(lambda __response__: GetAppsResult(
         apps=pulumi.get(__response__, 'apps'),

@@ -87,7 +87,7 @@ export interface GetMscSubContactVerificationMessageResult {
  * }));
  * ```
  */
-export function getMscSubContactVerificationMessageOutput(args: GetMscSubContactVerificationMessageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubContactVerificationMessageResult> {
+export function getMscSubContactVerificationMessageOutput(args: GetMscSubContactVerificationMessageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMscSubContactVerificationMessageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", {
         "contactId": args.contactId,

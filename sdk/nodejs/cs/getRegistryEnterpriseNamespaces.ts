@@ -105,7 +105,7 @@ export interface GetRegistryEnterpriseNamespacesResult {
  * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
  * ```
  */
-export function getRegistryEnterpriseNamespacesOutput(args: GetRegistryEnterpriseNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseNamespacesResult> {
+export function getRegistryEnterpriseNamespacesOutput(args: GetRegistryEnterpriseNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistryEnterpriseNamespacesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getRegistryEnterpriseNamespaces:getRegistryEnterpriseNamespaces", {
         "ids": args.ids,

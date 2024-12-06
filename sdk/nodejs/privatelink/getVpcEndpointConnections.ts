@@ -99,7 +99,7 @@ export interface GetVpcEndpointConnectionsResult {
  * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections?.[0]?.id);
  * ```
  */
-export function getVpcEndpointConnectionsOutput(args: GetVpcEndpointConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointConnectionsResult> {
+export function getVpcEndpointConnectionsOutput(args: GetVpcEndpointConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcEndpointConnectionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:privatelink/getVpcEndpointConnections:getVpcEndpointConnections", {
         "endpointId": args.endpointId,

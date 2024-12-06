@@ -113,7 +113,7 @@ export interface GetKubernetesClustersResult {
  * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
  */
-export function getKubernetesClustersOutput(args?: GetKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesClustersResult> {
+export function getKubernetesClustersOutput(args?: GetKubernetesClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesClusters:getKubernetesClusters", {

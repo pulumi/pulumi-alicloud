@@ -153,7 +153,7 @@ def get_transit_router_vbr_attachments_output(cen_id: Optional[pulumi.Input[str]
                                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                               status: Optional[pulumi.Input[Optional[str]]] = None,
                                               transit_router_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterVbrAttachmentsResult]:
+                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterVbrAttachmentsResult]:
     """
     This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)
 
@@ -172,7 +172,7 @@ def get_transit_router_vbr_attachments_output(cen_id: Optional[pulumi.Input[str]
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['transitRouterId'] = transit_router_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments', __args__, opts=opts, typ=GetTransitRouterVbrAttachmentsResult)
     return __ret__.apply(lambda __response__: GetTransitRouterVbrAttachmentsResult(
         attachments=pulumi.get(__response__, 'attachments'),

@@ -184,7 +184,7 @@ def get_extension_providers_output(ids: Optional[pulumi.Input[Optional[Sequence[
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    service_mesh_id: Optional[pulumi.Input[str]] = None,
                                    type: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExtensionProvidersResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExtensionProvidersResult]:
     """
     This data source provides the Service Mesh Extension Providers of the current Alibaba Cloud user.
 
@@ -221,7 +221,7 @@ def get_extension_providers_output(ids: Optional[pulumi.Input[Optional[Sequence[
     __args__['outputFile'] = output_file
     __args__['serviceMeshId'] = service_mesh_id
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:servicemesh/getExtensionProviders:getExtensionProviders', __args__, opts=opts, typ=GetExtensionProvidersResult)
     return __ret__.apply(lambda __response__: GetExtensionProvidersResult(
         id=pulumi.get(__response__, 'id'),

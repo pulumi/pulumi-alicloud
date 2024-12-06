@@ -226,7 +226,7 @@ def get_virtual_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              virtual_node_name: Optional[pulumi.Input[Optional[str]]] = None,
                              vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualNodesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualNodesResult]:
     """
     This data source provides the Eci Virtual Nodes of the current Alibaba Cloud user.
 
@@ -269,7 +269,7 @@ def get_virtual_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['tags'] = tags
     __args__['virtualNodeName'] = virtual_node_name
     __args__['vswitchId'] = vswitch_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eci/getVirtualNodes:getVirtualNodes', __args__, opts=opts, typ=GetVirtualNodesResult)
     return __ret__.apply(lambda __response__: GetVirtualNodesResult(
         id=pulumi.get(__response__, 'id'),

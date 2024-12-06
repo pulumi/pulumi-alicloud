@@ -42,7 +42,7 @@ export interface GetDBAuditInstanceResult {
     readonly outputFile?: string;
     readonly tags?: {[key: string]: string};
 }
-export function getDBAuditInstanceOutput(args?: GetDBAuditInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBAuditInstanceResult> {
+export function getDBAuditInstanceOutput(args?: GetDBAuditInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDBAuditInstanceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:yundun/getDBAuditInstance:getDBAuditInstance", {

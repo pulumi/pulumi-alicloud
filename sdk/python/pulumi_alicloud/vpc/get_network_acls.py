@@ -209,7 +209,7 @@ def get_network_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             resource_type: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
                             vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkAclsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAclsResult]:
     """
     This data source provides the Network Acls of the current Alibaba Cloud user.
 
@@ -247,7 +247,7 @@ def get_network_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['resourceType'] = resource_type
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getNetworkAcls:getNetworkAcls', __args__, opts=opts, typ=GetNetworkAclsResult)
     return __ret__.apply(lambda __response__: GetNetworkAclsResult(
         acls=pulumi.get(__response__, 'acls'),

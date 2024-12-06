@@ -99,7 +99,7 @@ export interface GetAlidnsInstancesResult {
  * export const firstInstanceId = example.then(example => example.instances?.[0]?.id);
  * ```
  */
-export function getAlidnsInstancesOutput(args?: GetAlidnsInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsInstancesResult> {
+export function getAlidnsInstancesOutput(args?: GetAlidnsInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlidnsInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getAlidnsInstances:getAlidnsInstances", {

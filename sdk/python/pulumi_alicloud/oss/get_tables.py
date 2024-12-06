@@ -157,7 +157,7 @@ def get_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
                       instance_name: Optional[pulumi.Input[str]] = None,
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTablesResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTablesResult]:
     """
     This data source provides the ots tables of the current Alibaba Cloud user.
 
@@ -177,7 +177,7 @@ def get_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     __args__['instanceName'] = instance_name
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:oss/getTables:getTables', __args__, opts=opts, typ=GetTablesResult)
     return __ret__.apply(lambda __response__: GetTablesResult(
         id=pulumi.get(__response__, 'id'),

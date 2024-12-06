@@ -42,7 +42,7 @@ export interface GetRdsParameterGroupsResult {
     readonly names: string[];
     readonly outputFile?: string;
 }
-export function getRdsParameterGroupsOutput(args?: GetRdsParameterGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRdsParameterGroupsResult> {
+export function getRdsParameterGroupsOutput(args?: GetRdsParameterGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRdsParameterGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getRdsParameterGroups:getRdsParameterGroups", {

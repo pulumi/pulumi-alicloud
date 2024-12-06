@@ -130,7 +130,7 @@ export interface GetPrometheusMonitoringsResult {
  * export const armsPrometheusMonitoringsId2 = nameRegex.then(nameRegex => nameRegex.prometheusMonitorings?.[0]?.id);
  * ```
  */
-export function getPrometheusMonitoringsOutput(args: GetPrometheusMonitoringsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusMonitoringsResult> {
+export function getPrometheusMonitoringsOutput(args: GetPrometheusMonitoringsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrometheusMonitoringsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:arms/getPrometheusMonitorings:getPrometheusMonitorings", {
         "clusterId": args.clusterId,

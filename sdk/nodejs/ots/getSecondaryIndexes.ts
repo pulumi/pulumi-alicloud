@@ -92,7 +92,7 @@ export interface GetSecondaryIndexesResult {
  *
  * ## Example Usage
  */
-export function getSecondaryIndexesOutput(args: GetSecondaryIndexesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecondaryIndexesResult> {
+export function getSecondaryIndexesOutput(args: GetSecondaryIndexesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecondaryIndexesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ots/getSecondaryIndexes:getSecondaryIndexes", {
         "ids": args.ids,

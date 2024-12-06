@@ -64,7 +64,7 @@ export interface GetOpenApiProductsResult {
  *
  * > **NOTE:** Available since v1.195.0.
  */
-export function getOpenApiProductsOutput(args?: GetOpenApiProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenApiProductsResult> {
+export function getOpenApiProductsOutput(args?: GetOpenApiProductsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenApiProductsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:bss/getOpenApiProducts:getOpenApiProducts", {

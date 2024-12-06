@@ -82,7 +82,7 @@ export interface GetOtsSnapshotsResult {
  * const snapshots = alicloud.hbr.getOtsSnapshots({});
  * ```
  */
-export function getOtsSnapshotsOutput(args?: GetOtsSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOtsSnapshotsResult> {
+export function getOtsSnapshotsOutput(args?: GetOtsSnapshotsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOtsSnapshotsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", {

@@ -124,7 +124,7 @@ export interface GetTransitRouterRouteTableAssociationsResult {
  * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.associations?.[0]?.resourceType);
  * ```
  */
-export function getTransitRouterRouteTableAssociationsOutput(args?: GetTransitRouterRouteTableAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTableAssociationsResult> {
+export function getTransitRouterRouteTableAssociationsOutput(args?: GetTransitRouterRouteTableAssociationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterRouteTableAssociationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", {

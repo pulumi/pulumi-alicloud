@@ -159,7 +159,7 @@ def get_honeypot_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                node_id: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHoneypotImagesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHoneypotImagesResult]:
     """
     This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
 
@@ -186,7 +186,7 @@ def get_honeypot_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     __args__['nameRegex'] = name_regex
     __args__['nodeId'] = node_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getHoneypotImages:getHoneypotImages', __args__, opts=opts, typ=GetHoneypotImagesResult)
     return __ret__.apply(lambda __response__: GetHoneypotImagesResult(
         id=pulumi.get(__response__, 'id'),

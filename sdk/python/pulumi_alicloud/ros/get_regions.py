@@ -100,7 +100,7 @@ def get_regions(output_file: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         regions=pulumi.get(__ret__, 'regions'))
 def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     This data source provides the Ros Regions of the current Alibaba Cloud user.
 
@@ -123,7 +123,7 @@ def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
     return __ret__.apply(lambda __response__: GetRegionsResult(
         id=pulumi.get(__response__, 'id'),

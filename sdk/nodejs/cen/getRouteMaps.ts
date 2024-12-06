@@ -132,7 +132,7 @@ export interface GetRouteMapsResult {
  * export const firstCenRouteMapId = _this.then(_this => _this.maps?.[0]?.routeMapId);
  * ```
  */
-export function getRouteMapsOutput(args: GetRouteMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteMapsResult> {
+export function getRouteMapsOutput(args: GetRouteMapsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteMapsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getRouteMaps:getRouteMaps", {
         "cenId": args.cenId,

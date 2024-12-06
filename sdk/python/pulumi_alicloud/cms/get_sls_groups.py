@@ -180,7 +180,7 @@ def get_sls_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                           page_number: Optional[pulumi.Input[Optional[int]]] = None,
                           page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSlsGroupsResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSlsGroupsResult]:
     """
     This data source provides the Cms Sls Groups of the current Alibaba Cloud user.
 
@@ -213,7 +213,7 @@ def get_sls_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getSlsGroups:getSlsGroups', __args__, opts=opts, typ=GetSlsGroupsResult)
     return __ret__.apply(lambda __response__: GetSlsGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

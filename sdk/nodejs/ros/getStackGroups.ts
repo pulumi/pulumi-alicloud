@@ -100,7 +100,7 @@ export interface GetStackGroupsResult {
  * export const firstRosStackGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
-export function getStackGroupsOutput(args?: GetStackGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackGroupsResult> {
+export function getStackGroupsOutput(args?: GetStackGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStackGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ros/getStackGroups:getStackGroups", {

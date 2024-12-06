@@ -198,7 +198,7 @@ def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence
                                     owner: Optional[pulumi.Input[Optional[str]]] = None,
                                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsImageComponentsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsImageComponentsResult]:
     """
     This data source provides the Ecs Image Components of the current Alibaba Cloud user.
 
@@ -237,7 +237,7 @@ def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence
     __args__['owner'] = owner
     __args__['resourceGroupId'] = resource_group_id
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsImageComponents:getEcsImageComponents', __args__, opts=opts, typ=GetEcsImageComponentsResult)
     return __ret__.apply(lambda __response__: GetEcsImageComponentsResult(
         components=pulumi.get(__response__, 'components'),

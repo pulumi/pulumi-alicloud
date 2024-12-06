@@ -265,7 +265,7 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             source_cidr: Optional[pulumi.Input[Optional[str]]] = None,
                             source_vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnatEntriesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnatEntriesResult]:
     """
     This data source provides a list of Snat Entries owned by an Alibaba Cloud account.
 
@@ -326,7 +326,7 @@ def get_snat_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['sourceCidr'] = source_cidr
     __args__['sourceVswitchId'] = source_vswitch_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getSnatEntries:getSnatEntries', __args__, opts=opts, typ=GetSnatEntriesResult)
     return __ret__.apply(lambda __response__: GetSnatEntriesResult(
         entries=pulumi.get(__response__, 'entries'),

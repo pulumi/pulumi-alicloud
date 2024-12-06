@@ -243,7 +243,7 @@ def get_inter_region_traffic_qos_policies_output(ids: Optional[pulumi.Input[Opti
                                                  traffic_qos_policy_name: Optional[pulumi.Input[Optional[str]]] = None,
                                                  transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
                                                  transit_router_id: Optional[pulumi.Input[str]] = None,
-                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInterRegionTrafficQosPoliciesResult]:
+                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInterRegionTrafficQosPoliciesResult]:
     """
     This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.
 
@@ -288,7 +288,7 @@ def get_inter_region_traffic_qos_policies_output(ids: Optional[pulumi.Input[Opti
     __args__['trafficQosPolicyName'] = traffic_qos_policy_name
     __args__['transitRouterAttachmentId'] = transit_router_attachment_id
     __args__['transitRouterId'] = transit_router_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies', __args__, opts=opts, typ=GetInterRegionTrafficQosPoliciesResult)
     return __ret__.apply(lambda __response__: GetInterRegionTrafficQosPoliciesResult(
         id=pulumi.get(__response__, 'id'),

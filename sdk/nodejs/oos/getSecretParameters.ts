@@ -185,7 +185,7 @@ export interface GetSecretParametersResult {
  * export const oosSecretParameterId0 = ids.apply(ids => ids.parameters?.[0]?.id);
  * ```
  */
-export function getSecretParametersOutput(args?: GetSecretParametersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretParametersResult> {
+export function getSecretParametersOutput(args?: GetSecretParametersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretParametersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oos/getSecretParameters:getSecretParameters", {

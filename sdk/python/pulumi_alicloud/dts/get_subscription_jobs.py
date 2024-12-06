@@ -178,7 +178,7 @@ def get_subscription_jobs_output(enable_details: Optional[pulumi.Input[Optional[
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
                                  tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionJobsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubscriptionJobsResult]:
     """
     This data source provides the Dts Subscription Jobs of the current Alibaba Cloud user.
 
@@ -209,7 +209,7 @@ def get_subscription_jobs_output(enable_details: Optional[pulumi.Input[Optional[
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dts/getSubscriptionJobs:getSubscriptionJobs', __args__, opts=opts, typ=GetSubscriptionJobsResult)
     return __ret__.apply(lambda __response__: GetSubscriptionJobsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

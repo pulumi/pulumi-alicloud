@@ -204,7 +204,7 @@ def get_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
                         page_size: Optional[pulumi.Input[Optional[int]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         storage_bundle_id: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewaysResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewaysResult]:
     """
     This data source provides the Cloud Storage Gateway Gateways of the current Alibaba Cloud user.
 
@@ -239,7 +239,7 @@ def get_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     __args__['pageSize'] = page_size
     __args__['status'] = status
     __args__['storageBundleId'] = storage_bundle_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudstoragegateway/getGateways:getGateways', __args__, opts=opts, typ=GetGatewaysResult)
     return __ret__.apply(lambda __response__: GetGatewaysResult(
         gateways=pulumi.get(__response__, 'gateways'),

@@ -162,7 +162,7 @@ def get_ipv6_internet_bandwidths_output(ids: Optional[pulumi.Input[Optional[Sequ
                                         ipv6_internet_bandwidth_id: Optional[pulumi.Input[Optional[str]]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6InternetBandwidthsResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv6InternetBandwidthsResult]:
     """
     This data source provides the Vpc Ipv6 Internet Bandwidths of the current Alibaba Cloud user.
 
@@ -199,7 +199,7 @@ def get_ipv6_internet_bandwidths_output(ids: Optional[pulumi.Input[Optional[Sequ
     __args__['ipv6InternetBandwidthId'] = ipv6_internet_bandwidth_id
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths', __args__, opts=opts, typ=GetIpv6InternetBandwidthsResult)
     return __ret__.apply(lambda __response__: GetIpv6InternetBandwidthsResult(
         bandwidths=pulumi.get(__response__, 'bandwidths'),

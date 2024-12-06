@@ -109,7 +109,7 @@ def get_monitor_group_instances(ids: Optional[str] = None,
 def get_monitor_group_instances_output(ids: Optional[pulumi.Input[str]] = None,
                                        keyword: Optional[pulumi.Input[Optional[str]]] = None,
                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMonitorGroupInstancesResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitorGroupInstancesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -117,7 +117,7 @@ def get_monitor_group_instances_output(ids: Optional[pulumi.Input[str]] = None,
     __args__['ids'] = ids
     __args__['keyword'] = keyword
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances', __args__, opts=opts, typ=GetMonitorGroupInstancesResult)
     return __ret__.apply(lambda __response__: GetMonitorGroupInstancesResult(
         id=pulumi.get(__response__, 'id'),

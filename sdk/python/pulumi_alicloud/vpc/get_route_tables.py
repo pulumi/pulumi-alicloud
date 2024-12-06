@@ -329,7 +329,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             status: Optional[pulumi.Input[Optional[str]]] = None,
                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                             vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteTablesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteTablesResult]:
     """
     This data source provides a list of Route Tables owned by an Alibaba Cloud account.
 
@@ -384,7 +384,7 @@ def get_route_tables_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getRouteTables:getRouteTables', __args__, opts=opts, typ=GetRouteTablesResult)
     return __ret__.apply(lambda __response__: GetRouteTablesResult(
         id=pulumi.get(__response__, 'id'),

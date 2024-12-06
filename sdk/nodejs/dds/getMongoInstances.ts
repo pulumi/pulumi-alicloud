@@ -51,7 +51,7 @@ export interface GetMongoInstancesResult {
     readonly outputFile?: string;
     readonly tags?: {[key: string]: string};
 }
-export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMongoInstancesResult> {
+export function getMongoInstancesOutput(args?: GetMongoInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMongoInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dds/getMongoInstances:getMongoInstances", {

@@ -185,7 +185,7 @@ def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    status: Optional[pulumi.Input[Optional[str]]] = None,
                                    tls_cipher_policy_name: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTlsCipherPoliciesResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTlsCipherPoliciesResult]:
     """
     This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.
 
@@ -223,7 +223,7 @@ def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['tlsCipherPolicyName'] = tls_cipher_policy_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies', __args__, opts=opts, typ=GetTlsCipherPoliciesResult)
     return __ret__.apply(lambda __response__: GetTlsCipherPoliciesResult(
         id=pulumi.get(__response__, 'id'),

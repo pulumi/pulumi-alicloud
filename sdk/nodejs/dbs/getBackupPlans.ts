@@ -114,7 +114,7 @@ export interface GetBackupPlansResult {
  * export const dbsBackupPlanId2 = nameRegex.then(nameRegex => nameRegex.plans?.[0]?.id);
  * ```
  */
-export function getBackupPlansOutput(args?: GetBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlansResult> {
+export function getBackupPlansOutput(args?: GetBackupPlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPlansResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dbs/getBackupPlans:getBackupPlans", {

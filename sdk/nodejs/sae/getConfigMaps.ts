@@ -123,7 +123,7 @@ export interface GetConfigMapsResult {
  * export const saeConfigMapId = nameRegex.apply(nameRegex => nameRegex.maps?.[0]?.id);
  * ```
  */
-export function getConfigMapsOutput(args: GetConfigMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigMapsResult> {
+export function getConfigMapsOutput(args: GetConfigMapsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigMapsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sae/getConfigMaps:getConfigMaps", {
         "ids": args.ids,

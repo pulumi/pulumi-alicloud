@@ -173,7 +173,7 @@ def get_host_groups_output(host_group_name: Optional[pulumi.Input[Optional[str]]
                            instance_id: Optional[pulumi.Input[str]] = None,
                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostGroupsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostGroupsResult]:
     """
     This data source provides the Bastionhost Host Groups of the current Alibaba Cloud user.
 
@@ -211,7 +211,7 @@ def get_host_groups_output(host_group_name: Optional[pulumi.Input[Optional[str]]
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:bastionhost/getHostGroups:getHostGroups', __args__, opts=opts, typ=GetHostGroupsResult)
     return __ret__.apply(lambda __response__: GetHostGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

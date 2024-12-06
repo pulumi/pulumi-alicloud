@@ -137,7 +137,7 @@ def get_alarm_contact_groups(ids: Optional[Sequence[str]] = None,
 def get_alarm_contact_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlarmContactGroupsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlarmContactGroupsResult]:
     """
     This data source provides the CMS Groups of the current Alibaba Cloud user.
 
@@ -163,7 +163,7 @@ def get_alarm_contact_groups_output(ids: Optional[pulumi.Input[Optional[Sequence
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getAlarmContactGroups:getAlarmContactGroups', __args__, opts=opts, typ=GetAlarmContactGroupsResult)
     return __ret__.apply(lambda __response__: GetAlarmContactGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

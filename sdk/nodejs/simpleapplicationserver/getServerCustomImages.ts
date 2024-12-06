@@ -94,7 +94,7 @@ export interface GetServerCustomImagesResult {
  * export const simpleApplicationServerCustomImageId2 = nameRegex.then(nameRegex => nameRegex.images?.[0]?.id);
  * ```
  */
-export function getServerCustomImagesOutput(args?: GetServerCustomImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCustomImagesResult> {
+export function getServerCustomImagesOutput(args?: GetServerCustomImagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerCustomImagesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", {

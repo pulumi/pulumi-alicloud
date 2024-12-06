@@ -143,7 +143,7 @@ def get_ip_sets_output(accelerator_id: Optional[pulumi.Input[str]] = None,
                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpSetsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpSetsResult]:
     """
     This data source provides the Global Accelerator (GA) Ip Sets of the current Alibaba Cloud user.
 
@@ -173,7 +173,7 @@ def get_ip_sets_output(accelerator_id: Optional[pulumi.Input[str]] = None,
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getIpSets:getIpSets', __args__, opts=opts, typ=GetIpSetsResult)
     return __ret__.apply(lambda __response__: GetIpSetsResult(
         accelerator_id=pulumi.get(__response__, 'accelerator_id'),

@@ -111,7 +111,7 @@ def get_character_set_names(engine: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_character_set_names_output(engine: Optional[pulumi.Input[str]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCharacterSetNamesResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCharacterSetNamesResult]:
     """
     This data source is the character set supported by querying RDS instances.
 
@@ -134,7 +134,7 @@ def get_character_set_names_output(engine: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['engine'] = engine
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getCharacterSetNames:getCharacterSetNames', __args__, opts=opts, typ=GetCharacterSetNamesResult)
     return __ret__.apply(lambda __response__: GetCharacterSetNamesResult(
         engine=pulumi.get(__response__, 'engine'),

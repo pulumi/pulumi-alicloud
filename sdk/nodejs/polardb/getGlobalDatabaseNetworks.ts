@@ -188,7 +188,7 @@ export interface GetGlobalDatabaseNetworksResult {
  * export const polardbGlobalDatabaseNetworkId2 = description.apply(description => description.networks?.[0]?.id);
  * ```
  */
-export function getGlobalDatabaseNetworksOutput(args?: GetGlobalDatabaseNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalDatabaseNetworksResult> {
+export function getGlobalDatabaseNetworksOutput(args?: GetGlobalDatabaseNetworksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGlobalDatabaseNetworksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", {

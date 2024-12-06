@@ -260,7 +260,7 @@ def get_transit_router_vpc_attachments_output(cen_id: Optional[pulumi.Input[str]
                                               transit_router_attachment_id: Optional[pulumi.Input[Optional[str]]] = None,
                                               transit_router_id: Optional[pulumi.Input[Optional[str]]] = None,
                                               vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterVpcAttachmentsResult]:
+                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterVpcAttachmentsResult]:
     """
     This data source provides the CEN Transit Router VPC Attachments of the current Alibaba Cloud user.
 
@@ -328,7 +328,7 @@ def get_transit_router_vpc_attachments_output(cen_id: Optional[pulumi.Input[str]
     __args__['transitRouterAttachmentId'] = transit_router_attachment_id
     __args__['transitRouterId'] = transit_router_id
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments', __args__, opts=opts, typ=GetTransitRouterVpcAttachmentsResult)
     return __ret__.apply(lambda __response__: GetTransitRouterVpcAttachmentsResult(
         attachments=pulumi.get(__response__, 'attachments'),

@@ -236,7 +236,7 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
                                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                          resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                          status: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCommonBandwidthPackagesResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCommonBandwidthPackagesResult]:
     """
     This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.
 
@@ -283,7 +283,7 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages', __args__, opts=opts, typ=GetCommonBandwidthPackagesResult)
     return __ret__.apply(lambda __response__: GetCommonBandwidthPackagesResult(
         bandwidth_package_name=pulumi.get(__response__, 'bandwidth_package_name'),

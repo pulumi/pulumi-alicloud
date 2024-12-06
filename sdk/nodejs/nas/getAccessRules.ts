@@ -89,7 +89,7 @@ export interface GetAccessRulesResult {
  *
  * > **NOTE**: Available in 1.35.0+
  */
-export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessRulesResult> {
+export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nas/getAccessRules:getAccessRules", {
         "accessGroupName": args.accessGroupName,

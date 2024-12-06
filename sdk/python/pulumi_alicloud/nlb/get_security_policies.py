@@ -195,7 +195,7 @@ def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  security_policy_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
                                  tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityPoliciesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityPoliciesResult]:
     """
     This data source provides the Nlb Security Policies of the current Alibaba Cloud user.
 
@@ -231,7 +231,7 @@ def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['securityPolicyNames'] = security_policy_names
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nlb/getSecurityPolicies:getSecurityPolicies', __args__, opts=opts, typ=GetSecurityPoliciesResult)
     return __ret__.apply(lambda __response__: GetSecurityPoliciesResult(
         id=pulumi.get(__response__, 'id'),

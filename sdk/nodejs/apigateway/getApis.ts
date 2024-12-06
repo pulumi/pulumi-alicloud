@@ -178,7 +178,7 @@ export interface GetApisResult {
  * export const apiGatewayApisId0 = ids.apply(ids => ids.apis?.[0]?.id);
  * ```
  */
-export function getApisOutput(args?: GetApisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApisResult> {
+export function getApisOutput(args?: GetApisOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApisResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:apigateway/getApis:getApis", {

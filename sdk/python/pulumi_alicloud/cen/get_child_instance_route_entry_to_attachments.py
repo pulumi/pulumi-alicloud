@@ -187,7 +187,7 @@ def get_child_instance_route_entry_to_attachments_output(cen_id: Optional[pulumi
                                                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                          service_type: Optional[pulumi.Input[Optional[str]]] = None,
                                                          transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
-                                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChildInstanceRouteEntryToAttachmentsResult]:
+                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChildInstanceRouteEntryToAttachmentsResult]:
     """
     This data source provides Cen Child Instance Route Entry To Attachment available to the user.[What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment)
 
@@ -219,7 +219,7 @@ def get_child_instance_route_entry_to_attachments_output(cen_id: Optional[pulumi
     __args__['outputFile'] = output_file
     __args__['serviceType'] = service_type
     __args__['transitRouterAttachmentId'] = transit_router_attachment_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments', __args__, opts=opts, typ=GetChildInstanceRouteEntryToAttachmentsResult)
     return __ret__.apply(lambda __response__: GetChildInstanceRouteEntryToAttachmentsResult(
         attachments=pulumi.get(__response__, 'attachments'),

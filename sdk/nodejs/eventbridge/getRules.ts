@@ -107,7 +107,7 @@ export interface GetRulesResult {
  * export const firstEventBridgeRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
  */
-export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
+export function getRulesOutput(args: GetRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eventbridge/getRules:getRules", {
         "eventBusName": args.eventBusName,

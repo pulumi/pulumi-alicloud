@@ -90,7 +90,7 @@ export interface GetMscSubContactsResult {
  * export const mscSubContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
  * ```
  */
-export function getMscSubContactsOutput(args?: GetMscSubContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubContactsResult> {
+export function getMscSubContactsOutput(args?: GetMscSubContactsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMscSubContactsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:index/getMscSubContacts:getMscSubContacts", {

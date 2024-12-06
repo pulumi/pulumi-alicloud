@@ -293,7 +293,7 @@ def get_load_balancers_output(address_ip_version: Optional[pulumi.Input[Optional
                               tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               vpc_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancersResult]:
     """
     This data source provides the Nlb Load Balancers of the current Alibaba Cloud user.
 
@@ -343,7 +343,7 @@ def get_load_balancers_output(address_ip_version: Optional[pulumi.Input[Optional
     __args__['tags'] = tags
     __args__['vpcIds'] = vpc_ids
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nlb/getLoadBalancers:getLoadBalancers', __args__, opts=opts, typ=GetLoadBalancersResult)
     return __ret__.apply(lambda __response__: GetLoadBalancersResult(
         address_ip_version=pulumi.get(__response__, 'address_ip_version'),

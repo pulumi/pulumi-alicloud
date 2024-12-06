@@ -164,7 +164,7 @@ def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Option
                                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                traffic_qos_policy_id: Optional[pulumi.Input[str]] = None,
-                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInterRegionTrafficQosQueuesResult]:
+                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInterRegionTrafficQosQueuesResult]:
     """
     This data source provides Cen Inter Region Traffic Qos Queue available to the user.
 
@@ -193,7 +193,7 @@ def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Option
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['trafficQosPolicyId'] = traffic_qos_policy_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues', __args__, opts=opts, typ=GetInterRegionTrafficQosQueuesResult)
     return __ret__.apply(lambda __response__: GetInterRegionTrafficQosQueuesResult(
         id=pulumi.get(__response__, 'id'),

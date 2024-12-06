@@ -78,7 +78,7 @@ export interface GetAuditPoliciesResult {
  * export const mongodbAuditPolicyId1 = example.then(example => example.policies?.[0]?.id);
  * ```
  */
-export function getAuditPoliciesOutput(args: GetAuditPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuditPoliciesResult> {
+export function getAuditPoliciesOutput(args: GetAuditPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuditPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mongodb/getAuditPolicies:getAuditPolicies", {
         "dbInstanceId": args.dbInstanceId,

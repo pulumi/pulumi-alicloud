@@ -118,7 +118,7 @@ export interface GetTrailsResult {
  * export const trailName = _default.then(_default => _default.trails?.[0]?.id);
  * ```
  */
-export function getTrailsOutput(args?: GetTrailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrailsResult> {
+export function getTrailsOutput(args?: GetTrailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrailsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:actiontrail/getTrails:getTrails", {

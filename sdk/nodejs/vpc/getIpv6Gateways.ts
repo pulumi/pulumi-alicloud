@@ -132,7 +132,7 @@ export interface GetIpv6GatewaysResult {
  * export const vpcIpv6GatewayId4 = status.then(status => status.gateways?.[0]?.id);
  * ```
  */
-export function getIpv6GatewaysOutput(args?: GetIpv6GatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6GatewaysResult> {
+export function getIpv6GatewaysOutput(args?: GetIpv6GatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpv6GatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getIpv6Gateways:getIpv6Gateways", {

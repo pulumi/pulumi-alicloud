@@ -61,7 +61,7 @@ export interface GetCallerIdentityResult {
  * export const currentUserArn = current.then(current => current.id);
  * ```
  */
-export function getCallerIdentityOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetCallerIdentityResult> {
+export function getCallerIdentityOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCallerIdentityResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:index/getCallerIdentity:getCallerIdentity", {
     }, opts);

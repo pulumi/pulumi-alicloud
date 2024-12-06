@@ -100,7 +100,7 @@ export interface GetTransitRouterVpnAttachmentsResult {
  * export const cenTransitRouterVpnAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
  */
-export function getTransitRouterVpnAttachmentsOutput(args: GetTransitRouterVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVpnAttachmentsResult> {
+export function getTransitRouterVpnAttachmentsOutput(args: GetTransitRouterVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterVpnAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", {
         "cenId": args.cenId,

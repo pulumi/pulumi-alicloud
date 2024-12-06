@@ -80,7 +80,7 @@ export interface GetConsumerChannelsResult {
  * export const dtsConsumerChannelId1 = ids.then(ids => ids.channels?.[0]?.id);
  * ```
  */
-export function getConsumerChannelsOutput(args: GetConsumerChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerChannelsResult> {
+export function getConsumerChannelsOutput(args: GetConsumerChannelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConsumerChannelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dts/getConsumerChannels:getConsumerChannels", {
         "dtsInstanceId": args.dtsInstanceId,

@@ -94,7 +94,7 @@ export interface GetHavipsResult {
  * export const firstHavipId = example.then(example => example.havips?.[0]?.id);
  * ```
  */
-export function getHavipsOutput(args?: GetHavipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHavipsResult> {
+export function getHavipsOutput(args?: GetHavipsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHavipsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getHavips:getHavips", {

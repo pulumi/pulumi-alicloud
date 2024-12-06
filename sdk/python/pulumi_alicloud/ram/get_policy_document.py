@@ -273,7 +273,7 @@ def get_policy_document(output_file: Optional[str] = None,
 def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                statements: Optional[pulumi.Input[Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']]]]] = None,
                                version: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyDocumentResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyDocumentResult]:
     """
     This data source Generates a RAM policy document of the current Alibaba Cloud user.
 
@@ -441,7 +441,7 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
     __args__['outputFile'] = output_file
     __args__['statements'] = statements
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getPolicyDocument:getPolicyDocument', __args__, opts=opts, typ=GetPolicyDocumentResult)
     return __ret__.apply(lambda __response__: GetPolicyDocumentResult(
         document=pulumi.get(__response__, 'document'),
