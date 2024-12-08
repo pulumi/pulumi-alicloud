@@ -100,7 +100,7 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * Specifies whether to enable IPv6. Valid values:
      */
     public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
     /**
@@ -284,7 +284,7 @@ export interface NetworkState {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * Specifies whether to enable IPv6. Valid values:
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
@@ -398,7 +398,7 @@ export interface NetworkArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+     * Specifies whether to enable IPv6. Valid values:
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**

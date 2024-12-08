@@ -29,6 +29,7 @@ class AutoscalingConfigArgs:
                  recycle_node_deletion_enabled: Optional[pulumi.Input[bool]] = None,
                  scale_down_enabled: Optional[pulumi.Input[bool]] = None,
                  scale_up_from_zero: Optional[pulumi.Input[bool]] = None,
+                 scaler_type: Optional[pulumi.Input[str]] = None,
                  scan_interval: Optional[pulumi.Input[str]] = None,
                  skip_nodes_with_local_storage: Optional[pulumi.Input[bool]] = None,
                  skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
@@ -46,6 +47,7 @@ class AutoscalingConfigArgs:
         :param pulumi.Input[bool] recycle_node_deletion_enabled: Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         :param pulumi.Input[bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
         :param pulumi.Input[bool] scale_up_from_zero: Should CA scale up when there 0 ready nodes. Default is `true`.
+        :param pulumi.Input[str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
         :param pulumi.Input[str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[bool] skip_nodes_with_local_storage: If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         :param pulumi.Input[bool] skip_nodes_with_system_pods: If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
@@ -72,6 +74,8 @@ class AutoscalingConfigArgs:
             pulumi.set(__self__, "scale_down_enabled", scale_down_enabled)
         if scale_up_from_zero is not None:
             pulumi.set(__self__, "scale_up_from_zero", scale_up_from_zero)
+        if scaler_type is not None:
+            pulumi.set(__self__, "scaler_type", scaler_type)
         if scan_interval is not None:
             pulumi.set(__self__, "scan_interval", scan_interval)
         if skip_nodes_with_local_storage is not None:
@@ -202,6 +206,18 @@ class AutoscalingConfigArgs:
     @scale_up_from_zero.setter
     def scale_up_from_zero(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "scale_up_from_zero", value)
+
+    @property
+    @pulumi.getter(name="scalerType")
+    def scaler_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        """
+        return pulumi.get(self, "scaler_type")
+
+    @scaler_type.setter
+    def scaler_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaler_type", value)
 
     @property
     @pulumi.getter(name="scanInterval")
@@ -277,6 +293,7 @@ class _AutoscalingConfigState:
                  recycle_node_deletion_enabled: Optional[pulumi.Input[bool]] = None,
                  scale_down_enabled: Optional[pulumi.Input[bool]] = None,
                  scale_up_from_zero: Optional[pulumi.Input[bool]] = None,
+                 scaler_type: Optional[pulumi.Input[str]] = None,
                  scan_interval: Optional[pulumi.Input[str]] = None,
                  skip_nodes_with_local_storage: Optional[pulumi.Input[bool]] = None,
                  skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
@@ -294,6 +311,7 @@ class _AutoscalingConfigState:
         :param pulumi.Input[bool] recycle_node_deletion_enabled: Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         :param pulumi.Input[bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
         :param pulumi.Input[bool] scale_up_from_zero: Should CA scale up when there 0 ready nodes. Default is `true`.
+        :param pulumi.Input[str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
         :param pulumi.Input[str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[bool] skip_nodes_with_local_storage: If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         :param pulumi.Input[bool] skip_nodes_with_system_pods: If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
@@ -320,6 +338,8 @@ class _AutoscalingConfigState:
             pulumi.set(__self__, "scale_down_enabled", scale_down_enabled)
         if scale_up_from_zero is not None:
             pulumi.set(__self__, "scale_up_from_zero", scale_up_from_zero)
+        if scaler_type is not None:
+            pulumi.set(__self__, "scaler_type", scaler_type)
         if scan_interval is not None:
             pulumi.set(__self__, "scan_interval", scan_interval)
         if skip_nodes_with_local_storage is not None:
@@ -450,6 +470,18 @@ class _AutoscalingConfigState:
     @scale_up_from_zero.setter
     def scale_up_from_zero(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "scale_up_from_zero", value)
+
+    @property
+    @pulumi.getter(name="scalerType")
+    def scaler_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        """
+        return pulumi.get(self, "scaler_type")
+
+    @scaler_type.setter
+    def scaler_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scaler_type", value)
 
     @property
     @pulumi.getter(name="scanInterval")
@@ -527,6 +559,7 @@ class AutoscalingConfig(pulumi.CustomResource):
                  recycle_node_deletion_enabled: Optional[pulumi.Input[bool]] = None,
                  scale_down_enabled: Optional[pulumi.Input[bool]] = None,
                  scale_up_from_zero: Optional[pulumi.Input[bool]] = None,
+                 scaler_type: Optional[pulumi.Input[str]] = None,
                  scan_interval: Optional[pulumi.Input[str]] = None,
                  skip_nodes_with_local_storage: Optional[pulumi.Input[bool]] = None,
                  skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
@@ -542,6 +575,8 @@ class AutoscalingConfig(pulumi.CustomResource):
 
         > **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
 
+        > **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cluster_id: The id of kubernetes cluster.
@@ -554,6 +589,7 @@ class AutoscalingConfig(pulumi.CustomResource):
         :param pulumi.Input[bool] recycle_node_deletion_enabled: Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         :param pulumi.Input[bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
         :param pulumi.Input[bool] scale_up_from_zero: Should CA scale up when there 0 ready nodes. Default is `true`.
+        :param pulumi.Input[str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
         :param pulumi.Input[str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[bool] skip_nodes_with_local_storage: If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         :param pulumi.Input[bool] skip_nodes_with_system_pods: If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
@@ -574,6 +610,8 @@ class AutoscalingConfig(pulumi.CustomResource):
         > **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scale_down_enabled`.
 
         > **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+
+        > **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
 
         :param str resource_name: The name of the resource.
         :param AutoscalingConfigArgs args: The arguments to use to populate this resource's properties.
@@ -600,6 +638,7 @@ class AutoscalingConfig(pulumi.CustomResource):
                  recycle_node_deletion_enabled: Optional[pulumi.Input[bool]] = None,
                  scale_down_enabled: Optional[pulumi.Input[bool]] = None,
                  scale_up_from_zero: Optional[pulumi.Input[bool]] = None,
+                 scaler_type: Optional[pulumi.Input[str]] = None,
                  scan_interval: Optional[pulumi.Input[str]] = None,
                  skip_nodes_with_local_storage: Optional[pulumi.Input[bool]] = None,
                  skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
@@ -624,6 +663,7 @@ class AutoscalingConfig(pulumi.CustomResource):
             __props__.__dict__["recycle_node_deletion_enabled"] = recycle_node_deletion_enabled
             __props__.__dict__["scale_down_enabled"] = scale_down_enabled
             __props__.__dict__["scale_up_from_zero"] = scale_up_from_zero
+            __props__.__dict__["scaler_type"] = scaler_type
             __props__.__dict__["scan_interval"] = scan_interval
             __props__.__dict__["skip_nodes_with_local_storage"] = skip_nodes_with_local_storage
             __props__.__dict__["skip_nodes_with_system_pods"] = skip_nodes_with_system_pods
@@ -649,6 +689,7 @@ class AutoscalingConfig(pulumi.CustomResource):
             recycle_node_deletion_enabled: Optional[pulumi.Input[bool]] = None,
             scale_down_enabled: Optional[pulumi.Input[bool]] = None,
             scale_up_from_zero: Optional[pulumi.Input[bool]] = None,
+            scaler_type: Optional[pulumi.Input[str]] = None,
             scan_interval: Optional[pulumi.Input[str]] = None,
             skip_nodes_with_local_storage: Optional[pulumi.Input[bool]] = None,
             skip_nodes_with_system_pods: Optional[pulumi.Input[bool]] = None,
@@ -671,6 +712,7 @@ class AutoscalingConfig(pulumi.CustomResource):
         :param pulumi.Input[bool] recycle_node_deletion_enabled: Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         :param pulumi.Input[bool] scale_down_enabled: Specify whether to allow the scale-in of nodes. Default is `true`.
         :param pulumi.Input[bool] scale_up_from_zero: Should CA scale up when there 0 ready nodes. Default is `true`.
+        :param pulumi.Input[str] scaler_type: The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
         :param pulumi.Input[str] scan_interval: The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         :param pulumi.Input[bool] skip_nodes_with_local_storage: If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         :param pulumi.Input[bool] skip_nodes_with_system_pods: If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
@@ -691,6 +733,7 @@ class AutoscalingConfig(pulumi.CustomResource):
         __props__.__dict__["recycle_node_deletion_enabled"] = recycle_node_deletion_enabled
         __props__.__dict__["scale_down_enabled"] = scale_down_enabled
         __props__.__dict__["scale_up_from_zero"] = scale_up_from_zero
+        __props__.__dict__["scaler_type"] = scaler_type
         __props__.__dict__["scan_interval"] = scan_interval
         __props__.__dict__["skip_nodes_with_local_storage"] = skip_nodes_with_local_storage
         __props__.__dict__["skip_nodes_with_system_pods"] = skip_nodes_with_system_pods
@@ -777,6 +820,14 @@ class AutoscalingConfig(pulumi.CustomResource):
         Should CA scale up when there 0 ready nodes. Default is `true`.
         """
         return pulumi.get(self, "scale_up_from_zero")
+
+    @property
+    @pulumi.getter(name="scalerType")
+    def scaler_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+        """
+        return pulumi.get(self, "scaler_type")
 
     @property
     @pulumi.getter(name="scanInterval")

@@ -79,6 +79,12 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/keyPair:KeyPair")
 public class KeyPair extends com.pulumi.resources.CustomResource {
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    public Output<String> createTime() {
+        return this.createTime;
+    }
     @Export(name="fingerPrint", refs={String.class}, tree="[0]")
     private Output<String> fingerPrint;
 
@@ -103,10 +109,10 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+     * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
      * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
     @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 

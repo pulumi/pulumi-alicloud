@@ -86,7 +86,7 @@ type Cluster struct {
 	GdnId pulumi.StringPtrOutput `pulumi:"gdnId"`
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode pulumi.StringOutput `pulumi:"hotReplicaMode"`
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
 	HotStandbyCluster pulumi.StringOutput `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -307,7 +307,7 @@ type clusterState struct {
 	GdnId *string `pulumi:"gdnId"`
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode *string `pulumi:"hotReplicaMode"`
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
 	HotStandbyCluster *string `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -490,7 +490,7 @@ type ClusterState struct {
 	GdnId pulumi.StringPtrInput
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode pulumi.StringPtrInput
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
 	HotStandbyCluster pulumi.StringPtrInput
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -671,7 +671,7 @@ type clusterArgs struct {
 	GdnId *string `pulumi:"gdnId"`
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode *string `pulumi:"hotReplicaMode"`
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
 	HotStandbyCluster *string `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -841,7 +841,7 @@ type ClusterArgs struct {
 	GdnId pulumi.StringPtrInput
 	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotReplicaMode pulumi.StringPtrInput
-	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
 	HotStandbyCluster pulumi.StringPtrInput
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -1180,7 +1180,7 @@ func (o ClusterOutput) HotReplicaMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.HotReplicaMode }).(pulumi.StringOutput)
 }
 
-// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
 func (o ClusterOutput) HotStandbyCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.HotStandbyCluster }).(pulumi.StringOutput)
 }

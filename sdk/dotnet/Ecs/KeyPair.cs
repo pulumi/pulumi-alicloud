@@ -58,6 +58,9 @@ namespace Pulumi.AliCloud.Ecs
     [AliCloudResourceType("alicloud:ecs/keyPair:KeyPair")]
     public partial class KeyPair : global::Pulumi.CustomResource
     {
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
         [Output("fingerPrint")]
         public Output<string> FingerPrint { get; private set; } = null!;
 
@@ -186,6 +189,9 @@ namespace Pulumi.AliCloud.Ecs
 
     public sealed class KeyPairState : global::Pulumi.ResourceArgs
     {
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
         [Input("fingerPrint")]
         public Input<string>? FingerPrint { get; set; }
 

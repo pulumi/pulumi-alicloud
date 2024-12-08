@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlertContact{}
 	case "alicloud:arms/alertContactGroup:AlertContactGroup":
 		r = &AlertContactGroup{}
+	case "alicloud:arms/alertRobot:AlertRobot":
+		r = &AlertRobot{}
 	case "alicloud:arms/dispatchRule:DispatchRule":
 		r = &DispatchRule{}
 	case "alicloud:arms/envCustomJob:EnvCustomJob":
@@ -79,6 +81,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"arms/alertContactGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/alertRobot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

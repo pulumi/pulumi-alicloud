@@ -46,7 +46,7 @@ class NetworkArgs:
         :param pulumi.Input[bool] classic_link_enabled: The status of ClassicLink function.
         :param pulumi.Input[str] description: The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run. Valid values:
-        :param pulumi.Input[bool] enable_ipv6: The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         :param pulumi.Input[str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
                
@@ -167,7 +167,7 @@ class NetworkArgs:
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
-        The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        Specifies whether to enable IPv6. Valid values:
         """
         return pulumi.get(self, "enable_ipv6")
 
@@ -369,7 +369,7 @@ class _NetworkState:
         :param pulumi.Input[str] create_time: The creation time of the VPC.
         :param pulumi.Input[str] description: The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run. Valid values:
-        :param pulumi.Input[bool] enable_ipv6: The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         :param pulumi.Input[str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
                
@@ -522,7 +522,7 @@ class _NetworkState:
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> Optional[pulumi.Input[bool]]:
         """
-        The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        Specifies whether to enable IPv6. Valid values:
         """
         return pulumi.get(self, "enable_ipv6")
 
@@ -825,7 +825,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[bool] classic_link_enabled: The status of ClassicLink function.
         :param pulumi.Input[str] description: The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run. Valid values:
-        :param pulumi.Input[bool] enable_ipv6: The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         :param pulumi.Input[str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
                
@@ -1012,7 +1012,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The creation time of the VPC.
         :param pulumi.Input[str] description: The new description of the VPC. The description must be 1 to 256 characters in length, and cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Specifies whether to perform a dry run. Valid values:
-        :param pulumi.Input[bool] enable_ipv6: The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[bool] enable_ipv6: Specifies whether to enable IPv6. Valid values:
         :param pulumi.Input[str] ipv4_ipam_pool_id: The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         :param pulumi.Input[str] ipv6_cidr_block: The IPv6 CIDR block of the default VPC.
                
@@ -1118,7 +1118,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="enableIpv6")
     def enable_ipv6(self) -> pulumi.Output[Optional[bool]]:
         """
-        The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+        Specifies whether to enable IPv6. Valid values:
         """
         return pulumi.get(self, "enable_ipv6")
 

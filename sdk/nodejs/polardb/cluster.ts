@@ -160,7 +160,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly hotReplicaMode!: pulumi.Output<string>;
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
      */
     public readonly hotStandbyCluster!: pulumi.Output<string>;
     /**
@@ -663,7 +663,7 @@ export interface ClusterState {
      */
     hotReplicaMode?: pulumi.Input<string>;
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
      */
     hotStandbyCluster?: pulumi.Input<string>;
     /**
@@ -981,7 +981,7 @@ export interface ClusterArgs {
      */
     hotReplicaMode?: pulumi.Input<string>;
     /**
-     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
      */
     hotStandbyCluster?: pulumi.Input<string>;
     /**

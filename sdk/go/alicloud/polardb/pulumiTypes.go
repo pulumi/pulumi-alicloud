@@ -739,7 +739,7 @@ type GetClustersCluster struct {
 	DeleteLock int `pulumi:"deleteLock"`
 	// The description of the PolarDB cluster.
 	Description string `pulumi:"description"`
-	// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+	// The database engine of the cluster, example: POLARDB.
 	Engine string `pulumi:"engine"`
 	// Expiration time. Pay-As-You-Go clusters never expire.
 	ExpireTime string `pulumi:"expireTime"`
@@ -797,7 +797,7 @@ type GetClustersClusterArgs struct {
 	DeleteLock pulumi.IntInput `pulumi:"deleteLock"`
 	// The description of the PolarDB cluster.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+	// The database engine of the cluster, example: POLARDB.
 	Engine pulumi.StringInput `pulumi:"engine"`
 	// Expiration time. Pay-As-You-Go clusters never expire.
 	ExpireTime pulumi.StringInput `pulumi:"expireTime"`
@@ -924,7 +924,7 @@ func (o GetClustersClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+// The database engine of the cluster, example: POLARDB.
 func (o GetClustersClusterOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Engine }).(pulumi.StringOutput)
 }

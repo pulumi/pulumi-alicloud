@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Ecs
     /// ECS Disk can be imported using the id, e.g.
     /// 
     /// ```sh
-    /// $ pulumi import alicloud:ecs/ecsDisk:EcsDisk example d-abcd12345
+    /// $ pulumi import alicloud:ecs/ecsDisk:EcsDisk example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsDisk:EcsDisk")]
@@ -31,43 +31,55 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        /// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+        /// </summary>
+        [Output("burstingEnabled")]
+        public Output<bool?> BurstingEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         /// </summary>
         [Output("category")]
         public Output<string?> Category { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        /// (Available since v1.237.0) The time when the disk was created.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         /// </summary>
         [Output("deleteAutoSnapshot")]
         public Output<bool?> DeleteAutoSnapshot { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the disk is released together with the instance. Default value: `false`.
+        /// Specifies whether to release the disk along with its associated instance. Default value: `false`.
         /// </summary>
         [Output("deleteWithInstance")]
         public Output<bool> DeleteWithInstance { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
+        /// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("diskName")]
         public Output<string> DiskName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+        /// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether to enable creating snapshot automatically.
+        /// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
         /// </summary>
         [Output("enableAutoSnapshot")]
         public Output<bool> EnableAutoSnapshot { get; private set; } = null!;
@@ -90,25 +102,33 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        /// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         /// </summary>
         [Output("kmsKeyId")]
         public Output<string?> KmsKeyId { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        /// </summary>
+        [Output("multiAttach")]
+        public Output<string> MultiAttach { get; private set; } = null!;
+
+        /// <summary>
         /// Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+        /// 
+        /// &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
+        /// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
         /// </summary>
         [Output("paymentType")]
         public Output<string> PaymentType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
         /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
         /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
         /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -118,7 +138,19 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PerformanceLevel { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        /// </summary>
+        [Output("provisionedIops")]
+        public Output<int?> ProvisionedIops { get; private set; } = null!;
+
+        /// <summary>
+        /// (Available since v1.237.0) The ID of the region to which the disk belongs.
+        /// </summary>
+        [Output("regionId")]
+        public Output<string> RegionId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the resource group to which to add the disk.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
@@ -148,7 +180,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> SnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The disk status.
+        /// The status of the disk.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -239,43 +271,49 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        /// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+        /// </summary>
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
+
+        /// <summary>
+        /// The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        /// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         /// </summary>
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
 
         /// <summary>
-        /// Indicates whether the disk is released together with the instance. Default value: `false`.
+        /// Specifies whether to release the disk along with its associated instance. Default value: `false`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
         /// <summary>
-        /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
+        /// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
 
         /// <summary>
-        /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+        /// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable creating snapshot automatically.
+        /// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
@@ -298,25 +336,33 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        /// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        /// </summary>
+        [Input("multiAttach")]
+        public Input<string>? MultiAttach { get; set; }
+
+        /// <summary>
         /// Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+        /// 
+        /// &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
+        /// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
         /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
         /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
         /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -326,7 +372,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which to add the disk.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -409,43 +461,55 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Category of the disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
+        /// Specifies whether to enable the performance burst feature. Valid values: `true`, `false`. **NOTE:** `bursting_enabled` is only valid when `category` is `cloud_auto`.
+        /// </summary>
+        [Input("burstingEnabled")]
+        public Input<bool>? BurstingEnabled { get; set; }
+
+        /// <summary>
+        /// The category of the data disk. Default value: `cloud_efficiency`. Valid Values: `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`, `cloud_essd_entry`, `elastic_ephemeral_disk_standard`, `elastic_ephemeral_disk_premium`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
+        /// (Available since v1.237.0) The time when the disk was created.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Specifies whether to delete the automatic snapshots of the disk when the disk is released. Default value: `false`.
         /// </summary>
         [Input("deleteAutoSnapshot")]
         public Input<bool>? DeleteAutoSnapshot { get; set; }
 
         /// <summary>
-        /// Indicates whether the disk is released together with the instance. Default value: `false`.
+        /// Specifies whether to release the disk along with its associated instance. Default value: `false`.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
         /// <summary>
-        /// Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
+        /// The name of the data disk. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("diskName")]
         public Input<string>? DiskName { get; set; }
 
         /// <summary>
-        /// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
+        /// Specifies whether to check the validity of the request without actually making the request.request Default value: `false`. Valid values:
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Indicates whether to enable creating snapshot automatically.
+        /// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values: `true`, `false`.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
@@ -468,25 +532,33 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
+        /// The ID of the Key Management Service (KMS) key that is used for the disk. **NOTE:** `kms_key_id` is only valid when `encrypted` is `true`.
         /// </summary>
         [Input("kmsKeyId")]
         public Input<string>? KmsKeyId { get; set; }
 
         /// <summary>
+        /// Specifies whether to enable the multi-attach feature for the disk. Default value: `Disabled`. Valid values: `Enabled`, `Disabled`. **NOTE:** Currently, `multi_attach` can only be set to `Enabled` when `category` is set to `cloud_essd`.
+        /// </summary>
+        [Input("multiAttach")]
+        public Input<string>? MultiAttach { get; set; }
+
+        /// <summary>
         /// Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
+        /// 
+        /// &gt; **NOTE:** Disk category `cloud` has been outdated, and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
+        /// The payment type of the disk. Default to `PayAsYouGo`. Valid values: `PayAsYouGo`, `Subscription`. If you want to change the disk payment type, the `instance_id` is required.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:                                                       
+        /// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
         /// - `PL0`: A single ESSD delivers up to 10,000 random read/write IOPS.
         /// - `PL1`: A single ESSD delivers up to 50,000 random read/write IOPS.
         /// - `PL2`: A single ESSD delivers up to 100,000 random read/write IOPS.
@@ -496,7 +568,19 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
+        /// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. **NOTE:** `provisioned_iops` is only valid when `category` is `cloud_auto`.
+        /// </summary>
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// (Available since v1.237.0) The ID of the region to which the disk belongs.
+        /// </summary>
+        [Input("regionId")]
+        public Input<string>? RegionId { get; set; }
+
+        /// <summary>
+        /// The ID of the resource group to which to add the disk.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -526,7 +610,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// The disk status.
+        /// The status of the disk.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

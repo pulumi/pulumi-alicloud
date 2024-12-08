@@ -18,11 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **DEPRECATED:** This resource has been deprecated from v1.153.0 and using alicloud_backend_server instead.
+ * &gt; **DEPRECATED:** This resource has been deprecated from v1.153.0 and using alicloud.slb.BackendServer instead.
  * 
  * Add a group of backend servers (ECS instance) to the Server Load Balancer or remove them from it.
- * 
- * &gt; **NOTE:** Deprecated since v1.153.0+.
  * 
  * ## Example Usage
  * 

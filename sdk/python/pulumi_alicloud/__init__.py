@@ -920,6 +920,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "arms/alertRobot",
+  "fqn": "pulumi_alicloud.arms",
+  "classes": {
+   "alicloud:arms/alertRobot:AlertRobot": "AlertRobot"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "arms/dispatchRule",
   "fqn": "pulumi_alicloud.arms",
   "classes": {
@@ -2360,6 +2368,22 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "dataworks/dataSource",
+  "fqn": "pulumi_alicloud.dataworks",
+  "classes": {
+   "alicloud:dataworks/dataSource:DataSource": "DataSource"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dataworks/dataSourceSharedRule",
+  "fqn": "pulumi_alicloud.dataworks",
+  "classes": {
+   "alicloud:dataworks/dataSourceSharedRule:DataSourceSharedRule": "DataSourceSharedRule"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "dataworks/folder",
   "fqn": "pulumi_alicloud.dataworks",
   "classes": {
@@ -2372,6 +2396,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.dataworks",
   "classes": {
    "alicloud:dataworks/project:Project": "Project"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "dataworks/projectMember",
+  "fqn": "pulumi_alicloud.dataworks",
+  "classes": {
+   "alicloud:dataworks/projectMember:ProjectMember": "ProjectMember"
   }
  },
  {
@@ -3300,6 +3332,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.ecs",
   "classes": {
    "alicloud:ecs/imageImport:ImageImport": "ImageImport"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "ecs/imagePipelineExecution",
+  "fqn": "pulumi_alicloud.ecs",
+  "classes": {
+   "alicloud:ecs/imagePipelineExecution:ImagePipelineExecution": "ImagePipelineExecution"
   }
  },
  {
@@ -5656,6 +5696,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketWebsite",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketWebsite:BucketWebsite": "BucketWebsite"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "ots/instance",
   "fqn": "pulumi_alicloud.ots",
   "classes": {
@@ -7020,6 +7068,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.sls",
   "classes": {
    "alicloud:sls/collectionPolicy:CollectionPolicy": "CollectionPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sls/ossExportSink",
+  "fqn": "pulumi_alicloud.sls",
+  "classes": {
+   "alicloud:sls/ossExportSink:OssExportSink": "OssExportSink"
   }
  },
  {

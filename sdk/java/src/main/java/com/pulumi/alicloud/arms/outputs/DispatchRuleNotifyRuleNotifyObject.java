@@ -21,7 +21,7 @@ public final class DispatchRuleNotifyRuleNotifyObject {
      */
     private String notifyObjectId;
     /**
-     * @return The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+     * @return The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
      * 
      */
     private String notifyType;
@@ -42,7 +42,7 @@ public final class DispatchRuleNotifyRuleNotifyObject {
         return this.notifyObjectId;
     }
     /**
-     * @return The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+     * @return The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
      * 
      */
     public String notifyType() {

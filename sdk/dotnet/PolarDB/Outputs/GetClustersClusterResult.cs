@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.PolarDB.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+        /// The database engine of the cluster, example: POLARDB.
         /// </summary>
         public readonly string Engine;
         /// <summary>

@@ -15,6 +15,10 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDispatchRulesResult {
+    /**
+     * @return The name of the dispatch rule.
+     * 
+     */
     private @Nullable String dispatchRuleName;
     private @Nullable Boolean enableDetails;
     /**
@@ -24,11 +28,23 @@ public final class GetDispatchRulesResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Dispatch Rule names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
+    /**
+     * @return A list of Arms Dispatch Rules. Each element contains the following attributes:
+     * 
+     */
     private List<GetDispatchRulesRule> rules;
 
     private GetDispatchRulesResult() {}
+    /**
+     * @return The name of the dispatch rule.
+     * 
+     */
     public Optional<String> dispatchRuleName() {
         return Optional.ofNullable(this.dispatchRuleName);
     }
@@ -48,12 +64,20 @@ public final class GetDispatchRulesResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Dispatch Rule names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }
     public Optional<String> outputFile() {
         return Optional.ofNullable(this.outputFile);
     }
+    /**
+     * @return A list of Arms Dispatch Rules. Each element contains the following attributes:
+     * 
+     */
     public List<GetDispatchRulesRule> rules() {
         return this.rules;
     }

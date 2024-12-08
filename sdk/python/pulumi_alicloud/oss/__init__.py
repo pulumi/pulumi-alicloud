@@ -26,6 +26,7 @@ from .bucket_server_side_encryption import *
 from .bucket_transfer_acceleration import *
 from .bucket_user_defined_log_fields import *
 from .bucket_versioning import *
+from .bucket_website import *
 from .get_bucket_objects import *
 from .get_buckets import *
 from .get_instance_attachments import *

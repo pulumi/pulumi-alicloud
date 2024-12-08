@@ -68,12 +68,13 @@ import (
 type KeyPair struct {
 	pulumi.CustomResourceState
 
+	CreateTime  pulumi.StringOutput `pulumi:"createTime"`
 	FingerPrint pulumi.StringOutput `pulumi:"fingerPrint"`
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrOutput `pulumi:"keyFile"`
 	// The key pair's name. It is the only in one Alicloud account.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName       pulumi.StringOutput    `pulumi:"keyName"`
 	KeyNamePrefix pulumi.StringPtrOutput `pulumi:"keyNamePrefix"`
 	KeyPairName   pulumi.StringOutput    `pulumi:"keyPairName"`
@@ -114,12 +115,13 @@ func GetKeyPair(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyPair resources.
 type keyPairState struct {
+	CreateTime  *string `pulumi:"createTime"`
 	FingerPrint *string `pulumi:"fingerPrint"`
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile *string `pulumi:"keyFile"`
 	// The key pair's name. It is the only in one Alicloud account.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
 	KeyPairName   *string `pulumi:"keyPairName"`
@@ -131,12 +133,13 @@ type keyPairState struct {
 }
 
 type KeyPairState struct {
+	CreateTime  pulumi.StringPtrInput
 	FingerPrint pulumi.StringPtrInput
 	// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
 	KeyFile pulumi.StringPtrInput
 	// The key pair's name. It is the only in one Alicloud account.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
 	KeyPairName   pulumi.StringPtrInput
@@ -156,7 +159,7 @@ type keyPairArgs struct {
 	KeyFile *string `pulumi:"keyFile"`
 	// The key pair's name. It is the only in one Alicloud account.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName       *string `pulumi:"keyName"`
 	KeyNamePrefix *string `pulumi:"keyNamePrefix"`
 	KeyPairName   *string `pulumi:"keyPairName"`
@@ -173,7 +176,7 @@ type KeyPairArgs struct {
 	KeyFile pulumi.StringPtrInput
 	// The key pair's name. It is the only in one Alicloud account.
 	//
-	// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+	// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 	KeyName       pulumi.StringPtrInput
 	KeyNamePrefix pulumi.StringPtrInput
 	KeyPairName   pulumi.StringPtrInput
@@ -271,6 +274,10 @@ func (o KeyPairOutput) ToKeyPairOutputWithContext(ctx context.Context) KeyPairOu
 	return o
 }
 
+func (o KeyPairOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *KeyPair) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 func (o KeyPairOutput) FingerPrint() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringOutput { return v.FingerPrint }).(pulumi.StringOutput)
 }
@@ -282,7 +289,7 @@ func (o KeyPairOutput) KeyFile() pulumi.StringPtrOutput {
 
 // The key pair's name. It is the only in one Alicloud account.
 //
-// Deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+// Deprecated: Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
 func (o KeyPairOutput) KeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyPair) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
 }

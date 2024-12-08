@@ -103,7 +103,7 @@ export interface GetClustersResult {
      */
     readonly clusters: outputs.polardb.GetClustersCluster[];
     /**
-     * `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
+     * Database type. Value options: MySQL, PostgreSQL and Oracle.
      */
     readonly dbType?: string;
     readonly descriptionRegex?: string;

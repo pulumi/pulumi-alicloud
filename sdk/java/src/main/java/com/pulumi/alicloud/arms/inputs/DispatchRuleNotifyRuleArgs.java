@@ -32,6 +32,21 @@ public final class DispatchRuleNotifyRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * End time of notification.
+     * 
+     */
+    @Import(name="notifyEndTime", required=true)
+    private Output<String> notifyEndTime;
+
+    /**
+     * @return End time of notification.
+     * 
+     */
+    public Output<String> notifyEndTime() {
+        return this.notifyEndTime;
+    }
+
+    /**
      * Sets the notification object. See `notify_objects` below.
      * 
      */
@@ -46,11 +61,28 @@ public final class DispatchRuleNotifyRuleArgs extends com.pulumi.resources.Resou
         return this.notifyObjects;
     }
 
+    /**
+     * Start time of notification.
+     * 
+     */
+    @Import(name="notifyStartTime", required=true)
+    private Output<String> notifyStartTime;
+
+    /**
+     * @return Start time of notification.
+     * 
+     */
+    public Output<String> notifyStartTime() {
+        return this.notifyStartTime;
+    }
+
     private DispatchRuleNotifyRuleArgs() {}
 
     private DispatchRuleNotifyRuleArgs(DispatchRuleNotifyRuleArgs $) {
         this.notifyChannels = $.notifyChannels;
+        this.notifyEndTime = $.notifyEndTime;
         this.notifyObjects = $.notifyObjects;
+        this.notifyStartTime = $.notifyStartTime;
     }
 
     public static Builder builder() {
@@ -103,6 +135,27 @@ public final class DispatchRuleNotifyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param notifyEndTime End time of notification.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notifyEndTime(Output<String> notifyEndTime) {
+            $.notifyEndTime = notifyEndTime;
+            return this;
+        }
+
+        /**
+         * @param notifyEndTime End time of notification.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notifyEndTime(String notifyEndTime) {
+            return notifyEndTime(Output.of(notifyEndTime));
+        }
+
+        /**
          * @param notifyObjects Sets the notification object. See `notify_objects` below.
          * 
          * @return builder
@@ -133,12 +186,39 @@ public final class DispatchRuleNotifyRuleArgs extends com.pulumi.resources.Resou
             return notifyObjects(List.of(notifyObjects));
         }
 
+        /**
+         * @param notifyStartTime Start time of notification.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notifyStartTime(Output<String> notifyStartTime) {
+            $.notifyStartTime = notifyStartTime;
+            return this;
+        }
+
+        /**
+         * @param notifyStartTime Start time of notification.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notifyStartTime(String notifyStartTime) {
+            return notifyStartTime(Output.of(notifyStartTime));
+        }
+
         public DispatchRuleNotifyRuleArgs build() {
             if ($.notifyChannels == null) {
                 throw new MissingRequiredPropertyException("DispatchRuleNotifyRuleArgs", "notifyChannels");
             }
+            if ($.notifyEndTime == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleNotifyRuleArgs", "notifyEndTime");
+            }
             if ($.notifyObjects == null) {
                 throw new MissingRequiredPropertyException("DispatchRuleNotifyRuleArgs", "notifyObjects");
+            }
+            if ($.notifyStartTime == null) {
+                throw new MissingRequiredPropertyException("DispatchRuleNotifyRuleArgs", "notifyStartTime");
             }
             return $;
         }

@@ -12,7 +12,6 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDispatchRulesRuleGroupRule {
-    private Integer groupId;
     /**
      * @return The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
      * 
@@ -35,9 +34,6 @@ public final class GetDispatchRulesRuleGroupRule {
     private Integer repeatInterval;
 
     private GetDispatchRulesRuleGroupRule() {}
-    public Integer groupId() {
-        return this.groupId;
-    }
     /**
      * @return The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
      * 
@@ -76,7 +72,6 @@ public final class GetDispatchRulesRuleGroupRule {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Integer groupId;
         private Integer groupInterval;
         private Integer groupWaitTime;
         private List<String> groupingFields;
@@ -84,21 +79,12 @@ public final class GetDispatchRulesRuleGroupRule {
         public Builder() {}
         public Builder(GetDispatchRulesRuleGroupRule defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.groupId = defaults.groupId;
     	      this.groupInterval = defaults.groupInterval;
     	      this.groupWaitTime = defaults.groupWaitTime;
     	      this.groupingFields = defaults.groupingFields;
     	      this.repeatInterval = defaults.repeatInterval;
         }
 
-        @CustomType.Setter
-        public Builder groupId(Integer groupId) {
-            if (groupId == null) {
-              throw new MissingRequiredPropertyException("GetDispatchRulesRuleGroupRule", "groupId");
-            }
-            this.groupId = groupId;
-            return this;
-        }
         @CustomType.Setter
         public Builder groupInterval(Integer groupInterval) {
             if (groupInterval == null) {
@@ -136,7 +122,6 @@ public final class GetDispatchRulesRuleGroupRule {
         }
         public GetDispatchRulesRuleGroupRule build() {
             final var _resultValue = new GetDispatchRulesRuleGroupRule();
-            _resultValue.groupId = groupId;
             _resultValue.groupInterval = groupInterval;
             _resultValue.groupWaitTime = groupWaitTime;
             _resultValue.groupingFields = groupingFields;

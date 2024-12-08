@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
  * 
+ * &gt; **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scaler_type`.
+ * 
  */
 @ResourceType(type="alicloud:cs/autoscalingConfig:AutoscalingConfig")
 public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
@@ -167,6 +169,20 @@ public class AutoscalingConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> scaleUpFromZero() {
         return Codegen.optional(this.scaleUpFromZero);
+    }
+    /**
+     * The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+     * 
+     */
+    @Export(name="scalerType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> scalerType;
+
+    /**
+     * @return The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+     * 
+     */
+    public Output<Optional<String>> scalerType() {
+        return Codegen.optional(this.scalerType);
     }
     /**
      * The interval at which the cluster is reevaluated for scaling. Default is `30s`.

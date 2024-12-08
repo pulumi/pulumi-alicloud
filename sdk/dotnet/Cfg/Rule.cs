@@ -52,8 +52,8 @@ namespace Pulumi.AliCloud.Cfg
     ///         RuleName = "contains-tag",
     ///         InputParameters = 
     ///         {
-    ///             { "key", "example" },
-    ///             { "value", "example" },
+    ///             { "key1", "value1" },
+    ///             { "key2", "key2" },
     ///         },
     ///     });
     /// 

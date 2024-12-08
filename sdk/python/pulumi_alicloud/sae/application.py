@@ -3280,7 +3280,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="microRegistration")
-    def micro_registration(self) -> pulumi.Output[Optional[str]]:
+    def micro_registration(self) -> pulumi.Output[str]:
         """
         Select the Nacos registry. Valid values: `0`, `1`, `2`.
         """

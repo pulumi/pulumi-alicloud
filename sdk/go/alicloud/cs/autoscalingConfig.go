@@ -18,6 +18,8 @@ import (
 // > **NOTE:** From version 1.164.0, support for specifying whether to allow the scale-in of nodes by parameter `scaleDownEnabled`.
 //
 // > **NOTE:** From version 1.164.0, support for selecting the policy for selecting which node pool to scale by parameter `expander`.
+//
+// > **NOTE:** From version 1.237.0, support for selecting the type of autoscaler by parameter `scalerType`.
 type AutoscalingConfig struct {
 	pulumi.CustomResourceState
 
@@ -41,6 +43,8 @@ type AutoscalingConfig struct {
 	ScaleDownEnabled pulumi.BoolPtrOutput `pulumi:"scaleDownEnabled"`
 	// Should CA scale up when there 0 ready nodes. Default is `true`.
 	ScaleUpFromZero pulumi.BoolPtrOutput `pulumi:"scaleUpFromZero"`
+	// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+	ScalerType pulumi.StringPtrOutput `pulumi:"scalerType"`
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval pulumi.StringPtrOutput `pulumi:"scanInterval"`
 	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
@@ -103,6 +107,8 @@ type autoscalingConfigState struct {
 	ScaleDownEnabled *bool `pulumi:"scaleDownEnabled"`
 	// Should CA scale up when there 0 ready nodes. Default is `true`.
 	ScaleUpFromZero *bool `pulumi:"scaleUpFromZero"`
+	// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+	ScalerType *string `pulumi:"scalerType"`
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval *string `pulumi:"scanInterval"`
 	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
@@ -136,6 +142,8 @@ type AutoscalingConfigState struct {
 	ScaleDownEnabled pulumi.BoolPtrInput
 	// Should CA scale up when there 0 ready nodes. Default is `true`.
 	ScaleUpFromZero pulumi.BoolPtrInput
+	// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+	ScalerType pulumi.StringPtrInput
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval pulumi.StringPtrInput
 	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
@@ -173,6 +181,8 @@ type autoscalingConfigArgs struct {
 	ScaleDownEnabled *bool `pulumi:"scaleDownEnabled"`
 	// Should CA scale up when there 0 ready nodes. Default is `true`.
 	ScaleUpFromZero *bool `pulumi:"scaleUpFromZero"`
+	// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+	ScalerType *string `pulumi:"scalerType"`
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval *string `pulumi:"scanInterval"`
 	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
@@ -207,6 +217,8 @@ type AutoscalingConfigArgs struct {
 	ScaleDownEnabled pulumi.BoolPtrInput
 	// Should CA scale up when there 0 ready nodes. Default is `true`.
 	ScaleUpFromZero pulumi.BoolPtrInput
+	// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+	ScalerType pulumi.StringPtrInput
 	// The interval at which the cluster is reevaluated for scaling. Default is `30s`.
 	ScanInterval pulumi.StringPtrInput
 	// If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
@@ -354,6 +366,11 @@ func (o AutoscalingConfigOutput) ScaleDownEnabled() pulumi.BoolPtrOutput {
 // Should CA scale up when there 0 ready nodes. Default is `true`.
 func (o AutoscalingConfigOutput) ScaleUpFromZero() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AutoscalingConfig) pulumi.BoolPtrOutput { return v.ScaleUpFromZero }).(pulumi.BoolPtrOutput)
+}
+
+// The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+func (o AutoscalingConfigOutput) ScalerType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalingConfig) pulumi.StringPtrOutput { return v.ScalerType }).(pulumi.StringPtrOutput)
 }
 
 // The interval at which the cluster is reevaluated for scaling. Default is `30s`.

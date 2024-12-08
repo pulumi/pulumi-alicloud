@@ -13,7 +13,6 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class GetDispatchRulesRuleGroupRuleResult
     {
-        public readonly int GroupId;
         /// <summary>
         /// The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
         /// </summary>
@@ -33,8 +32,6 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
         [OutputConstructor]
         private GetDispatchRulesRuleGroupRuleResult(
-            int groupId,
-
             int groupInterval,
 
             int groupWaitTime,
@@ -43,7 +40,6 @@ namespace Pulumi.AliCloud.Arms.Outputs
 
             int repeatInterval)
         {
-            GroupId = groupId;
             GroupInterval = groupInterval;
             GroupWaitTime = groupWaitTime;
             GroupingFields = groupingFields;

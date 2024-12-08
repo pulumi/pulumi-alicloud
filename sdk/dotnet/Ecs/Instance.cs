@@ -266,6 +266,26 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> ImageId { get; private set; } = null!;
 
         /// <summary>
+        /// The options of images. See `image_options` below.
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        /// </summary>
+        [Output("imageOptions")]
+        public Output<Outputs.InstanceImageOptions> ImageOptions { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to change instance disks charge type when changing instance charge type.
         /// </summary>
         [Output("includeDataDisks")]
@@ -860,6 +880,26 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
+        /// The options of images. See `image_options` below.
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        /// </summary>
+        [Input("imageOptions")]
+        public Input<Inputs.InstanceImageOptionsArgs>? ImageOptions { get; set; }
+
+        /// <summary>
         /// Whether to change instance disks charge type when changing instance charge type.
         /// </summary>
         [Input("includeDataDisks")]
@@ -1432,6 +1472,26 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("imageId")]
         public Input<string>? ImageId { get; set; }
+
+        /// <summary>
+        /// The options of images. See `image_options` below.
+        /// 
+        /// &gt; **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloud_efficiency` and `cloud_ssd` disk.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `period_unit`, but it is irreversible.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
+        /// 
+        /// &gt; **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, setting "internet_max_bandwidth_out" larger than 0 can allocate a public IP for an instance.
+        /// Setting "internet_max_bandwidth_out" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
+        /// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
+        /// 
+        /// &gt; **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
+        /// </summary>
+        [Input("imageOptions")]
+        public Input<Inputs.InstanceImageOptionsGetArgs>? ImageOptions { get; set; }
 
         /// <summary>
         /// Whether to change instance disks charge type when changing instance charge type.

@@ -13,7 +13,7 @@ import (
 
 // This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
 //
-// > **NOTE:** Available in v1.136.0+.
+// > **NOTE:** Available since v1.136.0.
 //
 // ## Example Usage
 //
@@ -31,18 +31,81 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := arms.NewAlertContact(ctx, "default", &arms.AlertContactArgs{
+//				AlertContactName: pulumi.String("example_value"),
+//				Email:            pulumi.String("example_value@aaa.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultAlertContactGroup, err := arms.NewAlertContactGroup(ctx, "default", &arms.AlertContactGroupArgs{
+//				AlertContactGroupName: pulumi.String("example_value"),
+//				ContactIds: pulumi.StringArray{
+//					_default.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = arms.NewDispatchRule(ctx, "default", &arms.DispatchRuleArgs{
+//				DispatchRuleName: pulumi.String("example_value"),
+//				DispatchType:     pulumi.String("CREATE_ALERT"),
+//				GroupRules: arms.DispatchRuleGroupRuleArray{
+//					&arms.DispatchRuleGroupRuleArgs{
+//						GroupWaitTime:  pulumi.Int(5),
+//						GroupInterval:  pulumi.Int(15),
+//						RepeatInterval: pulumi.Int(100),
+//						GroupingFields: pulumi.StringArray{
+//							pulumi.String("alertname"),
+//						},
+//					},
+//				},
+//				LabelMatchExpressionGrids: arms.DispatchRuleLabelMatchExpressionGridArray{
+//					&arms.DispatchRuleLabelMatchExpressionGridArgs{
+//						LabelMatchExpressionGroups: arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArray{
+//							&arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs{
+//								LabelMatchExpressions: arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArray{
+//									&arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs{
+//										Key:      pulumi.String("_aliyun_arms_involvedObject_kind"),
+//										Value:    pulumi.String("app"),
+//										Operator: pulumi.String("eq"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//				NotifyRules: arms.DispatchRuleNotifyRuleArray{
+//					&arms.DispatchRuleNotifyRuleArgs{
+//						NotifyObjects: arms.DispatchRuleNotifyRuleNotifyObjectArray{
+//							&arms.DispatchRuleNotifyRuleNotifyObjectArgs{
+//								NotifyObjectId: _default.ID(),
+//								NotifyType:     pulumi.String("ARMS_CONTACT"),
+//								Name:           pulumi.String("example_value"),
+//							},
+//							&arms.DispatchRuleNotifyRuleNotifyObjectArgs{
+//								NotifyObjectId: defaultAlertContactGroup.ID(),
+//								NotifyType:     pulumi.String("ARMS_CONTACT_GROUP"),
+//								Name:           pulumi.String("example_value"),
+//							},
+//						},
+//						NotifyChannels: pulumi.StringArray{
+//							pulumi.String("dingTalk"),
+//							pulumi.String("wechat"),
+//						},
+//						NotifyStartTime: pulumi.String("10:00"),
+//						NotifyEndTime:   pulumi.String("23:00"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			ids, err := arms.GetDispatchRules(ctx, &arms.GetDispatchRulesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			ctx.Export("armsDispatchRuleId1", ids.Rules[0].Id)
-//			nameRegex, err := arms.GetDispatchRules(ctx, &arms.GetDispatchRulesArgs{
-//				NameRegex: pulumi.StringRef("^my-DispatchRule"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("armsDispatchRuleId2", nameRegex.Rules[0].Id)
 //			return nil
 //		})
 //	}
@@ -74,15 +137,18 @@ type GetDispatchRulesArgs struct {
 
 // A collection of values returned by getDispatchRules.
 type GetDispatchRulesResult struct {
+	// The name of the dispatch rule.
 	DispatchRuleName *string `pulumi:"dispatchRuleName"`
 	EnableDetails    *bool   `pulumi:"enableDetails"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string                 `pulumi:"id"`
-	Ids        []string               `pulumi:"ids"`
-	NameRegex  *string                `pulumi:"nameRegex"`
-	Names      []string               `pulumi:"names"`
-	OutputFile *string                `pulumi:"outputFile"`
-	Rules      []GetDispatchRulesRule `pulumi:"rules"`
+	Id        string   `pulumi:"id"`
+	Ids       []string `pulumi:"ids"`
+	NameRegex *string  `pulumi:"nameRegex"`
+	// A list of Dispatch Rule names.
+	Names      []string `pulumi:"names"`
+	OutputFile *string  `pulumi:"outputFile"`
+	// A list of Arms Dispatch Rules. Each element contains the following attributes:
+	Rules []GetDispatchRulesRule `pulumi:"rules"`
 }
 
 func GetDispatchRulesOutput(ctx *pulumi.Context, args GetDispatchRulesOutputArgs, opts ...pulumi.InvokeOption) GetDispatchRulesResultOutput {
@@ -137,6 +203,7 @@ func (o GetDispatchRulesResultOutput) ToGetDispatchRulesResultOutputWithContext(
 	return o
 }
 
+// The name of the dispatch rule.
 func (o GetDispatchRulesResultOutput) DispatchRuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDispatchRulesResult) *string { return v.DispatchRuleName }).(pulumi.StringPtrOutput)
 }
@@ -158,6 +225,7 @@ func (o GetDispatchRulesResultOutput) NameRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDispatchRulesResult) *string { return v.NameRegex }).(pulumi.StringPtrOutput)
 }
 
+// A list of Dispatch Rule names.
 func (o GetDispatchRulesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDispatchRulesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
@@ -166,6 +234,7 @@ func (o GetDispatchRulesResultOutput) OutputFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDispatchRulesResult) *string { return v.OutputFile }).(pulumi.StringPtrOutput)
 }
 
+// A list of Arms Dispatch Rules. Each element contains the following attributes:
 func (o GetDispatchRulesResultOutput) Rules() GetDispatchRulesRuleArrayOutput {
 	return o.ApplyT(func(v GetDispatchRulesResult) []GetDispatchRulesRule { return v.Rules }).(GetDispatchRulesRuleArrayOutput)
 }

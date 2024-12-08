@@ -41,6 +41,7 @@ __all__ = [
     'SyntheticTaskMonitorConfWebsite',
     'GetAlertContactGroupsGroupResult',
     'GetAlertContactsContactResult',
+    'GetAlertRobotsRobotResult',
     'GetDispatchRulesRuleResult',
     'GetDispatchRulesRuleGroupRuleResult',
     'GetDispatchRulesRuleLabelMatchExpressionGridResult',
@@ -284,8 +285,12 @@ class DispatchRuleNotifyRule(dict):
         suggest = None
         if key == "notifyChannels":
             suggest = "notify_channels"
+        elif key == "notifyEndTime":
+            suggest = "notify_end_time"
         elif key == "notifyObjects":
             suggest = "notify_objects"
+        elif key == "notifyStartTime":
+            suggest = "notify_start_time"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DispatchRuleNotifyRule. Access the value via the '{suggest}' property getter instead.")
@@ -300,13 +305,19 @@ class DispatchRuleNotifyRule(dict):
 
     def __init__(__self__, *,
                  notify_channels: Sequence[str],
-                 notify_objects: Sequence['outputs.DispatchRuleNotifyRuleNotifyObject']):
+                 notify_end_time: str,
+                 notify_objects: Sequence['outputs.DispatchRuleNotifyRuleNotifyObject'],
+                 notify_start_time: str):
         """
         :param Sequence[str] notify_channels: The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
+        :param str notify_end_time: End time of notification.
         :param Sequence['DispatchRuleNotifyRuleNotifyObjectArgs'] notify_objects: Sets the notification object. See `notify_objects` below.
+        :param str notify_start_time: Start time of notification.
         """
         pulumi.set(__self__, "notify_channels", notify_channels)
+        pulumi.set(__self__, "notify_end_time", notify_end_time)
         pulumi.set(__self__, "notify_objects", notify_objects)
+        pulumi.set(__self__, "notify_start_time", notify_start_time)
 
     @property
     @pulumi.getter(name="notifyChannels")
@@ -317,12 +328,28 @@ class DispatchRuleNotifyRule(dict):
         return pulumi.get(self, "notify_channels")
 
     @property
+    @pulumi.getter(name="notifyEndTime")
+    def notify_end_time(self) -> str:
+        """
+        End time of notification.
+        """
+        return pulumi.get(self, "notify_end_time")
+
+    @property
     @pulumi.getter(name="notifyObjects")
     def notify_objects(self) -> Sequence['outputs.DispatchRuleNotifyRuleNotifyObject']:
         """
         Sets the notification object. See `notify_objects` below.
         """
         return pulumi.get(self, "notify_objects")
+
+    @property
+    @pulumi.getter(name="notifyStartTime")
+    def notify_start_time(self) -> str:
+        """
+        Start time of notification.
+        """
+        return pulumi.get(self, "notify_start_time")
 
 
 @pulumi.output_type
@@ -353,7 +380,7 @@ class DispatchRuleNotifyRuleNotifyObject(dict):
         """
         :param str name: The name of the contact or contact group.
         :param str notify_object_id: The ID of the contact or contact group.
-        :param str notify_type: The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+        :param str notify_type: The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "notify_object_id", notify_object_id)
@@ -379,7 +406,7 @@ class DispatchRuleNotifyRuleNotifyObject(dict):
     @pulumi.getter(name="notifyType")
     def notify_type(self) -> str:
         """
-        The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+        The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         """
         return pulumi.get(self, "notify_type")
 
@@ -2320,6 +2347,101 @@ class GetAlertContactsContactResult(dict):
 
 
 @pulumi.output_type
+class GetAlertRobotsRobotResult(dict):
+    def __init__(__self__, *,
+                 create_time: str,
+                 daily_noc: str,
+                 daily_noc_time: str,
+                 id: str,
+                 robot_addr: str,
+                 robot_id: str,
+                 robot_name: str,
+                 robot_type: str):
+        """
+        :param str create_time: The creation time of the resource.
+        :param str daily_noc: Specifies whether the alert robot receives daily notifications.
+        :param str daily_noc_time: The time of the daily notification.
+        :param str id: The ID of the Alert Robot.
+        :param str robot_addr: The webhook url of the robot.
+        :param str robot_id: The id of the robot.
+        :param str robot_name: The name of the robot.
+        :param str robot_type: The robot type.
+        """
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "daily_noc", daily_noc)
+        pulumi.set(__self__, "daily_noc_time", daily_noc_time)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "robot_addr", robot_addr)
+        pulumi.set(__self__, "robot_id", robot_id)
+        pulumi.set(__self__, "robot_name", robot_name)
+        pulumi.set(__self__, "robot_type", robot_type)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The creation time of the resource.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dailyNoc")
+    def daily_noc(self) -> str:
+        """
+        Specifies whether the alert robot receives daily notifications.
+        """
+        return pulumi.get(self, "daily_noc")
+
+    @property
+    @pulumi.getter(name="dailyNocTime")
+    def daily_noc_time(self) -> str:
+        """
+        The time of the daily notification.
+        """
+        return pulumi.get(self, "daily_noc_time")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of the Alert Robot.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="robotAddr")
+    def robot_addr(self) -> str:
+        """
+        The webhook url of the robot.
+        """
+        return pulumi.get(self, "robot_addr")
+
+    @property
+    @pulumi.getter(name="robotId")
+    def robot_id(self) -> str:
+        """
+        The id of the robot.
+        """
+        return pulumi.get(self, "robot_id")
+
+    @property
+    @pulumi.getter(name="robotName")
+    def robot_name(self) -> str:
+        """
+        The name of the robot.
+        """
+        return pulumi.get(self, "robot_name")
+
+    @property
+    @pulumi.getter(name="robotType")
+    def robot_type(self) -> str:
+        """
+        The robot type.
+        """
+        return pulumi.get(self, "robot_type")
+
+
+@pulumi.output_type
 class GetDispatchRulesRuleResult(dict):
     def __init__(__self__, *,
                  dispatch_rule_id: str,
@@ -2333,6 +2455,7 @@ class GetDispatchRulesRuleResult(dict):
         """
         :param str dispatch_rule_id: Dispatch rule ID.
         :param str dispatch_rule_name: The name of the dispatch rule.
+        :param str dispatch_type: The type of the dispatch rule.
         :param Sequence['GetDispatchRulesRuleGroupRuleArgs'] group_rules: Sets the event group.
         :param str id: The ID of the Dispatch Rule.
         :param Sequence['GetDispatchRulesRuleLabelMatchExpressionGridArgs'] label_match_expression_grids: Sets the dispatch rule.
@@ -2367,6 +2490,9 @@ class GetDispatchRulesRuleResult(dict):
     @property
     @pulumi.getter(name="dispatchType")
     def dispatch_type(self) -> str:
+        """
+        The type of the dispatch rule.
+        """
         return pulumi.get(self, "dispatch_type")
 
     @property
@@ -2413,7 +2539,6 @@ class GetDispatchRulesRuleResult(dict):
 @pulumi.output_type
 class GetDispatchRulesRuleGroupRuleResult(dict):
     def __init__(__self__, *,
-                 group_id: int,
                  group_interval: int,
                  group_wait_time: int,
                  grouping_fields: Sequence[str],
@@ -2424,16 +2549,10 @@ class GetDispatchRulesRuleGroupRuleResult(dict):
         :param Sequence[str] grouping_fields: The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
         :param int repeat_interval: The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
         """
-        pulumi.set(__self__, "group_id", group_id)
         pulumi.set(__self__, "group_interval", group_interval)
         pulumi.set(__self__, "group_wait_time", group_wait_time)
         pulumi.set(__self__, "grouping_fields", grouping_fields)
         pulumi.set(__self__, "repeat_interval", repeat_interval)
-
-    @property
-    @pulumi.getter(name="groupId")
-    def group_id(self) -> int:
-        return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter(name="groupInterval")
@@ -2548,21 +2667,35 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabel
 class GetDispatchRulesRuleNotifyRuleResult(dict):
     def __init__(__self__, *,
                  notify_channels: Sequence[str],
-                 notify_objects: Sequence['outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult']):
+                 notify_end_time: str,
+                 notify_objects: Sequence['outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult'],
+                 notify_start_time: str):
         """
-        :param Sequence[str] notify_channels: The notification method.
+        :param Sequence[str] notify_channels: A list of notification methods.
+        :param str notify_end_time: (Available since v1.237.0) End time of notification.
         :param Sequence['GetDispatchRulesRuleNotifyRuleNotifyObjectArgs'] notify_objects: Sets the notification object.
+        :param str notify_start_time: (Available since v1.237.0) Start time of notification.
         """
         pulumi.set(__self__, "notify_channels", notify_channels)
+        pulumi.set(__self__, "notify_end_time", notify_end_time)
         pulumi.set(__self__, "notify_objects", notify_objects)
+        pulumi.set(__self__, "notify_start_time", notify_start_time)
 
     @property
     @pulumi.getter(name="notifyChannels")
     def notify_channels(self) -> Sequence[str]:
         """
-        The notification method.
+        A list of notification methods.
         """
         return pulumi.get(self, "notify_channels")
+
+    @property
+    @pulumi.getter(name="notifyEndTime")
+    def notify_end_time(self) -> str:
+        """
+        (Available since v1.237.0) End time of notification.
+        """
+        return pulumi.get(self, "notify_end_time")
 
     @property
     @pulumi.getter(name="notifyObjects")
@@ -2571,6 +2704,14 @@ class GetDispatchRulesRuleNotifyRuleResult(dict):
         Sets the notification object.
         """
         return pulumi.get(self, "notify_objects")
+
+    @property
+    @pulumi.getter(name="notifyStartTime")
+    def notify_start_time(self) -> str:
+        """
+        (Available since v1.237.0) Start time of notification.
+        """
+        return pulumi.get(self, "notify_start_time")
 
 
 @pulumi.output_type
