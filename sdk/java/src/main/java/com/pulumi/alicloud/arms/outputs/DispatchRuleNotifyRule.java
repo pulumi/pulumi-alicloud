@@ -18,10 +18,20 @@ public final class DispatchRuleNotifyRule {
      */
     private List<String> notifyChannels;
     /**
+     * @return End time of notification.
+     * 
+     */
+    private String notifyEndTime;
+    /**
      * @return Sets the notification object. See `notify_objects` below.
      * 
      */
     private List<DispatchRuleNotifyRuleNotifyObject> notifyObjects;
+    /**
+     * @return Start time of notification.
+     * 
+     */
+    private String notifyStartTime;
 
     private DispatchRuleNotifyRule() {}
     /**
@@ -32,11 +42,25 @@ public final class DispatchRuleNotifyRule {
         return this.notifyChannels;
     }
     /**
+     * @return End time of notification.
+     * 
+     */
+    public String notifyEndTime() {
+        return this.notifyEndTime;
+    }
+    /**
      * @return Sets the notification object. See `notify_objects` below.
      * 
      */
     public List<DispatchRuleNotifyRuleNotifyObject> notifyObjects() {
         return this.notifyObjects;
+    }
+    /**
+     * @return Start time of notification.
+     * 
+     */
+    public String notifyStartTime() {
+        return this.notifyStartTime;
     }
 
     public static Builder builder() {
@@ -49,12 +73,16 @@ public final class DispatchRuleNotifyRule {
     @CustomType.Builder
     public static final class Builder {
         private List<String> notifyChannels;
+        private String notifyEndTime;
         private List<DispatchRuleNotifyRuleNotifyObject> notifyObjects;
+        private String notifyStartTime;
         public Builder() {}
         public Builder(DispatchRuleNotifyRule defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.notifyChannels = defaults.notifyChannels;
+    	      this.notifyEndTime = defaults.notifyEndTime;
     	      this.notifyObjects = defaults.notifyObjects;
+    	      this.notifyStartTime = defaults.notifyStartTime;
         }
 
         @CustomType.Setter
@@ -69,6 +97,14 @@ public final class DispatchRuleNotifyRule {
             return notifyChannels(List.of(notifyChannels));
         }
         @CustomType.Setter
+        public Builder notifyEndTime(String notifyEndTime) {
+            if (notifyEndTime == null) {
+              throw new MissingRequiredPropertyException("DispatchRuleNotifyRule", "notifyEndTime");
+            }
+            this.notifyEndTime = notifyEndTime;
+            return this;
+        }
+        @CustomType.Setter
         public Builder notifyObjects(List<DispatchRuleNotifyRuleNotifyObject> notifyObjects) {
             if (notifyObjects == null) {
               throw new MissingRequiredPropertyException("DispatchRuleNotifyRule", "notifyObjects");
@@ -79,10 +115,20 @@ public final class DispatchRuleNotifyRule {
         public Builder notifyObjects(DispatchRuleNotifyRuleNotifyObject... notifyObjects) {
             return notifyObjects(List.of(notifyObjects));
         }
+        @CustomType.Setter
+        public Builder notifyStartTime(String notifyStartTime) {
+            if (notifyStartTime == null) {
+              throw new MissingRequiredPropertyException("DispatchRuleNotifyRule", "notifyStartTime");
+            }
+            this.notifyStartTime = notifyStartTime;
+            return this;
+        }
         public DispatchRuleNotifyRule build() {
             final var _resultValue = new DispatchRuleNotifyRule();
             _resultValue.notifyChannels = notifyChannels;
+            _resultValue.notifyEndTime = notifyEndTime;
             _resultValue.notifyObjects = notifyObjects;
+            _resultValue.notifyStartTime = notifyStartTime;
             return _resultValue;
         }
     }

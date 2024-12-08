@@ -63,6 +63,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketUserDefinedLogFields{}
 	case "alicloud:oss/bucketVersioning:BucketVersioning":
 		r = &BucketVersioning{}
+	case "alicloud:oss/bucketWebsite:BucketWebsite":
+		r = &BucketWebsite{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -179,6 +181,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketVersioning",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketWebsite",
 		&module{version},
 	)
 }

@@ -21,7 +21,7 @@ public final class GetClustersResult {
      */
     private List<GetClustersCluster> clusters;
     /**
-     * @return `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
+     * @return Database type. Value options: MySQL, PostgreSQL and Oracle.
      * 
      */
     private @Nullable String dbType;
@@ -58,7 +58,7 @@ public final class GetClustersResult {
         return this.clusters;
     }
     /**
-     * @return `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
+     * @return Database type. Value options: MySQL, PostgreSQL and Oracle.
      * 
      */
     public Optional<String> dbType() {

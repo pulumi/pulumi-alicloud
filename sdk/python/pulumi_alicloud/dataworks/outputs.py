@@ -15,8 +15,52 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ProjectMemberRole',
     'GetFoldersFolderResult',
 ]
+
+@pulumi.output_type
+class ProjectMemberRole(dict):
+    def __init__(__self__, *,
+                 code: Optional[str] = None,
+                 name: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str code: Project Role Code.
+        :param str name: project role name
+        :param str type: project role type
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[str]:
+        """
+        Project Role Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        project role name
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        project role type
+        """
+        return pulumi.get(self, "type")
+
 
 @pulumi.output_type
 class GetFoldersFolderResult(dict):

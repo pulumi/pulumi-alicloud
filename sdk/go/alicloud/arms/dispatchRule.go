@@ -96,6 +96,8 @@ import (
 //							pulumi.String("dingTalk"),
 //							pulumi.String("wechat"),
 //						},
+//						NotifyStartTime: pulumi.String("10:00"),
+//						NotifyEndTime:   pulumi.String("23:00"),
 //					},
 //				},
 //			})

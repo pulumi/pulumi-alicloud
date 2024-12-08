@@ -63,6 +63,7 @@ export class KeyPair extends pulumi.CustomResource {
         return obj['__pulumiType'] === KeyPair.__pulumiType;
     }
 
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     public /*out*/ readonly fingerPrint!: pulumi.Output<string>;
     /**
      * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
@@ -71,7 +72,7 @@ export class KeyPair extends pulumi.CustomResource {
     /**
      * The key pair's name. It is the only in one Alicloud account.
      *
-     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     public readonly keyName!: pulumi.Output<string>;
     public readonly keyNamePrefix!: pulumi.Output<string | undefined>;
@@ -99,6 +100,7 @@ export class KeyPair extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyPairState | undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["fingerPrint"] = state ? state.fingerPrint : undefined;
             resourceInputs["keyFile"] = state ? state.keyFile : undefined;
             resourceInputs["keyName"] = state ? state.keyName : undefined;
@@ -116,6 +118,7 @@ export class KeyPair extends pulumi.CustomResource {
             resourceInputs["publicKey"] = args ? args.publicKey : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["fingerPrint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -127,6 +130,7 @@ export class KeyPair extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KeyPair resources.
  */
 export interface KeyPairState {
+    createTime?: pulumi.Input<string>;
     fingerPrint?: pulumi.Input<string>;
     /**
      * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
@@ -135,7 +139,7 @@ export interface KeyPairState {
     /**
      * The key pair's name. It is the only in one Alicloud account.
      *
-     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
     keyNamePrefix?: pulumi.Input<string>;
@@ -162,7 +166,7 @@ export interface KeyPairArgs {
     /**
      * The key pair's name. It is the only in one Alicloud account.
      *
-     * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
+     * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
     keyName?: pulumi.Input<string>;
     keyNamePrefix?: pulumi.Input<string>;

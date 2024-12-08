@@ -247,18 +247,14 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Node type, value:
-     * - `MASTER_SLAVE`: high availability (dual copy)
-     * - `STAND_ALONE`: single copy
+     * The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
      * 
      */
     @Import(name="nodeType")
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return Node type, value:
-     * - `MASTER_SLAVE`: high availability (dual copy)
-     * - `STAND_ALONE`: single copy
+     * @return The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
      * 
      */
     public Optional<Output<String>> nodeType() {
@@ -266,18 +262,33 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+     * sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
      * 
      */
     @Import(name="paramNoLooseSentinelEnabled")
     private @Nullable Output<String> paramNoLooseSentinelEnabled;
 
     /**
-     * @return sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+     * @return sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
      * 
      */
     public Optional<Output<String>> paramNoLooseSentinelEnabled() {
         return Optional.ofNullable(this.paramNoLooseSentinelEnabled);
+    }
+
+    /**
+     * Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+     * 
+     */
+    @Import(name="paramNoLooseSentinelPasswordFreeAccess")
+    private @Nullable Output<String> paramNoLooseSentinelPasswordFreeAccess;
+
+    /**
+     * @return Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+     * 
+     */
+    public Optional<Output<String>> paramNoLooseSentinelPasswordFreeAccess() {
+        return Optional.ofNullable(this.paramNoLooseSentinelPasswordFreeAccess);
     }
 
     /**
@@ -716,6 +727,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.modifyMode = $.modifyMode;
         this.nodeType = $.nodeType;
         this.paramNoLooseSentinelEnabled = $.paramNoLooseSentinelEnabled;
+        this.paramNoLooseSentinelPasswordFreeAccess = $.paramNoLooseSentinelPasswordFreeAccess;
         this.paramReplMode = $.paramReplMode;
         this.paramSemisyncReplTimeout = $.paramSemisyncReplTimeout;
         this.paramSentinelCompatEnable = $.paramSentinelCompatEnable;
@@ -1068,9 +1080,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Node type, value:
-         * - `MASTER_SLAVE`: high availability (dual copy)
-         * - `STAND_ALONE`: single copy
+         * @param nodeType The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
          * 
          * @return builder
          * 
@@ -1081,9 +1091,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType Node type, value:
-         * - `MASTER_SLAVE`: high availability (dual copy)
-         * - `STAND_ALONE`: single copy
+         * @param nodeType The node type. For cloud-native instances, input MASTER_SLAVE (master-replica) or STAND_ALONE (standalone). For classic instances, input double (master-replica) or single (standalone).
          * 
          * @return builder
          * 
@@ -1093,7 +1101,7 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
          * 
          * @return builder
          * 
@@ -1104,13 +1112,34 @@ public final class TairInstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes or no. The default value is no.
+         * @param paramNoLooseSentinelEnabled sentinel compatibility mode, applicable to non-cluster instances. For more information about parameters, see yes or no in the https://www.alibabacloud.com/help/en/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance, valid values: yes, no. The default value is no.
          * 
          * @return builder
          * 
          */
         public Builder paramNoLooseSentinelEnabled(String paramNoLooseSentinelEnabled) {
             return paramNoLooseSentinelEnabled(Output.of(paramNoLooseSentinelEnabled));
+        }
+
+        /**
+         * @param paramNoLooseSentinelPasswordFreeAccess Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramNoLooseSentinelPasswordFreeAccess(@Nullable Output<String> paramNoLooseSentinelPasswordFreeAccess) {
+            $.paramNoLooseSentinelPasswordFreeAccess = paramNoLooseSentinelPasswordFreeAccess;
+            return this;
+        }
+
+        /**
+         * @param paramNoLooseSentinelPasswordFreeAccess Whether to allow Sentinel commands to be executed without secrets when Sentinel mode is enabled. Value: yes: enabled. After the command is enabled, you can directly run the Sentinel command in the VPC without enabling the password-free feature. no: the default value, disabled. For parameters, see https://help.aliyun.com/zh/redis/user-guide/use-the-sentinel-compatible-mode-to-connect-to-an-apsaradb-for-redis-instance
+         * 
+         * @return builder
+         * 
+         */
+        public Builder paramNoLooseSentinelPasswordFreeAccess(String paramNoLooseSentinelPasswordFreeAccess) {
+            return paramNoLooseSentinelPasswordFreeAccess(Output.of(paramNoLooseSentinelPasswordFreeAccess));
         }
 
         /**

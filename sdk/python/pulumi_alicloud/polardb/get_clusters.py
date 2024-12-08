@@ -68,7 +68,7 @@ class GetClustersResult:
     @pulumi.getter(name="dbType")
     def db_type(self) -> Optional[str]:
         """
-        `Primary` for primary cluster, `ReadOnly` for read-only cluster, `Guard` for disaster recovery cluster, and `Temp` for temporary cluster.
+        Database type. Value options: MySQL, PostgreSQL and Oracle.
         """
         return pulumi.get(self, "db_type")
 

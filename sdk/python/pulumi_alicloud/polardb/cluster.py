@@ -124,7 +124,7 @@ class ClusterArgs:
         :param pulumi.Input[str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[str] hot_replica_mode: Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
-        :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -612,7 +612,7 @@ class ClusterArgs:
     @pulumi.getter(name="hotStandbyCluster")
     def hot_standby_cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         """
         return pulumi.get(self, "hot_standby_cluster")
 
@@ -1262,7 +1262,7 @@ class _ClusterState:
         :param pulumi.Input[str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[str] hot_replica_mode: Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
-        :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -1806,7 +1806,7 @@ class _ClusterState:
     @pulumi.getter(name="hotStandbyCluster")
     def hot_standby_cluster(self) -> Optional[pulumi.Input[str]]:
         """
-        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         """
         return pulumi.get(self, "hot_standby_cluster")
 
@@ -2497,7 +2497,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[str] hot_replica_mode: Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
-        :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -2873,7 +2873,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] gdn_id: The ID of the global database network (GDN).
                > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
         :param pulumi.Input[str] hot_replica_mode: Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
-        :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        :param pulumi.Input[str] hot_standby_cluster: Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         :param pulumi.Input[str] imci_switch: Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
                > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
                > **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
@@ -3246,7 +3246,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="hotStandbyCluster")
     def hot_standby_cluster(self) -> pulumi.Output[str]:
         """
-        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         """
         return pulumi.get(self, "hot_standby_cluster")
 

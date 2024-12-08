@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> HotReplicaMode { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         /// </summary>
         [Output("hotStandbyCluster")]
         public Output<string> HotStandbyCluster { get; private set; } = null!;
@@ -692,7 +692,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? HotReplicaMode { get; set; }
 
         /// <summary>
-        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         /// </summary>
         [Input("hotStandbyCluster")]
         public Input<string>? HotStandbyCluster { get; set; }
@@ -1184,7 +1184,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? HotReplicaMode { get; set; }
 
         /// <summary>
-        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
+        /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`.
         /// </summary>
         [Input("hotStandbyCluster")]
         public Input<string>? HotStandbyCluster { get; set; }

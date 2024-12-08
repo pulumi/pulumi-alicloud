@@ -21,6 +21,9 @@ namespace Pulumi.AliCloud.Arms.Outputs
         /// The name of the dispatch rule.
         /// </summary>
         public readonly string DispatchRuleName;
+        /// <summary>
+        /// The type of the dispatch rule.
+        /// </summary>
         public readonly string DispatchType;
         /// <summary>
         /// Sets the event group.

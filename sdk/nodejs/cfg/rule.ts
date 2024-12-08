@@ -38,8 +38,8 @@ import * as utilities from "../utilities";
  *     resourceTypesScopes: ["ACS::RDS::DBInstance"],
  *     ruleName: "contains-tag",
  *     inputParameters: {
- *         key: "example",
- *         value: "example",
+ *         key1: "value1",
+ *         key2: "key2",
  *     },
  * });
  * ```

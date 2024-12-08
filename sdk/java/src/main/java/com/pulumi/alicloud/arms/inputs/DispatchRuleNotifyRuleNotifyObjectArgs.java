@@ -45,14 +45,14 @@ public final class DispatchRuleNotifyRuleNotifyObjectArgs extends com.pulumi.res
     }
 
     /**
-     * The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+     * The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
      * 
      */
     @Import(name="notifyType", required=true)
     private Output<String> notifyType;
 
     /**
-     * @return The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+     * @return The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
      * 
      */
     public Output<String> notifyType() {
@@ -128,7 +128,7 @@ public final class DispatchRuleNotifyRuleNotifyObjectArgs extends com.pulumi.res
         }
 
         /**
-         * @param notifyType The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+         * @param notifyType The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class DispatchRuleNotifyRuleNotifyObjectArgs extends com.pulumi.res
         }
 
         /**
-         * @param notifyType The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+         * @param notifyType The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
          * 
          * @return builder
          * 

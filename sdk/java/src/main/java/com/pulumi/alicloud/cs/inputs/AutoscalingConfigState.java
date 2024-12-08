@@ -168,6 +168,21 @@ public final class AutoscalingConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+     * 
+     */
+    @Import(name="scalerType")
+    private @Nullable Output<String> scalerType;
+
+    /**
+     * @return The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+     * 
+     */
+    public Optional<Output<String>> scalerType() {
+        return Optional.ofNullable(this.scalerType);
+    }
+
+    /**
      * The interval at which the cluster is reevaluated for scaling. Default is `30s`.
      * 
      */
@@ -255,6 +270,7 @@ public final class AutoscalingConfigState extends com.pulumi.resources.ResourceA
         this.recycleNodeDeletionEnabled = $.recycleNodeDeletionEnabled;
         this.scaleDownEnabled = $.scaleDownEnabled;
         this.scaleUpFromZero = $.scaleUpFromZero;
+        this.scalerType = $.scalerType;
         this.scanInterval = $.scanInterval;
         this.skipNodesWithLocalStorage = $.skipNodesWithLocalStorage;
         this.skipNodesWithSystemPods = $.skipNodesWithSystemPods;
@@ -488,6 +504,27 @@ public final class AutoscalingConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder scaleUpFromZero(Boolean scaleUpFromZero) {
             return scaleUpFromZero(Output.of(scaleUpFromZero));
+        }
+
+        /**
+         * @param scalerType The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalerType(@Nullable Output<String> scalerType) {
+            $.scalerType = scalerType;
+            return this;
+        }
+
+        /**
+         * @param scalerType The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scalerType(String scalerType) {
+            return scalerType(Output.of(scalerType));
         }
 
         /**

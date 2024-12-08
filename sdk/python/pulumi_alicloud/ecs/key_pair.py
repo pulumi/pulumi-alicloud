@@ -36,8 +36,8 @@ class KeyPairArgs:
         if key_file is not None:
             pulumi.set(__self__, "key_file", key_file)
         if key_name is not None:
-            warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+            warnings.warn("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""key_name is deprecated: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if key_name_prefix is not None:
@@ -65,7 +65,7 @@ class KeyPairArgs:
 
     @property
     @pulumi.getter(name="keyName")
-    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+    @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
         The key pair's name. It is the only in one Alicloud account.
@@ -131,6 +131,7 @@ class KeyPairArgs:
 @pulumi.input_type
 class _KeyPairState:
     def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  finger_print: Optional[pulumi.Input[str]] = None,
                  key_file: Optional[pulumi.Input[str]] = None,
                  key_name: Optional[pulumi.Input[str]] = None,
@@ -146,13 +147,15 @@ class _KeyPairState:
         :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if finger_print is not None:
             pulumi.set(__self__, "finger_print", finger_print)
         if key_file is not None:
             pulumi.set(__self__, "key_file", key_file)
         if key_name is not None:
-            warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+            warnings.warn("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""", DeprecationWarning)
+            pulumi.log.warn("""key_name is deprecated: Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
         if key_name is not None:
             pulumi.set(__self__, "key_name", key_name)
         if key_name_prefix is not None:
@@ -165,6 +168,15 @@ class _KeyPairState:
             pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -189,7 +201,7 @@ class _KeyPairState:
 
     @property
     @pulumi.getter(name="keyName")
-    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+    @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
         The key pair's name. It is the only in one Alicloud account.
@@ -376,6 +388,7 @@ class KeyPair(pulumi.CustomResource):
             __props__.__dict__["public_key"] = public_key
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["finger_print"] = None
         super(KeyPair, __self__).__init__(
             'alicloud:ecs/keyPair:KeyPair',
@@ -387,6 +400,7 @@ class KeyPair(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             finger_print: Optional[pulumi.Input[str]] = None,
             key_file: Optional[pulumi.Input[str]] = None,
             key_name: Optional[pulumi.Input[str]] = None,
@@ -411,6 +425,7 @@ class KeyPair(pulumi.CustomResource):
 
         __props__ = _KeyPairState.__new__(_KeyPairState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["finger_print"] = finger_print
         __props__.__dict__["key_file"] = key_file
         __props__.__dict__["key_name"] = key_name
@@ -420,6 +435,11 @@ class KeyPair(pulumi.CustomResource):
         __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["tags"] = tags
         return KeyPair(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -436,7 +456,7 @@ class KeyPair(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyName")
-    @_utilities.deprecated("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
+    @_utilities.deprecated("""Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.""")
     def key_name(self) -> pulumi.Output[str]:
         """
         The key pair's name. It is the only in one Alicloud account.

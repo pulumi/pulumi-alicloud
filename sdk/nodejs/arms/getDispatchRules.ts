@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -19,12 +19,55 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const _default = new alicloud.arms.AlertContact("default", {
+ *     alertContactName: "example_value",
+ *     email: "example_value@aaa.com",
+ * });
+ * const defaultAlertContactGroup = new alicloud.arms.AlertContactGroup("default", {
+ *     alertContactGroupName: "example_value",
+ *     contactIds: [_default.id],
+ * });
+ * const defaultDispatchRule = new alicloud.arms.DispatchRule("default", {
+ *     dispatchRuleName: "example_value",
+ *     dispatchType: "CREATE_ALERT",
+ *     groupRules: [{
+ *         groupWaitTime: 5,
+ *         groupInterval: 15,
+ *         repeatInterval: 100,
+ *         groupingFields: ["alertname"],
+ *     }],
+ *     labelMatchExpressionGrids: [{
+ *         labelMatchExpressionGroups: [{
+ *             labelMatchExpressions: [{
+ *                 key: "_aliyun_arms_involvedObject_kind",
+ *                 value: "app",
+ *                 operator: "eq",
+ *             }],
+ *         }],
+ *     }],
+ *     notifyRules: [{
+ *         notifyObjects: [
+ *             {
+ *                 notifyObjectId: _default.id,
+ *                 notifyType: "ARMS_CONTACT",
+ *                 name: "example_value",
+ *             },
+ *             {
+ *                 notifyObjectId: defaultAlertContactGroup.id,
+ *                 notifyType: "ARMS_CONTACT_GROUP",
+ *                 name: "example_value",
+ *             },
+ *         ],
+ *         notifyChannels: [
+ *             "dingTalk",
+ *             "wechat",
+ *         ],
+ *         notifyStartTime: "10:00",
+ *         notifyEndTime: "23:00",
+ *     }],
+ * });
  * const ids = alicloud.arms.getDispatchRules({});
  * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.arms.getDispatchRules({
- *     nameRegex: "^my-DispatchRule",
- * });
- * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
  */
 export function getDispatchRules(args?: GetDispatchRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetDispatchRulesResult> {
@@ -69,6 +112,9 @@ export interface GetDispatchRulesArgs {
  * A collection of values returned by getDispatchRules.
  */
 export interface GetDispatchRulesResult {
+    /**
+     * The name of the dispatch rule.
+     */
     readonly dispatchRuleName?: string;
     readonly enableDetails?: boolean;
     /**
@@ -77,14 +123,20 @@ export interface GetDispatchRulesResult {
     readonly id: string;
     readonly ids: string[];
     readonly nameRegex?: string;
+    /**
+     * A list of Dispatch Rule names.
+     */
     readonly names: string[];
     readonly outputFile?: string;
+    /**
+     * A list of Arms Dispatch Rules. Each element contains the following attributes:
+     */
     readonly rules: outputs.arms.GetDispatchRulesRule[];
 }
 /**
  * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
  *
- * > **NOTE:** Available in v1.136.0+.
+ * > **NOTE:** Available since v1.136.0.
  *
  * ## Example Usage
  *
@@ -94,12 +146,55 @@ export interface GetDispatchRulesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * const _default = new alicloud.arms.AlertContact("default", {
+ *     alertContactName: "example_value",
+ *     email: "example_value@aaa.com",
+ * });
+ * const defaultAlertContactGroup = new alicloud.arms.AlertContactGroup("default", {
+ *     alertContactGroupName: "example_value",
+ *     contactIds: [_default.id],
+ * });
+ * const defaultDispatchRule = new alicloud.arms.DispatchRule("default", {
+ *     dispatchRuleName: "example_value",
+ *     dispatchType: "CREATE_ALERT",
+ *     groupRules: [{
+ *         groupWaitTime: 5,
+ *         groupInterval: 15,
+ *         repeatInterval: 100,
+ *         groupingFields: ["alertname"],
+ *     }],
+ *     labelMatchExpressionGrids: [{
+ *         labelMatchExpressionGroups: [{
+ *             labelMatchExpressions: [{
+ *                 key: "_aliyun_arms_involvedObject_kind",
+ *                 value: "app",
+ *                 operator: "eq",
+ *             }],
+ *         }],
+ *     }],
+ *     notifyRules: [{
+ *         notifyObjects: [
+ *             {
+ *                 notifyObjectId: _default.id,
+ *                 notifyType: "ARMS_CONTACT",
+ *                 name: "example_value",
+ *             },
+ *             {
+ *                 notifyObjectId: defaultAlertContactGroup.id,
+ *                 notifyType: "ARMS_CONTACT_GROUP",
+ *                 name: "example_value",
+ *             },
+ *         ],
+ *         notifyChannels: [
+ *             "dingTalk",
+ *             "wechat",
+ *         ],
+ *         notifyStartTime: "10:00",
+ *         notifyEndTime: "23:00",
+ *     }],
+ * });
  * const ids = alicloud.arms.getDispatchRules({});
  * export const armsDispatchRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
- * const nameRegex = alicloud.arms.getDispatchRules({
- *     nameRegex: "^my-DispatchRule",
- * });
- * export const armsDispatchRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
  */
 export function getDispatchRulesOutput(args?: GetDispatchRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDispatchRulesResult> {

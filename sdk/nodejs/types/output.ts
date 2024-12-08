@@ -3660,9 +3660,17 @@ export namespace arms {
          */
         notifyChannels: string[];
         /**
+         * End time of notification.
+         */
+        notifyEndTime: string;
+        /**
          * Sets the notification object. See `notifyObjects` below.
          */
         notifyObjects: outputs.arms.DispatchRuleNotifyRuleNotifyObject[];
+        /**
+         * Start time of notification.
+         */
+        notifyStartTime: string;
     }
 
     export interface DispatchRuleNotifyRuleNotifyObject {
@@ -3675,7 +3683,7 @@ export namespace arms {
          */
         notifyObjectId: string;
         /**
-         * The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
+         * The type of the alert contact. Valid values: ARMS_ROBOT: robot. ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
          */
         notifyType: string;
     }
@@ -3742,6 +3750,41 @@ export namespace arms {
         webhook: string;
     }
 
+    export interface GetAlertRobotsRobot {
+        /**
+         * The creation time of the resource.
+         */
+        createTime: string;
+        /**
+         * Specifies whether the alert robot receives daily notifications.
+         */
+        dailyNoc: string;
+        /**
+         * The time of the daily notification.
+         */
+        dailyNocTime: string;
+        /**
+         * The ID of the Alert Robot.
+         */
+        id: string;
+        /**
+         * The webhook url of the robot.
+         */
+        robotAddr: string;
+        /**
+         * The id of the robot.
+         */
+        robotId: string;
+        /**
+         * The name of the robot.
+         */
+        robotName: string;
+        /**
+         * The robot type.
+         */
+        robotType: string;
+    }
+
     export interface GetDispatchRulesRule {
         /**
          * Dispatch rule ID.
@@ -3751,6 +3794,9 @@ export namespace arms {
          * The name of the dispatch rule.
          */
         dispatchRuleName: string;
+        /**
+         * The type of the dispatch rule.
+         */
         dispatchType: string;
         /**
          * Sets the event group.
@@ -3775,7 +3821,6 @@ export namespace arms {
     }
 
     export interface GetDispatchRulesRuleGroupRule {
-        groupId: number;
         /**
          * The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
          */
@@ -3825,13 +3870,21 @@ export namespace arms {
 
     export interface GetDispatchRulesRuleNotifyRule {
         /**
-         * The notification method.
+         * A list of notification methods.
          */
         notifyChannels: string[];
+        /**
+         * (Available since v1.237.0) End time of notification.
+         */
+        notifyEndTime: string;
         /**
          * Sets the notification object.
          */
         notifyObjects: outputs.arms.GetDispatchRulesRuleNotifyRuleNotifyObject[];
+        /**
+         * (Available since v1.237.0) Start time of notification.
+         */
+        notifyStartTime: string;
     }
 
     export interface GetDispatchRulesRuleNotifyRuleNotifyObject {
@@ -15174,6 +15227,21 @@ export namespace dataworks {
         projectId: string;
     }
 
+    export interface ProjectMemberRole {
+        /**
+         * Project Role Code.
+         */
+        code?: string;
+        /**
+         * project role name
+         */
+        name: string;
+        /**
+         * project role type
+         */
+        type: string;
+    }
+
 }
 
 export namespace dbs {
@@ -24125,6 +24193,13 @@ export namespace ecs {
          * The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
          */
         snapshotId?: string;
+    }
+
+    export interface InstanceImageOptions {
+        /**
+         * Whether to allow the instance logging in with the ecs-user user.
+         */
+        loginAsNonRoot?: boolean;
     }
 
     export interface InstanceMaintenanceTime {
@@ -39738,6 +39813,353 @@ export namespace oss {
         indexDocument: string;
     }
 
+    export interface BucketWebsiteErrorDocument {
+        /**
+         * The HTTP status code when the error page is returned. The default 404.
+         */
+        httpStatus?: number;
+        /**
+         * The error page file. If the Object accessed does not exist, this error page is returned.
+         */
+        key?: string;
+    }
+
+    export interface BucketWebsiteIndexDocument {
+        /**
+         * The default home page.
+         */
+        suffix?: string;
+        /**
+         * Whether to jump to the default home page of a subdirectory when accessing a subdirectory.
+         */
+        supportSubDir?: boolean;
+        /**
+         * After the default homepage is set, the behavior when an Object that ends with a non-forward slash (/) is accessed and the Object does not exist.
+         */
+        type?: string;
+    }
+
+    export interface BucketWebsiteRoutingRules {
+        /**
+         * Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routingRule` below.
+         */
+        routingRules?: outputs.oss.BucketWebsiteRoutingRulesRoutingRule[];
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRule {
+        /**
+         * Save the criteria that the rule needs to match. See `condition` below.
+         */
+        condition?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleCondition;
+        /**
+         * The Lua script configuration to be executed. See `luaConfig` below.
+         */
+        luaConfig?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleLuaConfig;
+        /**
+         * Specifies the action to perform after this rule is matched. See `redirect` below.
+         */
+        redirect?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirect;
+        /**
+         * The sequence number of the matching and executing jump rules. OSS matches rules according to this sequence number. If the match is successful, the rule is executed and subsequent rules are not executed.
+         */
+        ruleNumber?: number;
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleCondition {
+        /**
+         * When the specified Object is accessed, this status is returned to match this rule. This field must be 404 when the jump rule is mirrored back to the source.
+         */
+        httpErrorCodeReturnedEquals?: string;
+        /**
+         * This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `includeHeaders` below.
+         */
+        includeHeaders?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader[];
+        /**
+         * Only objects that match this prefix can match this rule.
+         */
+        keyPrefixEquals?: string;
+        /**
+         * Only objects that match this suffix can match this rule.
+         */
+        keySuffixEquals?: string;
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
+        /**
+         * This rule can only be matched if the request contains the Header specified by Key and the value ends with this value.
+         */
+        endsWith?: string;
+        /**
+         * This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
+         */
+        equals?: string;
+        key?: string;
+        /**
+         * This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
+         */
+        startsWith?: string;
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleLuaConfig {
+        /**
+         * The Lua script name.
+         */
+        script?: string;
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirect {
+        /**
+         * If this field is set to true, the prefix of Object is replaced with the value specified by ReplaceKeyPrefixWith. If this field is not specified or is blank, the Object prefix is truncated.
+         */
+        enableReplacePrefix?: boolean;
+        /**
+         * The domain name during the jump. The domain name must comply with the domain name specification.
+         */
+        hostName?: string;
+        /**
+         * The status code returned during the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+         */
+        httpRedirectCode?: string;
+        /**
+         * Image back-to-source allows getting Image information
+         */
+        mirrorAllowGetImageInfo?: boolean;
+        /**
+         * Whether to allow HeadObject in image back-to-source
+         */
+        mirrorAllowHeadObject?: boolean;
+        /**
+         * Mirror back-to-source allows support for video frame truncation
+         */
+        mirrorAllowVideoSnapshot?: boolean;
+        /**
+         * The status code of the mirror back-to-source trigger asynchronous pull mode.
+         */
+        mirrorAsyncStatus?: number;
+        /**
+         * Image back Source station authentication information See `mirrorAuth` below.
+         */
+        mirrorAuth?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth;
+        /**
+         * Whether to check the MD5 of the source body. It takes effect only when the RedirectType is set to Mirror.
+         */
+        mirrorCheckMd5?: boolean;
+        /**
+         * Mirrored back-to-source high-speed Channel vpregion
+         */
+        mirrorDstRegion?: string;
+        /**
+         * Mirroring back-to-source high-speed Channel standby station VpcId
+         */
+        mirrorDstSlaveVpcId?: string;
+        /**
+         * Mirror back-to-source high-speed Channel VpcId
+         */
+        mirrorDstVpcId?: string;
+        /**
+         * If the result of the image back-to-source acquisition is 3xx, whether to continue to jump to the specified Location to obtain data. It takes effect only when the RedirectType is set to Mirror.
+         */
+        mirrorFollowRedirect?: boolean;
+        /**
+         * Specifies the Header carried when the image returns to the source. It takes effect only when the RedirectType is set to Mirror. See `mirrorHeaders` below.
+         */
+        mirrorHeaders?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders;
+        /**
+         * Whether it is a mirror back-to-source high-speed Channel
+         */
+        mirrorIsExpressTunnel?: boolean;
+        /**
+         * Mirror back-to-source multi-source station configuration container. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorMultiAlternates` below.
+         */
+        mirrorMultiAlternates: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates;
+        /**
+         * Transparent transmission/to source Station
+         */
+        mirrorPassOriginalSlashes?: boolean;
+        /**
+         * Same as PassQueryString and takes precedence over PassQueryString. It takes effect only when the RedirectType is set to Mirror.
+         */
+        mirrorPassQueryString?: boolean;
+        /**
+         * Whether mirroring back to source does not save data
+         */
+        mirrorProxyPass?: boolean;
+        /**
+         * The container that saves the image back to the source and returns the response header rule. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorReturnHeaders` below.
+         */
+        mirrorReturnHeaders: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders;
+        /**
+         * Roles used when mirroring back-to-source
+         */
+        mirrorRole?: string;
+        /**
+         * Mirror back-to-source back-to-source OSS automatically saves user metadata
+         */
+        mirrorSaveOssMeta?: boolean;
+        /**
+         * Transparent transmission of SNI
+         */
+        mirrorSni?: boolean;
+        /**
+         * It is used to judge the status of active-standby switching. The judgment logic of active-standby switching is that the source station returns an error. If MirrorSwitchAllErrors is true, it is considered a failure except the following status code: 200,206,301,302,303,307,404; If false, only the source Station Returns 5xx or times out is considered a failure.
+         */
+        mirrorSwitchAllErrors?: boolean;
+        /**
+         * Save the label according to the parameters when saving the file from the mirror back to the source. **NOTE:**: If you want to clean one configuration, you must set the configuration to empty value, removing from code cannot make effect. See `mirrorTaggings` below.
+         */
+        mirrorTaggings: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings;
+        /**
+         * Mirror back-to-source leased line back-to-source tunnel ID
+         */
+        mirrorTunnelId?: string;
+        /**
+         * The address of the origin of the image. It takes effect only when the RedirectType is set to Mirror. The origin address must start with http:// or https:// and end with a forward slash (/). OSS takes the Object name after the Origin address to form the origin URL.
+         */
+        mirrorUrl?: string;
+        /**
+         * Mirror back-to-source Master-backup back-to-source switching decision URL
+         */
+        mirrorUrlProbe?: string;
+        /**
+         * Mirror back-to-source primary backup back-to-source backup station URL
+         */
+        mirrorUrlSlave?: string;
+        /**
+         * Whether the source station LastModifiedTime is used for the image back-to-source save file.
+         */
+        mirrorUserLastModified?: boolean;
+        /**
+         * Whether to use role for mirroring back to source
+         */
+        mirrorUsingRole?: boolean;
+        /**
+         * Whether to carry the request parameters when executing the jump or mirror back-to-source rule. Did the user carry the request parameters when requesting OSS? a = B & c = d, and set PassQueryString to true. If the rule is a 302 jump, this request parameter is added to the Location header of the jump. For example Location:example.com? a = B & c = d, and the jump type is mirrored back-to-origin, this request parameter is also carried in the back-to-origin request initiated. Values: true, false (default)
+         */
+        passQueryString?: boolean;
+        /**
+         * The protocol at the time of the jump. It takes effect only when the RedirectType is set to External or AliCDN.
+         */
+        protocol?: string;
+        /**
+         * Specifies the type of jump. The value range is as follows: Mirror: Mirror back to the source. External: External redirects, that is, OSS returns a 3xx request to redirect to another address. AliCDN: Alibaba Cloud CDN jump, mainly used for Alibaba Cloud CDN. Unlike External, OSS adds an additional Header. After recognizing this Header, Alibaba Cloud CDN redirects the data to the specified address and returns the obtained data to the user instead of returning the 3xx Redirection request to the user.
+         */
+        redirectType?: string;
+        /**
+         * The prefix of the Object name will be replaced with this value during Redirect. If the prefix is empty, this string is inserted in front of the Object name.
+         */
+        replaceKeyPrefixWith?: string;
+        /**
+         * During redirection, the Object name is replaced with the value specified by ReplaceKeyWith. You can set variables in ReplaceKeyWith. Currently, the supported variable is ${key}, which indicates the name of the Object in the request.
+         */
+        replaceKeyWith?: string;
+        /**
+         * Mirror back-to-source transparent source station response code list
+         */
+        transparentMirrorResponseCodes?: string;
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorAuth {
+        /**
+         * Mirror back-to-source source Station back-to-source AK
+         */
+        accessKeyId?: string;
+        /**
+         * Mirroring back to the source station back to the source SK will be automatically desensitized when obtaining the configuration.
+         */
+        accessKeySecret?: string;
+        /**
+         * Authentication type of mirror return Source
+         */
+        authType?: string;
+        /**
+         * Signature Region
+         */
+        region?: string;
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeaders {
+        /**
+         * Indicates whether other headers except the following headers are transmitted to the source site. It takes effect only when the RedirectType is set to Mirror. content-length, authorization2, authorization, range, date, and other headers Headers whose names start with oss-/x-oss-/x-drs-
+         */
+        passAll?: boolean;
+        /**
+         * Pass through the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+         */
+        passes?: string[];
+        /**
+         * Do not pass the specified Header to the source site. It takes effect only when the RedirectType is set to Mirror. Each Header is up to 1024 bytes in length and has A character set of 0 to 9, a to Z, A to z, and dashes (-).
+         */
+        removes?: string[];
+        /**
+         * Set a Header to send to the source site. Regardless of whether the request contains the specified Header, these headers will be set when returning to the source site. It takes effect only when the RedirectType is set to Mirror. See `set` below.
+         */
+        sets?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet[];
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorHeadersSet {
+        key?: string;
+        /**
+         * Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+         */
+        value?: string;
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternates {
+        /**
+         * Mirror back-to-source multi-source station configuration list See `mirrorMultiAlternate` below.
+         */
+        mirrorMultiAlternates?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate[];
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorMultiAlternatesMirrorMultiAlternate {
+        /**
+         * Mirroring back-to-source multi-station Region
+         */
+        mirrorMultiAlternateDstRegion?: string;
+        /**
+         * Image back-to-source multi-source station serial number
+         */
+        mirrorMultiAlternateNumber?: number;
+        /**
+         * Mirroring back-to-source multi-source site URL
+         */
+        mirrorMultiAlternateUrl?: string;
+        /**
+         * Mirroring back-to-source multi-source VpcId
+         */
+        mirrorMultiAlternateVpcId?: string;
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeaders {
+        /**
+         * The list of response header rules for mirroring back-to-source return. See `returnHeader` below.
+         */
+        returnHeaders?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader[];
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader {
+        key?: string;
+        /**
+         * Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+         */
+        value?: string;
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggings {
+        /**
+         * Image back-to-source save label rule list See `taggings` below.
+         */
+        taggings?: outputs.oss.BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging[];
+    }
+
+    export interface BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging {
+        key?: string;
+        /**
+         * Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
+         */
+        value?: string;
+    }
+
     export interface GetBucketObjectsObject {
         /**
          * Object access control list. Possible values: `default`, `private`, `public-read` and `public-read-write`.
@@ -40705,7 +41127,7 @@ export namespace polardb {
          */
         description: string;
         /**
-         * Database type. Options are `MySQL`, `Oracle` and `PostgreSQL`. If no value is specified, all types are returned.
+         * The database engine of the cluster, example: POLARDB.
          */
         engine: string;
         /**
@@ -49670,6 +50092,118 @@ export namespace sls {
          * When the resource directory is configured in the custom mode, the corresponding member account list
          */
         members?: string[];
+    }
+
+    export interface OssExportSinkConfiguration {
+        /**
+         * The beginning of the time range to ship data. The value 1 specifies that the data shipping job ships data from the first log in the Logstore. Example value: 1718380800
+         */
+        fromTime: number;
+        /**
+         * The name of the Logstore.
+         */
+        logstore: string;
+        /**
+         * The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+         */
+        roleArn: string;
+        /**
+         * The configurations of the Object Storage Service (OSS) data shipping job. See `sink` below.
+         */
+        sink: outputs.sls.OssExportSinkConfigurationSink;
+        /**
+         * The end of the time range to ship data. The value 0 specifies that the data shipping job continuously ships data until the job is manually stopped. Example value: 1718380800
+         */
+        toTime: number;
+    }
+
+    export interface OssExportSinkConfigurationSink {
+        /**
+         * The OSS bucket.
+         */
+        bucket: string;
+        /**
+         * The interval between two data shipping operations. Valid values: 300 to 900. Unit: seconds.
+         */
+        bufferInterval: string;
+        /**
+         * The size of the OSS object to which data is shipped. Valid values: 5 to 256. Unit: MB.
+         */
+        bufferSize: string;
+        /**
+         * Supports four compression types, such as snappy, gzip, zstd, and none.
+         */
+        compressionType: string;
+        /**
+         * The OSS file content details. Note: the value of this parameter should be updated based on the value of the contentType parameter.
+         *
+         * If the contentType value is JSON, the parameters of the contentDetail value are as follows:
+         *
+         * If the tag is allowed to be posted, the value of the parameter enableTag is true. Example:{"enableTag": true}
+         *
+         * You are not allowed to post tags. The value of the parameter enableTag is false. Example:{"enableTag": false}
+         *
+         * If the contentType value is csv, the parameters of the contentDetail value are as follows:
+         *
+         * The parameter columns is the key of the log in the source logstore.
+         *
+         * The delimiter parameter, which can be ",","|","", or "\t".
+         *
+         * The header parameter determines whether the OSS file retains the header. The optional value is true or false.
+         *
+         * The lineFeed parameter. Optional values are "\t", "\n", or "".
+         *
+         * The invalid field content parameter is null to specify the delivery content when the field name does not exist.
+         *
+         * The escape character parameter "quote". Optional values are "" "," '", or" ".
+         *
+         * Example:{"null": "-", "header": false, "lineFeed": "\n", "quote": "", "delimiter": ",", "columns": ["a", "B", "c", "d"]}
+         *
+         * When the contentType value is parquet, the parameters of the contentDetail value are as follows:
+         *
+         * The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+         *
+         * When the contentType value is set to orc, the parameters of the contentDetail value are as follows:
+         *
+         * The columns parameter is the key of the log in the source Logstore and must carry the data type of the key, for example:{"columns": [{"name": "a", "type": "string"}, {"name": "B", "type": "string"}, {"name": "c", "type": "string": "string"}]}
+         */
+        contentDetail: string;
+        /**
+         * The storage format of the OSS object. Valid values: json, parquet, csv, and orc.
+         */
+        contentType: string;
+        /**
+         * The latency of data shipping. The value of this parameter cannot exceed the data retention period of the source Logstore.
+         */
+        delaySeconds?: number;
+        /**
+         * The OSS Endpoint can only be an OSS intranet Endpoint and only supports the same region. Example value: https://oss-cn-hangzhou-internal.aliyuncs.com
+         */
+        endpoint: string;
+        /**
+         * The directory is dynamically generated according to the time. The default value is% Y/%m/%d/%H/%M. The corresponding generated directory is, for example, 2017/01/23/12/00. Note that the partition format cannot start and end. Example values:%Y/%m/%d
+         */
+        pathFormat?: string;
+        /**
+         * The partition format type. only support time
+         */
+        pathFormatType?: string;
+        /**
+         * The prefix of the OSS object.
+         */
+        prefix?: string;
+        /**
+         * The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
+         */
+        roleArn: string;
+        /**
+         * The suffix of the OSS object.
+         */
+        suffix?: string;
+        /**
+         * The time zone. Example value: +0800
+         */
+        timeZone: string;
     }
 
     export interface ScheduledSqlSchedule {

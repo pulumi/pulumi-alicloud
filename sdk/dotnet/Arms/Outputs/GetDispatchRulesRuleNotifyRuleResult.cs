@@ -14,22 +14,36 @@ namespace Pulumi.AliCloud.Arms.Outputs
     public sealed class GetDispatchRulesRuleNotifyRuleResult
     {
         /// <summary>
-        /// The notification method.
+        /// A list of notification methods.
         /// </summary>
         public readonly ImmutableArray<string> NotifyChannels;
+        /// <summary>
+        /// (Available since v1.237.0) End time of notification.
+        /// </summary>
+        public readonly string NotifyEndTime;
         /// <summary>
         /// Sets the notification object.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult> NotifyObjects;
+        /// <summary>
+        /// (Available since v1.237.0) Start time of notification.
+        /// </summary>
+        public readonly string NotifyStartTime;
 
         [OutputConstructor]
         private GetDispatchRulesRuleNotifyRuleResult(
             ImmutableArray<string> notifyChannels,
 
-            ImmutableArray<Outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult> notifyObjects)
+            string notifyEndTime,
+
+            ImmutableArray<Outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult> notifyObjects,
+
+            string notifyStartTime)
         {
             NotifyChannels = notifyChannels;
+            NotifyEndTime = notifyEndTime;
             NotifyObjects = notifyObjects;
+            NotifyStartTime = notifyStartTime;
         }
     }
 }

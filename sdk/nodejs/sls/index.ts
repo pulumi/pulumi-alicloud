@@ -15,6 +15,11 @@ export type CollectionPolicy = import("./collectionPolicy").CollectionPolicy;
 export const CollectionPolicy: typeof import("./collectionPolicy").CollectionPolicy = null as any;
 utilities.lazyLoad(exports, ["CollectionPolicy"], () => require("./collectionPolicy"));
 
+export { OssExportSinkArgs, OssExportSinkState } from "./ossExportSink";
+export type OssExportSink = import("./ossExportSink").OssExportSink;
+export const OssExportSink: typeof import("./ossExportSink").OssExportSink = null as any;
+utilities.lazyLoad(exports, ["OssExportSink"], () => require("./ossExportSink"));
+
 export { ScheduledSqlArgs, ScheduledSqlState } from "./scheduledSql";
 export type ScheduledSql = import("./scheduledSql").ScheduledSql;
 export const ScheduledSql: typeof import("./scheduledSql").ScheduledSql = null as any;
@@ -29,6 +34,8 @@ const _module = {
                 return new Alert(name, <any>undefined, { urn })
             case "alicloud:sls/collectionPolicy:CollectionPolicy":
                 return new CollectionPolicy(name, <any>undefined, { urn })
+            case "alicloud:sls/ossExportSink:OssExportSink":
+                return new OssExportSink(name, <any>undefined, { urn })
             case "alicloud:sls/scheduledSql:ScheduledSql":
                 return new ScheduledSql(name, <any>undefined, { urn })
             default:
@@ -38,4 +45,5 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "sls/alert", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/collectionPolicy", _module)
+pulumi.runtime.registerResourceModule("alicloud", "sls/ossExportSink", _module)
 pulumi.runtime.registerResourceModule("alicloud", "sls/scheduledSql", _module)

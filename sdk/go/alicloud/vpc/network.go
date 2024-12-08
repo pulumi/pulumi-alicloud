@@ -86,7 +86,7 @@ type Network struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether to perform a dry run. Valid values:
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// Specifies whether to enable IPv6. Valid values:
 	EnableIpv6 pulumi.BoolPtrOutput `pulumi:"enableIpv6"`
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId pulumi.StringPtrOutput `pulumi:"ipv4IpamPoolId"`
@@ -184,7 +184,7 @@ type networkState struct {
 	Description *string `pulumi:"description"`
 	// Specifies whether to perform a dry run. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// Specifies whether to enable IPv6. Valid values:
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId *string `pulumi:"ipv4IpamPoolId"`
@@ -253,7 +253,7 @@ type NetworkState struct {
 	Description pulumi.StringPtrInput
 	// Specifies whether to perform a dry run. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// Specifies whether to enable IPv6. Valid values:
 	EnableIpv6 pulumi.BoolPtrInput
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId pulumi.StringPtrInput
@@ -324,7 +324,7 @@ type networkArgs struct {
 	Description *string `pulumi:"description"`
 	// Specifies whether to perform a dry run. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// Specifies whether to enable IPv6. Valid values:
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId *string `pulumi:"ipv4IpamPoolId"`
@@ -380,7 +380,7 @@ type NetworkArgs struct {
 	Description pulumi.StringPtrInput
 	// Specifies whether to perform a dry run. Valid values:
 	DryRun pulumi.BoolPtrInput
-	// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+	// Specifies whether to enable IPv6. Valid values:
 	EnableIpv6 pulumi.BoolPtrInput
 	// The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
 	Ipv4IpamPoolId pulumi.StringPtrInput
@@ -538,7 +538,7 @@ func (o NetworkOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the VPC. The name must be 1 to 128 characters in length and cannot start with `http://` or `https://`.
+// Specifies whether to enable IPv6. Valid values:
 func (o NetworkOutput) EnableIpv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.EnableIpv6 }).(pulumi.BoolPtrOutput)
 }

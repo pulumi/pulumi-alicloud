@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Data Works Project resource.
  *
- * For information about Data Works Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/dataworks/developer-reference/api-dataworks-public-2020-05-18-createproject).
+ * For information about Data Works Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/).
  *
  * > **NOTE:** Available since v1.229.0.
  *
@@ -22,16 +22,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const _default = new random.index.Integer("default", {
- *     min: 10000,
- *     max: 99999,
+ * const randint = new random.index.Integer("randint", {
+ *     max: 999,
+ *     min: 1,
  * });
+ * const default = alicloud.resourcemanager.getResourceGroups({});
  * const defaultProject = new alicloud.dataworks.Project("default", {
- *     projectName: `${name}_${_default.result}`,
- *     projectMode: 2,
- *     description: `${name}_${_default.result}`,
- *     displayName: `${name}_${_default.result}`,
- *     status: "0",
+ *     status: "Available",
+ *     description: "tf_desc",
+ *     projectName: `${name}${randint.id}`,
+ *     paiTaskEnabled: false,
+ *     displayName: "tf_new_api_display",
+ *     devRoleDisabled: true,
+ *     devEnvironmentEnabled: false,
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  * });
  * ```
  *
@@ -72,31 +76,41 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * The creation time of the resource
+     * Workspace Description
      */
-    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Description of the workspace
+     * Is Development Environment Enabled
      */
-    public readonly description!: pulumi.Output<string>;
+    public readonly devEnvironmentEnabled!: pulumi.Output<boolean>;
     /**
-     * The display name of the workspace.
+     * Is Development Role Disabled
+     */
+    public readonly devRoleDisabled!: pulumi.Output<boolean>;
+    /**
+     * Workspace Display Name
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The mode of the workspace, with the following values:
-     * - 2, indicates the simple workspace mode.
-     * - 3, indicating the standard workspace mode.
+     * Create PAI Workspace Together
      */
-    public readonly projectMode!: pulumi.Output<number | undefined>;
+    public readonly paiTaskEnabled!: pulumi.Output<boolean>;
     /**
-     * Immutable Name of the workspace.
+     * Workspace Name
      */
     public readonly projectName!: pulumi.Output<string>;
     /**
-     * The status of the resource
+     * Aliyun Resource Group Id
+     */
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * Workspace Status
      */
     public readonly status!: pulumi.Output<string>;
+    /**
+     * Aliyun Resource Tag
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -111,29 +125,35 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["devEnvironmentEnabled"] = state ? state.devEnvironmentEnabled : undefined;
+            resourceInputs["devRoleDisabled"] = state ? state.devRoleDisabled : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["projectMode"] = state ? state.projectMode : undefined;
+            resourceInputs["paiTaskEnabled"] = state ? state.paiTaskEnabled : undefined;
             resourceInputs["projectName"] = state ? state.projectName : undefined;
+            resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'description'");
-            }
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
+            }
+            if ((!args || args.paiTaskEnabled === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'paiTaskEnabled'");
             }
             if ((!args || args.projectName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectName'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["devEnvironmentEnabled"] = args ? args.devEnvironmentEnabled : undefined;
+            resourceInputs["devRoleDisabled"] = args ? args.devRoleDisabled : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["projectMode"] = args ? args.projectMode : undefined;
+            resourceInputs["paiTaskEnabled"] = args ? args.paiTaskEnabled : undefined;
             resourceInputs["projectName"] = args ? args.projectName : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
-            resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["tags"] = args ? args.tags : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Project.__pulumiType, name, resourceInputs, opts);
@@ -145,31 +165,41 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * The creation time of the resource
-     */
-    createTime?: pulumi.Input<string>;
-    /**
-     * Description of the workspace
+     * Workspace Description
      */
     description?: pulumi.Input<string>;
     /**
-     * The display name of the workspace.
+     * Is Development Environment Enabled
+     */
+    devEnvironmentEnabled?: pulumi.Input<boolean>;
+    /**
+     * Is Development Role Disabled
+     */
+    devRoleDisabled?: pulumi.Input<boolean>;
+    /**
+     * Workspace Display Name
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The mode of the workspace, with the following values:
-     * - 2, indicates the simple workspace mode.
-     * - 3, indicating the standard workspace mode.
+     * Create PAI Workspace Together
      */
-    projectMode?: pulumi.Input<number>;
+    paiTaskEnabled?: pulumi.Input<boolean>;
     /**
-     * Immutable Name of the workspace.
+     * Workspace Name
      */
     projectName?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * Aliyun Resource Group Id
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Workspace Status
      */
     status?: pulumi.Input<string>;
+    /**
+     * Aliyun Resource Tag
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -177,25 +207,39 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * Description of the workspace
+     * Workspace Description
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
-     * The display name of the workspace.
+     * Is Development Environment Enabled
+     */
+    devEnvironmentEnabled?: pulumi.Input<boolean>;
+    /**
+     * Is Development Role Disabled
+     */
+    devRoleDisabled?: pulumi.Input<boolean>;
+    /**
+     * Workspace Display Name
      */
     displayName: pulumi.Input<string>;
     /**
-     * The mode of the workspace, with the following values:
-     * - 2, indicates the simple workspace mode.
-     * - 3, indicating the standard workspace mode.
+     * Create PAI Workspace Together
      */
-    projectMode?: pulumi.Input<number>;
+    paiTaskEnabled: pulumi.Input<boolean>;
     /**
-     * Immutable Name of the workspace.
+     * Workspace Name
      */
     projectName: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * Aliyun Resource Group Id
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * Workspace Status
      */
     status?: pulumi.Input<string>;
+    /**
+     * Aliyun Resource Tag
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

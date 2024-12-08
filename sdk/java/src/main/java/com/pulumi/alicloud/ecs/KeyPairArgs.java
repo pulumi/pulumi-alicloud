@@ -35,10 +35,10 @@ public final class KeyPairArgs extends com.pulumi.resources.ResourceArgs {
      * The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+     * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
      * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
     @Import(name="keyName")
     private @Nullable Output<String> keyName;
 
@@ -46,10 +46,10 @@ public final class KeyPairArgs extends com.pulumi.resources.ResourceArgs {
      * @return The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
-     * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+     * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
      * 
      */
-    @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+    @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
     public Optional<Output<String>> keyName() {
         return Optional.ofNullable(this.keyName);
     }
@@ -162,10 +162,10 @@ public final class KeyPairArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+         * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
          * 
          */
-        @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+        @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
         public Builder keyName(@Nullable Output<String> keyName) {
             $.keyName = keyName;
             return this;
@@ -177,10 +177,10 @@ public final class KeyPairArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
+         * Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead.
          * 
          */
-        @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
+        @Deprecated /* Field `key_name` has been deprecated from provider version 1.121.0. New field `key_pair_name` instead. */
         public Builder keyName(String keyName) {
             return keyName(Output.of(keyName));
         }

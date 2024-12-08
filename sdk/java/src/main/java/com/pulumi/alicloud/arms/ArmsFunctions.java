@@ -8,6 +8,8 @@ import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsArgs;
 import com.pulumi.alicloud.arms.inputs.GetAlertContactGroupsPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetAlertContactsArgs;
 import com.pulumi.alicloud.arms.inputs.GetAlertContactsPlainArgs;
+import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
+import com.pulumi.alicloud.arms.inputs.GetAlertRobotsPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
 import com.pulumi.alicloud.arms.inputs.GetDispatchRulesPlainArgs;
 import com.pulumi.alicloud.arms.inputs.GetIntegrationExportersArgs;
@@ -24,6 +26,7 @@ import com.pulumi.alicloud.arms.inputs.GetRemoteWritesArgs;
 import com.pulumi.alicloud.arms.inputs.GetRemoteWritesPlainArgs;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactGroupsResult;
 import com.pulumi.alicloud.arms.outputs.GetAlertContactsResult;
+import com.pulumi.alicloud.arms.outputs.GetAlertRobotsResult;
 import com.pulumi.alicloud.arms.outputs.GetDispatchRulesResult;
 import com.pulumi.alicloud.arms.outputs.GetIntegrationExportersResult;
 import com.pulumi.alicloud.arms.outputs.GetPrometheisResult;
@@ -621,9 +624,9 @@ public final class ArmsFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:arms/getAlertContacts:getAlertContacts", TypeShape.of(GetAlertContactsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
+     * This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.237.0.
      * 
      * ## Example Usage
      * 
@@ -637,8 +640,10 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertRobot;
+     * import com.pulumi.alicloud.arms.AlertRobotArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
-     * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -652,16 +657,396 @@ public final class ArmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         var default_ = new AlertRobot("default", AlertRobotArgs.builder()
+     *             .alertRobotName("my-AlertRobot")
+     *             .robotType("wechat")
+     *             .robotAddr("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1c704e23")
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getAlertRobots(GetAlertRobotsArgs.builder()
+     *             .alertRobotName(default_.alertRobotName())
+     *             .build());
+     * 
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlertRobotsResult> getAlertRobots() {
+        return getAlertRobots(GetAlertRobotsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.237.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertRobot;
+     * import com.pulumi.alicloud.arms.AlertRobotArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new AlertRobot("default", AlertRobotArgs.builder()
+     *             .alertRobotName("my-AlertRobot")
+     *             .robotType("wechat")
+     *             .robotAddr("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1c704e23")
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getAlertRobots(GetAlertRobotsArgs.builder()
+     *             .alertRobotName(default_.alertRobotName())
+     *             .build());
+     * 
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAlertRobotsResult> getAlertRobotsPlain() {
+        return getAlertRobotsPlain(GetAlertRobotsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.237.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertRobot;
+     * import com.pulumi.alicloud.arms.AlertRobotArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new AlertRobot("default", AlertRobotArgs.builder()
+     *             .alertRobotName("my-AlertRobot")
+     *             .robotType("wechat")
+     *             .robotAddr("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1c704e23")
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getAlertRobots(GetAlertRobotsArgs.builder()
+     *             .alertRobotName(default_.alertRobotName())
+     *             .build());
+     * 
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlertRobotsResult> getAlertRobots(GetAlertRobotsArgs args) {
+        return getAlertRobots(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.237.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertRobot;
+     * import com.pulumi.alicloud.arms.AlertRobotArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new AlertRobot("default", AlertRobotArgs.builder()
+     *             .alertRobotName("my-AlertRobot")
+     *             .robotType("wechat")
+     *             .robotAddr("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1c704e23")
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getAlertRobots(GetAlertRobotsArgs.builder()
+     *             .alertRobotName(default_.alertRobotName())
+     *             .build());
+     * 
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAlertRobotsResult> getAlertRobotsPlain(GetAlertRobotsPlainArgs args) {
+        return getAlertRobotsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.237.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertRobot;
+     * import com.pulumi.alicloud.arms.AlertRobotArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new AlertRobot("default", AlertRobotArgs.builder()
+     *             .alertRobotName("my-AlertRobot")
+     *             .robotType("wechat")
+     *             .robotAddr("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1c704e23")
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getAlertRobots(GetAlertRobotsArgs.builder()
+     *             .alertRobotName(default_.alertRobotName())
+     *             .build());
+     * 
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAlertRobotsResult> getAlertRobots(GetAlertRobotsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("alicloud:arms/getAlertRobots:getAlertRobots", TypeShape.of(GetAlertRobotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Alert Robots of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.237.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertRobot;
+     * import com.pulumi.alicloud.arms.AlertRobotArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetAlertRobotsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var default_ = new AlertRobot("default", AlertRobotArgs.builder()
+     *             .alertRobotName("my-AlertRobot")
+     *             .robotType("wechat")
+     *             .robotAddr("https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=1c704e23")
+     *             .build());
+     * 
+     *         final var nameRegex = ArmsFunctions.getAlertRobots(GetAlertRobotsArgs.builder()
+     *             .alertRobotName(default_.alertRobotName())
+     *             .build());
+     * 
+     *         ctx.export("armsAlertRobotId", nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult).applyValue(nameRegex -> nameRegex.applyValue(getAlertRobotsResult -> getAlertRobotsResult.robots()[0].id())));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAlertRobotsResult> getAlertRobotsPlain(GetAlertRobotsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("alicloud:arms/getAlertRobots:getAlertRobots", TypeShape.of(GetAlertRobotsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
+     * 
+     * &gt; **NOTE:** Available since v1.136.0.
+     * 
+     * ## Example Usage
+     * 
+     * Basic Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertContact;
+     * import com.pulumi.alicloud.arms.AlertContactArgs;
+     * import com.pulumi.alicloud.arms.AlertContactGroup;
+     * import com.pulumi.alicloud.arms.AlertContactGroupArgs;
+     * import com.pulumi.alicloud.arms.DispatchRule;
+     * import com.pulumi.alicloud.arms.DispatchRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
+     * import com.pulumi.alicloud.arms.ArmsFunctions;
+     * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         var default_ = new AlertContact("default", AlertContactArgs.builder()
+     *             .alertContactName("example_value")
+     *             .email("example_value}{@literal @}{@code aaa.com")
+     *             .build());
+     * 
+     *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()
+     *             .alertContactGroupName("example_value")
+     *             .contactIds(default_.id())
+     *             .build());
+     * 
+     *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()
+     *             .dispatchRuleName("example_value")
+     *             .dispatchType("CREATE_ALERT")
+     *             .groupRules(DispatchRuleGroupRuleArgs.builder()
+     *                 .groupWaitTime(5)
+     *                 .groupInterval(15)
+     *                 .repeatInterval(100)
+     *                 .groupingFields("alertname")
+     *                 .build())
+     *             .labelMatchExpressionGrids(DispatchRuleLabelMatchExpressionGridArgs.builder()
+     *                 .labelMatchExpressionGroups(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs.builder()
+     *                     .labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs.builder()
+     *                         .key("_aliyun_arms_involvedObject_kind")
+     *                         .value("app")
+     *                         .operator("eq")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .notifyRules(DispatchRuleNotifyRuleArgs.builder()
+     *                 .notifyObjects(                
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(default_.id())
+     *                         .notifyType("ARMS_CONTACT")
+     *                         .name("example_value")
+     *                         .build(),
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(defaultAlertContactGroup.id())
+     *                         .notifyType("ARMS_CONTACT_GROUP")
+     *                         .name("example_value")
+     *                         .build())
+     *                 .notifyChannels(                
+     *                     "dingTalk",
+     *                     "wechat")
+     *                 .notifyStartTime("10:00")
+     *                 .notifyEndTime("23:00")
+     *                 .build())
+     *             .build());
+     * 
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
      *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex("^my-DispatchRule")
-     *             .build());
-     * 
-     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -673,7 +1058,7 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -687,6 +1072,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertContact;
+     * import com.pulumi.alicloud.arms.AlertContactArgs;
+     * import com.pulumi.alicloud.arms.AlertContactGroup;
+     * import com.pulumi.alicloud.arms.AlertContactGroupArgs;
+     * import com.pulumi.alicloud.arms.DispatchRule;
+     * import com.pulumi.alicloud.arms.DispatchRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.List;
@@ -696,22 +1090,65 @@ public final class ArmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         var default_ = new AlertContact("default", AlertContactArgs.builder()
+     *             .alertContactName("example_value")
+     *             .email("example_value}{@literal @}{@code aaa.com")
+     *             .build());
+     * 
+     *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()
+     *             .alertContactGroupName("example_value")
+     *             .contactIds(default_.id())
+     *             .build());
+     * 
+     *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()
+     *             .dispatchRuleName("example_value")
+     *             .dispatchType("CREATE_ALERT")
+     *             .groupRules(DispatchRuleGroupRuleArgs.builder()
+     *                 .groupWaitTime(5)
+     *                 .groupInterval(15)
+     *                 .repeatInterval(100)
+     *                 .groupingFields("alertname")
+     *                 .build())
+     *             .labelMatchExpressionGrids(DispatchRuleLabelMatchExpressionGridArgs.builder()
+     *                 .labelMatchExpressionGroups(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs.builder()
+     *                     .labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs.builder()
+     *                         .key("_aliyun_arms_involvedObject_kind")
+     *                         .value("app")
+     *                         .operator("eq")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .notifyRules(DispatchRuleNotifyRuleArgs.builder()
+     *                 .notifyObjects(                
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(default_.id())
+     *                         .notifyType("ARMS_CONTACT")
+     *                         .name("example_value")
+     *                         .build(),
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(defaultAlertContactGroup.id())
+     *                         .notifyType("ARMS_CONTACT_GROUP")
+     *                         .name("example_value")
+     *                         .build())
+     *                 .notifyChannels(                
+     *                     "dingTalk",
+     *                     "wechat")
+     *                 .notifyStartTime("10:00")
+     *                 .notifyEndTime("23:00")
+     *                 .build())
+     *             .build());
+     * 
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
      *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex("^my-DispatchRule")
-     *             .build());
-     * 
-     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -723,7 +1160,7 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -737,6 +1174,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertContact;
+     * import com.pulumi.alicloud.arms.AlertContactArgs;
+     * import com.pulumi.alicloud.arms.AlertContactGroup;
+     * import com.pulumi.alicloud.arms.AlertContactGroupArgs;
+     * import com.pulumi.alicloud.arms.DispatchRule;
+     * import com.pulumi.alicloud.arms.DispatchRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.List;
@@ -746,22 +1192,65 @@ public final class ArmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         var default_ = new AlertContact("default", AlertContactArgs.builder()
+     *             .alertContactName("example_value")
+     *             .email("example_value}{@literal @}{@code aaa.com")
+     *             .build());
+     * 
+     *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()
+     *             .alertContactGroupName("example_value")
+     *             .contactIds(default_.id())
+     *             .build());
+     * 
+     *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()
+     *             .dispatchRuleName("example_value")
+     *             .dispatchType("CREATE_ALERT")
+     *             .groupRules(DispatchRuleGroupRuleArgs.builder()
+     *                 .groupWaitTime(5)
+     *                 .groupInterval(15)
+     *                 .repeatInterval(100)
+     *                 .groupingFields("alertname")
+     *                 .build())
+     *             .labelMatchExpressionGrids(DispatchRuleLabelMatchExpressionGridArgs.builder()
+     *                 .labelMatchExpressionGroups(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs.builder()
+     *                     .labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs.builder()
+     *                         .key("_aliyun_arms_involvedObject_kind")
+     *                         .value("app")
+     *                         .operator("eq")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .notifyRules(DispatchRuleNotifyRuleArgs.builder()
+     *                 .notifyObjects(                
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(default_.id())
+     *                         .notifyType("ARMS_CONTACT")
+     *                         .name("example_value")
+     *                         .build(),
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(defaultAlertContactGroup.id())
+     *                         .notifyType("ARMS_CONTACT_GROUP")
+     *                         .name("example_value")
+     *                         .build())
+     *                 .notifyChannels(                
+     *                     "dingTalk",
+     *                     "wechat")
+     *                 .notifyStartTime("10:00")
+     *                 .notifyEndTime("23:00")
+     *                 .build())
+     *             .build());
+     * 
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
      *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex("^my-DispatchRule")
-     *             .build());
-     * 
-     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -773,7 +1262,7 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -787,6 +1276,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertContact;
+     * import com.pulumi.alicloud.arms.AlertContactArgs;
+     * import com.pulumi.alicloud.arms.AlertContactGroup;
+     * import com.pulumi.alicloud.arms.AlertContactGroupArgs;
+     * import com.pulumi.alicloud.arms.DispatchRule;
+     * import com.pulumi.alicloud.arms.DispatchRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.List;
@@ -796,22 +1294,65 @@ public final class ArmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         var default_ = new AlertContact("default", AlertContactArgs.builder()
+     *             .alertContactName("example_value")
+     *             .email("example_value}{@literal @}{@code aaa.com")
+     *             .build());
+     * 
+     *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()
+     *             .alertContactGroupName("example_value")
+     *             .contactIds(default_.id())
+     *             .build());
+     * 
+     *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()
+     *             .dispatchRuleName("example_value")
+     *             .dispatchType("CREATE_ALERT")
+     *             .groupRules(DispatchRuleGroupRuleArgs.builder()
+     *                 .groupWaitTime(5)
+     *                 .groupInterval(15)
+     *                 .repeatInterval(100)
+     *                 .groupingFields("alertname")
+     *                 .build())
+     *             .labelMatchExpressionGrids(DispatchRuleLabelMatchExpressionGridArgs.builder()
+     *                 .labelMatchExpressionGroups(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs.builder()
+     *                     .labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs.builder()
+     *                         .key("_aliyun_arms_involvedObject_kind")
+     *                         .value("app")
+     *                         .operator("eq")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .notifyRules(DispatchRuleNotifyRuleArgs.builder()
+     *                 .notifyObjects(                
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(default_.id())
+     *                         .notifyType("ARMS_CONTACT")
+     *                         .name("example_value")
+     *                         .build(),
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(defaultAlertContactGroup.id())
+     *                         .notifyType("ARMS_CONTACT_GROUP")
+     *                         .name("example_value")
+     *                         .build())
+     *                 .notifyChannels(                
+     *                     "dingTalk",
+     *                     "wechat")
+     *                 .notifyStartTime("10:00")
+     *                 .notifyEndTime("23:00")
+     *                 .build())
+     *             .build());
+     * 
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
      *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex("^my-DispatchRule")
-     *             .build());
-     * 
-     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -823,7 +1364,7 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -837,6 +1378,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertContact;
+     * import com.pulumi.alicloud.arms.AlertContactArgs;
+     * import com.pulumi.alicloud.arms.AlertContactGroup;
+     * import com.pulumi.alicloud.arms.AlertContactGroupArgs;
+     * import com.pulumi.alicloud.arms.DispatchRule;
+     * import com.pulumi.alicloud.arms.DispatchRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.List;
@@ -846,22 +1396,65 @@ public final class ArmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         var default_ = new AlertContact("default", AlertContactArgs.builder()
+     *             .alertContactName("example_value")
+     *             .email("example_value}{@literal @}{@code aaa.com")
+     *             .build());
+     * 
+     *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()
+     *             .alertContactGroupName("example_value")
+     *             .contactIds(default_.id())
+     *             .build());
+     * 
+     *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()
+     *             .dispatchRuleName("example_value")
+     *             .dispatchType("CREATE_ALERT")
+     *             .groupRules(DispatchRuleGroupRuleArgs.builder()
+     *                 .groupWaitTime(5)
+     *                 .groupInterval(15)
+     *                 .repeatInterval(100)
+     *                 .groupingFields("alertname")
+     *                 .build())
+     *             .labelMatchExpressionGrids(DispatchRuleLabelMatchExpressionGridArgs.builder()
+     *                 .labelMatchExpressionGroups(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs.builder()
+     *                     .labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs.builder()
+     *                         .key("_aliyun_arms_involvedObject_kind")
+     *                         .value("app")
+     *                         .operator("eq")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .notifyRules(DispatchRuleNotifyRuleArgs.builder()
+     *                 .notifyObjects(                
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(default_.id())
+     *                         .notifyType("ARMS_CONTACT")
+     *                         .name("example_value")
+     *                         .build(),
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(defaultAlertContactGroup.id())
+     *                         .notifyType("ARMS_CONTACT_GROUP")
+     *                         .name("example_value")
+     *                         .build())
+     *                 .notifyChannels(                
+     *                     "dingTalk",
+     *                     "wechat")
+     *                 .notifyStartTime("10:00")
+     *                 .notifyEndTime("23:00")
+     *                 .build())
+     *             .build());
+     * 
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
      *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex("^my-DispatchRule")
-     *             .build());
-     * 
-     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
@@ -873,7 +1466,7 @@ public final class ArmsFunctions {
     /**
      * This data source provides the Arms Dispatch Rules of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.136.0+.
+     * &gt; **NOTE:** Available since v1.136.0.
      * 
      * ## Example Usage
      * 
@@ -887,6 +1480,15 @@ public final class ArmsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.arms.AlertContact;
+     * import com.pulumi.alicloud.arms.AlertContactArgs;
+     * import com.pulumi.alicloud.arms.AlertContactGroup;
+     * import com.pulumi.alicloud.arms.AlertContactGroupArgs;
+     * import com.pulumi.alicloud.arms.DispatchRule;
+     * import com.pulumi.alicloud.arms.DispatchRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleGroupRuleArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleLabelMatchExpressionGridArgs;
+     * import com.pulumi.alicloud.arms.inputs.DispatchRuleNotifyRuleArgs;
      * import com.pulumi.alicloud.arms.ArmsFunctions;
      * import com.pulumi.alicloud.arms.inputs.GetDispatchRulesArgs;
      * import java.util.List;
@@ -896,22 +1498,65 @@ public final class ArmsFunctions {
      * import java.nio.file.Files;
      * import java.nio.file.Paths;
      * 
-     * public class App {
-     *     public static void main(String[] args) {
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
      *         Pulumi.run(App::stack);
-     *     }
+     *     }}{@code
      * 
-     *     public static void stack(Context ctx) {
+     *     public static void stack(Context ctx) }{{@code
+     *         var default_ = new AlertContact("default", AlertContactArgs.builder()
+     *             .alertContactName("example_value")
+     *             .email("example_value}{@literal @}{@code aaa.com")
+     *             .build());
+     * 
+     *         var defaultAlertContactGroup = new AlertContactGroup("defaultAlertContactGroup", AlertContactGroupArgs.builder()
+     *             .alertContactGroupName("example_value")
+     *             .contactIds(default_.id())
+     *             .build());
+     * 
+     *         var defaultDispatchRule = new DispatchRule("defaultDispatchRule", DispatchRuleArgs.builder()
+     *             .dispatchRuleName("example_value")
+     *             .dispatchType("CREATE_ALERT")
+     *             .groupRules(DispatchRuleGroupRuleArgs.builder()
+     *                 .groupWaitTime(5)
+     *                 .groupInterval(15)
+     *                 .repeatInterval(100)
+     *                 .groupingFields("alertname")
+     *                 .build())
+     *             .labelMatchExpressionGrids(DispatchRuleLabelMatchExpressionGridArgs.builder()
+     *                 .labelMatchExpressionGroups(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs.builder()
+     *                     .labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs.builder()
+     *                         .key("_aliyun_arms_involvedObject_kind")
+     *                         .value("app")
+     *                         .operator("eq")
+     *                         .build())
+     *                     .build())
+     *                 .build())
+     *             .notifyRules(DispatchRuleNotifyRuleArgs.builder()
+     *                 .notifyObjects(                
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(default_.id())
+     *                         .notifyType("ARMS_CONTACT")
+     *                         .name("example_value")
+     *                         .build(),
+     *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
+     *                         .notifyObjectId(defaultAlertContactGroup.id())
+     *                         .notifyType("ARMS_CONTACT_GROUP")
+     *                         .name("example_value")
+     *                         .build())
+     *                 .notifyChannels(                
+     *                     "dingTalk",
+     *                     "wechat")
+     *                 .notifyStartTime("10:00")
+     *                 .notifyEndTime("23:00")
+     *                 .build())
+     *             .build());
+     * 
      *         final var ids = ArmsFunctions.getDispatchRules();
      * 
      *         ctx.export("armsDispatchRuleId1", ids.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *         final var nameRegex = ArmsFunctions.getDispatchRules(GetDispatchRulesArgs.builder()
-     *             .nameRegex("^my-DispatchRule")
-     *             .build());
-     * 
-     *         ctx.export("armsDispatchRuleId2", nameRegex.applyValue(getDispatchRulesResult -> getDispatchRulesResult.rules()[0].id()));
-     *     }
-     * }
+     *     }}{@code
+     * }}{@code
      * }
      * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
