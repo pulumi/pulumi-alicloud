@@ -136,7 +136,7 @@ def get_kubernetes_addons(cluster_id: Optional[str] = None,
 def get_kubernetes_addons_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesAddonsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesAddonsResult]:
     """
     This data source provides a list of available addons that the cluster can install.
 
@@ -152,7 +152,7 @@ def get_kubernetes_addons_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['clusterId'] = cluster_id
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getKubernetesAddons:getKubernetesAddons', __args__, opts=opts, typ=GetKubernetesAddonsResult)
     return __ret__.apply(lambda __response__: GetKubernetesAddonsResult(
         addons=pulumi.get(__response__, 'addons'),

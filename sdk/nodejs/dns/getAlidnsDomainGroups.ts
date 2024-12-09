@@ -91,7 +91,7 @@ export interface GetAlidnsDomainGroupsResult {
  * export const firstDomainGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
-export function getAlidnsDomainGroupsOutput(args?: GetAlidnsDomainGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainGroupsResult> {
+export function getAlidnsDomainGroupsOutput(args?: GetAlidnsDomainGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlidnsDomainGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getAlidnsDomainGroups:getAlidnsDomainGroups", {

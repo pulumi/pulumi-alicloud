@@ -87,7 +87,7 @@ export interface GetVersionsResult {
  * export const serviceMeshVersion = versions[0].version;
  * ```
  */
-export function getVersionsOutput(args?: GetVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionsResult> {
+export function getVersionsOutput(args?: GetVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:servicemesh/getVersions:getVersions", {

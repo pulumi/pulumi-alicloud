@@ -138,7 +138,7 @@ export interface GetDbClustersResult {
  * export const dbCluster = defaultGetDbClusters.apply(defaultGetDbClusters => defaultGetDbClusters.ids?.[0]);
  * ```
  */
-export function getDbClustersOutput(args?: GetDbClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbClustersResult> {
+export function getDbClustersOutput(args?: GetDbClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:selectdb/getDbClusters:getDbClusters", {

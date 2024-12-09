@@ -118,7 +118,7 @@ export interface GetChildInstanceRouteEntryToAttachmentsResult {
  * export const alicloudCenChildInstanceRouteEntryToAttachmentExampleId = _default.then(_default => _default.attachments?.[0]?.id);
  * ```
  */
-export function getChildInstanceRouteEntryToAttachmentsOutput(args: GetChildInstanceRouteEntryToAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChildInstanceRouteEntryToAttachmentsResult> {
+export function getChildInstanceRouteEntryToAttachmentsOutput(args: GetChildInstanceRouteEntryToAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetChildInstanceRouteEntryToAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getChildInstanceRouteEntryToAttachments:getChildInstanceRouteEntryToAttachments", {
         "cenId": args.cenId,

@@ -96,7 +96,7 @@ export interface GetApplicationsResult {
  * export const oosApplicationId2 = nameRegex.then(nameRegex => nameRegex.applications?.[0]?.id);
  * ```
  */
-export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
+export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oos/getApplications:getApplications", {

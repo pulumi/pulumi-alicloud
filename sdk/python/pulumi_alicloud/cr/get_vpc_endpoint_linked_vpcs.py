@@ -172,7 +172,7 @@ def get_vpc_endpoint_linked_vpcs_output(ids: Optional[pulumi.Input[Optional[Sequ
                                         module_name: Optional[pulumi.Input[str]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcEndpointLinkedVpcsResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcEndpointLinkedVpcsResult]:
     """
     This data source provides the CR Vpc Endpoint Linked Vpcs of the current Alibaba Cloud user.
 
@@ -207,7 +207,7 @@ def get_vpc_endpoint_linked_vpcs_output(ids: Optional[pulumi.Input[Optional[Sequ
     __args__['moduleName'] = module_name
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs', __args__, opts=opts, typ=GetVpcEndpointLinkedVpcsResult)
     return __ret__.apply(lambda __response__: GetVpcEndpointLinkedVpcsResult(
         id=pulumi.get(__response__, 'id'),

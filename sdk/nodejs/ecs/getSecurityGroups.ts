@@ -149,7 +149,7 @@ export interface GetSecurityGroupsResult {
  * export const firstGroupId = primarySecGroupsDs.apply(primarySecGroupsDs => primarySecGroupsDs.groups?.[0]?.id);
  * ```
  */
-export function getSecurityGroupsOutput(args?: GetSecurityGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityGroupsResult> {
+export function getSecurityGroupsOutput(args?: GetSecurityGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getSecurityGroups:getSecurityGroups", {

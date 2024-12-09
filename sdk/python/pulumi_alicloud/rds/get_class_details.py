@@ -284,7 +284,7 @@ def get_class_details_output(class_code: Optional[pulumi.Input[str]] = None,
                              commodity_code: Optional[pulumi.Input[str]] = None,
                              engine: Optional[pulumi.Input[str]] = None,
                              engine_version: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClassDetailsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClassDetailsResult]:
     """
     This data source provides details of the Rds specifications of current Alibaba Cloud users.
 
@@ -327,7 +327,7 @@ def get_class_details_output(class_code: Optional[pulumi.Input[str]] = None,
     __args__['commodityCode'] = commodity_code
     __args__['engine'] = engine
     __args__['engineVersion'] = engine_version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getClassDetails:getClassDetails', __args__, opts=opts, typ=GetClassDetailsResult)
     return __ret__.apply(lambda __response__: GetClassDetailsResult(
         category=pulumi.get(__response__, 'category'),

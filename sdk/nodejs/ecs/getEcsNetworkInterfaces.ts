@@ -214,7 +214,7 @@ export interface GetEcsNetworkInterfacesResult {
  * export const firstEcsNetworkInterfaceId = example.then(example => example.interfaces?.[0]?.id);
  * ```
  */
-export function getEcsNetworkInterfacesOutput(args?: GetEcsNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsNetworkInterfacesResult> {
+export function getEcsNetworkInterfacesOutput(args?: GetEcsNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsNetworkInterfacesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", {

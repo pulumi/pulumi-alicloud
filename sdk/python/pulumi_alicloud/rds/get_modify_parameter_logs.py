@@ -143,7 +143,7 @@ def get_modify_parameter_logs_output(db_instance_id: Optional[pulumi.Input[str]]
                                      end_time: Optional[pulumi.Input[str]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                      start_time: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetModifyParameterLogsResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetModifyParameterLogsResult]:
     """
     This data source provides the Rds Modify Parameter Logs of the current Alibaba Cloud user.
 
@@ -173,7 +173,7 @@ def get_modify_parameter_logs_output(db_instance_id: Optional[pulumi.Input[str]]
     __args__['endTime'] = end_time
     __args__['outputFile'] = output_file
     __args__['startTime'] = start_time
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getModifyParameterLogs:getModifyParameterLogs', __args__, opts=opts, typ=GetModifyParameterLogsResult)
     return __ret__.apply(lambda __response__: GetModifyParameterLogsResult(
         db_instance_id=pulumi.get(__response__, 'db_instance_id'),

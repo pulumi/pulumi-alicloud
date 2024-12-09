@@ -145,7 +145,7 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          version: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -155,7 +155,7 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     __args__['outputFile'] = output_file
     __args__['tags'] = tags
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:elasticsearch/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         description_regex=pulumi.get(__response__, 'description_regex'),

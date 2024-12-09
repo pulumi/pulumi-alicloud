@@ -137,7 +137,7 @@ export interface GetTransitRouterMulticastDomainAssociationsResult {
  * export const cenTransitRouterMulticastDomainId0 = ids.then(ids => ids.associations?.[0]?.id);
  * ```
  */
-export function getTransitRouterMulticastDomainAssociationsOutput(args: GetTransitRouterMulticastDomainAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainAssociationsResult> {
+export function getTransitRouterMulticastDomainAssociationsOutput(args: GetTransitRouterMulticastDomainAssociationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterMulticastDomainAssociationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterMulticastDomainAssociations:getTransitRouterMulticastDomainAssociations", {
         "ids": args.ids,

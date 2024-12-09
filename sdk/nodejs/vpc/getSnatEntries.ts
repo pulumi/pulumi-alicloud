@@ -196,7 +196,7 @@ export interface GetSnatEntriesResult {
  * });
  * ```
  */
-export function getSnatEntriesOutput(args: GetSnatEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnatEntriesResult> {
+export function getSnatEntriesOutput(args: GetSnatEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnatEntriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getSnatEntries:getSnatEntries", {
         "ids": args.ids,

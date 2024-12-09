@@ -138,7 +138,7 @@ export interface GetEndpointsResult {
  * export const endpoint = _default.apply(_default => _default.endpoints?.[0]?.dbEndpointId);
  * ```
  */
-export function getEndpointsOutput(args: GetEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointsResult> {
+export function getEndpointsOutput(args: GetEndpointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEndpointsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:polardb/getEndpoints:getEndpoints", {
         "dbClusterId": args.dbClusterId,

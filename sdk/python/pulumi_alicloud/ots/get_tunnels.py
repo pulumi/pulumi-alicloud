@@ -184,7 +184,7 @@ def get_tunnels_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                        table_name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTunnelsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTunnelsResult]:
     """
     This data source provides the ots tunnels of the current Alibaba Cloud user.
 
@@ -218,7 +218,7 @@ def get_tunnels_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['tableName'] = table_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ots/getTunnels:getTunnels', __args__, opts=opts, typ=GetTunnelsResult)
     return __ret__.apply(lambda __response__: GetTunnelsResult(
         id=pulumi.get(__response__, 'id'),

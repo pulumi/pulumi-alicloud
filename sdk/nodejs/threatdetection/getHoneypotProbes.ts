@@ -154,7 +154,7 @@ export interface GetHoneypotProbesResult {
  * export const alicloudThreatDetectionHoneypotProbeExampleId = _default.apply(_default => _default.probes?.[0]?.id);
  * ```
  */
-export function getHoneypotProbesOutput(args?: GetHoneypotProbesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotProbesResult> {
+export function getHoneypotProbesOutput(args?: GetHoneypotProbesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHoneypotProbesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", {

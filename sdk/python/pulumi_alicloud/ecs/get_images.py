@@ -399,7 +399,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
                       status: Optional[pulumi.Input[Optional[str]]] = None,
                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                       usage: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     This data source provides available image resources. It contains user's private images, system images provided by Alibaba Cloud,
     other public images and the ones available on the image market.
@@ -468,7 +468,7 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['usage'] = usage
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
     return __ret__.apply(lambda __response__: GetImagesResult(
         action_type=pulumi.get(__response__, 'action_type'),

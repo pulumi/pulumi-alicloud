@@ -105,7 +105,7 @@ export interface GetDeviceGroupsResult {
  * export const iotDeviceGroupId1 = ids.then(ids => ids.groups?.[0]?.id);
  * ```
  */
-export function getDeviceGroupsOutput(args?: GetDeviceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceGroupsResult> {
+export function getDeviceGroupsOutput(args?: GetDeviceGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeviceGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:iot/getDeviceGroups:getDeviceGroups", {

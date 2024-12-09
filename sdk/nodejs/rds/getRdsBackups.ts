@@ -108,7 +108,7 @@ export interface GetRdsBackupsResult {
  * export const firstRdsBackupId = example.then(example => example.backups?.[0]?.id);
  * ```
  */
-export function getRdsBackupsOutput(args: GetRdsBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRdsBackupsResult> {
+export function getRdsBackupsOutput(args: GetRdsBackupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRdsBackupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getRdsBackups:getRdsBackups", {
         "backupMode": args.backupMode,

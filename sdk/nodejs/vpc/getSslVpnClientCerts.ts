@@ -100,7 +100,7 @@ export interface GetSslVpnClientCertsResult {
  * });
  * ```
  */
-export function getSslVpnClientCertsOutput(args?: GetSslVpnClientCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnClientCertsResult> {
+export function getSslVpnClientCertsOutput(args?: GetSslVpnClientCertsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSslVpnClientCertsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getSslVpnClientCerts:getSslVpnClientCerts", {

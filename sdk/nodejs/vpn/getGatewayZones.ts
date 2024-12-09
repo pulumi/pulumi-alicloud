@@ -92,7 +92,7 @@ export interface GetGatewayZonesResult {
  * });
  * ```
  */
-export function getGatewayZonesOutput(args: GetGatewayZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayZonesResult> {
+export function getGatewayZonesOutput(args: GetGatewayZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpn/getGatewayZones:getGatewayZones", {
         "ids": args.ids,

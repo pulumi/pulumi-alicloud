@@ -82,7 +82,7 @@ export interface GetConnectionsResult {
  * export const connectionString = example.then(example => example.connections?.[0]?.connectionString);
  * ```
  */
-export function getConnectionsOutput(args: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
+export function getConnectionsOutput(args: GetConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kvstore/getConnections:getConnections", {
         "ids": args.ids,

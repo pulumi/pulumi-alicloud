@@ -152,7 +152,7 @@ def get_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         policy_type: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPoliciesResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoliciesResult]:
     """
     This data source provides the Resource Manager Policies of the current Alibaba Cloud user.
 
@@ -169,7 +169,7 @@ def get_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['policyType'] = policy_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getPolicies:getPolicies', __args__, opts=opts, typ=GetPoliciesResult)
     return __ret__.apply(lambda __response__: GetPoliciesResult(
         id=pulumi.get(__response__, 'id'),

@@ -189,7 +189,7 @@ def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEngineNamespacesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEngineNamespacesResult]:
     """
     This data source provides the Mse Engine Namespaces of the current Alibaba Cloud user.
 
@@ -250,7 +250,7 @@ def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mse/getEngineNamespaces:getEngineNamespaces', __args__, opts=opts, typ=GetEngineNamespacesResult)
     return __ret__.apply(lambda __response__: GetEngineNamespacesResult(
         accept_language=pulumi.get(__response__, 'accept_language'),

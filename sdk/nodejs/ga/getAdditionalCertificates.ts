@@ -100,7 +100,7 @@ export interface GetAdditionalCertificatesResult {
  * export const gaAdditionalCertificateId1 = ids.then(ids => ids.certificates?.[0]?.id);
  * ```
  */
-export function getAdditionalCertificatesOutput(args: GetAdditionalCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdditionalCertificatesResult> {
+export function getAdditionalCertificatesOutput(args: GetAdditionalCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAdditionalCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getAdditionalCertificates:getAdditionalCertificates", {
         "acceleratorId": args.acceleratorId,

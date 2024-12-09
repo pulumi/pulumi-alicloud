@@ -115,7 +115,7 @@ export interface GetGatewayBlockVolumesResult {
  * export const cloudStorageGatewayGatewayBlockVolumeId2 = nameRegex.then(nameRegex => nameRegex.volumes?.[0]?.id);
  * ```
  */
-export function getGatewayBlockVolumesOutput(args: GetGatewayBlockVolumesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayBlockVolumesResult> {
+export function getGatewayBlockVolumesOutput(args: GetGatewayBlockVolumesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayBlockVolumesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", {
         "gatewayId": args.gatewayId,

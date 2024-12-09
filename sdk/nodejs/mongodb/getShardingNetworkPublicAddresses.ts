@@ -94,7 +94,7 @@ export interface GetShardingNetworkPublicAddressesResult {
  * export const mongodbShardingNetworkPublicAddressDbInstanceId1 = example.then(example => example.addresses?.[0]?.dbInstanceId);
  * ```
  */
-export function getShardingNetworkPublicAddressesOutput(args: GetShardingNetworkPublicAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShardingNetworkPublicAddressesResult> {
+export function getShardingNetworkPublicAddressesOutput(args: GetShardingNetworkPublicAddressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShardingNetworkPublicAddressesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", {
         "dbInstanceId": args.dbInstanceId,

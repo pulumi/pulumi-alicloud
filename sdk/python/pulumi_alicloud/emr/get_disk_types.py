@@ -189,7 +189,7 @@ def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
                           instance_type: Optional[pulumi.Input[str]] = None,
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                           zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskTypesResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiskTypesResult]:
     """
     The `emr_get_disk_types` data source provides a collection of data disk and
     system disk types available in Alibaba Cloud account when create a emr cluster.
@@ -225,7 +225,7 @@ def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
     __args__['instanceType'] = instance_type
     __args__['outputFile'] = output_file
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:emr/getDiskTypes:getDiskTypes', __args__, opts=opts, typ=GetDiskTypesResult)
     return __ret__.apply(lambda __response__: GetDiskTypesResult(
         cluster_type=pulumi.get(__response__, 'cluster_type'),

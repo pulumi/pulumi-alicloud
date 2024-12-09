@@ -136,7 +136,7 @@ export interface GetVpcFlowLogsResult {
  * export const firstVpcFlowLogId = example.then(example => example.logs?.[0]?.id);
  * ```
  */
-export function getVpcFlowLogsOutput(args?: GetVpcFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFlowLogsResult> {
+export function getVpcFlowLogsOutput(args?: GetVpcFlowLogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcFlowLogsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", {

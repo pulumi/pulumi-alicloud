@@ -101,7 +101,7 @@ export interface GetEnterpriseDatabasesResult {
  * export const alicloudDmsEnterpriseDatabaseExampleId = _default.then(_default => _default.databases?.[0]?.id);
  * ```
  */
-export function getEnterpriseDatabasesOutput(args: GetEnterpriseDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseDatabasesResult> {
+export function getEnterpriseDatabasesOutput(args: GetEnterpriseDatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseDatabasesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseDatabases:getEnterpriseDatabases", {
         "ids": args.ids,

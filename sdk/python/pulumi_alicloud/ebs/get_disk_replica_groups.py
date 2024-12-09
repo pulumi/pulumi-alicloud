@@ -114,7 +114,7 @@ def get_disk_replica_groups(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_disk_replica_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskReplicaGroupsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiskReplicaGroupsResult]:
     """
     This data source provides the Ebs Disk Replica Groups of the current Alibaba Cloud user.
 
@@ -139,7 +139,7 @@ def get_disk_replica_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     __args__ = dict()
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups', __args__, opts=opts, typ=GetDiskReplicaGroupsResult)
     return __ret__.apply(lambda __response__: GetDiskReplicaGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

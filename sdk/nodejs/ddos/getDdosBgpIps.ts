@@ -112,7 +112,7 @@ export interface GetDdosBgpIpsResult {
  * export const ddosbgpIpId1 = ids.then(ids => ids.ips?.[0]?.id);
  * ```
  */
-export function getDdosBgpIpsOutput(args: GetDdosBgpIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosBgpIpsResult> {
+export function getDdosBgpIpsOutput(args: GetDdosBgpIpsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDdosBgpIpsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ddos/getDdosBgpIps:getDdosBgpIps", {
         "ids": args.ids,

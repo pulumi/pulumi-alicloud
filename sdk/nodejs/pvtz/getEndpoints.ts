@@ -100,7 +100,7 @@ export interface GetEndpointsResult {
  * export const pvtzEndpointId2 = nameRegex.then(nameRegex => nameRegex.endpoints?.[0]?.id);
  * ```
  */
-export function getEndpointsOutput(args?: GetEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointsResult> {
+export function getEndpointsOutput(args?: GetEndpointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEndpointsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:pvtz/getEndpoints:getEndpoints", {

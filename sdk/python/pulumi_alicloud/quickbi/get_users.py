@@ -142,7 +142,7 @@ def get_users_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      keyword: Optional[pulumi.Input[Optional[str]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     This data source provides the Quick BI Users of the current Alibaba Cloud user.
 
@@ -171,7 +171,7 @@ def get_users_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     __args__['ids'] = ids
     __args__['keyword'] = keyword
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:quickbi/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult)
     return __ret__.apply(lambda __response__: GetUsersResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

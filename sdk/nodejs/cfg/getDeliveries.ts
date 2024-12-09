@@ -92,7 +92,7 @@ export interface GetDeliveriesResult {
  * export const configDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
  * ```
  */
-export function getDeliveriesOutput(args?: GetDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveriesResult> {
+export function getDeliveriesOutput(args?: GetDeliveriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeliveriesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cfg/getDeliveries:getDeliveries", {

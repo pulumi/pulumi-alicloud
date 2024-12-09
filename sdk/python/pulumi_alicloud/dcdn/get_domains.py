@@ -262,7 +262,7 @@ def get_domains_output(change_end_time: Optional[pulumi.Input[Optional[str]]] = 
                        resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                        security_token: Optional[pulumi.Input[Optional[str]]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     Provides a collection of DCDN Domains to the specified filters.
 
@@ -302,7 +302,7 @@ def get_domains_output(change_end_time: Optional[pulumi.Input[Optional[str]]] = 
     __args__['resourceGroupId'] = resource_group_id
     __args__['securityToken'] = security_token
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult)
     return __ret__.apply(lambda __response__: GetDomainsResult(
         change_end_time=pulumi.get(__response__, 'change_end_time'),

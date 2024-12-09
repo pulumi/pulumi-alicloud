@@ -147,7 +147,7 @@ def get_customer_gateways(ids: Optional[Sequence[str]] = None,
 def get_customer_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomerGatewaysResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomerGatewaysResult]:
     """
     The VPN customers gateways data source lists a number of VPN customer gateways resource information owned by an Alicloud account.
 
@@ -174,7 +174,7 @@ def get_customer_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpn/getCustomerGateways:getCustomerGateways', __args__, opts=opts, typ=GetCustomerGatewaysResult)
     return __ret__.apply(lambda __response__: GetCustomerGatewaysResult(
         gateways=pulumi.get(__response__, 'gateways'),

@@ -107,7 +107,7 @@ export interface GetBgpNetworksResult {
  * export const vpcBgpNetworkId3 = status.then(status => status.networks?.[0]?.id);
  * ```
  */
-export function getBgpNetworksOutput(args?: GetBgpNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpNetworksResult> {
+export function getBgpNetworksOutput(args?: GetBgpNetworksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBgpNetworksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getBgpNetworks:getBgpNetworks", {

@@ -118,7 +118,7 @@ export interface GetTunnelsResult {
  * export const firstTunnelId = tunnelsDs.then(tunnelsDs => tunnelsDs.tunnels?.[0]?.id);
  * ```
  */
-export function getTunnelsOutput(args: GetTunnelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelsResult> {
+export function getTunnelsOutput(args: GetTunnelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTunnelsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ots/getTunnels:getTunnels", {
         "ids": args.ids,

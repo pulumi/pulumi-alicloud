@@ -205,7 +205,7 @@ def get_service_subscriptions_output(ids: Optional[pulumi.Input[Optional[Sequenc
                                      page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                      subscription_name: Optional[pulumi.Input[Optional[str]]] = None,
                                      topic_name: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceSubscriptionsResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceSubscriptionsResult]:
     """
     This data source provides the Message Notification Service Subscriptions of the current Alibaba Cloud user.
 
@@ -239,7 +239,7 @@ def get_service_subscriptions_output(ids: Optional[pulumi.Input[Optional[Sequenc
     __args__['pageSize'] = page_size
     __args__['subscriptionName'] = subscription_name
     __args__['topicName'] = topic_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:message/getServiceSubscriptions:getServiceSubscriptions', __args__, opts=opts, typ=GetServiceSubscriptionsResult)
     return __ret__.apply(lambda __response__: GetServiceSubscriptionsResult(
         id=pulumi.get(__response__, 'id'),

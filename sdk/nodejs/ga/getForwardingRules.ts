@@ -100,7 +100,7 @@ export interface GetForwardingRulesResult {
  * export const firstGaForwardingRuleId = example.then(example => example.forwardingRules?.[0]?.id);
  * ```
  */
-export function getForwardingRulesOutput(args: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRulesResult> {
+export function getForwardingRulesOutput(args: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetForwardingRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getForwardingRules:getForwardingRules", {
         "acceleratorId": args.acceleratorId,

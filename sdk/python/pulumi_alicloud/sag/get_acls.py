@@ -149,7 +149,7 @@ def get_acls(ids: Optional[Sequence[str]] = None,
 def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclsResult]:
     """
     This data source provides Sag Acls available to the user.
 
@@ -178,7 +178,7 @@ def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:sag/getAcls:getAcls', __args__, opts=opts, typ=GetAclsResult)
     return __ret__.apply(lambda __response__: GetAclsResult(
         acls=pulumi.get(__response__, 'acls'),

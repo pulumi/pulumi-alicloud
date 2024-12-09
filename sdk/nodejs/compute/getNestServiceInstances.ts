@@ -124,7 +124,7 @@ export interface GetNestServiceInstancesResult {
  * export const armsPrometheisId2 = nameRegex.then(nameRegex => nameRegex.serviceInstances?.[0]?.id);
  * ```
  */
-export function getNestServiceInstancesOutput(args?: GetNestServiceInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNestServiceInstancesResult> {
+export function getNestServiceInstancesOutput(args?: GetNestServiceInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNestServiceInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:compute/getNestServiceInstances:getNestServiceInstances", {

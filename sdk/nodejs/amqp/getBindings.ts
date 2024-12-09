@@ -85,7 +85,7 @@ export interface GetBindingsResult {
  * });
  * ```
  */
-export function getBindingsOutput(args: GetBindingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBindingsResult> {
+export function getBindingsOutput(args: GetBindingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBindingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:amqp/getBindings:getBindings", {
         "instanceId": args.instanceId,

@@ -110,7 +110,7 @@ export interface GetResourceGroupsResult {
  * export const firstResourceGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
-export function getResourceGroupsOutput(args?: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
+export function getResourceGroupsOutput(args?: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getResourceGroups:getResourceGroups", {

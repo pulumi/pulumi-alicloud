@@ -98,7 +98,7 @@ export interface GetDdosCooPortsResult {
  * export const firstDdoscooPortId = example.then(example => example.ports?.[0]?.id);
  * ```
  */
-export function getDdosCooPortsOutput(args: GetDdosCooPortsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooPortsResult> {
+export function getDdosCooPortsOutput(args: GetDdosCooPortsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDdosCooPortsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", {
         "frontendPort": args.frontendPort,

@@ -151,7 +151,7 @@ export interface GetDatabasesResult {
  * export const database = _default.apply(_default => _default.databases?.[0]?.dbName);
  * ```
  */
-export function getDatabasesOutput(args: GetDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabasesResult> {
+export function getDatabasesOutput(args: GetDatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabasesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:polardb/getDatabases:getDatabases", {
         "dbClusterId": args.dbClusterId,

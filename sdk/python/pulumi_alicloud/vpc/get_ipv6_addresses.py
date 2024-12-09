@@ -187,7 +187,7 @@ def get_ipv6_addresses_output(associated_instance_id: Optional[pulumi.Input[Opti
                               status: Optional[pulumi.Input[Optional[str]]] = None,
                               vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                               vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6AddressesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv6AddressesResult]:
     """
     This data source provides the Vpc Ipv6 Addresses of the current Alibaba Cloud user.
 
@@ -227,7 +227,7 @@ def get_ipv6_addresses_output(associated_instance_id: Optional[pulumi.Input[Opti
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getIpv6Addresses:getIpv6Addresses', __args__, opts=opts, typ=GetIpv6AddressesResult)
     return __ret__.apply(lambda __response__: GetIpv6AddressesResult(
         addresses=pulumi.get(__response__, 'addresses'),

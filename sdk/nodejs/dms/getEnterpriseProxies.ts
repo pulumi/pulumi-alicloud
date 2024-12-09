@@ -81,7 +81,7 @@ export interface GetEnterpriseProxiesResult {
  * export const dmsEnterpriseProxyId1 = ids.then(ids => ids.proxies?.[0]?.id);
  * ```
  */
-export function getEnterpriseProxiesOutput(args?: GetEnterpriseProxiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseProxiesResult> {
+export function getEnterpriseProxiesOutput(args?: GetEnterpriseProxiesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseProxiesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseProxies:getEnterpriseProxies", {

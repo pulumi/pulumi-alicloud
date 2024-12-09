@@ -198,7 +198,7 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
                        tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     This data source provides the Vod Domains of the current Alibaba Cloud user.
 
@@ -249,7 +249,7 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vod/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult)
     return __ret__.apply(lambda __response__: GetDomainsResult(
         domain_search_type=pulumi.get(__response__, 'domain_search_type'),

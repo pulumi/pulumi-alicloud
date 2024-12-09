@@ -93,7 +93,7 @@ export interface GetBundlesResult {
  * });
  * ```
  */
-export function getBundlesOutput(args?: GetBundlesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBundlesResult> {
+export function getBundlesOutput(args?: GetBundlesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBundlesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getBundles:getBundles", {

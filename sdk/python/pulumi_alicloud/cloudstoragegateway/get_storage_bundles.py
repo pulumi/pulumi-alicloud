@@ -168,7 +168,7 @@ def get_storage_bundles_output(backend_bucket_region_id: Optional[pulumi.Input[s
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStorageBundlesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStorageBundlesResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -179,7 +179,7 @@ def get_storage_bundles_output(backend_bucket_region_id: Optional[pulumi.Input[s
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles', __args__, opts=opts, typ=GetStorageBundlesResult)
     return __ret__.apply(lambda __response__: GetStorageBundlesResult(
         backend_bucket_region_id=pulumi.get(__response__, 'backend_bucket_region_id'),

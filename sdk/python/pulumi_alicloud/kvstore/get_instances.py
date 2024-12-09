@@ -411,7 +411,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
                          vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                          vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                          zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instances of the current Alibaba Cloud user.
 
@@ -470,7 +470,7 @@ def get_instances_output(architecture_type: Optional[pulumi.Input[Optional[str]]
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         architecture_type=pulumi.get(__response__, 'architecture_type'),

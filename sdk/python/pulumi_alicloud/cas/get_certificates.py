@@ -178,7 +178,7 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
                             lang: Optional[pulumi.Input[Optional[str]]] = None,
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificatesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificatesResult]:
     """
     > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
 
@@ -197,7 +197,7 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
     __args__['lang'] = lang
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cas/getCertificates:getCertificates', __args__, opts=opts, typ=GetCertificatesResult)
     return __ret__.apply(lambda __response__: GetCertificatesResult(
         certificates=pulumi.get(__response__, 'certificates'),

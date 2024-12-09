@@ -99,7 +99,7 @@ def get_blocked_regions(language: Optional[str] = None,
         language=pulumi.get(__ret__, 'language'),
         regions=pulumi.get(__ret__, 'regions'))
 def get_blocked_regions_output(language: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBlockedRegionsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBlockedRegionsResult]:
     """
     This data source provides the Cdn blocked regions.
 
@@ -121,7 +121,7 @@ def get_blocked_regions_output(language: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['language'] = language
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cdn/getBlockedRegions:getBlockedRegions', __args__, opts=opts, typ=GetBlockedRegionsResult)
     return __ret__.apply(lambda __response__: GetBlockedRegionsResult(
         id=pulumi.get(__response__, 'id'),

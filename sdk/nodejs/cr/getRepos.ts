@@ -105,7 +105,7 @@ export interface GetReposResult {
  * export const output = myRepos.then(myRepos => myRepos.repos);
  * ```
  */
-export function getReposOutput(args?: GetReposOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReposResult> {
+export function getReposOutput(args?: GetReposOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReposResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cr/getRepos:getRepos", {

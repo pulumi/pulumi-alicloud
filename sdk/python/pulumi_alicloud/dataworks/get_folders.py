@@ -151,7 +151,7 @@ def get_folders_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                        parent_folder_path: Optional[pulumi.Input[str]] = None,
                        project_id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFoldersResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFoldersResult]:
     """
     This data source provides the Data Works Folders of the current Alibaba Cloud user.
 
@@ -189,7 +189,7 @@ def get_folders_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     __args__['outputFile'] = output_file
     __args__['parentFolderPath'] = parent_folder_path
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dataworks/getFolders:getFolders', __args__, opts=opts, typ=GetFoldersResult)
     return __ret__.apply(lambda __response__: GetFoldersResult(
         folders=pulumi.get(__response__, 'folders'),

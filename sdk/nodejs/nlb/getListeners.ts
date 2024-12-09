@@ -97,7 +97,7 @@ export interface GetListenersResult {
  * export const alicloudNlbListenerId1 = ids.then(ids => ids.listeners?.[0]?.id);
  * ```
  */
-export function getListenersOutput(args?: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
+export function getListenersOutput(args?: GetListenersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListenersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nlb/getListeners:getListeners", {

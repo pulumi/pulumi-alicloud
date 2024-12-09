@@ -228,7 +228,7 @@ def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulum
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       risk_level: Optional[pulumi.Input[Optional[int]]] = None,
                                       status: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAggregateConfigRulesResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAggregateConfigRulesResult]:
     """
     This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.
 
@@ -267,7 +267,7 @@ def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulum
     __args__['outputFile'] = output_file
     __args__['riskLevel'] = risk_level
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules', __args__, opts=opts, typ=GetAggregateConfigRulesResult)
     return __ret__.apply(lambda __response__: GetAggregateConfigRulesResult(
         aggregate_config_rule_name=pulumi.get(__response__, 'aggregate_config_rule_name'),

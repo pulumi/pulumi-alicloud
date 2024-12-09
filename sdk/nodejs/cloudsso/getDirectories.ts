@@ -104,7 +104,7 @@ export interface GetDirectoriesResult {
  * export const cloudSsoDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
  * ```
  */
-export function getDirectoriesOutput(args?: GetDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoriesResult> {
+export function getDirectoriesOutput(args?: GetDirectoriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDirectoriesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudsso/getDirectories:getDirectories", {

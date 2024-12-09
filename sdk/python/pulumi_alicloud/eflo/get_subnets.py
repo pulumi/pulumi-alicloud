@@ -292,7 +292,7 @@ def get_subnets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
                        type: Optional[pulumi.Input[Optional[str]]] = None,
                        vpd_id: Optional[pulumi.Input[Optional[str]]] = None,
                        zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetsResult]:
     """
     This data source provides Eflo Subnet available to the user.[What is Subnet](https://help.aliyun.com/document_detail/604977.html)
 
@@ -338,7 +338,7 @@ def get_subnets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     __args__['type'] = type
     __args__['vpdId'] = vpd_id
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eflo/getSubnets:getSubnets', __args__, opts=opts, typ=GetSubnetsResult)
     return __ret__.apply(lambda __response__: GetSubnetsResult(
         id=pulumi.get(__response__, 'id'),

@@ -92,7 +92,7 @@ export interface GetAccessRulesResult {
  * export const dfsAccessRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * ```
  */
-export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessRulesResult> {
+export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dfs/getAccessRules:getAccessRules", {
         "accessGroupId": args.accessGroupId,

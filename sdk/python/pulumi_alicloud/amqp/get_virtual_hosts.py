@@ -159,7 +159,7 @@ def get_virtual_hosts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              instance_id: Optional[pulumi.Input[str]] = None,
                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualHostsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualHostsResult]:
     """
     This data source provides the Amqp Virtual Hosts of the current Alibaba Cloud user.
 
@@ -195,7 +195,7 @@ def get_virtual_hosts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:amqp/getVirtualHosts:getVirtualHosts', __args__, opts=opts, typ=GetVirtualHostsResult)
     return __ret__.apply(lambda __response__: GetVirtualHostsResult(
         hosts=pulumi.get(__response__, 'hosts'),

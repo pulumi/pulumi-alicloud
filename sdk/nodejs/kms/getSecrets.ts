@@ -131,7 +131,7 @@ export interface GetSecretsResult {
  * export const firstSecretId = kmsSecretsDs.then(kmsSecretsDs => kmsSecretsDs.secrets?.[0]?.id);
  * ```
  */
-export function getSecretsOutput(args?: GetSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretsResult> {
+export function getSecretsOutput(args?: GetSecretsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kms/getSecrets:getSecrets", {

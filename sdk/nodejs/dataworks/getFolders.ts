@@ -102,7 +102,7 @@ export interface GetFoldersResult {
  * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?.[0]?.id);
  * ```
  */
-export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
+export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFoldersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dataworks/getFolders:getFolders", {
         "ids": args.ids,

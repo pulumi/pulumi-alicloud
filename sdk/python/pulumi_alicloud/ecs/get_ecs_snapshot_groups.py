@@ -200,7 +200,7 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
                                    snapshot_group_name: Optional[pulumi.Input[Optional[str]]] = None,
                                    status: Optional[pulumi.Input[Optional[str]]] = None,
                                    tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsSnapshotGroupsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsSnapshotGroupsResult]:
     """
     This data source provides the Ecs Snapshot Groups of the current Alibaba Cloud user.
 
@@ -241,7 +241,7 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     __args__['snapshotGroupName'] = snapshot_group_name
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups', __args__, opts=opts, typ=GetEcsSnapshotGroupsResult)
     return __ret__.apply(lambda __response__: GetEcsSnapshotGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

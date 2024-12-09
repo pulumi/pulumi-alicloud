@@ -209,7 +209,7 @@ def get_industrial_pid_loops_output(enable_details: Optional[pulumi.Input[Option
                                     pid_loop_name: Optional[pulumi.Input[Optional[str]]] = None,
                                     pid_project_id: Optional[pulumi.Input[str]] = None,
                                     status: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIndustrialPidLoopsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIndustrialPidLoopsResult]:
     """
     This data source provides the Brain Industrial Pid Loops of the current Alibaba Cloud user.
 
@@ -247,7 +247,7 @@ def get_industrial_pid_loops_output(enable_details: Optional[pulumi.Input[Option
     __args__['pidLoopName'] = pid_loop_name
     __args__['pidProjectId'] = pid_project_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:brain/getIndustrialPidLoops:getIndustrialPidLoops', __args__, opts=opts, typ=GetIndustrialPidLoopsResult)
     return __ret__.apply(lambda __response__: GetIndustrialPidLoopsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

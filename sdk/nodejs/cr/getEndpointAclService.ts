@@ -100,7 +100,7 @@ export interface GetEndpointAclServiceResult {
  * });
  * ```
  */
-export function getEndpointAclServiceOutput(args: GetEndpointAclServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointAclServiceResult> {
+export function getEndpointAclServiceOutput(args: GetEndpointAclServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEndpointAclServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cr/getEndpointAclService:getEndpointAclService", {
         "enable": args.enable,

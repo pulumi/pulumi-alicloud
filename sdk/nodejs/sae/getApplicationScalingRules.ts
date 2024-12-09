@@ -92,7 +92,7 @@ export interface GetApplicationScalingRulesResult {
  * export const saeApplicationScalingRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * ```
  */
-export function getApplicationScalingRulesOutput(args: GetApplicationScalingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationScalingRulesResult> {
+export function getApplicationScalingRulesOutput(args: GetApplicationScalingRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApplicationScalingRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", {
         "appId": args.appId,

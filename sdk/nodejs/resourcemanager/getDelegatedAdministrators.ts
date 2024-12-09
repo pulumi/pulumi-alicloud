@@ -91,7 +91,7 @@ export interface GetDelegatedAdministratorsResult {
  * export const resourceManagerDelegatedAdministratorId1 = ids.then(ids => ids.administrators?.[0]?.id);
  * ```
  */
-export function getDelegatedAdministratorsOutput(args?: GetDelegatedAdministratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegatedAdministratorsResult> {
+export function getDelegatedAdministratorsOutput(args?: GetDelegatedAdministratorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDelegatedAdministratorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getDelegatedAdministrators:getDelegatedAdministrators", {

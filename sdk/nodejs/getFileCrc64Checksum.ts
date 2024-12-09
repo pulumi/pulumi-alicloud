@@ -72,7 +72,7 @@ export interface GetFileCrc64ChecksumResult {
  * export const fileCrc64Checksum = defualt.checksum;
  * ```
  */
-export function getFileCrc64ChecksumOutput(args: GetFileCrc64ChecksumOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileCrc64ChecksumResult> {
+export function getFileCrc64ChecksumOutput(args: GetFileCrc64ChecksumOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFileCrc64ChecksumResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum", {
         "filename": args.filename,

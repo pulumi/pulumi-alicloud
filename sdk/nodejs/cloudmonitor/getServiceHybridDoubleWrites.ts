@@ -136,7 +136,7 @@ export interface GetServiceHybridDoubleWritesResult {
  * export const cloudMonitorServiceHybridDoubleWritesId1 = ids.apply(ids => ids.hybridDoubleWrites?.[0]?.id);
  * ```
  */
-export function getServiceHybridDoubleWritesOutput(args?: GetServiceHybridDoubleWritesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceHybridDoubleWritesResult> {
+export function getServiceHybridDoubleWritesOutput(args?: GetServiceHybridDoubleWritesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceHybridDoubleWritesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", {

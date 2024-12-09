@@ -165,7 +165,7 @@ def get_bgp_peers_output(bgp_group_id: Optional[pulumi.Input[Optional[str]]] = N
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          router_id: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBgpPeersResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBgpPeersResult]:
     """
     This data source provides the Vpc Bgp Peers of the current Alibaba Cloud user.
 
@@ -205,7 +205,7 @@ def get_bgp_peers_output(bgp_group_id: Optional[pulumi.Input[Optional[str]]] = N
     __args__['outputFile'] = output_file
     __args__['routerId'] = router_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getBgpPeers:getBgpPeers', __args__, opts=opts, typ=GetBgpPeersResult)
     return __ret__.apply(lambda __response__: GetBgpPeersResult(
         bgp_group_id=pulumi.get(__response__, 'bgp_group_id'),

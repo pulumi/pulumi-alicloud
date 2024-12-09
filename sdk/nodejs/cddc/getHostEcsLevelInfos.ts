@@ -68,7 +68,7 @@ export interface GetHostEcsLevelInfosResult {
  *
  * > **NOTE:** Available in v1.147.0+.
  */
-export function getHostEcsLevelInfosOutput(args: GetHostEcsLevelInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostEcsLevelInfosResult> {
+export function getHostEcsLevelInfosOutput(args: GetHostEcsLevelInfosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostEcsLevelInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos", {
         "dbType": args.dbType,

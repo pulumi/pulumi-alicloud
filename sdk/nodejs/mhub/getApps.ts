@@ -123,7 +123,7 @@ export interface GetAppsResult {
  * export const mhubAppId2 = nameRegex.then(nameRegex => nameRegex.apps?.[0]?.id);
  * ```
  */
-export function getAppsOutput(args: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
+export function getAppsOutput(args: GetAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mhub/getApps:getApps", {
         "enableDetails": args.enableDetails,

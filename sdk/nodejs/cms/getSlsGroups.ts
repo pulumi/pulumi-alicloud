@@ -106,7 +106,7 @@ export interface GetSlsGroupsResult {
  * export const cmsSlsGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
-export function getSlsGroupsOutput(args?: GetSlsGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlsGroupsResult> {
+export function getSlsGroupsOutput(args?: GetSlsGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSlsGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getSlsGroups:getSlsGroups", {

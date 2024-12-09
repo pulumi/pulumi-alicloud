@@ -103,7 +103,7 @@ def get_permission(enable: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
 def get_permission_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPermissionResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPermissionResult]:
     """
     Assigns a RAM role to Tair (Redis OSS-Compatible) And Memcache (KVStore).
 
@@ -127,7 +127,7 @@ def get_permission_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['enable'] = enable
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getPermission:getPermission', __args__, opts=opts, typ=GetPermissionResult)
     return __ret__.apply(lambda __response__: GetPermissionResult(
         enable=pulumi.get(__response__, 'enable'),

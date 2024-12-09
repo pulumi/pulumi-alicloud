@@ -70,7 +70,7 @@ export interface GetBlockedRegionsResult {
  * });
  * ```
  */
-export function getBlockedRegionsOutput(args: GetBlockedRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBlockedRegionsResult> {
+export function getBlockedRegionsOutput(args: GetBlockedRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBlockedRegionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cdn/getBlockedRegions:getBlockedRegions", {
         "language": args.language,

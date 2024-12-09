@@ -186,7 +186,7 @@ def get_basic_accelerate_ips_output(accelerate_ip_address: Optional[pulumi.Input
                                     ip_set_id: Optional[pulumi.Input[str]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     status: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBasicAccelerateIpsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBasicAccelerateIpsResult]:
     """
     This data source provides the Global Accelerator (GA) Basic Accelerate IPs of the current Alibaba Cloud user.
 
@@ -220,7 +220,7 @@ def get_basic_accelerate_ips_output(accelerate_ip_address: Optional[pulumi.Input
     __args__['ipSetId'] = ip_set_id
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps', __args__, opts=opts, typ=GetBasicAccelerateIpsResult)
     return __ret__.apply(lambda __response__: GetBasicAccelerateIpsResult(
         accelerate_ip_address=pulumi.get(__response__, 'accelerate_ip_address'),

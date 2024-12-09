@@ -153,7 +153,7 @@ def get_grey_tag_routes_output(app_id: Optional[pulumi.Input[str]] = None,
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGreyTagRoutesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGreyTagRoutesResult]:
     """
     This data source provides the Sae GreyTagRoutes of the current Alibaba Cloud user.
 
@@ -183,7 +183,7 @@ def get_grey_tag_routes_output(app_id: Optional[pulumi.Input[str]] = None,
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:sae/getGreyTagRoutes:getGreyTagRoutes', __args__, opts=opts, typ=GetGreyTagRoutesResult)
     return __ret__.apply(lambda __response__: GetGreyTagRoutesResult(
         app_id=pulumi.get(__response__, 'app_id'),

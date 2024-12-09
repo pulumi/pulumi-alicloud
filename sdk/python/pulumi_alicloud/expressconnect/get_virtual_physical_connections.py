@@ -250,7 +250,7 @@ def get_virtual_physical_connections_output(business_status: Optional[pulumi.Inp
                                             virtual_physical_connection_status: Optional[pulumi.Input[Optional[str]]] = None,
                                             vlan_ids: Optional[pulumi.Input[Optional[Sequence[int]]]] = None,
                                             vpconn_ali_uid: Optional[pulumi.Input[Optional[str]]] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVirtualPhysicalConnectionsResult]:
+                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualPhysicalConnectionsResult]:
     """
     This data source provides Express Connect Virtual Physical Connection available to the user.
 
@@ -284,7 +284,7 @@ def get_virtual_physical_connections_output(business_status: Optional[pulumi.Inp
     __args__['virtualPhysicalConnectionStatus'] = virtual_physical_connection_status
     __args__['vlanIds'] = vlan_ids
     __args__['vpconnAliUid'] = vpconn_ali_uid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections', __args__, opts=opts, typ=GetVirtualPhysicalConnectionsResult)
     return __ret__.apply(lambda __response__: GetVirtualPhysicalConnectionsResult(
         business_status=pulumi.get(__response__, 'business_status'),

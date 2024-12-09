@@ -142,7 +142,7 @@ export interface GetEcsDedicatedHostClustersResult {
  * export const ecsDedicatedHostClusterId5 = clusterIds.then(clusterIds => clusterIds.clusters?.[0]?.id);
  * ```
  */
-export function getEcsDedicatedHostClustersOutput(args?: GetEcsDedicatedHostClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDedicatedHostClustersResult> {
+export function getEcsDedicatedHostClustersOutput(args?: GetEcsDedicatedHostClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsDedicatedHostClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", {

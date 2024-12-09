@@ -91,7 +91,7 @@ export interface GetSaslUsersResult {
  * export const firstSaslUsername = saslUsersDs.then(saslUsersDs => saslUsersDs.users?.[0]?.username);
  * ```
  */
-export function getSaslUsersOutput(args: GetSaslUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslUsersResult> {
+export function getSaslUsersOutput(args: GetSaslUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSaslUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:actiontrail/getSaslUsers:getSaslUsers", {
         "instanceId": args.instanceId,

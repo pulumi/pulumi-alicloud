@@ -179,7 +179,7 @@ def get_ecs_network_interface_permissions_output(ids: Optional[pulumi.Input[Opti
                                                  page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                                  page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                                  status: Optional[pulumi.Input[Optional[str]]] = None,
-                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsNetworkInterfacePermissionsResult]:
+                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsNetworkInterfacePermissionsResult]:
     """
     This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.
 
@@ -211,7 +211,7 @@ def get_ecs_network_interface_permissions_output(ids: Optional[pulumi.Input[Opti
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions', __args__, opts=opts, typ=GetEcsNetworkInterfacePermissionsResult)
     return __ret__.apply(lambda __response__: GetEcsNetworkInterfacePermissionsResult(
         id=pulumi.get(__response__, 'id'),

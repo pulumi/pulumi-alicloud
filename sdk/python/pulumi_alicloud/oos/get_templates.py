@@ -306,7 +306,7 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          template_format: Optional[pulumi.Input[Optional[str]]] = None,
                          template_type: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplatesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTemplatesResult]:
     """
     This data source provides a list of OOS Templates in an Alibaba Cloud account according to the specified filters.
 
@@ -360,7 +360,7 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['tags'] = tags
     __args__['templateFormat'] = template_format
     __args__['templateType'] = template_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:oos/getTemplates:getTemplates', __args__, opts=opts, typ=GetTemplatesResult)
     return __ret__.apply(lambda __response__: GetTemplatesResult(
         category=pulumi.get(__response__, 'category'),

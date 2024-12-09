@@ -93,7 +93,7 @@ export interface GetTransitRouterRouteEntriesResult {
  *
  * > **NOTE:** Available in 1.126.0+
  */
-export function getTransitRouterRouteEntriesOutput(args: GetTransitRouterRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteEntriesResult> {
+export function getTransitRouterRouteEntriesOutput(args: GetTransitRouterRouteEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterRouteEntriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterRouteEntries:getTransitRouterRouteEntries", {
         "ids": args.ids,

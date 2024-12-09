@@ -119,7 +119,7 @@ def get_connections(ids: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_connections_output(ids: Optional[pulumi.Input[str]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionsResult]:
     """
     This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).
 
@@ -143,7 +143,7 @@ def get_connections_output(ids: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getConnections:getConnections', __args__, opts=opts, typ=GetConnectionsResult)
     return __ret__.apply(lambda __response__: GetConnectionsResult(
         connections=pulumi.get(__response__, 'connections'),

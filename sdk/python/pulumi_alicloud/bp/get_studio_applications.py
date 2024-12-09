@@ -221,7 +221,7 @@ def get_studio_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    status: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStudioApplicationsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStudioApplicationsResult]:
     """
     This data source provides the Cloud Architect Design Tools (BPStudio) Applications of the current Alibaba Cloud user.
 
@@ -259,7 +259,7 @@ def get_studio_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:bp/getStudioApplications:getStudioApplications', __args__, opts=opts, typ=GetStudioApplicationsResult)
     return __ret__.apply(lambda __response__: GetStudioApplicationsResult(
         applications=pulumi.get(__response__, 'applications'),

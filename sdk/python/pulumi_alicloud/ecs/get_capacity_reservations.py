@@ -263,7 +263,7 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
                                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                      status: Optional[pulumi.Input[Optional[str]]] = None,
                                      tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCapacityReservationsResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCapacityReservationsResult]:
     """
     This data source provides Ecs Capacity Reservation available to the user.
 
@@ -304,7 +304,7 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
     __args__['resourceGroupId'] = resource_group_id
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getCapacityReservations:getCapacityReservations', __args__, opts=opts, typ=GetCapacityReservationsResult)
     return __ret__.apply(lambda __response__: GetCapacityReservationsResult(
         capacity_reservation_ids=pulumi.get(__response__, 'capacity_reservation_ids'),

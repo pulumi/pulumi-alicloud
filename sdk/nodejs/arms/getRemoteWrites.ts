@@ -116,7 +116,7 @@ export interface GetRemoteWritesResult {
  * export const armsRemoteWritesId2 = nameRegex.then(nameRegex => nameRegex.remoteWrites?.[0]?.id);
  * ```
  */
-export function getRemoteWritesOutput(args: GetRemoteWritesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRemoteWritesResult> {
+export function getRemoteWritesOutput(args: GetRemoteWritesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRemoteWritesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:arms/getRemoteWrites:getRemoteWrites", {
         "clusterId": args.clusterId,

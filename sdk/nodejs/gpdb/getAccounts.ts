@@ -115,7 +115,7 @@ export interface GetAccountsResult {
  * export const gpdbAccountId2 = nameRegex.then(nameRegex => nameRegex.accounts?.[0]?.id);
  * ```
  */
-export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:gpdb/getAccounts:getAccounts", {
         "dbInstanceId": args.dbInstanceId,

@@ -93,7 +93,7 @@ export interface GetDedicatedBlockStorageClustersResult {
  * export const alicloudEbsDedicatedBlockStorageClusterExampleId = _default.then(_default => _default.clusters?.[0]?.id);
  * ```
  */
-export function getDedicatedBlockStorageClustersOutput(args?: GetDedicatedBlockStorageClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedBlockStorageClustersResult> {
+export function getDedicatedBlockStorageClustersOutput(args?: GetDedicatedBlockStorageClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDedicatedBlockStorageClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", {

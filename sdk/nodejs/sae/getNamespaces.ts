@@ -86,7 +86,7 @@ export interface GetNamespacesResult {
  * export const saeNamespaceId = nameRegex.then(nameRegex => nameRegex.namespaces?.[0]?.id);
  * ```
  */
-export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNamespacesResult> {
+export function getNamespacesOutput(args?: GetNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNamespacesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sae/getNamespaces:getNamespaces", {

@@ -94,7 +94,7 @@ export interface GetTagsResult {
  * export const directMailTagId2 = nameRegex.then(nameRegex => nameRegex.tags?.[0]?.id);
  * ```
  */
-export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagsResult> {
+export function getTagsOutput(args?: GetTagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:directmail/getTags:getTags", {

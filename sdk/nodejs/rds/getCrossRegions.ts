@@ -71,7 +71,7 @@ export interface GetCrossRegionsResult {
  * export const firstRdsCrossRegions = regions.ids[0];
  * ```
  */
-export function getCrossRegionsOutput(args?: GetCrossRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCrossRegionsResult> {
+export function getCrossRegionsOutput(args?: GetCrossRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCrossRegionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getCrossRegions:getCrossRegions", {

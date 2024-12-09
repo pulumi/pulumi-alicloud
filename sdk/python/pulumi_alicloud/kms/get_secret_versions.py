@@ -179,7 +179,7 @@ def get_secret_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                secret_name: Optional[pulumi.Input[str]] = None,
                                version_stage: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretVersionsResult]:
     """
     This data source provides a list of KMS Secret Versions in an Alibaba Cloud account according to the specified filters.
 
@@ -212,7 +212,7 @@ def get_secret_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
     __args__['outputFile'] = output_file
     __args__['secretName'] = secret_name
     __args__['versionStage'] = version_stage
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kms/getSecretVersions:getSecretVersions', __args__, opts=opts, typ=GetSecretVersionsResult)
     return __ret__.apply(lambda __response__: GetSecretVersionsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

@@ -145,7 +145,7 @@ def get_ecs_backup_clients_output(ids: Optional[pulumi.Input[Optional[Sequence[s
                                   instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   status: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsBackupClientsResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsBackupClientsResult]:
     """
     This data source provides the Hbr Ecs File Backup Clients of the current Alibaba Cloud user.
 
@@ -177,7 +177,7 @@ def get_ecs_backup_clients_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     __args__['instanceIds'] = instance_ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getEcsBackupClients:getEcsBackupClients', __args__, opts=opts, typ=GetEcsBackupClientsResult)
     return __ret__.apply(lambda __response__: GetEcsBackupClientsResult(
         clients=pulumi.get(__response__, 'clients'),

@@ -188,7 +188,7 @@ def get_ddos_bgp_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             page_size: Optional[pulumi.Input[Optional[int]]] = None,
                             product_name: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDdosBgpIpsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDdosBgpIpsResult]:
     """
     This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.
 
@@ -227,7 +227,7 @@ def get_ddos_bgp_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['pageSize'] = page_size
     __args__['productName'] = product_name
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ddos/getDdosBgpIps:getDdosBgpIps', __args__, opts=opts, typ=GetDdosBgpIpsResult)
     return __ret__.apply(lambda __response__: GetDdosBgpIpsResult(
         id=pulumi.get(__response__, 'id'),

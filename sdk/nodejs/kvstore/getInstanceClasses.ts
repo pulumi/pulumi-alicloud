@@ -187,7 +187,7 @@ export interface GetInstanceClassesResult {
  * export const firstKvstoreInstanceClass = resourcesGetInstanceClasses.then(resourcesGetInstanceClasses => resourcesGetInstanceClasses.instanceClasses);
  * ```
  */
-export function getInstanceClassesOutput(args: GetInstanceClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassesResult> {
+export function getInstanceClassesOutput(args: GetInstanceClassesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceClassesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kvstore/getInstanceClasses:getInstanceClasses", {
         "architecture": args.architecture,

@@ -167,7 +167,7 @@ export interface GetSiteMonitorsResult {
  * export const alicloudCmsSiteMonitorExampleId = _default.apply(_default => _default.monitors?.[0]?.taskId);
  * ```
  */
-export function getSiteMonitorsOutput(args?: GetSiteMonitorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSiteMonitorsResult> {
+export function getSiteMonitorsOutput(args?: GetSiteMonitorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSiteMonitorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getSiteMonitors:getSiteMonitors", {

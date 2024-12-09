@@ -81,7 +81,7 @@ export interface GetInstanceKeywordsResult {
  * export const accountKeywords = resources.then(resources => resources.keywords?.[0]);
  * ```
  */
-export function getInstanceKeywordsOutput(args: GetInstanceKeywordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceKeywordsResult> {
+export function getInstanceKeywordsOutput(args: GetInstanceKeywordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceKeywordsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getInstanceKeywords:getInstanceKeywords", {
         "key": args.key,

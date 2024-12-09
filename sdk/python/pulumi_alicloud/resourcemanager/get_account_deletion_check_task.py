@@ -146,7 +146,7 @@ def get_account_deletion_check_task(account_id: Optional[str] = None,
         not_allow_reasons=pulumi.get(__ret__, 'not_allow_reasons'),
         status=pulumi.get(__ret__, 'status'))
 def get_account_deletion_check_task_output(account_id: Optional[pulumi.Input[str]] = None,
-                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountDeletionCheckTaskResult]:
+                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountDeletionCheckTaskResult]:
     """
     Using this data source can open Resource Manager Account Deletion Check Task.
 
@@ -173,7 +173,7 @@ def get_account_deletion_check_task_output(account_id: Optional[pulumi.Input[str
     """
     __args__ = dict()
     __args__['accountId'] = account_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask', __args__, opts=opts, typ=GetAccountDeletionCheckTaskResult)
     return __ret__.apply(lambda __response__: GetAccountDeletionCheckTaskResult(
         abandon_able_checks=pulumi.get(__response__, 'abandon_able_checks'),

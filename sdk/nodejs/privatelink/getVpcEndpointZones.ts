@@ -85,7 +85,7 @@ export interface GetVpcEndpointZonesResult {
  * export const firstPrivatelinkVpcEndpointZoneId = example.then(example => example.zones?.[0]?.id);
  * ```
  */
-export function getVpcEndpointZonesOutput(args: GetVpcEndpointZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointZonesResult> {
+export function getVpcEndpointZonesOutput(args: GetVpcEndpointZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcEndpointZonesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:privatelink/getVpcEndpointZones:getVpcEndpointZones", {
         "endpointId": args.endpointId,

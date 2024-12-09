@@ -188,7 +188,7 @@ export interface GetAlidnsRecordsResult {
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
  * ```
  */
-export function getAlidnsRecordsOutput(args: GetAlidnsRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsRecordsResult> {
+export function getAlidnsRecordsOutput(args: GetAlidnsRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlidnsRecordsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getAlidnsRecords:getAlidnsRecords", {
         "direction": args.direction,

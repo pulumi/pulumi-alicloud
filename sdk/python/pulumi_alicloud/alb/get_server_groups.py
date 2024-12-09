@@ -256,7 +256,7 @@ def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
                              status: Optional[pulumi.Input[Optional[str]]] = None,
                              tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerGroupsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerGroupsResult]:
     """
     This data source provides the Alb Server Groups of the current Alibaba Cloud user.
 
@@ -299,7 +299,7 @@ def get_server_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:alb/getServerGroups:getServerGroups', __args__, opts=opts, typ=GetServerGroupsResult)
     return __ret__.apply(lambda __response__: GetServerGroupsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

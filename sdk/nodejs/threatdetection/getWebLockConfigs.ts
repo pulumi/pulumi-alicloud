@@ -111,7 +111,7 @@ export interface GetWebLockConfigsResult {
  * export const alicloudThreatDetectionWebLockConfigExampleId = _default.then(_default => _default.configs?.[0]?.id);
  * ```
  */
-export function getWebLockConfigsOutput(args?: GetWebLockConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebLockConfigsResult> {
+export function getWebLockConfigsOutput(args?: GetWebLockConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebLockConfigsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", {

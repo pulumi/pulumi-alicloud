@@ -119,7 +119,7 @@ export interface GetGroupsResult {
  * export const cloudSsoGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
-export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+export function getGroupsOutput(args: GetGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudsso/getGroups:getGroups", {
         "directoryId": args.directoryId,

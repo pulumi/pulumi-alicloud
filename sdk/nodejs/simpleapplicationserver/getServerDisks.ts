@@ -136,7 +136,7 @@ export interface GetServerDisksResult {
  * export const simpleApplicationServerDiskId5 = diskType.then(diskType => diskType.disks?.[0]?.id);
  * ```
  */
-export function getServerDisksOutput(args?: GetServerDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerDisksResult> {
+export function getServerDisksOutput(args?: GetServerDisksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerDisksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerDisks:getServerDisks", {

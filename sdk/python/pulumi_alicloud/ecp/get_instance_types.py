@@ -100,7 +100,7 @@ def get_instance_types(output_file: Optional[str] = None,
         instance_types=pulumi.get(__ret__, 'instance_types'),
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_instance_types_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     This data source provides the available instance types with the Cloud Phone (ECP) Instance of the current Alibaba Cloud user.
 
@@ -123,7 +123,7 @@ def get_instance_types_output(output_file: Optional[pulumi.Input[Optional[str]]]
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecp/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult)
     return __ret__.apply(lambda __response__: GetInstanceTypesResult(
         id=pulumi.get(__response__, 'id'),

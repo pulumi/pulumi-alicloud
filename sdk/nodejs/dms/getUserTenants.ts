@@ -96,7 +96,7 @@ export interface GetUserTenantsResult {
  * export const tid = _default.then(_default => _default.ids?.[0]);
  * ```
  */
-export function getUserTenantsOutput(args?: GetUserTenantsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserTenantsResult> {
+export function getUserTenantsOutput(args?: GetUserTenantsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserTenantsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dms/getUserTenants:getUserTenants", {

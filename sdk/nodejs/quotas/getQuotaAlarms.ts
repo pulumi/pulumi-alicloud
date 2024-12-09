@@ -118,7 +118,7 @@ export interface GetQuotaAlarmsResult {
  * export const firstQuotasQuotaAlarmId = example.then(example => example.alarms?.[0]?.id);
  * ```
  */
-export function getQuotaAlarmsOutput(args?: GetQuotaAlarmsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaAlarmsResult> {
+export function getQuotaAlarmsOutput(args?: GetQuotaAlarmsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuotaAlarmsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:quotas/getQuotaAlarms:getQuotaAlarms", {

@@ -166,7 +166,7 @@ def get_snapshots_output(desktop_id: Optional[pulumi.Input[Optional[str]]] = Non
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
     This data source provides the Ecd Snapshots of the current Alibaba Cloud user.
 
@@ -197,7 +197,7 @@ def get_snapshots_output(desktop_id: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['snapshotId'] = snapshot_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult)
     return __ret__.apply(lambda __response__: GetSnapshotsResult(
         desktop_id=pulumi.get(__response__, 'desktop_id'),

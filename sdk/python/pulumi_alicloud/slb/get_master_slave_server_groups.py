@@ -149,7 +149,7 @@ def get_master_slave_server_groups_output(ids: Optional[pulumi.Input[Optional[Se
                                           load_balancer_id: Optional[pulumi.Input[str]] = None,
                                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMasterSlaveServerGroupsResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMasterSlaveServerGroupsResult]:
     """
     This data source provides the master slave server groups related to a server load balancer.
 
@@ -166,7 +166,7 @@ def get_master_slave_server_groups_output(ids: Optional[pulumi.Input[Optional[Se
     __args__['loadBalancerId'] = load_balancer_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups', __args__, opts=opts, typ=GetMasterSlaveServerGroupsResult)
     return __ret__.apply(lambda __response__: GetMasterSlaveServerGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

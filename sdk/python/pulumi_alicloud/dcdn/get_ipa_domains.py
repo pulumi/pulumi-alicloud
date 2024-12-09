@@ -172,7 +172,7 @@ def get_ipa_domains_output(domain_name: Optional[pulumi.Input[Optional[str]]] = 
                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
                            status: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpaDomainsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpaDomainsResult]:
     """
     This data source provides the Dcdn Ipa Domains of the current Alibaba Cloud user.
 
@@ -209,7 +209,7 @@ def get_ipa_domains_output(domain_name: Optional[pulumi.Input[Optional[str]]] = 
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getIpaDomains:getIpaDomains', __args__, opts=opts, typ=GetIpaDomainsResult)
     return __ret__.apply(lambda __response__: GetIpaDomainsResult(
         domain_name=pulumi.get(__response__, 'domain_name'),

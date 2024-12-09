@@ -236,7 +236,7 @@ def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optiona
                               select_contact_groups: Optional[pulumi.Input[Optional[bool]]] = None,
                               tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               type: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMonitorGroupsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitorGroupsResult]:
     """
     This data source provides the Cms Monitor Groups of the current Alibaba Cloud user.
 
@@ -277,7 +277,7 @@ def get_monitor_groups_output(dynamic_tag_rule_id: Optional[pulumi.Input[Optiona
     __args__['selectContactGroups'] = select_contact_groups
     __args__['tags'] = tags
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getMonitorGroups:getMonitorGroups', __args__, opts=opts, typ=GetMonitorGroupsResult)
     return __ret__.apply(lambda __response__: GetMonitorGroupsResult(
         dynamic_tag_rule_id=pulumi.get(__response__, 'dynamic_tag_rule_id'),

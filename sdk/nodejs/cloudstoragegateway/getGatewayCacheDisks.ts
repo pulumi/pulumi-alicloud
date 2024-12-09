@@ -116,7 +116,7 @@ export interface GetGatewayCacheDisksResult {
  * export const cloudStorageGatewayGatewayCacheDiskId2 = status.then(status => status.disks?.[0]?.id);
  * ```
  */
-export function getGatewayCacheDisksOutput(args: GetGatewayCacheDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayCacheDisksResult> {
+export function getGatewayCacheDisksOutput(args: GetGatewayCacheDisksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayCacheDisksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getGatewayCacheDisks:getGatewayCacheDisks", {
         "gatewayId": args.gatewayId,

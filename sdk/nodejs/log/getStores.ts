@@ -90,7 +90,7 @@ export interface GetStoresResult {
  * export const firstLogStoreId = example.then(example => example.stores?.[0]?.id);
  * ```
  */
-export function getStoresOutput(args: GetStoresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStoresResult> {
+export function getStoresOutput(args: GetStoresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStoresResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:log/getStores:getStores", {
         "ids": args.ids,

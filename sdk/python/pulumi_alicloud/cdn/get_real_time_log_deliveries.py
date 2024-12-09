@@ -127,7 +127,7 @@ def get_real_time_log_deliveries(domain: Optional[str] = None,
 def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[str]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRealTimeLogDeliveriesResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRealTimeLogDeliveriesResult]:
     """
     This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.
 
@@ -153,7 +153,7 @@ def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[str]] = No
     __args__['domain'] = domain
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries', __args__, opts=opts, typ=GetRealTimeLogDeliveriesResult)
     return __ret__.apply(lambda __response__: GetRealTimeLogDeliveriesResult(
         deliveries=pulumi.get(__response__, 'deliveries'),

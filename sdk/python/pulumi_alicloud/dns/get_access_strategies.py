@@ -202,7 +202,7 @@ def get_access_strategies_output(enable_details: Optional[pulumi.Input[Optional[
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  strategy_mode: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessStrategiesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessStrategiesResult]:
     """
     This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.
 
@@ -245,7 +245,7 @@ def get_access_strategies_output(enable_details: Optional[pulumi.Input[Optional[
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['strategyMode'] = strategy_mode
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getAccessStrategies:getAccessStrategies', __args__, opts=opts, typ=GetAccessStrategiesResult)
     return __ret__.apply(lambda __response__: GetAccessStrategiesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

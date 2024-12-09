@@ -202,7 +202,7 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[
                                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                            tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                            zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsDedicatedHostClustersResult]:
+                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsDedicatedHostClustersResult]:
     """
     This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.
 
@@ -245,7 +245,7 @@ def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[
     __args__['outputFile'] = output_file
     __args__['tags'] = tags
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters', __args__, opts=opts, typ=GetEcsDedicatedHostClustersResult)
     return __ret__.apply(lambda __response__: GetEcsDedicatedHostClustersResult(
         clusters=pulumi.get(__response__, 'clusters'),

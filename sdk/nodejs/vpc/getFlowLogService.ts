@@ -78,7 +78,7 @@ export interface GetFlowLogServiceResult {
  * });
  * ```
  */
-export function getFlowLogServiceOutput(args?: GetFlowLogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowLogServiceResult> {
+export function getFlowLogServiceOutput(args?: GetFlowLogServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlowLogServiceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getFlowLogService:getFlowLogService", {

@@ -190,7 +190,7 @@ def get_access_assignments_output(access_configuration_id: Optional[pulumi.Input
                                   principal_type: Optional[pulumi.Input[Optional[str]]] = None,
                                   target_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   target_type: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessAssignmentsResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessAssignmentsResult]:
     """
     This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.
 
@@ -231,7 +231,7 @@ def get_access_assignments_output(access_configuration_id: Optional[pulumi.Input
     __args__['principalType'] = principal_type
     __args__['targetId'] = target_id
     __args__['targetType'] = target_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudsso/getAccessAssignments:getAccessAssignments', __args__, opts=opts, typ=GetAccessAssignmentsResult)
     return __ret__.apply(lambda __response__: GetAccessAssignmentsResult(
         access_configuration_id=pulumi.get(__response__, 'access_configuration_id'),

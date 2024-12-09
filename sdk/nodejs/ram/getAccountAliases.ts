@@ -30,7 +30,7 @@ export interface GetAccountAliasesResult {
     readonly id: string;
     readonly outputFile?: string;
 }
-export function getAccountAliasesOutput(args?: GetAccountAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAliasesResult> {
+export function getAccountAliasesOutput(args?: GetAccountAliasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountAliasesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ram/getAccountAliases:getAccountAliases", {

@@ -109,7 +109,7 @@ export interface GetTransitRouterCidrsResult {
  * export const cenTransitRouterCidrId1 = nameRegex.then(nameRegex => nameRegex.cidrs?.[0]?.id);
  * ```
  */
-export function getTransitRouterCidrsOutput(args: GetTransitRouterCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterCidrsResult> {
+export function getTransitRouterCidrsOutput(args: GetTransitRouterCidrsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterCidrsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs", {
         "ids": args.ids,

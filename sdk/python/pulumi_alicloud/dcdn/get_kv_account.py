@@ -89,7 +89,7 @@ def get_kv_account(status: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
 def get_kv_account_output(status: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKvAccountResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKvAccountResult]:
     """
     This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
 
@@ -109,7 +109,7 @@ def get_kv_account_output(status: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getKvAccount:getKvAccount', __args__, opts=opts, typ=GetKvAccountResult)
     return __ret__.apply(lambda __response__: GetKvAccountResult(
         id=pulumi.get(__response__, 'id'),

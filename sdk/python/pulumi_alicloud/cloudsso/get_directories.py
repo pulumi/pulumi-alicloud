@@ -156,7 +156,7 @@ def get_directories_output(enable_details: Optional[pulumi.Input[Optional[bool]]
                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoriesResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirectoriesResult]:
     """
     This data source provides the Cloud Sso Directories of the current Alibaba Cloud user.
 
@@ -189,7 +189,7 @@ def get_directories_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudsso/getDirectories:getDirectories', __args__, opts=opts, typ=GetDirectoriesResult)
     return __ret__.apply(lambda __response__: GetDirectoriesResult(
         directories=pulumi.get(__response__, 'directories'),

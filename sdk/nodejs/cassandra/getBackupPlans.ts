@@ -83,7 +83,7 @@ export interface GetBackupPlansResult {
  * export const firstCassandraBackupPlanId = example.then(example => example.plans?.[0]?.id);
  * ```
  */
-export function getBackupPlansOutput(args: GetBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlansResult> {
+export function getBackupPlansOutput(args: GetBackupPlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPlansResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cassandra/getBackupPlans:getBackupPlans", {
         "clusterId": args.clusterId,

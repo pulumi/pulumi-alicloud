@@ -123,7 +123,7 @@ export interface GetServerPlansResult {
  * export const simpleApplicationServerPlanId1 = ids.plans[0].id;
  * ```
  */
-export function getServerPlansOutput(args?: GetServerPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerPlansResult> {
+export function getServerPlansOutput(args?: GetServerPlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerPlansResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerPlans:getServerPlans", {

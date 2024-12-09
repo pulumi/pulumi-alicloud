@@ -157,7 +157,7 @@ def get_domain_txt_guid_output(domain_name: Optional[pulumi.Input[str]] = None,
                                lang: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                type: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainTxtGuidResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainTxtGuidResult]:
     """
     Provides the generation of txt records to realize the retrieval and verification of domain names.
 
@@ -186,7 +186,7 @@ def get_domain_txt_guid_output(domain_name: Optional[pulumi.Input[str]] = None,
     __args__['lang'] = lang
     __args__['outputFile'] = output_file
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getDomainTxtGuid:getDomainTxtGuid', __args__, opts=opts, typ=GetDomainTxtGuidResult)
     return __ret__.apply(lambda __response__: GetDomainTxtGuidResult(
         domain_name=pulumi.get(__response__, 'domain_name'),

@@ -115,7 +115,7 @@ export interface GetHostGroupsResult {
  * export const bastionhostHostGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
-export function getHostGroupsOutput(args: GetHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostGroupsResult> {
+export function getHostGroupsOutput(args: GetHostGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:bastionhost/getHostGroups:getHostGroups", {
         "hostGroupName": args.hostGroupName,

@@ -161,7 +161,7 @@ def get_policy_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                policy_name: Optional[pulumi.Input[str]] = None,
                                policy_type: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyVersionsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyVersionsResult]:
     """
     This data source provides the Resource Manager Policy Versions of the current Alibaba Cloud user.
 
@@ -191,7 +191,7 @@ def get_policy_versions_output(enable_details: Optional[pulumi.Input[Optional[bo
     __args__['outputFile'] = output_file
     __args__['policyName'] = policy_name
     __args__['policyType'] = policy_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getPolicyVersions:getPolicyVersions', __args__, opts=opts, typ=GetPolicyVersionsResult)
     return __ret__.apply(lambda __response__: GetPolicyVersionsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

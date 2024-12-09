@@ -178,7 +178,7 @@ def get_listeners_output(description_regex: Optional[pulumi.Input[Optional[str]]
                          load_balancer_id: Optional[pulumi.Input[str]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          protocol: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListenersResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListenersResult]:
     """
     This data source provides the listeners related to a server load balancer of the current Alibaba Cloud user.
 
@@ -222,7 +222,7 @@ def get_listeners_output(description_regex: Optional[pulumi.Input[Optional[str]]
     __args__['loadBalancerId'] = load_balancer_id
     __args__['outputFile'] = output_file
     __args__['protocol'] = protocol
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult)
     return __ret__.apply(lambda __response__: GetListenersResult(
         description_regex=pulumi.get(__response__, 'description_regex'),

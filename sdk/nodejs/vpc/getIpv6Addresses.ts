@@ -127,7 +127,7 @@ export interface GetIpv6AddressesResult {
  * export const vpcIpv6AddressId4 = status.then(status => status.addresses?.[0]?.id);
  * ```
  */
-export function getIpv6AddressesOutput(args?: GetIpv6AddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6AddressesResult> {
+export function getIpv6AddressesOutput(args?: GetIpv6AddressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpv6AddressesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getIpv6Addresses:getIpv6Addresses", {

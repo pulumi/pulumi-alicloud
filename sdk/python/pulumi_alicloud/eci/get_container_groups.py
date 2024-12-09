@@ -262,7 +262,7 @@ def get_container_groups_output(container_group_name: Optional[pulumi.Input[Opti
                                 vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 with_event: Optional[pulumi.Input[Optional[bool]]] = None,
                                 zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetContainerGroupsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerGroupsResult]:
     """
     This data source provides the Eci Container Groups of the current Alibaba Cloud user.
 
@@ -305,7 +305,7 @@ def get_container_groups_output(container_group_name: Optional[pulumi.Input[Opti
     __args__['vswitchId'] = vswitch_id
     __args__['withEvent'] = with_event
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eci/getContainerGroups:getContainerGroups', __args__, opts=opts, typ=GetContainerGroupsResult)
     return __ret__.apply(lambda __response__: GetContainerGroupsResult(
         container_group_name=pulumi.get(__response__, 'container_group_name'),

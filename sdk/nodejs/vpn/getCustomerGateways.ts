@@ -95,7 +95,7 @@ export interface GetCustomerGatewaysResult {
  * });
  * ```
  */
-export function getCustomerGatewaysOutput(args?: GetCustomerGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerGatewaysResult> {
+export function getCustomerGatewaysOutput(args?: GetCustomerGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomerGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpn/getCustomerGateways:getCustomerGateways", {

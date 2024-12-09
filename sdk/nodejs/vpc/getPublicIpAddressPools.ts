@@ -118,7 +118,7 @@ export interface GetPublicIpAddressPoolsResult {
  * export const vpcPublicIpAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
  * ```
  */
-export function getPublicIpAddressPoolsOutput(args?: GetPublicIpAddressPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIpAddressPoolsResult> {
+export function getPublicIpAddressPoolsOutput(args?: GetPublicIpAddressPoolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPublicIpAddressPoolsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools", {

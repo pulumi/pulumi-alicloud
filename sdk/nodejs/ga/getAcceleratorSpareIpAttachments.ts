@@ -98,7 +98,7 @@ export interface GetAcceleratorSpareIpAttachmentsResult {
  * export const gaAcceleratorSpareIpAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
  */
-export function getAcceleratorSpareIpAttachmentsOutput(args: GetAcceleratorSpareIpAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorSpareIpAttachmentsResult> {
+export function getAcceleratorSpareIpAttachmentsOutput(args: GetAcceleratorSpareIpAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAcceleratorSpareIpAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getAcceleratorSpareIpAttachments:getAcceleratorSpareIpAttachments", {
         "acceleratorId": args.acceleratorId,

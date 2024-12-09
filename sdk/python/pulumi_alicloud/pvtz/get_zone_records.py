@@ -222,7 +222,7 @@ def get_zone_records_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             tag: Optional[pulumi.Input[Optional[str]]] = None,
                             user_client_ip: Optional[pulumi.Input[Optional[str]]] = None,
                             zone_id: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneRecordsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneRecordsResult]:
     """
     This data source provides Private Zone Records resource information owned by an Alibaba Cloud account.
 
@@ -262,7 +262,7 @@ def get_zone_records_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['tag'] = tag
     __args__['userClientIp'] = user_client_ip
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:pvtz/getZoneRecords:getZoneRecords', __args__, opts=opts, typ=GetZoneRecordsResult)
     return __ret__.apply(lambda __response__: GetZoneRecordsResult(
         id=pulumi.get(__response__, 'id'),

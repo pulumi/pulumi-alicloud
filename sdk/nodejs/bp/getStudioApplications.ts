@@ -133,7 +133,7 @@ export interface GetStudioApplicationsResult {
  * export const bpStudioApplicationId2 = nameRegex.then(nameRegex => nameRegex.applications?.[0]?.id);
  * ```
  */
-export function getStudioApplicationsOutput(args?: GetStudioApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStudioApplicationsResult> {
+export function getStudioApplicationsOutput(args?: GetStudioApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStudioApplicationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:bp/getStudioApplications:getStudioApplications", {

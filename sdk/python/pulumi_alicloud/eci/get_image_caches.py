@@ -210,7 +210,7 @@ def get_image_caches_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             snapshot_id: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageCachesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageCachesResult]:
     """
     Provides a collection of ECI Image Cache to the specified filters.
 
@@ -243,7 +243,7 @@ def get_image_caches_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['outputFile'] = output_file
     __args__['snapshotId'] = snapshot_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eci/getImageCaches:getImageCaches', __args__, opts=opts, typ=GetImageCachesResult)
     return __ret__.apply(lambda __response__: GetImageCachesResult(
         caches=pulumi.get(__response__, 'caches'),

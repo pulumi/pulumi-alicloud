@@ -134,7 +134,7 @@ export interface GetCustomRoutingEndpointTrafficPoliciesResult {
  * export const gaCustomRoutingEndpointTrafficPoliciesId1 = ids.then(ids => ids.customRoutingEndpointTrafficPolicies?.[0]?.id);
  * ```
  */
-export function getCustomRoutingEndpointTrafficPoliciesOutput(args: GetCustomRoutingEndpointTrafficPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointTrafficPoliciesResult> {
+export function getCustomRoutingEndpointTrafficPoliciesOutput(args: GetCustomRoutingEndpointTrafficPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomRoutingEndpointTrafficPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getCustomRoutingEndpointTrafficPolicies:getCustomRoutingEndpointTrafficPolicies", {
         "acceleratorId": args.acceleratorId,

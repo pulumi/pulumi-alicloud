@@ -267,7 +267,7 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  router_type: Optional[pulumi.Input[Optional[str]]] = None,
                                  specification: Optional[pulumi.Input[Optional[str]]] = None,
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterInterfacesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouterInterfacesResult]:
     """
     This data source provides information about [router interfaces](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
     that connect VPCs together.
@@ -309,7 +309,7 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['routerType'] = router_type
     __args__['specification'] = specification
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getRouterInterfaces:getRouterInterfaces', __args__, opts=opts, typ=GetRouterInterfacesResult)
     return __ret__.apply(lambda __response__: GetRouterInterfacesResult(
         id=pulumi.get(__response__, 'id'),

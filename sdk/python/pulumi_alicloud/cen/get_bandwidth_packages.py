@@ -192,7 +192,7 @@ def get_bandwidth_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[s
                                   name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   status: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBandwidthPackagesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBandwidthPackagesResult]:
     """
     This data source provides CEN Bandwidth Packages available to the user.
 
@@ -222,7 +222,7 @@ def get_bandwidth_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getBandwidthPackages:getBandwidthPackages', __args__, opts=opts, typ=GetBandwidthPackagesResult)
     return __ret__.apply(lambda __response__: GetBandwidthPackagesResult(
         id=pulumi.get(__response__, 'id'),

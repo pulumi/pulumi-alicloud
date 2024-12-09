@@ -162,7 +162,7 @@ def get_ssl_vpn_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                vpn_gateway_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSslVpnServersResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSslVpnServersResult]:
     """
     The SSL-VPN servers data source lists lots of SSL-VPN servers resource information owned by an Alicloud account.
 
@@ -189,7 +189,7 @@ def get_ssl_vpn_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['vpnGatewayId'] = vpn_gateway_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getSslVpnServers:getSslVpnServers', __args__, opts=opts, typ=GetSslVpnServersResult)
     return __ret__.apply(lambda __response__: GetSslVpnServersResult(
         id=pulumi.get(__response__, 'id'),

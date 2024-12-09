@@ -79,7 +79,7 @@ export interface GetProjectsResult {
  * export const immProjectId1 = ids.then(ids => ids.projects?.[0]?.id);
  * ```
  */
-export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
+export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:imm/getProjects:getProjects", {

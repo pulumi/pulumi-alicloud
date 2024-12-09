@@ -288,7 +288,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
                          resolution: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
                          zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides the Ecp Instances of the current Alibaba Cloud user.
 
@@ -357,7 +357,7 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     __args__['resolution'] = resolution
     __args__['status'] = status
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecp/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

@@ -82,13 +82,13 @@ def get_account_aliases(output_file: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_account_aliases_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAliasesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAliasesResult]:
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getAccountAliases:getAccountAliases', __args__, opts=opts, typ=GetAccountAliasesResult)
     return __ret__.apply(lambda __response__: GetAccountAliasesResult(
         account_alias=pulumi.get(__response__, 'account_alias'),

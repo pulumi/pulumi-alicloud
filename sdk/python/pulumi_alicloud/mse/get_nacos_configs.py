@@ -294,7 +294,7 @@ def get_nacos_configs_output(accept_language: Optional[pulumi.Input[Optional[str
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              request_pars: Optional[pulumi.Input[Optional[str]]] = None,
                              tags: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNacosConfigsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNacosConfigsResult]:
     """
     This data source provides the Mse Nacos Configs of the current Alibaba Cloud user.
 
@@ -376,7 +376,7 @@ def get_nacos_configs_output(accept_language: Optional[pulumi.Input[Optional[str
     __args__['outputFile'] = output_file
     __args__['requestPars'] = request_pars
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mse/getNacosConfigs:getNacosConfigs', __args__, opts=opts, typ=GetNacosConfigsResult)
     return __ret__.apply(lambda __response__: GetNacosConfigsResult(
         accept_language=pulumi.get(__response__, 'accept_language'),

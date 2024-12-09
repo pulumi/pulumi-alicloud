@@ -117,7 +117,7 @@ export interface GetAlarmContactsResult {
  * }
  * ```
  */
-export function getAlarmContactsOutput(args?: GetAlarmContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactsResult> {
+export function getAlarmContactsOutput(args?: GetAlarmContactsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlarmContactsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getAlarmContacts:getAlarmContacts", {

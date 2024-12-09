@@ -255,7 +255,7 @@ def get_vpds_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
                     status: Optional[pulumi.Input[Optional[str]]] = None,
                     vpd_id: Optional[pulumi.Input[Optional[str]]] = None,
                     vpd_name: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpdsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpdsResult]:
     """
     This data source provides Eflo Vpd available to the user.[What is Vpd](https://help.aliyun.com/document_detail/604976.html)
 
@@ -294,7 +294,7 @@ def get_vpds_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
     __args__['status'] = status
     __args__['vpdId'] = vpd_id
     __args__['vpdName'] = vpd_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eflo/getVpds:getVpds', __args__, opts=opts, typ=GetVpdsResult)
     return __ret__.apply(lambda __response__: GetVpdsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

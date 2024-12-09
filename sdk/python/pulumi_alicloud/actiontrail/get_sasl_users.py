@@ -144,7 +144,7 @@ def get_sasl_users(instance_id: Optional[str] = None,
 def get_sasl_users_output(instance_id: Optional[pulumi.Input[str]] = None,
                           name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSaslUsersResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSaslUsersResult]:
     """
     This data source provides a list of ALIKAFKA Sasl users in an Alibaba Cloud account according to the specified filters.
 
@@ -171,7 +171,7 @@ def get_sasl_users_output(instance_id: Optional[pulumi.Input[str]] = None,
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getSaslUsers:getSaslUsers', __args__, opts=opts, typ=GetSaslUsersResult)
     return __ret__.apply(lambda __response__: GetSaslUsersResult(
         id=pulumi.get(__response__, 'id'),

@@ -211,7 +211,7 @@ def get_nat_ip_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             nat_ip_cidrs: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNatIpCidrsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNatIpCidrsResult]:
     """
     This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.
 
@@ -263,7 +263,7 @@ def get_nat_ip_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['natIpCidrs'] = nat_ip_cidrs
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getNatIpCidrs:getNatIpCidrs', __args__, opts=opts, typ=GetNatIpCidrsResult)
     return __ret__.apply(lambda __response__: GetNatIpCidrsResult(
         cidrs=pulumi.get(__response__, 'cidrs'),

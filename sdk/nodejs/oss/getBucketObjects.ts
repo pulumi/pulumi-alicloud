@@ -87,7 +87,7 @@ export interface GetBucketObjectsResult {
  * export const firstObjectKey = bucketObjectsDs.then(bucketObjectsDs => bucketObjectsDs.objects?.[0]?.key);
  * ```
  */
-export function getBucketObjectsOutput(args: GetBucketObjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectsResult> {
+export function getBucketObjectsOutput(args: GetBucketObjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketObjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oss/getBucketObjects:getBucketObjects", {
         "bucketName": args.bucketName,

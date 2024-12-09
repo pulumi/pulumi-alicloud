@@ -117,7 +117,7 @@ export interface GetGatewayVpnAttachmentsResult {
  * export const internetIp = vpnAttachments.attachments[0].internetIp;
  * ```
  */
-export function getGatewayVpnAttachmentsOutput(args?: GetGatewayVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayVpnAttachmentsResult> {
+export function getGatewayVpnAttachmentsOutput(args?: GetGatewayVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayVpnAttachmentsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", {

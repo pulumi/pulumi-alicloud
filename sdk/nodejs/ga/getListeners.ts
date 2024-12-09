@@ -101,7 +101,7 @@ export interface GetListenersResult {
  * export const firstGaListenerId = example.then(example => example.listeners?.[0]?.id);
  * ```
  */
-export function getListenersOutput(args: GetListenersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListenersResult> {
+export function getListenersOutput(args: GetListenersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListenersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getListeners:getListeners", {
         "acceleratorId": args.acceleratorId,

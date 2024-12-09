@@ -163,7 +163,7 @@ def get_service_meshes_output(enable_details: Optional[pulumi.Input[Optional[boo
                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
                               status: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceMeshesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceMeshesResult]:
     """
     This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
 
@@ -182,7 +182,7 @@ def get_service_meshes_output(enable_details: Optional[pulumi.Input[Optional[boo
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:servicemesh/getServiceMeshes:getServiceMeshes', __args__, opts=opts, typ=GetServiceMeshesResult)
     return __ret__.apply(lambda __response__: GetServiceMeshesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

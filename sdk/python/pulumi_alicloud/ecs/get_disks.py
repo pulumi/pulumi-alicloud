@@ -535,7 +535,7 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
                      tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                      type: Optional[pulumi.Input[Optional[str]]] = None,
                      zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDisksResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDisksResult]:
     """
     > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_disks from version 1.122.0.
 
@@ -604,7 +604,7 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
     __args__['tags'] = tags
     __args__['type'] = type
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getDisks:getDisks', __args__, opts=opts, typ=GetDisksResult)
     return __ret__.apply(lambda __response__: GetDisksResult(
         additional_attributes=pulumi.get(__response__, 'additional_attributes'),

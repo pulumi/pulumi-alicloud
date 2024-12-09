@@ -120,7 +120,7 @@ export interface GetTransitRoutersResult {
  * export const firstTransitRoutersType = _default.then(_default => _default.transitRouters?.[0]?.type);
  * ```
  */
-export function getTransitRoutersOutput(args: GetTransitRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRoutersResult> {
+export function getTransitRoutersOutput(args: GetTransitRoutersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRoutersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouters:getTransitRouters", {
         "cenId": args.cenId,

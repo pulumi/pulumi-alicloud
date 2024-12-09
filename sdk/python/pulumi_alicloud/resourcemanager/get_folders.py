@@ -194,7 +194,7 @@ def get_folders_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                        parent_folder_id: Optional[pulumi.Input[Optional[str]]] = None,
                        query_keyword: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFoldersResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFoldersResult]:
     """
     This data source provides the Resource Manager Folders of the current Alibaba Cloud user.
 
@@ -232,7 +232,7 @@ def get_folders_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     __args__['outputFile'] = output_file
     __args__['parentFolderId'] = parent_folder_id
     __args__['queryKeyword'] = query_keyword
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getFolders:getFolders', __args__, opts=opts, typ=GetFoldersResult)
     return __ret__.apply(lambda __response__: GetFoldersResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

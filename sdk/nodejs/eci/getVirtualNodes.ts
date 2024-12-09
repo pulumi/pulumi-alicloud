@@ -133,7 +133,7 @@ export interface GetVirtualNodesResult {
  * export const eciVirtualNodeId2 = nameRegex.then(nameRegex => nameRegex.nodes?.[0]?.id);
  * ```
  */
-export function getVirtualNodesOutput(args?: GetVirtualNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualNodesResult> {
+export function getVirtualNodesOutput(args?: GetVirtualNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualNodesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eci/getVirtualNodes:getVirtualNodes", {

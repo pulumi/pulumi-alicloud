@@ -207,7 +207,7 @@ def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
                                transit_router_id: Optional[pulumi.Input[Optional[str]]] = None,
                                transit_router_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRoutersResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRoutersResult]:
     """
     This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)
 
@@ -240,7 +240,7 @@ def get_transit_routers_output(cen_id: Optional[pulumi.Input[str]] = None,
     __args__['status'] = status
     __args__['transitRouterId'] = transit_router_id
     __args__['transitRouterIds'] = transit_router_ids
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouters:getTransitRouters', __args__, opts=opts, typ=GetTransitRoutersResult)
     return __ret__.apply(lambda __response__: GetTransitRoutersResult(
         cen_id=pulumi.get(__response__, 'cen_id'),

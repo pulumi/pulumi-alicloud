@@ -159,7 +159,7 @@ export interface GetNatIpCidrsResult {
  * export const vpcNatIpCidrId5 = atIpCidrName.then(atIpCidrName => atIpCidrName.cidrs?.[0]?.id);
  * ```
  */
-export function getNatIpCidrsOutput(args: GetNatIpCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpCidrsResult> {
+export function getNatIpCidrsOutput(args: GetNatIpCidrsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNatIpCidrsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", {
         "ids": args.ids,

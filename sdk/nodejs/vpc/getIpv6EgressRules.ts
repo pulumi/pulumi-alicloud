@@ -147,7 +147,7 @@ export interface GetIpv6EgressRulesResult {
  * export const vpcIpv6EgressRuleId4 = ipv6EgressRuleName.then(ipv6EgressRuleName => ipv6EgressRuleName.rules?.[0]?.id);
  * ```
  */
-export function getIpv6EgressRulesOutput(args: GetIpv6EgressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv6EgressRulesResult> {
+export function getIpv6EgressRulesOutput(args: GetIpv6EgressRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpv6EgressRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getIpv6EgressRules:getIpv6EgressRules", {
         "ids": args.ids,

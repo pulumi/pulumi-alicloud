@@ -166,7 +166,7 @@ def get_db_clusters_output(db_cluster_description: Optional[pulumi.Input[Optiona
                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
                            status: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbClustersResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbClustersResult]:
     """
     This data source provides the Click House DBCluster of the current Alibaba Cloud user.
 
@@ -207,7 +207,7 @@ def get_db_clusters_output(db_cluster_description: Optional[pulumi.Input[Optiona
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:clickhouse/getDbClusters:getDbClusters', __args__, opts=opts, typ=GetDbClustersResult)
     return __ret__.apply(lambda __response__: GetDbClustersResult(
         clusters=pulumi.get(__response__, 'clusters'),

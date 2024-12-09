@@ -196,7 +196,7 @@ def get_public_ip_address_pools_output(ids: Optional[pulumi.Input[Optional[Seque
                                        public_ip_address_pool_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                        public_ip_address_pool_name: Optional[pulumi.Input[Optional[str]]] = None,
                                        status: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPublicIpAddressPoolsResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPublicIpAddressPoolsResult]:
     """
     This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.
 
@@ -233,7 +233,7 @@ def get_public_ip_address_pools_output(ids: Optional[pulumi.Input[Optional[Seque
     __args__['publicIpAddressPoolIds'] = public_ip_address_pool_ids
     __args__['publicIpAddressPoolName'] = public_ip_address_pool_name
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getPublicIpAddressPools:getPublicIpAddressPools', __args__, opts=opts, typ=GetPublicIpAddressPoolsResult)
     return __ret__.apply(lambda __response__: GetPublicIpAddressPoolsResult(
         id=pulumi.get(__response__, 'id'),

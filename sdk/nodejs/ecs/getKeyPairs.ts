@@ -120,7 +120,7 @@ export interface GetKeyPairsResult {
  * });
  * ```
  */
-export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
+export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeyPairsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getKeyPairs:getKeyPairs", {

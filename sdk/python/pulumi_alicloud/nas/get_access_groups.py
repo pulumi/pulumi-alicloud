@@ -240,7 +240,7 @@ def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[s
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              type: Optional[pulumi.Input[Optional[str]]] = None,
                              useutc_date_time: Optional[pulumi.Input[Optional[bool]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessGroupsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessGroupsResult]:
     """
     This data source provides user-available access groups. Use when you can create mount points
 
@@ -277,7 +277,7 @@ def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[s
     __args__['outputFile'] = output_file
     __args__['type'] = type
     __args__['useutcDateTime'] = useutc_date_time
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getAccessGroups:getAccessGroups', __args__, opts=opts, typ=GetAccessGroupsResult)
     return __ret__.apply(lambda __response__: GetAccessGroupsResult(
         access_group_name=pulumi.get(__response__, 'access_group_name'),

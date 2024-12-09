@@ -177,7 +177,7 @@ def get_keys_output(description_regex: Optional[pulumi.Input[Optional[str]]] = N
                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                     status: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeysResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeysResult]:
     """
     This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.
 
@@ -208,7 +208,7 @@ def get_keys_output(description_regex: Optional[pulumi.Input[Optional[str]]] = N
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kms/getKeys:getKeys', __args__, opts=opts, typ=GetKeysResult)
     return __ret__.apply(lambda __response__: GetKeysResult(
         description_regex=pulumi.get(__response__, 'description_regex'),

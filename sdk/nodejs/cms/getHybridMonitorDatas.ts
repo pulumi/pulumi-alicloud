@@ -108,7 +108,7 @@ export interface GetHybridMonitorDatasResult {
  * export const cmsMetricRuleTemplateId1 = _default.then(_default => _default.datas?.[0]);
  * ```
  */
-export function getHybridMonitorDatasOutput(args: GetHybridMonitorDatasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorDatasResult> {
+export function getHybridMonitorDatasOutput(args: GetHybridMonitorDatasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridMonitorDatasResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", {
         "end": args.end,

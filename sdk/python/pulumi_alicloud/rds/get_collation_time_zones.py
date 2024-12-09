@@ -116,7 +116,7 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[Union['GetC
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[Optional[Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict']]]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCollationTimeZonesResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCollationTimeZonesResult]:
     """
     Operation to query the character set collations and time zones available for use in ApsaraDB RDS.
 
@@ -142,7 +142,7 @@ def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[
     __args__ = dict()
     __args__['collationTimeZones'] = collation_time_zones
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getCollationTimeZones:getCollationTimeZones', __args__, opts=opts, typ=GetCollationTimeZonesResult)
     return __ret__.apply(lambda __response__: GetCollationTimeZonesResult(
         collation_time_zones=pulumi.get(__response__, 'collation_time_zones'),

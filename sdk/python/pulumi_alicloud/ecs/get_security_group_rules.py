@@ -221,7 +221,7 @@ def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[st
                                     nic_type: Optional[pulumi.Input[Optional[str]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     policy: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityGroupRulesResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGroupRulesResult]:
     """
     The `ecs_get_security_group_rules` data source provides a collection of security permissions of a specific security group.
     Each collection item represents a single `ingress` or `egress` permission rule.
@@ -264,7 +264,7 @@ def get_security_group_rules_output(direction: Optional[pulumi.Input[Optional[st
     __args__['nicType'] = nic_type
     __args__['outputFile'] = output_file
     __args__['policy'] = policy
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getSecurityGroupRules:getSecurityGroupRules', __args__, opts=opts, typ=GetSecurityGroupRulesResult)
     return __ret__.apply(lambda __response__: GetSecurityGroupRulesResult(
         direction=pulumi.get(__response__, 'direction'),

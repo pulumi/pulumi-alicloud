@@ -182,7 +182,7 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         search_key: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewaysResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewaysResult]:
     """
     This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.
 
@@ -217,7 +217,7 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     __args__['outputFile'] = output_file
     __args__['searchKey'] = search_key
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:databasegateway/getGateways:getGateways', __args__, opts=opts, typ=GetGatewaysResult)
     return __ret__.apply(lambda __response__: GetGatewaysResult(
         enable_details=pulumi.get(__response__, 'enable_details'),
