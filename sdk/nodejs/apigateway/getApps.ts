@@ -93,7 +93,7 @@ export interface GetAppsResult {
  * export const firstAppId = dataApigatway.then(dataApigatway => dataApigatway.apps?.[0]?.id);
  * ```
  */
-export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
+export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:apigateway/getApps:getApps", {

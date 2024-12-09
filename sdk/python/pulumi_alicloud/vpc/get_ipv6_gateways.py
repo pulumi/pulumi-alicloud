@@ -188,7 +188,7 @@ def get_ipv6_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv6GatewaysResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv6GatewaysResult]:
     """
     This data source provides the Vpc Ipv6 Gateways of the current Alibaba Cloud user.
 
@@ -229,7 +229,7 @@ def get_ipv6_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getIpv6Gateways:getIpv6Gateways', __args__, opts=opts, typ=GetIpv6GatewaysResult)
     return __ret__.apply(lambda __response__: GetIpv6GatewaysResult(
         gateways=pulumi.get(__response__, 'gateways'),

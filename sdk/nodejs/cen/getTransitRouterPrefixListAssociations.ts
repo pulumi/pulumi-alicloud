@@ -116,7 +116,7 @@ export interface GetTransitRouterPrefixListAssociationsResult {
  * export const cenTransitRouterPrefixListAssociationId = _default.then(_default => _default.associations?.[0]?.id);
  * ```
  */
-export function getTransitRouterPrefixListAssociationsOutput(args: GetTransitRouterPrefixListAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterPrefixListAssociationsResult> {
+export function getTransitRouterPrefixListAssociationsOutput(args: GetTransitRouterPrefixListAssociationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterPrefixListAssociationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", {
         "ids": args.ids,

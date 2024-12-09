@@ -244,7 +244,7 @@ def get_service_certificates_output(enable_details: Optional[pulumi.Input[Option
                                     lang: Optional[pulumi.Input[Optional[str]]] = None,
                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceCertificatesResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceCertificatesResult]:
     """
     This data source provides the Ssl Certificates Service Certificates of the current Alibaba Cloud user.
 
@@ -334,7 +334,7 @@ def get_service_certificates_output(enable_details: Optional[pulumi.Input[Option
     __args__['lang'] = lang
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cas/getServiceCertificates:getServiceCertificates', __args__, opts=opts, typ=GetServiceCertificatesResult)
     return __ret__.apply(lambda __response__: GetServiceCertificatesResult(
         certificates=pulumi.get(__response__, 'certificates'),

@@ -216,7 +216,7 @@ def get_cross_region_backups_output(backup_id: Optional[pulumi.Input[Optional[st
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     start_time: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCrossRegionBackupsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCrossRegionBackupsResult]:
     """
     This data source provides the Rds Parameter Groups of the current Alibaba Cloud user.
 
@@ -259,7 +259,7 @@ def get_cross_region_backups_output(backup_id: Optional[pulumi.Input[Optional[st
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
     __args__['startTime'] = start_time
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getCrossRegionBackups:getCrossRegionBackups', __args__, opts=opts, typ=GetCrossRegionBackupsResult)
     return __ret__.apply(lambda __response__: GetCrossRegionBackupsResult(
         backup_id=pulumi.get(__response__, 'backup_id'),

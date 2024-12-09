@@ -87,7 +87,7 @@ export interface GetGroupsResult {
  * export const firstGroupId = dataApigatway.then(dataApigatway => dataApigatway.groups?.[0]?.id);
  * ```
  */
-export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:apigateway/getGroups:getGroups", {

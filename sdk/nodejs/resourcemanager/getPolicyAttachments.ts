@@ -123,7 +123,7 @@ export interface GetPolicyAttachmentsResult {
  * export const firstAttachmentId = example.then(example => example.attachments?.[0]?.id);
  * ```
  */
-export function getPolicyAttachmentsOutput(args?: GetPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyAttachmentsResult> {
+export function getPolicyAttachmentsOutput(args?: GetPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyAttachmentsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments", {

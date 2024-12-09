@@ -108,7 +108,7 @@ export interface GetScheduledTasksResult {
  * export const firstScheduledTask = ds.then(ds => ds.tasks?.[0]?.id);
  * ```
  */
-export function getScheduledTasksOutput(args?: GetScheduledTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduledTasksResult> {
+export function getScheduledTasksOutput(args?: GetScheduledTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetScheduledTasksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ess/getScheduledTasks:getScheduledTasks", {

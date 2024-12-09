@@ -165,7 +165,7 @@ def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             query_args: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWafPoliciesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWafPoliciesResult]:
     """
     This data source provides the Dcdn Waf Policies of the current Alibaba Cloud user.
 
@@ -195,7 +195,7 @@ def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['outputFile'] = output_file
     __args__['queryArgs'] = query_args
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dcdn/getWafPolicies:getWafPolicies', __args__, opts=opts, typ=GetWafPoliciesResult)
     return __ret__.apply(lambda __response__: GetWafPoliciesResult(
         id=pulumi.get(__response__, 'id'),

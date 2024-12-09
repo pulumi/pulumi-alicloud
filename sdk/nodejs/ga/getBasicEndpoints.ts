@@ -145,7 +145,7 @@ export interface GetBasicEndpointsResult {
  * export const gaBasicEndpointsId2 = nameRegex.then(nameRegex => nameRegex.endpoints?.[0]?.id);
  * ```
  */
-export function getBasicEndpointsOutput(args: GetBasicEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicEndpointsResult> {
+export function getBasicEndpointsOutput(args: GetBasicEndpointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBasicEndpointsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getBasicEndpoints:getBasicEndpoints", {
         "endpointGroupId": args.endpointGroupId,

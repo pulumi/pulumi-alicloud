@@ -160,7 +160,7 @@ def get_template_scratches_output(enable_details: Optional[pulumi.Input[Optional
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   status: Optional[pulumi.Input[Optional[str]]] = None,
                                   template_scratch_type: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplateScratchesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTemplateScratchesResult]:
     """
     This data source provides the Ros Template Scratches of the current Alibaba Cloud user.
 
@@ -195,7 +195,7 @@ def get_template_scratches_output(enable_details: Optional[pulumi.Input[Optional
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['templateScratchType'] = template_scratch_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getTemplateScratches:getTemplateScratches', __args__, opts=opts, typ=GetTemplateScratchesResult)
     return __ret__.apply(lambda __response__: GetTemplateScratchesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

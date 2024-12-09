@@ -237,7 +237,7 @@ export interface GetDisksResult {
  * export const firstDiskId = disksDs.then(disksDs => disksDs.disks?.[0]?.id);
  * ```
  */
-export function getDisksOutput(args?: GetDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDisksResult> {
+export function getDisksOutput(args?: GetDisksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDisksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getDisks:getDisks", {

@@ -108,7 +108,7 @@ export interface GetAlertContactsResult {
  * export const armsAlertContactId2 = nameRegex.then(nameRegex => nameRegex.contacts?.[0]?.id);
  * ```
  */
-export function getAlertContactsOutput(args?: GetAlertContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertContactsResult> {
+export function getAlertContactsOutput(args?: GetAlertContactsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertContactsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:arms/getAlertContacts:getAlertContacts", {

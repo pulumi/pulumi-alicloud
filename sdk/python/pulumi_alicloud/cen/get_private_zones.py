@@ -174,7 +174,7 @@ def get_private_zones_output(cen_id: Optional[pulumi.Input[str]] = None,
                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateZonesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateZonesResult]:
     """
     This data source provides CEN Private Zones available to the user.
 
@@ -207,7 +207,7 @@ def get_private_zones_output(cen_id: Optional[pulumi.Input[str]] = None,
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getPrivateZones:getPrivateZones', __args__, opts=opts, typ=GetPrivateZonesResult)
     return __ret__.apply(lambda __response__: GetPrivateZonesResult(
         cen_id=pulumi.get(__response__, 'cen_id'),

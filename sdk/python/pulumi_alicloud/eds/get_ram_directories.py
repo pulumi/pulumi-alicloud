@@ -154,7 +154,7 @@ def get_ram_directories_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRamDirectoriesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRamDirectoriesResult]:
     """
     This data source provides the Ecd Ram Directories of the current Alibaba Cloud user.
 
@@ -185,7 +185,7 @@ def get_ram_directories_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getRamDirectories:getRamDirectories', __args__, opts=opts, typ=GetRamDirectoriesResult)
     return __ret__.apply(lambda __response__: GetRamDirectoriesResult(
         directories=pulumi.get(__response__, 'directories'),

@@ -368,7 +368,7 @@ def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
                     segment_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                     status: Optional[pulumi.Input[Optional[str]]] = None,
                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEipsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEipsResult]:
     """
     > **DEPRECATED:**  This datasource has been deprecated from version `1.126.0`. Please use new datasource alicloud_eip_addresses.
 
@@ -413,7 +413,7 @@ def get_eips_output(address_name: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['segmentInstanceId'] = segment_instance_id
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEips:getEips', __args__, opts=opts, typ=GetEipsResult)
     return __ret__.apply(lambda __response__: GetEipsResult(
         address_name=pulumi.get(__response__, 'address_name'),

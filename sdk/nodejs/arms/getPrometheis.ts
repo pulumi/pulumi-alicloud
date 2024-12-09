@@ -166,7 +166,7 @@ export interface GetPrometheisResult {
  * export const armsPrometheisId = nameRegex.apply(nameRegex => nameRegex.prometheis?.[0]?.id);
  * ```
  */
-export function getPrometheisOutput(args?: GetPrometheisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheisResult> {
+export function getPrometheisOutput(args?: GetPrometheisOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrometheisResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:arms/getPrometheis:getPrometheis", {

@@ -221,7 +221,7 @@ export interface GetRouteEntriesResult {
  * });
  * ```
  */
-export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteEntriesResult> {
+export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteEntriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getRouteEntries:getRouteEntries", {
         "cidrBlock": args.cidrBlock,

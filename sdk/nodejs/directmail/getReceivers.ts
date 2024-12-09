@@ -100,7 +100,7 @@ export interface GetReceiversResult {
  * export const firstDirectMailReceiversId = example.then(example => example.receiverses?.[0]?.id);
  * ```
  */
-export function getReceiversOutput(args?: GetReceiversOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReceiversResult> {
+export function getReceiversOutput(args?: GetReceiversOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReceiversResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:directmail/getReceivers:getReceivers", {

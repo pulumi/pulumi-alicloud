@@ -87,7 +87,7 @@ export interface GetRegionsResult {
  * export const currentRegionId = currentRegionDs.then(currentRegionDs => currentRegionDs.regions?.[0]?.id);
  * ```
  */
-export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
+export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:index/getRegions:getRegions", {

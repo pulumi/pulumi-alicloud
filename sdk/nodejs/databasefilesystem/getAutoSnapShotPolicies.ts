@@ -97,7 +97,7 @@ export interface GetAutoSnapShotPoliciesResult {
  * export const alicloudDbfsAutoSnapShotPolicyExampleId = _default.then(_default => _default.autoSnapShotPolicies?.[0]?.id);
  * ```
  */
-export function getAutoSnapShotPoliciesOutput(args?: GetAutoSnapShotPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoSnapShotPoliciesResult> {
+export function getAutoSnapShotPoliciesOutput(args?: GetAutoSnapShotPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAutoSnapShotPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", {

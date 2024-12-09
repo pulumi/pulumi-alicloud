@@ -108,7 +108,7 @@ export interface GetGatewaysResult {
  * export const cloudStorageGatewayGatewayId = nameRegex.apply(nameRegex => nameRegex.gateways?.[0]?.id);
  * ```
  */
-export function getGatewaysOutput(args: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
+export function getGatewaysOutput(args: GetGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewaysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getGateways:getGateways", {
         "ids": args.ids,

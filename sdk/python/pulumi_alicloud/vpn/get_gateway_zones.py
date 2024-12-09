@@ -139,7 +139,7 @@ def get_gateway_zones(ids: Optional[Sequence[str]] = None,
 def get_gateway_zones_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              spec: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayZonesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayZonesResult]:
     """
     This data source provides VPN Gateway Zone available to the user.[What is Zone](https://next.api.alibabacloud.com/api/Vpc/2016-04-28/DescribeVpnGatewayAvailableZones?lang=JAVA)
 
@@ -171,7 +171,7 @@ def get_gateway_zones_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['spec'] = spec
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpn/getGatewayZones:getGatewayZones', __args__, opts=opts, typ=GetGatewayZonesResult)
     return __ret__.apply(lambda __response__: GetGatewayZonesResult(
         id=pulumi.get(__response__, 'id'),

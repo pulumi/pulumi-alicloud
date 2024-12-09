@@ -133,7 +133,7 @@ def get_pbr_route_entries(ids: Optional[Sequence[str]] = None,
 def get_pbr_route_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPbrRouteEntriesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPbrRouteEntriesResult]:
     """
     > **NOTE:** Available in v1.162.0+.
 
@@ -159,7 +159,7 @@ def get_pbr_route_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['vpnGatewayId'] = vpn_gateway_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries', __args__, opts=opts, typ=GetPbrRouteEntriesResult)
     return __ret__.apply(lambda __response__: GetPbrRouteEntriesResult(
         entries=pulumi.get(__response__, 'entries'),

@@ -159,7 +159,7 @@ def get_vbr_pconn_associations_output(ids: Optional[pulumi.Input[Optional[Sequen
                                       page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                       page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                       vbr_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVbrPconnAssociationsResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVbrPconnAssociationsResult]:
     """
     This data source provides Express Connect Vbr Pconn Association available to the user.
 
@@ -187,7 +187,7 @@ def get_vbr_pconn_associations_output(ids: Optional[pulumi.Input[Optional[Sequen
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['vbrId'] = vbr_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations', __args__, opts=opts, typ=GetVbrPconnAssociationsResult)
     return __ret__.apply(lambda __response__: GetVbrPconnAssociationsResult(
         associations=pulumi.get(__response__, 'associations'),

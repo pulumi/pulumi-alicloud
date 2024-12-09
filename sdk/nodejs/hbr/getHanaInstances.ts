@@ -108,7 +108,7 @@ export interface GetHanaInstancesResult {
  * export const hbrHanaInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * ```
  */
-export function getHanaInstancesOutput(args?: GetHanaInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHanaInstancesResult> {
+export function getHanaInstancesOutput(args?: GetHanaInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHanaInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getHanaInstances:getHanaInstances", {

@@ -156,7 +156,7 @@ export interface GetParametersResult {
  * export const oosParameterId4 = tags.then(tags => tags.parameters?.[0]?.id);
  * ```
  */
-export function getParametersOutput(args?: GetParametersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetParametersResult> {
+export function getParametersOutput(args?: GetParametersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetParametersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oos/getParameters:getParameters", {

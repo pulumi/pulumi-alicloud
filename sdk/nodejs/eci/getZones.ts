@@ -69,7 +69,7 @@ export interface GetZonesResult {
  * export const firstEciZonesId = _default.then(_default => _default.zones?.[0]?.zoneIds?.[0]);
  * ```
  */
-export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eci/getZones:getZones", {

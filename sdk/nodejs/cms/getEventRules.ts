@@ -112,7 +112,7 @@ export interface GetEventRulesResult {
  * export const cmsEventRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
  */
-export function getEventRulesOutput(args?: GetEventRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventRulesResult> {
+export function getEventRulesOutput(args?: GetEventRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEventRulesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getEventRules:getEventRules", {

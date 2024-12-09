@@ -77,7 +77,7 @@ export interface GetTransitRouterVbrAttachmentsResult {
  *
  * > **NOTE:** Available in 1.126.0+
  */
-export function getTransitRouterVbrAttachmentsOutput(args: GetTransitRouterVbrAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVbrAttachmentsResult> {
+export function getTransitRouterVbrAttachmentsOutput(args: GetTransitRouterVbrAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterVbrAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterVbrAttachments:getTransitRouterVbrAttachments", {
         "cenId": args.cenId,

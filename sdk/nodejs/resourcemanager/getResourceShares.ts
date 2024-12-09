@@ -107,7 +107,7 @@ export interface GetResourceSharesResult {
  * export const firstResourceManagerResourceShareId = example.then(example => example.shares?.[0]?.id);
  * ```
  */
-export function getResourceSharesOutput(args: GetResourceSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceSharesResult> {
+export function getResourceSharesOutput(args: GetResourceSharesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceSharesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getResourceShares:getResourceShares", {
         "ids": args.ids,

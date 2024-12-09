@@ -225,7 +225,7 @@ def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
                               support_local_storage: Optional[pulumi.Input[Optional[bool]]] = None,
                               support_node_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     The `emr_get_instance_types` data source provides a collection of ecs
     instance types available in Alibaba Cloud account when create a emr cluster.
@@ -270,7 +270,7 @@ def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
     __args__['supportLocalStorage'] = support_local_storage
     __args__['supportNodeTypes'] = support_node_types
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:emr/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult)
     return __ret__.apply(lambda __response__: GetInstanceTypesResult(
         cluster_type=pulumi.get(__response__, 'cluster_type'),

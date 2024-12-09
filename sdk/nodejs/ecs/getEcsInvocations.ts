@@ -103,7 +103,7 @@ export interface GetEcsInvocationsResult {
  * export const ecsInvocationId1 = ids.then(ids => ids.invocations?.[0]?.id);
  * ```
  */
-export function getEcsInvocationsOutput(args?: GetEcsInvocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsInvocationsResult> {
+export function getEcsInvocationsOutput(args?: GetEcsInvocationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsInvocationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsInvocations:getEcsInvocations", {

@@ -216,7 +216,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              route_table_id: Optional[pulumi.Input[str]] = None,
                              type: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteEntriesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteEntriesResult]:
     """
     This data source provides a list of Route Entries owned by an Alibaba Cloud account.
 
@@ -292,7 +292,7 @@ def get_route_entries_output(cidr_block: Optional[pulumi.Input[Optional[str]]] =
     __args__['outputFile'] = output_file
     __args__['routeTableId'] = route_table_id
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getRouteEntries:getRouteEntries', __args__, opts=opts, typ=GetRouteEntriesResult)
     return __ret__.apply(lambda __response__: GetRouteEntriesResult(
         cidr_block=pulumi.get(__response__, 'cidr_block'),

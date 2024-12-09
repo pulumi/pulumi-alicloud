@@ -137,7 +137,7 @@ def get_key_versions(ids: Optional[Sequence[str]] = None,
 def get_key_versions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             key_id: Optional[pulumi.Input[str]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyVersionsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyVersionsResult]:
     """
     This data source provides a list of KMS KeyVersions in an Alibaba Cloud account according to the specified filters.
 
@@ -164,7 +164,7 @@ def get_key_versions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['ids'] = ids
     __args__['keyId'] = key_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kms/getKeyVersions:getKeyVersions', __args__, opts=opts, typ=GetKeyVersionsResult)
     return __ret__.apply(lambda __response__: GetKeyVersionsResult(
         id=pulumi.get(__response__, 'id'),

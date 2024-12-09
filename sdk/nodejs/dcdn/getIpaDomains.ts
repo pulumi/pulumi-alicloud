@@ -114,7 +114,7 @@ export interface GetIpaDomainsResult {
  * export const dcdnIpaDomainId2 = status.then(status => status.domains?.[0]?.id);
  * ```
  */
-export function getIpaDomainsOutput(args?: GetIpaDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpaDomainsResult> {
+export function getIpaDomainsOutput(args?: GetIpaDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpaDomainsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dcdn/getIpaDomains:getIpaDomains", {

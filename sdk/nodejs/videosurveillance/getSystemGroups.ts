@@ -118,7 +118,7 @@ export interface GetSystemGroupsResult {
  * export const vsGroup = _default.apply(_default => _default.ids?.[0]);
  * ```
  */
-export function getSystemGroupsOutput(args?: GetSystemGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemGroupsResult> {
+export function getSystemGroupsOutput(args?: GetSystemGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSystemGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:videosurveillance/getSystemGroups:getSystemGroups", {

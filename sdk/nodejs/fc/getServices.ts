@@ -87,7 +87,7 @@ export interface GetServicesResult {
  * export const firstFcServiceName = fcServicesDs.then(fcServicesDs => fcServicesDs.services?.[0]?.name);
  * ```
  */
-export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicesResult> {
+export function getServicesOutput(args?: GetServicesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServicesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:fc/getServices:getServices", {

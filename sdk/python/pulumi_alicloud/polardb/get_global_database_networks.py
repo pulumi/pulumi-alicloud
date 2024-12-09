@@ -235,7 +235,7 @@ def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Opt
                                         page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                         page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalDatabaseNetworksResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGlobalDatabaseNetworksResult]:
     """
     This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.
 
@@ -294,7 +294,7 @@ def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Opt
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks', __args__, opts=opts, typ=GetGlobalDatabaseNetworksResult)
     return __ret__.apply(lambda __response__: GetGlobalDatabaseNetworksResult(
         db_cluster_id=pulumi.get(__response__, 'db_cluster_id'),

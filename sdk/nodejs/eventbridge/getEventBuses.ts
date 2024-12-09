@@ -102,7 +102,7 @@ export interface GetEventBusesResult {
  * export const eventBridgeEventBusId2 = nameRegex.then(nameRegex => nameRegex.buses?.[0]?.id);
  * ```
  */
-export function getEventBusesOutput(args?: GetEventBusesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventBusesResult> {
+export function getEventBusesOutput(args?: GetEventBusesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEventBusesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eventbridge/getEventBuses:getEventBuses", {

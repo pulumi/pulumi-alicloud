@@ -132,7 +132,7 @@ def get_transit_router_multicast_domain_sources(ids: Optional[Sequence[str]] = N
 def get_transit_router_multicast_domain_sources_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                        transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
-                                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterMulticastDomainSourcesResult]:
+                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterMulticastDomainSourcesResult]:
     """
     This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
 
@@ -157,7 +157,7 @@ def get_transit_router_multicast_domain_sources_output(ids: Optional[pulumi.Inpu
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['transitRouterMulticastDomainId'] = transit_router_multicast_domain_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources', __args__, opts=opts, typ=GetTransitRouterMulticastDomainSourcesResult)
     return __ret__.apply(lambda __response__: GetTransitRouterMulticastDomainSourcesResult(
         id=pulumi.get(__response__, 'id'),

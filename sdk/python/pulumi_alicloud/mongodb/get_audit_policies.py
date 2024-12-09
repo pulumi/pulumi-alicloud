@@ -114,7 +114,7 @@ def get_audit_policies(db_instance_id: Optional[str] = None,
         policies=pulumi.get(__ret__, 'policies'))
 def get_audit_policies_output(db_instance_id: Optional[pulumi.Input[str]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAuditPoliciesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuditPoliciesResult]:
     """
     This data source provides the Mongodb Audit Policies of the current Alibaba Cloud user.
 
@@ -139,7 +139,7 @@ def get_audit_policies_output(db_instance_id: Optional[pulumi.Input[str]] = None
     __args__ = dict()
     __args__['dbInstanceId'] = db_instance_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mongodb/getAuditPolicies:getAuditPolicies', __args__, opts=opts, typ=GetAuditPoliciesResult)
     return __ret__.apply(lambda __response__: GetAuditPoliciesResult(
         db_instance_id=pulumi.get(__response__, 'db_instance_id'),

@@ -191,7 +191,7 @@ def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                      rule_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      status: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesResult]:
     """
     This data source provides the Alb Rules of the current Alibaba Cloud user.
 
@@ -214,7 +214,7 @@ def get_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None
     __args__['outputFile'] = output_file
     __args__['ruleIds'] = rule_ids
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:alb/getRules:getRules', __args__, opts=opts, typ=GetRulesResult)
     return __ret__.apply(lambda __response__: GetRulesResult(
         id=pulumi.get(__response__, 'id'),

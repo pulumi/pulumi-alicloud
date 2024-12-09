@@ -95,7 +95,7 @@ export interface GetDomainTxtGuidResult {
  * export const value = _this.then(_this => _this.value);
  * ```
  */
-export function getDomainTxtGuidOutput(args: GetDomainTxtGuidOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainTxtGuidResult> {
+export function getDomainTxtGuidOutput(args: GetDomainTxtGuidOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainTxtGuidResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getDomainTxtGuid:getDomainTxtGuid", {
         "domainName": args.domainName,

@@ -98,7 +98,7 @@ export interface GetFilesetsResult {
  * export const nasFilesetId1 = ids.then(ids => ids.filesets?.[0]?.id);
  * ```
  */
-export function getFilesetsOutput(args: GetFilesetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFilesetsResult> {
+export function getFilesetsOutput(args: GetFilesetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFilesetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nas/getFilesets:getFilesets", {
         "fileSystemId": args.fileSystemId,

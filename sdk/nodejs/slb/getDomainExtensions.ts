@@ -88,7 +88,7 @@ export interface GetDomainExtensionsResult {
  * });
  * ```
  */
-export function getDomainExtensionsOutput(args: GetDomainExtensionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainExtensionsResult> {
+export function getDomainExtensionsOutput(args: GetDomainExtensionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainExtensionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getDomainExtensions:getDomainExtensions", {
         "frontendPort": args.frontendPort,

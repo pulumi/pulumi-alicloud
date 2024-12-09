@@ -100,7 +100,7 @@ def get_account_alias(output_file: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_account_alias_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountAliasResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountAliasResult]:
     """
     This data source provides an alias for the Alibaba Cloud account.
 
@@ -121,7 +121,7 @@ def get_account_alias_output(output_file: Optional[pulumi.Input[Optional[str]]] 
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getAccountAlias:getAccountAlias', __args__, opts=opts, typ=GetAccountAliasResult)
     return __ret__.apply(lambda __response__: GetAccountAliasResult(
         account_alias=pulumi.get(__response__, 'account_alias'),

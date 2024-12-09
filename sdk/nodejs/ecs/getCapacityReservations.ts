@@ -154,7 +154,7 @@ export interface GetCapacityReservationsResult {
  * export const alicloudEcsCapacityReservationExampleId = _default.then(_default => _default.reservations?.[0]?.id);
  * ```
  */
-export function getCapacityReservationsOutput(args?: GetCapacityReservationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCapacityReservationsResult> {
+export function getCapacityReservationsOutput(args?: GetCapacityReservationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCapacityReservationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getCapacityReservations:getCapacityReservations", {

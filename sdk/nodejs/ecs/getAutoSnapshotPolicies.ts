@@ -100,7 +100,7 @@ export interface GetAutoSnapshotPoliciesResult {
  * export const firstEcsAutoSnapshotPolicyId = example.then(example => example.policies?.[0]?.id);
  * ```
  */
-export function getAutoSnapshotPoliciesOutput(args?: GetAutoSnapshotPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoSnapshotPoliciesResult> {
+export function getAutoSnapshotPoliciesOutput(args?: GetAutoSnapshotPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAutoSnapshotPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getAutoSnapshotPolicies:getAutoSnapshotPolicies", {

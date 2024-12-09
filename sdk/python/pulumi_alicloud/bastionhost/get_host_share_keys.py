@@ -173,7 +173,7 @@ def get_host_share_keys_output(enable_details: Optional[pulumi.Input[Optional[bo
                                instance_id: Optional[pulumi.Input[str]] = None,
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostShareKeysResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostShareKeysResult]:
     """
     This data source provides the Bastionhost Host Share Keys of the current Alibaba Cloud user.
 
@@ -211,7 +211,7 @@ def get_host_share_keys_output(enable_details: Optional[pulumi.Input[Optional[bo
     __args__['instanceId'] = instance_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:bastionhost/getHostShareKeys:getHostShareKeys', __args__, opts=opts, typ=GetHostShareKeysResult)
     return __ret__.apply(lambda __response__: GetHostShareKeysResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

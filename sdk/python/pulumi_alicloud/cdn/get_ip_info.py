@@ -138,7 +138,7 @@ def get_ip_info(ip: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         region_ename=pulumi.get(__ret__, 'region_ename'))
 def get_ip_info_output(ip: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpInfoResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpInfoResult]:
     """
     This data source provides the function of verifying whether an IP is a CDN node.
 
@@ -160,7 +160,7 @@ def get_ip_info_output(ip: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['ip'] = ip
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cdn/getIpInfo:getIpInfo', __args__, opts=opts, typ=GetIpInfoResult)
     return __ret__.apply(lambda __response__: GetIpInfoResult(
         cdn_ip=pulumi.get(__response__, 'cdn_ip'),

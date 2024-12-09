@@ -418,7 +418,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
                               sorted_by: Optional[pulumi.Input[Optional[str]]] = None,
                               spot_strategy: Optional[pulumi.Input[Optional[str]]] = None,
                               system_disk_category: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTypesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     This data source provides the ECS instance types of Alibaba Cloud.
 
@@ -518,7 +518,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     __args__['sortedBy'] = sorted_by
     __args__['spotStrategy'] = spot_strategy
     __args__['systemDiskCategory'] = system_disk_category
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getInstanceTypes:getInstanceTypes', __args__, opts=opts, typ=GetInstanceTypesResult)
     return __ret__.apply(lambda __response__: GetInstanceTypesResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),

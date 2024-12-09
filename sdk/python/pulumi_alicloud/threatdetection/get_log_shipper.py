@@ -170,7 +170,7 @@ def get_log_shipper(enable: Optional[str] = None,
         sls_service_status=pulumi.get(__ret__, 'sls_service_status'),
         status=pulumi.get(__ret__, 'status'))
 def get_log_shipper_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogShipperResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogShipperResult]:
     """
     Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.
 
@@ -196,7 +196,7 @@ def get_log_shipper_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['enable'] = enable
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getLogShipper:getLogShipper', __args__, opts=opts, typ=GetLogShipperResult)
     return __ret__.apply(lambda __response__: GetLogShipperResult(
         auth_status=pulumi.get(__response__, 'auth_status'),

@@ -86,7 +86,7 @@ export interface GetTransitRouterMulticastDomainSourcesResult {
  * export const alicloudCenTransitRouterMulticastDomainSourceExampleId = _default.then(_default => _default.sources?.[0]?.id);
  * ```
  */
-export function getTransitRouterMulticastDomainSourcesOutput(args: GetTransitRouterMulticastDomainSourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainSourcesResult> {
+export function getTransitRouterMulticastDomainSourcesOutput(args: GetTransitRouterMulticastDomainSourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterMulticastDomainSourcesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources", {
         "ids": args.ids,

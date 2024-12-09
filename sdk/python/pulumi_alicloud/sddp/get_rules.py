@@ -283,7 +283,7 @@ def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
                      rule_type: Optional[pulumi.Input[Optional[int]]] = None,
                      status: Optional[pulumi.Input[Optional[str]]] = None,
                      warn_level: Optional[pulumi.Input[Optional[int]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesResult]:
     """
     This data source provides the Sddp Rules of the current Alibaba Cloud user.
 
@@ -335,7 +335,7 @@ def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
     __args__['ruleType'] = rule_type
     __args__['status'] = status
     __args__['warnLevel'] = warn_level
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:sddp/getRules:getRules', __args__, opts=opts, typ=GetRulesResult)
     return __ret__.apply(lambda __response__: GetRulesResult(
         category=pulumi.get(__response__, 'category'),

@@ -168,7 +168,7 @@ def get_physical_connections_output(ids: Optional[pulumi.Input[Optional[Sequence
                                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     status: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPhysicalConnectionsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPhysicalConnectionsResult]:
     """
     This data source provides the Express Connect Physical Connections of the current Alibaba Cloud user.
 
@@ -201,7 +201,7 @@ def get_physical_connections_output(ids: Optional[pulumi.Input[Optional[Sequence
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections', __args__, opts=opts, typ=GetPhysicalConnectionsResult)
     return __ret__.apply(lambda __response__: GetPhysicalConnectionsResult(
         connections=pulumi.get(__response__, 'connections'),

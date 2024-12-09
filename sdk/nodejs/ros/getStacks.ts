@@ -124,7 +124,7 @@ export interface GetStacksResult {
  * export const firstRosStackId = example.then(example => example.stacks?.[0]?.id);
  * ```
  */
-export function getStacksOutput(args?: GetStacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStacksResult> {
+export function getStacksOutput(args?: GetStacksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStacksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ros/getStacks:getStacks", {

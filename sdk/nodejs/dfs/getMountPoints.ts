@@ -98,7 +98,7 @@ export interface GetMountPointsResult {
  * export const dfsMountPointId1 = ids.then(ids => ids.points?.[0]?.id);
  * ```
  */
-export function getMountPointsOutput(args: GetMountPointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountPointsResult> {
+export function getMountPointsOutput(args: GetMountPointsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMountPointsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dfs/getMountPoints:getMountPoints", {
         "fileSystemId": args.fileSystemId,

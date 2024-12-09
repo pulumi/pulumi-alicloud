@@ -79,7 +79,7 @@ export interface GetServiceMeshesResult {
  *
  * > **NOTE:** Available since v1.138.0.
  */
-export function getServiceMeshesOutput(args?: GetServiceMeshesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceMeshesResult> {
+export function getServiceMeshesOutput(args?: GetServiceMeshesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceMeshesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", {

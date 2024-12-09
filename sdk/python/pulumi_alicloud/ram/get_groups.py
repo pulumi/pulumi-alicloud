@@ -172,7 +172,7 @@ def get_groups_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       policy_name: Optional[pulumi.Input[Optional[str]]] = None,
                       policy_type: Optional[pulumi.Input[Optional[str]]] = None,
                       user_name: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupsResult]:
     """
     This data source provides a list of RAM Groups in an Alibaba Cloud account according to the specified filters.
 
@@ -203,7 +203,7 @@ def get_groups_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['policyName'] = policy_name
     __args__['policyType'] = policy_type
     __args__['userName'] = user_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ram/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
     return __ret__.apply(lambda __response__: GetGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

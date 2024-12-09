@@ -251,7 +251,7 @@ def get_honeypot_presets_output(current_page: Optional[pulumi.Input[Optional[int
                                 page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                 page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                 preset_name: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHoneypotPresetsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHoneypotPresetsResult]:
     """
     This data source provides Threat Detection Honeypot Preset available to the user.
 
@@ -290,7 +290,7 @@ def get_honeypot_presets_output(current_page: Optional[pulumi.Input[Optional[int
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['presetName'] = preset_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets', __args__, opts=opts, typ=GetHoneypotPresetsResult)
     return __ret__.apply(lambda __response__: GetHoneypotPresetsResult(
         current_page=pulumi.get(__response__, 'current_page'),

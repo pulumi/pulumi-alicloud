@@ -195,7 +195,7 @@ def get_nest_service_instances_output(filters: Optional[pulumi.Input[Optional[Se
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       status: Optional[pulumi.Input[Optional[str]]] = None,
                                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNestServiceInstancesResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNestServiceInstancesResult]:
     """
     This data source provides the Compute Nest Service Instances of the current Alibaba Cloud user.
 
@@ -230,7 +230,7 @@ def get_nest_service_instances_output(filters: Optional[pulumi.Input[Optional[Se
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:compute/getNestServiceInstances:getNestServiceInstances', __args__, opts=opts, typ=GetNestServiceInstancesResult)
     return __ret__.apply(lambda __response__: GetNestServiceInstancesResult(
         filters=pulumi.get(__response__, 'filters'),

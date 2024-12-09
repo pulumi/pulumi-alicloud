@@ -244,7 +244,7 @@ def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[O
                                     page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                     sort_by: Optional[pulumi.Input[Optional[str]]] = None,
                                     sort_order: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProvisionedProductsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProvisionedProductsResult]:
     """
     This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
 
@@ -282,7 +282,7 @@ def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[O
     __args__['pageSize'] = page_size
     __args__['sortBy'] = sort_by
     __args__['sortOrder'] = sort_order
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts', __args__, opts=opts, typ=GetProvisionedProductsResult)
     return __ret__.apply(lambda __response__: GetProvisionedProductsResult(
         access_level_filter=pulumi.get(__response__, 'access_level_filter'),

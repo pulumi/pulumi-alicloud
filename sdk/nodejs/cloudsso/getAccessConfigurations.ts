@@ -119,7 +119,7 @@ export interface GetAccessConfigurationsResult {
  * export const cloudSsoAccessConfigurationId2 = nameRegex.then(nameRegex => nameRegex.configurations?.[0]?.id);
  * ```
  */
-export function getAccessConfigurationsOutput(args: GetAccessConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessConfigurationsResult> {
+export function getAccessConfigurationsOutput(args: GetAccessConfigurationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessConfigurationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", {
         "directoryId": args.directoryId,

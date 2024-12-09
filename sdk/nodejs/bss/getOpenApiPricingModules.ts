@@ -110,7 +110,7 @@ export interface GetOpenApiPricingModulesResult {
  * export const alicloudBssOpenapiPricingModuleExampleId = _default.then(_default => _default.modules?.[0]?.code);
  * ```
  */
-export function getOpenApiPricingModulesOutput(args: GetOpenApiPricingModulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenApiPricingModulesResult> {
+export function getOpenApiPricingModulesOutput(args: GetOpenApiPricingModulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenApiPricingModulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules", {
         "ids": args.ids,

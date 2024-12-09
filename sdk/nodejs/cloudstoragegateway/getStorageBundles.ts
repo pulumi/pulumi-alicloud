@@ -48,7 +48,7 @@ export interface GetStorageBundlesResult {
     readonly pageSize?: number;
     readonly totalCount: number;
 }
-export function getStorageBundlesOutput(args: GetStorageBundlesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStorageBundlesResult> {
+export function getStorageBundlesOutput(args: GetStorageBundlesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStorageBundlesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getStorageBundles:getStorageBundles", {
         "backendBucketRegionId": args.backendBucketRegionId,

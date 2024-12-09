@@ -120,7 +120,7 @@ export interface GetAccessAssignmentsResult {
  * export const cloudSsoAccessAssignmentId1 = ids.then(ids => ids.assignments?.[0]?.id);
  * ```
  */
-export function getAccessAssignmentsOutput(args: GetAccessAssignmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessAssignmentsResult> {
+export function getAccessAssignmentsOutput(args: GetAccessAssignmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessAssignmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", {
         "accessConfigurationId": args.accessConfigurationId,

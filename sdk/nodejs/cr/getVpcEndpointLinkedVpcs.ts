@@ -114,7 +114,7 @@ export interface GetVpcEndpointLinkedVpcsResult {
  * export const alicloudCrVpcEndpointLinkedVpcsId1 = ids.then(ids => ids.vpcEndpointLinkedVpcs?.[0]?.id);
  * ```
  */
-export function getVpcEndpointLinkedVpcsOutput(args: GetVpcEndpointLinkedVpcsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointLinkedVpcsResult> {
+export function getVpcEndpointLinkedVpcsOutput(args: GetVpcEndpointLinkedVpcsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcEndpointLinkedVpcsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", {
         "ids": args.ids,

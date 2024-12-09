@@ -399,7 +399,7 @@ export interface GetClustersResult {
  * export const emrClusterId2 = nameRegex.apply(nameRegex => nameRegex.clusters?.[0]?.id);
  * ```
  */
-export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:emr/getClusters:getClusters", {

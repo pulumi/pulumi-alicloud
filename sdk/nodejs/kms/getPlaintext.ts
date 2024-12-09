@@ -91,7 +91,7 @@ export interface GetPlaintextResult {
  * export const decrypted = plaintext.apply(plaintext => plaintext.plaintext);
  * ```
  */
-export function getPlaintextOutput(args: GetPlaintextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlaintextResult> {
+export function getPlaintextOutput(args: GetPlaintextOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPlaintextResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kms/getPlaintext:getPlaintext", {
         "ciphertextBlob": args.ciphertextBlob,

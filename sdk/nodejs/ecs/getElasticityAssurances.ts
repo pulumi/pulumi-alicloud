@@ -114,7 +114,7 @@ export interface GetElasticityAssurancesResult {
  * export const alicloudEcsElasticityAssuranceExampleId = _default.then(_default => _default.assurances?.[0]?.id);
  * ```
  */
-export function getElasticityAssurancesOutput(args?: GetElasticityAssurancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetElasticityAssurancesResult> {
+export function getElasticityAssurancesOutput(args?: GetElasticityAssurancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetElasticityAssurancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", {

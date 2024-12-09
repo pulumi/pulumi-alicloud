@@ -213,7 +213,7 @@ def get_template_applications_output(batch_quota_application_id: Optional[pulumi
                                      product_code: Optional[pulumi.Input[Optional[str]]] = None,
                                      quota_action_code: Optional[pulumi.Input[Optional[str]]] = None,
                                      quota_category: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTemplateApplicationsResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTemplateApplicationsResult]:
     """
     This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
 
@@ -271,7 +271,7 @@ def get_template_applications_output(batch_quota_application_id: Optional[pulumi
     __args__['productCode'] = product_code
     __args__['quotaActionCode'] = quota_action_code
     __args__['quotaCategory'] = quota_category
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:quotas/getTemplateApplications:getTemplateApplications', __args__, opts=opts, typ=GetTemplateApplicationsResult)
     return __ret__.apply(lambda __response__: GetTemplateApplicationsResult(
         applications=pulumi.get(__response__, 'applications'),

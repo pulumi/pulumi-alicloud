@@ -270,7 +270,7 @@ def get_enterprise_instances_output(env_type: Optional[pulumi.Input[Optional[str
                                     search_key: Optional[pulumi.Input[Optional[str]]] = None,
                                     status: Optional[pulumi.Input[Optional[str]]] = None,
                                     tid: Optional[pulumi.Input[Optional[int]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnterpriseInstancesResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnterpriseInstancesResult]:
     """
     This data source provides a list of DMS Enterprise Instances in an Alibaba Cloud account according to the specified filters.
 
@@ -314,7 +314,7 @@ def get_enterprise_instances_output(env_type: Optional[pulumi.Input[Optional[str
     __args__['searchKey'] = search_key
     __args__['status'] = status
     __args__['tid'] = tid
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dms/getEnterpriseInstances:getEnterpriseInstances', __args__, opts=opts, typ=GetEnterpriseInstancesResult)
     return __ret__.apply(lambda __response__: GetEnterpriseInstancesResult(
         env_type=pulumi.get(__response__, 'env_type'),

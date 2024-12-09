@@ -185,7 +185,7 @@ export interface GetEipAddressesResult {
  * export const firstEipAddressId = example.then(example => example.addresses?.[0]?.id);
  * ```
  */
-export function getEipAddressesOutput(args?: GetEipAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipAddressesResult> {
+export function getEipAddressesOutput(args?: GetEipAddressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEipAddressesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEipAddresses:getEipAddresses", {

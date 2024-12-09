@@ -57,7 +57,7 @@ export interface GetEnterpriseLogicDatabasesResult {
  *
  * > **NOTE:** Available since v1.195.0.
  */
-export function getEnterpriseLogicDatabasesOutput(args?: GetEnterpriseLogicDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseLogicDatabasesResult> {
+export function getEnterpriseLogicDatabasesOutput(args?: GetEnterpriseLogicDatabasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseLogicDatabasesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases", {

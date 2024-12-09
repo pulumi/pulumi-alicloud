@@ -151,7 +151,7 @@ export interface GetHostsResult {
  * export const bastionhostHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?.[0]?.id);
  * ```
  */
-export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostsResult> {
+export function getHostsOutput(args: GetHostsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:bastionhost/getHosts:getHosts", {
         "enableDetails": args.enableDetails,

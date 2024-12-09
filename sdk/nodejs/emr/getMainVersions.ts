@@ -104,7 +104,7 @@ export interface GetMainVersionsResult {
  * export const thisClusterTypes = _default.then(_default => _default.mainVersions?.[0]?.clusterTypes);
  * ```
  */
-export function getMainVersionsOutput(args?: GetMainVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMainVersionsResult> {
+export function getMainVersionsOutput(args?: GetMainVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMainVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:emr/getMainVersions:getMainVersions", {

@@ -145,7 +145,7 @@ export interface GetUsersResult {
  * export const bastionhostUserId2 = nameRegex.then(nameRegex => nameRegex.users?.[0]?.id);
  * ```
  */
-export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:bastionhost/getUsers:getUsers", {
         "displayName": args.displayName,

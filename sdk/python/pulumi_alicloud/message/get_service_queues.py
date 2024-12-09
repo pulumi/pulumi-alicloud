@@ -187,7 +187,7 @@ def get_service_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
                               page_number: Optional[pulumi.Input[Optional[int]]] = None,
                               page_size: Optional[pulumi.Input[Optional[int]]] = None,
                               queue_name: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceQueuesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceQueuesResult]:
     """
     This data source provides the Message Notification Service Queues of the current Alibaba Cloud user.
 
@@ -218,7 +218,7 @@ def get_service_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['queueName'] = queue_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:message/getServiceQueues:getServiceQueues', __args__, opts=opts, typ=GetServiceQueuesResult)
     return __ret__.apply(lambda __response__: GetServiceQueuesResult(
         id=pulumi.get(__response__, 'id'),

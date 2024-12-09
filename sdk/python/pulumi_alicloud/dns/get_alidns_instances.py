@@ -160,7 +160,7 @@ def get_alidns_instances_output(domain_type: Optional[pulumi.Input[Optional[str]
                                 lang: Optional[pulumi.Input[Optional[str]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 user_client_ip: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlidnsInstancesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlidnsInstancesResult]:
     """
     This data source provides a list of Alidns instances in an Alibaba Cloud account according to the specified filters.
 
@@ -189,7 +189,7 @@ def get_alidns_instances_output(domain_type: Optional[pulumi.Input[Optional[str]
     __args__['lang'] = lang
     __args__['outputFile'] = output_file
     __args__['userClientIp'] = user_client_ip
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getAlidnsInstances:getAlidnsInstances', __args__, opts=opts, typ=GetAlidnsInstancesResult)
     return __ret__.apply(lambda __response__: GetAlidnsInstancesResult(
         domain_type=pulumi.get(__response__, 'domain_type'),

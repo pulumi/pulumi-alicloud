@@ -136,7 +136,7 @@ export interface GetAnycastEipAddressesResult {
  * export const firstEipanycastAnycastEipAddressId = example.then(example => example.addresses?.[0]?.id);
  * ```
  */
-export function getAnycastEipAddressesOutput(args?: GetAnycastEipAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAnycastEipAddressesResult> {
+export function getAnycastEipAddressesOutput(args?: GetAnycastEipAddressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAnycastEipAddressesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", {

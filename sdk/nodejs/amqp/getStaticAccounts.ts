@@ -87,7 +87,7 @@ export interface GetStaticAccountsResult {
  * export const alicloudAmqpStaticAccountExampleId = _default.then(_default => _default.accounts?.[0]?.id);
  * ```
  */
-export function getStaticAccountsOutput(args?: GetStaticAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticAccountsResult> {
+export function getStaticAccountsOutput(args?: GetStaticAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStaticAccountsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:amqp/getStaticAccounts:getStaticAccounts", {

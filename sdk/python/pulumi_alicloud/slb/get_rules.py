@@ -204,7 +204,7 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
                      load_balancer_id: Optional[pulumi.Input[str]] = None,
                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesResult]:
     """
     This data source provides the rules associated with a server load balancer listener.
 
@@ -264,7 +264,7 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
     __args__['loadBalancerId'] = load_balancer_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getRules:getRules', __args__, opts=opts, typ=GetRulesResult)
     return __ret__.apply(lambda __response__: GetRulesResult(
         frontend_port=pulumi.get(__response__, 'frontend_port'),

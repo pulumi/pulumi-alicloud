@@ -79,7 +79,7 @@ export interface GetCustomPropertiesResult {
  * export const ecdCustomPropertyId1 = ids.then(ids => ids.properties?.[0]?.id);
  * ```
  */
-export function getCustomPropertiesOutput(args?: GetCustomPropertiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomPropertiesResult> {
+export function getCustomPropertiesOutput(args?: GetCustomPropertiesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomPropertiesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getCustomProperties:getCustomProperties", {

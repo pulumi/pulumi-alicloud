@@ -85,7 +85,7 @@ export interface GetCertificatesResult {
  * This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
  */
 /** @deprecated This resource has been deprecated in favour of getServiceCertificates */
-export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
+export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificatesResult> {
     pulumi.log.warn("getCertificates is deprecated: This resource has been deprecated in favour of getServiceCertificates")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -331,7 +331,7 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
                           status: Optional[pulumi.Input[Optional[str]]] = None,
                           tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           template_name: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExecutionsResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExecutionsResult]:
     """
     This data source provides a list of OOS Executions in an Alibaba Cloud account according to the specified filters.
 
@@ -387,7 +387,7 @@ def get_executions_output(category: Optional[pulumi.Input[Optional[str]]] = None
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['templateName'] = template_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:oos/getExecutions:getExecutions', __args__, opts=opts, typ=GetExecutionsResult)
     return __ret__.apply(lambda __response__: GetExecutionsResult(
         category=pulumi.get(__response__, 'category'),

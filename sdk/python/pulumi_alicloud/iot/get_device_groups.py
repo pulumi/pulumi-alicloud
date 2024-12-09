@@ -184,7 +184,7 @@ def get_device_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              super_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceGroupsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeviceGroupsResult]:
     """
     This data source provides the Iot Device Groups of the current Alibaba Cloud user.
 
@@ -219,7 +219,7 @@ def get_device_groups_output(enable_details: Optional[pulumi.Input[Optional[bool
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['superGroupId'] = super_group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:iot/getDeviceGroups:getDeviceGroups', __args__, opts=opts, typ=GetDeviceGroupsResult)
     return __ret__.apply(lambda __response__: GetDeviceGroupsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

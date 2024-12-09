@@ -132,7 +132,7 @@ export interface GetDbInstancesResult {
  * export const dbInstance = defaultGetDbInstances.apply(defaultGetDbInstances => defaultGetDbInstances.ids?.[0]);
  * ```
  */
-export function getDbInstancesOutput(args?: GetDbInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancesResult> {
+export function getDbInstancesOutput(args?: GetDbInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:selectdb/getDbInstances:getDbInstances", {

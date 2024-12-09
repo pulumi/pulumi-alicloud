@@ -106,7 +106,7 @@ export interface GetKeysResult {
  * export const firstKeyId = kmsKeysDs.then(kmsKeysDs => kmsKeysDs.keys?.[0]?.id);
  * ```
  */
-export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
+export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kms/getKeys:getKeys", {

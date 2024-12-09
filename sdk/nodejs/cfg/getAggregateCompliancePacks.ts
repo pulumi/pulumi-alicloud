@@ -116,7 +116,7 @@ export interface GetAggregateCompliancePacksResult {
  * export const firstConfigAggregateCompliancePackId = example.then(example => example.packs?.[0]?.id);
  * ```
  */
-export function getAggregateCompliancePacksOutput(args: GetAggregateCompliancePacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateCompliancePacksResult> {
+export function getAggregateCompliancePacksOutput(args: GetAggregateCompliancePacksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAggregateCompliancePacksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cfg/getAggregateCompliancePacks:getAggregateCompliancePacks", {
         "aggregatorId": args.aggregatorId,

@@ -98,7 +98,7 @@ export interface GetHistoryDeliveryJobsResult {
  * export const actiontrailHistoryDeliveryJobId2 = status.then(status => status.jobs?.[0]?.id);
  * ```
  */
-export function getHistoryDeliveryJobsOutput(args?: GetHistoryDeliveryJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHistoryDeliveryJobsResult> {
+export function getHistoryDeliveryJobsOutput(args?: GetHistoryDeliveryJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHistoryDeliveryJobsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", {

@@ -91,7 +91,7 @@ export interface GetHybridMonitorFcTasksResult {
  * export const cmsHybridMonitorFcTaskId1 = ids.then(ids => ids.tasks?.[0]?.id);
  * ```
  */
-export function getHybridMonitorFcTasksOutput(args?: GetHybridMonitorFcTasksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorFcTasksResult> {
+export function getHybridMonitorFcTasksOutput(args?: GetHybridMonitorFcTasksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHybridMonitorFcTasksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getHybridMonitorFcTasks:getHybridMonitorFcTasks", {

@@ -127,7 +127,7 @@ def get_attachments(instance_ids: Optional[Sequence[str]] = None,
 def get_attachments_output(instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            load_balancer_id: Optional[pulumi.Input[str]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttachmentsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttachmentsResult]:
     """
     This data source provides the server load balancer attachments of the current Alibaba Cloud user.
 
@@ -150,7 +150,7 @@ def get_attachments_output(instance_ids: Optional[pulumi.Input[Optional[Sequence
     __args__['instanceIds'] = instance_ids
     __args__['loadBalancerId'] = load_balancer_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getAttachments:getAttachments', __args__, opts=opts, typ=GetAttachmentsResult)
     return __ret__.apply(lambda __response__: GetAttachmentsResult(
         id=pulumi.get(__response__, 'id'),

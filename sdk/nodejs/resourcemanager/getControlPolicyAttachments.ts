@@ -91,7 +91,7 @@ export interface GetControlPolicyAttachmentsResult {
  * export const firstResourceManagerControlPolicyAttachmentId = example.then(example => example.attachments?.[0]?.id);
  * ```
  */
-export function getControlPolicyAttachmentsOutput(args: GetControlPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPolicyAttachmentsResult> {
+export function getControlPolicyAttachmentsOutput(args: GetControlPolicyAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetControlPolicyAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", {
         "language": args.language,

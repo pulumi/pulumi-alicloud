@@ -244,7 +244,7 @@ export interface GetGatewayVcoRoutesResult {
  * export const vpnGatewayVcoRouteId1 = ids.routes[0].id;
  * ```
  */
-export function getGatewayVcoRoutesOutput(args: GetGatewayVcoRoutesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayVcoRoutesResult> {
+export function getGatewayVcoRoutesOutput(args: GetGatewayVcoRoutesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayVcoRoutesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpn/getGatewayVcoRoutes:getGatewayVcoRoutes", {
         "ids": args.ids,

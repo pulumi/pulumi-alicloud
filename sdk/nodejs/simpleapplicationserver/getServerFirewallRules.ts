@@ -92,7 +92,7 @@ export interface GetServerFirewallRulesResult {
  * export const simpleApplicationServerFirewallRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * ```
  */
-export function getServerFirewallRulesOutput(args: GetServerFirewallRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerFirewallRulesResult> {
+export function getServerFirewallRulesOutput(args: GetServerFirewallRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerFirewallRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", {
         "ids": args.ids,

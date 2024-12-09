@@ -143,7 +143,7 @@ def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[int]] = No
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  load_balancer_id: Optional[pulumi.Input[str]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainExtensionsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainExtensionsResult]:
     """
     This data source provides the domain extensions associated with a server load balancer listener.
 
@@ -170,7 +170,7 @@ def get_domain_extensions_output(frontend_port: Optional[pulumi.Input[int]] = No
     __args__['ids'] = ids
     __args__['loadBalancerId'] = load_balancer_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getDomainExtensions:getDomainExtensions', __args__, opts=opts, typ=GetDomainExtensionsResult)
     return __ret__.apply(lambda __response__: GetDomainExtensionsResult(
         extensions=pulumi.get(__response__, 'extensions'),

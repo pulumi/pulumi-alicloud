@@ -119,7 +119,7 @@ export interface GetQueuesResult {
  * export const amqpQueueId2 = nameRegex.then(nameRegex => nameRegex.queues?.[0]?.id);
  * ```
  */
-export function getQueuesOutput(args: GetQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuesResult> {
+export function getQueuesOutput(args: GetQueuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:amqp/getQueues:getQueues", {
         "ids": args.ids,

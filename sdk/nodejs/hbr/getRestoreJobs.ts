@@ -129,7 +129,7 @@ export interface GetRestoreJobsResult {
  * }));
  * ```
  */
-export function getRestoreJobsOutput(args: GetRestoreJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestoreJobsResult> {
+export function getRestoreJobsOutput(args: GetRestoreJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRestoreJobsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getRestoreJobs:getRestoreJobs", {
         "outputFile": args.outputFile,

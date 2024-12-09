@@ -80,7 +80,7 @@ export interface GetBackendServersResult {
  * export const firstSlbBackendServerId = sampleDs.then(sampleDs => sampleDs.backendServers?.[0]?.id);
  * ```
  */
-export function getBackendServersOutput(args: GetBackendServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServersResult> {
+export function getBackendServersOutput(args: GetBackendServersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackendServersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getBackendServers:getBackendServers", {
         "ids": args.ids,

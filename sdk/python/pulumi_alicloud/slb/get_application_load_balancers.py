@@ -475,7 +475,7 @@ def get_application_load_balancers_output(address: Optional[pulumi.Input[Optiona
                                           tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                           vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                                           vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationLoadBalancersResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationLoadBalancersResult]:
     """
     This data source provides the server load balancers of the current Alibaba Cloud user.
 
@@ -539,7 +539,7 @@ def get_application_load_balancers_output(address: Optional[pulumi.Input[Optiona
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getApplicationLoadBalancers:getApplicationLoadBalancers', __args__, opts=opts, typ=GetApplicationLoadBalancersResult)
     return __ret__.apply(lambda __response__: GetApplicationLoadBalancersResult(
         address=pulumi.get(__response__, 'address'),

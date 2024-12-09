@@ -72,7 +72,7 @@ export interface GetIpInfoResult {
  * });
  * ```
  */
-export function getIpInfoOutput(args: GetIpInfoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpInfoResult> {
+export function getIpInfoOutput(args: GetIpInfoOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cdn/getIpInfo:getIpInfo", {
         "ip": args.ip,

@@ -218,7 +218,7 @@ def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optiona
                                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                               repo_name: Optional[pulumi.Input[Optional[str]]] = None,
                                               target_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryEnterpriseSyncRulesResult]:
+                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryEnterpriseSyncRulesResult]:
     """
     This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.
 
@@ -256,7 +256,7 @@ def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optiona
     __args__['outputFile'] = output_file
     __args__['repoName'] = repo_name
     __args__['targetInstanceId'] = target_instance_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules', __args__, opts=opts, typ=GetRegistryEnterpriseSyncRulesResult)
     return __ret__.apply(lambda __response__: GetRegistryEnterpriseSyncRulesResult(
         id=pulumi.get(__response__, 'id'),

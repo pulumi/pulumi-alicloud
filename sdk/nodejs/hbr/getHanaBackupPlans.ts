@@ -114,7 +114,7 @@ export interface GetHanaBackupPlansResult {
  * export const hbrHanaBackupPlanId1 = ids.then(ids => ids.plans?.[0]?.id);
  * ```
  */
-export function getHanaBackupPlansOutput(args: GetHanaBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHanaBackupPlansResult> {
+export function getHanaBackupPlansOutput(args: GetHanaBackupPlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHanaBackupPlansResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans", {
         "clusterId": args.clusterId,

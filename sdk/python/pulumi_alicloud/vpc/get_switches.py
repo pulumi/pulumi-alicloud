@@ -336,7 +336,7 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
                         vswitch_name: Optional[pulumi.Input[Optional[str]]] = None,
                         vswitch_owner_id: Optional[pulumi.Input[Optional[int]]] = None,
                         zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSwitchesResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSwitchesResult]:
     """
     This data source provides a list of VSwitches owned by an Alibaba Cloud account.
 
@@ -393,7 +393,7 @@ def get_switches_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     __args__['vswitchName'] = vswitch_name
     __args__['vswitchOwnerId'] = vswitch_owner_id
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getSwitches:getSwitches', __args__, opts=opts, typ=GetSwitchesResult)
     return __ret__.apply(lambda __response__: GetSwitchesResult(
         cidr_block=pulumi.get(__response__, 'cidr_block'),

@@ -102,7 +102,7 @@ export interface GetTriggersResult {
  * export const firstFcTriggerName = fcTriggersDs.then(fcTriggersDs => fcTriggersDs.triggers?.[0]?.name);
  * ```
  */
-export function getTriggersOutput(args: GetTriggersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggersResult> {
+export function getTriggersOutput(args: GetTriggersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTriggersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:fc/getTriggers:getTriggers", {
         "functionName": args.functionName,

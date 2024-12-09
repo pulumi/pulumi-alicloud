@@ -145,7 +145,7 @@ export interface GetQuotaApplicationsResult {
  * }));
  * ```
  */
-export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaApplicationsResult> {
+export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQuotaApplicationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:quotas/getQuotaApplications:getQuotaApplications", {
         "dimensions": args.dimensions,

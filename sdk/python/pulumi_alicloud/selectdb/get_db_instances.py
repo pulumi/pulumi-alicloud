@@ -149,7 +149,7 @@ def get_db_instances(ids: Optional[Sequence[str]] = None,
 def get_db_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbInstancesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbInstancesResult]:
     """
     This data source provides the SelectDB DBInstance of the current Alibaba Cloud user.
 
@@ -194,7 +194,7 @@ def get_db_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:selectdb/getDbInstances:getDbInstances', __args__, opts=opts, typ=GetDbInstancesResult)
     return __ret__.apply(lambda __response__: GetDbInstancesResult(
         id=pulumi.get(__response__, 'id'),

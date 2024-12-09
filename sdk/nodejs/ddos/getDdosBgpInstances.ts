@@ -121,7 +121,7 @@ export interface GetDdosBgpInstancesResult {
  * }
  * ```
  */
-export function getDdosBgpInstancesOutput(args?: GetDdosBgpInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosBgpInstancesResult> {
+export function getDdosBgpInstancesOutput(args?: GetDdosBgpInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDdosBgpInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", {

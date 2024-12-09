@@ -169,7 +169,7 @@ def get_vbr_health_checks_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
                                  vbr_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  vbr_instance_owner_id: Optional[pulumi.Input[Optional[int]]] = None,
                                  vbr_instance_region_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVbrHealthChecksResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVbrHealthChecksResult]:
     """
     This data source provides CEN VBR Health Checks available to the user.
 
@@ -188,7 +188,7 @@ def get_vbr_health_checks_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
     __args__['vbrInstanceId'] = vbr_instance_id
     __args__['vbrInstanceOwnerId'] = vbr_instance_owner_id
     __args__['vbrInstanceRegionId'] = vbr_instance_region_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getVbrHealthChecks:getVbrHealthChecks', __args__, opts=opts, typ=GetVbrHealthChecksResult)
     return __ret__.apply(lambda __response__: GetVbrHealthChecksResult(
         cen_id=pulumi.get(__response__, 'cen_id'),

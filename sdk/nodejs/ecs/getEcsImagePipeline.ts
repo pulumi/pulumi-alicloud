@@ -112,7 +112,7 @@ export interface GetEcsImagePipelineResult {
  * export const ecsImagePipelineId2 = nameRegex.then(nameRegex => nameRegex.pipelines?.[0]?.id);
  * ```
  */
-export function getEcsImagePipelineOutput(args?: GetEcsImagePipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsImagePipelineResult> {
+export function getEcsImagePipelineOutput(args?: GetEcsImagePipelineOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsImagePipelineResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsImagePipeline:getEcsImagePipeline", {

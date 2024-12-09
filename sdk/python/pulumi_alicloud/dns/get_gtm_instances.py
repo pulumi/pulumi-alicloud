@@ -138,7 +138,7 @@ def get_gtm_instances(ids: Optional[Sequence[str]] = None,
 def get_gtm_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              lang: Optional[pulumi.Input[Optional[str]]] = None,
                              resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGtmInstancesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGtmInstancesResult]:
     """
     This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.
 
@@ -165,7 +165,7 @@ def get_gtm_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['ids'] = ids
     __args__['lang'] = lang
     __args__['resourceGroupId'] = resource_group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getGtmInstances:getGtmInstances', __args__, opts=opts, typ=GetGtmInstancesResult)
     return __ret__.apply(lambda __response__: GetGtmInstancesResult(
         id=pulumi.get(__response__, 'id'),

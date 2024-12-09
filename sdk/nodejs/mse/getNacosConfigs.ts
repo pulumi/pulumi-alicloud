@@ -232,7 +232,7 @@ export interface GetNacosConfigsResult {
  * }));
  * ```
  */
-export function getNacosConfigsOutput(args: GetNacosConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNacosConfigsResult> {
+export function getNacosConfigsOutput(args: GetNacosConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNacosConfigsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mse/getNacosConfigs:getNacosConfigs", {
         "acceptLanguage": args.acceptLanguage,

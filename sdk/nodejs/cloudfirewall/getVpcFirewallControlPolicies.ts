@@ -156,7 +156,7 @@ export interface GetVpcFirewallControlPoliciesResult {
  * export const alicloudCloudFirewallVpcFirewallControlPoliciesId1 = ids.then(ids => ids.policies?.[0]?.id);
  * ```
  */
-export function getVpcFirewallControlPoliciesOutput(args: GetVpcFirewallControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFirewallControlPoliciesResult> {
+export function getVpcFirewallControlPoliciesOutput(args: GetVpcFirewallControlPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcFirewallControlPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies", {
         "aclAction": args.aclAction,

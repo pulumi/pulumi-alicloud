@@ -102,7 +102,7 @@ export interface GetPrefixListsResult {
  * export const vpcPrefixListId2 = nameRegex.then(nameRegex => nameRegex.lists?.[0]?.id);
  * ```
  */
-export function getPrefixListsOutput(args?: GetPrefixListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrefixListsResult> {
+export function getPrefixListsOutput(args?: GetPrefixListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrefixListsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getPrefixLists:getPrefixLists", {

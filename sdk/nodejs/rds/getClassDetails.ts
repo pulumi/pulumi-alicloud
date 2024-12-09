@@ -152,7 +152,7 @@ export interface GetClassDetailsResult {
  * });
  * ```
  */
-export function getClassDetailsOutput(args: GetClassDetailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClassDetailsResult> {
+export function getClassDetailsOutput(args: GetClassDetailsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClassDetailsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getClassDetails:getClassDetails", {
         "classCode": args.classCode,

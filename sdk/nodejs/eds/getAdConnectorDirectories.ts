@@ -92,7 +92,7 @@ export interface GetAdConnectorDirectoriesResult {
  * export const ecdAdConnectorDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
  * ```
  */
-export function getAdConnectorDirectoriesOutput(args?: GetAdConnectorDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdConnectorDirectoriesResult> {
+export function getAdConnectorDirectoriesOutput(args?: GetAdConnectorDirectoriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAdConnectorDirectoriesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", {

@@ -177,7 +177,7 @@ def get_accelerators_output(bandwidth_billing_type: Optional[pulumi.Input[Option
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAcceleratorsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAcceleratorsResult]:
     """
     This data source provides the Global Accelerator (GA) Accelerators of the current Alibaba Cloud user.
 
@@ -210,7 +210,7 @@ def get_accelerators_output(bandwidth_billing_type: Optional[pulumi.Input[Option
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getAccelerators:getAccelerators', __args__, opts=opts, typ=GetAcceleratorsResult)
     return __ret__.apply(lambda __response__: GetAcceleratorsResult(
         accelerators=pulumi.get(__response__, 'accelerators'),

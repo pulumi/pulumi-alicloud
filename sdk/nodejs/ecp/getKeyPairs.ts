@@ -96,7 +96,7 @@ export interface GetKeyPairsResult {
  * export const ecpKeyPairId2 = nameRegex.then(nameRegex => nameRegex.pairs?.[0]?.id);
  * ```
  */
-export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
+export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeyPairsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecp/getKeyPairs:getKeyPairs", {

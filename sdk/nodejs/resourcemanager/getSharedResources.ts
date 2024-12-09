@@ -72,7 +72,7 @@ export interface GetSharedResourcesResult {
  *
  * > **NOTE:** Available since v1.111.0.
  */
-export function getSharedResourcesOutput(args?: GetSharedResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSharedResourcesResult> {
+export function getSharedResourcesOutput(args?: GetSharedResourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSharedResourcesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getSharedResources:getSharedResources", {

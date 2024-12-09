@@ -184,7 +184,7 @@ def get_trails_deprecated_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrailsDeprecatedResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTrailsDeprecatedResult]:
     """
     > **DEPRECATED:**  This datasource has been renamed to actiontrail_get_trails from version 1.95.0.
 
@@ -202,7 +202,7 @@ def get_trails_deprecated_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getTrailsDeprecated:getTrailsDeprecated', __args__, opts=opts, typ=GetTrailsDeprecatedResult)
     return __ret__.apply(lambda __response__: GetTrailsDeprecatedResult(
         actiontrails=pulumi.get(__response__, 'actiontrails'),

@@ -130,7 +130,7 @@ def get_sharding_network_private_addresses_output(db_instance_id: Optional[pulum
                                                   node_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                   role: Optional[pulumi.Input[Optional[str]]] = None,
-                                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetShardingNetworkPrivateAddressesResult]:
+                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetShardingNetworkPrivateAddressesResult]:
     """
     This data source provides the Mongodb Sharding Network Private Addresses of the current Alibaba Cloud user.
 
@@ -147,7 +147,7 @@ def get_sharding_network_private_addresses_output(db_instance_id: Optional[pulum
     __args__['nodeId'] = node_id
     __args__['outputFile'] = output_file
     __args__['role'] = role
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses', __args__, opts=opts, typ=GetShardingNetworkPrivateAddressesResult)
     return __ret__.apply(lambda __response__: GetShardingNetworkPrivateAddressesResult(
         addresses=pulumi.get(__response__, 'addresses'),

@@ -180,7 +180,7 @@ export interface GetClustersResult {
  * export const instanceId = exampleGetClusters.apply(exampleGetClusters => exampleGetClusters.clusters?.[0]?.id);
  * ```
  */
-export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mse/getClusters:getClusters", {

@@ -270,7 +270,7 @@ export interface GetFlowlogsResult {
  * export const firstCenFlowlogId = _default.apply(_default => _default.flowlogs?.[0]?.id);
  * ```
  */
-export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowlogsResult> {
+export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFlowlogsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getFlowlogs:getFlowlogs", {

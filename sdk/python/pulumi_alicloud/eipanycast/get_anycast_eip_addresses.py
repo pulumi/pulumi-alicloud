@@ -251,7 +251,7 @@ def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.I
                                      payment_type: Optional[pulumi.Input[Optional[str]]] = None,
                                      service_location: Optional[pulumi.Input[Optional[str]]] = None,
                                      status: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAnycastEipAddressesResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAnycastEipAddressesResult]:
     """
     This data source provides the Eipanycast Anycast Eip Addresses of the current Alibaba Cloud user.
 
@@ -295,7 +295,7 @@ def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.I
     __args__['paymentType'] = payment_type
     __args__['serviceLocation'] = service_location
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses', __args__, opts=opts, typ=GetAnycastEipAddressesResult)
     return __ret__.apply(lambda __response__: GetAnycastEipAddressesResult(
         addresses=pulumi.get(__response__, 'addresses'),

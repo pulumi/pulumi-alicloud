@@ -166,7 +166,7 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     > **NOTE:** From the version 1.132.0, the data source has been renamed to `bastionhost_get_instances`.
 
@@ -203,7 +203,7 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:bastionhost/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         description_regex=pulumi.get(__response__, 'description_regex'),

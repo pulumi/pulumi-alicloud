@@ -365,7 +365,7 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          type: Optional[pulumi.Input[Optional[str]]] = None,
                          usage: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
     > **DEPRECATED:** This datasource has been renamed to ecs_get_ecs_snapshots from version 1.120.0.
 
@@ -439,7 +439,7 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['tags'] = tags
     __args__['type'] = type
     __args__['usage'] = usage
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult)
     return __ret__.apply(lambda __response__: GetSnapshotsResult(
         category=pulumi.get(__response__, 'category'),

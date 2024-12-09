@@ -84,7 +84,7 @@ export interface GetVbrHealthChecksResult {
  *
  * > **NOTE:** Available in 1.98.0+
  */
-export function getVbrHealthChecksOutput(args: GetVbrHealthChecksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVbrHealthChecksResult> {
+export function getVbrHealthChecksOutput(args: GetVbrHealthChecksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVbrHealthChecksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getVbrHealthChecks:getVbrHealthChecks", {
         "cenId": args.cenId,

@@ -156,7 +156,7 @@ export interface GetCommonBandwidthPackagesResult {
  *   * `allocationId` - The ID of the EIP instance.
  *   * `bandwidthPackageIpRelationStatus` - The IP relation status of bandwidth package.
  */
-export function getCommonBandwidthPackagesOutput(args?: GetCommonBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCommonBandwidthPackagesResult> {
+export function getCommonBandwidthPackagesOutput(args?: GetCommonBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCommonBandwidthPackagesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getCommonBandwidthPackages:getCommonBandwidthPackages", {

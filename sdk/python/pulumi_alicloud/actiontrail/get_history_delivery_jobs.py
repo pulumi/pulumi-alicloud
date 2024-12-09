@@ -144,7 +144,7 @@ def get_history_delivery_jobs_output(enable_details: Optional[pulumi.Input[Optio
                                      ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                      status: Optional[pulumi.Input[Optional[int]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHistoryDeliveryJobsResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHistoryDeliveryJobsResult]:
     """
     This data source provides the Actiontrail History Delivery Jobs of the current Alibaba Cloud user.
 
@@ -175,7 +175,7 @@ def get_history_delivery_jobs_output(enable_details: Optional[pulumi.Input[Optio
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs', __args__, opts=opts, typ=GetHistoryDeliveryJobsResult)
     return __ret__.apply(lambda __response__: GetHistoryDeliveryJobsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

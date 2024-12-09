@@ -78,7 +78,7 @@ export interface GetIndustrialSericeResult {
  * });
  * ```
  */
-export function getIndustrialSericeOutput(args?: GetIndustrialSericeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIndustrialSericeResult> {
+export function getIndustrialSericeOutput(args?: GetIndustrialSericeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIndustrialSericeResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:brain/getIndustrialSerice:getIndustrialSerice", {

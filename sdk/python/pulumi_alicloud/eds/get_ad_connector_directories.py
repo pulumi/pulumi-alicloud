@@ -152,7 +152,7 @@ def get_ad_connector_directories_output(ids: Optional[pulumi.Input[Optional[Sequ
                                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAdConnectorDirectoriesResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAdConnectorDirectoriesResult]:
     """
     This data source provides the Ecd Ad Connector Directories of the current Alibaba Cloud user.
 
@@ -181,7 +181,7 @@ def get_ad_connector_directories_output(ids: Optional[pulumi.Input[Optional[Sequ
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories', __args__, opts=opts, typ=GetAdConnectorDirectoriesResult)
     return __ret__.apply(lambda __response__: GetAdConnectorDirectoriesResult(
         directories=pulumi.get(__response__, 'directories'),

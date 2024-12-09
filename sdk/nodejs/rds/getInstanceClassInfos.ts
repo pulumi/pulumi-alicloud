@@ -116,7 +116,7 @@ export interface GetInstanceClassInfosResult {
  * export const firstDbInstanceClass = resources.then(resources => resources.infos?.[0]);
  * ```
  */
-export function getInstanceClassInfosOutput(args: GetInstanceClassInfosOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClassInfosResult> {
+export function getInstanceClassInfosOutput(args: GetInstanceClassInfosOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceClassInfosResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getInstanceClassInfos:getInstanceClassInfos", {
         "commodityCode": args.commodityCode,

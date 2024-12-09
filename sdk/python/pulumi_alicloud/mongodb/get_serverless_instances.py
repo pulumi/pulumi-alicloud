@@ -266,7 +266,7 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
                                     vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerlessInstancesResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerlessInstancesResult]:
     """
     This data source provides the Mongodb Serverless Instances of the current Alibaba Cloud user.
 
@@ -323,7 +323,7 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mongodb/getServerlessInstances:getServerlessInstances', __args__, opts=opts, typ=GetServerlessInstancesResult)
     return __ret__.apply(lambda __response__: GetServerlessInstancesResult(
         db_instance_class=pulumi.get(__response__, 'db_instance_class'),

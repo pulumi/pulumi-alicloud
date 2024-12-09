@@ -164,7 +164,7 @@ def get_backends_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         page_number: Optional[pulumi.Input[Optional[int]]] = None,
                         page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendsResult]:
     """
     This data source provides the Api Gateway Backends of the current Alibaba Cloud user.
 
@@ -193,7 +193,7 @@ def get_backends_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:apigateway/getBackends:getBackends', __args__, opts=opts, typ=GetBackendsResult)
     return __ret__.apply(lambda __response__: GetBackendsResult(
         backends=pulumi.get(__response__, 'backends'),

@@ -92,7 +92,7 @@ export interface GetMigrationJobsResult {
  * export const dtsMigrationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
  */
-export function getMigrationJobsOutput(args?: GetMigrationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMigrationJobsResult> {
+export function getMigrationJobsOutput(args?: GetMigrationJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMigrationJobsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dts/getMigrationJobs:getMigrationJobs", {

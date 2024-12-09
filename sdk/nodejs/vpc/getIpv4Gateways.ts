@@ -108,7 +108,7 @@ export interface GetIpv4GatewaysResult {
  * export const vpcIpv4GatewayId2 = nameRegex.then(nameRegex => nameRegex.gateways?.[0]?.id);
  * ```
  */
-export function getIpv4GatewaysOutput(args?: GetIpv4GatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpv4GatewaysResult> {
+export function getIpv4GatewaysOutput(args?: GetIpv4GatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpv4GatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getIpv4Gateways:getIpv4Gateways", {

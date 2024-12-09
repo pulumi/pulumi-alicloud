@@ -162,7 +162,7 @@ export interface GetPrometheusResult {
  * export const armsPrometheusId = nameRegex.apply(nameRegex => nameRegex.prometheis?.[0]?.id);
  * ```
  */
-export function getPrometheusOutput(args?: GetPrometheusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusResult> {
+export function getPrometheusOutput(args?: GetPrometheusOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrometheusResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:arms/getPrometheus:getPrometheus", {

@@ -105,7 +105,7 @@ export interface GetLaunchOptionsResult {
  * export const alicloudServiceCatalogLaunchOptionExampleId = defaultGetLaunchOptions.then(defaultGetLaunchOptions => defaultGetLaunchOptions.launchOptions?.[0]?.id);
  * ```
  */
-export function getLaunchOptionsOutput(args: GetLaunchOptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLaunchOptionsResult> {
+export function getLaunchOptionsOutput(args: GetLaunchOptionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLaunchOptionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", {
         "ids": args.ids,

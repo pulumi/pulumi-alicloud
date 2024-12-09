@@ -288,7 +288,7 @@ def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[O
                                              release: Optional[pulumi.Input[Optional[bool]]] = None,
                                              source: Optional[pulumi.Input[Optional[str]]] = None,
                                              vpc_firewall_id: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcFirewallControlPoliciesResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcFirewallControlPoliciesResult]:
     """
     This data source provides the Cloud Firewall Vpc Firewall Control Policies of the current Alibaba Cloud user.
 
@@ -343,7 +343,7 @@ def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[O
     __args__['release'] = release
     __args__['source'] = source
     __args__['vpcFirewallId'] = vpc_firewall_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudfirewall/getVpcFirewallControlPolicies:getVpcFirewallControlPolicies', __args__, opts=opts, typ=GetVpcFirewallControlPoliciesResult)
     return __ret__.apply(lambda __response__: GetVpcFirewallControlPoliciesResult(
         acl_action=pulumi.get(__response__, 'acl_action'),

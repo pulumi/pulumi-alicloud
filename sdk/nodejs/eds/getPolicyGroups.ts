@@ -132,7 +132,7 @@ export interface GetPolicyGroupsResult {
  * export const ecdPolicyGroupId = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
-export function getPolicyGroupsOutput(args?: GetPolicyGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyGroupsResult> {
+export function getPolicyGroupsOutput(args?: GetPolicyGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getPolicyGroups:getPolicyGroups", {

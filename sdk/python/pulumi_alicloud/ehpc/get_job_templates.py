@@ -120,7 +120,7 @@ def get_job_templates(ids: Optional[Sequence[str]] = None,
         templates=pulumi.get(__ret__, 'templates'))
 def get_job_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobTemplatesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobTemplatesResult]:
     """
     This data source provides the Ehpc Job Templates of the current Alibaba Cloud user.
 
@@ -148,7 +148,7 @@ def get_job_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__ = dict()
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ehpc/getJobTemplates:getJobTemplates', __args__, opts=opts, typ=GetJobTemplatesResult)
     return __ret__.apply(lambda __response__: GetJobTemplatesResult(
         id=pulumi.get(__response__, 'id'),

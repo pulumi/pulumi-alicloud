@@ -128,7 +128,7 @@ def get_queues(name_prefix: Optional[str] = None,
         queues=pulumi.get(__ret__, 'queues'))
 def get_queues_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQueuesResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQueuesResult]:
     """
     This data source provides a list of MNS queues in an Alibaba Cloud account according to the specified parameters.
 
@@ -151,7 +151,7 @@ def get_queues_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['namePrefix'] = name_prefix
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mns/getQueues:getQueues', __args__, opts=opts, typ=GetQueuesResult)
     return __ret__.apply(lambda __response__: GetQueuesResult(
         id=pulumi.get(__response__, 'id'),

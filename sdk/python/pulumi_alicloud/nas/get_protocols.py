@@ -130,7 +130,7 @@ def get_protocols(output_file: Optional[str] = None,
 def get_protocols_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          type: Optional[pulumi.Input[str]] = None,
                          zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProtocolsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProtocolsResult]:
     """
     Provide  a data source to retrieve the type of protocol used to create NAS file system.
 
@@ -157,7 +157,7 @@ def get_protocols_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
     __args__['outputFile'] = output_file
     __args__['type'] = type
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getProtocols:getProtocols', __args__, opts=opts, typ=GetProtocolsResult)
     return __ret__.apply(lambda __response__: GetProtocolsResult(
         id=pulumi.get(__response__, 'id'),

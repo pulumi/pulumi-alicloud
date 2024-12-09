@@ -113,7 +113,7 @@ export interface GetTemplateScratchesResult {
  * export const rosTemplateScratchId3 = templateScratchType.then(templateScratchType => templateScratchType.scratches?.[0]?.id);
  * ```
  */
-export function getTemplateScratchesOutput(args?: GetTemplateScratchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateScratchesResult> {
+export function getTemplateScratchesOutput(args?: GetTemplateScratchesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplateScratchesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ros/getTemplateScratches:getTemplateScratches", {

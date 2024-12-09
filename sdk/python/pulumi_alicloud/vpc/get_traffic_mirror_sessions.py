@@ -259,7 +259,7 @@ def get_traffic_mirror_sessions_output(enabled: Optional[pulumi.Input[Optional[b
                                        traffic_mirror_session_name: Optional[pulumi.Input[Optional[str]]] = None,
                                        traffic_mirror_source_id: Optional[pulumi.Input[Optional[str]]] = None,
                                        traffic_mirror_target_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrafficMirrorSessionsResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTrafficMirrorSessionsResult]:
     """
     This data source provides the Vpc Traffic Mirror Sessions of the current Alibaba Cloud user.
 
@@ -323,7 +323,7 @@ def get_traffic_mirror_sessions_output(enabled: Optional[pulumi.Input[Optional[b
     __args__['trafficMirrorSessionName'] = traffic_mirror_session_name
     __args__['trafficMirrorSourceId'] = traffic_mirror_source_id
     __args__['trafficMirrorTargetId'] = traffic_mirror_target_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions', __args__, opts=opts, typ=GetTrafficMirrorSessionsResult)
     return __ret__.apply(lambda __response__: GetTrafficMirrorSessionsResult(
         enabled=pulumi.get(__response__, 'enabled'),

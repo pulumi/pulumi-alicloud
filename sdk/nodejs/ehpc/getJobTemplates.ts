@@ -90,7 +90,7 @@ export interface GetJobTemplatesResult {
  * export const ehpcJobTemplateId1 = ids.apply(ids => ids.id);
  * ```
  */
-export function getJobTemplatesOutput(args?: GetJobTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobTemplatesResult> {
+export function getJobTemplatesOutput(args?: GetJobTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetJobTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ehpc/getJobTemplates:getJobTemplates", {

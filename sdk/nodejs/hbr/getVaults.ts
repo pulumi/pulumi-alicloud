@@ -100,7 +100,7 @@ export interface GetVaultsResult {
  * export const hbrVaultId1 = ids.then(ids => ids.vaults?.[0]?.id);
  * ```
  */
-export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVaultsResult> {
+export function getVaultsOutput(args?: GetVaultsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVaultsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getVaults:getVaults", {

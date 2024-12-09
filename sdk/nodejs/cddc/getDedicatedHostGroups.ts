@@ -92,7 +92,7 @@ export interface GetDedicatedHostGroupsResult {
  * export const cddcDedicatedHostGroupId = _default.then(_default => _default.id);
  * ```
  */
-export function getDedicatedHostGroupsOutput(args?: GetDedicatedHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostGroupsResult> {
+export function getDedicatedHostGroupsOutput(args?: GetDedicatedHostGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDedicatedHostGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", {

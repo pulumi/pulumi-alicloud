@@ -213,7 +213,7 @@ def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]
                                   principal_name: Optional[pulumi.Input[Optional[str]]] = None,
                                   principal_type: Optional[pulumi.Input[Optional[str]]] = None,
                                   resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyAttachmentsResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyAttachmentsResult]:
     """
     This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.
 
@@ -246,7 +246,7 @@ def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[str]]
     __args__['principalName'] = principal_name
     __args__['principalType'] = principal_type
     __args__['resourceGroupId'] = resource_group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:resourcemanager/getPolicyAttachments:getPolicyAttachments', __args__, opts=opts, typ=GetPolicyAttachmentsResult)
     return __ret__.apply(lambda __response__: GetPolicyAttachmentsResult(
         attachments=pulumi.get(__response__, 'attachments'),
