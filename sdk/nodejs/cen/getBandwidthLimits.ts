@@ -74,7 +74,7 @@ export interface GetBandwidthLimitsResult {
  * export const firstCenBandwidthLimitsLocalRegionId = bwl.then(bwl => bwl.limits?.[0]?.localRegionId);
  * ```
  */
-export function getBandwidthLimitsOutput(args?: GetBandwidthLimitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthLimitsResult> {
+export function getBandwidthLimitsOutput(args?: GetBandwidthLimitsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBandwidthLimitsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getBandwidthLimits:getBandwidthLimits", {

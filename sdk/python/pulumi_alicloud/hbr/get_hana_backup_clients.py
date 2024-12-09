@@ -212,7 +212,7 @@ def get_hana_backup_clients_output(client_id: Optional[pulumi.Input[Optional[str
                                    page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                    status: Optional[pulumi.Input[Optional[str]]] = None,
                                    vault_id: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHanaBackupClientsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHanaBackupClientsResult]:
     """
     This data source provides the Hybrid Backup Recovery (HBR) Hana Backup Clients of the current Alibaba Cloud user.
 
@@ -248,7 +248,7 @@ def get_hana_backup_clients_output(client_id: Optional[pulumi.Input[Optional[str
     __args__['pageSize'] = page_size
     __args__['status'] = status
     __args__['vaultId'] = vault_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getHanaBackupClients:getHanaBackupClients', __args__, opts=opts, typ=GetHanaBackupClientsResult)
     return __ret__.apply(lambda __response__: GetHanaBackupClientsResult(
         client_id=pulumi.get(__response__, 'client_id'),

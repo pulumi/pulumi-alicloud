@@ -196,7 +196,7 @@ def get_registry_enterprise_repos_output(enable_details: Optional[pulumi.Input[O
                                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                          namespace: Optional[pulumi.Input[Optional[str]]] = None,
                                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryEnterpriseReposResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryEnterpriseReposResult]:
     """
     This data source provides a list Container Registry Enterprise Edition repositories on Alibaba Cloud.
 
@@ -230,7 +230,7 @@ def get_registry_enterprise_repos_output(enable_details: Optional[pulumi.Input[O
     __args__['nameRegex'] = name_regex
     __args__['namespace'] = namespace
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos', __args__, opts=opts, typ=GetRegistryEnterpriseReposResult)
     return __ret__.apply(lambda __response__: GetRegistryEnterpriseReposResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

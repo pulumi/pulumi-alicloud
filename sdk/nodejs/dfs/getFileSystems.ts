@@ -94,7 +94,7 @@ export interface GetFileSystemsResult {
  * export const dfsFileSystemId2 = nameRegex.then(nameRegex => nameRegex.systems?.[0]?.id);
  * ```
  */
-export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFileSystemsResult> {
+export function getFileSystemsOutput(args?: GetFileSystemsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFileSystemsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dfs/getFileSystems:getFileSystems", {

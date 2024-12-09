@@ -88,7 +88,7 @@ export interface GetEventSourcesResult {
  * export const firstEventBridgeEventSourceId = example.then(example => example.sources?.[0]?.id);
  * ```
  */
-export function getEventSourcesOutput(args?: GetEventSourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventSourcesResult> {
+export function getEventSourcesOutput(args?: GetEventSourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEventSourcesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eventbridge/getEventSources:getEventSources", {

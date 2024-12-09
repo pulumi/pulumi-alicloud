@@ -95,7 +95,7 @@ export interface GetAccountsResult {
  * export const firstKvstoreAccountId = example.then(example => example.accounts?.[0]?.id);
  * ```
  */
-export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kvstore/getAccounts:getAccounts", {
         "accountName": args.accountName,

@@ -134,7 +134,7 @@ export interface GetServerGroupsResult {
  * export const firstSlbServerGroupId = sampleDs.apply(sampleDs => sampleDs.slbServerGroups?.[0]?.id);
  * ```
  */
-export function getServerGroupsOutput(args: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupsResult> {
+export function getServerGroupsOutput(args: GetServerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getServerGroups:getServerGroups", {
         "ids": args.ids,

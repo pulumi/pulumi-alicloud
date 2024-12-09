@@ -113,7 +113,7 @@ export interface GetChangeSetsResult {
  * export const firstRosChangeSetId = example.then(example => example.sets?.[0]?.id);
  * ```
  */
-export function getChangeSetsOutput(args: GetChangeSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChangeSetsResult> {
+export function getChangeSetsOutput(args: GetChangeSetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetChangeSetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ros/getChangeSets:getChangeSets", {
         "changeSetName": args.changeSetName,

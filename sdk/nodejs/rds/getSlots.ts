@@ -87,7 +87,7 @@ export interface GetSlotsResult {
  * export const firstRdsSlotsName = example.then(example => example.slots?.[0]?.slotName);
  * ```
  */
-export function getSlotsOutput(args: GetSlotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSlotsResult> {
+export function getSlotsOutput(args: GetSlotsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSlotsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getSlots:getSlots", {
         "dbInstanceId": args.dbInstanceId,

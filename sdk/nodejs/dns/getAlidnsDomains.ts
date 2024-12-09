@@ -177,7 +177,7 @@ export interface GetAlidnsDomainsResult {
  * export const firstDomainId = domainsDs.then(domainsDs => domainsDs.domains?.[0]?.domainId);
  * ```
  */
-export function getAlidnsDomainsOutput(args?: GetAlidnsDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlidnsDomainsResult> {
+export function getAlidnsDomainsOutput(args?: GetAlidnsDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlidnsDomainsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getAlidnsDomains:getAlidnsDomains", {

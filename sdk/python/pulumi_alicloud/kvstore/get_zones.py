@@ -170,7 +170,7 @@ def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
                      multi: Optional[pulumi.Input[Optional[bool]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                      product_type: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.
 
@@ -199,7 +199,7 @@ def get_zones_output(engine: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['multi'] = multi
     __args__['outputFile'] = output_file
     __args__['productType'] = product_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
         engine=pulumi.get(__response__, 'engine'),

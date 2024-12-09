@@ -257,7 +257,7 @@ def get_hosts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
                      source: Optional[pulumi.Input[Optional[str]]] = None,
                      source_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                      source_instance_state: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostsResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostsResult]:
     """
     This data source provides the Bastionhost Hosts of the current Alibaba Cloud user.
 
@@ -307,7 +307,7 @@ def get_hosts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     __args__['source'] = source
     __args__['sourceInstanceId'] = source_instance_id
     __args__['sourceInstanceState'] = source_instance_state
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:bastionhost/getHosts:getHosts', __args__, opts=opts, typ=GetHostsResult)
     return __ret__.apply(lambda __response__: GetHostsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

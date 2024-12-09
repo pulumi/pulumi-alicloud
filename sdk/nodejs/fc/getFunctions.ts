@@ -94,7 +94,7 @@ export interface GetFunctionsResult {
  * export const firstFcFunctionName = functionsDs.then(functionsDs => functionsDs.functions?.[0]?.name);
  * ```
  */
-export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionsResult> {
+export function getFunctionsOutput(args: GetFunctionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFunctionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:fc/getFunctions:getFunctions", {
         "ids": args.ids,

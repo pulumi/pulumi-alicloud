@@ -119,7 +119,7 @@ export interface GetBasicAccelerateIpsResult {
  * export const gaBasicAccelerateIpId1 = ids.then(ids => ids.ips?.[0]?.id);
  * ```
  */
-export function getBasicAccelerateIpsOutput(args: GetBasicAccelerateIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAccelerateIpsResult> {
+export function getBasicAccelerateIpsOutput(args: GetBasicAccelerateIpsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBasicAccelerateIpsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getBasicAccelerateIps:getBasicAccelerateIps", {
         "accelerateIpAddress": args.accelerateIpAddress,

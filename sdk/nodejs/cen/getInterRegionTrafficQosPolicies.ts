@@ -152,7 +152,7 @@ export interface GetInterRegionTrafficQosPoliciesResult {
  * export const cenInterRegionTrafficQosPolicyId1 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
  */
-export function getInterRegionTrafficQosPoliciesOutput(args: GetInterRegionTrafficQosPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterRegionTrafficQosPoliciesResult> {
+export function getInterRegionTrafficQosPoliciesOutput(args: GetInterRegionTrafficQosPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInterRegionTrafficQosPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", {
         "ids": args.ids,

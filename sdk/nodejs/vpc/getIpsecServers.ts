@@ -106,7 +106,7 @@ export interface GetIpsecServersResult {
  * export const vpnIpsecServerId2 = nameRegex.then(nameRegex => nameRegex.servers?.[0]?.id);
  * ```
  */
-export function getIpsecServersOutput(args?: GetIpsecServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpsecServersResult> {
+export function getIpsecServersOutput(args?: GetIpsecServersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIpsecServersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getIpsecServers:getIpsecServers", {

@@ -146,7 +146,7 @@ export interface GetRecordsResult {
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
  * ```
  */
-export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordsResult> {
+export function getRecordsOutput(args: GetRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecordsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getRecords:getRecords", {
         "domainName": args.domainName,

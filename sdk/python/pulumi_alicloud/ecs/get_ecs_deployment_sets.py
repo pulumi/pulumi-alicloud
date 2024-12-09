@@ -168,7 +168,7 @@ def get_ecs_deployment_sets_output(deployment_set_name: Optional[pulumi.Input[Op
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    strategy: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsDeploymentSetsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsDeploymentSetsResult]:
     """
     This data source provides the Ecs Deployment Sets of the current Alibaba Cloud user.
 
@@ -201,7 +201,7 @@ def get_ecs_deployment_sets_output(deployment_set_name: Optional[pulumi.Input[Op
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['strategy'] = strategy
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsDeploymentSets:getEcsDeploymentSets', __args__, opts=opts, typ=GetEcsDeploymentSetsResult)
     return __ret__.apply(lambda __response__: GetEcsDeploymentSetsResult(
         deployment_set_name=pulumi.get(__response__, 'deployment_set_name'),

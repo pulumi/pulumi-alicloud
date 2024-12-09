@@ -203,7 +203,7 @@ def get_host_accounts_output(host_account_name: Optional[pulumi.Input[Optional[s
                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              protocol_name: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostAccountsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostAccountsResult]:
     """
     This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.
 
@@ -247,7 +247,7 @@ def get_host_accounts_output(host_account_name: Optional[pulumi.Input[Optional[s
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['protocolName'] = protocol_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:bastionhost/getHostAccounts:getHostAccounts', __args__, opts=opts, typ=GetHostAccountsResult)
     return __ret__.apply(lambda __response__: GetHostAccountsResult(
         accounts=pulumi.get(__response__, 'accounts'),

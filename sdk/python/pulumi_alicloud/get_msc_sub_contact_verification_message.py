@@ -119,7 +119,7 @@ def get_msc_sub_contact_verification_message(contact_id: Optional[str] = None,
         type=pulumi.get(__ret__, 'type'))
 def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.Input[str]] = None,
                                                     type: Optional[pulumi.Input[int]] = None,
-                                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMscSubContactVerificationMessageResult]:
+                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMscSubContactVerificationMessageResult]:
     """
     > **NOTE:** Available in v1.156.0+.
 
@@ -147,7 +147,7 @@ def get_msc_sub_contact_verification_message_output(contact_id: Optional[pulumi.
     __args__ = dict()
     __args__['contactId'] = contact_id
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage', __args__, opts=opts, typ=GetMscSubContactVerificationMessageResult)
     return __ret__.apply(lambda __response__: GetMscSubContactVerificationMessageResult(
         contact_id=pulumi.get(__response__, 'contact_id'),

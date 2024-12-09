@@ -157,7 +157,7 @@ def get_ddos_coo_ports_output(frontend_port: Optional[pulumi.Input[Optional[str]
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               instance_id: Optional[pulumi.Input[str]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDdosCooPortsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDdosCooPortsResult]:
     """
     This data source provides the Ddoscoo Ports of the current Alibaba Cloud user.
 
@@ -189,7 +189,7 @@ def get_ddos_coo_ports_output(frontend_port: Optional[pulumi.Input[Optional[str]
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ddos/getDdosCooPorts:getDdosCooPorts', __args__, opts=opts, typ=GetDdosCooPortsResult)
     return __ret__.apply(lambda __response__: GetDdosCooPortsResult(
         frontend_port=pulumi.get(__response__, 'frontend_port'),

@@ -279,7 +279,7 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
                                status: Optional[pulumi.Input[Optional[str]]] = None,
                                tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDedicatedHostsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedHostsResult]:
     """
     This data source provides a list of ECS Dedicated Hosts in an Alibaba Cloud account according to the specified filters.
 
@@ -323,7 +323,7 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
     __args__['status'] = status
     __args__['tags'] = tags
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getDedicatedHosts:getDedicatedHosts', __args__, opts=opts, typ=GetDedicatedHostsResult)
     return __ret__.apply(lambda __response__: GetDedicatedHostsResult(
         dedicated_host_id=pulumi.get(__response__, 'dedicated_host_id'),

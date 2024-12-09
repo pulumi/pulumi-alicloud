@@ -130,7 +130,7 @@ export interface GetTransitRouterMulticastDomainsResult {
  * export const cenTransitRouterMulticastDomainId1 = nameRegex.then(nameRegex => nameRegex.domains?.[0]?.id);
  * ```
  */
-export function getTransitRouterMulticastDomainsOutput(args: GetTransitRouterMulticastDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainsResult> {
+export function getTransitRouterMulticastDomainsOutput(args: GetTransitRouterMulticastDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterMulticastDomainsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterMulticastDomains:getTransitRouterMulticastDomains", {
         "ids": args.ids,

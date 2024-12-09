@@ -109,7 +109,7 @@ export interface GetAggregatorsResult {
  * export const firstConfigAggregatorId = example.then(example => example.aggregators?.[0]?.id);
  * ```
  */
-export function getAggregatorsOutput(args?: GetAggregatorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregatorsResult> {
+export function getAggregatorsOutput(args?: GetAggregatorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAggregatorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cfg/getAggregators:getAggregators", {

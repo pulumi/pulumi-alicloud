@@ -124,7 +124,7 @@ export interface GetVirtualPhysicalConnectionsResult {
  *
  * > **NOTE:** Available in 1.196.0+
  */
-export function getVirtualPhysicalConnectionsOutput(args?: GetVirtualPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualPhysicalConnectionsResult> {
+export function getVirtualPhysicalConnectionsOutput(args?: GetVirtualPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualPhysicalConnectionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:expressconnect/getVirtualPhysicalConnections:getVirtualPhysicalConnections", {

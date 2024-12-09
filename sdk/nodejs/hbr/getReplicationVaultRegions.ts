@@ -69,7 +69,7 @@ export interface GetReplicationVaultRegionsResult {
  * export const hbrReplicationVaultRegionRegionId1 = _default.then(_default => _default.regions?.[0]?.replicationRegionId);
  * ```
  */
-export function getReplicationVaultRegionsOutput(args?: GetReplicationVaultRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReplicationVaultRegionsResult> {
+export function getReplicationVaultRegionsOutput(args?: GetReplicationVaultRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReplicationVaultRegionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getReplicationVaultRegions:getReplicationVaultRegions", {

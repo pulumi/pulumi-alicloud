@@ -195,7 +195,7 @@ def get_ascripts_output(ascript_name: Optional[pulumi.Input[Optional[str]]] = No
                         listener_id: Optional[pulumi.Input[Optional[str]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAscriptsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAscriptsResult]:
     """
     This data source provides Alb Ascript available to the user.
 
@@ -228,7 +228,7 @@ def get_ascripts_output(ascript_name: Optional[pulumi.Input[Optional[str]]] = No
     __args__['listenerId'] = listener_id
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:alb/getAscripts:getAscripts', __args__, opts=opts, typ=GetAscriptsResult)
     return __ret__.apply(lambda __response__: GetAscriptsResult(
         ascript_name=pulumi.get(__response__, 'ascript_name'),

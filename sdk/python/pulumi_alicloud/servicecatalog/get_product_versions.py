@@ -184,7 +184,7 @@ def get_product_versions_output(enable_details: Optional[pulumi.Input[Optional[b
                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 product_id: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductVersionsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProductVersionsResult]:
     """
     This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
 
@@ -213,7 +213,7 @@ def get_product_versions_output(enable_details: Optional[pulumi.Input[Optional[b
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['productId'] = product_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:servicecatalog/getProductVersions:getProductVersions', __args__, opts=opts, typ=GetProductVersionsResult)
     return __ret__.apply(lambda __response__: GetProductVersionsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

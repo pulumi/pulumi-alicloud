@@ -102,7 +102,7 @@ export interface GetInstanceTypeFamiliesResult {
  * export const instanceIds = _default.then(_default => _default.ids);
  * ```
  */
-export function getInstanceTypeFamiliesOutput(args?: GetInstanceTypeFamiliesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypeFamiliesResult> {
+export function getInstanceTypeFamiliesOutput(args?: GetInstanceTypeFamiliesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceTypeFamiliesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getInstanceTypeFamilies:getInstanceTypeFamilies", {

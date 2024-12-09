@@ -125,7 +125,7 @@ export interface GetNodeClassesResult {
  * export const polardbAvailableZoneId = resources.then(resources => resources.classes?.[0]?.zoneId);
  * ```
  */
-export function getNodeClassesOutput(args: GetNodeClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeClassesResult> {
+export function getNodeClassesOutput(args: GetNodeClassesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeClassesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:polardb/getNodeClasses:getNodeClasses", {
         "category": args.category,

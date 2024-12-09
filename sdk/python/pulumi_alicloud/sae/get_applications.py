@@ -254,7 +254,7 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             reverse: Optional[pulumi.Input[Optional[bool]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationsResult]:
     """
     This data source provides the Sae Applications of the current Alibaba Cloud user.
 
@@ -323,7 +323,7 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
     __args__['outputFile'] = output_file
     __args__['reverse'] = reverse
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:sae/getApplications:getApplications', __args__, opts=opts, typ=GetApplicationsResult)
     return __ret__.apply(lambda __response__: GetApplicationsResult(
         app_name=pulumi.get(__response__, 'app_name'),

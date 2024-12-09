@@ -112,7 +112,7 @@ export interface GetSmartagFlowLogsResult {
  * export const smartagFlowLogId2 = nameRegex.then(nameRegex => nameRegex.logs?.[0]?.id);
  * ```
  */
-export function getSmartagFlowLogsOutput(args?: GetSmartagFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSmartagFlowLogsResult> {
+export function getSmartagFlowLogsOutput(args?: GetSmartagFlowLogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSmartagFlowLogsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", {

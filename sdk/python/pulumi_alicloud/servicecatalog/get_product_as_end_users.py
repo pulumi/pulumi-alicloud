@@ -161,7 +161,7 @@ def get_product_as_end_users_output(ids: Optional[pulumi.Input[Optional[Sequence
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     sort_by: Optional[pulumi.Input[Optional[str]]] = None,
                                     sort_order: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProductAsEndUsersResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProductAsEndUsersResult]:
     """
     > **DEPRECATED:** It has been deprecated from version `1.197.0`.
     Please use new datasource servicecatalog_get_end_user_products instead.
@@ -191,7 +191,7 @@ def get_product_as_end_users_output(ids: Optional[pulumi.Input[Optional[Sequence
     __args__['outputFile'] = output_file
     __args__['sortBy'] = sort_by
     __args__['sortOrder'] = sort_order
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers', __args__, opts=opts, typ=GetProductAsEndUsersResult)
     return __ret__.apply(lambda __response__: GetProductAsEndUsersResult(
         id=pulumi.get(__response__, 'id'),

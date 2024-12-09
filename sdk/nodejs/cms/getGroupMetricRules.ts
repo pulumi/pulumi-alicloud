@@ -130,7 +130,7 @@ export interface GetGroupMetricRulesResult {
  * export const firstCmsGroupMetricRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
  */
-export function getGroupMetricRulesOutput(args?: GetGroupMetricRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMetricRulesResult> {
+export function getGroupMetricRulesOutput(args?: GetGroupMetricRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupMetricRulesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getGroupMetricRules:getGroupMetricRules", {

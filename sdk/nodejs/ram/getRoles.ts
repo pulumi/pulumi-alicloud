@@ -109,7 +109,7 @@ export interface GetRolesResult {
  * export const firstRoleId = rolesDs.then(rolesDs => rolesDs.roles?.[0]?.id);
  * ```
  */
-export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
+export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRolesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ram/getRoles:getRoles", {

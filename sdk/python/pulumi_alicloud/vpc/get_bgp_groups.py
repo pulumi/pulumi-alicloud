@@ -168,7 +168,7 @@ def get_bgp_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                           router_id: Optional[pulumi.Input[Optional[str]]] = None,
                           status: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBgpGroupsResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBgpGroupsResult]:
     """
     This data source provides the Vpc Bgp Groups of the current Alibaba Cloud user.
 
@@ -201,7 +201,7 @@ def get_bgp_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     __args__['outputFile'] = output_file
     __args__['routerId'] = router_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getBgpGroups:getBgpGroups', __args__, opts=opts, typ=GetBgpGroupsResult)
     return __ret__.apply(lambda __response__: GetBgpGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

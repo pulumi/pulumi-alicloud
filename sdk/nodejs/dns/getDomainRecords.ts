@@ -62,7 +62,7 @@ export interface GetDomainRecordsResult {
 /**
  * > **NOTE:** This resource has been deprecated from v1.3.2. Please use the datasource `alicloud.dns.getRecords` instead.
  */
-export function getDomainRecordsOutput(args: GetDomainRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainRecordsResult> {
+export function getDomainRecordsOutput(args: GetDomainRecordsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainRecordsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getDomainRecords:getDomainRecords", {
         "domainName": args.domainName,

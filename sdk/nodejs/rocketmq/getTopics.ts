@@ -135,7 +135,7 @@ export interface GetTopicsResult {
  * export const firstTopicName = topicsDs.apply(topicsDs => topicsDs.topics?.[0]?.topicName);
  * ```
  */
-export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
+export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTopicsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rocketmq/getTopics:getTopics", {
         "enableDetails": args.enableDetails,

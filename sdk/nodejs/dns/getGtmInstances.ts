@@ -82,7 +82,7 @@ export interface GetGtmInstancesResult {
  * export const alidnsGtmInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * ```
  */
-export function getGtmInstancesOutput(args?: GetGtmInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGtmInstancesResult> {
+export function getGtmInstancesOutput(args?: GetGtmInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGtmInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getGtmInstances:getGtmInstances", {

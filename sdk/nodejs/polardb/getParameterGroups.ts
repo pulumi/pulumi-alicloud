@@ -126,7 +126,7 @@ export interface GetParameterGroupsResult {
  * export const polardbParameterGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
  */
-export function getParameterGroupsOutput(args?: GetParameterGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetParameterGroupsResult> {
+export function getParameterGroupsOutput(args?: GetParameterGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetParameterGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:polardb/getParameterGroups:getParameterGroups", {

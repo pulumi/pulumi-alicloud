@@ -159,7 +159,7 @@ export interface GetTransitRouterRouteTablesResult {
  * export const firstTransitRouterRouteTableType = _default.apply(_default => _default.tables?.[0]?.transitRouterRouteTableType);
  * ```
  */
-export function getTransitRouterRouteTablesOutput(args: GetTransitRouterRouteTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTablesResult> {
+export function getTransitRouterRouteTablesOutput(args: GetTransitRouterRouteTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterRouteTablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterRouteTables:getTransitRouterRouteTables", {
         "ids": args.ids,

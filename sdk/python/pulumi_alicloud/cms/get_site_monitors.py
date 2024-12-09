@@ -186,7 +186,7 @@ def get_site_monitors_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              task_id: Optional[pulumi.Input[Optional[str]]] = None,
                              task_type: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSiteMonitorsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSiteMonitorsResult]:
     """
     This data source provides Cloud Monitor Service Site Monitor available to the user.[What is Site Monitor](https://www.alibabacloud.com/help/en/)
 
@@ -247,7 +247,7 @@ def get_site_monitors_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['outputFile'] = output_file
     __args__['taskId'] = task_id
     __args__['taskType'] = task_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getSiteMonitors:getSiteMonitors', __args__, opts=opts, typ=GetSiteMonitorsResult)
     return __ret__.apply(lambda __response__: GetSiteMonitorsResult(
         id=pulumi.get(__response__, 'id'),

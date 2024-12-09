@@ -140,7 +140,7 @@ def get_endpoints(db_cluster_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'))
 def get_endpoints_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
                          db_endpoint_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointsResult]:
     """
     The `polardb_get_endpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.
     Filters support regular expression for the cluster name, searches by clusterId, and other filters which are listed below.
@@ -185,7 +185,7 @@ def get_endpoints_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['dbClusterId'] = db_cluster_id
     __args__['dbEndpointId'] = db_endpoint_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:polardb/getEndpoints:getEndpoints', __args__, opts=opts, typ=GetEndpointsResult)
     return __ret__.apply(lambda __response__: GetEndpointsResult(
         db_cluster_id=pulumi.get(__response__, 'db_cluster_id'),

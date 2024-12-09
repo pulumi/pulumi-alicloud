@@ -171,7 +171,7 @@ def get_auto_snap_shot_policies_output(ids: Optional[pulumi.Input[Optional[Seque
                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                        page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutoSnapShotPoliciesResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutoSnapShotPoliciesResult]:
     """
     This data source provides Dbfs Auto Snap Shot Policy available to the user.[What is Auto Snap Shot Policy](https://help.aliyun.com/document_detail/469597.html)
 
@@ -198,7 +198,7 @@ def get_auto_snap_shot_policies_output(ids: Optional[pulumi.Input[Optional[Seque
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies', __args__, opts=opts, typ=GetAutoSnapShotPoliciesResult)
     return __ret__.apply(lambda __response__: GetAutoSnapShotPoliciesResult(
         auto_snap_shot_policies=pulumi.get(__response__, 'auto_snap_shot_policies'),

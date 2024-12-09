@@ -163,7 +163,7 @@ def get_lifecycle_hooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                scaling_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLifecycleHooksResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLifecycleHooksResult]:
     """
     This data source provides available lifecycle hook resources.
 
@@ -191,7 +191,7 @@ def get_lifecycle_hooks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['scalingGroupId'] = scaling_group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ess/getLifecycleHooks:getLifecycleHooks', __args__, opts=opts, typ=GetLifecycleHooksResult)
     return __ret__.apply(lambda __response__: GetLifecycleHooksResult(
         hooks=pulumi.get(__response__, 'hooks'),

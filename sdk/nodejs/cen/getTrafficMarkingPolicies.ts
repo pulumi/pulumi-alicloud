@@ -118,7 +118,7 @@ export interface GetTrafficMarkingPoliciesResult {
  * export const cenTrafficMarkingPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
  */
-export function getTrafficMarkingPoliciesOutput(args: GetTrafficMarkingPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMarkingPoliciesResult> {
+export function getTrafficMarkingPoliciesOutput(args: GetTrafficMarkingPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrafficMarkingPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", {
         "description": args.description,

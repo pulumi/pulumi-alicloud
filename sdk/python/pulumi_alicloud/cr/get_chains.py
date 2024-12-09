@@ -214,7 +214,7 @@ def get_chains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       repo_name: Optional[pulumi.Input[Optional[str]]] = None,
                       repo_namespace_name: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetChainsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetChainsResult]:
     """
     This data source provides the Cr Chains of the current Alibaba Cloud user.
 
@@ -257,7 +257,7 @@ def get_chains_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     __args__['outputFile'] = output_file
     __args__['repoName'] = repo_name
     __args__['repoNamespaceName'] = repo_namespace_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cr/getChains:getChains', __args__, opts=opts, typ=GetChainsResult)
     return __ret__.apply(lambda __response__: GetChainsResult(
         chains=pulumi.get(__response__, 'chains'),

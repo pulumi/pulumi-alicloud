@@ -100,7 +100,7 @@ export interface GetRamDirectoriesResult {
  * export const ecdRamDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
  * ```
  */
-export function getRamDirectoriesOutput(args?: GetRamDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRamDirectoriesResult> {
+export function getRamDirectoriesOutput(args?: GetRamDirectoriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRamDirectoriesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getRamDirectories:getRamDirectories", {

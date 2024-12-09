@@ -120,7 +120,7 @@ export interface GetAssetsResult {
  * export const alicloudThreatDetectionAssetExampleId = _default.then(_default => _default.assets?.[0]?.id);
  * ```
  */
-export function getAssetsOutput(args?: GetAssetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetsResult> {
+export function getAssetsOutput(args?: GetAssetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getAssets:getAssets", {

@@ -69,7 +69,7 @@ export interface GetInstanceTypesResult {
  * export const firstEcpInstanceTypesInstanceType = _default.then(_default => _default.instanceTypes?.[0]?.instanceType);
  * ```
  */
-export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
+export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecp/getInstanceTypes:getInstanceTypes", {

@@ -118,7 +118,7 @@ export interface GetTlsCipherPoliciesResult {
  * export const slbTlsCipherPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
  */
-export function getTlsCipherPoliciesOutput(args?: GetTlsCipherPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTlsCipherPoliciesResult> {
+export function getTlsCipherPoliciesOutput(args?: GetTlsCipherPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTlsCipherPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", {

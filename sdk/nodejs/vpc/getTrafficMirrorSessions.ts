@@ -206,7 +206,7 @@ export interface GetTrafficMirrorSessionsResult {
  * export const vpcTrafficMirrorSessionId9 = status.then(status => status.sessions?.[0]?.id);
  * ```
  */
-export function getTrafficMirrorSessionsOutput(args?: GetTrafficMirrorSessionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorSessionsResult> {
+export function getTrafficMirrorSessionsOutput(args?: GetTrafficMirrorSessionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrafficMirrorSessionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", {

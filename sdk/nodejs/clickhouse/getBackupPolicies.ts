@@ -78,7 +78,7 @@ export interface GetBackupPoliciesResult {
  * export const clickHouseBackupPolicyId1 = example.then(example => example.policies?.[0]?.id);
  * ```
  */
-export function getBackupPoliciesOutput(args: GetBackupPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPoliciesResult> {
+export function getBackupPoliciesOutput(args: GetBackupPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:clickhouse/getBackupPolicies:getBackupPolicies", {
         "dbClusterId": args.dbClusterId,

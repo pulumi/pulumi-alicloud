@@ -76,7 +76,7 @@ export interface GetTrailsDeprecatedResult {
  * This data source provides a list of action trail of the current Alibaba Cloud user.
  */
 /** @deprecated DataSource has been renamed to `getTrails` */
-export function getTrailsDeprecatedOutput(args?: GetTrailsDeprecatedOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrailsDeprecatedResult> {
+export function getTrailsDeprecatedOutput(args?: GetTrailsDeprecatedOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrailsDeprecatedResult> {
     pulumi.log.warn("getTrailsDeprecated is deprecated: DataSource has been renamed to `getTrails`")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

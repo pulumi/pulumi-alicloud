@@ -94,7 +94,7 @@ export interface GetSnapshotsResult {
  * export const ecdSnapshotId1 = ids.then(ids => ids.snapshots?.[0]?.id);
  * ```
  */
-export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
+export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnapshotsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getSnapshots:getSnapshots", {

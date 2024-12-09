@@ -131,7 +131,7 @@ export interface GetMetricRuleBlackListsResult {
  * export const alicloudCmsRuleBlackListExampleId = lists[0].id;
  * ```
  */
-export function getMetricRuleBlackListsOutput(args?: GetMetricRuleBlackListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricRuleBlackListsResult> {
+export function getMetricRuleBlackListsOutput(args?: GetMetricRuleBlackListsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetricRuleBlackListsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", {

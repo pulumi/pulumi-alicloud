@@ -85,7 +85,7 @@ export interface GetProtocolsResult {
  * export const nasProtocolsProtocol = _default.then(_default => _default.protocols?.[0]);
  * ```
  */
-export function getProtocolsOutput(args: GetProtocolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProtocolsResult> {
+export function getProtocolsOutput(args: GetProtocolsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProtocolsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nas/getProtocols:getProtocols", {
         "outputFile": args.outputFile,

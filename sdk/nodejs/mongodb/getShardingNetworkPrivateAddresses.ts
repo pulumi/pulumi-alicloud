@@ -62,7 +62,7 @@ export interface GetShardingNetworkPrivateAddressesResult {
  *
  * > **NOTE:** Available in v1.157.0+.
  */
-export function getShardingNetworkPrivateAddressesOutput(args: GetShardingNetworkPrivateAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShardingNetworkPrivateAddressesResult> {
+export function getShardingNetworkPrivateAddressesOutput(args: GetShardingNetworkPrivateAddressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetShardingNetworkPrivateAddressesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mongodb/getShardingNetworkPrivateAddresses:getShardingNetworkPrivateAddresses", {
         "dbInstanceId": args.dbInstanceId,

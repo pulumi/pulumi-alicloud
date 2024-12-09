@@ -163,7 +163,7 @@ def get_cluster_credential(cluster_id: Optional[str] = None,
 def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   temporary_duration_minutes: Optional[pulumi.Input[Optional[int]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterCredentialResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterCredentialResult]:
     """
     This data source provides Container Service cluster credential on Alibaba Cloud.
 
@@ -180,7 +180,7 @@ def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[str]] = None
     __args__['clusterId'] = cluster_id
     __args__['outputFile'] = output_file
     __args__['temporaryDurationMinutes'] = temporary_duration_minutes
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getClusterCredential:getClusterCredential', __args__, opts=opts, typ=GetClusterCredentialResult)
     return __ret__.apply(lambda __response__: GetClusterCredentialResult(
         certificate_authority=pulumi.get(__response__, 'certificate_authority'),

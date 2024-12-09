@@ -147,7 +147,7 @@ def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       platform: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     This data source provides the Simple Application Server Images of the current Alibaba Cloud user.
 
@@ -159,7 +159,7 @@ def get_images_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['platform'] = platform
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:simpleapplicationserver/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
     return __ret__.apply(lambda __response__: GetImagesResult(
         id=pulumi.get(__response__, 'id'),

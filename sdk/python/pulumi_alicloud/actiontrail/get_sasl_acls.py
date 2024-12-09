@@ -170,7 +170,7 @@ def get_sasl_acls_output(acl_resource_name: Optional[pulumi.Input[str]] = None,
                          instance_id: Optional[pulumi.Input[str]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          username: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSaslAclsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSaslAclsResult]:
     """
     This data source provides a list of ALIKAFKA Sasl acls in an Alibaba Cloud account according to the specified filters.
 
@@ -203,7 +203,7 @@ def get_sasl_acls_output(acl_resource_name: Optional[pulumi.Input[str]] = None,
     __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
     __args__['username'] = username
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getSaslAcls:getSaslAcls', __args__, opts=opts, typ=GetSaslAclsResult)
     return __ret__.apply(lambda __response__: GetSaslAclsResult(
         acl_resource_name=pulumi.get(__response__, 'acl_resource_name'),

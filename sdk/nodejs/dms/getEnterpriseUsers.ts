@@ -124,7 +124,7 @@ export interface GetEnterpriseUsersResult {
  * export const firstUserId = dmsEnterpriseUsersDs.then(dmsEnterpriseUsersDs => dmsEnterpriseUsersDs.users?.[0]?.id);
  * ```
  */
-export function getEnterpriseUsersOutput(args?: GetEnterpriseUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseUsersResult> {
+export function getEnterpriseUsersOutput(args?: GetEnterpriseUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseUsersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseUsers:getEnterpriseUsers", {

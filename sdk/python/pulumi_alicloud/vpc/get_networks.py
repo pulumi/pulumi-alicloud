@@ -350,7 +350,7 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
                         vpc_name: Optional[pulumi.Input[Optional[str]]] = None,
                         vpc_owner_id: Optional[pulumi.Input[Optional[int]]] = None,
                         vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworksResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworksResult]:
     """
     This data source provides VPCs available to the user.
 
@@ -399,7 +399,7 @@ def get_networks_output(cidr_block: Optional[pulumi.Input[Optional[str]]] = None
     __args__['vpcName'] = vpc_name
     __args__['vpcOwnerId'] = vpc_owner_id
     __args__['vswitchId'] = vswitch_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getNetworks:getNetworks', __args__, opts=opts, typ=GetNetworksResult)
     return __ret__.apply(lambda __response__: GetNetworksResult(
         cidr_block=pulumi.get(__response__, 'cidr_block'),

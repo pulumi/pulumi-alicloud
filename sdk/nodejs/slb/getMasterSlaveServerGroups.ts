@@ -72,7 +72,7 @@ export interface GetMasterSlaveServerGroupsResult {
  *
  * > **NOTE:** Available in 1.54.0+
  */
-export function getMasterSlaveServerGroupsOutput(args: GetMasterSlaveServerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMasterSlaveServerGroupsResult> {
+export function getMasterSlaveServerGroupsOutput(args: GetMasterSlaveServerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMasterSlaveServerGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getMasterSlaveServerGroups:getMasterSlaveServerGroups", {
         "ids": args.ids,

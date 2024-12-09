@@ -78,7 +78,7 @@ export interface GetTrafficMirrorServiceResult {
  * });
  * ```
  */
-export function getTrafficMirrorServiceOutput(args?: GetTrafficMirrorServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorServiceResult> {
+export function getTrafficMirrorServiceOutput(args?: GetTrafficMirrorServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrafficMirrorServiceResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getTrafficMirrorService:getTrafficMirrorService", {

@@ -96,7 +96,7 @@ export interface GetAppTemplatesResult {
  * export const impAppTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
  * ```
  */
-export function getAppTemplatesOutput(args?: GetAppTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppTemplatesResult> {
+export function getAppTemplatesOutput(args?: GetAppTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:imp/getAppTemplates:getAppTemplates", {

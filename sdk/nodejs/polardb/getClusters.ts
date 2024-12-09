@@ -169,7 +169,7 @@ export interface GetClustersResult {
  * export const firstPolardbClusterId = polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id);
  * ```
  */
-export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:polardb/getClusters:getClusters", {

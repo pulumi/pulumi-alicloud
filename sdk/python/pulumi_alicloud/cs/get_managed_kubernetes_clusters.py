@@ -177,7 +177,7 @@ def get_managed_kubernetes_clusters_output(enable_details: Optional[pulumi.Input
                                            kube_config_file_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedKubernetesClustersResult]:
+                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagedKubernetesClustersResult]:
     """
     This data source provides a list Container Service Managed Kubernetes Clusters on Alibaba Cloud.
 
@@ -210,7 +210,7 @@ def get_managed_kubernetes_clusters_output(enable_details: Optional[pulumi.Input
     __args__['kubeConfigFilePrefix'] = kube_config_file_prefix
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters', __args__, opts=opts, typ=GetManagedKubernetesClustersResult)
     return __ret__.apply(lambda __response__: GetManagedKubernetesClustersResult(
         clusters=pulumi.get(__response__, 'clusters'),

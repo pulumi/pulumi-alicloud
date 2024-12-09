@@ -177,7 +177,7 @@ def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]]
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlarmContactsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlarmContactsResult]:
     """
     Provides a list of alarm contact owned by an Alibaba Cloud account.
 
@@ -210,7 +210,7 @@ def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]]
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getAlarmContacts:getAlarmContacts', __args__, opts=opts, typ=GetAlarmContactsResult)
     return __ret__.apply(lambda __response__: GetAlarmContactsResult(
         chanel_type=pulumi.get(__response__, 'chanel_type'),

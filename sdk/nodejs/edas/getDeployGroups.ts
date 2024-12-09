@@ -66,7 +66,7 @@ export interface GetDeployGroupsResult {
  *
  * > **NOTE:** Available in 1.82.0+
  */
-export function getDeployGroupsOutput(args: GetDeployGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeployGroupsResult> {
+export function getDeployGroupsOutput(args: GetDeployGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeployGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:edas/getDeployGroups:getDeployGroups", {
         "appId": args.appId,

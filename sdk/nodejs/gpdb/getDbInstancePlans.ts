@@ -121,7 +121,7 @@ export interface GetDbInstancePlansResult {
  * export const gpdbDbInstancePlanId2 = nameRegex.then(nameRegex => nameRegex.plans?.[0]?.id);
  * ```
  */
-export function getDbInstancePlansOutput(args: GetDbInstancePlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancePlansResult> {
+export function getDbInstancePlansOutput(args: GetDbInstancePlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbInstancePlansResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:gpdb/getDbInstancePlans:getDbInstancePlans", {
         "dbInstanceId": args.dbInstanceId,

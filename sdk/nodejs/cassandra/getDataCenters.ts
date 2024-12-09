@@ -105,7 +105,7 @@ export interface GetDataCentersResult {
  * });
  * ```
  */
-export function getDataCentersOutput(args: GetDataCentersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCentersResult> {
+export function getDataCentersOutput(args: GetDataCentersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDataCentersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cassandra/getDataCenters:getDataCenters", {
         "clusterId": args.clusterId,

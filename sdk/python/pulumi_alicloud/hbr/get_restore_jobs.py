@@ -224,7 +224,7 @@ def get_restore_jobs_output(output_file: Optional[pulumi.Input[Optional[str]]] =
                             target_file_system_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             target_instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             vault_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRestoreJobsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRestoreJobsResult]:
     """
     This data source provides the Hbr Restore Jobs of the current Alibaba Cloud user.
 
@@ -265,7 +265,7 @@ def get_restore_jobs_output(output_file: Optional[pulumi.Input[Optional[str]]] =
     __args__['targetFileSystemIds'] = target_file_system_ids
     __args__['targetInstanceIds'] = target_instance_ids
     __args__['vaultIds'] = vault_ids
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getRestoreJobs:getRestoreJobs', __args__, opts=opts, typ=GetRestoreJobsResult)
     return __ret__.apply(lambda __response__: GetRestoreJobsResult(
         id=pulumi.get(__response__, 'id'),

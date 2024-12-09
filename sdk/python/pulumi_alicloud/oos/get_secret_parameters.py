@@ -273,7 +273,7 @@ def get_secret_parameters_output(enable_details: Optional[pulumi.Input[Optional[
                                  sort_order: Optional[pulumi.Input[Optional[str]]] = None,
                                  tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                  with_decryption: Optional[pulumi.Input[Optional[bool]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretParametersResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretParametersResult]:
     """
     This data source provides the Oos Secret Parameters of the current Alibaba Cloud user.
 
@@ -336,7 +336,7 @@ def get_secret_parameters_output(enable_details: Optional[pulumi.Input[Optional[
     __args__['sortOrder'] = sort_order
     __args__['tags'] = tags
     __args__['withDecryption'] = with_decryption
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:oos/getSecretParameters:getSecretParameters', __args__, opts=opts, typ=GetSecretParametersResult)
     return __ret__.apply(lambda __response__: GetSecretParametersResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

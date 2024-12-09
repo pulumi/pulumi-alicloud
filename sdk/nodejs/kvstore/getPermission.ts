@@ -76,7 +76,7 @@ export interface GetPermissionResult {
  * });
  * ```
  */
-export function getPermissionOutput(args?: GetPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionResult> {
+export function getPermissionOutput(args?: GetPermissionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPermissionResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kvstore/getPermission:getPermission", {

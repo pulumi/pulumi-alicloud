@@ -62,7 +62,7 @@ export interface GetIngressesResult {
  *
  * > **NOTE:** Available in v1.137.0+.
  */
-export function getIngressesOutput(args: GetIngressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIngressesResult> {
+export function getIngressesOutput(args: GetIngressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIngressesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sae/getIngresses:getIngresses", {
         "enableDetails": args.enableDetails,

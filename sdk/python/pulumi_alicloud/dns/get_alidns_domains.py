@@ -328,7 +328,7 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
                               starmark: Optional[pulumi.Input[Optional[bool]]] = None,
                               tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               version_code: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlidnsDomainsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlidnsDomainsResult]:
     """
     This data source provides a list of Alidns Domains in an Alibaba Cloud account according to the specified filters.
 
@@ -377,7 +377,7 @@ def get_alidns_domains_output(ali_domain: Optional[pulumi.Input[Optional[bool]]]
     __args__['starmark'] = starmark
     __args__['tags'] = tags
     __args__['versionCode'] = version_code
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getAlidnsDomains:getAlidnsDomains', __args__, opts=opts, typ=GetAlidnsDomainsResult)
     return __ret__.apply(lambda __response__: GetAlidnsDomainsResult(
         ali_domain=pulumi.get(__response__, 'ali_domain'),

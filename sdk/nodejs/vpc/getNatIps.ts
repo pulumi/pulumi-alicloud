@@ -178,7 +178,7 @@ export interface GetNatIpsResult {
  * export const vpcNatIpId6 = status.then(status => status.ips?.[0]?.id);
  * ```
  */
-export function getNatIpsOutput(args: GetNatIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpsResult> {
+export function getNatIpsOutput(args: GetNatIpsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNatIpsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getNatIps:getNatIps", {
         "ids": args.ids,

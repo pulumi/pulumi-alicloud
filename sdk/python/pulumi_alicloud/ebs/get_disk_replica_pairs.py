@@ -146,7 +146,7 @@ def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[s
                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                   replica_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                   site: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskReplicaPairsResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiskReplicaPairsResult]:
     """
     This data source provides Ebs Disk Replica Pair available to the user.
 
@@ -173,7 +173,7 @@ def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     __args__['outputFile'] = output_file
     __args__['replicaGroupId'] = replica_group_id
     __args__['site'] = site
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ebs/getDiskReplicaPairs:getDiskReplicaPairs', __args__, opts=opts, typ=GetDiskReplicaPairsResult)
     return __ret__.apply(lambda __response__: GetDiskReplicaPairsResult(
         id=pulumi.get(__response__, 'id'),

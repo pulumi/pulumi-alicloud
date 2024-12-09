@@ -193,7 +193,7 @@ def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                     resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAclsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclsResult]:
     """
     This data source provides the acls in the region.
 
@@ -236,7 +236,7 @@ def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getAcls:getAcls', __args__, opts=opts, typ=GetAclsResult)
     return __ret__.apply(lambda __response__: GetAclsResult(
         acls=pulumi.get(__response__, 'acls'),

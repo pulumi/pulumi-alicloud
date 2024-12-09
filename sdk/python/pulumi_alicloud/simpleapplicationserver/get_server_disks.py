@@ -188,7 +188,7 @@ def get_server_disks_output(disk_type: Optional[pulumi.Input[Optional[str]]] = N
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerDisksResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerDisksResult]:
     """
     This data source provides the Simple Application Server Disks of the current Alibaba Cloud user.
 
@@ -229,7 +229,7 @@ def get_server_disks_output(disk_type: Optional[pulumi.Input[Optional[str]]] = N
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:simpleapplicationserver/getServerDisks:getServerDisks', __args__, opts=opts, typ=GetServerDisksResult)
     return __ret__.apply(lambda __response__: GetServerDisksResult(
         disk_type=pulumi.get(__response__, 'disk_type'),

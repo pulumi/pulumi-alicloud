@@ -115,7 +115,7 @@ export interface GetHostShareKeysResult {
  * export const bastionhostHostShareKeyId2 = nameRegex.then(nameRegex => nameRegex.keys?.[0]?.id);
  * ```
  */
-export function getHostShareKeysOutput(args: GetHostShareKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostShareKeysResult> {
+export function getHostShareKeysOutput(args: GetHostShareKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostShareKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:bastionhost/getHostShareKeys:getHostShareKeys", {
         "enableDetails": args.enableDetails,

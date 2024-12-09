@@ -140,7 +140,7 @@ export interface GetChainsResult {
  * export const crChainId2 = nameRegex.then(nameRegex => nameRegex.chains?.[0]?.id);
  * ```
  */
-export function getChainsOutput(args: GetChainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChainsResult> {
+export function getChainsOutput(args: GetChainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetChainsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cr/getChains:getChains", {
         "enableDetails": args.enableDetails,

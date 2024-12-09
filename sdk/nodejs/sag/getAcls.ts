@@ -98,7 +98,7 @@ export interface GetAclsResult {
  * const defaultAcl = new alicloud.rocketmq.Acl("default", {name: "tf-testAccSagAclName"});
  * ```
  */
-export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
+export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sag/getAcls:getAcls", {

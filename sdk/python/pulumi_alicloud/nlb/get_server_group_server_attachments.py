@@ -162,7 +162,7 @@ def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Option
                                                server_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                server_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                                server_ips: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerGroupServerAttachmentsResult]:
+                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerGroupServerAttachmentsResult]:
     """
     This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.
 
@@ -193,7 +193,7 @@ def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Option
     __args__['serverGroupId'] = server_group_id
     __args__['serverIds'] = server_ids
     __args__['serverIps'] = server_ips
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments', __args__, opts=opts, typ=GetServerGroupServerAttachmentsResult)
     return __ret__.apply(lambda __response__: GetServerGroupServerAttachmentsResult(
         attachments=pulumi.get(__response__, 'attachments'),

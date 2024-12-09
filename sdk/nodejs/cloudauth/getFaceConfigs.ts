@@ -96,7 +96,7 @@ export interface GetFaceConfigsResult {
  * export const faceConfig = _default.apply(_default => _default.configs?.[0]);
  * ```
  */
-export function getFaceConfigsOutput(args?: GetFaceConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFaceConfigsResult> {
+export function getFaceConfigsOutput(args?: GetFaceConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFaceConfigsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudauth/getFaceConfigs:getFaceConfigs", {

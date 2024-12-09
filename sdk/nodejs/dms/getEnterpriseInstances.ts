@@ -156,7 +156,7 @@ export interface GetEnterpriseInstancesResult {
  * export const firstDatabaseInstanceId = dmsEnterpriseInstancesDs.then(dmsEnterpriseInstancesDs => dmsEnterpriseInstancesDs.instances?.[0]?.instanceId);
  * ```
  */
-export function getEnterpriseInstancesOutput(args?: GetEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseInstancesResult> {
+export function getEnterpriseInstancesOutput(args?: GetEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnterpriseInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dms/getEnterpriseInstances:getEnterpriseInstances", {

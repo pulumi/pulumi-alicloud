@@ -115,7 +115,7 @@ export interface GetHoneypotNodesResult {
  * export const alicloudThreatDetectionHoneypotNodeExampleId = _default.then(_default => _default.nodes?.[0]?.id);
  * ```
  */
-export function getHoneypotNodesOutput(args?: GetHoneypotNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotNodesResult> {
+export function getHoneypotNodesOutput(args?: GetHoneypotNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHoneypotNodesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", {

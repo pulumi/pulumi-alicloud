@@ -130,7 +130,7 @@ export interface GetPoliciesResult {
  * export const firstPolicyName = policiesDs.then(policiesDs => policiesDs.policies?.[0]?.name);
  * ```
  */
-export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPoliciesResult> {
+export function getPoliciesOutput(args?: GetPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ram/getPolicies:getPolicies", {

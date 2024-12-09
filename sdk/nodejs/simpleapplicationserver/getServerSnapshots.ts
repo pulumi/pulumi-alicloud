@@ -132,7 +132,7 @@ export interface GetServerSnapshotsResult {
  * export const simpleApplicationServerSnapshotId4 = instanceIdConf.then(instanceIdConf => instanceIdConf.snapshots?.[0]?.id);
  * ```
  */
-export function getServerSnapshotsOutput(args?: GetServerSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSnapshotsResult> {
+export function getServerSnapshotsOutput(args?: GetServerSnapshotsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerSnapshotsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", {

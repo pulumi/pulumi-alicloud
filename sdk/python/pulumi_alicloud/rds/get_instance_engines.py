@@ -224,7 +224,7 @@ def get_instance_engines_output(category: Optional[pulumi.Input[Optional[str]]] 
                                 multi_zone: Optional[pulumi.Input[Optional[bool]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceEnginesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceEnginesResult]:
     """
     This data source provides the RDS instance engines resource available info of Alibaba Cloud.
 
@@ -262,7 +262,7 @@ def get_instance_engines_output(category: Optional[pulumi.Input[Optional[str]]] 
     __args__['multiZone'] = multi_zone
     __args__['outputFile'] = output_file
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getInstanceEngines:getInstanceEngines', __args__, opts=opts, typ=GetInstanceEnginesResult)
     return __ret__.apply(lambda __response__: GetInstanceEnginesResult(
         category=pulumi.get(__response__, 'category'),

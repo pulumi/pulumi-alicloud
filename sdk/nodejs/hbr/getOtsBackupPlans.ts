@@ -104,7 +104,7 @@ export interface GetOtsBackupPlansResult {
  * export const hbrOtsBackupPlanId = plans[0].id;
  * ```
  */
-export function getOtsBackupPlansOutput(args?: GetOtsBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOtsBackupPlansResult> {
+export function getOtsBackupPlansOutput(args?: GetOtsBackupPlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOtsBackupPlansResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getOtsBackupPlans:getOtsBackupPlans", {

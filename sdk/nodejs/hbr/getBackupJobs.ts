@@ -189,7 +189,7 @@ export interface GetBackupJobsResult {
  * export const alicloudHbrBackupJobsExample1 = example.then(example => example.jobs?.[0]?.id);
  * ```
  */
-export function getBackupJobsOutput(args: GetBackupJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupJobsResult> {
+export function getBackupJobsOutput(args: GetBackupJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupJobsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getBackupJobs:getBackupJobs", {
         "filters": args.filters,

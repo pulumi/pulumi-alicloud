@@ -171,7 +171,7 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
                                 instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 zone_id: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceEnginesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceEnginesResult]:
     """
     This data source provides the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance engines resource available info of Alibaba Cloud.
 
@@ -205,7 +205,7 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
     __args__['instanceChargeType'] = instance_charge_type
     __args__['outputFile'] = output_file
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kvstore/getInstanceEngines:getInstanceEngines', __args__, opts=opts, typ=GetInstanceEnginesResult)
     return __ret__.apply(lambda __response__: GetInstanceEnginesResult(
         engine=pulumi.get(__response__, 'engine'),

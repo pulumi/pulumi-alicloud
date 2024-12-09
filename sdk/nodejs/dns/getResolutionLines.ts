@@ -113,7 +113,7 @@ export interface GetResolutionLinesResult {
  * export const firstLineCode = resolutionLinesDs.then(resolutionLinesDs => resolutionLinesDs.lines?.[0]?.lineCode);
  * ```
  */
-export function getResolutionLinesOutput(args?: GetResolutionLinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolutionLinesResult> {
+export function getResolutionLinesOutput(args?: GetResolutionLinesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResolutionLinesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dns/getResolutionLines:getResolutionLines", {

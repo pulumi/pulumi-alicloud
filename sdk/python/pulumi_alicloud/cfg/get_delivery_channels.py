@@ -168,7 +168,7 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                  status: Optional[pulumi.Input[Optional[int]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeliveryChannelsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeliveryChannelsResult]:
     """
     > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.
     Please use new datasource cfg_get_deliveries instead.
@@ -201,7 +201,7 @@ def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cfg/getDeliveryChannels:getDeliveryChannels', __args__, opts=opts, typ=GetDeliveryChannelsResult)
     return __ret__.apply(lambda __response__: GetDeliveryChannelsResult(
         channels=pulumi.get(__response__, 'channels'),

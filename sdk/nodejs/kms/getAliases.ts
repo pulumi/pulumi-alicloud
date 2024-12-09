@@ -95,7 +95,7 @@ export interface GetAliasesResult {
  * export const firstKeyId = kmsKeysDs.keys[0].id;
  * ```
  */
-export function getAliasesOutput(args?: GetAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAliasesResult> {
+export function getAliasesOutput(args?: GetAliasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAliasesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kms/getAliases:getAliases", {

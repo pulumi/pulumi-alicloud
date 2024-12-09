@@ -91,7 +91,7 @@ export interface GetRulesResult {
  *
  * > **NOTE:** Available since v1.133.0.
  */
-export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesResult> {
+export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRulesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:alb/getRules:getRules", {

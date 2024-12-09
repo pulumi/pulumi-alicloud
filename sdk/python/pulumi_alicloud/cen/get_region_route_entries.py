@@ -127,7 +127,7 @@ def get_region_route_entries(instance_id: Optional[str] = None,
 def get_region_route_entries_output(instance_id: Optional[pulumi.Input[str]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     region_id: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionRouteEntriesResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionRouteEntriesResult]:
     """
     This data source provides CEN Regional Route Entries available to the user.
 
@@ -150,7 +150,7 @@ def get_region_route_entries_output(instance_id: Optional[pulumi.Input[str]] = N
     __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
     __args__['regionId'] = region_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getRegionRouteEntries:getRegionRouteEntries', __args__, opts=opts, typ=GetRegionRouteEntriesResult)
     return __ret__.apply(lambda __response__: GetRegionRouteEntriesResult(
         entries=pulumi.get(__response__, 'entries'),

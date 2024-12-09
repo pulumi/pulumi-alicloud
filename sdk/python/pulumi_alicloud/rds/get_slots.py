@@ -131,7 +131,7 @@ def get_slots(db_instance_id: Optional[str] = None,
 def get_slots_output(db_instance_id: Optional[pulumi.Input[str]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
                      resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSlotsResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSlotsResult]:
     """
     This data source provides the Rds Replication Slots of the current Alibaba Cloud user.
 
@@ -158,7 +158,7 @@ def get_slots_output(db_instance_id: Optional[pulumi.Input[str]] = None,
     __args__['dbInstanceId'] = db_instance_id
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getSlots:getSlots', __args__, opts=opts, typ=GetSlotsResult)
     return __ret__.apply(lambda __response__: GetSlotsResult(
         db_instance_id=pulumi.get(__response__, 'db_instance_id'),

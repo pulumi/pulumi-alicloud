@@ -138,7 +138,7 @@ export interface GetClustersResult {
  * export const firstAdbClusterId = adbClustersDs.then(adbClustersDs => adbClustersDs.clusters?.[0]?.id);
  * ```
  */
-export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
+export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:adb/getClusters:getClusters", {

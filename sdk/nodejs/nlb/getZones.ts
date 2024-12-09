@@ -70,7 +70,7 @@ export interface GetZonesResult {
  * export const firstNlbZonesId = example.then(example => example.zones?.[0]?.zoneId);
  * ```
  */
-export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nlb/getZones:getZones", {

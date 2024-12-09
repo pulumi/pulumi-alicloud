@@ -169,7 +169,7 @@ def get_alarms_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       scaling_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlarmsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlarmsResult]:
     """
     This data source provides available alarm resources.
 
@@ -188,7 +188,7 @@ def get_alarms_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['scalingGroupId'] = scaling_group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ess/getAlarms:getAlarms', __args__, opts=opts, typ=GetAlarmsResult)
     return __ret__.apply(lambda __response__: GetAlarmsResult(
         alarms=pulumi.get(__response__, 'alarms'),

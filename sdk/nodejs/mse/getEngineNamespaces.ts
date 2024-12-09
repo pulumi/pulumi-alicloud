@@ -170,7 +170,7 @@ export interface GetEngineNamespacesResult {
  * export const mseEngineNamespaceIdExample = exampleGetEngineNamespaces.apply(exampleGetEngineNamespaces => exampleGetEngineNamespaces.namespaces?.[1]?.id);
  * ```
  */
-export function getEngineNamespacesOutput(args?: GetEngineNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineNamespacesResult> {
+export function getEngineNamespacesOutput(args?: GetEngineNamespacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEngineNamespacesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mse/getEngineNamespaces:getEngineNamespaces", {

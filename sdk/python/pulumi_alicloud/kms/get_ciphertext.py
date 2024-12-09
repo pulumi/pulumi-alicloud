@@ -129,7 +129,7 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, str]] = None,
 def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                           key_id: Optional[pulumi.Input[str]] = None,
                           plaintext: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCiphertextResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCiphertextResult]:
     """
     ## Example Usage
 
@@ -155,7 +155,7 @@ def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Map
     __args__['encryptionContext'] = encryption_context
     __args__['keyId'] = key_id
     __args__['plaintext'] = plaintext
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:kms/getCiphertext:getCiphertext', __args__, opts=opts, typ=GetCiphertextResult)
     return __ret__.apply(lambda __response__: GetCiphertextResult(
         ciphertext_blob=pulumi.get(__response__, 'ciphertext_blob'),

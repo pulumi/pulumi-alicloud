@@ -168,7 +168,7 @@ def get_prefix_lists_output(enable_details: Optional[pulumi.Input[Optional[bool]
                             name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             prefix_list_name: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrefixListsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrefixListsResult]:
     """
     This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.
 
@@ -201,7 +201,7 @@ def get_prefix_lists_output(enable_details: Optional[pulumi.Input[Optional[bool]
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['prefixListName'] = prefix_list_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getPrefixLists:getPrefixLists', __args__, opts=opts, typ=GetPrefixListsResult)
     return __ret__.apply(lambda __response__: GetPrefixListsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

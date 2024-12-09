@@ -102,7 +102,7 @@ export interface GetAggregateDeliveriesResult {
  * export const configAggregateDeliveryId1 = ids.then(ids => ids.deliveries?.[0]?.id);
  * ```
  */
-export function getAggregateDeliveriesOutput(args: GetAggregateDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateDeliveriesResult> {
+export function getAggregateDeliveriesOutput(args: GetAggregateDeliveriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAggregateDeliveriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", {
         "aggregatorId": args.aggregatorId,

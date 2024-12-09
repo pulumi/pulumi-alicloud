@@ -98,7 +98,7 @@ export interface GetEdgeKubernetesClustersResult {
  * export const output = k8sClusters.then(k8sClusters => k8sClusters.clusters);
  * ```
  */
-export function getEdgeKubernetesClustersOutput(args?: GetEdgeKubernetesClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEdgeKubernetesClustersResult> {
+export function getEdgeKubernetesClustersOutput(args?: GetEdgeKubernetesClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEdgeKubernetesClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getEdgeKubernetesClusters:getEdgeKubernetesClusters", {

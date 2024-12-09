@@ -318,7 +318,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
                          tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                          vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                          vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     The `rds_get_instances` data source provides a collection of RDS instances available in Alibaba Cloud account.
     Filters support regular expression for the instance name, searches by tags, and other filters which are listed below.
@@ -368,7 +368,7 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         connection_mode=pulumi.get(__response__, 'connection_mode'),

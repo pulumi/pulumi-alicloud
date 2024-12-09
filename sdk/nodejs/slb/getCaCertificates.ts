@@ -101,7 +101,7 @@ export interface GetCaCertificatesResult {
  * export const firstSlbCaCertificateId = sampleDs.then(sampleDs => sampleDs.certificates?.[0]?.id);
  * ```
  */
-export function getCaCertificatesOutput(args?: GetCaCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertificatesResult> {
+export function getCaCertificatesOutput(args?: GetCaCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCaCertificatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getCaCertificates:getCaCertificates", {

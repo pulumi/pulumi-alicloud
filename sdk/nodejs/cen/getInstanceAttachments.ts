@@ -111,7 +111,7 @@ export interface GetInstanceAttachmentsResult {
  * export const theFirstAttachmentedInstanceId = example.then(example => example.attachments?.[0]?.childInstanceId);
  * ```
  */
-export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
+export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getInstanceAttachments:getInstanceAttachments", {
         "childInstanceRegionId": args.childInstanceRegionId,

@@ -163,7 +163,7 @@ export interface GetServerlessInstancesResult {
  * export const mongodbServerlessInstanceId1 = example.then(example => example.instances?.[0]?.id);
  * ```
  */
-export function getServerlessInstancesOutput(args?: GetServerlessInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerlessInstancesResult> {
+export function getServerlessInstancesOutput(args?: GetServerlessInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerlessInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mongodb/getServerlessInstances:getServerlessInstances", {

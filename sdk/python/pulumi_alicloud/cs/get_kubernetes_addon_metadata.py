@@ -118,7 +118,7 @@ def get_kubernetes_addon_metadata(cluster_id: Optional[str] = None,
 def get_kubernetes_addon_metadata_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                          name: Optional[pulumi.Input[str]] = None,
                                          version: Optional[pulumi.Input[str]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesAddonMetadataResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesAddonMetadataResult]:
     """
     This data source provides metadata of kubernetes cluster addons.
 
@@ -133,7 +133,7 @@ def get_kubernetes_addon_metadata_output(cluster_id: Optional[pulumi.Input[str]]
     __args__['clusterId'] = cluster_id
     __args__['name'] = name
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata', __args__, opts=opts, typ=GetKubernetesAddonMetadataResult)
     return __ret__.apply(lambda __response__: GetKubernetesAddonMetadataResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

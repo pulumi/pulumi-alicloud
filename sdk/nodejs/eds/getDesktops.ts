@@ -199,7 +199,7 @@ export interface GetDesktopsResult {
  * export const ecdDesktopId2 = nameRegex.apply(nameRegex => nameRegex.desktops?.[0]?.id);
  * ```
  */
-export function getDesktopsOutput(args?: GetDesktopsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDesktopsResult> {
+export function getDesktopsOutput(args?: GetDesktopsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDesktopsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getDesktops:getDesktops", {

@@ -78,7 +78,7 @@ export interface GetRegionRouteEntriesResult {
  * export const firstRegionRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
  * ```
  */
-export function getRegionRouteEntriesOutput(args: GetRegionRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionRouteEntriesResult> {
+export function getRegionRouteEntriesOutput(args: GetRegionRouteEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionRouteEntriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", {
         "instanceId": args.instanceId,

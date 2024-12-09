@@ -124,7 +124,7 @@ export interface GetPrometheusAlertRulesResult {
  * export const armsPrometheusAlertRuleId2 = nameRegex.then(nameRegex => nameRegex.rules?.[0]?.id);
  * ```
  */
-export function getPrometheusAlertRulesOutput(args: GetPrometheusAlertRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrometheusAlertRulesResult> {
+export function getPrometheusAlertRulesOutput(args: GetPrometheusAlertRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPrometheusAlertRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:arms/getPrometheusAlertRules:getPrometheusAlertRules", {
         "clusterId": args.clusterId,

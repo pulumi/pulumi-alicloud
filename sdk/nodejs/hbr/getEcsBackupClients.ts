@@ -101,7 +101,7 @@ export interface GetEcsBackupClientsResult {
  * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?.[0]?.id);
  * ```
  */
-export function getEcsBackupClientsOutput(args?: GetEcsBackupClientsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupClientsResult> {
+export function getEcsBackupClientsOutput(args?: GetEcsBackupClientsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsBackupClientsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", {

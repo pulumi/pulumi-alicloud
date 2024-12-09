@@ -80,7 +80,7 @@ export interface GetKubernetesPermissionResult {
  * export const permissions = defaultGetKubernetesPermission.then(defaultGetKubernetesPermission => defaultGetKubernetesPermission.permissions);
  * ```
  */
-export function getKubernetesPermissionOutput(args: GetKubernetesPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesPermissionResult> {
+export function getKubernetesPermissionOutput(args: GetKubernetesPermissionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesPermissionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesPermission:getKubernetesPermission", {
         "uid": args.uid,

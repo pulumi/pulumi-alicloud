@@ -245,7 +245,7 @@ def get_records_output(domain_name: Optional[pulumi.Input[str]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
                        type: Optional[pulumi.Input[Optional[str]]] = None,
                        value_regex: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordsResult]:
     """
     This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
 
@@ -286,7 +286,7 @@ def get_records_output(domain_name: Optional[pulumi.Input[str]] = None,
     __args__['status'] = status
     __args__['type'] = type
     __args__['valueRegex'] = value_regex
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getRecords:getRecords', __args__, opts=opts, typ=GetRecordsResult)
     return __ret__.apply(lambda __response__: GetRecordsResult(
         domain_name=pulumi.get(__response__, 'domain_name'),

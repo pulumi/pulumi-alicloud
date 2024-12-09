@@ -242,7 +242,7 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         policy_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDesktopsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDesktopsResult]:
     """
     This data source provides the Ecd Desktops of the current Alibaba Cloud user.
 
@@ -313,7 +313,7 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
     __args__['outputFile'] = output_file
     __args__['policyGroupId'] = policy_group_id
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getDesktops:getDesktops', __args__, opts=opts, typ=GetDesktopsResult)
     return __ret__.apply(lambda __response__: GetDesktopsResult(
         desktop_name=pulumi.get(__response__, 'desktop_name'),

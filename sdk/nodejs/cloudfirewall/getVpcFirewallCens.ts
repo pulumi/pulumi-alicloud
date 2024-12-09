@@ -155,7 +155,7 @@ export interface GetVpcFirewallCensResult {
  * export const alicloudCloudFirewallVpcFirewallCenExampleId = _default.then(_default => _default.cens?.[0]?.id);
  * ```
  */
-export function getVpcFirewallCensOutput(args?: GetVpcFirewallCensOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFirewallCensResult> {
+export function getVpcFirewallCensOutput(args?: GetVpcFirewallCensOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVpcFirewallCensResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getVpcFirewallCens:getVpcFirewallCens", {

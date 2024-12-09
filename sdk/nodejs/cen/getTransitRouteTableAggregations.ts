@@ -130,7 +130,7 @@ export interface GetTransitRouteTableAggregationsResult {
  * export const cenTransitRouterMulticastDomainId1 = nameRegex.then(nameRegex => nameRegex.transitRouteTableAggregations?.[0]?.id);
  * ```
  */
-export function getTransitRouteTableAggregationsOutput(args: GetTransitRouteTableAggregationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouteTableAggregationsResult> {
+export function getTransitRouteTableAggregationsOutput(args: GetTransitRouteTableAggregationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouteTableAggregationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", {
         "ids": args.ids,

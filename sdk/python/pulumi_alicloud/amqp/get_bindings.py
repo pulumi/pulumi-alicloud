@@ -138,7 +138,7 @@ def get_bindings(instance_id: Optional[str] = None,
 def get_bindings_output(instance_id: Optional[pulumi.Input[str]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         virtual_host_name: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBindingsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBindingsResult]:
     """
     This data source provides the Amqp Bindings of the current Alibaba Cloud user.
 
@@ -165,7 +165,7 @@ def get_bindings_output(instance_id: Optional[pulumi.Input[str]] = None,
     __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
     __args__['virtualHostName'] = virtual_host_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:amqp/getBindings:getBindings', __args__, opts=opts, typ=GetBindingsResult)
     return __ret__.apply(lambda __response__: GetBindingsResult(
         bindings=pulumi.get(__response__, 'bindings'),

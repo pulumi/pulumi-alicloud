@@ -172,7 +172,7 @@ def get_traffic_mirror_filters_output(ids: Optional[pulumi.Input[Optional[Sequen
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       status: Optional[pulumi.Input[Optional[str]]] = None,
                                       traffic_mirror_filter_name: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrafficMirrorFiltersResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTrafficMirrorFiltersResult]:
     """
     This data source provides the Vpc Traffic Mirror Filters of the current Alibaba Cloud user.
 
@@ -209,7 +209,7 @@ def get_traffic_mirror_filters_output(ids: Optional[pulumi.Input[Optional[Sequen
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['trafficMirrorFilterName'] = traffic_mirror_filter_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getTrafficMirrorFilters:getTrafficMirrorFilters', __args__, opts=opts, typ=GetTrafficMirrorFiltersResult)
     return __ret__.apply(lambda __response__: GetTrafficMirrorFiltersResult(
         filters=pulumi.get(__response__, 'filters'),

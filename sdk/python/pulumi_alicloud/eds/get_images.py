@@ -227,7 +227,7 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
                       os_type: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       status: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImagesResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
     This data source provides the Ecd Images of the current Alibaba Cloud user.
 
@@ -295,7 +295,7 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
     __args__['osType'] = os_type
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getImages:getImages', __args__, opts=opts, typ=GetImagesResult)
     return __ret__.apply(lambda __response__: GetImagesResult(
         desktop_instance_type=pulumi.get(__response__, 'desktop_instance_type'),

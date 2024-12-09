@@ -71,7 +71,7 @@ export interface GetCharacterSetNamesResult {
  * export const firstRdsCharacterSetNames = names.then(names => names.names?.[0]);
  * ```
  */
-export function getCharacterSetNamesOutput(args: GetCharacterSetNamesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCharacterSetNamesResult> {
+export function getCharacterSetNamesOutput(args: GetCharacterSetNamesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCharacterSetNamesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getCharacterSetNames:getCharacterSetNames", {
         "engine": args.engine,

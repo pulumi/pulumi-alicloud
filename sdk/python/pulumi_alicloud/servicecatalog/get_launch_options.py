@@ -160,7 +160,7 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
                               product_id: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLaunchOptionsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLaunchOptionsResult]:
     """
     This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
 
@@ -190,7 +190,7 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['productId'] = product_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:servicecatalog/getLaunchOptions:getLaunchOptions', __args__, opts=opts, typ=GetLaunchOptionsResult)
     return __ret__.apply(lambda __response__: GetLaunchOptionsResult(
         id=pulumi.get(__response__, 'id'),

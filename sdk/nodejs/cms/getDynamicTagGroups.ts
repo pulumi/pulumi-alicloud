@@ -121,7 +121,7 @@ export interface GetDynamicTagGroupsResult {
  * export const cmsDynamicTagGroupId1 = ids.apply(ids => ids.groups?.[0]?.id);
  * ```
  */
-export function getDynamicTagGroupsOutput(args?: GetDynamicTagGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDynamicTagGroupsResult> {
+export function getDynamicTagGroupsOutput(args?: GetDynamicTagGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDynamicTagGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", {

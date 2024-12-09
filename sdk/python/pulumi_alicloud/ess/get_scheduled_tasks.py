@@ -177,7 +177,7 @@ def get_scheduled_tasks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                scheduled_action: Optional[pulumi.Input[Optional[str]]] = None,
                                scheduled_task_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScheduledTasksResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScheduledTasksResult]:
     """
     This data source provides available scheduled task resources.
 
@@ -207,7 +207,7 @@ def get_scheduled_tasks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     __args__['outputFile'] = output_file
     __args__['scheduledAction'] = scheduled_action
     __args__['scheduledTaskId'] = scheduled_task_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ess/getScheduledTasks:getScheduledTasks', __args__, opts=opts, typ=GetScheduledTasksResult)
     return __ret__.apply(lambda __response__: GetScheduledTasksResult(
         id=pulumi.get(__response__, 'id'),

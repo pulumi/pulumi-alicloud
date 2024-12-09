@@ -264,7 +264,7 @@ def get_vpc_firewall_cens_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
                                  vpc_firewall_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  vpc_firewall_name: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcFirewallCensResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcFirewallCensResult]:
     """
     This data source provides Cloud Firewall Vpc Firewall Cen available to the user.[What is Vpc Firewall Cen](https://www.alibabacloud.com/help/en/cloud-firewall/latest/describevpcfirewallcenlist)
 
@@ -307,7 +307,7 @@ def get_vpc_firewall_cens_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
     __args__['status'] = status
     __args__['vpcFirewallId'] = vpc_firewall_id
     __args__['vpcFirewallName'] = vpc_firewall_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudfirewall/getVpcFirewallCens:getVpcFirewallCens', __args__, opts=opts, typ=GetVpcFirewallCensResult)
     return __ret__.apply(lambda __response__: GetVpcFirewallCensResult(
         cen_id=pulumi.get(__response__, 'cen_id'),

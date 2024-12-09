@@ -100,7 +100,7 @@ export interface GetSamlProvidersResult {
  * export const firstRamSamlProviderId = example.then(example => example.providers?.[0]?.id);
  * ```
  */
-export function getSamlProvidersOutput(args?: GetSamlProvidersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSamlProvidersResult> {
+export function getSamlProvidersOutput(args?: GetSamlProvidersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSamlProvidersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ram/getSamlProviders:getSamlProviders", {

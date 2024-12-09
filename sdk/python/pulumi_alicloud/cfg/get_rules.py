@@ -231,7 +231,7 @@ def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = 
                      risk_level: Optional[pulumi.Input[Optional[int]]] = None,
                      rule_name: Optional[pulumi.Input[Optional[str]]] = None,
                      status: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesResult]:
     """
     This data source provides the Config Rules of the current Alibaba Cloud user.
 
@@ -269,7 +269,7 @@ def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = 
     __args__['riskLevel'] = risk_level
     __args__['ruleName'] = rule_name
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cfg/getRules:getRules', __args__, opts=opts, typ=GetRulesResult)
     return __ret__.apply(lambda __response__: GetRulesResult(
         config_rule_state=pulumi.get(__response__, 'config_rule_state'),

@@ -98,7 +98,7 @@ export interface GetAgentsResult {
  * export const alicloudChatbotAgentsId1 = nameRegex.then(nameRegex => nameRegex.agents?.[0]?.id);
  * ```
  */
-export function getAgentsOutput(args?: GetAgentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAgentsResult> {
+export function getAgentsOutput(args?: GetAgentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAgentsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:chatbot/getAgents:getAgents", {

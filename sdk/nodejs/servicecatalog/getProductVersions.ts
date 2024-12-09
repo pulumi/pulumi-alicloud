@@ -105,7 +105,7 @@ export interface GetProductVersionsResult {
  * export const alicloudServiceCatalogProductVersionExampleId = _default.then(_default => _default.productVersions?.[0]?.id);
  * ```
  */
-export function getProductVersionsOutput(args: GetProductVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductVersionsResult> {
+export function getProductVersionsOutput(args: GetProductVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProductVersionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getProductVersions:getProductVersions", {
         "enableDetails": args.enableDetails,

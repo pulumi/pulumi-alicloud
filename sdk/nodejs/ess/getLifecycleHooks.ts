@@ -102,7 +102,7 @@ export interface GetLifecycleHooksResult {
  * export const firstLifecycleHook = ds.then(ds => ds.hooks?.[0]?.id);
  * ```
  */
-export function getLifecycleHooksOutput(args?: GetLifecycleHooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecycleHooksResult> {
+export function getLifecycleHooksOutput(args?: GetLifecycleHooksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLifecycleHooksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ess/getLifecycleHooks:getLifecycleHooks", {

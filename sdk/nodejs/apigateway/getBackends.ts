@@ -88,7 +88,7 @@ export interface GetBackendsResult {
  * export const apiGatewayBackendId1 = ids.then(ids => ids.backends?.[0]?.id);
  * ```
  */
-export function getBackendsOutput(args?: GetBackendsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendsResult> {
+export function getBackendsOutput(args?: GetBackendsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackendsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:apigateway/getBackends:getBackends", {

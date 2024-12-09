@@ -205,7 +205,7 @@ def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                           status: Optional[pulumi.Input[Optional[str]]] = None,
                           transmit_direction: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteMapsResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteMapsResult]:
     """
     This data source provides CEN Route Maps available to the user.
 
@@ -243,7 +243,7 @@ def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['transmitDirection'] = transmit_direction
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getRouteMaps:getRouteMaps', __args__, opts=opts, typ=GetRouteMapsResult)
     return __ret__.apply(lambda __response__: GetRouteMapsResult(
         cen_id=pulumi.get(__response__, 'cen_id'),

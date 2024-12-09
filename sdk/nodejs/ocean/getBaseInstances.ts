@@ -129,7 +129,7 @@ export interface GetBaseInstancesResult {
  * export const oceanBaseInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
  * ```
  */
-export function getBaseInstancesOutput(args?: GetBaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaseInstancesResult> {
+export function getBaseInstancesOutput(args?: GetBaseInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBaseInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ocean/getBaseInstances:getBaseInstances", {

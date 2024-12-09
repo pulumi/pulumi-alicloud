@@ -112,7 +112,7 @@ export interface GetDeliveryChannelsResult {
  * export const firstConfigDeliveryChannelId = example.then(example => example.channels?.[0]?.id);
  * ```
  */
-export function getDeliveryChannelsOutput(args?: GetDeliveryChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeliveryChannelsResult> {
+export function getDeliveryChannelsOutput(args?: GetDeliveryChannelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDeliveryChannelsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cfg/getDeliveryChannels:getDeliveryChannels", {

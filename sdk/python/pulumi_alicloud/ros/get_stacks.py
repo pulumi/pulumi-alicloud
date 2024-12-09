@@ -223,7 +223,7 @@ def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
                       stack_name: Optional[pulumi.Input[Optional[str]]] = None,
                       status: Optional[pulumi.Input[Optional[str]]] = None,
                       tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStacksResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStacksResult]:
     """
     This data source provides the Ros Stacks of the current Alibaba Cloud user.
 
@@ -263,7 +263,7 @@ def get_stacks_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = N
     __args__['stackName'] = stack_name
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ros/getStacks:getStacks', __args__, opts=opts, typ=GetStacksResult)
     return __ret__.apply(lambda __response__: GetStacksResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

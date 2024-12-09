@@ -121,7 +121,7 @@ def get_transit_router_available_resources(output_file: Optional[str] = None,
         support_multicast=pulumi.get(__ret__, 'support_multicast'))
 def get_transit_router_available_resources_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                   support_multicast: Optional[pulumi.Input[Optional[bool]]] = None,
-                                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterAvailableResourcesResult]:
+                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterAvailableResourcesResult]:
     """
     This data source provides the CEN Transit Router Available Resources of the current Alibaba Cloud user.
 
@@ -147,7 +147,7 @@ def get_transit_router_available_resources_output(output_file: Optional[pulumi.I
     __args__ = dict()
     __args__['outputFile'] = output_file
     __args__['supportMulticast'] = support_multicast
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterAvailableResources:getTransitRouterAvailableResources', __args__, opts=opts, typ=GetTransitRouterAvailableResourcesResult)
     return __ret__.apply(lambda __response__: GetTransitRouterAvailableResourcesResult(
         id=pulumi.get(__response__, 'id'),

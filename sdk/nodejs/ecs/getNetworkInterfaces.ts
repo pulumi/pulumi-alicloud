@@ -315,7 +315,7 @@ export interface GetNetworkInterfacesResult {
  * * `outputFile` - (Optional) The name of output file that saves the filter results.
  * * `resourceGroupId` - (Optional, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
  */
-export function getNetworkInterfacesOutput(args?: GetNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkInterfacesResult> {
+export function getNetworkInterfacesOutput(args?: GetNetworkInterfacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkInterfacesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getNetworkInterfaces:getNetworkInterfaces", {

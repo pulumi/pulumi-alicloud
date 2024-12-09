@@ -130,7 +130,7 @@ def get_versions(edition: Optional[str] = None,
 def get_versions_output(edition: Optional[pulumi.Input[Optional[str]]] = None,
                         ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVersionsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVersionsResult]:
     """
     This data source provides ASM available versions in the specified region.
 
@@ -159,7 +159,7 @@ def get_versions_output(edition: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['edition'] = edition
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:servicemesh/getVersions:getVersions', __args__, opts=opts, typ=GetVersionsResult)
     return __ret__.apply(lambda __response__: GetVersionsResult(
         edition=pulumi.get(__response__, 'edition'),

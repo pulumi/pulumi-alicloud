@@ -128,7 +128,7 @@ def get_instance_keywords(key: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_instance_keywords_output(key: Optional[pulumi.Input[str]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceKeywordsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceKeywordsResult]:
     """
     Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.
 
@@ -152,7 +152,7 @@ def get_instance_keywords_output(key: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['key'] = key
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getInstanceKeywords:getInstanceKeywords', __args__, opts=opts, typ=GetInstanceKeywordsResult)
     return __ret__.apply(lambda __response__: GetInstanceKeywordsResult(
         id=pulumi.get(__response__, 'id'),

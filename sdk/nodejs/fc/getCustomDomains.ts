@@ -91,7 +91,7 @@ export interface GetCustomDomainsResult {
  * export const firstFcCustomDomainName = fcDomainsDs.domains[0].domainName;
  * ```
  */
-export function getCustomDomainsOutput(args?: GetCustomDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomDomainsResult> {
+export function getCustomDomainsOutput(args?: GetCustomDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomDomainsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:fc/getCustomDomains:getCustomDomains", {

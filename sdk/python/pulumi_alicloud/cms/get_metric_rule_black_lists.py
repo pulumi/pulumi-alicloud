@@ -237,7 +237,7 @@ def get_metric_rule_black_lists_output(category: Optional[pulumi.Input[Optional[
                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                        page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetricRuleBlackListsResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetricRuleBlackListsResult]:
     """
     This data source provides Cloud Monitor Service Metric Rule Black List available to the user.[What is Metric Rule Black List](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruleblacklist)
 
@@ -273,7 +273,7 @@ def get_metric_rule_black_lists_output(category: Optional[pulumi.Input[Optional[
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists', __args__, opts=opts, typ=GetMetricRuleBlackListsResult)
     return __ret__.apply(lambda __response__: GetMetricRuleBlackListsResult(
         category=pulumi.get(__response__, 'category'),

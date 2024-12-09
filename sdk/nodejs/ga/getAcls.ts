@@ -108,7 +108,7 @@ export interface GetAclsResult {
  * export const gaAclId2 = nameRegex.then(nameRegex => nameRegex.acls?.[0]?.id);
  * ```
  */
-export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
+export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getAcls:getAcls", {

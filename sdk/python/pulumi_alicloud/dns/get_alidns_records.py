@@ -343,7 +343,7 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
                               type_key_word: Optional[pulumi.Input[Optional[str]]] = None,
                               value_key_word: Optional[pulumi.Input[Optional[str]]] = None,
                               value_regex: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAlidnsRecordsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlidnsRecordsResult]:
     """
     This data source provides a list of Alidns Domain Records in an Alibaba Cloud account according to the specified filters.
 
@@ -399,7 +399,7 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
     __args__['typeKeyWord'] = type_key_word
     __args__['valueKeyWord'] = value_key_word
     __args__['valueRegex'] = value_regex
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getAlidnsRecords:getAlidnsRecords', __args__, opts=opts, typ=GetAlidnsRecordsResult)
     return __ret__.apply(lambda __response__: GetAlidnsRecordsResult(
         direction=pulumi.get(__response__, 'direction'),

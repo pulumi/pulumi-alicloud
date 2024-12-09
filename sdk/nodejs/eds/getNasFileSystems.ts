@@ -124,7 +124,7 @@ export interface GetNasFileSystemsResult {
  * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?.[0]?.id);
  * ```
  */
-export function getNasFileSystemsOutput(args?: GetNasFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasFileSystemsResult> {
+export function getNasFileSystemsOutput(args?: GetNasFileSystemsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNasFileSystemsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getNasFileSystems:getNasFileSystems", {

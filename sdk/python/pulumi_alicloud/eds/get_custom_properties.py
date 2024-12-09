@@ -114,7 +114,7 @@ def get_custom_properties(ids: Optional[Sequence[str]] = None,
         properties=pulumi.get(__ret__, 'properties'))
 def get_custom_properties_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCustomPropertiesResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomPropertiesResult]:
     """
     This data source provides the Ecd Custom Properties of the current Alibaba Cloud user.
 
@@ -139,7 +139,7 @@ def get_custom_properties_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     __args__ = dict()
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getCustomProperties:getCustomProperties', __args__, opts=opts, typ=GetCustomPropertiesResult)
     return __ret__.apply(lambda __response__: GetCustomPropertiesResult(
         id=pulumi.get(__response__, 'id'),

@@ -171,7 +171,7 @@ def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                instance_id: Optional[pulumi.Input[str]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsumerGroupsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsumerGroupsResult]:
     """
     This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.
 
@@ -200,7 +200,7 @@ def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional
     __args__['ids'] = ids
     __args__['instanceId'] = instance_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:actiontrail/getConsumerGroups:getConsumerGroups', __args__, opts=opts, typ=GetConsumerGroupsResult)
     return __ret__.apply(lambda __response__: GetConsumerGroupsResult(
         consumer_id_regex=pulumi.get(__response__, 'consumer_id_regex'),

@@ -109,7 +109,7 @@ export interface GetAcceleratorsResult {
  * export const firstGaAcceleratorId = example.then(example => example.accelerators?.[0]?.id);
  * ```
  */
-export function getAcceleratorsOutput(args?: GetAcceleratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorsResult> {
+export function getAcceleratorsOutput(args?: GetAcceleratorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAcceleratorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getAccelerators:getAccelerators", {

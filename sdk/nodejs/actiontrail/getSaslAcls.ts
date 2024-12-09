@@ -112,7 +112,7 @@ export interface GetSaslAclsResult {
  * export const firstSaslAclUsername = saslAclsDs.then(saslAclsDs => saslAclsDs.acls?.[0]?.username);
  * ```
  */
-export function getSaslAclsOutput(args: GetSaslAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslAclsResult> {
+export function getSaslAclsOutput(args: GetSaslAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSaslAclsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:actiontrail/getSaslAcls:getSaslAcls", {
         "aclResourceName": args.aclResourceName,

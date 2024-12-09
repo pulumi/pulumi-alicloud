@@ -392,7 +392,7 @@ def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
                         region_id: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
                         transit_router_id: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlowlogsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlowlogsResult]:
     """
     This data source provides CEN flow logs available to the user.
 
@@ -475,7 +475,7 @@ def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['regionId'] = region_id
     __args__['status'] = status
     __args__['transitRouterId'] = transit_router_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getFlowlogs:getFlowlogs', __args__, opts=opts, typ=GetFlowlogsResult)
     return __ret__.apply(lambda __response__: GetFlowlogsResult(
         cen_id=pulumi.get(__response__, 'cen_id'),

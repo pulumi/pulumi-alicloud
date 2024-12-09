@@ -80,7 +80,7 @@ export interface GetCollationTimeZonesResult {
  * export const firstRdsCollationTimeZones = zones.then(zones => zones.collationTimeZones?.[0]);
  * ```
  */
-export function getCollationTimeZonesOutput(args?: GetCollationTimeZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCollationTimeZonesResult> {
+export function getCollationTimeZonesOutput(args?: GetCollationTimeZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCollationTimeZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getCollationTimeZones:getCollationTimeZones", {

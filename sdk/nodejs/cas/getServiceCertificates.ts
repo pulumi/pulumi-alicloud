@@ -227,7 +227,7 @@ export interface GetServiceCertificatesResult {
  * export const sslCertificatesServiceCertificatesId0 = ids.apply(ids => ids.certificates?.[0]?.id);
  * ```
  */
-export function getServiceCertificatesOutput(args?: GetServiceCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceCertificatesResult> {
+export function getServiceCertificatesOutput(args?: GetServiceCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceCertificatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cas/getServiceCertificates:getServiceCertificates", {

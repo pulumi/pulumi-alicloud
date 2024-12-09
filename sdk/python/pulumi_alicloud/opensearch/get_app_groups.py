@@ -220,7 +220,7 @@ def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                           resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                           type: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppGroupsResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppGroupsResult]:
     """
     This data source provides the Open Search App Groups of the current Alibaba Cloud user.
 
@@ -269,7 +269,7 @@ def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:opensearch/getAppGroups:getAppGroups', __args__, opts=opts, typ=GetAppGroupsResult)
     return __ret__.apply(lambda __response__: GetAppGroupsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),
