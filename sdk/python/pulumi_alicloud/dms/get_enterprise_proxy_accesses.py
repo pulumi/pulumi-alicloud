@@ -154,7 +154,7 @@ def get_enterprise_proxy_accesses_output(enable_details: Optional[pulumi.Input[O
                                          ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                          proxy_id: Optional[pulumi.Input[str]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnterpriseProxyAccessesResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnterpriseProxyAccessesResult]:
     """
     This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
 
@@ -186,7 +186,7 @@ def get_enterprise_proxy_accesses_output(enable_details: Optional[pulumi.Input[O
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['proxyId'] = proxy_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses', __args__, opts=opts, typ=GetEnterpriseProxyAccessesResult)
     return __ret__.apply(lambda __response__: GetEnterpriseProxyAccessesResult(
         accesses=pulumi.get(__response__, 'accesses'),

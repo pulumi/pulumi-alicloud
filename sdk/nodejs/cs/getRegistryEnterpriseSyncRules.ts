@@ -136,7 +136,7 @@ export interface GetRegistryEnterpriseSyncRulesResult {
  * export const output = mySyncRules.then(mySyncRules => mySyncRules.rules.map(__item => __item.id));
  * ```
  */
-export function getRegistryEnterpriseSyncRulesOutput(args: GetRegistryEnterpriseSyncRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseSyncRulesResult> {
+export function getRegistryEnterpriseSyncRulesOutput(args: GetRegistryEnterpriseSyncRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistryEnterpriseSyncRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getRegistryEnterpriseSyncRules:getRegistryEnterpriseSyncRules", {
         "ids": args.ids,

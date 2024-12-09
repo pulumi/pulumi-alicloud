@@ -212,7 +212,7 @@ def get_apis_output(api_id: Optional[pulumi.Input[Optional[str]]] = None,
                     ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApisResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApisResult]:
     """
     This data source provides the Api Gateway APIs of the current Alibaba Cloud user.
 
@@ -277,7 +277,7 @@ def get_apis_output(api_id: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:apigateway/getApis:getApis', __args__, opts=opts, typ=GetApisResult)
     return __ret__.apply(lambda __response__: GetApisResult(
         api_id=pulumi.get(__response__, 'api_id'),

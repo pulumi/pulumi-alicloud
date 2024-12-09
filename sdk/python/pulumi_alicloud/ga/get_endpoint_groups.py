@@ -262,7 +262,7 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
                                name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                status: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEndpointGroupsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointGroupsResult]:
     """
     This data source provides the Global Accelerator (GA) Endpoint Groups of the current Alibaba Cloud user.
 
@@ -353,7 +353,7 @@ def get_endpoint_groups_output(accelerator_id: Optional[pulumi.Input[str]] = Non
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getEndpointGroups:getEndpointGroups', __args__, opts=opts, typ=GetEndpointGroupsResult)
     return __ret__.apply(lambda __response__: GetEndpointGroupsResult(
         accelerator_id=pulumi.get(__response__, 'accelerator_id'),

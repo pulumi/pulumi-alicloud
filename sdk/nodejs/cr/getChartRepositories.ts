@@ -99,7 +99,7 @@ export interface GetChartRepositoriesResult {
  * export const crChartRepositoryId1 = _default.ids[0];
  * ```
  */
-export function getChartRepositoriesOutput(args: GetChartRepositoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChartRepositoriesResult> {
+export function getChartRepositoriesOutput(args: GetChartRepositoriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetChartRepositoriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cr/getChartRepositories:getChartRepositories", {
         "ids": args.ids,

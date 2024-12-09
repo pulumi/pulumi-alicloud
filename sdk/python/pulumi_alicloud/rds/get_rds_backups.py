@@ -184,7 +184,7 @@ def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = 
                            ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
                            start_time: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRdsBackupsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRdsBackupsResult]:
     """
     This data source provides the Rds Backups of the current Alibaba Cloud user.
 
@@ -219,7 +219,7 @@ def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = 
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['startTime'] = start_time
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getRdsBackups:getRdsBackups', __args__, opts=opts, typ=GetRdsBackupsResult)
     return __ret__.apply(lambda __response__: GetRdsBackupsResult(
         backup_mode=pulumi.get(__response__, 'backup_mode'),

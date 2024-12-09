@@ -234,7 +234,7 @@ def get_clusters_output(cluster_alias_name: Optional[pulumi.Input[Optional[str]]
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
                         request_pars: Optional[pulumi.Input[Optional[str]]] = None,
                         status: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClustersResult]:
     """
     This data source provides a list of MSE Clusters in an Alibaba Cloud account according to the specified filters.
 
@@ -297,7 +297,7 @@ def get_clusters_output(cluster_alias_name: Optional[pulumi.Input[Optional[str]]
     __args__['outputFile'] = output_file
     __args__['requestPars'] = request_pars
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mse/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult)
     return __ret__.apply(lambda __response__: GetClustersResult(
         cluster_alias_name=pulumi.get(__response__, 'cluster_alias_name'),

@@ -188,7 +188,7 @@ def get_server_snapshots_output(disk_id: Optional[pulumi.Input[Optional[str]]] =
                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 status: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerSnapshotsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerSnapshotsResult]:
     """
     This data source provides the Simple Application Server Snapshots of the current Alibaba Cloud user.
 
@@ -229,7 +229,7 @@ def get_server_snapshots_output(disk_id: Optional[pulumi.Input[Optional[str]]] =
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots', __args__, opts=opts, typ=GetServerSnapshotsResult)
     return __ret__.apply(lambda __response__: GetServerSnapshotsResult(
         disk_id=pulumi.get(__response__, 'disk_id'),

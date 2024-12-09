@@ -221,7 +221,7 @@ def get_assets_output(criteria: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       page_number: Optional[pulumi.Input[Optional[int]]] = None,
                       page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAssetsResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAssetsResult]:
     """
     This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
 
@@ -263,7 +263,7 @@ def get_assets_output(criteria: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getAssets:getAssets', __args__, opts=opts, typ=GetAssetsResult)
     return __ret__.apply(lambda __response__: GetAssetsResult(
         assets=pulumi.get(__response__, 'assets'),

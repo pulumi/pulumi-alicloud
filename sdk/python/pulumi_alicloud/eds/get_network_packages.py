@@ -135,7 +135,7 @@ def get_network_packages(ids: Optional[Sequence[str]] = None,
 def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 status: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPackagesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkPackagesResult]:
     """
     This data source provides the Ecd Network Packages of the current Alibaba Cloud user.
 
@@ -169,7 +169,7 @@ def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getNetworkPackages:getNetworkPackages', __args__, opts=opts, typ=GetNetworkPackagesResult)
     return __ret__.apply(lambda __response__: GetNetworkPackagesResult(
         id=pulumi.get(__response__, 'id'),

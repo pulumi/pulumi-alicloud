@@ -173,7 +173,7 @@ def get_access_rules_output(access_group_name: Optional[pulumi.Input[str]] = Non
                             rw_access: Optional[pulumi.Input[Optional[str]]] = None,
                             source_cidr_ip: Optional[pulumi.Input[Optional[str]]] = None,
                             user_access: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessRulesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessRulesResult]:
     """
     This data source provides AccessRule available to the user.
 
@@ -194,7 +194,7 @@ def get_access_rules_output(access_group_name: Optional[pulumi.Input[str]] = Non
     __args__['rwAccess'] = rw_access
     __args__['sourceCidrIp'] = source_cidr_ip
     __args__['userAccess'] = user_access
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getAccessRules:getAccessRules', __args__, opts=opts, typ=GetAccessRulesResult)
     return __ret__.apply(lambda __response__: GetAccessRulesResult(
         access_group_name=pulumi.get(__response__, 'access_group_name'),

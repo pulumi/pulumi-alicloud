@@ -78,7 +78,7 @@ export interface GetBucketsResult {
  * export const firstOssBucketName = ossBucketsDs.then(ossBucketsDs => ossBucketsDs.buckets?.[0]?.name);
  * ```
  */
-export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketsResult> {
+export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oss/getBuckets:getBuckets", {

@@ -109,7 +109,7 @@ export interface GetDesktopTypesResult {
  * export const ecdDesktopTypeId1 = ids.then(ids => ids.types?.[0]?.id);
  * ```
  */
-export function getDesktopTypesOutput(args?: GetDesktopTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDesktopTypesResult> {
+export function getDesktopTypesOutput(args?: GetDesktopTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDesktopTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getDesktopTypes:getDesktopTypes", {

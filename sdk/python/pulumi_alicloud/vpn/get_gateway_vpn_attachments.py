@@ -197,7 +197,7 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
                                        page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                        status: Optional[pulumi.Input[Optional[str]]] = None,
                                        vpn_gateway_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGatewayVpnAttachmentsResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayVpnAttachmentsResult]:
     """
     This data source provides the Vpn Gateway Vpn Attachments of the current Alibaba Cloud user.
 
@@ -234,7 +234,7 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     __args__['pageSize'] = page_size
     __args__['status'] = status
     __args__['vpnGatewayId'] = vpn_gateway_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments', __args__, opts=opts, typ=GetGatewayVpnAttachmentsResult)
     return __ret__.apply(lambda __response__: GetGatewayVpnAttachmentsResult(
         attachments=pulumi.get(__response__, 'attachments'),

@@ -198,7 +198,7 @@ def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[str]] = N
                                  plan_schedule_type: Optional[pulumi.Input[Optional[str]]] = None,
                                  plan_type: Optional[pulumi.Input[Optional[str]]] = None,
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDbInstancePlansResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbInstancePlansResult]:
     """
     This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.
 
@@ -237,7 +237,7 @@ def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[str]] = N
     __args__['planScheduleType'] = plan_schedule_type
     __args__['planType'] = plan_type
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:gpdb/getDbInstancePlans:getDbInstancePlans', __args__, opts=opts, typ=GetDbInstancePlansResult)
     return __ret__.apply(lambda __response__: GetDbInstancePlansResult(
         db_instance_id=pulumi.get(__response__, 'db_instance_id'),

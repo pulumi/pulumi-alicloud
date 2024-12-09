@@ -182,7 +182,7 @@ def get_scaling_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              scaling_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                              type: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScalingRulesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScalingRulesResult]:
     """
     This data source provides available scaling rule resources.
 
@@ -214,7 +214,7 @@ def get_scaling_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['outputFile'] = output_file
     __args__['scalingGroupId'] = scaling_group_id
     __args__['type'] = type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ess/getScalingRules:getScalingRules', __args__, opts=opts, typ=GetScalingRulesResult)
     return __ret__.apply(lambda __response__: GetScalingRulesResult(
         id=pulumi.get(__response__, 'id'),

@@ -163,7 +163,7 @@ export interface GetSubnetsResult {
  * export const alicloudEfloSubnetExampleId = _default.then(_default => _default.subnets?.[0]?.id);
  * ```
  */
-export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetsResult> {
+export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eflo/getSubnets:getSubnets", {

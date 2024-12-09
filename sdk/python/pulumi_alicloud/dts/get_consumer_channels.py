@@ -128,7 +128,7 @@ def get_consumer_channels(dts_instance_id: Optional[str] = None,
 def get_consumer_channels_output(dts_instance_id: Optional[pulumi.Input[str]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsumerChannelsResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsumerChannelsResult]:
     """
     This data source provides the Dts Consumer Channels of the current Alibaba Cloud user.
 
@@ -155,7 +155,7 @@ def get_consumer_channels_output(dts_instance_id: Optional[pulumi.Input[str]] = 
     __args__['dtsInstanceId'] = dts_instance_id
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dts/getConsumerChannels:getConsumerChannels', __args__, opts=opts, typ=GetConsumerChannelsResult)
     return __ret__.apply(lambda __response__: GetConsumerChannelsResult(
         channels=pulumi.get(__response__, 'channels'),

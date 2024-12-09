@@ -182,7 +182,7 @@ def get_snapshots_output(file_system_id: Optional[pulumi.Input[Optional[str]]] =
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          snapshot_name: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotsResult]:
     """
     This data source provides the Nas Snapshots of the current Alibaba Cloud user.
 
@@ -217,7 +217,7 @@ def get_snapshots_output(file_system_id: Optional[pulumi.Input[Optional[str]]] =
     __args__['outputFile'] = output_file
     __args__['snapshotName'] = snapshot_name
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getSnapshots:getSnapshots', __args__, opts=opts, typ=GetSnapshotsResult)
     return __ret__.apply(lambda __response__: GetSnapshotsResult(
         file_system_id=pulumi.get(__response__, 'file_system_id'),

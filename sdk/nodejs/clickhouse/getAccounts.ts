@@ -185,7 +185,7 @@ export interface GetAccountsResult {
  * export const accountId = defaultGetAccounts.apply(defaultGetAccounts => defaultGetAccounts.ids?.[0]);
  * ```
  */
-export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:clickhouse/getAccounts:getAccounts", {
         "dbClusterId": args.dbClusterId,

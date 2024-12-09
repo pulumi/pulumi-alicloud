@@ -140,7 +140,7 @@ export interface GetGatewaySmbUsersResult {
  * export const cloudStorageGatewayGatewaySmbUserId1 = ids.apply(ids => ids.users?.[0]?.id);
  * ```
  */
-export function getGatewaySmbUsersOutput(args: GetGatewaySmbUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaySmbUsersResult> {
+export function getGatewaySmbUsersOutput(args: GetGatewaySmbUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewaySmbUsersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getGatewaySmbUsers:getGatewaySmbUsers", {
         "gatewayId": args.gatewayId,

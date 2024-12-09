@@ -81,7 +81,7 @@ export interface GetProductResult {
  * export const firstProductPackageVersion = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.packageVersions?.[0]?.packageVersion);
  * ```
  */
-export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductResult> {
+export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProductResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:marketplace/getProduct:getProduct", {
         "availableRegion": args.availableRegion,

@@ -99,7 +99,7 @@ export interface GetServerBackupPlansResult {
  * export const hbrServerBackupPlanId1 = ids.then(ids => ids.plans?.[0]?.id);
  * ```
  */
-export function getServerBackupPlansOutput(args?: GetServerBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerBackupPlansResult> {
+export function getServerBackupPlansOutput(args?: GetServerBackupPlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerBackupPlansResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getServerBackupPlans:getServerBackupPlans", {

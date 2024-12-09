@@ -140,7 +140,7 @@ export interface GetDhcpOptionsSetsResult {
  * export const vpcDhcpOptionsSetId5 = status.then(status => status.sets?.[0]?.id);
  * ```
  */
-export function getDhcpOptionsSetsOutput(args?: GetDhcpOptionsSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDhcpOptionsSetsResult> {
+export function getDhcpOptionsSetsOutput(args?: GetDhcpOptionsSetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDhcpOptionsSetsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getDhcpOptionsSets:getDhcpOptionsSets", {

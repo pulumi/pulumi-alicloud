@@ -133,7 +133,7 @@ export interface GetAclsResult {
  * * `protocol`      - the listener protocol (such as tcp/udp/http/https, etc).
  * * `aclType`      - the type of acl (such as white/black).
  */
-export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
+export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAclsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getAcls:getAcls", {

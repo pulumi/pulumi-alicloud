@@ -116,7 +116,7 @@ export interface GetTransitRouterMulticastDomainPeerMembersResult {
  * export const alicloudCenTransitRouterMulticastDomainPeerMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
  * ```
  */
-export function getTransitRouterMulticastDomainPeerMembersOutput(args: GetTransitRouterMulticastDomainPeerMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainPeerMembersResult> {
+export function getTransitRouterMulticastDomainPeerMembersOutput(args: GetTransitRouterMulticastDomainPeerMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterMulticastDomainPeerMembersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterMulticastDomainPeerMembers:getTransitRouterMulticastDomainPeerMembers", {
         "ids": args.ids,

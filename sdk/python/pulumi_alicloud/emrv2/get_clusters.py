@@ -269,7 +269,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
                         payment_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                         tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClustersResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClustersResult]:
     """
     This data source provides the Emr Clusters of the current Alibaba Cloud user.
 
@@ -300,7 +300,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     __args__['paymentTypes'] = payment_types
     __args__['resourceGroupId'] = resource_group_id
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:emrv2/getClusters:getClusters', __args__, opts=opts, typ=GetClustersResult)
     return __ret__.apply(lambda __response__: GetClustersResult(
         cluster_name=pulumi.get(__response__, 'cluster_name'),

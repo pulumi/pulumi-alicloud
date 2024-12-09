@@ -188,7 +188,7 @@ def get_application_infos_output(dimensions: Optional[pulumi.Input[Optional[Sequ
                                  quota_action_code: Optional[pulumi.Input[Optional[str]]] = None,
                                  quota_category: Optional[pulumi.Input[Optional[str]]] = None,
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationInfosResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationInfosResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -202,7 +202,7 @@ def get_application_infos_output(dimensions: Optional[pulumi.Input[Optional[Sequ
     __args__['quotaActionCode'] = quota_action_code
     __args__['quotaCategory'] = quota_category
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:quotas/getApplicationInfos:getApplicationInfos', __args__, opts=opts, typ=GetApplicationInfosResult)
     return __ret__.apply(lambda __response__: GetApplicationInfosResult(
         applications=pulumi.get(__response__, 'applications'),

@@ -144,7 +144,7 @@ def get_host_ecs_level_infos_output(db_type: Optional[pulumi.Input[str]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                     storage_type: Optional[pulumi.Input[str]] = None,
                                     zone_id: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostEcsLevelInfosResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostEcsLevelInfosResult]:
     """
     This data source provides the Cddc Host Ecs Level Infos of the current Alibaba Cloud user.
 
@@ -163,7 +163,7 @@ def get_host_ecs_level_infos_output(db_type: Optional[pulumi.Input[str]] = None,
     __args__['outputFile'] = output_file
     __args__['storageType'] = storage_type
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cddc/getHostEcsLevelInfos:getHostEcsLevelInfos', __args__, opts=opts, typ=GetHostEcsLevelInfosResult)
     return __ret__.apply(lambda __response__: GetHostEcsLevelInfosResult(
         db_type=pulumi.get(__response__, 'db_type'),

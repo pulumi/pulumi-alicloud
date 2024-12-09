@@ -159,7 +159,7 @@ export interface GetStackInstancesResult {
  * export const rosStackInstanceId4 = accountId.then(accountId => accountId.instances?.[0]?.id);
  * ```
  */
-export function getStackInstancesOutput(args: GetStackInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStackInstancesResult> {
+export function getStackInstancesOutput(args: GetStackInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStackInstancesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ros/getStackInstances:getStackInstances", {
         "enableDetails": args.enableDetails,

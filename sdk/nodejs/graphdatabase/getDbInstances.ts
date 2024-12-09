@@ -117,7 +117,7 @@ export interface GetDbInstancesResult {
  * export const graphDatabaseDbInstanceId3 = description.then(description => description.instances?.[0]?.id);
  * ```
  */
-export function getDbInstancesOutput(args?: GetDbInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancesResult> {
+export function getDbInstancesOutput(args?: GetDbInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:graphdatabase/getDbInstances:getDbInstances", {

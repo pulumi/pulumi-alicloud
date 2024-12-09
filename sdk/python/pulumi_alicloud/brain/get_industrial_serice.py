@@ -105,7 +105,7 @@ def get_industrial_serice(enable: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
 def get_industrial_serice_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIndustrialSericeResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIndustrialSericeResult]:
     """
     Using this data source can open Brain Industrial service automatically. If the service has been opened, it will return opened.
 
@@ -131,7 +131,7 @@ def get_industrial_serice_output(enable: Optional[pulumi.Input[Optional[str]]] =
     """
     __args__ = dict()
     __args__['enable'] = enable
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:brain/getIndustrialSerice:getIndustrialSerice', __args__, opts=opts, typ=GetIndustrialSericeResult)
     return __ret__.apply(lambda __response__: GetIndustrialSericeResult(
         enable=pulumi.get(__response__, 'enable'),

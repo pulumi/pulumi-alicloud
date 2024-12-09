@@ -95,7 +95,7 @@ export interface GetVbrPconnAssociationsResult {
  * export const alicloudExpressConnectVbrPconnAssociationExampleId = _default.then(_default => _default.associations?.[0]?.id);
  * ```
  */
-export function getVbrPconnAssociationsOutput(args?: GetVbrPconnAssociationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVbrPconnAssociationsResult> {
+export function getVbrPconnAssociationsOutput(args?: GetVbrPconnAssociationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVbrPconnAssociationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:expressconnect/getVbrPconnAssociations:getVbrPconnAssociations", {

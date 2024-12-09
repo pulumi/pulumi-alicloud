@@ -106,7 +106,7 @@ export interface GetControlPoliciesResult {
  * export const firstResourceManagerControlPolicyId = example.then(example => example.policies?.[0]?.id);
  * ```
  */
-export function getControlPoliciesOutput(args?: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPoliciesResult> {
+export function getControlPoliciesOutput(args?: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetControlPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getControlPolicies:getControlPolicies", {

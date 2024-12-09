@@ -180,7 +180,7 @@ def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
                                 plan_id: Optional[pulumi.Input[Optional[str]]] = None,
                                 plan_name: Optional[pulumi.Input[Optional[str]]] = None,
                                 vault_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOtsBackupPlansResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOtsBackupPlansResult]:
     """
     This data source provides the Hbr OtsBackupPlans of the current Alibaba Cloud user.
 
@@ -213,7 +213,7 @@ def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     __args__['planId'] = plan_id
     __args__['planName'] = plan_name
     __args__['vaultId'] = vault_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getOtsBackupPlans:getOtsBackupPlans', __args__, opts=opts, typ=GetOtsBackupPlansResult)
     return __ret__.apply(lambda __response__: GetOtsBackupPlansResult(
         id=pulumi.get(__response__, 'id'),

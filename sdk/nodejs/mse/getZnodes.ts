@@ -125,7 +125,7 @@ export interface GetZnodesResult {
  * export const mseZnodeId2 = nameRegex.then(nameRegex => nameRegex.znodes?.[0]?.id);
  * ```
  */
-export function getZnodesOutput(args: GetZnodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZnodesResult> {
+export function getZnodesOutput(args: GetZnodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZnodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mse/getZnodes:getZnodes", {
         "acceptLanguage": args.acceptLanguage,

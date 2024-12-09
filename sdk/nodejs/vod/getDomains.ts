@@ -140,7 +140,7 @@ export interface GetDomainsResult {
  * export const vodDomain = _default.apply(_default => _default.domains?.[0]);
  * ```
  */
-export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vod/getDomains:getDomains", {

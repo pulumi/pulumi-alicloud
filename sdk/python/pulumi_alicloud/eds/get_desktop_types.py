@@ -184,7 +184,7 @@ def get_desktop_types_output(cpu_count: Optional[pulumi.Input[Optional[int]]] = 
                              memory_size: Optional[pulumi.Input[Optional[int]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDesktopTypesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDesktopTypesResult]:
     """
     This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.
 
@@ -219,7 +219,7 @@ def get_desktop_types_output(cpu_count: Optional[pulumi.Input[Optional[int]]] = 
     __args__['memorySize'] = memory_size
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getDesktopTypes:getDesktopTypes', __args__, opts=opts, typ=GetDesktopTypesResult)
     return __ret__.apply(lambda __response__: GetDesktopTypesResult(
         cpu_count=pulumi.get(__response__, 'cpu_count'),

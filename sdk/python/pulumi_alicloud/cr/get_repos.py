@@ -174,7 +174,7 @@ def get_repos_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
                      name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                      namespace: Optional[pulumi.Input[Optional[str]]] = None,
                      output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReposResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReposResult]:
     """
     This data source provides a list Container Registry repositories on Alibaba Cloud.
 
@@ -203,7 +203,7 @@ def get_repos_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     __args__['nameRegex'] = name_regex
     __args__['namespace'] = namespace
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cr/getRepos:getRepos', __args__, opts=opts, typ=GetReposResult)
     return __ret__.apply(lambda __response__: GetReposResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

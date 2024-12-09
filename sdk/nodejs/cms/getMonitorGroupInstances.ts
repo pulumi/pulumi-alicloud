@@ -37,7 +37,7 @@ export interface GetMonitorGroupInstancesResult {
     readonly keyword?: string;
     readonly outputFile?: string;
 }
-export function getMonitorGroupInstancesOutput(args: GetMonitorGroupInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitorGroupInstancesResult> {
+export function getMonitorGroupInstancesOutput(args: GetMonitorGroupInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitorGroupInstancesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getMonitorGroupInstances:getMonitorGroupInstances", {
         "ids": args.ids,

@@ -134,7 +134,7 @@ def get_server_backup_plans(filters: Optional[Sequence[Union['GetServerBackupPla
 def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetServerBackupPlansFilterArgs', 'GetServerBackupPlansFilterArgsDict']]]]] = None,
                                    ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerBackupPlansResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerBackupPlansResult]:
     """
     This data source provides the Hbr Server Backup Plans of the current Alibaba Cloud user.
 
@@ -166,7 +166,7 @@ def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Seque
     __args__['filters'] = filters
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getServerBackupPlans:getServerBackupPlans', __args__, opts=opts, typ=GetServerBackupPlansResult)
     return __ret__.apply(lambda __response__: GetServerBackupPlansResult(
         filters=pulumi.get(__response__, 'filters'),

@@ -67,7 +67,7 @@ export interface GetKvAccountResult {
  * });
  * ```
  */
-export function getKvAccountOutput(args?: GetKvAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKvAccountResult> {
+export function getKvAccountOutput(args?: GetKvAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKvAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:dcdn/getKvAccount:getKvAccount", {

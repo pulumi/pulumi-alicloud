@@ -166,7 +166,7 @@ def get_nas_backup_plans_output(file_system_id: Optional[pulumi.Input[Optional[s
                                 name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                 vault_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNasBackupPlansResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNasBackupPlansResult]:
     """
     This data source provides the Hbr NasBackupPlans of the current Alibaba Cloud user.
 
@@ -197,7 +197,7 @@ def get_nas_backup_plans_output(file_system_id: Optional[pulumi.Input[Optional[s
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['vaultId'] = vault_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getNasBackupPlans:getNasBackupPlans', __args__, opts=opts, typ=GetNasBackupPlansResult)
     return __ret__.apply(lambda __response__: GetNasBackupPlansResult(
         file_system_id=pulumi.get(__response__, 'file_system_id'),

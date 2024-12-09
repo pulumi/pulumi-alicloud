@@ -124,7 +124,7 @@ export interface GetBaselineStrategiesResult {
  * export const alicloudThreatDetectionBaselineStrategyExampleId = defaultAlicloudThreatDetectionBaselineStrategys.strategys[0].id;
  * ```
  */
-export function getBaselineStrategiesOutput(args?: GetBaselineStrategiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaselineStrategiesResult> {
+export function getBaselineStrategiesOutput(args?: GetBaselineStrategiesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBaselineStrategiesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", {

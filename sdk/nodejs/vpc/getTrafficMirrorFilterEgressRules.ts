@@ -104,7 +104,7 @@ export interface GetTrafficMirrorFilterEgressRulesResult {
  * export const vpcTrafficMirrorFilterEgressRuleId2 = status.then(status => status.rules?.[0]?.id);
  * ```
  */
-export function getTrafficMirrorFilterEgressRulesOutput(args: GetTrafficMirrorFilterEgressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFilterEgressRulesResult> {
+export function getTrafficMirrorFilterEgressRulesOutput(args: GetTrafficMirrorFilterEgressRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTrafficMirrorFilterEgressRulesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules", {
         "ids": args.ids,

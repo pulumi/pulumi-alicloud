@@ -108,7 +108,7 @@ def get_enterprise_logic_databases(ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_enterprise_logic_databases_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnterpriseLogicDatabasesResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnterpriseLogicDatabasesResult]:
     """
     This data source provides DMS Enterprise Logic Database available to the user. [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 
@@ -121,7 +121,7 @@ def get_enterprise_logic_databases_output(ids: Optional[pulumi.Input[Optional[Se
     __args__ = dict()
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dms/getEnterpriseLogicDatabases:getEnterpriseLogicDatabases', __args__, opts=opts, typ=GetEnterpriseLogicDatabasesResult)
     return __ret__.apply(lambda __response__: GetEnterpriseLogicDatabasesResult(
         databases=pulumi.get(__response__, 'databases'),

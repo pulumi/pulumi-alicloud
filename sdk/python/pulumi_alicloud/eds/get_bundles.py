@@ -164,7 +164,7 @@ def get_bundles_output(bundle_ids: Optional[pulumi.Input[Optional[Sequence[str]]
                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                        name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBundlesResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBundlesResult]:
     """
     This data source provides the Ecd bundles of the current Alibaba Cloud user.
 
@@ -193,7 +193,7 @@ def get_bundles_output(bundle_ids: Optional[pulumi.Input[Optional[Sequence[str]]
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:eds/getBundles:getBundles', __args__, opts=opts, typ=GetBundlesResult)
     return __ret__.apply(lambda __response__: GetBundlesResult(
         bundle_ids=pulumi.get(__response__, 'bundle_ids'),

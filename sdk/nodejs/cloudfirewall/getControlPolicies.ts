@@ -152,7 +152,7 @@ export interface GetControlPoliciesResult {
  * });
  * ```
  */
-export function getControlPoliciesOutput(args: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlPoliciesResult> {
+export function getControlPoliciesOutput(args: GetControlPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetControlPoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getControlPolicies:getControlPolicies", {
         "aclAction": args.aclAction,

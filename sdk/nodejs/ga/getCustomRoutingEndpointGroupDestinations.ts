@@ -143,7 +143,7 @@ export interface GetCustomRoutingEndpointGroupDestinationsResult {
  * export const gaCustomRoutingEndpointGroupDestinationsId1 = ids.then(ids => ids.customRoutingEndpointGroupDestinations?.[0]?.id);
  * ```
  */
-export function getCustomRoutingEndpointGroupDestinationsOutput(args: GetCustomRoutingEndpointGroupDestinationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointGroupDestinationsResult> {
+export function getCustomRoutingEndpointGroupDestinationsOutput(args: GetCustomRoutingEndpointGroupDestinationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomRoutingEndpointGroupDestinationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getCustomRoutingEndpointGroupDestinations:getCustomRoutingEndpointGroupDestinations", {
         "acceleratorId": args.acceleratorId,

@@ -184,7 +184,7 @@ def get_listeners_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
                          load_balancer_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          status: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListenersResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListenersResult]:
     """
     This data source provides the Application Load Balancer (ALB) Listeners of the current Alibaba Cloud user.
 
@@ -219,7 +219,7 @@ def get_listeners_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     __args__['loadBalancerIds'] = load_balancer_ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:alb/getListeners:getListeners', __args__, opts=opts, typ=GetListenersResult)
     return __ret__.apply(lambda __response__: GetListenersResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

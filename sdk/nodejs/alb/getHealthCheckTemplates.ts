@@ -106,7 +106,7 @@ export interface GetHealthCheckTemplatesResult {
  * export const albHealthCheckTemplateId2 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
  * ```
  */
-export function getHealthCheckTemplatesOutput(args?: GetHealthCheckTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHealthCheckTemplatesResult> {
+export function getHealthCheckTemplatesOutput(args?: GetHealthCheckTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHealthCheckTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:alb/getHealthCheckTemplates:getHealthCheckTemplates", {

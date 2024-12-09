@@ -194,7 +194,7 @@ def get_event_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
                            page_number: Optional[pulumi.Input[Optional[int]]] = None,
                            page_size: Optional[pulumi.Input[Optional[int]]] = None,
                            status: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEventRulesResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEventRulesResult]:
     """
     This data source provides the Cms Event Rules of the current Alibaba Cloud user.
 
@@ -229,7 +229,7 @@ def get_event_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cms/getEventRules:getEventRules', __args__, opts=opts, typ=GetEventRulesResult)
     return __ret__.apply(lambda __response__: GetEventRulesResult(
         id=pulumi.get(__response__, 'id'),

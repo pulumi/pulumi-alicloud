@@ -119,7 +119,7 @@ export interface GetDbClustersResult {
  * export const dbCluster = _default.apply(_default => _default.ids?.[0]);
  * ```
  */
-export function getDbClustersOutput(args?: GetDbClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbClustersResult> {
+export function getDbClustersOutput(args?: GetDbClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:clickhouse/getDbClusters:getDbClusters", {

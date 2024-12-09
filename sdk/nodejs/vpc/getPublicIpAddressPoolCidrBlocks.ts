@@ -124,7 +124,7 @@ export interface GetPublicIpAddressPoolCidrBlocksResult {
  * export const vpcPublicIpAddressPoolCidrBlockId2 = cidrBlock.then(cidrBlock => cidrBlock.blocks?.[0]?.id);
  * ```
  */
-export function getPublicIpAddressPoolCidrBlocksOutput(args: GetPublicIpAddressPoolCidrBlocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIpAddressPoolCidrBlocksResult> {
+export function getPublicIpAddressPoolCidrBlocksOutput(args: GetPublicIpAddressPoolCidrBlocksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPublicIpAddressPoolCidrBlocksResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", {
         "cidrBlock": args.cidrBlock,

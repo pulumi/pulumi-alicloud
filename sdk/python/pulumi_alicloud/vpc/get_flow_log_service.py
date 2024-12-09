@@ -105,7 +105,7 @@ def get_flow_log_service(enable: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
 def get_flow_log_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFlowLogServiceResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFlowLogServiceResult]:
     """
     Using this data source can open Vpc Flow Log service automatically. If the service has been opened, it will return opened.
 
@@ -131,7 +131,7 @@ def get_flow_log_service_output(enable: Optional[pulumi.Input[Optional[str]]] = 
     """
     __args__ = dict()
     __args__['enable'] = enable
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getFlowLogService:getFlowLogService', __args__, opts=opts, typ=GetFlowLogServiceResult)
     return __ret__.apply(lambda __response__: GetFlowLogServiceResult(
         enable=pulumi.get(__response__, 'enable'),

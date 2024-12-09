@@ -165,7 +165,7 @@ def get_scaling_configurations_output(ids: Optional[pulumi.Input[Optional[Sequen
                                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       scaling_group_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScalingConfigurationsResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScalingConfigurationsResult]:
     """
     This data source provides available scaling configuration resources.
 
@@ -195,7 +195,7 @@ def get_scaling_configurations_output(ids: Optional[pulumi.Input[Optional[Sequen
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['scalingGroupId'] = scaling_group_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ess/getScalingConfigurations:getScalingConfigurations', __args__, opts=opts, typ=GetScalingConfigurationsResult)
     return __ret__.apply(lambda __response__: GetScalingConfigurationsResult(
         configurations=pulumi.get(__response__, 'configurations'),

@@ -121,7 +121,7 @@ export interface GetBasicAcceleratorsResult {
  * export const gaBasicAcceleratorId2 = nameRegex.then(nameRegex => nameRegex.accelerators?.[0]?.id);
  * ```
  */
-export function getBasicAcceleratorsOutput(args?: GetBasicAcceleratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAcceleratorsResult> {
+export function getBasicAcceleratorsOutput(args?: GetBasicAcceleratorsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBasicAcceleratorsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getBasicAccelerators:getBasicAccelerators", {

@@ -167,7 +167,7 @@ export interface GetKubernetesVersionResult {
  * export const metadata = _default.then(_default => _default.metadatas);
  * ```
  */
-export function getKubernetesVersionOutput(args: GetKubernetesVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesVersionResult> {
+export function getKubernetesVersionOutput(args: GetKubernetesVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesVersion:getKubernetesVersion", {
         "clusterType": args.clusterType,

@@ -228,7 +228,7 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
                                   quota_action_code: Optional[pulumi.Input[Optional[str]]] = None,
                                   quota_category: Optional[pulumi.Input[Optional[str]]] = None,
                                   status: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetQuotaApplicationsResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotaApplicationsResult]:
     """
     This data source provides the Quotas Quota Applications of the current Alibaba Cloud user.
 
@@ -282,7 +282,7 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
     __args__['quotaActionCode'] = quota_action_code
     __args__['quotaCategory'] = quota_category
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:quotas/getQuotaApplications:getQuotaApplications', __args__, opts=opts, typ=GetQuotaApplicationsResult)
     return __ret__.apply(lambda __response__: GetQuotaApplicationsResult(
         applications=pulumi.get(__response__, 'applications'),

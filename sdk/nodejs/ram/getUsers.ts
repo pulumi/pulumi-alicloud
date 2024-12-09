@@ -203,7 +203,7 @@ export interface GetUsersResult {
  * export const firstUserId = usersDs.apply(usersDs => usersDs.users?.[0]?.id);
  * ```
  */
-export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ram/getUsers:getUsers", {

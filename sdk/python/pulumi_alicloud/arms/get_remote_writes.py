@@ -167,7 +167,7 @@ def get_remote_writes_output(cluster_id: Optional[pulumi.Input[str]] = None,
                              ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                              name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRemoteWritesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRemoteWritesResult]:
     """
     This data source provides the Arms Remote Writes of the current Alibaba Cloud user.
 
@@ -202,7 +202,7 @@ def get_remote_writes_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:arms/getRemoteWrites:getRemoteWrites', __args__, opts=opts, typ=GetRemoteWritesResult)
     return __ret__.apply(lambda __response__: GetRemoteWritesResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

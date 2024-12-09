@@ -184,7 +184,7 @@ def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[s
                                    name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    strategy_ids: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBaselineStrategiesResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBaselineStrategiesResult]:
     """
     This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
 
@@ -222,7 +222,7 @@ def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[s
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['strategyIds'] = strategy_ids
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies', __args__, opts=opts, typ=GetBaselineStrategiesResult)
     return __ret__.apply(lambda __response__: GetBaselineStrategiesResult(
         custom_type=pulumi.get(__response__, 'custom_type'),

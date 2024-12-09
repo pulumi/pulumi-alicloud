@@ -150,7 +150,7 @@ def get_resource_groups_output(db_cluster_id: Optional[pulumi.Input[str]] = None
                                group_name: Optional[pulumi.Input[Optional[str]]] = None,
                                ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourceGroupsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceGroupsResult]:
     """
     This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
 
@@ -178,7 +178,7 @@ def get_resource_groups_output(db_cluster_id: Optional[pulumi.Input[str]] = None
     __args__['groupName'] = group_name
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:adb/getResourceGroups:getResourceGroups', __args__, opts=opts, typ=GetResourceGroupsResult)
     return __ret__.apply(lambda __response__: GetResourceGroupsResult(
         db_cluster_id=pulumi.get(__response__, 'db_cluster_id'),

@@ -92,7 +92,7 @@ export interface GetModifyParameterLogsResult {
  * });
  * ```
  */
-export function getModifyParameterLogsOutput(args: GetModifyParameterLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModifyParameterLogsResult> {
+export function getModifyParameterLogsOutput(args: GetModifyParameterLogsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetModifyParameterLogsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", {
         "dbInstanceId": args.dbInstanceId,

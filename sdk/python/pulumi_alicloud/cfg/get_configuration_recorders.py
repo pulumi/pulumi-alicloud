@@ -103,7 +103,7 @@ def get_configuration_recorders(output_file: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         recorders=pulumi.get(__ret__, 'recorders'))
 def get_configuration_recorders_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConfigurationRecordersResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConfigurationRecordersResult]:
     """
     This data source provides the Config Configuration Recorders of the current Alibaba Cloud user.
 
@@ -126,7 +126,7 @@ def get_configuration_recorders_output(output_file: Optional[pulumi.Input[Option
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders', __args__, opts=opts, typ=GetConfigurationRecordersResult)
     return __ret__.apply(lambda __response__: GetConfigurationRecordersResult(
         id=pulumi.get(__response__, 'id'),

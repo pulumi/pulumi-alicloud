@@ -94,7 +94,7 @@ export interface GetSimpleOfficeSitesResult {
  * export const desktopAccessType = _default.then(_default => _default.sites?.[0]?.desktopAccessType);
  * ```
  */
-export function getSimpleOfficeSitesOutput(args?: GetSimpleOfficeSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSimpleOfficeSitesResult> {
+export function getSimpleOfficeSitesOutput(args?: GetSimpleOfficeSitesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSimpleOfficeSitesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eds/getSimpleOfficeSites:getSimpleOfficeSites", {

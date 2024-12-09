@@ -111,7 +111,7 @@ export interface GetExecutionsResult {
  * export const fnfExecutionId1 = idsAlicloudFnFExecutions.executions[0].id;
  * ```
  */
-export function getExecutionsOutput(args: GetExecutionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionsResult> {
+export function getExecutionsOutput(args: GetExecutionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExecutionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:fnf/getExecutions:getExecutions", {
         "enableDetails": args.enableDetails,

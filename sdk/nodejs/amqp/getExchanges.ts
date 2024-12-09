@@ -119,7 +119,7 @@ export interface GetExchangesResult {
  * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges?.[0]?.id);
  * ```
  */
-export function getExchangesOutput(args: GetExchangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExchangesResult> {
+export function getExchangesOutput(args: GetExchangesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExchangesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:amqp/getExchanges:getExchanges", {
         "ids": args.ids,

@@ -146,7 +146,7 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
 def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                    topic_name: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTopicSubscriptionsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTopicSubscriptionsResult]:
     """
     This data source provides a list of MNS topic subscriptions in an Alibaba Cloud account according to the specified parameters.
 
@@ -172,7 +172,7 @@ def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[s
     __args__['namePrefix'] = name_prefix
     __args__['outputFile'] = output_file
     __args__['topicName'] = topic_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mns/getTopicSubscriptions:getTopicSubscriptions', __args__, opts=opts, typ=GetTopicSubscriptionsResult)
     return __ret__.apply(lambda __response__: GetTopicSubscriptionsResult(
         id=pulumi.get(__response__, 'id'),

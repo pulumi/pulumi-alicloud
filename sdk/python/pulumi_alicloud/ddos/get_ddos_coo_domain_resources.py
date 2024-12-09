@@ -142,7 +142,7 @@ def get_ddos_coo_domain_resources_output(ids: Optional[pulumi.Input[Optional[Seq
                                          instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                          query_domain_pattern: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDdosCooDomainResourcesResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDdosCooDomainResourcesResult]:
     """
     This data source provides the Ddoscoo Domain Resources of the current Alibaba Cloud user.
 
@@ -171,7 +171,7 @@ def get_ddos_coo_domain_resources_output(ids: Optional[pulumi.Input[Optional[Seq
     __args__['instanceIds'] = instance_ids
     __args__['outputFile'] = output_file
     __args__['queryDomainPattern'] = query_domain_pattern
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources', __args__, opts=opts, typ=GetDdosCooDomainResourcesResult)
     return __ret__.apply(lambda __response__: GetDdosCooDomainResourcesResult(
         id=pulumi.get(__response__, 'id'),

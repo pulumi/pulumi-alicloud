@@ -97,7 +97,7 @@ export interface GetInstanceAttachmentsResult {
  * ```
  */
 /** @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
-export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
+export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceAttachmentsResult> {
     pulumi.log.warn("getInstanceAttachments is deprecated: alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oss/getInstanceAttachments:getInstanceAttachments", {

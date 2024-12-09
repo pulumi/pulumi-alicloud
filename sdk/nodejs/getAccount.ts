@@ -45,7 +45,7 @@ export interface GetAccountResult {
  * export const currentAccountId = current.then(current => current.id);
  * ```
  */
-export function getAccountOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
+export function getAccountOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:index/getAccount:getAccount", {
     }, opts);

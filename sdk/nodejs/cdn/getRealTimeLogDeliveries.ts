@@ -81,7 +81,7 @@ export interface GetRealTimeLogDeliveriesResult {
  * export const cdnRealTimeLogDelivery1 = example.then(example => example.deliveries?.[0]?.id);
  * ```
  */
-export function getRealTimeLogDeliveriesOutput(args: GetRealTimeLogDeliveriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRealTimeLogDeliveriesResult> {
+export function getRealTimeLogDeliveriesOutput(args: GetRealTimeLogDeliveriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRealTimeLogDeliveriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cdn/getRealTimeLogDeliveries:getRealTimeLogDeliveries", {
         "domain": args.domain,

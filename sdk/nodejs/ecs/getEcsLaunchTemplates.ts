@@ -296,7 +296,7 @@ export interface GetEcsLaunchTemplatesResult {
  * export const firstEcsLaunchTemplateId = example.apply(example => example.templates?.[0]?.id);
  * ```
  */
-export function getEcsLaunchTemplatesOutput(args?: GetEcsLaunchTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsLaunchTemplatesResult> {
+export function getEcsLaunchTemplatesOutput(args?: GetEcsLaunchTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsLaunchTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", {

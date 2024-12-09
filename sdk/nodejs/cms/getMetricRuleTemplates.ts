@@ -134,7 +134,7 @@ export interface GetMetricRuleTemplatesResult {
  * export const cmsMetricRuleTemplateId4 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
  * ```
  */
-export function getMetricRuleTemplatesOutput(args?: GetMetricRuleTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricRuleTemplatesResult> {
+export function getMetricRuleTemplatesOutput(args?: GetMetricRuleTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetricRuleTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", {

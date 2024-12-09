@@ -118,7 +118,7 @@ export interface GetNetworkAclsResult {
  * export const firstNetworkAclId = example.then(example => example.acls?.[0]?.id);
  * ```
  */
-export function getNetworkAclsOutput(args?: GetNetworkAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAclsResult> {
+export function getNetworkAclsOutput(args?: GetNetworkAclsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkAclsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getNetworkAcls:getNetworkAcls", {

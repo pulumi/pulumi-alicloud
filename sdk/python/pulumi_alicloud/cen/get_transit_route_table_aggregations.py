@@ -199,7 +199,7 @@ def get_transit_route_table_aggregations_output(ids: Optional[pulumi.Input[Optio
                                                 status: Optional[pulumi.Input[Optional[str]]] = None,
                                                 transit_route_table_aggregation_cidr: Optional[pulumi.Input[Optional[str]]] = None,
                                                 transit_route_table_id: Optional[pulumi.Input[str]] = None,
-                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouteTableAggregationsResult]:
+                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouteTableAggregationsResult]:
     """
     This data source provides the Cen Transit Route Table Aggregations of the current Alibaba Cloud user.
 
@@ -236,7 +236,7 @@ def get_transit_route_table_aggregations_output(ids: Optional[pulumi.Input[Optio
     __args__['status'] = status
     __args__['transitRouteTableAggregationCidr'] = transit_route_table_aggregation_cidr
     __args__['transitRouteTableId'] = transit_route_table_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations', __args__, opts=opts, typ=GetTransitRouteTableAggregationsResult)
     return __ret__.apply(lambda __response__: GetTransitRouteTableAggregationsResult(
         id=pulumi.get(__response__, 'id'),

@@ -97,7 +97,7 @@ export interface GetMailAddressesResult {
  * export const directMailMailAddressId1 = ids.then(ids => ids.addresses?.[0]?.id);
  * ```
  */
-export function getMailAddressesOutput(args?: GetMailAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMailAddressesResult> {
+export function getMailAddressesOutput(args?: GetMailAddressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMailAddressesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:directmail/getMailAddresses:getMailAddresses", {

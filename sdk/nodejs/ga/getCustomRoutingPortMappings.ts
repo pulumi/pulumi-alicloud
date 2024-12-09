@@ -117,7 +117,7 @@ export interface GetCustomRoutingPortMappingsResult {
  * export const gaCustomRoutingPortMappingsAcceleratorId1 = _default.then(_default => _default.customRoutingPortMappings?.[0]?.acceleratorId);
  * ```
  */
-export function getCustomRoutingPortMappingsOutput(args: GetCustomRoutingPortMappingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingPortMappingsResult> {
+export function getCustomRoutingPortMappingsOutput(args: GetCustomRoutingPortMappingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomRoutingPortMappingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getCustomRoutingPortMappings:getCustomRoutingPortMappings", {
         "acceleratorId": args.acceleratorId,

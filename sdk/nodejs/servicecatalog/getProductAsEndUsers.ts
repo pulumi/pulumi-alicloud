@@ -99,7 +99,7 @@ export interface GetProductAsEndUsersResult {
  * export const alicloudServiceCatalogProductAsEndUserExampleId = _default.then(_default => _default.users?.[0]?.id);
  * ```
  */
-export function getProductAsEndUsersOutput(args?: GetProductAsEndUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductAsEndUsersResult> {
+export function getProductAsEndUsersOutput(args?: GetProductAsEndUsersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProductAsEndUsersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", {

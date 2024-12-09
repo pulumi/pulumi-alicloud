@@ -148,7 +148,7 @@ def get_scim_server_credentials_output(directory_id: Optional[pulumi.Input[str]]
                                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                        status: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScimServerCredentialsResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScimServerCredentialsResult]:
     """
     This data source provides the Cloud Sso Scim Server Credentials of the current Alibaba Cloud user.
 
@@ -183,7 +183,7 @@ def get_scim_server_credentials_output(directory_id: Optional[pulumi.Input[str]]
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials', __args__, opts=opts, typ=GetScimServerCredentialsResult)
     return __ret__.apply(lambda __response__: GetScimServerCredentialsResult(
         credentials=pulumi.get(__response__, 'credentials'),

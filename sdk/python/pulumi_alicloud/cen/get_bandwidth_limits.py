@@ -113,7 +113,7 @@ def get_bandwidth_limits(instance_ids: Optional[Sequence[str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_bandwidth_limits_output(instance_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                 output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBandwidthLimitsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBandwidthLimitsResult]:
     """
     This data source provides CEN Bandwidth Limits available to the user.
 
@@ -134,7 +134,7 @@ def get_bandwidth_limits_output(instance_ids: Optional[pulumi.Input[Optional[Seq
     __args__ = dict()
     __args__['instanceIds'] = instance_ids
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getBandwidthLimits:getBandwidthLimits', __args__, opts=opts, typ=GetBandwidthLimitsResult)
     return __ret__.apply(lambda __response__: GetBandwidthLimitsResult(
         id=pulumi.get(__response__, 'id'),

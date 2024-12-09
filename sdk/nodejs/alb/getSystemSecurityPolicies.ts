@@ -88,7 +88,7 @@ export interface GetSystemSecurityPoliciesResult {
  * export const albSystemSecurityPolicyId1 = defaults.then(defaults => defaults.policies?.[0]?.id);
  * ```
  */
-export function getSystemSecurityPoliciesOutput(args?: GetSystemSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemSecurityPoliciesResult> {
+export function getSystemSecurityPoliciesOutput(args?: GetSystemSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSystemSecurityPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:alb/getSystemSecurityPolicies:getSystemSecurityPolicies", {

@@ -91,7 +91,7 @@ export interface GetDdosCooDomainResourcesResult {
  * export const firstDdoscooDomainResourceId = example.then(example => example.resources?.[0]?.id);
  * ```
  */
-export function getDdosCooDomainResourcesOutput(args?: GetDdosCooDomainResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooDomainResourcesResult> {
+export function getDdosCooDomainResourcesOutput(args?: GetDdosCooDomainResourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDdosCooDomainResourcesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ddos/getDdosCooDomainResources:getDdosCooDomainResources", {

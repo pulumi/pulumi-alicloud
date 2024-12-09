@@ -151,7 +151,7 @@ export interface GetBaselinesResult {
  * export const alicloudGovernanceBaselineExampleId = _default.apply(_default => _default.baselines?.[0]?.baselineId);
  * ```
  */
-export function getBaselinesOutput(args?: GetBaselinesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaselinesResult> {
+export function getBaselinesOutput(args?: GetBaselinesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBaselinesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:governance/getBaselines:getBaselines", {

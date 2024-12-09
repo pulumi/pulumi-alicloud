@@ -186,7 +186,7 @@ def get_baselines(ids: Optional[Sequence[str]] = None,
 def get_baselines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBaselinesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBaselinesResult]:
     """
     This data source provides Governance Baseline available to the user.[What is Baseline](https://next.api.aliyun.com/document/governance/2021-01-20/CreateAccountFactoryBaseline)
 
@@ -252,7 +252,7 @@ def get_baselines_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:governance/getBaselines:getBaselines', __args__, opts=opts, typ=GetBaselinesResult)
     return __ret__.apply(lambda __response__: GetBaselinesResult(
         baselines=pulumi.get(__response__, 'baselines'),

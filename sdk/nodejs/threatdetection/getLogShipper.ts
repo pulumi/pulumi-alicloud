@@ -98,7 +98,7 @@ export interface GetLogShipperResult {
  * });
  * ```
  */
-export function getLogShipperOutput(args?: GetLogShipperOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogShipperResult> {
+export function getLogShipperOutput(args?: GetLogShipperOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogShipperResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getLogShipper:getLogShipper", {

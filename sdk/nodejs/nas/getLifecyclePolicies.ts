@@ -109,7 +109,7 @@ export interface GetLifecyclePoliciesResult {
  * export const nasLifecyclePolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
  */
-export function getLifecyclePoliciesOutput(args: GetLifecyclePoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecyclePoliciesResult> {
+export function getLifecyclePoliciesOutput(args: GetLifecyclePoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLifecyclePoliciesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", {
         "fileSystemId": args.fileSystemId,

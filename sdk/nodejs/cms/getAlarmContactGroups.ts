@@ -84,7 +84,7 @@ export interface GetAlarmContactGroupsResult {
  * });
  * ```
  */
-export function getAlarmContactGroupsOutput(args?: GetAlarmContactGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactGroupsResult> {
+export function getAlarmContactGroupsOutput(args?: GetAlarmContactGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlarmContactGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getAlarmContactGroups:getAlarmContactGroups", {

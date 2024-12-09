@@ -177,7 +177,7 @@ def get_ca_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaCertificatesResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCaCertificatesResult]:
     """
     This data source provides the CA certificate list.
 
@@ -204,7 +204,7 @@ def get_ca_certificates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     __args__['outputFile'] = output_file
     __args__['resourceGroupId'] = resource_group_id
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getCaCertificates:getCaCertificates', __args__, opts=opts, typ=GetCaCertificatesResult)
     return __ret__.apply(lambda __response__: GetCaCertificatesResult(
         certificates=pulumi.get(__response__, 'certificates'),

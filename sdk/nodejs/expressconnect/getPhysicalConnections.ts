@@ -106,7 +106,7 @@ export interface GetPhysicalConnectionsResult {
  * export const expressConnectPhysicalConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
  * ```
  */
-export function getPhysicalConnectionsOutput(args?: GetPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhysicalConnectionsResult> {
+export function getPhysicalConnectionsOutput(args?: GetPhysicalConnectionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPhysicalConnectionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", {

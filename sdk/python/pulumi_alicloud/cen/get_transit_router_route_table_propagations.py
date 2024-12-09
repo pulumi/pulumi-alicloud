@@ -152,7 +152,7 @@ def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Inpu
                                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                        status: Optional[pulumi.Input[Optional[str]]] = None,
                                                        transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
-                                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterRouteTablePropagationsResult]:
+                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterRouteTablePropagationsResult]:
     """
     This data source provides CEN Transit Router Route Table Propagations available to the user.[What is Cen Transit Router Route Table Propagations](https://help.aliyun.com/document_detail/261245.html)
 
@@ -179,7 +179,7 @@ def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Inpu
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['transitRouterRouteTableId'] = transit_router_route_table_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterRouteTablePropagations:getTransitRouterRouteTablePropagations', __args__, opts=opts, typ=GetTransitRouterRouteTablePropagationsResult)
     return __ret__.apply(lambda __response__: GetTransitRouterRouteTablePropagationsResult(
         id=pulumi.get(__response__, 'id'),

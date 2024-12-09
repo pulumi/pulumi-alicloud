@@ -157,7 +157,7 @@ def get_apps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                     name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
                     tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppsResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppsResult]:
     """
     This data source provides the apps of the current Alibaba Cloud user.
 
@@ -182,7 +182,7 @@ def get_apps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:apigateway/getApps:getApps', __args__, opts=opts, typ=GetAppsResult)
     return __ret__.apply(lambda __response__: GetAppsResult(
         apps=pulumi.get(__response__, 'apps'),

@@ -103,7 +103,7 @@ export interface GetInterRegionTrafficQosQueuesResult {
  * export const alicloudCenInterRegionTrafficQosQueueExampleId = _default.then(_default => _default.queues?.[0]?.id);
  * ```
  */
-export function getInterRegionTrafficQosQueuesOutput(args: GetInterRegionTrafficQosQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterRegionTrafficQosQueuesResult> {
+export function getInterRegionTrafficQosQueuesOutput(args: GetInterRegionTrafficQosQueuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInterRegionTrafficQosQueuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getInterRegionTrafficQosQueues:getInterRegionTrafficQosQueues", {
         "ids": args.ids,

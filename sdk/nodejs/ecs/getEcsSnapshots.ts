@@ -163,7 +163,7 @@ export interface GetEcsSnapshotsResult {
  * export const firstEcsSnapshotId = example.then(example => example.snapshots?.[0]?.id);
  * ```
  */
-export function getEcsSnapshotsOutput(args?: GetEcsSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsSnapshotsResult> {
+export function getEcsSnapshotsOutput(args?: GetEcsSnapshotsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsSnapshotsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsSnapshots:getEcsSnapshots", {

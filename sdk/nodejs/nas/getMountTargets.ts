@@ -159,7 +159,7 @@ export interface GetMountTargetsResult {
  * export const theFirstMountTargetDomain = example.then(example => example.targets?.[0]?.id);
  * ```
  */
-export function getMountTargetsOutput(args: GetMountTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountTargetsResult> {
+export function getMountTargetsOutput(args: GetMountTargetsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMountTargetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:nas/getMountTargets:getMountTargets", {
         "accessGroupName": args.accessGroupName,

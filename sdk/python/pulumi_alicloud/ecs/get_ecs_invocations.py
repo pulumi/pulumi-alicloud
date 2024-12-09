@@ -182,7 +182,7 @@ def get_ecs_invocations_output(command_id: Optional[pulumi.Input[Optional[str]]]
                                output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                page_size: Optional[pulumi.Input[Optional[int]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEcsInvocationsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsInvocationsResult]:
     """
     This data source provides the Ecs Invocations of the current Alibaba Cloud user.
 
@@ -215,7 +215,7 @@ def get_ecs_invocations_output(command_id: Optional[pulumi.Input[Optional[str]]]
     __args__['outputFile'] = output_file
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEcsInvocations:getEcsInvocations', __args__, opts=opts, typ=GetEcsInvocationsResult)
     return __ret__.apply(lambda __response__: GetEcsInvocationsResult(
         command_id=pulumi.get(__response__, 'command_id'),

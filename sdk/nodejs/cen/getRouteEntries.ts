@@ -96,7 +96,7 @@ export interface GetRouteEntriesResult {
  * export const firstRouteEntriesRouteEntryCidrBlock = entry.then(entry => entry.entries?.[0]?.cidrBlock);
  * ```
  */
-export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteEntriesResult> {
+export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouteEntriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getRouteEntries:getRouteEntries", {
         "cidrBlock": args.cidrBlock,

@@ -202,7 +202,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
                             memory: Optional[pulumi.Input[Optional[int]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             platform: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerPlansResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerPlansResult]:
     """
     This data source provides the Simple Application Server Plans of the current Alibaba Cloud user.
 
@@ -243,7 +243,7 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
     __args__['memory'] = memory
     __args__['outputFile'] = output_file
     __args__['platform'] = platform
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:simpleapplicationserver/getServerPlans:getServerPlans', __args__, opts=opts, typ=GetServerPlansResult)
     return __ret__.apply(lambda __response__: GetServerPlansResult(
         bandwidth=pulumi.get(__response__, 'bandwidth'),

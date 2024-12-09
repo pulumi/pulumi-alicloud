@@ -127,7 +127,7 @@ export interface GetMonitorGroupsResult {
  * export const firstCmsMonitorGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
-export function getMonitorGroupsOutput(args?: GetMonitorGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMonitorGroupsResult> {
+export function getMonitorGroupsOutput(args?: GetMonitorGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMonitorGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cms/getMonitorGroups:getMonitorGroups", {

@@ -159,7 +159,7 @@ export interface GetRouterInterfacesResult {
  * export const firstRouterInterfaceId = routerInterfacesDs.then(routerInterfacesDs => routerInterfacesDs.interfaces?.[0]?.id);
  * ```
  */
-export function getRouterInterfacesOutput(args?: GetRouterInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterInterfacesResult> {
+export function getRouterInterfacesOutput(args?: GetRouterInterfacesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouterInterfacesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getRouterInterfaces:getRouterInterfaces", {

@@ -360,7 +360,7 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
                              segment_instance_id: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
                              tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEipAddressesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEipAddressesResult]:
     """
     This data source provides the Eip Addresses of the current Alibaba Cloud user.
 
@@ -417,7 +417,7 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
     __args__['segmentInstanceId'] = segment_instance_id
     __args__['status'] = status
     __args__['tags'] = tags
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getEipAddresses:getEipAddresses', __args__, opts=opts, typ=GetEipAddressesResult)
     return __ret__.apply(lambda __response__: GetEipAddressesResult(
         address_name=pulumi.get(__response__, 'address_name'),

@@ -68,7 +68,7 @@ export interface GetResourceDirectoriesResult {
  * export const resourceDirectoryId = _default.then(_default => _default.directories?.[0]?.id);
  * ```
  */
-export function getResourceDirectoriesOutput(args?: GetResourceDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceDirectoriesResult> {
+export function getResourceDirectoriesOutput(args?: GetResourceDirectoriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceDirectoriesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:resourcemanager/getResourceDirectories:getResourceDirectories", {

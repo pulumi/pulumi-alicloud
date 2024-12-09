@@ -101,7 +101,7 @@ export interface GetCertificatesResult {
  * export const wafCertificate = _default.then(_default => _default.certificates?.[0]);
  * ```
  */
-export function getCertificatesOutput(args: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
+export function getCertificatesOutput(args: GetCertificatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificatesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:waf/getCertificates:getCertificates", {
         "domain": args.domain,

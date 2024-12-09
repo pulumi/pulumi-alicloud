@@ -106,7 +106,7 @@ export interface GetBandwidthPackagesResult {
  * export const firstGaBandwidthPackageId = example.then(example => example.packages?.[0]?.id);
  * ```
  */
-export function getBandwidthPackagesOutput(args?: GetBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthPackagesResult> {
+export function getBandwidthPackagesOutput(args?: GetBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBandwidthPackagesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ga/getBandwidthPackages:getBandwidthPackages", {

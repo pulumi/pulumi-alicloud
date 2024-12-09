@@ -134,7 +134,7 @@ export interface GetVirtualBorderRoutersResult {
  * export const expressConnectVirtualBorderRouterId3 = filter.then(filter => filter.routers?.[0]?.id);
  * ```
  */
-export function getVirtualBorderRoutersOutput(args?: GetVirtualBorderRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualBorderRoutersResult> {
+export function getVirtualBorderRoutersOutput(args?: GetVirtualBorderRoutersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualBorderRoutersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", {

@@ -159,7 +159,7 @@ def get_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = No
                          lang: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          user_client_ip: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstancesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     > **DEPRECATED:**  This resource has been renamed to dns_get_alidns_instances from version 1.95.0.
 
@@ -187,7 +187,7 @@ def get_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = No
     __args__['lang'] = lang
     __args__['outputFile'] = output_file
     __args__['userClientIp'] = user_client_ip
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dns/getInstances:getInstances', __args__, opts=opts, typ=GetInstancesResult)
     return __ret__.apply(lambda __response__: GetInstancesResult(
         domain_type=pulumi.get(__response__, 'domain_type'),

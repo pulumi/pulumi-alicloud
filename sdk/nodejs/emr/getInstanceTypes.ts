@@ -139,7 +139,7 @@ export interface GetInstanceTypesResult {
  * export const firstInstanceType = _default.then(_default => _default.types?.[0]?.id);
  * ```
  */
-export function getInstanceTypesOutput(args: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
+export function getInstanceTypesOutput(args: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceTypesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:emr/getInstanceTypes:getInstanceTypes", {
         "clusterType": args.clusterType,

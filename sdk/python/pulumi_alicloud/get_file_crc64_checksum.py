@@ -113,7 +113,7 @@ def get_file_crc64_checksum(filename: Optional[str] = None,
         output_file=pulumi.get(__ret__, 'output_file'))
 def get_file_crc64_checksum_output(filename: Optional[pulumi.Input[str]] = None,
                                    output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFileCrc64ChecksumResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFileCrc64ChecksumResult]:
     """
     This data source compute file crc64 checksum.
 
@@ -135,7 +135,7 @@ def get_file_crc64_checksum_output(filename: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['filename'] = filename
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:index/getFileCrc64Checksum:getFileCrc64Checksum', __args__, opts=opts, typ=GetFileCrc64ChecksumResult)
     return __ret__.apply(lambda __response__: GetFileCrc64ChecksumResult(
         checksum=pulumi.get(__response__, 'checksum'),

@@ -152,7 +152,7 @@ def get_migration_jobs_output(enable_details: Optional[pulumi.Input[Optional[boo
                               ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                               name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                               output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMigrationJobsResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMigrationJobsResult]:
     """
     This data source provides the Dts Migration Jobs of the current Alibaba Cloud user.
 
@@ -181,7 +181,7 @@ def get_migration_jobs_output(enable_details: Optional[pulumi.Input[Optional[boo
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dts/getMigrationJobs:getMigrationJobs', __args__, opts=opts, typ=GetMigrationJobsResult)
     return __ret__.apply(lambda __response__: GetMigrationJobsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

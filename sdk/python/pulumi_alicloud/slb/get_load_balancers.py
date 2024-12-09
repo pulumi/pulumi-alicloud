@@ -448,7 +448,7 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
                               tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                               vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                               vswitch_id: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancersResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancersResult]:
     """
     > **DEPRECATED:** This datasource has been renamed to slb_get_application_load_balancers from version 1.123.1.
 
@@ -509,7 +509,7 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
     __args__['vswitchId'] = vswitch_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:slb/getLoadBalancers:getLoadBalancers', __args__, opts=opts, typ=GetLoadBalancersResult)
     return __ret__.apply(lambda __response__: GetLoadBalancersResult(
         address=pulumi.get(__response__, 'address'),

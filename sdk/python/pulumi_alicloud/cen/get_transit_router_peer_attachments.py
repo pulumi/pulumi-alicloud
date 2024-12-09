@@ -197,7 +197,7 @@ def get_transit_router_peer_attachments_output(cen_id: Optional[pulumi.Input[str
                                                status: Optional[pulumi.Input[Optional[str]]] = None,
                                                transit_router_attachment_id: Optional[pulumi.Input[Optional[str]]] = None,
                                                transit_router_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransitRouterPeerAttachmentsResult]:
+                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterPeerAttachmentsResult]:
     """
     This data source provides CEN Transit Router peer attachments available to the user.
 
@@ -220,7 +220,7 @@ def get_transit_router_peer_attachments_output(cen_id: Optional[pulumi.Input[str
     __args__['status'] = status
     __args__['transitRouterAttachmentId'] = transit_router_attachment_id
     __args__['transitRouterId'] = transit_router_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cen/getTransitRouterPeerAttachments:getTransitRouterPeerAttachments', __args__, opts=opts, typ=GetTransitRouterPeerAttachmentsResult)
     return __ret__.apply(lambda __response__: GetTransitRouterPeerAttachmentsResult(
         attachments=pulumi.get(__response__, 'attachments'),

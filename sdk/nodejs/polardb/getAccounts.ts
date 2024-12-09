@@ -163,7 +163,7 @@ export interface GetAccountsResult {
  * }
  * ```
  */
-export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
+export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:polardb/getAccounts:getAccounts", {
         "dbClusterId": args.dbClusterId,

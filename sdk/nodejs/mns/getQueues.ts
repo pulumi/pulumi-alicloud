@@ -82,7 +82,7 @@ export interface GetQueuesResult {
  * export const firstQueueId = queues.then(queues => queues.queues?.[0]?.id);
  * ```
  */
-export function getQueuesOutput(args?: GetQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuesResult> {
+export function getQueuesOutput(args?: GetQueuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueuesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:mns/getQueues:getQueues", {

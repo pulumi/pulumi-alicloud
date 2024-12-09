@@ -210,7 +210,7 @@ export interface GetTransitRouterVpcAttachmentsResult {
  * export const cenTransitRouterVpcAttachmentsId0 = ids.apply(ids => ids.attachments?.[0]?.id);
  * ```
  */
-export function getTransitRouterVpcAttachmentsOutput(args: GetTransitRouterVpcAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterVpcAttachmentsResult> {
+export function getTransitRouterVpcAttachmentsOutput(args: GetTransitRouterVpcAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransitRouterVpcAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cen/getTransitRouterVpcAttachments:getTransitRouterVpcAttachments", {
         "cenId": args.cenId,

@@ -103,7 +103,7 @@ def get_service(enable: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
 def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
     Using this data source can enable API gateway service automatically. If the service has been enabled, it will return `Opened`.
 
@@ -127,7 +127,7 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['enable'] = enable
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:apigateway/getService:getService', __args__, opts=opts, typ=GetServiceResult)
     return __ret__.apply(lambda __response__: GetServiceResult(
         enable=pulumi.get(__response__, 'enable'),

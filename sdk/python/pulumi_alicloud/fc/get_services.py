@@ -143,7 +143,7 @@ def get_services(ids: Optional[Sequence[str]] = None,
 def get_services_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                         output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicesResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServicesResult]:
     """
     This data source provides the Function Compute services of the current Alibaba Cloud user.
 
@@ -166,7 +166,7 @@ def get_services_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:fc/getServices:getServices', __args__, opts=opts, typ=GetServicesResult)
     return __ret__.apply(lambda __response__: GetServicesResult(
         id=pulumi.get(__response__, 'id'),

@@ -85,7 +85,7 @@ export interface GetCiphertextResult {
  * });
  * ```
  */
-export function getCiphertextOutput(args: GetCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCiphertextResult> {
+export function getCiphertextOutput(args: GetCiphertextOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCiphertextResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:kms/getCiphertext:getCiphertext", {
         "encryptionContext": args.encryptionContext,

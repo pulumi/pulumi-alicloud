@@ -100,7 +100,7 @@ export interface GetSslVpnServersResult {
  * });
  * ```
  */
-export function getSslVpnServersOutput(args?: GetSslVpnServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnServersResult> {
+export function getSslVpnServersOutput(args?: GetSslVpnServersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSslVpnServersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getSslVpnServers:getSslVpnServers", {

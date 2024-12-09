@@ -189,7 +189,7 @@ def get_znodes_output(accept_language: Optional[pulumi.Input[Optional[str]]] = N
                       name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                       path: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZnodesResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZnodesResult]:
     """
     This data source provides the Mse Znodes of the current Alibaba Cloud user.
 
@@ -231,7 +231,7 @@ def get_znodes_output(accept_language: Optional[pulumi.Input[Optional[str]]] = N
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['path'] = path
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:mse/getZnodes:getZnodes', __args__, opts=opts, typ=GetZnodesResult)
     return __ret__.apply(lambda __response__: GetZnodesResult(
         accept_language=pulumi.get(__response__, 'accept_language'),

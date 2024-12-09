@@ -186,7 +186,7 @@ def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[st
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             protocol_type: Optional[pulumi.Input[Optional[str]]] = None,
                             storage_type: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFileSystemsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFileSystemsResult]:
     """
     This data source provides FileSystems available to the user.
 
@@ -222,7 +222,7 @@ def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[st
     __args__['outputFile'] = output_file
     __args__['protocolType'] = protocol_type
     __args__['storageType'] = storage_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:nas/getFileSystems:getFileSystems', __args__, opts=opts, typ=GetFileSystemsResult)
     return __ret__.apply(lambda __response__: GetFileSystemsResult(
         description_regex=pulumi.get(__response__, 'description_regex'),

@@ -97,7 +97,7 @@ export interface GetResourceGroupsResult {
  * export const alicloudAdbResourceGroupExampleId = _default.then(_default => _default.groups?.[0]?.id);
  * ```
  */
-export function getResourceGroupsOutput(args: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceGroupsResult> {
+export function getResourceGroupsOutput(args: GetResourceGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetResourceGroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:adb/getResourceGroups:getResourceGroups", {
         "dbClusterId": args.dbClusterId,

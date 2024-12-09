@@ -127,7 +127,7 @@ export interface GetBackupPoliciesResult {
  * export const threatDetectionBackupPoliciesId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
  */
-export function getBackupPoliciesOutput(args?: GetBackupPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPoliciesResult> {
+export function getBackupPoliciesOutput(args?: GetBackupPoliciesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPoliciesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", {

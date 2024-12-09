@@ -220,7 +220,7 @@ export interface GetSnapshotsResult {
  * * `tags` - (Optional) A map of tags assigned to snapshots.
  * * `outputFile` - (Optional) The name of output file that saves the filter results.
  */
-export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
+export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnapshotsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getSnapshots:getSnapshots", {

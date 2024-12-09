@@ -163,7 +163,7 @@ export interface GetDedicatedHostsResult {
  * export const firstDedicatedHostsId = dedicatedHostsDs.then(dedicatedHostsDs => dedicatedHostsDs.hosts?.[0]?.id);
  * ```
  */
-export function getDedicatedHostsOutput(args?: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedHostsResult> {
+export function getDedicatedHostsOutput(args?: GetDedicatedHostsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDedicatedHostsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getDedicatedHosts:getDedicatedHosts", {

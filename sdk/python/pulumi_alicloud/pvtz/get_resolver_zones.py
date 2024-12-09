@@ -114,7 +114,7 @@ def get_resolver_zones(output_file: Optional[str] = None,
         zones=pulumi.get(__ret__, 'zones'))
 def get_resolver_zones_output(output_file: Optional[pulumi.Input[Optional[str]]] = None,
                               status: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResolverZonesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResolverZonesResult]:
     """
     This data source provides the available zones with the Private Zone Resolver of the current Alibaba Cloud user.
 
@@ -139,7 +139,7 @@ def get_resolver_zones_output(output_file: Optional[pulumi.Input[Optional[str]]]
     __args__ = dict()
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:pvtz/getResolverZones:getResolverZones', __args__, opts=opts, typ=GetResolverZonesResult)
     return __ret__.apply(lambda __response__: GetResolverZonesResult(
         id=pulumi.get(__response__, 'id'),

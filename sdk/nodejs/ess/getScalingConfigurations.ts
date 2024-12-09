@@ -106,7 +106,7 @@ export interface GetScalingConfigurationsResult {
  * export const firstScalingRule = scalingconfigurationsDs.then(scalingconfigurationsDs => scalingconfigurationsDs.configurations?.[0]?.id);
  * ```
  */
-export function getScalingConfigurationsOutput(args?: GetScalingConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingConfigurationsResult> {
+export function getScalingConfigurationsOutput(args?: GetScalingConfigurationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetScalingConfigurationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ess/getScalingConfigurations:getScalingConfigurations", {

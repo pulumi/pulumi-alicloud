@@ -134,7 +134,7 @@ export interface GetContainerGroupsResult {
  * export const firstEciContainerGroupId = example.then(example => example.groups?.[0]?.id);
  * ```
  */
-export function getContainerGroupsOutput(args?: GetContainerGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContainerGroupsResult> {
+export function getContainerGroupsOutput(args?: GetContainerGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetContainerGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:eci/getContainerGroups:getContainerGroups", {

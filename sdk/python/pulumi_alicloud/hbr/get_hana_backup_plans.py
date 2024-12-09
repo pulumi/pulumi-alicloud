@@ -209,7 +209,7 @@ def get_hana_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                  page_number: Optional[pulumi.Input[Optional[int]]] = None,
                                  page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                  vault_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHanaBackupPlansResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHanaBackupPlansResult]:
     """
     This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.
 
@@ -247,7 +247,7 @@ def get_hana_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['vaultId'] = vault_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:hbr/getHanaBackupPlans:getHanaBackupPlans', __args__, opts=opts, typ=GetHanaBackupPlansResult)
     return __ret__.apply(lambda __response__: GetHanaBackupPlansResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

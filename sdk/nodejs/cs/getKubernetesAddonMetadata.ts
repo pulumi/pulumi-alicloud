@@ -57,7 +57,7 @@ export interface GetKubernetesAddonMetadataResult {
  *
  * > **NOTE:** Available in 1.166.0+.
  */
-export function getKubernetesAddonMetadataOutput(args: GetKubernetesAddonMetadataOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesAddonMetadataResult> {
+export function getKubernetesAddonMetadataOutput(args: GetKubernetesAddonMetadataOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesAddonMetadataResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", {
         "clusterId": args.clusterId,

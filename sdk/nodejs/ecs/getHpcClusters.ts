@@ -88,7 +88,7 @@ export interface GetHpcClustersResult {
  * export const firstEcsHpcClusterId = example.then(example => example.clusters?.[0]?.id);
  * ```
  */
-export function getHpcClustersOutput(args?: GetHpcClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHpcClustersResult> {
+export function getHpcClustersOutput(args?: GetHpcClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHpcClustersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getHpcClusters:getHpcClusters", {

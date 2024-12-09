@@ -114,7 +114,7 @@ export interface GetProductsResult {
  *
  * > **NOTE:** Available in 1.64.0+
  */
-export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductsResult> {
+export function getProductsOutput(args?: GetProductsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProductsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:marketplace/getProducts:getProducts", {

@@ -113,7 +113,7 @@ export interface GetDomainsResult {
  * });
  * ```
  */
-export function getDomainsOutput(args: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+export function getDomainsOutput(args: GetDomainsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:waf/getDomains:getDomains", {
         "enableDetails": args.enableDetails,

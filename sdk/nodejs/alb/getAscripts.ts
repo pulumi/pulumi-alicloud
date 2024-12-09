@@ -118,7 +118,7 @@ export interface GetAscriptsResult {
  * export const alicloudAlbAscriptExampleId = _default.then(_default => _default.ascripts?.[0]?.id);
  * ```
  */
-export function getAscriptsOutput(args?: GetAscriptsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAscriptsResult> {
+export function getAscriptsOutput(args?: GetAscriptsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAscriptsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:alb/getAscripts:getAscripts", {

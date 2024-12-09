@@ -103,7 +103,7 @@ export interface GetIntegrationExportersResult {
  * export const armsIntegrationExportersId1 = ids.then(ids => ids.integrationExporters?.[0]?.id);
  * ```
  */
-export function getIntegrationExportersOutput(args: GetIntegrationExportersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIntegrationExportersResult> {
+export function getIntegrationExportersOutput(args: GetIntegrationExportersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIntegrationExportersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:arms/getIntegrationExporters:getIntegrationExporters", {
         "clusterId": args.clusterId,

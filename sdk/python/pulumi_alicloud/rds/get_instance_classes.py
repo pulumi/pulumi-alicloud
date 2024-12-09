@@ -298,7 +298,7 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] 
                                 sorted_by: Optional[pulumi.Input[Optional[str]]] = None,
                                 storage_type: Optional[pulumi.Input[Optional[str]]] = None,
                                 zone_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceClassesResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceClassesResult]:
     """
     This data source provides the RDS instance classes resource available info of Alibaba Cloud.
 
@@ -359,7 +359,7 @@ def get_instance_classes_output(category: Optional[pulumi.Input[Optional[str]]] 
     __args__['sortedBy'] = sorted_by
     __args__['storageType'] = storage_type
     __args__['zoneId'] = zone_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getInstanceClasses:getInstanceClasses', __args__, opts=opts, typ=GetInstanceClassesResult)
     return __ret__.apply(lambda __response__: GetInstanceClassesResult(
         category=pulumi.get(__response__, 'category'),

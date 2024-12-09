@@ -113,7 +113,7 @@ export interface GetGatewaysResult {
  *
  * > **NOTE:** Available since v1.18.0.
  */
-export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
+export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewaysResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpn/getGateways:getGateways", {

@@ -98,7 +98,7 @@ export interface GetNasBackupPlansResult {
  * export const hbrNasBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
  */
-export function getNasBackupPlansOutput(args?: GetNasBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasBackupPlansResult> {
+export function getNasBackupPlansOutput(args?: GetNasBackupPlansOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNasBackupPlansResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", {

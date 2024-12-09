@@ -257,7 +257,7 @@ def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
                                resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                                tags: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
                                vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityGroupsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGroupsResult]:
     """
     This data source provides a list of Security Groups in an Alibaba Cloud account according to the specified filters.
 
@@ -303,7 +303,7 @@ def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
     __args__['resourceGroupId'] = resource_group_id
     __args__['tags'] = tags
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ecs/getSecurityGroups:getSecurityGroups', __args__, opts=opts, typ=GetSecurityGroupsResult)
     return __ret__.apply(lambda __response__: GetSecurityGroupsResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

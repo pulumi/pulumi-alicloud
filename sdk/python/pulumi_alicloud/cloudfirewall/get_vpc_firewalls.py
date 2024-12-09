@@ -264,7 +264,7 @@ def get_vpc_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              vpc_firewall_id: Optional[pulumi.Input[Optional[str]]] = None,
                              vpc_firewall_name: Optional[pulumi.Input[Optional[str]]] = None,
                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVpcFirewallsResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcFirewallsResult]:
     """
     This data source provides Cloud Firewall Vpc Firewall available to the user.[What is Vpc Firewall](https://help.aliyun.com/document_detail/342932.html)
 
@@ -306,7 +306,7 @@ def get_vpc_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['vpcFirewallId'] = vpc_firewall_id
     __args__['vpcFirewallName'] = vpc_firewall_name
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudfirewall/getVpcFirewalls:getVpcFirewalls', __args__, opts=opts, typ=GetVpcFirewallsResult)
     return __ret__.apply(lambda __response__: GetVpcFirewallsResult(
         firewalls=pulumi.get(__response__, 'firewalls'),

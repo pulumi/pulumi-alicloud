@@ -75,7 +75,7 @@ export interface GetInstanceSpecificationsResult {
  * export const saeInstanceSpecificationId1 = ids.then(ids => ids.specifications?.[0]?.id);
  * ```
  */
-export function getInstanceSpecificationsOutput(args?: GetInstanceSpecificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSpecificationsResult> {
+export function getInstanceSpecificationsOutput(args?: GetInstanceSpecificationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceSpecificationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:sae/getInstanceSpecifications:getInstanceSpecifications", {

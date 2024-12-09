@@ -182,7 +182,7 @@ def get_ipv4_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
                              output_file: Optional[pulumi.Input[Optional[str]]] = None,
                              status: Optional[pulumi.Input[Optional[str]]] = None,
                              vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpv4GatewaysResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv4GatewaysResult]:
     """
     This data source provides the Vpc Ipv4 Gateways of the current Alibaba Cloud user.
 
@@ -217,7 +217,7 @@ def get_ipv4_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['vpcId'] = vpc_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getIpv4Gateways:getIpv4Gateways', __args__, opts=opts, typ=GetIpv4GatewaysResult)
     return __ret__.apply(lambda __response__: GetIpv4GatewaysResult(
         gateways=pulumi.get(__response__, 'gateways'),

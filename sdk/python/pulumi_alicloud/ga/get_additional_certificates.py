@@ -147,7 +147,7 @@ def get_additional_certificates_output(accelerator_id: Optional[pulumi.Input[str
                                        ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                        listener_id: Optional[pulumi.Input[str]] = None,
                                        output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAdditionalCertificatesResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAdditionalCertificatesResult]:
     """
     This data source provides the Ga Additional Certificates of the current Alibaba Cloud user.
 
@@ -181,7 +181,7 @@ def get_additional_certificates_output(accelerator_id: Optional[pulumi.Input[str
     __args__['ids'] = ids
     __args__['listenerId'] = listener_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ga/getAdditionalCertificates:getAdditionalCertificates', __args__, opts=opts, typ=GetAdditionalCertificatesResult)
     return __ret__.apply(lambda __response__: GetAdditionalCertificatesResult(
         accelerator_id=pulumi.get(__response__, 'accelerator_id'),

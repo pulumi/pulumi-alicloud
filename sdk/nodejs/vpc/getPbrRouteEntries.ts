@@ -88,7 +88,7 @@ export interface GetPbrRouteEntriesResult {
  * export const vpnIpsecServerId1 = ids.then(ids => ids.entries?.[0]?.id);
  * ```
  */
-export function getPbrRouteEntriesOutput(args: GetPbrRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPbrRouteEntriesResult> {
+export function getPbrRouteEntriesOutput(args: GetPbrRouteEntriesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPbrRouteEntriesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:vpc/getPbrRouteEntries:getPbrRouteEntries", {
         "ids": args.ids,

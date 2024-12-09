@@ -70,7 +70,7 @@ export interface GetAccountAliasResult {
  * export const accountAlias = aliasDs.then(aliasDs => aliasDs.accountAlias);
  * ```
  */
-export function getAccountAliasOutput(args?: GetAccountAliasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAliasResult> {
+export function getAccountAliasOutput(args?: GetAccountAliasOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountAliasResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ram/getAccountAlias:getAccountAlias", {

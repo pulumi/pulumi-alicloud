@@ -188,7 +188,7 @@ def get_open_api_pricing_modules_output(ids: Optional[pulumi.Input[Optional[Sequ
                                         product_code: Optional[pulumi.Input[str]] = None,
                                         product_type: Optional[pulumi.Input[Optional[str]]] = None,
                                         subscription_type: Optional[pulumi.Input[str]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOpenApiPricingModulesResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenApiPricingModulesResult]:
     """
     This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)
 
@@ -223,7 +223,7 @@ def get_open_api_pricing_modules_output(ids: Optional[pulumi.Input[Optional[Sequ
     __args__['productCode'] = product_code
     __args__['productType'] = product_type
     __args__['subscriptionType'] = subscription_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:bss/getOpenApiPricingModules:getOpenApiPricingModules', __args__, opts=opts, typ=GetOpenApiPricingModulesResult)
     return __ret__.apply(lambda __response__: GetOpenApiPricingModulesResult(
         id=pulumi.get(__response__, 'id'),

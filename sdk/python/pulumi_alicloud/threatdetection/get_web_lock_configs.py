@@ -200,7 +200,7 @@ def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str
                                 remark: Optional[pulumi.Input[Optional[str]]] = None,
                                 source_ip: Optional[pulumi.Input[Optional[str]]] = None,
                                 status: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebLockConfigsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebLockConfigsResult]:
     """
     This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
 
@@ -233,7 +233,7 @@ def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     __args__['remark'] = remark
     __args__['sourceIp'] = source_ip
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs', __args__, opts=opts, typ=GetWebLockConfigsResult)
     return __ret__.apply(lambda __response__: GetWebLockConfigsResult(
         configs=pulumi.get(__response__, 'configs'),

@@ -69,7 +69,7 @@ export interface GetMscSubSubscriptionsResult {
  * export const mscSubSubscriptionId1 = _default.then(_default => _default.subscriptions?.[0]?.id);
  * ```
  */
-export function getMscSubSubscriptionsOutput(args?: GetMscSubSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubSubscriptionsResult> {
+export function getMscSubSubscriptionsOutput(args?: GetMscSubSubscriptionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMscSubSubscriptionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:index/getMscSubSubscriptions:getMscSubSubscriptions", {

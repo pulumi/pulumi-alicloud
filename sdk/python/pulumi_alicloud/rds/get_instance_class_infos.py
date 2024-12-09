@@ -177,7 +177,7 @@ def get_instance_class_infos_output(commodity_code: Optional[pulumi.Input[str]] 
                                     infos: Optional[pulumi.Input[Optional[Sequence[Union['GetInstanceClassInfosInfoArgs', 'GetInstanceClassInfosInfoArgsDict']]]]] = None,
                                     order_type: Optional[pulumi.Input[str]] = None,
                                     output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceClassInfosResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceClassInfosResult]:
     """
     This data source operation to query the instance types that are available to specific instances of Alibaba Cloud.
 
@@ -222,7 +222,7 @@ def get_instance_class_infos_output(commodity_code: Optional[pulumi.Input[str]] 
     __args__['infos'] = infos
     __args__['orderType'] = order_type
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:rds/getInstanceClassInfos:getInstanceClassInfos', __args__, opts=opts, typ=GetInstanceClassInfosResult)
     return __ret__.apply(lambda __response__: GetInstanceClassInfosResult(
         commodity_code=pulumi.get(__response__, 'commodity_code'),

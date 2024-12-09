@@ -149,7 +149,7 @@ def get_user_tenants(ids: Optional[Sequence[str]] = None,
 def get_user_tenants_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserTenantsResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserTenantsResult]:
     """
     This data source provides a list of DMS User Tenants in an Alibaba Cloud account according to the specified filters.
 
@@ -175,7 +175,7 @@ def get_user_tenants_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     __args__['ids'] = ids
     __args__['outputFile'] = output_file
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dms/getUserTenants:getUserTenants', __args__, opts=opts, typ=GetUserTenantsResult)
     return __ret__.apply(lambda __response__: GetUserTenantsResult(
         id=pulumi.get(__response__, 'id'),

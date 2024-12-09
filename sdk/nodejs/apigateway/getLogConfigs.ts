@@ -93,7 +93,7 @@ export interface GetLogConfigsResult {
  * export const apiGatewayLogConfigId2 = logType.then(logType => logType.configs?.[0]?.id);
  * ```
  */
-export function getLogConfigsOutput(args?: GetLogConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogConfigsResult> {
+export function getLogConfigsOutput(args?: GetLogConfigsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogConfigsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:apigateway/getLogConfigs:getLogConfigs", {

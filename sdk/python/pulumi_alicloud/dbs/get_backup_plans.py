@@ -208,7 +208,7 @@ def get_backup_plans_output(backup_plan_name: Optional[pulumi.Input[Optional[str
                             page_number: Optional[pulumi.Input[Optional[int]]] = None,
                             page_size: Optional[pulumi.Input[Optional[int]]] = None,
                             status: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupPlansResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlansResult]:
     """
     This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.
 
@@ -245,7 +245,7 @@ def get_backup_plans_output(backup_plan_name: Optional[pulumi.Input[Optional[str
     __args__['pageNumber'] = page_number
     __args__['pageSize'] = page_size
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:dbs/getBackupPlans:getBackupPlans', __args__, opts=opts, typ=GetBackupPlansResult)
     return __ret__.apply(lambda __response__: GetBackupPlansResult(
         backup_plan_name=pulumi.get(__response__, 'backup_plan_name'),

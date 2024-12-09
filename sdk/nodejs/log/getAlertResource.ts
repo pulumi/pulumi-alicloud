@@ -85,7 +85,7 @@ export interface GetAlertResourceResult {
  * });
  * ```
  */
-export function getAlertResourceOutput(args: GetAlertResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlertResourceResult> {
+export function getAlertResourceOutput(args: GetAlertResourceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAlertResourceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:log/getAlertResource:getAlertResource", {
         "lang": args.lang,

@@ -102,7 +102,7 @@ export interface GetScimServerCredentialsResult {
  * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials?.[0]?.id);
  * ```
  */
-export function getScimServerCredentialsOutput(args: GetScimServerCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScimServerCredentialsResult> {
+export function getScimServerCredentialsOutput(args: GetScimServerCredentialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetScimServerCredentialsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudsso/getScimServerCredentials:getScimServerCredentials", {
         "directoryId": args.directoryId,

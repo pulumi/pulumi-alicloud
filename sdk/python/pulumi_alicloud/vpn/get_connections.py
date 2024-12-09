@@ -181,7 +181,7 @@ def get_connections_output(customer_gateway_id: Optional[pulumi.Input[Optional[s
                            name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                            output_file: Optional[pulumi.Input[Optional[str]]] = None,
                            vpn_gateway_id: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionsResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionsResult]:
     """
     The VPN connections data source lists lots of VPN connections resource information owned by an Alicloud account.
 
@@ -212,7 +212,7 @@ def get_connections_output(customer_gateway_id: Optional[pulumi.Input[Optional[s
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['vpnGatewayId'] = vpn_gateway_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpn/getConnections:getConnections', __args__, opts=opts, typ=GetConnectionsResult)
     return __ret__.apply(lambda __response__: GetConnectionsResult(
         connections=pulumi.get(__response__, 'connections'),

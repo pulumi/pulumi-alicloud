@@ -131,7 +131,7 @@ export interface GetHostAccountsResult {
  * export const bastionhostHostAccountId2 = nameRegex.then(nameRegex => nameRegex.accounts?.[0]?.id);
  * ```
  */
-export function getHostAccountsOutput(args: GetHostAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostAccountsResult> {
+export function getHostAccountsOutput(args: GetHostAccountsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostAccountsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:bastionhost/getHostAccounts:getHostAccounts", {
         "hostAccountName": args.hostAccountName,

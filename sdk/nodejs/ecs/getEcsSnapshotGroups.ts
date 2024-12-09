@@ -134,7 +134,7 @@ export interface GetEcsSnapshotGroupsResult {
  * export const ecsSnapshotGroupId4 = instanceId.then(instanceId => instanceId.groups?.[0]?.id);
  * ```
  */
-export function getEcsSnapshotGroupsOutput(args?: GetEcsSnapshotGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsSnapshotGroupsResult> {
+export function getEcsSnapshotGroupsOutput(args?: GetEcsSnapshotGroupsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEcsSnapshotGroupsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getEcsSnapshotGroups:getEcsSnapshotGroups", {

@@ -209,7 +209,7 @@ export interface GetImagesResult {
  * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
  * ```
  */
-export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImagesResult> {
+export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImagesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:ecs/getImages:getImages", {

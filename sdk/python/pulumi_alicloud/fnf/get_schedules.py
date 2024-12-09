@@ -168,7 +168,7 @@ def get_schedules_output(flow_name: Optional[pulumi.Input[str]] = None,
                          limit: Optional[pulumi.Input[Optional[int]]] = None,
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSchedulesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchedulesResult]:
     """
     This data source provides the Fnf Schedules of the current Alibaba Cloud user.
 
@@ -201,7 +201,7 @@ def get_schedules_output(flow_name: Optional[pulumi.Input[str]] = None,
     __args__['limit'] = limit
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:fnf/getSchedules:getSchedules', __args__, opts=opts, typ=GetSchedulesResult)
     return __ret__.apply(lambda __response__: GetSchedulesResult(
         flow_name=pulumi.get(__response__, 'flow_name'),

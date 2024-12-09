@@ -109,7 +109,7 @@ export interface GetVirtualHostsResult {
  * export const amqpVirtualHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?.[0]?.id);
  * ```
  */
-export function getVirtualHostsOutput(args: GetVirtualHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualHostsResult> {
+export function getVirtualHostsOutput(args: GetVirtualHostsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVirtualHostsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:amqp/getVirtualHosts:getVirtualHosts", {
         "ids": args.ids,

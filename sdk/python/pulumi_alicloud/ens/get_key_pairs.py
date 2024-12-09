@@ -163,7 +163,7 @@ def get_key_pairs_output(key_pair_name: Optional[pulumi.Input[Optional[str]]] = 
                          name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                          output_file: Optional[pulumi.Input[Optional[str]]] = None,
                          version: Optional[pulumi.Input[str]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyPairsResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyPairsResult]:
     """
     This data source provides the Ens Key Pairs of the current Alibaba Cloud user.
 
@@ -193,7 +193,7 @@ def get_key_pairs_output(key_pair_name: Optional[pulumi.Input[Optional[str]]] = 
     __args__['nameRegex'] = name_regex
     __args__['outputFile'] = output_file
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ens/getKeyPairs:getKeyPairs', __args__, opts=opts, typ=GetKeyPairsResult)
     return __ret__.apply(lambda __response__: GetKeyPairsResult(
         id=pulumi.get(__response__, 'id'),

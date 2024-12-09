@@ -103,7 +103,7 @@ export interface GetDBClusterLakeVersionsResult {
  * export const adbDbClusterLakeVersionId1 = ids.then(ids => ids.versions?.[0]?.id);
  * ```
  */
-export function getDBClusterLakeVersionsOutput(args?: GetDBClusterLakeVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDBClusterLakeVersionsResult> {
+export function getDBClusterLakeVersionsOutput(args?: GetDBClusterLakeVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDBClusterLakeVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:adb/getDBClusterLakeVersions:getDBClusterLakeVersions", {

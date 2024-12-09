@@ -126,7 +126,7 @@ def get_backup_plans(cluster_id: Optional[str] = None,
         plans=pulumi.get(__ret__, 'plans'))
 def get_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
                             output_file: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupPlansResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlansResult]:
     """
     This data source provides the Cassandra Backup Plans of the current Alibaba Cloud user.
 
@@ -153,7 +153,7 @@ def get_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['clusterId'] = cluster_id
     __args__['outputFile'] = output_file
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cassandra/getBackupPlans:getBackupPlans', __args__, opts=opts, typ=GetBackupPlansResult)
     return __ret__.apply(lambda __response__: GetBackupPlansResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

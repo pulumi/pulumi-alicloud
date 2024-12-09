@@ -72,7 +72,7 @@ export interface GetConfigurationRecordersResult {
  * export const listOfResourceTypes = _this.recorders[0].resourceTypes;
  * ```
  */
-export function getConfigurationRecordersOutput(args?: GetConfigurationRecordersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigurationRecordersResult> {
+export function getConfigurationRecordersOutput(args?: GetConfigurationRecordersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigurationRecordersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cfg/getConfigurationRecorders:getConfigurationRecorders", {

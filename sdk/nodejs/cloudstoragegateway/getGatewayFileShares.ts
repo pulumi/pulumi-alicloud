@@ -109,7 +109,7 @@ export interface GetGatewayFileSharesResult {
  * export const cloudStorageGatewayGatewayFileShareId2 = nameRegex.then(nameRegex => nameRegex.shares?.[0]?.id);
  * ```
  */
-export function getGatewayFileSharesOutput(args: GetGatewayFileSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayFileSharesResult> {
+export function getGatewayFileSharesOutput(args: GetGatewayFileSharesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGatewayFileSharesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudstoragegateway/getGatewayFileShares:getGatewayFileShares", {
         "gatewayId": args.gatewayId,

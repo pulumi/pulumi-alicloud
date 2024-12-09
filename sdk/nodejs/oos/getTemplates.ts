@@ -171,7 +171,7 @@ export interface GetTemplatesResult {
  * export const firstTemplateName = example.then(example => example.templates?.[0]?.templateName);
  * ```
  */
-export function getTemplatesOutput(args?: GetTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplatesResult> {
+export function getTemplatesOutput(args?: GetTemplatesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTemplatesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:oos/getTemplates:getTemplates", {

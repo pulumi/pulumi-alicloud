@@ -249,7 +249,7 @@ def get_base_instances_output(enable_details: Optional[pulumi.Input[Optional[boo
                               resource_group_id: Optional[pulumi.Input[Optional[str]]] = None,
                               search_key: Optional[pulumi.Input[Optional[str]]] = None,
                               status: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBaseInstancesResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBaseInstancesResult]:
     """
     This data source provides the Ocean Base Instances of the current Alibaba Cloud user.
 
@@ -291,7 +291,7 @@ def get_base_instances_output(enable_details: Optional[pulumi.Input[Optional[boo
     __args__['resourceGroupId'] = resource_group_id
     __args__['searchKey'] = search_key
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:ocean/getBaseInstances:getBaseInstances', __args__, opts=opts, typ=GetBaseInstancesResult)
     return __ret__.apply(lambda __response__: GetBaseInstancesResult(
         enable_details=pulumi.get(__response__, 'enable_details'),

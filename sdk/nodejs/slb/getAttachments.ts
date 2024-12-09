@@ -79,7 +79,7 @@ export interface GetAttachmentsResult {
  * export const firstSlbAttachmentInstanceId = sampleDs.then(sampleDs => sampleDs.slbAttachments?.[0]?.instanceId);
  * ```
  */
-export function getAttachmentsOutput(args: GetAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachmentsResult> {
+export function getAttachmentsOutput(args: GetAttachmentsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAttachmentsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:slb/getAttachments:getAttachments", {
         "instanceIds": args.instanceIds,

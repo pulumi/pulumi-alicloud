@@ -193,7 +193,7 @@ def get_service_hybrid_double_writes_output(ids: Optional[pulumi.Input[Optional[
                                             source_namespace: Optional[pulumi.Input[Optional[str]]] = None,
                                             source_user_id: Optional[pulumi.Input[Optional[str]]] = None,
                                             user_id: Optional[pulumi.Input[Optional[str]]] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceHybridDoubleWritesResult]:
+                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceHybridDoubleWritesResult]:
     """
     This data source provides the Cloud Monitor Service Hybrid Double Writes of the current Alibaba Cloud user.
 
@@ -234,7 +234,7 @@ def get_service_hybrid_double_writes_output(ids: Optional[pulumi.Input[Optional[
     __args__['sourceNamespace'] = source_namespace
     __args__['sourceUserId'] = source_user_id
     __args__['userId'] = user_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites', __args__, opts=opts, typ=GetServiceHybridDoubleWritesResult)
     return __ret__.apply(lambda __response__: GetServiceHybridDoubleWritesResult(
         hybrid_double_writes=pulumi.get(__response__, 'hybrid_double_writes'),

@@ -147,7 +147,7 @@ def get_traffic_mirror_filter_egress_rules_output(ids: Optional[pulumi.Input[Opt
                                                   output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                                   status: Optional[pulumi.Input[Optional[str]]] = None,
                                                   traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
-                                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTrafficMirrorFilterEgressRulesResult]:
+                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTrafficMirrorFilterEgressRulesResult]:
     """
     This data source provides the Vpc Traffic Mirror Filter Egress Rules of the current Alibaba Cloud user.
 
@@ -181,7 +181,7 @@ def get_traffic_mirror_filter_egress_rules_output(ids: Optional[pulumi.Input[Opt
     __args__['outputFile'] = output_file
     __args__['status'] = status
     __args__['trafficMirrorFilterId'] = traffic_mirror_filter_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('alicloud:vpc/getTrafficMirrorFilterEgressRules:getTrafficMirrorFilterEgressRules', __args__, opts=opts, typ=GetTrafficMirrorFilterEgressRulesResult)
     return __ret__.apply(lambda __response__: GetTrafficMirrorFilterEgressRulesResult(
         id=pulumi.get(__response__, 'id'),

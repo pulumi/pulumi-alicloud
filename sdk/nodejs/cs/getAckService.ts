@@ -81,7 +81,7 @@ export interface GetAckServiceResult {
  * });
  * ```
  */
-export function getAckServiceOutput(args: GetAckServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAckServiceResult> {
+export function getAckServiceOutput(args: GetAckServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAckServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cs/getAckService:getAckService", {
         "enable": args.enable,

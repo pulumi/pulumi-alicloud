@@ -90,7 +90,7 @@ export interface GetInstanceMembersResult {
  * export const alicloudCloudFirewallInstanceMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
  * ```
  */
-export function getInstanceMembersOutput(args?: GetInstanceMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceMembersResult> {
+export function getInstanceMembersOutput(args?: GetInstanceMembersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceMembersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("alicloud:cloudfirewall/getInstanceMembers:getInstanceMembers", {
